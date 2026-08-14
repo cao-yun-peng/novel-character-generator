@@ -1,12 +1,12 @@
 # 小说角色插画与 3D 建模生成器——技术设计文档
 
-> 文档版本：2.4
+> 文档版本：2.5
 >
 > 修订日期：2026-08-14
 >
 > 文档状态：一期可实施设计，P0 前置项与 PoC 决策项已标注
 >
-> 说明：模型名称、API 价格和平台能力变化较快，本文只固化接口与验证方法，不把临时价格或未验证的模型组合写成架构保证。1
+> 说明：模型名称、API 价格和平台能力变化较快，本文只固化接口与验证方法，不把临时价格或未验证的模型组合写成架构保证。
 
 ## 目录
 
@@ -232,7 +232,7 @@ Application Orchestrator
 
 默认 `StructuredCallAgentRuntime` 支持单次结构化调用、Schema 校验、一次受限修复和显式停止原因。小说导入、分块、事实保存、时间线解析、档案聚合、图像任务、费用、审批和恢复均由 Application Orchestrator 控制。
 
-LangGraph 只允许封装在单个复杂 Agent 内部，用于已经证明需要多轮工具调用、运行时语义分支或图内暂停后继续同一语义任务的场景。即使局部启用，也必须满足：
+LangGraph 只允许封装在单个复杂 Agent 内部，用于已经证明需要多轮工具调用或运行时语义分支的场景。业务审批不在一期使用 Graph interrupt 恢复：Agent 返回 `ApprovalRequest` 后结束本次 attempt，审批完成后启动新 attempt。即使局部启用，也必须满足：
 
 - Graph State 只保存 JSON 可序列化的临时语义状态和业务 ID；
 - 不保存任务状态、审批授权、费用事实、完整正文、ORM/Provider 对象或业务真值；
@@ -251,6 +251,7 @@ PoC 未达到采用门槛时，不安装生产 LangGraph 依赖，不创建生�
 class LLMCapabilities(BaseModel):
     structured_output: bool
     json_object_mode: bool
+    agent: "AgentCapabilities"
     max_context_tokens: int
     max_output_tokens: int
     supports_seed: bool = False
@@ -283,13 +284,17 @@ novel-character-generator/
 │       │       ├── images.py
 │       │       └── health.py
 │       ├── application/
+│       │   ├── orchestrator.py
 │       │   ├── commands/
 │       │   ├── queries/
 │       │   ├── services/
 │       │   │   ├── ingestion_service.py
 │       │   │   ├── extraction_service.py
 │       │   │   ├── profile_service.py
-│       │   │   └── generation_service.py
+│       │   │   ├── generation_service.py
+│       │   │   ├── external_operation_service.py
+│       │   │   ├── approval_service.py
+│       │   │   └── evaluation_service.py
 │       │   └── ports/
 │       │       ├── llm.py
 │       │       ├── image_generator.py
@@ -310,6 +315,15 @@ novel-character-generator/
 │       │       ├── read_tools.py
 │       │       ├── proposal_tools.py
 │       │       └── approval_tools.py
+│       ├── evaluation/
+│       │   ├── schemas.py
+│       │   ├── dataset_registry.py
+│       │   ├── runner.py
+│       │   ├── reports.py
+│       │   └── graders/
+│       │       ├── deterministic.py
+│       │       ├── model_grader.py
+│       │       └── human_review.py
 │       ├── domain/
 │       │   ├── entities/
 │       │   ├── value_objects/
@@ -321,9 +335,9 @@ novel-character-generator/
 │       │   │   ├── snapshot_resolver.py
 │       │   │   └── retry_policy.py
 │       │   └── exceptions.py
-│       ├── workflows/
-│       │   ├── text_graph.py
-│       │   ├── image_graph.py
+│       ├── pipelines/
+│       │   ├── text_pipeline.py
+│       │   ├── image_pipeline.py
 │       │   ├── states.py
 │       │   └── nodes/
 │       ├── workers/
@@ -339,6 +353,9 @@ novel-character-generator/
 │       │   │   ├── base.py
 │       │   │   ├── deepseek.py
 │       │   │   └── openai_compatible.py
+│       │   ├── agent_runtime/
+│       │   │   ├── structured_call.py
+│       │   │   └── langgraph_poc.py
 │       │   ├── image/
 │       │   │   ├── fal_client.py
 │       │   │   ├── workflow_registry.py
@@ -391,23 +408,28 @@ novel-character-generator/
 | 表 | 作用 | 关键约束 |
 |---|---|---|
 | `novels` | 小说元数据与处理状态 | 原文不直接塞入状态快照 |
-| `source_documents` | 上传文件、哈希、编码、存储位置 | `sha256` 唯一去重 |
+| `source_documents` | 小说的逻辑源文档 | 只保存文档身份和当前版本指针 |
+| `source_document_versions` | 每次上传/修改的不可变内容、哈希、编码与存储位置 | `(source_document_id, version)` 唯一，旧版本不覆盖 |
+| `normalization_maps` | 规范化文本到原文件偏移的可逆映射 | 关联 source document version 和算法版本 |
 | `chapters` | 章节边界和顺序 | `(novel_id, ordinal)` 唯一 |
-| `text_chunks` | 稳定文本块、原文区间和内容哈希 | `(novel_id, ordinal, content_hash)` |
+| `text_chunks` | 稳定文本块、原文区间和内容哈希 | 关联 source document version；`(version_id, ordinal, content_hash)` |
 | `timelines` | 主时间线、分支时间线及继承关系 | 分支点以前继承父时间线状态 |
 | `story_events` | 故事时间中的事件与因果顺序 | `story_order` 与叙事出场顺序分离 |
+| `event_participants` | 事件中的 actor、patient、observer 等角色及证据 | `(event_id, character_id, role)` 唯一 |
 | `scenes` | 场景、视角、所在事件和叙事区间 | 每个场景绑定一个时间线 |
 | `characters` | 规范角色实体 | 不直接保存完整事实 JSON |
 | `character_aliases` | 别名、称谓、有效范围 | `(novel_id, normalized_alias)` 建索引 |
 | `feature_observations` | 字段级观察、证据与来源 | 不覆盖旧观察 |
+| `feature_suggestions` | 身份原型、画风默认值等非事实建议 | 不得伪装成原文 Observation |
 | `expression_observations` | 外显神情、内在情绪、对象和诱因 | 默认只在当前场景有效 |
 | `character_appearance_states` | 角色在特定时间段的外观状态 | 同一时间线内有效区间可计算 |
 | `character_image_sets` | 一个角色的阶段形象集合、默认代表形象和集合版本 | 每个集合关联已批准阶段，不按章节穷举 |
-| `character_stage_images` | 阶段快照、候选图、阶段基准图及排序 | `(image_set_id, appearance_state_id)` 唯一 |
+| `character_stage_images` | 阶段快照、候选图、阶段基准图及排序 | `(image_set_id, stage_key)` 唯一，可组合多个状态 |
 | `character_render_profiles` | 当前生成档案及锁定状态 | 带版本号和乐观锁 |
 | `pipeline_runs` | 一次导入/提取/生成运行 | 幂等键唯一 |
 | `pipeline_steps` | 步骤状态、尝试次数和游标 | `(run_id, step_key)` 唯一 |
 | `run_events` | 面向进度流的追加事件 | 单调序号 |
+| `external_operations` | 外部调用提交、查询、取消、对账和未知状态 | `(provider, idempotency_key)` 唯一，保存 request fingerprint 与 fencing generation |
 | `model_calls` | 外部调用、token、价格快照和请求 ID | 请求摘要不得含密钥 |
 | `agent_runs` | 一次 Agent 语义任务、版本、预算和最终状态 | 关联 pipeline step |
 | `agent_turns` | 每轮模型输出摘要、上下文哈希和使用量 | 不保存隐藏推理内容 |
@@ -415,6 +437,11 @@ novel-character-generator/
 | `decision_records` | 实体合并、档案选择等关键决策及证据 | 保留策略/人工来源 |
 | `human_approvals` | 审批对象、审批结果、修改内容与审批人 | 追加写审计记录 |
 | `agent_evaluations` | 最终结果、工具选择与执行轨迹评分 | 关联评测集和评分器版本 |
+| `eval_datasets` | 评测集版本、来源、切分策略和冻结状态 | 发布测试集不可被运行时修改 |
+| `eval_cases` | 文本、实体、时间、Agent、图像等评测样本 | 关联小说级 split 和标注版本 |
+| `eval_runs` | 被测配置、基线、随机种子、费用与汇总 | 配置哈希和数据集版本不可变 |
+| `eval_results` | 每个 case、grader 的分数、通过状态和诊断 | `(eval_run_id, eval_case_id, grader_version)` 唯一 |
+| `grader_versions` | 确定性、模型和人工评分器的版本化定义 | 模型评分器必须记录模型与 rubric |
 | `artifacts` | 图像、源文件、模型等统一产物 | 内容哈希、MIME、存储 URI |
 | `generated_images` | 图像业务元数据和评测结果 | 关联 workflow/profile/run |
 
@@ -436,9 +463,21 @@ novel-character-generator/
 | 审核优先级 | 综合影响范围、错误风险、不确定性和角色重要度排序 | 高影响合并与阶段选择必须人工处理 |
 
 ```python
+class SourceDocumentVersion(BaseModel):
+    id: UUID
+    source_document_id: UUID
+    version: int
+    content_sha256: str
+    storage_uri: str
+    encoding: str
+    normalization_map_id: UUID
+    supersedes_version_id: UUID | None
+    created_at: datetime
+
+
 class MentionSpan(BaseModel):
     id: UUID
-    source_document_version: str
+    source_document_version_id: UUID
     source_chunk_id: UUID
     char_start: int
     char_end: int
@@ -472,21 +511,42 @@ class FeatureObservation(BaseModel):
     character_id: UUID
     field_path: str                 # 例如 face.eye_color
     value: JsonValue
-    source_kind: Literal["text", "prototype", "style", "manual"]
+    source_kind: Literal["text", "manual"]
+    source_document_version_id: UUID | None
     source_chunk_id: UUID | None
+    mention_span_id: UUID | None
     evidence_quote: str | None
     char_start: int | None
     char_end: int | None
+    grounding_status: Literal["exact", "fuzzy", "ungrounded", "manually_grounded"]
     chapter_ordinal: int | None
     scene_id: UUID | None
     event_id: UUID | None
-    temporal_scope: TemporalScope | None  # text/manual事实必填；原型建议可为空
+    temporal_scope: TemporalScope | None  # 故事有效时间；永久身份锚点可为空
     epistemic_status: Literal["asserted", "negated", "inferred", "uncertain"]
     confidence: float               # 0..1，仅表示抽取置信度
-    extraction_run_id: UUID
+    extraction_run_id: UUID | None
+    manual_approval_id: UUID | None
     extractor_version: str
     supersedes_id: UUID | None
-    created_at: datetime
+    record_status: Literal["active", "invalidated", "superseded"]
+    recorded_at: datetime           # 系统时间：何时记录
+    invalidated_at: datetime | None
+    invalidated_by_run_id: UUID | None
+
+
+class FeatureSuggestion(BaseModel):
+    id: UUID
+    character_id: UUID
+    field_path: str
+    value: JsonValue
+    suggestion_kind: Literal["identity_prototype", "style_default"]
+    resource_version: str
+    confidence: float
+    allowed_fields: list[str]
+    rationale: str
+    status: Literal["candidate", "accepted", "rejected"]
+    approval_id: UUID | None
 ```
 
 规则：
@@ -495,7 +555,12 @@ class FeatureObservation(BaseModel):
 - `inferred` 与 `text/asserted` 必须区分；
 - 同一字段允许存在多条观察和冲突；
 - 用户修订创建新的 `manual` 观察或档案版本，不静默改写历史；
-- 原文引用应控制长度并保存精确区间，避免保存无法定位的整段文本。
+- 原文引用应控制长度并保存精确区间，避免保存无法定位的整段文本；
+- `text` Observation 必须关联不可变的 source document version；`ungrounded` 默认不得进入 RenderProfile；
+- `text` Observation 必须关联 extraction run；`manual` Observation 必须关联 `manual_approval_id`；
+- 故事有效时间由 `temporal_scope` 表示，系统记录/失效时间由 `recorded_at`、`invalidated_at` 表示，两类时间不得混用；
+- 章节删除或文本版本更新只会失效旧观察，不物理删除；重放历史运行时按 source version 和系统时间读取当时有效记录；
+- 原型和画风默认值保存为 `FeatureSuggestion`，只有人工接受后才参与渲染决策，不能写成 `source_kind=prototype/style` 的事实。
 
 ### 6.4 时间线、事件与场景作用域
 
@@ -518,6 +583,13 @@ class StoryEvent(BaseModel):
     story_order: Decimal | None       # 故事内顺序，允许后续插入
     starts_at: datetime | None        # 小说给出明确时间时才填写
     ends_at: datetime | None
+
+
+class EventParticipant(BaseModel):
+    event_id: UUID
+    character_id: UUID
+    role: Literal["actor", "patient", "observer", "speaker", "other"]
+    evidence_observation_ids: list[UUID]
 
 
 class Scene(BaseModel):
@@ -565,6 +637,7 @@ class TemporalScope(BaseModel):
 class ExpressionObservation(BaseModel):
     id: UUID
     character_id: UUID
+    source_document_version_id: UUID
     source_chunk_id: UUID
     char_start: int
     char_end: int
@@ -588,6 +661,10 @@ class ExpressionObservation(BaseModel):
     confidence: float
     extraction_run_id: UUID
     extractor_version: str
+    record_status: Literal["active", "invalidated", "superseded"]
+    recorded_at: datetime
+    invalidated_at: datetime | None
+    invalidated_by_run_id: UUID | None
 ```
 
 神情默认是 `instant` 或 `scene` 级瞬时状态，不写入永久脸部特征。“常年冷着脸”只有在文本明确表达持续性时，才可形成 `persistent` 的习惯神态观察。内心情绪不得由面部表情反推为事实；模型推断必须标记为 `inferred` 并降低置信度。反过来，内心写着“狂喜”但原文明说“不动声色”时，视觉快照采用外显神情而不是内心情绪。
@@ -610,6 +687,11 @@ class CharacterAppearanceState(BaseModel):
     character_id: UUID
     temporal_scope: TemporalScope
     label: str | None                 # 少年期、受伤后、宴会伪装等
+    state_kind: Literal[
+        "base_age_stage", "persistent_change", "disguise",
+        "clothing", "temporary_condition", "manual_override"
+    ]
+    merge_priority: int
     age_stage: str | None
     face: FaceBlock | None
     body: BodyBlock | None
@@ -620,6 +702,9 @@ class CharacterAppearanceState(BaseModel):
     cleanliness: str | None
     disguise: str | None
     field_sources: dict[str, list[UUID]]
+    resolver_version: str
+    created_by_run_id: UUID
+    record_status: Literal["active", "invalidated", "superseded"]
     status: Literal["draft", "needs_review", "approved"]
 
 
@@ -637,13 +722,18 @@ class ResolvedCharacterSnapshot(BaseModel):
     timeline_id: UUID
     target_event_id: UUID | None
     target_scene_id: UUID | None
+    render_profile_version: int
     identity: IdentityBlock
-    appearance: CharacterAppearanceState
+    applied_state_ids: list[UUID]
+    resolved_appearance: ResolvedAppearanceBlock
     scene_state: SceneCharacterState | None
     field_sources: dict[str, list[UUID]]
     unresolved_conflicts: list[ConflictItem]
+    snapshot_schema_version: str
     resolver_version: str
 ```
+
+`CharacterAppearanceState` 是部分字段覆盖层，不要求每个状态复制完整角色。解析器先应用基础年龄阶段，再按 `persistent_change → disguise → clothing → temporary_condition → manual_override` 合并同一目标时点所有有效状态；同优先级写入同一字段且值不兼容时停止解析并进入审核。最终扁平结果写入 `resolved_appearance`，完整 JSON 作为不可变 Artifact 保存，`applied_state_ids` 仅用于追溯，避免状态组合爆炸。
 
 ### 6.7 CharacterRenderProfile
 
@@ -653,10 +743,11 @@ class CharacterRenderProfile(BaseModel):
     version: int
     status: Literal["draft", "needs_review", "approved", "locked"]
     identity_anchor: IdentityBlock
-    default_appearance_state_id: UUID | None
+    default_stage_key: str | None
     appearance_state_ids: list[UUID]
     palette: ColorPaletteBlock
     field_sources: dict[str, list[UUID]]  # observation IDs
+    field_suggestions: dict[str, list[UUID]]  # accepted suggestion IDs
     unresolved_conflicts: list[ConflictItem]
     style_preset: str
     approved_by: str | None
@@ -669,15 +760,46 @@ class CharacterRenderProfile(BaseModel):
 ### 6.8 任务状态机
 
 ```text
-queued → claimed → running → waiting_external → succeeded
-                   │              │
-                   ├──────────────┴→ retry_scheduled
-                   ├────────────────→ paused_for_review
-                   ├────────────────→ cancelled
-                   └────────────────→ failed
+PipelineStep
+queued → claimed → running ───────────────→ succeeded
+                   ├──→ waiting_external ─→ running
+                   ├──→ waiting_approval ─→ queued（审批后新 attempt）
+                   ├──→ retry_scheduled ──→ queued
+                   ├──→ cancelled
+                   └──→ failed
+
+ExternalOperation
+prepared → submitting → submitted → polling → succeeded
+              │             │          ├────→ failed
+              │             │          └────→ cancelled
+              └→ submission_unknown → reconciling
+                                         ├→ submitted
+                                         ├→ failed
+                                         └→ manual_review
 ```
 
-状态变化使用显式允许列表，不能由任意路由直接写字符串。
+```python
+class ExternalOperation(BaseModel):
+    id: UUID
+    run_id: UUID
+    step_id: UUID
+    provider: str
+    operation_type: str
+    request_fingerprint: str
+    idempotency_key: str
+    state: Literal[
+        "prepared", "submitting", "submitted", "polling", "submission_unknown",
+        "reconciling", "manual_review", "succeeded", "failed", "cancelled"
+    ]
+    external_job_id: str | None
+    lease_generation: int
+    attempt: int
+    request_hash: str
+    response_hash: str | None
+    last_reconciled_at: datetime | None
+```
+
+状态变化使用显式允许列表和 compare-and-set，不能由任意路由直接写字符串。`PipelineStep` 表示业务步骤是否可继续，`ExternalOperation` 表示一次远程副作用的提交真相；二者不得合并成一个状态字段。Worker 每次写入必须携带 `lease_generation`，旧租约写入由 fencing 拒绝。Provider 不支持幂等键且进程在提交窗口崩溃时，操作进入 `submission_unknown`，自动重提之前必须先按请求指纹、远程任务列表、回调或人工方式对账。无法自动对账时将 ExternalOperation 置为 `manual_review`，同时把 PipelineStep 置为 `waiting_approval` 并创建审批项。
 
 ---
 
@@ -806,7 +928,7 @@ class TextPipelineCursor(BaseModel):
 ```text
 same_character
 AND same_field
-AND same_timeline
+AND same_effective_timeline_domain_at_target_event
 AND temporal_scopes_overlap
 AND compatible_reality_status
 AND values_are_incompatible
@@ -825,11 +947,13 @@ AND values_are_incompatible
 
 “后文没有再提到疤痕”不等于疤痕消失。持久字段延续到明确终止事件；瞬时神情则不得跨场景延续。解析器应维护字段级持续性策略，而不是对所有字段使用同一过期规则。
 
+冲突检测中的“有效时间线域”必须先解析继承关系：子时间线在 `branch_event_id` 以前继承父时间线状态，因此父子 timeline ID 不同并不自动意味着不冲突；只有分支事件以后才独立判断。梦境、传闻等 `reality_status` 使用版本化兼容矩阵，禁止把现实层级兼容性留成未定义布尔判断。
+
 | 描述组合 | 是否冲突 | 处理 |
 |---|---|---|
 | 少年黑发；老年白发 | 否 | 两个阶段外观状态 |
 | 主线无伤；梦中胸口有伤 | 否 | 不同现实层级 |
-| 主时间线蓝衣；分支时间线黑衣 | 否 | 分别绑定时间线 |
+| 分支事件后主时间线蓝衣；分支时间线黑衣 | 否 | 分别绑定时间线 |
 | 同一场景先微笑、后皱眉 | 否 | 按场景内顺序保存两个瞬时状态 |
 | 内心狂喜；表面不动声色 | 否 | 内外情绪分字段 |
 | 同一角色同一场景被明确写为蓝眼和黑眼 | 是 | 标记审核，不自动覆盖 |
@@ -846,8 +970,15 @@ class CharacterRenderRequest(BaseModel):
     target_event_id: UUID | None
     target_scene_id: UUID | None
     target_chapter_ordinal: int | None
-    expression_override: str | None
+    expression_override: ExpressionRenderOverride | None
     render_overrides: dict[str, JsonValue]
+
+
+class ExpressionRenderOverride(BaseModel):
+    outward_emotion: str | None
+    visible_cues: list[str]
+    intensity: float | None
+    reason: str
 ```
 
 解析顺序为：用户本次覆盖 > 场景瞬时状态 > 目标时点有效的阶段外观 > 稳定身份锚点 > 画风默认值。若目标时间缺失且角色存在多个已批准阶段，API 返回 `ambiguous_appearance_state`，由用户选择，不擅自使用最新章节状态。
@@ -859,7 +990,7 @@ class CharacterRenderRequest(BaseModel):
 阶段选择遵循以下规则：
 
 - 一期每个主要角色默认生成 2–4 个关键阶段，数量上限由预算和 PoC 结果冻结；
-- 阶段必须来自已批准的 `CharacterAppearanceState`，并绑定明确时间线与事件范围；
+- 阶段必须由一个或多个已批准的 `CharacterAppearanceState` 组合，并绑定明确时间线与事件范围；
 - 少年期、成年期、长期伤势、长期伪装或身份转折可成为独立阶段；
 - 同一阶段内的短暂表情、单次动作、一次性污渍和普通换装通常只作为场景状态，不自动新增阶段；
 - 相邻状态若视觉差异不足，则合并展示，避免为每章或每次描述重复出图；
@@ -882,7 +1013,8 @@ class CharacterImageSet(BaseModel):
 class CharacterStageImage(BaseModel):
     id: UUID
     image_set_id: UUID
-    appearance_state_id: UUID
+    stage_key: str
+    appearance_state_ids: list[UUID]
     resolved_snapshot_hash: str
     stage_label: str
     representative_event_id: UUID | None
@@ -986,7 +1118,7 @@ CLIP-I 只作为辅助主体相似度，不能单独决定“锁定角色”。�
 
 - `artifact_id`、存储 URI、SHA-256、MIME、尺寸；
 - `character_id`、RenderProfile 版本、CharacterImageSet 版本、ResolvedCharacterSnapshot 哈希；
-- `appearance_state_id`、阶段标签、阶段显示顺序、是否为阶段基准图及是否为默认代表形象；哈希；
+- `appearance_state_ids`、阶段标签、阶段显示顺序、是否为阶段基准图及是否为默认代表形象；
 - `timeline_id`、目标 event/scene ID、外观状态和神情观察 IDs；
 - WorkflowProfile、Prompt 和模型版本；
 - seed、完整生成参数、参考图 artifact IDs；
@@ -1247,7 +1379,7 @@ Provider 不支持工具调用时，Extraction 退化为单次结构化输出；
 max_agent_turns = 3
 max_tool_calls = 12
 max_reflection_rounds = 1
-max_image_regenerations = 2
+max_image_regenerations = 1
 deadline_seconds = 180
 ```
 
@@ -1263,7 +1395,7 @@ Agent 需要审批时返回序列化的 `ApprovalRequest`。Application Service 
 - 可选操作：批准、拒绝、修改、延后；
 - 审批过期时间和恢复令牌。
 
-审批完成后，API 通过 compare-and-set 写入决策并将 Step 重新放回队列；Worker 根据业务状态继续下一确定性步骤。等待和恢复不依赖 Graph checkpoint。若局部 LangGraph Agent 在内部产生中断，只能把中断转换成业务 `ApprovalRequest` 并退出本次 Agent 运行；审批后由应用服务启动新的 Agent attempt，不直接把 checkpoint 当作授权或任务游标。
+审批完成后，API 通过 compare-and-set 写入决策并将 Step 重新放回队列；Worker 根据业务状态继续下一确定性步骤。等待和恢复不依赖 Graph checkpoint。一期局部 LangGraph Agent 不使用 `interrupt()` 承担业务审批；需要人工决定时必须把请求转换成业务 `ApprovalRequest` 并退出本次 Agent 运行。审批后由应用服务启动新的 Agent attempt，checkpoint 既不作为授权，也不作为业务任务游标。若二期确需恢复同一语义运行，必须单独设计 thread/checkpoint 生命周期和副作用重放测试后再开放。
 
 ### 10.13 Agent 轨迹与评测
 
@@ -1328,9 +1460,11 @@ Programmatic Tool Calling 和多 Agent 属于 Provider 特定或仍在演进的�
 2. Worker 使用条件更新领取 `queued/retry_scheduled` 任务；
 3. 设置 `lease_owner`、`lease_expires_at` 和心跳；
 4. 每个步骤开始前检查是否已有成功结果；
-5. 外部请求提交前保存幂等记录，提交后立即保存 request ID；
-6. Worker 崩溃后，租约过期任务可被重新领取；
-7. 已提交的外部任务优先查询状态，不盲目再次提交。
+5. 外部请求提交前创建 `external_operations(prepared)`，以 request fingerprint 和幂等键唯一约束；
+6. 提交窗口开始时写入 `submitting`，提交后立即保存 external job ID 并转为 `submitted`；
+7. 若进程在提交窗口崩溃且无法证明是否已提交，转为 `submission_unknown` 并进入对账，不直接重提；
+8. Worker 崩溃后，租约过期任务可被重新领取，所有写入使用 `lease_generation` fencing；
+9. 已提交的外部任务优先查询状态，不盲目再次提交。
 
 ### 11.2 重试策略
 
@@ -1381,13 +1515,21 @@ GET    /api/v1/runs/{run_id}/events           SSE进度
 POST   /api/v1/runs/{run_id}/cancel           请求取消
 POST   /api/v1/runs/{run_id}/retry            重试可重试步骤
 GET    /api/v1/runs/{run_id}/agent-runs        查询Agent子任务与预算
+GET    /api/v1/runs/{run_id}/external-operations 查询远程提交与对账状态
 GET    /api/v1/agent-runs/{agent_run_id}        查询轨迹摘要和工具调用
+GET    /api/v1/approvals                         查询待审批项，支持status/type/cursor
 POST   /api/v1/approvals/{approval_id}/resolve  批准、拒绝或修改待审批动作
 
 GET    /api/v1/novels/{novel_id}/characters
+GET    /api/v1/novels/{novel_id}/timelines
+GET    /api/v1/novels/{novel_id}/events
+GET    /api/v1/novels/{novel_id}/scenes
+PUT    /api/v1/scenes/{scene_id}/temporal-binding 修正timeline/event/presentation
 GET    /api/v1/characters/{character_id}/observations
 GET    /api/v1/characters/{character_id}/expressions
 GET    /api/v1/characters/{character_id}/appearance-states
+GET    /api/v1/characters/{character_id}/conflicts
+POST   /api/v1/conflicts/{conflict_id}/resolve
 GET    /api/v1/characters/{character_id}/snapshot  按timeline/event/scene解析
 GET    /api/v1/characters/{character_id}/render-profile
 PUT    /api/v1/characters/{character_id}/render-profile
@@ -1397,8 +1539,12 @@ POST   /api/v1/characters/{character_id}/split
 
 POST   /api/v1/characters/{character_id}/image-runs
 GET    /api/v1/characters/{character_id}/images
-POST   /api/v1/images/{image_id}/select-reference
+GET    /api/v1/characters/{character_id}/image-set
+PUT    /api/v1/characters/{character_id}/image-set/stages 确认阶段、排序和预算
+POST   /api/v1/stage-images/{stage_image_id}/select-baseline
+PUT    /api/v1/characters/{character_id}/image-set/default-representative
 
+GET    /api/v1/capabilities
 GET    /health/live
 GET    /health/ready
 GET    /metrics                              Prometheus 格式指标；仅内网或受保护端点
@@ -1406,7 +1552,7 @@ GET    /metrics                              Prometheus 格式指标；仅内网
 
 ### 12.3 二期端点
 
-二期增加 `/prompts`、`/agents`、`/tools`、`/prototypes`、`/loras`、`/models3d`、批量生成、关系图谱与管理审计端点。未启用的二期模块不在一期注册返回空列表的假接口；通过 `/capabilities` 明确告知当前已启用能力及 Agent/Tool Calling/MCP/A2A 支持情况。
+二期增加 `/prompts`、`/agents`、`/tools`、`/prototypes`、`/loras`、`/models3d`、批量生成、关系图谱与管理审计端点。未启用的二期模块不在一期注册返回空列表的假接口；一期 `/capabilities` 已明确告知当前启用能力，二期只扩展其返回内容。
 
 ---
 
@@ -1428,16 +1574,16 @@ class LLMProvider(Protocol):
     async def get_capabilities(self) -> LLMCapabilities: ...
     async def get_pricing(self) -> PricingSnapshot | None: ...
 
-    async def run_agent(
+    async def generate_tool_turn(
         self,
         *,
-        agent_spec: AgentSpec,
-        context: AgentContextPacket,
+        messages: Sequence[Message],
         tools: Sequence[BoundTool],
-    ) -> AgentProviderResult: ...
+        request_options: LLMRequestOptions,
+    ) -> LLMToolTurnResult: ...
 ```
 
-返回值必须包含 usage、model revision、request ID、finish reason、工具调用关联信息和原始响应哈希。业务层不直接接触厂商 SDK 对象。Provider 的 Agent Runtime 只负责适配厂商响应循环，权限、预算、审批和最终写入仍由项目自己的 Agent Runtime 控制。
+返回值必须包含 usage、model revision、request ID、finish reason、工具调用关联信息和原始响应哈希。业务层不直接接触厂商 SDK 对象。Provider 只适配一次模型响应及工具调用格式；多轮循环、工具执行、权限、预算、审批、停止和轨迹记录统一由项目 `AgentRuntime` 负责，避免 Provider 与 Runtime 双重编排。
 
 ### 13.2 图像 Provider 接口
 
@@ -1448,9 +1594,11 @@ class ImageGenerator(Protocol):
     async def cancel(self, external_job_id: str) -> bool: ...
     async def fetch_result(self, external_job_id: str) -> ImageGenerationResult: ...
     async def estimate_cost(self, request: ImageGenerationRequest) -> CostEstimate | None: ...
+    async def get_capabilities(self) -> ImageProviderCapabilities: ...
+    async def reconcile(self, operation: ExternalOperation) -> ReconciliationResult: ...
 ```
 
-提交与查询分开，才能在 Worker 重启后恢复远程任务。
+提交与查询分开，才能在 Worker 重启后恢复远程任务。`ImageProviderCapabilities` 至少声明幂等键、取消、Webhook、按 request fingerprint 查询、状态保留期和费用返回能力；不支持的能力不能由适配器伪造。PoC 同时测量冷启动、模型/节点下载、首图与热启动 P95、回调重复/乱序和远程状态过期。无法自动识别的 `submission_unknown` 必须进入人工对账，而不是盲目重提。
 
 ### 13.3 Prompt 与 Agent 规格管理
 
@@ -1477,7 +1625,7 @@ class ImageGenerator(Protocol):
 
 静态系统指令、输出 Schema 和稳定工具定义适合作为可缓存前缀。`model_calls` 记录 `cache_read_tokens`、`cache_write_tokens`、缓存键和 TTL 快照，用实际命中率判断收益。
 
-Provider 能力声明可增加：
+`LLMCapabilities.agent` 使用以下结构，并随 Provider/模型 revision 保存能力快照：
 
 ```python
 class AgentCapabilities(BaseModel):
@@ -1532,6 +1680,7 @@ MAX_TASK_ATTEMPTS=3
 WORKER_LEASE_SECONDS=120
 
 AGENT_RUNTIME_ENABLED=true
+LANGGRAPH_AGENT_RUNTIME_ENABLED=false
 AGENT_MAX_TURNS_DEFAULT=3
 AGENT_MAX_TOOL_CALLS_DEFAULT=12
 AGENT_MAX_REFLECTION_ROUNDS=1
@@ -1539,10 +1688,11 @@ AGENT_MAX_COST_DEFAULT=
 AGENT_TOOL_WRITE_POLICY=approval_required
 
 AUTH_MODE=api_key
+USER_API_KEY=
 ADMIN_API_KEY=
 ```
 
-敏感值只通过环境变量或 secret manager 注入，不写入日志、数据库快照或 `.env.example`。
+敏感值只通过环境变量或 secret manager 注入，不写入日志、数据库快照或 `.env.example`。生产启动时校验：普通与管理 API Key 均已配置且不同；启用的 LLM/Image Provider 已提供密钥；Agent 已配置正数费用上限；`LANGGRAPH_AGENT_RUNTIME_ENABLED` 默认保持关闭。缺少必需配置时启动失败，不以无限预算或匿名管理权限降级。
 
 ### 14.2 文件与路径安全
 
@@ -1592,47 +1742,166 @@ Agent 工具权限按 `read/propose/execute/admin` 分级。模型永远不能�
 | 脱敏测试 | 正文、Prompt、密钥、Authorization、Cookie、人脸 embedding 和签名 URL 不得出现在日志、Trace 或告警中 |
 | E2E | 上传→提取→审核→生成→选择基准图 |
 
-### 15.2 黄金评测集
+### 15.2 EvalCase、数据集与运行模型
 
-一期建立 3–5 部合法可用小说片段的评测集，覆盖：
+评测资产使用项目自己的稳定 Schema；OpenAI Evals、Promptfoo 或其他平台只能作为 Adapter，不能成为历史结果可读性的唯一依赖。该结构与 OpenAI Evals 的 data source schema、testing criteria、grader result 和 eval run 模型兼容。
 
-- 古风、现代、玄幻等不同文本风格；
-- 别名、绰号、称谓、同名角色；
-- 性别不明确或代词省略；
-- 外貌随时间变化、伪装、倒叙、梦境、幻觉和传闻；
-- 重生、时间循环和平行时间线中同一角色的不同状态；
-- 同一场景中的外显神情、内心情绪、强装镇定和转瞬表情；
-- 持久伤疤的出现/痊愈与临时伤势，验证字段级持续性；
-- 只出现一次但有关键描写的角色；
-- “干净的乞丐”“长发和尚”等反差设定；
-- 文本中没有外貌描写的留白角色。
+```python
+class EvalCase(BaseModel):
+    id: UUID
+    dataset_version: str
+    source_novel_id: UUID | None       # 故障/安全合成 case 可为空
+    source_document_version_id: UUID | None
+    split_group_key: str               # 小说ID或合成场景族，整个组只能属于一个split
+    split: Literal["dev", "validation", "test"]
+    task_type: Literal[
+        "observation", "entity_link", "temporal_binding", "conflict",
+        "snapshot", "expression", "agent", "image", "recovery", "security"
+    ]
+    input_refs: list[UUID]
+    expected_output: JsonValue
+    evidence_spans: list[TextSpan]
+    slice_tags: list[str]
+    severity: Literal["normal", "important", "critical"]
+    rubric_version: str
+    annotation_status: Literal["single", "double", "adjudicated"]
 
-### 15.3 一期验收门槛
 
-门槛由验证集基线校准，第一版建议：
+class EvalRun(BaseModel):
+    id: UUID
+    dataset_version: str
+    candidate_config_hash: str
+    baseline_config_hash: str | None
+    model_versions: dict[str, str]
+    prompt_versions: dict[str, str]
+    agent_spec_versions: dict[str, str]
+    tool_versions: dict[str, str]
+    schema_versions: dict[str, str]
+    workflow_profile_version: str | None
+    grader_bundle_version: str
+    random_seeds: list[int]
+    started_at: datetime
+    completed_at: datetime | None
+```
 
-- 章节和文本块可稳定重现，偏移映射正确率 100%；
-- 字段证据定位准确率 ≥ 95%；
-- 主要角色实体链接 F1 ≥ 0.90；
-- 外貌事实字段 precision ≥ 0.90，recall 作为次要指标；
-- 神情可见线索的证据定位准确率 ≥ 90%，内外情绪混淆率单独报告；
-- 黄金集中的跨时间非冲突案例不得被合并覆盖，目标快照必须绑定正确时间线和阶段；
-- 任务故障恢复测试不产生重复外部提交；
-- 所有生成图均能追溯到档案、Prompt、模型、工作流和 seed；
-- 角色一致性阈值由至少 100 对内部样本标定；
-- 最终锁定仍由人工完成，不以单一自动分数替代；
-- Agent 工具调用权限违规数为 0，收费/合并/发布动作未经审批执行数为 0；
-- Agent 达到轮次、费用或时间上限时能结构化停止，不进入无限循环；
-- 轨迹评测集上的工具选择、人工升级和最终输出均达到各 AgentSpec 的发布门槛；
-- API、Worker、Agent、LLM、Tool、图像 Provider 和审批均能通过 `trace_id` 与 `run_id` 关联，抽样 E2E Trace 不允许出现断链；
-- `/metrics` 不包含 `run_id`、`novel_id`、`character_id` 等高基数标签，且只能从受保护网络或管理身份访问；
-- Collector/观测后端不可用时，上传、分析和生成任务继续运行，遥测丢弃量可查询；
-- 脱敏测试中正文、完整 Prompt、密钥、认证 Header、人脸 embedding 和签名 URL 泄漏数为 0；
-- `submission_unknown`、租约冲突、预算异常和 Provider 错误均能产生可定位告警，告警附带 Trace 或 Run 关联信息。
+每个 `eval_results` 保存 case、grader、原始输出 Artifact、分数、pass/fail、失败原因、token、延迟和费用。模型评分器必须记录模型 revision、Prompt/rubric 和采样参数；人工评分必须记录匿名评审者、盲评顺序和裁决结果。
 
-### 15.4 测试预算
+### 15.3 数据抽样、隔离与人工标注
 
-测试不以“约 250 行”估算。建议至少将 30%–40% 的一期工程量用于自动测试、评测集、故障注入和脚本。AI 系统的主要风险来自数据与外部服务行为，不是代码能否运行。
+数据按 `split_group_key` 划分：真实文本使用小说/独立来源作品，合成故障与安全 case 使用场景族。禁止将同一组的不同章节或轻微变体随机分到开发集和测试集，避免同一角色、别名、世界观或攻击模板泄漏：
+
+```text
+dev 60%          调 Prompt、规则和解析器
+validation 20%   选择模型、阈值和 WorkflowProfile
+test 20%         冻结；只用于候选版本发布评测
+```
+
+样本规模分两档：
+
+- PoC：3–5 个合法来源作品、80–120 个精标 case，覆盖核心正例、反例和严重失败模式；
+- 一期 Alpha：6–10 个独立来源作品、300–500 个文本/Agent case、200–300 张图像，并保证每个关键 slice 有最低样本数；
+- 新发现的线上失败先进入 quarantine，经标注和去重后加入下一数据集版本，不能直接修改冻结测试集。
+
+`slice_tags` 至少覆盖古风/现代/玄幻、同名/别名/省略代词、无外貌留白、倒叙、梦境、传闻、伪装、重生/循环/平行线、持久伤势、瞬时神情、内外情绪不一致和反差设定。20%–30% 的主观或高风险 case 由两人独立标注；一致性使用 Cohen's kappa 或 Krippendorff's alpha 报告，低于 0.70 时先修订标注手册并重新标注，不用模型分数掩盖定义分歧。
+
+### 15.4 文本、实体、时间与快照指标
+
+Observation 的严格匹配键为：
+
+```text
+(character_id, field_path, normalized_value,
+ effective_temporal_scope, reality_status, evidence_span)
+```
+
+同时报告严格和宽松两套结果：严格结果要求字段、值、时间与证据均正确；宽松结果允许受控同义值和证据区间部分重叠。指标定义固定到 `grader_versions`：
+
+| 能力 | 指标 | 说明 |
+|---|---|---|
+| 分块/偏移 | 可重现率、原文往返准确率 | 偏移映射必须可逆 |
+| Observation | micro/macro Precision、Recall、F1 | macro 按字段和 slice 计算，避免高频字段掩盖长尾 |
+| Grounding | exact-span、token-span F1、IoU、unsupported fact rate | 无证据事实单独作为风险指标 |
+| 实体链接 | mention-level F1、cluster B³/CEAF、严重误合并数 | 主角与配角分开报告 |
+| 时间绑定 | timeline/event 准确率、区间 IoU、defer Recall | 复杂分支允许正确 defer |
+| 冲突 | conflict Precision/Recall/F1、误覆盖数 | 父子时间线先解析继承域 |
+| 快照 | 字段准确率、关键字段 exact-match、状态组合正确率 | 在指定 timeline/event/scene 上评测 |
+| 神情 | 外显情绪 Macro-F1、visible-cue span F1、内外情绪混淆率 | 瞬时神情跨场景延续单独计错 |
+
+不得只报告总体平均值；关键 slice、严重等级和置信区间必须出现在报告中。Precision/Recall 的阈值先用 validation 标定，测试集只验证，不再调参。
+
+### 15.5 Agent 结果与轨迹评测
+
+每个 Agent 至少与以下基线之一在同一 EvalCase 上比较：确定性规则、单次 Structured Output、上一发布版本。Agent 评测同时包含：
+
+- 最终任务成功率和 Schema 有效率；
+- 事实、证据和引用完整性；
+- 正确工具选择率与参数准确率；
+- 必须转人工场景的 escalation Recall，以及不必要升级率；
+- 重复/无关工具调用率、平均轮次、P95 延迟和单位成功任务成本；
+- 权限、预算、最大轮次、停止和审批策略是否遵守；
+- Prompt 注入、恶意工具输出和上下文污染下的失败方式。
+
+最终结果正确但使用越权、危险或不可重放路径仍判失败。测试/验证集上的随机任务至少重复 3 次；Provider 不支持 seed 时仍执行重复采样并报告均值、标准差和最差结果。模型 Grader 只能评价难以确定性判断的语义维度，发布前必须在双人标注子集上校准；权限、证据区间、工具参数、费用和停止条件优先使用确定性 Grader。
+
+### 15.6 图像自动评测与人工盲评
+
+图像不使用单一加权总分。评测顺序为：
+
+```text
+硬失败规则
+  → 身份/主体/属性/状态自动指标
+  → 同角色同阶段多 seed 排序
+  → 候选与基线的盲测 A/B
+  → 人工选择阶段基准图
+```
+
+硬失败包括多余人物、缺脸、严重肢体畸形、错误年龄阶段、错误时间线、关键疤痕/发色/伪装缺失以及目标神情相反。ArcFace/InsightFace 只用于清晰且适合该模型域的人脸；非写实或全身角色使用主体裁剪后的 DINO/CLIP-I 辅助，不把相似度当身份真值。VLM 评分器按版本化属性清单输出逐字段结论。
+
+一期 Alpha 至少包含 20–30 个评测角色、每个 2 个阶段、每阶段不少于 4 个 seed，并形成不少于 150 组盲测比较。评审者看不到模型、Prompt、工作流和候选顺序；至少 20% 图片由第二评审者复核，分歧进入裁决。报告身份保持、阶段属性、神情遵循、严重缺陷率、首次可用率、重生成率、人工接受率、延迟和单张/单阶段成本。
+
+### 15.7 基线、消融与统计判定
+
+候选版本必须冻结模型 revision、Prompt、AgentSpec、工具、Schema、resolver、WorkflowProfile、EvaluatorBundle 和依赖哈希。至少执行以下对照：
+
+- 单次结构化调用 vs Extraction Agent；
+- 当前发布版本 vs 候选模型/Prompt；
+- 单一代表形象 vs 2–4 阶段形象集；
+- 图像工作流 A vs B；
+- 自动 Critic 关闭 vs 开启一次受控修订。
+
+质量差异报告 95% bootstrap 置信区间；样本过少时明确标记 exploratory，不声称显著提升。降低成本、延迟或工具调用数只有在质量门禁仍通过时才算改进。不得用总体平均提升掩盖 critical slice 回归。
+
+### 15.8 一期发布门禁与运行频率
+
+以下数值为第一版门槛，PoC 后只能通过版本化决策记录修改：
+
+| 模块 | 发布门槛 |
+|---|---|
+| 分块/偏移 | 可稳定重现；原文偏移往返准确率 100% |
+| Grounding | 字段证据定位准确率 ≥ 95%；unsupported fact rate ≤ 2% |
+| 实体 | 主要角色 mention F1 ≥ 0.90；高影响自动误合并数为 0 |
+| Observation | 外貌字段 precision ≥ 0.90；同时报告 recall 与 macro-F1 |
+| 时间/快照 | critical case 的 canonical 跨时间污染数为 0；关键字段 exact-match ≥ 0.90 |
+| 神情 | 可见线索定位准确率 ≥ 90%；内外情绪混淆率单独报告并不劣于基线 |
+| Agent | 权限违规和未经审批收费/合并/发布数为 0；必须升级 case 的 Recall ≥ 0.95 |
+| 图像 | 错时间线/年龄等 critical mismatch ≤ 5%；人工接受率不劣于冻结基线 |
+| 恢复 | 故障注入不产生重复外部提交或重复计费；未知提交可进入对账/人工状态 |
+| 追溯 | 图像、事实和审批可回到 source、配置、模型、工作流、seed 和费用；critical E2E 链路无断点 |
+| 安全 | 正文、完整 Prompt、密钥、认证 Header、人脸 embedding 和签名 URL 泄漏数为 0 |
+
+执行频率：
+
+- PR Smoke：20–50 个固定低成本 case，运行单元、Schema、关键安全和文本黄金测试；
+- Nightly：完整文本、Agent、恢复、对抗和遥测降级集；
+- Release Candidate：冻结 test split、全部图像盲评、Provider 契约、故障恢复、安全和成本报告；
+- 生产监控：只记录经批准的聚合指标和人工反馈，不把未经标注的线上接受率直接当离线准确率。
+
+任一安全硬门槛失败、critical slice 回归或数据泄漏即阻止发布；普通质量指标只有在置信区间、成本和人工审核负担均可接受时通过。
+
+### 15.9 评测报告、失败回流与预算
+
+每次 EvalRun 生成机器可读 JSON 和人工可读报告，至少包含配置 diff、数据集版本、总体及 slice 指标、置信区间、失败样本、成本/延迟、Grader 版本、人工一致性和发布结论。失败样本先进入 quarantine；确认不是标注错误或重复样本后，才加入下一版 dev/validation 集。冻结 test case 不因候选版本表现而修改。
+
+测试不以代码行数估算。建议将 30%–40% 的一期工程量用于自动测试、标注、评测集、图像盲评、故障注入和报告脚本，并为至少一名额外标注/审核人员预留时间。AI 系统的主要风险来自数据、模型随机性与外部服务行为，不是代码能否运行。
 
 ---
 
@@ -1669,7 +1938,7 @@ HTTP / Worker / Scheduler
 |---|---|
 | HTTP 请求 | route、method、status、request_id、run_id |
 | Worker 领取 | run_id、step_id、queue_wait_ms、lease_generation、attempt |
-| Workflow 节点 | graph_version、node_name、checkpoint_id、resume_reason |
+| Workflow/AgentRuntime 节点 | pipeline_version、node_name；仅启用 LangGraph 时记录 graph_version/checkpoint_id/resume_reason |
 | Agent 运行 | agent_id/version、agent_run_id、turn_count、stop_reason、approval_required |
 | LLM 调用 | provider、model_revision、usage、cache usage、finish_reason、provider_request_id |
 | Tool 调用 | tool_id/version、tool_call_id、side_effect_level、approval_id、result_status |
@@ -1679,7 +1948,7 @@ HTTP / Worker / Scheduler
 
 ### 16.2 日志关联字段
 
-每条结构化日志至少包含：
+每条结构化日志必须包含 `service_name`、`service_version`、`environment`、时间戳和日志级别；其余关联字段在当前上下文存在时填写：
 
 ```text
 service_name, service_version, environment,
@@ -1781,9 +2050,9 @@ Agent成本 = Σ(Agent各轮模型成本
 
 ## 17. 开发计划
 
-以下按 1 名熟悉 Python/LLM 的工程师估算。加入专项 Agent、时态/神情状态模型、轨迹评测和安全测试后，一期预计 10–12 周（含第 0 阶段 PoC 与缓冲）；若同时建设完整前端，应另计 UI 工期。
+以下按 1 名熟悉 Python/LLM 的工程师、另有至少 1 名兼职标注/审核人员估算。加入专项 Agent、双时态/状态叠加、图像工作流、可执行评测和安全恢复后，一期内部 Alpha 预计 13–16 周；若只有一人同时承担标注，或同时建设完整前端，应另计工期。
 
-### 17.1 第 0 阶段：技术 PoC（1 周）
+### 17.1 第 0 阶段：技术 PoC（2–3 周）
 
 以下内容均为 **PoC 决策项**。PoC 结束时必须把结论、原始样本、指标、成本和选择理由写入决策记录；在此之前不得将候选方案描述为生产默认值。
 
@@ -1795,8 +2064,8 @@ Agent成本 = Σ(Agent各轮模型成本
 | `POC-TIME-01` | 一期时间线自动化边界 | 主线、回忆、梦境/传闻及复杂分支样本 | 自动支持集、`defer` 条件和污染率上限 |
 | `POC-IMAGE-01` | 固定图像工作流 | SDXL + InstantID vs FLUX + PuLID-FLUX 完整组合 | 唯一一期 WorkflowProfile、资产清单和许可证结论 |
 | `POC-IMAGE-02` | 单角色输出多少阶段 | 单一代表形象 vs 2–4 个关键阶段形象集 | 默认阶段数、阶段差异阈值、预算和人工审核上限 |
-| `POC-WORKFLOW-01` | 是否为局部复杂 Agent 引入 LangGraph | 默认 StructuredCallAgentRuntime vs 单 Agent 内部 LangGraphAgentRuntime；主流程始终使用 Application Orchestrator | 仅当多轮语义分支和图内暂停产生明确净收益并通过恢复测试时，批准指定 Agent 局部启用 |
-| `POC-EVAL-01` | 图像阈值与评测组合 | 身份、阶段、场景三层指标 + 人工盲评 | 评测器组合、失败样本口径和阈值集版本 |
+| `POC-WORKFLOW-01` | 是否为局部复杂 Agent 引入 LangGraph | 默认 StructuredCallAgentRuntime vs 单 Agent 内部 LangGraphAgentRuntime；主流程始终使用 Application Orchestrator | 仅当多轮语义分支产生明确净收益并通过恢复测试时，批准指定 Agent 局部启用；一期业务审批仍以新 attempt 恢复 |
+| `POC-EVAL-01` | 评测协议是否可执行 | 文本/实体/时间/Agent/图像 case、确定性 Grader、模型 Grader、人工盲评 | EvalCase Schema、标注手册、split、基线、门禁和报告模板 |
 
 `POC-WORKFLOW-01` 的 LangGraph 采用门槛：
 
@@ -1805,40 +2074,41 @@ Agent成本 = Σ(Agent各轮模型成本
 | 流程复杂度 | 单个 Agent 至少存在 3 个由运行时语义判断决定的分支 |
 | 多轮收益 | 相比 StructuredCall 基线，在同一黄金集上有稳定质量或人工审核效率收益 |
 | 成本收益 | 质量收益能够覆盖额外模型调用、checkpoint 和维护成本 |
-| 人工暂停 | 存在暂停后继续同一语义任务的真实需求，普通新 attempt 无法等价满足 |
+| 业务审批边界 | 一期 Agent 遇到审批必须结束 attempt；LangGraph 不得绕过业务 `ApprovalRequest` 与新 attempt 规则 |
 | 恢复可靠性 | 崩溃、中断、重复恢复、子图和版本升级测试通过，副作用不重复 |
 | 状态边界 | Graph State 不保存任务真值、审批授权、费用、外部提交或完整业务对象 |
 | 可替换性 | 关闭 LangGraph 后主流程、领域模型和历史业务记录仍可正常使用 |
 
 任一条件不满足，该 Agent 继续使用 `StructuredCallAgentRuntime`。不得因为流程图展示更直观、已有示例代码或框架自带 checkpoint 而采用 LangGraph。
 
-PoC 样本至少覆盖 3 个代表角色及其 2 个以上可视阶段，并完成以下验证：
+PoC 使用 3–5 个独立合法来源、80–120 个精标 case，至少覆盖 3 个代表角色及其 2 个以上可视阶段，并完成以下验证：
 
 - 用代表性文本片段验证块级结构化提取和精确证据对齐；
 - 对比至少两种实体链接/别名策略；
 - 跑通两套图像候选工作流或对无法运行的候选给出明确阻断原因；
 - 比较单一代表形象与阶段形象集的价值、重复率和成本；
 - 对比单次结构化调用和 Extraction Agent 的质量、延迟与成本；
-- 验证工具调用、ContextPacket、有限轮次、人工中断和外部提交未知状态；
+- 验证工具调用、ContextPacket、有限轮次、业务审批后新 attempt 和外部提交未知状态；
+- 建立按小说隔离的 dev/validation/test、EvalCase Schema、初版标注手册和报告模板；
 - 输出兼容矩阵、许可证结论、质量基线和真实成本样本。
 
 **退出条件：** P0 数据结构与安全约束已有实现方案，所有 PoC 决策项均形成结论；三个核心命题达到可接受基线。任一生产依赖资产许可证不明确、外部提交无法安全恢复或阶段形象成本超过冻结预算时，不进入对应功能的工程开发。
 
-### 17.2 第 1–2 周：工程基础与任务系统
+### 17.2 第 1 阶段：工程基础与任务系统（2 周）
 
 - `src` 骨架、配置、结构化日志；
 - OpenTelemetry 初始化、OTLP 导出、Trace Context 传播、`/metrics` 与本地 Collector 配置；
 - Async SQLAlchemy 与 Alembic；
-- novels/documents/chapters/chunks/runs/steps/artifacts 表；
+- novels/source_document_versions/chapters/chunks/runs/steps/artifacts 表；
 - timelines/story_events/scenes 表与最小时间作用域模型；
-- 数据库任务领取、`lease_generation`、取消、重试和 `submission_unknown`；
+- 数据库任务领取、`lease_generation` fencing、`external_operations`、取消、重试、对账和 `submission_unknown`；
 - 上传、Run 和 SSE API；
 - 故障恢复测试骨架。
 - `AgentRuntime` 端口、`StructuredCallAgentRuntime`、AgentSpec、ToolSpec、权限和预算守卫骨架；
 - `LangGraphAgentRuntime` 只建立隔离 PoC，不接管 PipelineRun/PipelineStep；
-- agent_runs/turns/tool_calls/decisions/approvals 表及迁移。
+- agent_runs/turns/tool_calls/decisions/approvals 以及 eval_datasets/cases/runs/results/grader_versions 表及迁移。
 
-### 17.3 第 3–5 周：文本 Agent 与证据模型
+### 17.3 第 2 阶段：文本 Agent 与证据模型（4–5 周）
 
 - 章节识别、动态分块、偏移映射；
 - Extraction Agent 与结构化输出降级；
@@ -1846,11 +2116,11 @@ PoC 样本至少覆盖 3 个代表角色及其 2 个以上可视阶段，并完�
 - `MentionSpan`、`AliasAssertion`、规范化偏移映射和 Grounding 校验；
 - FeatureObservation 持久化；
 - ExpressionObservation、AppearanceState 与场景/时间线候选提取；
-- RenderProfile 聚合、目标时点快照解析、冲突和人工编辑；
+- RenderProfile 聚合、多状态叠加、有效时间线继承、目标时点快照解析、冲突和人工编辑；
 - ContextPacket、ModelRouter 和工具契约；
 - 黄金集、Agent 轨迹集与精度报告。
 
-### 17.4 第 6–7 周：图像 Agent 与评测
+### 17.4 第 3 阶段：图像 Agent 与评测（3 周）
 
 - WorkflowProfile 注册与契约测试；
 - fal 提交/查询/下载/恢复；
@@ -1860,13 +2130,13 @@ PoC 样本至少覆盖 3 个代表角色及其 2 个以上可视阶段，并完�
 - 身份层、阶段层、场景神情层的一致性评测；
 - 生成快照、费用记录和预算限制。
 
-### 17.5 第 8–10 周：Agent 安全、加固与验收
+### 17.5 第 4 阶段：Agent 安全、加固与验收（2–3 周）
 
 - 端到端、重试、取消和崩溃恢复；
 - 文件安全、认证、数据删除；
 - Prompt 注入、恶意工具输出、权限提升和无限循环测试；
 - 工具轨迹、人工升级、缓存与模型路由回归评测；
-- 3–5 部测试材料跑批；
+- 6–10 个独立来源、300–500 个文本/Agent case 和 200–300 张评测图像跑批；
 - 指标阈值标定；
 - 部署文档、运维手册和二期接口评审。
 
@@ -1941,24 +2211,28 @@ PoC 样本至少覆盖 3 个代表角色及其 2 个以上可视阶段，并完�
 | LLM 幻觉 | 无原文证据的外貌字段 | 证据必填、precision 优先、人工审核 |
 | 别名误合并 | 两个角色被当成一人 | 保留假设、置信度、支持拆分和重算 |
 | 时间线误绑定 | 少年、老年、梦境或分支状态相互覆盖 | 叙事顺序与故事顺序分离、作用域候选、复杂案例转人工 |
+| 状态组合爆炸 | 年龄、伤势、伪装、服装组合生成大量完整状态 | AppearanceState 保存部分覆盖层，目标时点按类型/优先级合并并保存扁平快照 |
 | 神情语义误读 | 把内心狂喜画成微笑，或让瞬时表情永久化 | 内外情绪分字段、可见线索证据、场景级默认有效期 |
 | 长文本成本失控 | 调用数随角色数倍增 | 块级批量提取、相关记忆注入、预算门槛 |
 | 工作流不兼容 | 模型或节点无法组合 | 固定兼容矩阵、commit 与契约测试 |
 | 单指标误判 | 背景相似导致高 CLIP-I | 主体裁剪、多指标与人工终审 |
 | Worker 崩溃 | 重复提交或任务卡死 | 租约、幂等、远程 request ID、恢复测试 |
+| 外部提交状态未知 | Provider 已收费但本地未保存 job ID | ExternalOperation 提交状态、request fingerprint、reconcile 和人工对账，禁止盲目重提 |
+| 图像冷启动 | 首次请求下载模型/节点导致分钟级等待或超时 | 固定镜像、预热、区分冷/热 P95、启动探针和更长外部等待状态 |
 | SQLite 写锁 | 并发更新失败 | 单写 Worker、短事务；二期 PostgreSQL |
 | Provider 价格变化 | 预算不准确 | 动态价格快照、运行前估价和硬预算 |
 | 遥测后端故障 | Trace/Metrics 无法导出或队列积压 | 有界异步队列、批量导出、普通遥测可丢弃并计数，业务主流程继续 |
 | Metrics 高基数 | 时序数量和存储成本失控 | 禁止业务 ID 和自由文本作为标签，明细通过 Trace/日志/业务库查询 |
 | 观测数据泄露 | 正文、Prompt、密钥或签名 URL 出现在日志/Trace/告警 | 统一脱敏过滤、属性白名单、泄漏测试和受控保留周期 |
 | 云端数据风险 | 正文或图像泄漏 | 最小发送、明确告知、删除策略、日志脱敏 |
-| 图结构升级 | 旧 checkpoint 无法恢复 | State schema version、兼容迁移或显式终止旧 Run |
+| 局部 LangGraph 升级 | PoC Agent 的旧 checkpoint 无法读取 | Graph State schema version、兼容迁移或显式终止旧 Agent attempt；不影响业务 Run 真值 |
 | Agent 越权 | 自行提交收费/写入/删除动作 | 工具白名单、权限交集、审批门槛和运行时守卫 |
 | Prompt 注入 | 小说文本或工具结果包含恶意指令 | 数据与指令分层、内容标记、工具结果不可信处理 |
 | Agent 循环 | 重复查询、反思或重新生成 | 最大轮次/工具数/费用/时间和结构化停止 |
 | 上下文污染 | 摘要错误逐轮放大 | 原始证据优先、来源 ID、上下文哈希和定期重建 |
 | 多 Agent 分歧 | 多个建议互相冲突 | Orchestrator 按规则聚合，高风险转人工，不自由辩论 |
 | Provider 特性锁定 | 高级 Agent 能力无法迁移 | Capabilities 探测、普通 Tool Calling/Structured Output 降级 |
+| 评测泄漏或过拟合 | 同一小说角色同时出现在开发集和测试集 | 按小说划分、冻结 test、版本化 EvalCase、失败样本先进入 quarantine |
 | 轨迹泄露 | 保存敏感输入或隐藏推理 | 仅保存可见输出、摘要、哈希和工具事件，严格脱敏 |
 
 ---
@@ -1970,14 +2244,18 @@ PoC 样本至少覆盖 3 个代表角色及其 2 个以上可视阶段，并完�
 | 一期目标 | 识别全书候选角色，精细处理 3–5 个主要角色；每个主要角色默认输出 2–4 个关键阶段形象 | 控制角色数量与生成成本，同时保留主角历史形象价值 |
 | 文本调用粒度 | 每块一次批量提取 | 避免 `块数 × 角色数` 爆炸 |
 | 事实模型 | Observation + Identity/Appearance/Scene 三层状态 + RenderProfile | 支持证据、多时间线、瞬时神情和人工选择 |
+| Observation 时间 | 故事有效时间 + 系统记录/失效时间 | 支持中部编辑、删除章节、重抽取和历史重放 |
+| 状态合并 | AppearanceState 部分覆盖层 + 目标时点扁平快照 | 同时表达年龄、伤势、伪装和服装，避免组合爆炸 |
 | 渲染输入 | 目标时点 ResolvedCharacterSnapshot | 防止默认使用错误年龄、服装、伤势或神情 |
 | 冲突判定 | 同角色/字段/时间线/重叠区间/现实层级联合判断 | 时间变化和叙事视角差异不应误报为事实矛盾 |
 | 编排 | Application Orchestrator + PipelineRun/PipelineStep 是主流程唯一编排；LangGraph 仅为局部 AgentRuntime PoC | 避免任务状态与 Graph checkpoint 双真值，只有证明多轮语义收益后才局部引入 |
 | 长任务 | 独立 Worker + durable Run/Step | HTTP 解耦、可恢复、可取消 |
+| 外部副作用 | ExternalOperation 独立状态机 | 关闭提交崩溃窗口，支持未知状态对账和 fencing |
 | ORM | 全异步 SQLAlchemy | 与 FastAPI/外部异步调用保持一致，不混用 Session |
 | 数据库 | 一期 SQLite，二期 PostgreSQL | 一期低运维，明确并发边界 |
 | 图像方案 | 一期固定一套兼容工作流；一个角色形成多个阶段基准图和一个默认代表形象 | 先保证可复现，并避免把完整角色历程压缩成单一形象 |
 | 质量评测 | 多指标 + 人工终审 | CLIP-I 不足以判断身份一致性 |
+| 评测真值 | 版本化 EvalDataset/Case/Run/Result/Grader | 数据、配置、评分器、成本和发布结论可复现 |
 | Prompt | 一期 Git 文件，二期在线发布 | 避免过早建设管理平台 |
 | 3D/LoRA | 二期正式实现 | 保留完整路线但不阻塞一期验证 |
 | 价格 | 动态快照，不在文档硬编码 | 模型和平台价格会变化 |
@@ -1994,6 +2272,8 @@ PoC 样本至少覆盖 3 个代表角色及其 2 个以上可视阶段，并完�
 - [OpenTelemetry Python](https://opentelemetry.io/docs/languages/python/)
 - [Prometheus Instrumentation Practices](https://prometheus.io/docs/practices/instrumentation/)
 - [OpenAI Model Guidance：Tool Calling、Prompt Caching 与 Multi-agent](https://developers.openai.com/api/docs/guides/latest-model)
+- [OpenAI Evals API](https://platform.openai.com/docs/api-reference/evals)
+- [OpenAI Graders API](https://platform.openai.com/docs/api-reference/graders)
 - [LangGraph Persistence](https://docs.langchain.com/oss/python/langgraph/persistence)
 - [LangGraph Interrupts](https://docs.langchain.com/oss/python/langgraph/interrupts)
 - [LangGraph Fault Tolerance](https://docs.langchain.com/oss/python/langgraph/fault-tolerance)
@@ -2004,6 +2284,7 @@ PoC 样本至少覆盖 3 个代表角色及其 2 个以上可视阶段，并完�
 - [fal Model API Pricing](https://fal.ai/docs/documentation/model-apis/pricing)
 - [fal Serverless Pricing](https://fal.ai/docs/documentation/serverless/pricing)
 - [fal ComfyUI Deployment](https://fal.ai/docs/examples/image-generation/deploy-comfyui-server)
+- [fal Workflow Endpoints](https://fal.ai/docs/documentation/model-apis/workflows)
 - [InstantID](https://github.com/InstantID/InstantID)
 - [PuLID](https://github.com/ToTheBeginning/PuLID)
 - [Model Context Protocol Specification](https://modelcontextprotocol.io/specification/2025-06-18/server/index)

@@ -43,12 +43,55 @@ class ExpressionDraft(BaseModel):
     confidence: float = Field(ge=0, le=1)
 
 
+class SceneHypothesisDraft(BaseModel):
+    label: str | None = None
+    start: int = Field(ge=0)
+    end: int = Field(gt=0)
+    timeline_name: str | None = None
+    presentation_mode: Literal[
+        "direct", "flashback", "flashforward", "dream", "illusion", "rumor", "hypothetical"
+    ] = "direct"
+    reality_status: Literal["canonical", "subjective", "alleged", "counterfactual"] = (
+        "canonical"
+    )
+    confidence: float = Field(ge=0, le=1)
+
+
+class TimelineHypothesisDraft(BaseModel):
+    name: str
+    canonicality: Literal["canonical", "alternate", "hypothetical"]
+    evidence_quote: str
+    start: int = Field(ge=0)
+    end: int = Field(gt=0)
+    confidence: float = Field(ge=0, le=1)
+
+
+class RelationDraft(BaseModel):
+    source_character_name: str
+    target_character_name: str
+    relation_type: str
+    evidence_quote: str
+    start: int = Field(ge=0)
+    end: int = Field(gt=0)
+    confidence: float = Field(ge=0, le=1)
+
+
+class ReferenceDraft(BaseModel):
+    text: str
+    start: int = Field(ge=0)
+    end: int = Field(gt=0)
+    candidate_character_names: list[str] = Field(default_factory=list)
+
+
 class ChunkExtractionResult(BaseModel):
     mentions: list[MentionDraft] = Field(default_factory=list)
     alias_hypotheses: list[AliasDraft] = Field(default_factory=list)
     observations: list[ObservationDraft] = Field(default_factory=list)
     expression_observations: list[ExpressionDraft] = Field(default_factory=list)
-    unresolved_references: list[str] = Field(default_factory=list)
+    scene_hypotheses: list[SceneHypothesisDraft] = Field(default_factory=list)
+    timeline_hypotheses: list[TimelineHypothesisDraft] = Field(default_factory=list)
+    relations: list[RelationDraft] = Field(default_factory=list)
+    unresolved_references: list[ReferenceDraft] = Field(default_factory=list)
     warnings: list[str] = Field(default_factory=list)
 
 

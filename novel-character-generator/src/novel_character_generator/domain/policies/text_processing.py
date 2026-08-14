@@ -21,7 +21,13 @@ SENTENCE_END = re.compile(r"(?<=[。！？!?；;])")
 def decode_text(data: bytes) -> tuple[str, str]:
     if not data:
         raise ValueError("empty_text_file")
-    for encoding in ("utf-8-sig", "utf-16", "gb18030"):
+    # Only attempt UTF-16 when a BOM makes the byte order unambiguous. Without
+    # this guard, many ordinary GB18030 byte sequences decode as plausible but
+    # corrupt UTF-16 text.
+    encodings = ["utf-8-sig", "gb18030"]
+    if data.startswith((b"\xff\xfe", b"\xfe\xff")):
+        encodings.insert(0, "utf-16")
+    for encoding in encodings:
         try:
             text = data.decode(encoding)
         except UnicodeError:

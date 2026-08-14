@@ -6,7 +6,7 @@ from pydantic import BaseModel, Field, model_validator
 
 class MentionSpan(BaseModel):
     id: UUID = Field(default_factory=uuid4)
-    source_document_version: str
+    source_document_version_id: UUID
     source_chunk_id: UUID
     char_start: int = Field(ge=0)
     char_end: int = Field(gt=0)

@@ -6,6 +6,7 @@ from pydantic import BaseModel
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from novel_character_generator.api.auth import require_user_api_key
 from novel_character_generator.api.deps import get_session
 from novel_character_generator.infrastructure.db.orm import (
     CharacterORM,
@@ -15,7 +16,11 @@ from novel_character_generator.infrastructure.db.orm import (
     TextChunkORM,
 )
 
-router = APIRouter(prefix="/api/v1", tags=["characters"])
+router = APIRouter(
+    prefix="/api/v1",
+    tags=["characters"],
+    dependencies=[Depends(require_user_api_key)],
+)
 
 
 class CharacterResponse(BaseModel):

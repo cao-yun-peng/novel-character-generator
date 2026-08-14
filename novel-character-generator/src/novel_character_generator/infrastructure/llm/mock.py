@@ -1,4 +1,5 @@
 import re
+from typing import Literal
 
 from novel_character_generator.application.ports.extraction import (
     AliasDraft,
@@ -24,7 +25,11 @@ FEATURE_PATTERNS: tuple[tuple[str, str], ...] = (
     ("clothing.outerwear", "朱红斗篷"),
     ("accessory.waist", "白玉铃"),
 )
-EXPRESSION_PATTERNS: tuple[tuple[str, str, list[str]], ...] = (
+Emotion = Literal[
+    "joy", "sadness", "anger", "fear", "surprise", "disgust", "calm", "mixed", "unknown"
+]
+
+EXPRESSION_PATTERNS: tuple[tuple[str, Emotion, list[str]], ...] = (
     ("嘴角微扬", "joy", ["嘴角微扬"]),
     ("神色平静", "calm", ["神色平静"]),
     ("握剑的手却微微发紧", "fear", ["握剑的手发紧"]),
@@ -41,14 +46,14 @@ class MockExtractionProvider:
         mentions = self._mentions(text, names)
         aliases = self._aliases(text, names)
         observations = [
-            draft
+            observation
             for field_path, phrase in FEATURE_PATTERNS
-            if (draft := self._observation(text, names, field_path, phrase)) is not None
+            if (observation := self._observation(text, names, field_path, phrase)) is not None
         ]
         expressions = [
-            draft
+            expression
             for phrase, emotion, cues in EXPRESSION_PATTERNS
-            if (draft := self._expression(text, names, phrase, emotion, cues)) is not None
+            if (expression := self._expression(text, names, phrase, emotion, cues)) is not None
         ]
         return ChunkExtractionResult(
             mentions=mentions,
@@ -111,7 +116,7 @@ class MockExtractionProvider:
         )
 
     def _expression(
-        self, text: str, names: list[str], phrase: str, emotion: str, cues: list[str]
+        self, text: str, names: list[str], phrase: str, emotion: Emotion, cues: list[str]
     ) -> ExpressionDraft | None:
         start = text.find(phrase)
         if start < 0:

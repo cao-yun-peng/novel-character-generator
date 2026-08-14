@@ -1,6 +1,7 @@
 import asyncio
 from pathlib import Path
 from urllib.parse import unquote, urlparse
+from urllib.request import url2pathname
 
 
 class LocalArtifactStore:
@@ -19,9 +20,10 @@ class LocalArtifactStore:
 
     async def get(self, storage_uri: str) -> bytes:
         parsed = urlparse(storage_uri)
-        if parsed.scheme != "file":
+        if parsed.scheme != "file" or parsed.netloc not in {"", "localhost"}:
             raise ValueError("unsupported_artifact_uri")
-        path = await asyncio.to_thread(Path(unquote(parsed.path)).resolve)
+        local_path = url2pathname(unquote(parsed.path))
+        path = await asyncio.to_thread(Path(local_path).resolve)
         if not path.is_relative_to(self.root):
             raise ValueError("artifact_path_outside_root")
         return await asyncio.to_thread(path.read_bytes)

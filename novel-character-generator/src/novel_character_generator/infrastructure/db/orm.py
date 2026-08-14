@@ -42,6 +42,9 @@ class SourceDocumentORM(IdMixin, TimestampMixin, Base):
     __tablename__ = "source_documents"
 
     novel_id: Mapped[UUID] = mapped_column(ForeignKey("novels.id", ondelete="CASCADE"), index=True)
+    current_version_id: Mapped[UUID | None] = mapped_column(index=True)
+    # Legacy mirror fields retained during the schema transition. New code uses
+    # SourceDocumentVersionORM as the immutable content record.
     version: Mapped[str] = mapped_column(String(64))
     sha256: Mapped[str] = mapped_column(String(64), unique=True)
     encoding: Mapped[str] = mapped_column(String(32))
@@ -52,10 +55,42 @@ class SourceDocumentORM(IdMixin, TimestampMixin, Base):
     normalization_map: Mapped[dict[str, Any] | None] = mapped_column(JSON)
 
 
+class SourceDocumentVersionORM(IdMixin, TimestampMixin, Base):
+    __tablename__ = "source_document_versions"
+    __table_args__ = (
+        UniqueConstraint("source_document_id", "version"),
+        Index("ix_source_document_versions_hash", "content_sha256"),
+    )
+
+    source_document_id: Mapped[UUID] = mapped_column(
+        ForeignKey("source_documents.id", ondelete="CASCADE"), index=True
+    )
+    version: Mapped[int] = mapped_column(Integer)
+    content_sha256: Mapped[str] = mapped_column(String(64))
+    encoding: Mapped[str] = mapped_column(String(32))
+    mime_type: Mapped[str] = mapped_column(String(255))
+    storage_uri: Mapped[str] = mapped_column(Text)
+    byte_size: Mapped[int] = mapped_column(Integer)
+    normalization_map_id: Mapped[UUID | None] = mapped_column(index=True)
+    supersedes_version_id: Mapped[UUID | None] = mapped_column(
+        ForeignKey("source_document_versions.id")
+    )
+
+
+class NormalizationMapORM(IdMixin, TimestampMixin, Base):
+    __tablename__ = "normalization_maps"
+
+    source_document_version_id: Mapped[UUID] = mapped_column(
+        ForeignKey("source_document_versions.id", ondelete="CASCADE"), unique=True
+    )
+    algorithm_version: Mapped[str] = mapped_column(String(64))
+    original_boundaries: Mapped[list[int]] = mapped_column(JSON)
+
+
 class ChapterORM(IdMixin, Base):
     __tablename__ = "chapters"
     __table_args__ = (
-        UniqueConstraint("novel_id", "ordinal"),
+        UniqueConstraint("source_document_version_id", "ordinal"),
         CheckConstraint("ordinal >= 0", name="ck_chapters_ordinal_nonnegative"),
         CheckConstraint(
             "original_char_end > original_char_start",
@@ -71,6 +106,9 @@ class ChapterORM(IdMixin, Base):
     source_document_id: Mapped[UUID] = mapped_column(
         ForeignKey("source_documents.id", ondelete="CASCADE")
     )
+    source_document_version_id: Mapped[UUID] = mapped_column(
+        ForeignKey("source_document_versions.id", ondelete="CASCADE")
+    )
     ordinal: Mapped[int] = mapped_column(Integer)
     title: Mapped[str | None] = mapped_column(String(500))
     original_char_start: Mapped[int] = mapped_column(Integer)
@@ -82,8 +120,9 @@ class ChapterORM(IdMixin, Base):
 class TextChunkORM(IdMixin, Base):
     __tablename__ = "text_chunks"
     __table_args__ = (
-        UniqueConstraint("novel_id", "ordinal", "content_hash"),
+        UniqueConstraint("source_document_version_id", "ordinal", "content_hash"),
         Index("ix_text_chunks_document_ordinal", "source_document_id", "ordinal"),
+        Index("ix_text_chunks_version_ordinal", "source_document_version_id", "ordinal"),
         CheckConstraint("ordinal >= 0", name="ck_text_chunks_ordinal_nonnegative"),
         CheckConstraint(
             "original_char_end > original_char_start",
@@ -98,6 +137,9 @@ class TextChunkORM(IdMixin, Base):
     novel_id: Mapped[UUID] = mapped_column(ForeignKey("novels.id", ondelete="CASCADE"))
     source_document_id: Mapped[UUID] = mapped_column(
         ForeignKey("source_documents.id", ondelete="CASCADE")
+    )
+    source_document_version_id: Mapped[UUID] = mapped_column(
+        ForeignKey("source_document_versions.id", ondelete="CASCADE")
     )
     chapter_id: Mapped[UUID | None] = mapped_column(ForeignKey("chapters.id", ondelete="SET NULL"))
     ordinal: Mapped[int] = mapped_column(Integer)
@@ -131,6 +173,20 @@ class StoryEventORM(IdMixin, Base):
     ends_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
 
 
+class EventParticipantORM(IdMixin, TimestampMixin, Base):
+    __tablename__ = "event_participants"
+    __table_args__ = (UniqueConstraint("event_id", "character_id", "role"),)
+
+    event_id: Mapped[UUID] = mapped_column(
+        ForeignKey("story_events.id", ondelete="CASCADE"), index=True
+    )
+    character_id: Mapped[UUID] = mapped_column(
+        ForeignKey("characters.id", ondelete="CASCADE"), index=True
+    )
+    role: Mapped[str] = mapped_column(String(32))
+    evidence_observation_ids: Mapped[list[str]] = mapped_column(JSON)
+
+
 class CharacterORM(IdMixin, TimestampMixin, Base):
     __tablename__ = "characters"
     __table_args__ = (UniqueConstraint("novel_id", "canonical_name"),)
@@ -140,9 +196,13 @@ class CharacterORM(IdMixin, TimestampMixin, Base):
     status: Mapped[str] = mapped_column(String(32))
 
 
-class SceneORM(IdMixin, Base):
+class SceneORM(IdMixin, TimestampMixin, Base):
     __tablename__ = "scenes"
-    __table_args__ = (UniqueConstraint("novel_id", "narrative_order"),)
+    __table_args__ = (
+        UniqueConstraint("novel_id", "narrative_order"),
+        UniqueConstraint("source_chunk_id", "char_start", "char_end"),
+        CheckConstraint("binding_revision >= 1", name="ck_scenes_binding_revision_positive"),
+    )
 
     novel_id: Mapped[UUID] = mapped_column(ForeignKey("novels.id", ondelete="CASCADE"))
     timeline_id: Mapped[UUID] = mapped_column(ForeignKey("timelines.id"))
@@ -150,6 +210,21 @@ class SceneORM(IdMixin, Base):
     chapter_ordinal: Mapped[int] = mapped_column(Integer)
     narrative_order: Mapped[int] = mapped_column(Integer)
     point_of_view_character_id: Mapped[UUID | None] = mapped_column(ForeignKey("characters.id"))
+    label: Mapped[str | None] = mapped_column(String(500))
+    source_document_version_id: Mapped[UUID | None] = mapped_column(
+        ForeignKey("source_document_versions.id", ondelete="SET NULL"), index=True
+    )
+    source_chunk_id: Mapped[UUID | None] = mapped_column(
+        ForeignKey("text_chunks.id", ondelete="SET NULL"), index=True
+    )
+    char_start: Mapped[int | None] = mapped_column(Integer)
+    char_end: Mapped[int | None] = mapped_column(Integer)
+    presentation_mode: Mapped[str] = mapped_column(String(32))
+    reality_status: Mapped[str] = mapped_column(String(32))
+    confidence: Mapped[float | None] = mapped_column(Float)
+    binding_status: Mapped[str] = mapped_column(String(32), index=True)
+    binding_revision: Mapped[int] = mapped_column(Integer, default=1)
+    created_by_run_id: Mapped[UUID | None] = mapped_column(ForeignKey("pipeline_runs.id"))
 
 
 class PipelineRunORM(IdMixin, TimestampMixin, Base):
@@ -205,6 +280,9 @@ class MentionSpanORM(IdMixin, TimestampMixin, Base):
     )
 
     source_document_version: Mapped[str] = mapped_column(String(64))
+    source_document_version_id: Mapped[UUID] = mapped_column(
+        ForeignKey("source_document_versions.id", ondelete="CASCADE"), index=True
+    )
     source_chunk_id: Mapped[UUID] = mapped_column(ForeignKey("text_chunks.id", ondelete="CASCADE"))
     char_start: Mapped[int] = mapped_column(Integer)
     char_end: Mapped[int] = mapped_column(Integer)
@@ -252,7 +330,11 @@ class FeatureObservationORM(IdMixin, TimestampMixin, Base):
     field_path: Mapped[str] = mapped_column(String(255))
     value: Mapped[Any] = mapped_column(JSON)
     source_kind: Mapped[str] = mapped_column(String(32))
+    source_document_version_id: Mapped[UUID | None] = mapped_column(
+        ForeignKey("source_document_versions.id"), index=True
+    )
     source_chunk_id: Mapped[UUID | None] = mapped_column(ForeignKey("text_chunks.id"))
+    mention_span_id: Mapped[UUID | None] = mapped_column(ForeignKey("mention_spans.id"))
     evidence_quote: Mapped[str | None] = mapped_column(Text)
     char_start: Mapped[int | None] = mapped_column(Integer)
     char_end: Mapped[int | None] = mapped_column(Integer)
@@ -263,12 +345,34 @@ class FeatureObservationORM(IdMixin, TimestampMixin, Base):
     epistemic_status: Mapped[str] = mapped_column(String(32))
     grounding_status: Mapped[str] = mapped_column(String(32))
     confidence: Mapped[float] = mapped_column(Float)
-    extraction_run_id: Mapped[UUID] = mapped_column(ForeignKey("pipeline_runs.id"))
+    extraction_run_id: Mapped[UUID | None] = mapped_column(ForeignKey("pipeline_runs.id"))
+    manual_approval_id: Mapped[UUID | None] = mapped_column(ForeignKey("human_approvals.id"))
     extractor_version: Mapped[str] = mapped_column(String(100))
     supersedes_id: Mapped[UUID | None] = mapped_column(ForeignKey("feature_observations.id"))
     fingerprint: Mapped[str] = mapped_column(String(64), unique=True)
     valid_from: Mapped[datetime] = mapped_column(DateTime(timezone=True))
     valid_to: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
+    record_status: Mapped[str] = mapped_column(String(32), default="active")
+    recorded_at: Mapped[datetime] = mapped_column(DateTime(timezone=True))
+    invalidated_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
+    invalidated_by_run_id: Mapped[UUID | None] = mapped_column(ForeignKey("pipeline_runs.id"))
+
+
+class FeatureSuggestionORM(IdMixin, TimestampMixin, Base):
+    __tablename__ = "feature_suggestions"
+
+    character_id: Mapped[UUID] = mapped_column(
+        ForeignKey("characters.id", ondelete="CASCADE"), index=True
+    )
+    field_path: Mapped[str] = mapped_column(String(255))
+    value: Mapped[Any] = mapped_column(JSON)
+    suggestion_kind: Mapped[str] = mapped_column(String(32))
+    resource_version: Mapped[str] = mapped_column(String(100))
+    confidence: Mapped[float] = mapped_column(Float)
+    allowed_fields: Mapped[list[str]] = mapped_column(JSON)
+    rationale: Mapped[str] = mapped_column(Text)
+    status: Mapped[str] = mapped_column(String(32), index=True)
+    approval_id: Mapped[UUID | None] = mapped_column(ForeignKey("human_approvals.id"))
 
 
 class ExpressionObservationORM(IdMixin, TimestampMixin, Base):
@@ -284,6 +388,9 @@ class ExpressionObservationORM(IdMixin, TimestampMixin, Base):
     )
 
     character_id: Mapped[UUID] = mapped_column(ForeignKey("characters.id", ondelete="CASCADE"))
+    source_document_version_id: Mapped[UUID] = mapped_column(
+        ForeignKey("source_document_versions.id"), index=True
+    )
     source_chunk_id: Mapped[UUID] = mapped_column(ForeignKey("text_chunks.id"))
     char_start: Mapped[int] = mapped_column(Integer)
     char_end: Mapped[int] = mapped_column(Integer)
@@ -398,16 +505,21 @@ class ExternalOperationORM(IdMixin, TimestampMixin, Base):
     __table_args__ = (UniqueConstraint("provider", "idempotency_key"),)
 
     pipeline_step_id: Mapped[UUID] = mapped_column(ForeignKey("pipeline_steps.id"))
+    run_id: Mapped[UUID] = mapped_column(ForeignKey("pipeline_runs.id"), index=True)
     provider: Mapped[str] = mapped_column(String(100))
     operation_kind: Mapped[str] = mapped_column(String(100))
     idempotency_key: Mapped[str] = mapped_column(String(255))
     request_hash: Mapped[str] = mapped_column(String(64))
+    request_fingerprint: Mapped[str] = mapped_column(String(64))
     status: Mapped[str] = mapped_column(String(32), index=True)
+    lease_generation: Mapped[int] = mapped_column(Integer)
+    attempt: Mapped[int] = mapped_column(Integer)
     provider_request_id: Mapped[str | None] = mapped_column(String(255), index=True)
     response_hash: Mapped[str | None] = mapped_column(String(64))
     artifact_id: Mapped[UUID | None] = mapped_column(ForeignKey("artifacts.id"))
     submitted_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
     completed_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
+    last_reconciled_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
 
 
 class ModelCallORM(IdMixin, TimestampMixin, Base):
@@ -436,6 +548,20 @@ class AgentRunORM(IdMixin, TimestampMixin, Base):
     context_hash: Mapped[str] = mapped_column(String(64))
     final_output_hash: Mapped[str | None] = mapped_column(String(64))
     stop_reason: Mapped[str | None] = mapped_column(String(100))
+    attempt: Mapped[int] = mapped_column(Integer, default=1)
+    agent_spec_snapshot: Mapped[dict[str, Any]] = mapped_column(JSON)
+    tool_spec_versions: Mapped[dict[str, str]] = mapped_column(JSON)
+    prompt_version: Mapped[str] = mapped_column(String(100))
+    model_policy: Mapped[str] = mapped_column(String(100))
+    output_schema: Mapped[str] = mapped_column(String(255))
+    permission: Mapped[str] = mapped_column(String(32))
+    evaluation_version: Mapped[str | None] = mapped_column(String(100))
+    started_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
+    completed_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
+    input_tokens: Mapped[int] = mapped_column(Integer, default=0)
+    output_tokens: Mapped[int] = mapped_column(Integer, default=0)
+    total_cost: Mapped[Decimal] = mapped_column(Numeric(18, 6), default=0)
+    latency_ms: Mapped[int] = mapped_column(Integer, default=0)
 
 
 class AgentTurnORM(IdMixin, TimestampMixin, Base):
@@ -483,6 +609,12 @@ class HumanApprovalORM(IdMixin, TimestampMixin, Base):
     __table_args__ = (UniqueConstraint("action_hash"),)
 
     pipeline_step_id: Mapped[UUID] = mapped_column(ForeignKey("pipeline_steps.id"))
+    requested_by_agent_run_id: Mapped[UUID | None] = mapped_column(ForeignKey("agent_runs.id"))
+    approval_type: Mapped[str] = mapped_column(String(100), index=True)
+    subject_type: Mapped[str] = mapped_column(String(100))
+    subject_id: Mapped[UUID] = mapped_column(index=True)
+    lease_generation: Mapped[int] = mapped_column(Integer)
+    revision: Mapped[int] = mapped_column(Integer, default=1)
     action_hash: Mapped[str] = mapped_column(String(64))
     action: Mapped[dict[str, Any]] = mapped_column(JSON)
     supporting_evidence_ids: Mapped[list[str]] = mapped_column(JSON)
@@ -495,6 +627,7 @@ class HumanApprovalORM(IdMixin, TimestampMixin, Base):
     expires_at: Mapped[datetime] = mapped_column(DateTime(timezone=True))
     resolved_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
     recovery_token_hash: Mapped[str] = mapped_column(String(64), unique=True)
+    decision_payload_hash: Mapped[str | None] = mapped_column(String(64))
 
 
 class AgentEvaluationORM(IdMixin, TimestampMixin, Base):
@@ -505,3 +638,114 @@ class AgentEvaluationORM(IdMixin, TimestampMixin, Base):
     evaluator_version: Mapped[str] = mapped_column(String(100))
     scores: Mapped[dict[str, Any]] = mapped_column(JSON)
     passed: Mapped[bool] = mapped_column(Boolean)
+
+
+class EvalDatasetORM(IdMixin, TimestampMixin, Base):
+    __tablename__ = "eval_datasets"
+    __table_args__ = (UniqueConstraint("name", "version"),)
+
+    name: Mapped[str] = mapped_column(String(255))
+    version: Mapped[str] = mapped_column(String(100))
+    source: Mapped[str] = mapped_column(String(255))
+    split_strategy: Mapped[dict[str, Any]] = mapped_column(JSON)
+    dataset_metadata: Mapped[dict[str, Any]] = mapped_column(JSON)
+    frozen: Mapped[bool] = mapped_column(Boolean, default=False, index=True)
+    frozen_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
+
+
+class EvalCaseORM(IdMixin, TimestampMixin, Base):
+    __tablename__ = "eval_cases"
+    __table_args__ = (
+        Index("ix_eval_cases_dataset_split_task", "eval_dataset_id", "split", "task_type"),
+    )
+
+    eval_dataset_id: Mapped[UUID] = mapped_column(
+        ForeignKey("eval_datasets.id", ondelete="CASCADE")
+    )
+    dataset_version: Mapped[str] = mapped_column(String(100))
+    source_novel_id: Mapped[UUID | None] = mapped_column(
+        ForeignKey("novels.id", ondelete="SET NULL")
+    )
+    source_document_version_id: Mapped[UUID | None] = mapped_column(
+        ForeignKey("source_document_versions.id", ondelete="SET NULL")
+    )
+    split_group_key: Mapped[str] = mapped_column(String(255), index=True)
+    split: Mapped[str] = mapped_column(String(32))
+    task_type: Mapped[str] = mapped_column(String(64))
+    input_refs: Mapped[list[str]] = mapped_column(JSON)
+    expected_output: Mapped[Any] = mapped_column(JSON)
+    evidence_spans: Mapped[list[dict[str, Any]]] = mapped_column(JSON)
+    slice_tags: Mapped[list[str]] = mapped_column(JSON)
+    severity: Mapped[str] = mapped_column(String(32))
+    rubric_version: Mapped[str] = mapped_column(String(100))
+    annotation_status: Mapped[str] = mapped_column(String(32))
+
+
+class GraderVersionORM(IdMixin, TimestampMixin, Base):
+    __tablename__ = "grader_versions"
+    __table_args__ = (
+        UniqueConstraint("grader_key", "version"),
+        UniqueConstraint("content_hash"),
+    )
+
+    grader_key: Mapped[str] = mapped_column(String(255))
+    version: Mapped[str] = mapped_column(String(100))
+    grader_kind: Mapped[str] = mapped_column(String(32))
+    definition: Mapped[dict[str, Any]] = mapped_column(JSON)
+    model_provider: Mapped[str | None] = mapped_column(String(100))
+    model_name: Mapped[str | None] = mapped_column(String(255))
+    model_revision: Mapped[str | None] = mapped_column(String(255))
+    prompt_version: Mapped[str | None] = mapped_column(String(100))
+    rubric_version: Mapped[str] = mapped_column(String(100))
+    sampling_parameters: Mapped[dict[str, Any] | None] = mapped_column(JSON)
+    content_hash: Mapped[str] = mapped_column(String(64))
+
+
+class EvalRunORM(IdMixin, TimestampMixin, Base):
+    __tablename__ = "eval_runs"
+
+    eval_dataset_id: Mapped[UUID] = mapped_column(ForeignKey("eval_datasets.id"), index=True)
+    dataset_version: Mapped[str] = mapped_column(String(100))
+    candidate_config_hash: Mapped[str] = mapped_column(String(64))
+    baseline_config_hash: Mapped[str | None] = mapped_column(String(64))
+    model_versions: Mapped[dict[str, str]] = mapped_column(JSON)
+    prompt_versions: Mapped[dict[str, str]] = mapped_column(JSON)
+    agent_spec_versions: Mapped[dict[str, str]] = mapped_column(JSON)
+    tool_versions: Mapped[dict[str, str]] = mapped_column(JSON)
+    schema_versions: Mapped[dict[str, str]] = mapped_column(JSON)
+    workflow_profile_version: Mapped[str | None] = mapped_column(String(100))
+    grader_bundle_version: Mapped[str] = mapped_column(String(100))
+    random_seeds: Mapped[list[int]] = mapped_column(JSON)
+    status: Mapped[str] = mapped_column(String(32), index=True)
+    started_at: Mapped[datetime] = mapped_column(DateTime(timezone=True))
+    completed_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
+    total_tokens: Mapped[int] = mapped_column(Integer, default=0)
+    total_latency_ms: Mapped[int] = mapped_column(Integer, default=0)
+    total_cost: Mapped[Decimal] = mapped_column(Numeric(18, 6), default=0)
+    summary: Mapped[dict[str, Any] | None] = mapped_column(JSON)
+
+
+class EvalResultORM(IdMixin, TimestampMixin, Base):
+    __tablename__ = "eval_results"
+    __table_args__ = (
+        UniqueConstraint("eval_run_id", "eval_case_id", "grader_version_id"),
+        CheckConstraint("latency_ms >= 0", name="ck_eval_results_latency_nonnegative"),
+        CheckConstraint("input_tokens >= 0", name="ck_eval_results_input_tokens_nonnegative"),
+        CheckConstraint("output_tokens >= 0", name="ck_eval_results_output_tokens_nonnegative"),
+    )
+
+    eval_run_id: Mapped[UUID] = mapped_column(
+        ForeignKey("eval_runs.id", ondelete="CASCADE"), index=True
+    )
+    eval_case_id: Mapped[UUID] = mapped_column(ForeignKey("eval_cases.id"), index=True)
+    grader_version_id: Mapped[UUID] = mapped_column(ForeignKey("grader_versions.id"))
+    raw_output_artifact_id: Mapped[UUID | None] = mapped_column(ForeignKey("artifacts.id"))
+    scores: Mapped[dict[str, Any]] = mapped_column(JSON)
+    score: Mapped[float | None] = mapped_column(Float)
+    passed: Mapped[bool] = mapped_column(Boolean)
+    diagnostics: Mapped[dict[str, Any]] = mapped_column(JSON)
+    failure_reason: Mapped[str | None] = mapped_column(Text)
+    input_tokens: Mapped[int] = mapped_column(Integer, default=0)
+    output_tokens: Mapped[int] = mapped_column(Integer, default=0)
+    latency_ms: Mapped[int] = mapped_column(Integer, default=0)
+    cost: Mapped[Decimal] = mapped_column(Numeric(18, 6), default=0)

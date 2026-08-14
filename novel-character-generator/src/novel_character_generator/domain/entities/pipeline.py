@@ -57,6 +57,55 @@ class RunStatus(StrEnum):
     FAILED = "failed"
 
 
+class ExternalOperationState(StrEnum):
+    PREPARED = "prepared"
+    SUBMITTING = "submitting"
+    SUBMITTED = "submitted"
+    POLLING = "polling"
+    SUBMISSION_UNKNOWN = "submission_unknown"
+    RECONCILING = "reconciling"
+    MANUAL_REVIEW = "manual_review"
+    SUCCEEDED = "succeeded"
+    FAILED = "failed"
+    CANCELLED = "cancelled"
+
+
+ALLOWED_EXTERNAL_OPERATION_TRANSITIONS: dict[
+    ExternalOperationState, frozenset[ExternalOperationState]
+] = {
+    ExternalOperationState.PREPARED: frozenset(
+        {ExternalOperationState.SUBMITTING, ExternalOperationState.CANCELLED}
+    ),
+    ExternalOperationState.SUBMITTING: frozenset(
+        {ExternalOperationState.SUBMITTED, ExternalOperationState.SUBMISSION_UNKNOWN}
+    ),
+    ExternalOperationState.SUBMITTED: frozenset(
+        {ExternalOperationState.POLLING, ExternalOperationState.CANCELLED}
+    ),
+    ExternalOperationState.POLLING: frozenset(
+        {
+            ExternalOperationState.SUCCEEDED,
+            ExternalOperationState.FAILED,
+            ExternalOperationState.CANCELLED,
+        }
+    ),
+    ExternalOperationState.SUBMISSION_UNKNOWN: frozenset(
+        {ExternalOperationState.RECONCILING}
+    ),
+    ExternalOperationState.RECONCILING: frozenset(
+        {
+            ExternalOperationState.SUBMITTED,
+            ExternalOperationState.FAILED,
+            ExternalOperationState.MANUAL_REVIEW,
+        }
+    ),
+    ExternalOperationState.MANUAL_REVIEW: frozenset(),
+    ExternalOperationState.SUCCEEDED: frozenset(),
+    ExternalOperationState.FAILED: frozenset(),
+    ExternalOperationState.CANCELLED: frozenset(),
+}
+
+
 class PipelineRun(BaseModel):
     id: UUID = Field(default_factory=uuid4)
     novel_id: UUID
@@ -80,3 +129,23 @@ class PipelineStep(BaseModel):
 
     def can_transition_to(self, target: StepStatus) -> bool:
         return target in ALLOWED_STEP_TRANSITIONS[self.status]
+
+
+class ExternalOperation(BaseModel):
+    id: UUID = Field(default_factory=uuid4)
+    run_id: UUID
+    step_id: UUID
+    provider: str
+    operation_type: str
+    request_fingerprint: str
+    idempotency_key: str
+    state: ExternalOperationState = ExternalOperationState.PREPARED
+    external_job_id: str | None = None
+    lease_generation: int = Field(ge=0)
+    attempt: int = Field(default=0, ge=0)
+    request_hash: str
+    response_hash: str | None = None
+    last_reconciled_at: datetime | None = None
+
+    def can_transition_to(self, target: ExternalOperationState) -> bool:
+        return target in ALLOWED_EXTERNAL_OPERATION_TRANSITIONS[self.state]
