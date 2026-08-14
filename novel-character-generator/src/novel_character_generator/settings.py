@@ -11,6 +11,12 @@ class Settings(BaseSettings):
 
     app_env: Literal["development", "test", "production"] = "development"
     log_level: str = "INFO"
+    log_format: Literal["json", "console"] = "json"
+    otel_enabled: bool = True
+    otel_service_name: str = "novel-character-generator-api"
+    otel_exporter_otlp_endpoint: str | None = None
+    metrics_enabled: bool = True
+    metrics_path: str = "/metrics"
     database_url: str = "sqlite+aiosqlite:///./data/app.db"
     artifact_store: Literal["local"] = "local"
     artifact_local_root: Path = Path("data/artifacts")

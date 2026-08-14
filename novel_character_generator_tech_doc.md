@@ -1,6 +1,6 @@
 # 小说角色插画与 3D 建模生成器——技术设计文档
 
-> 文档版本：2.3
+> 文档版本：2.4
 >
 > 修订日期：2026-08-14
 >
@@ -137,19 +137,20 @@ Agent 用于实体歧义、视觉方案、图像审查等需要语义判断的�
 └───────────────┬──────────────────────────┬─────────────────┘
                 │                          │
 ┌───────────────▼──────────────┐  ┌────────▼─────────────────┐
-│ Workflow / Worker            │  │ Domain                   │
-│ LangGraph 外层编排           │  │ Observation/Profile      │
+│ Application Orchestrator     │  │ Domain                   │
+│ Run/Step 确定性状态机        │  │ Observation/Profile      │
 │ DB任务领取、重试、恢复       │  │ 聚合规则、冲突、状态机   │
+│ 可插拔 AgentRuntime          │  │                          │
 └───────────────┬──────────────┘  └────────┬─────────────────┘
                 │                          │
 ┌───────────────▼──────────────────────────▼─────────────────┐
 │ Infrastructure                                             │
 │ LLM Provider / Image Provider / SQLAlchemy / 文件存储      │
-│ LangGraph Checkpointer / 日志与指标                        │
+│ AgentRuntime Adapter / OpenTelemetry / 日志与指标          │
 └────────────────────────────────────────────────────────────┘
 ```
 
-依赖方向为 `API → Application → Domain`；Infrastructure 实现 Domain/Application 声明的端口。Domain 不依赖 FastAPI、SQLAlchemy、fal 或 LangGraph。
+依赖方向为 `API → Application → Domain`；Infrastructure 实现 Domain/Application 声明的端口。Domain 不依赖 FastAPI、SQLAlchemy、fal、LangGraph 或具体 Agent 框架。`pipeline_runs`、`pipeline_steps` 和业务审批表是主流程唯一状态真值。
 
 ### 3.2 运行时拓扑
 
@@ -202,8 +203,9 @@ Task Table ◄──────────── Worker Process
 | ORM | SQLAlchemy 2 Async | 全部 Repository 使用 `AsyncSession`，不混用同步 API |
 | SQLite 驱动 | aiosqlite | 一期单机存储 |
 | 迁移 | Alembic | 禁止以 `create_all()` 或 `init.sql` 代替版本迁移 |
-| 工作流 | LangGraph | 只处理需要暂停、恢复和条件路由的外层流程 |
-| Checkpoint | AsyncSqliteSaver | 一期实验/单机；`thread_id = pipeline_run_id` |
+| 主流程编排 | Application Orchestrator + PipelineRun/PipelineStep | 确定性应用服务和数据库状态机是一期默认实现 |
+| Agent Runtime | 自定义 `AgentRuntime` 端口；默认 StructuredCall 实现 | 支持单次结构化调用、一次受限修复和有限工具循环 |
+| LangGraph | 仅作为局部 AgentRuntime PoC 候选 | 不参与主任务领取、审批授权、收费提交和业务恢复；PoC 达标后才局部启用 |
 | HTTP | httpx | LLM 与 Provider 请求，统一超时和连接池 |
 | LLM | DeepSeek 或兼容 Provider | 通过能力声明而非仅凭 OpenAI 格式切换 |
 | 图像执行 | fal 自部署固定 ComfyUI endpoint，或经验证的模型 API | 工作流和依赖必须固定版本 |
@@ -215,18 +217,31 @@ Task Table ◄──────────── Worker Process
 | Metrics | OpenTelemetry Metrics 或 Prometheus client | 暴露低基数运行指标与业务指标；一期提供 `/metrics` |
 | 本地观测后端 | OpenTelemetry Collector + Jaeger/Tempo + Prometheus/Grafana 中任选可替换组合 | 仅用于开发与 PoC，生产后端由部署环境决定 |
 
-### 4.2 为什么保留 LangGraph
+### 4.2 编排与 AgentRuntime 决策
 
-LangGraph适合人工中断、条件分支和持久化恢复，但不负责业务事实存储，也不替代任务队列。使用约束如下：
+一期默认使用普通应用服务和数据库状态机，不把 LangGraph 作为主流程依赖：
 
-- Graph State 只保存 JSON 可序列化值和业务 ID；
-- Provider、Session、Repository、Manager 等运行时对象不得进入 State；
-- 编译图时必须配置 checkpointer；
-- 每次运行必须提供稳定的 `thread_id`；
-- 节点副作用必须幂等；
-- 升级图结构时必须提供版本和迁移策略。
+```text
+Application Orchestrator
+├── PipelineRun / PipelineStep       任务状态与恢复真值
+├── HumanApproval                    审批授权与审计真值
+├── ExternalOperation               外部提交、查询与对账真值
+├── StructuredCallAgentRuntime      默认 Agent 实现
+└── LangGraphAgentRuntime            局部 PoC 候选
+```
 
-若验证后发现一期工作流完全线性，可用普通应用服务替代 LangGraph；领域模型与任务系统不受影响。
+默认 `StructuredCallAgentRuntime` 支持单次结构化调用、Schema 校验、一次受限修复和显式停止原因。小说导入、分块、事实保存、时间线解析、档案聚合、图像任务、费用、审批和恢复均由 Application Orchestrator 控制。
+
+LangGraph 只允许封装在单个复杂 Agent 内部，用于已经证明需要多轮工具调用、运行时语义分支或图内暂停后继续同一语义任务的场景。即使局部启用，也必须满足：
+
+- Graph State 只保存 JSON 可序列化的临时语义状态和业务 ID；
+- 不保存任务状态、审批授权、费用事实、完整正文、ORM/Provider 对象或业务真值；
+- 外部副作用仍通过应用服务和幂等业务工具执行；
+- checkpoint 不能作为任务恢复、审批审计或外部提交对账的唯一依据；
+- LangGraph 版本、图版本和 checkpoint 迁移必须纳入回归测试；
+- 关闭 `LangGraphAgentRuntime` 后，主流程和领域模型仍能正常工作。
+
+PoC 未达到采用门槛时，不安装生产 LangGraph 依赖，不创建生产 checkpoint 表，也不为适应 replay 重构确定性业务流程。
 
 ### 4.3 Provider 抽象边界
 
@@ -750,22 +765,23 @@ Prompt 只注入：
 - 场景或事件被重新绑定时间线时，只失效受影响作用域的状态快照，不重跑无关章节；
 - `ResolvedCharacterSnapshot` 是派生产物，可按 resolver 版本重建，不作为唯一事实源。
 
-### 7.6 LangGraph 状态
+### 7.6 应用编排状态
+
+文本流程由 `PipelineRun` 和 `PipelineStep` 驱动，应用服务只传递业务 ID 和小型命令对象：
 
 ```python
-class TextWorkflowState(TypedDict):
+class TextPipelineCursor(BaseModel):
     schema_version: str
-    run_id: str
-    novel_id: str
-    chunk_ids: list[str]
+    run_id: UUID
+    novel_id: UUID
     current_chunk_ordinal: int
     completed_step_keys: list[str]
-    pending_review_ids: list[str]
+    pending_review_ids: list[UUID]
     error_codes: list[str]
     status: str
 ```
 
-State 中不保存原文全文、数据库 Session、Provider Client、MemoryManager 或 Pydantic 大对象。节点使用 `run_id` 从 Repository 加载所需数据。
+游标持久化到业务任务表，不保存原文全文、数据库 Session、Provider Client 或 Pydantic 大对象。Worker 根据 `run_id` 和 `step_id` 从 Repository 加载数据。若局部 LangGraph PoC 启用，其 Graph State 只能引用这些业务 ID，不能复制或替代 `TextPipelineCursor` 的任务真值。
 
 ---
 
@@ -983,18 +999,20 @@ CLIP-I 只作为辅助主体相似度，不能单独决定“锁定角色”。�
 
 ### 10.1 定位与边界
 
-本项目采用“Agent 增强的可恢复工作流”，而不是全自主多 Agent 系统：
+本项目采用“确定性应用编排 + 可插拔 AgentRuntime”，而不是全自主多 Agent 系统或全流程图编排：
 
 ```text
-确定性 Workflow Orchestrator
-  ├── Extraction Agent              块级事实提取
-  ├── Entity Resolution Agent       实体、别名和共指裁决
-  ├── Visual Director Agent         生成视觉方案
-  ├── Multimodal Critic Agent       审核候选图
-  └── Review Agent                  复杂证据与冲突审计
+Application Orchestrator
+  ├── StructuredCallAgentRuntime     一期默认
+  │   ├── Extraction Agent           块级事实提取
+  │   ├── Entity Resolution Agent    实体、别名和共指提案
+  │   ├── Visual Director Agent      生成视觉方案
+  │   ├── Multimodal Critic Agent    审核候选图
+  │   └── Review Agent               复杂证据与冲突审计
+  └── LangGraphAgentRuntime          仅局部 PoC，默认关闭
 ```
 
-Orchestrator 决定何时调用哪个 Agent、是否并行、何时停止以及是否转人工。专项 Agent 不互相自由对话，也不能绕过 Orchestrator 调用另一个 Agent。跨 Agent 传递的是经过 Schema 校验的结构化产物和证据 ID，而不是完整聊天历史。
+Application Orchestrator 决定何时调用哪个 Agent、是否重试、何时停止以及是否转人工。专项 Agent 不互相自由对话，也不能绕过应用服务调用另一个 Agent。跨 Agent 传递的是经过 Schema 校验的结构化产物和证据 ID，而不是完整聊天历史。
 
 职责边界：
 
@@ -1235,9 +1253,9 @@ deadline_seconds = 180
 
 每个 AgentSpec 可以更严格，但不能在运行时自行放宽。达到轮次、费用、时间或重试上限时返回结构化 `AgentLimitReached`，不得用“继续思考”绕过限制。
 
-### 10.12 人工审批与可恢复中断
+### 10.12 人工审批与可恢复等待
 
-Agent 需要审批时返回序列化的 `ApprovalRequest`，LangGraph 使用 `interrupt()` 暂停。审批内容包括：
+Agent 需要审批时返回序列化的 `ApprovalRequest`。Application Service 在业务数据库中创建 `human_approvals`，将对应 `PipelineStep` 标记为 `waiting_approval`，随后释放 Worker。审批内容包括：
 
 - 建议执行的动作及影响范围；
 - 支撑和反对证据；
@@ -1245,7 +1263,7 @@ Agent 需要审批时返回序列化的 `ApprovalRequest`，LangGraph 使用 `in
 - 可选操作：批准、拒绝、修改、延后；
 - 审批过期时间和恢复令牌。
 
-恢复时节点会从开头重新执行，因此 `interrupt()` 前的所有副作用必须幂等，最好将中断放在副作用之前。审批结果写入业务数据库，LangGraph checkpoint 只保存审批 ID。
+审批完成后，API 通过 compare-and-set 写入决策并将 Step 重新放回队列；Worker 根据业务状态继续下一确定性步骤。等待和恢复不依赖 Graph checkpoint。若局部 LangGraph Agent 在内部产生中断，只能把中断转换成业务 `ApprovalRequest` 并退出本次 Agent 运行；审批后由应用服务启动新的 Agent attempt，不直接把 checkpoint 当作授权或任务游标。
 
 ### 10.13 Agent 轨迹与评测
 
@@ -1281,9 +1299,11 @@ Agent 评测必须同时检查结果和轨迹：
 
 - Extraction、Entity Resolution、Visual Director、Multimodal Critic；
 - Review Agent 的最小异常审计能力；
+- `AgentRuntime` 端口和默认 `StructuredCallAgentRuntime`；
 - 强类型工具、ContextPacket、ModelRouter 和有界反思；
-- LangGraph 人工中断、Agent 轨迹记录和离线轨迹评测；
-- Provider 不支持工具调用时的结构化输出降级。
+- 业务数据库驱动的人工审批等待、Agent 轨迹记录和离线轨迹评测；
+- Provider 不支持工具调用时的结构化输出降级；
+- 一个隔离的 `LangGraphAgentRuntime` PoC，只用于 `POC-WORKFLOW-01`，默认配置关闭且不进入主流程恢复。
 
 二期实现：
 
@@ -1775,8 +1795,22 @@ Agent成本 = Σ(Agent各轮模型成本
 | `POC-TIME-01` | 一期时间线自动化边界 | 主线、回忆、梦境/传闻及复杂分支样本 | 自动支持集、`defer` 条件和污染率上限 |
 | `POC-IMAGE-01` | 固定图像工作流 | SDXL + InstantID vs FLUX + PuLID-FLUX 完整组合 | 唯一一期 WorkflowProfile、资产清单和许可证结论 |
 | `POC-IMAGE-02` | 单角色输出多少阶段 | 单一代表形象 vs 2–4 个关键阶段形象集 | 默认阶段数、阶段差异阈值、预算和人工审核上限 |
-| `POC-WORKFLOW-01` | LangGraph 是否保留 | 普通应用服务 vs LangGraph 外层编排 | 只有人工中断、恢复或条件路由带来明确收益时保留 |
+| `POC-WORKFLOW-01` | 是否为局部复杂 Agent 引入 LangGraph | 默认 StructuredCallAgentRuntime vs 单 Agent 内部 LangGraphAgentRuntime；主流程始终使用 Application Orchestrator | 仅当多轮语义分支和图内暂停产生明确净收益并通过恢复测试时，批准指定 Agent 局部启用 |
 | `POC-EVAL-01` | 图像阈值与评测组合 | 身份、阶段、场景三层指标 + 人工盲评 | 评测器组合、失败样本口径和阈值集版本 |
+
+`POC-WORKFLOW-01` 的 LangGraph 采用门槛：
+
+| 条件 | 采用要求 |
+|---|---|
+| 流程复杂度 | 单个 Agent 至少存在 3 个由运行时语义判断决定的分支 |
+| 多轮收益 | 相比 StructuredCall 基线，在同一黄金集上有稳定质量或人工审核效率收益 |
+| 成本收益 | 质量收益能够覆盖额外模型调用、checkpoint 和维护成本 |
+| 人工暂停 | 存在暂停后继续同一语义任务的真实需求，普通新 attempt 无法等价满足 |
+| 恢复可靠性 | 崩溃、中断、重复恢复、子图和版本升级测试通过，副作用不重复 |
+| 状态边界 | Graph State 不保存任务真值、审批授权、费用、外部提交或完整业务对象 |
+| 可替换性 | 关闭 LangGraph 后主流程、领域模型和历史业务记录仍可正常使用 |
+
+任一条件不满足，该 Agent 继续使用 `StructuredCallAgentRuntime`。不得因为流程图展示更直观、已有示例代码或框架自带 checkpoint 而采用 LangGraph。
 
 PoC 样本至少覆盖 3 个代表角色及其 2 个以上可视阶段，并完成以下验证：
 
@@ -1800,7 +1834,8 @@ PoC 样本至少覆盖 3 个代表角色及其 2 个以上可视阶段，并完�
 - 数据库任务领取、`lease_generation`、取消、重试和 `submission_unknown`；
 - 上传、Run 和 SSE API；
 - 故障恢复测试骨架。
-- AgentSpec、ToolSpec、Agent Runtime、权限和预算守卫骨架；
+- `AgentRuntime` 端口、`StructuredCallAgentRuntime`、AgentSpec、ToolSpec、权限和预算守卫骨架；
+- `LangGraphAgentRuntime` 只建立隔离 PoC，不接管 PipelineRun/PipelineStep；
 - agent_runs/turns/tool_calls/decisions/approvals 表及迁移。
 
 ### 17.3 第 3–5 周：文本 Agent 与证据模型
@@ -1937,7 +1972,7 @@ PoC 样本至少覆盖 3 个代表角色及其 2 个以上可视阶段，并完�
 | 事实模型 | Observation + Identity/Appearance/Scene 三层状态 + RenderProfile | 支持证据、多时间线、瞬时神情和人工选择 |
 | 渲染输入 | 目标时点 ResolvedCharacterSnapshot | 防止默认使用错误年龄、服装、伤势或神情 |
 | 冲突判定 | 同角色/字段/时间线/重叠区间/现实层级联合判断 | 时间变化和叙事视角差异不应误报为事实矛盾 |
-| 编排 | LangGraph 只做外层可恢复工作流 | 不侵入领域与任务系统 |
+| 编排 | Application Orchestrator + PipelineRun/PipelineStep 是主流程唯一编排；LangGraph 仅为局部 AgentRuntime PoC | 避免任务状态与 Graph checkpoint 双真值，只有证明多轮语义收益后才局部引入 |
 | 长任务 | 独立 Worker + durable Run/Step | HTTP 解耦、可恢复、可取消 |
 | ORM | 全异步 SQLAlchemy | 与 FastAPI/外部异步调用保持一致，不混用 Session |
 | 数据库 | 一期 SQLite，二期 PostgreSQL | 一期低运维，明确并发边界 |
