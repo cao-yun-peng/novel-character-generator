@@ -39,6 +39,9 @@ async def process_ingestion_run(
         return
     if step.status not in {"queued", "retry_scheduled"}:
         raise ValueError("ingestion_step_not_runnable")
+    step_id = step.id
+    persisted_run_id = run.id
+    novel_id = run.novel_id
     now = datetime.now(UTC)
     step.status = "running"
     step.attempt += 1
@@ -47,8 +50,8 @@ async def process_ingestion_run(
     run.updated_at = now
     await session.commit()
     try:
-        novel = await repository.get_novel(run.novel_id)
-        document = await repository.latest_document(run.novel_id)
+        novel = await repository.get_novel(novel_id)
+        document = await repository.latest_document(novel_id)
         if novel is None or document is None:
             raise RuntimeError("ingestion_source_not_found")
         data = await artifact_store.get(document.storage_uri)
@@ -82,15 +85,15 @@ async def process_ingestion_run(
         await session.commit()
     except Exception:
         await session.rollback()
-        step = await session.get(PipelineStepORM, step.id)
-        run = await session.get(PipelineRunORM, run.id)
-        if step is not None and run is not None:
+        failed_step = await session.get(PipelineStepORM, step_id)
+        failed_run = await session.get(PipelineRunORM, persisted_run_id)
+        if failed_step is not None and failed_run is not None:
             now = datetime.now(UTC)
-            step.status = "failed"
-            step.error_code = "ingestion_failed"
-            step.updated_at = now
-            run.status = "failed"
-            run.completed_at = now
-            run.updated_at = now
+            failed_step.status = "failed"
+            failed_step.error_code = "ingestion_failed"
+            failed_step.updated_at = now
+            failed_run.status = "failed"
+            failed_run.completed_at = now
+            failed_run.updated_at = now
             await session.commit()
         raise
