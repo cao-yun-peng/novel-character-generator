@@ -1,10 +1,10 @@
 # 小说角色插画与 3D 建模生成器——技术设计文档
 
-> 文档版本：2.1
+> 文档版本：2.2
 >
 > 修订日期：2026-08-14
 >
-> 文档状态：一期可实施设计，二期能力保留
+> 文档状态：一期可实施设计，P0 前置项与 PoC 决策项已标注
 >
 > 说明：模型名称、API 价格和平台能力变化较快，本文只固化接口与验证方法，不把临时价格或未验证的模型组合写成架构保证。
 
@@ -38,7 +38,7 @@
 
 ### 1.1 项目目标
 
-系统从长篇中文小说中提取带原文证据的角色视觉事实，经人工确认形成稳定的角色渲染档案，再生成角色肖像和角色设定图。系统需要支持增量章节、失败恢复、生成参数追溯和成本统计，并为二期的多姿势、LoRA、3D 建模及管理界面保留清晰扩展点。
+系统从长篇中文小说中提取带原文证据的角色视觉事实，经人工确认形成稳定的角色渲染档案，并为同一角色按已批准的关键历史阶段生成一组可追溯形象，而不是把整本小说压缩成唯一形象。每个阶段形象对应明确的时间线、事件范围和外观状态；系统同时支持选定一个默认代表形象，供列表展示、后续设定图和二期 3D 流程使用。系统需要支持增量章节、失败恢复、生成参数追溯和成本统计，并为二期的多姿势、LoRA、3D 建模及管理界面保留清晰扩展点。
 
 一期不追求“全自动生成整部小说所有角色”，而是先证明三个核心命题：
 
@@ -57,7 +57,7 @@
 | 事实存储 | 字段级证据、来源、置信度、时间范围、提取运行版本完整保存 |
 | 时态与神情 | 区分叙事/故事顺序、主线/分支/梦境；提取外显神情与明确内心情绪 |
 | 渲染档案 | 稳定身份、阶段外观、场景状态分层，可人工编辑、锁定和重新计算 |
-| 图像生成 | 固定一套已验证工作流；正面肖像 + 单张角色设定图 |
+| 图像生成 | 固定一套已验证工作流；每个主要角色选择 2–4 个已批准关键阶段，每阶段生成候选肖像并锁定一张阶段基准图；生成角色阶段形象集和一张默认代表设定图 |
 | 质量评测 | 身份、主体、属性、图像质量多指标组合；人工最终确认 |
 | 任务执行 | 独立 Worker、进度查询、取消、幂等、有限重试、断点恢复 |
 | 存储 | SQLite + 本地文件，抽象出对象存储接口 |
@@ -67,7 +67,8 @@
 
 以下能力不是取消，而是明确放入二期，避免一期同时验证过多不确定技术：
 
-- 自动切割和精修四视图、多姿势批量生成；
+- 自动切割和精修四视图、同阶段多姿势批量生成；
+- 超过一期上限的全量阶段自动出图，以及每个章节、每次换装或每个瞬时神情的穷举生成；
 - PuLID/InstantID 等多工作流切换和多图像 Provider；
 - 角色专属 LoRA 训练与训练任务编排；
 - 2D/多视图到 3D、拓扑优化、纹理、骨骼绑定和动画；
@@ -179,10 +180,12 @@ Task Table ◄──────────── Worker Process
   → 别名归并及人工纠错
   → 写入事实观察
   → 聚合角色渲染档案
-  → 人工审核并锁定
-  → 图像生成
+  → 人工审核并锁定角色档案
+  → 从全部 AppearanceState 中选择 2–4 个关键历史阶段
+  → 为每个阶段解析不可变快照并生成候选图
   → 多指标评测
-  → 人工选择基准图
+  → 人工选择阶段基准图
+  → 选定默认代表形象并形成角色阶段形象集
 ```
 
 ---
@@ -381,6 +384,8 @@ novel-character-generator/
 | `feature_observations` | 字段级观察、证据与来源 | 不覆盖旧观察 |
 | `expression_observations` | 外显神情、内在情绪、对象和诱因 | 默认只在当前场景有效 |
 | `character_appearance_states` | 角色在特定时间段的外观状态 | 同一时间线内有效区间可计算 |
+| `character_image_sets` | 一个角色的阶段形象集合、默认代表形象和集合版本 | 每个集合关联已批准阶段，不按章节穷举 |
+| `character_stage_images` | 阶段快照、候选图、阶段基准图及排序 | `(image_set_id, appearance_state_id)` 唯一 |
 | `character_render_profiles` | 当前生成档案及锁定状态 | 带版本号和乐观锁 |
 | `pipeline_runs` | 一次导入/提取/生成运行 | 幂等键唯一 |
 | `pipeline_steps` | 步骤状态、尝试次数和游标 | `(run_id, step_key)` 唯一 |
@@ -397,7 +402,51 @@ novel-character-generator/
 
 一期 Prompt 使用 Git 管理的文件版本；二期增加 `prompt_templates`、`identity_prototypes`、发布记录和管理 API。
 
-### 6.2 FeatureObservation
+### 6.2 P0 前置数据模型
+
+以下数据模型属于 **P0 前置项**，进入一期工程开发前必须补齐。它们决定证据能否重放、角色合并能否回滚，以及后续阶段形象是否可信：
+
+| P0 项 | 最低要求 | 未完成时的限制 |
+|---|---|---|
+| `MentionSpan` | 持久化每次人名、称谓、代词的原文区间、原始文本、候选角色和最终绑定 | 不允许自动执行实体合并 |
+| `AliasAssertion` | 保存别名类型、说话人/视角、场景、时间线、支持与反对证据、审批状态 | 别名只能作为候选召回，不能成为确定关系 |
+| 规范化偏移映射 | 版本化记录 Unicode、换行和不可见字符转换，并可逆映射回原文件 | 无法精确回到原文的观察不得批准 |
+| Grounding 状态 | 区分 `exact`、`fuzzy`、`ungrounded`、`manually_grounded` | `ungrounded` 默认不得进入 RenderProfile |
+| 重叠块去重 | 使用来源版本、证据区间、字段、规范值和提取器版本生成稳定指纹 | 禁止直接按出现顺序去重 |
+| 事件参与者 | 保存 actor、patient、observer 等参与角色及证据 | 复杂事件不自动绑定外观变化 |
+| 双时态记录 | 区分故事有效时间与系统抽取、审核、失效时间 | 不能可靠重放历史决策 |
+| 审核优先级 | 综合影响范围、错误风险、不确定性和角色重要度排序 | 高影响合并与阶段选择必须人工处理 |
+
+```python
+class MentionSpan(BaseModel):
+    id: UUID
+    source_document_version: str
+    source_chunk_id: UUID
+    char_start: int
+    char_end: int
+    mention_text: str
+    mention_kind: Literal["name", "title", "kinship", "disguise", "nickname", "pronoun"]
+    candidate_character_ids: list[UUID]
+    resolved_character_id: UUID | None
+    grounding_status: Literal["exact", "fuzzy", "ungrounded", "manually_grounded"]
+    normalization_map_version: str
+
+
+class AliasAssertion(BaseModel):
+    id: UUID
+    alias_text: str
+    normalized_alias: str
+    mention_span_id: UUID
+    proposed_character_id: UUID | None
+    speaker_id: UUID | None
+    scene_id: UUID | None
+    timeline_id: UUID | None
+    supporting_evidence_ids: list[UUID]
+    opposing_evidence_ids: list[UUID]
+    status: Literal["proposed", "approved", "rejected", "superseded"]
+```
+
+### 6.3 FeatureObservation
 
 ```python
 class FeatureObservation(BaseModel):
@@ -430,7 +479,7 @@ class FeatureObservation(BaseModel):
 - 用户修订创建新的 `manual` 观察或档案版本，不静默改写历史；
 - 原文引用应控制长度并保存精确区间，避免保存无法定位的整段文本。
 
-### 6.3 时间线、事件与场景作用域
+### 6.4 时间线、事件与场景作用域
 
 章节顺序是“作者何时讲到”，故事时间是“事情何时发生”，两者必须分开。回忆可能出现在第 30 章，但描述的是角色少年期；不能仅用 `chapter_ordinal` 推断角色当时的外观。
 
@@ -490,7 +539,7 @@ class TemporalScope(BaseModel):
 - 梦境、幻觉、传闻和假设保留为证据，但不自动更新 canonical 角色状态；
 - 时间线重绑定属于可审计决策，修改后只重算受影响角色的状态和快照。
 
-### 6.4 神情与内外情绪观察
+### 6.5 神情与内外情绪观察
 
 神情可以提取，但必须区分“可见表情”和“角色内心”。例如“嘴角带笑，眼神却冰冷”不能被压缩成单一的 `happy`。
 
@@ -525,7 +574,7 @@ class ExpressionObservation(BaseModel):
 
 神情默认是 `instant` 或 `scene` 级瞬时状态，不写入永久脸部特征。“常年冷着脸”只有在文本明确表达持续性时，才可形成 `persistent` 的习惯神态观察。内心情绪不得由面部表情反推为事实；模型推断必须标记为 `inferred` 并降低置信度。反过来，内心写着“狂喜”但原文明说“不动声色”时，视觉快照采用外显神情而不是内心情绪。
 
-### 6.5 稳定身份、阶段外观与场景状态
+### 6.6 稳定身份、阶段外观与场景状态
 
 角色描述采用三层模型，避免把少年、成年、受伤后或伪装状态互相覆盖：
 
@@ -578,7 +627,7 @@ class ResolvedCharacterSnapshot(BaseModel):
     resolver_version: str
 ```
 
-### 6.6 CharacterRenderProfile
+### 6.7 CharacterRenderProfile
 
 ```python
 class CharacterRenderProfile(BaseModel):
@@ -599,7 +648,7 @@ class CharacterRenderProfile(BaseModel):
 
 `CharacterRenderProfile` 是用户确认过的角色规则与可用状态集合，不再代表唯一的“当前外观”。每次生成前必须解析出 `ResolvedCharacterSnapshot`。所有 Block 使用 Enum 或受约束字符串，未知值为 `None`。不要使用无法区分缺失、空列表和明确“无”的字段定义。
 
-### 6.7 任务状态机
+### 6.8 任务状态机
 
 ```text
 queued → claimed → running → waiting_external → succeeded
@@ -625,7 +674,7 @@ queued → claimed → running → waiting_external → succeeded
 5. 大章节在段落/句子边界切分；重叠区保留来源映射。
 6. 每块保存内容哈希，使追加章节只创建新块或重算受影响块。
 
-默认建议为 6K–12K tokens 的动态范围，具体值由 Provider 上下文、输出预算和注入记忆共同决定。
+默认候选范围为 1K–12K tokens，不预设单一最优值。**[PoC 决策项 POC-TEXT-01]** 第 0 阶段必须在同一中文小说黄金集上比较场景优先 1K–3K、段落递归 2K–4K、当前大块 6K–12K、小块双 pass 和邻块上下文方案，并按字段 precision/recall、span 准确率、实体链接、重复率、延迟、总成本及“每个正确字段成本”冻结一期参数。PoC 通过前，6K–12K 只能作为对照组，不能写入生产默认配置。
 
 ### 7.2 块级提取
 
@@ -784,7 +833,49 @@ class CharacterRenderRequest(BaseModel):
 
 解析顺序为：用户本次覆盖 > 场景瞬时状态 > 目标时点有效的阶段外观 > 稳定身份锚点 > 画风默认值。若目标时间缺失且角色存在多个已批准阶段，API 返回 `ambiguous_appearance_state`，由用户选择，不擅自使用最新章节状态。
 
-### 8.4 身份原型
+### 8.4 角色阶段形象集
+
+一本小说中的主角通常存在少年、成年、受伤后、身份揭露、阵营变化或重要换装等可视差异。既然系统已保存这些 `CharacterAppearanceState`，一期不再把输出限制为一个形象，而是将已批准且差异足够大的状态组织为 `CharacterImageSet`。
+
+阶段选择遵循以下规则：
+
+- 一期每个主要角色默认生成 2–4 个关键阶段，数量上限由预算和 PoC 结果冻结；
+- 阶段必须来自已批准的 `CharacterAppearanceState`，并绑定明确时间线与事件范围；
+- 少年期、成年期、长期伤势、长期伪装或身份转折可成为独立阶段；
+- 同一阶段内的短暂表情、单次动作、一次性污渍和普通换装通常只作为场景状态，不自动新增阶段；
+- 相邻状态若视觉差异不足，则合并展示，避免为每章或每次描述重复出图；
+- 每个阶段独立解析 `ResolvedCharacterSnapshot`、生成候选图并锁定阶段基准图；
+- 用户可从阶段基准图中指定一个 `default_representative_image_id`，但该默认图不覆盖其他历史形象；
+- 后续新增章节出现新的重要阶段时，新建集合版本，只生成新增或受影响阶段，不重跑全部历史阶段。
+
+```python
+class CharacterImageSet(BaseModel):
+    id: UUID
+    character_id: UUID
+    render_profile_version: int
+    version: int
+    default_representative_image_id: UUID | None
+    stage_image_ids: list[UUID]
+    selection_policy_version: str
+    status: Literal["draft", "partially_approved", "approved"]
+
+
+class CharacterStageImage(BaseModel):
+    id: UUID
+    image_set_id: UUID
+    appearance_state_id: UUID
+    resolved_snapshot_hash: str
+    stage_label: str
+    representative_event_id: UUID | None
+    candidate_image_ids: list[UUID]
+    baseline_image_id: UUID | None
+    display_order: int
+    selection_reason_codes: list[str]
+```
+
+**[PoC 决策项 POC-IMAGE-02]** 第 0 阶段必须比较“单一代表形象”和“2–4 个关键阶段形象集”两种产品输出，记录阶段覆盖率、重复形象率、人工选择耗时、单角色成本和用户对角色历程表达的评价。PoC 只决定默认阶段数、差异阈值和预算上限，不改变底层保存全部历史观察与阶段状态的原则。
+
+### 8.5 身份原型
 
 一期原型为只读、版本化、人工审核的 JSON 资源。原型字段必须带：
 
@@ -814,17 +905,19 @@ SDXL-compatible checkpoint
   + 固定 ComfyUI 与 custom node commits
 ```
 
-如果 PoC 显示 FLUX + PuLID-FLUX 更适合目标画风，可替换为该组合，但不能把 SDXL 的 InstantID 节点与 FLUX checkpoint 随意拼接。
+**[PoC 决策项 POC-IMAGE-01]** 一期只会冻结其中一套完整组合。PoC 使用同一批角色、阶段和场景，比较身份、阶段属性、Prompt 遵循、失败率、时延、显存或费用，并同时审查完整资产许可证。若 FLUX + PuLID-FLUX 更合适，可以整体替换 SDXL + InstantID；不得跨模型族随意拼接节点。
 
 一期生成顺序：
 
-1. 用 `CharacterRenderRequest` 在目标时间线、事件或场景解析 `ResolvedCharacterSnapshot`；
-2. 从已批准快照生成 4–8 张候选正面肖像；
-3. 自动质量筛选后由用户选择基准图；
-4. 基于基准图生成一张角色设定图；
-5. 保存工作流、模型、Prompt、seed、输入快照和远程请求 ID 的完整快照。
+1. 从已批准的全部 `CharacterAppearanceState` 中提出关键阶段候选，人工确认一期需要生成的 2–4 个阶段；
+2. 为每个阶段用 `CharacterRenderRequest` 在目标时间线、事件或场景解析独立的 `ResolvedCharacterSnapshot`；
+3. 每个阶段从已批准快照生成 4–8 张候选正面肖像；
+4. 自动质量筛选后由用户为每个阶段选择阶段基准图；
+5. 将所有阶段基准图组织为 `CharacterImageSet`，并选定一个默认代表形象；
+6. 默认只基于代表形象生成一张角色设定图；其他阶段设定图按用户选择和预算生成；
+7. 保存工作流、模型、Prompt、seed、输入快照、阶段归属和远程请求 ID 的完整快照。
 
-自动四格切分、跨姿势量产和 LoRA 进入二期。
+一期支持“一个角色多个历史阶段形象”，但不做每章节、每次换装、每个表情的穷举生成。自动四格切分、同阶段跨姿势量产和 LoRA 进入二期。
 
 ### 9.2 WorkflowProfile
 
@@ -833,17 +926,24 @@ class WorkflowProfile(BaseModel):
     id: str
     version: str
     base_model_family: Literal["sdxl", "flux", "other"]
-    workflow_file: str
-    workflow_sha256: str
+    ui_workflow_file: str
+    ui_workflow_sha256: str
+    api_workflow_file: str
+    api_workflow_sha256: str
+    parameter_binding_schema_version: str
     comfyui_commit: str
-    custom_node_commits: dict[str, str]
+    comfyui_frontend_version: str
+    custom_nodes: list[CustomNodeAsset]
+    python_lock_sha256: str
+    container_image_digest: str
     model_assets: list[ModelAsset]
     supported_modes: set[str]
     input_schema_version: str
     output_schema_version: str
+    evaluator_bundle_version: str
 ```
 
-工作流注册时运行契约测试，校验节点、输入、模型文件和输出结构。运行时禁止直接修改原始模板，必须深拷贝后填参。
+工作流注册时运行契约测试，校验 UI JSON 与实际提交的 API JSON、参数绑定、节点、输入端口、模型文件、容器环境和输出结构。运行时禁止直接修改原始模板，必须深拷贝后填参。**[P0]** 每个模型、身份权重、基础 checkpoint、VAE 和 custom node 必须保存来源 URL、版本/commit、SHA-256 与许可证标识；许可证不明确的资产只能用于隔离 PoC，不能进入生产 Profile。
 
 ### 9.3 多指标质量评测
 
@@ -866,7 +966,8 @@ CLIP-I 只作为辅助主体相似度，不能单独决定“锁定角色”。�
 每个生成结果至少保存：
 
 - `artifact_id`、存储 URI、SHA-256、MIME、尺寸；
-- `character_id`、RenderProfile 版本、ResolvedCharacterSnapshot 哈希；
+- `character_id`、RenderProfile 版本、CharacterImageSet 版本、ResolvedCharacterSnapshot 哈希；
+- `appearance_state_id`、阶段标签、阶段显示顺序、是否为阶段基准图及是否为默认代表形象；哈希；
 - `timeline_id`、目标 event/scene ID、外观状态和神情观察 IDs；
 - WorkflowProfile、Prompt 和模型版本；
 - seed、完整生成参数、参考图 artifact IDs；
@@ -1563,15 +1664,30 @@ Agent成本 = Σ(Agent各轮模型成本
 
 ### 17.1 第 0 阶段：技术 PoC（1 周）
 
-- 用 3 个代表性文本片段验证块级结构化提取；
-- 对比至少两种实体链接/别名策略；
-- 在 fal 上跑通一套固定 ComfyUI 工作流；
-- 用 3 个角色各生成多组候选，验证身份保持和评测指标；
-- 输出兼容矩阵、质量基线和真实成本样本。
-- 对比“单次结构化调用”和“Extraction Agent + 只读工具”的质量、延迟与成本；
-- 验证工具调用、ContextPacket、有限轮次和人工中断的最小闭环。
+以下内容均为 **PoC 决策项**。PoC 结束时必须把结论、原始样本、指标、成本和选择理由写入决策记录；在此之前不得将候选方案描述为生产默认值。
 
-**退出条件：** 三个核心命题至少有可接受基线，否则调整方案后再进入工程开发。
+| ID | 待决定问题 | 对照方案 | 决策输出 |
+|---|---|---|---|
+| `POC-TEXT-01` | 中文小说分块参数 | 场景 1K–3K、段落 2K–4K、大块 6K–12K、小块双 pass、邻块上下文 | 分块策略、重叠、最大上下文和每正确字段成本 |
+| `POC-AGENT-01` | Extraction Agent 是否值得保留 | 单次结构化调用 vs Agent + 只读工具 | 是否启用 Agent、最大轮次、质量与成本门槛 |
+| `POC-ENTITY-01` | 实体链接策略 | 规则优先、候选召回 + LLM 提案等至少两种方案 | 候选召回、自动链接阈值和强制人工条件 |
+| `POC-TIME-01` | 一期时间线自动化边界 | 主线、回忆、梦境/传闻及复杂分支样本 | 自动支持集、`defer` 条件和污染率上限 |
+| `POC-IMAGE-01` | 固定图像工作流 | SDXL + InstantID vs FLUX + PuLID-FLUX 完整组合 | 唯一一期 WorkflowProfile、资产清单和许可证结论 |
+| `POC-IMAGE-02` | 单角色输出多少阶段 | 单一代表形象 vs 2–4 个关键阶段形象集 | 默认阶段数、阶段差异阈值、预算和人工审核上限 |
+| `POC-WORKFLOW-01` | LangGraph 是否保留 | 普通应用服务 vs LangGraph 外层编排 | 只有人工中断、恢复或条件路由带来明确收益时保留 |
+| `POC-EVAL-01` | 图像阈值与评测组合 | 身份、阶段、场景三层指标 + 人工盲评 | 评测器组合、失败样本口径和阈值集版本 |
+
+PoC 样本至少覆盖 3 个代表角色及其 2 个以上可视阶段，并完成以下验证：
+
+- 用代表性文本片段验证块级结构化提取和精确证据对齐；
+- 对比至少两种实体链接/别名策略；
+- 跑通两套图像候选工作流或对无法运行的候选给出明确阻断原因；
+- 比较单一代表形象与阶段形象集的价值、重复率和成本；
+- 对比单次结构化调用和 Extraction Agent 的质量、延迟与成本；
+- 验证工具调用、ContextPacket、有限轮次、人工中断和外部提交未知状态；
+- 输出兼容矩阵、许可证结论、质量基线和真实成本样本。
+
+**退出条件：** P0 数据结构与安全约束已有实现方案，所有 PoC 决策项均形成结论；三个核心命题达到可接受基线。任一生产依赖资产许可证不明确、外部提交无法安全恢复或阶段形象成本超过冻结预算时，不进入对应功能的工程开发。
 
 ### 17.2 第 1–2 周：工程基础与任务系统
 
@@ -1579,7 +1695,7 @@ Agent成本 = Σ(Agent各轮模型成本
 - Async SQLAlchemy 与 Alembic；
 - novels/documents/chapters/chunks/runs/steps/artifacts 表；
 - timelines/story_events/scenes 表与最小时间作用域模型；
-- 数据库任务领取、租约、取消、重试；
+- 数据库任务领取、`lease_generation`、取消、重试和 `submission_unknown`；
 - 上传、Run 和 SSE API；
 - 故障恢复测试骨架。
 - AgentSpec、ToolSpec、Agent Runtime、权限和预算守卫骨架；
@@ -1590,6 +1706,7 @@ Agent成本 = Σ(Agent各轮模型成本
 - 章节识别、动态分块、偏移映射；
 - Extraction Agent 与结构化输出降级；
 - Entity Resolution Agent、别名、共指和审批中断；
+- `MentionSpan`、`AliasAssertion`、规范化偏移映射和 Grounding 校验；
 - FeatureObservation 持久化；
 - ExpressionObservation、AppearanceState 与场景/时间线候选提取；
 - RenderProfile 聚合、目标时点快照解析、冲突和人工编辑；
@@ -1600,7 +1717,7 @@ Agent成本 = Σ(Agent各轮模型成本
 
 - WorkflowProfile 注册与契约测试；
 - fal 提交/查询/下载/恢复；
-- 候选肖像、设定图和基准图选择；
+- 候选肖像、阶段形象集、阶段基准图、默认代表形象和设定图选择；
 - Visual Director 与 Multimodal Critic；
 - 多指标质量评测和最多一次受控修订；
 - 身份层、阶段层、场景神情层的一致性评测；
@@ -1635,7 +1752,7 @@ Agent成本 = Σ(Agent各轮模型成本
 ### 18.2 二期 B：角色图像量产（2–4 周）
 
 - 自动四视图切割与视图分类；
-- 多姿势、服装变化和场景化生成；
+- 多姿势、同一阶段内的服装变化和场景化生成；
 - FLUX + PuLID-FLUX 等第二套工作流；
 - 工作流 A/B 测试和按画风路由；
 - 30+ 角色批量生成、并发与预算调度。
@@ -1710,7 +1827,7 @@ Agent成本 = Σ(Agent各轮模型成本
 
 | 决策 | 选择 | 原因 |
 |---|---|---|
-| 一期目标 | 先验证 3–5 个主要角色 | 控制成本与技术变量 |
+| 一期目标 | 识别全书候选角色，精细处理 3–5 个主要角色；每个主要角色默认输出 2–4 个关键阶段形象 | 控制角色数量与生成成本，同时保留主角历史形象价值 |
 | 文本调用粒度 | 每块一次批量提取 | 避免 `块数 × 角色数` 爆炸 |
 | 事实模型 | Observation + Identity/Appearance/Scene 三层状态 + RenderProfile | 支持证据、多时间线、瞬时神情和人工选择 |
 | 渲染输入 | 目标时点 ResolvedCharacterSnapshot | 防止默认使用错误年龄、服装、伤势或神情 |
@@ -1719,7 +1836,7 @@ Agent成本 = Σ(Agent各轮模型成本
 | 长任务 | 独立 Worker + durable Run/Step | HTTP 解耦、可恢复、可取消 |
 | ORM | 全异步 SQLAlchemy | 与 FastAPI/外部异步调用保持一致，不混用 Session |
 | 数据库 | 一期 SQLite，二期 PostgreSQL | 一期低运维，明确并发边界 |
-| 图像方案 | 一期固定一套兼容工作流 | 先保证可复现，再扩展多 Provider |
+| 图像方案 | 一期固定一套兼容工作流；一个角色形成多个阶段基准图和一个默认代表形象 | 先保证可复现，并避免把完整角色历程压缩成单一形象 |
 | 质量评测 | 多指标 + 人工终审 | CLIP-I 不足以判断身份一致性 |
 | Prompt | 一期 Git 文件，二期在线发布 | 避免过早建设管理平台 |
 | 3D/LoRA | 二期正式实现 | 保留完整路线但不阻塞一期验证 |
