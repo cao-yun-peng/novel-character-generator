@@ -1,6 +1,6 @@
 # 小说角色插画与 3D 建模生成器——技术设计文档
 
-> 文档版本：2.2
+> 文档版本：2.3
 >
 > 修订日期：2026-08-14
 >
@@ -210,7 +210,10 @@ Task Table ◄──────────── Worker Process
 | 图像处理 | Pillow / OpenCV | 读取、裁剪、质量检测；重型模型使用独立执行适配器 |
 | 测试 | pytest / pytest-asyncio / respx | 单元、异步、HTTP mock |
 | 包管理 | `pyproject.toml` + `uv.lock` | 固定依赖，保证可复现 |
-| 日志 | structlog 或标准 logging JSON formatter | 结构化日志、run_id 贯穿 |
+| 日志 | structlog 或标准 logging JSON formatter | 结构化日志，关联 trace_id 与业务运行 ID |
+| Trace | OpenTelemetry API/SDK + OTLP | 统一 HTTP、Worker、数据库、Provider 与 Agent Span；业务代码不绑定具体后端 |
+| Metrics | OpenTelemetry Metrics 或 Prometheus client | 暴露低基数运行指标与业务指标；一期提供 `/metrics` |
+| 本地观测后端 | OpenTelemetry Collector + Jaeger/Tempo + Prometheus/Grafana 中任选可替换组合 | 仅用于开发与 PoC，生产后端由部署环境决定 |
 
 ### 4.2 为什么保留 LangGraph
 
@@ -1378,6 +1381,7 @@ POST   /api/v1/images/{image_id}/select-reference
 
 GET    /health/live
 GET    /health/ready
+GET    /metrics                              Prometheus 格式指标；仅内网或受保护端点
 ```
 
 ### 12.3 二期端点
@@ -1479,6 +1483,15 @@ class AgentCapabilities(BaseModel):
 ```ini
 APP_ENV=development
 LOG_LEVEL=INFO
+LOG_FORMAT=json
+
+OTEL_ENABLED=true
+OTEL_SERVICE_NAME=novel-character-generator-api
+OTEL_EXPORTER_OTLP_ENDPOINT=http://otel-collector:4317
+OTEL_TRACES_SAMPLER=parentbased_traceidratio
+OTEL_TRACES_SAMPLER_ARG=0.10
+METRICS_ENABLED=true
+METRICS_PATH=/metrics
 
 DATABASE_URL=sqlite+aiosqlite:///./data/app.db
 ARTIFACT_STORE=local
@@ -1553,7 +1566,10 @@ Agent 工具权限按 `read/propose/execute/admin` 分级。模型永远不能�
 | Agent 轨迹评测 | 结果正确性、证据、重复调用、越权、停止条件和成本 |
 | Agent 对抗测试 | Prompt 注入、恶意工具输出、上下文污染和权限提升尝试 |
 | 图像工作流契约 | 节点、模型资产、输入输出 Schema、最小生成 smoke test |
-| 故障恢复 | Worker 在提交前/后、保存前/后崩溃，确保不重复收费 |
+| 故障恢复 | Worker 在提交前/后、保存前/后崩溃，验证不重复收费并保留可关联的 Run/Trace 诊断信息 |
+| 可观测链路 | API→Run→Step→Agent/LLM/Tool→Provider→Artifact 的 Span 层级、跨 Worker Trace Context/Span Link、日志关联字段 |
+| 遥测降级 | Collector 断开、导出超时、队列满；业务任务不中断，普通遥测可丢弃且记录丢弃计数 |
+| 脱敏测试 | 正文、Prompt、密钥、Authorization、Cookie、人脸 embedding 和签名 URL 不得出现在日志、Trace 或告警中 |
 | E2E | 上传→提取→审核→生成→选择基准图 |
 
 ### 15.2 黄金评测集
@@ -1584,10 +1600,15 @@ Agent 工具权限按 `read/propose/execute/admin` 分级。模型永远不能�
 - 任务故障恢复测试不产生重复外部提交；
 - 所有生成图均能追溯到档案、Prompt、模型、工作流和 seed；
 - 角色一致性阈值由至少 100 对内部样本标定；
-- 最终锁定仍由人工完成，不以单一自动分数替代。
+- 最终锁定仍由人工完成，不以单一自动分数替代；
 - Agent 工具调用权限违规数为 0，收费/合并/发布动作未经审批执行数为 0；
 - Agent 达到轮次、费用或时间上限时能结构化停止，不进入无限循环；
-- 轨迹评测集上的工具选择、人工升级和最终输出均达到各 AgentSpec 的发布门槛。
+- 轨迹评测集上的工具选择、人工升级和最终输出均达到各 AgentSpec 的发布门槛；
+- API、Worker、Agent、LLM、Tool、图像 Provider 和审批均能通过 `trace_id` 与 `run_id` 关联，抽样 E2E Trace 不允许出现断链；
+- `/metrics` 不包含 `run_id`、`novel_id`、`character_id` 等高基数标签，且只能从受保护网络或管理身份访问；
+- Collector/观测后端不可用时，上传、分析和生成任务继续运行，遥测丢弃量可查询；
+- 脱敏测试中正文、完整 Prompt、密钥、认证 Header、人脸 embedding 和签名 URL 泄漏数为 0；
+- `submission_unknown`、租约冲突、预算异常和 Provider 错误均能产生可定位告警，告警附带 Trace 或 Run 关联信息。
 
 ### 15.4 测试预算
 
@@ -1597,33 +1618,113 @@ Agent 工具权限按 `read/propose/execute/admin` 分级。模型永远不能�
 
 ## 16. 可观测性与成本控制
 
-### 16.1 日志关联字段
+### 16.1 双层可观测模型
+
+系统同时维护运行时观测和业务追溯，两者通过关联 ID 连接，但用途与保留方式不同：
+
+```text
+HTTP / Worker / Scheduler
+  → OpenTelemetry Trace（trace_id / span_id）
+    → API Span
+      → Pipeline Step Span
+        → Agent / LLM / Tool / Provider Span
+          → Artifact / Evaluation / Approval Span
+
+业务数据库
+  PipelineRun → PipelineStep
+    → AgentRun / AgentTurn / ToolCall / ModelCall
+      → GeneratedImage / Evaluation / HumanApproval / Artifact
+```
+
+- 运行时链路回答请求在哪里等待、失败或变慢，使用 OpenTelemetry Trace、Metrics 和结构化日志；
+- 业务链路回答为什么产生某项事实或图像、使用了哪些证据、模型、工作流、审批和费用，以业务表为真值；
+- Trace 只保存诊断属性和业务 ID，不替代 `pipeline_runs`、`model_calls`、`human_approvals` 等业务记录；
+- API 创建根 Span，Worker 从任务记录中的 `traceparent` 或 `trace_context` 恢复父上下文；若原 Trace 已结束，则创建新 Trace 并使用 Span Link 关联原提交 Span；
+- Provider 不回传 W3C Trace Context 时，在本地 Client Span 中保存 Provider request ID；不得把内部 Trace Header 发送给未批准的第三方；
+- `run_id` 是跨重试、跨进程和长周期业务关联键，`trace_id` 是一次运行时调用树标识，两者不得混用。
+
+一期必须覆盖以下 Span：
+
+| Span | 关键属性 |
+|---|---|
+| HTTP 请求 | route、method、status、request_id、run_id |
+| Worker 领取 | run_id、step_id、queue_wait_ms、lease_generation、attempt |
+| Workflow 节点 | graph_version、node_name、checkpoint_id、resume_reason |
+| Agent 运行 | agent_id/version、agent_run_id、turn_count、stop_reason、approval_required |
+| LLM 调用 | provider、model_revision、usage、cache usage、finish_reason、provider_request_id |
+| Tool 调用 | tool_id/version、tool_call_id、side_effect_level、approval_id、result_status |
+| 图像 Provider | workflow_profile、external_job_id、submit/query/download 阶段、submission_state |
+| 数据库与存储 | operation、表/仓储名、duration、result；不记录 SQL 参数和正文 |
+| 人工审批 | approval_id、action_hash、decision、wait_duration；不记录审批密钥 |
+
+### 16.2 日志关联字段
 
 每条结构化日志至少包含：
 
 ```text
-request_id, run_id, step_id, agent_run_id, agent_id, tool_call_id,
+service_name, service_version, environment,
+trace_id, span_id, request_id, run_id, step_id,
+agent_run_id, agent_id, tool_call_id, approval_id,
 novel_id, character_id, provider, model, workflow_profile,
-attempt, duration_ms, error_code
+attempt, lease_generation, duration_ms, error_code
 ```
 
-不记录完整正文、完整 Prompt、API Key 和带签名下载 URL。
+日志级别约定：
 
-### 16.2 关键指标
+- `INFO` 记录状态转换、外部调用摘要、审批结果和任务恢复；
+- `WARN` 记录可恢复错误、预算临界、租约临近过期和采样降级；
+- `ERROR` 记录步骤最终失败、重复副作用风险、数据不一致及人工介入原因；
+- 高频轮询、心跳和正常重试使用聚合指标或受控 `DEBUG`，避免日志量随任务时长线性增长。
 
-- 每块输入/输出 token 与有效事实数；
-- JSON 校验失败率、修复率、Provider 错误率；
-- 实体待人工审核比例；
-- 每角色候选图数量、重生成率、人工接受率；
-- Worker 队列等待时间、执行时间、租约超时数；
-- 每小说、每角色、每成功产物成本；
-- 工作流版本的质量与成本对比。
-- 每个 Agent 的任务成功率、平均轮次、工具调用数和人工升级率；
-- 无效/重复工具调用率、Schema 修复率和达到限制次数；
-- Agent 版本的轨迹评分、回归失败数和单位成功任务成本；
-- Prompt cache read/write tokens、命中率和净成本收益。
+不记录完整正文、完整 Prompt、API Key、Cookie、Authorization Header、原始人脸 embedding 和带签名下载 URL。错误堆栈在写出前经过统一脱敏过滤器；无法确认安全性的 Provider 原始响应只保存内容哈希和受限摘要。
 
-### 16.3 成本公式
+### 16.3 指标体系
+
+所有指标标签必须低基数。允许的常用标签包括 `service`、`environment`、`operation`、`provider`、`model_family`、`workflow_profile`、`status` 和稳定错误类别；`run_id`、`novel_id`、`character_id`、`request_id`、Prompt 文本和外部 job ID 禁止作为 Metrics 标签，只存在于 Trace 或日志中。
+
+| 类别 | 指标 |
+|---|---|
+| API | 请求量、状态码、P50/P95/P99 延迟、SSE 活跃连接与断开数 |
+| Worker | 队列深度、等待时间、执行时间、领取失败、心跳延迟、租约过期、fencing 拒绝写入数 |
+| 任务恢复 | 重试数、恢复成功率、`submission_unknown` 数量与停留时间、重复回调/产物去重数 |
+| LLM | 输入/输出/cache tokens、调用延迟、限流、超时、Schema 校验失败与修复率 |
+| Agent | 成功率、平均轮次、工具调用数、无效/重复调用率、人工升级率、达到限制次数 |
+| 图像 | 每阶段候选数、生成时延、失败率、重生成率、阶段基准图接受率 |
+| 审批 | 待审批数量、等待时间、过期率、修改率、重复消费阻止数 |
+| 数据库 | 事务时长、写锁/忙超时、连接池等待、迁移版本 |
+| 成本 | 每小说、角色、阶段、成功产物和 Agent 任务成本；预算预测与实际偏差 |
+| 质量 | 有效事实数、实体待审比例、证据定位率、工作流版本质量与成本对比 |
+
+一期 `/metrics` 只允许内网访问或经过管理权限保护。业务报表可以查询数据库中的高基数字段，不通过 Metrics 系统承载。
+
+### 16.4 采样与保留
+
+- 本地开发和 PoC 默认 100% Trace；生产默认采用父级继承的比例采样，初始建议 10%，上线后按吞吐和成本调整；
+- 错误、超预算、`submission_unknown`、租约冲突、审批、数据不一致和安全事件需要完整保留。若后端不支持尾部采样，则通过独立审计事件和业务记录保证不丢失；
+- 成功任务可降低 Trace 采样，但业务 Run、Step、费用、审批和产物记录不得采样丢弃；
+- 日志、Trace、Metrics、Agent 轨迹和业务审计分别配置保留周期；具体天数由部署环境、用户协议和合规要求配置，不在代码中硬编码；
+- 删除小说时，按数据治理策略删除或匿名化关联日志索引、Trace 属性和业务记录；聚合且不可反查个人或小说的 Metrics 可继续保留；
+- 观测后端不可成为主流程硬依赖。Collector 或后端不可用时使用有界内存队列和批量导出，队列满后丢弃普通遥测并递增 `telemetry_dropped_total`，不得阻塞生成任务。
+
+### 16.5 告警与诊断
+
+一期至少配置以下告警类别，阈值先由 PoC 基线标定，再保存为版本化配置：
+
+| 告警 | 触发信号 | 处理方向 |
+|---|---|---|
+| 任务卡死 | Step 长时间无心跳或无进度事件 | 检查 Worker、租约和外部任务状态 |
+| 租约异常 | 租约频繁过期或 fencing 拒绝写入增加 | 检查 Worker 停顿、数据库锁和时钟 |
+| 外部提交不确定 | `submission_unknown` 数量或停留时间超限 | 停止自动重提，查询 Provider 或人工对账 |
+| Provider 异常 | 超时、429、5xx 或延迟持续升高 | 降低并发、退避或暂停对应工作流 |
+| 费用异常 | 实际费用超过预测区间或预算消耗突增 | 暂停新收费步骤并请求确认 |
+| Agent 异常 | 循环、重复工具调用、Schema 修复或人工升级率突增 | 回滚 AgentSpec/Prompt/模型版本 |
+| 质量回归 | 证据定位、实体链接或阶段图接受率低于基线 | 阻止相关版本发布并运行黄金集 |
+| 遥测失效 | 导出失败、队列积压或遥测丢弃持续增加 | 检查 Collector；业务任务继续运行 |
+| 安全风险 | 脱敏过滤命中密钥、正文或签名 URL | 阻断对应日志事件并触发安全审计 |
+
+每条告警必须附带可查询的 `service`、时间窗口、错误类别及示例 `trace_id` 或 `run_id`，但通知内容不得包含小说正文、Prompt 或签名 URL。
+
+### 16.6 成本公式
 
 不在文档中长期固定价格。运行时从平台价格 API 或配置快照读取：
 
@@ -1692,6 +1793,7 @@ PoC 样本至少覆盖 3 个代表角色及其 2 个以上可视阶段，并完�
 ### 17.2 第 1–2 周：工程基础与任务系统
 
 - `src` 骨架、配置、结构化日志；
+- OpenTelemetry 初始化、OTLP 导出、Trace Context 传播、`/metrics` 与本地 Collector 配置；
 - Async SQLAlchemy 与 Alembic；
 - novels/documents/chapters/chunks/runs/steps/artifacts 表；
 - timelines/story_events/scenes 表与最小时间作用域模型；
@@ -1811,6 +1913,9 @@ PoC 样本至少覆盖 3 个代表角色及其 2 个以上可视阶段，并完�
 | Worker 崩溃 | 重复提交或任务卡死 | 租约、幂等、远程 request ID、恢复测试 |
 | SQLite 写锁 | 并发更新失败 | 单写 Worker、短事务；二期 PostgreSQL |
 | Provider 价格变化 | 预算不准确 | 动态价格快照、运行前估价和硬预算 |
+| 遥测后端故障 | Trace/Metrics 无法导出或队列积压 | 有界异步队列、批量导出、普通遥测可丢弃并计数，业务主流程继续 |
+| Metrics 高基数 | 时序数量和存储成本失控 | 禁止业务 ID 和自由文本作为标签，明细通过 Trace/日志/业务库查询 |
+| 观测数据泄露 | 正文、Prompt、密钥或签名 URL 出现在日志/Trace/告警 | 统一脱敏过滤、属性白名单、泄漏测试和受控保留周期 |
 | 云端数据风险 | 正文或图像泄漏 | 最小发送、明确告知、删除策略、日志脱敏 |
 | 图结构升级 | 旧 checkpoint 无法恢复 | State schema version、兼容迁移或显式终止旧 Run |
 | Agent 越权 | 自行提交收费/写入/删除动作 | 工具白名单、权限交集、审批门槛和运行时守卫 |
@@ -1841,6 +1946,7 @@ PoC 样本至少覆盖 3 个代表角色及其 2 个以上可视阶段，并完�
 | Prompt | 一期 Git 文件，二期在线发布 | 避免过早建设管理平台 |
 | 3D/LoRA | 二期正式实现 | 保留完整路线但不阻塞一期验证 |
 | 价格 | 动态快照，不在文档硬编码 | 模型和平台价格会变化 |
+| 可观测性 | OpenTelemetry 标准 + 业务 Run/Step 双层链路 | Trace 定位运行故障，业务记录解释事实、审批、产物和费用；观测后端不成为主流程依赖 |
 | Agent 定位 | 专项 Agent + 确定性 Orchestrator | 保留语义能力，同时控制副作用和成本 |
 | Agent 通信 | Schema 产物 + 证据 ID | 不共享完整聊天历史，不自由群聊 |
 | Agent 工具 | 强类型、最小权限、默认只读 | 降低越权、注入和不可恢复副作用 |
@@ -1849,6 +1955,9 @@ PoC 样本至少覆盖 3 个代表角色及其 2 个以上可视阶段，并完�
 
 ## 附录 B：参考资料
 
+- [OpenTelemetry Documentation](https://opentelemetry.io/docs/)
+- [OpenTelemetry Python](https://opentelemetry.io/docs/languages/python/)
+- [Prometheus Instrumentation Practices](https://prometheus.io/docs/practices/instrumentation/)
 - [OpenAI Model Guidance：Tool Calling、Prompt Caching 与 Multi-agent](https://developers.openai.com/api/docs/guides/latest-model)
 - [LangGraph Persistence](https://docs.langchain.com/oss/python/langgraph/persistence)
 - [LangGraph Interrupts](https://docs.langchain.com/oss/python/langgraph/interrupts)
