@@ -20,6 +20,7 @@ class Settings(BaseSettings):
     database_url: str = "sqlite+aiosqlite:///./data/app.db"
     artifact_store: Literal["local"] = "local"
     artifact_local_root: Path = Path("data/artifacts")
+    max_upload_bytes: int = Field(default=20_000_000, gt=0)
     max_chunk_input_tokens: int = Field(default=10_000, gt=0)
     max_task_attempts: int = Field(default=3, ge=1)
     worker_lease_seconds: int = Field(default=120, ge=10)
