@@ -118,6 +118,42 @@ class IngestionRepository:
         await self.session.flush()
         return run, step
 
+    async def create_extraction_run(
+        self, novel_id: UUID, idempotency_key: str
+    ) -> tuple[PipelineRunORM, PipelineStepORM]:
+        now = datetime.now(UTC)
+        run = PipelineRunORM(
+            id=uuid4(),
+            novel_id=novel_id,
+            run_type="character_extraction",
+            status="queued",
+            idempotency_key=idempotency_key,
+            cancel_requested=False,
+            completed_at=None,
+            created_at=now,
+            updated_at=now,
+        )
+        step = PipelineStepORM(
+            id=uuid4(),
+            run_id=run.id,
+            step_key="extract_characters",
+            status="queued",
+            attempt=0,
+            lease_owner=None,
+            lease_expires_at=None,
+            lease_generation=0,
+            heartbeat_at=None,
+            next_attempt_at=None,
+            cursor={"schema_version": "v1", "current_chunk_ordinal": 0},
+            error_code=None,
+            error_message=None,
+            created_at=now,
+            updated_at=now,
+        )
+        self.session.add_all([run, step])
+        await self.session.flush()
+        return run, step
+
     async def persist_processed_text(
         self,
         *,

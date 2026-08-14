@@ -221,6 +221,7 @@ class AliasAssertionORM(IdMixin, TimestampMixin, Base):
     __table_args__ = (Index("ix_alias_assertions_normalized", "normalized_alias"),)
 
     alias_text: Mapped[str] = mapped_column(String(255))
+    alias_kind: Mapped[str] = mapped_column(String(32))
     normalized_alias: Mapped[str] = mapped_column(String(255))
     mention_span_id: Mapped[UUID] = mapped_column(ForeignKey("mention_spans.id"))
     proposed_character_id: Mapped[UUID | None] = mapped_column(ForeignKey("characters.id"))
@@ -279,6 +280,7 @@ class ExpressionObservationORM(IdMixin, TimestampMixin, Base):
             "confidence >= 0 AND confidence <= 1",
             name="ck_expression_observations_confidence",
         ),
+        UniqueConstraint("fingerprint"),
     )
 
     character_id: Mapped[UUID] = mapped_column(ForeignKey("characters.id", ondelete="CASCADE"))
@@ -302,6 +304,7 @@ class ExpressionObservationORM(IdMixin, TimestampMixin, Base):
     confidence: Mapped[float] = mapped_column(Float)
     extraction_run_id: Mapped[UUID] = mapped_column(ForeignKey("pipeline_runs.id"))
     extractor_version: Mapped[str] = mapped_column(String(100))
+    fingerprint: Mapped[str] = mapped_column(String(64))
 
 
 class CharacterAppearanceStateORM(IdMixin, TimestampMixin, Base):

@@ -78,3 +78,20 @@ class IngestionService:
         run, _ = await self.repository.create_import_run(novel_id, idempotency_key)
         await self.session.commit()
         return run
+
+    async def create_extraction_run(
+        self, novel_id: UUID, idempotency_key: str
+    ) -> PipelineRunORM | None:
+        novel = await self.repository.get_novel(novel_id)
+        if novel is None:
+            return None
+        if novel.status != "chunked":
+            raise ValueError("novel_not_chunked")
+        existing = await self.repository.get_run_by_idempotency_key(idempotency_key)
+        if existing is not None:
+            if existing.novel_id != novel_id or existing.run_type != "character_extraction":
+                raise ValueError("idempotency_key_conflict")
+            return existing
+        run, _ = await self.repository.create_extraction_run(novel_id, idempotency_key)
+        await self.session.commit()
+        return run

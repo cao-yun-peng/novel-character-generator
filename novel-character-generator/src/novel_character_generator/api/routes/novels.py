@@ -80,3 +80,25 @@ async def create_ingestion_run(
     if run is None:
         raise HTTPException(status_code=404, detail="novel_not_found")
     return RunResponse(id=run.id, novel_id=run.novel_id, status=run.status, run_type=run.run_type)
+
+
+@router.post(
+    "/{novel_id}/extraction-runs",
+    response_model=RunResponse,
+    status_code=status.HTTP_202_ACCEPTED,
+)
+async def create_extraction_run(
+    novel_id: UUID,
+    session: Annotated[AsyncSession, Depends(get_session)],
+    artifact_store: Annotated[LocalArtifactStore, Depends(get_artifact_store)],
+    idempotency_key: Annotated[str, Header(alias="Idempotency-Key", min_length=1, max_length=255)],
+) -> RunResponse:
+    try:
+        run = await IngestionService(session, artifact_store).create_extraction_run(
+            novel_id, idempotency_key
+        )
+    except ValueError as error:
+        raise HTTPException(status_code=409, detail=str(error)) from error
+    if run is None:
+        raise HTTPException(status_code=404, detail="novel_not_found")
+    return RunResponse(id=run.id, novel_id=run.novel_id, status=run.status, run_type=run.run_type)
