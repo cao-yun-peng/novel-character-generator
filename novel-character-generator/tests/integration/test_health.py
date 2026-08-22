@@ -38,6 +38,8 @@ def test_openapi_exposes_documented_phase_one_routes() -> None:
         "/api/v1/novels/{novel_id}/events",
         "/api/v1/novels/{novel_id}/scenes",
         "/api/v1/scenes/{scene_id}/temporal-binding",
+        "/api/v1/characters/merge",
+        "/api/v1/characters/{character_id}/split",
         "/api/v1/capabilities",
     } <= paths
     assert "/api/v1/novels/{novel_id}/extraction-runs" not in paths
@@ -58,6 +60,7 @@ def test_api_key_roles_capabilities_and_metrics(monkeypatch) -> None:
             assert capabilities.status_code == 200
             assert capabilities.json()["document_versioning"] is True
             assert capabilities.json()["story_temporal_binding"] is True
+            assert capabilities.json()["character_entity_resolution"] is True
             assert capabilities.json()["external_operation_reconciliation"] is False
             assert client.get("/metrics", headers={"X-API-Key": "user-secret"}).status_code == 403
             metrics = client.get("/metrics", headers={"X-API-Key": "admin-secret"})

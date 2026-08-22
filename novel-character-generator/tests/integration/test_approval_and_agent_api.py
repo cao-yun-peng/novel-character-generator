@@ -133,7 +133,6 @@ async def test_approval_cas_resume_and_agent_trajectory_api(
             ),
         )
         approval_id = created.approval.id
-        recovery_token = created.recovery_token
         run_id = run.id
         step_id = step.id
 
@@ -178,7 +177,6 @@ async def test_approval_cas_resume_and_agent_trajectory_api(
 
             resolve_headers = {
                 "X-API-Key": "admin-secret",
-                "X-Recovery-Token": recovery_token,
                 "X-Actor-ID": "reviewer-1",
                 "If-Match": '"1"',
             }

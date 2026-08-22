@@ -179,7 +179,7 @@ class ApprovalService:
         *,
         decision: ApprovalDecision,
         expected_revision: int,
-        recovery_token: str,
+        recovery_token: str | None,
         resolved_by: str,
         modifications: dict[str, JsonValue] | None = None,
         defer_until: datetime | None = None,
@@ -189,11 +189,14 @@ class ApprovalService:
             raise ValueError("approval_not_found")
         if approval.status != "pending":
             raise ApprovalConflict("approval_already_resolved")
+        if approval.pipeline_step_id is None:
+            raise ApprovalConflict("approval_has_no_resumable_step")
         if approval.revision != expected_revision:
             raise ApprovalConflict("approval_revision_conflict")
-        supplied_hash = sha256(recovery_token.encode()).hexdigest()
-        if not compare_digest(supplied_hash, approval.recovery_token_hash):
-            raise ApprovalConflict("approval_recovery_token_invalid")
+        if recovery_token is not None:
+            supplied_hash = sha256(recovery_token.encode()).hexdigest()
+            if not compare_digest(supplied_hash, approval.recovery_token_hash):
+                raise ApprovalConflict("approval_recovery_token_invalid")
         now = datetime.now(UTC)
         expires_at = approval.expires_at
         if expires_at.tzinfo is None:

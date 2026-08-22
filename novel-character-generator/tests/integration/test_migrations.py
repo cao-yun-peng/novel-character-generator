@@ -12,6 +12,8 @@ EXPECTED_TABLES = {
     "artifacts",
     "chapters",
     "character_appearance_states",
+    "character_conflicts",
+    "character_entity_operations",
     "character_image_sets",
     "character_render_profiles",
     "character_stage_images",

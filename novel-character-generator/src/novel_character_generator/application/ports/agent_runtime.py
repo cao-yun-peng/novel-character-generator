@@ -149,6 +149,16 @@ class AgentRunResult(BaseModel):
     total_usage: TokenUsage
     stop_reason: str
 
+    @model_validator(mode="after")
+    def validate_status_payload(self) -> "AgentRunResult":
+        if self.status == "completed" and self.output is None:
+            raise ValueError("completed_agent_run_requires_output")
+        if self.status == "approval_required" and self.approval_request is None:
+            raise ValueError("approval_agent_run_requires_request")
+        if self.status == "limit_reached" and self.limit_reached is None:
+            raise ValueError("limited_agent_run_requires_limit")
+        return self
+
 
 class AgentModelClient(Protocol):
     async def generate_turn(

@@ -15,6 +15,7 @@ class CapabilitiesResponse(BaseModel):
     agent_runtime: bool
     human_approvals: bool
     story_temporal_binding: bool
+    character_entity_resolution: bool
     evaluation_framework: bool
     image_generation: bool
 
@@ -31,6 +32,7 @@ async def capabilities() -> CapabilitiesResponse:
         agent_runtime=settings.agent_runtime_enabled,
         human_approvals=True,
         story_temporal_binding=True,
+        character_entity_resolution=True,
         evaluation_framework=True,
         image_generation=False,
     )

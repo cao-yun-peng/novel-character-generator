@@ -117,6 +117,11 @@ class AgentExecutionService:
         except AgentRuntimeError as error:
             await self._record_failure(agent_run.id, code=error.code, started=started)
             raise
+        except Exception:
+            await self._record_failure(
+                agent_run.id, code="agent_runtime_failed", started=started
+            )
+            raise
         await self._record_result(
             agent_run_id=agent_run.id,
             result=result,

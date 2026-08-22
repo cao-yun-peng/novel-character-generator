@@ -205,7 +205,11 @@ async def test_scene_hypotheses_are_grounded_queryable_and_correctable(
                 DecisionRecordORM.decision_kind == "temporal_binding",
             )
         )
+        rebound_observation = await session.scalar(select(FeatureObservationORM))
         assert decision is not None
         assert decision.decision["actor_id"] == "editor-1"
+        assert rebound_observation is not None
+        assert rebound_observation.temporal_scope["timeline_id"] == str(canonical.id)
+        assert rebound_observation.temporal_scope["presentation_mode"] == "direct"
 
     await engine.dispose()

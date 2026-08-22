@@ -23,7 +23,7 @@ router = APIRouter(
 
 class ApprovalResponse(BaseModel):
     id: UUID
-    pipeline_step_id: UUID
+    pipeline_step_id: UUID | None
     requested_by_agent_run_id: UUID | None
     approval_type: str
     subject_type: str
@@ -95,8 +95,10 @@ async def resolve_approval(
     request: ResolveApprovalRequest,
     session: Annotated[AsyncSession, Depends(get_session)],
     if_match: Annotated[str, Header(alias="If-Match")],
-    recovery_token: Annotated[str, Header(alias="X-Recovery-Token", min_length=16)],
     actor_id: Annotated[str, Header(alias="X-Actor-ID", min_length=1, max_length=255)],
+    recovery_token: Annotated[
+        str | None, Header(alias="X-Recovery-Token", min_length=16)
+    ] = None,
 ) -> ApprovalResponse:
     try:
         approval = await ApprovalService(session).resolve(

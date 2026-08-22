@@ -1,0 +1,42 @@
+# 技术文档索引
+
+> 文档版本：2.7 · 修订日期：2026-08-22
+>
+> 本目录是技术设计的唯一正文来源。根目录的 `novel_character_generator_tech_doc.md` 仅作为兼容入口，不再保存完整副本。
+
+## 主题文档
+
+| 文档 | 内容 |
+|---|---|
+| [项目目标与设计原则](01-project-overview-and-principles.md) | 项目目标、一期/二期范围、证据优先与防漂移基本原则 |
+| [架构蓝图与技术栈](02-architecture-and-tech-stack.md) | 逻辑架构、运行拓扑、技术选型和代码骨架 |
+| [领域模型与数据库设计](03-domain-data-model.md) | 核心表、证据模型、时间线、神情、外观状态和任务状态机 |
+| [文本理解流水线](04-text-understanding-pipeline.md) | 导入分块、结构化提取、实体链接、时间定位与增量处理 |
+| [角色渲染档案](05-character-render-profile.md) | 聚合优先级、冲突处理、目标时点快照、阶段形象集与身份原型 |
+| [图像生成与视觉防漂移](06-image-generation-and-drift-control.md) | 工作流、质量评测、生成上下文、漂移审计、门禁与失效传播 |
+| [Agent 增强架构](07-agent-architecture.md) | Agent 边界、Runtime、专项 Agent、工具契约、上下文与有界反思 |
+| [任务系统与断点恢复](08-task-recovery.md) | 数据库任务队列、幂等重试、租约、并发与恢复策略 |
+| [API 规范](09-api-specification.md) | 统一 API 规则、一期端点和二期端点 |
+| [Provider 与工作流版本](10-provider-and-workflow-versioning.md) | LLM/Image Provider、Prompt、AgentSpec、缓存和版本治理 |
+| [配置、安全与数据治理](11-security-and-data-governance.md) | 配置校验、文件安全、数据治理、认证与权限 |
+| [评测系统与验收门禁](12-evaluation-and-acceptance.md) | 测试分层、数据集、指标、图像盲评、发布门禁和失败回流 |
+| [可观测性、日志检查与成本](13-observability-logging-and-cost.md) | Trace、关键日志事件、log-check 输出、指标、告警与成本控制 |
+| [一期与二期开发路线图](14-roadmap.md) | PoC、一期实施阶段和二期能力规划 |
+| [风险、关键决策与参考资料](15-risks-decisions-and-references.md) | 风险降级矩阵、架构决策记录和参考资料 |
+
+## 推荐读取路径
+
+- 快速了解项目：01 → 02 → 03 → 06。
+- 文本与角色事实：01 → 03 → 04 → 05 → 12。
+- 图像生成与防漂移：03 → 05 → 06 → 10 → 12 → 13。
+- Agent 与任务恢复：02 → 07 → 08 → 11 → 13。
+- API 开发：02 → 03 → 08 → 09 → 11。
+- 运维与排障：08 → 10 → 11 → 13 → 15。
+
+## 阅读与维护约定
+
+1. 优先通过上表选择任务相关文档，不默认全量读取。
+2. 每个主题文件保留原技术文档的章节编号，方便历史链接、评审意见和 Git diff 对照。
+3. 跨主题设计变更只修改对应主题文件；若职责或文件名发生变化，同时更新本索引。
+4. 数据模型、API、评测、日志事件等跨文档契约必须使用稳定名称和版本，并在相关文档间使用相对链接。
+5. 发布前检查 Markdown 链接、代码块闭合、章节覆盖和 `git diff --check`。

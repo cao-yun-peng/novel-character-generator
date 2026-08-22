@@ -113,6 +113,15 @@ class CharacterAppearanceState(BaseModel):
     character_id: UUID
     temporal_scope: TemporalScope
     label: str | None = None
+    state_kind: Literal[
+        "base_age_stage",
+        "persistent_change",
+        "disguise",
+        "clothing",
+        "temporary_condition",
+        "manual_override",
+    ] = "base_age_stage"
+    merge_priority: int = 0
     age_stage: str | None = None
     face: dict[str, Any] | None = None
     body: dict[str, Any] | None = None
@@ -123,6 +132,9 @@ class CharacterAppearanceState(BaseModel):
     cleanliness: str | None = None
     disguise: str | None = None
     field_sources: dict[str, list[UUID]] = Field(default_factory=dict)
+    resolver_version: str = "appearance-resolver-v1"
+    created_by_run_id: UUID | None = None
+    record_status: Literal["active", "invalidated", "superseded"] = "active"
     status: Literal["draft", "needs_review", "approved"] = "draft"
 
 
@@ -133,9 +145,11 @@ class CharacterRenderProfile(BaseModel):
     status: Literal["draft", "needs_review", "approved", "locked"] = "draft"
     identity_anchor: dict[str, Any] = Field(default_factory=dict)
     default_appearance_state_id: UUID | None = None
+    default_stage_key: str | None = None
     appearance_state_ids: list[UUID] = Field(default_factory=list)
     palette: dict[str, Any] = Field(default_factory=dict)
     field_sources: dict[str, list[UUID]] = Field(default_factory=dict)
+    field_suggestions: dict[str, Any] = Field(default_factory=dict)
     unresolved_conflicts: list[dict[str, Any]] = Field(default_factory=list)
     style_preset: str
     approved_by: str | None = None

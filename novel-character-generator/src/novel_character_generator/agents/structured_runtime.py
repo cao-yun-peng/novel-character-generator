@@ -58,6 +58,8 @@ class RegisteredTool:
             )
         except TimeoutError as error:
             raise AgentRuntimeError("tool_timeout") from error
+        except Exception as error:
+            raise AgentRuntimeError("tool_execution_failed") from error
         try:
             validated = self.output_model.model_validate(output)
         except ValidationError as error:

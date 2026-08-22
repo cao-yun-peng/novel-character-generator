@@ -7,7 +7,10 @@ from sqlalchemy import select, update
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from novel_character_generator.infrastructure.db.orm import (
+    AliasAssertionORM,
     DecisionRecordORM,
+    ExpressionObservationORM,
+    FeatureObservationORM,
     NovelORM,
     SceneORM,
     StoryEventORM,
@@ -112,6 +115,52 @@ class StoryService:
         if updated_id is None:
             await self.session.rollback()
             raise TemporalBindingConflict("scene_binding_revision_conflict")
+        observations = list(
+            await self.session.scalars(
+                select(FeatureObservationORM).where(
+                    FeatureObservationORM.scene_id == scene.id,
+                    FeatureObservationORM.record_status == "active",
+                )
+            )
+        )
+        for observation in observations:
+            scope = dict(observation.temporal_scope or {})
+            scope.update(
+                {
+                    "timeline_id": str(binding.timeline_id),
+                    "presentation_mode": binding.presentation_mode,
+                    "reality_status": binding.reality_status,
+                }
+            )
+            observation.temporal_scope = scope
+            observation.event_id = binding.event_id
+            observation.updated_at = now
+        expressions = list(
+            await self.session.scalars(
+                select(ExpressionObservationORM).where(
+                    ExpressionObservationORM.scene_id == scene.id
+                )
+            )
+        )
+        for expression in expressions:
+            scope = dict(expression.temporal_scope)
+            scope.update(
+                {
+                    "timeline_id": str(binding.timeline_id),
+                    "presentation_mode": binding.presentation_mode,
+                    "reality_status": binding.reality_status,
+                }
+            )
+            expression.temporal_scope = scope
+            expression.updated_at = now
+        aliases = list(
+            await self.session.scalars(
+                select(AliasAssertionORM).where(AliasAssertionORM.scene_id == scene.id)
+            )
+        )
+        for alias in aliases:
+            alias.timeline_id = binding.timeline_id
+            alias.updated_at = now
         self.session.add(
             DecisionRecordORM(
                 id=uuid4(),

@@ -189,11 +189,40 @@ class EventParticipantORM(IdMixin, TimestampMixin, Base):
 
 class CharacterORM(IdMixin, TimestampMixin, Base):
     __tablename__ = "characters"
-    __table_args__ = (UniqueConstraint("novel_id", "canonical_name"),)
+    __table_args__ = (
+        UniqueConstraint("novel_id", "canonical_name"),
+        CheckConstraint("revision >= 1", name="ck_characters_revision_positive"),
+    )
 
     novel_id: Mapped[UUID] = mapped_column(ForeignKey("novels.id", ondelete="CASCADE"), index=True)
     canonical_name: Mapped[str] = mapped_column(String(255))
     status: Mapped[str] = mapped_column(String(32))
+    revision: Mapped[int] = mapped_column(Integer, default=1)
+    merged_into_character_id: Mapped[UUID | None] = mapped_column(
+        ForeignKey("characters.id"), index=True
+    )
+
+
+class CharacterEntityOperationORM(IdMixin, TimestampMixin, Base):
+    __tablename__ = "character_entity_operations"
+    __table_args__ = (
+        UniqueConstraint("idempotency_key"),
+        Index("ix_character_entity_operations_novel_created", "novel_id", "created_at"),
+    )
+
+    operation_type: Mapped[str] = mapped_column(String(32))
+    novel_id: Mapped[UUID] = mapped_column(
+        ForeignKey("novels.id", ondelete="CASCADE"), index=True
+    )
+    idempotency_key: Mapped[str] = mapped_column(String(255))
+    request_hash: Mapped[str] = mapped_column(String(64))
+    source_character_ids: Mapped[list[str]] = mapped_column(JSON)
+    target_character_ids: Mapped[list[str]] = mapped_column(JSON)
+    action: Mapped[dict[str, Any]] = mapped_column(JSON)
+    before_snapshot: Mapped[dict[str, Any]] = mapped_column(JSON)
+    status: Mapped[str] = mapped_column(String(32), index=True)
+    actor_id: Mapped[str] = mapped_column(String(255))
+    reason: Mapped[str] = mapped_column(Text)
 
 
 class SceneORM(IdMixin, TimestampMixin, Base):
@@ -416,13 +445,23 @@ class ExpressionObservationORM(IdMixin, TimestampMixin, Base):
 
 class CharacterAppearanceStateORM(IdMixin, TimestampMixin, Base):
     __tablename__ = "character_appearance_states"
+    __table_args__ = (
+        Index("ix_appearance_states_character_status", "character_id", "status", "record_status"),
+    )
 
-    character_id: Mapped[UUID] = mapped_column(ForeignKey("characters.id", ondelete="CASCADE"))
+    character_id: Mapped[UUID] = mapped_column(
+        ForeignKey("characters.id", ondelete="CASCADE"), index=True
+    )
     temporal_scope: Mapped[dict[str, Any]] = mapped_column(JSON)
     label: Mapped[str | None] = mapped_column(String(255))
+    state_kind: Mapped[str] = mapped_column(String(32), default="base_age_stage")
+    merge_priority: Mapped[int] = mapped_column(Integer, default=0)
     age_stage: Mapped[str | None] = mapped_column(String(100))
     appearance: Mapped[dict[str, Any]] = mapped_column(JSON)
     field_sources: Mapped[dict[str, list[str]]] = mapped_column(JSON)
+    resolver_version: Mapped[str] = mapped_column(String(100), default="appearance-resolver-v1")
+    created_by_run_id: Mapped[UUID | None] = mapped_column(ForeignKey("pipeline_runs.id"))
+    record_status: Mapped[str] = mapped_column(String(32), default="active")
     status: Mapped[str] = mapped_column(String(32))
 
 
@@ -437,14 +476,40 @@ class CharacterRenderProfileORM(IdMixin, TimestampMixin, Base):
     default_appearance_state_id: Mapped[UUID | None] = mapped_column(
         ForeignKey("character_appearance_states.id")
     )
+    default_stage_key: Mapped[str | None] = mapped_column(String(100))
     appearance_state_ids: Mapped[list[str]] = mapped_column(JSON)
     palette: Mapped[dict[str, Any]] = mapped_column(JSON)
     field_sources: Mapped[dict[str, list[str]]] = mapped_column(JSON)
+    field_suggestions: Mapped[dict[str, Any]] = mapped_column(JSON)
     unresolved_conflicts: Mapped[list[dict[str, Any]]] = mapped_column(JSON)
     style_preset: Mapped[str] = mapped_column(String(100))
     approved_by: Mapped[str | None] = mapped_column(String(255))
     approved_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
     revision: Mapped[int] = mapped_column(Integer)
+
+
+class CharacterConflictORM(IdMixin, TimestampMixin, Base):
+    __tablename__ = "character_conflicts"
+    __table_args__ = (
+        Index("ix_character_conflicts_character_status", "character_id", "status"),
+        UniqueConstraint("character_id", "fingerprint"),
+        CheckConstraint("revision >= 1", name="ck_character_conflicts_revision_positive"),
+    )
+
+    character_id: Mapped[UUID] = mapped_column(
+        ForeignKey("characters.id", ondelete="CASCADE"), index=True
+    )
+    field_path: Mapped[str] = mapped_column(String(255))
+    appearance_state_ids: Mapped[list[str]] = mapped_column(JSON)
+    candidate_values: Mapped[list[Any]] = mapped_column(JSON)
+    temporal_scope: Mapped[dict[str, Any]] = mapped_column(JSON)
+    merge_priority: Mapped[int] = mapped_column(Integer)
+    fingerprint: Mapped[str] = mapped_column(String(64))
+    status: Mapped[str] = mapped_column(String(32), default="pending")
+    resolution: Mapped[dict[str, Any] | None] = mapped_column(JSON)
+    resolved_by: Mapped[str | None] = mapped_column(String(255))
+    resolved_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
+    revision: Mapped[int] = mapped_column(Integer, default=1)
 
 
 class CharacterImageSetORM(IdMixin, TimestampMixin, Base):
@@ -594,7 +659,7 @@ class ToolCallORM(IdMixin, TimestampMixin, Base):
 class DecisionRecordORM(IdMixin, TimestampMixin, Base):
     __tablename__ = "decision_records"
 
-    pipeline_run_id: Mapped[UUID] = mapped_column(ForeignKey("pipeline_runs.id"))
+    pipeline_run_id: Mapped[UUID | None] = mapped_column(ForeignKey("pipeline_runs.id"))
     agent_run_id: Mapped[UUID | None] = mapped_column(ForeignKey("agent_runs.id"))
     decision_kind: Mapped[str] = mapped_column(String(100))
     subject_type: Mapped[str] = mapped_column(String(100))
@@ -608,7 +673,7 @@ class HumanApprovalORM(IdMixin, TimestampMixin, Base):
     __tablename__ = "human_approvals"
     __table_args__ = (UniqueConstraint("action_hash"),)
 
-    pipeline_step_id: Mapped[UUID] = mapped_column(ForeignKey("pipeline_steps.id"))
+    pipeline_step_id: Mapped[UUID | None] = mapped_column(ForeignKey("pipeline_steps.id"))
     requested_by_agent_run_id: Mapped[UUID | None] = mapped_column(ForeignKey("agent_runs.id"))
     approval_type: Mapped[str] = mapped_column(String(100), index=True)
     subject_type: Mapped[str] = mapped_column(String(100))
