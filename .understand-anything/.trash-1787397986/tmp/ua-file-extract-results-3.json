@@ -1,0 +1,2482 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 8,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "novel-character-generator/src/novel_character_generator/application/ports/extraction.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 101,
+      "nonEmptyLines": 79,
+      "classes": [
+        {
+          "name": "MentionDraft",
+          "startLine": 6,
+          "endLine": 11,
+          "methods": [],
+          "properties": [
+            "text",
+            "canonical_name",
+            "start",
+            "end",
+            "kind"
+          ]
+        },
+        {
+          "name": "AliasDraft",
+          "startLine": 14,
+          "endLine": 19,
+          "methods": [],
+          "properties": [
+            "alias_text",
+            "canonical_name",
+            "mention_start",
+            "mention_end",
+            "alias_kind"
+          ]
+        },
+        {
+          "name": "ObservationDraft",
+          "startLine": 22,
+          "endLine": 30,
+          "methods": [],
+          "properties": [
+            "character_name",
+            "field_path",
+            "value",
+            "evidence_quote",
+            "start",
+            "end",
+            "epistemic_status",
+            "confidence"
+          ]
+        },
+        {
+          "name": "ExpressionDraft",
+          "startLine": 33,
+          "endLine": 43,
+          "methods": [],
+          "properties": [
+            "character_name",
+            "outward_emotion",
+            "expression_text",
+            "visible_cues",
+            "internal_emotion",
+            "start",
+            "end",
+            "confidence"
+          ]
+        },
+        {
+          "name": "SceneHypothesisDraft",
+          "startLine": 46,
+          "endLine": 57,
+          "methods": [],
+          "properties": [
+            "label",
+            "start",
+            "end",
+            "timeline_name",
+            "presentation_mode",
+            "reality_status",
+            "confidence"
+          ]
+        },
+        {
+          "name": "TimelineHypothesisDraft",
+          "startLine": 60,
+          "endLine": 66,
+          "methods": [],
+          "properties": [
+            "name",
+            "canonicality",
+            "evidence_quote",
+            "start",
+            "end",
+            "confidence"
+          ]
+        },
+        {
+          "name": "RelationDraft",
+          "startLine": 69,
+          "endLine": 76,
+          "methods": [],
+          "properties": [
+            "source_character_name",
+            "target_character_name",
+            "relation_type",
+            "evidence_quote",
+            "start",
+            "end",
+            "confidence"
+          ]
+        },
+        {
+          "name": "ReferenceDraft",
+          "startLine": 79,
+          "endLine": 83,
+          "methods": [],
+          "properties": [
+            "text",
+            "start",
+            "end",
+            "candidate_character_names"
+          ]
+        },
+        {
+          "name": "ChunkExtractionResult",
+          "startLine": 86,
+          "endLine": 95,
+          "methods": [],
+          "properties": [
+            "mentions",
+            "alias_hypotheses",
+            "observations",
+            "expression_observations",
+            "scene_hypotheses",
+            "timeline_hypotheses",
+            "relations",
+            "unresolved_references",
+            "warnings"
+          ]
+        },
+        {
+          "name": "ExtractionProvider",
+          "startLine": 98,
+          "endLine": 101,
+          "methods": [
+            "extract_chunk"
+          ],
+          "properties": [
+            "version"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "MentionDraft",
+          "line": 6,
+          "isDefault": false
+        },
+        {
+          "name": "AliasDraft",
+          "line": 14,
+          "isDefault": false
+        },
+        {
+          "name": "ObservationDraft",
+          "line": 22,
+          "isDefault": false
+        },
+        {
+          "name": "ExpressionDraft",
+          "line": 33,
+          "isDefault": false
+        },
+        {
+          "name": "SceneHypothesisDraft",
+          "line": 46,
+          "isDefault": false
+        },
+        {
+          "name": "TimelineHypothesisDraft",
+          "line": 60,
+          "isDefault": false
+        },
+        {
+          "name": "RelationDraft",
+          "line": 69,
+          "isDefault": false
+        },
+        {
+          "name": "ReferenceDraft",
+          "line": 79,
+          "isDefault": false
+        },
+        {
+          "name": "ChunkExtractionResult",
+          "line": 86,
+          "isDefault": false
+        },
+        {
+          "name": "ExtractionProvider",
+          "line": 98,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 10,
+        "functionCount": 0,
+        "classCount": 10
+      }
+    },
+    {
+      "path": "novel-character-generator/src/novel_character_generator/domain/policies/grounding.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 33,
+      "nonEmptyLines": 28,
+      "functions": [
+        {
+          "name": "validate_evidence",
+          "startLine": 8,
+          "endLine": 15,
+          "params": [
+            "text",
+            "quote",
+            "start",
+            "end"
+          ]
+        },
+        {
+          "name": "observation_fingerprint",
+          "startLine": 18,
+          "endLine": 33,
+          "params": [
+            "source_version",
+            "start",
+            "end",
+            "field_path",
+            "value",
+            "extractor_version"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "validate_evidence",
+          "line": 8,
+          "isDefault": false
+        },
+        {
+          "name": "observation_fingerprint",
+          "line": 18,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "validate_evidence",
+          "callee": "len",
+          "lineNumber": 9
+        },
+        {
+          "caller": "validate_evidence",
+          "callee": "quote.strip",
+          "lineNumber": 13
+        },
+        {
+          "caller": "validate_evidence",
+          "callee": "quote.strip",
+          "lineNumber": 13
+        },
+        {
+          "caller": "validate_evidence",
+          "callee": "max",
+          "lineNumber": 13
+        },
+        {
+          "caller": "validate_evidence",
+          "callee": "min",
+          "lineNumber": 13
+        },
+        {
+          "caller": "validate_evidence",
+          "callee": "len",
+          "lineNumber": 13
+        },
+        {
+          "caller": "observation_fingerprint",
+          "callee": "json.dumps",
+          "lineNumber": 27
+        },
+        {
+          "caller": "observation_fingerprint",
+          "callee": "hashlib.sha256(payload.encode()).hexdigest",
+          "lineNumber": 33
+        },
+        {
+          "caller": "observation_fingerprint",
+          "callee": "hashlib.sha256",
+          "lineNumber": 33
+        },
+        {
+          "caller": "observation_fingerprint",
+          "callee": "payload.encode",
+          "lineNumber": 33
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 2,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "novel-character-generator/src/novel_character_generator/infrastructure/db/repositories/extraction.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 549,
+      "nonEmptyLines": 532,
+      "classes": [
+        {
+          "name": "ExtractionRepository",
+          "startLine": 31,
+          "endLine": 549,
+          "methods": [
+            "__init__",
+            "chunks",
+            "source_document",
+            "normalization_map",
+            "canonical_timeline",
+            "get_or_create_character",
+            "persist_temporal_hypotheses",
+            "scene_for_span",
+            "persist_result"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "ExtractionRepository",
+          "line": 31,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "chunks",
+          "callee": "self.session.scalars",
+          "lineNumber": 36
+        },
+        {
+          "caller": "chunks",
+          "callee": "select(TextChunkORM)\n            .join(\n                SourceDocumentORM,\n                TextChunkORM.source_document_version_id == SourceDocumentORM.current_version_id,\n            )\n            .where(SourceDocumentORM.novel_id == novel_id)\n            .order_by",
+          "lineNumber": 37
+        },
+        {
+          "caller": "chunks",
+          "callee": "select(TextChunkORM)\n            .join(\n                SourceDocumentORM,\n                TextChunkORM.source_document_version_id == SourceDocumentORM.current_version_id,\n            )\n            .where",
+          "lineNumber": 37
+        },
+        {
+          "caller": "chunks",
+          "callee": "select(TextChunkORM)\n            .join",
+          "lineNumber": 37
+        },
+        {
+          "caller": "chunks",
+          "callee": "select",
+          "lineNumber": 37
+        },
+        {
+          "caller": "chunks",
+          "callee": "list",
+          "lineNumber": 45
+        },
+        {
+          "caller": "source_document",
+          "callee": "self.session.scalar",
+          "lineNumber": 48
+        },
+        {
+          "caller": "source_document",
+          "callee": "select(SourceDocumentVersionORM)\n            .join(\n                SourceDocumentORM,\n                SourceDocumentVersionORM.id == SourceDocumentORM.current_version_id,\n            )\n            .where(SourceDocumentORM.novel_id == novel_id)\n            .order_by",
+          "lineNumber": 49
+        },
+        {
+          "caller": "source_document",
+          "callee": "select(SourceDocumentVersionORM)\n            .join(\n                SourceDocumentORM,\n                SourceDocumentVersionORM.id == SourceDocumentORM.current_version_id,\n            )\n            .where",
+          "lineNumber": 49
+        },
+        {
+          "caller": "source_document",
+          "callee": "select(SourceDocumentVersionORM)\n            .join",
+          "lineNumber": 49
+        },
+        {
+          "caller": "source_document",
+          "callee": "select",
+          "lineNumber": 49
+        },
+        {
+          "caller": "source_document",
+          "callee": "SourceDocumentORM.created_at.desc",
+          "lineNumber": 55
+        },
+        {
+          "caller": "source_document",
+          "callee": "RuntimeError",
+          "lineNumber": 58
+        },
+        {
+          "caller": "normalization_map",
+          "callee": "self.session.scalar",
+          "lineNumber": 62
+        },
+        {
+          "caller": "normalization_map",
+          "callee": "select(NormalizationMapORM).where",
+          "lineNumber": 63
+        },
+        {
+          "caller": "normalization_map",
+          "callee": "select",
+          "lineNumber": 63
+        },
+        {
+          "caller": "normalization_map",
+          "callee": "RuntimeError",
+          "lineNumber": 68
+        },
+        {
+          "caller": "canonical_timeline",
+          "callee": "self.session.scalar",
+          "lineNumber": 72
+        },
+        {
+          "caller": "canonical_timeline",
+          "callee": "select(TimelineORM).where",
+          "lineNumber": 73
+        },
+        {
+          "caller": "canonical_timeline",
+          "callee": "select",
+          "lineNumber": 73
+        },
+        {
+          "caller": "canonical_timeline",
+          "callee": "TimelineORM",
+          "lineNumber": 79
+        },
+        {
+          "caller": "canonical_timeline",
+          "callee": "uuid4",
+          "lineNumber": 80
+        },
+        {
+          "caller": "canonical_timeline",
+          "callee": "self.session.add",
+          "lineNumber": 87
+        },
+        {
+          "caller": "canonical_timeline",
+          "callee": "self.session.flush",
+          "lineNumber": 88
+        },
+        {
+          "caller": "get_or_create_character",
+          "callee": "self.session.scalar",
+          "lineNumber": 92
+        },
+        {
+          "caller": "get_or_create_character",
+          "callee": "select(CharacterORM).where",
+          "lineNumber": 93
+        },
+        {
+          "caller": "get_or_create_character",
+          "callee": "select",
+          "lineNumber": 93
+        },
+        {
+          "caller": "get_or_create_character",
+          "callee": "datetime.now",
+          "lineNumber": 99
+        },
+        {
+          "caller": "get_or_create_character",
+          "callee": "CharacterORM",
+          "lineNumber": 100
+        },
+        {
+          "caller": "get_or_create_character",
+          "callee": "uuid4",
+          "lineNumber": 101
+        },
+        {
+          "caller": "get_or_create_character",
+          "callee": "self.session.add",
+          "lineNumber": 108
+        },
+        {
+          "caller": "get_or_create_character",
+          "callee": "self.session.flush",
+          "lineNumber": 109
+        },
+        {
+          "caller": "persist_temporal_hypotheses",
+          "callee": "validate_evidence",
+          "lineNumber": 123
+        },
+        {
+          "caller": "persist_temporal_hypotheses",
+          "callee": "self.session.scalar",
+          "lineNumber": 134
+        },
+        {
+          "caller": "persist_temporal_hypotheses",
+          "callee": "select(TimelineORM).where",
+          "lineNumber": 135
+        },
+        {
+          "caller": "persist_temporal_hypotheses",
+          "callee": "select",
+          "lineNumber": 135
+        },
+        {
+          "caller": "persist_temporal_hypotheses",
+          "callee": "TimelineORM",
+          "lineNumber": 141
+        },
+        {
+          "caller": "persist_temporal_hypotheses",
+          "callee": "uuid4",
+          "lineNumber": 142
+        },
+        {
+          "caller": "persist_temporal_hypotheses",
+          "callee": "self.session.add",
+          "lineNumber": 149
+        },
+        {
+          "caller": "persist_temporal_hypotheses",
+          "callee": "self.session.flush",
+          "lineNumber": 150
+        },
+        {
+          "caller": "persist_temporal_hypotheses",
+          "callee": "self.session.get",
+          "lineNumber": 155
+        },
+        {
+          "caller": "persist_temporal_hypotheses",
+          "callee": "datetime.now",
+          "lineNumber": 158
+        },
+        {
+          "caller": "persist_temporal_hypotheses",
+          "callee": "enumerate",
+          "lineNumber": 160
+        },
+        {
+          "caller": "persist_temporal_hypotheses",
+          "callee": "validate_evidence",
+          "lineNumber": 163
+        },
+        {
+          "caller": "persist_temporal_hypotheses",
+          "callee": "timelines.get",
+          "lineNumber": 174
+        },
+        {
+          "caller": "persist_temporal_hypotheses",
+          "callee": "self.session.scalar",
+          "lineNumber": 176
+        },
+        {
+          "caller": "persist_temporal_hypotheses",
+          "callee": "select(TimelineORM).where",
+          "lineNumber": 177
+        },
+        {
+          "caller": "persist_temporal_hypotheses",
+          "callee": "select",
+          "lineNumber": 177
+        },
+        {
+          "caller": "persist_temporal_hypotheses",
+          "callee": "TimelineORM",
+          "lineNumber": 183
+        },
+        {
+          "caller": "persist_temporal_hypotheses",
+          "callee": "uuid4",
+          "lineNumber": 184
+        },
+        {
+          "caller": "persist_temporal_hypotheses",
+          "callee": "self.session.add",
+          "lineNumber": 191
+        },
+        {
+          "caller": "persist_temporal_hypotheses",
+          "callee": "self.session.flush",
+          "lineNumber": 192
+        },
+        {
+          "caller": "persist_temporal_hypotheses",
+          "callee": "self.session.scalar",
+          "lineNumber": 194
+        },
+        {
+          "caller": "persist_temporal_hypotheses",
+          "callee": "select(SceneORM).where",
+          "lineNumber": 195
+        },
+        {
+          "caller": "persist_temporal_hypotheses",
+          "callee": "select",
+          "lineNumber": 195
+        },
+        {
+          "caller": "persist_temporal_hypotheses",
+          "callee": "scenes.append",
+          "lineNumber": 202
+        },
+        {
+          "caller": "persist_temporal_hypotheses",
+          "callee": "ValueError",
+          "lineNumber": 205
+        },
+        {
+          "caller": "persist_temporal_hypotheses",
+          "callee": "StoryEventORM",
+          "lineNumber": 209
+        },
+        {
+          "caller": "persist_temporal_hypotheses",
+          "callee": "uuid4",
+          "lineNumber": 210
+        },
+        {
+          "caller": "persist_temporal_hypotheses",
+          "callee": "Decimal",
+          "lineNumber": 213
+        },
+        {
+          "caller": "persist_temporal_hypotheses",
+          "callee": "self.session.add",
+          "lineNumber": 217
+        },
+        {
+          "caller": "persist_temporal_hypotheses",
+          "callee": "self.session.flush",
+          "lineNumber": 218
+        },
+        {
+          "caller": "persist_temporal_hypotheses",
+          "callee": "SceneORM",
+          "lineNumber": 219
+        },
+        {
+          "caller": "persist_temporal_hypotheses",
+          "callee": "uuid4",
+          "lineNumber": 220
+        },
+        {
+          "caller": "persist_temporal_hypotheses",
+          "callee": "self.session.add",
+          "lineNumber": 241
+        },
+        {
+          "caller": "persist_temporal_hypotheses",
+          "callee": "scenes.append",
+          "lineNumber": 242
+        },
+        {
+          "caller": "persist_temporal_hypotheses",
+          "callee": "self.session.flush",
+          "lineNumber": 243
+        },
+        {
+          "caller": "scene_for_span",
+          "callee": "min",
+          "lineNumber": 258
+        },
+        {
+          "caller": "persist_result",
+          "callee": "datetime.now",
+          "lineNumber": 271
+        },
+        {
+          "caller": "persist_result",
+          "callee": "self.persist_temporal_hypotheses",
+          "lineNumber": 272
+        },
+        {
+          "caller": "persist_result",
+          "callee": "self.get_or_create_character",
+          "lineNumber": 282
+        },
+        {
+          "caller": "persist_result",
+          "callee": "self.get_or_create_character",
+          "lineNumber": 286
+        },
+        {
+          "caller": "persist_result",
+          "callee": "self.get_or_create_character",
+          "lineNumber": 290
+        },
+        {
+          "caller": "persist_result",
+          "callee": "self.get_or_create_character",
+          "lineNumber": 294
+        },
+        {
+          "caller": "persist_result",
+          "callee": "self.get_or_create_character",
+          "lineNumber": 297
+        },
+        {
+          "caller": "persist_result",
+          "callee": "validate_evidence",
+          "lineNumber": 303
+        },
+        {
+          "caller": "persist_result",
+          "callee": "characters.get",
+          "lineNumber": 304
+        },
+        {
+          "caller": "persist_result",
+          "callee": "self.session.scalar",
+          "lineNumber": 305
+        },
+        {
+          "caller": "persist_result",
+          "callee": "select(MentionSpanORM).where",
+          "lineNumber": 306
+        },
+        {
+          "caller": "persist_result",
+          "callee": "select",
+          "lineNumber": 306
+        },
+        {
+          "caller": "persist_result",
+          "callee": "MentionSpanORM",
+          "lineNumber": 315
+        },
+        {
+          "caller": "persist_result",
+          "callee": "uuid4",
+          "lineNumber": 316
+        },
+        {
+          "caller": "persist_result",
+          "callee": "str",
+          "lineNumber": 317
+        },
+        {
+          "caller": "persist_result",
+          "callee": "str",
+          "lineNumber": 324
+        },
+        {
+          "caller": "persist_result",
+          "callee": "self.session.add",
+          "lineNumber": 333
+        },
+        {
+          "caller": "persist_result",
+          "callee": "self.session.flush",
+          "lineNumber": 335
+        },
+        {
+          "caller": "persist_result",
+          "callee": "mentions_by_span.get",
+          "lineNumber": 338
+        },
+        {
+          "caller": "persist_result",
+          "callee": "validate_evidence",
+          "lineNumber": 340
+        },
+        {
+          "caller": "persist_result",
+          "callee": "characters.get",
+          "lineNumber": 343
+        },
+        {
+          "caller": "persist_result",
+          "callee": "self.session.scalar",
+          "lineNumber": 344
+        },
+        {
+          "caller": "persist_result",
+          "callee": "select(MentionSpanORM).where",
+          "lineNumber": 345
+        },
+        {
+          "caller": "persist_result",
+          "callee": "select",
+          "lineNumber": 345
+        },
+        {
+          "caller": "persist_result",
+          "callee": "MentionSpanORM",
+          "lineNumber": 354
+        },
+        {
+          "caller": "persist_result",
+          "callee": "uuid4",
+          "lineNumber": 355
+        },
+        {
+          "caller": "persist_result",
+          "callee": "str",
+          "lineNumber": 356
+        },
+        {
+          "caller": "persist_result",
+          "callee": "str",
+          "lineNumber": 363
+        },
+        {
+          "caller": "persist_result",
+          "callee": "self.session.add",
+          "lineNumber": 370
+        },
+        {
+          "caller": "persist_result",
+          "callee": "self.session.flush",
+          "lineNumber": 371
+        },
+        {
+          "caller": "persist_result",
+          "callee": "characters.get",
+          "lineNumber": 372
+        },
+        {
+          "caller": "persist_result",
+          "callee": "self.scene_for_span",
+          "lineNumber": 373
+        },
+        {
+          "caller": "persist_result",
+          "callee": "self.session.scalar",
+          "lineNumber": 376
+        },
+        {
+          "caller": "persist_result",
+          "callee": "select(AliasAssertionORM.id).where",
+          "lineNumber": 377
+        },
+        {
+          "caller": "persist_result",
+          "callee": "select",
+          "lineNumber": 377
+        },
+        {
+          "caller": "persist_result",
+          "callee": "self.session.add",
+          "lineNumber": 384
+        },
+        {
+          "caller": "persist_result",
+          "callee": "AliasAssertionORM",
+          "lineNumber": 384
+        },
+        {
+          "caller": "persist_result",
+          "callee": "uuid4",
+          "lineNumber": 385
+        },
+        {
+          "caller": "persist_result",
+          "callee": "alias.alias_text.casefold",
+          "lineNumber": 388
+        },
+        {
+          "caller": "persist_result",
+          "callee": "str",
+          "lineNumber": 394
+        },
+        {
+          "caller": "persist_result",
+          "callee": "validate_evidence",
+          "lineNumber": 402
+        },
+        {
+          "caller": "persist_result",
+          "callee": "observation_fingerprint",
+          "lineNumber": 407
+        },
+        {
+          "caller": "persist_result",
+          "callee": "self.session.scalar",
+          "lineNumber": 415
+        },
+        {
+          "caller": "persist_result",
+          "callee": "select(FeatureObservationORM.id).where",
+          "lineNumber": 416
+        },
+        {
+          "caller": "persist_result",
+          "callee": "select",
+          "lineNumber": 416
+        },
+        {
+          "caller": "persist_result",
+          "callee": "self.scene_for_span",
+          "lineNumber": 423
+        },
+        {
+          "caller": "persist_result",
+          "callee": "self.session.add",
+          "lineNumber": 429
+        },
+        {
+          "caller": "persist_result",
+          "callee": "FeatureObservationORM",
+          "lineNumber": 430
+        },
+        {
+          "caller": "persist_result",
+          "callee": "uuid4",
+          "lineNumber": 431
+        },
+        {
+          "caller": "persist_result",
+          "callee": "str",
+          "lineNumber": 446
+        },
+        {
+          "caller": "persist_result",
+          "callee": "validate_evidence",
+          "lineNumber": 479
+        },
+        {
+          "caller": "persist_result",
+          "callee": "observation_fingerprint",
+          "lineNumber": 484
+        },
+        {
+          "caller": "persist_result",
+          "callee": "self.session.scalar",
+          "lineNumber": 492
+        },
+        {
+          "caller": "persist_result",
+          "callee": "select(ExpressionObservationORM.id).where",
+          "lineNumber": 493
+        },
+        {
+          "caller": "persist_result",
+          "callee": "select",
+          "lineNumber": 493
+        },
+        {
+          "caller": "persist_result",
+          "callee": "self.scene_for_span",
+          "lineNumber": 500
+        },
+        {
+          "caller": "persist_result",
+          "callee": "self.session.add",
+          "lineNumber": 506
+        },
+        {
+          "caller": "persist_result",
+          "callee": "ExpressionObservationORM",
+          "lineNumber": 507
+        },
+        {
+          "caller": "persist_result",
+          "callee": "uuid4",
+          "lineNumber": 508
+        },
+        {
+          "caller": "persist_result",
+          "callee": "str",
+          "lineNumber": 526
+        },
+        {
+          "caller": "persist_result",
+          "callee": "self.session.flush",
+          "lineNumber": 549
+        }
+      ],
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "novel-character-generator/src/novel_character_generator/infrastructure/llm/mock.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 140,
+      "nonEmptyLines": 128,
+      "classes": [
+        {
+          "name": "MockExtractionProvider",
+          "startLine": 41,
+          "endLine": 140,
+          "methods": [
+            "extract_chunk",
+            "_names",
+            "_mentions",
+            "_aliases",
+            "_observation",
+            "_expression",
+            "_nearest_name"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "MockExtractionProvider",
+          "line": 41,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "extract_chunk",
+          "callee": "self._names",
+          "lineNumber": 45
+        },
+        {
+          "caller": "extract_chunk",
+          "callee": "self._mentions",
+          "lineNumber": 46
+        },
+        {
+          "caller": "extract_chunk",
+          "callee": "self._aliases",
+          "lineNumber": 47
+        },
+        {
+          "caller": "extract_chunk",
+          "callee": "self._observation",
+          "lineNumber": 51
+        },
+        {
+          "caller": "extract_chunk",
+          "callee": "self._expression",
+          "lineNumber": 56
+        },
+        {
+          "caller": "extract_chunk",
+          "callee": "ChunkExtractionResult",
+          "lineNumber": 58
+        },
+        {
+          "caller": "_names",
+          "callee": "match.group",
+          "lineNumber": 66
+        },
+        {
+          "caller": "_names",
+          "callee": "NAME_CONTEXT.finditer",
+          "lineNumber": 66
+        },
+        {
+          "caller": "_names",
+          "callee": "sorted",
+          "lineNumber": 67
+        },
+        {
+          "caller": "_names",
+          "callee": "text.find",
+          "lineNumber": 67
+        },
+        {
+          "caller": "_mentions",
+          "callee": "re.finditer",
+          "lineNumber": 72
+        },
+        {
+          "caller": "_mentions",
+          "callee": "re.escape",
+          "lineNumber": 72
+        },
+        {
+          "caller": "_mentions",
+          "callee": "mentions.append",
+          "lineNumber": 73
+        },
+        {
+          "caller": "_mentions",
+          "callee": "MentionDraft",
+          "lineNumber": 74
+        },
+        {
+          "caller": "_mentions",
+          "callee": "match.start",
+          "lineNumber": 77
+        },
+        {
+          "caller": "_mentions",
+          "callee": "match.end",
+          "lineNumber": 78
+        },
+        {
+          "caller": "_mentions",
+          "callee": "sorted",
+          "lineNumber": 82
+        },
+        {
+          "caller": "_aliases",
+          "callee": "ALIAS_PATTERN.finditer",
+          "lineNumber": 86
+        },
+        {
+          "caller": "_aliases",
+          "callee": "self._nearest_name",
+          "lineNumber": 87
+        },
+        {
+          "caller": "_aliases",
+          "callee": "match.start",
+          "lineNumber": 87
+        },
+        {
+          "caller": "_aliases",
+          "callee": "aliases.append",
+          "lineNumber": 88
+        },
+        {
+          "caller": "_aliases",
+          "callee": "AliasDraft",
+          "lineNumber": 89
+        },
+        {
+          "caller": "_aliases",
+          "callee": "match.group",
+          "lineNumber": 90
+        },
+        {
+          "caller": "_aliases",
+          "callee": "match.start",
+          "lineNumber": 92
+        },
+        {
+          "caller": "_aliases",
+          "callee": "match.end",
+          "lineNumber": 93
+        },
+        {
+          "caller": "_aliases",
+          "callee": "match.group",
+          "lineNumber": 94
+        },
+        {
+          "caller": "_observation",
+          "callee": "text.find",
+          "lineNumber": 102
+        },
+        {
+          "caller": "_observation",
+          "callee": "self._nearest_name",
+          "lineNumber": 105
+        },
+        {
+          "caller": "_observation",
+          "callee": "ObservationDraft",
+          "lineNumber": 108
+        },
+        {
+          "caller": "_observation",
+          "callee": "len",
+          "lineNumber": 114
+        },
+        {
+          "caller": "_expression",
+          "callee": "text.find",
+          "lineNumber": 121
+        },
+        {
+          "caller": "_expression",
+          "callee": "self._nearest_name",
+          "lineNumber": 124
+        },
+        {
+          "caller": "_expression",
+          "callee": "ExpressionDraft",
+          "lineNumber": 127
+        },
+        {
+          "caller": "_expression",
+          "callee": "len",
+          "lineNumber": 133
+        },
+        {
+          "caller": "_nearest_name",
+          "callee": "text.rfind",
+          "lineNumber": 138
+        },
+        {
+          "caller": "_nearest_name",
+          "callee": "max",
+          "lineNumber": 140
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "novel-character-generator/src/novel_character_generator/infrastructure/llm/openai_compatible.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 68,
+      "nonEmptyLines": 62,
+      "classes": [
+        {
+          "name": "OpenAICompatibleExtractionProvider",
+          "startLine": 8,
+          "endLine": 68,
+          "methods": [
+            "__init__",
+            "extract_chunk"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "OpenAICompatibleExtractionProvider",
+          "line": 8,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "__init__",
+          "callee": "base_url.rstrip",
+          "lineNumber": 22
+        },
+        {
+          "caller": "extract_chunk",
+          "callee": "ChunkExtractionResult.model_json_schema",
+          "lineNumber": 30
+        },
+        {
+          "caller": "extract_chunk",
+          "callee": "json.dumps",
+          "lineNumber": 38
+        },
+        {
+          "caller": "extract_chunk",
+          "callee": "httpx.AsyncClient",
+          "lineNumber": 42
+        },
+        {
+          "caller": "extract_chunk",
+          "callee": "client.post",
+          "lineNumber": 48
+        },
+        {
+          "caller": "extract_chunk",
+          "callee": "response.raise_for_status",
+          "lineNumber": 60
+        },
+        {
+          "caller": "extract_chunk",
+          "callee": "response.json",
+          "lineNumber": 61
+        },
+        {
+          "caller": "extract_chunk",
+          "callee": "ValueError",
+          "lineNumber": 65
+        },
+        {
+          "caller": "extract_chunk",
+          "callee": "isinstance",
+          "lineNumber": 66
+        },
+        {
+          "caller": "extract_chunk",
+          "callee": "ValueError",
+          "lineNumber": 67
+        },
+        {
+          "caller": "extract_chunk",
+          "callee": "ChunkExtractionResult.model_validate_json",
+          "lineNumber": 68
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "novel-character-generator/src/novel_character_generator/workers/handlers/extraction.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 118,
+      "nonEmptyLines": 113,
+      "functions": [
+        {
+          "name": "process_extraction_run",
+          "startLine": 18,
+          "endLine": 118,
+          "params": [
+            "session",
+            "provider",
+            "run_id",
+            "max_attempts",
+            "lease_seconds"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "process_extraction_run",
+          "line": 18,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "process_extraction_run",
+          "callee": "session.get",
+          "lineNumber": 26
+        },
+        {
+          "caller": "process_extraction_run",
+          "callee": "ValueError",
+          "lineNumber": 28
+        },
+        {
+          "caller": "process_extraction_run",
+          "callee": "session.scalar",
+          "lineNumber": 29
+        },
+        {
+          "caller": "process_extraction_run",
+          "callee": "select(PipelineStepORM).where",
+          "lineNumber": 30
+        },
+        {
+          "caller": "process_extraction_run",
+          "callee": "select",
+          "lineNumber": 30
+        },
+        {
+          "caller": "process_extraction_run",
+          "callee": "RuntimeError",
+          "lineNumber": 36
+        },
+        {
+          "caller": "process_extraction_run",
+          "callee": "ValueError",
+          "lineNumber": 40
+        },
+        {
+          "caller": "process_extraction_run",
+          "callee": "mark_cancelled",
+          "lineNumber": 42
+        },
+        {
+          "caller": "process_extraction_run",
+          "callee": "start_step",
+          "lineNumber": 51
+        },
+        {
+          "caller": "process_extraction_run",
+          "callee": "ExtractionRepository",
+          "lineNumber": 53
+        },
+        {
+          "caller": "process_extraction_run",
+          "callee": "repository.source_document",
+          "lineNumber": 54
+        },
+        {
+          "caller": "process_extraction_run",
+          "callee": "repository.normalization_map",
+          "lineNumber": 55
+        },
+        {
+          "caller": "process_extraction_run",
+          "callee": "repository.canonical_timeline",
+          "lineNumber": 56
+        },
+        {
+          "caller": "process_extraction_run",
+          "callee": "repository.chunks",
+          "lineNumber": 57
+        },
+        {
+          "caller": "process_extraction_run",
+          "callee": "int",
+          "lineNumber": 59
+        },
+        {
+          "caller": "process_extraction_run",
+          "callee": "cursor.get",
+          "lineNumber": 59
+        },
+        {
+          "caller": "process_extraction_run",
+          "callee": "session.commit",
+          "lineNumber": 60
+        },
+        {
+          "caller": "process_extraction_run",
+          "callee": "session.refresh",
+          "lineNumber": 65
+        },
+        {
+          "caller": "process_extraction_run",
+          "callee": "mark_cancelled",
+          "lineNumber": 67
+        },
+        {
+          "caller": "process_extraction_run",
+          "callee": "session.commit",
+          "lineNumber": 75
+        },
+        {
+          "caller": "process_extraction_run",
+          "callee": "provider.extract_chunk",
+          "lineNumber": 76
+        },
+        {
+          "caller": "process_extraction_run",
+          "callee": "repository.persist_result",
+          "lineNumber": 77
+        },
+        {
+          "caller": "process_extraction_run",
+          "callee": "checkpoint_step",
+          "lineNumber": 86
+        },
+        {
+          "caller": "process_extraction_run",
+          "callee": "complete_step",
+          "lineNumber": 97
+        },
+        {
+          "caller": "process_extraction_run",
+          "callee": "len",
+          "lineNumber": 104
+        },
+        {
+          "caller": "process_extraction_run",
+          "callee": "record_step_error",
+          "lineNumber": 109
+        }
+      ],
+      "metrics": {
+        "importCount": 4,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "novel-character-generator/src/novel_character_generator/workers/main.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 123,
+      "nonEmptyLines": 110,
+      "functions": [
+        {
+          "name": "extraction_provider",
+          "startLine": 25,
+          "endLine": 36,
+          "params": []
+        },
+        {
+          "name": "run_once",
+          "startLine": 39,
+          "endLine": 76,
+          "params": [
+            "run_id",
+            "step_key"
+          ]
+        },
+        {
+          "name": "run_worker",
+          "startLine": 79,
+          "endLine": 98,
+          "params": [
+            "once",
+            "poll_interval",
+            "worker_id"
+          ]
+        },
+        {
+          "name": "main",
+          "startLine": 101,
+          "endLine": 119,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "extraction_provider",
+          "line": 25,
+          "isDefault": false
+        },
+        {
+          "name": "run_once",
+          "line": 39,
+          "isDefault": false
+        },
+        {
+          "name": "run_worker",
+          "line": 79,
+          "isDefault": false
+        },
+        {
+          "name": "main",
+          "line": 101,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "extraction_provider",
+          "callee": "get_settings",
+          "lineNumber": 26
+        },
+        {
+          "caller": "extraction_provider",
+          "callee": "MockExtractionProvider",
+          "lineNumber": 28
+        },
+        {
+          "caller": "extraction_provider",
+          "callee": "OpenAICompatibleExtractionProvider",
+          "lineNumber": 31
+        },
+        {
+          "caller": "extraction_provider",
+          "callee": "settings.llm_api_key.get_secret_value",
+          "lineNumber": 34
+        },
+        {
+          "caller": "run_once",
+          "callee": "get_settings",
+          "lineNumber": 40
+        },
+        {
+          "caller": "run_once",
+          "callee": "session_factory",
+          "lineNumber": 41
+        },
+        {
+          "caller": "run_once",
+          "callee": "session.get",
+          "lineNumber": 42
+        },
+        {
+          "caller": "run_once",
+          "callee": "ValueError",
+          "lineNumber": 44
+        },
+        {
+          "caller": "run_once",
+          "callee": "select(PipelineStepORM).where",
+          "lineNumber": 45
+        },
+        {
+          "caller": "run_once",
+          "callee": "select",
+          "lineNumber": 45
+        },
+        {
+          "caller": "run_once",
+          "callee": "PipelineStepORM.status.in_",
+          "lineNumber": 47
+        },
+        {
+          "caller": "run_once",
+          "callee": "step_query.where",
+          "lineNumber": 50
+        },
+        {
+          "caller": "run_once",
+          "callee": "session.scalar",
+          "lineNumber": 51
+        },
+        {
+          "caller": "run_once",
+          "callee": "step_query.order_by",
+          "lineNumber": 52
+        },
+        {
+          "caller": "run_once",
+          "callee": "case",
+          "lineNumber": 53
+        },
+        {
+          "caller": "run_once",
+          "callee": "ValueError",
+          "lineNumber": 58
+        },
+        {
+          "caller": "run_once",
+          "callee": "process_ingestion_run",
+          "lineNumber": 60
+        },
+        {
+          "caller": "run_once",
+          "callee": "LocalArtifactStore",
+          "lineNumber": 62
+        },
+        {
+          "caller": "run_once",
+          "callee": "process_extraction_run",
+          "lineNumber": 68
+        },
+        {
+          "caller": "run_once",
+          "callee": "extraction_provider",
+          "lineNumber": 70
+        },
+        {
+          "caller": "run_once",
+          "callee": "ValueError",
+          "lineNumber": 76
+        },
+        {
+          "caller": "run_worker",
+          "callee": "get_settings",
+          "lineNumber": 80
+        },
+        {
+          "caller": "run_worker",
+          "callee": "session_factory",
+          "lineNumber": 82
+        },
+        {
+          "caller": "run_worker",
+          "callee": "claim_next_step",
+          "lineNumber": 83
+        },
+        {
+          "caller": "run_worker",
+          "callee": "run_once",
+          "lineNumber": 90
+        },
+        {
+          "caller": "run_worker",
+          "callee": "logger.exception",
+          "lineNumber": 92
+        },
+        {
+          "caller": "run_worker",
+          "callee": "str",
+          "lineNumber": 94
+        },
+        {
+          "caller": "run_worker",
+          "callee": "str",
+          "lineNumber": 94
+        },
+        {
+          "caller": "run_worker",
+          "callee": "asyncio.sleep",
+          "lineNumber": 98
+        },
+        {
+          "caller": "main",
+          "callee": "argparse.ArgumentParser",
+          "lineNumber": 102
+        },
+        {
+          "caller": "main",
+          "callee": "parser.add_argument",
+          "lineNumber": 103
+        },
+        {
+          "caller": "main",
+          "callee": "parser.add_argument",
+          "lineNumber": 104
+        },
+        {
+          "caller": "main",
+          "callee": "parser.add_argument",
+          "lineNumber": 105
+        },
+        {
+          "caller": "main",
+          "callee": "parser.add_argument",
+          "lineNumber": 106
+        },
+        {
+          "caller": "main",
+          "callee": "socket.gethostname",
+          "lineNumber": 107
+        },
+        {
+          "caller": "main",
+          "callee": "os.getpid",
+          "lineNumber": 107
+        },
+        {
+          "caller": "main",
+          "callee": "parser.parse_args",
+          "lineNumber": 109
+        },
+        {
+          "caller": "main",
+          "callee": "asyncio.run",
+          "lineNumber": 111
+        },
+        {
+          "caller": "main",
+          "callee": "run_once",
+          "lineNumber": 111
+        },
+        {
+          "caller": "main",
+          "callee": "asyncio.run",
+          "lineNumber": 113
+        },
+        {
+          "caller": "main",
+          "callee": "run_worker",
+          "lineNumber": 114
+        }
+      ],
+      "metrics": {
+        "importCount": 9,
+        "exportCount": 4,
+        "functionCount": 4,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "novel-character-generator/src/novel_character_generator/workers/task_claim.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 388,
+      "nonEmptyLines": 366,
+      "functions": [
+        {
+          "name": "_runnable",
+          "startLine": 16,
+          "endLine": 27,
+          "params": [
+            "now"
+          ]
+        },
+        {
+          "name": "claim_next_step",
+          "startLine": 30,
+          "endLine": 77,
+          "params": [
+            "session",
+            "worker_id",
+            "lease_seconds"
+          ]
+        },
+        {
+          "name": "record_step_error",
+          "startLine": 80,
+          "endLine": 142,
+          "params": [
+            "session",
+            "step_id",
+            "run_id",
+            "error_code",
+            "error",
+            "max_attempts",
+            "expected_generation"
+          ]
+        },
+        {
+          "name": "mark_cancelled",
+          "startLine": 145,
+          "endLine": 180,
+          "params": [
+            "session",
+            "step",
+            "run",
+            "expected_generation"
+          ]
+        },
+        {
+          "name": "start_step",
+          "startLine": 183,
+          "endLine": 221,
+          "params": [
+            "session",
+            "step",
+            "run"
+          ]
+        },
+        {
+          "name": "checkpoint_step",
+          "startLine": 224,
+          "endLine": 264,
+          "params": [
+            "session",
+            "step",
+            "expected_generation",
+            "cursor",
+            "lease_seconds"
+          ]
+        },
+        {
+          "name": "complete_step",
+          "startLine": 267,
+          "endLine": 308,
+          "params": [
+            "session",
+            "step",
+            "run",
+            "expected_generation",
+            "cursor"
+          ]
+        },
+        {
+          "name": "complete_step_and_enqueue",
+          "startLine": 311,
+          "endLine": 388,
+          "params": [
+            "session",
+            "step",
+            "run",
+            "expected_generation",
+            "cursor",
+            "next_step_key"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "LeaseLostError",
+          "startLine": 12,
+          "endLine": 13,
+          "methods": [],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "LeaseLostError",
+          "line": 12,
+          "isDefault": false
+        },
+        {
+          "name": "_runnable",
+          "line": 16,
+          "isDefault": false
+        },
+        {
+          "name": "claim_next_step",
+          "line": 30,
+          "isDefault": false
+        },
+        {
+          "name": "record_step_error",
+          "line": 80,
+          "isDefault": false
+        },
+        {
+          "name": "mark_cancelled",
+          "line": 145,
+          "isDefault": false
+        },
+        {
+          "name": "start_step",
+          "line": 183,
+          "isDefault": false
+        },
+        {
+          "name": "checkpoint_step",
+          "line": 224,
+          "isDefault": false
+        },
+        {
+          "name": "complete_step",
+          "line": 267,
+          "isDefault": false
+        },
+        {
+          "name": "complete_step_and_enqueue",
+          "line": 311,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "_runnable",
+          "callee": "or_",
+          "lineNumber": 17
+        },
+        {
+          "caller": "_runnable",
+          "callee": "and_",
+          "lineNumber": 18
+        },
+        {
+          "caller": "_runnable",
+          "callee": "PipelineStepORM.status.in_",
+          "lineNumber": 19
+        },
+        {
+          "caller": "_runnable",
+          "callee": "or_",
+          "lineNumber": 20
+        },
+        {
+          "caller": "_runnable",
+          "callee": "PipelineStepORM.next_attempt_at.is_",
+          "lineNumber": 20
+        },
+        {
+          "caller": "_runnable",
+          "callee": "and_",
+          "lineNumber": 22
+        },
+        {
+          "caller": "_runnable",
+          "callee": "PipelineStepORM.status.in_",
+          "lineNumber": 23
+        },
+        {
+          "caller": "_runnable",
+          "callee": "PipelineStepORM.lease_expires_at.is_not",
+          "lineNumber": 24
+        },
+        {
+          "caller": "claim_next_step",
+          "callee": "datetime.now",
+          "lineNumber": 34
+        },
+        {
+          "caller": "claim_next_step",
+          "callee": "_runnable",
+          "lineNumber": 35
+        },
+        {
+          "caller": "claim_next_step",
+          "callee": "session.scalar",
+          "lineNumber": 36
+        },
+        {
+          "caller": "claim_next_step",
+          "callee": "select(PipelineStepORM.id)\n        .where(runnable)\n        .order_by(PipelineStepORM.created_at, PipelineStepORM.id)\n        .limit",
+          "lineNumber": 37
+        },
+        {
+          "caller": "claim_next_step",
+          "callee": "select(PipelineStepORM.id)\n        .where(runnable)\n        .order_by",
+          "lineNumber": 37
+        },
+        {
+          "caller": "claim_next_step",
+          "callee": "select(PipelineStepORM.id)\n        .where",
+          "lineNumber": 37
+        },
+        {
+          "caller": "claim_next_step",
+          "callee": "select",
+          "lineNumber": 37
+        },
+        {
+          "caller": "claim_next_step",
+          "callee": "session.rollback",
+          "lineNumber": 43
+        },
+        {
+          "caller": "claim_next_step",
+          "callee": "session.scalar",
+          "lineNumber": 46
+        },
+        {
+          "caller": "claim_next_step",
+          "callee": "update(PipelineStepORM)\n        .where(PipelineStepORM.id == candidate_id, runnable)\n        .values(\n            status=\"claimed\",\n            lease_owner=worker_id,\n            lease_expires_at=now + timedelta(seconds=lease_seconds),\n            lease_generation=PipelineStepORM.lease_generation + 1,\n            heartbeat_at=now,\n            updated_at=now,\n        )\n        .returning",
+          "lineNumber": 47
+        },
+        {
+          "caller": "claim_next_step",
+          "callee": "update(PipelineStepORM)\n        .where(PipelineStepORM.id == candidate_id, runnable)\n        .values",
+          "lineNumber": 47
+        },
+        {
+          "caller": "claim_next_step",
+          "callee": "update(PipelineStepORM)\n        .where",
+          "lineNumber": 47
+        },
+        {
+          "caller": "claim_next_step",
+          "callee": "update",
+          "lineNumber": 47
+        },
+        {
+          "caller": "claim_next_step",
+          "callee": "timedelta",
+          "lineNumber": 52
+        },
+        {
+          "caller": "claim_next_step",
+          "callee": "session.rollback",
+          "lineNumber": 60
+        },
+        {
+          "caller": "claim_next_step",
+          "callee": "session.get",
+          "lineNumber": 62
+        },
+        {
+          "caller": "claim_next_step",
+          "callee": "session.rollback",
+          "lineNumber": 64
+        },
+        {
+          "caller": "claim_next_step",
+          "callee": "append_run_event",
+          "lineNumber": 66
+        },
+        {
+          "caller": "claim_next_step",
+          "callee": "str",
+          "lineNumber": 71
+        },
+        {
+          "caller": "claim_next_step",
+          "callee": "session.commit",
+          "lineNumber": 76
+        },
+        {
+          "caller": "record_step_error",
+          "callee": "session.rollback",
+          "lineNumber": 90
+        },
+        {
+          "caller": "record_step_error",
+          "callee": "session.get",
+          "lineNumber": 91
+        },
+        {
+          "caller": "record_step_error",
+          "callee": "session.get",
+          "lineNumber": 92
+        },
+        {
+          "caller": "record_step_error",
+          "callee": "session.rollback",
+          "lineNumber": 98
+        },
+        {
+          "caller": "record_step_error",
+          "callee": "datetime.now",
+          "lineNumber": 101
+        },
+        {
+          "caller": "record_step_error",
+          "callee": "timedelta",
+          "lineNumber": 105
+        },
+        {
+          "caller": "record_step_error",
+          "callee": "min",
+          "lineNumber": 105
+        },
+        {
+          "caller": "record_step_error",
+          "callee": "max",
+          "lineNumber": 105
+        },
+        {
+          "caller": "record_step_error",
+          "callee": "session.scalar",
+          "lineNumber": 107
+        },
+        {
+          "caller": "record_step_error",
+          "callee": "update(PipelineStepORM)\n        .where(\n            PipelineStepORM.id == step_id,\n            PipelineStepORM.lease_generation == expected_generation,\n        )\n        .values(\n            status=next_status,\n            next_attempt_at=next_attempt_at,\n            error_code=error_code,\n            error_message=str(error)[:2_000],\n            lease_owner=None,\n            lease_expires_at=None,\n            heartbeat_at=now,\n            updated_at=now,\n        )\n        .returning",
+          "lineNumber": 108
+        },
+        {
+          "caller": "record_step_error",
+          "callee": "update(PipelineStepORM)\n        .where(\n            PipelineStepORM.id == step_id,\n            PipelineStepORM.lease_generation == expected_generation,\n        )\n        .values",
+          "lineNumber": 108
+        },
+        {
+          "caller": "record_step_error",
+          "callee": "update(PipelineStepORM)\n        .where",
+          "lineNumber": 108
+        },
+        {
+          "caller": "record_step_error",
+          "callee": "update",
+          "lineNumber": 108
+        },
+        {
+          "caller": "record_step_error",
+          "callee": "str",
+          "lineNumber": 117
+        },
+        {
+          "caller": "record_step_error",
+          "callee": "session.rollback",
+          "lineNumber": 126
+        },
+        {
+          "caller": "record_step_error",
+          "callee": "append_run_event",
+          "lineNumber": 128
+        },
+        {
+          "caller": "record_step_error",
+          "callee": "str",
+          "lineNumber": 133
+        },
+        {
+          "caller": "record_step_error",
+          "callee": "session.commit",
+          "lineNumber": 142
+        },
+        {
+          "caller": "mark_cancelled",
+          "callee": "datetime.now",
+          "lineNumber": 152
+        },
+        {
+          "caller": "mark_cancelled",
+          "callee": "session.scalar",
+          "lineNumber": 153
+        },
+        {
+          "caller": "mark_cancelled",
+          "callee": "update(PipelineStepORM)\n        .where(\n            PipelineStepORM.id == step.id,\n            PipelineStepORM.lease_generation == expected_generation,\n        )\n        .values(\n            status=\"cancelled\",\n            lease_owner=None,\n            lease_expires_at=None,\n            heartbeat_at=now,\n            updated_at=now,\n        )\n        .returning",
+          "lineNumber": 154
+        },
+        {
+          "caller": "mark_cancelled",
+          "callee": "update(PipelineStepORM)\n        .where(\n            PipelineStepORM.id == step.id,\n            PipelineStepORM.lease_generation == expected_generation,\n        )\n        .values",
+          "lineNumber": 154
+        },
+        {
+          "caller": "mark_cancelled",
+          "callee": "update(PipelineStepORM)\n        .where",
+          "lineNumber": 154
+        },
+        {
+          "caller": "mark_cancelled",
+          "callee": "update",
+          "lineNumber": 154
+        },
+        {
+          "caller": "mark_cancelled",
+          "callee": "session.rollback",
+          "lineNumber": 169
+        },
+        {
+          "caller": "mark_cancelled",
+          "callee": "LeaseLostError",
+          "lineNumber": 170
+        },
+        {
+          "caller": "mark_cancelled",
+          "callee": "append_run_event",
+          "lineNumber": 171
+        },
+        {
+          "caller": "mark_cancelled",
+          "callee": "str",
+          "lineNumber": 175
+        },
+        {
+          "caller": "mark_cancelled",
+          "callee": "session.commit",
+          "lineNumber": 180
+        },
+        {
+          "caller": "start_step",
+          "callee": "datetime.now",
+          "lineNumber": 187
+        },
+        {
+          "caller": "start_step",
+          "callee": "session.scalar",
+          "lineNumber": 189
+        },
+        {
+          "caller": "start_step",
+          "callee": "update(PipelineStepORM)\n        .where(\n            PipelineStepORM.id == step.id,\n            PipelineStepORM.lease_generation == expected_generation,\n            PipelineStepORM.status == step.status,\n        )\n        .values(\n            status=\"running\",\n            attempt=PipelineStepORM.attempt + 1,\n            heartbeat_at=now,\n            updated_at=now,\n        )\n        .returning",
+          "lineNumber": 190
+        },
+        {
+          "caller": "start_step",
+          "callee": "update(PipelineStepORM)\n        .where(\n            PipelineStepORM.id == step.id,\n            PipelineStepORM.lease_generation == expected_generation,\n            PipelineStepORM.status == step.status,\n        )\n        .values",
+          "lineNumber": 190
+        },
+        {
+          "caller": "start_step",
+          "callee": "update(PipelineStepORM)\n        .where",
+          "lineNumber": 190
+        },
+        {
+          "caller": "start_step",
+          "callee": "update",
+          "lineNumber": 190
+        },
+        {
+          "caller": "start_step",
+          "callee": "session.rollback",
+          "lineNumber": 205
+        },
+        {
+          "caller": "start_step",
+          "callee": "LeaseLostError",
+          "lineNumber": 206
+        },
+        {
+          "caller": "start_step",
+          "callee": "append_run_event",
+          "lineNumber": 207
+        },
+        {
+          "caller": "start_step",
+          "callee": "str",
+          "lineNumber": 212
+        },
+        {
+          "caller": "start_step",
+          "callee": "session.commit",
+          "lineNumber": 219
+        },
+        {
+          "caller": "start_step",
+          "callee": "session.refresh",
+          "lineNumber": 220
+        },
+        {
+          "caller": "checkpoint_step",
+          "callee": "datetime.now",
+          "lineNumber": 233
+        },
+        {
+          "caller": "checkpoint_step",
+          "callee": "timedelta",
+          "lineNumber": 240
+        },
+        {
+          "caller": "checkpoint_step",
+          "callee": "session.scalar",
+          "lineNumber": 241
+        },
+        {
+          "caller": "checkpoint_step",
+          "callee": "update(PipelineStepORM)\n        .where(\n            PipelineStepORM.id == step.id,\n            PipelineStepORM.lease_generation == expected_generation,\n        )\n        .values(**values)\n        .returning",
+          "lineNumber": 242
+        },
+        {
+          "caller": "checkpoint_step",
+          "callee": "update(PipelineStepORM)\n        .where(\n            PipelineStepORM.id == step.id,\n            PipelineStepORM.lease_generation == expected_generation,\n        )\n        .values",
+          "lineNumber": 242
+        },
+        {
+          "caller": "checkpoint_step",
+          "callee": "update(PipelineStepORM)\n        .where",
+          "lineNumber": 242
+        },
+        {
+          "caller": "checkpoint_step",
+          "callee": "update",
+          "lineNumber": 242
+        },
+        {
+          "caller": "checkpoint_step",
+          "callee": "session.rollback",
+          "lineNumber": 251
+        },
+        {
+          "caller": "checkpoint_step",
+          "callee": "LeaseLostError",
+          "lineNumber": 252
+        },
+        {
+          "caller": "checkpoint_step",
+          "callee": "append_run_event",
+          "lineNumber": 253
+        },
+        {
+          "caller": "checkpoint_step",
+          "callee": "str",
+          "lineNumber": 258
+        },
+        {
+          "caller": "checkpoint_step",
+          "callee": "session.commit",
+          "lineNumber": 263
+        },
+        {
+          "caller": "checkpoint_step",
+          "callee": "session.refresh",
+          "lineNumber": 264
+        },
+        {
+          "caller": "complete_step",
+          "callee": "datetime.now",
+          "lineNumber": 275
+        },
+        {
+          "caller": "complete_step",
+          "callee": "session.scalar",
+          "lineNumber": 276
+        },
+        {
+          "caller": "complete_step",
+          "callee": "update(PipelineStepORM)\n        .where(\n            PipelineStepORM.id == step.id,\n            PipelineStepORM.lease_generation == expected_generation,\n        )\n        .values(\n            status=\"succeeded\",\n            cursor=cursor,\n            lease_owner=None,\n            lease_expires_at=None,\n            heartbeat_at=now,\n            updated_at=now,\n        )\n        .returning",
+          "lineNumber": 277
+        },
+        {
+          "caller": "complete_step",
+          "callee": "update(PipelineStepORM)\n        .where(\n            PipelineStepORM.id == step.id,\n            PipelineStepORM.lease_generation == expected_generation,\n        )\n        .values",
+          "lineNumber": 277
+        },
+        {
+          "caller": "complete_step",
+          "callee": "update(PipelineStepORM)\n        .where",
+          "lineNumber": 277
+        },
+        {
+          "caller": "complete_step",
+          "callee": "update",
+          "lineNumber": 277
+        },
+        {
+          "caller": "complete_step",
+          "callee": "session.rollback",
+          "lineNumber": 293
+        },
+        {
+          "caller": "complete_step",
+          "callee": "LeaseLostError",
+          "lineNumber": 294
+        },
+        {
+          "caller": "complete_step",
+          "callee": "append_run_event",
+          "lineNumber": 295
+        },
+        {
+          "caller": "complete_step",
+          "callee": "str",
+          "lineNumber": 300
+        },
+        {
+          "caller": "complete_step",
+          "callee": "session.commit",
+          "lineNumber": 308
+        },
+        {
+          "caller": "complete_step_and_enqueue",
+          "callee": "datetime.now",
+          "lineNumber": 321
+        },
+        {
+          "caller": "complete_step_and_enqueue",
+          "callee": "session.scalar",
+          "lineNumber": 322
+        },
+        {
+          "caller": "complete_step_and_enqueue",
+          "callee": "update(PipelineStepORM)\n        .where(\n            PipelineStepORM.id == step.id,\n            PipelineStepORM.status == \"running\",\n            PipelineStepORM.lease_generation == expected_generation,\n        )\n        .values(\n            status=\"succeeded\",\n            cursor=cursor,\n            lease_owner=None,\n            lease_expires_at=None,\n            heartbeat_at=now,\n            updated_at=now,\n        )\n        .returning",
+          "lineNumber": 323
+        },
+        {
+          "caller": "complete_step_and_enqueue",
+          "callee": "update(PipelineStepORM)\n        .where(\n            PipelineStepORM.id == step.id,\n            PipelineStepORM.status == \"running\",\n            PipelineStepORM.lease_generation == expected_generation,\n        )\n        .values",
+          "lineNumber": 323
+        },
+        {
+          "caller": "complete_step_and_enqueue",
+          "callee": "update(PipelineStepORM)\n        .where",
+          "lineNumber": 323
+        },
+        {
+          "caller": "complete_step_and_enqueue",
+          "callee": "update",
+          "lineNumber": 323
+        },
+        {
+          "caller": "complete_step_and_enqueue",
+          "callee": "session.rollback",
+          "lineNumber": 340
+        },
+        {
+          "caller": "complete_step_and_enqueue",
+          "callee": "LeaseLostError",
+          "lineNumber": 341
+        },
+        {
+          "caller": "complete_step_and_enqueue",
+          "callee": "session.scalar",
+          "lineNumber": 342
+        },
+        {
+          "caller": "complete_step_and_enqueue",
+          "callee": "select(PipelineStepORM).where",
+          "lineNumber": 343
+        },
+        {
+          "caller": "complete_step_and_enqueue",
+          "callee": "select",
+          "lineNumber": 343
+        },
+        {
+          "caller": "complete_step_and_enqueue",
+          "callee": "PipelineStepORM",
+          "lineNumber": 349
+        },
+        {
+          "caller": "complete_step_and_enqueue",
+          "callee": "uuid4",
+          "lineNumber": 350
+        },
+        {
+          "caller": "complete_step_and_enqueue",
+          "callee": "session.add",
+          "lineNumber": 366
+        },
+        {
+          "caller": "complete_step_and_enqueue",
+          "callee": "session.flush",
+          "lineNumber": 367
+        },
+        {
+          "caller": "complete_step_and_enqueue",
+          "callee": "append_run_event",
+          "lineNumber": 368
+        },
+        {
+          "caller": "complete_step_and_enqueue",
+          "callee": "str",
+          "lineNumber": 373
+        },
+        {
+          "caller": "complete_step_and_enqueue",
+          "callee": "append_run_event",
+          "lineNumber": 378
+        },
+        {
+          "caller": "complete_step_and_enqueue",
+          "callee": "str",
+          "lineNumber": 382
+        },
+        {
+          "caller": "complete_step_and_enqueue",
+          "callee": "session.commit",
+          "lineNumber": 387
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 9,
+        "functionCount": 8,
+        "classCount": 1
+      }
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "nodes": [
+    {
+      "id": "config:novel-character-generator/.env.example",
+      "type": "config",
+      "name": ".env.example",
+      "filePath": "novel-character-generator/.env.example",
+      "summary": "提供服务运行所需的环境变量样例，覆盖日志、OpenTelemetry、指标、数据库、制品存储、LLM、智能体运行时与 API 密钥认证配置。它定义了开发环境可直接采用的默认运行参数。",
+      "tags": ["配置", "环境变量", "运行时", "可观测性", "认证"],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:novel-character-generator/alembic.ini",
+      "type": "config",
+      "name": "alembic.ini",
+      "filePath": "novel-character-generator/alembic.ini",
+      "summary": "配置 Alembic 数据库迁移环境，包括迁移脚本位置、Python 源码路径、SQLite 异步数据库连接以及 Alembic 和 SQLAlchemy 的日志行为。",
+      "tags": ["配置", "数据库", "迁移", "alembic", "日志"],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:novel-character-generator/pyproject.toml",
+      "type": "config",
+      "name": "pyproject.toml",
+      "filePath": "novel-character-generator/pyproject.toml",
+      "summary": "定义 Python 3.12 服务的构建方式、运行与开发依赖，以及 Hatch 打包、pytest、Ruff 和 mypy 的项目级质量配置。它将 FastAPI、SQLAlchemy、异步 SQLite 与 LLM 客户端等运行依赖集中声明。",
+      "tags": ["配置", "python", "构建系统", "依赖管理", "代码质量"],
+      "complexity": "simple",
+      "languageNotes": "TOML 按 PEP 621 声明项目元数据，并将测试、静态检查和打包配置集中在同一文件。"
+    }
+  ],
+  "edges": [
+    {
+      "source": "config:novel-character-generator/.env.example",
+      "target": "file:novel-character-generator/src/novel_character_generator/settings.py",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:novel-character-generator/alembic.ini",
+      "target": "file:novel-character-generator/migrations/env.py",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:novel-character-generator/pyproject.toml",
+      "target": "file:novel-character-generator/src/novel_character_generator/api/app.py",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    }
+  ]
+}

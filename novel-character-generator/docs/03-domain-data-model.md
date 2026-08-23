@@ -2,7 +2,7 @@
 
 > [← 上一篇](02-architecture-and-tech-stack.md) · [文档索引](README.md) · [下一篇 →](04-text-understanding-pipeline.md)
 >
-> 文档版本：2.7 · 源章节：6. 数据模型 · 修订日期：2026-08-22
+> 文档版本：2.8 · 源章节：6. 数据模型 · 修订日期：2026-08-22
 
 ## 6. 数据模型
 

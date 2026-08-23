@@ -1,0 +1,566 @@
+{
+  "nodes": [
+    {
+      "id": "file:novel-character-generator/src/novel_character_generator/application/services/story_service.py",
+      "type": "file",
+      "name": "story_service.py",
+      "filePath": "novel-character-generator/src/novel_character_generator/application/services/story_service.py",
+      "summary": "故事应用服务，读取时间线、事件和场景，并以乐观并发控制更新场景时序。",
+      "tags": [
+        "应用服务",
+        "故事管理",
+        "时序绑定",
+        "并发控制"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:novel-character-generator/src/novel_character_generator/application/services/story_service.py:TemporalBindingConflict",
+      "type": "class",
+      "name": "TemporalBindingConflict",
+      "filePath": "novel-character-generator/src/novel_character_generator/application/services/story_service.py",
+      "lineRange": [
+        21,
+        22
+      ],
+      "summary": "TemporalBindingConflict 表示该模块在校验、并发或状态迁移时抛出的业务异常。",
+      "tags": [
+        "异常",
+        "业务规则",
+        "并发控制"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:novel-character-generator/src/novel_character_generator/application/services/story_service.py:TemporalBindingUpdate",
+      "type": "class",
+      "name": "TemporalBindingUpdate",
+      "filePath": "novel-character-generator/src/novel_character_generator/application/services/story_service.py",
+      "lineRange": [
+        26,
+        32
+      ],
+      "summary": "在 story_service.py 中定义 TemporalBindingUpdate，表达该模块的核心数据与状态。",
+      "tags": [
+        "领域模型",
+        "python",
+        "数据契约"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:novel-character-generator/src/novel_character_generator/application/services/story_service.py:StoryService",
+      "type": "class",
+      "name": "StoryService",
+      "filePath": "novel-character-generator/src/novel_character_generator/application/services/story_service.py",
+      "lineRange": [
+        35,
+        190
+      ],
+      "summary": "StoryService 封装该模块的应用用例、业务规则与数据访问编排。",
+      "tags": [
+        "应用服务",
+        "业务规则",
+        "事务处理",
+        "领域编排"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:novel-character-generator/src/novel_character_generator/domain/entities/evaluation.py",
+      "type": "file",
+      "name": "evaluation.py",
+      "filePath": "novel-character-generator/src/novel_character_generator/domain/entities/evaluation.py",
+      "summary": "评测领域实体，定义数据集、用例、评分器、运行和结果的验证规则与数据契约。",
+      "tags": [
+        "领域模型",
+        "评测",
+        "pydantic",
+        "验证"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:novel-character-generator/src/novel_character_generator/domain/entities/evaluation.py:EvidenceSpan",
+      "type": "class",
+      "name": "EvidenceSpan",
+      "filePath": "novel-character-generator/src/novel_character_generator/domain/entities/evaluation.py",
+      "lineRange": [
+        23,
+        33
+      ],
+      "summary": "在 evaluation.py 中定义 EvidenceSpan，表达该模块的核心数据与状态。",
+      "tags": [
+        "领域模型",
+        "python",
+        "数据契约"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:novel-character-generator/src/novel_character_generator/domain/entities/evaluation.py:EvalDataset",
+      "type": "class",
+      "name": "EvalDataset",
+      "filePath": "novel-character-generator/src/novel_character_generator/domain/entities/evaluation.py",
+      "lineRange": [
+        36,
+        50
+      ],
+      "summary": "在 evaluation.py 中定义 EvalDataset，表达该模块的核心数据与状态。",
+      "tags": [
+        "领域模型",
+        "python",
+        "数据契约"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:novel-character-generator/src/novel_character_generator/domain/entities/evaluation.py:EvalCase",
+      "type": "class",
+      "name": "EvalCase",
+      "filePath": "novel-character-generator/src/novel_character_generator/domain/entities/evaluation.py",
+      "lineRange": [
+        53,
+        68
+      ],
+      "summary": "在 evaluation.py 中定义 EvalCase，表达该模块的核心数据与状态。",
+      "tags": [
+        "领域模型",
+        "python",
+        "数据契约"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:novel-character-generator/src/novel_character_generator/domain/entities/evaluation.py:EvalRun",
+      "type": "class",
+      "name": "EvalRun",
+      "filePath": "novel-character-generator/src/novel_character_generator/domain/entities/evaluation.py",
+      "lineRange": [
+        71,
+        90
+      ],
+      "summary": "在 evaluation.py 中定义 EvalRun，表达该模块的核心数据与状态。",
+      "tags": [
+        "领域模型",
+        "python",
+        "数据契约"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:novel-character-generator/src/novel_character_generator/domain/entities/evaluation.py:GraderVersion",
+      "type": "class",
+      "name": "GraderVersion",
+      "filePath": "novel-character-generator/src/novel_character_generator/domain/entities/evaluation.py",
+      "lineRange": [
+        93,
+        117
+      ],
+      "summary": "在 evaluation.py 中定义 GraderVersion，表达该模块的核心数据与状态。",
+      "tags": [
+        "领域模型",
+        "python",
+        "数据契约"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:novel-character-generator/src/novel_character_generator/domain/entities/evaluation.py:EvalResult",
+      "type": "class",
+      "name": "EvalResult",
+      "filePath": "novel-character-generator/src/novel_character_generator/domain/entities/evaluation.py",
+      "lineRange": [
+        120,
+        134
+      ],
+      "summary": "在 evaluation.py 中定义 EvalResult，表达该模块的核心数据与状态。",
+      "tags": [
+        "领域模型",
+        "python",
+        "数据契约"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:novel-character-generator/src/novel_character_generator/domain/entities/pipeline.py",
+      "type": "file",
+      "name": "pipeline.py",
+      "filePath": "novel-character-generator/src/novel_character_generator/domain/entities/pipeline.py",
+      "summary": "流水线领域实体，定义运行、步骤和外部操作的状态枚举与合法状态迁移。",
+      "tags": [
+        "领域模型",
+        "流水线",
+        "状态机",
+        "pydantic"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:novel-character-generator/src/novel_character_generator/domain/entities/pipeline.py:StepStatus",
+      "type": "class",
+      "name": "StepStatus",
+      "filePath": "novel-character-generator/src/novel_character_generator/domain/entities/pipeline.py",
+      "lineRange": [
+        8,
+        18
+      ],
+      "summary": "StepStatus 定义该领域流程可使用的状态枚举。",
+      "tags": [
+        "领域模型",
+        "状态机",
+        "枚举"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:novel-character-generator/src/novel_character_generator/domain/entities/pipeline.py:RunStatus",
+      "type": "class",
+      "name": "RunStatus",
+      "filePath": "novel-character-generator/src/novel_character_generator/domain/entities/pipeline.py",
+      "lineRange": [
+        51,
+        57
+      ],
+      "summary": "RunStatus 定义该领域流程可使用的状态枚举。",
+      "tags": [
+        "领域模型",
+        "状态机",
+        "枚举"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:novel-character-generator/src/novel_character_generator/domain/entities/pipeline.py:ExternalOperationState",
+      "type": "class",
+      "name": "ExternalOperationState",
+      "filePath": "novel-character-generator/src/novel_character_generator/domain/entities/pipeline.py",
+      "lineRange": [
+        60,
+        70
+      ],
+      "summary": "ExternalOperationState 定义该领域流程可使用的状态枚举。",
+      "tags": [
+        "领域模型",
+        "状态机",
+        "枚举"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:novel-character-generator/src/novel_character_generator/domain/entities/pipeline.py:PipelineRun",
+      "type": "class",
+      "name": "PipelineRun",
+      "filePath": "novel-character-generator/src/novel_character_generator/domain/entities/pipeline.py",
+      "lineRange": [
+        109,
+        116
+      ],
+      "summary": "在 pipeline.py 中定义 PipelineRun，表达该模块的核心数据与状态。",
+      "tags": [
+        "领域模型",
+        "python",
+        "数据契约"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:novel-character-generator/src/novel_character_generator/domain/entities/pipeline.py:PipelineStep",
+      "type": "class",
+      "name": "PipelineStep",
+      "filePath": "novel-character-generator/src/novel_character_generator/domain/entities/pipeline.py",
+      "lineRange": [
+        119,
+        131
+      ],
+      "summary": "在 pipeline.py 中定义 PipelineStep，表达该模块的核心数据与状态。",
+      "tags": [
+        "领域模型",
+        "python",
+        "数据契约"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:novel-character-generator/src/novel_character_generator/domain/entities/pipeline.py:ExternalOperation",
+      "type": "class",
+      "name": "ExternalOperation",
+      "filePath": "novel-character-generator/src/novel_character_generator/domain/entities/pipeline.py",
+      "lineRange": [
+        134,
+        151
+      ],
+      "summary": "在 pipeline.py 中定义 ExternalOperation，表达该模块的核心数据与状态。",
+      "tags": [
+        "领域模型",
+        "python",
+        "数据契约"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/base.py",
+      "type": "file",
+      "name": "base.py",
+      "filePath": "novel-character-generator/src/novel_character_generator/infrastructure/db/base.py",
+      "summary": "SQLAlchemy 声明式 ORM 基类，为所有持久化模型提供统一映射基础。",
+      "tags": [
+        "数据库",
+        "sqlalchemy",
+        "orm",
+        "基础设施"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/base.py:Base",
+      "type": "class",
+      "name": "Base",
+      "filePath": "novel-character-generator/src/novel_character_generator/infrastructure/db/base.py",
+      "lineRange": [
+        4,
+        5
+      ],
+      "summary": "在 base.py 中定义 Base，表达该模块的核心数据与状态。",
+      "tags": [
+        "领域模型",
+        "python",
+        "数据契约"
+      ],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/application/services/story_service.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/application/services/story_service.py:TemporalBindingConflict",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/application/services/story_service.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/application/services/story_service.py:TemporalBindingConflict",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/application/services/story_service.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/application/services/story_service.py:TemporalBindingUpdate",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/application/services/story_service.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/application/services/story_service.py:TemporalBindingUpdate",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/application/services/story_service.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/application/services/story_service.py:StoryService",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/application/services/story_service.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/application/services/story_service.py:StoryService",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/application/services/story_service.py",
+      "target": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/domain/entities/evaluation.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/domain/entities/evaluation.py:EvidenceSpan",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/domain/entities/evaluation.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/domain/entities/evaluation.py:EvidenceSpan",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/domain/entities/evaluation.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/domain/entities/evaluation.py:EvalDataset",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/domain/entities/evaluation.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/domain/entities/evaluation.py:EvalDataset",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/domain/entities/evaluation.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/domain/entities/evaluation.py:EvalCase",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/domain/entities/evaluation.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/domain/entities/evaluation.py:EvalCase",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/domain/entities/evaluation.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/domain/entities/evaluation.py:EvalRun",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/domain/entities/evaluation.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/domain/entities/evaluation.py:EvalRun",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/domain/entities/evaluation.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/domain/entities/evaluation.py:GraderVersion",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/domain/entities/evaluation.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/domain/entities/evaluation.py:GraderVersion",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/domain/entities/evaluation.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/domain/entities/evaluation.py:EvalResult",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/domain/entities/evaluation.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/domain/entities/evaluation.py:EvalResult",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/domain/entities/pipeline.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/domain/entities/pipeline.py:StepStatus",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/domain/entities/pipeline.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/domain/entities/pipeline.py:StepStatus",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/domain/entities/pipeline.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/domain/entities/pipeline.py:RunStatus",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/domain/entities/pipeline.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/domain/entities/pipeline.py:RunStatus",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/domain/entities/pipeline.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/domain/entities/pipeline.py:ExternalOperationState",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/domain/entities/pipeline.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/domain/entities/pipeline.py:ExternalOperationState",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/domain/entities/pipeline.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/domain/entities/pipeline.py:PipelineRun",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/domain/entities/pipeline.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/domain/entities/pipeline.py:PipelineRun",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/domain/entities/pipeline.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/domain/entities/pipeline.py:PipelineStep",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/domain/entities/pipeline.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/domain/entities/pipeline.py:PipelineStep",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/domain/entities/pipeline.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/domain/entities/pipeline.py:ExternalOperation",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/domain/entities/pipeline.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/domain/entities/pipeline.py:ExternalOperation",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/base.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/base.py:Base",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/base.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/base.py:Base",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    }
+  ]
+}

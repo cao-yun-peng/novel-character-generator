@@ -2,7 +2,7 @@
 
 > [← 上一篇](08-task-recovery.md) · [文档索引](README.md) · [下一篇 →](10-provider-and-workflow-versioning.md)
 >
-> 文档版本：2.7 · 源章节：12. API 设计 · 修订日期：2026-08-22
+> 文档版本：2.8 · 源章节：12. API 设计 · 修订日期：2026-08-22
 
 ## 12. API 设计
 

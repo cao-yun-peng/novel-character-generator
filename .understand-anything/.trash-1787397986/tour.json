@@ -1,0 +1,105 @@
+[
+  {
+    "order": 1,
+    "title": "项目目标与主链路",
+    "description": "先从这份起始文档理解项目要把小说文本转化为可追溯的角色视觉档案，以及当前已经可运行的主链路。它建立了后续阅读所需的业务词汇：文本、证据、角色、时间线与流水线运行。带着这些概念进入代码，才能分辨每一层是在表达业务规则还是执行技术实现。",
+    "nodeIds": [
+      "document:novel-character-generator/docs/00-start-here.md"
+    ]
+  },
+  {
+    "order": 2,
+    "title": "运行配置与依赖",
+    "description": "项目以 Python 3.12 服务为核心，pyproject.toml 集中声明 FastAPI、SQLAlchemy、异步 SQLite、测试与静态检查工具。环境变量样例则把数据库、制品存储、LLM、智能体限制和 API 密钥变成可替换的部署参数。先掌握这两个非代码入口，才能理解后续 API 和 Worker 为什么共享同一组运行时选择。",
+    "nodeIds": [
+      "config:novel-character-generator/pyproject.toml",
+      "config:novel-character-generator/.env.example"
+    ],
+    "languageLesson": "pyproject.toml 是 Python 项目的统一元数据与工具配置入口；将运行依赖和 pytest、Ruff、mypy 的规则集中管理，可避免不同环境使用互相矛盾的约束。"
+  },
+  {
+    "order": 3,
+    "title": "FastAPI 与请求入口",
+    "description": "HTTP 服务从 app.py 装配生命周期钩子、中间件、指标和全部路由，是最适合观察整体请求流的代码入口。小说路由负责上传文本并创建分析运行，运行路由负责查询、SSE 事件流、取消与重试。它们把外部请求转换为下一步的应用服务调用，而不是直接承载业务或持久化细节。",
+    "nodeIds": [
+      "file:novel-character-generator/src/novel_character_generator/api/app.py",
+      "file:novel-character-generator/src/novel_character_generator/api/routes/novels.py",
+      "file:novel-character-generator/src/novel_character_generator/api/routes/runs.py"
+    ],
+    "languageLesson": "FastAPI 通过依赖注入把认证、数据库会话等横切关注点从路由函数中分离；异步路由可在等待 I/O 时让事件循环处理其他请求。"
+  },
+  {
+    "order": 4,
+    "title": "应用服务编排",
+    "description": "路由进入应用层后，ingestion_service 负责上传、版本与分析运行的创建，appearance_service 则聚合角色外观状态和渲染档案。两者协调端口、仓储和事务，却把具体存储与模型实现留给基础设施层。这个边界使 API 操作和后台任务可以复用同一套业务用例。",
+    "nodeIds": [
+      "file:novel-character-generator/src/novel_character_generator/application/services/ingestion_service.py",
+      "file:novel-character-generator/src/novel_character_generator/application/services/appearance_service.py"
+    ]
+  },
+  {
+    "order": 5,
+    "title": "领域对象与证据规则",
+    "description": "文档实体保留源文本版本、章节和文本块的位置关系，让任何抽取结论都能回到原文。流水线实体用显式状态迁移描述可恢复任务的合法生命周期，证据策略再通过定位校验和指纹避免无依据或重复的观察。它们是应用服务必须遵守的业务不变量，而非数据库或 HTTP 的附属结构。",
+    "nodeIds": [
+      "file:novel-character-generator/src/novel_character_generator/domain/entities/document.py",
+      "file:novel-character-generator/src/novel_character_generator/domain/entities/pipeline.py",
+      "file:novel-character-generator/src/novel_character_generator/domain/policies/grounding.py"
+    ],
+    "languageLesson": "Python 的 dataclass 与 Enum 适合表达值对象和有限状态机；把验证放在领域对象附近，可以在 API、Worker 和测试之间共享同一条规则。"
+  },
+  {
+    "order": 6,
+    "title": "SQLAlchemy 与迁移",
+    "description": "高扇入的 orm.py 集中映射小说摄取、角色、运行、审批和评测等核心数据，因此是理解持久化模型的关键节点。session.py 提供异步引擎和会话工厂，alembic.ini 则把模式演进与数据库连接配置固定下来。应用层通过这些基础设施保存领域变化，同时用迁移保证不同环境拥有一致的表结构。",
+    "nodeIds": [
+      "file:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "file:novel-character-generator/src/novel_character_generator/infrastructure/db/session.py",
+      "config:novel-character-generator/alembic.ini"
+    ],
+    "languageLesson": "SQLAlchemy 的 ORM 映射把 Python 类与关系表对应；Alembic 将结构变化写为有序迁移，使数据库能随代码版本前进或回退。"
+  },
+  {
+    "order": 7,
+    "title": "后台任务与恢复",
+    "description": "长时间文本处理不阻塞 Web 请求，而由 Worker 入口持续轮询、领取并分派摄取和抽取步骤。摄取与抽取处理器分别实现文本分块和角色信息保存，task_claim 用租约代际围栏、检查点和重试保护任务恢复。这样，步骤 3 创建的运行可以在进程故障后继续推进，并把状态变化交回查询接口。",
+    "nodeIds": [
+      "file:novel-character-generator/src/novel_character_generator/workers/main.py",
+      "file:novel-character-generator/src/novel_character_generator/workers/handlers/ingestion.py",
+      "file:novel-character-generator/src/novel_character_generator/workers/handlers/extraction.py",
+      "file:novel-character-generator/src/novel_character_generator/workers/task_claim.py"
+    ],
+    "languageLesson": "异步 Worker 的关键不是简单的后台执行，而是以可持久化的状态、租约与检查点定义可重试边界；这能降低重复处理和并发抢占造成的数据风险。"
+  },
+  {
+    "order": 8,
+    "title": "结构化抽取提供者",
+    "description": "应用层的 extraction 端口先定义抽取输入、聚合结果和异步协议，使工作流不依赖某一家模型服务。OpenAI 兼容实现将聊天补全结果校验为 Pydantic 结构，mock 实现则以确定性规则支持本地开发和测试。这个适配层让步骤 7 的抽取处理器能在不改业务流程的情况下切换真实或离线 Provider。",
+    "nodeIds": [
+      "file:novel-character-generator/src/novel_character_generator/application/ports/extraction.py",
+      "file:novel-character-generator/src/novel_character_generator/infrastructure/llm/openai_compatible.py",
+      "file:novel-character-generator/src/novel_character_generator/infrastructure/llm/mock.py"
+    ],
+    "languageLesson": "Python Protocol 可用结构化类型定义端口契约，无需强制继承；Pydantic 则在外部模型输出进入领域前完成数据验证。"
+  },
+  {
+    "order": 9,
+    "title": "受控智能体执行",
+    "description": "在基础抽取之外，agent_runtime 端口描述智能体规格、工具契约、上下文和执行结果，形成稳定的应用层接口。structured_runtime 对模型回合、工具调用、输出模式、成本、时限与权限实施约束；agent_execution_service 再把运行、审计记录和必要的人工审批持久化。它把模型能力纳入可追踪、可治理的业务流程，而不是让模型直接操作系统状态。",
+    "nodeIds": [
+      "file:novel-character-generator/src/novel_character_generator/application/ports/agent_runtime.py",
+      "file:novel-character-generator/src/novel_character_generator/agents/structured_runtime.py",
+      "file:novel-character-generator/src/novel_character_generator/application/services/agent_execution_service.py"
+    ],
+    "languageLesson": "结构化智能体将自由文本模型输出限制在经类型验证的工具和结果模式中；配合权限与成本预算，能把不确定的模型调用转化为可审计的受限执行。"
+  },
+  {
+    "order": 10,
+    "title": "集成与单元验证",
+    "description": "文本分析集成测试从公开运行端点验证摄取后再抽取的完整闭环，覆盖步骤 3 到步骤 8 的协作。结构化智能体单元测试则聚焦工具权限、审批预检、类型化输出和成本限制等边界行为。两类测试共同确认：系统既能跑通主要业务路径，也会在高风险约束被触发时安全停止。",
+    "nodeIds": [
+      "file:novel-character-generator/tests/integration/test_text_analysis_run.py",
+      "file:novel-character-generator/tests/unit/test_structured_agent_runtime.py"
+    ]
+  }
+]

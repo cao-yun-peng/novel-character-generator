@@ -1,0 +1,1553 @@
+{
+  "nodes": [
+    {
+      "id": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "type": "file",
+      "name": "orm.py",
+      "filePath": "novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "summary": "SQLAlchemy ORM 映射集合，持久化小说摄取、角色抽取、流水线、智能体运行、审批和评测等核心数据。",
+      "tags": [
+        "数据库",
+        "sqlalchemy",
+        "orm",
+        "持久化"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:IdMixin",
+      "type": "class",
+      "name": "IdMixin",
+      "filePath": "novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "lineRange": [
+        25,
+        26
+      ],
+      "summary": "IdMixin 为 ORM 模型提供可复用的字段映射能力。",
+      "tags": [
+        "数据库",
+        "sqlalchemy",
+        "orm",
+        "持久化"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:TimestampMixin",
+      "type": "class",
+      "name": "TimestampMixin",
+      "filePath": "novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "lineRange": [
+        29,
+        31
+      ],
+      "summary": "TimestampMixin 为 ORM 模型提供可复用的字段映射能力。",
+      "tags": [
+        "数据库",
+        "sqlalchemy",
+        "orm",
+        "持久化"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:NovelORM",
+      "type": "class",
+      "name": "NovelORM",
+      "filePath": "novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "lineRange": [
+        34,
+        38
+      ],
+      "summary": "NovelORM 是 SQLAlchemy ORM 映射，用于持久化对应的业务记录。",
+      "tags": [
+        "数据库",
+        "sqlalchemy",
+        "orm",
+        "持久化"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:SourceDocumentORM",
+      "type": "class",
+      "name": "SourceDocumentORM",
+      "filePath": "novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "lineRange": [
+        41,
+        55
+      ],
+      "summary": "SourceDocumentORM 是 SQLAlchemy ORM 映射，用于持久化对应的业务记录。",
+      "tags": [
+        "数据库",
+        "sqlalchemy",
+        "orm",
+        "持久化"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:SourceDocumentVersionORM",
+      "type": "class",
+      "name": "SourceDocumentVersionORM",
+      "filePath": "novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "lineRange": [
+        58,
+        77
+      ],
+      "summary": "SourceDocumentVersionORM 是 SQLAlchemy ORM 映射，用于持久化对应的业务记录。",
+      "tags": [
+        "数据库",
+        "sqlalchemy",
+        "orm",
+        "持久化"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:NormalizationMapORM",
+      "type": "class",
+      "name": "NormalizationMapORM",
+      "filePath": "novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "lineRange": [
+        80,
+        87
+      ],
+      "summary": "NormalizationMapORM 是 SQLAlchemy ORM 映射，用于持久化对应的业务记录。",
+      "tags": [
+        "数据库",
+        "sqlalchemy",
+        "orm",
+        "持久化"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:ChapterORM",
+      "type": "class",
+      "name": "ChapterORM",
+      "filePath": "novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "lineRange": [
+        90,
+        117
+      ],
+      "summary": "ChapterORM 是 SQLAlchemy ORM 映射，用于持久化对应的业务记录。",
+      "tags": [
+        "数据库",
+        "sqlalchemy",
+        "orm",
+        "持久化"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:TextChunkORM",
+      "type": "class",
+      "name": "TextChunkORM",
+      "filePath": "novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "lineRange": [
+        120,
+        151
+      ],
+      "summary": "TextChunkORM 是 SQLAlchemy ORM 映射，用于持久化对应的业务记录。",
+      "tags": [
+        "数据库",
+        "sqlalchemy",
+        "orm",
+        "持久化"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:TimelineORM",
+      "type": "class",
+      "name": "TimelineORM",
+      "filePath": "novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "lineRange": [
+        154,
+        161
+      ],
+      "summary": "TimelineORM 是 SQLAlchemy ORM 映射，用于持久化对应的业务记录。",
+      "tags": [
+        "数据库",
+        "sqlalchemy",
+        "orm",
+        "持久化"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:StoryEventORM",
+      "type": "class",
+      "name": "StoryEventORM",
+      "filePath": "novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "lineRange": [
+        164,
+        173
+      ],
+      "summary": "StoryEventORM 是 SQLAlchemy ORM 映射，用于持久化对应的业务记录。",
+      "tags": [
+        "数据库",
+        "sqlalchemy",
+        "orm",
+        "持久化"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:EventParticipantORM",
+      "type": "class",
+      "name": "EventParticipantORM",
+      "filePath": "novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "lineRange": [
+        176,
+        187
+      ],
+      "summary": "EventParticipantORM 是 SQLAlchemy ORM 映射，用于持久化对应的业务记录。",
+      "tags": [
+        "数据库",
+        "sqlalchemy",
+        "orm",
+        "持久化"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:CharacterORM",
+      "type": "class",
+      "name": "CharacterORM",
+      "filePath": "novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "lineRange": [
+        190,
+        203
+      ],
+      "summary": "CharacterORM 是 SQLAlchemy ORM 映射，用于持久化对应的业务记录。",
+      "tags": [
+        "数据库",
+        "sqlalchemy",
+        "orm",
+        "持久化"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:CharacterEntityOperationORM",
+      "type": "class",
+      "name": "CharacterEntityOperationORM",
+      "filePath": "novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "lineRange": [
+        206,
+        225
+      ],
+      "summary": "CharacterEntityOperationORM 是 SQLAlchemy ORM 映射，用于持久化对应的业务记录。",
+      "tags": [
+        "数据库",
+        "sqlalchemy",
+        "orm",
+        "持久化"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:SceneORM",
+      "type": "class",
+      "name": "SceneORM",
+      "filePath": "novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "lineRange": [
+        228,
+        256
+      ],
+      "summary": "SceneORM 是 SQLAlchemy ORM 映射，用于持久化对应的业务记录。",
+      "tags": [
+        "数据库",
+        "sqlalchemy",
+        "orm",
+        "持久化"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:PipelineRunORM",
+      "type": "class",
+      "name": "PipelineRunORM",
+      "filePath": "novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "lineRange": [
+        259,
+        267
+      ],
+      "summary": "PipelineRunORM 是 SQLAlchemy ORM 映射，用于持久化对应的业务记录。",
+      "tags": [
+        "数据库",
+        "sqlalchemy",
+        "orm",
+        "持久化"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:PipelineStepORM",
+      "type": "class",
+      "name": "PipelineStepORM",
+      "filePath": "novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "lineRange": [
+        270,
+        290
+      ],
+      "summary": "PipelineStepORM 是 SQLAlchemy ORM 映射，用于持久化对应的业务记录。",
+      "tags": [
+        "数据库",
+        "sqlalchemy",
+        "orm",
+        "持久化"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:RunEventORM",
+      "type": "class",
+      "name": "RunEventORM",
+      "filePath": "novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "lineRange": [
+        293,
+        301
+      ],
+      "summary": "RunEventORM 是 SQLAlchemy ORM 映射，用于持久化对应的业务记录。",
+      "tags": [
+        "数据库",
+        "sqlalchemy",
+        "orm",
+        "持久化"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:MentionSpanORM",
+      "type": "class",
+      "name": "MentionSpanORM",
+      "filePath": "novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "lineRange": [
+        304,
+        323
+      ],
+      "summary": "MentionSpanORM 是 SQLAlchemy ORM 映射，用于持久化对应的业务记录。",
+      "tags": [
+        "数据库",
+        "sqlalchemy",
+        "orm",
+        "持久化"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:AliasAssertionORM",
+      "type": "class",
+      "name": "AliasAssertionORM",
+      "filePath": "novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "lineRange": [
+        326,
+        340
+      ],
+      "summary": "AliasAssertionORM 是 SQLAlchemy ORM 映射，用于持久化对应的业务记录。",
+      "tags": [
+        "数据库",
+        "sqlalchemy",
+        "orm",
+        "持久化"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:FeatureObservationORM",
+      "type": "class",
+      "name": "FeatureObservationORM",
+      "filePath": "novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "lineRange": [
+        343,
+        387
+      ],
+      "summary": "FeatureObservationORM 是 SQLAlchemy ORM 映射，用于持久化对应的业务记录。",
+      "tags": [
+        "数据库",
+        "sqlalchemy",
+        "orm",
+        "持久化"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:FeatureSuggestionORM",
+      "type": "class",
+      "name": "FeatureSuggestionORM",
+      "filePath": "novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "lineRange": [
+        390,
+        404
+      ],
+      "summary": "FeatureSuggestionORM 是 SQLAlchemy ORM 映射，用于持久化对应的业务记录。",
+      "tags": [
+        "数据库",
+        "sqlalchemy",
+        "orm",
+        "持久化"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:ExpressionObservationORM",
+      "type": "class",
+      "name": "ExpressionObservationORM",
+      "filePath": "novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "lineRange": [
+        407,
+        443
+      ],
+      "summary": "ExpressionObservationORM 是 SQLAlchemy ORM 映射，用于持久化对应的业务记录。",
+      "tags": [
+        "数据库",
+        "sqlalchemy",
+        "orm",
+        "持久化"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:CharacterAppearanceStateORM",
+      "type": "class",
+      "name": "CharacterAppearanceStateORM",
+      "filePath": "novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "lineRange": [
+        446,
+        465
+      ],
+      "summary": "CharacterAppearanceStateORM 是 SQLAlchemy ORM 映射，用于持久化对应的业务记录。",
+      "tags": [
+        "数据库",
+        "sqlalchemy",
+        "orm",
+        "持久化"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:CharacterRenderProfileORM",
+      "type": "class",
+      "name": "CharacterRenderProfileORM",
+      "filePath": "novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "lineRange": [
+        468,
+        488
+      ],
+      "summary": "CharacterRenderProfileORM 是 SQLAlchemy ORM 映射，用于持久化对应的业务记录。",
+      "tags": [
+        "数据库",
+        "sqlalchemy",
+        "orm",
+        "持久化"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:CharacterConflictORM",
+      "type": "class",
+      "name": "CharacterConflictORM",
+      "filePath": "novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "lineRange": [
+        491,
+        512
+      ],
+      "summary": "CharacterConflictORM 是 SQLAlchemy ORM 映射，用于持久化对应的业务记录。",
+      "tags": [
+        "数据库",
+        "sqlalchemy",
+        "orm",
+        "持久化"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:CharacterImageSetORM",
+      "type": "class",
+      "name": "CharacterImageSetORM",
+      "filePath": "novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "lineRange": [
+        515,
+        526
+      ],
+      "summary": "CharacterImageSetORM 是 SQLAlchemy ORM 映射，用于持久化对应的业务记录。",
+      "tags": [
+        "数据库",
+        "sqlalchemy",
+        "orm",
+        "持久化"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:GeneratedImageORM",
+      "type": "class",
+      "name": "GeneratedImageORM",
+      "filePath": "novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "lineRange": [
+        529,
+        538
+      ],
+      "summary": "GeneratedImageORM 是 SQLAlchemy ORM 映射，用于持久化对应的业务记录。",
+      "tags": [
+        "数据库",
+        "sqlalchemy",
+        "orm",
+        "持久化"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:CharacterStageImageORM",
+      "type": "class",
+      "name": "CharacterStageImageORM",
+      "filePath": "novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "lineRange": [
+        541,
+        555
+      ],
+      "summary": "CharacterStageImageORM 是 SQLAlchemy ORM 映射，用于持久化对应的业务记录。",
+      "tags": [
+        "数据库",
+        "sqlalchemy",
+        "orm",
+        "持久化"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:ArtifactORM",
+      "type": "class",
+      "name": "ArtifactORM",
+      "filePath": "novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "lineRange": [
+        558,
+        565
+      ],
+      "summary": "ArtifactORM 是 SQLAlchemy ORM 映射，用于持久化对应的业务记录。",
+      "tags": [
+        "数据库",
+        "sqlalchemy",
+        "orm",
+        "持久化"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:ExternalOperationORM",
+      "type": "class",
+      "name": "ExternalOperationORM",
+      "filePath": "novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "lineRange": [
+        568,
+        587
+      ],
+      "summary": "ExternalOperationORM 是 SQLAlchemy ORM 映射，用于持久化对应的业务记录。",
+      "tags": [
+        "数据库",
+        "sqlalchemy",
+        "orm",
+        "持久化"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:ModelCallORM",
+      "type": "class",
+      "name": "ModelCallORM",
+      "filePath": "novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "lineRange": [
+        590,
+        602
+      ],
+      "summary": "ModelCallORM 是 SQLAlchemy ORM 映射，用于持久化对应的业务记录。",
+      "tags": [
+        "数据库",
+        "sqlalchemy",
+        "orm",
+        "持久化"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:AgentRunORM",
+      "type": "class",
+      "name": "AgentRunORM",
+      "filePath": "novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "lineRange": [
+        605,
+        629
+      ],
+      "summary": "AgentRunORM 是 SQLAlchemy ORM 映射，用于持久化对应的业务记录。",
+      "tags": [
+        "数据库",
+        "sqlalchemy",
+        "orm",
+        "持久化"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:AgentTurnORM",
+      "type": "class",
+      "name": "AgentTurnORM",
+      "filePath": "novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "lineRange": [
+        632,
+        640
+      ],
+      "summary": "AgentTurnORM 是 SQLAlchemy ORM 映射，用于持久化对应的业务记录。",
+      "tags": [
+        "数据库",
+        "sqlalchemy",
+        "orm",
+        "持久化"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:ToolCallORM",
+      "type": "class",
+      "name": "ToolCallORM",
+      "filePath": "novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "lineRange": [
+        643,
+        656
+      ],
+      "summary": "ToolCallORM 是 SQLAlchemy ORM 映射，用于持久化对应的业务记录。",
+      "tags": [
+        "数据库",
+        "sqlalchemy",
+        "orm",
+        "持久化"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:DecisionRecordORM",
+      "type": "class",
+      "name": "DecisionRecordORM",
+      "filePath": "novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "lineRange": [
+        659,
+        669
+      ],
+      "summary": "DecisionRecordORM 是 SQLAlchemy ORM 映射，用于持久化对应的业务记录。",
+      "tags": [
+        "数据库",
+        "sqlalchemy",
+        "orm",
+        "持久化"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:HumanApprovalORM",
+      "type": "class",
+      "name": "HumanApprovalORM",
+      "filePath": "novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "lineRange": [
+        672,
+        695
+      ],
+      "summary": "HumanApprovalORM 是 SQLAlchemy ORM 映射，用于持久化对应的业务记录。",
+      "tags": [
+        "数据库",
+        "sqlalchemy",
+        "orm",
+        "持久化"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:AgentEvaluationORM",
+      "type": "class",
+      "name": "AgentEvaluationORM",
+      "filePath": "novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "lineRange": [
+        698,
+        705
+      ],
+      "summary": "AgentEvaluationORM 是 SQLAlchemy ORM 映射，用于持久化对应的业务记录。",
+      "tags": [
+        "数据库",
+        "sqlalchemy",
+        "orm",
+        "持久化"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:EvalDatasetORM",
+      "type": "class",
+      "name": "EvalDatasetORM",
+      "filePath": "novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "lineRange": [
+        708,
+        718
+      ],
+      "summary": "EvalDatasetORM 是 SQLAlchemy ORM 映射，用于持久化对应的业务记录。",
+      "tags": [
+        "数据库",
+        "sqlalchemy",
+        "orm",
+        "持久化"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:EvalCaseORM",
+      "type": "class",
+      "name": "EvalCaseORM",
+      "filePath": "novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "lineRange": [
+        721,
+        746
+      ],
+      "summary": "EvalCaseORM 是 SQLAlchemy ORM 映射，用于持久化对应的业务记录。",
+      "tags": [
+        "数据库",
+        "sqlalchemy",
+        "orm",
+        "持久化"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:GraderVersionORM",
+      "type": "class",
+      "name": "GraderVersionORM",
+      "filePath": "novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "lineRange": [
+        749,
+        766
+      ],
+      "summary": "GraderVersionORM 是 SQLAlchemy ORM 映射，用于持久化对应的业务记录。",
+      "tags": [
+        "数据库",
+        "sqlalchemy",
+        "orm",
+        "持久化"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:EvalRunORM",
+      "type": "class",
+      "name": "EvalRunORM",
+      "filePath": "novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "lineRange": [
+        769,
+        790
+      ],
+      "summary": "EvalRunORM 是 SQLAlchemy ORM 映射，用于持久化对应的业务记录。",
+      "tags": [
+        "数据库",
+        "sqlalchemy",
+        "orm",
+        "持久化"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:EvalResultORM",
+      "type": "class",
+      "name": "EvalResultORM",
+      "filePath": "novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "lineRange": [
+        793,
+        816
+      ],
+      "summary": "EvalResultORM 是 SQLAlchemy ORM 映射，用于持久化对应的业务记录。",
+      "tags": [
+        "数据库",
+        "sqlalchemy",
+        "orm",
+        "持久化"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/repositories/evaluation.py",
+      "type": "file",
+      "name": "evaluation.py",
+      "filePath": "novel-character-generator/src/novel_character_generator/infrastructure/db/repositories/evaluation.py",
+      "summary": "评测仓储，实现评测数据集、用例、评分器、评测运行和结果的事务性读写与冲突检查。",
+      "tags": [
+        "仓储",
+        "评测",
+        "sqlalchemy",
+        "持久化"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/repositories/evaluation.py:EvaluationConflict",
+      "type": "class",
+      "name": "EvaluationConflict",
+      "filePath": "novel-character-generator/src/novel_character_generator/infrastructure/db/repositories/evaluation.py",
+      "lineRange": [
+        23,
+        24
+      ],
+      "summary": "EvaluationConflict 表示该模块在校验、并发或状态迁移时抛出的业务异常。",
+      "tags": [
+        "异常",
+        "业务规则",
+        "并发控制"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/repositories/evaluation.py:EvaluationRepository",
+      "type": "class",
+      "name": "EvaluationRepository",
+      "filePath": "novel-character-generator/src/novel_character_generator/infrastructure/db/repositories/evaluation.py",
+      "lineRange": [
+        27,
+        211
+      ],
+      "summary": "EvaluationRepository 封装相关持久化记录的查询、创建和一致性控制。",
+      "tags": [
+        "仓储",
+        "数据库",
+        "sqlalchemy",
+        "持久化"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/repositories/external_operations.py",
+      "type": "file",
+      "name": "external_operations.py",
+      "filePath": "novel-character-generator/src/novel_character_generator/infrastructure/db/repositories/external_operations.py",
+      "summary": "外部操作仓储，创建、租约式迁移和查询异步外部操作记录。",
+      "tags": [
+        "仓储",
+        "外部操作",
+        "状态机",
+        "sqlalchemy"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/repositories/external_operations.py:ExternalOperationConflict",
+      "type": "class",
+      "name": "ExternalOperationConflict",
+      "filePath": "novel-character-generator/src/novel_character_generator/infrastructure/db/repositories/external_operations.py",
+      "lineRange": [
+        14,
+        15
+      ],
+      "summary": "ExternalOperationConflict 表示该模块在校验、并发或状态迁移时抛出的业务异常。",
+      "tags": [
+        "异常",
+        "业务规则",
+        "并发控制"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/repositories/external_operations.py:ExternalOperationRepository",
+      "type": "class",
+      "name": "ExternalOperationRepository",
+      "filePath": "novel-character-generator/src/novel_character_generator/infrastructure/db/repositories/external_operations.py",
+      "lineRange": [
+        18,
+        122
+      ],
+      "summary": "ExternalOperationRepository 封装相关持久化记录的查询、创建和一致性控制。",
+      "tags": [
+        "仓储",
+        "数据库",
+        "sqlalchemy",
+        "持久化"
+      ],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:IdMixin",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:IdMixin",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:TimestampMixin",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:TimestampMixin",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:NovelORM",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:NovelORM",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:SourceDocumentORM",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:SourceDocumentORM",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:SourceDocumentVersionORM",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:SourceDocumentVersionORM",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:NormalizationMapORM",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:NormalizationMapORM",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:ChapterORM",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:ChapterORM",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:TextChunkORM",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:TextChunkORM",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:TimelineORM",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:TimelineORM",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:StoryEventORM",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:StoryEventORM",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:EventParticipantORM",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:EventParticipantORM",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:CharacterORM",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:CharacterORM",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:CharacterEntityOperationORM",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:CharacterEntityOperationORM",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:SceneORM",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:SceneORM",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:PipelineRunORM",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:PipelineRunORM",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:PipelineStepORM",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:PipelineStepORM",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:RunEventORM",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:RunEventORM",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:MentionSpanORM",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:MentionSpanORM",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:AliasAssertionORM",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:AliasAssertionORM",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:FeatureObservationORM",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:FeatureObservationORM",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:FeatureSuggestionORM",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:FeatureSuggestionORM",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:ExpressionObservationORM",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:ExpressionObservationORM",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:CharacterAppearanceStateORM",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:CharacterAppearanceStateORM",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:CharacterRenderProfileORM",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:CharacterRenderProfileORM",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:CharacterConflictORM",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:CharacterConflictORM",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:CharacterImageSetORM",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:CharacterImageSetORM",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:GeneratedImageORM",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:GeneratedImageORM",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:CharacterStageImageORM",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:CharacterStageImageORM",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:ArtifactORM",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:ArtifactORM",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:ExternalOperationORM",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:ExternalOperationORM",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:ModelCallORM",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:ModelCallORM",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:AgentRunORM",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:AgentRunORM",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:AgentTurnORM",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:AgentTurnORM",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:ToolCallORM",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:ToolCallORM",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:DecisionRecordORM",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:DecisionRecordORM",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:HumanApprovalORM",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:HumanApprovalORM",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:AgentEvaluationORM",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:AgentEvaluationORM",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:EvalDatasetORM",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:EvalDatasetORM",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:EvalCaseORM",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:EvalCaseORM",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:GraderVersionORM",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:GraderVersionORM",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:EvalRunORM",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:EvalRunORM",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:EvalResultORM",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:EvalResultORM",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "target": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/base.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/repositories/evaluation.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/repositories/evaluation.py:EvaluationConflict",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/repositories/evaluation.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/repositories/evaluation.py:EvaluationConflict",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/repositories/evaluation.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/repositories/evaluation.py:EvaluationRepository",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/repositories/evaluation.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/repositories/evaluation.py:EvaluationRepository",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/repositories/evaluation.py",
+      "target": "file:novel-character-generator/src/novel_character_generator/domain/entities/evaluation.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/repositories/evaluation.py",
+      "target": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/repositories/external_operations.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/repositories/external_operations.py:ExternalOperationConflict",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/repositories/external_operations.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/repositories/external_operations.py:ExternalOperationConflict",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/repositories/external_operations.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/repositories/external_operations.py:ExternalOperationRepository",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/repositories/external_operations.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/infrastructure/db/repositories/external_operations.py:ExternalOperationRepository",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/repositories/external_operations.py",
+      "target": "file:novel-character-generator/src/novel_character_generator/domain/entities/pipeline.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/repositories/external_operations.py",
+      "target": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    }
+  ]
+}

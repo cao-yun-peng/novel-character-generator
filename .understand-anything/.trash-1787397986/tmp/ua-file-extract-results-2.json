@@ -1,0 +1,6770 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 11,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "novel-character-generator/src/novel_character_generator/api/routes/characters.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 568,
+      "nonEmptyLines": 493,
+      "functions": [
+        {
+          "name": "_revision",
+          "startLine": 211,
+          "endLine": 220,
+          "params": [
+            "if_match",
+            "allow_zero"
+          ]
+        },
+        {
+          "name": "_state_response",
+          "startLine": 223,
+          "endLine": 224,
+          "params": [
+            "row"
+          ]
+        },
+        {
+          "name": "_profile_response",
+          "startLine": 227,
+          "endLine": 228,
+          "params": [
+            "row"
+          ]
+        },
+        {
+          "name": "_conflict_response",
+          "startLine": 231,
+          "endLine": 232,
+          "params": [
+            "row"
+          ]
+        },
+        {
+          "name": "_entity_operation_response",
+          "startLine": 235,
+          "endLine": 238,
+          "params": [
+            "row"
+          ]
+        },
+        {
+          "name": "_service_error",
+          "startLine": 241,
+          "endLine": 245,
+          "params": [
+            "error"
+          ]
+        },
+        {
+          "name": "list_characters",
+          "startLine": 249,
+          "endLine": 266,
+          "params": [
+            "novel_id",
+            "session"
+          ]
+        },
+        {
+          "name": "_character_or_404",
+          "startLine": 269,
+          "endLine": 273,
+          "params": [
+            "session",
+            "character_id"
+          ]
+        },
+        {
+          "name": "list_mentions",
+          "startLine": 277,
+          "endLine": 296,
+          "params": [
+            "character_id",
+            "session"
+          ]
+        },
+        {
+          "name": "list_observations",
+          "startLine": 300,
+          "endLine": 319,
+          "params": [
+            "character_id",
+            "session"
+          ]
+        },
+        {
+          "name": "list_expressions",
+          "startLine": 323,
+          "endLine": 341,
+          "params": [
+            "character_id",
+            "session"
+          ]
+        },
+        {
+          "name": "list_appearance_states",
+          "startLine": 348,
+          "endLine": 354,
+          "params": [
+            "character_id",
+            "session"
+          ]
+        },
+        {
+          "name": "list_character_conflicts",
+          "startLine": 358,
+          "endLine": 369,
+          "params": [
+            "character_id",
+            "session",
+            "status"
+          ]
+        },
+        {
+          "name": "resolve_character_conflict",
+          "startLine": 373,
+          "endLine": 391,
+          "params": [
+            "conflict_id",
+            "request",
+            "session",
+            "if_match",
+            "actor_id"
+          ]
+        },
+        {
+          "name": "get_render_profile",
+          "startLine": 398,
+          "endLine": 410,
+          "params": [
+            "character_id",
+            "session",
+            "response"
+          ]
+        },
+        {
+          "name": "put_render_profile",
+          "startLine": 417,
+          "endLine": 443,
+          "params": [
+            "character_id",
+            "request",
+            "session",
+            "response",
+            "if_match"
+          ]
+        },
+        {
+          "name": "approve_character_profile",
+          "startLine": 450,
+          "endLine": 468,
+          "params": [
+            "character_id",
+            "session",
+            "response",
+            "if_match",
+            "actor_id"
+          ]
+        },
+        {
+          "name": "get_character_snapshot",
+          "startLine": 475,
+          "endLine": 497,
+          "params": [
+            "character_id",
+            "session",
+            "timeline_id",
+            "event_id",
+            "scene_id",
+            "chapter_ordinal"
+          ]
+        },
+        {
+          "name": "merge_characters",
+          "startLine": 505,
+          "endLine": 531,
+          "params": [
+            "request",
+            "session",
+            "if_match",
+            "idempotency_key",
+            "actor_id"
+          ]
+        },
+        {
+          "name": "split_character",
+          "startLine": 539,
+          "endLine": 568,
+          "params": [
+            "character_id",
+            "request",
+            "session",
+            "if_match",
+            "idempotency_key",
+            "actor_id"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "CharacterResponse",
+          "startLine": 45,
+          "endLine": 50,
+          "methods": [],
+          "properties": [
+            "id",
+            "canonical_name",
+            "status",
+            "revision",
+            "merged_into_character_id"
+          ]
+        },
+        {
+          "name": "MentionResponse",
+          "startLine": 53,
+          "endLine": 58,
+          "methods": [],
+          "properties": [
+            "text",
+            "kind",
+            "grounding_status",
+            "char_start",
+            "char_end"
+          ]
+        },
+        {
+          "name": "ObservationResponse",
+          "startLine": 61,
+          "endLine": 67,
+          "methods": [],
+          "properties": [
+            "id",
+            "field_path",
+            "value",
+            "evidence_quote",
+            "grounding_status",
+            "confidence"
+          ]
+        },
+        {
+          "name": "ExpressionResponse",
+          "startLine": 70,
+          "endLine": 75,
+          "methods": [],
+          "properties": [
+            "id",
+            "outward_emotion",
+            "expression_text",
+            "evidence_quote",
+            "confidence"
+          ]
+        },
+        {
+          "name": "AppearanceStateResponse",
+          "startLine": 78,
+          "endLine": 93,
+          "methods": [],
+          "properties": [
+            "id",
+            "character_id",
+            "temporal_scope",
+            "label",
+            "state_kind",
+            "merge_priority",
+            "age_stage",
+            "appearance",
+            "field_sources",
+            "resolver_version",
+            "created_by_run_id",
+            "record_status",
+            "status",
+            "created_at",
+            "updated_at"
+          ]
+        },
+        {
+          "name": "RenderProfileResponse",
+          "startLine": 96,
+          "endLine": 114,
+          "methods": [],
+          "properties": [
+            "id",
+            "character_id",
+            "version",
+            "status",
+            "identity_anchor",
+            "default_appearance_state_id",
+            "default_stage_key",
+            "appearance_state_ids",
+            "palette",
+            "field_sources",
+            "field_suggestions",
+            "unresolved_conflicts",
+            "style_preset",
+            "approved_by",
+            "approved_at",
+            "revision",
+            "created_at",
+            "updated_at"
+          ]
+        },
+        {
+          "name": "UpdateRenderProfileRequest",
+          "startLine": 117,
+          "endLine": 124,
+          "methods": [],
+          "properties": [
+            "identity_anchor",
+            "default_stage_key",
+            "appearance_state_ids",
+            "palette",
+            "field_sources",
+            "field_suggestions",
+            "style_preset"
+          ]
+        },
+        {
+          "name": "CharacterConflictResponse",
+          "startLine": 127,
+          "endLine": 141,
+          "methods": [],
+          "properties": [
+            "id",
+            "character_id",
+            "field_path",
+            "appearance_state_ids",
+            "candidate_values",
+            "temporal_scope",
+            "merge_priority",
+            "status",
+            "resolution",
+            "resolved_by",
+            "resolved_at",
+            "revision",
+            "created_at",
+            "updated_at"
+          ]
+        },
+        {
+          "name": "ResolveCharacterConflictRequest",
+          "startLine": 144,
+          "endLine": 145,
+          "methods": [],
+          "properties": [
+            "selected_value"
+          ]
+        },
+        {
+          "name": "SnapshotResponse",
+          "startLine": 148,
+          "endLine": 159,
+          "methods": [],
+          "properties": [
+            "character_id",
+            "render_profile_id",
+            "render_profile_version",
+            "target",
+            "appearance_state_ids",
+            "appearance",
+            "palette",
+            "style_preset",
+            "field_sources",
+            "resolver_version",
+            "snapshot_hash"
+          ]
+        },
+        {
+          "name": "MergeSourceRequest",
+          "startLine": 162,
+          "endLine": 164,
+          "methods": [],
+          "properties": [
+            "character_id",
+            "revision"
+          ]
+        },
+        {
+          "name": "MergeCharactersRequest",
+          "startLine": 167,
+          "endLine": 170,
+          "methods": [],
+          "properties": [
+            "target_character_id",
+            "sources",
+            "reason"
+          ]
+        },
+        {
+          "name": "SplitAssignmentsRequest",
+          "startLine": 173,
+          "endLine": 181,
+          "methods": [],
+          "properties": [
+            "mention_span_ids",
+            "alias_assertion_ids",
+            "observation_ids",
+            "expression_ids",
+            "appearance_state_ids",
+            "suggestion_ids",
+            "event_participant_ids",
+            "scene_ids"
+          ]
+        },
+        {
+          "name": "SplitTargetRequest",
+          "startLine": 184,
+          "endLine": 187,
+          "methods": [],
+          "properties": [
+            "canonical_name",
+            "reuse_source",
+            "assignments"
+          ]
+        },
+        {
+          "name": "SplitCharacterRequest",
+          "startLine": 190,
+          "endLine": 193,
+          "methods": [],
+          "properties": [
+            "targets",
+            "invalidate_render_assets",
+            "reason"
+          ]
+        },
+        {
+          "name": "CharacterEntityOperationResponse",
+          "startLine": 196,
+          "endLine": 208,
+          "methods": [],
+          "properties": [
+            "id",
+            "operation_type",
+            "novel_id",
+            "source_character_ids",
+            "target_character_ids",
+            "action",
+            "before_snapshot",
+            "status",
+            "actor_id",
+            "reason",
+            "created_at",
+            "updated_at"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "CharacterResponse",
+          "line": 45,
+          "isDefault": false
+        },
+        {
+          "name": "MentionResponse",
+          "line": 53,
+          "isDefault": false
+        },
+        {
+          "name": "ObservationResponse",
+          "line": 61,
+          "isDefault": false
+        },
+        {
+          "name": "ExpressionResponse",
+          "line": 70,
+          "isDefault": false
+        },
+        {
+          "name": "AppearanceStateResponse",
+          "line": 78,
+          "isDefault": false
+        },
+        {
+          "name": "RenderProfileResponse",
+          "line": 96,
+          "isDefault": false
+        },
+        {
+          "name": "UpdateRenderProfileRequest",
+          "line": 117,
+          "isDefault": false
+        },
+        {
+          "name": "CharacterConflictResponse",
+          "line": 127,
+          "isDefault": false
+        },
+        {
+          "name": "ResolveCharacterConflictRequest",
+          "line": 144,
+          "isDefault": false
+        },
+        {
+          "name": "SnapshotResponse",
+          "line": 148,
+          "isDefault": false
+        },
+        {
+          "name": "MergeSourceRequest",
+          "line": 162,
+          "isDefault": false
+        },
+        {
+          "name": "MergeCharactersRequest",
+          "line": 167,
+          "isDefault": false
+        },
+        {
+          "name": "SplitAssignmentsRequest",
+          "line": 173,
+          "isDefault": false
+        },
+        {
+          "name": "SplitTargetRequest",
+          "line": 184,
+          "isDefault": false
+        },
+        {
+          "name": "SplitCharacterRequest",
+          "line": 190,
+          "isDefault": false
+        },
+        {
+          "name": "CharacterEntityOperationResponse",
+          "line": 196,
+          "isDefault": false
+        },
+        {
+          "name": "_revision",
+          "line": 211,
+          "isDefault": false
+        },
+        {
+          "name": "_state_response",
+          "line": 223,
+          "isDefault": false
+        },
+        {
+          "name": "_profile_response",
+          "line": 227,
+          "isDefault": false
+        },
+        {
+          "name": "_conflict_response",
+          "line": 231,
+          "isDefault": false
+        },
+        {
+          "name": "_entity_operation_response",
+          "line": 235,
+          "isDefault": false
+        },
+        {
+          "name": "_service_error",
+          "line": 241,
+          "isDefault": false
+        },
+        {
+          "name": "list_characters",
+          "line": 248,
+          "isDefault": false
+        },
+        {
+          "name": "_character_or_404",
+          "line": 269,
+          "isDefault": false
+        },
+        {
+          "name": "list_mentions",
+          "line": 276,
+          "isDefault": false
+        },
+        {
+          "name": "list_observations",
+          "line": 299,
+          "isDefault": false
+        },
+        {
+          "name": "list_expressions",
+          "line": 322,
+          "isDefault": false
+        },
+        {
+          "name": "list_appearance_states",
+          "line": 344,
+          "isDefault": false
+        },
+        {
+          "name": "list_character_conflicts",
+          "line": 357,
+          "isDefault": false
+        },
+        {
+          "name": "resolve_character_conflict",
+          "line": 372,
+          "isDefault": false
+        },
+        {
+          "name": "get_render_profile",
+          "line": 394,
+          "isDefault": false
+        },
+        {
+          "name": "put_render_profile",
+          "line": 413,
+          "isDefault": false
+        },
+        {
+          "name": "approve_character_profile",
+          "line": 446,
+          "isDefault": false
+        },
+        {
+          "name": "get_character_snapshot",
+          "line": 471,
+          "isDefault": false
+        },
+        {
+          "name": "merge_characters",
+          "line": 500,
+          "isDefault": false
+        },
+        {
+          "name": "split_character",
+          "line": 534,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "_revision",
+          "callee": "if_match.strip().strip",
+          "lineNumber": 212
+        },
+        {
+          "caller": "_revision",
+          "callee": "if_match.strip",
+          "lineNumber": 212
+        },
+        {
+          "caller": "_revision",
+          "callee": "int",
+          "lineNumber": 214
+        },
+        {
+          "caller": "_revision",
+          "callee": "HTTPException",
+          "lineNumber": 216
+        },
+        {
+          "caller": "_revision",
+          "callee": "HTTPException",
+          "lineNumber": 219
+        },
+        {
+          "caller": "_state_response",
+          "callee": "AppearanceStateResponse.model_validate",
+          "lineNumber": 224
+        },
+        {
+          "caller": "_profile_response",
+          "callee": "RenderProfileResponse.model_validate",
+          "lineNumber": 228
+        },
+        {
+          "caller": "_conflict_response",
+          "callee": "CharacterConflictResponse.model_validate",
+          "lineNumber": 232
+        },
+        {
+          "caller": "_entity_operation_response",
+          "callee": "CharacterEntityOperationResponse.model_validate",
+          "lineNumber": 238
+        },
+        {
+          "caller": "_service_error",
+          "callee": "str",
+          "lineNumber": 242
+        },
+        {
+          "caller": "_service_error",
+          "callee": "code.endswith",
+          "lineNumber": 243
+        },
+        {
+          "caller": "_service_error",
+          "callee": "HTTPException",
+          "lineNumber": 244
+        },
+        {
+          "caller": "_service_error",
+          "callee": "HTTPException",
+          "lineNumber": 245
+        },
+        {
+          "caller": "list_characters",
+          "callee": "Depends",
+          "lineNumber": 250
+        },
+        {
+          "caller": "list_characters",
+          "callee": "session.scalars",
+          "lineNumber": 252
+        },
+        {
+          "caller": "list_characters",
+          "callee": "select(CharacterORM)\n        .where(CharacterORM.novel_id == novel_id)\n        .order_by",
+          "lineNumber": 253
+        },
+        {
+          "caller": "list_characters",
+          "callee": "select(CharacterORM)\n        .where",
+          "lineNumber": 253
+        },
+        {
+          "caller": "list_characters",
+          "callee": "select",
+          "lineNumber": 253
+        },
+        {
+          "caller": "list_characters",
+          "callee": "CharacterResponse",
+          "lineNumber": 258
+        },
+        {
+          "caller": "_character_or_404",
+          "callee": "session.get",
+          "lineNumber": 270
+        },
+        {
+          "caller": "_character_or_404",
+          "callee": "HTTPException",
+          "lineNumber": 272
+        },
+        {
+          "caller": "list_mentions",
+          "callee": "Depends",
+          "lineNumber": 278
+        },
+        {
+          "caller": "list_mentions",
+          "callee": "_character_or_404",
+          "lineNumber": 280
+        },
+        {
+          "caller": "list_mentions",
+          "callee": "session.scalars",
+          "lineNumber": 281
+        },
+        {
+          "caller": "list_mentions",
+          "callee": "select(MentionSpanORM)\n        .join(TextChunkORM, MentionSpanORM.source_chunk_id == TextChunkORM.id)\n        .where(MentionSpanORM.resolved_character_id == character_id)\n        .order_by",
+          "lineNumber": 282
+        },
+        {
+          "caller": "list_mentions",
+          "callee": "select(MentionSpanORM)\n        .join(TextChunkORM, MentionSpanORM.source_chunk_id == TextChunkORM.id)\n        .where",
+          "lineNumber": 282
+        },
+        {
+          "caller": "list_mentions",
+          "callee": "select(MentionSpanORM)\n        .join",
+          "lineNumber": 282
+        },
+        {
+          "caller": "list_mentions",
+          "callee": "select",
+          "lineNumber": 282
+        },
+        {
+          "caller": "list_mentions",
+          "callee": "MentionResponse",
+          "lineNumber": 288
+        },
+        {
+          "caller": "list_observations",
+          "callee": "Depends",
+          "lineNumber": 301
+        },
+        {
+          "caller": "list_observations",
+          "callee": "_character_or_404",
+          "lineNumber": 303
+        },
+        {
+          "caller": "list_observations",
+          "callee": "session.scalars",
+          "lineNumber": 304
+        },
+        {
+          "caller": "list_observations",
+          "callee": "select(FeatureObservationORM)\n        .where(FeatureObservationORM.character_id == character_id)\n        .order_by",
+          "lineNumber": 305
+        },
+        {
+          "caller": "list_observations",
+          "callee": "select(FeatureObservationORM)\n        .where",
+          "lineNumber": 305
+        },
+        {
+          "caller": "list_observations",
+          "callee": "select",
+          "lineNumber": 305
+        },
+        {
+          "caller": "list_observations",
+          "callee": "ObservationResponse",
+          "lineNumber": 310
+        },
+        {
+          "caller": "list_expressions",
+          "callee": "Depends",
+          "lineNumber": 324
+        },
+        {
+          "caller": "list_expressions",
+          "callee": "_character_or_404",
+          "lineNumber": 326
+        },
+        {
+          "caller": "list_expressions",
+          "callee": "session.scalars",
+          "lineNumber": 327
+        },
+        {
+          "caller": "list_expressions",
+          "callee": "select(ExpressionObservationORM)\n        .where(ExpressionObservationORM.character_id == character_id)\n        .order_by",
+          "lineNumber": 328
+        },
+        {
+          "caller": "list_expressions",
+          "callee": "select(ExpressionObservationORM)\n        .where",
+          "lineNumber": 328
+        },
+        {
+          "caller": "list_expressions",
+          "callee": "select",
+          "lineNumber": 328
+        },
+        {
+          "caller": "list_expressions",
+          "callee": "ExpressionResponse",
+          "lineNumber": 333
+        },
+        {
+          "caller": "list_appearance_states",
+          "callee": "Depends",
+          "lineNumber": 349
+        },
+        {
+          "caller": "list_appearance_states",
+          "callee": "AppearanceService",
+          "lineNumber": 351
+        },
+        {
+          "caller": "list_appearance_states",
+          "callee": "service.character",
+          "lineNumber": 352
+        },
+        {
+          "caller": "list_appearance_states",
+          "callee": "HTTPException",
+          "lineNumber": 353
+        },
+        {
+          "caller": "list_appearance_states",
+          "callee": "_state_response",
+          "lineNumber": 354
+        },
+        {
+          "caller": "list_appearance_states",
+          "callee": "service.states",
+          "lineNumber": 354
+        },
+        {
+          "caller": "list_character_conflicts",
+          "callee": "Depends",
+          "lineNumber": 360
+        },
+        {
+          "caller": "list_character_conflicts",
+          "callee": "Query",
+          "lineNumber": 361
+        },
+        {
+          "caller": "list_character_conflicts",
+          "callee": "AppearanceService",
+          "lineNumber": 363
+        },
+        {
+          "caller": "list_character_conflicts",
+          "callee": "service.character",
+          "lineNumber": 364
+        },
+        {
+          "caller": "list_character_conflicts",
+          "callee": "HTTPException",
+          "lineNumber": 365
+        },
+        {
+          "caller": "list_character_conflicts",
+          "callee": "service.conflicts",
+          "lineNumber": 366
+        },
+        {
+          "caller": "list_character_conflicts",
+          "callee": "_conflict_response",
+          "lineNumber": 369
+        },
+        {
+          "caller": "resolve_character_conflict",
+          "callee": "Depends",
+          "lineNumber": 376
+        },
+        {
+          "caller": "resolve_character_conflict",
+          "callee": "Header",
+          "lineNumber": 377
+        },
+        {
+          "caller": "resolve_character_conflict",
+          "callee": "Header",
+          "lineNumber": 378
+        },
+        {
+          "caller": "resolve_character_conflict",
+          "callee": "AppearanceService(session).resolve_conflict",
+          "lineNumber": 381
+        },
+        {
+          "caller": "resolve_character_conflict",
+          "callee": "AppearanceService",
+          "lineNumber": 381
+        },
+        {
+          "caller": "resolve_character_conflict",
+          "callee": "_revision",
+          "lineNumber": 384
+        },
+        {
+          "caller": "resolve_character_conflict",
+          "callee": "HTTPException",
+          "lineNumber": 388
+        },
+        {
+          "caller": "resolve_character_conflict",
+          "callee": "str",
+          "lineNumber": 388
+        },
+        {
+          "caller": "resolve_character_conflict",
+          "callee": "_service_error",
+          "lineNumber": 390
+        },
+        {
+          "caller": "resolve_character_conflict",
+          "callee": "_conflict_response",
+          "lineNumber": 391
+        },
+        {
+          "caller": "get_render_profile",
+          "callee": "Depends",
+          "lineNumber": 400
+        },
+        {
+          "caller": "get_render_profile",
+          "callee": "AppearanceService",
+          "lineNumber": 403
+        },
+        {
+          "caller": "get_render_profile",
+          "callee": "service.character",
+          "lineNumber": 404
+        },
+        {
+          "caller": "get_render_profile",
+          "callee": "HTTPException",
+          "lineNumber": 405
+        },
+        {
+          "caller": "get_render_profile",
+          "callee": "service.latest_profile",
+          "lineNumber": 406
+        },
+        {
+          "caller": "get_render_profile",
+          "callee": "HTTPException",
+          "lineNumber": 408
+        },
+        {
+          "caller": "get_render_profile",
+          "callee": "_profile_response",
+          "lineNumber": 410
+        },
+        {
+          "caller": "put_render_profile",
+          "callee": "Depends",
+          "lineNumber": 420
+        },
+        {
+          "caller": "put_render_profile",
+          "callee": "Header",
+          "lineNumber": 422
+        },
+        {
+          "caller": "put_render_profile",
+          "callee": "AppearanceService(session).put_profile",
+          "lineNumber": 425
+        },
+        {
+          "caller": "put_render_profile",
+          "callee": "AppearanceService",
+          "lineNumber": 425
+        },
+        {
+          "caller": "put_render_profile",
+          "callee": "RenderProfileUpdate",
+          "lineNumber": 427
+        },
+        {
+          "caller": "put_render_profile",
+          "callee": "_revision",
+          "lineNumber": 436
+        },
+        {
+          "caller": "put_render_profile",
+          "callee": "HTTPException",
+          "lineNumber": 439
+        },
+        {
+          "caller": "put_render_profile",
+          "callee": "str",
+          "lineNumber": 439
+        },
+        {
+          "caller": "put_render_profile",
+          "callee": "_service_error",
+          "lineNumber": 441
+        },
+        {
+          "caller": "put_render_profile",
+          "callee": "_profile_response",
+          "lineNumber": 443
+        },
+        {
+          "caller": "approve_character_profile",
+          "callee": "Depends",
+          "lineNumber": 452
+        },
+        {
+          "caller": "approve_character_profile",
+          "callee": "Header",
+          "lineNumber": 454
+        },
+        {
+          "caller": "approve_character_profile",
+          "callee": "Header",
+          "lineNumber": 455
+        },
+        {
+          "caller": "approve_character_profile",
+          "callee": "AppearanceService(session).approve",
+          "lineNumber": 458
+        },
+        {
+          "caller": "approve_character_profile",
+          "callee": "AppearanceService",
+          "lineNumber": 458
+        },
+        {
+          "caller": "approve_character_profile",
+          "callee": "_revision",
+          "lineNumber": 460
+        },
+        {
+          "caller": "approve_character_profile",
+          "callee": "HTTPException",
+          "lineNumber": 464
+        },
+        {
+          "caller": "approve_character_profile",
+          "callee": "str",
+          "lineNumber": 464
+        },
+        {
+          "caller": "approve_character_profile",
+          "callee": "_service_error",
+          "lineNumber": 466
+        },
+        {
+          "caller": "approve_character_profile",
+          "callee": "_profile_response",
+          "lineNumber": 468
+        },
+        {
+          "caller": "get_character_snapshot",
+          "callee": "Depends",
+          "lineNumber": 477
+        },
+        {
+          "caller": "get_character_snapshot",
+          "callee": "Query",
+          "lineNumber": 481
+        },
+        {
+          "caller": "get_character_snapshot",
+          "callee": "AppearanceService(session).snapshot",
+          "lineNumber": 484
+        },
+        {
+          "caller": "get_character_snapshot",
+          "callee": "AppearanceService",
+          "lineNumber": 484
+        },
+        {
+          "caller": "get_character_snapshot",
+          "callee": "SnapshotTarget",
+          "lineNumber": 486
+        },
+        {
+          "caller": "get_character_snapshot",
+          "callee": "HTTPException",
+          "lineNumber": 494
+        },
+        {
+          "caller": "get_character_snapshot",
+          "callee": "str",
+          "lineNumber": 494
+        },
+        {
+          "caller": "get_character_snapshot",
+          "callee": "_service_error",
+          "lineNumber": 496
+        },
+        {
+          "caller": "get_character_snapshot",
+          "callee": "SnapshotResponse.model_validate",
+          "lineNumber": 497
+        },
+        {
+          "caller": "merge_characters",
+          "callee": "Depends",
+          "lineNumber": 507
+        },
+        {
+          "caller": "merge_characters",
+          "callee": "Header",
+          "lineNumber": 508
+        },
+        {
+          "caller": "merge_characters",
+          "callee": "Header",
+          "lineNumber": 509
+        },
+        {
+          "caller": "merge_characters",
+          "callee": "Header",
+          "lineNumber": 510
+        },
+        {
+          "caller": "merge_characters",
+          "callee": "CharacterEntityService(session).merge",
+          "lineNumber": 513
+        },
+        {
+          "caller": "merge_characters",
+          "callee": "CharacterEntityService",
+          "lineNumber": 513
+        },
+        {
+          "caller": "merge_characters",
+          "callee": "_revision",
+          "lineNumber": 515
+        },
+        {
+          "caller": "merge_characters",
+          "callee": "MergeSource",
+          "lineNumber": 517
+        },
+        {
+          "caller": "merge_characters",
+          "callee": "HTTPException",
+          "lineNumber": 528
+        },
+        {
+          "caller": "merge_characters",
+          "callee": "str",
+          "lineNumber": 528
+        },
+        {
+          "caller": "merge_characters",
+          "callee": "_service_error",
+          "lineNumber": 530
+        },
+        {
+          "caller": "merge_characters",
+          "callee": "_entity_operation_response",
+          "lineNumber": 531
+        },
+        {
+          "caller": "split_character",
+          "callee": "Depends",
+          "lineNumber": 542
+        },
+        {
+          "caller": "split_character",
+          "callee": "Header",
+          "lineNumber": 543
+        },
+        {
+          "caller": "split_character",
+          "callee": "Header",
+          "lineNumber": 544
+        },
+        {
+          "caller": "split_character",
+          "callee": "Header",
+          "lineNumber": 545
+        },
+        {
+          "caller": "split_character",
+          "callee": "CharacterEntityService(session).split",
+          "lineNumber": 548
+        },
+        {
+          "caller": "split_character",
+          "callee": "CharacterEntityService",
+          "lineNumber": 548
+        },
+        {
+          "caller": "split_character",
+          "callee": "_revision",
+          "lineNumber": 550
+        },
+        {
+          "caller": "split_character",
+          "callee": "SplitTarget",
+          "lineNumber": 552
+        },
+        {
+          "caller": "split_character",
+          "callee": "SplitAssignments",
+          "lineNumber": 555
+        },
+        {
+          "caller": "split_character",
+          "callee": "item.assignments.model_dump",
+          "lineNumber": 555
+        },
+        {
+          "caller": "split_character",
+          "callee": "HTTPException",
+          "lineNumber": 565
+        },
+        {
+          "caller": "split_character",
+          "callee": "str",
+          "lineNumber": 565
+        },
+        {
+          "caller": "split_character",
+          "callee": "_service_error",
+          "lineNumber": 567
+        },
+        {
+          "caller": "split_character",
+          "callee": "_entity_operation_response",
+          "lineNumber": 568
+        }
+      ],
+      "metrics": {
+        "importCount": 5,
+        "exportCount": 36,
+        "functionCount": 20,
+        "classCount": 16
+      }
+    },
+    {
+      "path": "novel-character-generator/src/novel_character_generator/api/routes/story.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 184,
+      "nonEmptyLines": 159,
+      "functions": [
+        {
+          "name": "_if_match_revision",
+          "startLine": 83,
+          "endLine": 91,
+          "params": [
+            "if_match"
+          ]
+        },
+        {
+          "name": "_require_novel",
+          "startLine": 94,
+          "endLine": 96,
+          "params": [
+            "service",
+            "novel_id"
+          ]
+        },
+        {
+          "name": "list_timelines",
+          "startLine": 100,
+          "endLine": 108,
+          "params": [
+            "novel_id",
+            "session"
+          ]
+        },
+        {
+          "name": "list_events",
+          "startLine": 112,
+          "endLine": 142,
+          "params": [
+            "novel_id",
+            "session"
+          ]
+        },
+        {
+          "name": "list_scenes",
+          "startLine": 146,
+          "endLine": 154,
+          "params": [
+            "novel_id",
+            "session"
+          ]
+        },
+        {
+          "name": "update_scene_temporal_binding",
+          "startLine": 158,
+          "endLine": 184,
+          "params": [
+            "scene_id",
+            "request",
+            "session",
+            "if_match",
+            "actor_id"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "TimelineResponse",
+          "startLine": 27,
+          "endLine": 33,
+          "methods": [],
+          "properties": [
+            "id",
+            "novel_id",
+            "name",
+            "parent_timeline_id",
+            "branch_event_id",
+            "canonicality"
+          ]
+        },
+        {
+          "name": "EventParticipantResponse",
+          "startLine": 36,
+          "endLine": 39,
+          "methods": [],
+          "properties": [
+            "character_id",
+            "role",
+            "evidence_observation_ids"
+          ]
+        },
+        {
+          "name": "StoryEventResponse",
+          "startLine": 42,
+          "endLine": 49,
+          "methods": [],
+          "properties": [
+            "id",
+            "timeline_id",
+            "name",
+            "story_order",
+            "starts_at",
+            "ends_at",
+            "participants"
+          ]
+        },
+        {
+          "name": "SceneResponse",
+          "startLine": 52,
+          "endLine": 71,
+          "methods": [],
+          "properties": [
+            "id",
+            "novel_id",
+            "timeline_id",
+            "event_id",
+            "chapter_ordinal",
+            "narrative_order",
+            "point_of_view_character_id",
+            "label",
+            "source_document_version_id",
+            "source_chunk_id",
+            "char_start",
+            "char_end",
+            "presentation_mode",
+            "reality_status",
+            "confidence",
+            "binding_status",
+            "binding_revision",
+            "created_at",
+            "updated_at"
+          ]
+        },
+        {
+          "name": "TemporalBindingRequest",
+          "startLine": 74,
+          "endLine": 80,
+          "methods": [],
+          "properties": [
+            "timeline_id",
+            "event_id",
+            "presentation_mode",
+            "reality_status"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "TimelineResponse",
+          "line": 27,
+          "isDefault": false
+        },
+        {
+          "name": "EventParticipantResponse",
+          "line": 36,
+          "isDefault": false
+        },
+        {
+          "name": "StoryEventResponse",
+          "line": 42,
+          "isDefault": false
+        },
+        {
+          "name": "SceneResponse",
+          "line": 52,
+          "isDefault": false
+        },
+        {
+          "name": "TemporalBindingRequest",
+          "line": 74,
+          "isDefault": false
+        },
+        {
+          "name": "_if_match_revision",
+          "line": 83,
+          "isDefault": false
+        },
+        {
+          "name": "_require_novel",
+          "line": 94,
+          "isDefault": false
+        },
+        {
+          "name": "list_timelines",
+          "line": 99,
+          "isDefault": false
+        },
+        {
+          "name": "list_events",
+          "line": 111,
+          "isDefault": false
+        },
+        {
+          "name": "list_scenes",
+          "line": 145,
+          "isDefault": false
+        },
+        {
+          "name": "update_scene_temporal_binding",
+          "line": 157,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "_if_match_revision",
+          "callee": "if_match.strip().strip",
+          "lineNumber": 84
+        },
+        {
+          "caller": "_if_match_revision",
+          "callee": "if_match.strip",
+          "lineNumber": 84
+        },
+        {
+          "caller": "_if_match_revision",
+          "callee": "int",
+          "lineNumber": 86
+        },
+        {
+          "caller": "_if_match_revision",
+          "callee": "HTTPException",
+          "lineNumber": 88
+        },
+        {
+          "caller": "_if_match_revision",
+          "callee": "HTTPException",
+          "lineNumber": 90
+        },
+        {
+          "caller": "_require_novel",
+          "callee": "service.novel_exists",
+          "lineNumber": 95
+        },
+        {
+          "caller": "_require_novel",
+          "callee": "HTTPException",
+          "lineNumber": 96
+        },
+        {
+          "caller": "list_timelines",
+          "callee": "Depends",
+          "lineNumber": 101
+        },
+        {
+          "caller": "list_timelines",
+          "callee": "StoryService",
+          "lineNumber": 103
+        },
+        {
+          "caller": "list_timelines",
+          "callee": "_require_novel",
+          "lineNumber": 104
+        },
+        {
+          "caller": "list_timelines",
+          "callee": "TimelineResponse.model_validate",
+          "lineNumber": 106
+        },
+        {
+          "caller": "list_timelines",
+          "callee": "service.timelines",
+          "lineNumber": 107
+        },
+        {
+          "caller": "list_events",
+          "callee": "Depends",
+          "lineNumber": 113
+        },
+        {
+          "caller": "list_events",
+          "callee": "StoryService",
+          "lineNumber": 115
+        },
+        {
+          "caller": "list_events",
+          "callee": "_require_novel",
+          "lineNumber": 116
+        },
+        {
+          "caller": "list_events",
+          "callee": "service.events",
+          "lineNumber": 117
+        },
+        {
+          "caller": "list_events",
+          "callee": "list",
+          "lineNumber": 119
+        },
+        {
+          "caller": "list_events",
+          "callee": "session.scalars",
+          "lineNumber": 120
+        },
+        {
+          "caller": "list_events",
+          "callee": "select(EventParticipantORM)\n            .where(EventParticipantORM.event_id.in_(event_ids))\n            .order_by",
+          "lineNumber": 121
+        },
+        {
+          "caller": "list_events",
+          "callee": "select(EventParticipantORM)\n            .where",
+          "lineNumber": 121
+        },
+        {
+          "caller": "list_events",
+          "callee": "select",
+          "lineNumber": 121
+        },
+        {
+          "caller": "list_events",
+          "callee": "EventParticipantORM.event_id.in_",
+          "lineNumber": 122
+        },
+        {
+          "caller": "list_events",
+          "callee": "by_event.setdefault(participant.event_id, []).append",
+          "lineNumber": 128
+        },
+        {
+          "caller": "list_events",
+          "callee": "by_event.setdefault",
+          "lineNumber": 128
+        },
+        {
+          "caller": "list_events",
+          "callee": "EventParticipantResponse.model_validate",
+          "lineNumber": 129
+        },
+        {
+          "caller": "list_events",
+          "callee": "StoryEventResponse",
+          "lineNumber": 132
+        },
+        {
+          "caller": "list_events",
+          "callee": "by_event.get",
+          "lineNumber": 139
+        },
+        {
+          "caller": "list_scenes",
+          "callee": "Depends",
+          "lineNumber": 147
+        },
+        {
+          "caller": "list_scenes",
+          "callee": "StoryService",
+          "lineNumber": 149
+        },
+        {
+          "caller": "list_scenes",
+          "callee": "_require_novel",
+          "lineNumber": 150
+        },
+        {
+          "caller": "list_scenes",
+          "callee": "SceneResponse.model_validate",
+          "lineNumber": 152
+        },
+        {
+          "caller": "list_scenes",
+          "callee": "service.scenes",
+          "lineNumber": 153
+        },
+        {
+          "caller": "update_scene_temporal_binding",
+          "callee": "Depends",
+          "lineNumber": 161
+        },
+        {
+          "caller": "update_scene_temporal_binding",
+          "callee": "Header",
+          "lineNumber": 162
+        },
+        {
+          "caller": "update_scene_temporal_binding",
+          "callee": "Header",
+          "lineNumber": 163
+        },
+        {
+          "caller": "update_scene_temporal_binding",
+          "callee": "StoryService",
+          "lineNumber": 165
+        },
+        {
+          "caller": "update_scene_temporal_binding",
+          "callee": "service.update_temporal_binding",
+          "lineNumber": 167
+        },
+        {
+          "caller": "update_scene_temporal_binding",
+          "callee": "TemporalBindingUpdate",
+          "lineNumber": 169
+        },
+        {
+          "caller": "update_scene_temporal_binding",
+          "callee": "_if_match_revision",
+          "lineNumber": 175
+        },
+        {
+          "caller": "update_scene_temporal_binding",
+          "callee": "HTTPException",
+          "lineNumber": 179
+        },
+        {
+          "caller": "update_scene_temporal_binding",
+          "callee": "str",
+          "lineNumber": 179
+        },
+        {
+          "caller": "update_scene_temporal_binding",
+          "callee": "HTTPException",
+          "lineNumber": 181
+        },
+        {
+          "caller": "update_scene_temporal_binding",
+          "callee": "str",
+          "lineNumber": 181
+        },
+        {
+          "caller": "update_scene_temporal_binding",
+          "callee": "HTTPException",
+          "lineNumber": 183
+        },
+        {
+          "caller": "update_scene_temporal_binding",
+          "callee": "SceneResponse.model_validate",
+          "lineNumber": 184
+        }
+      ],
+      "metrics": {
+        "importCount": 4,
+        "exportCount": 11,
+        "functionCount": 6,
+        "classCount": 5
+      }
+    },
+    {
+      "path": "novel-character-generator/src/novel_character_generator/application/services/appearance_service.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 638,
+      "nonEmptyLines": 603,
+      "functions": [
+        {
+          "name": "_canonical",
+          "startLine": 61,
+          "endLine": 62,
+          "params": [
+            "value"
+          ]
+        },
+        {
+          "name": "_flatten",
+          "startLine": 65,
+          "endLine": 73,
+          "params": [
+            "value",
+            "prefix"
+          ]
+        },
+        {
+          "name": "_put_path",
+          "startLine": 76,
+          "endLine": 85,
+          "params": [
+            "target",
+            "path",
+            "value"
+          ]
+        },
+        {
+          "name": "_scope_overlaps",
+          "startLine": 88,
+          "endLine": 112,
+          "params": [
+            "left",
+            "right"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "AppearanceRevisionConflict",
+          "startLine": 34,
+          "endLine": 35,
+          "methods": [],
+          "properties": []
+        },
+        {
+          "name": "AppearanceResolutionError",
+          "startLine": 38,
+          "endLine": 39,
+          "methods": [],
+          "properties": []
+        },
+        {
+          "name": "RenderProfileUpdate",
+          "startLine": 43,
+          "endLine": 50,
+          "methods": [],
+          "properties": [
+            "identity_anchor",
+            "default_stage_key",
+            "appearance_state_ids",
+            "palette",
+            "field_sources",
+            "field_suggestions",
+            "style_preset"
+          ]
+        },
+        {
+          "name": "SnapshotTarget",
+          "startLine": 54,
+          "endLine": 58,
+          "methods": [],
+          "properties": [
+            "timeline_id",
+            "event_id",
+            "scene_id",
+            "chapter_ordinal"
+          ]
+        },
+        {
+          "name": "AppearanceService",
+          "startLine": 115,
+          "endLine": 638,
+          "methods": [
+            "__init__",
+            "character",
+            "states",
+            "latest_profile",
+            "conflicts",
+            "put_profile",
+            "approve",
+            "resolve_conflict",
+            "snapshot",
+            "_require_states",
+            "_refresh_conflicts",
+            "_resolve_target",
+            "_states_at_target",
+            "_timeline_limits"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "AppearanceRevisionConflict",
+          "line": 34,
+          "isDefault": false
+        },
+        {
+          "name": "AppearanceResolutionError",
+          "line": 38,
+          "isDefault": false
+        },
+        {
+          "name": "RenderProfileUpdate",
+          "line": 42,
+          "isDefault": false
+        },
+        {
+          "name": "SnapshotTarget",
+          "line": 53,
+          "isDefault": false
+        },
+        {
+          "name": "_canonical",
+          "line": 61,
+          "isDefault": false
+        },
+        {
+          "name": "_flatten",
+          "line": 65,
+          "isDefault": false
+        },
+        {
+          "name": "_put_path",
+          "line": 76,
+          "isDefault": false
+        },
+        {
+          "name": "_scope_overlaps",
+          "line": 88,
+          "isDefault": false
+        },
+        {
+          "name": "AppearanceService",
+          "line": 115,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "_canonical",
+          "callee": "json.dumps",
+          "lineNumber": 62
+        },
+        {
+          "caller": "_flatten",
+          "callee": "value.items",
+          "lineNumber": 67
+        },
+        {
+          "caller": "_flatten",
+          "callee": "isinstance",
+          "lineNumber": 69
+        },
+        {
+          "caller": "_flatten",
+          "callee": "result.update",
+          "lineNumber": 70
+        },
+        {
+          "caller": "_flatten",
+          "callee": "_flatten",
+          "lineNumber": 70
+        },
+        {
+          "caller": "_put_path",
+          "callee": "path.split",
+          "lineNumber": 77
+        },
+        {
+          "caller": "_put_path",
+          "callee": "cursor.get",
+          "lineNumber": 80
+        },
+        {
+          "caller": "_put_path",
+          "callee": "isinstance",
+          "lineNumber": 81
+        },
+        {
+          "caller": "_scope_overlaps",
+          "callee": "left.get",
+          "lineNumber": 89
+        },
+        {
+          "caller": "_scope_overlaps",
+          "callee": "right.get",
+          "lineNumber": 89
+        },
+        {
+          "caller": "_scope_overlaps",
+          "callee": "left.get",
+          "lineNumber": 91
+        },
+        {
+          "caller": "_scope_overlaps",
+          "callee": "right.get",
+          "lineNumber": 91
+        },
+        {
+          "caller": "_scope_overlaps",
+          "callee": "left.get",
+          "lineNumber": 93
+        },
+        {
+          "caller": "_scope_overlaps",
+          "callee": "right.get",
+          "lineNumber": 94
+        },
+        {
+          "caller": "_scope_overlaps",
+          "callee": "_canonical",
+          "lineNumber": 96
+        },
+        {
+          "caller": "_scope_overlaps",
+          "callee": "_canonical",
+          "lineNumber": 96
+        },
+        {
+          "caller": "_scope_overlaps",
+          "callee": "left.get",
+          "lineNumber": 98
+        },
+        {
+          "caller": "_scope_overlaps",
+          "callee": "right.get",
+          "lineNumber": 99
+        },
+        {
+          "caller": "_scope_overlaps",
+          "callee": "bool",
+          "lineNumber": 101
+        },
+        {
+          "caller": "_scope_overlaps",
+          "callee": "left.get",
+          "lineNumber": 102
+        },
+        {
+          "caller": "_scope_overlaps",
+          "callee": "left.get",
+          "lineNumber": 103
+        },
+        {
+          "caller": "_scope_overlaps",
+          "callee": "right.get",
+          "lineNumber": 104
+        },
+        {
+          "caller": "_scope_overlaps",
+          "callee": "right.get",
+          "lineNumber": 105
+        },
+        {
+          "caller": "_scope_overlaps",
+          "callee": "any",
+          "lineNumber": 106
+        },
+        {
+          "caller": "_scope_overlaps",
+          "callee": "int",
+          "lineNumber": 107
+        },
+        {
+          "caller": "_scope_overlaps",
+          "callee": "int",
+          "lineNumber": 108
+        },
+        {
+          "caller": "_scope_overlaps",
+          "callee": "int",
+          "lineNumber": 109
+        },
+        {
+          "caller": "_scope_overlaps",
+          "callee": "int",
+          "lineNumber": 110
+        },
+        {
+          "caller": "_scope_overlaps",
+          "callee": "max",
+          "lineNumber": 111
+        },
+        {
+          "caller": "_scope_overlaps",
+          "callee": "min",
+          "lineNumber": 111
+        },
+        {
+          "caller": "character",
+          "callee": "self.session.get",
+          "lineNumber": 120
+        },
+        {
+          "caller": "states",
+          "callee": "list",
+          "lineNumber": 123
+        },
+        {
+          "caller": "states",
+          "callee": "self.session.scalars",
+          "lineNumber": 124
+        },
+        {
+          "caller": "states",
+          "callee": "select(CharacterAppearanceStateORM)\n                .where(\n                    CharacterAppearanceStateORM.character_id == character_id,\n                    CharacterAppearanceStateORM.record_status == \"active\",\n                )\n                .order_by",
+          "lineNumber": 125
+        },
+        {
+          "caller": "states",
+          "callee": "select(CharacterAppearanceStateORM)\n                .where",
+          "lineNumber": 125
+        },
+        {
+          "caller": "states",
+          "callee": "select",
+          "lineNumber": 125
+        },
+        {
+          "caller": "latest_profile",
+          "callee": "self.session.scalar",
+          "lineNumber": 139
+        },
+        {
+          "caller": "latest_profile",
+          "callee": "select(CharacterRenderProfileORM)\n            .where(CharacterRenderProfileORM.character_id == character_id)\n            .order_by(CharacterRenderProfileORM.version.desc())\n            .limit",
+          "lineNumber": 140
+        },
+        {
+          "caller": "latest_profile",
+          "callee": "select(CharacterRenderProfileORM)\n            .where(CharacterRenderProfileORM.character_id == character_id)\n            .order_by",
+          "lineNumber": 140
+        },
+        {
+          "caller": "latest_profile",
+          "callee": "select(CharacterRenderProfileORM)\n            .where",
+          "lineNumber": 140
+        },
+        {
+          "caller": "latest_profile",
+          "callee": "select",
+          "lineNumber": 140
+        },
+        {
+          "caller": "latest_profile",
+          "callee": "CharacterRenderProfileORM.version.desc",
+          "lineNumber": 142
+        },
+        {
+          "caller": "conflicts",
+          "callee": "list",
+          "lineNumber": 148
+        },
+        {
+          "caller": "conflicts",
+          "callee": "self.session.scalars",
+          "lineNumber": 149
+        },
+        {
+          "caller": "conflicts",
+          "callee": "select(CharacterConflictORM)\n                .where(CharacterConflictORM.character_id == character_id)\n                .order_by",
+          "lineNumber": 150
+        },
+        {
+          "caller": "conflicts",
+          "callee": "select(CharacterConflictORM)\n                .where",
+          "lineNumber": 150
+        },
+        {
+          "caller": "conflicts",
+          "callee": "select",
+          "lineNumber": 150
+        },
+        {
+          "caller": "put_profile",
+          "callee": "self.character",
+          "lineNumber": 163
+        },
+        {
+          "caller": "put_profile",
+          "callee": "ValueError",
+          "lineNumber": 164
+        },
+        {
+          "caller": "put_profile",
+          "callee": "list",
+          "lineNumber": 165
+        },
+        {
+          "caller": "put_profile",
+          "callee": "dict.fromkeys",
+          "lineNumber": 165
+        },
+        {
+          "caller": "put_profile",
+          "callee": "self._require_states",
+          "lineNumber": 166
+        },
+        {
+          "caller": "put_profile",
+          "callee": "self.latest_profile",
+          "lineNumber": 167
+        },
+        {
+          "caller": "put_profile",
+          "callee": "datetime.now",
+          "lineNumber": 168
+        },
+        {
+          "caller": "put_profile",
+          "callee": "AppearanceRevisionConflict",
+          "lineNumber": 171
+        },
+        {
+          "caller": "put_profile",
+          "callee": "CharacterRenderProfileORM",
+          "lineNumber": 172
+        },
+        {
+          "caller": "put_profile",
+          "callee": "uuid4",
+          "lineNumber": 173
+        },
+        {
+          "caller": "put_profile",
+          "callee": "len",
+          "lineNumber": 178
+        },
+        {
+          "caller": "put_profile",
+          "callee": "str",
+          "lineNumber": 180
+        },
+        {
+          "caller": "put_profile",
+          "callee": "self.session.add",
+          "lineNumber": 192
+        },
+        {
+          "caller": "put_profile",
+          "callee": "AppearanceRevisionConflict",
+          "lineNumber": 194
+        },
+        {
+          "caller": "put_profile",
+          "callee": "CharacterRenderProfileORM",
+          "lineNumber": 197
+        },
+        {
+          "caller": "put_profile",
+          "callee": "uuid4",
+          "lineNumber": 198
+        },
+        {
+          "caller": "put_profile",
+          "callee": "len",
+          "lineNumber": 203
+        },
+        {
+          "caller": "put_profile",
+          "callee": "str",
+          "lineNumber": 205
+        },
+        {
+          "caller": "put_profile",
+          "callee": "self.session.add",
+          "lineNumber": 217
+        },
+        {
+          "caller": "put_profile",
+          "callee": "len",
+          "lineNumber": 220
+        },
+        {
+          "caller": "put_profile",
+          "callee": "str",
+          "lineNumber": 222
+        },
+        {
+          "caller": "put_profile",
+          "callee": "self._refresh_conflicts",
+          "lineNumber": 229
+        },
+        {
+          "caller": "put_profile",
+          "callee": "self.session.commit",
+          "lineNumber": 234
+        },
+        {
+          "caller": "put_profile",
+          "callee": "self.session.get_one",
+          "lineNumber": 235
+        },
+        {
+          "caller": "approve",
+          "callee": "self.latest_profile",
+          "lineNumber": 240
+        },
+        {
+          "caller": "approve",
+          "callee": "ValueError",
+          "lineNumber": 242
+        },
+        {
+          "caller": "approve",
+          "callee": "AppearanceRevisionConflict",
+          "lineNumber": 244
+        },
+        {
+          "caller": "approve",
+          "callee": "self.session.scalar",
+          "lineNumber": 245
+        },
+        {
+          "caller": "approve",
+          "callee": "select(CharacterConflictORM.id)\n            .where(\n                CharacterConflictORM.character_id == character_id,\n                CharacterConflictORM.status == \"pending\",\n            )\n            .limit",
+          "lineNumber": 246
+        },
+        {
+          "caller": "approve",
+          "callee": "select(CharacterConflictORM.id)\n            .where",
+          "lineNumber": 246
+        },
+        {
+          "caller": "approve",
+          "callee": "select",
+          "lineNumber": 246
+        },
+        {
+          "caller": "approve",
+          "callee": "AppearanceResolutionError",
+          "lineNumber": 254
+        },
+        {
+          "caller": "approve",
+          "callee": "self._require_states",
+          "lineNumber": 255
+        },
+        {
+          "caller": "approve",
+          "callee": "UUID",
+          "lineNumber": 256
+        },
+        {
+          "caller": "approve",
+          "callee": "datetime.now",
+          "lineNumber": 258
+        },
+        {
+          "caller": "approve",
+          "callee": "self.session.commit",
+          "lineNumber": 267
+        },
+        {
+          "caller": "approve",
+          "callee": "self.session.get_one",
+          "lineNumber": 268
+        },
+        {
+          "caller": "resolve_conflict",
+          "callee": "self.session.get",
+          "lineNumber": 278
+        },
+        {
+          "caller": "resolve_conflict",
+          "callee": "ValueError",
+          "lineNumber": 280
+        },
+        {
+          "caller": "resolve_conflict",
+          "callee": "AppearanceResolutionError",
+          "lineNumber": 282
+        },
+        {
+          "caller": "resolve_conflict",
+          "callee": "datetime.now",
+          "lineNumber": 283
+        },
+        {
+          "caller": "resolve_conflict",
+          "callee": "self.session.scalar",
+          "lineNumber": 284
+        },
+        {
+          "caller": "resolve_conflict",
+          "callee": "update(CharacterConflictORM)\n            .where(\n                CharacterConflictORM.id == conflict_id,\n                CharacterConflictORM.revision == expected_revision,\n                CharacterConflictORM.status == \"pending\",\n            )\n            .values(\n                status=\"resolved\",\n                resolution={\"field_path\": conflict.field_path, \"selected_value\": selected_value},\n                resolved_by=actor_id,\n                resolved_at=now,\n                revision=expected_revision + 1,\n                updated_at=now,\n            )\n            .returning",
+          "lineNumber": 285
+        },
+        {
+          "caller": "resolve_conflict",
+          "callee": "update(CharacterConflictORM)\n            .where(\n                CharacterConflictORM.id == conflict_id,\n                CharacterConflictORM.revision == expected_revision,\n                CharacterConflictORM.status == \"pending\",\n            )\n            .values",
+          "lineNumber": 285
+        },
+        {
+          "caller": "resolve_conflict",
+          "callee": "update(CharacterConflictORM)\n            .where",
+          "lineNumber": 285
+        },
+        {
+          "caller": "resolve_conflict",
+          "callee": "update",
+          "lineNumber": 285
+        },
+        {
+          "caller": "resolve_conflict",
+          "callee": "self.session.rollback",
+          "lineNumber": 302
+        },
+        {
+          "caller": "resolve_conflict",
+          "callee": "AppearanceRevisionConflict",
+          "lineNumber": 303
+        },
+        {
+          "caller": "resolve_conflict",
+          "callee": "_put_path",
+          "lineNumber": 305
+        },
+        {
+          "caller": "resolve_conflict",
+          "callee": "CharacterAppearanceStateORM",
+          "lineNumber": 306
+        },
+        {
+          "caller": "resolve_conflict",
+          "callee": "uuid4",
+          "lineNumber": 307
+        },
+        {
+          "caller": "resolve_conflict",
+          "callee": "max",
+          "lineNumber": 312
+        },
+        {
+          "caller": "resolve_conflict",
+          "callee": "self.session.add",
+          "lineNumber": 323
+        },
+        {
+          "caller": "resolve_conflict",
+          "callee": "self.latest_profile",
+          "lineNumber": 324
+        },
+        {
+          "caller": "resolve_conflict",
+          "callee": "str",
+          "lineNumber": 326
+        },
+        {
+          "caller": "resolve_conflict",
+          "callee": "item.get",
+          "lineNumber": 330
+        },
+        {
+          "caller": "resolve_conflict",
+          "callee": "str",
+          "lineNumber": 330
+        },
+        {
+          "caller": "resolve_conflict",
+          "callee": "self.session.commit",
+          "lineNumber": 337
+        },
+        {
+          "caller": "resolve_conflict",
+          "callee": "self.session.get_one",
+          "lineNumber": 338
+        },
+        {
+          "caller": "snapshot",
+          "callee": "self.character",
+          "lineNumber": 341
+        },
+        {
+          "caller": "snapshot",
+          "callee": "ValueError",
+          "lineNumber": 343
+        },
+        {
+          "caller": "snapshot",
+          "callee": "self.latest_profile",
+          "lineNumber": 344
+        },
+        {
+          "caller": "snapshot",
+          "callee": "ValueError",
+          "lineNumber": 346
+        },
+        {
+          "caller": "snapshot",
+          "callee": "self._require_states",
+          "lineNumber": 347
+        },
+        {
+          "caller": "snapshot",
+          "callee": "UUID",
+          "lineNumber": 348
+        },
+        {
+          "caller": "snapshot",
+          "callee": "self._resolve_target",
+          "lineNumber": 355
+        },
+        {
+          "caller": "snapshot",
+          "callee": "all",
+          "lineNumber": 356
+        },
+        {
+          "caller": "snapshot",
+          "callee": "len",
+          "lineNumber": 365
+        },
+        {
+          "caller": "snapshot",
+          "callee": "AppearanceResolutionError",
+          "lineNumber": 366
+        },
+        {
+          "caller": "snapshot",
+          "callee": "self._states_at_target",
+          "lineNumber": 369
+        },
+        {
+          "caller": "snapshot",
+          "callee": "selected.sort",
+          "lineNumber": 370
+        },
+        {
+          "caller": "snapshot",
+          "callee": "STATE_KIND_ORDER.get",
+          "lineNumber": 372
+        },
+        {
+          "caller": "snapshot",
+          "callee": "str",
+          "lineNumber": 375
+        },
+        {
+          "caller": "snapshot",
+          "callee": "dict",
+          "lineNumber": 378
+        },
+        {
+          "caller": "snapshot",
+          "callee": "dict",
+          "lineNumber": 379
+        },
+        {
+          "caller": "snapshot",
+          "callee": "_flatten",
+          "lineNumber": 385
+        },
+        {
+          "caller": "snapshot",
+          "callee": "STATE_KIND_ORDER.get",
+          "lineNumber": 388
+        },
+        {
+          "caller": "snapshot",
+          "callee": "_flatten(state.appearance).items",
+          "lineNumber": 389
+        },
+        {
+          "caller": "snapshot",
+          "callee": "_flatten",
+          "lineNumber": 389
+        },
+        {
+          "caller": "snapshot",
+          "callee": "_canonical",
+          "lineNumber": 391
+        },
+        {
+          "caller": "snapshot",
+          "callee": "precedence_values.get",
+          "lineNumber": 392
+        },
+        {
+          "caller": "snapshot",
+          "callee": "AppearanceResolutionError",
+          "lineNumber": 398
+        },
+        {
+          "caller": "snapshot",
+          "callee": "_put_path",
+          "lineNumber": 400
+        },
+        {
+          "caller": "snapshot",
+          "callee": "str",
+          "lineNumber": 404
+        },
+        {
+          "caller": "snapshot",
+          "callee": "str",
+          "lineNumber": 405
+        },
+        {
+          "caller": "snapshot",
+          "callee": "str",
+          "lineNumber": 408
+        },
+        {
+          "caller": "snapshot",
+          "callee": "str",
+          "lineNumber": 411
+        },
+        {
+          "caller": "snapshot",
+          "callee": "str",
+          "lineNumber": 412
+        },
+        {
+          "caller": "snapshot",
+          "callee": "str",
+          "lineNumber": 415
+        },
+        {
+          "caller": "snapshot",
+          "callee": "hashlib.sha256(_canonical(payload).encode()).hexdigest",
+          "lineNumber": 422
+        },
+        {
+          "caller": "snapshot",
+          "callee": "hashlib.sha256",
+          "lineNumber": 422
+        },
+        {
+          "caller": "snapshot",
+          "callee": "_canonical(payload).encode",
+          "lineNumber": 422
+        },
+        {
+          "caller": "snapshot",
+          "callee": "_canonical",
+          "lineNumber": 422
+        },
+        {
+          "caller": "_require_states",
+          "callee": "list",
+          "lineNumber": 430
+        },
+        {
+          "caller": "_require_states",
+          "callee": "self.session.scalars",
+          "lineNumber": 431
+        },
+        {
+          "caller": "_require_states",
+          "callee": "select(CharacterAppearanceStateORM).where",
+          "lineNumber": 432
+        },
+        {
+          "caller": "_require_states",
+          "callee": "select",
+          "lineNumber": 432
+        },
+        {
+          "caller": "_require_states",
+          "callee": "CharacterAppearanceStateORM.id.in_",
+          "lineNumber": 433
+        },
+        {
+          "caller": "_require_states",
+          "callee": "any",
+          "lineNumber": 439
+        },
+        {
+          "caller": "_require_states",
+          "callee": "ValueError",
+          "lineNumber": 440
+        },
+        {
+          "caller": "_refresh_conflicts",
+          "callee": "enumerate",
+          "lineNumber": 450
+        },
+        {
+          "caller": "_refresh_conflicts",
+          "callee": "_flatten",
+          "lineNumber": 451
+        },
+        {
+          "caller": "_refresh_conflicts",
+          "callee": "STATE_KIND_ORDER.get",
+          "lineNumber": 453
+        },
+        {
+          "caller": "_refresh_conflicts",
+          "callee": "STATE_KIND_ORDER.get",
+          "lineNumber": 453
+        },
+        {
+          "caller": "_refresh_conflicts",
+          "callee": "_scope_overlaps",
+          "lineNumber": 457
+        },
+        {
+          "caller": "_refresh_conflicts",
+          "callee": "_flatten",
+          "lineNumber": 459
+        },
+        {
+          "caller": "_refresh_conflicts",
+          "callee": "sorted",
+          "lineNumber": 460
+        },
+        {
+          "caller": "_refresh_conflicts",
+          "callee": "left_values.keys",
+          "lineNumber": 460
+        },
+        {
+          "caller": "_refresh_conflicts",
+          "callee": "right_values.keys",
+          "lineNumber": 460
+        },
+        {
+          "caller": "_refresh_conflicts",
+          "callee": "_canonical",
+          "lineNumber": 461
+        },
+        {
+          "caller": "_refresh_conflicts",
+          "callee": "_canonical",
+          "lineNumber": 461
+        },
+        {
+          "caller": "_refresh_conflicts",
+          "callee": "sorted",
+          "lineNumber": 463
+        },
+        {
+          "caller": "_refresh_conflicts",
+          "callee": "str",
+          "lineNumber": 463
+        },
+        {
+          "caller": "_refresh_conflicts",
+          "callee": "str",
+          "lineNumber": 463
+        },
+        {
+          "caller": "_refresh_conflicts",
+          "callee": "hashlib.sha256(\n                        _canonical(\n                            {\n                                \"field_path\": path,\n                                \"state_ids\": state_ids,\n                                \"scope\": left.temporal_scope,\n                                \"priority\": left.merge_priority,\n                            }\n                        ).encode()\n                    ).hexdigest",
+          "lineNumber": 464
+        },
+        {
+          "caller": "_refresh_conflicts",
+          "callee": "hashlib.sha256",
+          "lineNumber": 464
+        },
+        {
+          "caller": "_refresh_conflicts",
+          "callee": "_canonical(\n                            {\n                                \"field_path\": path,\n                                \"state_ids\": state_ids,\n                                \"scope\": left.temporal_scope,\n                                \"priority\": left.merge_priority,\n                            }\n                        ).encode",
+          "lineNumber": 465
+        },
+        {
+          "caller": "_refresh_conflicts",
+          "callee": "_canonical",
+          "lineNumber": 465
+        },
+        {
+          "caller": "_refresh_conflicts",
+          "callee": "list",
+          "lineNumber": 481
+        },
+        {
+          "caller": "_refresh_conflicts",
+          "callee": "self.session.scalars",
+          "lineNumber": 482
+        },
+        {
+          "caller": "_refresh_conflicts",
+          "callee": "select(CharacterConflictORM).where",
+          "lineNumber": 483
+        },
+        {
+          "caller": "_refresh_conflicts",
+          "callee": "select",
+          "lineNumber": 483
+        },
+        {
+          "caller": "_refresh_conflicts",
+          "callee": "detected.items",
+          "lineNumber": 496
+        },
+        {
+          "caller": "_refresh_conflicts",
+          "callee": "by_fingerprint.get",
+          "lineNumber": 497
+        },
+        {
+          "caller": "_refresh_conflicts",
+          "callee": "CharacterConflictORM",
+          "lineNumber": 499
+        },
+        {
+          "caller": "_refresh_conflicts",
+          "callee": "uuid4",
+          "lineNumber": 500
+        },
+        {
+          "caller": "_refresh_conflicts",
+          "callee": "self.session.add",
+          "lineNumber": 516
+        },
+        {
+          "caller": "_refresh_conflicts",
+          "callee": "summaries.append",
+          "lineNumber": 517
+        },
+        {
+          "caller": "_refresh_conflicts",
+          "callee": "str",
+          "lineNumber": 519
+        },
+        {
+          "caller": "_resolve_target",
+          "callee": "self.session.get",
+          "lineNumber": 531
+        },
+        {
+          "caller": "_resolve_target",
+          "callee": "ValueError",
+          "lineNumber": 533
+        },
+        {
+          "caller": "_resolve_target",
+          "callee": "ValueError",
+          "lineNumber": 535
+        },
+        {
+          "caller": "_resolve_target",
+          "callee": "SnapshotTarget",
+          "lineNumber": 536
+        },
+        {
+          "caller": "_resolve_target",
+          "callee": "self.session.get",
+          "lineNumber": 543
+        },
+        {
+          "caller": "_resolve_target",
+          "callee": "ValueError",
+          "lineNumber": 545
+        },
+        {
+          "caller": "_resolve_target",
+          "callee": "self.session.get_one",
+          "lineNumber": 546
+        },
+        {
+          "caller": "_resolve_target",
+          "callee": "ValueError",
+          "lineNumber": 548
+        },
+        {
+          "caller": "_resolve_target",
+          "callee": "ValueError",
+          "lineNumber": 550
+        },
+        {
+          "caller": "_resolve_target",
+          "callee": "SnapshotTarget",
+          "lineNumber": 551
+        },
+        {
+          "caller": "_resolve_target",
+          "callee": "self.session.get",
+          "lineNumber": 557
+        },
+        {
+          "caller": "_resolve_target",
+          "callee": "ValueError",
+          "lineNumber": 559
+        },
+        {
+          "caller": "_resolve_target",
+          "callee": "ValueError",
+          "lineNumber": 561
+        },
+        {
+          "caller": "_states_at_target",
+          "callee": "AppearanceResolutionError",
+          "lineNumber": 568
+        },
+        {
+          "caller": "_states_at_target",
+          "callee": "self._timeline_limits",
+          "lineNumber": 569
+        },
+        {
+          "caller": "_states_at_target",
+          "callee": "scope.get",
+          "lineNumber": 574
+        },
+        {
+          "caller": "_states_at_target",
+          "callee": "UUID",
+          "lineNumber": 577
+        },
+        {
+          "caller": "_states_at_target",
+          "callee": "str",
+          "lineNumber": 577
+        },
+        {
+          "caller": "_states_at_target",
+          "callee": "scope.get",
+          "lineNumber": 582
+        },
+        {
+          "caller": "_states_at_target",
+          "callee": "scope.get",
+          "lineNumber": 585
+        },
+        {
+          "caller": "_states_at_target",
+          "callee": "scope.get",
+          "lineNumber": 586
+        },
+        {
+          "caller": "_states_at_target",
+          "callee": "int",
+          "lineNumber": 587
+        },
+        {
+          "caller": "_states_at_target",
+          "callee": "int",
+          "lineNumber": 589
+        },
+        {
+          "caller": "_states_at_target",
+          "callee": "scope.get",
+          "lineNumber": 592
+        },
+        {
+          "caller": "_states_at_target",
+          "callee": "scope.get",
+          "lineNumber": 593
+        },
+        {
+          "caller": "_states_at_target",
+          "callee": "UUID",
+          "lineNumber": 595
+        },
+        {
+          "caller": "_states_at_target",
+          "callee": "str",
+          "lineNumber": 595
+        },
+        {
+          "caller": "_states_at_target",
+          "callee": "self.session.get",
+          "lineNumber": 597
+        },
+        {
+          "caller": "_states_at_target",
+          "callee": "UUID",
+          "lineNumber": 603
+        },
+        {
+          "caller": "_states_at_target",
+          "callee": "str",
+          "lineNumber": 603
+        },
+        {
+          "caller": "_states_at_target",
+          "callee": "self.session.get",
+          "lineNumber": 605
+        },
+        {
+          "caller": "_states_at_target",
+          "callee": "selected.append",
+          "lineNumber": 610
+        },
+        {
+          "caller": "_timeline_limits",
+          "callee": "self.session.get",
+          "lineNumber": 618
+        },
+        {
+          "caller": "_timeline_limits",
+          "callee": "ValueError",
+          "lineNumber": 620
+        },
+        {
+          "caller": "_timeline_limits",
+          "callee": "self.session.get_one",
+          "lineNumber": 623
+        },
+        {
+          "caller": "_timeline_limits",
+          "callee": "AppearanceResolutionError",
+          "lineNumber": 628
+        },
+        {
+          "caller": "_timeline_limits",
+          "callee": "self.session.get",
+          "lineNumber": 631
+        },
+        {
+          "caller": "_timeline_limits",
+          "callee": "AppearanceResolutionError",
+          "lineNumber": 633
+        },
+        {
+          "caller": "_timeline_limits",
+          "callee": "self.session.get_one",
+          "lineNumber": 636
+        },
+        {
+          "caller": "_timeline_limits",
+          "callee": "visited.add",
+          "lineNumber": 637
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 9,
+        "functionCount": 4,
+        "classCount": 5
+      }
+    },
+    {
+      "path": "novel-character-generator/src/novel_character_generator/application/services/character_entity_service.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 768,
+      "nonEmptyLines": 730,
+      "functions": [
+        {
+          "name": "_canonical",
+          "startLine": 78,
+          "endLine": 79,
+          "params": [
+            "value"
+          ]
+        },
+        {
+          "name": "_hash",
+          "startLine": 82,
+          "endLine": 83,
+          "params": [
+            "value"
+          ]
+        },
+        {
+          "name": "_replace_ids",
+          "startLine": 86,
+          "endLine": 96,
+          "params": [
+            "values",
+            "sources",
+            "target"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "EntityOperationConflict",
+          "startLine": 34,
+          "endLine": 35,
+          "methods": [],
+          "properties": []
+        },
+        {
+          "name": "MergeSource",
+          "startLine": 39,
+          "endLine": 41,
+          "methods": [],
+          "properties": [
+            "character_id",
+            "expected_revision"
+          ]
+        },
+        {
+          "name": "SplitAssignments",
+          "startLine": 45,
+          "endLine": 68,
+          "methods": [
+            "as_dict",
+            "item_count"
+          ],
+          "properties": [
+            "mention_span_ids",
+            "alias_assertion_ids",
+            "observation_ids",
+            "expression_ids",
+            "appearance_state_ids",
+            "suggestion_ids",
+            "event_participant_ids",
+            "scene_ids"
+          ]
+        },
+        {
+          "name": "SplitTarget",
+          "startLine": 72,
+          "endLine": 75,
+          "methods": [],
+          "properties": [
+            "canonical_name",
+            "reuse_source",
+            "assignments"
+          ]
+        },
+        {
+          "name": "CharacterEntityService",
+          "startLine": 99,
+          "endLine": 768,
+          "methods": [
+            "__init__",
+            "merge",
+            "split",
+            "_idempotent_operation",
+            "_reserve_revision",
+            "_entity_snapshot",
+            "_bulk_rebind",
+            "_merge_conflicts",
+            "_merge_event_participants",
+            "_move_render_profiles",
+            "_move_image_sets",
+            "_validate_assignment_uniqueness",
+            "_apply_split_assignments",
+            "_add_manual_audit"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "EntityOperationConflict",
+          "line": 34,
+          "isDefault": false
+        },
+        {
+          "name": "MergeSource",
+          "line": 38,
+          "isDefault": false
+        },
+        {
+          "name": "SplitAssignments",
+          "line": 44,
+          "isDefault": false
+        },
+        {
+          "name": "SplitTarget",
+          "line": 71,
+          "isDefault": false
+        },
+        {
+          "name": "_canonical",
+          "line": 78,
+          "isDefault": false
+        },
+        {
+          "name": "_hash",
+          "line": 82,
+          "isDefault": false
+        },
+        {
+          "name": "_replace_ids",
+          "line": 86,
+          "isDefault": false
+        },
+        {
+          "name": "CharacterEntityService",
+          "line": 99,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "as_dict",
+          "callee": "str",
+          "lineNumber": 57
+        },
+        {
+          "caller": "as_dict",
+          "callee": "str",
+          "lineNumber": 58
+        },
+        {
+          "caller": "as_dict",
+          "callee": "str",
+          "lineNumber": 59
+        },
+        {
+          "caller": "as_dict",
+          "callee": "str",
+          "lineNumber": 60
+        },
+        {
+          "caller": "as_dict",
+          "callee": "str",
+          "lineNumber": 61
+        },
+        {
+          "caller": "as_dict",
+          "callee": "str",
+          "lineNumber": 62
+        },
+        {
+          "caller": "as_dict",
+          "callee": "str",
+          "lineNumber": 63
+        },
+        {
+          "caller": "as_dict",
+          "callee": "str",
+          "lineNumber": 64
+        },
+        {
+          "caller": "item_count",
+          "callee": "sum",
+          "lineNumber": 68
+        },
+        {
+          "caller": "item_count",
+          "callee": "len",
+          "lineNumber": 68
+        },
+        {
+          "caller": "item_count",
+          "callee": "self.as_dict().values",
+          "lineNumber": 68
+        },
+        {
+          "caller": "item_count",
+          "callee": "self.as_dict",
+          "lineNumber": 68
+        },
+        {
+          "caller": "_canonical",
+          "callee": "json.dumps",
+          "lineNumber": 79
+        },
+        {
+          "caller": "_hash",
+          "callee": "hashlib.sha256(_canonical(value).encode()).hexdigest",
+          "lineNumber": 83
+        },
+        {
+          "caller": "_hash",
+          "callee": "hashlib.sha256",
+          "lineNumber": 83
+        },
+        {
+          "caller": "_hash",
+          "callee": "_canonical(value).encode",
+          "lineNumber": 83
+        },
+        {
+          "caller": "_hash",
+          "callee": "_canonical",
+          "lineNumber": 83
+        },
+        {
+          "caller": "_replace_ids",
+          "callee": "UUID",
+          "lineNumber": 90
+        },
+        {
+          "caller": "_replace_ids",
+          "callee": "str",
+          "lineNumber": 93
+        },
+        {
+          "caller": "_replace_ids",
+          "callee": "result.append",
+          "lineNumber": 95
+        },
+        {
+          "caller": "merge",
+          "callee": "str",
+          "lineNumber": 113
+        },
+        {
+          "caller": "merge",
+          "callee": "str",
+          "lineNumber": 116
+        },
+        {
+          "caller": "merge",
+          "callee": "_hash",
+          "lineNumber": 121
+        },
+        {
+          "caller": "merge",
+          "callee": "self._idempotent_operation",
+          "lineNumber": 122
+        },
+        {
+          "caller": "merge",
+          "callee": "len",
+          "lineNumber": 126
+        },
+        {
+          "caller": "merge",
+          "callee": "set",
+          "lineNumber": 126
+        },
+        {
+          "caller": "merge",
+          "callee": "len",
+          "lineNumber": 126
+        },
+        {
+          "caller": "merge",
+          "callee": "ValueError",
+          "lineNumber": 127
+        },
+        {
+          "caller": "merge",
+          "callee": "ValueError",
+          "lineNumber": 129
+        },
+        {
+          "caller": "merge",
+          "callee": "self.session.get",
+          "lineNumber": 130
+        },
+        {
+          "caller": "merge",
+          "callee": "ValueError",
+          "lineNumber": 132
+        },
+        {
+          "caller": "merge",
+          "callee": "EntityOperationConflict",
+          "lineNumber": 134
+        },
+        {
+          "caller": "merge",
+          "callee": "self.session.get",
+          "lineNumber": 138
+        },
+        {
+          "caller": "merge",
+          "callee": "ValueError",
+          "lineNumber": 140
+        },
+        {
+          "caller": "merge",
+          "callee": "ValueError",
+          "lineNumber": 142
+        },
+        {
+          "caller": "merge",
+          "callee": "EntityOperationConflict",
+          "lineNumber": 144
+        },
+        {
+          "caller": "merge",
+          "callee": "source_rows.append",
+          "lineNumber": 145
+        },
+        {
+          "caller": "merge",
+          "callee": "datetime.now",
+          "lineNumber": 146
+        },
+        {
+          "caller": "merge",
+          "callee": "self._reserve_revision",
+          "lineNumber": 147
+        },
+        {
+          "caller": "merge",
+          "callee": "self._reserve_revision",
+          "lineNumber": 149
+        },
+        {
+          "caller": "merge",
+          "callee": "self._entity_snapshot",
+          "lineNumber": 150
+        },
+        {
+          "caller": "merge",
+          "callee": "set",
+          "lineNumber": 151
+        },
+        {
+          "caller": "merge",
+          "callee": "list",
+          "lineNumber": 153
+        },
+        {
+          "caller": "merge",
+          "callee": "self.session.scalars",
+          "lineNumber": 154
+        },
+        {
+          "caller": "merge",
+          "callee": "select(MentionSpanORM)\n                .join(TextChunkORM, MentionSpanORM.source_chunk_id == TextChunkORM.id)\n                .where",
+          "lineNumber": 155
+        },
+        {
+          "caller": "merge",
+          "callee": "select(MentionSpanORM)\n                .join",
+          "lineNumber": 155
+        },
+        {
+          "caller": "merge",
+          "callee": "select",
+          "lineNumber": 155
+        },
+        {
+          "caller": "merge",
+          "callee": "_replace_ids",
+          "lineNumber": 165
+        },
+        {
+          "caller": "merge",
+          "callee": "list",
+          "lineNumber": 174
+        },
+        {
+          "caller": "merge",
+          "callee": "self.session.scalars",
+          "lineNumber": 175
+        },
+        {
+          "caller": "merge",
+          "callee": "select(AliasAssertionORM).where",
+          "lineNumber": 176
+        },
+        {
+          "caller": "merge",
+          "callee": "select",
+          "lineNumber": 176
+        },
+        {
+          "caller": "merge",
+          "callee": "or_",
+          "lineNumber": 177
+        },
+        {
+          "caller": "merge",
+          "callee": "AliasAssertionORM.proposed_character_id.in_",
+          "lineNumber": 178
+        },
+        {
+          "caller": "merge",
+          "callee": "AliasAssertionORM.speaker_id.in_",
+          "lineNumber": 179
+        },
+        {
+          "caller": "merge",
+          "callee": "self._bulk_rebind",
+          "lineNumber": 191
+        },
+        {
+          "caller": "merge",
+          "callee": "self._bulk_rebind",
+          "lineNumber": 192
+        },
+        {
+          "caller": "merge",
+          "callee": "self._bulk_rebind",
+          "lineNumber": 193
+        },
+        {
+          "caller": "merge",
+          "callee": "self._merge_conflicts",
+          "lineNumber": 194
+        },
+        {
+          "caller": "merge",
+          "callee": "self._merge_event_participants",
+          "lineNumber": 195
+        },
+        {
+          "caller": "merge",
+          "callee": "self.session.execute",
+          "lineNumber": 197
+        },
+        {
+          "caller": "merge",
+          "callee": "update(ExpressionObservationORM)\n            .where(ExpressionObservationORM.character_id.in_(source_ids))\n            .values",
+          "lineNumber": 198
+        },
+        {
+          "caller": "merge",
+          "callee": "update(ExpressionObservationORM)\n            .where",
+          "lineNumber": 198
+        },
+        {
+          "caller": "merge",
+          "callee": "update",
+          "lineNumber": 198
+        },
+        {
+          "caller": "merge",
+          "callee": "ExpressionObservationORM.character_id.in_",
+          "lineNumber": 199
+        },
+        {
+          "caller": "merge",
+          "callee": "self.session.execute",
+          "lineNumber": 202
+        },
+        {
+          "caller": "merge",
+          "callee": "update(ExpressionObservationORM)\n            .where(ExpressionObservationORM.target_character_id.in_(source_ids))\n            .values",
+          "lineNumber": 203
+        },
+        {
+          "caller": "merge",
+          "callee": "update(ExpressionObservationORM)\n            .where",
+          "lineNumber": 203
+        },
+        {
+          "caller": "merge",
+          "callee": "update",
+          "lineNumber": 203
+        },
+        {
+          "caller": "merge",
+          "callee": "ExpressionObservationORM.target_character_id.in_",
+          "lineNumber": 204
+        },
+        {
+          "caller": "merge",
+          "callee": "self.session.execute",
+          "lineNumber": 207
+        },
+        {
+          "caller": "merge",
+          "callee": "update(SceneORM)\n            .where(SceneORM.point_of_view_character_id.in_(source_ids))\n            .values",
+          "lineNumber": 208
+        },
+        {
+          "caller": "merge",
+          "callee": "update(SceneORM)\n            .where",
+          "lineNumber": 208
+        },
+        {
+          "caller": "merge",
+          "callee": "update",
+          "lineNumber": 208
+        },
+        {
+          "caller": "merge",
+          "callee": "SceneORM.point_of_view_character_id.in_",
+          "lineNumber": 209
+        },
+        {
+          "caller": "merge",
+          "callee": "self._move_render_profiles",
+          "lineNumber": 212
+        },
+        {
+          "caller": "merge",
+          "callee": "self._move_image_sets",
+          "lineNumber": 213
+        },
+        {
+          "caller": "merge",
+          "callee": "self.session.execute",
+          "lineNumber": 214
+        },
+        {
+          "caller": "merge",
+          "callee": "update(GeneratedImageORM)\n            .where(GeneratedImageORM.character_id.in_(source_ids))\n            .values",
+          "lineNumber": 215
+        },
+        {
+          "caller": "merge",
+          "callee": "update(GeneratedImageORM)\n            .where",
+          "lineNumber": 215
+        },
+        {
+          "caller": "merge",
+          "callee": "update",
+          "lineNumber": 215
+        },
+        {
+          "caller": "merge",
+          "callee": "GeneratedImageORM.character_id.in_",
+          "lineNumber": 216
+        },
+        {
+          "caller": "merge",
+          "callee": "self.session.execute",
+          "lineNumber": 219
+        },
+        {
+          "caller": "merge",
+          "callee": "update(CharacterORM)\n            .where(CharacterORM.id.in_(source_ids))\n            .values",
+          "lineNumber": 220
+        },
+        {
+          "caller": "merge",
+          "callee": "update(CharacterORM)\n            .where",
+          "lineNumber": 220
+        },
+        {
+          "caller": "merge",
+          "callee": "update",
+          "lineNumber": 220
+        },
+        {
+          "caller": "merge",
+          "callee": "CharacterORM.id.in_",
+          "lineNumber": 221
+        },
+        {
+          "caller": "merge",
+          "callee": "CharacterEntityOperationORM",
+          "lineNumber": 228
+        },
+        {
+          "caller": "merge",
+          "callee": "uuid4",
+          "lineNumber": 229
+        },
+        {
+          "caller": "merge",
+          "callee": "str",
+          "lineNumber": 234
+        },
+        {
+          "caller": "merge",
+          "callee": "str",
+          "lineNumber": 235
+        },
+        {
+          "caller": "merge",
+          "callee": "self.session.add",
+          "lineNumber": 244
+        },
+        {
+          "caller": "merge",
+          "callee": "self._add_manual_audit",
+          "lineNumber": 245
+        },
+        {
+          "caller": "merge",
+          "callee": "self.session.commit",
+          "lineNumber": 252
+        },
+        {
+          "caller": "merge",
+          "callee": "self.session.get_one",
+          "lineNumber": 253
+        },
+        {
+          "caller": "split",
+          "callee": "str",
+          "lineNumber": 268
+        },
+        {
+          "caller": "split",
+          "callee": "item.assignments.as_dict",
+          "lineNumber": 274
+        },
+        {
+          "caller": "split",
+          "callee": "_hash",
+          "lineNumber": 281
+        },
+        {
+          "caller": "split",
+          "callee": "self._idempotent_operation",
+          "lineNumber": 282
+        },
+        {
+          "caller": "split",
+          "callee": "len",
+          "lineNumber": 285
+        },
+        {
+          "caller": "split",
+          "callee": "sum",
+          "lineNumber": 285
+        },
+        {
+          "caller": "split",
+          "callee": "ValueError",
+          "lineNumber": 286
+        },
+        {
+          "caller": "split",
+          "callee": "item.canonical_name.strip",
+          "lineNumber": 287
+        },
+        {
+          "caller": "split",
+          "callee": "any",
+          "lineNumber": 288
+        },
+        {
+          "caller": "split",
+          "callee": "len",
+          "lineNumber": 288
+        },
+        {
+          "caller": "split",
+          "callee": "set",
+          "lineNumber": 288
+        },
+        {
+          "caller": "split",
+          "callee": "len",
+          "lineNumber": 288
+        },
+        {
+          "caller": "split",
+          "callee": "ValueError",
+          "lineNumber": 289
+        },
+        {
+          "caller": "split",
+          "callee": "any",
+          "lineNumber": 290
+        },
+        {
+          "caller": "split",
+          "callee": "item.assignments.item_count",
+          "lineNumber": 290
+        },
+        {
+          "caller": "split",
+          "callee": "ValueError",
+          "lineNumber": 291
+        },
+        {
+          "caller": "split",
+          "callee": "self._validate_assignment_uniqueness",
+          "lineNumber": 292
+        },
+        {
+          "caller": "split",
+          "callee": "self.session.get",
+          "lineNumber": 293
+        },
+        {
+          "caller": "split",
+          "callee": "ValueError",
+          "lineNumber": 295
+        },
+        {
+          "caller": "split",
+          "callee": "EntityOperationConflict",
+          "lineNumber": 297
+        },
+        {
+          "caller": "split",
+          "callee": "self.session.scalar",
+          "lineNumber": 298
+        },
+        {
+          "caller": "split",
+          "callee": "select(CharacterORM.id)\n            .where(\n                CharacterORM.novel_id == source.novel_id,\n                CharacterORM.canonical_name.in_(names),\n                CharacterORM.id != source.id,\n            )\n            .limit",
+          "lineNumber": 299
+        },
+        {
+          "caller": "split",
+          "callee": "select(CharacterORM.id)\n            .where",
+          "lineNumber": 299
+        },
+        {
+          "caller": "split",
+          "callee": "select",
+          "lineNumber": 299
+        },
+        {
+          "caller": "split",
+          "callee": "CharacterORM.canonical_name.in_",
+          "lineNumber": 302
+        },
+        {
+          "caller": "split",
+          "callee": "EntityOperationConflict",
+          "lineNumber": 308
+        },
+        {
+          "caller": "split",
+          "callee": "self.session.scalar",
+          "lineNumber": 309
+        },
+        {
+          "caller": "split",
+          "callee": "select(CharacterRenderProfileORM.id)\n            .where(\n                CharacterRenderProfileORM.character_id == source.id,\n                CharacterRenderProfileORM.status.in_((\"approved\", \"locked\")),\n            )\n            .limit",
+          "lineNumber": 310
+        },
+        {
+          "caller": "split",
+          "callee": "select(CharacterRenderProfileORM.id)\n            .where",
+          "lineNumber": 310
+        },
+        {
+          "caller": "split",
+          "callee": "select",
+          "lineNumber": 310
+        },
+        {
+          "caller": "split",
+          "callee": "CharacterRenderProfileORM.status.in_",
+          "lineNumber": 313
+        },
+        {
+          "caller": "split",
+          "callee": "self.session.scalar",
+          "lineNumber": 318
+        },
+        {
+          "caller": "split",
+          "callee": "select(CharacterImageSetORM.id)\n                .where(\n                    CharacterImageSetORM.character_id == source.id,\n                    CharacterImageSetORM.status.in_((\"partially_approved\", \"approved\")),\n                )\n                .limit",
+          "lineNumber": 319
+        },
+        {
+          "caller": "split",
+          "callee": "select(CharacterImageSetORM.id)\n                .where",
+          "lineNumber": 319
+        },
+        {
+          "caller": "split",
+          "callee": "select",
+          "lineNumber": 319
+        },
+        {
+          "caller": "split",
+          "callee": "CharacterImageSetORM.status.in_",
+          "lineNumber": 322
+        },
+        {
+          "caller": "split",
+          "callee": "self.session.scalar",
+          "lineNumber": 327
+        },
+        {
+          "caller": "split",
+          "callee": "select(GeneratedImageORM.id)\n                .where(GeneratedImageORM.character_id == source.id)\n                .limit",
+          "lineNumber": 328
+        },
+        {
+          "caller": "split",
+          "callee": "select(GeneratedImageORM.id)\n                .where",
+          "lineNumber": 328
+        },
+        {
+          "caller": "split",
+          "callee": "select",
+          "lineNumber": 328
+        },
+        {
+          "caller": "split",
+          "callee": "EntityOperationConflict",
+          "lineNumber": 333
+        },
+        {
+          "caller": "split",
+          "callee": "datetime.now",
+          "lineNumber": 334
+        },
+        {
+          "caller": "split",
+          "callee": "self._entity_snapshot",
+          "lineNumber": 335
+        },
+        {
+          "caller": "split",
+          "callee": "self._reserve_revision",
+          "lineNumber": 336
+        },
+        {
+          "caller": "split",
+          "callee": "next",
+          "lineNumber": 337
+        },
+        {
+          "caller": "split",
+          "callee": "reuse_target.canonical_name.strip",
+          "lineNumber": 338
+        },
+        {
+          "caller": "split",
+          "callee": "uuid4",
+          "lineNumber": 344
+        },
+        {
+          "caller": "split",
+          "callee": "self.session.add",
+          "lineNumber": 346
+        },
+        {
+          "caller": "split",
+          "callee": "CharacterORM",
+          "lineNumber": 347
+        },
+        {
+          "caller": "split",
+          "callee": "target.canonical_name.strip",
+          "lineNumber": 350
+        },
+        {
+          "caller": "split",
+          "callee": "self.session.flush",
+          "lineNumber": 358
+        },
+        {
+          "caller": "split",
+          "callee": "self._apply_split_assignments",
+          "lineNumber": 361
+        },
+        {
+          "caller": "split",
+          "callee": "list",
+          "lineNumber": 373
+        },
+        {
+          "caller": "split",
+          "callee": "self.session.scalars",
+          "lineNumber": 374
+        },
+        {
+          "caller": "split",
+          "callee": "select(CharacterRenderProfileORM).where",
+          "lineNumber": 375
+        },
+        {
+          "caller": "split",
+          "callee": "select",
+          "lineNumber": 375
+        },
+        {
+          "caller": "split",
+          "callee": "UUID",
+          "lineNumber": 382
+        },
+        {
+          "caller": "split",
+          "callee": "self.session.execute",
+          "lineNumber": 392
+        },
+        {
+          "caller": "split",
+          "callee": "update(CharacterConflictORM)\n                .where(\n                    CharacterConflictORM.character_id == source.id,\n                    CharacterConflictORM.status == \"pending\",\n                )\n                .values",
+          "lineNumber": 393
+        },
+        {
+          "caller": "split",
+          "callee": "update(CharacterConflictORM)\n                .where",
+          "lineNumber": 393
+        },
+        {
+          "caller": "split",
+          "callee": "update",
+          "lineNumber": 393
+        },
+        {
+          "caller": "split",
+          "callee": "self.session.execute",
+          "lineNumber": 404
+        },
+        {
+          "caller": "split",
+          "callee": "update(CharacterImageSetORM)\n            .where(CharacterImageSetORM.character_id == source.id)\n            .values",
+          "lineNumber": 405
+        },
+        {
+          "caller": "split",
+          "callee": "update(CharacterImageSetORM)\n            .where",
+          "lineNumber": 405
+        },
+        {
+          "caller": "split",
+          "callee": "update",
+          "lineNumber": 405
+        },
+        {
+          "caller": "split",
+          "callee": "CharacterEntityOperationORM",
+          "lineNumber": 409
+        },
+        {
+          "caller": "split",
+          "callee": "uuid4",
+          "lineNumber": 410
+        },
+        {
+          "caller": "split",
+          "callee": "str",
+          "lineNumber": 415
+        },
+        {
+          "caller": "split",
+          "callee": "str",
+          "lineNumber": 416
+        },
+        {
+          "caller": "split",
+          "callee": "self.session.add",
+          "lineNumber": 425
+        },
+        {
+          "caller": "split",
+          "callee": "self._add_manual_audit",
+          "lineNumber": 426
+        },
+        {
+          "caller": "split",
+          "callee": "self.session.commit",
+          "lineNumber": 433
+        },
+        {
+          "caller": "split",
+          "callee": "self.session.get_one",
+          "lineNumber": 434
+        },
+        {
+          "caller": "_idempotent_operation",
+          "callee": "self.session.scalar",
+          "lineNumber": 439
+        },
+        {
+          "caller": "_idempotent_operation",
+          "callee": "select(CharacterEntityOperationORM).where",
+          "lineNumber": 440
+        },
+        {
+          "caller": "_idempotent_operation",
+          "callee": "select",
+          "lineNumber": 440
+        },
+        {
+          "caller": "_idempotent_operation",
+          "callee": "EntityOperationConflict",
+          "lineNumber": 445
+        },
+        {
+          "caller": "_reserve_revision",
+          "callee": "self.session.scalar",
+          "lineNumber": 451
+        },
+        {
+          "caller": "_reserve_revision",
+          "callee": "update(CharacterORM)\n            .where(\n                CharacterORM.id == character.id,\n                CharacterORM.revision == expected_revision,\n                CharacterORM.status == \"active\",\n            )\n            .values(revision=expected_revision + 1, updated_at=now)\n            .returning",
+          "lineNumber": 452
+        },
+        {
+          "caller": "_reserve_revision",
+          "callee": "update(CharacterORM)\n            .where(\n                CharacterORM.id == character.id,\n                CharacterORM.revision == expected_revision,\n                CharacterORM.status == \"active\",\n            )\n            .values",
+          "lineNumber": 452
+        },
+        {
+          "caller": "_reserve_revision",
+          "callee": "update(CharacterORM)\n            .where",
+          "lineNumber": 452
+        },
+        {
+          "caller": "_reserve_revision",
+          "callee": "update",
+          "lineNumber": 452
+        },
+        {
+          "caller": "_reserve_revision",
+          "callee": "self.session.rollback",
+          "lineNumber": 462
+        },
+        {
+          "caller": "_reserve_revision",
+          "callee": "EntityOperationConflict",
+          "lineNumber": 463
+        },
+        {
+          "caller": "_entity_snapshot",
+          "callee": "list",
+          "lineNumber": 466
+        },
+        {
+          "caller": "_entity_snapshot",
+          "callee": "self.session.scalars",
+          "lineNumber": 467
+        },
+        {
+          "caller": "_entity_snapshot",
+          "callee": "select(CharacterORM).where",
+          "lineNumber": 468
+        },
+        {
+          "caller": "_entity_snapshot",
+          "callee": "select",
+          "lineNumber": 468
+        },
+        {
+          "caller": "_entity_snapshot",
+          "callee": "CharacterORM.id.in_",
+          "lineNumber": 468
+        },
+        {
+          "caller": "_entity_snapshot",
+          "callee": "self.session.scalar",
+          "lineNumber": 490
+        },
+        {
+          "caller": "_entity_snapshot",
+          "callee": "select(func.count()).select_from(model).where",
+          "lineNumber": 491
+        },
+        {
+          "caller": "_entity_snapshot",
+          "callee": "select(func.count()).select_from",
+          "lineNumber": 491
+        },
+        {
+          "caller": "_entity_snapshot",
+          "callee": "select",
+          "lineNumber": 491
+        },
+        {
+          "caller": "_entity_snapshot",
+          "callee": "func.count",
+          "lineNumber": 491
+        },
+        {
+          "caller": "_entity_snapshot",
+          "callee": "column.in_",
+          "lineNumber": 491
+        },
+        {
+          "caller": "_entity_snapshot",
+          "callee": "int",
+          "lineNumber": 493
+        },
+        {
+          "caller": "_entity_snapshot",
+          "callee": "str",
+          "lineNumber": 497
+        },
+        {
+          "caller": "_bulk_rebind",
+          "callee": "self.session.execute",
+          "lineNumber": 510
+        },
+        {
+          "caller": "_bulk_rebind",
+          "callee": "update(model)\n            .where(model.character_id.in_(source_ids))\n            .values",
+          "lineNumber": 511
+        },
+        {
+          "caller": "_bulk_rebind",
+          "callee": "update(model)\n            .where",
+          "lineNumber": 511
+        },
+        {
+          "caller": "_bulk_rebind",
+          "callee": "update",
+          "lineNumber": 511
+        },
+        {
+          "caller": "_bulk_rebind",
+          "callee": "model.character_id.in_",
+          "lineNumber": 512
+        },
+        {
+          "caller": "_merge_conflicts",
+          "callee": "list",
+          "lineNumber": 519
+        },
+        {
+          "caller": "_merge_conflicts",
+          "callee": "self.session.scalars",
+          "lineNumber": 520
+        },
+        {
+          "caller": "_merge_conflicts",
+          "callee": "select(CharacterConflictORM).where",
+          "lineNumber": 521
+        },
+        {
+          "caller": "_merge_conflicts",
+          "callee": "select",
+          "lineNumber": 521
+        },
+        {
+          "caller": "_merge_conflicts",
+          "callee": "CharacterConflictORM.character_id.in_",
+          "lineNumber": 522
+        },
+        {
+          "caller": "_merge_conflicts",
+          "callee": "self.session.scalar",
+          "lineNumber": 527
+        },
+        {
+          "caller": "_merge_conflicts",
+          "callee": "select(CharacterConflictORM).where",
+          "lineNumber": 528
+        },
+        {
+          "caller": "_merge_conflicts",
+          "callee": "select",
+          "lineNumber": 528
+        },
+        {
+          "caller": "_merge_conflicts",
+          "callee": "list",
+          "lineNumber": 537
+        },
+        {
+          "caller": "_merge_conflicts",
+          "callee": "dict.fromkeys",
+          "lineNumber": 538
+        },
+        {
+          "caller": "_merge_conflicts",
+          "callee": "json.loads",
+          "lineNumber": 541
+        },
+        {
+          "caller": "_merge_conflicts",
+          "callee": "dict.fromkeys",
+          "lineNumber": 542
+        },
+        {
+          "caller": "_merge_conflicts",
+          "callee": "_canonical",
+          "lineNumber": 543
+        },
+        {
+          "caller": "_merge_conflicts",
+          "callee": "self.session.delete",
+          "lineNumber": 548
+        },
+        {
+          "caller": "_merge_event_participants",
+          "callee": "list",
+          "lineNumber": 553
+        },
+        {
+          "caller": "_merge_event_participants",
+          "callee": "self.session.scalars",
+          "lineNumber": 554
+        },
+        {
+          "caller": "_merge_event_participants",
+          "callee": "select(EventParticipantORM).where",
+          "lineNumber": 555
+        },
+        {
+          "caller": "_merge_event_participants",
+          "callee": "select",
+          "lineNumber": 555
+        },
+        {
+          "caller": "_merge_event_participants",
+          "callee": "EventParticipantORM.character_id.in_",
+          "lineNumber": 555
+        },
+        {
+          "caller": "_merge_event_participants",
+          "callee": "self.session.scalar",
+          "lineNumber": 559
+        },
+        {
+          "caller": "_merge_event_participants",
+          "callee": "select(EventParticipantORM).where",
+          "lineNumber": 560
+        },
+        {
+          "caller": "_merge_event_participants",
+          "callee": "select",
+          "lineNumber": 560
+        },
+        {
+          "caller": "_merge_event_participants",
+          "callee": "list",
+          "lineNumber": 570
+        },
+        {
+          "caller": "_merge_event_participants",
+          "callee": "dict.fromkeys",
+          "lineNumber": 571
+        },
+        {
+          "caller": "_merge_event_participants",
+          "callee": "self.session.delete",
+          "lineNumber": 576
+        },
+        {
+          "caller": "_move_render_profiles",
+          "callee": "self.session.scalar",
+          "lineNumber": 581
+        },
+        {
+          "caller": "_move_render_profiles",
+          "callee": "select(func.max(CharacterRenderProfileORM.version)).where",
+          "lineNumber": 582
+        },
+        {
+          "caller": "_move_render_profiles",
+          "callee": "select",
+          "lineNumber": 582
+        },
+        {
+          "caller": "_move_render_profiles",
+          "callee": "func.max",
+          "lineNumber": 582
+        },
+        {
+          "caller": "_move_render_profiles",
+          "callee": "int",
+          "lineNumber": 586
+        },
+        {
+          "caller": "_move_render_profiles",
+          "callee": "list",
+          "lineNumber": 587
+        },
+        {
+          "caller": "_move_render_profiles",
+          "callee": "self.session.scalars",
+          "lineNumber": 588
+        },
+        {
+          "caller": "_move_render_profiles",
+          "callee": "select(CharacterRenderProfileORM)\n                .where(CharacterRenderProfileORM.character_id.in_(source_ids))\n                .order_by",
+          "lineNumber": 589
+        },
+        {
+          "caller": "_move_render_profiles",
+          "callee": "select(CharacterRenderProfileORM)\n                .where",
+          "lineNumber": 589
+        },
+        {
+          "caller": "_move_render_profiles",
+          "callee": "select",
+          "lineNumber": 589
+        },
+        {
+          "caller": "_move_render_profiles",
+          "callee": "CharacterRenderProfileORM.character_id.in_",
+          "lineNumber": 590
+        },
+        {
+          "caller": "_move_image_sets",
+          "callee": "self.session.scalar",
+          "lineNumber": 607
+        },
+        {
+          "caller": "_move_image_sets",
+          "callee": "select(func.max(CharacterImageSetORM.version)).where",
+          "lineNumber": 608
+        },
+        {
+          "caller": "_move_image_sets",
+          "callee": "select",
+          "lineNumber": 608
+        },
+        {
+          "caller": "_move_image_sets",
+          "callee": "func.max",
+          "lineNumber": 608
+        },
+        {
+          "caller": "_move_image_sets",
+          "callee": "int",
+          "lineNumber": 612
+        },
+        {
+          "caller": "_move_image_sets",
+          "callee": "list",
+          "lineNumber": 613
+        },
+        {
+          "caller": "_move_image_sets",
+          "callee": "self.session.scalars",
+          "lineNumber": 614
+        },
+        {
+          "caller": "_move_image_sets",
+          "callee": "select(CharacterImageSetORM)\n                .where(CharacterImageSetORM.character_id.in_(source_ids))\n                .order_by",
+          "lineNumber": 615
+        },
+        {
+          "caller": "_move_image_sets",
+          "callee": "select(CharacterImageSetORM)\n                .where",
+          "lineNumber": 615
+        },
+        {
+          "caller": "_move_image_sets",
+          "callee": "select",
+          "lineNumber": 615
+        },
+        {
+          "caller": "_move_image_sets",
+          "callee": "CharacterImageSetORM.character_id.in_",
+          "lineNumber": 616
+        },
+        {
+          "caller": "_validate_assignment_uniqueness",
+          "callee": "target.assignments.__dict__.items",
+          "lineNumber": 631
+        },
+        {
+          "caller": "_validate_assignment_uniqueness",
+          "callee": "list",
+          "lineNumber": 632
+        },
+        {
+          "caller": "_validate_assignment_uniqueness",
+          "callee": "seen.setdefault",
+          "lineNumber": 633
+        },
+        {
+          "caller": "_validate_assignment_uniqueness",
+          "callee": "set",
+          "lineNumber": 633
+        },
+        {
+          "caller": "_validate_assignment_uniqueness",
+          "callee": "len",
+          "lineNumber": 634
+        },
+        {
+          "caller": "_validate_assignment_uniqueness",
+          "callee": "set",
+          "lineNumber": 634
+        },
+        {
+          "caller": "_validate_assignment_uniqueness",
+          "callee": "len",
+          "lineNumber": 634
+        },
+        {
+          "caller": "_validate_assignment_uniqueness",
+          "callee": "field_seen.intersection",
+          "lineNumber": 634
+        },
+        {
+          "caller": "_validate_assignment_uniqueness",
+          "callee": "ValueError",
+          "lineNumber": 637
+        },
+        {
+          "caller": "_validate_assignment_uniqueness",
+          "callee": "field_seen.update",
+          "lineNumber": 638
+        },
+        {
+          "caller": "_apply_split_assignments",
+          "callee": "self.session.scalar",
+          "lineNumber": 681
+        },
+        {
+          "caller": "_apply_split_assignments",
+          "callee": "select(func.count())\n                .select_from(model)\n                .where",
+          "lineNumber": 682
+        },
+        {
+          "caller": "_apply_split_assignments",
+          "callee": "select(func.count())\n                .select_from",
+          "lineNumber": 682
+        },
+        {
+          "caller": "_apply_split_assignments",
+          "callee": "select",
+          "lineNumber": 682
+        },
+        {
+          "caller": "_apply_split_assignments",
+          "callee": "func.count",
+          "lineNumber": 682
+        },
+        {
+          "caller": "_apply_split_assignments",
+          "callee": "model.id.in_",
+          "lineNumber": 684
+        },
+        {
+          "caller": "_apply_split_assignments",
+          "callee": "int",
+          "lineNumber": 686
+        },
+        {
+          "caller": "_apply_split_assignments",
+          "callee": "len",
+          "lineNumber": 686
+        },
+        {
+          "caller": "_apply_split_assignments",
+          "callee": "ValueError",
+          "lineNumber": 687
+        },
+        {
+          "caller": "_apply_split_assignments",
+          "callee": "list",
+          "lineNumber": 691
+        },
+        {
+          "caller": "_apply_split_assignments",
+          "callee": "self.session.scalars",
+          "lineNumber": 692
+        },
+        {
+          "caller": "_apply_split_assignments",
+          "callee": "select(MentionSpanORM).where",
+          "lineNumber": 693
+        },
+        {
+          "caller": "_apply_split_assignments",
+          "callee": "select",
+          "lineNumber": 693
+        },
+        {
+          "caller": "_apply_split_assignments",
+          "callee": "MentionSpanORM.id.in_",
+          "lineNumber": 694
+        },
+        {
+          "caller": "_apply_split_assignments",
+          "callee": "_replace_ids",
+          "lineNumber": 700
+        },
+        {
+          "caller": "_apply_split_assignments",
+          "callee": "self.session.execute",
+          "lineNumber": 706
+        },
+        {
+          "caller": "_apply_split_assignments",
+          "callee": "update(model)\n                    .where(model.id.in_(ids), owner_column == source_character_id)\n                    .values",
+          "lineNumber": 707
+        },
+        {
+          "caller": "_apply_split_assignments",
+          "callee": "update(model)\n                    .where",
+          "lineNumber": 707
+        },
+        {
+          "caller": "_apply_split_assignments",
+          "callee": "update",
+          "lineNumber": 707
+        },
+        {
+          "caller": "_apply_split_assignments",
+          "callee": "model.id.in_",
+          "lineNumber": 708
+        },
+        {
+          "caller": "_add_manual_audit",
+          "callee": "uuid4",
+          "lineNumber": 721
+        },
+        {
+          "caller": "_add_manual_audit",
+          "callee": "self.session.add_all",
+          "lineNumber": 722
+        },
+        {
+          "caller": "_add_manual_audit",
+          "callee": "DecisionRecordORM",
+          "lineNumber": 724
+        },
+        {
+          "caller": "_add_manual_audit",
+          "callee": "uuid4",
+          "lineNumber": 725
+        },
+        {
+          "caller": "_add_manual_audit",
+          "callee": "str",
+          "lineNumber": 732
+        },
+        {
+          "caller": "_add_manual_audit",
+          "callee": "HumanApprovalORM",
+          "lineNumber": 742
+        },
+        {
+          "caller": "_add_manual_audit",
+          "callee": "_hash",
+          "lineNumber": 751
+        },
+        {
+          "caller": "_add_manual_audit",
+          "callee": "str",
+          "lineNumber": 751
+        },
+        {
+          "caller": "_add_manual_audit",
+          "callee": "_hash",
+          "lineNumber": 762
+        },
+        {
+          "caller": "_add_manual_audit",
+          "callee": "str",
+          "lineNumber": 762
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 8,
+        "functionCount": 3,
+        "classCount": 5
+      }
+    },
+    {
+      "path": "novel-character-generator/src/novel_character_generator/application/services/story_service.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 190,
+      "nonEmptyLines": 177,
+      "classes": [
+        {
+          "name": "TemporalBindingConflict",
+          "startLine": 21,
+          "endLine": 22,
+          "methods": [],
+          "properties": []
+        },
+        {
+          "name": "TemporalBindingUpdate",
+          "startLine": 26,
+          "endLine": 32,
+          "methods": [],
+          "properties": [
+            "timeline_id",
+            "event_id",
+            "presentation_mode",
+            "reality_status"
+          ]
+        },
+        {
+          "name": "StoryService",
+          "startLine": 35,
+          "endLine": 190,
+          "methods": [
+            "__init__",
+            "novel_exists",
+            "timelines",
+            "events",
+            "scenes",
+            "update_temporal_binding"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "TemporalBindingConflict",
+          "line": 21,
+          "isDefault": false
+        },
+        {
+          "name": "TemporalBindingUpdate",
+          "line": 25,
+          "isDefault": false
+        },
+        {
+          "name": "StoryService",
+          "line": 35,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "novel_exists",
+          "callee": "self.session.get",
+          "lineNumber": 40
+        },
+        {
+          "caller": "timelines",
+          "callee": "list",
+          "lineNumber": 43
+        },
+        {
+          "caller": "timelines",
+          "callee": "self.session.scalars",
+          "lineNumber": 44
+        },
+        {
+          "caller": "timelines",
+          "callee": "select(TimelineORM)\n                .where(TimelineORM.novel_id == novel_id)\n                .order_by",
+          "lineNumber": 45
+        },
+        {
+          "caller": "timelines",
+          "callee": "select(TimelineORM)\n                .where",
+          "lineNumber": 45
+        },
+        {
+          "caller": "timelines",
+          "callee": "select",
+          "lineNumber": 45
+        },
+        {
+          "caller": "events",
+          "callee": "list",
+          "lineNumber": 52
+        },
+        {
+          "caller": "events",
+          "callee": "self.session.scalars",
+          "lineNumber": 53
+        },
+        {
+          "caller": "events",
+          "callee": "select(StoryEventORM)\n                .join(TimelineORM, StoryEventORM.timeline_id == TimelineORM.id)\n                .where(TimelineORM.novel_id == novel_id)\n                .order_by",
+          "lineNumber": 54
+        },
+        {
+          "caller": "events",
+          "callee": "select(StoryEventORM)\n                .join(TimelineORM, StoryEventORM.timeline_id == TimelineORM.id)\n                .where",
+          "lineNumber": 54
+        },
+        {
+          "caller": "events",
+          "callee": "select(StoryEventORM)\n                .join",
+          "lineNumber": 54
+        },
+        {
+          "caller": "events",
+          "callee": "select",
+          "lineNumber": 54
+        },
+        {
+          "caller": "scenes",
+          "callee": "list",
+          "lineNumber": 62
+        },
+        {
+          "caller": "scenes",
+          "callee": "self.session.scalars",
+          "lineNumber": 63
+        },
+        {
+          "caller": "scenes",
+          "callee": "select(SceneORM)\n                .where(SceneORM.novel_id == novel_id)\n                .order_by",
+          "lineNumber": 64
+        },
+        {
+          "caller": "scenes",
+          "callee": "select(SceneORM)\n                .where",
+          "lineNumber": 64
+        },
+        {
+          "caller": "scenes",
+          "callee": "select",
+          "lineNumber": 64
+        },
+        {
+          "caller": "update_temporal_binding",
+          "callee": "self.session.get",
+          "lineNumber": 78
+        },
+        {
+          "caller": "update_temporal_binding",
+          "callee": "self.session.get",
+          "lineNumber": 81
+        },
+        {
+          "caller": "update_temporal_binding",
+          "callee": "ValueError",
+          "lineNumber": 83
+        },
+        {
+          "caller": "update_temporal_binding",
+          "callee": "self.session.get",
+          "lineNumber": 85
+        },
+        {
+          "caller": "update_temporal_binding",
+          "callee": "ValueError",
+          "lineNumber": 87
+        },
+        {
+          "caller": "update_temporal_binding",
+          "callee": "ValueError",
+          "lineNumber": 89
+        },
+        {
+          "caller": "update_temporal_binding",
+          "callee": "datetime.now",
+          "lineNumber": 90
+        },
+        {
+          "caller": "update_temporal_binding",
+          "callee": "str",
+          "lineNumber": 92
+        },
+        {
+          "caller": "update_temporal_binding",
+          "callee": "str",
+          "lineNumber": 93
+        },
+        {
+          "caller": "update_temporal_binding",
+          "callee": "self.session.scalar",
+          "lineNumber": 98
+        },
+        {
+          "caller": "update_temporal_binding",
+          "callee": "update(SceneORM)\n            .where(\n                SceneORM.id == scene.id,\n                SceneORM.binding_revision == expected_revision,\n            )\n            .values(\n                timeline_id=binding.timeline_id,\n                event_id=binding.event_id,\n                presentation_mode=binding.presentation_mode,\n                reality_status=binding.reality_status,\n                binding_status=\"corrected\",\n                binding_revision=expected_revision + 1,\n                updated_at=now,\n            )\n            .returning",
+          "lineNumber": 99
+        },
+        {
+          "caller": "update_temporal_binding",
+          "callee": "update(SceneORM)\n            .where(\n                SceneORM.id == scene.id,\n                SceneORM.binding_revision == expected_revision,\n            )\n            .values",
+          "lineNumber": 99
+        },
+        {
+          "caller": "update_temporal_binding",
+          "callee": "update(SceneORM)\n            .where",
+          "lineNumber": 99
+        },
+        {
+          "caller": "update_temporal_binding",
+          "callee": "update",
+          "lineNumber": 99
+        },
+        {
+          "caller": "update_temporal_binding",
+          "callee": "self.session.rollback",
+          "lineNumber": 116
+        },
+        {
+          "caller": "update_temporal_binding",
+          "callee": "TemporalBindingConflict",
+          "lineNumber": 117
+        },
+        {
+          "caller": "update_temporal_binding",
+          "callee": "list",
+          "lineNumber": 118
+        },
+        {
+          "caller": "update_temporal_binding",
+          "callee": "self.session.scalars",
+          "lineNumber": 119
+        },
+        {
+          "caller": "update_temporal_binding",
+          "callee": "select(FeatureObservationORM).where",
+          "lineNumber": 120
+        },
+        {
+          "caller": "update_temporal_binding",
+          "callee": "select",
+          "lineNumber": 120
+        },
+        {
+          "caller": "update_temporal_binding",
+          "callee": "dict",
+          "lineNumber": 127
+        },
+        {
+          "caller": "update_temporal_binding",
+          "callee": "scope.update",
+          "lineNumber": 128
+        },
+        {
+          "caller": "update_temporal_binding",
+          "callee": "str",
+          "lineNumber": 130
+        },
+        {
+          "caller": "update_temporal_binding",
+          "callee": "list",
+          "lineNumber": 138
+        },
+        {
+          "caller": "update_temporal_binding",
+          "callee": "self.session.scalars",
+          "lineNumber": 139
+        },
+        {
+          "caller": "update_temporal_binding",
+          "callee": "select(ExpressionObservationORM).where",
+          "lineNumber": 140
+        },
+        {
+          "caller": "update_temporal_binding",
+          "callee": "select",
+          "lineNumber": 140
+        },
+        {
+          "caller": "update_temporal_binding",
+          "callee": "dict",
+          "lineNumber": 146
+        },
+        {
+          "caller": "update_temporal_binding",
+          "callee": "scope.update",
+          "lineNumber": 147
+        },
+        {
+          "caller": "update_temporal_binding",
+          "callee": "str",
+          "lineNumber": 149
+        },
+        {
+          "caller": "update_temporal_binding",
+          "callee": "list",
+          "lineNumber": 156
+        },
+        {
+          "caller": "update_temporal_binding",
+          "callee": "self.session.scalars",
+          "lineNumber": 157
+        },
+        {
+          "caller": "update_temporal_binding",
+          "callee": "select(AliasAssertionORM).where",
+          "lineNumber": 158
+        },
+        {
+          "caller": "update_temporal_binding",
+          "callee": "select",
+          "lineNumber": 158
+        },
+        {
+          "caller": "update_temporal_binding",
+          "callee": "self.session.add",
+          "lineNumber": 164
+        },
+        {
+          "caller": "update_temporal_binding",
+          "callee": "DecisionRecordORM",
+          "lineNumber": 165
+        },
+        {
+          "caller": "update_temporal_binding",
+          "callee": "uuid4",
+          "lineNumber": 166
+        },
+        {
+          "caller": "update_temporal_binding",
+          "callee": "str",
+          "lineNumber": 176
+        },
+        {
+          "caller": "update_temporal_binding",
+          "callee": "str",
+          "lineNumber": 177
+        },
+        {
+          "caller": "update_temporal_binding",
+          "callee": "str",
+          "lineNumber": 183
+        },
+        {
+          "caller": "update_temporal_binding",
+          "callee": "self.session.commit",
+          "lineNumber": 189
+        },
+        {
+          "caller": "update_temporal_binding",
+          "callee": "self.session.get_one",
+          "lineNumber": 190
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 3,
+        "functionCount": 0,
+        "classCount": 3
+      }
+    },
+    {
+      "path": "novel-character-generator/src/novel_character_generator/domain/entities/evaluation.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 134,
+      "nonEmptyLines": 117,
+      "classes": [
+        {
+          "name": "EvidenceSpan",
+          "startLine": 23,
+          "endLine": 33,
+          "methods": [
+            "validate_span"
+          ],
+          "properties": [
+            "source_document_version_id",
+            "char_start",
+            "char_end",
+            "quote"
+          ]
+        },
+        {
+          "name": "EvalDataset",
+          "startLine": 36,
+          "endLine": 50,
+          "methods": [
+            "validate_freeze_state"
+          ],
+          "properties": [
+            "id",
+            "name",
+            "version",
+            "source",
+            "split_strategy",
+            "metadata",
+            "frozen",
+            "frozen_at"
+          ]
+        },
+        {
+          "name": "EvalCase",
+          "startLine": 53,
+          "endLine": 68,
+          "methods": [],
+          "properties": [
+            "id",
+            "eval_dataset_id",
+            "dataset_version",
+            "source_novel_id",
+            "source_document_version_id",
+            "split_group_key",
+            "split",
+            "task_type",
+            "input_refs",
+            "expected_output",
+            "evidence_spans",
+            "slice_tags",
+            "severity",
+            "rubric_version",
+            "annotation_status"
+          ]
+        },
+        {
+          "name": "EvalRun",
+          "startLine": 71,
+          "endLine": 90,
+          "methods": [],
+          "properties": [
+            "id",
+            "eval_dataset_id",
+            "dataset_version",
+            "candidate_config_hash",
+            "baseline_config_hash",
+            "model_versions",
+            "prompt_versions",
+            "agent_spec_versions",
+            "tool_versions",
+            "schema_versions",
+            "workflow_profile_version",
+            "grader_bundle_version",
+            "random_seeds",
+            "status",
+            "started_at",
+            "completed_at",
+            "total_tokens",
+            "total_latency_ms",
+            "total_cost"
+          ]
+        },
+        {
+          "name": "GraderVersion",
+          "startLine": 93,
+          "endLine": 117,
+          "methods": [
+            "validate_model_grader"
+          ],
+          "properties": [
+            "id",
+            "grader_key",
+            "version",
+            "grader_kind",
+            "definition",
+            "model_provider",
+            "model_name",
+            "model_revision",
+            "prompt_version",
+            "rubric_version",
+            "sampling_parameters",
+            "content_hash"
+          ]
+        },
+        {
+          "name": "EvalResult",
+          "startLine": 120,
+          "endLine": 134,
+          "methods": [],
+          "properties": [
+            "id",
+            "eval_run_id",
+            "eval_case_id",
+            "grader_version_id",
+            "raw_output_artifact_id",
+            "scores",
+            "score",
+            "passed",
+            "diagnostics",
+            "failure_reason",
+            "input_tokens",
+            "output_tokens",
+            "latency_ms",
+            "cost"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "EvidenceSpan",
+          "line": 23,
+          "isDefault": false
+        },
+        {
+          "name": "EvalDataset",
+          "line": 36,
+          "isDefault": false
+        },
+        {
+          "name": "EvalCase",
+          "line": 53,
+          "isDefault": false
+        },
+        {
+          "name": "EvalRun",
+          "line": 71,
+          "isDefault": false
+        },
+        {
+          "name": "GraderVersion",
+          "line": 93,
+          "isDefault": false
+        },
+        {
+          "name": "EvalResult",
+          "line": 120,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "validate_span",
+          "callee": "ValueError",
+          "lineNumber": 32
+        },
+        {
+          "caller": "validate_freeze_state",
+          "callee": "ValueError",
+          "lineNumber": 49
+        },
+        {
+          "caller": "validate_model_grader",
+          "callee": "ValueError",
+          "lineNumber": 116
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 6,
+        "functionCount": 0,
+        "classCount": 6
+      }
+    },
+    {
+      "path": "novel-character-generator/src/novel_character_generator/domain/entities/pipeline.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 151,
+      "nonEmptyLines": 132,
+      "classes": [
+        {
+          "name": "StepStatus",
+          "startLine": 8,
+          "endLine": 18,
+          "methods": [],
+          "properties": []
+        },
+        {
+          "name": "RunStatus",
+          "startLine": 51,
+          "endLine": 57,
+          "methods": [],
+          "properties": []
+        },
+        {
+          "name": "ExternalOperationState",
+          "startLine": 60,
+          "endLine": 70,
+          "methods": [],
+          "properties": []
+        },
+        {
+          "name": "PipelineRun",
+          "startLine": 109,
+          "endLine": 116,
+          "methods": [],
+          "properties": [
+            "id",
+            "novel_id",
+            "run_type",
+            "status",
+            "idempotency_key",
+            "cancel_requested",
+            "created_at"
+          ]
+        },
+        {
+          "name": "PipelineStep",
+          "startLine": 119,
+          "endLine": 131,
+          "methods": [
+            "can_transition_to"
+          ],
+          "properties": [
+            "id",
+            "run_id",
+            "step_key",
+            "status",
+            "attempt",
+            "lease_owner",
+            "lease_expires_at",
+            "lease_generation",
+            "heartbeat_at"
+          ]
+        },
+        {
+          "name": "ExternalOperation",
+          "startLine": 134,
+          "endLine": 151,
+          "methods": [
+            "can_transition_to"
+          ],
+          "properties": [
+            "id",
+            "run_id",
+            "step_id",
+            "provider",
+            "operation_type",
+            "request_fingerprint",
+            "idempotency_key",
+            "state",
+            "external_job_id",
+            "lease_generation",
+            "attempt",
+            "request_hash",
+            "response_hash",
+            "last_reconciled_at"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "StepStatus",
+          "line": 8,
+          "isDefault": false
+        },
+        {
+          "name": "RunStatus",
+          "line": 51,
+          "isDefault": false
+        },
+        {
+          "name": "ExternalOperationState",
+          "line": 60,
+          "isDefault": false
+        },
+        {
+          "name": "PipelineRun",
+          "line": 109,
+          "isDefault": false
+        },
+        {
+          "name": "PipelineStep",
+          "line": 119,
+          "isDefault": false
+        },
+        {
+          "name": "ExternalOperation",
+          "line": 134,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 6,
+        "functionCount": 0,
+        "classCount": 6
+      }
+    },
+    {
+      "path": "novel-character-generator/src/novel_character_generator/infrastructure/db/base.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 5,
+      "nonEmptyLines": 3,
+      "classes": [
+        {
+          "name": "Base",
+          "startLine": 4,
+          "endLine": 5,
+          "methods": [],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "Base",
+          "line": 4,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 816,
+      "nonEmptyLines": 690,
+      "classes": [
+        {
+          "name": "IdMixin",
+          "startLine": 25,
+          "endLine": 26,
+          "methods": [],
+          "properties": [
+            "id"
+          ]
+        },
+        {
+          "name": "TimestampMixin",
+          "startLine": 29,
+          "endLine": 31,
+          "methods": [],
+          "properties": [
+            "created_at",
+            "updated_at"
+          ]
+        },
+        {
+          "name": "NovelORM",
+          "startLine": 34,
+          "endLine": 38,
+          "methods": [],
+          "properties": [
+            "title",
+            "status"
+          ]
+        },
+        {
+          "name": "SourceDocumentORM",
+          "startLine": 41,
+          "endLine": 55,
+          "methods": [],
+          "properties": [
+            "novel_id",
+            "current_version_id",
+            "version",
+            "sha256",
+            "encoding",
+            "mime_type",
+            "storage_uri",
+            "byte_size",
+            "normalization_map_version",
+            "normalization_map"
+          ]
+        },
+        {
+          "name": "SourceDocumentVersionORM",
+          "startLine": 58,
+          "endLine": 77,
+          "methods": [],
+          "properties": [
+            "source_document_id",
+            "version",
+            "content_sha256",
+            "encoding",
+            "mime_type",
+            "storage_uri",
+            "byte_size",
+            "normalization_map_id",
+            "supersedes_version_id"
+          ]
+        },
+        {
+          "name": "NormalizationMapORM",
+          "startLine": 80,
+          "endLine": 87,
+          "methods": [],
+          "properties": [
+            "source_document_version_id",
+            "algorithm_version",
+            "original_boundaries"
+          ]
+        },
+        {
+          "name": "ChapterORM",
+          "startLine": 90,
+          "endLine": 117,
+          "methods": [],
+          "properties": [
+            "novel_id",
+            "source_document_id",
+            "source_document_version_id",
+            "ordinal",
+            "title",
+            "original_char_start",
+            "original_char_end",
+            "normalized_char_start",
+            "normalized_char_end"
+          ]
+        },
+        {
+          "name": "TextChunkORM",
+          "startLine": 120,
+          "endLine": 151,
+          "methods": [],
+          "properties": [
+            "novel_id",
+            "source_document_id",
+            "source_document_version_id",
+            "chapter_id",
+            "ordinal",
+            "content",
+            "content_hash",
+            "original_char_start",
+            "original_char_end",
+            "normalized_char_start",
+            "normalized_char_end"
+          ]
+        },
+        {
+          "name": "TimelineORM",
+          "startLine": 154,
+          "endLine": 161,
+          "methods": [],
+          "properties": [
+            "novel_id",
+            "name",
+            "parent_timeline_id",
+            "branch_event_id",
+            "canonicality"
+          ]
+        },
+        {
+          "name": "StoryEventORM",
+          "startLine": 164,
+          "endLine": 173,
+          "methods": [],
+          "properties": [
+            "timeline_id",
+            "name",
+            "story_order",
+            "starts_at",
+            "ends_at"
+          ]
+        },
+        {
+          "name": "EventParticipantORM",
+          "startLine": 176,
+          "endLine": 187,
+          "methods": [],
+          "properties": [
+            "event_id",
+            "character_id",
+            "role",
+            "evidence_observation_ids"
+          ]
+        },
+        {
+          "name": "CharacterORM",
+          "startLine": 190,
+          "endLine": 203,
+          "methods": [],
+          "properties": [
+            "novel_id",
+            "canonical_name",
+            "status",
+            "revision",
+            "merged_into_character_id"
+          ]
+        },
+        {
+          "name": "CharacterEntityOperationORM",
+          "startLine": 206,
+          "endLine": 225,
+          "methods": [],
+          "properties": [
+            "operation_type",
+            "novel_id",
+            "idempotency_key",
+            "request_hash",
+            "source_character_ids",
+            "target_character_ids",
+            "action",
+            "before_snapshot",
+            "status",
+            "actor_id",
+            "reason"
+          ]
+        },
+        {
+          "name": "SceneORM",
+          "startLine": 228,
+          "endLine": 256,
+          "methods": [],
+          "properties": [
+            "novel_id",
+            "timeline_id",
+            "event_id",
+            "chapter_ordinal",
+            "narrative_order",
+            "point_of_view_character_id",
+            "label",
+            "source_document_version_id",
+            "source_chunk_id",
+            "char_start",
+            "char_end",
+            "presentation_mode",
+            "reality_status",
+            "confidence",
+            "binding_status",
+            "binding_revision",
+            "created_by_run_id"
+          ]
+        },
+        {
+          "name": "PipelineRunORM",
+          "startLine": 259,
+          "endLine": 267,
+          "methods": [],
+          "properties": [
+            "novel_id",
+            "run_type",
+            "status",
+            "idempotency_key",
+            "cancel_requested",
+            "completed_at"
+          ]
+        },
+        {
+          "name": "PipelineStepORM",
+          "startLine": 270,
+          "endLine": 290,
+          "methods": [],
+          "properties": [
+            "run_id",
+            "step_key",
+            "status",
+            "attempt",
+            "lease_owner",
+            "lease_expires_at",
+            "lease_generation",
+            "heartbeat_at",
+            "next_attempt_at",
+            "cursor",
+            "error_code",
+            "error_message"
+          ]
+        },
+        {
+          "name": "RunEventORM",
+          "startLine": 293,
+          "endLine": 301,
+          "methods": [],
+          "properties": [
+            "run_id",
+            "sequence",
+            "event_type",
+            "payload",
+            "created_at"
+          ]
+        },
+        {
+          "name": "MentionSpanORM",
+          "startLine": 304,
+          "endLine": 323,
+          "methods": [],
+          "properties": [
+            "source_document_version",
+            "source_document_version_id",
+            "source_chunk_id",
+            "char_start",
+            "char_end",
+            "mention_text",
+            "mention_kind",
+            "candidate_character_ids",
+            "resolved_character_id",
+            "grounding_status",
+            "normalization_map_version"
+          ]
+        },
+        {
+          "name": "AliasAssertionORM",
+          "startLine": 326,
+          "endLine": 340,
+          "methods": [],
+          "properties": [
+            "alias_text",
+            "alias_kind",
+            "normalized_alias",
+            "mention_span_id",
+            "proposed_character_id",
+            "speaker_id",
+            "scene_id",
+            "timeline_id",
+            "supporting_evidence_ids",
+            "opposing_evidence_ids",
+            "status"
+          ]
+        },
+        {
+          "name": "FeatureObservationORM",
+          "startLine": 343,
+          "endLine": 387,
+          "methods": [],
+          "properties": [
+            "character_id",
+            "field_path",
+            "value",
+            "source_kind",
+            "source_document_version_id",
+            "source_chunk_id",
+            "mention_span_id",
+            "evidence_quote",
+            "char_start",
+            "char_end",
+            "chapter_ordinal",
+            "scene_id",
+            "event_id",
+            "temporal_scope",
+            "epistemic_status",
+            "grounding_status",
+            "confidence",
+            "extraction_run_id",
+            "manual_approval_id",
+            "extractor_version",
+            "supersedes_id",
+            "fingerprint",
+            "valid_from",
+            "valid_to",
+            "record_status",
+            "recorded_at",
+            "invalidated_at",
+            "invalidated_by_run_id"
+          ]
+        },
+        {
+          "name": "FeatureSuggestionORM",
+          "startLine": 390,
+          "endLine": 404,
+          "methods": [],
+          "properties": [
+            "character_id",
+            "field_path",
+            "value",
+            "suggestion_kind",
+            "resource_version",
+            "confidence",
+            "allowed_fields",
+            "rationale",
+            "status",
+            "approval_id"
+          ]
+        },
+        {
+          "name": "ExpressionObservationORM",
+          "startLine": 407,
+          "endLine": 443,
+          "methods": [],
+          "properties": [
+            "character_id",
+            "source_document_version_id",
+            "source_chunk_id",
+            "char_start",
+            "char_end",
+            "outward_emotion",
+            "expression_text",
+            "visible_cues",
+            "intensity",
+            "valence",
+            "arousal",
+            "is_masked",
+            "internal_emotion",
+            "target_character_id",
+            "cause_event_id",
+            "scene_id",
+            "temporal_scope",
+            "evidence_quote",
+            "epistemic_status",
+            "confidence",
+            "extraction_run_id",
+            "extractor_version",
+            "fingerprint"
+          ]
+        },
+        {
+          "name": "CharacterAppearanceStateORM",
+          "startLine": 446,
+          "endLine": 465,
+          "methods": [],
+          "properties": [
+            "character_id",
+            "temporal_scope",
+            "label",
+            "state_kind",
+            "merge_priority",
+            "age_stage",
+            "appearance",
+            "field_sources",
+            "resolver_version",
+            "created_by_run_id",
+            "record_status",
+            "status"
+          ]
+        },
+        {
+          "name": "CharacterRenderProfileORM",
+          "startLine": 468,
+          "endLine": 488,
+          "methods": [],
+          "properties": [
+            "character_id",
+            "version",
+            "status",
+            "identity_anchor",
+            "default_appearance_state_id",
+            "default_stage_key",
+            "appearance_state_ids",
+            "palette",
+            "field_sources",
+            "field_suggestions",
+            "unresolved_conflicts",
+            "style_preset",
+            "approved_by",
+            "approved_at",
+            "revision"
+          ]
+        },
+        {
+          "name": "CharacterConflictORM",
+          "startLine": 491,
+          "endLine": 512,
+          "methods": [],
+          "properties": [
+            "character_id",
+            "field_path",
+            "appearance_state_ids",
+            "candidate_values",
+            "temporal_scope",
+            "merge_priority",
+            "fingerprint",
+            "status",
+            "resolution",
+            "resolved_by",
+            "resolved_at",
+            "revision"
+          ]
+        },
+        {
+          "name": "CharacterImageSetORM",
+          "startLine": 515,
+          "endLine": 526,
+          "methods": [],
+          "properties": [
+            "character_id",
+            "render_profile_id",
+            "render_profile_version",
+            "version",
+            "status",
+            "default_representative_image_id",
+            "stage_image_ids",
+            "selection_policy_version"
+          ]
+        },
+        {
+          "name": "GeneratedImageORM",
+          "startLine": 529,
+          "endLine": 538,
+          "methods": [],
+          "properties": [
+            "character_id",
+            "run_id",
+            "artifact_id",
+            "workflow_profile",
+            "workflow_version",
+            "snapshot_hash",
+            "evaluation"
+          ]
+        },
+        {
+          "name": "CharacterStageImageORM",
+          "startLine": 541,
+          "endLine": 555,
+          "methods": [],
+          "properties": [
+            "image_set_id",
+            "appearance_state_id",
+            "resolved_snapshot_hash",
+            "stage_label",
+            "representative_event_id",
+            "candidate_image_ids",
+            "baseline_image_id",
+            "display_order",
+            "selection_reason_codes"
+          ]
+        },
+        {
+          "name": "ArtifactORM",
+          "startLine": 558,
+          "endLine": 565,
+          "methods": [],
+          "properties": [
+            "content_hash",
+            "mime_type",
+            "storage_uri",
+            "byte_size",
+            "artifact_kind"
+          ]
+        },
+        {
+          "name": "ExternalOperationORM",
+          "startLine": 568,
+          "endLine": 587,
+          "methods": [],
+          "properties": [
+            "pipeline_step_id",
+            "run_id",
+            "provider",
+            "operation_kind",
+            "idempotency_key",
+            "request_hash",
+            "request_fingerprint",
+            "status",
+            "lease_generation",
+            "attempt",
+            "provider_request_id",
+            "response_hash",
+            "artifact_id",
+            "submitted_at",
+            "completed_at",
+            "last_reconciled_at"
+          ]
+        },
+        {
+          "name": "ModelCallORM",
+          "startLine": 590,
+          "endLine": 602,
+          "methods": [],
+          "properties": [
+            "pipeline_step_id",
+            "provider",
+            "model",
+            "model_revision",
+            "request_hash",
+            "response_hash",
+            "provider_request_id",
+            "usage",
+            "pricing_snapshot",
+            "finish_reason"
+          ]
+        },
+        {
+          "name": "AgentRunORM",
+          "startLine": 605,
+          "endLine": 629,
+          "methods": [],
+          "properties": [
+            "pipeline_step_id",
+            "agent_id",
+            "agent_version",
+            "status",
+            "budget",
+            "context_hash",
+            "final_output_hash",
+            "stop_reason",
+            "attempt",
+            "agent_spec_snapshot",
+            "tool_spec_versions",
+            "prompt_version",
+            "model_policy",
+            "output_schema",
+            "permission",
+            "evaluation_version",
+            "started_at",
+            "completed_at",
+            "input_tokens",
+            "output_tokens",
+            "total_cost",
+            "latency_ms"
+          ]
+        },
+        {
+          "name": "AgentTurnORM",
+          "startLine": 632,
+          "endLine": 640,
+          "methods": [],
+          "properties": [
+            "agent_run_id",
+            "turn_number",
+            "input_context_hash",
+            "output_summary",
+            "usage"
+          ]
+        },
+        {
+          "name": "ToolCallORM",
+          "startLine": 643,
+          "endLine": 656,
+          "methods": [],
+          "properties": [
+            "agent_run_id",
+            "call_id",
+            "tool_name",
+            "tool_version",
+            "input_hash",
+            "output_hash",
+            "status",
+            "side_effect",
+            "duration_ms",
+            "error_code"
+          ]
+        },
+        {
+          "name": "DecisionRecordORM",
+          "startLine": 659,
+          "endLine": 669,
+          "methods": [],
+          "properties": [
+            "pipeline_run_id",
+            "agent_run_id",
+            "decision_kind",
+            "subject_type",
+            "subject_id",
+            "decision",
+            "evidence_ids",
+            "source_kind"
+          ]
+        },
+        {
+          "name": "HumanApprovalORM",
+          "startLine": 672,
+          "endLine": 695,
+          "methods": [],
+          "properties": [
+            "pipeline_step_id",
+            "requested_by_agent_run_id",
+            "approval_type",
+            "subject_type",
+            "subject_id",
+            "lease_generation",
+            "revision",
+            "action_hash",
+            "action",
+            "supporting_evidence_ids",
+            "opposing_evidence_ids",
+            "estimated_cost",
+            "status",
+            "decision",
+            "modifications",
+            "resolved_by",
+            "expires_at",
+            "resolved_at",
+            "recovery_token_hash",
+            "decision_payload_hash"
+          ]
+        },
+        {
+          "name": "AgentEvaluationORM",
+          "startLine": 698,
+          "endLine": 705,
+          "methods": [],
+          "properties": [
+            "agent_run_id",
+            "evaluation_set",
+            "evaluator_version",
+            "scores",
+            "passed"
+          ]
+        },
+        {
+          "name": "EvalDatasetORM",
+          "startLine": 708,
+          "endLine": 718,
+          "methods": [],
+          "properties": [
+            "name",
+            "version",
+            "source",
+            "split_strategy",
+            "dataset_metadata",
+            "frozen",
+            "frozen_at"
+          ]
+        },
+        {
+          "name": "EvalCaseORM",
+          "startLine": 721,
+          "endLine": 746,
+          "methods": [],
+          "properties": [
+            "eval_dataset_id",
+            "dataset_version",
+            "source_novel_id",
+            "source_document_version_id",
+            "split_group_key",
+            "split",
+            "task_type",
+            "input_refs",
+            "expected_output",
+            "evidence_spans",
+            "slice_tags",
+            "severity",
+            "rubric_version",
+            "annotation_status"
+          ]
+        },
+        {
+          "name": "GraderVersionORM",
+          "startLine": 749,
+          "endLine": 766,
+          "methods": [],
+          "properties": [
+            "grader_key",
+            "version",
+            "grader_kind",
+            "definition",
+            "model_provider",
+            "model_name",
+            "model_revision",
+            "prompt_version",
+            "rubric_version",
+            "sampling_parameters",
+            "content_hash"
+          ]
+        },
+        {
+          "name": "EvalRunORM",
+          "startLine": 769,
+          "endLine": 790,
+          "methods": [],
+          "properties": [
+            "eval_dataset_id",
+            "dataset_version",
+            "candidate_config_hash",
+            "baseline_config_hash",
+            "model_versions",
+            "prompt_versions",
+            "agent_spec_versions",
+            "tool_versions",
+            "schema_versions",
+            "workflow_profile_version",
+            "grader_bundle_version",
+            "random_seeds",
+            "status",
+            "started_at",
+            "completed_at",
+            "total_tokens",
+            "total_latency_ms",
+            "total_cost",
+            "summary"
+          ]
+        },
+        {
+          "name": "EvalResultORM",
+          "startLine": 793,
+          "endLine": 816,
+          "methods": [],
+          "properties": [
+            "eval_run_id",
+            "eval_case_id",
+            "grader_version_id",
+            "raw_output_artifact_id",
+            "scores",
+            "score",
+            "passed",
+            "diagnostics",
+            "failure_reason",
+            "input_tokens",
+            "output_tokens",
+            "latency_ms",
+            "cost"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "IdMixin",
+          "line": 25,
+          "isDefault": false
+        },
+        {
+          "name": "TimestampMixin",
+          "line": 29,
+          "isDefault": false
+        },
+        {
+          "name": "NovelORM",
+          "line": 34,
+          "isDefault": false
+        },
+        {
+          "name": "SourceDocumentORM",
+          "line": 41,
+          "isDefault": false
+        },
+        {
+          "name": "SourceDocumentVersionORM",
+          "line": 58,
+          "isDefault": false
+        },
+        {
+          "name": "NormalizationMapORM",
+          "line": 80,
+          "isDefault": false
+        },
+        {
+          "name": "ChapterORM",
+          "line": 90,
+          "isDefault": false
+        },
+        {
+          "name": "TextChunkORM",
+          "line": 120,
+          "isDefault": false
+        },
+        {
+          "name": "TimelineORM",
+          "line": 154,
+          "isDefault": false
+        },
+        {
+          "name": "StoryEventORM",
+          "line": 164,
+          "isDefault": false
+        },
+        {
+          "name": "EventParticipantORM",
+          "line": 176,
+          "isDefault": false
+        },
+        {
+          "name": "CharacterORM",
+          "line": 190,
+          "isDefault": false
+        },
+        {
+          "name": "CharacterEntityOperationORM",
+          "line": 206,
+          "isDefault": false
+        },
+        {
+          "name": "SceneORM",
+          "line": 228,
+          "isDefault": false
+        },
+        {
+          "name": "PipelineRunORM",
+          "line": 259,
+          "isDefault": false
+        },
+        {
+          "name": "PipelineStepORM",
+          "line": 270,
+          "isDefault": false
+        },
+        {
+          "name": "RunEventORM",
+          "line": 293,
+          "isDefault": false
+        },
+        {
+          "name": "MentionSpanORM",
+          "line": 304,
+          "isDefault": false
+        },
+        {
+          "name": "AliasAssertionORM",
+          "line": 326,
+          "isDefault": false
+        },
+        {
+          "name": "FeatureObservationORM",
+          "line": 343,
+          "isDefault": false
+        },
+        {
+          "name": "FeatureSuggestionORM",
+          "line": 390,
+          "isDefault": false
+        },
+        {
+          "name": "ExpressionObservationORM",
+          "line": 407,
+          "isDefault": false
+        },
+        {
+          "name": "CharacterAppearanceStateORM",
+          "line": 446,
+          "isDefault": false
+        },
+        {
+          "name": "CharacterRenderProfileORM",
+          "line": 468,
+          "isDefault": false
+        },
+        {
+          "name": "CharacterConflictORM",
+          "line": 491,
+          "isDefault": false
+        },
+        {
+          "name": "CharacterImageSetORM",
+          "line": 515,
+          "isDefault": false
+        },
+        {
+          "name": "GeneratedImageORM",
+          "line": 529,
+          "isDefault": false
+        },
+        {
+          "name": "CharacterStageImageORM",
+          "line": 541,
+          "isDefault": false
+        },
+        {
+          "name": "ArtifactORM",
+          "line": 558,
+          "isDefault": false
+        },
+        {
+          "name": "ExternalOperationORM",
+          "line": 568,
+          "isDefault": false
+        },
+        {
+          "name": "ModelCallORM",
+          "line": 590,
+          "isDefault": false
+        },
+        {
+          "name": "AgentRunORM",
+          "line": 605,
+          "isDefault": false
+        },
+        {
+          "name": "AgentTurnORM",
+          "line": 632,
+          "isDefault": false
+        },
+        {
+          "name": "ToolCallORM",
+          "line": 643,
+          "isDefault": false
+        },
+        {
+          "name": "DecisionRecordORM",
+          "line": 659,
+          "isDefault": false
+        },
+        {
+          "name": "HumanApprovalORM",
+          "line": 672,
+          "isDefault": false
+        },
+        {
+          "name": "AgentEvaluationORM",
+          "line": 698,
+          "isDefault": false
+        },
+        {
+          "name": "EvalDatasetORM",
+          "line": 708,
+          "isDefault": false
+        },
+        {
+          "name": "EvalCaseORM",
+          "line": 721,
+          "isDefault": false
+        },
+        {
+          "name": "GraderVersionORM",
+          "line": 749,
+          "isDefault": false
+        },
+        {
+          "name": "EvalRunORM",
+          "line": 769,
+          "isDefault": false
+        },
+        {
+          "name": "EvalResultORM",
+          "line": 793,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 42,
+        "functionCount": 0,
+        "classCount": 42
+      }
+    },
+    {
+      "path": "novel-character-generator/src/novel_character_generator/infrastructure/db/repositories/evaluation.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 211,
+      "nonEmptyLines": 199,
+      "classes": [
+        {
+          "name": "EvaluationConflict",
+          "startLine": 23,
+          "endLine": 24,
+          "methods": [],
+          "properties": []
+        },
+        {
+          "name": "EvaluationRepository",
+          "startLine": 27,
+          "endLine": 211,
+          "methods": [
+            "__init__",
+            "create_dataset",
+            "add_case",
+            "freeze_dataset",
+            "register_grader",
+            "create_run",
+            "record_result"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "EvaluationConflict",
+          "line": 23,
+          "isDefault": false
+        },
+        {
+          "name": "EvaluationRepository",
+          "line": 27,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "create_dataset",
+          "callee": "self.session.scalar",
+          "lineNumber": 32
+        },
+        {
+          "caller": "create_dataset",
+          "callee": "select(EvalDatasetORM).where",
+          "lineNumber": 33
+        },
+        {
+          "caller": "create_dataset",
+          "callee": "select",
+          "lineNumber": 33
+        },
+        {
+          "caller": "create_dataset",
+          "callee": "EvaluationConflict",
+          "lineNumber": 39
+        },
+        {
+          "caller": "create_dataset",
+          "callee": "datetime.now",
+          "lineNumber": 40
+        },
+        {
+          "caller": "create_dataset",
+          "callee": "EvalDatasetORM",
+          "lineNumber": 41
+        },
+        {
+          "caller": "create_dataset",
+          "callee": "self.session.add",
+          "lineNumber": 53
+        },
+        {
+          "caller": "create_dataset",
+          "callee": "self.session.flush",
+          "lineNumber": 54
+        },
+        {
+          "caller": "add_case",
+          "callee": "self.session.get",
+          "lineNumber": 58
+        },
+        {
+          "caller": "add_case",
+          "callee": "ValueError",
+          "lineNumber": 60
+        },
+        {
+          "caller": "add_case",
+          "callee": "EvaluationConflict",
+          "lineNumber": 62
+        },
+        {
+          "caller": "add_case",
+          "callee": "EvaluationConflict",
+          "lineNumber": 64
+        },
+        {
+          "caller": "add_case",
+          "callee": "self.session.scalar",
+          "lineNumber": 65
+        },
+        {
+          "caller": "add_case",
+          "callee": "select(EvalCaseORM.id).where",
+          "lineNumber": 66
+        },
+        {
+          "caller": "add_case",
+          "callee": "select",
+          "lineNumber": 66
+        },
+        {
+          "caller": "add_case",
+          "callee": "EvaluationConflict",
+          "lineNumber": 73
+        },
+        {
+          "caller": "add_case",
+          "callee": "datetime.now",
+          "lineNumber": 74
+        },
+        {
+          "caller": "add_case",
+          "callee": "EvalCaseORM",
+          "lineNumber": 75
+        },
+        {
+          "caller": "add_case",
+          "callee": "str",
+          "lineNumber": 84
+        },
+        {
+          "caller": "add_case",
+          "callee": "item.model_dump",
+          "lineNumber": 86
+        },
+        {
+          "caller": "add_case",
+          "callee": "self.session.add",
+          "lineNumber": 94
+        },
+        {
+          "caller": "add_case",
+          "callee": "self.session.flush",
+          "lineNumber": 95
+        },
+        {
+          "caller": "freeze_dataset",
+          "callee": "datetime.now",
+          "lineNumber": 99
+        },
+        {
+          "caller": "freeze_dataset",
+          "callee": "self.session.scalar",
+          "lineNumber": 100
+        },
+        {
+          "caller": "freeze_dataset",
+          "callee": "update(EvalDatasetORM)\n            .where(EvalDatasetORM.id == dataset_id, EvalDatasetORM.frozen.is_(False))\n            .values(frozen=True, frozen_at=now, updated_at=now)\n            .returning",
+          "lineNumber": 101
+        },
+        {
+          "caller": "freeze_dataset",
+          "callee": "update(EvalDatasetORM)\n            .where(EvalDatasetORM.id == dataset_id, EvalDatasetORM.frozen.is_(False))\n            .values",
+          "lineNumber": 101
+        },
+        {
+          "caller": "freeze_dataset",
+          "callee": "update(EvalDatasetORM)\n            .where",
+          "lineNumber": 101
+        },
+        {
+          "caller": "freeze_dataset",
+          "callee": "update",
+          "lineNumber": 101
+        },
+        {
+          "caller": "freeze_dataset",
+          "callee": "EvalDatasetORM.frozen.is_",
+          "lineNumber": 102
+        },
+        {
+          "caller": "freeze_dataset",
+          "callee": "self.session.get",
+          "lineNumber": 107
+        },
+        {
+          "caller": "freeze_dataset",
+          "callee": "ValueError",
+          "lineNumber": 109
+        },
+        {
+          "caller": "freeze_dataset",
+          "callee": "self.session.flush",
+          "lineNumber": 111
+        },
+        {
+          "caller": "freeze_dataset",
+          "callee": "self.session.get_one",
+          "lineNumber": 112
+        },
+        {
+          "caller": "register_grader",
+          "callee": "datetime.now",
+          "lineNumber": 115
+        },
+        {
+          "caller": "register_grader",
+          "callee": "GraderVersionORM",
+          "lineNumber": 116
+        },
+        {
+          "caller": "register_grader",
+          "callee": "self.session.add",
+          "lineNumber": 132
+        },
+        {
+          "caller": "register_grader",
+          "callee": "self.session.flush",
+          "lineNumber": 133
+        },
+        {
+          "caller": "create_run",
+          "callee": "self.session.get",
+          "lineNumber": 137
+        },
+        {
+          "caller": "create_run",
+          "callee": "ValueError",
+          "lineNumber": 139
+        },
+        {
+          "caller": "create_run",
+          "callee": "EvaluationConflict",
+          "lineNumber": 141
+        },
+        {
+          "caller": "create_run",
+          "callee": "EvaluationConflict",
+          "lineNumber": 143
+        },
+        {
+          "caller": "create_run",
+          "callee": "datetime.now",
+          "lineNumber": 144
+        },
+        {
+          "caller": "create_run",
+          "callee": "EvalRunORM",
+          "lineNumber": 145
+        },
+        {
+          "caller": "create_run",
+          "callee": "self.session.add",
+          "lineNumber": 169
+        },
+        {
+          "caller": "create_run",
+          "callee": "self.session.flush",
+          "lineNumber": 170
+        },
+        {
+          "caller": "record_result",
+          "callee": "self.session.get",
+          "lineNumber": 174
+        },
+        {
+          "caller": "record_result",
+          "callee": "self.session.get",
+          "lineNumber": 175
+        },
+        {
+          "caller": "record_result",
+          "callee": "self.session.get",
+          "lineNumber": 176
+        },
+        {
+          "caller": "record_result",
+          "callee": "ValueError",
+          "lineNumber": 178
+        },
+        {
+          "caller": "record_result",
+          "callee": "EvaluationConflict",
+          "lineNumber": 180
+        },
+        {
+          "caller": "record_result",
+          "callee": "self.session.scalar",
+          "lineNumber": 181
+        },
+        {
+          "caller": "record_result",
+          "callee": "select(EvalResultORM).where",
+          "lineNumber": 182
+        },
+        {
+          "caller": "record_result",
+          "callee": "select",
+          "lineNumber": 182
+        },
+        {
+          "caller": "record_result",
+          "callee": "EvaluationConflict",
+          "lineNumber": 189
+        },
+        {
+          "caller": "record_result",
+          "callee": "datetime.now",
+          "lineNumber": 190
+        },
+        {
+          "caller": "record_result",
+          "callee": "EvalResultORM",
+          "lineNumber": 191
+        },
+        {
+          "caller": "record_result",
+          "callee": "self.session.add",
+          "lineNumber": 209
+        },
+        {
+          "caller": "record_result",
+          "callee": "self.session.flush",
+          "lineNumber": 210
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 2,
+        "functionCount": 0,
+        "classCount": 2
+      }
+    },
+    {
+      "path": "novel-character-generator/src/novel_character_generator/infrastructure/db/repositories/external_operations.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 122,
+      "nonEmptyLines": 113,
+      "classes": [
+        {
+          "name": "ExternalOperationConflict",
+          "startLine": 14,
+          "endLine": 15,
+          "methods": [],
+          "properties": []
+        },
+        {
+          "name": "ExternalOperationRepository",
+          "startLine": 18,
+          "endLine": 122,
+          "methods": [
+            "__init__",
+            "prepare",
+            "transition",
+            "list_for_run"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "ExternalOperationConflict",
+          "line": 14,
+          "isDefault": false
+        },
+        {
+          "name": "ExternalOperationRepository",
+          "line": 18,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "prepare",
+          "callee": "self.session.scalar",
+          "lineNumber": 33
+        },
+        {
+          "caller": "prepare",
+          "callee": "select(ExternalOperationORM).where",
+          "lineNumber": 34
+        },
+        {
+          "caller": "prepare",
+          "callee": "select",
+          "lineNumber": 34
+        },
+        {
+          "caller": "prepare",
+          "callee": "ExternalOperationConflict",
+          "lineNumber": 41
+        },
+        {
+          "caller": "prepare",
+          "callee": "datetime.now",
+          "lineNumber": 43
+        },
+        {
+          "caller": "prepare",
+          "callee": "ExternalOperationORM",
+          "lineNumber": 44
+        },
+        {
+          "caller": "prepare",
+          "callee": "uuid4",
+          "lineNumber": 45
+        },
+        {
+          "caller": "prepare",
+          "callee": "self.session.add",
+          "lineNumber": 65
+        },
+        {
+          "caller": "prepare",
+          "callee": "self.session.flush",
+          "lineNumber": 66
+        },
+        {
+          "caller": "transition",
+          "callee": "self.session.get",
+          "lineNumber": 78
+        },
+        {
+          "caller": "transition",
+          "callee": "ValueError",
+          "lineNumber": 80
+        },
+        {
+          "caller": "transition",
+          "callee": "ExternalOperationState",
+          "lineNumber": 81
+        },
+        {
+          "caller": "transition",
+          "callee": "ValueError",
+          "lineNumber": 83
+        },
+        {
+          "caller": "transition",
+          "callee": "datetime.now",
+          "lineNumber": 84
+        },
+        {
+          "caller": "transition",
+          "callee": "self.session.scalar",
+          "lineNumber": 101
+        },
+        {
+          "caller": "transition",
+          "callee": "update(ExternalOperationORM)\n            .where(\n                ExternalOperationORM.id == operation_id,\n                ExternalOperationORM.status == current.value,\n                ExternalOperationORM.lease_generation == expected_generation,\n            )\n            .values(**values)\n            .returning",
+          "lineNumber": 102
+        },
+        {
+          "caller": "transition",
+          "callee": "update(ExternalOperationORM)\n            .where(\n                ExternalOperationORM.id == operation_id,\n                ExternalOperationORM.status == current.value,\n                ExternalOperationORM.lease_generation == expected_generation,\n            )\n            .values",
+          "lineNumber": 102
+        },
+        {
+          "caller": "transition",
+          "callee": "update(ExternalOperationORM)\n            .where",
+          "lineNumber": 102
+        },
+        {
+          "caller": "transition",
+          "callee": "update",
+          "lineNumber": 102
+        },
+        {
+          "caller": "transition",
+          "callee": "ExternalOperationConflict",
+          "lineNumber": 112
+        },
+        {
+          "caller": "transition",
+          "callee": "self.session.flush",
+          "lineNumber": 113
+        },
+        {
+          "caller": "transition",
+          "callee": "self.session.get_one",
+          "lineNumber": 114
+        },
+        {
+          "caller": "list_for_run",
+          "callee": "self.session.scalars",
+          "lineNumber": 117
+        },
+        {
+          "caller": "list_for_run",
+          "callee": "select(ExternalOperationORM)\n            .where(ExternalOperationORM.run_id == run_id)\n            .order_by",
+          "lineNumber": 118
+        },
+        {
+          "caller": "list_for_run",
+          "callee": "select(ExternalOperationORM)\n            .where",
+          "lineNumber": 118
+        },
+        {
+          "caller": "list_for_run",
+          "callee": "select",
+          "lineNumber": 118
+        },
+        {
+          "caller": "list_for_run",
+          "callee": "list",
+          "lineNumber": 122
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 2,
+        "functionCount": 0,
+        "classCount": 2
+      }
+    }
+  ]
+}

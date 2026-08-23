@@ -1,0 +1,1186 @@
+{
+  "nodes": [
+    {
+      "id": "file:novel-character-generator/tests/integration/test_story_temporal_api.py",
+      "type": "file",
+      "name": "test_story_temporal_api.py",
+      "filePath": "novel-character-generator/tests/integration/test_story_temporal_api.py",
+      "summary": "集成测试场景假设的证据绑定、时间查询与人工校正接口。",
+      "tags": [
+        "测试",
+        "集成测试",
+        "api",
+        "pytest"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:novel-character-generator/tests/integration/test_story_temporal_api.py:test_scene_hypotheses_are_grounded_queryable_and_correctable",
+      "type": "function",
+      "name": "test_scene_hypotheses_are_grounded_queryable_and_correctable",
+      "filePath": "novel-character-generator/tests/integration/test_story_temporal_api.py",
+      "lineRange": [
+        101,
+        215
+      ],
+      "summary": "验证“test_scene_hypotheses_are_grounded_queryable_and_correctable”覆盖的业务契约、状态变化与异常边界。",
+      "tags": [
+        "测试",
+        "pytest",
+        "契约验证"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "class:novel-character-generator/tests/integration/test_story_temporal_api.py:TemporalProvider",
+      "type": "class",
+      "name": "TemporalProvider",
+      "filePath": "novel-character-generator/tests/integration/test_story_temporal_api.py",
+      "lineRange": [
+        36,
+        97
+      ],
+      "summary": "为时间叙事接口测试提供确定性的抽取结果，以驱动场景假设和时间范围断言。",
+      "tags": [
+        "测试替身",
+        "测试",
+        "数据模型"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:novel-character-generator/tests/integration/test_task_recovery.py",
+      "type": "file",
+      "name": "test_task_recovery.py",
+      "filePath": "novel-character-generator/tests/integration/test_task_recovery.py",
+      "summary": "集成测试任务分片在处理失败后可重新认领并从游标续跑。",
+      "tags": [
+        "测试",
+        "集成测试",
+        "api",
+        "pytest"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:novel-character-generator/tests/integration/test_task_recovery.py:test_claim_failure_and_cursor_resume",
+      "type": "function",
+      "name": "test_claim_failure_and_cursor_resume",
+      "filePath": "novel-character-generator/tests/integration/test_task_recovery.py",
+      "lineRange": [
+        48,
+        103
+      ],
+      "summary": "验证“test_claim_failure_and_cursor_resume”覆盖的业务契约、状态变化与异常边界。",
+      "tags": [
+        "测试",
+        "pytest",
+        "契约验证"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:novel-character-generator/tests/integration/test_task_recovery.py:FailOnSecondChunk",
+      "type": "class",
+      "name": "FailOnSecondChunk",
+      "filePath": "novel-character-generator/tests/integration/test_task_recovery.py",
+      "lineRange": [
+        23,
+        33
+      ],
+      "summary": "在第二个文本分片处理时故意失败的测试提供方，用于验证任务恢复逻辑。",
+      "tags": [
+        "测试替身",
+        "测试",
+        "数据模型"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:novel-character-generator/tests/integration/test_task_recovery.py:RecordingProvider",
+      "type": "class",
+      "name": "RecordingProvider",
+      "filePath": "novel-character-generator/tests/integration/test_task_recovery.py",
+      "lineRange": [
+        36,
+        44
+      ],
+      "summary": "记录已处理分片的测试提供方，用于断言恢复任务的游标与重试行为。",
+      "tags": [
+        "测试替身",
+        "测试",
+        "数据模型"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:novel-character-generator/tests/integration/test_text_analysis_run.py",
+      "type": "file",
+      "name": "test_text_analysis_run.py",
+      "filePath": "novel-character-generator/tests/integration/test_text_analysis_run.py",
+      "summary": "集成测试公共文本分析接口先执行摄取再执行角色抽取的完整链路。",
+      "tags": [
+        "测试",
+        "集成测试",
+        "api",
+        "pytest"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:novel-character-generator/tests/integration/test_text_analysis_run.py:test_public_run_endpoint_executes_ingestion_then_extraction",
+      "type": "function",
+      "name": "test_public_run_endpoint_executes_ingestion_then_extraction",
+      "filePath": "novel-character-generator/tests/integration/test_text_analysis_run.py",
+      "lineRange": [
+        25,
+        96
+      ],
+      "summary": "验证“test_public_run_endpoint_executes_ingestion_then_extraction”覆盖的业务契约、状态变化与异常边界。",
+      "tags": [
+        "测试",
+        "pytest",
+        "契约验证"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:novel-character-generator/tests/unit/domain/test_models.py",
+      "type": "file",
+      "name": "test_models.py",
+      "filePath": "novel-character-generator/tests/unit/domain/test_models.py",
+      "summary": "单元测试领域模型的区间、证据、状态转换、评测冻结与评分溯源约束。",
+      "tags": [
+        "测试",
+        "单元测试",
+        "领域逻辑",
+        "pytest"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:novel-character-generator/tests/unit/domain/test_models.py:test_mention_span_rejects_reversed_offsets",
+      "type": "function",
+      "name": "test_mention_span_rejects_reversed_offsets",
+      "filePath": "novel-character-generator/tests/unit/domain/test_models.py",
+      "lineRange": [
+        13,
+        24
+      ],
+      "summary": "验证“test_mention_span_rejects_reversed_offsets”覆盖的业务契约、状态变化与异常边界。",
+      "tags": [
+        "测试",
+        "pytest",
+        "契约验证"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:novel-character-generator/tests/unit/domain/test_models.py:test_text_observation_requires_temporal_scope",
+      "type": "function",
+      "name": "test_text_observation_requires_temporal_scope",
+      "filePath": "novel-character-generator/tests/unit/domain/test_models.py",
+      "lineRange": [
+        27,
+        39
+      ],
+      "summary": "验证“test_text_observation_requires_temporal_scope”覆盖的业务契约、状态变化与异常边界。",
+      "tags": [
+        "测试",
+        "pytest",
+        "契约验证"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:novel-character-generator/tests/unit/domain/test_models.py:test_text_observation_accepts_grounded_evidence",
+      "type": "function",
+      "name": "test_text_observation_accepts_grounded_evidence",
+      "filePath": "novel-character-generator/tests/unit/domain/test_models.py",
+      "lineRange": [
+        42,
+        62
+      ],
+      "summary": "验证“test_text_observation_accepts_grounded_evidence”覆盖的业务契约、状态变化与异常边界。",
+      "tags": [
+        "测试",
+        "pytest",
+        "契约验证"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:novel-character-generator/tests/unit/domain/test_models.py:test_pipeline_step_uses_explicit_transition_rules",
+      "type": "function",
+      "name": "test_pipeline_step_uses_explicit_transition_rules",
+      "filePath": "novel-character-generator/tests/unit/domain/test_models.py",
+      "lineRange": [
+        65,
+        68
+      ],
+      "summary": "验证“test_pipeline_step_uses_explicit_transition_rules”覆盖的业务契约、状态变化与异常边界。",
+      "tags": [
+        "测试",
+        "pytest",
+        "契约验证"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:novel-character-generator/tests/unit/domain/test_models.py:test_frozen_eval_dataset_requires_freeze_timestamp",
+      "type": "function",
+      "name": "test_frozen_eval_dataset_requires_freeze_timestamp",
+      "filePath": "novel-character-generator/tests/unit/domain/test_models.py",
+      "lineRange": [
+        71,
+        79
+      ],
+      "summary": "验证“test_frozen_eval_dataset_requires_freeze_timestamp”覆盖的业务契约、状态变化与异常边界。",
+      "tags": [
+        "测试",
+        "pytest",
+        "契约验证"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:novel-character-generator/tests/unit/domain/test_models.py:test_model_grader_requires_reproducible_provenance",
+      "type": "function",
+      "name": "test_model_grader_requires_reproducible_provenance",
+      "filePath": "novel-character-generator/tests/unit/domain/test_models.py",
+      "lineRange": [
+        82,
+        91
+      ],
+      "summary": "验证“test_model_grader_requires_reproducible_provenance”覆盖的业务契约、状态变化与异常边界。",
+      "tags": [
+        "测试",
+        "pytest",
+        "契约验证"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:novel-character-generator/tests/unit/domain/test_text_processing.py",
+      "type": "file",
+      "name": "test_text_processing.py",
+      "filePath": "novel-character-generator/tests/unit/domain/test_text_processing.py",
+      "summary": "单元测试文本规范化、编码探测、章节识别和切片哈希的确定性。",
+      "tags": [
+        "测试",
+        "单元测试",
+        "领域逻辑",
+        "pytest"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:novel-character-generator/tests/unit/domain/test_text_processing.py:test_normalization_preserves_reverse_offsets",
+      "type": "function",
+      "name": "test_normalization_preserves_reverse_offsets",
+      "filePath": "novel-character-generator/tests/unit/domain/test_text_processing.py",
+      "lineRange": [
+        9,
+        14
+      ],
+      "summary": "验证“test_normalization_preserves_reverse_offsets”覆盖的业务契约、状态变化与异常边界。",
+      "tags": [
+        "测试",
+        "pytest",
+        "契约验证"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:novel-character-generator/tests/unit/domain/test_text_processing.py:test_decode_text_distinguishes_gb18030_from_utf16",
+      "type": "function",
+      "name": "test_decode_text_distinguishes_gb18030_from_utf16",
+      "filePath": "novel-character-generator/tests/unit/domain/test_text_processing.py",
+      "lineRange": [
+        17,
+        26
+      ],
+      "summary": "验证“test_decode_text_distinguishes_gb18030_from_utf16”覆盖的业务契约、状态变化与异常边界。",
+      "tags": [
+        "测试",
+        "pytest",
+        "契约验证"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:novel-character-generator/tests/unit/domain/test_text_processing.py:test_chapter_detection_and_chunk_hashes_are_stable",
+      "type": "function",
+      "name": "test_chapter_detection_and_chunk_hashes_are_stable",
+      "filePath": "novel-character-generator/tests/unit/domain/test_text_processing.py",
+      "lineRange": [
+        29,
+        41
+      ],
+      "summary": "验证“test_chapter_detection_and_chunk_hashes_are_stable”覆盖的业务契约、状态变化与异常边界。",
+      "tags": [
+        "测试",
+        "pytest",
+        "契约验证"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:novel-character-generator/tests/unit/test_mock_extraction.py",
+      "type": "file",
+      "name": "test_mock_extraction.py",
+      "filePath": "novel-character-generator/tests/unit/test_mock_extraction.py",
+      "summary": "单元测试模拟抽取提供方返回带证据的角色数据及指纹稳定性。",
+      "tags": [
+        "测试",
+        "单元测试",
+        "领域逻辑",
+        "pytest"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:novel-character-generator/tests/unit/test_mock_extraction.py:test_mock_extraction_returns_grounded_character_data",
+      "type": "function",
+      "name": "test_mock_extraction_returns_grounded_character_data",
+      "filePath": "novel-character-generator/tests/unit/test_mock_extraction.py",
+      "lineRange": [
+        11,
+        19
+      ],
+      "summary": "验证“test_mock_extraction_returns_grounded_character_data”覆盖的业务契约、状态变化与异常边界。",
+      "tags": [
+        "测试",
+        "pytest",
+        "契约验证"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:novel-character-generator/tests/unit/test_mock_extraction.py:test_grounding_and_fingerprint_are_deterministic",
+      "type": "function",
+      "name": "test_grounding_and_fingerprint_are_deterministic",
+      "filePath": "novel-character-generator/tests/unit/test_mock_extraction.py",
+      "lineRange": [
+        22,
+        33
+      ],
+      "summary": "验证“test_grounding_and_fingerprint_are_deterministic”覆盖的业务契约、状态变化与异常边界。",
+      "tags": [
+        "测试",
+        "pytest",
+        "契约验证"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:novel-character-generator/tests/unit/test_openai_compatible_extraction.py",
+      "type": "file",
+      "name": "test_openai_compatible_extraction.py",
+      "filePath": "novel-character-generator/tests/unit/test_openai_compatible_extraction.py",
+      "summary": "单元测试 OpenAI 兼容提供方发出结构化 JSON 请求并解析响应。",
+      "tags": [
+        "测试",
+        "单元测试",
+        "领域逻辑",
+        "pytest"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:novel-character-generator/tests/unit/test_openai_compatible_extraction.py:test_openai_compatible_provider_requests_structured_json",
+      "type": "function",
+      "name": "test_openai_compatible_provider_requests_structured_json",
+      "filePath": "novel-character-generator/tests/unit/test_openai_compatible_extraction.py",
+      "lineRange": [
+        12,
+        51
+      ],
+      "summary": "验证“test_openai_compatible_provider_requests_structured_json”覆盖的业务契约、状态变化与异常边界。",
+      "tags": [
+        "测试",
+        "pytest",
+        "契约验证"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:novel-character-generator/tests/unit/test_settings.py",
+      "type": "file",
+      "name": "test_settings.py",
+      "filePath": "novel-character-generator/tests/unit/test_settings.py",
+      "summary": "单元测试默认 SQLite 配置、生产环境提供方约束和密钥隔离规则。",
+      "tags": [
+        "测试",
+        "单元测试",
+        "领域逻辑",
+        "pytest"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:novel-character-generator/tests/unit/test_settings.py:test_default_settings_use_async_sqlite",
+      "type": "function",
+      "name": "test_default_settings_use_async_sqlite",
+      "filePath": "novel-character-generator/tests/unit/test_settings.py",
+      "lineRange": [
+        7,
+        10
+      ],
+      "summary": "验证“test_default_settings_use_async_sqlite”覆盖的业务契约、状态变化与异常边界。",
+      "tags": [
+        "测试",
+        "pytest",
+        "契约验证"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:novel-character-generator/tests/unit/test_settings.py:test_production_rejects_mock_provider",
+      "type": "function",
+      "name": "test_production_rejects_mock_provider",
+      "filePath": "novel-character-generator/tests/unit/test_settings.py",
+      "lineRange": [
+        13,
+        15
+      ],
+      "summary": "验证“test_production_rejects_mock_provider”覆盖的业务契约、状态变化与异常边界。",
+      "tags": [
+        "测试",
+        "pytest",
+        "契约验证"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:novel-character-generator/tests/unit/test_settings.py:test_remote_provider_requires_credentials",
+      "type": "function",
+      "name": "test_remote_provider_requires_credentials",
+      "filePath": "novel-character-generator/tests/unit/test_settings.py",
+      "lineRange": [
+        18,
+        20
+      ],
+      "summary": "验证“test_remote_provider_requires_credentials”覆盖的业务契约、状态变化与异常边界。",
+      "tags": [
+        "测试",
+        "pytest",
+        "契约验证"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:novel-character-generator/tests/unit/test_settings.py:test_production_requires_distinct_user_and_admin_keys",
+      "type": "function",
+      "name": "test_production_requires_distinct_user_and_admin_keys",
+      "filePath": "novel-character-generator/tests/unit/test_settings.py",
+      "lineRange": [
+        23,
+        33
+      ],
+      "summary": "验证“test_production_requires_distinct_user_and_admin_keys”覆盖的业务契约、状态变化与异常边界。",
+      "tags": [
+        "测试",
+        "pytest",
+        "契约验证"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:novel-character-generator/tests/unit/test_structured_agent_runtime.py",
+      "type": "file",
+      "name": "test_structured_agent_runtime.py",
+      "filePath": "novel-character-generator/tests/unit/test_structured_agent_runtime.py",
+      "summary": "单元测试结构化智能体运行时的工具调用、权限阻止、审批预检和成本上限处理。",
+      "tags": [
+        "测试",
+        "单元测试",
+        "领域逻辑",
+        "pytest"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:novel-character-generator/tests/unit/test_structured_agent_runtime.py:agent_spec",
+      "type": "function",
+      "name": "agent_spec",
+      "filePath": "novel-character-generator/tests/unit/test_structured_agent_runtime.py",
+      "lineRange": [
+        55,
+        69
+      ],
+      "summary": "验证“agent_spec”覆盖的业务契约、状态变化与异常边界。",
+      "tags": [
+        "测试",
+        "pytest",
+        "契约验证"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:novel-character-generator/tests/unit/test_structured_agent_runtime.py:context",
+      "type": "function",
+      "name": "context",
+      "filePath": "novel-character-generator/tests/unit/test_structured_agent_runtime.py",
+      "lineRange": [
+        72,
+        78
+      ],
+      "summary": "验证“context”覆盖的业务契约、状态变化与异常边界。",
+      "tags": [
+        "测试",
+        "pytest",
+        "契约验证"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:novel-character-generator/tests/unit/test_structured_agent_runtime.py:runtime_settings",
+      "type": "function",
+      "name": "runtime_settings",
+      "filePath": "novel-character-generator/tests/unit/test_structured_agent_runtime.py",
+      "lineRange": [
+        81,
+        87
+      ],
+      "summary": "验证“runtime_settings”覆盖的业务契约、状态变化与异常边界。",
+      "tags": [
+        "测试",
+        "pytest",
+        "契约验证"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:novel-character-generator/tests/unit/test_structured_agent_runtime.py:registered_tool",
+      "type": "function",
+      "name": "registered_tool",
+      "filePath": "novel-character-generator/tests/unit/test_structured_agent_runtime.py",
+      "lineRange": [
+        90,
+        115
+      ],
+      "summary": "验证“registered_tool”覆盖的业务契约、状态变化与异常边界。",
+      "tags": [
+        "测试",
+        "pytest",
+        "契约验证"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:novel-character-generator/tests/unit/test_structured_agent_runtime.py:test_runtime_executes_typed_tool_then_validates_final_output",
+      "type": "function",
+      "name": "test_runtime_executes_typed_tool_then_validates_final_output",
+      "filePath": "novel-character-generator/tests/unit/test_structured_agent_runtime.py",
+      "lineRange": [
+        119,
+        158
+      ],
+      "summary": "验证“test_runtime_executes_typed_tool_then_validates_final_output”覆盖的业务契约、状态变化与异常边界。",
+      "tags": [
+        "测试",
+        "pytest",
+        "契约验证"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:novel-character-generator/tests/unit/test_structured_agent_runtime.py:test_runtime_rejects_tool_permission_escalation",
+      "type": "function",
+      "name": "test_runtime_rejects_tool_permission_escalation",
+      "filePath": "novel-character-generator/tests/unit/test_structured_agent_runtime.py",
+      "lineRange": [
+        162,
+        200
+      ],
+      "summary": "验证“test_runtime_rejects_tool_permission_escalation”覆盖的业务契约、状态变化与异常边界。",
+      "tags": [
+        "测试",
+        "pytest",
+        "契约验证"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:novel-character-generator/tests/unit/test_structured_agent_runtime.py:test_approval_preflight_prevents_partial_side_effects",
+      "type": "function",
+      "name": "test_approval_preflight_prevents_partial_side_effects",
+      "filePath": "novel-character-generator/tests/unit/test_structured_agent_runtime.py",
+      "lineRange": [
+        204,
+        255
+      ],
+      "summary": "验证“test_approval_preflight_prevents_partial_side_effects”覆盖的业务契约、状态变化与异常边界。",
+      "tags": [
+        "测试",
+        "pytest",
+        "契约验证"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:novel-character-generator/tests/unit/test_structured_agent_runtime.py:test_runtime_returns_structured_cost_limit",
+      "type": "function",
+      "name": "test_runtime_returns_structured_cost_limit",
+      "filePath": "novel-character-generator/tests/unit/test_structured_agent_runtime.py",
+      "lineRange": [
+        259,
+        283
+      ],
+      "summary": "验证“test_runtime_returns_structured_cost_limit”覆盖的业务契约、状态变化与异常边界。",
+      "tags": [
+        "测试",
+        "pytest",
+        "契约验证"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:novel-character-generator/tests/unit/test_structured_agent_runtime.py:EchoInput",
+      "type": "class",
+      "name": "EchoInput",
+      "filePath": "novel-character-generator/tests/unit/test_structured_agent_runtime.py",
+      "lineRange": [
+        25,
+        26
+      ],
+      "summary": "结构化运行时测试使用的回显工具输入数据模型。",
+      "tags": [
+        "测试替身",
+        "测试",
+        "数据模型"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:novel-character-generator/tests/unit/test_structured_agent_runtime.py:EchoOutput",
+      "type": "class",
+      "name": "EchoOutput",
+      "filePath": "novel-character-generator/tests/unit/test_structured_agent_runtime.py",
+      "lineRange": [
+        29,
+        30
+      ],
+      "summary": "结构化运行时测试使用的回显工具输出数据模型。",
+      "tags": [
+        "测试替身",
+        "测试",
+        "数据模型"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:novel-character-generator/tests/unit/test_structured_agent_runtime.py:FinalOutput",
+      "type": "class",
+      "name": "FinalOutput",
+      "filePath": "novel-character-generator/tests/unit/test_structured_agent_runtime.py",
+      "lineRange": [
+        33,
+        34
+      ],
+      "summary": "结构化运行时测试中用于校验最终回答格式的数据模型。",
+      "tags": [
+        "测试替身",
+        "测试",
+        "数据模型"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:novel-character-generator/tests/unit/test_structured_agent_runtime.py:SequenceModel",
+      "type": "class",
+      "name": "SequenceModel",
+      "filePath": "novel-character-generator/tests/unit/test_structured_agent_runtime.py",
+      "lineRange": [
+        37,
+        52
+      ],
+      "summary": "按预设顺序返回模型轮次的测试替身，用于可重复验证智能体运行时。",
+      "tags": [
+        "测试替身",
+        "测试",
+        "数据模型"
+      ],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:novel-character-generator/tests/integration/test_story_temporal_api.py",
+      "target": "function:novel-character-generator/tests/integration/test_story_temporal_api.py:test_scene_hypotheses_are_grounded_queryable_and_correctable",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/tests/integration/test_story_temporal_api.py",
+      "target": "class:novel-character-generator/tests/integration/test_story_temporal_api.py:TemporalProvider",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/tests/integration/test_story_temporal_api.py",
+      "target": "class:novel-character-generator/tests/integration/test_story_temporal_api.py:TemporalProvider",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/tests/integration/test_story_temporal_api.py",
+      "target": "function:novel-character-generator/tests/integration/test_story_temporal_api.py:test_scene_hypotheses_are_grounded_queryable_and_correctable",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/tests/integration/test_task_recovery.py",
+      "target": "function:novel-character-generator/tests/integration/test_task_recovery.py:test_claim_failure_and_cursor_resume",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/tests/integration/test_task_recovery.py",
+      "target": "class:novel-character-generator/tests/integration/test_task_recovery.py:FailOnSecondChunk",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/tests/integration/test_task_recovery.py",
+      "target": "class:novel-character-generator/tests/integration/test_task_recovery.py:RecordingProvider",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/tests/integration/test_task_recovery.py",
+      "target": "class:novel-character-generator/tests/integration/test_task_recovery.py:FailOnSecondChunk",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/tests/integration/test_task_recovery.py",
+      "target": "class:novel-character-generator/tests/integration/test_task_recovery.py:RecordingProvider",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/tests/integration/test_task_recovery.py",
+      "target": "function:novel-character-generator/tests/integration/test_task_recovery.py:test_claim_failure_and_cursor_resume",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/tests/integration/test_text_analysis_run.py",
+      "target": "function:novel-character-generator/tests/integration/test_text_analysis_run.py:test_public_run_endpoint_executes_ingestion_then_extraction",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/tests/integration/test_text_analysis_run.py",
+      "target": "function:novel-character-generator/tests/integration/test_text_analysis_run.py:test_public_run_endpoint_executes_ingestion_then_extraction",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/tests/unit/domain/test_models.py",
+      "target": "function:novel-character-generator/tests/unit/domain/test_models.py:test_mention_span_rejects_reversed_offsets",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/tests/unit/domain/test_models.py",
+      "target": "function:novel-character-generator/tests/unit/domain/test_models.py:test_text_observation_requires_temporal_scope",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/tests/unit/domain/test_models.py",
+      "target": "function:novel-character-generator/tests/unit/domain/test_models.py:test_text_observation_accepts_grounded_evidence",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/tests/unit/domain/test_models.py",
+      "target": "function:novel-character-generator/tests/unit/domain/test_models.py:test_pipeline_step_uses_explicit_transition_rules",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/tests/unit/domain/test_models.py",
+      "target": "function:novel-character-generator/tests/unit/domain/test_models.py:test_frozen_eval_dataset_requires_freeze_timestamp",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/tests/unit/domain/test_models.py",
+      "target": "function:novel-character-generator/tests/unit/domain/test_models.py:test_model_grader_requires_reproducible_provenance",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/tests/unit/domain/test_models.py",
+      "target": "function:novel-character-generator/tests/unit/domain/test_models.py:test_mention_span_rejects_reversed_offsets",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/tests/unit/domain/test_models.py",
+      "target": "function:novel-character-generator/tests/unit/domain/test_models.py:test_text_observation_requires_temporal_scope",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/tests/unit/domain/test_models.py",
+      "target": "function:novel-character-generator/tests/unit/domain/test_models.py:test_text_observation_accepts_grounded_evidence",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/tests/unit/domain/test_models.py",
+      "target": "function:novel-character-generator/tests/unit/domain/test_models.py:test_pipeline_step_uses_explicit_transition_rules",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/tests/unit/domain/test_models.py",
+      "target": "function:novel-character-generator/tests/unit/domain/test_models.py:test_frozen_eval_dataset_requires_freeze_timestamp",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/tests/unit/domain/test_models.py",
+      "target": "function:novel-character-generator/tests/unit/domain/test_models.py:test_model_grader_requires_reproducible_provenance",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/tests/unit/domain/test_text_processing.py",
+      "target": "function:novel-character-generator/tests/unit/domain/test_text_processing.py:test_normalization_preserves_reverse_offsets",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/tests/unit/domain/test_text_processing.py",
+      "target": "function:novel-character-generator/tests/unit/domain/test_text_processing.py:test_decode_text_distinguishes_gb18030_from_utf16",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/tests/unit/domain/test_text_processing.py",
+      "target": "function:novel-character-generator/tests/unit/domain/test_text_processing.py:test_chapter_detection_and_chunk_hashes_are_stable",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/tests/unit/domain/test_text_processing.py",
+      "target": "function:novel-character-generator/tests/unit/domain/test_text_processing.py:test_normalization_preserves_reverse_offsets",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/tests/unit/domain/test_text_processing.py",
+      "target": "function:novel-character-generator/tests/unit/domain/test_text_processing.py:test_decode_text_distinguishes_gb18030_from_utf16",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/tests/unit/domain/test_text_processing.py",
+      "target": "function:novel-character-generator/tests/unit/domain/test_text_processing.py:test_chapter_detection_and_chunk_hashes_are_stable",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/tests/unit/test_mock_extraction.py",
+      "target": "function:novel-character-generator/tests/unit/test_mock_extraction.py:test_mock_extraction_returns_grounded_character_data",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/tests/unit/test_mock_extraction.py",
+      "target": "function:novel-character-generator/tests/unit/test_mock_extraction.py:test_grounding_and_fingerprint_are_deterministic",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/tests/unit/test_mock_extraction.py",
+      "target": "function:novel-character-generator/tests/unit/test_mock_extraction.py:test_mock_extraction_returns_grounded_character_data",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/tests/unit/test_mock_extraction.py",
+      "target": "function:novel-character-generator/tests/unit/test_mock_extraction.py:test_grounding_and_fingerprint_are_deterministic",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/tests/unit/test_openai_compatible_extraction.py",
+      "target": "function:novel-character-generator/tests/unit/test_openai_compatible_extraction.py:test_openai_compatible_provider_requests_structured_json",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/tests/unit/test_openai_compatible_extraction.py",
+      "target": "function:novel-character-generator/tests/unit/test_openai_compatible_extraction.py:test_openai_compatible_provider_requests_structured_json",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/tests/unit/test_settings.py",
+      "target": "function:novel-character-generator/tests/unit/test_settings.py:test_default_settings_use_async_sqlite",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/tests/unit/test_settings.py",
+      "target": "function:novel-character-generator/tests/unit/test_settings.py:test_production_rejects_mock_provider",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/tests/unit/test_settings.py",
+      "target": "function:novel-character-generator/tests/unit/test_settings.py:test_remote_provider_requires_credentials",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/tests/unit/test_settings.py",
+      "target": "function:novel-character-generator/tests/unit/test_settings.py:test_production_requires_distinct_user_and_admin_keys",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/tests/unit/test_settings.py",
+      "target": "function:novel-character-generator/tests/unit/test_settings.py:test_default_settings_use_async_sqlite",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/tests/unit/test_settings.py",
+      "target": "function:novel-character-generator/tests/unit/test_settings.py:test_production_rejects_mock_provider",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/tests/unit/test_settings.py",
+      "target": "function:novel-character-generator/tests/unit/test_settings.py:test_remote_provider_requires_credentials",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/tests/unit/test_settings.py",
+      "target": "function:novel-character-generator/tests/unit/test_settings.py:test_production_requires_distinct_user_and_admin_keys",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/tests/unit/test_structured_agent_runtime.py",
+      "target": "function:novel-character-generator/tests/unit/test_structured_agent_runtime.py:agent_spec",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/tests/unit/test_structured_agent_runtime.py",
+      "target": "function:novel-character-generator/tests/unit/test_structured_agent_runtime.py:context",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/tests/unit/test_structured_agent_runtime.py",
+      "target": "function:novel-character-generator/tests/unit/test_structured_agent_runtime.py:runtime_settings",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/tests/unit/test_structured_agent_runtime.py",
+      "target": "function:novel-character-generator/tests/unit/test_structured_agent_runtime.py:registered_tool",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/tests/unit/test_structured_agent_runtime.py",
+      "target": "function:novel-character-generator/tests/unit/test_structured_agent_runtime.py:test_runtime_executes_typed_tool_then_validates_final_output",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/tests/unit/test_structured_agent_runtime.py",
+      "target": "function:novel-character-generator/tests/unit/test_structured_agent_runtime.py:test_runtime_rejects_tool_permission_escalation",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/tests/unit/test_structured_agent_runtime.py",
+      "target": "function:novel-character-generator/tests/unit/test_structured_agent_runtime.py:test_approval_preflight_prevents_partial_side_effects",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/tests/unit/test_structured_agent_runtime.py",
+      "target": "function:novel-character-generator/tests/unit/test_structured_agent_runtime.py:test_runtime_returns_structured_cost_limit",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/tests/unit/test_structured_agent_runtime.py",
+      "target": "class:novel-character-generator/tests/unit/test_structured_agent_runtime.py:EchoInput",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/tests/unit/test_structured_agent_runtime.py",
+      "target": "class:novel-character-generator/tests/unit/test_structured_agent_runtime.py:EchoOutput",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/tests/unit/test_structured_agent_runtime.py",
+      "target": "class:novel-character-generator/tests/unit/test_structured_agent_runtime.py:FinalOutput",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/tests/unit/test_structured_agent_runtime.py",
+      "target": "class:novel-character-generator/tests/unit/test_structured_agent_runtime.py:SequenceModel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/tests/unit/test_structured_agent_runtime.py",
+      "target": "class:novel-character-generator/tests/unit/test_structured_agent_runtime.py:EchoInput",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/tests/unit/test_structured_agent_runtime.py",
+      "target": "class:novel-character-generator/tests/unit/test_structured_agent_runtime.py:EchoOutput",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/tests/unit/test_structured_agent_runtime.py",
+      "target": "class:novel-character-generator/tests/unit/test_structured_agent_runtime.py:FinalOutput",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/tests/unit/test_structured_agent_runtime.py",
+      "target": "class:novel-character-generator/tests/unit/test_structured_agent_runtime.py:SequenceModel",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/tests/unit/test_structured_agent_runtime.py",
+      "target": "function:novel-character-generator/tests/unit/test_structured_agent_runtime.py:agent_spec",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/tests/unit/test_structured_agent_runtime.py",
+      "target": "function:novel-character-generator/tests/unit/test_structured_agent_runtime.py:context",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/tests/unit/test_structured_agent_runtime.py",
+      "target": "function:novel-character-generator/tests/unit/test_structured_agent_runtime.py:runtime_settings",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/tests/unit/test_structured_agent_runtime.py",
+      "target": "function:novel-character-generator/tests/unit/test_structured_agent_runtime.py:registered_tool",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/tests/unit/test_structured_agent_runtime.py",
+      "target": "function:novel-character-generator/tests/unit/test_structured_agent_runtime.py:test_runtime_executes_typed_tool_then_validates_final_output",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/tests/unit/test_structured_agent_runtime.py",
+      "target": "function:novel-character-generator/tests/unit/test_structured_agent_runtime.py:test_runtime_rejects_tool_permission_escalation",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/tests/unit/test_structured_agent_runtime.py",
+      "target": "function:novel-character-generator/tests/unit/test_structured_agent_runtime.py:test_approval_preflight_prevents_partial_side_effects",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/tests/unit/test_structured_agent_runtime.py",
+      "target": "function:novel-character-generator/tests/unit/test_structured_agent_runtime.py:test_runtime_returns_structured_cost_limit",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    }
+  ]
+}

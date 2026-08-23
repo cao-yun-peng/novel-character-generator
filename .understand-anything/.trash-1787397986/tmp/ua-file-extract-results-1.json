@@ -1,0 +1,2594 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 15,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "novel-character-generator/src/novel_character_generator/api/app.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 52,
+      "nonEmptyLines": 44,
+      "functions": [
+        {
+          "name": "lifespan",
+          "startLine": 24,
+          "endLine": 26,
+          "params": [
+            "_"
+          ]
+        },
+        {
+          "name": "create_app",
+          "startLine": 29,
+          "endLine": 49,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "lifespan",
+          "line": 23,
+          "isDefault": false
+        },
+        {
+          "name": "create_app",
+          "line": 29,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "lifespan",
+          "callee": "dispose_engine",
+          "lineNumber": 26
+        },
+        {
+          "caller": "create_app",
+          "callee": "FastAPI",
+          "lineNumber": 30
+        },
+        {
+          "caller": "create_app",
+          "callee": "configure_error_handling",
+          "lineNumber": 31
+        },
+        {
+          "caller": "create_app",
+          "callee": "get_settings",
+          "lineNumber": 32
+        },
+        {
+          "caller": "create_app",
+          "callee": "app.add_middleware",
+          "lineNumber": 33
+        },
+        {
+          "caller": "create_app",
+          "callee": "app.add_api_route",
+          "lineNumber": 34
+        },
+        {
+          "caller": "create_app",
+          "callee": "get_settings",
+          "lineNumber": 35
+        },
+        {
+          "caller": "create_app",
+          "callee": "Depends",
+          "lineNumber": 38
+        },
+        {
+          "caller": "create_app",
+          "callee": "app.include_router",
+          "lineNumber": 41
+        },
+        {
+          "caller": "create_app",
+          "callee": "app.include_router",
+          "lineNumber": 42
+        },
+        {
+          "caller": "create_app",
+          "callee": "Depends",
+          "lineNumber": 42
+        },
+        {
+          "caller": "create_app",
+          "callee": "app.include_router",
+          "lineNumber": 43
+        },
+        {
+          "caller": "create_app",
+          "callee": "app.include_router",
+          "lineNumber": 44
+        },
+        {
+          "caller": "create_app",
+          "callee": "app.include_router",
+          "lineNumber": 45
+        },
+        {
+          "caller": "create_app",
+          "callee": "app.include_router",
+          "lineNumber": 46
+        },
+        {
+          "caller": "create_app",
+          "callee": "app.include_router",
+          "lineNumber": 47
+        },
+        {
+          "caller": "create_app",
+          "callee": "app.include_router",
+          "lineNumber": 48
+        }
+      ],
+      "metrics": {
+        "importCount": 14,
+        "exportCount": 2,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "novel-character-generator/src/novel_character_generator/api/auth.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 55,
+      "nonEmptyLines": 44,
+      "functions": [
+        {
+          "name": "_matches",
+          "startLine": 11,
+          "endLine": 12,
+          "params": [
+            "candidate",
+            "expected"
+          ]
+        },
+        {
+          "name": "_configured_keys",
+          "startLine": 15,
+          "endLine": 19,
+          "params": []
+        },
+        {
+          "name": "require_user_api_key",
+          "startLine": 22,
+          "endLine": 37,
+          "params": [
+            "api_key"
+          ]
+        },
+        {
+          "name": "require_admin_api_key",
+          "startLine": 40,
+          "endLine": 55,
+          "params": [
+            "api_key"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "_matches",
+          "line": 11,
+          "isDefault": false
+        },
+        {
+          "name": "_configured_keys",
+          "line": 15,
+          "isDefault": false
+        },
+        {
+          "name": "require_user_api_key",
+          "line": 22,
+          "isDefault": false
+        },
+        {
+          "name": "require_admin_api_key",
+          "line": 40,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "_matches",
+          "callee": "compare_digest",
+          "lineNumber": 12
+        },
+        {
+          "caller": "_configured_keys",
+          "callee": "get_settings",
+          "lineNumber": 16
+        },
+        {
+          "caller": "_configured_keys",
+          "callee": "settings.user_api_key.get_secret_value",
+          "lineNumber": 17
+        },
+        {
+          "caller": "_configured_keys",
+          "callee": "settings.admin_api_key.get_secret_value",
+          "lineNumber": 18
+        },
+        {
+          "caller": "require_user_api_key",
+          "callee": "Header",
+          "lineNumber": 23
+        },
+        {
+          "caller": "require_user_api_key",
+          "callee": "get_settings",
+          "lineNumber": 25
+        },
+        {
+          "caller": "require_user_api_key",
+          "callee": "_configured_keys",
+          "lineNumber": 26
+        },
+        {
+          "caller": "require_user_api_key",
+          "callee": "_matches",
+          "lineNumber": 29
+        },
+        {
+          "caller": "require_user_api_key",
+          "callee": "_matches",
+          "lineNumber": 31
+        },
+        {
+          "caller": "require_user_api_key",
+          "callee": "HTTPException",
+          "lineNumber": 33
+        },
+        {
+          "caller": "require_admin_api_key",
+          "callee": "Header",
+          "lineNumber": 41
+        },
+        {
+          "caller": "require_admin_api_key",
+          "callee": "get_settings",
+          "lineNumber": 43
+        },
+        {
+          "caller": "require_admin_api_key",
+          "callee": "_configured_keys",
+          "lineNumber": 44
+        },
+        {
+          "caller": "require_admin_api_key",
+          "callee": "_matches",
+          "lineNumber": 47
+        },
+        {
+          "caller": "require_admin_api_key",
+          "callee": "_matches",
+          "lineNumber": 49
+        },
+        {
+          "caller": "require_admin_api_key",
+          "callee": "HTTPException",
+          "lineNumber": 50
+        },
+        {
+          "caller": "require_admin_api_key",
+          "callee": "HTTPException",
+          "lineNumber": 51
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 4,
+        "functionCount": 4,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "novel-character-generator/src/novel_character_generator/api/deps.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 16,
+      "nonEmptyLines": 10,
+      "functions": [
+        {
+          "name": "get_session",
+          "startLine": 10,
+          "endLine": 12,
+          "params": []
+        },
+        {
+          "name": "get_artifact_store",
+          "startLine": 15,
+          "endLine": 16,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "get_session",
+          "line": 10,
+          "isDefault": false
+        },
+        {
+          "name": "get_artifact_store",
+          "line": 15,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "get_session",
+          "callee": "session_factory",
+          "lineNumber": 11
+        },
+        {
+          "caller": "get_artifact_store",
+          "callee": "LocalArtifactStore",
+          "lineNumber": 16
+        },
+        {
+          "caller": "get_artifact_store",
+          "callee": "get_settings",
+          "lineNumber": 16
+        }
+      ],
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 2,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "novel-character-generator/src/novel_character_generator/api/errors.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 82,
+      "nonEmptyLines": 65,
+      "functions": [
+        {
+          "name": "_request_id",
+          "startLine": 29,
+          "endLine": 30,
+          "params": [
+            "request"
+          ]
+        },
+        {
+          "name": "_error",
+          "startLine": 33,
+          "endLine": 42,
+          "params": [
+            "request",
+            "status_code",
+            "code",
+            "message",
+            "headers"
+          ]
+        },
+        {
+          "name": "http_exception_handler",
+          "startLine": 45,
+          "endLine": 56,
+          "params": [
+            "request",
+            "error"
+          ]
+        },
+        {
+          "name": "validation_exception_handler",
+          "startLine": 59,
+          "endLine": 66,
+          "params": [
+            "request",
+            "error"
+          ]
+        },
+        {
+          "name": "unhandled_exception_handler",
+          "startLine": 69,
+          "endLine": 75,
+          "params": [
+            "request",
+            "_"
+          ]
+        },
+        {
+          "name": "configure_error_handling",
+          "startLine": 78,
+          "endLine": 82,
+          "params": [
+            "app"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "ErrorResponse",
+          "startLine": 12,
+          "endLine": 15,
+          "methods": [],
+          "properties": [
+            "code",
+            "message",
+            "request_id"
+          ]
+        },
+        {
+          "name": "RequestIdMiddleware",
+          "startLine": 18,
+          "endLine": 26,
+          "methods": [
+            "dispatch"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "ErrorResponse",
+          "line": 12,
+          "isDefault": false
+        },
+        {
+          "name": "RequestIdMiddleware",
+          "line": 18,
+          "isDefault": false
+        },
+        {
+          "name": "_request_id",
+          "line": 29,
+          "isDefault": false
+        },
+        {
+          "name": "_error",
+          "line": 33,
+          "isDefault": false
+        },
+        {
+          "name": "http_exception_handler",
+          "line": 45,
+          "isDefault": false
+        },
+        {
+          "name": "validation_exception_handler",
+          "line": 59,
+          "isDefault": false
+        },
+        {
+          "name": "unhandled_exception_handler",
+          "line": 69,
+          "isDefault": false
+        },
+        {
+          "name": "configure_error_handling",
+          "line": 78,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "dispatch",
+          "callee": "request.headers.get",
+          "lineNumber": 22
+        },
+        {
+          "caller": "dispatch",
+          "callee": "str",
+          "lineNumber": 22
+        },
+        {
+          "caller": "dispatch",
+          "callee": "uuid4",
+          "lineNumber": 22
+        },
+        {
+          "caller": "dispatch",
+          "callee": "call_next",
+          "lineNumber": 24
+        },
+        {
+          "caller": "_request_id",
+          "callee": "str",
+          "lineNumber": 30
+        },
+        {
+          "caller": "_request_id",
+          "callee": "getattr",
+          "lineNumber": 30
+        },
+        {
+          "caller": "_request_id",
+          "callee": "uuid4",
+          "lineNumber": 30
+        },
+        {
+          "caller": "_error",
+          "callee": "ErrorResponse",
+          "lineNumber": 41
+        },
+        {
+          "caller": "_error",
+          "callee": "_request_id",
+          "lineNumber": 41
+        },
+        {
+          "caller": "_error",
+          "callee": "JSONResponse",
+          "lineNumber": 42
+        },
+        {
+          "caller": "_error",
+          "callee": "payload.model_dump",
+          "lineNumber": 42
+        },
+        {
+          "caller": "http_exception_handler",
+          "callee": "isinstance",
+          "lineNumber": 46
+        },
+        {
+          "caller": "http_exception_handler",
+          "callee": "isinstance",
+          "lineNumber": 48
+        },
+        {
+          "caller": "http_exception_handler",
+          "callee": "isinstance",
+          "lineNumber": 49
+        },
+        {
+          "caller": "http_exception_handler",
+          "callee": "str",
+          "lineNumber": 49
+        },
+        {
+          "caller": "http_exception_handler",
+          "callee": "_error",
+          "lineNumber": 50
+        },
+        {
+          "caller": "validation_exception_handler",
+          "callee": "isinstance",
+          "lineNumber": 60
+        },
+        {
+          "caller": "validation_exception_handler",
+          "callee": "_error",
+          "lineNumber": 61
+        },
+        {
+          "caller": "unhandled_exception_handler",
+          "callee": "_error",
+          "lineNumber": 70
+        },
+        {
+          "caller": "configure_error_handling",
+          "callee": "app.add_middleware",
+          "lineNumber": 79
+        },
+        {
+          "caller": "configure_error_handling",
+          "callee": "app.add_exception_handler",
+          "lineNumber": 80
+        },
+        {
+          "caller": "configure_error_handling",
+          "callee": "app.add_exception_handler",
+          "lineNumber": 81
+        },
+        {
+          "caller": "configure_error_handling",
+          "callee": "app.add_exception_handler",
+          "lineNumber": 82
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 8,
+        "functionCount": 6,
+        "classCount": 2
+      }
+    },
+    {
+      "path": "novel-character-generator/src/novel_character_generator/api/metrics.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 76,
+      "nonEmptyLines": 65,
+      "functions": [
+        {
+          "name": "metrics",
+          "startLine": 73,
+          "endLine": 76,
+          "params": []
+        }
+      ],
+      "classes": [
+        {
+          "name": "MetricsRegistry",
+          "startLine": 11,
+          "endLine": 50,
+          "methods": [
+            "__init__",
+            "observe",
+            "render"
+          ],
+          "properties": []
+        },
+        {
+          "name": "MetricsMiddleware",
+          "startLine": 56,
+          "endLine": 70,
+          "methods": [
+            "dispatch"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "MetricsRegistry",
+          "line": 11,
+          "isDefault": false
+        },
+        {
+          "name": "MetricsMiddleware",
+          "line": 56,
+          "isDefault": false
+        },
+        {
+          "name": "metrics",
+          "line": 73,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "__init__",
+          "callee": "Lock",
+          "lineNumber": 13
+        },
+        {
+          "caller": "__init__",
+          "callee": "Counter",
+          "lineNumber": 14
+        },
+        {
+          "caller": "observe",
+          "callee": "self._duration_seconds.get",
+          "lineNumber": 21
+        },
+        {
+          "caller": "render",
+          "callee": "sorted",
+          "lineNumber": 29
+        },
+        {
+          "caller": "render",
+          "callee": "self._requests.items",
+          "lineNumber": 29
+        },
+        {
+          "caller": "render",
+          "callee": "sorted",
+          "lineNumber": 30
+        },
+        {
+          "caller": "render",
+          "callee": "self._duration_seconds.items",
+          "lineNumber": 30
+        },
+        {
+          "caller": "render",
+          "callee": "lines.append",
+          "lineNumber": 33
+        },
+        {
+          "caller": "render",
+          "callee": "lines.extend",
+          "lineNumber": 37
+        },
+        {
+          "caller": "render",
+          "callee": "lines.append",
+          "lineNumber": 46
+        },
+        {
+          "caller": "render",
+          "callee": "\"\\n\".join",
+          "lineNumber": 50
+        },
+        {
+          "caller": "dispatch",
+          "callee": "perf_counter",
+          "lineNumber": 60
+        },
+        {
+          "caller": "dispatch",
+          "callee": "call_next",
+          "lineNumber": 61
+        },
+        {
+          "caller": "dispatch",
+          "callee": "request.scope.get",
+          "lineNumber": 62
+        },
+        {
+          "caller": "dispatch",
+          "callee": "getattr",
+          "lineNumber": 63
+        },
+        {
+          "caller": "dispatch",
+          "callee": "metrics_registry.observe",
+          "lineNumber": 64
+        },
+        {
+          "caller": "dispatch",
+          "callee": "perf_counter",
+          "lineNumber": 68
+        },
+        {
+          "caller": "metrics",
+          "callee": "PlainTextResponse",
+          "lineNumber": 74
+        },
+        {
+          "caller": "metrics",
+          "callee": "metrics_registry.render",
+          "lineNumber": 75
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 3,
+        "functionCount": 1,
+        "classCount": 2
+      }
+    },
+    {
+      "path": "novel-character-generator/src/novel_character_generator/api/routes/__init__.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 1,
+      "nonEmptyLines": 0,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "novel-character-generator/src/novel_character_generator/api/routes/agent_runs.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 126,
+      "nonEmptyLines": 111,
+      "functions": [
+        {
+          "name": "agent_run_summary",
+          "startLine": 82,
+          "endLine": 83,
+          "params": [
+            "row"
+          ]
+        },
+        {
+          "name": "get_agent_run",
+          "startLine": 87,
+          "endLine": 126,
+          "params": [
+            "agent_run_id",
+            "session"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "AgentRunSummaryResponse",
+          "startLine": 27,
+          "endLine": 47,
+          "methods": [],
+          "properties": [
+            "id",
+            "pipeline_step_id",
+            "agent_id",
+            "agent_version",
+            "status",
+            "attempt",
+            "prompt_version",
+            "model_policy",
+            "output_schema",
+            "permission",
+            "budget",
+            "context_hash",
+            "final_output_hash",
+            "stop_reason",
+            "input_tokens",
+            "output_tokens",
+            "total_cost",
+            "latency_ms",
+            "started_at",
+            "completed_at"
+          ]
+        },
+        {
+          "name": "AgentTurnResponse",
+          "startLine": 50,
+          "endLine": 56,
+          "methods": [],
+          "properties": [
+            "id",
+            "turn_number",
+            "input_context_hash",
+            "output_summary",
+            "usage",
+            "created_at"
+          ]
+        },
+        {
+          "name": "ToolCallResponse",
+          "startLine": 59,
+          "endLine": 70,
+          "methods": [],
+          "properties": [
+            "id",
+            "call_id",
+            "tool_name",
+            "tool_version",
+            "input_hash",
+            "output_hash",
+            "status",
+            "side_effect",
+            "duration_ms",
+            "error_code",
+            "created_at"
+          ]
+        },
+        {
+          "name": "AgentRunDetailsResponse",
+          "startLine": 73,
+          "endLine": 79,
+          "methods": [],
+          "properties": [
+            "agent_spec_snapshot",
+            "tool_spec_versions",
+            "evaluation_version",
+            "turns",
+            "tool_calls",
+            "decision_record_ids"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "AgentRunSummaryResponse",
+          "line": 27,
+          "isDefault": false
+        },
+        {
+          "name": "AgentTurnResponse",
+          "line": 50,
+          "isDefault": false
+        },
+        {
+          "name": "ToolCallResponse",
+          "line": 59,
+          "isDefault": false
+        },
+        {
+          "name": "AgentRunDetailsResponse",
+          "line": 73,
+          "isDefault": false
+        },
+        {
+          "name": "agent_run_summary",
+          "line": 82,
+          "isDefault": false
+        },
+        {
+          "name": "get_agent_run",
+          "line": 86,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "agent_run_summary",
+          "callee": "AgentRunSummaryResponse.model_validate",
+          "lineNumber": 83
+        },
+        {
+          "caller": "get_agent_run",
+          "callee": "Depends",
+          "lineNumber": 89
+        },
+        {
+          "caller": "get_agent_run",
+          "callee": "session.get",
+          "lineNumber": 91
+        },
+        {
+          "caller": "get_agent_run",
+          "callee": "HTTPException",
+          "lineNumber": 93
+        },
+        {
+          "caller": "get_agent_run",
+          "callee": "list",
+          "lineNumber": 94
+        },
+        {
+          "caller": "get_agent_run",
+          "callee": "session.scalars",
+          "lineNumber": 95
+        },
+        {
+          "caller": "get_agent_run",
+          "callee": "select(AgentTurnORM)\n            .where(AgentTurnORM.agent_run_id == agent_run_id)\n            .order_by",
+          "lineNumber": 96
+        },
+        {
+          "caller": "get_agent_run",
+          "callee": "select(AgentTurnORM)\n            .where",
+          "lineNumber": 96
+        },
+        {
+          "caller": "get_agent_run",
+          "callee": "select",
+          "lineNumber": 96
+        },
+        {
+          "caller": "get_agent_run",
+          "callee": "list",
+          "lineNumber": 101
+        },
+        {
+          "caller": "get_agent_run",
+          "callee": "session.scalars",
+          "lineNumber": 102
+        },
+        {
+          "caller": "get_agent_run",
+          "callee": "select(ToolCallORM)\n            .where(ToolCallORM.agent_run_id == agent_run_id)\n            .order_by",
+          "lineNumber": 103
+        },
+        {
+          "caller": "get_agent_run",
+          "callee": "select(ToolCallORM)\n            .where",
+          "lineNumber": 103
+        },
+        {
+          "caller": "get_agent_run",
+          "callee": "select",
+          "lineNumber": 103
+        },
+        {
+          "caller": "get_agent_run",
+          "callee": "list",
+          "lineNumber": 108
+        },
+        {
+          "caller": "get_agent_run",
+          "callee": "session.scalars",
+          "lineNumber": 109
+        },
+        {
+          "caller": "get_agent_run",
+          "callee": "select(DecisionRecordORM.id)\n            .where(DecisionRecordORM.agent_run_id == agent_run_id)\n            .order_by",
+          "lineNumber": 110
+        },
+        {
+          "caller": "get_agent_run",
+          "callee": "select(DecisionRecordORM.id)\n            .where",
+          "lineNumber": 110
+        },
+        {
+          "caller": "get_agent_run",
+          "callee": "select",
+          "lineNumber": 110
+        },
+        {
+          "caller": "get_agent_run",
+          "callee": "agent_run_summary(agent_run).model_dump",
+          "lineNumber": 115
+        },
+        {
+          "caller": "get_agent_run",
+          "callee": "agent_run_summary",
+          "lineNumber": 115
+        },
+        {
+          "caller": "get_agent_run",
+          "callee": "AgentRunDetailsResponse",
+          "lineNumber": 116
+        },
+        {
+          "caller": "get_agent_run",
+          "callee": "AgentTurnResponse.model_validate",
+          "lineNumber": 121
+        },
+        {
+          "caller": "get_agent_run",
+          "callee": "ToolCallResponse.model_validate",
+          "lineNumber": 123
+        }
+      ],
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 6,
+        "functionCount": 2,
+        "classCount": 4
+      }
+    },
+    {
+      "path": "novel-character-generator/src/novel_character_generator/api/routes/approvals.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 119,
+      "nonEmptyLines": 102,
+      "functions": [
+        {
+          "name": "_response",
+          "startLine": 54,
+          "endLine": 55,
+          "params": [
+            "row"
+          ]
+        },
+        {
+          "name": "_revision",
+          "startLine": 58,
+          "endLine": 66,
+          "params": [
+            "if_match"
+          ]
+        },
+        {
+          "name": "list_approvals",
+          "startLine": 70,
+          "endLine": 89,
+          "params": [
+            "session",
+            "status",
+            "approval_type",
+            "cursor",
+            "limit"
+          ]
+        },
+        {
+          "name": "resolve_approval",
+          "startLine": 93,
+          "endLine": 119,
+          "params": [
+            "approval_id",
+            "request",
+            "session",
+            "if_match",
+            "actor_id",
+            "recovery_token"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "ApprovalResponse",
+          "startLine": 24,
+          "endLine": 40,
+          "methods": [],
+          "properties": [
+            "id",
+            "pipeline_step_id",
+            "requested_by_agent_run_id",
+            "approval_type",
+            "subject_type",
+            "subject_id",
+            "action",
+            "estimated_cost",
+            "status",
+            "decision",
+            "modifications",
+            "resolved_by",
+            "expires_at",
+            "resolved_at",
+            "revision",
+            "created_at"
+          ]
+        },
+        {
+          "name": "ApprovalPageResponse",
+          "startLine": 43,
+          "endLine": 45,
+          "methods": [],
+          "properties": [
+            "items",
+            "next_cursor"
+          ]
+        },
+        {
+          "name": "ResolveApprovalRequest",
+          "startLine": 48,
+          "endLine": 51,
+          "methods": [],
+          "properties": [
+            "decision",
+            "modifications",
+            "defer_until"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "ApprovalResponse",
+          "line": 24,
+          "isDefault": false
+        },
+        {
+          "name": "ApprovalPageResponse",
+          "line": 43,
+          "isDefault": false
+        },
+        {
+          "name": "ResolveApprovalRequest",
+          "line": 48,
+          "isDefault": false
+        },
+        {
+          "name": "_response",
+          "line": 54,
+          "isDefault": false
+        },
+        {
+          "name": "_revision",
+          "line": 58,
+          "isDefault": false
+        },
+        {
+          "name": "list_approvals",
+          "line": 69,
+          "isDefault": false
+        },
+        {
+          "name": "resolve_approval",
+          "line": 92,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "_response",
+          "callee": "ApprovalResponse.model_validate",
+          "lineNumber": 55
+        },
+        {
+          "caller": "_revision",
+          "callee": "if_match.strip().strip",
+          "lineNumber": 59
+        },
+        {
+          "caller": "_revision",
+          "callee": "if_match.strip",
+          "lineNumber": 59
+        },
+        {
+          "caller": "_revision",
+          "callee": "int",
+          "lineNumber": 61
+        },
+        {
+          "caller": "_revision",
+          "callee": "HTTPException",
+          "lineNumber": 63
+        },
+        {
+          "caller": "_revision",
+          "callee": "HTTPException",
+          "lineNumber": 65
+        },
+        {
+          "caller": "list_approvals",
+          "callee": "Depends",
+          "lineNumber": 71
+        },
+        {
+          "caller": "list_approvals",
+          "callee": "Query",
+          "lineNumber": 72
+        },
+        {
+          "caller": "list_approvals",
+          "callee": "Query",
+          "lineNumber": 73
+        },
+        {
+          "caller": "list_approvals",
+          "callee": "Query",
+          "lineNumber": 75
+        },
+        {
+          "caller": "list_approvals",
+          "callee": "ApprovalService(session).list_pending",
+          "lineNumber": 78
+        },
+        {
+          "caller": "list_approvals",
+          "callee": "ApprovalService",
+          "lineNumber": 78
+        },
+        {
+          "caller": "list_approvals",
+          "callee": "HTTPException",
+          "lineNumber": 85
+        },
+        {
+          "caller": "list_approvals",
+          "callee": "str",
+          "lineNumber": 85
+        },
+        {
+          "caller": "list_approvals",
+          "callee": "ApprovalPageResponse",
+          "lineNumber": 86
+        },
+        {
+          "caller": "list_approvals",
+          "callee": "_response",
+          "lineNumber": 87
+        },
+        {
+          "caller": "resolve_approval",
+          "callee": "Depends",
+          "lineNumber": 96
+        },
+        {
+          "caller": "resolve_approval",
+          "callee": "Header",
+          "lineNumber": 97
+        },
+        {
+          "caller": "resolve_approval",
+          "callee": "Header",
+          "lineNumber": 98
+        },
+        {
+          "caller": "resolve_approval",
+          "callee": "Header",
+          "lineNumber": 100
+        },
+        {
+          "caller": "resolve_approval",
+          "callee": "ApprovalService(session).resolve",
+          "lineNumber": 104
+        },
+        {
+          "caller": "resolve_approval",
+          "callee": "ApprovalService",
+          "lineNumber": 104
+        },
+        {
+          "caller": "resolve_approval",
+          "callee": "_revision",
+          "lineNumber": 107
+        },
+        {
+          "caller": "resolve_approval",
+          "callee": "HTTPException",
+          "lineNumber": 114
+        },
+        {
+          "caller": "resolve_approval",
+          "callee": "str",
+          "lineNumber": 114
+        },
+        {
+          "caller": "resolve_approval",
+          "callee": "str",
+          "lineNumber": 116
+        },
+        {
+          "caller": "resolve_approval",
+          "callee": "HTTPException",
+          "lineNumber": 117
+        },
+        {
+          "caller": "resolve_approval",
+          "callee": "str",
+          "lineNumber": 117
+        },
+        {
+          "caller": "resolve_approval",
+          "callee": "HTTPException",
+          "lineNumber": 118
+        },
+        {
+          "caller": "resolve_approval",
+          "callee": "str",
+          "lineNumber": 118
+        },
+        {
+          "caller": "resolve_approval",
+          "callee": "_response",
+          "lineNumber": 119
+        }
+      ],
+      "metrics": {
+        "importCount": 4,
+        "exportCount": 7,
+        "functionCount": 4,
+        "classCount": 3
+      }
+    },
+    {
+      "path": "novel-character-generator/src/novel_character_generator/api/routes/capabilities.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 38,
+      "nonEmptyLines": 32,
+      "functions": [
+        {
+          "name": "capabilities",
+          "startLine": 24,
+          "endLine": 38,
+          "params": []
+        }
+      ],
+      "classes": [
+        {
+          "name": "CapabilitiesResponse",
+          "startLine": 9,
+          "endLine": 20,
+          "methods": [],
+          "properties": [
+            "source_formats",
+            "extraction",
+            "document_versioning",
+            "run_events_sse",
+            "external_operation_reconciliation",
+            "agent_runtime",
+            "human_approvals",
+            "story_temporal_binding",
+            "character_entity_resolution",
+            "evaluation_framework",
+            "image_generation"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "CapabilitiesResponse",
+          "line": 9,
+          "isDefault": false
+        },
+        {
+          "name": "capabilities",
+          "line": 23,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "capabilities",
+          "callee": "get_settings",
+          "lineNumber": 25
+        },
+        {
+          "caller": "capabilities",
+          "callee": "CapabilitiesResponse",
+          "lineNumber": 26
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 2,
+        "functionCount": 1,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "novel-character-generator/src/novel_character_generator/api/routes/health.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 20,
+      "nonEmptyLines": 12,
+      "functions": [
+        {
+          "name": "live",
+          "startLine": 14,
+          "endLine": 15,
+          "params": []
+        },
+        {
+          "name": "ready",
+          "startLine": 19,
+          "endLine": 20,
+          "params": []
+        }
+      ],
+      "classes": [
+        {
+          "name": "HealthResponse",
+          "startLine": 9,
+          "endLine": 10,
+          "methods": [],
+          "properties": [
+            "status"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "HealthResponse",
+          "line": 9,
+          "isDefault": false
+        },
+        {
+          "name": "live",
+          "line": 13,
+          "isDefault": false
+        },
+        {
+          "name": "ready",
+          "line": 18,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "live",
+          "callee": "HealthResponse",
+          "lineNumber": 15
+        },
+        {
+          "caller": "ready",
+          "callee": "HealthResponse",
+          "lineNumber": 20
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 3,
+        "functionCount": 2,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "novel-character-generator/src/novel_character_generator/api/routes/novels.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 134,
+      "nonEmptyLines": 113,
+      "functions": [
+        {
+          "name": "upload_novel",
+          "startLine": 48,
+          "endLine": 66,
+          "params": [
+            "file",
+            "session",
+            "artifact_store"
+          ]
+        },
+        {
+          "name": "get_novel",
+          "startLine": 70,
+          "endLine": 78,
+          "params": [
+            "novel_id",
+            "session",
+            "artifact_store"
+          ]
+        },
+        {
+          "name": "upload_novel_version",
+          "startLine": 86,
+          "endLine": 114,
+          "params": [
+            "novel_id",
+            "file",
+            "session",
+            "artifact_store"
+          ]
+        },
+        {
+          "name": "create_text_analysis_run",
+          "startLine": 118,
+          "endLine": 132,
+          "params": [
+            "novel_id",
+            "session",
+            "artifact_store",
+            "idempotency_key"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "NovelResponse",
+          "startLine": 21,
+          "endLine": 24,
+          "methods": [],
+          "properties": [
+            "id",
+            "title",
+            "status"
+          ]
+        },
+        {
+          "name": "NovelDetailsResponse",
+          "startLine": 27,
+          "endLine": 30,
+          "methods": [],
+          "properties": [
+            "source_sha256",
+            "chapter_count",
+            "chunk_count"
+          ]
+        },
+        {
+          "name": "RunResponse",
+          "startLine": 33,
+          "endLine": 37,
+          "methods": [],
+          "properties": [
+            "id",
+            "novel_id",
+            "status",
+            "run_type"
+          ]
+        },
+        {
+          "name": "DocumentVersionResponse",
+          "startLine": 40,
+          "endLine": 44,
+          "methods": [],
+          "properties": [
+            "id",
+            "source_document_id",
+            "version",
+            "content_sha256"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "NovelResponse",
+          "line": 21,
+          "isDefault": false
+        },
+        {
+          "name": "NovelDetailsResponse",
+          "line": 27,
+          "isDefault": false
+        },
+        {
+          "name": "RunResponse",
+          "line": 33,
+          "isDefault": false
+        },
+        {
+          "name": "DocumentVersionResponse",
+          "line": 40,
+          "isDefault": false
+        },
+        {
+          "name": "upload_novel",
+          "line": 47,
+          "isDefault": false
+        },
+        {
+          "name": "get_novel",
+          "line": 69,
+          "isDefault": false
+        },
+        {
+          "name": "upload_novel_version",
+          "line": 81,
+          "isDefault": false
+        },
+        {
+          "name": "create_text_analysis_run",
+          "line": 117,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "upload_novel",
+          "callee": "File",
+          "lineNumber": 49
+        },
+        {
+          "caller": "upload_novel",
+          "callee": "Depends",
+          "lineNumber": 50
+        },
+        {
+          "caller": "upload_novel",
+          "callee": "Depends",
+          "lineNumber": 51
+        },
+        {
+          "caller": "upload_novel",
+          "callee": "HTTPException",
+          "lineNumber": 54
+        },
+        {
+          "caller": "upload_novel",
+          "callee": "file.filename.lower().endswith",
+          "lineNumber": 55
+        },
+        {
+          "caller": "upload_novel",
+          "callee": "file.filename.lower",
+          "lineNumber": 55
+        },
+        {
+          "caller": "upload_novel",
+          "callee": "HTTPException",
+          "lineNumber": 56
+        },
+        {
+          "caller": "upload_novel",
+          "callee": "file.read",
+          "lineNumber": 57
+        },
+        {
+          "caller": "upload_novel",
+          "callee": "get_settings",
+          "lineNumber": 57
+        },
+        {
+          "caller": "upload_novel",
+          "callee": "len",
+          "lineNumber": 58
+        },
+        {
+          "caller": "upload_novel",
+          "callee": "get_settings",
+          "lineNumber": 58
+        },
+        {
+          "caller": "upload_novel",
+          "callee": "HTTPException",
+          "lineNumber": 59
+        },
+        {
+          "caller": "upload_novel",
+          "callee": "IngestionService(session, artifact_store).upload",
+          "lineNumber": 61
+        },
+        {
+          "caller": "upload_novel",
+          "callee": "IngestionService",
+          "lineNumber": 61
+        },
+        {
+          "caller": "upload_novel",
+          "callee": "HTTPException",
+          "lineNumber": 65
+        },
+        {
+          "caller": "upload_novel",
+          "callee": "str",
+          "lineNumber": 65
+        },
+        {
+          "caller": "upload_novel",
+          "callee": "NovelResponse",
+          "lineNumber": 66
+        },
+        {
+          "caller": "get_novel",
+          "callee": "Depends",
+          "lineNumber": 72
+        },
+        {
+          "caller": "get_novel",
+          "callee": "Depends",
+          "lineNumber": 73
+        },
+        {
+          "caller": "get_novel",
+          "callee": "IngestionService(session, artifact_store).details",
+          "lineNumber": 75
+        },
+        {
+          "caller": "get_novel",
+          "callee": "IngestionService",
+          "lineNumber": 75
+        },
+        {
+          "caller": "get_novel",
+          "callee": "HTTPException",
+          "lineNumber": 77
+        },
+        {
+          "caller": "get_novel",
+          "callee": "NovelDetailsResponse",
+          "lineNumber": 78
+        },
+        {
+          "caller": "upload_novel_version",
+          "callee": "File",
+          "lineNumber": 88
+        },
+        {
+          "caller": "upload_novel_version",
+          "callee": "Depends",
+          "lineNumber": 89
+        },
+        {
+          "caller": "upload_novel_version",
+          "callee": "Depends",
+          "lineNumber": 90
+        },
+        {
+          "caller": "upload_novel_version",
+          "callee": "HTTPException",
+          "lineNumber": 93
+        },
+        {
+          "caller": "upload_novel_version",
+          "callee": "file.filename.lower().endswith",
+          "lineNumber": 94
+        },
+        {
+          "caller": "upload_novel_version",
+          "callee": "file.filename.lower",
+          "lineNumber": 94
+        },
+        {
+          "caller": "upload_novel_version",
+          "callee": "HTTPException",
+          "lineNumber": 95
+        },
+        {
+          "caller": "upload_novel_version",
+          "callee": "file.read",
+          "lineNumber": 96
+        },
+        {
+          "caller": "upload_novel_version",
+          "callee": "get_settings",
+          "lineNumber": 96
+        },
+        {
+          "caller": "upload_novel_version",
+          "callee": "len",
+          "lineNumber": 97
+        },
+        {
+          "caller": "upload_novel_version",
+          "callee": "get_settings",
+          "lineNumber": 97
+        },
+        {
+          "caller": "upload_novel_version",
+          "callee": "HTTPException",
+          "lineNumber": 98
+        },
+        {
+          "caller": "upload_novel_version",
+          "callee": "IngestionService(session, artifact_store).upload_version",
+          "lineNumber": 100
+        },
+        {
+          "caller": "upload_novel_version",
+          "callee": "IngestionService",
+          "lineNumber": 100
+        },
+        {
+          "caller": "upload_novel_version",
+          "callee": "HTTPException",
+          "lineNumber": 106
+        },
+        {
+          "caller": "upload_novel_version",
+          "callee": "str",
+          "lineNumber": 106
+        },
+        {
+          "caller": "upload_novel_version",
+          "callee": "HTTPException",
+          "lineNumber": 108
+        },
+        {
+          "caller": "upload_novel_version",
+          "callee": "DocumentVersionResponse",
+          "lineNumber": 109
+        },
+        {
+          "caller": "create_text_analysis_run",
+          "callee": "Depends",
+          "lineNumber": 120
+        },
+        {
+          "caller": "create_text_analysis_run",
+          "callee": "Depends",
+          "lineNumber": 121
+        },
+        {
+          "caller": "create_text_analysis_run",
+          "callee": "Header",
+          "lineNumber": 122
+        },
+        {
+          "caller": "create_text_analysis_run",
+          "callee": "IngestionService(session, artifact_store).create_analysis_run",
+          "lineNumber": 125
+        },
+        {
+          "caller": "create_text_analysis_run",
+          "callee": "IngestionService",
+          "lineNumber": 125
+        },
+        {
+          "caller": "create_text_analysis_run",
+          "callee": "HTTPException",
+          "lineNumber": 129
+        },
+        {
+          "caller": "create_text_analysis_run",
+          "callee": "str",
+          "lineNumber": 129
+        },
+        {
+          "caller": "create_text_analysis_run",
+          "callee": "HTTPException",
+          "lineNumber": 131
+        },
+        {
+          "caller": "create_text_analysis_run",
+          "callee": "RunResponse",
+          "lineNumber": 132
+        }
+      ],
+      "metrics": {
+        "importCount": 5,
+        "exportCount": 8,
+        "functionCount": 4,
+        "classCount": 4
+      }
+    },
+    {
+      "path": "novel-character-generator/src/novel_character_generator/api/routes/runs.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 185,
+      "nonEmptyLines": 160,
+      "functions": [
+        {
+          "name": "_run_or_404",
+          "startLine": 69,
+          "endLine": 73,
+          "params": [
+            "service",
+            "run_id"
+          ]
+        },
+        {
+          "name": "get_run",
+          "startLine": 77,
+          "endLine": 80,
+          "params": [
+            "run_id",
+            "session"
+          ]
+        },
+        {
+          "name": "stream_run_events",
+          "startLine": 84,
+          "endLine": 116,
+          "params": [
+            "run_id",
+            "after",
+            "follow"
+          ]
+        },
+        {
+          "name": "list_external_operations",
+          "startLine": 123,
+          "endLine": 132,
+          "params": [
+            "run_id",
+            "session"
+          ]
+        },
+        {
+          "name": "list_agent_runs",
+          "startLine": 136,
+          "endLine": 149,
+          "params": [
+            "run_id",
+            "session"
+          ]
+        },
+        {
+          "name": "cancel_run",
+          "startLine": 157,
+          "endLine": 167,
+          "params": [
+            "run_id",
+            "session"
+          ]
+        },
+        {
+          "name": "retry_run",
+          "startLine": 175,
+          "endLine": 185,
+          "params": [
+            "run_id",
+            "session"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "StepResponse",
+          "startLine": 39,
+          "endLine": 45,
+          "methods": [],
+          "properties": [
+            "id",
+            "step_key",
+            "status",
+            "attempt",
+            "cursor",
+            "error_code"
+          ]
+        },
+        {
+          "name": "RunDetailsResponse",
+          "startLine": 48,
+          "endLine": 54,
+          "methods": [],
+          "properties": [
+            "id",
+            "novel_id",
+            "run_type",
+            "status",
+            "cancel_requested",
+            "steps"
+          ]
+        },
+        {
+          "name": "ExternalOperationResponse",
+          "startLine": 57,
+          "endLine": 66,
+          "methods": [],
+          "properties": [
+            "id",
+            "pipeline_step_id",
+            "provider",
+            "operation_kind",
+            "status",
+            "request_fingerprint",
+            "provider_request_id",
+            "lease_generation",
+            "attempt"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "StepResponse",
+          "line": 39,
+          "isDefault": false
+        },
+        {
+          "name": "RunDetailsResponse",
+          "line": 48,
+          "isDefault": false
+        },
+        {
+          "name": "ExternalOperationResponse",
+          "line": 57,
+          "isDefault": false
+        },
+        {
+          "name": "_run_or_404",
+          "line": 69,
+          "isDefault": false
+        },
+        {
+          "name": "get_run",
+          "line": 76,
+          "isDefault": false
+        },
+        {
+          "name": "stream_run_events",
+          "line": 83,
+          "isDefault": false
+        },
+        {
+          "name": "list_external_operations",
+          "line": 119,
+          "isDefault": false
+        },
+        {
+          "name": "list_agent_runs",
+          "line": 135,
+          "isDefault": false
+        },
+        {
+          "name": "cancel_run",
+          "line": 152,
+          "isDefault": false
+        },
+        {
+          "name": "retry_run",
+          "line": 170,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "_run_or_404",
+          "callee": "service.details",
+          "lineNumber": 70
+        },
+        {
+          "caller": "_run_or_404",
+          "callee": "HTTPException",
+          "lineNumber": 72
+        },
+        {
+          "caller": "_run_or_404",
+          "callee": "RunDetailsResponse.model_validate",
+          "lineNumber": 73
+        },
+        {
+          "caller": "get_run",
+          "callee": "Depends",
+          "lineNumber": 78
+        },
+        {
+          "caller": "get_run",
+          "callee": "_run_or_404",
+          "lineNumber": 80
+        },
+        {
+          "caller": "get_run",
+          "callee": "RunService",
+          "lineNumber": 80
+        },
+        {
+          "caller": "stream_run_events",
+          "callee": "Query",
+          "lineNumber": 86
+        },
+        {
+          "caller": "stream_run_events",
+          "callee": "session_factory",
+          "lineNumber": 89
+        },
+        {
+          "caller": "stream_run_events",
+          "callee": "session.get",
+          "lineNumber": 90
+        },
+        {
+          "caller": "stream_run_events",
+          "callee": "HTTPException",
+          "lineNumber": 91
+        },
+        {
+          "caller": "event_stream",
+          "callee": "session_factory",
+          "lineNumber": 96
+        },
+        {
+          "caller": "event_stream",
+          "callee": "read_run_events",
+          "lineNumber": 97
+        },
+        {
+          "caller": "event_stream",
+          "callee": "session.get",
+          "lineNumber": 100
+        },
+        {
+          "caller": "event_stream",
+          "callee": "json.dumps",
+          "lineNumber": 103
+        },
+        {
+          "caller": "event_stream",
+          "callee": "asyncio.sleep",
+          "lineNumber": 110
+        },
+        {
+          "caller": "stream_run_events",
+          "callee": "StreamingResponse",
+          "lineNumber": 112
+        },
+        {
+          "caller": "stream_run_events",
+          "callee": "event_stream",
+          "lineNumber": 113
+        },
+        {
+          "caller": "list_external_operations",
+          "callee": "Depends",
+          "lineNumber": 124
+        },
+        {
+          "caller": "list_external_operations",
+          "callee": "session.get",
+          "lineNumber": 126
+        },
+        {
+          "caller": "list_external_operations",
+          "callee": "HTTPException",
+          "lineNumber": 127
+        },
+        {
+          "caller": "list_external_operations",
+          "callee": "ExternalOperationRepository(session).list_for_run",
+          "lineNumber": 128
+        },
+        {
+          "caller": "list_external_operations",
+          "callee": "ExternalOperationRepository",
+          "lineNumber": 128
+        },
+        {
+          "caller": "list_external_operations",
+          "callee": "ExternalOperationResponse.model_validate",
+          "lineNumber": 130
+        },
+        {
+          "caller": "list_agent_runs",
+          "callee": "Depends",
+          "lineNumber": 137
+        },
+        {
+          "caller": "list_agent_runs",
+          "callee": "session.get",
+          "lineNumber": 139
+        },
+        {
+          "caller": "list_agent_runs",
+          "callee": "HTTPException",
+          "lineNumber": 140
+        },
+        {
+          "caller": "list_agent_runs",
+          "callee": "list",
+          "lineNumber": 141
+        },
+        {
+          "caller": "list_agent_runs",
+          "callee": "session.scalars",
+          "lineNumber": 142
+        },
+        {
+          "caller": "list_agent_runs",
+          "callee": "select(AgentRunORM)\n            .join(PipelineStepORM, AgentRunORM.pipeline_step_id == PipelineStepORM.id)\n            .where(PipelineStepORM.run_id == run_id)\n            .order_by",
+          "lineNumber": 143
+        },
+        {
+          "caller": "list_agent_runs",
+          "callee": "select(AgentRunORM)\n            .join(PipelineStepORM, AgentRunORM.pipeline_step_id == PipelineStepORM.id)\n            .where",
+          "lineNumber": 143
+        },
+        {
+          "caller": "list_agent_runs",
+          "callee": "select(AgentRunORM)\n            .join",
+          "lineNumber": 143
+        },
+        {
+          "caller": "list_agent_runs",
+          "callee": "select",
+          "lineNumber": 143
+        },
+        {
+          "caller": "list_agent_runs",
+          "callee": "agent_run_summary",
+          "lineNumber": 149
+        },
+        {
+          "caller": "cancel_run",
+          "callee": "Depends",
+          "lineNumber": 158
+        },
+        {
+          "caller": "cancel_run",
+          "callee": "RunService",
+          "lineNumber": 160
+        },
+        {
+          "caller": "cancel_run",
+          "callee": "service.request_cancel",
+          "lineNumber": 162
+        },
+        {
+          "caller": "cancel_run",
+          "callee": "HTTPException",
+          "lineNumber": 164
+        },
+        {
+          "caller": "cancel_run",
+          "callee": "str",
+          "lineNumber": 164
+        },
+        {
+          "caller": "cancel_run",
+          "callee": "HTTPException",
+          "lineNumber": 166
+        },
+        {
+          "caller": "cancel_run",
+          "callee": "RunDetailsResponse.model_validate",
+          "lineNumber": 167
+        },
+        {
+          "caller": "retry_run",
+          "callee": "Depends",
+          "lineNumber": 176
+        },
+        {
+          "caller": "retry_run",
+          "callee": "RunService",
+          "lineNumber": 178
+        },
+        {
+          "caller": "retry_run",
+          "callee": "service.retry",
+          "lineNumber": 180
+        },
+        {
+          "caller": "retry_run",
+          "callee": "get_settings",
+          "lineNumber": 180
+        },
+        {
+          "caller": "retry_run",
+          "callee": "HTTPException",
+          "lineNumber": 182
+        },
+        {
+          "caller": "retry_run",
+          "callee": "str",
+          "lineNumber": 182
+        },
+        {
+          "caller": "retry_run",
+          "callee": "HTTPException",
+          "lineNumber": 184
+        },
+        {
+          "caller": "retry_run",
+          "callee": "RunDetailsResponse.model_validate",
+          "lineNumber": 185
+        }
+      ],
+      "metrics": {
+        "importCount": 9,
+        "exportCount": 10,
+        "functionCount": 7,
+        "classCount": 3
+      }
+    },
+    {
+      "path": "novel-character-generator/src/novel_character_generator/infrastructure/db/session.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 27,
+      "nonEmptyLines": 20,
+      "functions": [
+        {
+          "name": "configure_sqlite",
+          "startLine": 15,
+          "endLine": 23,
+          "params": [
+            "connection",
+            "_"
+          ]
+        },
+        {
+          "name": "dispose_engine",
+          "startLine": 26,
+          "endLine": 27,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "configure_sqlite",
+          "line": 14,
+          "isDefault": false
+        },
+        {
+          "name": "dispose_engine",
+          "line": 26,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "configure_sqlite",
+          "callee": "isinstance",
+          "lineNumber": 17
+        },
+        {
+          "caller": "configure_sqlite",
+          "callee": "cast(Any, connection).cursor",
+          "lineNumber": 19
+        },
+        {
+          "caller": "configure_sqlite",
+          "callee": "cast",
+          "lineNumber": 19
+        },
+        {
+          "caller": "configure_sqlite",
+          "callee": "cursor.execute",
+          "lineNumber": 20
+        },
+        {
+          "caller": "configure_sqlite",
+          "callee": "cursor.execute",
+          "lineNumber": 21
+        },
+        {
+          "caller": "configure_sqlite",
+          "callee": "cursor.execute",
+          "lineNumber": 22
+        },
+        {
+          "caller": "configure_sqlite",
+          "callee": "cursor.close",
+          "lineNumber": 23
+        },
+        {
+          "caller": "dispose_engine",
+          "callee": "engine.dispose",
+          "lineNumber": 27
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 2,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "novel-character-generator/src/novel_character_generator/infrastructure/storage/local.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 29,
+      "nonEmptyLines": 25,
+      "classes": [
+        {
+          "name": "LocalArtifactStore",
+          "startLine": 7,
+          "endLine": 29,
+          "methods": [
+            "__init__",
+            "put",
+            "get"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "LocalArtifactStore",
+          "line": 7,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "__init__",
+          "callee": "root.resolve",
+          "lineNumber": 9
+        },
+        {
+          "caller": "put",
+          "callee": "len",
+          "lineNumber": 12
+        },
+        {
+          "caller": "put",
+          "callee": "content_hash.isalnum",
+          "lineNumber": 12
+        },
+        {
+          "caller": "put",
+          "callee": "ValueError",
+          "lineNumber": 13
+        },
+        {
+          "caller": "put",
+          "callee": "asyncio.to_thread",
+          "lineNumber": 15
+        },
+        {
+          "caller": "put",
+          "callee": "asyncio.to_thread",
+          "lineNumber": 16
+        },
+        {
+          "caller": "put",
+          "callee": "asyncio.to_thread",
+          "lineNumber": 18
+        },
+        {
+          "caller": "put",
+          "callee": "path.as_uri",
+          "lineNumber": 19
+        },
+        {
+          "caller": "get",
+          "callee": "urlparse",
+          "lineNumber": 22
+        },
+        {
+          "caller": "get",
+          "callee": "ValueError",
+          "lineNumber": 24
+        },
+        {
+          "caller": "get",
+          "callee": "url2pathname",
+          "lineNumber": 25
+        },
+        {
+          "caller": "get",
+          "callee": "unquote",
+          "lineNumber": 25
+        },
+        {
+          "caller": "get",
+          "callee": "asyncio.to_thread",
+          "lineNumber": 26
+        },
+        {
+          "caller": "get",
+          "callee": "Path",
+          "lineNumber": 26
+        },
+        {
+          "caller": "get",
+          "callee": "path.is_relative_to",
+          "lineNumber": 27
+        },
+        {
+          "caller": "get",
+          "callee": "ValueError",
+          "lineNumber": 28
+        },
+        {
+          "caller": "get",
+          "callee": "asyncio.to_thread",
+          "lineNumber": 29
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "novel-character-generator/src/novel_character_generator/settings.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 59,
+      "nonEmptyLines": 52,
+      "functions": [
+        {
+          "name": "get_settings",
+          "startLine": 58,
+          "endLine": 59,
+          "params": []
+        }
+      ],
+      "classes": [
+        {
+          "name": "Settings",
+          "startLine": 10,
+          "endLine": 54,
+          "methods": [
+            "validate_provider_configuration"
+          ],
+          "properties": [
+            "app_env",
+            "log_level",
+            "log_format",
+            "otel_enabled",
+            "otel_service_name",
+            "otel_exporter_otlp_endpoint",
+            "metrics_enabled",
+            "metrics_path",
+            "database_url",
+            "artifact_store",
+            "artifact_local_root",
+            "max_upload_bytes",
+            "max_chunk_input_tokens",
+            "max_task_attempts",
+            "worker_lease_seconds",
+            "llm_provider",
+            "llm_api_key",
+            "llm_base_url",
+            "llm_model",
+            "agent_runtime_enabled",
+            "agent_max_turns_default",
+            "agent_max_tool_calls_default",
+            "agent_max_reflection_rounds",
+            "agent_max_cost_default",
+            "agent_deadline_seconds_default",
+            "agent_tool_write_policy",
+            "auth_mode",
+            "user_api_key",
+            "admin_api_key"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "Settings",
+          "line": 10,
+          "isDefault": false
+        },
+        {
+          "name": "get_settings",
+          "line": 57,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "validate_provider_configuration",
+          "callee": "ValueError",
+          "lineNumber": 46
+        },
+        {
+          "caller": "validate_provider_configuration",
+          "callee": "ValueError",
+          "lineNumber": 48
+        },
+        {
+          "caller": "validate_provider_configuration",
+          "callee": "ValueError",
+          "lineNumber": 51
+        },
+        {
+          "caller": "validate_provider_configuration",
+          "callee": "self.user_api_key.get_secret_value",
+          "lineNumber": 52
+        },
+        {
+          "caller": "validate_provider_configuration",
+          "callee": "self.admin_api_key.get_secret_value",
+          "lineNumber": 52
+        },
+        {
+          "caller": "validate_provider_configuration",
+          "callee": "ValueError",
+          "lineNumber": 53
+        },
+        {
+          "caller": "get_settings",
+          "callee": "Settings",
+          "lineNumber": 59
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 2,
+        "functionCount": 1,
+        "classCount": 1
+      }
+    }
+  ]
+}

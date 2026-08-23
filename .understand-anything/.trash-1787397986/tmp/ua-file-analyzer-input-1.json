@@ -1,0 +1,37 @@
+{
+  "projectRoot": "E:\\project\\agent\\novel-character-generator",
+  "batchFiles": [
+    {"path":"novel-character-generator/src/novel_character_generator/api/app.py","language":"python","sizeLines":52,"fileCategory":"code"},
+    {"path":"novel-character-generator/src/novel_character_generator/api/auth.py","language":"python","sizeLines":55,"fileCategory":"code"},
+    {"path":"novel-character-generator/src/novel_character_generator/api/deps.py","language":"python","sizeLines":16,"fileCategory":"code"},
+    {"path":"novel-character-generator/src/novel_character_generator/api/errors.py","language":"python","sizeLines":82,"fileCategory":"code"},
+    {"path":"novel-character-generator/src/novel_character_generator/api/metrics.py","language":"python","sizeLines":76,"fileCategory":"code"},
+    {"path":"novel-character-generator/src/novel_character_generator/api/routes/__init__.py","language":"python","sizeLines":1,"fileCategory":"code"},
+    {"path":"novel-character-generator/src/novel_character_generator/api/routes/agent_runs.py","language":"python","sizeLines":126,"fileCategory":"code"},
+    {"path":"novel-character-generator/src/novel_character_generator/api/routes/approvals.py","language":"python","sizeLines":119,"fileCategory":"code"},
+    {"path":"novel-character-generator/src/novel_character_generator/api/routes/capabilities.py","language":"python","sizeLines":38,"fileCategory":"code"},
+    {"path":"novel-character-generator/src/novel_character_generator/api/routes/health.py","language":"python","sizeLines":20,"fileCategory":"code"},
+    {"path":"novel-character-generator/src/novel_character_generator/api/routes/novels.py","language":"python","sizeLines":134,"fileCategory":"code"},
+    {"path":"novel-character-generator/src/novel_character_generator/api/routes/runs.py","language":"python","sizeLines":185,"fileCategory":"code"},
+    {"path":"novel-character-generator/src/novel_character_generator/infrastructure/db/session.py","language":"python","sizeLines":27,"fileCategory":"code"},
+    {"path":"novel-character-generator/src/novel_character_generator/infrastructure/storage/local.py","language":"python","sizeLines":29,"fileCategory":"code"},
+    {"path":"novel-character-generator/src/novel_character_generator/settings.py","language":"python","sizeLines":59,"fileCategory":"code"}
+  ],
+  "batchImportData": {
+    "novel-character-generator/src/novel_character_generator/api/app.py": ["novel-character-generator/src/novel_character_generator/api/auth.py","novel-character-generator/src/novel_character_generator/api/errors.py","novel-character-generator/src/novel_character_generator/api/metrics.py","novel-character-generator/src/novel_character_generator/api/routes/__init__.py","novel-character-generator/src/novel_character_generator/api/routes/agent_runs.py","novel-character-generator/src/novel_character_generator/api/routes/approvals.py","novel-character-generator/src/novel_character_generator/api/routes/capabilities.py","novel-character-generator/src/novel_character_generator/api/routes/characters.py","novel-character-generator/src/novel_character_generator/api/routes/health.py","novel-character-generator/src/novel_character_generator/api/routes/novels.py","novel-character-generator/src/novel_character_generator/api/routes/runs.py","novel-character-generator/src/novel_character_generator/api/routes/story.py","novel-character-generator/src/novel_character_generator/infrastructure/db/session.py","novel-character-generator/src/novel_character_generator/settings.py"],
+    "novel-character-generator/src/novel_character_generator/api/auth.py": ["novel-character-generator/src/novel_character_generator/settings.py"],
+    "novel-character-generator/src/novel_character_generator/api/deps.py": ["novel-character-generator/src/novel_character_generator/infrastructure/db/session.py","novel-character-generator/src/novel_character_generator/infrastructure/storage/local.py","novel-character-generator/src/novel_character_generator/settings.py"],
+    "novel-character-generator/src/novel_character_generator/api/errors.py": [],
+    "novel-character-generator/src/novel_character_generator/api/metrics.py": [],
+    "novel-character-generator/src/novel_character_generator/api/routes/__init__.py": [],
+    "novel-character-generator/src/novel_character_generator/api/routes/agent_runs.py": ["novel-character-generator/src/novel_character_generator/api/auth.py","novel-character-generator/src/novel_character_generator/api/deps.py","novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py"],
+    "novel-character-generator/src/novel_character_generator/api/routes/approvals.py": ["novel-character-generator/src/novel_character_generator/api/auth.py","novel-character-generator/src/novel_character_generator/api/deps.py","novel-character-generator/src/novel_character_generator/application/services/approval_service.py","novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py"],
+    "novel-character-generator/src/novel_character_generator/api/routes/capabilities.py": ["novel-character-generator/src/novel_character_generator/settings.py"],
+    "novel-character-generator/src/novel_character_generator/api/routes/health.py": [],
+    "novel-character-generator/src/novel_character_generator/api/routes/novels.py": ["novel-character-generator/src/novel_character_generator/api/auth.py","novel-character-generator/src/novel_character_generator/api/deps.py","novel-character-generator/src/novel_character_generator/application/services/ingestion_service.py","novel-character-generator/src/novel_character_generator/infrastructure/storage/local.py","novel-character-generator/src/novel_character_generator/settings.py"],
+    "novel-character-generator/src/novel_character_generator/api/routes/runs.py": ["novel-character-generator/src/novel_character_generator/api/auth.py","novel-character-generator/src/novel_character_generator/api/deps.py","novel-character-generator/src/novel_character_generator/api/routes/agent_runs.py","novel-character-generator/src/novel_character_generator/application/services/run_service.py","novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py","novel-character-generator/src/novel_character_generator/infrastructure/db/repositories/external_operations.py","novel-character-generator/src/novel_character_generator/infrastructure/db/repositories/run_events.py","novel-character-generator/src/novel_character_generator/infrastructure/db/session.py","novel-character-generator/src/novel_character_generator/settings.py"],
+    "novel-character-generator/src/novel_character_generator/infrastructure/db/session.py": ["novel-character-generator/src/novel_character_generator/settings.py"],
+    "novel-character-generator/src/novel_character_generator/infrastructure/storage/local.py": [],
+    "novel-character-generator/src/novel_character_generator/settings.py": []
+  }
+}

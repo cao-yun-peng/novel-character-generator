@@ -1,0 +1,1084 @@
+{
+  "nodes": [
+    {
+      "id": "file:novel-character-generator/src/novel_character_generator/api/routes/capabilities.py",
+      "type": "file",
+      "name": "capabilities.py",
+      "filePath": "novel-character-generator/src/novel_character_generator/api/routes/capabilities.py",
+      "summary": "公开当前部署支持的文本分析、智能体、审批和故事处理能力开关。",
+      "tags": [
+        "api-handler",
+        "capabilities",
+        "configuration",
+        "fastapi"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:novel-character-generator/src/novel_character_generator/api/routes/capabilities.py:CapabilitiesResponse",
+      "type": "class",
+      "name": "CapabilitiesResponse",
+      "filePath": "novel-character-generator/src/novel_character_generator/api/routes/capabilities.py",
+      "lineRange": [
+        9,
+        20
+      ],
+      "summary": "定义服务功能可用性清单的响应模型。",
+      "tags": [
+        "api-schema",
+        "capabilities",
+        "pydantic"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:novel-character-generator/src/novel_character_generator/api/routes/capabilities.py:capabilities",
+      "type": "function",
+      "name": "capabilities",
+      "filePath": "novel-character-generator/src/novel_character_generator/api/routes/capabilities.py",
+      "lineRange": [
+        24,
+        38
+      ],
+      "summary": "根据设置与已实现特性返回客户端可查询的能力矩阵。",
+      "tags": [
+        "api-handler",
+        "capabilities",
+        "configuration"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:novel-character-generator/src/novel_character_generator/api/routes/health.py",
+      "type": "file",
+      "name": "health.py",
+      "filePath": "novel-character-generator/src/novel_character_generator/api/routes/health.py",
+      "summary": "提供存活和就绪探针，供部署平台执行健康检查。",
+      "tags": [
+        "api-handler",
+        "health-check",
+        "fastapi",
+        "monitoring"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:novel-character-generator/src/novel_character_generator/api/routes/health.py:HealthResponse",
+      "type": "class",
+      "name": "HealthResponse",
+      "filePath": "novel-character-generator/src/novel_character_generator/api/routes/health.py",
+      "lineRange": [
+        9,
+        10
+      ],
+      "summary": "定义健康探针的固定成功响应模型。",
+      "tags": [
+        "api-schema",
+        "health-check",
+        "pydantic"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:novel-character-generator/src/novel_character_generator/api/routes/health.py:live",
+      "type": "function",
+      "name": "live",
+      "filePath": "novel-character-generator/src/novel_character_generator/api/routes/health.py",
+      "lineRange": [
+        14,
+        15
+      ],
+      "summary": "返回进程存活探针结果。",
+      "tags": [
+        "api-handler",
+        "health-check",
+        "liveness"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:novel-character-generator/src/novel_character_generator/api/routes/health.py:ready",
+      "type": "function",
+      "name": "ready",
+      "filePath": "novel-character-generator/src/novel_character_generator/api/routes/health.py",
+      "lineRange": [
+        19,
+        20
+      ],
+      "summary": "返回服务就绪探针结果。",
+      "tags": [
+        "api-handler",
+        "health-check",
+        "readiness"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:novel-character-generator/src/novel_character_generator/api/routes/novels.py",
+      "type": "file",
+      "name": "novels.py",
+      "filePath": "novel-character-generator/src/novel_character_generator/api/routes/novels.py",
+      "summary": "处理小说文本上传、版本管理、详情查询以及文本分析运行的创建。",
+      "tags": [
+        "api-handler",
+        "ingestion",
+        "novel",
+        "fastapi"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:novel-character-generator/src/novel_character_generator/api/routes/novels.py:NovelResponse",
+      "type": "class",
+      "name": "NovelResponse",
+      "filePath": "novel-character-generator/src/novel_character_generator/api/routes/novels.py",
+      "lineRange": [
+        21,
+        24
+      ],
+      "summary": "定义小说基础信息的响应模型。",
+      "tags": [
+        "api-schema",
+        "novel",
+        "pydantic"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:novel-character-generator/src/novel_character_generator/api/routes/novels.py:NovelDetailsResponse",
+      "type": "class",
+      "name": "NovelDetailsResponse",
+      "filePath": "novel-character-generator/src/novel_character_generator/api/routes/novels.py",
+      "lineRange": [
+        27,
+        30
+      ],
+      "summary": "扩展小说响应，包含源文件哈希和解析统计信息。",
+      "tags": [
+        "api-schema",
+        "novel",
+        "pydantic"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:novel-character-generator/src/novel_character_generator/api/routes/novels.py:RunResponse",
+      "type": "class",
+      "name": "RunResponse",
+      "filePath": "novel-character-generator/src/novel_character_generator/api/routes/novels.py",
+      "lineRange": [
+        33,
+        37
+      ],
+      "summary": "定义文本分析运行的简要响应模型。",
+      "tags": [
+        "api-schema",
+        "run-management",
+        "pydantic"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:novel-character-generator/src/novel_character_generator/api/routes/novels.py:DocumentVersionResponse",
+      "type": "class",
+      "name": "DocumentVersionResponse",
+      "filePath": "novel-character-generator/src/novel_character_generator/api/routes/novels.py",
+      "lineRange": [
+        40,
+        44
+      ],
+      "summary": "定义小说源文档版本的响应模型。",
+      "tags": [
+        "api-schema",
+        "versioning",
+        "pydantic"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:novel-character-generator/src/novel_character_generator/api/routes/novels.py:upload_novel",
+      "type": "function",
+      "name": "upload_novel",
+      "filePath": "novel-character-generator/src/novel_character_generator/api/routes/novels.py",
+      "lineRange": [
+        48,
+        66
+      ],
+      "summary": "校验文本上传并调用导入服务创建小说及其初始内容。",
+      "tags": [
+        "api-handler",
+        "upload",
+        "ingestion"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:novel-character-generator/src/novel_character_generator/api/routes/novels.py:get_novel",
+      "type": "function",
+      "name": "get_novel",
+      "filePath": "novel-character-generator/src/novel_character_generator/api/routes/novels.py",
+      "lineRange": [
+        70,
+        78
+      ],
+      "summary": "查询指定小说的详情和文本切分统计。",
+      "tags": [
+        "api-handler",
+        "novel",
+        "database"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:novel-character-generator/src/novel_character_generator/api/routes/novels.py:upload_novel_version",
+      "type": "function",
+      "name": "upload_novel_version",
+      "filePath": "novel-character-generator/src/novel_character_generator/api/routes/novels.py",
+      "lineRange": [
+        86,
+        114
+      ],
+      "summary": "校验并上传指定小说的新源文档版本。",
+      "tags": [
+        "api-handler",
+        "upload",
+        "versioning"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:novel-character-generator/src/novel_character_generator/api/routes/novels.py:create_text_analysis_run",
+      "type": "function",
+      "name": "create_text_analysis_run",
+      "filePath": "novel-character-generator/src/novel_character_generator/api/routes/novels.py",
+      "lineRange": [
+        118,
+        132
+      ],
+      "summary": "为小说创建可幂等的文本分析流水线运行。",
+      "tags": [
+        "api-handler",
+        "run-management",
+        "ingestion"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:novel-character-generator/src/novel_character_generator/api/routes/runs.py",
+      "type": "file",
+      "name": "runs.py",
+      "filePath": "novel-character-generator/src/novel_character_generator/api/routes/runs.py",
+      "summary": "提供运行详情、SSE 事件流、外部操作、智能体运行及取消重试接口。",
+      "tags": [
+        "api-handler",
+        "run-management",
+        "sse",
+        "fastapi"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:novel-character-generator/src/novel_character_generator/api/routes/runs.py:StepResponse",
+      "type": "class",
+      "name": "StepResponse",
+      "filePath": "novel-character-generator/src/novel_character_generator/api/routes/runs.py",
+      "lineRange": [
+        39,
+        45
+      ],
+      "summary": "定义流水线步骤状态的响应模型。",
+      "tags": [
+        "api-schema",
+        "pipeline",
+        "pydantic"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:novel-character-generator/src/novel_character_generator/api/routes/runs.py:RunDetailsResponse",
+      "type": "class",
+      "name": "RunDetailsResponse",
+      "filePath": "novel-character-generator/src/novel_character_generator/api/routes/runs.py",
+      "lineRange": [
+        48,
+        54
+      ],
+      "summary": "定义包含步骤状态的分析运行详情响应模型。",
+      "tags": [
+        "api-schema",
+        "run-management",
+        "pydantic"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:novel-character-generator/src/novel_character_generator/api/routes/runs.py:ExternalOperationResponse",
+      "type": "class",
+      "name": "ExternalOperationResponse",
+      "filePath": "novel-character-generator/src/novel_character_generator/api/routes/runs.py",
+      "lineRange": [
+        57,
+        66
+      ],
+      "summary": "定义外部提供方操作及其协调状态的响应模型。",
+      "tags": [
+        "api-schema",
+        "external-operation",
+        "pydantic"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:novel-character-generator/src/novel_character_generator/api/routes/runs.py:_run_or_404",
+      "type": "function",
+      "name": "_run_or_404",
+      "filePath": "novel-character-generator/src/novel_character_generator/api/routes/runs.py",
+      "lineRange": [
+        69,
+        73
+      ],
+      "summary": "获取运行详情，缺失时抛出 404 错误。",
+      "tags": [
+        "utility",
+        "run-management",
+        "api"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:novel-character-generator/src/novel_character_generator/api/routes/runs.py:get_run",
+      "type": "function",
+      "name": "get_run",
+      "filePath": "novel-character-generator/src/novel_character_generator/api/routes/runs.py",
+      "lineRange": [
+        77,
+        80
+      ],
+      "summary": "返回指定分析运行的聚合详情。",
+      "tags": [
+        "api-handler",
+        "run-management",
+        "database"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:novel-character-generator/src/novel_character_generator/api/routes/runs.py:stream_run_events",
+      "type": "function",
+      "name": "stream_run_events",
+      "filePath": "novel-character-generator/src/novel_character_generator/api/routes/runs.py",
+      "lineRange": [
+        84,
+        116
+      ],
+      "summary": "以 Server-Sent Events 持续推送运行事件并处理终态与心跳。",
+      "tags": [
+        "api-handler",
+        "sse",
+        "run-events"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:novel-character-generator/src/novel_character_generator/api/routes/runs.py:list_external_operations",
+      "type": "function",
+      "name": "list_external_operations",
+      "filePath": "novel-character-generator/src/novel_character_generator/api/routes/runs.py",
+      "lineRange": [
+        123,
+        132
+      ],
+      "summary": "列出指定运行关联的外部提供方操作。",
+      "tags": [
+        "api-handler",
+        "external-operation",
+        "database"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:novel-character-generator/src/novel_character_generator/api/routes/runs.py:list_agent_runs",
+      "type": "function",
+      "name": "list_agent_runs",
+      "filePath": "novel-character-generator/src/novel_character_generator/api/routes/runs.py",
+      "lineRange": [
+        136,
+        149
+      ],
+      "summary": "查询运行下各流水线步骤关联的智能体执行记录。",
+      "tags": [
+        "api-handler",
+        "agent-runtime",
+        "database"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:novel-character-generator/src/novel_character_generator/api/routes/runs.py:cancel_run",
+      "type": "function",
+      "name": "cancel_run",
+      "filePath": "novel-character-generator/src/novel_character_generator/api/routes/runs.py",
+      "lineRange": [
+        157,
+        167
+      ],
+      "summary": "请求取消运行并返回更新后的运行详情。",
+      "tags": [
+        "api-handler",
+        "run-management",
+        "cancellation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:novel-character-generator/src/novel_character_generator/api/routes/runs.py:retry_run",
+      "type": "function",
+      "name": "retry_run",
+      "filePath": "novel-character-generator/src/novel_character_generator/api/routes/runs.py",
+      "lineRange": [
+        175,
+        185
+      ],
+      "summary": "使用配置的最大尝试次数重新调度失败或可重试运行。",
+      "tags": [
+        "api-handler",
+        "run-management",
+        "retry"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/session.py",
+      "type": "file",
+      "name": "session.py",
+      "filePath": "novel-character-generator/src/novel_character_generator/infrastructure/db/session.py",
+      "summary": "创建异步 SQLAlchemy 引擎与会话工厂，并在 SQLite 连接时启用关键 PRAGMA。",
+      "tags": [
+        "database",
+        "sqlalchemy",
+        "sqlite",
+        "infrastructure"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:novel-character-generator/src/novel_character_generator/infrastructure/db/session.py:configure_sqlite",
+      "type": "function",
+      "name": "configure_sqlite",
+      "filePath": "novel-character-generator/src/novel_character_generator/infrastructure/db/session.py",
+      "lineRange": [
+        15,
+        23
+      ],
+      "summary": "在 SQLite 连接建立时开启外键、超时和 WAL 日志配置。",
+      "tags": [
+        "database",
+        "sqlite",
+        "configuration"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:novel-character-generator/src/novel_character_generator/infrastructure/db/session.py:dispose_engine",
+      "type": "function",
+      "name": "dispose_engine",
+      "filePath": "novel-character-generator/src/novel_character_generator/infrastructure/db/session.py",
+      "lineRange": [
+        26,
+        27
+      ],
+      "summary": "异步释放 SQLAlchemy 引擎持有的连接资源。",
+      "tags": [
+        "database",
+        "lifecycle",
+        "sqlalchemy"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:novel-character-generator/src/novel_character_generator/infrastructure/storage/local.py",
+      "type": "file",
+      "name": "local.py",
+      "filePath": "novel-character-generator/src/novel_character_generator/infrastructure/storage/local.py",
+      "summary": "实现基于本地文件系统和内容哈希分层目录的异步制品读写存储。",
+      "tags": [
+        "storage",
+        "artifact",
+        "filesystem",
+        "infrastructure"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:novel-character-generator/src/novel_character_generator/infrastructure/storage/local.py:LocalArtifactStore",
+      "type": "class",
+      "name": "LocalArtifactStore",
+      "filePath": "novel-character-generator/src/novel_character_generator/infrastructure/storage/local.py",
+      "lineRange": [
+        7,
+        29
+      ],
+      "summary": "以内容哈希 URI 保存并安全读取本地制品，防止路径越界访问。",
+      "tags": [
+        "storage",
+        "artifact",
+        "filesystem"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:novel-character-generator/src/novel_character_generator/settings.py",
+      "type": "file",
+      "name": "settings.py",
+      "filePath": "novel-character-generator/src/novel_character_generator/settings.py",
+      "summary": "集中定义环境变量驱动的运行配置，并校验生产环境中的模型提供方和密钥约束。",
+      "tags": [
+        "configuration",
+        "pydantic",
+        "security",
+        "settings"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:novel-character-generator/src/novel_character_generator/settings.py:Settings",
+      "type": "class",
+      "name": "Settings",
+      "filePath": "novel-character-generator/src/novel_character_generator/settings.py",
+      "lineRange": [
+        10,
+        54
+      ],
+      "summary": "定义数据库、制品、LLM、智能体和鉴权设置，并验证生产环境约束。",
+      "tags": [
+        "configuration",
+        "pydantic",
+        "security"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:novel-character-generator/src/novel_character_generator/settings.py:get_settings",
+      "type": "function",
+      "name": "get_settings",
+      "filePath": "novel-character-generator/src/novel_character_generator/settings.py",
+      "lineRange": [
+        58,
+        59
+      ],
+      "summary": "缓存并返回全局 Settings 实例。",
+      "tags": [
+        "configuration",
+        "singleton",
+        "pydantic"
+      ],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/capabilities.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/api/routes/capabilities.py:CapabilitiesResponse",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/capabilities.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/api/routes/capabilities.py:CapabilitiesResponse",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/capabilities.py",
+      "target": "function:novel-character-generator/src/novel_character_generator/api/routes/capabilities.py:capabilities",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/capabilities.py",
+      "target": "function:novel-character-generator/src/novel_character_generator/api/routes/capabilities.py:capabilities",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/health.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/api/routes/health.py:HealthResponse",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/health.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/api/routes/health.py:HealthResponse",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/health.py",
+      "target": "function:novel-character-generator/src/novel_character_generator/api/routes/health.py:live",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/health.py",
+      "target": "function:novel-character-generator/src/novel_character_generator/api/routes/health.py:live",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/health.py",
+      "target": "function:novel-character-generator/src/novel_character_generator/api/routes/health.py:ready",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/health.py",
+      "target": "function:novel-character-generator/src/novel_character_generator/api/routes/health.py:ready",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/novels.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/api/routes/novels.py:NovelResponse",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/novels.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/api/routes/novels.py:NovelResponse",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/novels.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/api/routes/novels.py:NovelDetailsResponse",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/novels.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/api/routes/novels.py:NovelDetailsResponse",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/novels.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/api/routes/novels.py:RunResponse",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/novels.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/api/routes/novels.py:RunResponse",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/novels.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/api/routes/novels.py:DocumentVersionResponse",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/novels.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/api/routes/novels.py:DocumentVersionResponse",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/novels.py",
+      "target": "function:novel-character-generator/src/novel_character_generator/api/routes/novels.py:upload_novel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/novels.py",
+      "target": "function:novel-character-generator/src/novel_character_generator/api/routes/novels.py:upload_novel",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/novels.py",
+      "target": "function:novel-character-generator/src/novel_character_generator/api/routes/novels.py:get_novel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/novels.py",
+      "target": "function:novel-character-generator/src/novel_character_generator/api/routes/novels.py:get_novel",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/novels.py",
+      "target": "function:novel-character-generator/src/novel_character_generator/api/routes/novels.py:upload_novel_version",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/novels.py",
+      "target": "function:novel-character-generator/src/novel_character_generator/api/routes/novels.py:upload_novel_version",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/novels.py",
+      "target": "function:novel-character-generator/src/novel_character_generator/api/routes/novels.py:create_text_analysis_run",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/novels.py",
+      "target": "function:novel-character-generator/src/novel_character_generator/api/routes/novels.py:create_text_analysis_run",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/runs.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/api/routes/runs.py:StepResponse",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/runs.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/api/routes/runs.py:StepResponse",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/runs.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/api/routes/runs.py:RunDetailsResponse",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/runs.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/api/routes/runs.py:RunDetailsResponse",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/runs.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/api/routes/runs.py:ExternalOperationResponse",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/runs.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/api/routes/runs.py:ExternalOperationResponse",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/runs.py",
+      "target": "function:novel-character-generator/src/novel_character_generator/api/routes/runs.py:_run_or_404",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/runs.py",
+      "target": "function:novel-character-generator/src/novel_character_generator/api/routes/runs.py:_run_or_404",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/runs.py",
+      "target": "function:novel-character-generator/src/novel_character_generator/api/routes/runs.py:get_run",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/runs.py",
+      "target": "function:novel-character-generator/src/novel_character_generator/api/routes/runs.py:get_run",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/runs.py",
+      "target": "function:novel-character-generator/src/novel_character_generator/api/routes/runs.py:stream_run_events",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/runs.py",
+      "target": "function:novel-character-generator/src/novel_character_generator/api/routes/runs.py:stream_run_events",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/runs.py",
+      "target": "function:novel-character-generator/src/novel_character_generator/api/routes/runs.py:list_external_operations",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/runs.py",
+      "target": "function:novel-character-generator/src/novel_character_generator/api/routes/runs.py:list_external_operations",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/runs.py",
+      "target": "function:novel-character-generator/src/novel_character_generator/api/routes/runs.py:list_agent_runs",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/runs.py",
+      "target": "function:novel-character-generator/src/novel_character_generator/api/routes/runs.py:list_agent_runs",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/runs.py",
+      "target": "function:novel-character-generator/src/novel_character_generator/api/routes/runs.py:cancel_run",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/runs.py",
+      "target": "function:novel-character-generator/src/novel_character_generator/api/routes/runs.py:cancel_run",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/runs.py",
+      "target": "function:novel-character-generator/src/novel_character_generator/api/routes/runs.py:retry_run",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/runs.py",
+      "target": "function:novel-character-generator/src/novel_character_generator/api/routes/runs.py:retry_run",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/session.py",
+      "target": "function:novel-character-generator/src/novel_character_generator/infrastructure/db/session.py:configure_sqlite",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/session.py",
+      "target": "function:novel-character-generator/src/novel_character_generator/infrastructure/db/session.py:configure_sqlite",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/session.py",
+      "target": "function:novel-character-generator/src/novel_character_generator/infrastructure/db/session.py:dispose_engine",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/session.py",
+      "target": "function:novel-character-generator/src/novel_character_generator/infrastructure/db/session.py:dispose_engine",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/infrastructure/storage/local.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/infrastructure/storage/local.py:LocalArtifactStore",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/infrastructure/storage/local.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/infrastructure/storage/local.py:LocalArtifactStore",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/settings.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/settings.py:Settings",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/settings.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/settings.py:Settings",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/settings.py",
+      "target": "function:novel-character-generator/src/novel_character_generator/settings.py:get_settings",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/settings.py",
+      "target": "function:novel-character-generator/src/novel_character_generator/settings.py:get_settings",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/capabilities.py",
+      "target": "file:novel-character-generator/src/novel_character_generator/settings.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/novels.py",
+      "target": "file:novel-character-generator/src/novel_character_generator/api/auth.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/novels.py",
+      "target": "file:novel-character-generator/src/novel_character_generator/api/deps.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/novels.py",
+      "target": "file:novel-character-generator/src/novel_character_generator/application/services/ingestion_service.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/novels.py",
+      "target": "file:novel-character-generator/src/novel_character_generator/infrastructure/storage/local.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/novels.py",
+      "target": "file:novel-character-generator/src/novel_character_generator/settings.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/runs.py",
+      "target": "file:novel-character-generator/src/novel_character_generator/api/auth.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/runs.py",
+      "target": "file:novel-character-generator/src/novel_character_generator/api/deps.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/runs.py",
+      "target": "file:novel-character-generator/src/novel_character_generator/api/routes/agent_runs.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/runs.py",
+      "target": "file:novel-character-generator/src/novel_character_generator/application/services/run_service.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/runs.py",
+      "target": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/runs.py",
+      "target": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/repositories/external_operations.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/runs.py",
+      "target": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/repositories/run_events.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/runs.py",
+      "target": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/session.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/runs.py",
+      "target": "file:novel-character-generator/src/novel_character_generator/settings.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/session.py",
+      "target": "file:novel-character-generator/src/novel_character_generator/settings.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    }
+  ]
+}

@@ -1,0 +1,3092 @@
+{
+  "schemaVersion": 1,
+  "algorithm": "louvain",
+  "totalFiles": 137,
+  "totalBatches": 10,
+  "exportsByPath": {
+    ".DS_Store": [],
+    ".understand-anything/.understandignore": [],
+    "novel-character-generator/_shared/.DS_Store": [],
+    "novel-character-generator/.DS_Store": [],
+    "novel-character-generator/.python-version": [],
+    "novel-character-generator/migrations/env.py": [
+      "get_database_url",
+      "run_migrations_offline",
+      "do_run_migrations",
+      "run_migrations_online"
+    ],
+    "novel-character-generator/migrations/script.py.mako": [],
+    "novel-character-generator/migrations/versions/7af44def6f21_support_structured_extraction.py": [
+      "upgrade",
+      "downgrade"
+    ],
+    "novel-character-generator/migrations/versions/a91c4e72d530_add_character_entity_operations.py": [
+      "upgrade",
+      "downgrade"
+    ],
+    "novel-character-generator/migrations/versions/b21d91f4c8aa_version_source_documents.py": [
+      "upgrade",
+      "downgrade"
+    ],
+    "novel-character-generator/migrations/versions/c8e1a9d42f30_add_versioned_evaluation_tables.py": [
+      "_timestamps",
+      "upgrade",
+      "downgrade"
+    ],
+    "novel-character-generator/migrations/versions/d91f6a73b204_complete_agent_runtime_and_approvals.py": [
+      "upgrade",
+      "downgrade"
+    ],
+    "novel-character-generator/migrations/versions/e4b7281ca650_persist_scene_temporal_bindings.py": [
+      "upgrade",
+      "downgrade"
+    ],
+    "novel-character-generator/migrations/versions/ed400f92bdfe_create_revised_core_schema.py": [
+      "upgrade",
+      "downgrade"
+    ],
+    "novel-character-generator/migrations/versions/f6a2d07c19be_add_character_appearance_resolution.py": [
+      "upgrade",
+      "downgrade"
+    ],
+    "novel-character-generator/src/novel_character_generator/__init__.py": [],
+    "novel-character-generator/src/novel_character_generator/agents/__init__.py": [],
+    "novel-character-generator/src/novel_character_generator/agents/structured_runtime.py": [
+      "AgentRuntimeError",
+      "RegisteredTool",
+      "ToolRegistry",
+      "StructuredCallAgentRuntime"
+    ],
+    "novel-character-generator/src/novel_character_generator/agents/tools/__init__.py": [],
+    "novel-character-generator/src/novel_character_generator/api/__init__.py": [],
+    "novel-character-generator/src/novel_character_generator/api/app.py": [
+      "lifespan",
+      "create_app"
+    ],
+    "novel-character-generator/src/novel_character_generator/api/auth.py": [
+      "_matches",
+      "_configured_keys",
+      "require_user_api_key",
+      "require_admin_api_key"
+    ],
+    "novel-character-generator/src/novel_character_generator/api/deps.py": [
+      "get_session",
+      "get_artifact_store"
+    ],
+    "novel-character-generator/src/novel_character_generator/api/errors.py": [
+      "ErrorResponse",
+      "RequestIdMiddleware",
+      "_request_id",
+      "_error",
+      "http_exception_handler",
+      "validation_exception_handler",
+      "unhandled_exception_handler",
+      "configure_error_handling"
+    ],
+    "novel-character-generator/src/novel_character_generator/api/metrics.py": [
+      "MetricsRegistry",
+      "MetricsMiddleware",
+      "metrics"
+    ],
+    "novel-character-generator/src/novel_character_generator/api/routes/__init__.py": [],
+    "novel-character-generator/src/novel_character_generator/api/routes/agent_runs.py": [
+      "AgentRunSummaryResponse",
+      "AgentTurnResponse",
+      "ToolCallResponse",
+      "AgentRunDetailsResponse",
+      "agent_run_summary",
+      "get_agent_run"
+    ],
+    "novel-character-generator/src/novel_character_generator/api/routes/approvals.py": [
+      "ApprovalResponse",
+      "ApprovalPageResponse",
+      "ResolveApprovalRequest",
+      "_response",
+      "_revision",
+      "list_approvals",
+      "resolve_approval"
+    ],
+    "novel-character-generator/src/novel_character_generator/api/routes/capabilities.py": [
+      "CapabilitiesResponse",
+      "capabilities"
+    ],
+    "novel-character-generator/src/novel_character_generator/api/routes/characters.py": [
+      "CharacterResponse",
+      "MentionResponse",
+      "ObservationResponse",
+      "ExpressionResponse",
+      "AppearanceStateResponse",
+      "RenderProfileResponse",
+      "UpdateRenderProfileRequest",
+      "CharacterConflictResponse",
+      "ResolveCharacterConflictRequest",
+      "SnapshotResponse",
+      "MergeSourceRequest",
+      "MergeCharactersRequest",
+      "SplitAssignmentsRequest",
+      "SplitTargetRequest",
+      "SplitCharacterRequest",
+      "CharacterEntityOperationResponse",
+      "_revision",
+      "_state_response",
+      "_profile_response",
+      "_conflict_response",
+      "_entity_operation_response",
+      "_service_error",
+      "list_characters",
+      "_character_or_404",
+      "list_mentions",
+      "list_observations",
+      "list_expressions",
+      "list_appearance_states",
+      "list_character_conflicts",
+      "resolve_character_conflict",
+      "get_render_profile",
+      "put_render_profile",
+      "approve_character_profile",
+      "get_character_snapshot",
+      "merge_characters",
+      "split_character"
+    ],
+    "novel-character-generator/src/novel_character_generator/api/routes/health.py": [
+      "HealthResponse",
+      "live",
+      "ready"
+    ],
+    "novel-character-generator/src/novel_character_generator/api/routes/novels.py": [
+      "NovelResponse",
+      "NovelDetailsResponse",
+      "RunResponse",
+      "DocumentVersionResponse",
+      "upload_novel",
+      "get_novel",
+      "upload_novel_version",
+      "create_text_analysis_run"
+    ],
+    "novel-character-generator/src/novel_character_generator/api/routes/runs.py": [
+      "StepResponse",
+      "RunDetailsResponse",
+      "ExternalOperationResponse",
+      "_run_or_404",
+      "get_run",
+      "stream_run_events",
+      "list_external_operations",
+      "list_agent_runs",
+      "cancel_run",
+      "retry_run"
+    ],
+    "novel-character-generator/src/novel_character_generator/api/routes/story.py": [
+      "TimelineResponse",
+      "EventParticipantResponse",
+      "StoryEventResponse",
+      "SceneResponse",
+      "TemporalBindingRequest",
+      "_if_match_revision",
+      "_require_novel",
+      "list_timelines",
+      "list_events",
+      "list_scenes",
+      "update_scene_temporal_binding"
+    ],
+    "novel-character-generator/src/novel_character_generator/application/__init__.py": [],
+    "novel-character-generator/src/novel_character_generator/application/commands/__init__.py": [],
+    "novel-character-generator/src/novel_character_generator/application/ports/__init__.py": [],
+    "novel-character-generator/src/novel_character_generator/application/ports/agent_runtime.py": [
+      "ToolPermission",
+      "AgentSpec",
+      "ToolSpec",
+      "AgentContextPacket",
+      "TokenUsage",
+      "ToolCallRequest",
+      "AgentHistoryEntry",
+      "AgentModelTurn",
+      "ApprovalRequest",
+      "AgentLimitReached",
+      "AgentRunResult",
+      "AgentModelClient",
+      "AgentRuntime"
+    ],
+    "novel-character-generator/src/novel_character_generator/application/ports/artifact_store.py": [
+      "ArtifactStore"
+    ],
+    "novel-character-generator/src/novel_character_generator/application/ports/extraction.py": [
+      "MentionDraft",
+      "AliasDraft",
+      "ObservationDraft",
+      "ExpressionDraft",
+      "SceneHypothesisDraft",
+      "TimelineHypothesisDraft",
+      "RelationDraft",
+      "ReferenceDraft",
+      "ChunkExtractionResult",
+      "ExtractionProvider"
+    ],
+    "novel-character-generator/src/novel_character_generator/application/queries/__init__.py": [],
+    "novel-character-generator/src/novel_character_generator/application/services/__init__.py": [],
+    "novel-character-generator/src/novel_character_generator/application/services/agent_execution_service.py": [
+      "_hash_json",
+      "AgentExecution",
+      "AgentExecutionService"
+    ],
+    "novel-character-generator/src/novel_character_generator/application/services/appearance_service.py": [
+      "AppearanceRevisionConflict",
+      "AppearanceResolutionError",
+      "RenderProfileUpdate",
+      "SnapshotTarget",
+      "_canonical",
+      "_flatten",
+      "_put_path",
+      "_scope_overlaps",
+      "AppearanceService"
+    ],
+    "novel-character-generator/src/novel_character_generator/application/services/approval_service.py": [
+      "ApprovalConflict",
+      "CreatedApproval",
+      "ApprovalPage",
+      "_canonical_hash",
+      "ApprovalService"
+    ],
+    "novel-character-generator/src/novel_character_generator/application/services/character_entity_service.py": [
+      "EntityOperationConflict",
+      "MergeSource",
+      "SplitAssignments",
+      "SplitTarget",
+      "_canonical",
+      "_hash",
+      "_replace_ids",
+      "CharacterEntityService"
+    ],
+    "novel-character-generator/src/novel_character_generator/application/services/ingestion_service.py": [
+      "NovelDetails",
+      "IngestionService"
+    ],
+    "novel-character-generator/src/novel_character_generator/application/services/run_service.py": [
+      "StepDetails",
+      "RunDetails",
+      "RunService"
+    ],
+    "novel-character-generator/src/novel_character_generator/application/services/story_service.py": [
+      "TemporalBindingConflict",
+      "TemporalBindingUpdate",
+      "StoryService"
+    ],
+    "novel-character-generator/src/novel_character_generator/domain/__init__.py": [],
+    "novel-character-generator/src/novel_character_generator/domain/entities/__init__.py": [],
+    "novel-character-generator/src/novel_character_generator/domain/entities/character.py": [
+      "FeatureObservation",
+      "FeatureSuggestion",
+      "ExpressionObservation",
+      "CharacterAppearanceState",
+      "CharacterRenderProfile"
+    ],
+    "novel-character-generator/src/novel_character_generator/domain/entities/document.py": [
+      "SourceDocumentVersion",
+      "NormalizationMap",
+      "NormalizedText",
+      "ChapterBoundary",
+      "TextChunk"
+    ],
+    "novel-character-generator/src/novel_character_generator/domain/entities/evaluation.py": [
+      "EvidenceSpan",
+      "EvalDataset",
+      "EvalCase",
+      "EvalRun",
+      "GraderVersion",
+      "EvalResult"
+    ],
+    "novel-character-generator/src/novel_character_generator/domain/entities/image.py": [
+      "CharacterImageSet",
+      "CharacterStageImage"
+    ],
+    "novel-character-generator/src/novel_character_generator/domain/entities/pipeline.py": [
+      "StepStatus",
+      "RunStatus",
+      "ExternalOperationState",
+      "PipelineRun",
+      "PipelineStep",
+      "ExternalOperation"
+    ],
+    "novel-character-generator/src/novel_character_generator/domain/entities/story.py": [
+      "Timeline",
+      "StoryEvent",
+      "EventParticipant",
+      "Scene"
+    ],
+    "novel-character-generator/src/novel_character_generator/domain/entities/text.py": [
+      "MentionSpan",
+      "AliasAssertion"
+    ],
+    "novel-character-generator/src/novel_character_generator/domain/policies/__init__.py": [],
+    "novel-character-generator/src/novel_character_generator/domain/policies/grounding.py": [
+      "validate_evidence",
+      "observation_fingerprint"
+    ],
+    "novel-character-generator/src/novel_character_generator/domain/policies/text_processing.py": [
+      "decode_text",
+      "normalize_text",
+      "detect_chapters",
+      "estimate_tokens",
+      "_paragraph_ranges",
+      "_split_range",
+      "build_chunks"
+    ],
+    "novel-character-generator/src/novel_character_generator/domain/value_objects/__init__.py": [],
+    "novel-character-generator/src/novel_character_generator/domain/value_objects/temporal.py": [
+      "TemporalScope"
+    ],
+    "novel-character-generator/src/novel_character_generator/infrastructure/__init__.py": [],
+    "novel-character-generator/src/novel_character_generator/infrastructure/db/__init__.py": [],
+    "novel-character-generator/src/novel_character_generator/infrastructure/db/base.py": [
+      "Base"
+    ],
+    "novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py": [
+      "IdMixin",
+      "TimestampMixin",
+      "NovelORM",
+      "SourceDocumentORM",
+      "SourceDocumentVersionORM",
+      "NormalizationMapORM",
+      "ChapterORM",
+      "TextChunkORM",
+      "TimelineORM",
+      "StoryEventORM",
+      "EventParticipantORM",
+      "CharacterORM",
+      "CharacterEntityOperationORM",
+      "SceneORM",
+      "PipelineRunORM",
+      "PipelineStepORM",
+      "RunEventORM",
+      "MentionSpanORM",
+      "AliasAssertionORM",
+      "FeatureObservationORM",
+      "FeatureSuggestionORM",
+      "ExpressionObservationORM",
+      "CharacterAppearanceStateORM",
+      "CharacterRenderProfileORM",
+      "CharacterConflictORM",
+      "CharacterImageSetORM",
+      "GeneratedImageORM",
+      "CharacterStageImageORM",
+      "ArtifactORM",
+      "ExternalOperationORM",
+      "ModelCallORM",
+      "AgentRunORM",
+      "AgentTurnORM",
+      "ToolCallORM",
+      "DecisionRecordORM",
+      "HumanApprovalORM",
+      "AgentEvaluationORM",
+      "EvalDatasetORM",
+      "EvalCaseORM",
+      "GraderVersionORM",
+      "EvalRunORM",
+      "EvalResultORM"
+    ],
+    "novel-character-generator/src/novel_character_generator/infrastructure/db/repositories/__init__.py": [],
+    "novel-character-generator/src/novel_character_generator/infrastructure/db/repositories/evaluation.py": [
+      "EvaluationConflict",
+      "EvaluationRepository"
+    ],
+    "novel-character-generator/src/novel_character_generator/infrastructure/db/repositories/external_operations.py": [
+      "ExternalOperationConflict",
+      "ExternalOperationRepository"
+    ],
+    "novel-character-generator/src/novel_character_generator/infrastructure/db/repositories/extraction.py": [
+      "ExtractionRepository"
+    ],
+    "novel-character-generator/src/novel_character_generator/infrastructure/db/repositories/ingestion.py": [
+      "IngestionRepository"
+    ],
+    "novel-character-generator/src/novel_character_generator/infrastructure/db/repositories/run_events.py": [
+      "append_run_event",
+      "read_run_events"
+    ],
+    "novel-character-generator/src/novel_character_generator/infrastructure/db/session.py": [
+      "configure_sqlite",
+      "dispose_engine"
+    ],
+    "novel-character-generator/src/novel_character_generator/infrastructure/image/__init__.py": [],
+    "novel-character-generator/src/novel_character_generator/infrastructure/llm/__init__.py": [],
+    "novel-character-generator/src/novel_character_generator/infrastructure/llm/mock.py": [
+      "MockExtractionProvider"
+    ],
+    "novel-character-generator/src/novel_character_generator/infrastructure/llm/openai_compatible.py": [
+      "OpenAICompatibleExtractionProvider"
+    ],
+    "novel-character-generator/src/novel_character_generator/infrastructure/observability/__init__.py": [],
+    "novel-character-generator/src/novel_character_generator/infrastructure/storage/__init__.py": [],
+    "novel-character-generator/src/novel_character_generator/infrastructure/storage/local.py": [
+      "LocalArtifactStore"
+    ],
+    "novel-character-generator/src/novel_character_generator/settings.py": [
+      "Settings",
+      "get_settings"
+    ],
+    "novel-character-generator/src/novel_character_generator/workers/__init__.py": [],
+    "novel-character-generator/src/novel_character_generator/workers/handlers/__init__.py": [],
+    "novel-character-generator/src/novel_character_generator/workers/handlers/extraction.py": [
+      "process_extraction_run"
+    ],
+    "novel-character-generator/src/novel_character_generator/workers/handlers/ingestion.py": [
+      "process_ingestion_run"
+    ],
+    "novel-character-generator/src/novel_character_generator/workers/main.py": [
+      "extraction_provider",
+      "run_once",
+      "run_worker",
+      "main"
+    ],
+    "novel-character-generator/src/novel_character_generator/workers/task_claim.py": [
+      "LeaseLostError",
+      "_runnable",
+      "claim_next_step",
+      "record_step_error",
+      "mark_cancelled",
+      "start_step",
+      "checkpoint_step",
+      "complete_step",
+      "complete_step_and_enqueue"
+    ],
+    "novel-character-generator/src/novel_character_generator/workflows/__init__.py": [],
+    "novel-character-generator/src/novel_character_generator/workflows/nodes/__init__.py": [],
+    "novel-character-generator/tests/integration/test_agent_execution_service.py": [
+      "PublishInput",
+      "PublishOutput",
+      "ReviewOutput",
+      "ApprovalModel",
+      "test_agent_execution_persists_trajectory_and_waiting_approval"
+    ],
+    "novel-character-generator/tests/integration/test_approval_and_agent_api.py": [
+      "test_approval_cas_resume_and_agent_trajectory_api"
+    ],
+    "novel-character-generator/tests/integration/test_approval_decisions.py": [
+      "test_deferred_approval_can_later_be_rejected"
+    ],
+    "novel-character-generator/tests/integration/test_character_appearance_api.py": [
+      "test_render_profile_conflict_resolution_and_temporal_snapshot"
+    ],
+    "novel-character-generator/tests/integration/test_character_entity_api.py": [
+      "test_character_merge_and_split_are_audited_idempotent_and_revision_safe"
+    ],
+    "novel-character-generator/tests/integration/test_document_versions.py": [
+      "test_new_upload_creates_immutable_source_version"
+    ],
+    "novel-character-generator/tests/integration/test_evaluation_repository.py": [
+      "test_evaluation_dataset_isolation_freeze_and_result_uniqueness"
+    ],
+    "novel-character-generator/tests/integration/test_extraction_slice.py": [
+      "test_character_extraction_slice_is_grounded_and_idempotent"
+    ],
+    "novel-character-generator/tests/integration/test_health.py": [
+      "test_health_endpoints",
+      "test_validation_errors_use_stable_envelope",
+      "test_openapi_exposes_documented_phase_one_routes",
+      "test_api_key_roles_capabilities_and_metrics"
+    ],
+    "novel-character-generator/tests/integration/test_ingestion_slice.py": [
+      "test_upload_run_worker_and_query"
+    ],
+    "novel-character-generator/tests/integration/test_migrations.py": [
+      "test_initial_migration_upgrade_and_downgrade"
+    ],
+    "novel-character-generator/tests/integration/test_run_events_and_external_operations.py": [
+      "test_run_events_are_append_only_and_support_resume",
+      "test_external_operation_enforces_idempotency_and_fencing"
+    ],
+    "novel-character-generator/tests/integration/test_story_temporal_api.py": [
+      "TemporalProvider",
+      "test_scene_hypotheses_are_grounded_queryable_and_correctable"
+    ],
+    "novel-character-generator/tests/integration/test_task_recovery.py": [
+      "FailOnSecondChunk",
+      "RecordingProvider",
+      "test_claim_failure_and_cursor_resume"
+    ],
+    "novel-character-generator/tests/integration/test_text_analysis_run.py": [
+      "test_public_run_endpoint_executes_ingestion_then_extraction"
+    ],
+    "novel-character-generator/tests/unit/domain/test_models.py": [
+      "test_mention_span_rejects_reversed_offsets",
+      "test_text_observation_requires_temporal_scope",
+      "test_text_observation_accepts_grounded_evidence",
+      "test_pipeline_step_uses_explicit_transition_rules",
+      "test_frozen_eval_dataset_requires_freeze_timestamp",
+      "test_model_grader_requires_reproducible_provenance"
+    ],
+    "novel-character-generator/tests/unit/domain/test_text_processing.py": [
+      "test_normalization_preserves_reverse_offsets",
+      "test_decode_text_distinguishes_gb18030_from_utf16",
+      "test_chapter_detection_and_chunk_hashes_are_stable"
+    ],
+    "novel-character-generator/tests/unit/test_mock_extraction.py": [
+      "test_mock_extraction_returns_grounded_character_data",
+      "test_grounding_and_fingerprint_are_deterministic"
+    ],
+    "novel-character-generator/tests/unit/test_openai_compatible_extraction.py": [
+      "test_openai_compatible_provider_requests_structured_json"
+    ],
+    "novel-character-generator/tests/unit/test_settings.py": [
+      "test_default_settings_use_async_sqlite",
+      "test_production_rejects_mock_provider",
+      "test_remote_provider_requires_credentials",
+      "test_production_requires_distinct_user_and_admin_keys"
+    ],
+    "novel-character-generator/tests/unit/test_structured_agent_runtime.py": [
+      "EchoInput",
+      "EchoOutput",
+      "FinalOutput",
+      "SequenceModel",
+      "agent_spec",
+      "context",
+      "runtime_settings",
+      "registered_tool",
+      "test_runtime_executes_typed_tool_then_validates_final_output",
+      "test_runtime_rejects_tool_permission_escalation",
+      "test_approval_preflight_prevents_partial_side_effects",
+      "test_runtime_returns_structured_cost_limit"
+    ]
+  },
+  "batches": [
+    {
+      "batchIndex": 1,
+      "files": [
+        {
+          "path": "novel-character-generator/src/novel_character_generator/api/app.py",
+          "language": "python",
+          "sizeLines": 52,
+          "fileCategory": "code"
+        },
+        {
+          "path": "novel-character-generator/src/novel_character_generator/api/auth.py",
+          "language": "python",
+          "sizeLines": 55,
+          "fileCategory": "code"
+        },
+        {
+          "path": "novel-character-generator/src/novel_character_generator/api/deps.py",
+          "language": "python",
+          "sizeLines": 16,
+          "fileCategory": "code"
+        },
+        {
+          "path": "novel-character-generator/src/novel_character_generator/api/errors.py",
+          "language": "python",
+          "sizeLines": 82,
+          "fileCategory": "code"
+        },
+        {
+          "path": "novel-character-generator/src/novel_character_generator/api/metrics.py",
+          "language": "python",
+          "sizeLines": 76,
+          "fileCategory": "code"
+        },
+        {
+          "path": "novel-character-generator/src/novel_character_generator/api/routes/__init__.py",
+          "language": "python",
+          "sizeLines": 1,
+          "fileCategory": "code"
+        },
+        {
+          "path": "novel-character-generator/src/novel_character_generator/api/routes/agent_runs.py",
+          "language": "python",
+          "sizeLines": 126,
+          "fileCategory": "code"
+        },
+        {
+          "path": "novel-character-generator/src/novel_character_generator/api/routes/approvals.py",
+          "language": "python",
+          "sizeLines": 119,
+          "fileCategory": "code"
+        },
+        {
+          "path": "novel-character-generator/src/novel_character_generator/api/routes/capabilities.py",
+          "language": "python",
+          "sizeLines": 38,
+          "fileCategory": "code"
+        },
+        {
+          "path": "novel-character-generator/src/novel_character_generator/api/routes/health.py",
+          "language": "python",
+          "sizeLines": 20,
+          "fileCategory": "code"
+        },
+        {
+          "path": "novel-character-generator/src/novel_character_generator/api/routes/novels.py",
+          "language": "python",
+          "sizeLines": 134,
+          "fileCategory": "code"
+        },
+        {
+          "path": "novel-character-generator/src/novel_character_generator/api/routes/runs.py",
+          "language": "python",
+          "sizeLines": 185,
+          "fileCategory": "code"
+        },
+        {
+          "path": "novel-character-generator/src/novel_character_generator/infrastructure/db/session.py",
+          "language": "python",
+          "sizeLines": 27,
+          "fileCategory": "code"
+        },
+        {
+          "path": "novel-character-generator/src/novel_character_generator/infrastructure/storage/local.py",
+          "language": "python",
+          "sizeLines": 29,
+          "fileCategory": "code"
+        },
+        {
+          "path": "novel-character-generator/src/novel_character_generator/settings.py",
+          "language": "python",
+          "sizeLines": 59,
+          "fileCategory": "code"
+        }
+      ],
+      "batchImportData": {
+        "novel-character-generator/src/novel_character_generator/api/app.py": [
+          "novel-character-generator/src/novel_character_generator/api/auth.py",
+          "novel-character-generator/src/novel_character_generator/api/errors.py",
+          "novel-character-generator/src/novel_character_generator/api/metrics.py",
+          "novel-character-generator/src/novel_character_generator/api/routes/__init__.py",
+          "novel-character-generator/src/novel_character_generator/api/routes/agent_runs.py",
+          "novel-character-generator/src/novel_character_generator/api/routes/approvals.py",
+          "novel-character-generator/src/novel_character_generator/api/routes/capabilities.py",
+          "novel-character-generator/src/novel_character_generator/api/routes/characters.py",
+          "novel-character-generator/src/novel_character_generator/api/routes/health.py",
+          "novel-character-generator/src/novel_character_generator/api/routes/novels.py",
+          "novel-character-generator/src/novel_character_generator/api/routes/runs.py",
+          "novel-character-generator/src/novel_character_generator/api/routes/story.py",
+          "novel-character-generator/src/novel_character_generator/infrastructure/db/session.py",
+          "novel-character-generator/src/novel_character_generator/settings.py"
+        ],
+        "novel-character-generator/src/novel_character_generator/api/auth.py": [
+          "novel-character-generator/src/novel_character_generator/settings.py"
+        ],
+        "novel-character-generator/src/novel_character_generator/api/deps.py": [
+          "novel-character-generator/src/novel_character_generator/infrastructure/db/session.py",
+          "novel-character-generator/src/novel_character_generator/infrastructure/storage/local.py",
+          "novel-character-generator/src/novel_character_generator/settings.py"
+        ],
+        "novel-character-generator/src/novel_character_generator/api/errors.py": [],
+        "novel-character-generator/src/novel_character_generator/api/metrics.py": [],
+        "novel-character-generator/src/novel_character_generator/api/routes/__init__.py": [],
+        "novel-character-generator/src/novel_character_generator/api/routes/agent_runs.py": [
+          "novel-character-generator/src/novel_character_generator/api/auth.py",
+          "novel-character-generator/src/novel_character_generator/api/deps.py",
+          "novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py"
+        ],
+        "novel-character-generator/src/novel_character_generator/api/routes/approvals.py": [
+          "novel-character-generator/src/novel_character_generator/api/auth.py",
+          "novel-character-generator/src/novel_character_generator/api/deps.py",
+          "novel-character-generator/src/novel_character_generator/application/services/approval_service.py",
+          "novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py"
+        ],
+        "novel-character-generator/src/novel_character_generator/api/routes/capabilities.py": [
+          "novel-character-generator/src/novel_character_generator/settings.py"
+        ],
+        "novel-character-generator/src/novel_character_generator/api/routes/health.py": [],
+        "novel-character-generator/src/novel_character_generator/api/routes/novels.py": [
+          "novel-character-generator/src/novel_character_generator/api/auth.py",
+          "novel-character-generator/src/novel_character_generator/api/deps.py",
+          "novel-character-generator/src/novel_character_generator/application/services/ingestion_service.py",
+          "novel-character-generator/src/novel_character_generator/infrastructure/storage/local.py",
+          "novel-character-generator/src/novel_character_generator/settings.py"
+        ],
+        "novel-character-generator/src/novel_character_generator/api/routes/runs.py": [
+          "novel-character-generator/src/novel_character_generator/api/auth.py",
+          "novel-character-generator/src/novel_character_generator/api/deps.py",
+          "novel-character-generator/src/novel_character_generator/api/routes/agent_runs.py",
+          "novel-character-generator/src/novel_character_generator/application/services/run_service.py",
+          "novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+          "novel-character-generator/src/novel_character_generator/infrastructure/db/repositories/external_operations.py",
+          "novel-character-generator/src/novel_character_generator/infrastructure/db/repositories/run_events.py",
+          "novel-character-generator/src/novel_character_generator/infrastructure/db/session.py",
+          "novel-character-generator/src/novel_character_generator/settings.py"
+        ],
+        "novel-character-generator/src/novel_character_generator/infrastructure/db/session.py": [
+          "novel-character-generator/src/novel_character_generator/settings.py"
+        ],
+        "novel-character-generator/src/novel_character_generator/infrastructure/storage/local.py": [],
+        "novel-character-generator/src/novel_character_generator/settings.py": []
+      },
+      "neighborMap": {
+        "novel-character-generator/src/novel_character_generator/api/app.py": [
+          {
+            "path": "novel-character-generator/src/novel_character_generator/api/routes/characters.py",
+            "batchIndex": 2,
+            "symbols": [
+              "CharacterResponse",
+              "MentionResponse",
+              "ObservationResponse",
+              "ExpressionResponse",
+              "AppearanceStateResponse",
+              "RenderProfileResponse",
+              "UpdateRenderProfileRequest",
+              "CharacterConflictResponse",
+              "ResolveCharacterConflictRequest",
+              "SnapshotResponse",
+              "MergeSourceRequest",
+              "MergeCharactersRequest",
+              "SplitAssignmentsRequest",
+              "SplitTargetRequest",
+              "SplitCharacterRequest",
+              "CharacterEntityOperationResponse",
+              "_revision",
+              "_state_response",
+              "_profile_response",
+              "_conflict_response",
+              "_entity_operation_response",
+              "_service_error",
+              "list_characters",
+              "_character_or_404",
+              "list_mentions",
+              "list_observations",
+              "list_expressions",
+              "list_appearance_states",
+              "list_character_conflicts",
+              "resolve_character_conflict",
+              "get_render_profile",
+              "put_render_profile",
+              "approve_character_profile",
+              "get_character_snapshot",
+              "merge_characters",
+              "split_character"
+            ]
+          },
+          {
+            "path": "novel-character-generator/src/novel_character_generator/api/routes/story.py",
+            "batchIndex": 2,
+            "symbols": [
+              "TimelineResponse",
+              "EventParticipantResponse",
+              "StoryEventResponse",
+              "SceneResponse",
+              "TemporalBindingRequest",
+              "_if_match_revision",
+              "_require_novel",
+              "list_timelines",
+              "list_events",
+              "list_scenes",
+              "update_scene_temporal_binding"
+            ]
+          }
+        ],
+        "novel-character-generator/src/novel_character_generator/api/auth.py": [
+          {
+            "path": "novel-character-generator/src/novel_character_generator/api/routes/characters.py",
+            "batchIndex": 2,
+            "symbols": [
+              "CharacterResponse",
+              "MentionResponse",
+              "ObservationResponse",
+              "ExpressionResponse",
+              "AppearanceStateResponse",
+              "RenderProfileResponse",
+              "UpdateRenderProfileRequest",
+              "CharacterConflictResponse",
+              "ResolveCharacterConflictRequest",
+              "SnapshotResponse",
+              "MergeSourceRequest",
+              "MergeCharactersRequest",
+              "SplitAssignmentsRequest",
+              "SplitTargetRequest",
+              "SplitCharacterRequest",
+              "CharacterEntityOperationResponse",
+              "_revision",
+              "_state_response",
+              "_profile_response",
+              "_conflict_response",
+              "_entity_operation_response",
+              "_service_error",
+              "list_characters",
+              "_character_or_404",
+              "list_mentions",
+              "list_observations",
+              "list_expressions",
+              "list_appearance_states",
+              "list_character_conflicts",
+              "resolve_character_conflict",
+              "get_render_profile",
+              "put_render_profile",
+              "approve_character_profile",
+              "get_character_snapshot",
+              "merge_characters",
+              "split_character"
+            ]
+          },
+          {
+            "path": "novel-character-generator/src/novel_character_generator/api/routes/story.py",
+            "batchIndex": 2,
+            "symbols": [
+              "TimelineResponse",
+              "EventParticipantResponse",
+              "StoryEventResponse",
+              "SceneResponse",
+              "TemporalBindingRequest",
+              "_if_match_revision",
+              "_require_novel",
+              "list_timelines",
+              "list_events",
+              "list_scenes",
+              "update_scene_temporal_binding"
+            ]
+          }
+        ],
+        "novel-character-generator/src/novel_character_generator/api/deps.py": [
+          {
+            "path": "novel-character-generator/src/novel_character_generator/api/routes/characters.py",
+            "batchIndex": 2,
+            "symbols": [
+              "CharacterResponse",
+              "MentionResponse",
+              "ObservationResponse",
+              "ExpressionResponse",
+              "AppearanceStateResponse",
+              "RenderProfileResponse",
+              "UpdateRenderProfileRequest",
+              "CharacterConflictResponse",
+              "ResolveCharacterConflictRequest",
+              "SnapshotResponse",
+              "MergeSourceRequest",
+              "MergeCharactersRequest",
+              "SplitAssignmentsRequest",
+              "SplitTargetRequest",
+              "SplitCharacterRequest",
+              "CharacterEntityOperationResponse",
+              "_revision",
+              "_state_response",
+              "_profile_response",
+              "_conflict_response",
+              "_entity_operation_response",
+              "_service_error",
+              "list_characters",
+              "_character_or_404",
+              "list_mentions",
+              "list_observations",
+              "list_expressions",
+              "list_appearance_states",
+              "list_character_conflicts",
+              "resolve_character_conflict",
+              "get_render_profile",
+              "put_render_profile",
+              "approve_character_profile",
+              "get_character_snapshot",
+              "merge_characters",
+              "split_character"
+            ]
+          },
+          {
+            "path": "novel-character-generator/src/novel_character_generator/api/routes/story.py",
+            "batchIndex": 2,
+            "symbols": [
+              "TimelineResponse",
+              "EventParticipantResponse",
+              "StoryEventResponse",
+              "SceneResponse",
+              "TemporalBindingRequest",
+              "_if_match_revision",
+              "_require_novel",
+              "list_timelines",
+              "list_events",
+              "list_scenes",
+              "update_scene_temporal_binding"
+            ]
+          }
+        ],
+        "novel-character-generator/src/novel_character_generator/api/routes/agent_runs.py": [
+          {
+            "path": "novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+            "batchIndex": 2,
+            "symbols": [
+              "IdMixin",
+              "TimestampMixin",
+              "NovelORM",
+              "SourceDocumentORM",
+              "SourceDocumentVersionORM",
+              "NormalizationMapORM",
+              "ChapterORM",
+              "TextChunkORM",
+              "TimelineORM",
+              "StoryEventORM",
+              "EventParticipantORM",
+              "CharacterORM",
+              "CharacterEntityOperationORM",
+              "SceneORM",
+              "PipelineRunORM",
+              "PipelineStepORM",
+              "RunEventORM",
+              "MentionSpanORM",
+              "AliasAssertionORM",
+              "FeatureObservationORM",
+              "FeatureSuggestionORM",
+              "ExpressionObservationORM",
+              "CharacterAppearanceStateORM",
+              "CharacterRenderProfileORM",
+              "CharacterConflictORM",
+              "CharacterImageSetORM",
+              "GeneratedImageORM",
+              "CharacterStageImageORM",
+              "ArtifactORM",
+              "ExternalOperationORM",
+              "ModelCallORM",
+              "AgentRunORM",
+              "AgentTurnORM",
+              "ToolCallORM",
+              "DecisionRecordORM",
+              "HumanApprovalORM",
+              "AgentEvaluationORM",
+              "EvalDatasetORM",
+              "EvalCaseORM",
+              "GraderVersionORM",
+              "EvalRunORM",
+              "EvalResultORM"
+            ]
+          }
+        ],
+        "novel-character-generator/src/novel_character_generator/api/routes/approvals.py": [
+          {
+            "path": "novel-character-generator/src/novel_character_generator/application/services/approval_service.py",
+            "batchIndex": 4,
+            "symbols": [
+              "ApprovalConflict",
+              "CreatedApproval",
+              "ApprovalPage",
+              "_canonical_hash",
+              "ApprovalService"
+            ]
+          },
+          {
+            "path": "novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+            "batchIndex": 2,
+            "symbols": [
+              "IdMixin",
+              "TimestampMixin",
+              "NovelORM",
+              "SourceDocumentORM",
+              "SourceDocumentVersionORM",
+              "NormalizationMapORM",
+              "ChapterORM",
+              "TextChunkORM",
+              "TimelineORM",
+              "StoryEventORM",
+              "EventParticipantORM",
+              "CharacterORM",
+              "CharacterEntityOperationORM",
+              "SceneORM",
+              "PipelineRunORM",
+              "PipelineStepORM",
+              "RunEventORM",
+              "MentionSpanORM",
+              "AliasAssertionORM",
+              "FeatureObservationORM",
+              "FeatureSuggestionORM",
+              "ExpressionObservationORM",
+              "CharacterAppearanceStateORM",
+              "CharacterRenderProfileORM",
+              "CharacterConflictORM",
+              "CharacterImageSetORM",
+              "GeneratedImageORM",
+              "CharacterStageImageORM",
+              "ArtifactORM",
+              "ExternalOperationORM",
+              "ModelCallORM",
+              "AgentRunORM",
+              "AgentTurnORM",
+              "ToolCallORM",
+              "DecisionRecordORM",
+              "HumanApprovalORM",
+              "AgentEvaluationORM",
+              "EvalDatasetORM",
+              "EvalCaseORM",
+              "GraderVersionORM",
+              "EvalRunORM",
+              "EvalResultORM"
+            ]
+          }
+        ],
+        "novel-character-generator/src/novel_character_generator/api/routes/novels.py": [
+          {
+            "path": "novel-character-generator/src/novel_character_generator/application/services/ingestion_service.py",
+            "batchIndex": 5,
+            "symbols": [
+              "NovelDetails",
+              "IngestionService"
+            ]
+          }
+        ],
+        "novel-character-generator/src/novel_character_generator/api/routes/runs.py": [
+          {
+            "path": "novel-character-generator/src/novel_character_generator/application/services/run_service.py",
+            "batchIndex": 4,
+            "symbols": [
+              "StepDetails",
+              "RunDetails",
+              "RunService"
+            ]
+          },
+          {
+            "path": "novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+            "batchIndex": 2,
+            "symbols": [
+              "IdMixin",
+              "TimestampMixin",
+              "NovelORM",
+              "SourceDocumentORM",
+              "SourceDocumentVersionORM",
+              "NormalizationMapORM",
+              "ChapterORM",
+              "TextChunkORM",
+              "TimelineORM",
+              "StoryEventORM",
+              "EventParticipantORM",
+              "CharacterORM",
+              "CharacterEntityOperationORM",
+              "SceneORM",
+              "PipelineRunORM",
+              "PipelineStepORM",
+              "RunEventORM",
+              "MentionSpanORM",
+              "AliasAssertionORM",
+              "FeatureObservationORM",
+              "FeatureSuggestionORM",
+              "ExpressionObservationORM",
+              "CharacterAppearanceStateORM",
+              "CharacterRenderProfileORM",
+              "CharacterConflictORM",
+              "CharacterImageSetORM",
+              "GeneratedImageORM",
+              "CharacterStageImageORM",
+              "ArtifactORM",
+              "ExternalOperationORM",
+              "ModelCallORM",
+              "AgentRunORM",
+              "AgentTurnORM",
+              "ToolCallORM",
+              "DecisionRecordORM",
+              "HumanApprovalORM",
+              "AgentEvaluationORM",
+              "EvalDatasetORM",
+              "EvalCaseORM",
+              "GraderVersionORM",
+              "EvalRunORM",
+              "EvalResultORM"
+            ]
+          },
+          {
+            "path": "novel-character-generator/src/novel_character_generator/infrastructure/db/repositories/external_operations.py",
+            "batchIndex": 2,
+            "symbols": [
+              "ExternalOperationConflict",
+              "ExternalOperationRepository"
+            ]
+          },
+          {
+            "path": "novel-character-generator/src/novel_character_generator/infrastructure/db/repositories/run_events.py",
+            "batchIndex": 4,
+            "symbols": [
+              "append_run_event",
+              "read_run_events"
+            ]
+          }
+        ],
+        "novel-character-generator/src/novel_character_generator/infrastructure/db/session.py": [
+          {
+            "path": "novel-character-generator/src/novel_character_generator/workers/main.py",
+            "batchIndex": 3,
+            "symbols": [
+              "extraction_provider",
+              "run_once",
+              "run_worker",
+              "main"
+            ]
+          }
+        ],
+        "novel-character-generator/src/novel_character_generator/infrastructure/storage/local.py": [
+          {
+            "path": "novel-character-generator/src/novel_character_generator/workers/main.py",
+            "batchIndex": 3,
+            "symbols": [
+              "extraction_provider",
+              "run_once",
+              "run_worker",
+              "main"
+            ]
+          }
+        ],
+        "novel-character-generator/src/novel_character_generator/settings.py": [
+          {
+            "path": "novel-character-generator/src/novel_character_generator/agents/structured_runtime.py",
+            "batchIndex": 4,
+            "symbols": [
+              "AgentRuntimeError",
+              "RegisteredTool",
+              "ToolRegistry",
+              "StructuredCallAgentRuntime"
+            ]
+          },
+          {
+            "path": "novel-character-generator/src/novel_character_generator/workers/main.py",
+            "batchIndex": 3,
+            "symbols": [
+              "extraction_provider",
+              "run_once",
+              "run_worker",
+              "main"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "batchIndex": 2,
+      "files": [
+        {
+          "path": "novel-character-generator/src/novel_character_generator/api/routes/characters.py",
+          "language": "python",
+          "sizeLines": 568,
+          "fileCategory": "code"
+        },
+        {
+          "path": "novel-character-generator/src/novel_character_generator/api/routes/story.py",
+          "language": "python",
+          "sizeLines": 184,
+          "fileCategory": "code"
+        },
+        {
+          "path": "novel-character-generator/src/novel_character_generator/application/services/appearance_service.py",
+          "language": "python",
+          "sizeLines": 638,
+          "fileCategory": "code"
+        },
+        {
+          "path": "novel-character-generator/src/novel_character_generator/application/services/character_entity_service.py",
+          "language": "python",
+          "sizeLines": 768,
+          "fileCategory": "code"
+        },
+        {
+          "path": "novel-character-generator/src/novel_character_generator/application/services/story_service.py",
+          "language": "python",
+          "sizeLines": 190,
+          "fileCategory": "code"
+        },
+        {
+          "path": "novel-character-generator/src/novel_character_generator/domain/entities/evaluation.py",
+          "language": "python",
+          "sizeLines": 134,
+          "fileCategory": "code"
+        },
+        {
+          "path": "novel-character-generator/src/novel_character_generator/domain/entities/pipeline.py",
+          "language": "python",
+          "sizeLines": 151,
+          "fileCategory": "code"
+        },
+        {
+          "path": "novel-character-generator/src/novel_character_generator/infrastructure/db/base.py",
+          "language": "python",
+          "sizeLines": 5,
+          "fileCategory": "code"
+        },
+        {
+          "path": "novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+          "language": "python",
+          "sizeLines": 816,
+          "fileCategory": "code"
+        },
+        {
+          "path": "novel-character-generator/src/novel_character_generator/infrastructure/db/repositories/evaluation.py",
+          "language": "python",
+          "sizeLines": 211,
+          "fileCategory": "code"
+        },
+        {
+          "path": "novel-character-generator/src/novel_character_generator/infrastructure/db/repositories/external_operations.py",
+          "language": "python",
+          "sizeLines": 122,
+          "fileCategory": "code"
+        }
+      ],
+      "batchImportData": {
+        "novel-character-generator/src/novel_character_generator/api/routes/characters.py": [
+          "novel-character-generator/src/novel_character_generator/api/auth.py",
+          "novel-character-generator/src/novel_character_generator/api/deps.py",
+          "novel-character-generator/src/novel_character_generator/application/services/appearance_service.py",
+          "novel-character-generator/src/novel_character_generator/application/services/character_entity_service.py",
+          "novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py"
+        ],
+        "novel-character-generator/src/novel_character_generator/api/routes/story.py": [
+          "novel-character-generator/src/novel_character_generator/api/auth.py",
+          "novel-character-generator/src/novel_character_generator/api/deps.py",
+          "novel-character-generator/src/novel_character_generator/application/services/story_service.py",
+          "novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py"
+        ],
+        "novel-character-generator/src/novel_character_generator/application/services/appearance_service.py": [
+          "novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py"
+        ],
+        "novel-character-generator/src/novel_character_generator/application/services/character_entity_service.py": [
+          "novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py"
+        ],
+        "novel-character-generator/src/novel_character_generator/application/services/story_service.py": [
+          "novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py"
+        ],
+        "novel-character-generator/src/novel_character_generator/domain/entities/evaluation.py": [],
+        "novel-character-generator/src/novel_character_generator/domain/entities/pipeline.py": [],
+        "novel-character-generator/src/novel_character_generator/infrastructure/db/base.py": [],
+        "novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py": [
+          "novel-character-generator/src/novel_character_generator/infrastructure/db/base.py"
+        ],
+        "novel-character-generator/src/novel_character_generator/infrastructure/db/repositories/evaluation.py": [
+          "novel-character-generator/src/novel_character_generator/domain/entities/evaluation.py",
+          "novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py"
+        ],
+        "novel-character-generator/src/novel_character_generator/infrastructure/db/repositories/external_operations.py": [
+          "novel-character-generator/src/novel_character_generator/domain/entities/pipeline.py",
+          "novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py"
+        ]
+      },
+      "neighborMap": {
+        "novel-character-generator/src/novel_character_generator/api/routes/characters.py": [
+          {
+            "path": "novel-character-generator/src/novel_character_generator/api/auth.py",
+            "batchIndex": 1,
+            "symbols": [
+              "_matches",
+              "_configured_keys",
+              "require_user_api_key",
+              "require_admin_api_key"
+            ]
+          },
+          {
+            "path": "novel-character-generator/src/novel_character_generator/api/deps.py",
+            "batchIndex": 1,
+            "symbols": [
+              "get_session",
+              "get_artifact_store"
+            ]
+          },
+          {
+            "path": "novel-character-generator/src/novel_character_generator/api/app.py",
+            "batchIndex": 1,
+            "symbols": [
+              "lifespan",
+              "create_app"
+            ]
+          }
+        ],
+        "novel-character-generator/src/novel_character_generator/api/routes/story.py": [
+          {
+            "path": "novel-character-generator/src/novel_character_generator/api/auth.py",
+            "batchIndex": 1,
+            "symbols": [
+              "_matches",
+              "_configured_keys",
+              "require_user_api_key",
+              "require_admin_api_key"
+            ]
+          },
+          {
+            "path": "novel-character-generator/src/novel_character_generator/api/deps.py",
+            "batchIndex": 1,
+            "symbols": [
+              "get_session",
+              "get_artifact_store"
+            ]
+          },
+          {
+            "path": "novel-character-generator/src/novel_character_generator/api/app.py",
+            "batchIndex": 1,
+            "symbols": [
+              "lifespan",
+              "create_app"
+            ]
+          }
+        ],
+        "novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py": [
+          {
+            "path": "novel-character-generator/src/novel_character_generator/api/routes/agent_runs.py",
+            "batchIndex": 1,
+            "symbols": [
+              "AgentRunSummaryResponse",
+              "AgentTurnResponse",
+              "ToolCallResponse",
+              "AgentRunDetailsResponse",
+              "agent_run_summary",
+              "get_agent_run"
+            ]
+          },
+          {
+            "path": "novel-character-generator/src/novel_character_generator/api/routes/approvals.py",
+            "batchIndex": 1,
+            "symbols": [
+              "ApprovalResponse",
+              "ApprovalPageResponse",
+              "ResolveApprovalRequest",
+              "_response",
+              "_revision",
+              "list_approvals",
+              "resolve_approval"
+            ]
+          },
+          {
+            "path": "novel-character-generator/src/novel_character_generator/api/routes/runs.py",
+            "batchIndex": 1,
+            "symbols": [
+              "StepResponse",
+              "RunDetailsResponse",
+              "ExternalOperationResponse",
+              "_run_or_404",
+              "get_run",
+              "stream_run_events",
+              "list_external_operations",
+              "list_agent_runs",
+              "cancel_run",
+              "retry_run"
+            ]
+          },
+          {
+            "path": "novel-character-generator/src/novel_character_generator/application/services/agent_execution_service.py",
+            "batchIndex": 4,
+            "symbols": [
+              "_hash_json",
+              "AgentExecution",
+              "AgentExecutionService"
+            ]
+          },
+          {
+            "path": "novel-character-generator/src/novel_character_generator/application/services/approval_service.py",
+            "batchIndex": 4,
+            "symbols": [
+              "ApprovalConflict",
+              "CreatedApproval",
+              "ApprovalPage",
+              "_canonical_hash",
+              "ApprovalService"
+            ]
+          },
+          {
+            "path": "novel-character-generator/src/novel_character_generator/application/services/ingestion_service.py",
+            "batchIndex": 5,
+            "symbols": [
+              "NovelDetails",
+              "IngestionService"
+            ]
+          },
+          {
+            "path": "novel-character-generator/src/novel_character_generator/application/services/run_service.py",
+            "batchIndex": 4,
+            "symbols": [
+              "StepDetails",
+              "RunDetails",
+              "RunService"
+            ]
+          },
+          {
+            "path": "novel-character-generator/src/novel_character_generator/infrastructure/db/repositories/extraction.py",
+            "batchIndex": 3,
+            "symbols": [
+              "ExtractionRepository"
+            ]
+          },
+          {
+            "path": "novel-character-generator/src/novel_character_generator/infrastructure/db/repositories/ingestion.py",
+            "batchIndex": 5,
+            "symbols": [
+              "IngestionRepository"
+            ]
+          },
+          {
+            "path": "novel-character-generator/src/novel_character_generator/infrastructure/db/repositories/run_events.py",
+            "batchIndex": 4,
+            "symbols": [
+              "append_run_event",
+              "read_run_events"
+            ]
+          },
+          {
+            "path": "novel-character-generator/src/novel_character_generator/workers/handlers/extraction.py",
+            "batchIndex": 3,
+            "symbols": [
+              "process_extraction_run"
+            ]
+          },
+          {
+            "path": "novel-character-generator/src/novel_character_generator/workers/handlers/ingestion.py",
+            "batchIndex": 5,
+            "symbols": [
+              "process_ingestion_run"
+            ]
+          },
+          {
+            "path": "novel-character-generator/src/novel_character_generator/workers/main.py",
+            "batchIndex": 3,
+            "symbols": [
+              "extraction_provider",
+              "run_once",
+              "run_worker",
+              "main"
+            ]
+          },
+          {
+            "path": "novel-character-generator/src/novel_character_generator/workers/task_claim.py",
+            "batchIndex": 3,
+            "symbols": [
+              "LeaseLostError",
+              "_runnable",
+              "claim_next_step",
+              "record_step_error",
+              "mark_cancelled",
+              "start_step",
+              "checkpoint_step",
+              "complete_step",
+              "complete_step_and_enqueue"
+            ]
+          }
+        ],
+        "novel-character-generator/src/novel_character_generator/infrastructure/db/repositories/external_operations.py": [
+          {
+            "path": "novel-character-generator/src/novel_character_generator/api/routes/runs.py",
+            "batchIndex": 1,
+            "symbols": [
+              "StepResponse",
+              "RunDetailsResponse",
+              "ExternalOperationResponse",
+              "_run_or_404",
+              "get_run",
+              "stream_run_events",
+              "list_external_operations",
+              "list_agent_runs",
+              "cancel_run",
+              "retry_run"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "batchIndex": 3,
+      "files": [
+        {
+          "path": "novel-character-generator/src/novel_character_generator/application/ports/extraction.py",
+          "language": "python",
+          "sizeLines": 101,
+          "fileCategory": "code"
+        },
+        {
+          "path": "novel-character-generator/src/novel_character_generator/domain/policies/grounding.py",
+          "language": "python",
+          "sizeLines": 33,
+          "fileCategory": "code"
+        },
+        {
+          "path": "novel-character-generator/src/novel_character_generator/infrastructure/db/repositories/extraction.py",
+          "language": "python",
+          "sizeLines": 549,
+          "fileCategory": "code"
+        },
+        {
+          "path": "novel-character-generator/src/novel_character_generator/infrastructure/llm/mock.py",
+          "language": "python",
+          "sizeLines": 140,
+          "fileCategory": "code"
+        },
+        {
+          "path": "novel-character-generator/src/novel_character_generator/infrastructure/llm/openai_compatible.py",
+          "language": "python",
+          "sizeLines": 68,
+          "fileCategory": "code"
+        },
+        {
+          "path": "novel-character-generator/src/novel_character_generator/workers/handlers/extraction.py",
+          "language": "python",
+          "sizeLines": 118,
+          "fileCategory": "code"
+        },
+        {
+          "path": "novel-character-generator/src/novel_character_generator/workers/main.py",
+          "language": "python",
+          "sizeLines": 123,
+          "fileCategory": "code"
+        },
+        {
+          "path": "novel-character-generator/src/novel_character_generator/workers/task_claim.py",
+          "language": "python",
+          "sizeLines": 388,
+          "fileCategory": "code"
+        }
+      ],
+      "batchImportData": {
+        "novel-character-generator/src/novel_character_generator/application/ports/extraction.py": [],
+        "novel-character-generator/src/novel_character_generator/domain/policies/grounding.py": [],
+        "novel-character-generator/src/novel_character_generator/infrastructure/db/repositories/extraction.py": [
+          "novel-character-generator/src/novel_character_generator/application/ports/extraction.py",
+          "novel-character-generator/src/novel_character_generator/domain/policies/grounding.py",
+          "novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py"
+        ],
+        "novel-character-generator/src/novel_character_generator/infrastructure/llm/mock.py": [
+          "novel-character-generator/src/novel_character_generator/application/ports/extraction.py"
+        ],
+        "novel-character-generator/src/novel_character_generator/infrastructure/llm/openai_compatible.py": [
+          "novel-character-generator/src/novel_character_generator/application/ports/extraction.py"
+        ],
+        "novel-character-generator/src/novel_character_generator/workers/handlers/extraction.py": [
+          "novel-character-generator/src/novel_character_generator/application/ports/extraction.py",
+          "novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+          "novel-character-generator/src/novel_character_generator/infrastructure/db/repositories/extraction.py",
+          "novel-character-generator/src/novel_character_generator/workers/task_claim.py"
+        ],
+        "novel-character-generator/src/novel_character_generator/workers/main.py": [
+          "novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+          "novel-character-generator/src/novel_character_generator/infrastructure/db/session.py",
+          "novel-character-generator/src/novel_character_generator/infrastructure/llm/mock.py",
+          "novel-character-generator/src/novel_character_generator/infrastructure/llm/openai_compatible.py",
+          "novel-character-generator/src/novel_character_generator/infrastructure/storage/local.py",
+          "novel-character-generator/src/novel_character_generator/settings.py",
+          "novel-character-generator/src/novel_character_generator/workers/handlers/extraction.py",
+          "novel-character-generator/src/novel_character_generator/workers/handlers/ingestion.py",
+          "novel-character-generator/src/novel_character_generator/workers/task_claim.py"
+        ],
+        "novel-character-generator/src/novel_character_generator/workers/task_claim.py": [
+          "novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+          "novel-character-generator/src/novel_character_generator/infrastructure/db/repositories/run_events.py"
+        ]
+      },
+      "neighborMap": {
+        "novel-character-generator/src/novel_character_generator/infrastructure/db/repositories/extraction.py": [
+          {
+            "path": "novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+            "batchIndex": 2,
+            "symbols": [
+              "IdMixin",
+              "TimestampMixin",
+              "NovelORM",
+              "SourceDocumentORM",
+              "SourceDocumentVersionORM",
+              "NormalizationMapORM",
+              "ChapterORM",
+              "TextChunkORM",
+              "TimelineORM",
+              "StoryEventORM",
+              "EventParticipantORM",
+              "CharacterORM",
+              "CharacterEntityOperationORM",
+              "SceneORM",
+              "PipelineRunORM",
+              "PipelineStepORM",
+              "RunEventORM",
+              "MentionSpanORM",
+              "AliasAssertionORM",
+              "FeatureObservationORM",
+              "FeatureSuggestionORM",
+              "ExpressionObservationORM",
+              "CharacterAppearanceStateORM",
+              "CharacterRenderProfileORM",
+              "CharacterConflictORM",
+              "CharacterImageSetORM",
+              "GeneratedImageORM",
+              "CharacterStageImageORM",
+              "ArtifactORM",
+              "ExternalOperationORM",
+              "ModelCallORM",
+              "AgentRunORM",
+              "AgentTurnORM",
+              "ToolCallORM",
+              "DecisionRecordORM",
+              "HumanApprovalORM",
+              "AgentEvaluationORM",
+              "EvalDatasetORM",
+              "EvalCaseORM",
+              "GraderVersionORM",
+              "EvalRunORM",
+              "EvalResultORM"
+            ]
+          }
+        ],
+        "novel-character-generator/src/novel_character_generator/workers/handlers/extraction.py": [
+          {
+            "path": "novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+            "batchIndex": 2,
+            "symbols": [
+              "IdMixin",
+              "TimestampMixin",
+              "NovelORM",
+              "SourceDocumentORM",
+              "SourceDocumentVersionORM",
+              "NormalizationMapORM",
+              "ChapterORM",
+              "TextChunkORM",
+              "TimelineORM",
+              "StoryEventORM",
+              "EventParticipantORM",
+              "CharacterORM",
+              "CharacterEntityOperationORM",
+              "SceneORM",
+              "PipelineRunORM",
+              "PipelineStepORM",
+              "RunEventORM",
+              "MentionSpanORM",
+              "AliasAssertionORM",
+              "FeatureObservationORM",
+              "FeatureSuggestionORM",
+              "ExpressionObservationORM",
+              "CharacterAppearanceStateORM",
+              "CharacterRenderProfileORM",
+              "CharacterConflictORM",
+              "CharacterImageSetORM",
+              "GeneratedImageORM",
+              "CharacterStageImageORM",
+              "ArtifactORM",
+              "ExternalOperationORM",
+              "ModelCallORM",
+              "AgentRunORM",
+              "AgentTurnORM",
+              "ToolCallORM",
+              "DecisionRecordORM",
+              "HumanApprovalORM",
+              "AgentEvaluationORM",
+              "EvalDatasetORM",
+              "EvalCaseORM",
+              "GraderVersionORM",
+              "EvalRunORM",
+              "EvalResultORM"
+            ]
+          }
+        ],
+        "novel-character-generator/src/novel_character_generator/workers/main.py": [
+          {
+            "path": "novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+            "batchIndex": 2,
+            "symbols": [
+              "IdMixin",
+              "TimestampMixin",
+              "NovelORM",
+              "SourceDocumentORM",
+              "SourceDocumentVersionORM",
+              "NormalizationMapORM",
+              "ChapterORM",
+              "TextChunkORM",
+              "TimelineORM",
+              "StoryEventORM",
+              "EventParticipantORM",
+              "CharacterORM",
+              "CharacterEntityOperationORM",
+              "SceneORM",
+              "PipelineRunORM",
+              "PipelineStepORM",
+              "RunEventORM",
+              "MentionSpanORM",
+              "AliasAssertionORM",
+              "FeatureObservationORM",
+              "FeatureSuggestionORM",
+              "ExpressionObservationORM",
+              "CharacterAppearanceStateORM",
+              "CharacterRenderProfileORM",
+              "CharacterConflictORM",
+              "CharacterImageSetORM",
+              "GeneratedImageORM",
+              "CharacterStageImageORM",
+              "ArtifactORM",
+              "ExternalOperationORM",
+              "ModelCallORM",
+              "AgentRunORM",
+              "AgentTurnORM",
+              "ToolCallORM",
+              "DecisionRecordORM",
+              "HumanApprovalORM",
+              "AgentEvaluationORM",
+              "EvalDatasetORM",
+              "EvalCaseORM",
+              "GraderVersionORM",
+              "EvalRunORM",
+              "EvalResultORM"
+            ]
+          },
+          {
+            "path": "novel-character-generator/src/novel_character_generator/infrastructure/db/session.py",
+            "batchIndex": 1,
+            "symbols": [
+              "configure_sqlite",
+              "dispose_engine"
+            ]
+          },
+          {
+            "path": "novel-character-generator/src/novel_character_generator/infrastructure/storage/local.py",
+            "batchIndex": 1,
+            "symbols": [
+              "LocalArtifactStore"
+            ]
+          },
+          {
+            "path": "novel-character-generator/src/novel_character_generator/settings.py",
+            "batchIndex": 1,
+            "symbols": [
+              "Settings",
+              "get_settings"
+            ]
+          },
+          {
+            "path": "novel-character-generator/src/novel_character_generator/workers/handlers/ingestion.py",
+            "batchIndex": 5,
+            "symbols": [
+              "process_ingestion_run"
+            ]
+          }
+        ],
+        "novel-character-generator/src/novel_character_generator/workers/task_claim.py": [
+          {
+            "path": "novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+            "batchIndex": 2,
+            "symbols": [
+              "IdMixin",
+              "TimestampMixin",
+              "NovelORM",
+              "SourceDocumentORM",
+              "SourceDocumentVersionORM",
+              "NormalizationMapORM",
+              "ChapterORM",
+              "TextChunkORM",
+              "TimelineORM",
+              "StoryEventORM",
+              "EventParticipantORM",
+              "CharacterORM",
+              "CharacterEntityOperationORM",
+              "SceneORM",
+              "PipelineRunORM",
+              "PipelineStepORM",
+              "RunEventORM",
+              "MentionSpanORM",
+              "AliasAssertionORM",
+              "FeatureObservationORM",
+              "FeatureSuggestionORM",
+              "ExpressionObservationORM",
+              "CharacterAppearanceStateORM",
+              "CharacterRenderProfileORM",
+              "CharacterConflictORM",
+              "CharacterImageSetORM",
+              "GeneratedImageORM",
+              "CharacterStageImageORM",
+              "ArtifactORM",
+              "ExternalOperationORM",
+              "ModelCallORM",
+              "AgentRunORM",
+              "AgentTurnORM",
+              "ToolCallORM",
+              "DecisionRecordORM",
+              "HumanApprovalORM",
+              "AgentEvaluationORM",
+              "EvalDatasetORM",
+              "EvalCaseORM",
+              "GraderVersionORM",
+              "EvalRunORM",
+              "EvalResultORM"
+            ]
+          },
+          {
+            "path": "novel-character-generator/src/novel_character_generator/infrastructure/db/repositories/run_events.py",
+            "batchIndex": 4,
+            "symbols": [
+              "append_run_event",
+              "read_run_events"
+            ]
+          },
+          {
+            "path": "novel-character-generator/src/novel_character_generator/workers/handlers/ingestion.py",
+            "batchIndex": 5,
+            "symbols": [
+              "process_ingestion_run"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "batchIndex": 4,
+      "files": [
+        {
+          "path": "novel-character-generator/src/novel_character_generator/agents/structured_runtime.py",
+          "language": "python",
+          "sizeLines": 320,
+          "fileCategory": "code"
+        },
+        {
+          "path": "novel-character-generator/src/novel_character_generator/application/ports/agent_runtime.py",
+          "language": "python",
+          "sizeLines": 181,
+          "fileCategory": "code"
+        },
+        {
+          "path": "novel-character-generator/src/novel_character_generator/application/services/agent_execution_service.py",
+          "language": "python",
+          "sizeLines": 225,
+          "fileCategory": "code"
+        },
+        {
+          "path": "novel-character-generator/src/novel_character_generator/application/services/approval_service.py",
+          "language": "python",
+          "sizeLines": 302,
+          "fileCategory": "code"
+        },
+        {
+          "path": "novel-character-generator/src/novel_character_generator/application/services/run_service.py",
+          "language": "python",
+          "sizeLines": 135,
+          "fileCategory": "code"
+        },
+        {
+          "path": "novel-character-generator/src/novel_character_generator/infrastructure/db/repositories/run_events.py",
+          "language": "python",
+          "sizeLines": 43,
+          "fileCategory": "code"
+        }
+      ],
+      "batchImportData": {
+        "novel-character-generator/src/novel_character_generator/agents/structured_runtime.py": [
+          "novel-character-generator/src/novel_character_generator/application/ports/agent_runtime.py",
+          "novel-character-generator/src/novel_character_generator/settings.py"
+        ],
+        "novel-character-generator/src/novel_character_generator/application/ports/agent_runtime.py": [],
+        "novel-character-generator/src/novel_character_generator/application/services/agent_execution_service.py": [
+          "novel-character-generator/src/novel_character_generator/agents/structured_runtime.py",
+          "novel-character-generator/src/novel_character_generator/application/ports/agent_runtime.py",
+          "novel-character-generator/src/novel_character_generator/application/services/approval_service.py",
+          "novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py"
+        ],
+        "novel-character-generator/src/novel_character_generator/application/services/approval_service.py": [
+          "novel-character-generator/src/novel_character_generator/application/ports/agent_runtime.py",
+          "novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+          "novel-character-generator/src/novel_character_generator/infrastructure/db/repositories/run_events.py"
+        ],
+        "novel-character-generator/src/novel_character_generator/application/services/run_service.py": [
+          "novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+          "novel-character-generator/src/novel_character_generator/infrastructure/db/repositories/run_events.py"
+        ],
+        "novel-character-generator/src/novel_character_generator/infrastructure/db/repositories/run_events.py": [
+          "novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py"
+        ]
+      },
+      "neighborMap": {
+        "novel-character-generator/src/novel_character_generator/agents/structured_runtime.py": [
+          {
+            "path": "novel-character-generator/src/novel_character_generator/settings.py",
+            "batchIndex": 1,
+            "symbols": [
+              "Settings",
+              "get_settings"
+            ]
+          }
+        ],
+        "novel-character-generator/src/novel_character_generator/application/services/agent_execution_service.py": [
+          {
+            "path": "novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+            "batchIndex": 2,
+            "symbols": [
+              "IdMixin",
+              "TimestampMixin",
+              "NovelORM",
+              "SourceDocumentORM",
+              "SourceDocumentVersionORM",
+              "NormalizationMapORM",
+              "ChapterORM",
+              "TextChunkORM",
+              "TimelineORM",
+              "StoryEventORM",
+              "EventParticipantORM",
+              "CharacterORM",
+              "CharacterEntityOperationORM",
+              "SceneORM",
+              "PipelineRunORM",
+              "PipelineStepORM",
+              "RunEventORM",
+              "MentionSpanORM",
+              "AliasAssertionORM",
+              "FeatureObservationORM",
+              "FeatureSuggestionORM",
+              "ExpressionObservationORM",
+              "CharacterAppearanceStateORM",
+              "CharacterRenderProfileORM",
+              "CharacterConflictORM",
+              "CharacterImageSetORM",
+              "GeneratedImageORM",
+              "CharacterStageImageORM",
+              "ArtifactORM",
+              "ExternalOperationORM",
+              "ModelCallORM",
+              "AgentRunORM",
+              "AgentTurnORM",
+              "ToolCallORM",
+              "DecisionRecordORM",
+              "HumanApprovalORM",
+              "AgentEvaluationORM",
+              "EvalDatasetORM",
+              "EvalCaseORM",
+              "GraderVersionORM",
+              "EvalRunORM",
+              "EvalResultORM"
+            ]
+          }
+        ],
+        "novel-character-generator/src/novel_character_generator/application/services/approval_service.py": [
+          {
+            "path": "novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+            "batchIndex": 2,
+            "symbols": [
+              "IdMixin",
+              "TimestampMixin",
+              "NovelORM",
+              "SourceDocumentORM",
+              "SourceDocumentVersionORM",
+              "NormalizationMapORM",
+              "ChapterORM",
+              "TextChunkORM",
+              "TimelineORM",
+              "StoryEventORM",
+              "EventParticipantORM",
+              "CharacterORM",
+              "CharacterEntityOperationORM",
+              "SceneORM",
+              "PipelineRunORM",
+              "PipelineStepORM",
+              "RunEventORM",
+              "MentionSpanORM",
+              "AliasAssertionORM",
+              "FeatureObservationORM",
+              "FeatureSuggestionORM",
+              "ExpressionObservationORM",
+              "CharacterAppearanceStateORM",
+              "CharacterRenderProfileORM",
+              "CharacterConflictORM",
+              "CharacterImageSetORM",
+              "GeneratedImageORM",
+              "CharacterStageImageORM",
+              "ArtifactORM",
+              "ExternalOperationORM",
+              "ModelCallORM",
+              "AgentRunORM",
+              "AgentTurnORM",
+              "ToolCallORM",
+              "DecisionRecordORM",
+              "HumanApprovalORM",
+              "AgentEvaluationORM",
+              "EvalDatasetORM",
+              "EvalCaseORM",
+              "GraderVersionORM",
+              "EvalRunORM",
+              "EvalResultORM"
+            ]
+          },
+          {
+            "path": "novel-character-generator/src/novel_character_generator/api/routes/approvals.py",
+            "batchIndex": 1,
+            "symbols": [
+              "ApprovalResponse",
+              "ApprovalPageResponse",
+              "ResolveApprovalRequest",
+              "_response",
+              "_revision",
+              "list_approvals",
+              "resolve_approval"
+            ]
+          }
+        ],
+        "novel-character-generator/src/novel_character_generator/application/services/run_service.py": [
+          {
+            "path": "novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+            "batchIndex": 2,
+            "symbols": [
+              "IdMixin",
+              "TimestampMixin",
+              "NovelORM",
+              "SourceDocumentORM",
+              "SourceDocumentVersionORM",
+              "NormalizationMapORM",
+              "ChapterORM",
+              "TextChunkORM",
+              "TimelineORM",
+              "StoryEventORM",
+              "EventParticipantORM",
+              "CharacterORM",
+              "CharacterEntityOperationORM",
+              "SceneORM",
+              "PipelineRunORM",
+              "PipelineStepORM",
+              "RunEventORM",
+              "MentionSpanORM",
+              "AliasAssertionORM",
+              "FeatureObservationORM",
+              "FeatureSuggestionORM",
+              "ExpressionObservationORM",
+              "CharacterAppearanceStateORM",
+              "CharacterRenderProfileORM",
+              "CharacterConflictORM",
+              "CharacterImageSetORM",
+              "GeneratedImageORM",
+              "CharacterStageImageORM",
+              "ArtifactORM",
+              "ExternalOperationORM",
+              "ModelCallORM",
+              "AgentRunORM",
+              "AgentTurnORM",
+              "ToolCallORM",
+              "DecisionRecordORM",
+              "HumanApprovalORM",
+              "AgentEvaluationORM",
+              "EvalDatasetORM",
+              "EvalCaseORM",
+              "GraderVersionORM",
+              "EvalRunORM",
+              "EvalResultORM"
+            ]
+          },
+          {
+            "path": "novel-character-generator/src/novel_character_generator/api/routes/runs.py",
+            "batchIndex": 1,
+            "symbols": [
+              "StepResponse",
+              "RunDetailsResponse",
+              "ExternalOperationResponse",
+              "_run_or_404",
+              "get_run",
+              "stream_run_events",
+              "list_external_operations",
+              "list_agent_runs",
+              "cancel_run",
+              "retry_run"
+            ]
+          }
+        ],
+        "novel-character-generator/src/novel_character_generator/infrastructure/db/repositories/run_events.py": [
+          {
+            "path": "novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+            "batchIndex": 2,
+            "symbols": [
+              "IdMixin",
+              "TimestampMixin",
+              "NovelORM",
+              "SourceDocumentORM",
+              "SourceDocumentVersionORM",
+              "NormalizationMapORM",
+              "ChapterORM",
+              "TextChunkORM",
+              "TimelineORM",
+              "StoryEventORM",
+              "EventParticipantORM",
+              "CharacterORM",
+              "CharacterEntityOperationORM",
+              "SceneORM",
+              "PipelineRunORM",
+              "PipelineStepORM",
+              "RunEventORM",
+              "MentionSpanORM",
+              "AliasAssertionORM",
+              "FeatureObservationORM",
+              "FeatureSuggestionORM",
+              "ExpressionObservationORM",
+              "CharacterAppearanceStateORM",
+              "CharacterRenderProfileORM",
+              "CharacterConflictORM",
+              "CharacterImageSetORM",
+              "GeneratedImageORM",
+              "CharacterStageImageORM",
+              "ArtifactORM",
+              "ExternalOperationORM",
+              "ModelCallORM",
+              "AgentRunORM",
+              "AgentTurnORM",
+              "ToolCallORM",
+              "DecisionRecordORM",
+              "HumanApprovalORM",
+              "AgentEvaluationORM",
+              "EvalDatasetORM",
+              "EvalCaseORM",
+              "GraderVersionORM",
+              "EvalRunORM",
+              "EvalResultORM"
+            ]
+          },
+          {
+            "path": "novel-character-generator/src/novel_character_generator/api/routes/runs.py",
+            "batchIndex": 1,
+            "symbols": [
+              "StepResponse",
+              "RunDetailsResponse",
+              "ExternalOperationResponse",
+              "_run_or_404",
+              "get_run",
+              "stream_run_events",
+              "list_external_operations",
+              "list_agent_runs",
+              "cancel_run",
+              "retry_run"
+            ]
+          },
+          {
+            "path": "novel-character-generator/src/novel_character_generator/infrastructure/db/repositories/ingestion.py",
+            "batchIndex": 5,
+            "symbols": [
+              "IngestionRepository"
+            ]
+          },
+          {
+            "path": "novel-character-generator/src/novel_character_generator/workers/task_claim.py",
+            "batchIndex": 3,
+            "symbols": [
+              "LeaseLostError",
+              "_runnable",
+              "claim_next_step",
+              "record_step_error",
+              "mark_cancelled",
+              "start_step",
+              "checkpoint_step",
+              "complete_step",
+              "complete_step_and_enqueue"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "batchIndex": 5,
+      "files": [
+        {
+          "path": "novel-character-generator/src/novel_character_generator/application/ports/artifact_store.py",
+          "language": "python",
+          "sizeLines": 7,
+          "fileCategory": "code"
+        },
+        {
+          "path": "novel-character-generator/src/novel_character_generator/application/services/ingestion_service.py",
+          "language": "python",
+          "sizeLines": 146,
+          "fileCategory": "code"
+        },
+        {
+          "path": "novel-character-generator/src/novel_character_generator/domain/entities/document.py",
+          "language": "python",
+          "sizeLines": 52,
+          "fileCategory": "code"
+        },
+        {
+          "path": "novel-character-generator/src/novel_character_generator/domain/policies/text_processing.py",
+          "language": "python",
+          "sizeLines": 196,
+          "fileCategory": "code"
+        },
+        {
+          "path": "novel-character-generator/src/novel_character_generator/infrastructure/db/repositories/ingestion.py",
+          "language": "python",
+          "sizeLines": 377,
+          "fileCategory": "code"
+        },
+        {
+          "path": "novel-character-generator/src/novel_character_generator/workers/handlers/ingestion.py",
+          "language": "python",
+          "sizeLines": 117,
+          "fileCategory": "code"
+        }
+      ],
+      "batchImportData": {
+        "novel-character-generator/src/novel_character_generator/application/ports/artifact_store.py": [],
+        "novel-character-generator/src/novel_character_generator/application/services/ingestion_service.py": [
+          "novel-character-generator/src/novel_character_generator/application/ports/artifact_store.py",
+          "novel-character-generator/src/novel_character_generator/domain/policies/text_processing.py",
+          "novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+          "novel-character-generator/src/novel_character_generator/infrastructure/db/repositories/ingestion.py"
+        ],
+        "novel-character-generator/src/novel_character_generator/domain/entities/document.py": [],
+        "novel-character-generator/src/novel_character_generator/domain/policies/text_processing.py": [
+          "novel-character-generator/src/novel_character_generator/domain/entities/document.py"
+        ],
+        "novel-character-generator/src/novel_character_generator/infrastructure/db/repositories/ingestion.py": [
+          "novel-character-generator/src/novel_character_generator/domain/entities/document.py",
+          "novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+          "novel-character-generator/src/novel_character_generator/infrastructure/db/repositories/run_events.py"
+        ],
+        "novel-character-generator/src/novel_character_generator/workers/handlers/ingestion.py": [
+          "novel-character-generator/src/novel_character_generator/application/ports/artifact_store.py",
+          "novel-character-generator/src/novel_character_generator/domain/policies/text_processing.py",
+          "novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+          "novel-character-generator/src/novel_character_generator/infrastructure/db/repositories/ingestion.py",
+          "novel-character-generator/src/novel_character_generator/workers/task_claim.py"
+        ]
+      },
+      "neighborMap": {
+        "novel-character-generator/src/novel_character_generator/application/services/ingestion_service.py": [
+          {
+            "path": "novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+            "batchIndex": 2,
+            "symbols": [
+              "IdMixin",
+              "TimestampMixin",
+              "NovelORM",
+              "SourceDocumentORM",
+              "SourceDocumentVersionORM",
+              "NormalizationMapORM",
+              "ChapterORM",
+              "TextChunkORM",
+              "TimelineORM",
+              "StoryEventORM",
+              "EventParticipantORM",
+              "CharacterORM",
+              "CharacterEntityOperationORM",
+              "SceneORM",
+              "PipelineRunORM",
+              "PipelineStepORM",
+              "RunEventORM",
+              "MentionSpanORM",
+              "AliasAssertionORM",
+              "FeatureObservationORM",
+              "FeatureSuggestionORM",
+              "ExpressionObservationORM",
+              "CharacterAppearanceStateORM",
+              "CharacterRenderProfileORM",
+              "CharacterConflictORM",
+              "CharacterImageSetORM",
+              "GeneratedImageORM",
+              "CharacterStageImageORM",
+              "ArtifactORM",
+              "ExternalOperationORM",
+              "ModelCallORM",
+              "AgentRunORM",
+              "AgentTurnORM",
+              "ToolCallORM",
+              "DecisionRecordORM",
+              "HumanApprovalORM",
+              "AgentEvaluationORM",
+              "EvalDatasetORM",
+              "EvalCaseORM",
+              "GraderVersionORM",
+              "EvalRunORM",
+              "EvalResultORM"
+            ]
+          },
+          {
+            "path": "novel-character-generator/src/novel_character_generator/api/routes/novels.py",
+            "batchIndex": 1,
+            "symbols": [
+              "NovelResponse",
+              "NovelDetailsResponse",
+              "RunResponse",
+              "DocumentVersionResponse",
+              "upload_novel",
+              "get_novel",
+              "upload_novel_version",
+              "create_text_analysis_run"
+            ]
+          }
+        ],
+        "novel-character-generator/src/novel_character_generator/infrastructure/db/repositories/ingestion.py": [
+          {
+            "path": "novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+            "batchIndex": 2,
+            "symbols": [
+              "IdMixin",
+              "TimestampMixin",
+              "NovelORM",
+              "SourceDocumentORM",
+              "SourceDocumentVersionORM",
+              "NormalizationMapORM",
+              "ChapterORM",
+              "TextChunkORM",
+              "TimelineORM",
+              "StoryEventORM",
+              "EventParticipantORM",
+              "CharacterORM",
+              "CharacterEntityOperationORM",
+              "SceneORM",
+              "PipelineRunORM",
+              "PipelineStepORM",
+              "RunEventORM",
+              "MentionSpanORM",
+              "AliasAssertionORM",
+              "FeatureObservationORM",
+              "FeatureSuggestionORM",
+              "ExpressionObservationORM",
+              "CharacterAppearanceStateORM",
+              "CharacterRenderProfileORM",
+              "CharacterConflictORM",
+              "CharacterImageSetORM",
+              "GeneratedImageORM",
+              "CharacterStageImageORM",
+              "ArtifactORM",
+              "ExternalOperationORM",
+              "ModelCallORM",
+              "AgentRunORM",
+              "AgentTurnORM",
+              "ToolCallORM",
+              "DecisionRecordORM",
+              "HumanApprovalORM",
+              "AgentEvaluationORM",
+              "EvalDatasetORM",
+              "EvalCaseORM",
+              "GraderVersionORM",
+              "EvalRunORM",
+              "EvalResultORM"
+            ]
+          },
+          {
+            "path": "novel-character-generator/src/novel_character_generator/infrastructure/db/repositories/run_events.py",
+            "batchIndex": 4,
+            "symbols": [
+              "append_run_event",
+              "read_run_events"
+            ]
+          }
+        ],
+        "novel-character-generator/src/novel_character_generator/workers/handlers/ingestion.py": [
+          {
+            "path": "novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+            "batchIndex": 2,
+            "symbols": [
+              "IdMixin",
+              "TimestampMixin",
+              "NovelORM",
+              "SourceDocumentORM",
+              "SourceDocumentVersionORM",
+              "NormalizationMapORM",
+              "ChapterORM",
+              "TextChunkORM",
+              "TimelineORM",
+              "StoryEventORM",
+              "EventParticipantORM",
+              "CharacterORM",
+              "CharacterEntityOperationORM",
+              "SceneORM",
+              "PipelineRunORM",
+              "PipelineStepORM",
+              "RunEventORM",
+              "MentionSpanORM",
+              "AliasAssertionORM",
+              "FeatureObservationORM",
+              "FeatureSuggestionORM",
+              "ExpressionObservationORM",
+              "CharacterAppearanceStateORM",
+              "CharacterRenderProfileORM",
+              "CharacterConflictORM",
+              "CharacterImageSetORM",
+              "GeneratedImageORM",
+              "CharacterStageImageORM",
+              "ArtifactORM",
+              "ExternalOperationORM",
+              "ModelCallORM",
+              "AgentRunORM",
+              "AgentTurnORM",
+              "ToolCallORM",
+              "DecisionRecordORM",
+              "HumanApprovalORM",
+              "AgentEvaluationORM",
+              "EvalDatasetORM",
+              "EvalCaseORM",
+              "GraderVersionORM",
+              "EvalRunORM",
+              "EvalResultORM"
+            ]
+          },
+          {
+            "path": "novel-character-generator/src/novel_character_generator/workers/task_claim.py",
+            "batchIndex": 3,
+            "symbols": [
+              "LeaseLostError",
+              "_runnable",
+              "claim_next_step",
+              "record_step_error",
+              "mark_cancelled",
+              "start_step",
+              "checkpoint_step",
+              "complete_step",
+              "complete_step_and_enqueue"
+            ]
+          },
+          {
+            "path": "novel-character-generator/src/novel_character_generator/workers/main.py",
+            "batchIndex": 3,
+            "symbols": [
+              "extraction_provider",
+              "run_once",
+              "run_worker",
+              "main"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "batchIndex": 6,
+      "files": [
+        {
+          "path": "novel-character-generator/.env.example",
+          "language": "config",
+          "sizeLines": 29,
+          "fileCategory": "config"
+        },
+        {
+          "path": "novel-character-generator/alembic.ini",
+          "language": "config",
+          "sizeLines": 39,
+          "fileCategory": "config"
+        },
+        {
+          "path": "novel-character-generator/pyproject.toml",
+          "language": "toml",
+          "sizeLines": 51,
+          "fileCategory": "config"
+        }
+      ],
+      "batchImportData": {
+        "novel-character-generator/.env.example": [],
+        "novel-character-generator/alembic.ini": [],
+        "novel-character-generator/pyproject.toml": []
+      },
+      "neighborMap": {}
+    },
+    {
+      "batchIndex": 7,
+      "files": [
+        {
+          "path": "novel-character-generator/docs/00-code-navigation.md",
+          "language": "markdown",
+          "sizeLines": 156,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "novel-character-generator/docs/00-current-status.md",
+          "language": "markdown",
+          "sizeLines": 87,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "novel-character-generator/docs/00-start-here.md",
+          "language": "markdown",
+          "sizeLines": 122,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "novel-character-generator/docs/01-project-overview-and-principles.md",
+          "language": "markdown",
+          "sizeLines": 117,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "novel-character-generator/docs/02-architecture-and-tech-stack.md",
+          "language": "markdown",
+          "sizeLines": 287,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "novel-character-generator/docs/03-domain-data-model.md",
+          "language": "markdown",
+          "sizeLines": 409,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "novel-character-generator/docs/04-text-understanding-pipeline.md",
+          "language": "markdown",
+          "sizeLines": 111,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "novel-character-generator/docs/05-character-render-profile.md",
+          "language": "markdown",
+          "sizeLines": 143,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "novel-character-generator/docs/06-image-generation-and-drift-control.md",
+          "language": "markdown",
+          "sizeLines": 208,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "novel-character-generator/docs/07-agent-architecture.md",
+          "language": "markdown",
+          "sizeLines": 330,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "novel-character-generator/docs/08-task-recovery.md",
+          "language": "markdown",
+          "sizeLines": 49,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "novel-character-generator/docs/09-api-specification.md",
+          "language": "markdown",
+          "sizeLines": 71,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "novel-character-generator/docs/10-provider-and-workflow-versioning.md",
+          "language": "markdown",
+          "sizeLines": 95,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "novel-character-generator/docs/11-security-and-data-governance.md",
+          "language": "markdown",
+          "sizeLines": 85,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "novel-character-generator/docs/12-evaluation-and-acceptance.md",
+          "language": "markdown",
+          "sizeLines": 194,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "novel-character-generator/docs/13-observability-logging-and-cost.md",
+          "language": "markdown",
+          "sizeLines": 279,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "novel-character-generator/docs/14-roadmap.md",
+          "language": "markdown",
+          "sizeLines": 166,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "novel-character-generator/docs/15-risks-decisions-and-references.md",
+          "language": "markdown",
+          "sizeLines": 97,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "novel-character-generator/docs/README.md",
+          "language": "markdown",
+          "sizeLines": 51,
+          "fileCategory": "docs"
+        }
+      ],
+      "batchImportData": {
+        "novel-character-generator/docs/00-code-navigation.md": [],
+        "novel-character-generator/docs/00-current-status.md": [],
+        "novel-character-generator/docs/00-start-here.md": [],
+        "novel-character-generator/docs/01-project-overview-and-principles.md": [],
+        "novel-character-generator/docs/02-architecture-and-tech-stack.md": [],
+        "novel-character-generator/docs/03-domain-data-model.md": [],
+        "novel-character-generator/docs/04-text-understanding-pipeline.md": [],
+        "novel-character-generator/docs/05-character-render-profile.md": [],
+        "novel-character-generator/docs/06-image-generation-and-drift-control.md": [],
+        "novel-character-generator/docs/07-agent-architecture.md": [],
+        "novel-character-generator/docs/08-task-recovery.md": [],
+        "novel-character-generator/docs/09-api-specification.md": [],
+        "novel-character-generator/docs/10-provider-and-workflow-versioning.md": [],
+        "novel-character-generator/docs/11-security-and-data-governance.md": [],
+        "novel-character-generator/docs/12-evaluation-and-acceptance.md": [],
+        "novel-character-generator/docs/13-observability-logging-and-cost.md": [],
+        "novel-character-generator/docs/14-roadmap.md": [],
+        "novel-character-generator/docs/15-risks-decisions-and-references.md": [],
+        "novel-character-generator/docs/README.md": []
+      },
+      "neighborMap": {}
+    },
+    {
+      "batchIndex": 8,
+      "files": [
+        {
+          "path": ".DS_Store",
+          "language": "unknown",
+          "sizeLines": 0,
+          "fileCategory": "code"
+        },
+        {
+          "path": ".understand-anything/.understandignore",
+          "language": "unknown",
+          "sizeLines": 27,
+          "fileCategory": "code"
+        },
+        {
+          "path": ".understand-anything/config.json",
+          "language": "json",
+          "sizeLines": 3,
+          "fileCategory": "config"
+        },
+        {
+          "path": "novel_character_generator_tech_doc.md",
+          "language": "markdown",
+          "sizeLines": 30,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "novel-character-generator/_shared/.DS_Store",
+          "language": "unknown",
+          "sizeLines": 0,
+          "fileCategory": "code"
+        },
+        {
+          "path": "novel-character-generator/.DS_Store",
+          "language": "unknown",
+          "sizeLines": 0,
+          "fileCategory": "code"
+        },
+        {
+          "path": "novel-character-generator/.python-version",
+          "language": "unknown",
+          "sizeLines": 1,
+          "fileCategory": "code"
+        },
+        {
+          "path": "novel-character-generator/data/fixtures/upload-character-novel.txt",
+          "language": "txt",
+          "sizeLines": 9,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "novel-character-generator/data/fixtures/upload-smoke-novel.txt",
+          "language": "txt",
+          "sizeLines": 7,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "novel-character-generator/migrations/env.py",
+          "language": "python",
+          "sizeLines": 56,
+          "fileCategory": "code"
+        },
+        {
+          "path": "novel-character-generator/migrations/script.py.mako",
+          "language": "mako",
+          "sizeLines": 24,
+          "fileCategory": "code"
+        },
+        {
+          "path": "novel-character-generator/migrations/versions/7af44def6f21_support_structured_extraction.py",
+          "language": "python",
+          "sizeLines": 60,
+          "fileCategory": "code"
+        },
+        {
+          "path": "novel-character-generator/migrations/versions/a91c4e72d530_add_character_entity_operations.py",
+          "language": "python",
+          "sizeLines": 114,
+          "fileCategory": "code"
+        },
+        {
+          "path": "novel-character-generator/migrations/versions/b21d91f4c8aa_version_source_documents.py",
+          "language": "python",
+          "sizeLines": 443,
+          "fileCategory": "code"
+        },
+        {
+          "path": "novel-character-generator/migrations/versions/c8e1a9d42f30_add_versioned_evaluation_tables.py",
+          "language": "python",
+          "sizeLines": 183,
+          "fileCategory": "code"
+        },
+        {
+          "path": "novel-character-generator/migrations/versions/d91f6a73b204_complete_agent_runtime_and_approvals.py",
+          "language": "python",
+          "sizeLines": 167,
+          "fileCategory": "code"
+        },
+        {
+          "path": "novel-character-generator/migrations/versions/e4b7281ca650_persist_scene_temporal_bindings.py",
+          "language": "python",
+          "sizeLines": 129,
+          "fileCategory": "code"
+        },
+        {
+          "path": "novel-character-generator/migrations/versions/ed400f92bdfe_create_revised_core_schema.py",
+          "language": "python",
+          "sizeLines": 639,
+          "fileCategory": "code"
+        },
+        {
+          "path": "novel-character-generator/migrations/versions/f6a2d07c19be_add_character_appearance_resolution.py",
+          "language": "python",
+          "sizeLines": 133,
+          "fileCategory": "code"
+        },
+        {
+          "path": "novel-character-generator/src/novel_character_generator/__init__.py",
+          "language": "python",
+          "sizeLines": 1,
+          "fileCategory": "code"
+        },
+        {
+          "path": "novel-character-generator/src/novel_character_generator/agents/__init__.py",
+          "language": "python",
+          "sizeLines": 1,
+          "fileCategory": "code"
+        },
+        {
+          "path": "novel-character-generator/src/novel_character_generator/agents/tools/__init__.py",
+          "language": "python",
+          "sizeLines": 1,
+          "fileCategory": "code"
+        },
+        {
+          "path": "novel-character-generator/src/novel_character_generator/api/__init__.py",
+          "language": "python",
+          "sizeLines": 1,
+          "fileCategory": "code"
+        },
+        {
+          "path": "novel-character-generator/src/novel_character_generator/application/__init__.py",
+          "language": "python",
+          "sizeLines": 1,
+          "fileCategory": "code"
+        },
+        {
+          "path": "novel-character-generator/src/novel_character_generator/application/commands/__init__.py",
+          "language": "python",
+          "sizeLines": 1,
+          "fileCategory": "code"
+        }
+      ],
+      "batchImportData": {
+        ".DS_Store": [],
+        ".understand-anything/.understandignore": [],
+        ".understand-anything/config.json": [],
+        "novel_character_generator_tech_doc.md": [],
+        "novel-character-generator/_shared/.DS_Store": [],
+        "novel-character-generator/.DS_Store": [],
+        "novel-character-generator/.python-version": [],
+        "novel-character-generator/data/fixtures/upload-character-novel.txt": [],
+        "novel-character-generator/data/fixtures/upload-smoke-novel.txt": [],
+        "novel-character-generator/migrations/env.py": [],
+        "novel-character-generator/migrations/script.py.mako": [],
+        "novel-character-generator/migrations/versions/7af44def6f21_support_structured_extraction.py": [],
+        "novel-character-generator/migrations/versions/a91c4e72d530_add_character_entity_operations.py": [],
+        "novel-character-generator/migrations/versions/b21d91f4c8aa_version_source_documents.py": [],
+        "novel-character-generator/migrations/versions/c8e1a9d42f30_add_versioned_evaluation_tables.py": [],
+        "novel-character-generator/migrations/versions/d91f6a73b204_complete_agent_runtime_and_approvals.py": [],
+        "novel-character-generator/migrations/versions/e4b7281ca650_persist_scene_temporal_bindings.py": [],
+        "novel-character-generator/migrations/versions/ed400f92bdfe_create_revised_core_schema.py": [],
+        "novel-character-generator/migrations/versions/f6a2d07c19be_add_character_appearance_resolution.py": [],
+        "novel-character-generator/src/novel_character_generator/__init__.py": [],
+        "novel-character-generator/src/novel_character_generator/agents/__init__.py": [],
+        "novel-character-generator/src/novel_character_generator/agents/tools/__init__.py": [],
+        "novel-character-generator/src/novel_character_generator/api/__init__.py": [],
+        "novel-character-generator/src/novel_character_generator/application/__init__.py": [],
+        "novel-character-generator/src/novel_character_generator/application/commands/__init__.py": []
+      },
+      "neighborMap": {}
+    },
+    {
+      "batchIndex": 9,
+      "files": [
+        {
+          "path": "novel-character-generator/src/novel_character_generator/application/ports/__init__.py",
+          "language": "python",
+          "sizeLines": 1,
+          "fileCategory": "code"
+        },
+        {
+          "path": "novel-character-generator/src/novel_character_generator/application/queries/__init__.py",
+          "language": "python",
+          "sizeLines": 1,
+          "fileCategory": "code"
+        },
+        {
+          "path": "novel-character-generator/src/novel_character_generator/application/services/__init__.py",
+          "language": "python",
+          "sizeLines": 1,
+          "fileCategory": "code"
+        },
+        {
+          "path": "novel-character-generator/src/novel_character_generator/domain/__init__.py",
+          "language": "python",
+          "sizeLines": 1,
+          "fileCategory": "code"
+        },
+        {
+          "path": "novel-character-generator/src/novel_character_generator/domain/entities/__init__.py",
+          "language": "python",
+          "sizeLines": 1,
+          "fileCategory": "code"
+        },
+        {
+          "path": "novel-character-generator/src/novel_character_generator/domain/entities/character.py",
+          "language": "python",
+          "sizeLines": 157,
+          "fileCategory": "code"
+        },
+        {
+          "path": "novel-character-generator/src/novel_character_generator/domain/entities/image.py",
+          "language": "python",
+          "sizeLines": 28,
+          "fileCategory": "code"
+        },
+        {
+          "path": "novel-character-generator/src/novel_character_generator/domain/entities/story.py",
+          "language": "python",
+          "sizeLines": 56,
+          "fileCategory": "code"
+        },
+        {
+          "path": "novel-character-generator/src/novel_character_generator/domain/entities/text.py",
+          "language": "python",
+          "sizeLines": 38,
+          "fileCategory": "code"
+        },
+        {
+          "path": "novel-character-generator/src/novel_character_generator/domain/policies/__init__.py",
+          "language": "python",
+          "sizeLines": 1,
+          "fileCategory": "code"
+        },
+        {
+          "path": "novel-character-generator/src/novel_character_generator/domain/value_objects/__init__.py",
+          "language": "python",
+          "sizeLines": 1,
+          "fileCategory": "code"
+        },
+        {
+          "path": "novel-character-generator/src/novel_character_generator/domain/value_objects/temporal.py",
+          "language": "python",
+          "sizeLines": 22,
+          "fileCategory": "code"
+        },
+        {
+          "path": "novel-character-generator/src/novel_character_generator/infrastructure/__init__.py",
+          "language": "python",
+          "sizeLines": 1,
+          "fileCategory": "code"
+        },
+        {
+          "path": "novel-character-generator/src/novel_character_generator/infrastructure/db/__init__.py",
+          "language": "python",
+          "sizeLines": 1,
+          "fileCategory": "code"
+        },
+        {
+          "path": "novel-character-generator/src/novel_character_generator/infrastructure/db/repositories/__init__.py",
+          "language": "python",
+          "sizeLines": 1,
+          "fileCategory": "code"
+        },
+        {
+          "path": "novel-character-generator/src/novel_character_generator/infrastructure/image/__init__.py",
+          "language": "python",
+          "sizeLines": 1,
+          "fileCategory": "code"
+        },
+        {
+          "path": "novel-character-generator/src/novel_character_generator/infrastructure/llm/__init__.py",
+          "language": "python",
+          "sizeLines": 1,
+          "fileCategory": "code"
+        },
+        {
+          "path": "novel-character-generator/src/novel_character_generator/infrastructure/observability/__init__.py",
+          "language": "python",
+          "sizeLines": 1,
+          "fileCategory": "code"
+        },
+        {
+          "path": "novel-character-generator/src/novel_character_generator/infrastructure/storage/__init__.py",
+          "language": "python",
+          "sizeLines": 1,
+          "fileCategory": "code"
+        },
+        {
+          "path": "novel-character-generator/src/novel_character_generator/workers/__init__.py",
+          "language": "python",
+          "sizeLines": 1,
+          "fileCategory": "code"
+        },
+        {
+          "path": "novel-character-generator/src/novel_character_generator/workers/handlers/__init__.py",
+          "language": "python",
+          "sizeLines": 1,
+          "fileCategory": "code"
+        },
+        {
+          "path": "novel-character-generator/src/novel_character_generator/workflows/__init__.py",
+          "language": "python",
+          "sizeLines": 1,
+          "fileCategory": "code"
+        },
+        {
+          "path": "novel-character-generator/src/novel_character_generator/workflows/nodes/__init__.py",
+          "language": "python",
+          "sizeLines": 1,
+          "fileCategory": "code"
+        },
+        {
+          "path": "novel-character-generator/tests/integration/test_agent_execution_service.py",
+          "language": "python",
+          "sizeLines": 196,
+          "fileCategory": "code"
+        },
+        {
+          "path": "novel-character-generator/tests/integration/test_approval_and_agent_api.py",
+          "language": "python",
+          "sizeLines": 218,
+          "fileCategory": "code"
+        }
+      ],
+      "batchImportData": {
+        "novel-character-generator/src/novel_character_generator/application/ports/__init__.py": [],
+        "novel-character-generator/src/novel_character_generator/application/queries/__init__.py": [],
+        "novel-character-generator/src/novel_character_generator/application/services/__init__.py": [],
+        "novel-character-generator/src/novel_character_generator/domain/__init__.py": [],
+        "novel-character-generator/src/novel_character_generator/domain/entities/__init__.py": [],
+        "novel-character-generator/src/novel_character_generator/domain/entities/character.py": [
+          "novel-character-generator/src/novel_character_generator/domain/value_objects/temporal.py"
+        ],
+        "novel-character-generator/src/novel_character_generator/domain/entities/image.py": [],
+        "novel-character-generator/src/novel_character_generator/domain/entities/story.py": [],
+        "novel-character-generator/src/novel_character_generator/domain/entities/text.py": [],
+        "novel-character-generator/src/novel_character_generator/domain/policies/__init__.py": [],
+        "novel-character-generator/src/novel_character_generator/domain/value_objects/__init__.py": [],
+        "novel-character-generator/src/novel_character_generator/domain/value_objects/temporal.py": [],
+        "novel-character-generator/src/novel_character_generator/infrastructure/__init__.py": [],
+        "novel-character-generator/src/novel_character_generator/infrastructure/db/__init__.py": [],
+        "novel-character-generator/src/novel_character_generator/infrastructure/db/repositories/__init__.py": [],
+        "novel-character-generator/src/novel_character_generator/infrastructure/image/__init__.py": [],
+        "novel-character-generator/src/novel_character_generator/infrastructure/llm/__init__.py": [],
+        "novel-character-generator/src/novel_character_generator/infrastructure/observability/__init__.py": [],
+        "novel-character-generator/src/novel_character_generator/infrastructure/storage/__init__.py": [],
+        "novel-character-generator/src/novel_character_generator/workers/__init__.py": [],
+        "novel-character-generator/src/novel_character_generator/workers/handlers/__init__.py": [],
+        "novel-character-generator/src/novel_character_generator/workflows/__init__.py": [],
+        "novel-character-generator/src/novel_character_generator/workflows/nodes/__init__.py": [],
+        "novel-character-generator/tests/integration/test_agent_execution_service.py": [],
+        "novel-character-generator/tests/integration/test_approval_and_agent_api.py": []
+      },
+      "neighborMap": {}
+    },
+    {
+      "batchIndex": 10,
+      "files": [
+        {
+          "path": "novel-character-generator/tests/integration/test_approval_decisions.py",
+          "language": "python",
+          "sizeLines": 85,
+          "fileCategory": "code"
+        },
+        {
+          "path": "novel-character-generator/tests/integration/test_character_appearance_api.py",
+          "language": "python",
+          "sizeLines": 304,
+          "fileCategory": "code"
+        },
+        {
+          "path": "novel-character-generator/tests/integration/test_character_entity_api.py",
+          "language": "python",
+          "sizeLines": 441,
+          "fileCategory": "code"
+        },
+        {
+          "path": "novel-character-generator/tests/integration/test_document_versions.py",
+          "language": "python",
+          "sizeLines": 82,
+          "fileCategory": "code"
+        },
+        {
+          "path": "novel-character-generator/tests/integration/test_evaluation_repository.py",
+          "language": "python",
+          "sizeLines": 102,
+          "fileCategory": "code"
+        },
+        {
+          "path": "novel-character-generator/tests/integration/test_extraction_slice.py",
+          "language": "python",
+          "sizeLines": 70,
+          "fileCategory": "code"
+        },
+        {
+          "path": "novel-character-generator/tests/integration/test_health.py",
+          "language": "python",
+          "sizeLines": 71,
+          "fileCategory": "code"
+        },
+        {
+          "path": "novel-character-generator/tests/integration/test_ingestion_slice.py",
+          "language": "python",
+          "sizeLines": 49,
+          "fileCategory": "code"
+        },
+        {
+          "path": "novel-character-generator/tests/integration/test_migrations.py",
+          "language": "python",
+          "sizeLines": 66,
+          "fileCategory": "code"
+        },
+        {
+          "path": "novel-character-generator/tests/integration/test_run_events_and_external_operations.py",
+          "language": "python",
+          "sizeLines": 152,
+          "fileCategory": "code"
+        },
+        {
+          "path": "novel-character-generator/tests/integration/test_story_temporal_api.py",
+          "language": "python",
+          "sizeLines": 215,
+          "fileCategory": "code"
+        },
+        {
+          "path": "novel-character-generator/tests/integration/test_task_recovery.py",
+          "language": "python",
+          "sizeLines": 103,
+          "fileCategory": "code"
+        },
+        {
+          "path": "novel-character-generator/tests/integration/test_text_analysis_run.py",
+          "language": "python",
+          "sizeLines": 96,
+          "fileCategory": "code"
+        },
+        {
+          "path": "novel-character-generator/tests/unit/domain/test_models.py",
+          "language": "python",
+          "sizeLines": 91,
+          "fileCategory": "code"
+        },
+        {
+          "path": "novel-character-generator/tests/unit/domain/test_text_processing.py",
+          "language": "python",
+          "sizeLines": 41,
+          "fileCategory": "code"
+        },
+        {
+          "path": "novel-character-generator/tests/unit/test_mock_extraction.py",
+          "language": "python",
+          "sizeLines": 33,
+          "fileCategory": "code"
+        },
+        {
+          "path": "novel-character-generator/tests/unit/test_openai_compatible_extraction.py",
+          "language": "python",
+          "sizeLines": 51,
+          "fileCategory": "code"
+        },
+        {
+          "path": "novel-character-generator/tests/unit/test_settings.py",
+          "language": "python",
+          "sizeLines": 33,
+          "fileCategory": "code"
+        },
+        {
+          "path": "novel-character-generator/tests/unit/test_structured_agent_runtime.py",
+          "language": "python",
+          "sizeLines": 283,
+          "fileCategory": "code"
+        }
+      ],
+      "batchImportData": {
+        "novel-character-generator/tests/integration/test_approval_decisions.py": [],
+        "novel-character-generator/tests/integration/test_character_appearance_api.py": [],
+        "novel-character-generator/tests/integration/test_character_entity_api.py": [],
+        "novel-character-generator/tests/integration/test_document_versions.py": [],
+        "novel-character-generator/tests/integration/test_evaluation_repository.py": [],
+        "novel-character-generator/tests/integration/test_extraction_slice.py": [],
+        "novel-character-generator/tests/integration/test_health.py": [],
+        "novel-character-generator/tests/integration/test_ingestion_slice.py": [],
+        "novel-character-generator/tests/integration/test_migrations.py": [],
+        "novel-character-generator/tests/integration/test_run_events_and_external_operations.py": [],
+        "novel-character-generator/tests/integration/test_story_temporal_api.py": [],
+        "novel-character-generator/tests/integration/test_task_recovery.py": [],
+        "novel-character-generator/tests/integration/test_text_analysis_run.py": [],
+        "novel-character-generator/tests/unit/domain/test_models.py": [],
+        "novel-character-generator/tests/unit/domain/test_text_processing.py": [],
+        "novel-character-generator/tests/unit/test_mock_extraction.py": [],
+        "novel-character-generator/tests/unit/test_openai_compatible_extraction.py": [],
+        "novel-character-generator/tests/unit/test_settings.py": [],
+        "novel-character-generator/tests/unit/test_structured_agent_runtime.py": []
+      },
+      "neighborMap": {}
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "projectRoot": "E:\\project\\agent\\novel-character-generator",
+  "batchFiles": [
+    {"path":"novel-character-generator/src/novel_character_generator/application/ports/extraction.py","language":"python","sizeLines":101,"fileCategory":"code"},
+    {"path":"novel-character-generator/src/novel_character_generator/domain/policies/grounding.py","language":"python","sizeLines":33,"fileCategory":"code"},
+    {"path":"novel-character-generator/src/novel_character_generator/infrastructure/db/repositories/extraction.py","language":"python","sizeLines":549,"fileCategory":"code"},
+    {"path":"novel-character-generator/src/novel_character_generator/infrastructure/llm/mock.py","language":"python","sizeLines":140,"fileCategory":"code"},
+    {"path":"novel-character-generator/src/novel_character_generator/infrastructure/llm/openai_compatible.py","language":"python","sizeLines":68,"fileCategory":"code"},
+    {"path":"novel-character-generator/src/novel_character_generator/workers/handlers/extraction.py","language":"python","sizeLines":118,"fileCategory":"code"},
+    {"path":"novel-character-generator/src/novel_character_generator/workers/main.py","language":"python","sizeLines":123,"fileCategory":"code"},
+    {"path":"novel-character-generator/src/novel_character_generator/workers/task_claim.py","language":"python","sizeLines":388,"fileCategory":"code"}
+  ],
+  "batchImportData": {
+    "novel-character-generator/src/novel_character_generator/application/ports/extraction.py": [],
+    "novel-character-generator/src/novel_character_generator/domain/policies/grounding.py": [],
+    "novel-character-generator/src/novel_character_generator/infrastructure/db/repositories/extraction.py": ["novel-character-generator/src/novel_character_generator/application/ports/extraction.py","novel-character-generator/src/novel_character_generator/domain/policies/grounding.py","novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py"],
+    "novel-character-generator/src/novel_character_generator/infrastructure/llm/mock.py": ["novel-character-generator/src/novel_character_generator/application/ports/extraction.py"],
+    "novel-character-generator/src/novel_character_generator/infrastructure/llm/openai_compatible.py": ["novel-character-generator/src/novel_character_generator/application/ports/extraction.py"],
+    "novel-character-generator/src/novel_character_generator/workers/handlers/extraction.py": ["novel-character-generator/src/novel_character_generator/application/ports/extraction.py","novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py","novel-character-generator/src/novel_character_generator/infrastructure/db/repositories/extraction.py","novel-character-generator/src/novel_character_generator/workers/task_claim.py"],
+    "novel-character-generator/src/novel_character_generator/workers/main.py": ["novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py","novel-character-generator/src/novel_character_generator/infrastructure/db/session.py","novel-character-generator/src/novel_character_generator/infrastructure/llm/mock.py","novel-character-generator/src/novel_character_generator/infrastructure/llm/openai_compatible.py","novel-character-generator/src/novel_character_generator/infrastructure/storage/local.py","novel-character-generator/src/novel_character_generator/settings.py","novel-character-generator/src/novel_character_generator/workers/handlers/extraction.py","novel-character-generator/src/novel_character_generator/workers/handlers/ingestion.py","novel-character-generator/src/novel_character_generator/workers/task_claim.py"],
+    "novel-character-generator/src/novel_character_generator/workers/task_claim.py": ["novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py","novel-character-generator/src/novel_character_generator/infrastructure/db/repositories/run_events.py"]
+  }
+}

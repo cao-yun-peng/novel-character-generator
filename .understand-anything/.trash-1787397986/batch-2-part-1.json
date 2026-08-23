@@ -1,0 +1,1699 @@
+{
+  "nodes": [
+    {
+      "id": "file:novel-character-generator/src/novel_character_generator/api/routes/characters.py",
+      "type": "file",
+      "name": "characters.py",
+      "filePath": "novel-character-generator/src/novel_character_generator/api/routes/characters.py",
+      "summary": "角色 API 路由，查询角色证据、外观状态和冲突，并提供渲染档案审批、合并与拆分操作。",
+      "tags": [
+        "api-路由",
+        "角色管理",
+        "fastapi",
+        "异步接口"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "class:novel-character-generator/src/novel_character_generator/api/routes/characters.py:CharacterResponse",
+      "type": "class",
+      "name": "CharacterResponse",
+      "filePath": "novel-character-generator/src/novel_character_generator/api/routes/characters.py",
+      "lineRange": [
+        45,
+        50
+      ],
+      "summary": "为 API 边界定义 CharacterResponse 请求或响应数据模型。",
+      "tags": [
+        "api-模型",
+        "pydantic",
+        "序列化",
+        "角色管理"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:novel-character-generator/src/novel_character_generator/api/routes/characters.py:MentionResponse",
+      "type": "class",
+      "name": "MentionResponse",
+      "filePath": "novel-character-generator/src/novel_character_generator/api/routes/characters.py",
+      "lineRange": [
+        53,
+        58
+      ],
+      "summary": "为 API 边界定义 MentionResponse 请求或响应数据模型。",
+      "tags": [
+        "api-模型",
+        "pydantic",
+        "序列化",
+        "角色管理"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:novel-character-generator/src/novel_character_generator/api/routes/characters.py:ObservationResponse",
+      "type": "class",
+      "name": "ObservationResponse",
+      "filePath": "novel-character-generator/src/novel_character_generator/api/routes/characters.py",
+      "lineRange": [
+        61,
+        67
+      ],
+      "summary": "为 API 边界定义 ObservationResponse 请求或响应数据模型。",
+      "tags": [
+        "api-模型",
+        "pydantic",
+        "序列化",
+        "角色管理"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:novel-character-generator/src/novel_character_generator/api/routes/characters.py:ExpressionResponse",
+      "type": "class",
+      "name": "ExpressionResponse",
+      "filePath": "novel-character-generator/src/novel_character_generator/api/routes/characters.py",
+      "lineRange": [
+        70,
+        75
+      ],
+      "summary": "为 API 边界定义 ExpressionResponse 请求或响应数据模型。",
+      "tags": [
+        "api-模型",
+        "pydantic",
+        "序列化",
+        "角色管理"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:novel-character-generator/src/novel_character_generator/api/routes/characters.py:AppearanceStateResponse",
+      "type": "class",
+      "name": "AppearanceStateResponse",
+      "filePath": "novel-character-generator/src/novel_character_generator/api/routes/characters.py",
+      "lineRange": [
+        78,
+        93
+      ],
+      "summary": "为 API 边界定义 AppearanceStateResponse 请求或响应数据模型。",
+      "tags": [
+        "api-模型",
+        "pydantic",
+        "序列化",
+        "角色管理"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:novel-character-generator/src/novel_character_generator/api/routes/characters.py:RenderProfileResponse",
+      "type": "class",
+      "name": "RenderProfileResponse",
+      "filePath": "novel-character-generator/src/novel_character_generator/api/routes/characters.py",
+      "lineRange": [
+        96,
+        114
+      ],
+      "summary": "为 API 边界定义 RenderProfileResponse 请求或响应数据模型。",
+      "tags": [
+        "api-模型",
+        "pydantic",
+        "序列化",
+        "角色管理"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:novel-character-generator/src/novel_character_generator/api/routes/characters.py:UpdateRenderProfileRequest",
+      "type": "class",
+      "name": "UpdateRenderProfileRequest",
+      "filePath": "novel-character-generator/src/novel_character_generator/api/routes/characters.py",
+      "lineRange": [
+        117,
+        124
+      ],
+      "summary": "为 API 边界定义 UpdateRenderProfileRequest 请求或响应数据模型。",
+      "tags": [
+        "api-模型",
+        "pydantic",
+        "序列化",
+        "角色管理"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:novel-character-generator/src/novel_character_generator/api/routes/characters.py:CharacterConflictResponse",
+      "type": "class",
+      "name": "CharacterConflictResponse",
+      "filePath": "novel-character-generator/src/novel_character_generator/api/routes/characters.py",
+      "lineRange": [
+        127,
+        141
+      ],
+      "summary": "为 API 边界定义 CharacterConflictResponse 请求或响应数据模型。",
+      "tags": [
+        "api-模型",
+        "pydantic",
+        "序列化",
+        "角色管理"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:novel-character-generator/src/novel_character_generator/api/routes/characters.py:ResolveCharacterConflictRequest",
+      "type": "class",
+      "name": "ResolveCharacterConflictRequest",
+      "filePath": "novel-character-generator/src/novel_character_generator/api/routes/characters.py",
+      "lineRange": [
+        144,
+        145
+      ],
+      "summary": "为 API 边界定义 ResolveCharacterConflictRequest 请求或响应数据模型。",
+      "tags": [
+        "api-模型",
+        "pydantic",
+        "序列化",
+        "角色管理"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:novel-character-generator/src/novel_character_generator/api/routes/characters.py:SnapshotResponse",
+      "type": "class",
+      "name": "SnapshotResponse",
+      "filePath": "novel-character-generator/src/novel_character_generator/api/routes/characters.py",
+      "lineRange": [
+        148,
+        159
+      ],
+      "summary": "为 API 边界定义 SnapshotResponse 请求或响应数据模型。",
+      "tags": [
+        "api-模型",
+        "pydantic",
+        "序列化",
+        "角色管理"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:novel-character-generator/src/novel_character_generator/api/routes/characters.py:MergeSourceRequest",
+      "type": "class",
+      "name": "MergeSourceRequest",
+      "filePath": "novel-character-generator/src/novel_character_generator/api/routes/characters.py",
+      "lineRange": [
+        162,
+        164
+      ],
+      "summary": "为 API 边界定义 MergeSourceRequest 请求或响应数据模型。",
+      "tags": [
+        "api-模型",
+        "pydantic",
+        "序列化",
+        "角色管理"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:novel-character-generator/src/novel_character_generator/api/routes/characters.py:MergeCharactersRequest",
+      "type": "class",
+      "name": "MergeCharactersRequest",
+      "filePath": "novel-character-generator/src/novel_character_generator/api/routes/characters.py",
+      "lineRange": [
+        167,
+        170
+      ],
+      "summary": "为 API 边界定义 MergeCharactersRequest 请求或响应数据模型。",
+      "tags": [
+        "api-模型",
+        "pydantic",
+        "序列化",
+        "角色管理"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:novel-character-generator/src/novel_character_generator/api/routes/characters.py:SplitAssignmentsRequest",
+      "type": "class",
+      "name": "SplitAssignmentsRequest",
+      "filePath": "novel-character-generator/src/novel_character_generator/api/routes/characters.py",
+      "lineRange": [
+        173,
+        181
+      ],
+      "summary": "为 API 边界定义 SplitAssignmentsRequest 请求或响应数据模型。",
+      "tags": [
+        "api-模型",
+        "pydantic",
+        "序列化",
+        "角色管理"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:novel-character-generator/src/novel_character_generator/api/routes/characters.py:SplitTargetRequest",
+      "type": "class",
+      "name": "SplitTargetRequest",
+      "filePath": "novel-character-generator/src/novel_character_generator/api/routes/characters.py",
+      "lineRange": [
+        184,
+        187
+      ],
+      "summary": "为 API 边界定义 SplitTargetRequest 请求或响应数据模型。",
+      "tags": [
+        "api-模型",
+        "pydantic",
+        "序列化",
+        "角色管理"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:novel-character-generator/src/novel_character_generator/api/routes/characters.py:SplitCharacterRequest",
+      "type": "class",
+      "name": "SplitCharacterRequest",
+      "filePath": "novel-character-generator/src/novel_character_generator/api/routes/characters.py",
+      "lineRange": [
+        190,
+        193
+      ],
+      "summary": "为 API 边界定义 SplitCharacterRequest 请求或响应数据模型。",
+      "tags": [
+        "api-模型",
+        "pydantic",
+        "序列化",
+        "角色管理"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:novel-character-generator/src/novel_character_generator/api/routes/characters.py:CharacterEntityOperationResponse",
+      "type": "class",
+      "name": "CharacterEntityOperationResponse",
+      "filePath": "novel-character-generator/src/novel_character_generator/api/routes/characters.py",
+      "lineRange": [
+        196,
+        208
+      ],
+      "summary": "为 API 边界定义 CharacterEntityOperationResponse 请求或响应数据模型。",
+      "tags": [
+        "api-模型",
+        "pydantic",
+        "序列化",
+        "角色管理"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:novel-character-generator/src/novel_character_generator/api/routes/characters.py:_revision",
+      "type": "function",
+      "name": "_revision",
+      "filePath": "novel-character-generator/src/novel_character_generator/api/routes/characters.py",
+      "lineRange": [
+        211,
+        220
+      ],
+      "summary": "解析 If-Match 头中的修订号，并校验其是否满足当前操作的并发控制要求。",
+      "tags": [
+        "业务函数",
+        "python",
+        "异步处理",
+        "角色管理"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:novel-character-generator/src/novel_character_generator/api/routes/characters.py:list_characters",
+      "type": "function",
+      "name": "list_characters",
+      "filePath": "novel-character-generator/src/novel_character_generator/api/routes/characters.py",
+      "lineRange": [
+        249,
+        266
+      ],
+      "summary": "查询指定小说中的角色并序列化为 API 响应。",
+      "tags": [
+        "业务函数",
+        "python",
+        "异步处理",
+        "角色管理"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:novel-character-generator/src/novel_character_generator/api/routes/characters.py:list_mentions",
+      "type": "function",
+      "name": "list_mentions",
+      "filePath": "novel-character-generator/src/novel_character_generator/api/routes/characters.py",
+      "lineRange": [
+        277,
+        296
+      ],
+      "summary": "读取角色已解析的提及片段及其文本定位信息。",
+      "tags": [
+        "业务函数",
+        "python",
+        "异步处理",
+        "角色管理"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:novel-character-generator/src/novel_character_generator/api/routes/characters.py:list_observations",
+      "type": "function",
+      "name": "list_observations",
+      "filePath": "novel-character-generator/src/novel_character_generator/api/routes/characters.py",
+      "lineRange": [
+        300,
+        319
+      ],
+      "summary": "读取角色特征观察记录并按创建顺序返回。",
+      "tags": [
+        "业务函数",
+        "python",
+        "异步处理",
+        "角色管理"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:novel-character-generator/src/novel_character_generator/api/routes/characters.py:list_expressions",
+      "type": "function",
+      "name": "list_expressions",
+      "filePath": "novel-character-generator/src/novel_character_generator/api/routes/characters.py",
+      "lineRange": [
+        323,
+        341
+      ],
+      "summary": "读取角色表情与情绪观察记录。",
+      "tags": [
+        "业务函数",
+        "python",
+        "异步处理",
+        "角色管理"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:novel-character-generator/src/novel_character_generator/api/routes/characters.py:list_character_conflicts",
+      "type": "function",
+      "name": "list_character_conflicts",
+      "filePath": "novel-character-generator/src/novel_character_generator/api/routes/characters.py",
+      "lineRange": [
+        358,
+        369
+      ],
+      "summary": "查询角色未决或指定状态的外观冲突。",
+      "tags": [
+        "业务函数",
+        "python",
+        "异步处理",
+        "角色管理"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:novel-character-generator/src/novel_character_generator/api/routes/characters.py:resolve_character_conflict",
+      "type": "function",
+      "name": "resolve_character_conflict",
+      "filePath": "novel-character-generator/src/novel_character_generator/api/routes/characters.py",
+      "lineRange": [
+        373,
+        391
+      ],
+      "summary": "调用外观服务解决冲突，并返回更新后的冲突记录。",
+      "tags": [
+        "业务函数",
+        "python",
+        "异步处理",
+        "角色管理"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:novel-character-generator/src/novel_character_generator/api/routes/characters.py:get_render_profile",
+      "type": "function",
+      "name": "get_render_profile",
+      "filePath": "novel-character-generator/src/novel_character_generator/api/routes/characters.py",
+      "lineRange": [
+        398,
+        410
+      ],
+      "summary": "获取角色当前渲染档案。",
+      "tags": [
+        "业务函数",
+        "python",
+        "异步处理",
+        "角色管理"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:novel-character-generator/src/novel_character_generator/api/routes/characters.py:put_render_profile",
+      "type": "function",
+      "name": "put_render_profile",
+      "filePath": "novel-character-generator/src/novel_character_generator/api/routes/characters.py",
+      "lineRange": [
+        417,
+        443
+      ],
+      "summary": "更新角色渲染档案并应用乐观并发修订检查。",
+      "tags": [
+        "业务函数",
+        "python",
+        "异步处理",
+        "角色管理"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:novel-character-generator/src/novel_character_generator/api/routes/characters.py:approve_character_profile",
+      "type": "function",
+      "name": "approve_character_profile",
+      "filePath": "novel-character-generator/src/novel_character_generator/api/routes/characters.py",
+      "lineRange": [
+        450,
+        468
+      ],
+      "summary": "审批角色渲染档案，固化可用于生成的版本。",
+      "tags": [
+        "业务函数",
+        "python",
+        "异步处理",
+        "角色管理"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:novel-character-generator/src/novel_character_generator/api/routes/characters.py:get_character_snapshot",
+      "type": "function",
+      "name": "get_character_snapshot",
+      "filePath": "novel-character-generator/src/novel_character_generator/api/routes/characters.py",
+      "lineRange": [
+        475,
+        497
+      ],
+      "summary": "计算给定时间线、事件、场景或章节位置的角色外观快照。",
+      "tags": [
+        "业务函数",
+        "python",
+        "异步处理",
+        "角色管理"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:novel-character-generator/src/novel_character_generator/api/routes/characters.py:merge_characters",
+      "type": "function",
+      "name": "merge_characters",
+      "filePath": "novel-character-generator/src/novel_character_generator/api/routes/characters.py",
+      "lineRange": [
+        505,
+        531
+      ],
+      "summary": "调用实体服务执行多个角色的合并并返回审计操作。",
+      "tags": [
+        "业务函数",
+        "python",
+        "异步处理",
+        "角色管理"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:novel-character-generator/src/novel_character_generator/api/routes/characters.py:split_character",
+      "type": "function",
+      "name": "split_character",
+      "filePath": "novel-character-generator/src/novel_character_generator/api/routes/characters.py",
+      "lineRange": [
+        539,
+        568
+      ],
+      "summary": "调用实体服务将一个角色拆分为多个目标角色。",
+      "tags": [
+        "业务函数",
+        "python",
+        "异步处理",
+        "角色管理"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:novel-character-generator/src/novel_character_generator/api/routes/story.py",
+      "type": "file",
+      "name": "story.py",
+      "filePath": "novel-character-generator/src/novel_character_generator/api/routes/story.py",
+      "summary": "故事 API 路由，公开时间线、事件和场景查询，并支持修改场景的时序绑定。",
+      "tags": [
+        "api-路由",
+        "故事管理",
+        "fastapi",
+        "异步接口"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:novel-character-generator/src/novel_character_generator/api/routes/story.py:TimelineResponse",
+      "type": "class",
+      "name": "TimelineResponse",
+      "filePath": "novel-character-generator/src/novel_character_generator/api/routes/story.py",
+      "lineRange": [
+        27,
+        33
+      ],
+      "summary": "为 API 边界定义 TimelineResponse 请求或响应数据模型。",
+      "tags": [
+        "api-模型",
+        "pydantic",
+        "序列化",
+        "角色管理"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:novel-character-generator/src/novel_character_generator/api/routes/story.py:EventParticipantResponse",
+      "type": "class",
+      "name": "EventParticipantResponse",
+      "filePath": "novel-character-generator/src/novel_character_generator/api/routes/story.py",
+      "lineRange": [
+        36,
+        39
+      ],
+      "summary": "为 API 边界定义 EventParticipantResponse 请求或响应数据模型。",
+      "tags": [
+        "api-模型",
+        "pydantic",
+        "序列化",
+        "角色管理"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:novel-character-generator/src/novel_character_generator/api/routes/story.py:StoryEventResponse",
+      "type": "class",
+      "name": "StoryEventResponse",
+      "filePath": "novel-character-generator/src/novel_character_generator/api/routes/story.py",
+      "lineRange": [
+        42,
+        49
+      ],
+      "summary": "为 API 边界定义 StoryEventResponse 请求或响应数据模型。",
+      "tags": [
+        "api-模型",
+        "pydantic",
+        "序列化",
+        "角色管理"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:novel-character-generator/src/novel_character_generator/api/routes/story.py:SceneResponse",
+      "type": "class",
+      "name": "SceneResponse",
+      "filePath": "novel-character-generator/src/novel_character_generator/api/routes/story.py",
+      "lineRange": [
+        52,
+        71
+      ],
+      "summary": "为 API 边界定义 SceneResponse 请求或响应数据模型。",
+      "tags": [
+        "api-模型",
+        "pydantic",
+        "序列化",
+        "角色管理"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:novel-character-generator/src/novel_character_generator/api/routes/story.py:TemporalBindingRequest",
+      "type": "class",
+      "name": "TemporalBindingRequest",
+      "filePath": "novel-character-generator/src/novel_character_generator/api/routes/story.py",
+      "lineRange": [
+        74,
+        80
+      ],
+      "summary": "为 API 边界定义 TemporalBindingRequest 请求或响应数据模型。",
+      "tags": [
+        "api-模型",
+        "pydantic",
+        "序列化",
+        "角色管理"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:novel-character-generator/src/novel_character_generator/api/routes/story.py:list_events",
+      "type": "function",
+      "name": "list_events",
+      "filePath": "novel-character-generator/src/novel_character_generator/api/routes/story.py",
+      "lineRange": [
+        112,
+        142
+      ],
+      "summary": "按时间线或章节筛选并返回故事事件及参与者。",
+      "tags": [
+        "业务函数",
+        "python",
+        "异步处理",
+        "角色管理"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:novel-character-generator/src/novel_character_generator/api/routes/story.py:update_scene_temporal_binding",
+      "type": "function",
+      "name": "update_scene_temporal_binding",
+      "filePath": "novel-character-generator/src/novel_character_generator/api/routes/story.py",
+      "lineRange": [
+        158,
+        184
+      ],
+      "summary": "用服务层校验与乐观锁更新场景时序绑定。",
+      "tags": [
+        "业务函数",
+        "python",
+        "异步处理",
+        "角色管理"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:novel-character-generator/src/novel_character_generator/application/services/appearance_service.py",
+      "type": "file",
+      "name": "appearance_service.py",
+      "filePath": "novel-character-generator/src/novel_character_generator/application/services/appearance_service.py",
+      "summary": "外观应用服务，汇聚角色外观状态和渲染档案，处理冲突解决、审批及指定叙事时点的快照计算。",
+      "tags": [
+        "应用服务",
+        "外观管理",
+        "冲突解决",
+        "渲染档案"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "class:novel-character-generator/src/novel_character_generator/application/services/appearance_service.py:AppearanceRevisionConflict",
+      "type": "class",
+      "name": "AppearanceRevisionConflict",
+      "filePath": "novel-character-generator/src/novel_character_generator/application/services/appearance_service.py",
+      "lineRange": [
+        34,
+        35
+      ],
+      "summary": "AppearanceRevisionConflict 表示该模块在校验、并发或状态迁移时抛出的业务异常。",
+      "tags": [
+        "异常",
+        "业务规则",
+        "并发控制"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:novel-character-generator/src/novel_character_generator/application/services/appearance_service.py:AppearanceResolutionError",
+      "type": "class",
+      "name": "AppearanceResolutionError",
+      "filePath": "novel-character-generator/src/novel_character_generator/application/services/appearance_service.py",
+      "lineRange": [
+        38,
+        39
+      ],
+      "summary": "AppearanceResolutionError 表示该模块在校验、并发或状态迁移时抛出的业务异常。",
+      "tags": [
+        "异常",
+        "业务规则",
+        "并发控制"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:novel-character-generator/src/novel_character_generator/application/services/appearance_service.py:RenderProfileUpdate",
+      "type": "class",
+      "name": "RenderProfileUpdate",
+      "filePath": "novel-character-generator/src/novel_character_generator/application/services/appearance_service.py",
+      "lineRange": [
+        43,
+        50
+      ],
+      "summary": "在 appearance_service.py 中定义 RenderProfileUpdate，表达该模块的核心数据与状态。",
+      "tags": [
+        "领域模型",
+        "python",
+        "数据契约"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:novel-character-generator/src/novel_character_generator/application/services/appearance_service.py:SnapshotTarget",
+      "type": "class",
+      "name": "SnapshotTarget",
+      "filePath": "novel-character-generator/src/novel_character_generator/application/services/appearance_service.py",
+      "lineRange": [
+        54,
+        58
+      ],
+      "summary": "在 appearance_service.py 中定义 SnapshotTarget，表达该模块的核心数据与状态。",
+      "tags": [
+        "领域模型",
+        "python",
+        "数据契约"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:novel-character-generator/src/novel_character_generator/application/services/appearance_service.py:AppearanceService",
+      "type": "class",
+      "name": "AppearanceService",
+      "filePath": "novel-character-generator/src/novel_character_generator/application/services/appearance_service.py",
+      "lineRange": [
+        115,
+        638
+      ],
+      "summary": "AppearanceService 封装该模块的应用用例、业务规则与数据访问编排。",
+      "tags": [
+        "应用服务",
+        "业务规则",
+        "事务处理",
+        "领域编排"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:novel-character-generator/src/novel_character_generator/application/services/appearance_service.py:_put_path",
+      "type": "function",
+      "name": "_put_path",
+      "filePath": "novel-character-generator/src/novel_character_generator/application/services/appearance_service.py",
+      "lineRange": [
+        76,
+        85
+      ],
+      "summary": "在 appearance_service.py 中实现 _put_path，承担该模块的局部业务处理。",
+      "tags": [
+        "业务函数",
+        "python",
+        "异步处理",
+        "角色管理"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:novel-character-generator/src/novel_character_generator/application/services/appearance_service.py:_scope_overlaps",
+      "type": "function",
+      "name": "_scope_overlaps",
+      "filePath": "novel-character-generator/src/novel_character_generator/application/services/appearance_service.py",
+      "lineRange": [
+        88,
+        112
+      ],
+      "summary": "判断两个外观时序范围是否存在重叠。",
+      "tags": [
+        "业务函数",
+        "python",
+        "异步处理",
+        "角色管理"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:novel-character-generator/src/novel_character_generator/application/services/character_entity_service.py",
+      "type": "file",
+      "name": "character_entity_service.py",
+      "filePath": "novel-character-generator/src/novel_character_generator/application/services/character_entity_service.py",
+      "summary": "角色实体应用服务，执行带版本与幂等性保护的角色合并和拆分，并重绑定相关证据和资源。",
+      "tags": [
+        "应用服务",
+        "角色管理",
+        "实体合并",
+        "事务处理"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "class:novel-character-generator/src/novel_character_generator/application/services/character_entity_service.py:EntityOperationConflict",
+      "type": "class",
+      "name": "EntityOperationConflict",
+      "filePath": "novel-character-generator/src/novel_character_generator/application/services/character_entity_service.py",
+      "lineRange": [
+        34,
+        35
+      ],
+      "summary": "EntityOperationConflict 表示该模块在校验、并发或状态迁移时抛出的业务异常。",
+      "tags": [
+        "异常",
+        "业务规则",
+        "并发控制"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:novel-character-generator/src/novel_character_generator/application/services/character_entity_service.py:MergeSource",
+      "type": "class",
+      "name": "MergeSource",
+      "filePath": "novel-character-generator/src/novel_character_generator/application/services/character_entity_service.py",
+      "lineRange": [
+        39,
+        41
+      ],
+      "summary": "在 character_entity_service.py 中定义 MergeSource，表达该模块的核心数据与状态。",
+      "tags": [
+        "领域模型",
+        "python",
+        "数据契约"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:novel-character-generator/src/novel_character_generator/application/services/character_entity_service.py:SplitAssignments",
+      "type": "class",
+      "name": "SplitAssignments",
+      "filePath": "novel-character-generator/src/novel_character_generator/application/services/character_entity_service.py",
+      "lineRange": [
+        45,
+        68
+      ],
+      "summary": "在 character_entity_service.py 中定义 SplitAssignments，表达该模块的核心数据与状态。",
+      "tags": [
+        "领域模型",
+        "python",
+        "数据契约"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:novel-character-generator/src/novel_character_generator/application/services/character_entity_service.py:SplitTarget",
+      "type": "class",
+      "name": "SplitTarget",
+      "filePath": "novel-character-generator/src/novel_character_generator/application/services/character_entity_service.py",
+      "lineRange": [
+        72,
+        75
+      ],
+      "summary": "在 character_entity_service.py 中定义 SplitTarget，表达该模块的核心数据与状态。",
+      "tags": [
+        "领域模型",
+        "python",
+        "数据契约"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:novel-character-generator/src/novel_character_generator/application/services/character_entity_service.py:CharacterEntityService",
+      "type": "class",
+      "name": "CharacterEntityService",
+      "filePath": "novel-character-generator/src/novel_character_generator/application/services/character_entity_service.py",
+      "lineRange": [
+        99,
+        768
+      ],
+      "summary": "CharacterEntityService 封装该模块的应用用例、业务规则与数据访问编排。",
+      "tags": [
+        "应用服务",
+        "业务规则",
+        "事务处理",
+        "领域编排"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:novel-character-generator/src/novel_character_generator/application/services/character_entity_service.py:_replace_ids",
+      "type": "function",
+      "name": "_replace_ids",
+      "filePath": "novel-character-generator/src/novel_character_generator/application/services/character_entity_service.py",
+      "lineRange": [
+        86,
+        96
+      ],
+      "summary": "在字符串标识符列表中将源角色标识替换为目标角色标识。",
+      "tags": [
+        "业务函数",
+        "python",
+        "异步处理",
+        "角色管理"
+      ],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/characters.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/api/routes/characters.py:CharacterResponse",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/characters.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/api/routes/characters.py:CharacterResponse",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/characters.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/api/routes/characters.py:MentionResponse",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/characters.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/api/routes/characters.py:MentionResponse",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/characters.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/api/routes/characters.py:ObservationResponse",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/characters.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/api/routes/characters.py:ObservationResponse",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/characters.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/api/routes/characters.py:ExpressionResponse",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/characters.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/api/routes/characters.py:ExpressionResponse",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/characters.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/api/routes/characters.py:AppearanceStateResponse",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/characters.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/api/routes/characters.py:AppearanceStateResponse",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/characters.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/api/routes/characters.py:RenderProfileResponse",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/characters.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/api/routes/characters.py:RenderProfileResponse",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/characters.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/api/routes/characters.py:UpdateRenderProfileRequest",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/characters.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/api/routes/characters.py:UpdateRenderProfileRequest",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/characters.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/api/routes/characters.py:CharacterConflictResponse",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/characters.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/api/routes/characters.py:CharacterConflictResponse",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/characters.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/api/routes/characters.py:ResolveCharacterConflictRequest",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/characters.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/api/routes/characters.py:ResolveCharacterConflictRequest",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/characters.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/api/routes/characters.py:SnapshotResponse",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/characters.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/api/routes/characters.py:SnapshotResponse",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/characters.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/api/routes/characters.py:MergeSourceRequest",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/characters.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/api/routes/characters.py:MergeSourceRequest",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/characters.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/api/routes/characters.py:MergeCharactersRequest",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/characters.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/api/routes/characters.py:MergeCharactersRequest",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/characters.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/api/routes/characters.py:SplitAssignmentsRequest",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/characters.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/api/routes/characters.py:SplitAssignmentsRequest",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/characters.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/api/routes/characters.py:SplitTargetRequest",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/characters.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/api/routes/characters.py:SplitTargetRequest",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/characters.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/api/routes/characters.py:SplitCharacterRequest",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/characters.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/api/routes/characters.py:SplitCharacterRequest",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/characters.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/api/routes/characters.py:CharacterEntityOperationResponse",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/characters.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/api/routes/characters.py:CharacterEntityOperationResponse",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/characters.py",
+      "target": "function:novel-character-generator/src/novel_character_generator/api/routes/characters.py:_revision",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/characters.py",
+      "target": "function:novel-character-generator/src/novel_character_generator/api/routes/characters.py:_revision",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/characters.py",
+      "target": "function:novel-character-generator/src/novel_character_generator/api/routes/characters.py:list_characters",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/characters.py",
+      "target": "function:novel-character-generator/src/novel_character_generator/api/routes/characters.py:list_characters",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/characters.py",
+      "target": "function:novel-character-generator/src/novel_character_generator/api/routes/characters.py:list_mentions",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/characters.py",
+      "target": "function:novel-character-generator/src/novel_character_generator/api/routes/characters.py:list_mentions",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/characters.py",
+      "target": "function:novel-character-generator/src/novel_character_generator/api/routes/characters.py:list_observations",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/characters.py",
+      "target": "function:novel-character-generator/src/novel_character_generator/api/routes/characters.py:list_observations",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/characters.py",
+      "target": "function:novel-character-generator/src/novel_character_generator/api/routes/characters.py:list_expressions",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/characters.py",
+      "target": "function:novel-character-generator/src/novel_character_generator/api/routes/characters.py:list_expressions",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/characters.py",
+      "target": "function:novel-character-generator/src/novel_character_generator/api/routes/characters.py:list_character_conflicts",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/characters.py",
+      "target": "function:novel-character-generator/src/novel_character_generator/api/routes/characters.py:list_character_conflicts",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/characters.py",
+      "target": "function:novel-character-generator/src/novel_character_generator/api/routes/characters.py:resolve_character_conflict",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/characters.py",
+      "target": "function:novel-character-generator/src/novel_character_generator/api/routes/characters.py:resolve_character_conflict",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/characters.py",
+      "target": "function:novel-character-generator/src/novel_character_generator/api/routes/characters.py:get_render_profile",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/characters.py",
+      "target": "function:novel-character-generator/src/novel_character_generator/api/routes/characters.py:get_render_profile",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/characters.py",
+      "target": "function:novel-character-generator/src/novel_character_generator/api/routes/characters.py:put_render_profile",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/characters.py",
+      "target": "function:novel-character-generator/src/novel_character_generator/api/routes/characters.py:put_render_profile",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/characters.py",
+      "target": "function:novel-character-generator/src/novel_character_generator/api/routes/characters.py:approve_character_profile",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/characters.py",
+      "target": "function:novel-character-generator/src/novel_character_generator/api/routes/characters.py:approve_character_profile",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/characters.py",
+      "target": "function:novel-character-generator/src/novel_character_generator/api/routes/characters.py:get_character_snapshot",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/characters.py",
+      "target": "function:novel-character-generator/src/novel_character_generator/api/routes/characters.py:get_character_snapshot",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/characters.py",
+      "target": "function:novel-character-generator/src/novel_character_generator/api/routes/characters.py:merge_characters",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/characters.py",
+      "target": "function:novel-character-generator/src/novel_character_generator/api/routes/characters.py:merge_characters",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/characters.py",
+      "target": "function:novel-character-generator/src/novel_character_generator/api/routes/characters.py:split_character",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/characters.py",
+      "target": "function:novel-character-generator/src/novel_character_generator/api/routes/characters.py:split_character",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/characters.py",
+      "target": "file:novel-character-generator/src/novel_character_generator/api/auth.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/characters.py",
+      "target": "file:novel-character-generator/src/novel_character_generator/api/deps.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/characters.py",
+      "target": "file:novel-character-generator/src/novel_character_generator/application/services/appearance_service.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/characters.py",
+      "target": "file:novel-character-generator/src/novel_character_generator/application/services/character_entity_service.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/characters.py",
+      "target": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/story.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/api/routes/story.py:TimelineResponse",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/story.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/api/routes/story.py:TimelineResponse",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/story.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/api/routes/story.py:EventParticipantResponse",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/story.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/api/routes/story.py:EventParticipantResponse",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/story.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/api/routes/story.py:StoryEventResponse",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/story.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/api/routes/story.py:StoryEventResponse",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/story.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/api/routes/story.py:SceneResponse",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/story.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/api/routes/story.py:SceneResponse",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/story.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/api/routes/story.py:TemporalBindingRequest",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/story.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/api/routes/story.py:TemporalBindingRequest",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/story.py",
+      "target": "function:novel-character-generator/src/novel_character_generator/api/routes/story.py:list_events",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/story.py",
+      "target": "function:novel-character-generator/src/novel_character_generator/api/routes/story.py:list_events",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/story.py",
+      "target": "function:novel-character-generator/src/novel_character_generator/api/routes/story.py:update_scene_temporal_binding",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/story.py",
+      "target": "function:novel-character-generator/src/novel_character_generator/api/routes/story.py:update_scene_temporal_binding",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/story.py",
+      "target": "file:novel-character-generator/src/novel_character_generator/api/auth.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/story.py",
+      "target": "file:novel-character-generator/src/novel_character_generator/api/deps.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/story.py",
+      "target": "file:novel-character-generator/src/novel_character_generator/application/services/story_service.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/story.py",
+      "target": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/application/services/appearance_service.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/application/services/appearance_service.py:AppearanceRevisionConflict",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/application/services/appearance_service.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/application/services/appearance_service.py:AppearanceRevisionConflict",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/application/services/appearance_service.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/application/services/appearance_service.py:AppearanceResolutionError",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/application/services/appearance_service.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/application/services/appearance_service.py:AppearanceResolutionError",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/application/services/appearance_service.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/application/services/appearance_service.py:RenderProfileUpdate",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/application/services/appearance_service.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/application/services/appearance_service.py:RenderProfileUpdate",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/application/services/appearance_service.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/application/services/appearance_service.py:SnapshotTarget",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/application/services/appearance_service.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/application/services/appearance_service.py:SnapshotTarget",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/application/services/appearance_service.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/application/services/appearance_service.py:AppearanceService",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/application/services/appearance_service.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/application/services/appearance_service.py:AppearanceService",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/application/services/appearance_service.py",
+      "target": "function:novel-character-generator/src/novel_character_generator/application/services/appearance_service.py:_put_path",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/application/services/appearance_service.py",
+      "target": "function:novel-character-generator/src/novel_character_generator/application/services/appearance_service.py:_put_path",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/application/services/appearance_service.py",
+      "target": "function:novel-character-generator/src/novel_character_generator/application/services/appearance_service.py:_scope_overlaps",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/application/services/appearance_service.py",
+      "target": "function:novel-character-generator/src/novel_character_generator/application/services/appearance_service.py:_scope_overlaps",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/application/services/appearance_service.py",
+      "target": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/application/services/character_entity_service.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/application/services/character_entity_service.py:EntityOperationConflict",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/application/services/character_entity_service.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/application/services/character_entity_service.py:EntityOperationConflict",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/application/services/character_entity_service.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/application/services/character_entity_service.py:MergeSource",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/application/services/character_entity_service.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/application/services/character_entity_service.py:MergeSource",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/application/services/character_entity_service.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/application/services/character_entity_service.py:SplitAssignments",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/application/services/character_entity_service.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/application/services/character_entity_service.py:SplitAssignments",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/application/services/character_entity_service.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/application/services/character_entity_service.py:SplitTarget",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/application/services/character_entity_service.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/application/services/character_entity_service.py:SplitTarget",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/application/services/character_entity_service.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/application/services/character_entity_service.py:CharacterEntityService",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/application/services/character_entity_service.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/application/services/character_entity_service.py:CharacterEntityService",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/application/services/character_entity_service.py",
+      "target": "function:novel-character-generator/src/novel_character_generator/application/services/character_entity_service.py:_replace_ids",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/application/services/character_entity_service.py",
+      "target": "function:novel-character-generator/src/novel_character_generator/application/services/character_entity_service.py:_replace_ids",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/application/services/character_entity_service.py",
+      "target": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    }
+  ]
+}

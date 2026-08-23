@@ -1,0 +1,580 @@
+{
+  "nodes": [
+    {
+      "id": "file:novel-character-generator/tests/integration/test_approval_decisions.py",
+      "type": "file",
+      "name": "test_approval_decisions.py",
+      "filePath": "novel-character-generator/tests/integration/test_approval_decisions.py",
+      "summary": "集成测试延迟审批请求在后续被拒绝时的状态转换、截止时间与持久化结果。",
+      "tags": [
+        "测试",
+        "集成测试",
+        "api",
+        "pytest"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:novel-character-generator/tests/integration/test_approval_decisions.py:test_deferred_approval_can_later_be_rejected",
+      "type": "function",
+      "name": "test_deferred_approval_can_later_be_rejected",
+      "filePath": "novel-character-generator/tests/integration/test_approval_decisions.py",
+      "lineRange": [
+        22,
+        85
+      ],
+      "summary": "验证“test_deferred_approval_can_later_be_rejected”覆盖的业务契约、状态变化与异常边界。",
+      "tags": [
+        "测试",
+        "pytest",
+        "契约验证"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:novel-character-generator/tests/integration/test_character_appearance_api.py",
+      "type": "file",
+      "name": "test_character_appearance_api.py",
+      "filePath": "novel-character-generator/tests/integration/test_character_appearance_api.py",
+      "summary": "集成测试角色外观档案接口的冲突消解、审批流程与时间快照读取。",
+      "tags": [
+        "测试",
+        "集成测试",
+        "api",
+        "pytest"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:novel-character-generator/tests/integration/test_character_appearance_api.py:test_render_profile_conflict_resolution_and_temporal_snapshot",
+      "type": "function",
+      "name": "test_render_profile_conflict_resolution_and_temporal_snapshot",
+      "filePath": "novel-character-generator/tests/integration/test_character_appearance_api.py",
+      "lineRange": [
+        27,
+        304
+      ],
+      "summary": "验证“test_render_profile_conflict_resolution_and_temporal_snapshot”覆盖的业务契约、状态变化与异常边界。",
+      "tags": [
+        "测试",
+        "pytest",
+        "契约验证"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:novel-character-generator/tests/integration/test_character_entity_api.py",
+      "type": "file",
+      "name": "test_character_entity_api.py",
+      "filePath": "novel-character-generator/tests/integration/test_character_entity_api.py",
+      "summary": "集成测试角色实体合并与拆分操作的审计、幂等性和并发版本安全。",
+      "tags": [
+        "测试",
+        "集成测试",
+        "api",
+        "pytest"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:novel-character-generator/tests/integration/test_character_entity_api.py:test_character_merge_and_split_are_audited_idempotent_and_revision_safe",
+      "type": "function",
+      "name": "test_character_merge_and_split_are_audited_idempotent_and_revision_safe",
+      "filePath": "novel-character-generator/tests/integration/test_character_entity_api.py",
+      "lineRange": [
+        36,
+        441
+      ],
+      "summary": "验证“test_character_merge_and_split_are_audited_idempotent_and_revision_safe”覆盖的业务契约、状态变化与异常边界。",
+      "tags": [
+        "测试",
+        "pytest",
+        "契约验证"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:novel-character-generator/tests/integration/test_document_versions.py",
+      "type": "file",
+      "name": "test_document_versions.py",
+      "filePath": "novel-character-generator/tests/integration/test_document_versions.py",
+      "summary": "集成测试新上传文档会创建不可变源版本的版本管理约束。",
+      "tags": [
+        "测试",
+        "集成测试",
+        "api",
+        "pytest"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:novel-character-generator/tests/integration/test_document_versions.py:test_new_upload_creates_immutable_source_version",
+      "type": "function",
+      "name": "test_new_upload_creates_immutable_source_version",
+      "filePath": "novel-character-generator/tests/integration/test_document_versions.py",
+      "lineRange": [
+        22,
+        82
+      ],
+      "summary": "验证“test_new_upload_creates_immutable_source_version”覆盖的业务契约、状态变化与异常边界。",
+      "tags": [
+        "测试",
+        "pytest",
+        "契约验证"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:novel-character-generator/tests/integration/test_evaluation_repository.py",
+      "type": "file",
+      "name": "test_evaluation_repository.py",
+      "filePath": "novel-character-generator/tests/integration/test_evaluation_repository.py",
+      "summary": "集成测试评测数据集的租户隔离、冻结语义与评测结果唯一性。",
+      "tags": [
+        "测试",
+        "集成测试",
+        "api",
+        "pytest"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:novel-character-generator/tests/integration/test_evaluation_repository.py:test_evaluation_dataset_isolation_freeze_and_result_uniqueness",
+      "type": "function",
+      "name": "test_evaluation_dataset_isolation_freeze_and_result_uniqueness",
+      "filePath": "novel-character-generator/tests/integration/test_evaluation_repository.py",
+      "lineRange": [
+        23,
+        102
+      ],
+      "summary": "验证“test_evaluation_dataset_isolation_freeze_and_result_uniqueness”覆盖的业务契约、状态变化与异常边界。",
+      "tags": [
+        "测试",
+        "pytest",
+        "契约验证"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:novel-character-generator/tests/integration/test_extraction_slice.py",
+      "type": "file",
+      "name": "test_extraction_slice.py",
+      "filePath": "novel-character-generator/tests/integration/test_extraction_slice.py",
+      "summary": "集成测试角色抽取切片的证据溯源和重复执行幂等性。",
+      "tags": [
+        "测试",
+        "集成测试",
+        "api",
+        "pytest"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:novel-character-generator/tests/integration/test_extraction_slice.py:test_character_extraction_slice_is_grounded_and_idempotent",
+      "type": "function",
+      "name": "test_character_extraction_slice_is_grounded_and_idempotent",
+      "filePath": "novel-character-generator/tests/integration/test_extraction_slice.py",
+      "lineRange": [
+        24,
+        70
+      ],
+      "summary": "验证“test_character_extraction_slice_is_grounded_and_idempotent”覆盖的业务契约、状态变化与异常边界。",
+      "tags": [
+        "测试",
+        "pytest",
+        "契约验证"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:novel-character-generator/tests/integration/test_health.py",
+      "type": "file",
+      "name": "test_health.py",
+      "filePath": "novel-character-generator/tests/integration/test_health.py",
+      "summary": "集成测试健康检查、统一校验错误、OpenAPI 路由文档及 API 密钥权限能力。",
+      "tags": [
+        "测试",
+        "集成测试",
+        "api",
+        "pytest"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:novel-character-generator/tests/integration/test_health.py:test_health_endpoints",
+      "type": "function",
+      "name": "test_health_endpoints",
+      "filePath": "novel-character-generator/tests/integration/test_health.py",
+      "lineRange": [
+        7,
+        10
+      ],
+      "summary": "验证“test_health_endpoints”覆盖的业务契约、状态变化与异常边界。",
+      "tags": [
+        "测试",
+        "pytest",
+        "契约验证"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:novel-character-generator/tests/integration/test_health.py:test_validation_errors_use_stable_envelope",
+      "type": "function",
+      "name": "test_validation_errors_use_stable_envelope",
+      "filePath": "novel-character-generator/tests/integration/test_health.py",
+      "lineRange": [
+        13,
+        19
+      ],
+      "summary": "验证“test_validation_errors_use_stable_envelope”覆盖的业务契约、状态变化与异常边界。",
+      "tags": [
+        "测试",
+        "pytest",
+        "契约验证"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:novel-character-generator/tests/integration/test_health.py:test_openapi_exposes_documented_phase_one_routes",
+      "type": "function",
+      "name": "test_openapi_exposes_documented_phase_one_routes",
+      "filePath": "novel-character-generator/tests/integration/test_health.py",
+      "lineRange": [
+        22,
+        45
+      ],
+      "summary": "验证“test_openapi_exposes_documented_phase_one_routes”覆盖的业务契约、状态变化与异常边界。",
+      "tags": [
+        "测试",
+        "pytest",
+        "契约验证"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:novel-character-generator/tests/integration/test_health.py:test_api_key_roles_capabilities_and_metrics",
+      "type": "function",
+      "name": "test_api_key_roles_capabilities_and_metrics",
+      "filePath": "novel-character-generator/tests/integration/test_health.py",
+      "lineRange": [
+        48,
+        71
+      ],
+      "summary": "验证“test_api_key_roles_capabilities_and_metrics”覆盖的业务契约、状态变化与异常边界。",
+      "tags": [
+        "测试",
+        "pytest",
+        "契约验证"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:novel-character-generator/tests/integration/test_ingestion_slice.py",
+      "type": "file",
+      "name": "test_ingestion_slice.py",
+      "filePath": "novel-character-generator/tests/integration/test_ingestion_slice.py",
+      "summary": "集成测试从文本上传、运行创建、后台处理到查询结果的最小摄取流程。",
+      "tags": [
+        "测试",
+        "集成测试",
+        "api",
+        "pytest"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:novel-character-generator/tests/integration/test_ingestion_slice.py:test_upload_run_worker_and_query",
+      "type": "function",
+      "name": "test_upload_run_worker_and_query",
+      "filePath": "novel-character-generator/tests/integration/test_ingestion_slice.py",
+      "lineRange": [
+        15,
+        49
+      ],
+      "summary": "验证“test_upload_run_worker_and_query”覆盖的业务契约、状态变化与异常边界。",
+      "tags": [
+        "测试",
+        "pytest",
+        "契约验证"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:novel-character-generator/tests/integration/test_migrations.py",
+      "type": "file",
+      "name": "test_migrations.py",
+      "filePath": "novel-character-generator/tests/integration/test_migrations.py",
+      "summary": "集成测试 Alembic 初始迁移的升级与降级可执行性。",
+      "tags": [
+        "测试",
+        "集成测试",
+        "api",
+        "pytest"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:novel-character-generator/tests/integration/test_migrations.py:test_initial_migration_upgrade_and_downgrade",
+      "type": "function",
+      "name": "test_initial_migration_upgrade_and_downgrade",
+      "filePath": "novel-character-generator/tests/integration/test_migrations.py",
+      "lineRange": [
+        51,
+        66
+      ],
+      "summary": "验证“test_initial_migration_upgrade_and_downgrade”覆盖的业务契约、状态变化与异常边界。",
+      "tags": [
+        "测试",
+        "pytest",
+        "契约验证"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:novel-character-generator/tests/integration/test_run_events_and_external_operations.py",
+      "type": "file",
+      "name": "test_run_events_and_external_operations.py",
+      "filePath": "novel-character-generator/tests/integration/test_run_events_and_external_operations.py",
+      "summary": "集成测试运行事件的追加式恢复，以及外部操作的幂等键与围栏令牌保护。",
+      "tags": [
+        "测试",
+        "集成测试",
+        "api",
+        "pytest"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:novel-character-generator/tests/integration/test_run_events_and_external_operations.py:test_run_events_are_append_only_and_support_resume",
+      "type": "function",
+      "name": "test_run_events_are_append_only_and_support_resume",
+      "filePath": "novel-character-generator/tests/integration/test_run_events_and_external_operations.py",
+      "lineRange": [
+        25,
+        64
+      ],
+      "summary": "验证“test_run_events_are_append_only_and_support_resume”覆盖的业务契约、状态变化与异常边界。",
+      "tags": [
+        "测试",
+        "pytest",
+        "契约验证"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:novel-character-generator/tests/integration/test_run_events_and_external_operations.py:test_external_operation_enforces_idempotency_and_fencing",
+      "type": "function",
+      "name": "test_external_operation_enforces_idempotency_and_fencing",
+      "filePath": "novel-character-generator/tests/integration/test_run_events_and_external_operations.py",
+      "lineRange": [
+        68,
+        152
+      ],
+      "summary": "验证“test_external_operation_enforces_idempotency_and_fencing”覆盖的业务契约、状态变化与异常边界。",
+      "tags": [
+        "测试",
+        "pytest",
+        "契约验证"
+      ],
+      "complexity": "complex"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:novel-character-generator/tests/integration/test_approval_decisions.py",
+      "target": "function:novel-character-generator/tests/integration/test_approval_decisions.py:test_deferred_approval_can_later_be_rejected",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/tests/integration/test_approval_decisions.py",
+      "target": "function:novel-character-generator/tests/integration/test_approval_decisions.py:test_deferred_approval_can_later_be_rejected",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/tests/integration/test_character_appearance_api.py",
+      "target": "function:novel-character-generator/tests/integration/test_character_appearance_api.py:test_render_profile_conflict_resolution_and_temporal_snapshot",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/tests/integration/test_character_appearance_api.py",
+      "target": "function:novel-character-generator/tests/integration/test_character_appearance_api.py:test_render_profile_conflict_resolution_and_temporal_snapshot",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/tests/integration/test_character_entity_api.py",
+      "target": "function:novel-character-generator/tests/integration/test_character_entity_api.py:test_character_merge_and_split_are_audited_idempotent_and_revision_safe",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/tests/integration/test_character_entity_api.py",
+      "target": "function:novel-character-generator/tests/integration/test_character_entity_api.py:test_character_merge_and_split_are_audited_idempotent_and_revision_safe",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/tests/integration/test_document_versions.py",
+      "target": "function:novel-character-generator/tests/integration/test_document_versions.py:test_new_upload_creates_immutable_source_version",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/tests/integration/test_document_versions.py",
+      "target": "function:novel-character-generator/tests/integration/test_document_versions.py:test_new_upload_creates_immutable_source_version",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/tests/integration/test_evaluation_repository.py",
+      "target": "function:novel-character-generator/tests/integration/test_evaluation_repository.py:test_evaluation_dataset_isolation_freeze_and_result_uniqueness",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/tests/integration/test_evaluation_repository.py",
+      "target": "function:novel-character-generator/tests/integration/test_evaluation_repository.py:test_evaluation_dataset_isolation_freeze_and_result_uniqueness",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/tests/integration/test_extraction_slice.py",
+      "target": "function:novel-character-generator/tests/integration/test_extraction_slice.py:test_character_extraction_slice_is_grounded_and_idempotent",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/tests/integration/test_extraction_slice.py",
+      "target": "function:novel-character-generator/tests/integration/test_extraction_slice.py:test_character_extraction_slice_is_grounded_and_idempotent",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/tests/integration/test_health.py",
+      "target": "function:novel-character-generator/tests/integration/test_health.py:test_health_endpoints",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/tests/integration/test_health.py",
+      "target": "function:novel-character-generator/tests/integration/test_health.py:test_validation_errors_use_stable_envelope",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/tests/integration/test_health.py",
+      "target": "function:novel-character-generator/tests/integration/test_health.py:test_openapi_exposes_documented_phase_one_routes",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/tests/integration/test_health.py",
+      "target": "function:novel-character-generator/tests/integration/test_health.py:test_api_key_roles_capabilities_and_metrics",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/tests/integration/test_health.py",
+      "target": "function:novel-character-generator/tests/integration/test_health.py:test_health_endpoints",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/tests/integration/test_health.py",
+      "target": "function:novel-character-generator/tests/integration/test_health.py:test_validation_errors_use_stable_envelope",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/tests/integration/test_health.py",
+      "target": "function:novel-character-generator/tests/integration/test_health.py:test_openapi_exposes_documented_phase_one_routes",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/tests/integration/test_health.py",
+      "target": "function:novel-character-generator/tests/integration/test_health.py:test_api_key_roles_capabilities_and_metrics",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/tests/integration/test_ingestion_slice.py",
+      "target": "function:novel-character-generator/tests/integration/test_ingestion_slice.py:test_upload_run_worker_and_query",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/tests/integration/test_ingestion_slice.py",
+      "target": "function:novel-character-generator/tests/integration/test_ingestion_slice.py:test_upload_run_worker_and_query",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/tests/integration/test_migrations.py",
+      "target": "function:novel-character-generator/tests/integration/test_migrations.py:test_initial_migration_upgrade_and_downgrade",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/tests/integration/test_migrations.py",
+      "target": "function:novel-character-generator/tests/integration/test_migrations.py:test_initial_migration_upgrade_and_downgrade",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/tests/integration/test_run_events_and_external_operations.py",
+      "target": "function:novel-character-generator/tests/integration/test_run_events_and_external_operations.py:test_run_events_are_append_only_and_support_resume",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/tests/integration/test_run_events_and_external_operations.py",
+      "target": "function:novel-character-generator/tests/integration/test_run_events_and_external_operations.py:test_external_operation_enforces_idempotency_and_fencing",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/tests/integration/test_run_events_and_external_operations.py",
+      "target": "function:novel-character-generator/tests/integration/test_run_events_and_external_operations.py:test_run_events_are_append_only_and_support_resume",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/tests/integration/test_run_events_and_external_operations.py",
+      "target": "function:novel-character-generator/tests/integration/test_run_events_and_external_operations.py:test_external_operation_enforces_idempotency_and_fencing",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    }
+  ]
+}

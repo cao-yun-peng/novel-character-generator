@@ -1,0 +1,60 @@
+{
+  "issues": [],
+  "warnings": [
+    "Node 'file:.DS_Store' has no edges (orphan)",
+    "Node 'file:.understand-anything/.understandignore' has no edges (orphan)",
+    "Node 'config:.understand-anything/config.json' has no edges (orphan)",
+    "Node 'document:novel_character_generator_tech_doc.md' has no edges (orphan)",
+    "Node 'file:novel-character-generator/_shared/.DS_Store' has no edges (orphan)",
+    "Node 'file:novel-character-generator/.DS_Store' has no edges (orphan)",
+    "Node 'file:novel-character-generator/.python-version' has no edges (orphan)",
+    "Node 'document:novel-character-generator/data/fixtures/upload-character-novel.txt' has no edges (orphan)",
+    "Node 'document:novel-character-generator/data/fixtures/upload-smoke-novel.txt' has no edges (orphan)",
+    "Node 'file:novel-character-generator/migrations/script.py.mako' has no edges (orphan)",
+    "Node 'file:novel-character-generator/src/novel_character_generator/__init__.py' has no edges (orphan)",
+    "Node 'file:novel-character-generator/src/novel_character_generator/agents/__init__.py' has no edges (orphan)",
+    "Node 'file:novel-character-generator/src/novel_character_generator/agents/tools/__init__.py' has no edges (orphan)",
+    "Node 'file:novel-character-generator/src/novel_character_generator/api/__init__.py' has no edges (orphan)",
+    "Node 'file:novel-character-generator/src/novel_character_generator/application/__init__.py' has no edges (orphan)",
+    "Node 'file:novel-character-generator/src/novel_character_generator/application/commands/__init__.py' has no edges (orphan)",
+    "Node 'file:novel-character-generator/src/novel_character_generator/application/ports/__init__.py' has no edges (orphan)",
+    "Node 'file:novel-character-generator/src/novel_character_generator/application/queries/__init__.py' has no edges (orphan)",
+    "Node 'file:novel-character-generator/src/novel_character_generator/application/services/__init__.py' has no edges (orphan)",
+    "Node 'file:novel-character-generator/src/novel_character_generator/domain/__init__.py' has no edges (orphan)",
+    "Node 'file:novel-character-generator/src/novel_character_generator/domain/entities/__init__.py' has no edges (orphan)",
+    "Node 'file:novel-character-generator/src/novel_character_generator/domain/policies/__init__.py' has no edges (orphan)",
+    "Node 'file:novel-character-generator/src/novel_character_generator/domain/value_objects/__init__.py' has no edges (orphan)",
+    "Node 'file:novel-character-generator/src/novel_character_generator/infrastructure/__init__.py' has no edges (orphan)",
+    "Node 'file:novel-character-generator/src/novel_character_generator/infrastructure/db/__init__.py' has no edges (orphan)",
+    "Node 'file:novel-character-generator/src/novel_character_generator/infrastructure/db/repositories/__init__.py' has no edges (orphan)",
+    "Node 'file:novel-character-generator/src/novel_character_generator/infrastructure/image/__init__.py' has no edges (orphan)",
+    "Node 'file:novel-character-generator/src/novel_character_generator/infrastructure/llm/__init__.py' has no edges (orphan)",
+    "Node 'file:novel-character-generator/src/novel_character_generator/infrastructure/observability/__init__.py' has no edges (orphan)",
+    "Node 'file:novel-character-generator/src/novel_character_generator/infrastructure/storage/__init__.py' has no edges (orphan)",
+    "Node 'file:novel-character-generator/src/novel_character_generator/workers/__init__.py' has no edges (orphan)",
+    "Node 'file:novel-character-generator/src/novel_character_generator/workers/handlers/__init__.py' has no edges (orphan)",
+    "Node 'file:novel-character-generator/src/novel_character_generator/workflows/__init__.py' has no edges (orphan)",
+    "Node 'file:novel-character-generator/src/novel_character_generator/workflows/nodes/__init__.py' has no edges (orphan)"
+  ],
+  "stats": {
+    "totalNodes": 473,
+    "totalEdges": 836,
+    "totalLayers": 8,
+    "tourSteps": 10,
+    "nodeTypes": {
+      "file": 111,
+      "function": 147,
+      "class": 189,
+      "config": 4,
+      "document": 22
+    },
+    "edgeTypes": {
+      "contains": 336,
+      "exports": 336,
+      "imports": 104,
+      "calls": 28,
+      "configures": 3,
+      "documents": 29
+    }
+  }
+}

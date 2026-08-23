@@ -1,0 +1,290 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 3,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "novel-character-generator/.env.example",
+      "language": "config",
+      "fileCategory": "config",
+      "totalLines": 29,
+      "nonEmptyLines": 29,
+      "definitions": [
+        {
+          "name": "APP_ENV",
+          "kind": "variable",
+          "fields": [],
+          "startLine": 1,
+          "endLine": 1
+        },
+        {
+          "name": "LOG_LEVEL",
+          "kind": "variable",
+          "fields": [],
+          "startLine": 2,
+          "endLine": 2
+        },
+        {
+          "name": "LOG_FORMAT",
+          "kind": "variable",
+          "fields": [],
+          "startLine": 3,
+          "endLine": 3
+        },
+        {
+          "name": "OTEL_ENABLED",
+          "kind": "variable",
+          "fields": [],
+          "startLine": 4,
+          "endLine": 4
+        },
+        {
+          "name": "OTEL_SERVICE_NAME",
+          "kind": "variable",
+          "fields": [],
+          "startLine": 5,
+          "endLine": 5
+        },
+        {
+          "name": "OTEL_EXPORTER_OTLP_ENDPOINT",
+          "kind": "variable",
+          "fields": [],
+          "startLine": 6,
+          "endLine": 6
+        },
+        {
+          "name": "METRICS_ENABLED",
+          "kind": "variable",
+          "fields": [],
+          "startLine": 7,
+          "endLine": 7
+        },
+        {
+          "name": "METRICS_PATH",
+          "kind": "variable",
+          "fields": [],
+          "startLine": 8,
+          "endLine": 8
+        },
+        {
+          "name": "DATABASE_URL",
+          "kind": "variable",
+          "fields": [],
+          "startLine": 9,
+          "endLine": 9
+        },
+        {
+          "name": "ARTIFACT_STORE",
+          "kind": "variable",
+          "fields": [],
+          "startLine": 10,
+          "endLine": 10
+        },
+        {
+          "name": "ARTIFACT_LOCAL_ROOT",
+          "kind": "variable",
+          "fields": [],
+          "startLine": 11,
+          "endLine": 11
+        },
+        {
+          "name": "MAX_UPLOAD_BYTES",
+          "kind": "variable",
+          "fields": [],
+          "startLine": 12,
+          "endLine": 12
+        },
+        {
+          "name": "MAX_CHUNK_INPUT_TOKENS",
+          "kind": "variable",
+          "fields": [],
+          "startLine": 13,
+          "endLine": 13
+        },
+        {
+          "name": "MAX_TASK_ATTEMPTS",
+          "kind": "variable",
+          "fields": [],
+          "startLine": 14,
+          "endLine": 14
+        },
+        {
+          "name": "WORKER_LEASE_SECONDS",
+          "kind": "variable",
+          "fields": [],
+          "startLine": 15,
+          "endLine": 15
+        },
+        {
+          "name": "LLM_PROVIDER",
+          "kind": "variable",
+          "fields": [],
+          "startLine": 16,
+          "endLine": 16
+        },
+        {
+          "name": "LLM_API_KEY",
+          "kind": "variable",
+          "fields": [],
+          "startLine": 17,
+          "endLine": 17
+        },
+        {
+          "name": "LLM_BASE_URL",
+          "kind": "variable",
+          "fields": [],
+          "startLine": 18,
+          "endLine": 18
+        },
+        {
+          "name": "LLM_MODEL",
+          "kind": "variable",
+          "fields": [],
+          "startLine": 19,
+          "endLine": 19
+        },
+        {
+          "name": "AGENT_RUNTIME_ENABLED",
+          "kind": "variable",
+          "fields": [],
+          "startLine": 20,
+          "endLine": 20
+        },
+        {
+          "name": "AGENT_MAX_TURNS_DEFAULT",
+          "kind": "variable",
+          "fields": [],
+          "startLine": 21,
+          "endLine": 21
+        },
+        {
+          "name": "AGENT_MAX_TOOL_CALLS_DEFAULT",
+          "kind": "variable",
+          "fields": [],
+          "startLine": 22,
+          "endLine": 22
+        },
+        {
+          "name": "AGENT_MAX_REFLECTION_ROUNDS",
+          "kind": "variable",
+          "fields": [],
+          "startLine": 23,
+          "endLine": 23
+        },
+        {
+          "name": "AGENT_MAX_COST_DEFAULT",
+          "kind": "variable",
+          "fields": [],
+          "startLine": 24,
+          "endLine": 24
+        },
+        {
+          "name": "AGENT_DEADLINE_SECONDS_DEFAULT",
+          "kind": "variable",
+          "fields": [],
+          "startLine": 25,
+          "endLine": 25
+        },
+        {
+          "name": "AGENT_TOOL_WRITE_POLICY",
+          "kind": "variable",
+          "fields": [],
+          "startLine": 26,
+          "endLine": 26
+        },
+        {
+          "name": "AUTH_MODE",
+          "kind": "variable",
+          "fields": [],
+          "startLine": 27,
+          "endLine": 27
+        },
+        {
+          "name": "USER_API_KEY",
+          "kind": "variable",
+          "fields": [],
+          "startLine": 28,
+          "endLine": 28
+        },
+        {
+          "name": "ADMIN_API_KEY",
+          "kind": "variable",
+          "fields": [],
+          "startLine": 29,
+          "endLine": 29
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "definitionCount": 29
+      }
+    },
+    {
+      "path": "novel-character-generator/alembic.ini",
+      "language": "config",
+      "fileCategory": "config",
+      "totalLines": 39,
+      "nonEmptyLines": 31,
+      "metrics": {}
+    },
+    {
+      "path": "novel-character-generator/pyproject.toml",
+      "language": "toml",
+      "fileCategory": "config",
+      "totalLines": 51,
+      "nonEmptyLines": 44,
+      "sections": [
+        {
+          "heading": "build-system",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "project",
+          "level": 1,
+          "line": 5
+        },
+        {
+          "heading": "dependency-groups",
+          "level": 1,
+          "line": 23
+        },
+        {
+          "heading": "tool.hatch.build.targets.wheel",
+          "level": 5,
+          "line": 32
+        },
+        {
+          "heading": "tool.pytest.ini_options",
+          "level": 3,
+          "line": 35
+        },
+        {
+          "heading": "tool.ruff",
+          "level": 2,
+          "line": 40
+        },
+        {
+          "heading": "tool.ruff.lint",
+          "level": 3,
+          "line": 45
+        },
+        {
+          "heading": "tool.mypy",
+          "level": 2,
+          "line": 48
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 8
+      }
+    }
+  ]
+}

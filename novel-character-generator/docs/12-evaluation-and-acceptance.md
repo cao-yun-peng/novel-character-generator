@@ -2,7 +2,7 @@
 
 > [← 上一篇](11-security-and-data-governance.md) · [文档索引](README.md) · [下一篇 →](13-observability-logging-and-cost.md)
 >
-> 文档版本：2.7 · 源章节：15. 测试与验收 · 修订日期：2026-08-22
+> 文档版本：2.8 · 源章节：15. 测试与验收 · 修订日期：2026-08-22
 
 ## 15. 测试与验收
 

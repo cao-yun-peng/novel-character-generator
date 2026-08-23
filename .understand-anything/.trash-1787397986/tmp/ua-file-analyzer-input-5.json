@@ -1,0 +1,19 @@
+{
+  "projectRoot": "E:\\project\\agent\\novel-character-generator",
+  "batchFiles": [
+    {"path": "novel-character-generator/src/novel_character_generator/application/ports/artifact_store.py", "language": "python", "sizeLines": 7, "fileCategory": "code"},
+    {"path": "novel-character-generator/src/novel_character_generator/application/services/ingestion_service.py", "language": "python", "sizeLines": 146, "fileCategory": "code"},
+    {"path": "novel-character-generator/src/novel_character_generator/domain/entities/document.py", "language": "python", "sizeLines": 52, "fileCategory": "code"},
+    {"path": "novel-character-generator/src/novel_character_generator/domain/policies/text_processing.py", "language": "python", "sizeLines": 196, "fileCategory": "code"},
+    {"path": "novel-character-generator/src/novel_character_generator/infrastructure/db/repositories/ingestion.py", "language": "python", "sizeLines": 377, "fileCategory": "code"},
+    {"path": "novel-character-generator/src/novel_character_generator/workers/handlers/ingestion.py", "language": "python", "sizeLines": 117, "fileCategory": "code"}
+  ],
+  "batchImportData": {
+    "novel-character-generator/src/novel_character_generator/application/ports/artifact_store.py": [],
+    "novel-character-generator/src/novel_character_generator/application/services/ingestion_service.py": ["novel-character-generator/src/novel_character_generator/application/ports/artifact_store.py", "novel-character-generator/src/novel_character_generator/domain/policies/text_processing.py", "novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py", "novel-character-generator/src/novel_character_generator/infrastructure/db/repositories/ingestion.py"],
+    "novel-character-generator/src/novel_character_generator/domain/entities/document.py": [],
+    "novel-character-generator/src/novel_character_generator/domain/policies/text_processing.py": ["novel-character-generator/src/novel_character_generator/domain/entities/document.py"],
+    "novel-character-generator/src/novel_character_generator/infrastructure/db/repositories/ingestion.py": ["novel-character-generator/src/novel_character_generator/domain/entities/document.py", "novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py", "novel-character-generator/src/novel_character_generator/infrastructure/db/repositories/run_events.py"],
+    "novel-character-generator/src/novel_character_generator/workers/handlers/ingestion.py": ["novel-character-generator/src/novel_character_generator/application/ports/artifact_store.py", "novel-character-generator/src/novel_character_generator/domain/policies/text_processing.py", "novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py", "novel-character-generator/src/novel_character_generator/infrastructure/db/repositories/ingestion.py", "novel-character-generator/src/novel_character_generator/workers/task_claim.py"]
+  }
+}

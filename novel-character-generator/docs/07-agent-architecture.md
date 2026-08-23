@@ -2,7 +2,7 @@
 
 > [← 上一篇](06-image-generation-and-drift-control.md) · [文档索引](README.md) · [下一篇 →](08-task-recovery.md)
 >
-> 文档版本：2.7 · 源章节：10. Agent 增强架构 · 修订日期：2026-08-22
+> 文档版本：2.8 · 源章节：10. Agent 增强架构 · 修订日期：2026-08-22
 
 ## 10. Agent 增强架构
 

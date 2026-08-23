@@ -1,6 +1,6 @@
 # 小说角色插画与 3D 建模生成器——技术设计文档
 
-> 文档版本：2.7
+> 文档版本：2.8
 >
 > 修订日期：2026-08-22
 >
@@ -10,6 +10,9 @@
 
 | 文档 | 内容 |
 |---|---|
+| [开始这里：项目到底做什么](novel-character-generator/docs/00-start-here.md) | 输入、处理流程、最终产物和当前可运行主链 |
+| [当前实现状态](novel-character-generator/docs/00-current-status.md) | 已实现、部分实现、仅设计和二期能力边界 |
+| [代码导航](novel-character-generator/docs/00-code-navigation.md) | 功能到 API、Service、模型、Worker 和测试的映射 |
 | [项目目标与设计原则](novel-character-generator/docs/01-project-overview-and-principles.md) | 项目目标、一期/二期范围、证据优先与防漂移基本原则 |
 | [架构蓝图与技术栈](novel-character-generator/docs/02-architecture-and-tech-stack.md) | 逻辑架构、运行拓扑、技术选型和代码骨架 |
 | [领域模型与数据库设计](novel-character-generator/docs/03-domain-data-model.md) | 核心表、证据模型、时间线、神情、外观状态和任务状态机 |

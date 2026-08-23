@@ -1,0 +1,13 @@
+{
+  "fixedSectionOk": true,
+  "nodesRecovered": 0,
+  "edgesRestored": 0,
+  "crossBatchEdgesAdded": 0,
+  "typesRemapped": 0,
+  "complexityRemapped": 0,
+  "notes": [
+    "Merge report contained no fixed-item, warning, or error entries; the 473 input nodes and 836 input edges were preserved in the assembled graph.",
+    "All 104 import-map relationships were verified against assembled imports edges; no relationships were missing or extra.",
+    "All assembled edges reference existing nodes; batch outputs contained no missing node IDs, unknown node types, unknown complexity values, duplicate node IDs, or dangling edges."
+  ]
+}

@@ -1,0 +1,1411 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 25,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "novel-character-generator/src/novel_character_generator/application/ports/__init__.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 1,
+      "nonEmptyLines": 0,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "novel-character-generator/src/novel_character_generator/application/queries/__init__.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 1,
+      "nonEmptyLines": 0,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "novel-character-generator/src/novel_character_generator/application/services/__init__.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 1,
+      "nonEmptyLines": 0,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "novel-character-generator/src/novel_character_generator/domain/__init__.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 1,
+      "nonEmptyLines": 0,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "novel-character-generator/src/novel_character_generator/domain/entities/__init__.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 1,
+      "nonEmptyLines": 0,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "novel-character-generator/src/novel_character_generator/domain/entities/character.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 157,
+      "nonEmptyLines": 143,
+      "classes": [
+        {
+          "name": "FeatureObservation",
+          "startLine": 10,
+          "endLine": 60,
+          "methods": [
+            "validate_text_source"
+          ],
+          "properties": [
+            "id",
+            "character_id",
+            "field_path",
+            "value",
+            "source_kind",
+            "source_document_version_id",
+            "source_chunk_id",
+            "mention_span_id",
+            "evidence_quote",
+            "char_start",
+            "char_end",
+            "chapter_ordinal",
+            "scene_id",
+            "event_id",
+            "temporal_scope",
+            "epistemic_status",
+            "grounding_status",
+            "confidence",
+            "extraction_run_id",
+            "manual_approval_id",
+            "extractor_version",
+            "supersedes_id",
+            "record_status",
+            "recorded_at",
+            "invalidated_at",
+            "invalidated_by_run_id"
+          ]
+        },
+        {
+          "name": "FeatureSuggestion",
+          "startLine": 63,
+          "endLine": 74,
+          "methods": [],
+          "properties": [
+            "id",
+            "character_id",
+            "field_path",
+            "value",
+            "suggestion_kind",
+            "resource_version",
+            "confidence",
+            "allowed_fields",
+            "rationale",
+            "status",
+            "approval_id"
+          ]
+        },
+        {
+          "name": "ExpressionObservation",
+          "startLine": 77,
+          "endLine": 108,
+          "methods": [
+            "validate_span"
+          ],
+          "properties": [
+            "id",
+            "character_id",
+            "source_document_version_id",
+            "source_chunk_id",
+            "char_start",
+            "char_end",
+            "outward_emotion",
+            "expression_text",
+            "visible_cues",
+            "intensity",
+            "valence",
+            "arousal",
+            "is_masked",
+            "internal_emotion",
+            "target_character_id",
+            "cause_event_id",
+            "scene_id",
+            "temporal_scope",
+            "evidence_quote",
+            "epistemic_status",
+            "confidence",
+            "extraction_run_id",
+            "extractor_version"
+          ]
+        },
+        {
+          "name": "CharacterAppearanceState",
+          "startLine": 111,
+          "endLine": 138,
+          "methods": [],
+          "properties": [
+            "id",
+            "character_id",
+            "temporal_scope",
+            "label",
+            "state_kind",
+            "merge_priority",
+            "age_stage",
+            "face",
+            "body",
+            "hair",
+            "clothing",
+            "injuries",
+            "distinctive_marks",
+            "cleanliness",
+            "disguise",
+            "field_sources",
+            "resolver_version",
+            "created_by_run_id",
+            "record_status",
+            "status"
+          ]
+        },
+        {
+          "name": "CharacterRenderProfile",
+          "startLine": 141,
+          "endLine": 157,
+          "methods": [],
+          "properties": [
+            "id",
+            "character_id",
+            "version",
+            "status",
+            "identity_anchor",
+            "default_appearance_state_id",
+            "default_stage_key",
+            "appearance_state_ids",
+            "palette",
+            "field_sources",
+            "field_suggestions",
+            "unresolved_conflicts",
+            "style_preset",
+            "approved_by",
+            "approved_at",
+            "revision"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "FeatureObservation",
+          "line": 10,
+          "isDefault": false
+        },
+        {
+          "name": "FeatureSuggestion",
+          "line": 63,
+          "isDefault": false
+        },
+        {
+          "name": "ExpressionObservation",
+          "line": 77,
+          "isDefault": false
+        },
+        {
+          "name": "CharacterAppearanceState",
+          "line": 111,
+          "isDefault": false
+        },
+        {
+          "name": "CharacterRenderProfile",
+          "line": 141,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "validate_text_source",
+          "callee": "ValueError",
+          "lineNumber": 41
+        },
+        {
+          "caller": "validate_text_source",
+          "callee": "any",
+          "lineNumber": 51
+        },
+        {
+          "caller": "validate_text_source",
+          "callee": "ValueError",
+          "lineNumber": 52
+        },
+        {
+          "caller": "validate_text_source",
+          "callee": "ValueError",
+          "lineNumber": 54
+        },
+        {
+          "caller": "validate_text_source",
+          "callee": "ValueError",
+          "lineNumber": 56
+        },
+        {
+          "caller": "validate_text_source",
+          "callee": "ValueError",
+          "lineNumber": 59
+        },
+        {
+          "caller": "validate_span",
+          "callee": "ValueError",
+          "lineNumber": 107
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 5,
+        "functionCount": 0,
+        "classCount": 5
+      }
+    },
+    {
+      "path": "novel-character-generator/src/novel_character_generator/domain/entities/image.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 28,
+      "nonEmptyLines": 23,
+      "classes": [
+        {
+          "name": "CharacterImageSet",
+          "startLine": 7,
+          "endLine": 15,
+          "methods": [],
+          "properties": [
+            "id",
+            "character_id",
+            "render_profile_version",
+            "version",
+            "default_representative_image_id",
+            "stage_image_ids",
+            "selection_policy_version",
+            "status"
+          ]
+        },
+        {
+          "name": "CharacterStageImage",
+          "startLine": 18,
+          "endLine": 28,
+          "methods": [],
+          "properties": [
+            "id",
+            "image_set_id",
+            "appearance_state_id",
+            "resolved_snapshot_hash",
+            "stage_label",
+            "representative_event_id",
+            "candidate_image_ids",
+            "baseline_image_id",
+            "display_order",
+            "selection_reason_codes"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "CharacterImageSet",
+          "line": 7,
+          "isDefault": false
+        },
+        {
+          "name": "CharacterStageImage",
+          "line": 18,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 2,
+        "functionCount": 0,
+        "classCount": 2
+      }
+    },
+    {
+      "path": "novel-character-generator/src/novel_character_generator/domain/entities/story.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 56,
+      "nonEmptyLines": 47,
+      "classes": [
+        {
+          "name": "Timeline",
+          "startLine": 9,
+          "endLine": 15,
+          "methods": [],
+          "properties": [
+            "id",
+            "novel_id",
+            "name",
+            "parent_timeline_id",
+            "branch_event_id",
+            "canonicality"
+          ]
+        },
+        {
+          "name": "StoryEvent",
+          "startLine": 18,
+          "endLine": 24,
+          "methods": [],
+          "properties": [
+            "id",
+            "timeline_id",
+            "name",
+            "story_order",
+            "starts_at",
+            "ends_at"
+          ]
+        },
+        {
+          "name": "EventParticipant",
+          "startLine": 27,
+          "endLine": 31,
+          "methods": [],
+          "properties": [
+            "event_id",
+            "character_id",
+            "role",
+            "evidence_observation_ids"
+          ]
+        },
+        {
+          "name": "Scene",
+          "startLine": 34,
+          "endLine": 56,
+          "methods": [],
+          "properties": [
+            "id",
+            "novel_id",
+            "timeline_id",
+            "event_id",
+            "chapter_ordinal",
+            "narrative_order",
+            "point_of_view_character_id",
+            "label",
+            "source_document_version_id",
+            "source_chunk_id",
+            "char_start",
+            "char_end",
+            "presentation_mode",
+            "reality_status",
+            "confidence",
+            "binding_status",
+            "binding_revision",
+            "created_by_run_id"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "Timeline",
+          "line": 9,
+          "isDefault": false
+        },
+        {
+          "name": "StoryEvent",
+          "line": 18,
+          "isDefault": false
+        },
+        {
+          "name": "EventParticipant",
+          "line": 27,
+          "isDefault": false
+        },
+        {
+          "name": "Scene",
+          "line": 34,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 4,
+        "functionCount": 0,
+        "classCount": 4
+      }
+    },
+    {
+      "path": "novel-character-generator/src/novel_character_generator/domain/entities/text.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 38,
+      "nonEmptyLines": 32,
+      "classes": [
+        {
+          "name": "MentionSpan",
+          "startLine": 7,
+          "endLine": 24,
+          "methods": [
+            "validate_span"
+          ],
+          "properties": [
+            "id",
+            "source_document_version_id",
+            "source_chunk_id",
+            "char_start",
+            "char_end",
+            "mention_text",
+            "mention_kind",
+            "candidate_character_ids",
+            "resolved_character_id",
+            "grounding_status",
+            "normalization_map_version"
+          ]
+        },
+        {
+          "name": "AliasAssertion",
+          "startLine": 27,
+          "endLine": 38,
+          "methods": [],
+          "properties": [
+            "id",
+            "alias_text",
+            "normalized_alias",
+            "mention_span_id",
+            "proposed_character_id",
+            "speaker_id",
+            "scene_id",
+            "timeline_id",
+            "supporting_evidence_ids",
+            "opposing_evidence_ids",
+            "status"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "MentionSpan",
+          "line": 7,
+          "isDefault": false
+        },
+        {
+          "name": "AliasAssertion",
+          "line": 27,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "validate_span",
+          "callee": "ValueError",
+          "lineNumber": 23
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 2,
+        "functionCount": 0,
+        "classCount": 2
+      }
+    },
+    {
+      "path": "novel-character-generator/src/novel_character_generator/domain/policies/__init__.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 1,
+      "nonEmptyLines": 0,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "novel-character-generator/src/novel_character_generator/domain/value_objects/__init__.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 1,
+      "nonEmptyLines": 0,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "novel-character-generator/src/novel_character_generator/domain/value_objects/temporal.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 22,
+      "nonEmptyLines": 18,
+      "classes": [
+        {
+          "name": "TemporalScope",
+          "startLine": 8,
+          "endLine": 22,
+          "methods": [],
+          "properties": [
+            "timeline_id",
+            "start_event_id",
+            "end_event_id",
+            "start_scene_order",
+            "end_scene_order",
+            "start_chapter_ordinal",
+            "end_chapter_ordinal",
+            "scope_type",
+            "presentation_mode",
+            "reality_status"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "TemporalScope",
+          "line": 8,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "novel-character-generator/src/novel_character_generator/infrastructure/__init__.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 1,
+      "nonEmptyLines": 0,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "novel-character-generator/src/novel_character_generator/infrastructure/db/__init__.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 1,
+      "nonEmptyLines": 0,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "novel-character-generator/src/novel_character_generator/infrastructure/db/repositories/__init__.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 1,
+      "nonEmptyLines": 0,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "novel-character-generator/src/novel_character_generator/infrastructure/image/__init__.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 1,
+      "nonEmptyLines": 0,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "novel-character-generator/src/novel_character_generator/infrastructure/llm/__init__.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 1,
+      "nonEmptyLines": 0,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "novel-character-generator/src/novel_character_generator/infrastructure/observability/__init__.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 1,
+      "nonEmptyLines": 0,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "novel-character-generator/src/novel_character_generator/infrastructure/storage/__init__.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 1,
+      "nonEmptyLines": 0,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "novel-character-generator/src/novel_character_generator/workers/__init__.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 1,
+      "nonEmptyLines": 0,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "novel-character-generator/src/novel_character_generator/workers/handlers/__init__.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 1,
+      "nonEmptyLines": 0,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "novel-character-generator/src/novel_character_generator/workflows/__init__.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 1,
+      "nonEmptyLines": 0,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "novel-character-generator/src/novel_character_generator/workflows/nodes/__init__.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 1,
+      "nonEmptyLines": 0,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "novel-character-generator/tests/integration/test_agent_execution_service.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 196,
+      "nonEmptyLines": 178,
+      "functions": [
+        {
+          "name": "test_agent_execution_persists_trajectory_and_waiting_approval",
+          "startLine": 76,
+          "endLine": 196,
+          "params": [
+            "tmp_path"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "PublishInput",
+          "startLine": 42,
+          "endLine": 43,
+          "methods": [],
+          "properties": [
+            "profile_id"
+          ]
+        },
+        {
+          "name": "PublishOutput",
+          "startLine": 46,
+          "endLine": 47,
+          "methods": [],
+          "properties": [
+            "published"
+          ]
+        },
+        {
+          "name": "ReviewOutput",
+          "startLine": 50,
+          "endLine": 51,
+          "methods": [],
+          "properties": [
+            "accepted"
+          ]
+        },
+        {
+          "name": "ApprovalModel",
+          "startLine": 54,
+          "endLine": 72,
+          "methods": [
+            "generate_turn"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "PublishInput",
+          "line": 42,
+          "isDefault": false
+        },
+        {
+          "name": "PublishOutput",
+          "line": 46,
+          "isDefault": false
+        },
+        {
+          "name": "ReviewOutput",
+          "line": 50,
+          "isDefault": false
+        },
+        {
+          "name": "ApprovalModel",
+          "line": 54,
+          "isDefault": false
+        },
+        {
+          "name": "test_agent_execution_persists_trajectory_and_waiting_approval",
+          "line": 75,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "generate_turn",
+          "callee": "AgentModelTurn",
+          "lineNumber": 64
+        },
+        {
+          "caller": "generate_turn",
+          "callee": "ToolCallRequest",
+          "lineNumber": 66
+        },
+        {
+          "caller": "test_agent_execution_persists_trajectory_and_waiting_approval",
+          "callee": "Config",
+          "lineNumber": 80
+        },
+        {
+          "caller": "test_agent_execution_persists_trajectory_and_waiting_approval",
+          "callee": "type",
+          "lineNumber": 81
+        },
+        {
+          "caller": "test_agent_execution_persists_trajectory_and_waiting_approval",
+          "callee": "to_thread",
+          "lineNumber": 82
+        },
+        {
+          "caller": "test_agent_execution_persists_trajectory_and_waiting_approval",
+          "callee": "create_async_engine",
+          "lineNumber": 83
+        },
+        {
+          "caller": "test_agent_execution_persists_trajectory_and_waiting_approval",
+          "callee": "async_sessionmaker",
+          "lineNumber": 84
+        },
+        {
+          "caller": "publish",
+          "callee": "AssertionError",
+          "lineNumber": 88
+        },
+        {
+          "caller": "test_agent_execution_persists_trajectory_and_waiting_approval",
+          "callee": "ToolSpec",
+          "lineNumber": 90
+        },
+        {
+          "caller": "test_agent_execution_persists_trajectory_and_waiting_approval",
+          "callee": "Decimal",
+          "lineNumber": 101
+        },
+        {
+          "caller": "test_agent_execution_persists_trajectory_and_waiting_approval",
+          "callee": "ToolRegistry",
+          "lineNumber": 103
+        },
+        {
+          "caller": "test_agent_execution_persists_trajectory_and_waiting_approval",
+          "callee": "registry.register",
+          "lineNumber": 104
+        },
+        {
+          "caller": "test_agent_execution_persists_trajectory_and_waiting_approval",
+          "callee": "RegisteredTool",
+          "lineNumber": 105
+        },
+        {
+          "caller": "test_agent_execution_persists_trajectory_and_waiting_approval",
+          "callee": "StructuredCallAgentRuntime",
+          "lineNumber": 112
+        },
+        {
+          "caller": "test_agent_execution_persists_trajectory_and_waiting_approval",
+          "callee": "ApprovalModel",
+          "lineNumber": 113
+        },
+        {
+          "caller": "test_agent_execution_persists_trajectory_and_waiting_approval",
+          "callee": "Settings",
+          "lineNumber": 116
+        },
+        {
+          "caller": "test_agent_execution_persists_trajectory_and_waiting_approval",
+          "callee": "Decimal",
+          "lineNumber": 119
+        },
+        {
+          "caller": "test_agent_execution_persists_trajectory_and_waiting_approval",
+          "callee": "AgentSpec",
+          "lineNumber": 123
+        },
+        {
+          "caller": "test_agent_execution_persists_trajectory_and_waiting_approval",
+          "callee": "Decimal",
+          "lineNumber": 133
+        },
+        {
+          "caller": "test_agent_execution_persists_trajectory_and_waiting_approval",
+          "callee": "AgentContextPacket",
+          "lineNumber": 137
+        },
+        {
+          "caller": "test_agent_execution_persists_trajectory_and_waiting_approval",
+          "callee": "sessions",
+          "lineNumber": 144
+        },
+        {
+          "caller": "test_agent_execution_persists_trajectory_and_waiting_approval",
+          "callee": "IngestionService",
+          "lineNumber": 145
+        },
+        {
+          "caller": "test_agent_execution_persists_trajectory_and_waiting_approval",
+          "callee": "LocalArtifactStore",
+          "lineNumber": 145
+        },
+        {
+          "caller": "test_agent_execution_persists_trajectory_and_waiting_approval",
+          "callee": "ingestion.upload",
+          "lineNumber": 146
+        },
+        {
+          "caller": "test_agent_execution_persists_trajectory_and_waiting_approval",
+          "callee": "\"第一章\".encode",
+          "lineNumber": 146
+        },
+        {
+          "caller": "test_agent_execution_persists_trajectory_and_waiting_approval",
+          "callee": "ingestion.create_run",
+          "lineNumber": 147
+        },
+        {
+          "caller": "test_agent_execution_persists_trajectory_and_waiting_approval",
+          "callee": "session.scalar",
+          "lineNumber": 149
+        },
+        {
+          "caller": "test_agent_execution_persists_trajectory_and_waiting_approval",
+          "callee": "select(PipelineStepORM).where",
+          "lineNumber": 150
+        },
+        {
+          "caller": "test_agent_execution_persists_trajectory_and_waiting_approval",
+          "callee": "select",
+          "lineNumber": 150
+        },
+        {
+          "caller": "test_agent_execution_persists_trajectory_and_waiting_approval",
+          "callee": "datetime.now",
+          "lineNumber": 156
+        },
+        {
+          "caller": "test_agent_execution_persists_trajectory_and_waiting_approval",
+          "callee": "session.commit",
+          "lineNumber": 158
+        },
+        {
+          "caller": "test_agent_execution_persists_trajectory_and_waiting_approval",
+          "callee": "AgentExecutionService(session).execute",
+          "lineNumber": 160
+        },
+        {
+          "caller": "test_agent_execution_persists_trajectory_and_waiting_approval",
+          "callee": "AgentExecutionService",
+          "lineNumber": 160
+        },
+        {
+          "caller": "test_agent_execution_persists_trajectory_and_waiting_approval",
+          "callee": "len",
+          "lineNumber": 172
+        },
+        {
+          "caller": "test_agent_execution_persists_trajectory_and_waiting_approval",
+          "callee": "sessions",
+          "lineNumber": 174
+        },
+        {
+          "caller": "test_agent_execution_persists_trajectory_and_waiting_approval",
+          "callee": "session.get",
+          "lineNumber": 175
+        },
+        {
+          "caller": "test_agent_execution_persists_trajectory_and_waiting_approval",
+          "callee": "session.get",
+          "lineNumber": 176
+        },
+        {
+          "caller": "test_agent_execution_persists_trajectory_and_waiting_approval",
+          "callee": "session.scalar",
+          "lineNumber": 177
+        },
+        {
+          "caller": "test_agent_execution_persists_trajectory_and_waiting_approval",
+          "callee": "select(AgentTurnORM).where",
+          "lineNumber": 178
+        },
+        {
+          "caller": "test_agent_execution_persists_trajectory_and_waiting_approval",
+          "callee": "select",
+          "lineNumber": 178
+        },
+        {
+          "caller": "test_agent_execution_persists_trajectory_and_waiting_approval",
+          "callee": "session.scalar",
+          "lineNumber": 180
+        },
+        {
+          "caller": "test_agent_execution_persists_trajectory_and_waiting_approval",
+          "callee": "select(ToolCallORM).where",
+          "lineNumber": 181
+        },
+        {
+          "caller": "test_agent_execution_persists_trajectory_and_waiting_approval",
+          "callee": "select",
+          "lineNumber": 181
+        },
+        {
+          "caller": "test_agent_execution_persists_trajectory_and_waiting_approval",
+          "callee": "session.scalar",
+          "lineNumber": 183
+        },
+        {
+          "caller": "test_agent_execution_persists_trajectory_and_waiting_approval",
+          "callee": "select(HumanApprovalORM).where",
+          "lineNumber": 184
+        },
+        {
+          "caller": "test_agent_execution_persists_trajectory_and_waiting_approval",
+          "callee": "select",
+          "lineNumber": 184
+        },
+        {
+          "caller": "test_agent_execution_persists_trajectory_and_waiting_approval",
+          "callee": "engine.dispose",
+          "lineNumber": 196
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 5,
+        "functionCount": 1,
+        "classCount": 4
+      }
+    },
+    {
+      "path": "novel-character-generator/tests/integration/test_approval_and_agent_api.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 218,
+      "nonEmptyLines": 205,
+      "functions": [
+        {
+          "name": "test_approval_cas_resume_and_agent_trajectory_api",
+          "startLine": 36,
+          "endLine": 218,
+          "params": [
+            "tmp_path",
+            "monkeypatch"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "test_approval_cas_resume_and_agent_trajectory_api",
+          "line": 35,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "test_approval_cas_resume_and_agent_trajectory_api",
+          "callee": "Config",
+          "lineNumber": 40
+        },
+        {
+          "caller": "test_approval_cas_resume_and_agent_trajectory_api",
+          "callee": "type",
+          "lineNumber": 41
+        },
+        {
+          "caller": "test_approval_cas_resume_and_agent_trajectory_api",
+          "callee": "to_thread",
+          "lineNumber": 42
+        },
+        {
+          "caller": "test_approval_cas_resume_and_agent_trajectory_api",
+          "callee": "create_async_engine",
+          "lineNumber": 43
+        },
+        {
+          "caller": "test_approval_cas_resume_and_agent_trajectory_api",
+          "callee": "async_sessionmaker",
+          "lineNumber": 44
+        },
+        {
+          "caller": "test_approval_cas_resume_and_agent_trajectory_api",
+          "callee": "datetime.now",
+          "lineNumber": 45
+        },
+        {
+          "caller": "test_approval_cas_resume_and_agent_trajectory_api",
+          "callee": "sessions",
+          "lineNumber": 47
+        },
+        {
+          "caller": "test_approval_cas_resume_and_agent_trajectory_api",
+          "callee": "IngestionService",
+          "lineNumber": 48
+        },
+        {
+          "caller": "test_approval_cas_resume_and_agent_trajectory_api",
+          "callee": "LocalArtifactStore",
+          "lineNumber": 48
+        },
+        {
+          "caller": "test_approval_cas_resume_and_agent_trajectory_api",
+          "callee": "service.upload",
+          "lineNumber": 49
+        },
+        {
+          "caller": "test_approval_cas_resume_and_agent_trajectory_api",
+          "callee": "\"第一章\".encode",
+          "lineNumber": 49
+        },
+        {
+          "caller": "test_approval_cas_resume_and_agent_trajectory_api",
+          "callee": "service.create_run",
+          "lineNumber": 50
+        },
+        {
+          "caller": "test_approval_cas_resume_and_agent_trajectory_api",
+          "callee": "session.scalar",
+          "lineNumber": 52
+        },
+        {
+          "caller": "test_approval_cas_resume_and_agent_trajectory_api",
+          "callee": "select(PipelineStepORM).where",
+          "lineNumber": 53
+        },
+        {
+          "caller": "test_approval_cas_resume_and_agent_trajectory_api",
+          "callee": "select",
+          "lineNumber": 53
+        },
+        {
+          "caller": "test_approval_cas_resume_and_agent_trajectory_api",
+          "callee": "uuid4",
+          "lineNumber": 60
+        },
+        {
+          "caller": "test_approval_cas_resume_and_agent_trajectory_api",
+          "callee": "AgentRunORM",
+          "lineNumber": 61
+        },
+        {
+          "caller": "test_approval_cas_resume_and_agent_trajectory_api",
+          "callee": "Decimal",
+          "lineNumber": 83
+        },
+        {
+          "caller": "test_approval_cas_resume_and_agent_trajectory_api",
+          "callee": "session.add",
+          "lineNumber": 88
+        },
+        {
+          "caller": "test_approval_cas_resume_and_agent_trajectory_api",
+          "callee": "session.add",
+          "lineNumber": 89
+        },
+        {
+          "caller": "test_approval_cas_resume_and_agent_trajectory_api",
+          "callee": "AgentTurnORM",
+          "lineNumber": 90
+        },
+        {
+          "caller": "test_approval_cas_resume_and_agent_trajectory_api",
+          "callee": "uuid4",
+          "lineNumber": 91
+        },
+        {
+          "caller": "test_approval_cas_resume_and_agent_trajectory_api",
+          "callee": "session.add",
+          "lineNumber": 101
+        },
+        {
+          "caller": "test_approval_cas_resume_and_agent_trajectory_api",
+          "callee": "ToolCallORM",
+          "lineNumber": 102
+        },
+        {
+          "caller": "test_approval_cas_resume_and_agent_trajectory_api",
+          "callee": "uuid4",
+          "lineNumber": 103
+        },
+        {
+          "caller": "test_approval_cas_resume_and_agent_trajectory_api",
+          "callee": "session.commit",
+          "lineNumber": 118
+        },
+        {
+          "caller": "test_approval_cas_resume_and_agent_trajectory_api",
+          "callee": "ApprovalService(session).create_request",
+          "lineNumber": 119
+        },
+        {
+          "caller": "test_approval_cas_resume_and_agent_trajectory_api",
+          "callee": "ApprovalService",
+          "lineNumber": 119
+        },
+        {
+          "caller": "test_approval_cas_resume_and_agent_trajectory_api",
+          "callee": "ApprovalRequest",
+          "lineNumber": 123
+        },
+        {
+          "caller": "test_approval_cas_resume_and_agent_trajectory_api",
+          "callee": "ToolCallRequest",
+          "lineNumber": 124
+        },
+        {
+          "caller": "test_approval_cas_resume_and_agent_trajectory_api",
+          "callee": "Decimal",
+          "lineNumber": 130
+        },
+        {
+          "caller": "test_approval_cas_resume_and_agent_trajectory_api",
+          "callee": "timedelta",
+          "lineNumber": 132
+        },
+        {
+          "caller": "test_approval_cas_resume_and_agent_trajectory_api",
+          "callee": "monkeypatch.setenv",
+          "lineNumber": 139
+        },
+        {
+          "caller": "test_approval_cas_resume_and_agent_trajectory_api",
+          "callee": "monkeypatch.setenv",
+          "lineNumber": 140
+        },
+        {
+          "caller": "test_approval_cas_resume_and_agent_trajectory_api",
+          "callee": "get_settings.cache_clear",
+          "lineNumber": 141
+        },
+        {
+          "caller": "test_approval_cas_resume_and_agent_trajectory_api",
+          "callee": "create_app",
+          "lineNumber": 142
+        },
+        {
+          "caller": "override_session",
+          "callee": "sessions",
+          "lineNumber": 145
+        },
+        {
+          "caller": "test_approval_cas_resume_and_agent_trajectory_api",
+          "callee": "ASGITransport",
+          "lineNumber": 149
+        },
+        {
+          "caller": "test_approval_cas_resume_and_agent_trajectory_api",
+          "callee": "AsyncClient",
+          "lineNumber": 151
+        },
+        {
+          "caller": "test_approval_cas_resume_and_agent_trajectory_api",
+          "callee": "client.get",
+          "lineNumber": 152
+        },
+        {
+          "caller": "test_approval_cas_resume_and_agent_trajectory_api",
+          "callee": "denied.json",
+          "lineNumber": 156
+        },
+        {
+          "caller": "test_approval_cas_resume_and_agent_trajectory_api",
+          "callee": "client.get",
+          "lineNumber": 158
+        },
+        {
+          "caller": "test_approval_cas_resume_and_agent_trajectory_api",
+          "callee": "page.json",
+          "lineNumber": 162
+        },
+        {
+          "caller": "test_approval_cas_resume_and_agent_trajectory_api",
+          "callee": "client.get",
+          "lineNumber": 164
+        },
+        {
+          "caller": "test_approval_cas_resume_and_agent_trajectory_api",
+          "callee": "agent_runs.json",
+          "lineNumber": 169
+        },
+        {
+          "caller": "test_approval_cas_resume_and_agent_trajectory_api",
+          "callee": "client.get",
+          "lineNumber": 170
+        },
+        {
+          "caller": "test_approval_cas_resume_and_agent_trajectory_api",
+          "callee": "trajectory.json",
+          "lineNumber": 175
+        },
+        {
+          "caller": "test_approval_cas_resume_and_agent_trajectory_api",
+          "callee": "trajectory.json",
+          "lineNumber": 176
+        },
+        {
+          "caller": "test_approval_cas_resume_and_agent_trajectory_api",
+          "callee": "client.post",
+          "lineNumber": 183
+        },
+        {
+          "caller": "test_approval_cas_resume_and_agent_trajectory_api",
+          "callee": "resolved.json",
+          "lineNumber": 189
+        },
+        {
+          "caller": "test_approval_cas_resume_and_agent_trajectory_api",
+          "callee": "resolved.json",
+          "lineNumber": 190
+        },
+        {
+          "caller": "test_approval_cas_resume_and_agent_trajectory_api",
+          "callee": "client.post",
+          "lineNumber": 191
+        },
+        {
+          "caller": "test_approval_cas_resume_and_agent_trajectory_api",
+          "callee": "duplicate.json",
+          "lineNumber": 197
+        },
+        {
+          "caller": "test_approval_cas_resume_and_agent_trajectory_api",
+          "callee": "get_settings.cache_clear",
+          "lineNumber": 199
+        },
+        {
+          "caller": "test_approval_cas_resume_and_agent_trajectory_api",
+          "callee": "sessions",
+          "lineNumber": 201
+        },
+        {
+          "caller": "test_approval_cas_resume_and_agent_trajectory_api",
+          "callee": "session.get",
+          "lineNumber": 202
+        },
+        {
+          "caller": "test_approval_cas_resume_and_agent_trajectory_api",
+          "callee": "session.get",
+          "lineNumber": 203
+        },
+        {
+          "caller": "test_approval_cas_resume_and_agent_trajectory_api",
+          "callee": "list",
+          "lineNumber": 204
+        },
+        {
+          "caller": "test_approval_cas_resume_and_agent_trajectory_api",
+          "callee": "session.scalars",
+          "lineNumber": 205
+        },
+        {
+          "caller": "test_approval_cas_resume_and_agent_trajectory_api",
+          "callee": "select(RunEventORM)\n                .where(RunEventORM.run_id == run_id)\n                .order_by",
+          "lineNumber": 206
+        },
+        {
+          "caller": "test_approval_cas_resume_and_agent_trajectory_api",
+          "callee": "select(RunEventORM)\n                .where",
+          "lineNumber": 206
+        },
+        {
+          "caller": "test_approval_cas_resume_and_agent_trajectory_api",
+          "callee": "select",
+          "lineNumber": 206
+        },
+        {
+          "caller": "test_approval_cas_resume_and_agent_trajectory_api",
+          "callee": "engine.dispose",
+          "lineNumber": 218
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    }
+  ]
+}

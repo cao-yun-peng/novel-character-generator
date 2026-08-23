@@ -1,0 +1,13 @@
+{
+  "projectRoot": "E:\\project\\agent\\novel-character-generator",
+  "batchFiles": [
+    {"path": "novel-character-generator/.env.example", "language": "config", "sizeLines": 29, "fileCategory": "config"},
+    {"path": "novel-character-generator/alembic.ini", "language": "config", "sizeLines": 39, "fileCategory": "config"},
+    {"path": "novel-character-generator/pyproject.toml", "language": "toml", "sizeLines": 51, "fileCategory": "config"}
+  ],
+  "batchImportData": {
+    "novel-character-generator/.env.example": [],
+    "novel-character-generator/alembic.ini": [],
+    "novel-character-generator/pyproject.toml": []
+  }
+}

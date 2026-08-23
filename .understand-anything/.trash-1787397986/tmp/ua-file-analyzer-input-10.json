@@ -1,0 +1,140 @@
+{
+  "projectRoot": "E:\\project\\agent\\novel-character-generator",
+  "batchFiles": [
+    {
+      "path": "novel-character-generator/tests/integration/test_approval_decisions.py",
+      "language": "python",
+      "sizeLines": 85,
+      "fileCategory": "code"
+    },
+    {
+      "path": "novel-character-generator/tests/integration/test_character_appearance_api.py",
+      "language": "python",
+      "sizeLines": 304,
+      "fileCategory": "code"
+    },
+    {
+      "path": "novel-character-generator/tests/integration/test_character_entity_api.py",
+      "language": "python",
+      "sizeLines": 441,
+      "fileCategory": "code"
+    },
+    {
+      "path": "novel-character-generator/tests/integration/test_document_versions.py",
+      "language": "python",
+      "sizeLines": 82,
+      "fileCategory": "code"
+    },
+    {
+      "path": "novel-character-generator/tests/integration/test_evaluation_repository.py",
+      "language": "python",
+      "sizeLines": 102,
+      "fileCategory": "code"
+    },
+    {
+      "path": "novel-character-generator/tests/integration/test_extraction_slice.py",
+      "language": "python",
+      "sizeLines": 70,
+      "fileCategory": "code"
+    },
+    {
+      "path": "novel-character-generator/tests/integration/test_health.py",
+      "language": "python",
+      "sizeLines": 71,
+      "fileCategory": "code"
+    },
+    {
+      "path": "novel-character-generator/tests/integration/test_ingestion_slice.py",
+      "language": "python",
+      "sizeLines": 49,
+      "fileCategory": "code"
+    },
+    {
+      "path": "novel-character-generator/tests/integration/test_migrations.py",
+      "language": "python",
+      "sizeLines": 66,
+      "fileCategory": "code"
+    },
+    {
+      "path": "novel-character-generator/tests/integration/test_run_events_and_external_operations.py",
+      "language": "python",
+      "sizeLines": 152,
+      "fileCategory": "code"
+    },
+    {
+      "path": "novel-character-generator/tests/integration/test_story_temporal_api.py",
+      "language": "python",
+      "sizeLines": 215,
+      "fileCategory": "code"
+    },
+    {
+      "path": "novel-character-generator/tests/integration/test_task_recovery.py",
+      "language": "python",
+      "sizeLines": 103,
+      "fileCategory": "code"
+    },
+    {
+      "path": "novel-character-generator/tests/integration/test_text_analysis_run.py",
+      "language": "python",
+      "sizeLines": 96,
+      "fileCategory": "code"
+    },
+    {
+      "path": "novel-character-generator/tests/unit/domain/test_models.py",
+      "language": "python",
+      "sizeLines": 91,
+      "fileCategory": "code"
+    },
+    {
+      "path": "novel-character-generator/tests/unit/domain/test_text_processing.py",
+      "language": "python",
+      "sizeLines": 41,
+      "fileCategory": "code"
+    },
+    {
+      "path": "novel-character-generator/tests/unit/test_mock_extraction.py",
+      "language": "python",
+      "sizeLines": 33,
+      "fileCategory": "code"
+    },
+    {
+      "path": "novel-character-generator/tests/unit/test_openai_compatible_extraction.py",
+      "language": "python",
+      "sizeLines": 51,
+      "fileCategory": "code"
+    },
+    {
+      "path": "novel-character-generator/tests/unit/test_settings.py",
+      "language": "python",
+      "sizeLines": 33,
+      "fileCategory": "code"
+    },
+    {
+      "path": "novel-character-generator/tests/unit/test_structured_agent_runtime.py",
+      "language": "python",
+      "sizeLines": 283,
+      "fileCategory": "code"
+    }
+  ],
+  "batchImportData": {
+    "novel-character-generator/tests/integration/test_approval_decisions.py": [],
+    "novel-character-generator/tests/integration/test_character_appearance_api.py": [],
+    "novel-character-generator/tests/integration/test_character_entity_api.py": [],
+    "novel-character-generator/tests/integration/test_document_versions.py": [],
+    "novel-character-generator/tests/integration/test_evaluation_repository.py": [],
+    "novel-character-generator/tests/integration/test_extraction_slice.py": [],
+    "novel-character-generator/tests/integration/test_health.py": [],
+    "novel-character-generator/tests/integration/test_ingestion_slice.py": [],
+    "novel-character-generator/tests/integration/test_migrations.py": [],
+    "novel-character-generator/tests/integration/test_run_events_and_external_operations.py": [],
+    "novel-character-generator/tests/integration/test_story_temporal_api.py": [],
+    "novel-character-generator/tests/integration/test_task_recovery.py": [],
+    "novel-character-generator/tests/integration/test_text_analysis_run.py": [],
+    "novel-character-generator/tests/unit/domain/test_models.py": [],
+    "novel-character-generator/tests/unit/domain/test_text_processing.py": [],
+    "novel-character-generator/tests/unit/test_mock_extraction.py": [],
+    "novel-character-generator/tests/unit/test_openai_compatible_extraction.py": [],
+    "novel-character-generator/tests/unit/test_settings.py": [],
+    "novel-character-generator/tests/unit/test_structured_agent_runtime.py": []
+  }
+}

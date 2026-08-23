@@ -1,0 +1,2098 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 6,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "novel-character-generator/src/novel_character_generator/agents/structured_runtime.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 320,
+      "nonEmptyLines": 298,
+      "classes": [
+        {
+          "name": "AgentRuntimeError",
+          "startLine": 30,
+          "endLine": 33,
+          "methods": [
+            "__init__"
+          ],
+          "properties": []
+        },
+        {
+          "name": "RegisteredTool",
+          "startLine": 36,
+          "endLine": 67,
+          "methods": [
+            "__init__",
+            "execute"
+          ],
+          "properties": []
+        },
+        {
+          "name": "ToolRegistry",
+          "startLine": 70,
+          "endLine": 83,
+          "methods": [
+            "__init__",
+            "register",
+            "get"
+          ],
+          "properties": []
+        },
+        {
+          "name": "StructuredCallAgentRuntime",
+          "startLine": 86,
+          "endLine": 320,
+          "methods": [
+            "__init__",
+            "run",
+            "_validate_spec",
+            "_available_tools",
+            "_preflight_tool_calls",
+            "_approval_request",
+            "_validate_output",
+            "_limit_result"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "AgentRuntimeError",
+          "line": 30,
+          "isDefault": false
+        },
+        {
+          "name": "RegisteredTool",
+          "line": 36,
+          "isDefault": false
+        },
+        {
+          "name": "ToolRegistry",
+          "line": 70,
+          "isDefault": false
+        },
+        {
+          "name": "StructuredCallAgentRuntime",
+          "line": 86,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "__init__",
+          "callee": "super().__init__",
+          "lineNumber": 32
+        },
+        {
+          "caller": "__init__",
+          "callee": "super",
+          "lineNumber": 32
+        },
+        {
+          "caller": "execute",
+          "callee": "self.input_model.model_validate",
+          "lineNumber": 52
+        },
+        {
+          "caller": "execute",
+          "callee": "AgentRuntimeError",
+          "lineNumber": 54
+        },
+        {
+          "caller": "execute",
+          "callee": "asyncio.wait_for",
+          "lineNumber": 56
+        },
+        {
+          "caller": "execute",
+          "callee": "self.handler",
+          "lineNumber": 57
+        },
+        {
+          "caller": "execute",
+          "callee": "AgentRuntimeError",
+          "lineNumber": 60
+        },
+        {
+          "caller": "execute",
+          "callee": "AgentRuntimeError",
+          "lineNumber": 62
+        },
+        {
+          "caller": "execute",
+          "callee": "self.output_model.model_validate",
+          "lineNumber": 64
+        },
+        {
+          "caller": "execute",
+          "callee": "AgentRuntimeError",
+          "lineNumber": 66
+        },
+        {
+          "caller": "execute",
+          "callee": "cast",
+          "lineNumber": 67
+        },
+        {
+          "caller": "execute",
+          "callee": "validated.model_dump",
+          "lineNumber": 67
+        },
+        {
+          "caller": "register",
+          "callee": "ValueError",
+          "lineNumber": 76
+        },
+        {
+          "caller": "get",
+          "callee": "AgentRuntimeError",
+          "lineNumber": 83
+        },
+        {
+          "caller": "__init__",
+          "callee": "get_settings",
+          "lineNumber": 98
+        },
+        {
+          "caller": "run",
+          "callee": "self._validate_spec",
+          "lineNumber": 107
+        },
+        {
+          "caller": "run",
+          "callee": "self._available_tools",
+          "lineNumber": 108
+        },
+        {
+          "caller": "run",
+          "callee": "Decimal",
+          "lineNumber": 112
+        },
+        {
+          "caller": "run",
+          "callee": "set",
+          "lineNumber": 114
+        },
+        {
+          "caller": "run",
+          "callee": "asyncio.timeout",
+          "lineNumber": 116
+        },
+        {
+          "caller": "run",
+          "callee": "range",
+          "lineNumber": 117
+        },
+        {
+          "caller": "run",
+          "callee": "self.model.generate_turn",
+          "lineNumber": 118
+        },
+        {
+          "caller": "run",
+          "callee": "TokenUsage",
+          "lineNumber": 127
+        },
+        {
+          "caller": "run",
+          "callee": "self._limit_result",
+          "lineNumber": 133
+        },
+        {
+          "caller": "run",
+          "callee": "self._limit_result",
+          "lineNumber": 141
+        },
+        {
+          "caller": "run",
+          "callee": "AgentHistoryEntry",
+          "lineNumber": 148
+        },
+        {
+          "caller": "run",
+          "callee": "self._validate_output",
+          "lineNumber": 155
+        },
+        {
+          "caller": "run",
+          "callee": "history.append",
+          "lineNumber": 156
+        },
+        {
+          "caller": "run",
+          "callee": "AgentRunResult",
+          "lineNumber": 157
+        },
+        {
+          "caller": "run",
+          "callee": "self._preflight_tool_calls",
+          "lineNumber": 165
+        },
+        {
+          "caller": "run",
+          "callee": "len",
+          "lineNumber": 172
+        },
+        {
+          "caller": "run",
+          "callee": "self._limit_result",
+          "lineNumber": 174
+        },
+        {
+          "caller": "run",
+          "callee": "sum",
+          "lineNumber": 181
+        },
+        {
+          "caller": "run",
+          "callee": "Decimal",
+          "lineNumber": 182
+        },
+        {
+          "caller": "run",
+          "callee": "Decimal",
+          "lineNumber": 183
+        },
+        {
+          "caller": "run",
+          "callee": "self._limit_result",
+          "lineNumber": 186
+        },
+        {
+          "caller": "run",
+          "callee": "self._approval_request",
+          "lineNumber": 193
+        },
+        {
+          "caller": "run",
+          "callee": "history.append",
+          "lineNumber": 195
+        },
+        {
+          "caller": "run",
+          "callee": "AgentRunResult",
+          "lineNumber": 196
+        },
+        {
+          "caller": "run",
+          "callee": "perf_counter",
+          "lineNumber": 204
+        },
+        {
+          "caller": "run",
+          "callee": "tool.execute",
+          "lineNumber": 205
+        },
+        {
+          "caller": "run",
+          "callee": "round",
+          "lineNumber": 206
+        },
+        {
+          "caller": "run",
+          "callee": "perf_counter",
+          "lineNumber": 207
+        },
+        {
+          "caller": "run",
+          "callee": "seen_call_ids.add",
+          "lineNumber": 209
+        },
+        {
+          "caller": "run",
+          "callee": "history.append",
+          "lineNumber": 211
+        },
+        {
+          "caller": "run",
+          "callee": "TokenUsage",
+          "lineNumber": 213
+        },
+        {
+          "caller": "run",
+          "callee": "self._limit_result",
+          "lineNumber": 218
+        },
+        {
+          "caller": "run",
+          "callee": "TokenUsage",
+          "lineNumber": 225
+        },
+        {
+          "caller": "run",
+          "callee": "self._limit_result",
+          "lineNumber": 226
+        },
+        {
+          "caller": "_validate_spec",
+          "callee": "AgentRuntimeError",
+          "lineNumber": 236
+        },
+        {
+          "caller": "_validate_spec",
+          "callee": "AgentRuntimeError",
+          "lineNumber": 238
+        },
+        {
+          "caller": "_validate_spec",
+          "callee": "AgentRuntimeError",
+          "lineNumber": 240
+        },
+        {
+          "caller": "_validate_spec",
+          "callee": "AgentRuntimeError",
+          "lineNumber": 242
+        },
+        {
+          "caller": "_validate_spec",
+          "callee": "AgentRuntimeError",
+          "lineNumber": 244
+        },
+        {
+          "caller": "_validate_spec",
+          "callee": "AgentRuntimeError",
+          "lineNumber": 246
+        },
+        {
+          "caller": "_available_tools",
+          "callee": "set",
+          "lineNumber": 251
+        },
+        {
+          "caller": "_available_tools",
+          "callee": "self.tools.get",
+          "lineNumber": 252
+        },
+        {
+          "caller": "_preflight_tool_calls",
+          "callee": "set",
+          "lineNumber": 263
+        },
+        {
+          "caller": "_preflight_tool_calls",
+          "callee": "set",
+          "lineNumber": 263
+        },
+        {
+          "caller": "_preflight_tool_calls",
+          "callee": "set",
+          "lineNumber": 265
+        },
+        {
+          "caller": "_preflight_tool_calls",
+          "callee": "AgentRuntimeError",
+          "lineNumber": 268
+        },
+        {
+          "caller": "_preflight_tool_calls",
+          "callee": "current_ids.add",
+          "lineNumber": 269
+        },
+        {
+          "caller": "_preflight_tool_calls",
+          "callee": "AgentRuntimeError",
+          "lineNumber": 271
+        },
+        {
+          "caller": "_preflight_tool_calls",
+          "callee": "self.tools.get",
+          "lineNumber": 272
+        },
+        {
+          "caller": "_preflight_tool_calls",
+          "callee": "AgentRuntimeError",
+          "lineNumber": 275
+        },
+        {
+          "caller": "_preflight_tool_calls",
+          "callee": "requested.append",
+          "lineNumber": 276
+        },
+        {
+          "caller": "_approval_request",
+          "callee": "ApprovalRequest",
+          "lineNumber": 284
+        },
+        {
+          "caller": "_approval_request",
+          "callee": "datetime.now",
+          "lineNumber": 289
+        },
+        {
+          "caller": "_approval_request",
+          "callee": "timedelta",
+          "lineNumber": 289
+        },
+        {
+          "caller": "_validate_output",
+          "callee": "self.output_schemas[schema_name].model_validate",
+          "lineNumber": 295
+        },
+        {
+          "caller": "_validate_output",
+          "callee": "AgentRuntimeError",
+          "lineNumber": 297
+        },
+        {
+          "caller": "_validate_output",
+          "callee": "cast",
+          "lineNumber": 298
+        },
+        {
+          "caller": "_validate_output",
+          "callee": "validated.model_dump",
+          "lineNumber": 298
+        },
+        {
+          "caller": "_limit_result",
+          "callee": "AgentLimitReached",
+          "lineNumber": 309
+        },
+        {
+          "caller": "_limit_result",
+          "callee": "cast",
+          "lineNumber": 310
+        },
+        {
+          "caller": "_limit_result",
+          "callee": "AgentRunResult",
+          "lineNumber": 314
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 4,
+        "functionCount": 0,
+        "classCount": 4
+      }
+    },
+    {
+      "path": "novel-character-generator/src/novel_character_generator/application/ports/agent_runtime.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 181,
+      "nonEmptyLines": 145,
+      "classes": [
+        {
+          "name": "ToolPermission",
+          "startLine": 10,
+          "endLine": 14,
+          "methods": [],
+          "properties": []
+        },
+        {
+          "name": "AgentSpec",
+          "startLine": 25,
+          "endLine": 44,
+          "methods": [
+            "validate_unique_tools"
+          ],
+          "properties": [
+            "agent_id",
+            "version",
+            "objective",
+            "model_policy",
+            "prompt_version",
+            "allowed_tools",
+            "output_schema",
+            "max_turns",
+            "max_tool_calls",
+            "max_cost",
+            "deadline_seconds",
+            "approval_policy",
+            "enabled"
+          ]
+        },
+        {
+          "name": "ToolSpec",
+          "startLine": 47,
+          "endLine": 67,
+          "methods": [
+            "validate_side_effect_policy"
+          ],
+          "properties": [
+            "name",
+            "version",
+            "description",
+            "input_schema",
+            "output_schema",
+            "side_effect",
+            "idempotency",
+            "required_permission",
+            "requires_approval",
+            "timeout_seconds",
+            "estimated_cost",
+            "error_codes"
+          ]
+        },
+        {
+          "name": "AgentContextPacket",
+          "startLine": 70,
+          "endLine": 85,
+          "methods": [
+            "validate_unique_tools"
+          ],
+          "properties": [
+            "objective",
+            "current_chunk",
+            "related_characters",
+            "relevant_observations",
+            "unresolved_questions",
+            "policy_constraints",
+            "available_tool_names",
+            "token_budget",
+            "context_hash"
+          ]
+        },
+        {
+          "name": "TokenUsage",
+          "startLine": 88,
+          "endLine": 91,
+          "methods": [],
+          "properties": [
+            "input_tokens",
+            "output_tokens",
+            "cost"
+          ]
+        },
+        {
+          "name": "ToolCallRequest",
+          "startLine": 94,
+          "endLine": 97,
+          "methods": [],
+          "properties": [
+            "call_id",
+            "tool_name",
+            "arguments"
+          ]
+        },
+        {
+          "name": "AgentHistoryEntry",
+          "startLine": 100,
+          "endLine": 106,
+          "methods": [],
+          "properties": [
+            "turn_number",
+            "output",
+            "tool_calls",
+            "tool_results",
+            "tool_durations_ms",
+            "usage"
+          ]
+        },
+        {
+          "name": "AgentModelTurn",
+          "startLine": 109,
+          "endLine": 121,
+          "methods": [
+            "validate_content"
+          ],
+          "properties": [
+            "output",
+            "tool_calls",
+            "usage",
+            "stop_reason"
+          ]
+        },
+        {
+          "name": "ApprovalRequest",
+          "startLine": 124,
+          "endLine": 131,
+          "methods": [],
+          "properties": [
+            "tool_call",
+            "action",
+            "supporting_evidence_ids",
+            "opposing_evidence_ids",
+            "estimated_cost",
+            "options",
+            "expires_at"
+          ]
+        },
+        {
+          "name": "AgentLimitReached",
+          "startLine": 137,
+          "endLine": 140,
+          "methods": [],
+          "properties": [
+            "reason",
+            "limit",
+            "observed"
+          ]
+        },
+        {
+          "name": "AgentRunResult",
+          "startLine": 143,
+          "endLine": 160,
+          "methods": [
+            "validate_status_payload"
+          ],
+          "properties": [
+            "status",
+            "output",
+            "approval_request",
+            "limit_reached",
+            "history",
+            "total_usage",
+            "stop_reason"
+          ]
+        },
+        {
+          "name": "AgentModelClient",
+          "startLine": 163,
+          "endLine": 171,
+          "methods": [
+            "generate_turn"
+          ],
+          "properties": []
+        },
+        {
+          "name": "AgentRuntime",
+          "startLine": 174,
+          "endLine": 181,
+          "methods": [
+            "run"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "ToolPermission",
+          "line": 10,
+          "isDefault": false
+        },
+        {
+          "name": "AgentSpec",
+          "line": 25,
+          "isDefault": false
+        },
+        {
+          "name": "ToolSpec",
+          "line": 47,
+          "isDefault": false
+        },
+        {
+          "name": "AgentContextPacket",
+          "line": 70,
+          "isDefault": false
+        },
+        {
+          "name": "TokenUsage",
+          "line": 88,
+          "isDefault": false
+        },
+        {
+          "name": "ToolCallRequest",
+          "line": 94,
+          "isDefault": false
+        },
+        {
+          "name": "AgentHistoryEntry",
+          "line": 100,
+          "isDefault": false
+        },
+        {
+          "name": "AgentModelTurn",
+          "line": 109,
+          "isDefault": false
+        },
+        {
+          "name": "ApprovalRequest",
+          "line": 124,
+          "isDefault": false
+        },
+        {
+          "name": "AgentLimitReached",
+          "line": 137,
+          "isDefault": false
+        },
+        {
+          "name": "AgentRunResult",
+          "line": 143,
+          "isDefault": false
+        },
+        {
+          "name": "AgentModelClient",
+          "line": 163,
+          "isDefault": false
+        },
+        {
+          "name": "AgentRuntime",
+          "line": 174,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "validate_unique_tools",
+          "callee": "len",
+          "lineNumber": 42
+        },
+        {
+          "caller": "validate_unique_tools",
+          "callee": "len",
+          "lineNumber": 42
+        },
+        {
+          "caller": "validate_unique_tools",
+          "callee": "set",
+          "lineNumber": 42
+        },
+        {
+          "caller": "validate_unique_tools",
+          "callee": "ValueError",
+          "lineNumber": 43
+        },
+        {
+          "caller": "validate_side_effect_policy",
+          "callee": "ValueError",
+          "lineNumber": 64
+        },
+        {
+          "caller": "validate_side_effect_policy",
+          "callee": "ValueError",
+          "lineNumber": 66
+        },
+        {
+          "caller": "validate_unique_tools",
+          "callee": "len",
+          "lineNumber": 83
+        },
+        {
+          "caller": "validate_unique_tools",
+          "callee": "len",
+          "lineNumber": 83
+        },
+        {
+          "caller": "validate_unique_tools",
+          "callee": "set",
+          "lineNumber": 83
+        },
+        {
+          "caller": "validate_unique_tools",
+          "callee": "ValueError",
+          "lineNumber": 84
+        },
+        {
+          "caller": "validate_content",
+          "callee": "ValueError",
+          "lineNumber": 118
+        },
+        {
+          "caller": "validate_content",
+          "callee": "ValueError",
+          "lineNumber": 120
+        },
+        {
+          "caller": "validate_status_payload",
+          "callee": "ValueError",
+          "lineNumber": 155
+        },
+        {
+          "caller": "validate_status_payload",
+          "callee": "ValueError",
+          "lineNumber": 157
+        },
+        {
+          "caller": "validate_status_payload",
+          "callee": "ValueError",
+          "lineNumber": 159
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 13,
+        "functionCount": 0,
+        "classCount": 13
+      }
+    },
+    {
+      "path": "novel-character-generator/src/novel_character_generator/application/services/agent_execution_service.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 225,
+      "nonEmptyLines": 213,
+      "functions": [
+        {
+          "name": "_hash_json",
+          "startLine": 33,
+          "endLine": 35,
+          "params": [
+            "value"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "AgentExecution",
+          "startLine": 39,
+          "endLine": 42,
+          "methods": [],
+          "properties": [
+            "agent_run_id",
+            "result",
+            "created_approval"
+          ]
+        },
+        {
+          "name": "AgentExecutionService",
+          "startLine": 45,
+          "endLine": 225,
+          "methods": [
+            "__init__",
+            "execute",
+            "_record_result",
+            "_record_failure"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "_hash_json",
+          "line": 33,
+          "isDefault": false
+        },
+        {
+          "name": "AgentExecution",
+          "line": 38,
+          "isDefault": false
+        },
+        {
+          "name": "AgentExecutionService",
+          "line": 45,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "_hash_json",
+          "callee": "json.dumps",
+          "lineNumber": 34
+        },
+        {
+          "caller": "_hash_json",
+          "callee": "sha256(payload.encode()).hexdigest",
+          "lineNumber": 35
+        },
+        {
+          "caller": "_hash_json",
+          "callee": "sha256",
+          "lineNumber": 35
+        },
+        {
+          "caller": "_hash_json",
+          "callee": "payload.encode",
+          "lineNumber": 35
+        },
+        {
+          "caller": "execute",
+          "callee": "self.session.get",
+          "lineNumber": 61
+        },
+        {
+          "caller": "execute",
+          "callee": "ValueError",
+          "lineNumber": 63
+        },
+        {
+          "caller": "execute",
+          "callee": "ValueError",
+          "lineNumber": 65
+        },
+        {
+          "caller": "execute",
+          "callee": "set",
+          "lineNumber": 66
+        },
+        {
+          "caller": "execute",
+          "callee": "set",
+          "lineNumber": 66
+        },
+        {
+          "caller": "execute",
+          "callee": "ValueError",
+          "lineNumber": 68
+        },
+        {
+          "caller": "execute",
+          "callee": "self.session.scalar",
+          "lineNumber": 70
+        },
+        {
+          "caller": "execute",
+          "callee": "select(func.max(AgentRunORM.attempt)).where",
+          "lineNumber": 71
+        },
+        {
+          "caller": "execute",
+          "callee": "select",
+          "lineNumber": 71
+        },
+        {
+          "caller": "execute",
+          "callee": "func.max",
+          "lineNumber": 71
+        },
+        {
+          "caller": "execute",
+          "callee": "datetime.now",
+          "lineNumber": 78
+        },
+        {
+          "caller": "execute",
+          "callee": "AgentRunORM",
+          "lineNumber": 79
+        },
+        {
+          "caller": "execute",
+          "callee": "uuid4",
+          "lineNumber": 80
+        },
+        {
+          "caller": "execute",
+          "callee": "str",
+          "lineNumber": 88
+        },
+        {
+          "caller": "execute",
+          "callee": "spec.model_dump",
+          "lineNumber": 95
+        },
+        {
+          "caller": "execute",
+          "callee": "Decimal",
+          "lineNumber": 106
+        },
+        {
+          "caller": "execute",
+          "callee": "self.session.add",
+          "lineNumber": 111
+        },
+        {
+          "caller": "execute",
+          "callee": "self.session.commit",
+          "lineNumber": 112
+        },
+        {
+          "caller": "execute",
+          "callee": "perf_counter",
+          "lineNumber": 114
+        },
+        {
+          "caller": "execute",
+          "callee": "runtime.run",
+          "lineNumber": 116
+        },
+        {
+          "caller": "execute",
+          "callee": "self._record_failure",
+          "lineNumber": 118
+        },
+        {
+          "caller": "execute",
+          "callee": "self._record_failure",
+          "lineNumber": 121
+        },
+        {
+          "caller": "execute",
+          "callee": "self._record_result",
+          "lineNumber": 125
+        },
+        {
+          "caller": "execute",
+          "callee": "ApprovalService(self.session).create_request",
+          "lineNumber": 133
+        },
+        {
+          "caller": "execute",
+          "callee": "ApprovalService",
+          "lineNumber": 133
+        },
+        {
+          "caller": "execute",
+          "callee": "self.session.commit",
+          "lineNumber": 140
+        },
+        {
+          "caller": "execute",
+          "callee": "AgentExecution",
+          "lineNumber": 141
+        },
+        {
+          "caller": "_record_result",
+          "callee": "self.session.get_one",
+          "lineNumber": 155
+        },
+        {
+          "caller": "_record_result",
+          "callee": "datetime.now",
+          "lineNumber": 156
+        },
+        {
+          "caller": "_record_result",
+          "callee": "self.session.add",
+          "lineNumber": 158
+        },
+        {
+          "caller": "_record_result",
+          "callee": "AgentTurnORM",
+          "lineNumber": 159
+        },
+        {
+          "caller": "_record_result",
+          "callee": "uuid4",
+          "lineNumber": 160
+        },
+        {
+          "caller": "_record_result",
+          "callee": "len",
+          "lineNumber": 166
+        },
+        {
+          "caller": "_record_result",
+          "callee": "entry.usage.model_dump",
+          "lineNumber": 168
+        },
+        {
+          "caller": "_record_result",
+          "callee": "entry.tool_results.get",
+          "lineNumber": 174
+        },
+        {
+          "caller": "_record_result",
+          "callee": "self.session.add",
+          "lineNumber": 183
+        },
+        {
+          "caller": "_record_result",
+          "callee": "ToolCallORM",
+          "lineNumber": 184
+        },
+        {
+          "caller": "_record_result",
+          "callee": "uuid4",
+          "lineNumber": 185
+        },
+        {
+          "caller": "_record_result",
+          "callee": "_hash_json",
+          "lineNumber": 190
+        },
+        {
+          "caller": "_record_result",
+          "callee": "_hash_json",
+          "lineNumber": 191
+        },
+        {
+          "caller": "_record_result",
+          "callee": "entry.tool_durations_ms.get",
+          "lineNumber": 194
+        },
+        {
+          "caller": "_record_result",
+          "callee": "_hash_json",
+          "lineNumber": 206
+        },
+        {
+          "caller": "_record_result",
+          "callee": "round",
+          "lineNumber": 213
+        },
+        {
+          "caller": "_record_result",
+          "callee": "perf_counter",
+          "lineNumber": 213
+        },
+        {
+          "caller": "_record_result",
+          "callee": "self.session.flush",
+          "lineNumber": 215
+        },
+        {
+          "caller": "_record_failure",
+          "callee": "self.session.get_one",
+          "lineNumber": 218
+        },
+        {
+          "caller": "_record_failure",
+          "callee": "datetime.now",
+          "lineNumber": 219
+        },
+        {
+          "caller": "_record_failure",
+          "callee": "round",
+          "lineNumber": 223
+        },
+        {
+          "caller": "_record_failure",
+          "callee": "perf_counter",
+          "lineNumber": 223
+        },
+        {
+          "caller": "_record_failure",
+          "callee": "self.session.commit",
+          "lineNumber": 225
+        }
+      ],
+      "metrics": {
+        "importCount": 4,
+        "exportCount": 3,
+        "functionCount": 1,
+        "classCount": 2
+      }
+    },
+    {
+      "path": "novel-character-generator/src/novel_character_generator/application/services/approval_service.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 302,
+      "nonEmptyLines": 284,
+      "functions": [
+        {
+          "name": "_canonical_hash",
+          "startLine": 42,
+          "endLine": 44,
+          "params": [
+            "value"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "ApprovalConflict",
+          "startLine": 26,
+          "endLine": 27,
+          "methods": [],
+          "properties": []
+        },
+        {
+          "name": "CreatedApproval",
+          "startLine": 31,
+          "endLine": 33,
+          "methods": [],
+          "properties": [
+            "approval",
+            "recovery_token"
+          ]
+        },
+        {
+          "name": "ApprovalPage",
+          "startLine": 37,
+          "endLine": 39,
+          "methods": [],
+          "properties": [
+            "items",
+            "next_cursor"
+          ]
+        },
+        {
+          "name": "ApprovalService",
+          "startLine": 47,
+          "endLine": 302,
+          "methods": [
+            "__init__",
+            "create_request",
+            "list_pending",
+            "resolve"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "ApprovalConflict",
+          "line": 26,
+          "isDefault": false
+        },
+        {
+          "name": "CreatedApproval",
+          "line": 30,
+          "isDefault": false
+        },
+        {
+          "name": "ApprovalPage",
+          "line": 36,
+          "isDefault": false
+        },
+        {
+          "name": "_canonical_hash",
+          "line": 42,
+          "isDefault": false
+        },
+        {
+          "name": "ApprovalService",
+          "line": 47,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "_canonical_hash",
+          "callee": "json.dumps",
+          "lineNumber": 43
+        },
+        {
+          "caller": "_canonical_hash",
+          "callee": "sha256(payload.encode()).hexdigest",
+          "lineNumber": 44
+        },
+        {
+          "caller": "_canonical_hash",
+          "callee": "sha256",
+          "lineNumber": 44
+        },
+        {
+          "caller": "_canonical_hash",
+          "callee": "payload.encode",
+          "lineNumber": 44
+        },
+        {
+          "caller": "create_request",
+          "callee": "self.session.get",
+          "lineNumber": 60
+        },
+        {
+          "caller": "create_request",
+          "callee": "ValueError",
+          "lineNumber": 62
+        },
+        {
+          "caller": "create_request",
+          "callee": "self.session.get",
+          "lineNumber": 64
+        },
+        {
+          "caller": "create_request",
+          "callee": "ValueError",
+          "lineNumber": 66
+        },
+        {
+          "caller": "create_request",
+          "callee": "_canonical_hash",
+          "lineNumber": 68
+        },
+        {
+          "caller": "create_request",
+          "callee": "self.session.scalar",
+          "lineNumber": 69
+        },
+        {
+          "caller": "create_request",
+          "callee": "select(HumanApprovalORM.id).where",
+          "lineNumber": 70
+        },
+        {
+          "caller": "create_request",
+          "callee": "select",
+          "lineNumber": 70
+        },
+        {
+          "caller": "create_request",
+          "callee": "ApprovalConflict",
+          "lineNumber": 73
+        },
+        {
+          "caller": "create_request",
+          "callee": "secrets.token_urlsafe",
+          "lineNumber": 74
+        },
+        {
+          "caller": "create_request",
+          "callee": "datetime.now",
+          "lineNumber": 75
+        },
+        {
+          "caller": "create_request",
+          "callee": "HumanApprovalORM",
+          "lineNumber": 76
+        },
+        {
+          "caller": "create_request",
+          "callee": "uuid4",
+          "lineNumber": 77
+        },
+        {
+          "caller": "create_request",
+          "callee": "str",
+          "lineNumber": 87
+        },
+        {
+          "caller": "create_request",
+          "callee": "str",
+          "lineNumber": 88
+        },
+        {
+          "caller": "create_request",
+          "callee": "str",
+          "lineNumber": 90
+        },
+        {
+          "caller": "create_request",
+          "callee": "sha256(recovery_token.encode()).hexdigest",
+          "lineNumber": 100
+        },
+        {
+          "caller": "create_request",
+          "callee": "sha256",
+          "lineNumber": 100
+        },
+        {
+          "caller": "create_request",
+          "callee": "recovery_token.encode",
+          "lineNumber": 100
+        },
+        {
+          "caller": "create_request",
+          "callee": "self.session.add",
+          "lineNumber": 105
+        },
+        {
+          "caller": "create_request",
+          "callee": "self.session.scalar",
+          "lineNumber": 106
+        },
+        {
+          "caller": "create_request",
+          "callee": "update(PipelineStepORM)\n            .where(\n                PipelineStepORM.id == step.id,\n                PipelineStepORM.status.in_((\"running\", \"waiting_external\")),\n                PipelineStepORM.lease_generation == expected_generation,\n            )\n            .values(\n                status=\"waiting_approval\",\n                lease_owner=None,\n                lease_expires_at=None,\n                updated_at=now,\n            )\n            .returning",
+          "lineNumber": 107
+        },
+        {
+          "caller": "create_request",
+          "callee": "update(PipelineStepORM)\n            .where(\n                PipelineStepORM.id == step.id,\n                PipelineStepORM.status.in_((\"running\", \"waiting_external\")),\n                PipelineStepORM.lease_generation == expected_generation,\n            )\n            .values",
+          "lineNumber": 107
+        },
+        {
+          "caller": "create_request",
+          "callee": "update(PipelineStepORM)\n            .where",
+          "lineNumber": 107
+        },
+        {
+          "caller": "create_request",
+          "callee": "update",
+          "lineNumber": 107
+        },
+        {
+          "caller": "create_request",
+          "callee": "PipelineStepORM.status.in_",
+          "lineNumber": 110
+        },
+        {
+          "caller": "create_request",
+          "callee": "self.session.rollback",
+          "lineNumber": 122
+        },
+        {
+          "caller": "create_request",
+          "callee": "ApprovalConflict",
+          "lineNumber": 123
+        },
+        {
+          "caller": "create_request",
+          "callee": "append_run_event",
+          "lineNumber": 124
+        },
+        {
+          "caller": "create_request",
+          "callee": "str",
+          "lineNumber": 129
+        },
+        {
+          "caller": "create_request",
+          "callee": "str",
+          "lineNumber": 130
+        },
+        {
+          "caller": "create_request",
+          "callee": "self.session.commit",
+          "lineNumber": 135
+        },
+        {
+          "caller": "create_request",
+          "callee": "CreatedApproval",
+          "lineNumber": 136
+        },
+        {
+          "caller": "list_pending",
+          "callee": "select",
+          "lineNumber": 146
+        },
+        {
+          "caller": "list_pending",
+          "callee": "query.where",
+          "lineNumber": 148
+        },
+        {
+          "caller": "list_pending",
+          "callee": "query.where",
+          "lineNumber": 150
+        },
+        {
+          "caller": "list_pending",
+          "callee": "self.session.get",
+          "lineNumber": 152
+        },
+        {
+          "caller": "list_pending",
+          "callee": "ValueError",
+          "lineNumber": 154
+        },
+        {
+          "caller": "list_pending",
+          "callee": "query.where",
+          "lineNumber": 155
+        },
+        {
+          "caller": "list_pending",
+          "callee": "or_",
+          "lineNumber": 156
+        },
+        {
+          "caller": "list_pending",
+          "callee": "and_",
+          "lineNumber": 158
+        },
+        {
+          "caller": "list_pending",
+          "callee": "list",
+          "lineNumber": 164
+        },
+        {
+          "caller": "list_pending",
+          "callee": "self.session.scalars",
+          "lineNumber": 165
+        },
+        {
+          "caller": "list_pending",
+          "callee": "query.order_by(HumanApprovalORM.created_at, HumanApprovalORM.id).limit",
+          "lineNumber": 166
+        },
+        {
+          "caller": "list_pending",
+          "callee": "query.order_by",
+          "lineNumber": 166
+        },
+        {
+          "caller": "list_pending",
+          "callee": "len",
+          "lineNumber": 169
+        },
+        {
+          "caller": "list_pending",
+          "callee": "ApprovalPage",
+          "lineNumber": 171
+        },
+        {
+          "caller": "resolve",
+          "callee": "self.session.get",
+          "lineNumber": 187
+        },
+        {
+          "caller": "resolve",
+          "callee": "ValueError",
+          "lineNumber": 189
+        },
+        {
+          "caller": "resolve",
+          "callee": "ApprovalConflict",
+          "lineNumber": 191
+        },
+        {
+          "caller": "resolve",
+          "callee": "ApprovalConflict",
+          "lineNumber": 193
+        },
+        {
+          "caller": "resolve",
+          "callee": "ApprovalConflict",
+          "lineNumber": 195
+        },
+        {
+          "caller": "resolve",
+          "callee": "sha256(recovery_token.encode()).hexdigest",
+          "lineNumber": 197
+        },
+        {
+          "caller": "resolve",
+          "callee": "sha256",
+          "lineNumber": 197
+        },
+        {
+          "caller": "resolve",
+          "callee": "recovery_token.encode",
+          "lineNumber": 197
+        },
+        {
+          "caller": "resolve",
+          "callee": "compare_digest",
+          "lineNumber": 198
+        },
+        {
+          "caller": "resolve",
+          "callee": "ApprovalConflict",
+          "lineNumber": 199
+        },
+        {
+          "caller": "resolve",
+          "callee": "datetime.now",
+          "lineNumber": 200
+        },
+        {
+          "caller": "resolve",
+          "callee": "expires_at.replace",
+          "lineNumber": 203
+        },
+        {
+          "caller": "resolve",
+          "callee": "self.session.execute",
+          "lineNumber": 205
+        },
+        {
+          "caller": "resolve",
+          "callee": "update(HumanApprovalORM)\n                .where(\n                    HumanApprovalORM.id == approval.id,\n                    HumanApprovalORM.status == \"pending\",\n                    HumanApprovalORM.revision == expected_revision,\n                )\n                .values",
+          "lineNumber": 206
+        },
+        {
+          "caller": "resolve",
+          "callee": "update(HumanApprovalORM)\n                .where",
+          "lineNumber": 206
+        },
+        {
+          "caller": "resolve",
+          "callee": "update",
+          "lineNumber": 206
+        },
+        {
+          "caller": "resolve",
+          "callee": "self.session.commit",
+          "lineNumber": 214
+        },
+        {
+          "caller": "resolve",
+          "callee": "ApprovalConflict",
+          "lineNumber": 215
+        },
+        {
+          "caller": "resolve",
+          "callee": "ValueError",
+          "lineNumber": 217
+        },
+        {
+          "caller": "resolve",
+          "callee": "ValueError",
+          "lineNumber": 219
+        },
+        {
+          "caller": "resolve",
+          "callee": "defer_until.isoformat",
+          "lineNumber": 224
+        },
+        {
+          "caller": "resolve",
+          "callee": "_canonical_hash",
+          "lineNumber": 238
+        },
+        {
+          "caller": "resolve",
+          "callee": "self.session.scalar",
+          "lineNumber": 244
+        },
+        {
+          "caller": "resolve",
+          "callee": "update(HumanApprovalORM)\n            .where(\n                HumanApprovalORM.id == approval.id,\n                HumanApprovalORM.status == \"pending\",\n                HumanApprovalORM.revision == expected_revision,\n            )\n            .values(**values)\n            .returning",
+          "lineNumber": 245
+        },
+        {
+          "caller": "resolve",
+          "callee": "update(HumanApprovalORM)\n            .where(\n                HumanApprovalORM.id == approval.id,\n                HumanApprovalORM.status == \"pending\",\n                HumanApprovalORM.revision == expected_revision,\n            )\n            .values",
+          "lineNumber": 245
+        },
+        {
+          "caller": "resolve",
+          "callee": "update(HumanApprovalORM)\n            .where",
+          "lineNumber": 245
+        },
+        {
+          "caller": "resolve",
+          "callee": "update",
+          "lineNumber": 245
+        },
+        {
+          "caller": "resolve",
+          "callee": "self.session.rollback",
+          "lineNumber": 255
+        },
+        {
+          "caller": "resolve",
+          "callee": "ApprovalConflict",
+          "lineNumber": 256
+        },
+        {
+          "caller": "resolve",
+          "callee": "self.session.get",
+          "lineNumber": 258
+        },
+        {
+          "caller": "resolve",
+          "callee": "self.session.rollback",
+          "lineNumber": 260
+        },
+        {
+          "caller": "resolve",
+          "callee": "ValueError",
+          "lineNumber": 261
+        },
+        {
+          "caller": "resolve",
+          "callee": "self.session.scalar",
+          "lineNumber": 264
+        },
+        {
+          "caller": "resolve",
+          "callee": "update(PipelineStepORM)\n                .where(\n                    PipelineStepORM.id == step.id,\n                    PipelineStepORM.status == \"waiting_approval\",\n                    PipelineStepORM.lease_generation == approval.lease_generation,\n                )\n                .values(\n                    status=step_status,\n                    next_attempt_at=now if step_status == \"queued\" else None,\n                    lease_owner=None,\n                    lease_expires_at=None,\n                    updated_at=now,\n                )\n                .returning",
+          "lineNumber": 265
+        },
+        {
+          "caller": "resolve",
+          "callee": "update(PipelineStepORM)\n                .where(\n                    PipelineStepORM.id == step.id,\n                    PipelineStepORM.status == \"waiting_approval\",\n                    PipelineStepORM.lease_generation == approval.lease_generation,\n                )\n                .values",
+          "lineNumber": 265
+        },
+        {
+          "caller": "resolve",
+          "callee": "update(PipelineStepORM)\n                .where",
+          "lineNumber": 265
+        },
+        {
+          "caller": "resolve",
+          "callee": "update",
+          "lineNumber": 265
+        },
+        {
+          "caller": "resolve",
+          "callee": "self.session.rollback",
+          "lineNumber": 281
+        },
+        {
+          "caller": "resolve",
+          "callee": "ApprovalConflict",
+          "lineNumber": 282
+        },
+        {
+          "caller": "resolve",
+          "callee": "self.session.get",
+          "lineNumber": 283
+        },
+        {
+          "caller": "resolve",
+          "callee": "self.session.rollback",
+          "lineNumber": 285
+        },
+        {
+          "caller": "resolve",
+          "callee": "ValueError",
+          "lineNumber": 286
+        },
+        {
+          "caller": "resolve",
+          "callee": "append_run_event",
+          "lineNumber": 290
+        },
+        {
+          "caller": "resolve",
+          "callee": "str",
+          "lineNumber": 295
+        },
+        {
+          "caller": "resolve",
+          "callee": "str",
+          "lineNumber": 296
+        },
+        {
+          "caller": "resolve",
+          "callee": "self.session.commit",
+          "lineNumber": 301
+        },
+        {
+          "caller": "resolve",
+          "callee": "self.session.get_one",
+          "lineNumber": 302
+        }
+      ],
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 5,
+        "functionCount": 1,
+        "classCount": 4
+      }
+    },
+    {
+      "path": "novel-character-generator/src/novel_character_generator/application/services/run_service.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 135,
+      "nonEmptyLines": 122,
+      "classes": [
+        {
+          "name": "StepDetails",
+          "startLine": 13,
+          "endLine": 19,
+          "methods": [],
+          "properties": [
+            "id",
+            "step_key",
+            "status",
+            "attempt",
+            "cursor",
+            "error_code"
+          ]
+        },
+        {
+          "name": "RunDetails",
+          "startLine": 23,
+          "endLine": 29,
+          "methods": [],
+          "properties": [
+            "id",
+            "novel_id",
+            "run_type",
+            "status",
+            "cancel_requested",
+            "steps"
+          ]
+        },
+        {
+          "name": "RunService",
+          "startLine": 32,
+          "endLine": 135,
+          "methods": [
+            "__init__",
+            "details",
+            "request_cancel",
+            "retry"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "StepDetails",
+          "line": 12,
+          "isDefault": false
+        },
+        {
+          "name": "RunDetails",
+          "line": 22,
+          "isDefault": false
+        },
+        {
+          "name": "RunService",
+          "line": 32,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "details",
+          "callee": "self.session.get",
+          "lineNumber": 37
+        },
+        {
+          "caller": "details",
+          "callee": "list",
+          "lineNumber": 40
+        },
+        {
+          "caller": "details",
+          "callee": "self.session.scalars",
+          "lineNumber": 41
+        },
+        {
+          "caller": "details",
+          "callee": "select(PipelineStepORM)\n                .where(PipelineStepORM.run_id == run_id)\n                .order_by",
+          "lineNumber": 42
+        },
+        {
+          "caller": "details",
+          "callee": "select(PipelineStepORM)\n                .where",
+          "lineNumber": 42
+        },
+        {
+          "caller": "details",
+          "callee": "select",
+          "lineNumber": 42
+        },
+        {
+          "caller": "details",
+          "callee": "RunDetails",
+          "lineNumber": 47
+        },
+        {
+          "caller": "details",
+          "callee": "StepDetails",
+          "lineNumber": 54
+        },
+        {
+          "caller": "request_cancel",
+          "callee": "self.session.get",
+          "lineNumber": 67
+        },
+        {
+          "caller": "request_cancel",
+          "callee": "ValueError",
+          "lineNumber": 71
+        },
+        {
+          "caller": "request_cancel",
+          "callee": "datetime.now",
+          "lineNumber": 73
+        },
+        {
+          "caller": "request_cancel",
+          "callee": "list",
+          "lineNumber": 76
+        },
+        {
+          "caller": "request_cancel",
+          "callee": "self.session.scalars",
+          "lineNumber": 77
+        },
+        {
+          "caller": "request_cancel",
+          "callee": "select(PipelineStepORM).where",
+          "lineNumber": 78
+        },
+        {
+          "caller": "request_cancel",
+          "callee": "select",
+          "lineNumber": 78
+        },
+        {
+          "caller": "request_cancel",
+          "callee": "all",
+          "lineNumber": 81
+        },
+        {
+          "caller": "request_cancel",
+          "callee": "append_run_event",
+          "lineNumber": 89
+        },
+        {
+          "caller": "request_cancel",
+          "callee": "self.session.commit",
+          "lineNumber": 95
+        },
+        {
+          "caller": "request_cancel",
+          "callee": "self.details",
+          "lineNumber": 96
+        },
+        {
+          "caller": "retry",
+          "callee": "self.session.get",
+          "lineNumber": 99
+        },
+        {
+          "caller": "retry",
+          "callee": "ValueError",
+          "lineNumber": 103
+        },
+        {
+          "caller": "retry",
+          "callee": "list",
+          "lineNumber": 104
+        },
+        {
+          "caller": "retry",
+          "callee": "self.session.scalars",
+          "lineNumber": 105
+        },
+        {
+          "caller": "retry",
+          "callee": "select(PipelineStepORM).where",
+          "lineNumber": 106
+        },
+        {
+          "caller": "retry",
+          "callee": "select",
+          "lineNumber": 106
+        },
+        {
+          "caller": "retry",
+          "callee": "ValueError",
+          "lineNumber": 111
+        },
+        {
+          "caller": "retry",
+          "callee": "any",
+          "lineNumber": 112
+        },
+        {
+          "caller": "retry",
+          "callee": "ValueError",
+          "lineNumber": 113
+        },
+        {
+          "caller": "retry",
+          "callee": "datetime.now",
+          "lineNumber": 115
+        },
+        {
+          "caller": "retry",
+          "callee": "append_run_event",
+          "lineNumber": 128
+        },
+        {
+          "caller": "retry",
+          "callee": "str",
+          "lineNumber": 132
+        },
+        {
+          "caller": "retry",
+          "callee": "self.session.commit",
+          "lineNumber": 134
+        },
+        {
+          "caller": "retry",
+          "callee": "self.details",
+          "lineNumber": 135
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 3,
+        "functionCount": 0,
+        "classCount": 3
+      }
+    },
+    {
+      "path": "novel-character-generator/src/novel_character_generator/infrastructure/db/repositories/run_events.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 43,
+      "nonEmptyLines": 37,
+      "functions": [
+        {
+          "name": "append_run_event",
+          "startLine": 11,
+          "endLine": 31,
+          "params": [
+            "session",
+            "run_id",
+            "event_type",
+            "payload"
+          ]
+        },
+        {
+          "name": "read_run_events",
+          "startLine": 34,
+          "endLine": 43,
+          "params": [
+            "session",
+            "run_id",
+            "after_sequence",
+            "limit"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "append_run_event",
+          "line": 11,
+          "isDefault": false
+        },
+        {
+          "name": "read_run_events",
+          "line": 34,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "append_run_event",
+          "callee": "session.scalar",
+          "lineNumber": 18
+        },
+        {
+          "caller": "append_run_event",
+          "callee": "select(func.max(RunEventORM.sequence)).where",
+          "lineNumber": 19
+        },
+        {
+          "caller": "append_run_event",
+          "callee": "select",
+          "lineNumber": 19
+        },
+        {
+          "caller": "append_run_event",
+          "callee": "func.max",
+          "lineNumber": 19
+        },
+        {
+          "caller": "append_run_event",
+          "callee": "RunEventORM",
+          "lineNumber": 21
+        },
+        {
+          "caller": "append_run_event",
+          "callee": "uuid4",
+          "lineNumber": 22
+        },
+        {
+          "caller": "append_run_event",
+          "callee": "datetime.now",
+          "lineNumber": 27
+        },
+        {
+          "caller": "append_run_event",
+          "callee": "session.add",
+          "lineNumber": 29
+        },
+        {
+          "caller": "append_run_event",
+          "callee": "session.flush",
+          "lineNumber": 30
+        },
+        {
+          "caller": "read_run_events",
+          "callee": "session.scalars",
+          "lineNumber": 37
+        },
+        {
+          "caller": "read_run_events",
+          "callee": "select(RunEventORM)\n        .where(RunEventORM.run_id == run_id, RunEventORM.sequence > after_sequence)\n        .order_by(RunEventORM.sequence)\n        .limit",
+          "lineNumber": 38
+        },
+        {
+          "caller": "read_run_events",
+          "callee": "select(RunEventORM)\n        .where(RunEventORM.run_id == run_id, RunEventORM.sequence > after_sequence)\n        .order_by",
+          "lineNumber": 38
+        },
+        {
+          "caller": "read_run_events",
+          "callee": "select(RunEventORM)\n        .where",
+          "lineNumber": 38
+        },
+        {
+          "caller": "read_run_events",
+          "callee": "select",
+          "lineNumber": 38
+        },
+        {
+          "caller": "read_run_events",
+          "callee": "list",
+          "lineNumber": 43
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 2,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    }
+  ]
+}

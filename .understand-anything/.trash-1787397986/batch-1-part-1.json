@@ -1,0 +1,1285 @@
+{
+  "nodes": [
+    {
+      "id": "file:novel-character-generator/src/novel_character_generator/api/app.py",
+      "type": "file",
+      "name": "app.py",
+      "filePath": "novel-character-generator/src/novel_character_generator/api/app.py",
+      "summary": "装配 FastAPI 应用、生命周期钩子、中间件、指标端点与全部 API 路由，是 HTTP 服务入口。",
+      "tags": [
+        "entry-point",
+        "fastapi",
+        "api",
+        "application"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:novel-character-generator/src/novel_character_generator/api/app.py:lifespan",
+      "type": "function",
+      "name": "lifespan",
+      "filePath": "novel-character-generator/src/novel_character_generator/api/app.py",
+      "lineRange": [
+        24,
+        26
+      ],
+      "summary": "在应用关闭阶段释放数据库引擎资源。",
+      "tags": [
+        "lifecycle",
+        "database",
+        "fastapi"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:novel-character-generator/src/novel_character_generator/api/app.py:create_app",
+      "type": "function",
+      "name": "create_app",
+      "filePath": "novel-character-generator/src/novel_character_generator/api/app.py",
+      "lineRange": [
+        29,
+        49
+      ],
+      "summary": "创建并配置 FastAPI 实例，注册中间件、指标端点和全部业务路由。",
+      "tags": [
+        "factory",
+        "fastapi",
+        "routes"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:novel-character-generator/src/novel_character_generator/api/auth.py",
+      "type": "file",
+      "name": "auth.py",
+      "filePath": "novel-character-generator/src/novel_character_generator/api/auth.py",
+      "summary": "提供用户与管理员 API Key 校验依赖，并根据运行环境实施访问控制。",
+      "tags": [
+        "authentication",
+        "security",
+        "fastapi",
+        "dependency"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:novel-character-generator/src/novel_character_generator/api/auth.py:_matches",
+      "type": "function",
+      "name": "_matches",
+      "filePath": "novel-character-generator/src/novel_character_generator/api/auth.py",
+      "lineRange": [
+        11,
+        12
+      ],
+      "summary": "以恒定时间比较候选 API Key 与期望密钥。",
+      "tags": [
+        "security",
+        "authentication",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:novel-character-generator/src/novel_character_generator/api/auth.py:_configured_keys",
+      "type": "function",
+      "name": "_configured_keys",
+      "filePath": "novel-character-generator/src/novel_character_generator/api/auth.py",
+      "lineRange": [
+        15,
+        19
+      ],
+      "summary": "从应用设置中读取用户和管理员 API Key。",
+      "tags": [
+        "configuration",
+        "authentication",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:novel-character-generator/src/novel_character_generator/api/auth.py:require_user_api_key",
+      "type": "function",
+      "name": "require_user_api_key",
+      "filePath": "novel-character-generator/src/novel_character_generator/api/auth.py",
+      "lineRange": [
+        22,
+        37
+      ],
+      "summary": "验证请求 API Key，并授予开发、用户或管理员主体权限。",
+      "tags": [
+        "authentication",
+        "authorization",
+        "fastapi"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:novel-character-generator/src/novel_character_generator/api/auth.py:require_admin_api_key",
+      "type": "function",
+      "name": "require_admin_api_key",
+      "filePath": "novel-character-generator/src/novel_character_generator/api/auth.py",
+      "lineRange": [
+        40,
+        55
+      ],
+      "summary": "验证管理员 API Key，并区分无效密钥与权限不足。",
+      "tags": [
+        "authentication",
+        "authorization",
+        "fastapi"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:novel-character-generator/src/novel_character_generator/api/deps.py",
+      "type": "file",
+      "name": "deps.py",
+      "filePath": "novel-character-generator/src/novel_character_generator/api/deps.py",
+      "summary": "为路由层提供异步数据库会话和本地制品存储依赖。",
+      "tags": [
+        "dependency-injection",
+        "database",
+        "storage",
+        "fastapi"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:novel-character-generator/src/novel_character_generator/api/deps.py:get_session",
+      "type": "function",
+      "name": "get_session",
+      "filePath": "novel-character-generator/src/novel_character_generator/api/deps.py",
+      "lineRange": [
+        10,
+        12
+      ],
+      "summary": "生成并自动关闭供 FastAPI 注入的异步数据库会话。",
+      "tags": [
+        "dependency-injection",
+        "database",
+        "fastapi"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:novel-character-generator/src/novel_character_generator/api/deps.py:get_artifact_store",
+      "type": "function",
+      "name": "get_artifact_store",
+      "filePath": "novel-character-generator/src/novel_character_generator/api/deps.py",
+      "lineRange": [
+        15,
+        16
+      ],
+      "summary": "依据运行设置构造本地制品存储实例。",
+      "tags": [
+        "dependency-injection",
+        "storage",
+        "factory"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:novel-character-generator/src/novel_character_generator/api/errors.py",
+      "type": "file",
+      "name": "errors.py",
+      "filePath": "novel-character-generator/src/novel_character_generator/api/errors.py",
+      "summary": "统一生成含请求标识的错误响应，并注册 FastAPI 异常处理器与请求 ID 中间件。",
+      "tags": [
+        "error-handling",
+        "middleware",
+        "fastapi",
+        "api"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:novel-character-generator/src/novel_character_generator/api/errors.py:ErrorResponse",
+      "type": "class",
+      "name": "ErrorResponse",
+      "filePath": "novel-character-generator/src/novel_character_generator/api/errors.py",
+      "lineRange": [
+        12,
+        15
+      ],
+      "summary": "定义包含错误代码、消息和请求标识的统一错误响应模型。",
+      "tags": [
+        "error-model",
+        "pydantic",
+        "api"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:novel-character-generator/src/novel_character_generator/api/errors.py:RequestIdMiddleware",
+      "type": "class",
+      "name": "RequestIdMiddleware",
+      "filePath": "novel-character-generator/src/novel_character_generator/api/errors.py",
+      "lineRange": [
+        18,
+        26
+      ],
+      "summary": "为每个请求注入或传播 X-Request-ID，并写回响应头。",
+      "tags": [
+        "middleware",
+        "request-id",
+        "fastapi"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:novel-character-generator/src/novel_character_generator/api/errors.py:_request_id",
+      "type": "function",
+      "name": "_request_id",
+      "filePath": "novel-character-generator/src/novel_character_generator/api/errors.py",
+      "lineRange": [
+        29,
+        30
+      ],
+      "summary": "获取请求上下文中的请求标识，缺失时生成新的 UUID。",
+      "tags": [
+        "request-id",
+        "utility",
+        "error-handling"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:novel-character-generator/src/novel_character_generator/api/errors.py:_error",
+      "type": "function",
+      "name": "_error",
+      "filePath": "novel-character-generator/src/novel_character_generator/api/errors.py",
+      "lineRange": [
+        33,
+        42
+      ],
+      "summary": "将状态码和业务错误信息序列化为标准 JSON 错误响应。",
+      "tags": [
+        "error-handling",
+        "serialization",
+        "api"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:novel-character-generator/src/novel_character_generator/api/errors.py:http_exception_handler",
+      "type": "function",
+      "name": "http_exception_handler",
+      "filePath": "novel-character-generator/src/novel_character_generator/api/errors.py",
+      "lineRange": [
+        45,
+        56
+      ],
+      "summary": "将 FastAPI HTTPException 转换为统一的错误响应格式。",
+      "tags": [
+        "error-handling",
+        "fastapi",
+        "exception"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:novel-character-generator/src/novel_character_generator/api/errors.py:validation_exception_handler",
+      "type": "function",
+      "name": "validation_exception_handler",
+      "filePath": "novel-character-generator/src/novel_character_generator/api/errors.py",
+      "lineRange": [
+        59,
+        66
+      ],
+      "summary": "将请求校验异常映射为 422 标准错误响应。",
+      "tags": [
+        "validation",
+        "error-handling",
+        "fastapi"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:novel-character-generator/src/novel_character_generator/api/errors.py:unhandled_exception_handler",
+      "type": "function",
+      "name": "unhandled_exception_handler",
+      "filePath": "novel-character-generator/src/novel_character_generator/api/errors.py",
+      "lineRange": [
+        69,
+        75
+      ],
+      "summary": "将未处理异常隐藏为通用内部错误响应。",
+      "tags": [
+        "error-handling",
+        "security",
+        "fastapi"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:novel-character-generator/src/novel_character_generator/api/errors.py:configure_error_handling",
+      "type": "function",
+      "name": "configure_error_handling",
+      "filePath": "novel-character-generator/src/novel_character_generator/api/errors.py",
+      "lineRange": [
+        78,
+        82
+      ],
+      "summary": "向应用注册请求 ID 中间件和全部异常处理器。",
+      "tags": [
+        "configuration",
+        "middleware",
+        "fastapi"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:novel-character-generator/src/novel_character_generator/api/metrics.py",
+      "type": "file",
+      "name": "metrics.py",
+      "filePath": "novel-character-generator/src/novel_character_generator/api/metrics.py",
+      "summary": "累计 HTTP 请求计数和时长，并以 Prometheus 文本格式暴露指标端点。",
+      "tags": [
+        "metrics",
+        "middleware",
+        "monitoring",
+        "prometheus"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:novel-character-generator/src/novel_character_generator/api/metrics.py:MetricsRegistry",
+      "type": "class",
+      "name": "MetricsRegistry",
+      "filePath": "novel-character-generator/src/novel_character_generator/api/metrics.py",
+      "lineRange": [
+        11,
+        50
+      ],
+      "summary": "在线程锁保护下累计按路由和状态码分组的请求数与处理时长。",
+      "tags": [
+        "metrics",
+        "monitoring",
+        "prometheus"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:novel-character-generator/src/novel_character_generator/api/metrics.py:MetricsMiddleware",
+      "type": "class",
+      "name": "MetricsMiddleware",
+      "filePath": "novel-character-generator/src/novel_character_generator/api/metrics.py",
+      "lineRange": [
+        56,
+        70
+      ],
+      "summary": "测量每个 HTTP 请求的耗时并写入全局指标注册表。",
+      "tags": [
+        "middleware",
+        "metrics",
+        "monitoring"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:novel-character-generator/src/novel_character_generator/api/metrics.py:metrics",
+      "type": "function",
+      "name": "metrics",
+      "filePath": "novel-character-generator/src/novel_character_generator/api/metrics.py",
+      "lineRange": [
+        73,
+        76
+      ],
+      "summary": "以 Prometheus 兼容的纯文本格式返回当前 HTTP 指标。",
+      "tags": [
+        "metrics",
+        "prometheus",
+        "api"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:novel-character-generator/src/novel_character_generator/api/routes/__init__.py",
+      "type": "file",
+      "name": "__init__.py",
+      "filePath": "novel-character-generator/src/novel_character_generator/api/routes/__init__.py",
+      "summary": "声明 API 路由包，供应用入口导入各个路由模块。",
+      "tags": [
+        "package",
+        "routes",
+        "api",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:novel-character-generator/src/novel_character_generator/api/routes/agent_runs.py",
+      "type": "file",
+      "name": "agent_runs.py",
+      "filePath": "novel-character-generator/src/novel_character_generator/api/routes/agent_runs.py",
+      "summary": "提供智能体运行、回合、工具调用和决策记录的只读查询接口。",
+      "tags": [
+        "api-handler",
+        "agent-runtime",
+        "database",
+        "fastapi"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:novel-character-generator/src/novel_character_generator/api/routes/agent_runs.py:AgentRunSummaryResponse",
+      "type": "class",
+      "name": "AgentRunSummaryResponse",
+      "filePath": "novel-character-generator/src/novel_character_generator/api/routes/agent_runs.py",
+      "lineRange": [
+        27,
+        47
+      ],
+      "summary": "定义智能体运行摘要的 API 响应模型。",
+      "tags": [
+        "api-schema",
+        "agent-runtime",
+        "pydantic"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:novel-character-generator/src/novel_character_generator/api/routes/agent_runs.py:AgentTurnResponse",
+      "type": "class",
+      "name": "AgentTurnResponse",
+      "filePath": "novel-character-generator/src/novel_character_generator/api/routes/agent_runs.py",
+      "lineRange": [
+        50,
+        56
+      ],
+      "summary": "定义智能体单回合上下文、输出和用量的响应模型。",
+      "tags": [
+        "api-schema",
+        "agent-runtime",
+        "pydantic"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:novel-character-generator/src/novel_character_generator/api/routes/agent_runs.py:ToolCallResponse",
+      "type": "class",
+      "name": "ToolCallResponse",
+      "filePath": "novel-character-generator/src/novel_character_generator/api/routes/agent_runs.py",
+      "lineRange": [
+        59,
+        70
+      ],
+      "summary": "定义智能体工具调用审计信息的响应模型。",
+      "tags": [
+        "api-schema",
+        "agent-runtime",
+        "pydantic"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:novel-character-generator/src/novel_character_generator/api/routes/agent_runs.py:AgentRunDetailsResponse",
+      "type": "class",
+      "name": "AgentRunDetailsResponse",
+      "filePath": "novel-character-generator/src/novel_character_generator/api/routes/agent_runs.py",
+      "lineRange": [
+        73,
+        79
+      ],
+      "summary": "扩展运行摘要，聚合回合、工具调用和决策记录。",
+      "tags": [
+        "api-schema",
+        "agent-runtime",
+        "pydantic"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:novel-character-generator/src/novel_character_generator/api/routes/agent_runs.py:agent_run_summary",
+      "type": "function",
+      "name": "agent_run_summary",
+      "filePath": "novel-character-generator/src/novel_character_generator/api/routes/agent_runs.py",
+      "lineRange": [
+        82,
+        83
+      ],
+      "summary": "将 ORM 智能体运行记录转换为摘要响应。",
+      "tags": [
+        "serialization",
+        "agent-runtime",
+        "api"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:novel-character-generator/src/novel_character_generator/api/routes/agent_runs.py:get_agent_run",
+      "type": "function",
+      "name": "get_agent_run",
+      "filePath": "novel-character-generator/src/novel_character_generator/api/routes/agent_runs.py",
+      "lineRange": [
+        87,
+        126
+      ],
+      "summary": "查询指定智能体运行及其回合、工具调用和决策记录。",
+      "tags": [
+        "api-handler",
+        "agent-runtime",
+        "database"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:novel-character-generator/src/novel_character_generator/api/routes/approvals.py",
+      "type": "file",
+      "name": "approvals.py",
+      "filePath": "novel-character-generator/src/novel_character_generator/api/routes/approvals.py",
+      "summary": "提供待处理人工审批列表和带乐观并发控制的审批决策接口。",
+      "tags": [
+        "api-handler",
+        "approval",
+        "security",
+        "fastapi"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:novel-character-generator/src/novel_character_generator/api/routes/approvals.py:ApprovalResponse",
+      "type": "class",
+      "name": "ApprovalResponse",
+      "filePath": "novel-character-generator/src/novel_character_generator/api/routes/approvals.py",
+      "lineRange": [
+        24,
+        40
+      ],
+      "summary": "定义人工审批请求及其决策状态的 API 响应模型。",
+      "tags": [
+        "api-schema",
+        "approval",
+        "pydantic"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:novel-character-generator/src/novel_character_generator/api/routes/approvals.py:ApprovalPageResponse",
+      "type": "class",
+      "name": "ApprovalPageResponse",
+      "filePath": "novel-character-generator/src/novel_character_generator/api/routes/approvals.py",
+      "lineRange": [
+        43,
+        45
+      ],
+      "summary": "定义游标分页的审批列表响应模型。",
+      "tags": [
+        "api-schema",
+        "pagination",
+        "approval"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:novel-character-generator/src/novel_character_generator/api/routes/approvals.py:ResolveApprovalRequest",
+      "type": "class",
+      "name": "ResolveApprovalRequest",
+      "filePath": "novel-character-generator/src/novel_character_generator/api/routes/approvals.py",
+      "lineRange": [
+        48,
+        51
+      ],
+      "summary": "定义批准、拒绝、修改或延期审批的请求载荷。",
+      "tags": [
+        "api-schema",
+        "validation",
+        "approval"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:novel-character-generator/src/novel_character_generator/api/routes/approvals.py:_response",
+      "type": "function",
+      "name": "_response",
+      "filePath": "novel-character-generator/src/novel_character_generator/api/routes/approvals.py",
+      "lineRange": [
+        54,
+        55
+      ],
+      "summary": "将审批 ORM 记录转换为 API 响应模型。",
+      "tags": [
+        "serialization",
+        "approval",
+        "api"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:novel-character-generator/src/novel_character_generator/api/routes/approvals.py:_revision",
+      "type": "function",
+      "name": "_revision",
+      "filePath": "novel-character-generator/src/novel_character_generator/api/routes/approvals.py",
+      "lineRange": [
+        58,
+        66
+      ],
+      "summary": "解析并校验 If-Match 乐观并发版本号。",
+      "tags": [
+        "concurrency",
+        "validation",
+        "approval"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:novel-character-generator/src/novel_character_generator/api/routes/approvals.py:list_approvals",
+      "type": "function",
+      "name": "list_approvals",
+      "filePath": "novel-character-generator/src/novel_character_generator/api/routes/approvals.py",
+      "lineRange": [
+        70,
+        89
+      ],
+      "summary": "按状态和类型分页读取待人工处理的审批请求。",
+      "tags": [
+        "api-handler",
+        "approval",
+        "pagination"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:novel-character-generator/src/novel_character_generator/api/routes/approvals.py:resolve_approval",
+      "type": "function",
+      "name": "resolve_approval",
+      "filePath": "novel-character-generator/src/novel_character_generator/api/routes/approvals.py",
+      "lineRange": [
+        93,
+        119
+      ],
+      "summary": "提交审批决策并把冲突和业务校验错误映射为 HTTP 响应。",
+      "tags": [
+        "api-handler",
+        "approval",
+        "concurrency"
+      ],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/app.py",
+      "target": "function:novel-character-generator/src/novel_character_generator/api/app.py:lifespan",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/app.py",
+      "target": "function:novel-character-generator/src/novel_character_generator/api/app.py:lifespan",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/app.py",
+      "target": "function:novel-character-generator/src/novel_character_generator/api/app.py:create_app",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/app.py",
+      "target": "function:novel-character-generator/src/novel_character_generator/api/app.py:create_app",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/auth.py",
+      "target": "function:novel-character-generator/src/novel_character_generator/api/auth.py:_matches",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/auth.py",
+      "target": "function:novel-character-generator/src/novel_character_generator/api/auth.py:_matches",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/auth.py",
+      "target": "function:novel-character-generator/src/novel_character_generator/api/auth.py:_configured_keys",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/auth.py",
+      "target": "function:novel-character-generator/src/novel_character_generator/api/auth.py:_configured_keys",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/auth.py",
+      "target": "function:novel-character-generator/src/novel_character_generator/api/auth.py:require_user_api_key",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/auth.py",
+      "target": "function:novel-character-generator/src/novel_character_generator/api/auth.py:require_user_api_key",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/auth.py",
+      "target": "function:novel-character-generator/src/novel_character_generator/api/auth.py:require_admin_api_key",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/auth.py",
+      "target": "function:novel-character-generator/src/novel_character_generator/api/auth.py:require_admin_api_key",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/deps.py",
+      "target": "function:novel-character-generator/src/novel_character_generator/api/deps.py:get_session",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/deps.py",
+      "target": "function:novel-character-generator/src/novel_character_generator/api/deps.py:get_session",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/deps.py",
+      "target": "function:novel-character-generator/src/novel_character_generator/api/deps.py:get_artifact_store",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/deps.py",
+      "target": "function:novel-character-generator/src/novel_character_generator/api/deps.py:get_artifact_store",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/errors.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/api/errors.py:ErrorResponse",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/errors.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/api/errors.py:ErrorResponse",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/errors.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/api/errors.py:RequestIdMiddleware",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/errors.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/api/errors.py:RequestIdMiddleware",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/errors.py",
+      "target": "function:novel-character-generator/src/novel_character_generator/api/errors.py:_request_id",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/errors.py",
+      "target": "function:novel-character-generator/src/novel_character_generator/api/errors.py:_request_id",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/errors.py",
+      "target": "function:novel-character-generator/src/novel_character_generator/api/errors.py:_error",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/errors.py",
+      "target": "function:novel-character-generator/src/novel_character_generator/api/errors.py:_error",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/errors.py",
+      "target": "function:novel-character-generator/src/novel_character_generator/api/errors.py:http_exception_handler",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/errors.py",
+      "target": "function:novel-character-generator/src/novel_character_generator/api/errors.py:http_exception_handler",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/errors.py",
+      "target": "function:novel-character-generator/src/novel_character_generator/api/errors.py:validation_exception_handler",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/errors.py",
+      "target": "function:novel-character-generator/src/novel_character_generator/api/errors.py:validation_exception_handler",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/errors.py",
+      "target": "function:novel-character-generator/src/novel_character_generator/api/errors.py:unhandled_exception_handler",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/errors.py",
+      "target": "function:novel-character-generator/src/novel_character_generator/api/errors.py:unhandled_exception_handler",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/errors.py",
+      "target": "function:novel-character-generator/src/novel_character_generator/api/errors.py:configure_error_handling",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/errors.py",
+      "target": "function:novel-character-generator/src/novel_character_generator/api/errors.py:configure_error_handling",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/metrics.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/api/metrics.py:MetricsRegistry",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/metrics.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/api/metrics.py:MetricsRegistry",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/metrics.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/api/metrics.py:MetricsMiddleware",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/metrics.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/api/metrics.py:MetricsMiddleware",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/metrics.py",
+      "target": "function:novel-character-generator/src/novel_character_generator/api/metrics.py:metrics",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/metrics.py",
+      "target": "function:novel-character-generator/src/novel_character_generator/api/metrics.py:metrics",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/agent_runs.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/api/routes/agent_runs.py:AgentRunSummaryResponse",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/agent_runs.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/api/routes/agent_runs.py:AgentRunSummaryResponse",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/agent_runs.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/api/routes/agent_runs.py:AgentTurnResponse",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/agent_runs.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/api/routes/agent_runs.py:AgentTurnResponse",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/agent_runs.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/api/routes/agent_runs.py:ToolCallResponse",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/agent_runs.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/api/routes/agent_runs.py:ToolCallResponse",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/agent_runs.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/api/routes/agent_runs.py:AgentRunDetailsResponse",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/agent_runs.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/api/routes/agent_runs.py:AgentRunDetailsResponse",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/agent_runs.py",
+      "target": "function:novel-character-generator/src/novel_character_generator/api/routes/agent_runs.py:agent_run_summary",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/agent_runs.py",
+      "target": "function:novel-character-generator/src/novel_character_generator/api/routes/agent_runs.py:agent_run_summary",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/agent_runs.py",
+      "target": "function:novel-character-generator/src/novel_character_generator/api/routes/agent_runs.py:get_agent_run",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/agent_runs.py",
+      "target": "function:novel-character-generator/src/novel_character_generator/api/routes/agent_runs.py:get_agent_run",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/approvals.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/api/routes/approvals.py:ApprovalResponse",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/approvals.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/api/routes/approvals.py:ApprovalResponse",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/approvals.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/api/routes/approvals.py:ApprovalPageResponse",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/approvals.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/api/routes/approvals.py:ApprovalPageResponse",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/approvals.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/api/routes/approvals.py:ResolveApprovalRequest",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/approvals.py",
+      "target": "class:novel-character-generator/src/novel_character_generator/api/routes/approvals.py:ResolveApprovalRequest",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/approvals.py",
+      "target": "function:novel-character-generator/src/novel_character_generator/api/routes/approvals.py:_response",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/approvals.py",
+      "target": "function:novel-character-generator/src/novel_character_generator/api/routes/approvals.py:_response",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/approvals.py",
+      "target": "function:novel-character-generator/src/novel_character_generator/api/routes/approvals.py:_revision",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/approvals.py",
+      "target": "function:novel-character-generator/src/novel_character_generator/api/routes/approvals.py:_revision",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/approvals.py",
+      "target": "function:novel-character-generator/src/novel_character_generator/api/routes/approvals.py:list_approvals",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/approvals.py",
+      "target": "function:novel-character-generator/src/novel_character_generator/api/routes/approvals.py:list_approvals",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/approvals.py",
+      "target": "function:novel-character-generator/src/novel_character_generator/api/routes/approvals.py:resolve_approval",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/approvals.py",
+      "target": "function:novel-character-generator/src/novel_character_generator/api/routes/approvals.py:resolve_approval",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/app.py",
+      "target": "file:novel-character-generator/src/novel_character_generator/api/auth.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/app.py",
+      "target": "file:novel-character-generator/src/novel_character_generator/api/errors.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/app.py",
+      "target": "file:novel-character-generator/src/novel_character_generator/api/metrics.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/app.py",
+      "target": "file:novel-character-generator/src/novel_character_generator/api/routes/__init__.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/app.py",
+      "target": "file:novel-character-generator/src/novel_character_generator/api/routes/agent_runs.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/app.py",
+      "target": "file:novel-character-generator/src/novel_character_generator/api/routes/approvals.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/app.py",
+      "target": "file:novel-character-generator/src/novel_character_generator/api/routes/capabilities.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/app.py",
+      "target": "file:novel-character-generator/src/novel_character_generator/api/routes/characters.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/app.py",
+      "target": "file:novel-character-generator/src/novel_character_generator/api/routes/health.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/app.py",
+      "target": "file:novel-character-generator/src/novel_character_generator/api/routes/novels.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/app.py",
+      "target": "file:novel-character-generator/src/novel_character_generator/api/routes/runs.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/app.py",
+      "target": "file:novel-character-generator/src/novel_character_generator/api/routes/story.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/app.py",
+      "target": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/session.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/app.py",
+      "target": "file:novel-character-generator/src/novel_character_generator/settings.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/auth.py",
+      "target": "file:novel-character-generator/src/novel_character_generator/settings.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/deps.py",
+      "target": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/session.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/deps.py",
+      "target": "file:novel-character-generator/src/novel_character_generator/infrastructure/storage/local.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/deps.py",
+      "target": "file:novel-character-generator/src/novel_character_generator/settings.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/agent_runs.py",
+      "target": "file:novel-character-generator/src/novel_character_generator/api/auth.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/agent_runs.py",
+      "target": "file:novel-character-generator/src/novel_character_generator/api/deps.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/agent_runs.py",
+      "target": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/approvals.py",
+      "target": "file:novel-character-generator/src/novel_character_generator/api/auth.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/approvals.py",
+      "target": "file:novel-character-generator/src/novel_character_generator/api/deps.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/approvals.py",
+      "target": "file:novel-character-generator/src/novel_character_generator/application/services/approval_service.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:novel-character-generator/src/novel_character_generator/api/routes/approvals.py",
+      "target": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    }
+  ]
+}

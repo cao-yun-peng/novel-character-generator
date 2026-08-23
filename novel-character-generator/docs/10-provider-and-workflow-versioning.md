@@ -2,7 +2,7 @@
 
 > [← 上一篇](09-api-specification.md) · [文档索引](README.md) · [下一篇 →](11-security-and-data-governance.md)
 >
-> 文档版本：2.7 · 源章节：13. Provider 与工作流版本管理 · 修订日期：2026-08-22
+> 文档版本：2.8 · 源章节：13. Provider 与工作流版本管理 · 修订日期：2026-08-22
 
 ## 13. Provider 与工作流版本管理
 

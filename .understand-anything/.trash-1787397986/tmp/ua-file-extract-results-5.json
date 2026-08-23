@@ -1,0 +1,1604 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 6,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "novel-character-generator/src/novel_character_generator/application/ports/artifact_store.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 7,
+      "nonEmptyLines": 4,
+      "classes": [
+        {
+          "name": "ArtifactStore",
+          "startLine": 4,
+          "endLine": 7,
+          "methods": [
+            "put",
+            "get"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "ArtifactStore",
+          "line": 4,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "novel-character-generator/src/novel_character_generator/application/services/ingestion_service.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 146,
+      "nonEmptyLines": 134,
+      "classes": [
+        {
+          "name": "NovelDetails",
+          "startLine": 19,
+          "endLine": 25,
+          "methods": [],
+          "properties": [
+            "id",
+            "title",
+            "status",
+            "source_sha256",
+            "chapter_count",
+            "chunk_count"
+          ]
+        },
+        {
+          "name": "IngestionService",
+          "startLine": 28,
+          "endLine": 146,
+          "methods": [
+            "__init__",
+            "upload",
+            "upload_version",
+            "details",
+            "create_run",
+            "create_extraction_run",
+            "create_analysis_run"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "NovelDetails",
+          "line": 18,
+          "isDefault": false
+        },
+        {
+          "name": "IngestionService",
+          "line": 28,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "__init__",
+          "callee": "IngestionRepository",
+          "lineNumber": 32
+        },
+        {
+          "caller": "upload",
+          "callee": "decode_text",
+          "lineNumber": 35
+        },
+        {
+          "caller": "upload",
+          "callee": "text.strip",
+          "lineNumber": 36
+        },
+        {
+          "caller": "upload",
+          "callee": "ValueError",
+          "lineNumber": 37
+        },
+        {
+          "caller": "upload",
+          "callee": "hashlib.sha256(data).hexdigest",
+          "lineNumber": 38
+        },
+        {
+          "caller": "upload",
+          "callee": "hashlib.sha256",
+          "lineNumber": 38
+        },
+        {
+          "caller": "upload",
+          "callee": "self.repository.find_document_by_hash",
+          "lineNumber": 39
+        },
+        {
+          "caller": "upload",
+          "callee": "self.repository.get_document",
+          "lineNumber": 41
+        },
+        {
+          "caller": "upload",
+          "callee": "self.repository.get_novel",
+          "lineNumber": 43
+        },
+        {
+          "caller": "upload",
+          "callee": "RuntimeError",
+          "lineNumber": 48
+        },
+        {
+          "caller": "upload",
+          "callee": "self.artifact_store.put",
+          "lineNumber": 50
+        },
+        {
+          "caller": "upload",
+          "callee": "Path(filename).stem.strip",
+          "lineNumber": 51
+        },
+        {
+          "caller": "upload",
+          "callee": "Path",
+          "lineNumber": 51
+        },
+        {
+          "caller": "upload",
+          "callee": "self.repository.create_novel_and_document",
+          "lineNumber": 52
+        },
+        {
+          "caller": "upload",
+          "callee": "len",
+          "lineNumber": 57
+        },
+        {
+          "caller": "upload",
+          "callee": "self.session.commit",
+          "lineNumber": 59
+        },
+        {
+          "caller": "upload_version",
+          "callee": "decode_text",
+          "lineNumber": 66
+        },
+        {
+          "caller": "upload_version",
+          "callee": "text.strip",
+          "lineNumber": 67
+        },
+        {
+          "caller": "upload_version",
+          "callee": "ValueError",
+          "lineNumber": 68
+        },
+        {
+          "caller": "upload_version",
+          "callee": "self.repository.get_novel",
+          "lineNumber": 69
+        },
+        {
+          "caller": "upload_version",
+          "callee": "self.repository.latest_document",
+          "lineNumber": 72
+        },
+        {
+          "caller": "upload_version",
+          "callee": "RuntimeError",
+          "lineNumber": 74
+        },
+        {
+          "caller": "upload_version",
+          "callee": "hashlib.sha256(data).hexdigest",
+          "lineNumber": 75
+        },
+        {
+          "caller": "upload_version",
+          "callee": "hashlib.sha256",
+          "lineNumber": 75
+        },
+        {
+          "caller": "upload_version",
+          "callee": "self.artifact_store.put",
+          "lineNumber": 76
+        },
+        {
+          "caller": "upload_version",
+          "callee": "self.repository.create_document_version",
+          "lineNumber": 77
+        },
+        {
+          "caller": "upload_version",
+          "callee": "len",
+          "lineNumber": 82
+        },
+        {
+          "caller": "upload_version",
+          "callee": "self.session.commit",
+          "lineNumber": 85
+        },
+        {
+          "caller": "details",
+          "callee": "self.repository.get_novel",
+          "lineNumber": 89
+        },
+        {
+          "caller": "details",
+          "callee": "self.repository.latest_document_version",
+          "lineNumber": 92
+        },
+        {
+          "caller": "details",
+          "callee": "RuntimeError",
+          "lineNumber": 94
+        },
+        {
+          "caller": "details",
+          "callee": "self.repository.get_counts",
+          "lineNumber": 95
+        },
+        {
+          "caller": "details",
+          "callee": "NovelDetails",
+          "lineNumber": 96
+        },
+        {
+          "caller": "create_run",
+          "callee": "self.repository.get_novel",
+          "lineNumber": 106
+        },
+        {
+          "caller": "create_run",
+          "callee": "self.repository.get_run_by_idempotency_key",
+          "lineNumber": 108
+        },
+        {
+          "caller": "create_run",
+          "callee": "ValueError",
+          "lineNumber": 111
+        },
+        {
+          "caller": "create_run",
+          "callee": "self.repository.create_import_run",
+          "lineNumber": 113
+        },
+        {
+          "caller": "create_run",
+          "callee": "self.session.commit",
+          "lineNumber": 114
+        },
+        {
+          "caller": "create_extraction_run",
+          "callee": "self.repository.get_novel",
+          "lineNumber": 120
+        },
+        {
+          "caller": "create_extraction_run",
+          "callee": "ValueError",
+          "lineNumber": 124
+        },
+        {
+          "caller": "create_extraction_run",
+          "callee": "self.repository.get_run_by_idempotency_key",
+          "lineNumber": 125
+        },
+        {
+          "caller": "create_extraction_run",
+          "callee": "ValueError",
+          "lineNumber": 128
+        },
+        {
+          "caller": "create_extraction_run",
+          "callee": "self.repository.create_extraction_run",
+          "lineNumber": 130
+        },
+        {
+          "caller": "create_extraction_run",
+          "callee": "self.session.commit",
+          "lineNumber": 131
+        },
+        {
+          "caller": "create_analysis_run",
+          "callee": "self.repository.get_novel",
+          "lineNumber": 137
+        },
+        {
+          "caller": "create_analysis_run",
+          "callee": "self.repository.get_run_by_idempotency_key",
+          "lineNumber": 139
+        },
+        {
+          "caller": "create_analysis_run",
+          "callee": "ValueError",
+          "lineNumber": 142
+        },
+        {
+          "caller": "create_analysis_run",
+          "callee": "self.repository.create_analysis_run",
+          "lineNumber": 144
+        },
+        {
+          "caller": "create_analysis_run",
+          "callee": "self.session.commit",
+          "lineNumber": 145
+        }
+      ],
+      "metrics": {
+        "importCount": 4,
+        "exportCount": 2,
+        "functionCount": 0,
+        "classCount": 2
+      }
+    },
+    {
+      "path": "novel-character-generator/src/novel_character_generator/domain/entities/document.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 52,
+      "nonEmptyLines": 40,
+      "classes": [
+        {
+          "name": "SourceDocumentVersion",
+          "startLine": 7,
+          "endLine": 16,
+          "methods": [],
+          "properties": [
+            "id",
+            "source_document_id",
+            "version",
+            "content_sha256",
+            "storage_uri",
+            "encoding",
+            "normalization_map_id",
+            "supersedes_version_id",
+            "created_at"
+          ]
+        },
+        {
+          "name": "NormalizationMap",
+          "startLine": 19,
+          "endLine": 23,
+          "methods": [],
+          "properties": [
+            "id",
+            "source_document_version_id",
+            "algorithm_version",
+            "original_boundaries"
+          ]
+        },
+        {
+          "name": "NormalizedText",
+          "startLine": 26,
+          "endLine": 34,
+          "methods": [
+            "original_span"
+          ],
+          "properties": [
+            "text",
+            "original_boundaries",
+            "map_version"
+          ]
+        },
+        {
+          "name": "ChapterBoundary",
+          "startLine": 37,
+          "endLine": 41,
+          "methods": [],
+          "properties": [
+            "ordinal",
+            "title",
+            "normalized_start",
+            "normalized_end"
+          ]
+        },
+        {
+          "name": "TextChunk",
+          "startLine": 44,
+          "endLine": 52,
+          "methods": [],
+          "properties": [
+            "ordinal",
+            "chapter_ordinal",
+            "content",
+            "content_hash",
+            "normalized_start",
+            "normalized_end",
+            "original_start",
+            "original_end"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "SourceDocumentVersion",
+          "line": 7,
+          "isDefault": false
+        },
+        {
+          "name": "NormalizationMap",
+          "line": 19,
+          "isDefault": false
+        },
+        {
+          "name": "NormalizedText",
+          "line": 26,
+          "isDefault": false
+        },
+        {
+          "name": "ChapterBoundary",
+          "line": 37,
+          "isDefault": false
+        },
+        {
+          "name": "TextChunk",
+          "line": 44,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "original_span",
+          "callee": "len",
+          "lineNumber": 32
+        },
+        {
+          "caller": "original_span",
+          "callee": "ValueError",
+          "lineNumber": 33
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 5,
+        "functionCount": 0,
+        "classCount": 5
+      }
+    },
+    {
+      "path": "novel-character-generator/src/novel_character_generator/domain/policies/text_processing.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 196,
+      "nonEmptyLines": 180,
+      "functions": [
+        {
+          "name": "decode_text",
+          "startLine": 21,
+          "endLine": 38,
+          "params": [
+            "data"
+          ]
+        },
+        {
+          "name": "normalize_text",
+          "startLine": 41,
+          "endLine": 73,
+          "params": [
+            "original"
+          ]
+        },
+        {
+          "name": "detect_chapters",
+          "startLine": 76,
+          "endLine": 107,
+          "params": [
+            "text"
+          ]
+        },
+        {
+          "name": "estimate_tokens",
+          "startLine": 110,
+          "endLine": 112,
+          "params": [
+            "text"
+          ]
+        },
+        {
+          "name": "_paragraph_ranges",
+          "startLine": 115,
+          "endLine": 123,
+          "params": [
+            "text",
+            "start",
+            "end"
+          ]
+        },
+        {
+          "name": "_split_range",
+          "startLine": 126,
+          "endLine": 141,
+          "params": [
+            "text",
+            "start",
+            "end",
+            "target_tokens"
+          ]
+        },
+        {
+          "name": "build_chunks",
+          "startLine": 144,
+          "endLine": 196,
+          "params": [
+            "normalized",
+            "chapters",
+            "target_tokens",
+            "overlap_tokens"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "decode_text",
+          "line": 21,
+          "isDefault": false
+        },
+        {
+          "name": "normalize_text",
+          "line": 41,
+          "isDefault": false
+        },
+        {
+          "name": "detect_chapters",
+          "line": 76,
+          "isDefault": false
+        },
+        {
+          "name": "estimate_tokens",
+          "line": 110,
+          "isDefault": false
+        },
+        {
+          "name": "_paragraph_ranges",
+          "line": 115,
+          "isDefault": false
+        },
+        {
+          "name": "_split_range",
+          "line": 126,
+          "isDefault": false
+        },
+        {
+          "name": "build_chunks",
+          "line": 144,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "decode_text",
+          "callee": "ValueError",
+          "lineNumber": 23
+        },
+        {
+          "caller": "decode_text",
+          "callee": "data.startswith",
+          "lineNumber": 28
+        },
+        {
+          "caller": "decode_text",
+          "callee": "encodings.insert",
+          "lineNumber": 29
+        },
+        {
+          "caller": "decode_text",
+          "callee": "data.decode",
+          "lineNumber": 32
+        },
+        {
+          "caller": "decode_text",
+          "callee": "ValueError",
+          "lineNumber": 38
+        },
+        {
+          "caller": "normalize_text",
+          "callee": "len",
+          "lineNumber": 45
+        },
+        {
+          "caller": "normalize_text",
+          "callee": "len",
+          "lineNumber": 55
+        },
+        {
+          "caller": "normalize_text",
+          "callee": "unicodedata.combining",
+          "lineNumber": 55
+        },
+        {
+          "caller": "normalize_text",
+          "callee": "unicodedata.normalize",
+          "lineNumber": 61
+        },
+        {
+          "caller": "normalize_text",
+          "callee": "output.extend",
+          "lineNumber": 66
+        },
+        {
+          "caller": "normalize_text",
+          "callee": "range",
+          "lineNumber": 67
+        },
+        {
+          "caller": "normalize_text",
+          "callee": "len",
+          "lineNumber": 67
+        },
+        {
+          "caller": "normalize_text",
+          "callee": "boundaries.append",
+          "lineNumber": 68
+        },
+        {
+          "caller": "normalize_text",
+          "callee": "len",
+          "lineNumber": 68
+        },
+        {
+          "caller": "normalize_text",
+          "callee": "NormalizedText",
+          "lineNumber": 69
+        },
+        {
+          "caller": "normalize_text",
+          "callee": "\"\".join",
+          "lineNumber": 70
+        },
+        {
+          "caller": "detect_chapters",
+          "callee": "list",
+          "lineNumber": 77
+        },
+        {
+          "caller": "detect_chapters",
+          "callee": "CHAPTER_HEADING.finditer",
+          "lineNumber": 77
+        },
+        {
+          "caller": "detect_chapters",
+          "callee": "ChapterBoundary",
+          "lineNumber": 80
+        },
+        {
+          "caller": "detect_chapters",
+          "callee": "len",
+          "lineNumber": 84
+        },
+        {
+          "caller": "detect_chapters",
+          "callee": "matches[0].start",
+          "lineNumber": 88
+        },
+        {
+          "caller": "detect_chapters",
+          "callee": "text[: matches[0].start()].strip",
+          "lineNumber": 88
+        },
+        {
+          "caller": "detect_chapters",
+          "callee": "matches[0].start",
+          "lineNumber": 88
+        },
+        {
+          "caller": "detect_chapters",
+          "callee": "chapters.append",
+          "lineNumber": 89
+        },
+        {
+          "caller": "detect_chapters",
+          "callee": "ChapterBoundary",
+          "lineNumber": 90
+        },
+        {
+          "caller": "detect_chapters",
+          "callee": "matches[0].start",
+          "lineNumber": 94
+        },
+        {
+          "caller": "detect_chapters",
+          "callee": "enumerate",
+          "lineNumber": 97
+        },
+        {
+          "caller": "detect_chapters",
+          "callee": "matches[match_index + 1].start",
+          "lineNumber": 98
+        },
+        {
+          "caller": "detect_chapters",
+          "callee": "len",
+          "lineNumber": 98
+        },
+        {
+          "caller": "detect_chapters",
+          "callee": "len",
+          "lineNumber": 98
+        },
+        {
+          "caller": "detect_chapters",
+          "callee": "chapters.append",
+          "lineNumber": 99
+        },
+        {
+          "caller": "detect_chapters",
+          "callee": "ChapterBoundary",
+          "lineNumber": 100
+        },
+        {
+          "caller": "detect_chapters",
+          "callee": "len",
+          "lineNumber": 101
+        },
+        {
+          "caller": "detect_chapters",
+          "callee": "match.group(0).strip",
+          "lineNumber": 102
+        },
+        {
+          "caller": "detect_chapters",
+          "callee": "match.group",
+          "lineNumber": 102
+        },
+        {
+          "caller": "detect_chapters",
+          "callee": "match.start",
+          "lineNumber": 103
+        },
+        {
+          "caller": "estimate_tokens",
+          "callee": "sum",
+          "lineNumber": 111
+        },
+        {
+          "caller": "estimate_tokens",
+          "callee": "character.isascii",
+          "lineNumber": 111
+        },
+        {
+          "caller": "estimate_tokens",
+          "callee": "max",
+          "lineNumber": 112
+        },
+        {
+          "caller": "estimate_tokens",
+          "callee": "len",
+          "lineNumber": 112
+        },
+        {
+          "caller": "_paragraph_ranges",
+          "callee": "re.finditer",
+          "lineNumber": 117
+        },
+        {
+          "caller": "_paragraph_ranges",
+          "callee": "match.end",
+          "lineNumber": 118
+        },
+        {
+          "caller": "_paragraph_ranges",
+          "callee": "text[cursor:boundary].strip",
+          "lineNumber": 119
+        },
+        {
+          "caller": "_paragraph_ranges",
+          "callee": "text[cursor:end].strip",
+          "lineNumber": 122
+        },
+        {
+          "caller": "_split_range",
+          "callee": "estimate_tokens",
+          "lineNumber": 127
+        },
+        {
+          "caller": "_split_range",
+          "callee": "SENTENCE_END.split",
+          "lineNumber": 131
+        },
+        {
+          "caller": "_split_range",
+          "callee": "len",
+          "lineNumber": 132
+        },
+        {
+          "caller": "_split_range",
+          "callee": "estimate_tokens",
+          "lineNumber": 133
+        },
+        {
+          "caller": "_split_range",
+          "callee": "max",
+          "lineNumber": 134
+        },
+        {
+          "caller": "_split_range",
+          "callee": "ranges.append",
+          "lineNumber": 136
+        },
+        {
+          "caller": "_split_range",
+          "callee": "min",
+          "lineNumber": 136
+        },
+        {
+          "caller": "_split_range",
+          "callee": "ranges.append",
+          "lineNumber": 139
+        },
+        {
+          "caller": "build_chunks",
+          "callee": "ValueError",
+          "lineNumber": 152
+        },
+        {
+          "caller": "build_chunks",
+          "callee": "ValueError",
+          "lineNumber": 154
+        },
+        {
+          "caller": "build_chunks",
+          "callee": "_paragraph_ranges",
+          "lineNumber": 158
+        },
+        {
+          "caller": "build_chunks",
+          "callee": "units.extend",
+          "lineNumber": 161
+        },
+        {
+          "caller": "build_chunks",
+          "callee": "_split_range",
+          "lineNumber": 161
+        },
+        {
+          "caller": "build_chunks",
+          "callee": "len",
+          "lineNumber": 163
+        },
+        {
+          "caller": "build_chunks",
+          "callee": "len",
+          "lineNumber": 168
+        },
+        {
+          "caller": "build_chunks",
+          "callee": "estimate_tokens",
+          "lineNumber": 170
+        },
+        {
+          "caller": "build_chunks",
+          "callee": "normalized.original_span",
+          "lineNumber": 174
+        },
+        {
+          "caller": "build_chunks",
+          "callee": "chunks.append",
+          "lineNumber": 176
+        },
+        {
+          "caller": "build_chunks",
+          "callee": "TextChunk",
+          "lineNumber": 177
+        },
+        {
+          "caller": "build_chunks",
+          "callee": "len",
+          "lineNumber": 178
+        },
+        {
+          "caller": "build_chunks",
+          "callee": "hashlib.sha256(content.encode()).hexdigest",
+          "lineNumber": 181
+        },
+        {
+          "caller": "build_chunks",
+          "callee": "hashlib.sha256",
+          "lineNumber": 181
+        },
+        {
+          "caller": "build_chunks",
+          "callee": "content.encode",
+          "lineNumber": 181
+        },
+        {
+          "caller": "build_chunks",
+          "callee": "len",
+          "lineNumber": 188
+        },
+        {
+          "caller": "build_chunks",
+          "callee": "estimate_tokens",
+          "lineNumber": 192
+        },
+        {
+          "caller": "build_chunks",
+          "callee": "min",
+          "lineNumber": 195
+        },
+        {
+          "caller": "build_chunks",
+          "callee": "max",
+          "lineNumber": 195
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 7,
+        "functionCount": 7,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "novel-character-generator/src/novel_character_generator/infrastructure/db/repositories/ingestion.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 377,
+      "nonEmptyLines": 357,
+      "classes": [
+        {
+          "name": "IngestionRepository",
+          "startLine": 26,
+          "endLine": 377,
+          "methods": [
+            "__init__",
+            "find_document_by_hash",
+            "create_novel_and_document",
+            "create_document_version",
+            "get_novel",
+            "get_document",
+            "latest_document",
+            "latest_document_version",
+            "get_run_by_idempotency_key",
+            "create_import_run",
+            "create_extraction_run",
+            "create_analysis_run",
+            "_create_run",
+            "persist_processed_text",
+            "_persist_normalization_map",
+            "get_counts"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "IngestionRepository",
+          "line": 26,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "find_document_by_hash",
+          "callee": "cast",
+          "lineNumber": 31
+        },
+        {
+          "caller": "find_document_by_hash",
+          "callee": "self.session.scalar",
+          "lineNumber": 33
+        },
+        {
+          "caller": "find_document_by_hash",
+          "callee": "select(SourceDocumentVersionORM).where",
+          "lineNumber": 34
+        },
+        {
+          "caller": "find_document_by_hash",
+          "callee": "select",
+          "lineNumber": 34
+        },
+        {
+          "caller": "create_novel_and_document",
+          "callee": "datetime.now",
+          "lineNumber": 49
+        },
+        {
+          "caller": "create_novel_and_document",
+          "callee": "NovelORM",
+          "lineNumber": 50
+        },
+        {
+          "caller": "create_novel_and_document",
+          "callee": "uuid4",
+          "lineNumber": 50
+        },
+        {
+          "caller": "create_novel_and_document",
+          "callee": "SourceDocumentORM",
+          "lineNumber": 51
+        },
+        {
+          "caller": "create_novel_and_document",
+          "callee": "uuid4",
+          "lineNumber": 52
+        },
+        {
+          "caller": "create_novel_and_document",
+          "callee": "self.session.add_all",
+          "lineNumber": 66
+        },
+        {
+          "caller": "create_novel_and_document",
+          "callee": "self.session.flush",
+          "lineNumber": 67
+        },
+        {
+          "caller": "create_novel_and_document",
+          "callee": "SourceDocumentVersionORM",
+          "lineNumber": 68
+        },
+        {
+          "caller": "create_novel_and_document",
+          "callee": "uuid4",
+          "lineNumber": 69
+        },
+        {
+          "caller": "create_novel_and_document",
+          "callee": "self.session.add",
+          "lineNumber": 82
+        },
+        {
+          "caller": "create_novel_and_document",
+          "callee": "self.session.flush",
+          "lineNumber": 83
+        },
+        {
+          "caller": "create_novel_and_document",
+          "callee": "self.session.flush",
+          "lineNumber": 85
+        },
+        {
+          "caller": "create_document_version",
+          "callee": "self.session.get",
+          "lineNumber": 98
+        },
+        {
+          "caller": "create_document_version",
+          "callee": "datetime.now",
+          "lineNumber": 104
+        },
+        {
+          "caller": "create_document_version",
+          "callee": "SourceDocumentVersionORM",
+          "lineNumber": 105
+        },
+        {
+          "caller": "create_document_version",
+          "callee": "uuid4",
+          "lineNumber": 106
+        },
+        {
+          "caller": "create_document_version",
+          "callee": "self.session.add",
+          "lineNumber": 119
+        },
+        {
+          "caller": "create_document_version",
+          "callee": "self.session.flush",
+          "lineNumber": 120
+        },
+        {
+          "caller": "create_document_version",
+          "callee": "self.session.flush",
+          "lineNumber": 132
+        },
+        {
+          "caller": "get_novel",
+          "callee": "self.session.get",
+          "lineNumber": 136
+        },
+        {
+          "caller": "get_document",
+          "callee": "self.session.get",
+          "lineNumber": 139
+        },
+        {
+          "caller": "latest_document",
+          "callee": "cast",
+          "lineNumber": 142
+        },
+        {
+          "caller": "latest_document",
+          "callee": "self.session.scalar",
+          "lineNumber": 144
+        },
+        {
+          "caller": "latest_document",
+          "callee": "select(SourceDocumentORM)\n                .where(SourceDocumentORM.novel_id == novel_id)\n                .order_by",
+          "lineNumber": 145
+        },
+        {
+          "caller": "latest_document",
+          "callee": "select(SourceDocumentORM)\n                .where",
+          "lineNumber": 145
+        },
+        {
+          "caller": "latest_document",
+          "callee": "select",
+          "lineNumber": 145
+        },
+        {
+          "caller": "latest_document",
+          "callee": "SourceDocumentORM.created_at.desc",
+          "lineNumber": 147
+        },
+        {
+          "caller": "latest_document_version",
+          "callee": "cast",
+          "lineNumber": 154
+        },
+        {
+          "caller": "latest_document_version",
+          "callee": "self.session.scalar",
+          "lineNumber": 156
+        },
+        {
+          "caller": "latest_document_version",
+          "callee": "select(SourceDocumentVersionORM)\n                .join(\n                    SourceDocumentORM,\n                    SourceDocumentVersionORM.id == SourceDocumentORM.current_version_id,\n                )\n                .where(SourceDocumentORM.novel_id == novel_id)\n                .order_by",
+          "lineNumber": 157
+        },
+        {
+          "caller": "latest_document_version",
+          "callee": "select(SourceDocumentVersionORM)\n                .join(\n                    SourceDocumentORM,\n                    SourceDocumentVersionORM.id == SourceDocumentORM.current_version_id,\n                )\n                .where",
+          "lineNumber": 157
+        },
+        {
+          "caller": "latest_document_version",
+          "callee": "select(SourceDocumentVersionORM)\n                .join",
+          "lineNumber": 157
+        },
+        {
+          "caller": "latest_document_version",
+          "callee": "select",
+          "lineNumber": 157
+        },
+        {
+          "caller": "latest_document_version",
+          "callee": "SourceDocumentORM.created_at.desc",
+          "lineNumber": 163
+        },
+        {
+          "caller": "get_run_by_idempotency_key",
+          "callee": "cast",
+          "lineNumber": 168
+        },
+        {
+          "caller": "get_run_by_idempotency_key",
+          "callee": "self.session.scalar",
+          "lineNumber": 170
+        },
+        {
+          "caller": "get_run_by_idempotency_key",
+          "callee": "select(PipelineRunORM).where",
+          "lineNumber": 171
+        },
+        {
+          "caller": "get_run_by_idempotency_key",
+          "callee": "select",
+          "lineNumber": 171
+        },
+        {
+          "caller": "create_import_run",
+          "callee": "self._create_run",
+          "lineNumber": 178
+        },
+        {
+          "caller": "create_extraction_run",
+          "callee": "self._create_run",
+          "lineNumber": 188
+        },
+        {
+          "caller": "create_analysis_run",
+          "callee": "self._create_run",
+          "lineNumber": 198
+        },
+        {
+          "caller": "_create_run",
+          "callee": "datetime.now",
+          "lineNumber": 208
+        },
+        {
+          "caller": "_create_run",
+          "callee": "PipelineRunORM",
+          "lineNumber": 209
+        },
+        {
+          "caller": "_create_run",
+          "callee": "uuid4",
+          "lineNumber": 210
+        },
+        {
+          "caller": "_create_run",
+          "callee": "PipelineStepORM",
+          "lineNumber": 220
+        },
+        {
+          "caller": "_create_run",
+          "callee": "uuid4",
+          "lineNumber": 221
+        },
+        {
+          "caller": "_create_run",
+          "callee": "self.session.add_all",
+          "lineNumber": 237
+        },
+        {
+          "caller": "_create_run",
+          "callee": "self.session.flush",
+          "lineNumber": 238
+        },
+        {
+          "caller": "_create_run",
+          "callee": "append_run_event",
+          "lineNumber": 239
+        },
+        {
+          "caller": "persist_processed_text",
+          "callee": "list",
+          "lineNumber": 257
+        },
+        {
+          "caller": "persist_processed_text",
+          "callee": "self.session.scalars",
+          "lineNumber": 258
+        },
+        {
+          "caller": "persist_processed_text",
+          "callee": "select(TextChunkORM)\n                .where(TextChunkORM.source_document_version_id == document_version.id)\n                .order_by",
+          "lineNumber": 259
+        },
+        {
+          "caller": "persist_processed_text",
+          "callee": "select(TextChunkORM)\n                .where",
+          "lineNumber": 259
+        },
+        {
+          "caller": "persist_processed_text",
+          "callee": "select",
+          "lineNumber": 259
+        },
+        {
+          "caller": "persist_processed_text",
+          "callee": "RuntimeError",
+          "lineNumber": 279
+        },
+        {
+          "caller": "persist_processed_text",
+          "callee": "self._persist_normalization_map",
+          "lineNumber": 280
+        },
+        {
+          "caller": "persist_processed_text",
+          "callee": "datetime.now",
+          "lineNumber": 282
+        },
+        {
+          "caller": "persist_processed_text",
+          "callee": "self.session.flush",
+          "lineNumber": 283
+        },
+        {
+          "caller": "persist_processed_text",
+          "callee": "normalized.original_span",
+          "lineNumber": 288
+        },
+        {
+          "caller": "persist_processed_text",
+          "callee": "uuid4",
+          "lineNumber": 291
+        },
+        {
+          "caller": "persist_processed_text",
+          "callee": "self.session.add",
+          "lineNumber": 293
+        },
+        {
+          "caller": "persist_processed_text",
+          "callee": "ChapterORM",
+          "lineNumber": 294
+        },
+        {
+          "caller": "persist_processed_text",
+          "callee": "self.session.add",
+          "lineNumber": 308
+        },
+        {
+          "caller": "persist_processed_text",
+          "callee": "TextChunkORM",
+          "lineNumber": 309
+        },
+        {
+          "caller": "persist_processed_text",
+          "callee": "uuid4",
+          "lineNumber": 310
+        },
+        {
+          "caller": "persist_processed_text",
+          "callee": "self._persist_normalization_map",
+          "lineNumber": 324
+        },
+        {
+          "caller": "persist_processed_text",
+          "callee": "datetime.now",
+          "lineNumber": 326
+        },
+        {
+          "caller": "persist_processed_text",
+          "callee": "self.session.flush",
+          "lineNumber": 327
+        },
+        {
+          "caller": "_persist_normalization_map",
+          "callee": "datetime.now",
+          "lineNumber": 335
+        },
+        {
+          "caller": "_persist_normalization_map",
+          "callee": "self.session.scalar",
+          "lineNumber": 336
+        },
+        {
+          "caller": "_persist_normalization_map",
+          "callee": "select(NormalizationMapORM).where",
+          "lineNumber": 337
+        },
+        {
+          "caller": "_persist_normalization_map",
+          "callee": "select",
+          "lineNumber": 337
+        },
+        {
+          "caller": "_persist_normalization_map",
+          "callee": "NormalizationMapORM",
+          "lineNumber": 342
+        },
+        {
+          "caller": "_persist_normalization_map",
+          "callee": "uuid4",
+          "lineNumber": 343
+        },
+        {
+          "caller": "_persist_normalization_map",
+          "callee": "self.session.add",
+          "lineNumber": 350
+        },
+        {
+          "caller": "_persist_normalization_map",
+          "callee": "self.session.flush",
+          "lineNumber": 351
+        },
+        {
+          "caller": "_persist_normalization_map",
+          "callee": "RuntimeError",
+          "lineNumber": 357
+        },
+        {
+          "caller": "get_counts",
+          "callee": "self.latest_document_version",
+          "lineNumber": 364
+        },
+        {
+          "caller": "get_counts",
+          "callee": "self.session.scalar",
+          "lineNumber": 367
+        },
+        {
+          "caller": "get_counts",
+          "callee": "select(func.count())\n            .select_from(ChapterORM)\n            .where",
+          "lineNumber": 368
+        },
+        {
+          "caller": "get_counts",
+          "callee": "select(func.count())\n            .select_from",
+          "lineNumber": 368
+        },
+        {
+          "caller": "get_counts",
+          "callee": "select",
+          "lineNumber": 368
+        },
+        {
+          "caller": "get_counts",
+          "callee": "func.count",
+          "lineNumber": 368
+        },
+        {
+          "caller": "get_counts",
+          "callee": "self.session.scalar",
+          "lineNumber": 372
+        },
+        {
+          "caller": "get_counts",
+          "callee": "select(func.count())\n            .select_from(TextChunkORM)\n            .where",
+          "lineNumber": 373
+        },
+        {
+          "caller": "get_counts",
+          "callee": "select(func.count())\n            .select_from",
+          "lineNumber": 373
+        },
+        {
+          "caller": "get_counts",
+          "callee": "select",
+          "lineNumber": 373
+        },
+        {
+          "caller": "get_counts",
+          "callee": "func.count",
+          "lineNumber": 373
+        }
+      ],
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "novel-character-generator/src/novel_character_generator/workers/handlers/ingestion.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 117,
+      "nonEmptyLines": 113,
+      "functions": [
+        {
+          "name": "process_ingestion_run",
+          "startLine": 24,
+          "endLine": 117,
+          "params": [
+            "session",
+            "artifact_store",
+            "run_id",
+            "target_tokens",
+            "overlap_tokens",
+            "max_attempts"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "process_ingestion_run",
+          "line": 24,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "process_ingestion_run",
+          "callee": "IngestionRepository",
+          "lineNumber": 33
+        },
+        {
+          "caller": "process_ingestion_run",
+          "callee": "session.get",
+          "lineNumber": 34
+        },
+        {
+          "caller": "process_ingestion_run",
+          "callee": "ValueError",
+          "lineNumber": 36
+        },
+        {
+          "caller": "process_ingestion_run",
+          "callee": "session.scalar",
+          "lineNumber": 37
+        },
+        {
+          "caller": "process_ingestion_run",
+          "callee": "select(PipelineStepORM).where",
+          "lineNumber": 38
+        },
+        {
+          "caller": "process_ingestion_run",
+          "callee": "select",
+          "lineNumber": 38
+        },
+        {
+          "caller": "process_ingestion_run",
+          "callee": "RuntimeError",
+          "lineNumber": 44
+        },
+        {
+          "caller": "process_ingestion_run",
+          "callee": "ValueError",
+          "lineNumber": 48
+        },
+        {
+          "caller": "process_ingestion_run",
+          "callee": "mark_cancelled",
+          "lineNumber": 50
+        },
+        {
+          "caller": "process_ingestion_run",
+          "callee": "start_step",
+          "lineNumber": 60
+        },
+        {
+          "caller": "process_ingestion_run",
+          "callee": "repository.get_novel",
+          "lineNumber": 62
+        },
+        {
+          "caller": "process_ingestion_run",
+          "callee": "repository.latest_document",
+          "lineNumber": 63
+        },
+        {
+          "caller": "process_ingestion_run",
+          "callee": "repository.latest_document_version",
+          "lineNumber": 64
+        },
+        {
+          "caller": "process_ingestion_run",
+          "callee": "RuntimeError",
+          "lineNumber": 66
+        },
+        {
+          "caller": "process_ingestion_run",
+          "callee": "artifact_store.get",
+          "lineNumber": 67
+        },
+        {
+          "caller": "process_ingestion_run",
+          "callee": "decode_text",
+          "lineNumber": 68
+        },
+        {
+          "caller": "process_ingestion_run",
+          "callee": "normalize_text",
+          "lineNumber": 69
+        },
+        {
+          "caller": "process_ingestion_run",
+          "callee": "detect_chapters",
+          "lineNumber": 70
+        },
+        {
+          "caller": "process_ingestion_run",
+          "callee": "build_chunks",
+          "lineNumber": 71
+        },
+        {
+          "caller": "process_ingestion_run",
+          "callee": "repository.persist_processed_text",
+          "lineNumber": 77
+        },
+        {
+          "caller": "process_ingestion_run",
+          "callee": "len",
+          "lineNumber": 87
+        },
+        {
+          "caller": "process_ingestion_run",
+          "callee": "complete_step_and_enqueue",
+          "lineNumber": 91
+        },
+        {
+          "caller": "process_ingestion_run",
+          "callee": "complete_step",
+          "lineNumber": 100
+        },
+        {
+          "caller": "process_ingestion_run",
+          "callee": "record_step_error",
+          "lineNumber": 108
+        }
+      ],
+      "metrics": {
+        "importCount": 5,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    }
+  ]
+}
