@@ -269,6 +269,10 @@ class ExtractionRepository:
         extractor_version: str,
     ) -> None:
         now = datetime.now(UTC)
+        chapter_ordinal: int | None = None
+        if chunk.chapter_id is not None:
+            chapter = await self.session.get(ChapterORM, chunk.chapter_id)
+            chapter_ordinal = chapter.ordinal if chapter is not None else None
         scenes = await self.persist_temporal_hypotheses(
             run=run,
             chunk=chunk,
@@ -439,12 +443,17 @@ class ExtractionRepository:
                     evidence_quote=observation.evidence_quote,
                     char_start=observation.start,
                     char_end=observation.end,
-                    chapter_ordinal=None,
+                    chapter_ordinal=chapter_ordinal,
                     scene_id=observation_scene.id if observation_scene else None,
                     event_id=observation_scene.event_id if observation_scene else None,
                     temporal_scope={
                         "timeline_id": str(observation_timeline_id),
                         "scope_type": "scene" if observation_scene else "unknown",
+                        "start_chapter_ordinal": (
+                            observation_scene.chapter_ordinal
+                            if observation_scene
+                            else chapter_ordinal
+                        ),
                         "presentation_mode": (
                             observation_scene.presentation_mode
                             if observation_scene

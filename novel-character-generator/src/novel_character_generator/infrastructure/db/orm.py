@@ -460,6 +460,9 @@ class CharacterAppearanceStateORM(IdMixin, TimestampMixin, Base):
     appearance: Mapped[dict[str, Any]] = mapped_column(JSON)
     field_sources: Mapped[dict[str, list[str]]] = mapped_column(JSON)
     resolver_version: Mapped[str] = mapped_column(String(100), default="appearance-resolver-v1")
+    aggregation_fingerprint: Mapped[str | None] = mapped_column(
+        String(64), unique=True, index=True
+    )
     created_by_run_id: Mapped[UUID | None] = mapped_column(ForeignKey("pipeline_runs.id"))
     record_status: Mapped[str] = mapped_column(String(32), default="active")
     status: Mapped[str] = mapped_column(String(32))
@@ -486,6 +489,15 @@ class CharacterRenderProfileORM(IdMixin, TimestampMixin, Base):
     approved_by: Mapped[str | None] = mapped_column(String(255))
     approved_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
     revision: Mapped[int] = mapped_column(Integer)
+    record_status: Mapped[str] = mapped_column(String(32), default="active", index=True)
+    input_fingerprint: Mapped[str | None] = mapped_column(String(64), index=True)
+    source_document_version_id: Mapped[UUID | None] = mapped_column(
+        ForeignKey("source_document_versions.id"), index=True
+    )
+    aggregation_run_id: Mapped[UUID | None] = mapped_column(
+        ForeignKey("pipeline_runs.id"), index=True
+    )
+    aggregation_metadata: Mapped[dict[str, Any] | None] = mapped_column(JSON)
 
 
 class CharacterConflictORM(IdMixin, TimestampMixin, Base):
@@ -504,6 +516,9 @@ class CharacterConflictORM(IdMixin, TimestampMixin, Base):
     candidate_values: Mapped[list[Any]] = mapped_column(JSON)
     temporal_scope: Mapped[dict[str, Any]] = mapped_column(JSON)
     merge_priority: Mapped[int] = mapped_column(Integer)
+    conflict_kind: Mapped[str] = mapped_column(
+        String(32), default="incompatible_values", index=True
+    )
     fingerprint: Mapped[str] = mapped_column(String(64))
     status: Mapped[str] = mapped_column(String(32), default="pending")
     resolution: Mapped[dict[str, Any] | None] = mapped_column(JSON)

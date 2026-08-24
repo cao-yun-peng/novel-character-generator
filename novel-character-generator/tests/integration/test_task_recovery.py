@@ -75,7 +75,10 @@ async def test_claim_failure_and_cursor_resume(tmp_path: Path) -> None:
         with pytest.raises(TimeoutError):
             await process_extraction_run(session, failing, extraction.id)
         step = await session.scalar(
-            select(PipelineStepORM).where(PipelineStepORM.run_id == extraction.id)
+            select(PipelineStepORM).where(
+                PipelineStepORM.run_id == extraction.id,
+                PipelineStepORM.step_key == "extract_characters",
+            )
         )
         run = await session.get(PipelineRunORM, extraction.id)
         assert step is not None and run is not None
@@ -95,9 +98,19 @@ async def test_claim_failure_and_cursor_resume(tmp_path: Path) -> None:
         await process_extraction_run(session, recorder, extraction.id)
         assert recorder.inputs == [chunk.content for chunk in chunks[1:]]
         step = await session.scalar(
-            select(PipelineStepORM).where(PipelineStepORM.run_id == extraction.id)
+            select(PipelineStepORM).where(
+                PipelineStepORM.run_id == extraction.id,
+                PipelineStepORM.step_key == "extract_characters",
+            )
         )
         assert step is not None and step.status == "succeeded"
         assert step.lease_owner is None
+        aggregate_step = await session.scalar(
+            select(PipelineStepORM).where(
+                PipelineStepORM.run_id == extraction.id,
+                PipelineStepORM.step_key == "aggregate_appearance",
+            )
+        )
+        assert aggregate_step is not None and aggregate_step.status == "queued"
 
     await engine.dispose()

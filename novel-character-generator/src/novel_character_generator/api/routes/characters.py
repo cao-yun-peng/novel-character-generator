@@ -32,6 +32,7 @@ from novel_character_generator.infrastructure.db.orm import (
     ExpressionObservationORM,
     FeatureObservationORM,
     MentionSpanORM,
+    SourceDocumentORM,
     TextChunkORM,
 )
 
@@ -86,6 +87,7 @@ class AppearanceStateResponse(BaseModel):
     appearance: dict[str, JsonValue]
     field_sources: dict[str, list[str]]
     resolver_version: str
+    aggregation_fingerprint: str | None
     created_by_run_id: UUID | None
     record_status: str
     status: str
@@ -110,6 +112,11 @@ class RenderProfileResponse(BaseModel):
     approved_by: str | None
     approved_at: datetime | None
     revision: int
+    record_status: str
+    input_fingerprint: str | None
+    source_document_version_id: UUID | None
+    aggregation_run_id: UUID | None
+    aggregation_metadata: dict[str, JsonValue] | None
     created_at: datetime
     updated_at: datetime
 
@@ -132,6 +139,7 @@ class CharacterConflictResponse(BaseModel):
     candidate_values: list[JsonValue]
     temporal_scope: dict[str, JsonValue]
     merge_priority: int
+    conflict_kind: str
     status: str
     resolution: dict[str, JsonValue] | None
     resolved_by: str | None
@@ -281,6 +289,10 @@ async def list_mentions(
     result = await session.scalars(
         select(MentionSpanORM)
         .join(TextChunkORM, MentionSpanORM.source_chunk_id == TextChunkORM.id)
+        .join(
+            SourceDocumentORM,
+            MentionSpanORM.source_document_version_id == SourceDocumentORM.current_version_id,
+        )
         .where(MentionSpanORM.resolved_character_id == character_id)
         .order_by(TextChunkORM.ordinal, MentionSpanORM.char_start)
     )
@@ -303,7 +315,15 @@ async def list_observations(
     await _character_or_404(session, character_id)
     result = await session.scalars(
         select(FeatureObservationORM)
-        .where(FeatureObservationORM.character_id == character_id)
+        .join(
+            SourceDocumentORM,
+            FeatureObservationORM.source_document_version_id
+            == SourceDocumentORM.current_version_id,
+        )
+        .where(
+            FeatureObservationORM.character_id == character_id,
+            FeatureObservationORM.record_status == "active",
+        )
         .order_by(FeatureObservationORM.created_at)
     )
     return [
@@ -326,6 +346,11 @@ async def list_expressions(
     await _character_or_404(session, character_id)
     result = await session.scalars(
         select(ExpressionObservationORM)
+        .join(
+            SourceDocumentORM,
+            ExpressionObservationORM.source_document_version_id
+            == SourceDocumentORM.current_version_id,
+        )
         .where(ExpressionObservationORM.character_id == character_id)
         .order_by(ExpressionObservationORM.created_at)
     )

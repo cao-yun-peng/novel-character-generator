@@ -23,7 +23,7 @@
 | TXT 小说上传 | 创建小说和第一个不可变源文档版本 | 已实现 | [`novels.py`](../src/novel_character_generator/api/routes/novels.py)、[`ingestion_service.py`](../src/novel_character_generator/application/services/ingestion_service.py) |
 | 源文档版本 | 中途重新上传时保留历史版本和替代关系 | 已实现 | [`document.py`](../src/novel_character_generator/domain/entities/document.py)、[`test_document_versions.py`](../tests/integration/test_document_versions.py) |
 | 章节识别与分块 | 规范化文本、识别章节、生成稳定文本块 | 已实现 | [`text_processing.py`](../src/novel_character_generator/domain/policies/text_processing.py)、[`ingestion.py`](../src/novel_character_generator/workers/handlers/ingestion.py) |
-| 文本分析 Run | 一次请求顺序执行分块和角色提取 | 已实现 | [`novels.py`](../src/novel_character_generator/api/routes/novels.py)、[`test_text_analysis_run.py`](../tests/integration/test_text_analysis_run.py) |
+| 文本分析 Run | 一次请求顺序执行分块、角色提取和外观聚合 | 已实现 | [`novels.py`](../src/novel_character_generator/api/routes/novels.py)、[`test_text_analysis_run.py`](../tests/integration/test_text_analysis_run.py) |
 | 角色与视觉事实提取 | 提取角色、mention、外观观察及原文证据 | 已实现基础 | [`extraction.py`](../src/novel_character_generator/workers/handlers/extraction.py)、[`openai_compatible.py`](../src/novel_character_generator/infrastructure/llm/openai_compatible.py)、[`test_extraction_slice.py`](../tests/integration/test_extraction_slice.py) |
 | Mock/远程 LLM Provider | 本地稳定测试或调用 OpenAI-compatible 结构化输出 | 已实现 | [`mock.py`](../src/novel_character_generator/infrastructure/llm/mock.py)、[`workers/main.py`](../src/novel_character_generator/workers/main.py) |
 | Run 查询、SSE、取消和重试 | 查看进度，断线后续传事件，取消或重试任务 | 已实现 | [`runs.py`](../src/novel_character_generator/api/routes/runs.py)、[`run_service.py`](../src/novel_character_generator/application/services/run_service.py) |
@@ -32,8 +32,8 @@
 | 时间线、事件和场景查询 | 查看故事时间结构与场景绑定 | 已实现基础 | [`story.py`](../src/novel_character_generator/api/routes/story.py)、[`story_service.py`](../src/novel_character_generator/application/services/story_service.py) |
 | 场景时间绑定修正 | 人工修改 timeline/event/reality status，使用 revision 防冲突 | 已实现 | [`test_story_temporal_api.py`](../tests/integration/test_story_temporal_api.py) |
 | 角色合并与拆分 | 修正重复人物或错误共指，并保留审计记录 | 已实现 | [`character_entity_service.py`](../src/novel_character_generator/application/services/character_entity_service.py)、[`test_character_entity_api.py`](../tests/integration/test_character_entity_api.py) |
-| 外观状态与冲突 | 保存分阶段外观，识别同优先级、重叠时间范围的字段冲突 | 部分实现 | [`appearance_service.py`](../src/novel_character_generator/application/services/appearance_service.py)；状态自动聚合入口尚未闭合，目标见[聚合实现契约](17-appearance-aggregation-contract.md) |
-| 渲染档案审批 | 更新档案、解决冲突、批准档案版本 | 部分实现 | API 与 Service 已实现，但依赖预先存在的 AppearanceState；见 [`test_character_appearance_api.py`](../tests/integration/test_character_appearance_api.py) |
+| 外观状态与冲突 | 真实 Observation 自动形成分阶段外观，并识别同一范围内的不兼容字段 | 已实现核心 | [`appearance_aggregation.py`](../src/novel_character_generator/domain/policies/appearance_aggregation.py)、[`appearance_aggregation_service.py`](../src/novel_character_generator/application/services/appearance_aggregation_service.py)、[`test_appearance_aggregation_pipeline.py`](../tests/integration/test_appearance_aggregation_pipeline.py)；源版本替换及人工确认保护见 [`test_source_version_appearance_invalidation.py`](../tests/integration/test_source_version_appearance_invalidation.py)，父子时间线继承见 [`test_timeline_inheritance.py`](../tests/integration/test_timeline_inheritance.py) |
+| 渲染档案审批 | 聚合结果自动形成待审核档案，可解决冲突、编辑和批准版本 | 已实现核心 | 聚合 Worker 已接入现有 API 与 [`appearance_service.py`](../src/novel_character_generator/application/services/appearance_service.py)，真实提取链路见 [`test_appearance_aggregation_pipeline.py`](../tests/integration/test_appearance_aggregation_pipeline.py) |
 | 目标时点外观快照 | 按 timeline/event/scene/chapter 解析有效外观并生成 `snapshot_hash` | 已实现核心 | [`AppearanceService.snapshot`](../src/novel_character_generator/application/services/appearance_service.py)、对应集成测试 |
 | 人工审批 | 创建、分页查询、批准/拒绝/修改/延后，并恢复等待任务 | 已实现 | [`approval_service.py`](../src/novel_character_generator/application/services/approval_service.py)、[`approvals.py`](../src/novel_character_generator/api/routes/approvals.py) |
 | Structured AgentRuntime | 强类型工具、权限、预算、停止原因和轨迹持久化 | 部分实现 | [`structured_runtime.py`](../src/novel_character_generator/agents/structured_runtime.py)；默认 `agent_runtime_enabled=false`，尚未成为文本主流程必经步骤 |
@@ -55,13 +55,14 @@
 ### 已经形成闭环
 
 - TXT 上传 → 不可变源版本 → 分块 → 角色提取 → 查询角色与证据。
+- Observation → 确定性聚合 → AppearanceState/Conflict → 待审核 RenderProfile。
 - Run/Step 创建 → Worker 领取 → checkpoint → 完成或重试 → SSE 查询。
 - 人物合并/拆分 → revision 与幂等保护 → 审计记录。
 - 预置外观状态 → 冲突检测/解决 → 档案批准 → 目标时点快照。
 
 ### 还没有形成闭环
 
-- Observation 自动聚合成 AppearanceState，再形成待审核 RenderProfile。
+- 角色/字段级精细差异重算已延期；当前源版本替换继续采用安全的整角色保守重建。更大规模多层分支黄金集仍待完善。
 - 已批准快照提交图像 Provider，保存候选图与费用。
 - 候选图执行漂移审计、门禁、有界重生成和人工锁定。
 - 关键业务事件统一结构化输出，再由 `log-check` 对账。
@@ -69,12 +70,15 @@
 
 ## 建议的下一阶段实现顺序
 
-1. 完成 Observation → AppearanceState → RenderProfile 的确定性聚合和人工审核入口。
-2. 实现 `GenerationContextBuilder`，冻结生成与审计共用的 context hash。
-3. 接入一套固定 Image Provider/WorkflowProfile，先跑通单阶段候选图。
-4. 实现确定性基础检查和最小 Multimodal Critic，再加入 hard/soft gate。
-5. 在上述关键状态边界打结构化日志，实现最小 `log-check`。
-6. 用评测数据层建立从文本到阶段图的发布门禁。
+1. 实现 `GenerationContextBuilder`，冻结生成与审计共用的 context hash。
+2. 接入一套固定 Image Provider/WorkflowProfile，先跑通单阶段候选图。
+3. 实现确定性基础检查和最小 Multimodal Critic，再加入 hard/soft gate。
+4. 在上述关键状态边界实现最小 `log-check`。
+5. 用评测数据层建立从文本到阶段图的发布门禁。
+
+### 已延期事项
+
+- 角色/字段级精细差异重算：不影响当前 TXT 上传、角色提取、外观聚合和人工审批闭环；在小说源版本替换时暂时以更多重算换取一致性与实现安全性。
 
 逐项 API、代码、数据、日志和测试落点见[功能—代码—测试追踪矩阵](19-feature-traceability-matrix.md)。
 

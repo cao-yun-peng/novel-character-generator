@@ -17,6 +17,9 @@ from novel_character_generator.infrastructure.db.orm import PipelineRunORM, Pipe
 from novel_character_generator.infrastructure.llm.mock import MockExtractionProvider
 from novel_character_generator.infrastructure.storage.local import LocalArtifactStore
 from novel_character_generator.settings import get_settings
+from novel_character_generator.workers.handlers.appearance_aggregation import (
+    process_appearance_aggregation_run,
+)
 from novel_character_generator.workers.handlers.extraction import process_extraction_run
 from novel_character_generator.workers.handlers.ingestion import process_ingestion_run
 
@@ -90,7 +93,14 @@ async def test_public_run_endpoint_executes_ingestion_then_extraction(
                 .order_by(PipelineStepORM.created_at)
             )
         )
+        assert run is not None and run.status == "queued"
+        assert [(step.step_key, step.status) for step in steps] == [
+            ("normalize_and_chunk", "succeeded"),
+            ("extract_characters", "succeeded"),
+            ("aggregate_appearance", "queued"),
+        ]
+        await process_appearance_aggregation_run(session, run_id)
+        run = await session.get(PipelineRunORM, run_id)
         assert run is not None and run.status == "succeeded"
-        assert all(step.status == "succeeded" for step in steps)
 
     await engine.dispose()

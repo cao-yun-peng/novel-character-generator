@@ -86,6 +86,7 @@ def test_api_key_roles_capabilities_and_metrics(monkeypatch) -> None:
             assert capabilities.json()["document_versioning"] is True
             assert capabilities.json()["story_temporal_binding"] is True
             assert capabilities.json()["character_entity_resolution"] is True
+            assert capabilities.json()["appearance_aggregation"] is True
             assert capabilities.json()["external_operation_reconciliation"] is False
             assert client.get("/metrics", headers={"X-API-Key": "user-secret"}).status_code == 403
             metrics = client.get("/metrics", headers={"X-API-Key": "admin-secret"})

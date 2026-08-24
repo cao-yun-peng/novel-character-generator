@@ -1,4 +1,5 @@
 import hashlib
+import logging
 from dataclasses import dataclass
 from pathlib import Path
 from uuid import UUID
@@ -13,6 +14,8 @@ from novel_character_generator.infrastructure.db.orm import (
     SourceDocumentVersionORM,
 )
 from novel_character_generator.infrastructure.db.repositories.ingestion import IngestionRepository
+
+logger = logging.getLogger(__name__)
 
 
 @dataclass(frozen=True)
@@ -40,9 +43,7 @@ class IngestionService:
         if existing is not None:
             document = await self.repository.get_document(existing.source_document_id)
             novel = (
-                await self.repository.get_novel(document.novel_id)
-                if document is not None
-                else None
+                await self.repository.get_novel(document.novel_id) if document is not None else None
             )
             if novel is None:
                 raise RuntimeError("source_document_without_novel")
@@ -74,6 +75,12 @@ class IngestionService:
             raise RuntimeError("novel_without_source_document")
         sha256 = hashlib.sha256(data).hexdigest()
         storage_uri = await self.artifact_store.put(content_hash=sha256, data=data)
+        previous_version_id = document.current_version_id
+        previous_version = (
+            await self.session.get(SourceDocumentVersionORM, previous_version_id)
+            if previous_version_id is not None
+            else None
+        )
         document_version = await self.repository.create_document_version(
             document=document,
             sha256=sha256,
@@ -83,6 +90,26 @@ class IngestionService:
         )
         novel.status = "uploaded"
         await self.session.commit()
+        if previous_version_id is not None and previous_version_id != document_version.id:
+            logger.info(
+                "generation.dependency.invalidated",
+                extra={
+                    "event_name": "generation.dependency.invalidated",
+                    "novel_id": str(novel_id),
+                    "old_source_document_version_id": str(previous_version_id),
+                    "new_source_document_version_id": str(document_version.id),
+                    "old_hash": previous_version.content_sha256 if previous_version else None,
+                    "new_hash": document_version.content_sha256,
+                    "affected_snapshot_count": 0,
+                    "affected_image_count": 0,
+                    "affected_dependency_types": [
+                        "feature_observation",
+                        "appearance_state",
+                        "render_profile",
+                        "character_conflict",
+                    ],
+                },
+            )
         return document_version
 
     async def details(self, novel_id: UUID) -> NovelDetails | None:

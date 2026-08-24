@@ -11,6 +11,7 @@ from uuid import UUID, uuid4
 from sqlalchemy import select, update
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from novel_character_generator.domain.policies.appearance_aggregation import RESOLVER_VERSION
 from novel_character_generator.infrastructure.db.orm import (
     CharacterAppearanceStateORM,
     CharacterConflictORM,
@@ -56,6 +57,19 @@ class SnapshotTarget:
     event_id: UUID | None = None
     scene_id: UUID | None = None
     chapter_ordinal: int | None = None
+
+
+@dataclass(frozen=True)
+class _TimelineLimit:
+    max_story_order: Decimal | None
+    distance_from_target: int
+
+
+@dataclass(frozen=True)
+class _ApplicableState:
+    state: CharacterAppearanceStateORM
+    timeline_id: UUID | None
+    lineage_rank: int
 
 
 def _canonical(value: Any) -> str:
@@ -186,6 +200,11 @@ class AppearanceService:
                 approved_by=None,
                 approved_at=None,
                 revision=1,
+                record_status="active",
+                input_fingerprint=None,
+                source_document_version_id=None,
+                aggregation_run_id=None,
+                aggregation_metadata=None,
                 created_at=now,
                 updated_at=now,
             )
@@ -211,6 +230,11 @@ class AppearanceService:
                 approved_by=None,
                 approved_at=None,
                 revision=next_revision,
+                record_status="active",
+                input_fingerprint=None,
+                source_document_version_id=None,
+                aggregation_run_id=None,
+                aggregation_metadata=None,
                 created_at=now,
                 updated_at=now,
             )
@@ -224,6 +248,11 @@ class AppearanceService:
             profile.field_sources = request.field_sources
             profile.field_suggestions = request.field_suggestions
             profile.style_preset = request.style_preset
+            profile.record_status = "active"
+            profile.input_fingerprint = None
+            profile.source_document_version_id = None
+            profile.aggregation_run_id = None
+            profile.aggregation_metadata = None
             profile.revision += 1
             profile.updated_at = now
         profile.unresolved_conflicts = await self._refresh_conflicts(character_id, states, now)
@@ -240,6 +269,8 @@ class AppearanceService:
         profile = await self.latest_profile(character_id)
         if profile is None:
             raise ValueError("render_profile_not_found")
+        if profile.record_status != "active":
+            raise AppearanceResolutionError("render_profile_stale")
         if profile.revision != expected_revision:
             raise AppearanceRevisionConflict("render_profile_revision_conflict")
         pending = await self.session.scalar(
@@ -280,6 +311,9 @@ class AppearanceService:
             raise ValueError("appearance_conflict_not_found")
         if conflict.status != "pending":
             raise AppearanceResolutionError("appearance_conflict_already_resolved")
+        profile = await self.latest_profile(conflict.character_id)
+        if conflict.temporal_scope.get("scope_type") == "identity" and profile is None:
+            raise ValueError("render_profile_not_found")
         now = datetime.now(UTC)
         updated = await self.session.scalar(
             update(CharacterConflictORM)
@@ -301,29 +335,38 @@ class AppearanceService:
         if updated is None:
             await self.session.rollback()
             raise AppearanceRevisionConflict("appearance_conflict_revision_conflict")
-        override: dict[str, Any] = {}
-        _put_path(override, conflict.field_path, selected_value)
-        state = CharacterAppearanceStateORM(
-            id=uuid4(),
-            character_id=conflict.character_id,
-            temporal_scope=conflict.temporal_scope,
-            label=f"Conflict resolution: {conflict.field_path}",
-            state_kind="manual_override",
-            merge_priority=max(1000, conflict.merge_priority + 1),
-            age_stage=None,
-            appearance=override,
-            field_sources={},
-            resolver_version="appearance-resolver-v1",
-            created_by_run_id=None,
-            record_status="active",
-            status="approved",
-            created_at=now,
-            updated_at=now,
-        )
-        self.session.add(state)
-        profile = await self.latest_profile(conflict.character_id)
+        if conflict.temporal_scope.get("scope_type") == "identity":
+            assert profile is not None
+            identity_anchor = dict(profile.identity_anchor)
+            _put_path(identity_anchor, conflict.field_path, selected_value)
+            profile.identity_anchor = identity_anchor
+            field_sources = dict(profile.field_sources)
+            field_sources[conflict.field_path] = [f"manual:conflict:{conflict.id}"]
+            profile.field_sources = field_sources
+        else:
+            override: dict[str, Any] = {}
+            _put_path(override, conflict.field_path, selected_value)
+            state = CharacterAppearanceStateORM(
+                id=uuid4(),
+                character_id=conflict.character_id,
+                temporal_scope=conflict.temporal_scope,
+                label=f"Conflict resolution: {conflict.field_path}",
+                state_kind="manual_override",
+                merge_priority=max(1000, conflict.merge_priority + 1),
+                age_stage=None,
+                appearance=override,
+                field_sources={},
+                resolver_version=RESOLVER_VERSION,
+                created_by_run_id=None,
+                record_status="active",
+                status="approved",
+                created_at=now,
+                updated_at=now,
+            )
+            self.session.add(state)
+            if profile is not None:
+                profile.appearance_state_ids = [*profile.appearance_state_ids, str(state.id)]
         if profile is not None:
-            profile.appearance_state_ids = [*profile.appearance_state_ids, str(state.id)]
             profile.unresolved_conflicts = [
                 item
                 for item in profile.unresolved_conflicts
@@ -344,6 +387,8 @@ class AppearanceService:
         profile = await self.latest_profile(character_id)
         if profile is None:
             raise ValueError("render_profile_not_found")
+        if profile.record_status != "active":
+            raise AppearanceResolutionError("render_profile_stale")
         states = await self._require_states(
             character_id, [UUID(item) for item in profile.appearance_state_ids]
         )
@@ -362,32 +407,42 @@ class AppearanceService:
                 resolved_target.chapter_ordinal,
             )
         ):
-            if len(states) > 1:
+            distinct_scopes = {_canonical(state.temporal_scope) for state in states}
+            if len(distinct_scopes) > 1:
                 raise AppearanceResolutionError("ambiguous_appearance_state")
-            selected = states
+            applicable = [
+                _ApplicableState(state=state, timeline_id=None, lineage_rank=0)
+                for state in states
+            ]
         else:
-            selected = await self._states_at_target(states, resolved_target)
-        selected.sort(
+            applicable = await self._states_at_target(states, resolved_target)
+        applicable.sort(
             key=lambda item: (
-                STATE_KIND_ORDER.get(item.state_kind, 99),
-                item.merge_priority,
-                item.created_at,
-                str(item.id),
+                STATE_KIND_ORDER.get(item.state.state_kind, 99),
+                item.state.merge_priority,
+                item.lineage_rank,
+                item.state.created_at,
+                str(item.state.id),
             )
         )
+        selected = [item.state for item in applicable]
         resolved = dict(profile.identity_anchor)
         sources: dict[str, list[str]] = dict(profile.field_sources)
-        precedence_values: dict[tuple[int, int, str], str] = {}
+        precedence_values: dict[tuple[int, int, str, str], str] = {}
         manual_override_paths = {
             path
-            for state in selected
-            if state.state_kind == "manual_override"
-            for path in _flatten(state.appearance)
+            for item in applicable
+            if item.state.state_kind == "manual_override"
+            for path in _flatten(item.state.appearance)
         }
-        for state in selected:
+        for item in applicable:
+            state = item.state
             rank = STATE_KIND_ORDER.get(state.state_kind, 99)
             for path, value in _flatten(state.appearance).items():
-                key = (rank, state.merge_priority, path)
+                conflict_domain = (
+                    str(item.timeline_id) if item.timeline_id is not None else "global"
+                )
+                key = (rank, state.merge_priority, conflict_domain, path)
                 canonical_value = _canonical(value)
                 previous = precedence_values.get(key)
                 if (
@@ -417,7 +472,7 @@ class AppearanceService:
             "palette": profile.palette,
             "style_preset": profile.style_preset,
             "field_sources": sources,
-            "resolver_version": "appearance-resolver-v1",
+            "resolver_version": RESOLVER_VERSION,
         }
         payload["snapshot_hash"] = hashlib.sha256(_canonical(payload).encode()).hexdigest()
         return payload
@@ -438,7 +493,10 @@ class AppearanceService:
         by_id = {item.id: item for item in rows}
         if any(item not in by_id for item in state_ids):
             raise ValueError("appearance_state_character_mismatch")
-        return [by_id[item] for item in state_ids]
+        states = [by_id[item] for item in state_ids]
+        if any(item.record_status != "active" for item in states):
+            raise ValueError("appearance_state_stale")
+        return states
 
     async def _refresh_conflicts(
         self,
@@ -504,6 +562,7 @@ class AppearanceService:
                     candidate_values=item["candidate_values"],
                     temporal_scope=item["temporal_scope"],
                     merge_priority=item["merge_priority"],
+                    conflict_kind="incompatible_values",
                     fingerprint=fingerprint,
                     status="pending",
                     resolution=None,
@@ -563,12 +622,12 @@ class AppearanceService:
 
     async def _states_at_target(
         self, states: list[CharacterAppearanceStateORM], target: SnapshotTarget
-    ) -> list[CharacterAppearanceStateORM]:
+    ) -> list[_ApplicableState]:
         if target.timeline_id is None:
             raise AppearanceResolutionError("target_timeline_required")
         timeline_limits = await self._timeline_limits(target.timeline_id, target.event_id)
         event_orders: dict[UUID, Decimal | None] = {}
-        selected: list[CharacterAppearanceStateORM] = []
+        selected: list[_ApplicableState] = []
         for state in states:
             scope = state.temporal_scope
             if scope.get("reality_status", "canonical") != "canonical":
@@ -588,7 +647,8 @@ class AppearanceService:
                 continue
             if end_chapter is not None and (chapter is None or chapter > int(end_chapter)):
                 continue
-            target_order = timeline_limits[state_timeline]
+            timeline_limit = timeline_limits[state_timeline]
+            target_order = timeline_limit.max_story_order
             start_event = scope.get("start_event_id")
             end_event = scope.get("end_event_id")
             if start_event is not None:
@@ -607,22 +667,32 @@ class AppearanceService:
                 end_order = event_orders[end_id]
                 if target_order is None or end_order is None or end_order < target_order:
                     continue
-            selected.append(state)
+            selected.append(
+                _ApplicableState(
+                    state=state,
+                    timeline_id=state_timeline,
+                    lineage_rank=-timeline_limit.distance_from_target,
+                )
+            )
         return selected
 
     async def _timeline_limits(
         self, timeline_id: UUID, event_id: UUID | None
-    ) -> dict[UUID, Decimal | None]:
+    ) -> dict[UUID, _TimelineLimit]:
         target_order: Decimal | None = None
         if event_id is not None:
             event = await self.session.get(StoryEventORM, event_id)
             if event is None or event.timeline_id != timeline_id:
                 raise ValueError("event_timeline_mismatch")
             target_order = event.story_order
-        limits: dict[UUID, Decimal | None] = {timeline_id: target_order}
+        limits = {
+            timeline_id: _TimelineLimit(max_story_order=target_order, distance_from_target=0)
+        }
         current = await self.session.get_one(TimelineORM, timeline_id)
         visited = {current.id}
+        distance = 0
         while current.parent_timeline_id is not None:
+            distance += 1
             parent_id = current.parent_timeline_id
             if parent_id in visited:
                 raise AppearanceResolutionError("timeline_cycle_detected")
@@ -632,7 +702,10 @@ class AppearanceService:
                 if branch is None or branch.timeline_id != parent_id:
                     raise AppearanceResolutionError("invalid_timeline_branch_event")
                 branch_order = branch.story_order
-            limits[parent_id] = branch_order
+            limits[parent_id] = _TimelineLimit(
+                max_story_order=branch_order,
+                distance_from_target=distance,
+            )
             current = await self.session.get_one(TimelineORM, parent_id)
             visited.add(parent_id)
         return limits

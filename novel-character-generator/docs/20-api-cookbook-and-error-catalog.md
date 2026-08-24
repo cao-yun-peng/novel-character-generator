@@ -224,6 +224,8 @@ GET /api/v1/characters/{character_id}/snapshot
 
 参数按实际目标选择，不要求全部提供，但存在时间线数据时通常必须明确 `timeline_id`。多个阶段都可能有效而目标不明确时返回 `409 ambiguous_appearance_state`；不能由客户端静默选择“最新”阶段。
 
+查询角色冲突时，响应中的 `conflict_kind=incompatible_values` 表示自动事实之间矛盾，`conflict_kind=human_confirmation` 表示新自动事实与已批准或人工确认值冲突。两者都必须通过冲突解决接口处理，后者尤其不得由自动任务替用户选择新值。
+
 ## 10. 常见错误目录
 
 | HTTP | code | 含义与处理 |
@@ -237,6 +239,7 @@ GET /api/v1/characters/{character_id}/snapshot
 | 409 | `idempotency_key_conflict` | 同一幂等键对应不同业务请求；修正客户端 Key 生成策略 |
 | 409 | `render_profile_revision_conflict`、`appearance_conflict_revision_conflict`、`character_revision_conflict` | 并发修改冲突；重新读取后人工合并 |
 | 409 | `appearance_conflicts_unresolved` | 开放冲突阻止批准或 Snapshot；先解决冲突 |
+| 409 | `render_profile_stale` | 源文档已替换，旧档案仅供审计；等待新分析形成活动草稿 |
 | 409 | `ambiguous_appearance_state`、`target_timeline_required` | 目标时间/阶段不明确；补充查询参数 |
 | 409 | `run_not_cancellable`、`run_not_retryable`、`run_has_no_failed_step`、`task_attempts_exhausted` | Run 当前不允许该动作；检查状态和 attempt |
 | 409 | `entity_operation_idempotency_conflict` | 合并/拆分幂等键冲突；不要换 Key 盲目重试 |
@@ -245,6 +248,7 @@ GET /api/v1/characters/{character_id}/snapshot
 | 422 | `validation_error` | 请求 Schema 不合法 |
 | 422 | `empty_text_file` | TXT 解码后没有有效文本 |
 | 422 | `appearance_state_character_mismatch` | Profile 引用了其他人物的 State |
+| 422 | `appearance_state_stale` | Profile 引用了已失效的旧源版本 State；重新读取当前状态 |
 | 500 | `internal_error` | 未处理异常；携带 `request_id` 查询服务日志，避免无上限重试 |
 
 错误码会随功能增加，但已有 code 的语义不能静默改变。新增或删除 code 时必须同步路由测试、本目录和 OpenAPI 示例。

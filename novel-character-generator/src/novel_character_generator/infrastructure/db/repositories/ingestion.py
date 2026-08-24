@@ -2,7 +2,7 @@ from datetime import UTC, datetime
 from typing import cast
 from uuid import UUID, uuid4
 
-from sqlalchemy import func, select
+from sqlalchemy import func, select, update
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from novel_character_generator.domain.entities.document import (
@@ -12,6 +12,11 @@ from novel_character_generator.domain.entities.document import (
 )
 from novel_character_generator.infrastructure.db.orm import (
     ChapterORM,
+    CharacterAppearanceStateORM,
+    CharacterConflictORM,
+    CharacterORM,
+    CharacterRenderProfileORM,
+    FeatureObservationORM,
     NormalizationMapORM,
     NovelORM,
     PipelineRunORM,
@@ -102,6 +107,12 @@ class IngestionRepository:
         if current is not None and current.content_sha256 == sha256:
             return current
         now = datetime.now(UTC)
+        if current is not None:
+            await self.invalidate_source_version_dependencies(
+                novel_id=document.novel_id,
+                source_document_version_id=current.id,
+                invalidated_at=now,
+            )
         document_version = SourceDocumentVersionORM(
             id=uuid4(),
             source_document_id=document.id,
@@ -132,6 +143,58 @@ class IngestionRepository:
         await self.session.flush()
         return document_version
 
+    async def invalidate_source_version_dependencies(
+        self,
+        *,
+        novel_id: UUID,
+        source_document_version_id: UUID,
+        invalidated_at: datetime,
+    ) -> None:
+        character_ids = select(CharacterORM.id).where(CharacterORM.novel_id == novel_id)
+        await self.session.execute(
+            update(FeatureObservationORM)
+            .where(
+                FeatureObservationORM.source_document_version_id == source_document_version_id,
+                FeatureObservationORM.record_status == "active",
+            )
+            .values(
+                record_status="invalidated",
+                valid_to=invalidated_at,
+                invalidated_at=invalidated_at,
+                invalidated_by_run_id=None,
+                updated_at=invalidated_at,
+            )
+        )
+        await self.session.execute(
+            update(CharacterAppearanceStateORM)
+            .where(
+                CharacterAppearanceStateORM.character_id.in_(character_ids),
+                CharacterAppearanceStateORM.aggregation_fingerprint.is_not(None),
+                CharacterAppearanceStateORM.record_status == "active",
+            )
+            .values(record_status="invalidated", updated_at=invalidated_at)
+        )
+        await self.session.execute(
+            update(CharacterRenderProfileORM)
+            .where(
+                CharacterRenderProfileORM.character_id.in_(character_ids),
+                CharacterRenderProfileORM.record_status == "active",
+            )
+            .values(record_status="stale", updated_at=invalidated_at)
+        )
+        await self.session.execute(
+            update(CharacterConflictORM)
+            .where(
+                CharacterConflictORM.character_id.in_(character_ids),
+                CharacterConflictORM.status == "pending",
+            )
+            .values(
+                status="superseded",
+                revision=CharacterConflictORM.revision + 1,
+                updated_at=invalidated_at,
+            )
+        )
+
     async def get_novel(self, novel_id: UUID) -> NovelORM | None:
         return await self.session.get(NovelORM, novel_id)
 
@@ -148,9 +211,7 @@ class IngestionRepository:
             ),
         )
 
-    async def latest_document_version(
-        self, novel_id: UUID
-    ) -> SourceDocumentVersionORM | None:
+    async def latest_document_version(self, novel_id: UUID) -> SourceDocumentVersionORM | None:
         return cast(
             SourceDocumentVersionORM | None,
             await self.session.scalar(

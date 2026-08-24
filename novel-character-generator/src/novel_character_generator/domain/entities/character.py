@@ -133,6 +133,7 @@ class CharacterAppearanceState(BaseModel):
     disguise: str | None = None
     field_sources: dict[str, list[UUID]] = Field(default_factory=dict)
     resolver_version: str = "appearance-resolver-v1"
+    aggregation_fingerprint: str | None = Field(default=None, pattern=r"^[0-9a-f]{64}$")
     created_by_run_id: UUID | None = None
     record_status: Literal["active", "invalidated", "superseded"] = "active"
     status: Literal["draft", "needs_review", "approved"] = "draft"
@@ -155,3 +156,8 @@ class CharacterRenderProfile(BaseModel):
     approved_by: str | None = None
     approved_at: datetime | None = None
     revision: int = Field(default=1, ge=1)
+    record_status: Literal["active", "stale"] = "active"
+    input_fingerprint: str | None = Field(default=None, pattern=r"^[0-9a-f]{64}$")
+    source_document_version_id: UUID | None = None
+    aggregation_run_id: UUID | None = None
+    aggregation_metadata: dict[str, Any] | None = None

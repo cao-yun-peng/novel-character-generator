@@ -127,6 +127,7 @@ async function loadCapabilities() {
     $("#capability-chips").innerHTML = [
       ["TXT", capabilities.source_formats?.includes("txt")],
       ["角色提取", capabilities.extraction],
+      ["外观聚合", capabilities.appearance_aggregation],
       ["任务恢复", capabilities.run_events_sse],
       ["人工审核", capabilities.human_approvals],
       ["2D 图像", capabilities.image_generation],

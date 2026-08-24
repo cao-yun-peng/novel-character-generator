@@ -4,7 +4,7 @@
 >
 > 文档版本：2.9 · 修订日期：2026-08-24
 >
-> 当前状态：待实现。现有代码能够保存和查询 Observation、预置 AppearanceState、冲突、RenderProfile 与目标时点快照，但 `Observation → AppearanceState → RenderProfile` 自动链路尚未闭合。
+> 当前状态：核心链路已实现。`aggregate_appearance` 已接入文本 Pipeline，能够从真实 Observation 幂等形成 AppearanceState、Conflict 和待审核 RenderProfile；源版本替换会失效旧观察和派生状态、保留 stale 历史批准档案并生成新草稿。父子时间线继承和人工确认值冲突保护已有集成测试；角色/字段级精细差异重算已延期，当前继续采用整角色保守重建。
 
 ## 1. 要解决的问题
 
@@ -83,7 +83,7 @@ Step 成功只表示草稿和冲突已经一致落库，不表示档案已批准
 6. 持久字段延续到明确终止事件，瞬时字段不得跨场景延续；
 7. 输出稳定排序的 `appearance` 与 `field_sources`，计算聚合指纹。
 
-人工值不能被后续自动运行静默覆盖。新证据与人工值冲突时创建待审核冲突，并保留当前已批准版本直到用户决定。
+人工值不能被后续自动运行静默覆盖。新证据与人工值冲突时创建 `conflict_kind=human_confirmation` 的待审核冲突，并保留当前已批准版本直到用户决定；身份锚点与阶段状态都受此规则保护。
 
 ## 6. 幂等与版本
 

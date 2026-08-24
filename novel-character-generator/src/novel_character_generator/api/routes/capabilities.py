@@ -16,6 +16,7 @@ class CapabilitiesResponse(BaseModel):
     human_approvals: bool
     story_temporal_binding: bool
     character_entity_resolution: bool
+    appearance_aggregation: bool
     evaluation_framework: bool
     image_generation: bool
 
@@ -33,6 +34,7 @@ async def capabilities() -> CapabilitiesResponse:
         human_approvals=True,
         story_temporal_binding=True,
         character_entity_resolution=True,
+        appearance_aggregation=True,
         evaluation_framework=True,
         image_generation=False,
     )

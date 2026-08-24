@@ -1,23 +1,26 @@
+import logging
 from uuid import UUID
 
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from novel_character_generator.application.ports.extraction import ExtractionProvider
+from novel_character_generator.application.services.appearance_aggregation_service import (
+    AppearanceAggregationService,
+)
 from novel_character_generator.infrastructure.db.orm import PipelineRunORM, PipelineStepORM
-from novel_character_generator.infrastructure.db.repositories.extraction import ExtractionRepository
 from novel_character_generator.workers.task_claim import (
     checkpoint_step,
-    complete_step_and_enqueue,
+    complete_step,
     mark_cancelled,
     record_step_error,
     start_step,
 )
 
+logger = logging.getLogger(__name__)
 
-async def process_extraction_run(
+
+async def process_appearance_aggregation_run(
     session: AsyncSession,
-    provider: ExtractionProvider,
     run_id: UUID,
     *,
     max_attempts: int = 3,
@@ -25,19 +28,19 @@ async def process_extraction_run(
 ) -> None:
     run = await session.get(PipelineRunORM, run_id)
     if run is None or run.run_type not in {"character_extraction", "text_analysis"}:
-        raise ValueError("extraction_run_not_found")
+        raise ValueError("appearance_aggregation_run_not_found")
     step = await session.scalar(
         select(PipelineStepORM).where(
             PipelineStepORM.run_id == run_id,
-            PipelineStepORM.step_key == "extract_characters",
+            PipelineStepORM.step_key == "aggregate_appearance",
         )
     )
     if step is None:
-        raise RuntimeError("extraction_step_not_found")
+        raise RuntimeError("appearance_aggregation_step_not_found")
     if step.status == "succeeded":
         return
     if step.status not in {"queued", "retry_scheduled", "claimed"}:
-        raise ValueError("extraction_step_not_runnable")
+        raise ValueError("appearance_aggregation_step_not_runnable")
     if run.cancel_requested:
         await mark_cancelled(
             session,
@@ -50,17 +53,18 @@ async def process_extraction_run(
     persisted_run_id = run.id
     expected_generation = await start_step(session, step=step, run=run)
     try:
-        repository = ExtractionRepository(session)
-        document = await repository.source_document(run.novel_id)
-        normalization_map = await repository.normalization_map(document.id)
-        timeline = await repository.canonical_timeline(run.novel_id)
-        chunks = await repository.chunks(run.novel_id)
+        service = AppearanceAggregationService(session)
+        document = await service.source_document_version(run.novel_id)
+        character_ids = await service.affected_character_ids(
+            novel_id=run.novel_id,
+            source_document_version_id=document.id,
+        )
         cursor = step.cursor or {}
-        start_ordinal = int(cursor.get("current_chunk_ordinal", 0))
+        completed = {str(item) for item in cursor.get("completed_character_ids", [])}
         await session.commit()
 
-        for chunk in chunks:
-            if chunk.ordinal < start_ordinal:
+        for character_id in character_ids:
+            if str(character_id) in completed:
                 continue
             await session.refresh(run, attribute_names=["cancel_requested"])
             if run.cancel_requested:
@@ -71,47 +75,53 @@ async def process_extraction_run(
                     expected_generation=expected_generation,
                 )
                 return
-            # No database transaction is held while waiting for the provider.
-            await session.commit()
-            result = await provider.extract_chunk(chunk.content)
-            await repository.persist_result(
+            await service.aggregate_character(
                 run=run,
-                chunk=chunk,
-                document=document,
-                normalization_map=normalization_map,
-                timeline=timeline,
-                result=result,
-                extractor_version=provider.version,
+                step_id=step.id,
+                expected_generation=expected_generation,
+                character_id=character_id,
+                source_document_version_id=document.id,
             )
+            completed.add(str(character_id))
             await checkpoint_step(
                 session,
                 step=step,
                 expected_generation=expected_generation,
                 cursor={
                     "schema_version": "v1",
-                    "current_chunk_ordinal": chunk.ordinal + 1,
-                    "completed_step_keys": [],
+                    "source_document_version_id": str(document.id),
+                    "completed_character_ids": sorted(completed),
                 },
                 lease_seconds=lease_seconds,
             )
-        await complete_step_and_enqueue(
+        await complete_step(
             session,
             step=step,
             run=run,
             expected_generation=expected_generation,
             cursor={
                 "schema_version": "v1",
-                "current_chunk_ordinal": len(chunks),
+                "source_document_version_id": str(document.id),
+                "completed_character_ids": sorted(completed),
                 "completed_step_keys": [step.step_key],
             },
-            next_step_key="aggregate_appearance",
         )
     except Exception as error:
+        logger.exception(
+            "appearance.aggregation.failed",
+            extra={
+                "event_name": "appearance.aggregation.failed",
+                "run_id": str(run_id),
+                "step_id": str(step_id),
+                "lease_generation": expected_generation,
+                "error_code": "appearance_aggregation_failed",
+            },
+        )
         await record_step_error(
             session,
             step_id=step_id,
             run_id=persisted_run_id,
-            error_code="extraction_failed",
+            error_code="appearance_aggregation_failed",
             error=error,
             max_attempts=max_attempts,
             expected_generation=expected_generation,

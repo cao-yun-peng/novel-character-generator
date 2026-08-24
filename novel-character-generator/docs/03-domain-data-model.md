@@ -340,6 +340,10 @@ class ResolvedCharacterSnapshot(BaseModel):
 
 `CharacterAppearanceState` 是部分字段覆盖层，不要求每个状态复制完整角色。解析器先应用基础年龄阶段，再按 `persistent_change → disguise → clothing → temporary_condition → manual_override` 合并同一目标时点所有有效状态；同优先级写入同一字段且值不兼容时停止解析并进入审核。最终扁平结果写入 `resolved_appearance`，完整 JSON 作为不可变 Artifact 保存，`applied_state_ids` 仅用于追溯，避免状态组合爆炸。
 
+父子时间线解析时，祖先状态只读取到子线的 `branch_event_id`，按“最远祖先 → 当前子线”顺序应用；子线分支后的明确状态可以覆盖继承基线，父线分支后的变化不会泄漏到子线。同一时间线、同一优先级的重叠矛盾仍必须进入审核，时间线循环或无效分支事件直接拒绝解析。
+
+`CharacterConflict.conflict_kind` 区分普通 `incompatible_values` 与 `human_confirmation`。后者表示新自动事实与已批准档案、人工 override 或人工确认身份锚点冲突；自动任务只能创建待审核冲突，不能覆盖确认值。身份锚点冲突解决后直接更新档案锚点并写入 `manual:conflict:<id>` 来源，阶段字段则形成最高优先级 `manual_override` 状态。
+
 ### 6.7 CharacterRenderProfile
 
 ```python
@@ -358,9 +362,12 @@ class CharacterRenderProfile(BaseModel):
     approved_by: str | None
     approved_at: datetime | None
     revision: int                      # 乐观并发控制
+    record_status: Literal["active", "stale"]
+    source_document_version_id: UUID | None
+    input_fingerprint: str | None
 ```
 
-`CharacterRenderProfile` 是用户确认过的角色规则与可用状态集合，不再代表唯一的“当前外观”。每次生成前必须解析出 `ResolvedCharacterSnapshot`。所有 Block 使用 Enum 或受约束字符串，未知值为 `None`。不要使用无法区分缺失、空列表和明确“无”的字段定义。
+`CharacterRenderProfile` 是用户确认过的角色规则与可用状态集合，不再代表唯一的“当前外观”。源文档版本替换时，旧批准档案保持 `status=approved` 和原 revision 不变，同时将 `record_status` 标记为 `stale`；新版本分析形成新的活动草稿。每次生成前必须解析出 `ResolvedCharacterSnapshot`，stale 档案不得生成快照。所有 Block 使用 Enum 或受约束字符串，未知值为 `None`。不要使用无法区分缺失、空列表和明确“无”的字段定义。
 
 ### 6.8 任务状态机
 

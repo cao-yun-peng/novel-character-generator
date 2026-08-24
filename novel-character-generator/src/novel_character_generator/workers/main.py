@@ -15,6 +15,9 @@ from novel_character_generator.infrastructure.llm.openai_compatible import (
 )
 from novel_character_generator.infrastructure.storage.local import LocalArtifactStore
 from novel_character_generator.settings import get_settings
+from novel_character_generator.workers.handlers.appearance_aggregation import (
+    process_appearance_aggregation_run,
+)
 from novel_character_generator.workers.handlers.extraction import process_extraction_run
 from novel_character_generator.workers.handlers.ingestion import process_ingestion_run
 from novel_character_generator.workers.task_claim import claim_next_step
@@ -68,6 +71,13 @@ async def run_once(run_id: UUID, *, step_key: str | None = None) -> None:
             await process_extraction_run(
                 session,
                 extraction_provider(),
+                run_id,
+                max_attempts=settings.max_task_attempts,
+                lease_seconds=settings.worker_lease_seconds,
+            )
+        elif step.step_key == "aggregate_appearance":
+            await process_appearance_aggregation_run(
+                session,
                 run_id,
                 max_attempts=settings.max_task_attempts,
                 lease_seconds=settings.worker_lease_seconds,
