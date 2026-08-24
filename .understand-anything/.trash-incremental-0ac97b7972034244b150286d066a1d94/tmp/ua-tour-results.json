@@ -1,0 +1,3032 @@
+{
+  "scriptCompleted": true,
+  "entryPointCandidates": [
+    {
+      "id": "file:novel-character-generator/src/novel_character_generator/workers/main.py",
+      "score": 5,
+      "name": "main.py",
+      "summary": "提供工作进程命令行入口，按配置选择抽取提供者，并轮询、领取和分派摄取或角色抽取流水线步骤。"
+    },
+    {
+      "id": "file:novel-character-generator/src/novel_character_generator/api/app.py",
+      "score": 4,
+      "name": "app.py",
+      "summary": "创建 FastAPI 应用，装配错误处理、静态工作台、指标中间件、鉴权依赖及各领域路由，并在生命周期结束时释放数据库引擎。"
+    },
+    {
+      "id": "file:novel-character-generator/src/novel_character_generator/web/app.js",
+      "score": 4,
+      "name": "app.js",
+      "summary": "实现轻量工作台的浏览器状态、API 调用、小说上传、文本 Run 轮询、角色证据展示及受 capability 控制的图像任务请求。"
+    },
+    {
+      "id": "document:novel_character_generator_tech_doc.md",
+      "score": 2,
+      "name": "novel_character_generator_tech_doc.md",
+      "summary": "作为已拆分技术设计文档的兼容入口，指向主题文档索引并声明其为项目设计的唯一正文来源。"
+    },
+    {
+      "id": "file:.DS_Store",
+      "score": 2,
+      "name": ".DS_Store",
+      "summary": "macOS Finder 生成的目录显示元数据，不承载应用功能。"
+    }
+  ],
+  "fanInRanking": [
+    {
+      "id": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "fanIn": 23,
+      "name": "orm.py"
+    },
+    {
+      "id": "file:novel-character-generator/src/novel_character_generator/settings.py",
+      "fanIn": 11,
+      "name": "settings.py"
+    },
+    {
+      "id": "function:novel-character-generator/src/novel_character_generator/infrastructure/db/repositories/run_events.py:append_run_event",
+      "fanIn": 9,
+      "name": "append_run_event"
+    },
+    {
+      "id": "file:novel-character-generator/src/novel_character_generator/api/auth.py",
+      "fanIn": 8,
+      "name": "auth.py"
+    },
+    {
+      "id": "file:novel-character-generator/tests/integration/test_health.py",
+      "fanIn": 7,
+      "name": "test_health.py"
+    },
+    {
+      "id": "file:novel-character-generator/src/novel_character_generator/api/deps.py",
+      "fanIn": 6,
+      "name": "deps.py"
+    },
+    {
+      "id": "document:novel-character-generator/docs/00-current-status.md",
+      "fanIn": 5,
+      "name": "00-current-status.md"
+    },
+    {
+      "id": "file:novel-character-generator/src/novel_character_generator/api/app.py",
+      "fanIn": 5,
+      "name": "app.py"
+    },
+    {
+      "id": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/repositories/run_events.py",
+      "fanIn": 5,
+      "name": "run_events.py"
+    },
+    {
+      "id": "document:novel-character-generator/docs/03-domain-data-model.md",
+      "fanIn": 4,
+      "name": "03-domain-data-model.md"
+    },
+    {
+      "id": "document:novel-character-generator/docs/08-task-recovery.md",
+      "fanIn": 4,
+      "name": "08-task-recovery.md"
+    },
+    {
+      "id": "document:novel-character-generator/docs/12-evaluation-and-acceptance.md",
+      "fanIn": 4,
+      "name": "12-evaluation-and-acceptance.md"
+    },
+    {
+      "id": "document:novel-character-generator/docs/13-observability-logging-and-cost.md",
+      "fanIn": 4,
+      "name": "13-observability-logging-and-cost.md"
+    },
+    {
+      "id": "document:novel-character-generator/docs/20-api-cookbook-and-error-catalog.md",
+      "fanIn": 4,
+      "name": "20-api-cookbook-and-error-catalog.md"
+    },
+    {
+      "id": "file:novel-character-generator/src/novel_character_generator/agents/structured_runtime.py",
+      "fanIn": 4,
+      "name": "structured_runtime.py"
+    },
+    {
+      "id": "file:novel-character-generator/src/novel_character_generator/application/ports/extraction.py",
+      "fanIn": 4,
+      "name": "extraction.py"
+    },
+    {
+      "id": "file:novel-character-generator/src/novel_character_generator/application/services/approval_service.py",
+      "fanIn": 4,
+      "name": "approval_service.py"
+    },
+    {
+      "id": "file:novel-character-generator/src/novel_character_generator/domain/entities/document.py",
+      "fanIn": 4,
+      "name": "document.py"
+    },
+    {
+      "id": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/session.py",
+      "fanIn": 4,
+      "name": "session.py"
+    },
+    {
+      "id": "file:novel-character-generator/src/novel_character_generator/workers/task_claim.py",
+      "fanIn": 4,
+      "name": "task_claim.py"
+    }
+  ],
+  "fanOutRanking": [
+    {
+      "id": "file:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "fanOut": 85,
+      "name": "orm.py"
+    },
+    {
+      "id": "file:novel-character-generator/src/novel_character_generator/api/routes/characters.py",
+      "fanOut": 63,
+      "name": "characters.py"
+    },
+    {
+      "id": "file:novel-character-generator/src/novel_character_generator/api/routes/runs.py",
+      "fanOut": 29,
+      "name": "runs.py"
+    },
+    {
+      "id": "file:novel-character-generator/src/novel_character_generator/application/ports/agent_runtime.py",
+      "fanOut": 26,
+      "name": "agent_runtime.py"
+    },
+    {
+      "id": "file:novel-character-generator/tests/unit/test_structured_agent_runtime.py",
+      "fanOut": 24,
+      "name": "test_structured_agent_runtime.py"
+    },
+    {
+      "id": "file:novel-character-generator/src/novel_character_generator/api/routes/novels.py",
+      "fanOut": 21,
+      "name": "novels.py"
+    },
+    {
+      "id": "file:novel-character-generator/src/novel_character_generator/application/ports/extraction.py",
+      "fanOut": 20,
+      "name": "extraction.py"
+    },
+    {
+      "id": "file:novel-character-generator/src/novel_character_generator/workers/task_claim.py",
+      "fanOut": 20,
+      "name": "task_claim.py"
+    },
+    {
+      "id": "file:novel-character-generator/src/novel_character_generator/api/app.py",
+      "fanOut": 19,
+      "name": "app.py"
+    },
+    {
+      "id": "document:novel-character-generator/docs/00-code-navigation.md",
+      "fanOut": 18,
+      "name": "00-code-navigation.md"
+    },
+    {
+      "id": "file:novel-character-generator/src/novel_character_generator/api/routes/approvals.py",
+      "fanOut": 18,
+      "name": "approvals.py"
+    },
+    {
+      "id": "file:novel-character-generator/src/novel_character_generator/api/routes/story.py",
+      "fanOut": 18,
+      "name": "story.py"
+    },
+    {
+      "id": "file:novel-character-generator/src/novel_character_generator/workers/main.py",
+      "fanOut": 17,
+      "name": "main.py"
+    },
+    {
+      "id": "file:novel-character-generator/src/novel_character_generator/api/errors.py",
+      "fanOut": 16,
+      "name": "errors.py"
+    },
+    {
+      "id": "file:novel-character-generator/src/novel_character_generator/web/app.js",
+      "fanOut": 16,
+      "name": "app.js"
+    },
+    {
+      "id": "file:novel-character-generator/src/novel_character_generator/api/routes/agent_runs.py",
+      "fanOut": 15,
+      "name": "agent_runs.py"
+    },
+    {
+      "id": "file:novel-character-generator/src/novel_character_generator/application/services/appearance_service.py",
+      "fanOut": 15,
+      "name": "appearance_service.py"
+    },
+    {
+      "id": "file:novel-character-generator/src/novel_character_generator/domain/policies/text_processing.py",
+      "fanOut": 15,
+      "name": "text_processing.py"
+    },
+    {
+      "id": "file:novel-character-generator/src/novel_character_generator/application/services/approval_service.py",
+      "fanOut": 13,
+      "name": "approval_service.py"
+    },
+    {
+      "id": "file:novel-character-generator/src/novel_character_generator/application/services/character_entity_service.py",
+      "fanOut": 13,
+      "name": "character_entity_service.py"
+    }
+  ],
+  "bfsTraversal": {
+    "startNode": "file:novel-character-generator/src/novel_character_generator/workers/main.py",
+    "order": [
+      "file:novel-character-generator/src/novel_character_generator/workers/main.py",
+      "file:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+      "file:novel-character-generator/src/novel_character_generator/infrastructure/db/session.py",
+      "file:novel-character-generator/src/novel_character_generator/infrastructure/llm/mock.py",
+      "file:novel-character-generator/src/novel_character_generator/infrastructure/llm/openai_compatible.py",
+      "file:novel-character-generator/src/novel_character_generator/infrastructure/storage/local.py",
+      "file:novel-character-generator/src/novel_character_generator/settings.py",
+      "file:novel-character-generator/src/novel_character_generator/workers/handlers/extraction.py",
+      "file:novel-character-generator/src/novel_character_generator/workers/handlers/ingestion.py",
+      "file:novel-character-generator/src/novel_character_generator/workers/task_claim.py",
+      "file:novel-character-generator/src/novel_character_generator/infrastructure/db/base.py",
+      "file:novel-character-generator/src/novel_character_generator/application/ports/extraction.py",
+      "file:novel-character-generator/src/novel_character_generator/infrastructure/db/repositories/extraction.py",
+      "file:novel-character-generator/src/novel_character_generator/application/ports/artifact_store.py",
+      "file:novel-character-generator/src/novel_character_generator/domain/policies/text_processing.py",
+      "file:novel-character-generator/src/novel_character_generator/infrastructure/db/repositories/ingestion.py",
+      "file:novel-character-generator/src/novel_character_generator/infrastructure/db/repositories/run_events.py",
+      "file:novel-character-generator/src/novel_character_generator/domain/policies/grounding.py",
+      "file:novel-character-generator/src/novel_character_generator/domain/entities/document.py"
+    ],
+    "depthMap": {
+      "file:novel-character-generator/src/novel_character_generator/workers/main.py": 0,
+      "file:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py": 1,
+      "file:novel-character-generator/src/novel_character_generator/infrastructure/db/session.py": 1,
+      "file:novel-character-generator/src/novel_character_generator/infrastructure/llm/mock.py": 1,
+      "file:novel-character-generator/src/novel_character_generator/infrastructure/llm/openai_compatible.py": 1,
+      "file:novel-character-generator/src/novel_character_generator/infrastructure/storage/local.py": 1,
+      "file:novel-character-generator/src/novel_character_generator/settings.py": 1,
+      "file:novel-character-generator/src/novel_character_generator/workers/handlers/extraction.py": 1,
+      "file:novel-character-generator/src/novel_character_generator/workers/handlers/ingestion.py": 1,
+      "file:novel-character-generator/src/novel_character_generator/workers/task_claim.py": 1,
+      "file:novel-character-generator/src/novel_character_generator/infrastructure/db/base.py": 2,
+      "file:novel-character-generator/src/novel_character_generator/application/ports/extraction.py": 2,
+      "file:novel-character-generator/src/novel_character_generator/infrastructure/db/repositories/extraction.py": 2,
+      "file:novel-character-generator/src/novel_character_generator/application/ports/artifact_store.py": 2,
+      "file:novel-character-generator/src/novel_character_generator/domain/policies/text_processing.py": 2,
+      "file:novel-character-generator/src/novel_character_generator/infrastructure/db/repositories/ingestion.py": 2,
+      "file:novel-character-generator/src/novel_character_generator/infrastructure/db/repositories/run_events.py": 2,
+      "file:novel-character-generator/src/novel_character_generator/domain/policies/grounding.py": 3,
+      "file:novel-character-generator/src/novel_character_generator/domain/entities/document.py": 3
+    },
+    "byDepth": {
+      "0": [
+        "file:novel-character-generator/src/novel_character_generator/workers/main.py"
+      ],
+      "1": [
+        "file:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py",
+        "file:novel-character-generator/src/novel_character_generator/infrastructure/db/session.py",
+        "file:novel-character-generator/src/novel_character_generator/infrastructure/llm/mock.py",
+        "file:novel-character-generator/src/novel_character_generator/infrastructure/llm/openai_compatible.py",
+        "file:novel-character-generator/src/novel_character_generator/infrastructure/storage/local.py",
+        "file:novel-character-generator/src/novel_character_generator/settings.py",
+        "file:novel-character-generator/src/novel_character_generator/workers/handlers/extraction.py",
+        "file:novel-character-generator/src/novel_character_generator/workers/handlers/ingestion.py",
+        "file:novel-character-generator/src/novel_character_generator/workers/task_claim.py"
+      ],
+      "2": [
+        "file:novel-character-generator/src/novel_character_generator/infrastructure/db/base.py",
+        "file:novel-character-generator/src/novel_character_generator/application/ports/extraction.py",
+        "file:novel-character-generator/src/novel_character_generator/infrastructure/db/repositories/extraction.py",
+        "file:novel-character-generator/src/novel_character_generator/application/ports/artifact_store.py",
+        "file:novel-character-generator/src/novel_character_generator/domain/policies/text_processing.py",
+        "file:novel-character-generator/src/novel_character_generator/infrastructure/db/repositories/ingestion.py",
+        "file:novel-character-generator/src/novel_character_generator/infrastructure/db/repositories/run_events.py"
+      ],
+      "3": [
+        "file:novel-character-generator/src/novel_character_generator/domain/policies/grounding.py",
+        "file:novel-character-generator/src/novel_character_generator/domain/entities/document.py"
+      ]
+    }
+  },
+  "nonCodeFiles": {
+    "documentation": [
+      {
+        "id": "document:novel-character-generator/data/fixtures/upload-character-novel.txt",
+        "name": "upload-character-novel.txt",
+        "type": "document",
+        "summary": "包含角色名称与对话场景的小说文本夹具，用于验证小说上传及角色提取流程。"
+      },
+      {
+        "id": "document:novel-character-generator/data/fixtures/upload-smoke-novel.txt",
+        "name": "upload-smoke-novel.txt",
+        "type": "document",
+        "summary": "用于上传流程冒烟测试的原创分章小说文本夹具。"
+      },
+      {
+        "id": "document:novel-character-generator/README.md",
+        "name": "README.md",
+        "type": "document",
+        "summary": "项目入口文档，说明已跑通的文本分析主链、尚未实现的图像能力、本地启动方式、Worker 进程边界与常用质量检查。"
+      },
+      {
+        "id": "document:novel-character-generator/docs/00-code-navigation.md",
+        "name": "00-code-navigation.md",
+        "type": "document",
+        "summary": "为开发者提供从 HTTP 请求到路由、应用服务、领域、基础设施和 Worker 的代码导航，并列出常见功能的实现与测试入口。"
+      },
+      {
+        "id": "document:novel-character-generator/docs/00-current-status.md",
+        "name": "00-current-status.md",
+        "type": "document",
+        "summary": "按源码、API、Worker 和测试证据列出功能实现状态，明确现有闭环、设计缺口与建议的下一阶段优先级。"
+      },
+      {
+        "id": "document:novel-character-generator/docs/00-start-here.md",
+        "name": "00-start-here.md",
+        "type": "document",
+        "summary": "面向新读者说明小说到角色视觉档案的完整业务目标、当前可运行主链、核心领域概念与推荐阅读路径。"
+      },
+      {
+        "id": "document:novel-character-generator/docs/01-project-overview-and-principles.md",
+        "name": "01-project-overview-and-principles.md",
+        "type": "document",
+        "summary": "定义项目的阶段范围与设计原则，包括证据优先、长任务解耦、可追溯性、有界自治和视觉防漂移。"
+      },
+      {
+        "id": "document:novel-character-generator/docs/02-architecture-and-tech-stack.md",
+        "name": "02-architecture-and-tech-stack.md",
+        "type": "document",
+        "summary": "描述 FastAPI、SQLAlchemy、独立 Worker、Provider 与 AgentRuntime 的逻辑架构、运行时拓扑、处理流程和技术选型。"
+      },
+      {
+        "id": "document:novel-character-generator/docs/03-domain-data-model.md",
+        "name": "03-domain-data-model.md",
+        "type": "document",
+        "summary": "定义角色、证据观察、时间线、外观状态、渲染档案及可恢复任务状态机等核心领域模型和数据库设计。"
+      },
+      {
+        "id": "document:novel-character-generator/docs/04-text-understanding-pipeline.md",
+        "name": "04-text-understanding-pipeline.md",
+        "type": "document",
+        "summary": "规定小说导入、分块、批量抽取、实体链接、时间定位和增量处理的文本理解流水线。"
+      },
+      {
+        "id": "document:novel-character-generator/docs/05-character-render-profile.md",
+        "name": "05-character-render-profile.md",
+        "type": "document",
+        "summary": "说明角色渲染档案的聚合优先级、冲突处置、目标时点快照和阶段形象集的决策规则。"
+      },
+      {
+        "id": "document:novel-character-generator/docs/06-image-generation-and-drift-control.md",
+        "name": "06-image-generation-and-drift-control.md",
+        "type": "document",
+        "summary": "规划图像工作流、质量评测、生成上下文冻结与视觉漂移审计、门禁和重生成闭环。"
+      },
+      {
+        "id": "document:novel-character-generator/docs/07-agent-architecture.md",
+        "name": "07-agent-architecture.md",
+        "type": "document",
+        "summary": "定义专项 Agent 的职责边界、注册与版本、强类型工具契约、上下文工程、模型路由、审批和轨迹评测。"
+      },
+      {
+        "id": "document:novel-character-generator/docs/08-task-recovery.md",
+        "name": "08-task-recovery.md",
+        "type": "document",
+        "summary": "规定以 PipelineRun、PipelineStep 和外部操作账本为核心的持久化任务执行模型，覆盖租约、围栏令牌、取消、重试与未知提交的对账边界。文档同时说明一期单 Worker 约束及二期迁移至分布式队列的条件。"
+      },
+      {
+        "id": "document:novel-character-generator/docs/09-api-specification.md",
+        "name": "09-api-specification.md",
+        "type": "document",
+        "summary": "定义 FastAPI 服务的统一 API 契约，并逐项区分当前已注册端点、尚未实现的图像生成目标接口和二期扩展边界。内容涵盖异步任务响应、幂等键、并发更新、认证及运行时能力声明。"
+      },
+      {
+        "id": "document:novel-character-generator/docs/10-provider-and-workflow-versioning.md",
+        "name": "10-provider-and-workflow-versioning.md",
+        "type": "document",
+        "summary": "描述 LLM 与图像 Provider 的端口契约、异步外部任务恢复，以及 Prompt、AgentSpec、ToolSpec 和工作流配置的版本治理方式。明确将多轮编排、权限和预算收敛至 AgentRuntime，并规定能力探测与可降级原则。"
+      },
+      {
+        "id": "document:novel-character-generator/docs/11-security-and-data-governance.md",
+        "name": "11-security-and-data-governance.md",
+        "type": "document",
+        "summary": "列出当前 Settings 与环境变量真正支持的配置，并将尚未实现的目标配置单独隔离。文档规定文件路径防护、敏感数据最小化、日志脱敏、API Key 与 Agent 工具权限边界。"
+      },
+      {
+        "id": "document:novel-character-generator/docs/12-evaluation-and-acceptance.md",
+        "name": "12-evaluation-and-acceptance.md",
+        "type": "document",
+        "summary": "建立从单元、集成、Provider、Agent、图像到恢复与安全测试的评测分层，并定义 EvalCase、EvalRun、数据隔离、指标和人工盲评方法。文档给出一期发布门禁、执行频率及失败样本回流规则。"
+      },
+      {
+        "id": "document:novel-character-generator/docs/13-observability-logging-and-cost.md",
+        "name": "13-observability-logging-and-cost.md",
+        "type": "document",
+        "summary": "定义 OpenTelemetry 运行时观测与 Run/Step 业务追溯并行的双层模型，规定关联字段、关键业务日志、检查规则、指标、告警、采样和成本核算。强调遥测不可阻断业务流程，且正文、密钥和敏感产物不得进入观测数据。"
+      },
+      {
+        "id": "document:novel-character-generator/docs/14-roadmap.md",
+        "name": "14-roadmap.md",
+        "type": "document",
+        "summary": "按 PoC、工程基础、文本 Agent、图像生成和安全验收划分一期实施阶段，并列出每阶段的交付物与时间预估。后续章节规划生产化、批量图像、LoRA、3D、知识图谱及高级 Agent 互操作能力。"
+      },
+      {
+        "id": "document:novel-character-generator/docs/15-risks-decisions-and-references.md",
+        "name": "15-risks-decisions-and-references.md",
+        "type": "document",
+        "summary": "汇总模型、任务、数据、安全、遥测和 Agent 风险的表现形式及降级策略，并记录一期架构的关键决策依据。附录提供用于实现和评审的外部规范与技术参考。"
+      },
+      {
+        "id": "document:novel-character-generator/docs/README.md",
+        "name": "README.md",
+        "type": "document",
+        "summary": "作为技术设计文档的总索引，按首次阅读、主题设计与实施交付三类内容组织阅读入口。文档还提供按角色和任务划分的推荐阅读路径，以及跨文档维护和状态同步约定。"
+      },
+      {
+        "id": "document:novel-character-generator/docs/16-local-development-and-runbook.md",
+        "name": "16-local-development-and-runbook.md",
+        "type": "document",
+        "summary": "说明本地 FastAPI 与单写 Worker 的安装、启动、迁移、验证、备份恢复及排障流程，并界定一期 SQLite 部署约束。"
+      },
+      {
+        "id": "document:novel-character-generator/docs/17-appearance-aggregation-contract.md",
+        "name": "17-appearance-aggregation-contract.md",
+        "type": "document",
+        "summary": "定义从提取观察到外观状态、冲突和渲染档案草稿的确定性聚合闭环，包括版本、幂等、事务、审核和验收要求。"
+      },
+      {
+        "id": "document:novel-character-generator/docs/18-image-generation-implementation-contract.md",
+        "name": "18-image-generation-implementation-contract.md",
+        "type": "document",
+        "summary": "定义尚未实现的图像 Run API、冻结生成上下文、Provider 外部操作、漂移审计、门禁及人工锁定的端到端契约。"
+      },
+      {
+        "id": "document:novel-character-generator/docs/19-feature-traceability-matrix.md",
+        "name": "19-feature-traceability-matrix.md",
+        "type": "document",
+        "summary": "以功能、代码、Worker、测试和日志维度记录当前能力状态，并定义后续纵向切片的验收与状态升级规则。"
+      },
+      {
+        "id": "document:novel-character-generator/docs/20-api-cookbook-and-error-catalog.md",
+        "name": "20-api-cookbook-and-error-catalog.md",
+        "type": "document",
+        "summary": "提供已注册 API 的调用示例、认证与并发约定、SSE 续传、错误信封和错误码目录，同时明确未上线图像接口。"
+      },
+      {
+        "id": "document:novel_character_generator_tech_doc.md",
+        "name": "novel_character_generator_tech_doc.md",
+        "type": "document",
+        "summary": "作为已拆分技术设计文档的兼容入口，指向主题文档索引并声明其为项目设计的唯一正文来源。"
+      }
+    ],
+    "infrastructure": [],
+    "data": [],
+    "config": [
+      {
+        "id": "config:novel-character-generator/.env.example",
+        "name": ".env.example",
+        "type": "config",
+        "summary": "提供服务运行所需的环境变量样例，覆盖日志、OpenTelemetry、指标、数据库、制品存储、LLM、智能体运行时与 API 密钥认证配置。它定义了开发环境可直接采用的默认运行参数。"
+      },
+      {
+        "id": "config:novel-character-generator/alembic.ini",
+        "name": "alembic.ini",
+        "type": "config",
+        "summary": "配置 Alembic 数据库迁移环境，包括迁移脚本位置、Python 源码路径、SQLite 异步数据库连接以及 Alembic 和 SQLAlchemy 的日志行为。"
+      },
+      {
+        "id": "config:novel-character-generator/pyproject.toml",
+        "name": "pyproject.toml",
+        "type": "config",
+        "summary": "定义 Python 3.12 服务的构建方式、运行与开发依赖，以及 Hatch 打包、pytest、Ruff 和 mypy 的项目级质量配置。它将 FastAPI、SQLAlchemy、异步 SQLite 与 LLM 客户端等运行依赖集中声明。"
+      },
+      {
+        "id": "config:.understand-anything/config.json",
+        "name": "config.json",
+        "type": "config",
+        "summary": "保存知识图谱生成的输出语言等项目级配置。"
+      }
+    ]
+  },
+  "clusters": [],
+  "layers": {
+    "count": 0,
+    "list": []
+  },
+  "nodeSummaryIndex": {
+    "file:novel-character-generator/src/novel_character_generator/api/auth.py": {
+      "name": "auth.py",
+      "type": "file",
+      "summary": "提供用户与管理员 API Key 校验依赖，并根据运行环境实施访问控制。"
+    },
+    "function:novel-character-generator/src/novel_character_generator/api/auth.py:_matches": {
+      "name": "_matches",
+      "type": "function",
+      "summary": "以恒定时间比较候选 API Key 与期望密钥。"
+    },
+    "function:novel-character-generator/src/novel_character_generator/api/auth.py:_configured_keys": {
+      "name": "_configured_keys",
+      "type": "function",
+      "summary": "从应用设置中读取用户和管理员 API Key。"
+    },
+    "function:novel-character-generator/src/novel_character_generator/api/auth.py:require_user_api_key": {
+      "name": "require_user_api_key",
+      "type": "function",
+      "summary": "验证请求 API Key，并授予开发、用户或管理员主体权限。"
+    },
+    "function:novel-character-generator/src/novel_character_generator/api/auth.py:require_admin_api_key": {
+      "name": "require_admin_api_key",
+      "type": "function",
+      "summary": "验证管理员 API Key，并区分无效密钥与权限不足。"
+    },
+    "file:novel-character-generator/src/novel_character_generator/api/deps.py": {
+      "name": "deps.py",
+      "type": "file",
+      "summary": "为路由层提供异步数据库会话和本地制品存储依赖。"
+    },
+    "function:novel-character-generator/src/novel_character_generator/api/deps.py:get_session": {
+      "name": "get_session",
+      "type": "function",
+      "summary": "生成并自动关闭供 FastAPI 注入的异步数据库会话。"
+    },
+    "function:novel-character-generator/src/novel_character_generator/api/deps.py:get_artifact_store": {
+      "name": "get_artifact_store",
+      "type": "function",
+      "summary": "依据运行设置构造本地制品存储实例。"
+    },
+    "file:novel-character-generator/src/novel_character_generator/api/errors.py": {
+      "name": "errors.py",
+      "type": "file",
+      "summary": "统一生成含请求标识的错误响应，并注册 FastAPI 异常处理器与请求 ID 中间件。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/api/errors.py:ErrorResponse": {
+      "name": "ErrorResponse",
+      "type": "class",
+      "summary": "定义包含错误代码、消息和请求标识的统一错误响应模型。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/api/errors.py:RequestIdMiddleware": {
+      "name": "RequestIdMiddleware",
+      "type": "class",
+      "summary": "为每个请求注入或传播 X-Request-ID，并写回响应头。"
+    },
+    "function:novel-character-generator/src/novel_character_generator/api/errors.py:_request_id": {
+      "name": "_request_id",
+      "type": "function",
+      "summary": "获取请求上下文中的请求标识，缺失时生成新的 UUID。"
+    },
+    "function:novel-character-generator/src/novel_character_generator/api/errors.py:_error": {
+      "name": "_error",
+      "type": "function",
+      "summary": "将状态码和业务错误信息序列化为标准 JSON 错误响应。"
+    },
+    "function:novel-character-generator/src/novel_character_generator/api/errors.py:http_exception_handler": {
+      "name": "http_exception_handler",
+      "type": "function",
+      "summary": "将 FastAPI HTTPException 转换为统一的错误响应格式。"
+    },
+    "function:novel-character-generator/src/novel_character_generator/api/errors.py:validation_exception_handler": {
+      "name": "validation_exception_handler",
+      "type": "function",
+      "summary": "将请求校验异常映射为 422 标准错误响应。"
+    },
+    "function:novel-character-generator/src/novel_character_generator/api/errors.py:unhandled_exception_handler": {
+      "name": "unhandled_exception_handler",
+      "type": "function",
+      "summary": "将未处理异常隐藏为通用内部错误响应。"
+    },
+    "function:novel-character-generator/src/novel_character_generator/api/errors.py:configure_error_handling": {
+      "name": "configure_error_handling",
+      "type": "function",
+      "summary": "向应用注册请求 ID 中间件和全部异常处理器。"
+    },
+    "file:novel-character-generator/src/novel_character_generator/api/metrics.py": {
+      "name": "metrics.py",
+      "type": "file",
+      "summary": "累计 HTTP 请求计数和时长，并以 Prometheus 文本格式暴露指标端点。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/api/metrics.py:MetricsRegistry": {
+      "name": "MetricsRegistry",
+      "type": "class",
+      "summary": "在线程锁保护下累计按路由和状态码分组的请求数与处理时长。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/api/metrics.py:MetricsMiddleware": {
+      "name": "MetricsMiddleware",
+      "type": "class",
+      "summary": "测量每个 HTTP 请求的耗时并写入全局指标注册表。"
+    },
+    "function:novel-character-generator/src/novel_character_generator/api/metrics.py:metrics": {
+      "name": "metrics",
+      "type": "function",
+      "summary": "以 Prometheus 兼容的纯文本格式返回当前 HTTP 指标。"
+    },
+    "file:novel-character-generator/src/novel_character_generator/api/routes/__init__.py": {
+      "name": "__init__.py",
+      "type": "file",
+      "summary": "声明 API 路由包，供应用入口导入各个路由模块。"
+    },
+    "file:novel-character-generator/src/novel_character_generator/api/routes/agent_runs.py": {
+      "name": "agent_runs.py",
+      "type": "file",
+      "summary": "提供智能体运行、回合、工具调用和决策记录的只读查询接口。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/api/routes/agent_runs.py:AgentRunSummaryResponse": {
+      "name": "AgentRunSummaryResponse",
+      "type": "class",
+      "summary": "定义智能体运行摘要的 API 响应模型。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/api/routes/agent_runs.py:AgentTurnResponse": {
+      "name": "AgentTurnResponse",
+      "type": "class",
+      "summary": "定义智能体单回合上下文、输出和用量的响应模型。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/api/routes/agent_runs.py:ToolCallResponse": {
+      "name": "ToolCallResponse",
+      "type": "class",
+      "summary": "定义智能体工具调用审计信息的响应模型。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/api/routes/agent_runs.py:AgentRunDetailsResponse": {
+      "name": "AgentRunDetailsResponse",
+      "type": "class",
+      "summary": "扩展运行摘要，聚合回合、工具调用和决策记录。"
+    },
+    "function:novel-character-generator/src/novel_character_generator/api/routes/agent_runs.py:agent_run_summary": {
+      "name": "agent_run_summary",
+      "type": "function",
+      "summary": "将 ORM 智能体运行记录转换为摘要响应。"
+    },
+    "function:novel-character-generator/src/novel_character_generator/api/routes/agent_runs.py:get_agent_run": {
+      "name": "get_agent_run",
+      "type": "function",
+      "summary": "查询指定智能体运行及其回合、工具调用和决策记录。"
+    },
+    "file:novel-character-generator/src/novel_character_generator/api/routes/approvals.py": {
+      "name": "approvals.py",
+      "type": "file",
+      "summary": "提供待处理人工审批列表和带乐观并发控制的审批决策接口。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/api/routes/approvals.py:ApprovalResponse": {
+      "name": "ApprovalResponse",
+      "type": "class",
+      "summary": "定义人工审批请求及其决策状态的 API 响应模型。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/api/routes/approvals.py:ApprovalPageResponse": {
+      "name": "ApprovalPageResponse",
+      "type": "class",
+      "summary": "定义游标分页的审批列表响应模型。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/api/routes/approvals.py:ResolveApprovalRequest": {
+      "name": "ResolveApprovalRequest",
+      "type": "class",
+      "summary": "定义批准、拒绝、修改或延期审批的请求载荷。"
+    },
+    "function:novel-character-generator/src/novel_character_generator/api/routes/approvals.py:_response": {
+      "name": "_response",
+      "type": "function",
+      "summary": "将审批 ORM 记录转换为 API 响应模型。"
+    },
+    "function:novel-character-generator/src/novel_character_generator/api/routes/approvals.py:_revision": {
+      "name": "_revision",
+      "type": "function",
+      "summary": "解析并校验 If-Match 乐观并发版本号。"
+    },
+    "function:novel-character-generator/src/novel_character_generator/api/routes/approvals.py:list_approvals": {
+      "name": "list_approvals",
+      "type": "function",
+      "summary": "按状态和类型分页读取待人工处理的审批请求。"
+    },
+    "function:novel-character-generator/src/novel_character_generator/api/routes/approvals.py:resolve_approval": {
+      "name": "resolve_approval",
+      "type": "function",
+      "summary": "提交审批决策并把冲突和业务校验错误映射为 HTTP 响应。"
+    },
+    "file:novel-character-generator/src/novel_character_generator/api/routes/capabilities.py": {
+      "name": "capabilities.py",
+      "type": "file",
+      "summary": "公开当前部署支持的文本分析、智能体、审批和故事处理能力开关。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/api/routes/capabilities.py:CapabilitiesResponse": {
+      "name": "CapabilitiesResponse",
+      "type": "class",
+      "summary": "定义服务功能可用性清单的响应模型。"
+    },
+    "function:novel-character-generator/src/novel_character_generator/api/routes/capabilities.py:capabilities": {
+      "name": "capabilities",
+      "type": "function",
+      "summary": "根据设置与已实现特性返回客户端可查询的能力矩阵。"
+    },
+    "file:novel-character-generator/src/novel_character_generator/api/routes/health.py": {
+      "name": "health.py",
+      "type": "file",
+      "summary": "提供存活和就绪探针，供部署平台执行健康检查。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/api/routes/health.py:HealthResponse": {
+      "name": "HealthResponse",
+      "type": "class",
+      "summary": "定义健康探针的固定成功响应模型。"
+    },
+    "function:novel-character-generator/src/novel_character_generator/api/routes/health.py:live": {
+      "name": "live",
+      "type": "function",
+      "summary": "返回进程存活探针结果。"
+    },
+    "function:novel-character-generator/src/novel_character_generator/api/routes/health.py:ready": {
+      "name": "ready",
+      "type": "function",
+      "summary": "返回服务就绪探针结果。"
+    },
+    "file:novel-character-generator/src/novel_character_generator/api/routes/novels.py": {
+      "name": "novels.py",
+      "type": "file",
+      "summary": "处理小说文本上传、版本管理、详情查询以及文本分析运行的创建。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/api/routes/novels.py:NovelResponse": {
+      "name": "NovelResponse",
+      "type": "class",
+      "summary": "定义小说基础信息的响应模型。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/api/routes/novels.py:NovelDetailsResponse": {
+      "name": "NovelDetailsResponse",
+      "type": "class",
+      "summary": "扩展小说响应，包含源文件哈希和解析统计信息。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/api/routes/novels.py:RunResponse": {
+      "name": "RunResponse",
+      "type": "class",
+      "summary": "定义文本分析运行的简要响应模型。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/api/routes/novels.py:DocumentVersionResponse": {
+      "name": "DocumentVersionResponse",
+      "type": "class",
+      "summary": "定义小说源文档版本的响应模型。"
+    },
+    "function:novel-character-generator/src/novel_character_generator/api/routes/novels.py:upload_novel": {
+      "name": "upload_novel",
+      "type": "function",
+      "summary": "校验文本上传并调用导入服务创建小说及其初始内容。"
+    },
+    "function:novel-character-generator/src/novel_character_generator/api/routes/novels.py:get_novel": {
+      "name": "get_novel",
+      "type": "function",
+      "summary": "查询指定小说的详情和文本切分统计。"
+    },
+    "function:novel-character-generator/src/novel_character_generator/api/routes/novels.py:upload_novel_version": {
+      "name": "upload_novel_version",
+      "type": "function",
+      "summary": "校验并上传指定小说的新源文档版本。"
+    },
+    "function:novel-character-generator/src/novel_character_generator/api/routes/novels.py:create_text_analysis_run": {
+      "name": "create_text_analysis_run",
+      "type": "function",
+      "summary": "为小说创建可幂等的文本分析流水线运行。"
+    },
+    "file:novel-character-generator/src/novel_character_generator/api/routes/runs.py": {
+      "name": "runs.py",
+      "type": "file",
+      "summary": "提供运行详情、SSE 事件流、外部操作、智能体运行及取消重试接口。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/api/routes/runs.py:StepResponse": {
+      "name": "StepResponse",
+      "type": "class",
+      "summary": "定义流水线步骤状态的响应模型。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/api/routes/runs.py:RunDetailsResponse": {
+      "name": "RunDetailsResponse",
+      "type": "class",
+      "summary": "定义包含步骤状态的分析运行详情响应模型。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/api/routes/runs.py:ExternalOperationResponse": {
+      "name": "ExternalOperationResponse",
+      "type": "class",
+      "summary": "定义外部提供方操作及其协调状态的响应模型。"
+    },
+    "function:novel-character-generator/src/novel_character_generator/api/routes/runs.py:_run_or_404": {
+      "name": "_run_or_404",
+      "type": "function",
+      "summary": "获取运行详情，缺失时抛出 404 错误。"
+    },
+    "function:novel-character-generator/src/novel_character_generator/api/routes/runs.py:get_run": {
+      "name": "get_run",
+      "type": "function",
+      "summary": "返回指定分析运行的聚合详情。"
+    },
+    "function:novel-character-generator/src/novel_character_generator/api/routes/runs.py:stream_run_events": {
+      "name": "stream_run_events",
+      "type": "function",
+      "summary": "以 Server-Sent Events 持续推送运行事件并处理终态与心跳。"
+    },
+    "function:novel-character-generator/src/novel_character_generator/api/routes/runs.py:list_external_operations": {
+      "name": "list_external_operations",
+      "type": "function",
+      "summary": "列出指定运行关联的外部提供方操作。"
+    },
+    "function:novel-character-generator/src/novel_character_generator/api/routes/runs.py:list_agent_runs": {
+      "name": "list_agent_runs",
+      "type": "function",
+      "summary": "查询运行下各流水线步骤关联的智能体执行记录。"
+    },
+    "function:novel-character-generator/src/novel_character_generator/api/routes/runs.py:cancel_run": {
+      "name": "cancel_run",
+      "type": "function",
+      "summary": "请求取消运行并返回更新后的运行详情。"
+    },
+    "function:novel-character-generator/src/novel_character_generator/api/routes/runs.py:retry_run": {
+      "name": "retry_run",
+      "type": "function",
+      "summary": "使用配置的最大尝试次数重新调度失败或可重试运行。"
+    },
+    "file:novel-character-generator/src/novel_character_generator/infrastructure/db/session.py": {
+      "name": "session.py",
+      "type": "file",
+      "summary": "创建异步 SQLAlchemy 引擎与会话工厂，并在 SQLite 连接时启用关键 PRAGMA。"
+    },
+    "function:novel-character-generator/src/novel_character_generator/infrastructure/db/session.py:configure_sqlite": {
+      "name": "configure_sqlite",
+      "type": "function",
+      "summary": "在 SQLite 连接建立时开启外键、超时和 WAL 日志配置。"
+    },
+    "function:novel-character-generator/src/novel_character_generator/infrastructure/db/session.py:dispose_engine": {
+      "name": "dispose_engine",
+      "type": "function",
+      "summary": "异步释放 SQLAlchemy 引擎持有的连接资源。"
+    },
+    "file:novel-character-generator/src/novel_character_generator/infrastructure/storage/local.py": {
+      "name": "local.py",
+      "type": "file",
+      "summary": "实现基于本地文件系统和内容哈希分层目录的异步制品读写存储。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/infrastructure/storage/local.py:LocalArtifactStore": {
+      "name": "LocalArtifactStore",
+      "type": "class",
+      "summary": "以内容哈希 URI 保存并安全读取本地制品，防止路径越界访问。"
+    },
+    "file:novel-character-generator/src/novel_character_generator/settings.py": {
+      "name": "settings.py",
+      "type": "file",
+      "summary": "集中定义环境变量驱动的运行配置，并校验生产环境中的模型提供方和密钥约束。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/settings.py:Settings": {
+      "name": "Settings",
+      "type": "class",
+      "summary": "定义数据库、制品、LLM、智能体和鉴权设置，并验证生产环境约束。"
+    },
+    "function:novel-character-generator/src/novel_character_generator/settings.py:get_settings": {
+      "name": "get_settings",
+      "type": "function",
+      "summary": "缓存并返回全局 Settings 实例。"
+    },
+    "file:novel-character-generator/src/novel_character_generator/api/routes/characters.py": {
+      "name": "characters.py",
+      "type": "file",
+      "summary": "角色 API 路由，查询角色证据、外观状态和冲突，并提供渲染档案审批、合并与拆分操作。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/api/routes/characters.py:CharacterResponse": {
+      "name": "CharacterResponse",
+      "type": "class",
+      "summary": "为 API 边界定义 CharacterResponse 请求或响应数据模型。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/api/routes/characters.py:MentionResponse": {
+      "name": "MentionResponse",
+      "type": "class",
+      "summary": "为 API 边界定义 MentionResponse 请求或响应数据模型。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/api/routes/characters.py:ObservationResponse": {
+      "name": "ObservationResponse",
+      "type": "class",
+      "summary": "为 API 边界定义 ObservationResponse 请求或响应数据模型。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/api/routes/characters.py:ExpressionResponse": {
+      "name": "ExpressionResponse",
+      "type": "class",
+      "summary": "为 API 边界定义 ExpressionResponse 请求或响应数据模型。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/api/routes/characters.py:AppearanceStateResponse": {
+      "name": "AppearanceStateResponse",
+      "type": "class",
+      "summary": "为 API 边界定义 AppearanceStateResponse 请求或响应数据模型。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/api/routes/characters.py:RenderProfileResponse": {
+      "name": "RenderProfileResponse",
+      "type": "class",
+      "summary": "为 API 边界定义 RenderProfileResponse 请求或响应数据模型。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/api/routes/characters.py:UpdateRenderProfileRequest": {
+      "name": "UpdateRenderProfileRequest",
+      "type": "class",
+      "summary": "为 API 边界定义 UpdateRenderProfileRequest 请求或响应数据模型。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/api/routes/characters.py:CharacterConflictResponse": {
+      "name": "CharacterConflictResponse",
+      "type": "class",
+      "summary": "为 API 边界定义 CharacterConflictResponse 请求或响应数据模型。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/api/routes/characters.py:ResolveCharacterConflictRequest": {
+      "name": "ResolveCharacterConflictRequest",
+      "type": "class",
+      "summary": "为 API 边界定义 ResolveCharacterConflictRequest 请求或响应数据模型。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/api/routes/characters.py:SnapshotResponse": {
+      "name": "SnapshotResponse",
+      "type": "class",
+      "summary": "为 API 边界定义 SnapshotResponse 请求或响应数据模型。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/api/routes/characters.py:MergeSourceRequest": {
+      "name": "MergeSourceRequest",
+      "type": "class",
+      "summary": "为 API 边界定义 MergeSourceRequest 请求或响应数据模型。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/api/routes/characters.py:MergeCharactersRequest": {
+      "name": "MergeCharactersRequest",
+      "type": "class",
+      "summary": "为 API 边界定义 MergeCharactersRequest 请求或响应数据模型。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/api/routes/characters.py:SplitAssignmentsRequest": {
+      "name": "SplitAssignmentsRequest",
+      "type": "class",
+      "summary": "为 API 边界定义 SplitAssignmentsRequest 请求或响应数据模型。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/api/routes/characters.py:SplitTargetRequest": {
+      "name": "SplitTargetRequest",
+      "type": "class",
+      "summary": "为 API 边界定义 SplitTargetRequest 请求或响应数据模型。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/api/routes/characters.py:SplitCharacterRequest": {
+      "name": "SplitCharacterRequest",
+      "type": "class",
+      "summary": "为 API 边界定义 SplitCharacterRequest 请求或响应数据模型。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/api/routes/characters.py:CharacterEntityOperationResponse": {
+      "name": "CharacterEntityOperationResponse",
+      "type": "class",
+      "summary": "为 API 边界定义 CharacterEntityOperationResponse 请求或响应数据模型。"
+    },
+    "function:novel-character-generator/src/novel_character_generator/api/routes/characters.py:_revision": {
+      "name": "_revision",
+      "type": "function",
+      "summary": "解析 If-Match 头中的修订号，并校验其是否满足当前操作的并发控制要求。"
+    },
+    "function:novel-character-generator/src/novel_character_generator/api/routes/characters.py:list_characters": {
+      "name": "list_characters",
+      "type": "function",
+      "summary": "查询指定小说中的角色并序列化为 API 响应。"
+    },
+    "function:novel-character-generator/src/novel_character_generator/api/routes/characters.py:list_mentions": {
+      "name": "list_mentions",
+      "type": "function",
+      "summary": "读取角色已解析的提及片段及其文本定位信息。"
+    },
+    "function:novel-character-generator/src/novel_character_generator/api/routes/characters.py:list_observations": {
+      "name": "list_observations",
+      "type": "function",
+      "summary": "读取角色特征观察记录并按创建顺序返回。"
+    },
+    "function:novel-character-generator/src/novel_character_generator/api/routes/characters.py:list_expressions": {
+      "name": "list_expressions",
+      "type": "function",
+      "summary": "读取角色表情与情绪观察记录。"
+    },
+    "function:novel-character-generator/src/novel_character_generator/api/routes/characters.py:list_character_conflicts": {
+      "name": "list_character_conflicts",
+      "type": "function",
+      "summary": "查询角色未决或指定状态的外观冲突。"
+    },
+    "function:novel-character-generator/src/novel_character_generator/api/routes/characters.py:resolve_character_conflict": {
+      "name": "resolve_character_conflict",
+      "type": "function",
+      "summary": "调用外观服务解决冲突，并返回更新后的冲突记录。"
+    },
+    "function:novel-character-generator/src/novel_character_generator/api/routes/characters.py:get_render_profile": {
+      "name": "get_render_profile",
+      "type": "function",
+      "summary": "获取角色当前渲染档案。"
+    },
+    "function:novel-character-generator/src/novel_character_generator/api/routes/characters.py:put_render_profile": {
+      "name": "put_render_profile",
+      "type": "function",
+      "summary": "更新角色渲染档案并应用乐观并发修订检查。"
+    },
+    "function:novel-character-generator/src/novel_character_generator/api/routes/characters.py:approve_character_profile": {
+      "name": "approve_character_profile",
+      "type": "function",
+      "summary": "审批角色渲染档案，固化可用于生成的版本。"
+    },
+    "function:novel-character-generator/src/novel_character_generator/api/routes/characters.py:get_character_snapshot": {
+      "name": "get_character_snapshot",
+      "type": "function",
+      "summary": "计算给定时间线、事件、场景或章节位置的角色外观快照。"
+    },
+    "function:novel-character-generator/src/novel_character_generator/api/routes/characters.py:merge_characters": {
+      "name": "merge_characters",
+      "type": "function",
+      "summary": "调用实体服务执行多个角色的合并并返回审计操作。"
+    },
+    "function:novel-character-generator/src/novel_character_generator/api/routes/characters.py:split_character": {
+      "name": "split_character",
+      "type": "function",
+      "summary": "调用实体服务将一个角色拆分为多个目标角色。"
+    },
+    "file:novel-character-generator/src/novel_character_generator/api/routes/story.py": {
+      "name": "story.py",
+      "type": "file",
+      "summary": "故事 API 路由，公开时间线、事件和场景查询，并支持修改场景的时序绑定。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/api/routes/story.py:TimelineResponse": {
+      "name": "TimelineResponse",
+      "type": "class",
+      "summary": "为 API 边界定义 TimelineResponse 请求或响应数据模型。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/api/routes/story.py:EventParticipantResponse": {
+      "name": "EventParticipantResponse",
+      "type": "class",
+      "summary": "为 API 边界定义 EventParticipantResponse 请求或响应数据模型。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/api/routes/story.py:StoryEventResponse": {
+      "name": "StoryEventResponse",
+      "type": "class",
+      "summary": "为 API 边界定义 StoryEventResponse 请求或响应数据模型。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/api/routes/story.py:SceneResponse": {
+      "name": "SceneResponse",
+      "type": "class",
+      "summary": "为 API 边界定义 SceneResponse 请求或响应数据模型。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/api/routes/story.py:TemporalBindingRequest": {
+      "name": "TemporalBindingRequest",
+      "type": "class",
+      "summary": "为 API 边界定义 TemporalBindingRequest 请求或响应数据模型。"
+    },
+    "function:novel-character-generator/src/novel_character_generator/api/routes/story.py:list_events": {
+      "name": "list_events",
+      "type": "function",
+      "summary": "按时间线或章节筛选并返回故事事件及参与者。"
+    },
+    "function:novel-character-generator/src/novel_character_generator/api/routes/story.py:update_scene_temporal_binding": {
+      "name": "update_scene_temporal_binding",
+      "type": "function",
+      "summary": "用服务层校验与乐观锁更新场景时序绑定。"
+    },
+    "file:novel-character-generator/src/novel_character_generator/application/services/appearance_service.py": {
+      "name": "appearance_service.py",
+      "type": "file",
+      "summary": "外观应用服务，汇聚角色外观状态和渲染档案，处理冲突解决、审批及指定叙事时点的快照计算。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/application/services/appearance_service.py:AppearanceRevisionConflict": {
+      "name": "AppearanceRevisionConflict",
+      "type": "class",
+      "summary": "AppearanceRevisionConflict 表示该模块在校验、并发或状态迁移时抛出的业务异常。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/application/services/appearance_service.py:AppearanceResolutionError": {
+      "name": "AppearanceResolutionError",
+      "type": "class",
+      "summary": "AppearanceResolutionError 表示该模块在校验、并发或状态迁移时抛出的业务异常。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/application/services/appearance_service.py:RenderProfileUpdate": {
+      "name": "RenderProfileUpdate",
+      "type": "class",
+      "summary": "在 appearance_service.py 中定义 RenderProfileUpdate，表达该模块的核心数据与状态。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/application/services/appearance_service.py:SnapshotTarget": {
+      "name": "SnapshotTarget",
+      "type": "class",
+      "summary": "在 appearance_service.py 中定义 SnapshotTarget，表达该模块的核心数据与状态。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/application/services/appearance_service.py:AppearanceService": {
+      "name": "AppearanceService",
+      "type": "class",
+      "summary": "AppearanceService 封装该模块的应用用例、业务规则与数据访问编排。"
+    },
+    "function:novel-character-generator/src/novel_character_generator/application/services/appearance_service.py:_put_path": {
+      "name": "_put_path",
+      "type": "function",
+      "summary": "在 appearance_service.py 中实现 _put_path，承担该模块的局部业务处理。"
+    },
+    "function:novel-character-generator/src/novel_character_generator/application/services/appearance_service.py:_scope_overlaps": {
+      "name": "_scope_overlaps",
+      "type": "function",
+      "summary": "判断两个外观时序范围是否存在重叠。"
+    },
+    "file:novel-character-generator/src/novel_character_generator/application/services/character_entity_service.py": {
+      "name": "character_entity_service.py",
+      "type": "file",
+      "summary": "角色实体应用服务，执行带版本与幂等性保护的角色合并和拆分，并重绑定相关证据和资源。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/application/services/character_entity_service.py:EntityOperationConflict": {
+      "name": "EntityOperationConflict",
+      "type": "class",
+      "summary": "EntityOperationConflict 表示该模块在校验、并发或状态迁移时抛出的业务异常。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/application/services/character_entity_service.py:MergeSource": {
+      "name": "MergeSource",
+      "type": "class",
+      "summary": "在 character_entity_service.py 中定义 MergeSource，表达该模块的核心数据与状态。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/application/services/character_entity_service.py:SplitAssignments": {
+      "name": "SplitAssignments",
+      "type": "class",
+      "summary": "在 character_entity_service.py 中定义 SplitAssignments，表达该模块的核心数据与状态。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/application/services/character_entity_service.py:SplitTarget": {
+      "name": "SplitTarget",
+      "type": "class",
+      "summary": "在 character_entity_service.py 中定义 SplitTarget，表达该模块的核心数据与状态。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/application/services/character_entity_service.py:CharacterEntityService": {
+      "name": "CharacterEntityService",
+      "type": "class",
+      "summary": "CharacterEntityService 封装该模块的应用用例、业务规则与数据访问编排。"
+    },
+    "function:novel-character-generator/src/novel_character_generator/application/services/character_entity_service.py:_replace_ids": {
+      "name": "_replace_ids",
+      "type": "function",
+      "summary": "在字符串标识符列表中将源角色标识替换为目标角色标识。"
+    },
+    "file:novel-character-generator/src/novel_character_generator/application/services/story_service.py": {
+      "name": "story_service.py",
+      "type": "file",
+      "summary": "故事应用服务，读取时间线、事件和场景，并以乐观并发控制更新场景时序。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/application/services/story_service.py:TemporalBindingConflict": {
+      "name": "TemporalBindingConflict",
+      "type": "class",
+      "summary": "TemporalBindingConflict 表示该模块在校验、并发或状态迁移时抛出的业务异常。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/application/services/story_service.py:TemporalBindingUpdate": {
+      "name": "TemporalBindingUpdate",
+      "type": "class",
+      "summary": "在 story_service.py 中定义 TemporalBindingUpdate，表达该模块的核心数据与状态。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/application/services/story_service.py:StoryService": {
+      "name": "StoryService",
+      "type": "class",
+      "summary": "StoryService 封装该模块的应用用例、业务规则与数据访问编排。"
+    },
+    "file:novel-character-generator/src/novel_character_generator/domain/entities/evaluation.py": {
+      "name": "evaluation.py",
+      "type": "file",
+      "summary": "评测领域实体，定义数据集、用例、评分器、运行和结果的验证规则与数据契约。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/domain/entities/evaluation.py:EvidenceSpan": {
+      "name": "EvidenceSpan",
+      "type": "class",
+      "summary": "在 evaluation.py 中定义 EvidenceSpan，表达该模块的核心数据与状态。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/domain/entities/evaluation.py:EvalDataset": {
+      "name": "EvalDataset",
+      "type": "class",
+      "summary": "在 evaluation.py 中定义 EvalDataset，表达该模块的核心数据与状态。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/domain/entities/evaluation.py:EvalCase": {
+      "name": "EvalCase",
+      "type": "class",
+      "summary": "在 evaluation.py 中定义 EvalCase，表达该模块的核心数据与状态。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/domain/entities/evaluation.py:EvalRun": {
+      "name": "EvalRun",
+      "type": "class",
+      "summary": "在 evaluation.py 中定义 EvalRun，表达该模块的核心数据与状态。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/domain/entities/evaluation.py:GraderVersion": {
+      "name": "GraderVersion",
+      "type": "class",
+      "summary": "在 evaluation.py 中定义 GraderVersion，表达该模块的核心数据与状态。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/domain/entities/evaluation.py:EvalResult": {
+      "name": "EvalResult",
+      "type": "class",
+      "summary": "在 evaluation.py 中定义 EvalResult，表达该模块的核心数据与状态。"
+    },
+    "file:novel-character-generator/src/novel_character_generator/domain/entities/pipeline.py": {
+      "name": "pipeline.py",
+      "type": "file",
+      "summary": "流水线领域实体，定义运行、步骤和外部操作的状态枚举与合法状态迁移。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/domain/entities/pipeline.py:StepStatus": {
+      "name": "StepStatus",
+      "type": "class",
+      "summary": "StepStatus 定义该领域流程可使用的状态枚举。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/domain/entities/pipeline.py:RunStatus": {
+      "name": "RunStatus",
+      "type": "class",
+      "summary": "RunStatus 定义该领域流程可使用的状态枚举。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/domain/entities/pipeline.py:ExternalOperationState": {
+      "name": "ExternalOperationState",
+      "type": "class",
+      "summary": "ExternalOperationState 定义该领域流程可使用的状态枚举。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/domain/entities/pipeline.py:PipelineRun": {
+      "name": "PipelineRun",
+      "type": "class",
+      "summary": "在 pipeline.py 中定义 PipelineRun，表达该模块的核心数据与状态。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/domain/entities/pipeline.py:PipelineStep": {
+      "name": "PipelineStep",
+      "type": "class",
+      "summary": "在 pipeline.py 中定义 PipelineStep，表达该模块的核心数据与状态。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/domain/entities/pipeline.py:ExternalOperation": {
+      "name": "ExternalOperation",
+      "type": "class",
+      "summary": "在 pipeline.py 中定义 ExternalOperation，表达该模块的核心数据与状态。"
+    },
+    "file:novel-character-generator/src/novel_character_generator/infrastructure/db/base.py": {
+      "name": "base.py",
+      "type": "file",
+      "summary": "SQLAlchemy 声明式 ORM 基类，为所有持久化模型提供统一映射基础。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/infrastructure/db/base.py:Base": {
+      "name": "Base",
+      "type": "class",
+      "summary": "在 base.py 中定义 Base，表达该模块的核心数据与状态。"
+    },
+    "file:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py": {
+      "name": "orm.py",
+      "type": "file",
+      "summary": "SQLAlchemy ORM 映射集合，持久化小说摄取、角色抽取、流水线、智能体运行、审批和评测等核心数据。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:IdMixin": {
+      "name": "IdMixin",
+      "type": "class",
+      "summary": "IdMixin 为 ORM 模型提供可复用的字段映射能力。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:TimestampMixin": {
+      "name": "TimestampMixin",
+      "type": "class",
+      "summary": "TimestampMixin 为 ORM 模型提供可复用的字段映射能力。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:NovelORM": {
+      "name": "NovelORM",
+      "type": "class",
+      "summary": "NovelORM 是 SQLAlchemy ORM 映射，用于持久化对应的业务记录。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:SourceDocumentORM": {
+      "name": "SourceDocumentORM",
+      "type": "class",
+      "summary": "SourceDocumentORM 是 SQLAlchemy ORM 映射，用于持久化对应的业务记录。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:SourceDocumentVersionORM": {
+      "name": "SourceDocumentVersionORM",
+      "type": "class",
+      "summary": "SourceDocumentVersionORM 是 SQLAlchemy ORM 映射，用于持久化对应的业务记录。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:NormalizationMapORM": {
+      "name": "NormalizationMapORM",
+      "type": "class",
+      "summary": "NormalizationMapORM 是 SQLAlchemy ORM 映射，用于持久化对应的业务记录。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:ChapterORM": {
+      "name": "ChapterORM",
+      "type": "class",
+      "summary": "ChapterORM 是 SQLAlchemy ORM 映射，用于持久化对应的业务记录。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:TextChunkORM": {
+      "name": "TextChunkORM",
+      "type": "class",
+      "summary": "TextChunkORM 是 SQLAlchemy ORM 映射，用于持久化对应的业务记录。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:TimelineORM": {
+      "name": "TimelineORM",
+      "type": "class",
+      "summary": "TimelineORM 是 SQLAlchemy ORM 映射，用于持久化对应的业务记录。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:StoryEventORM": {
+      "name": "StoryEventORM",
+      "type": "class",
+      "summary": "StoryEventORM 是 SQLAlchemy ORM 映射，用于持久化对应的业务记录。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:EventParticipantORM": {
+      "name": "EventParticipantORM",
+      "type": "class",
+      "summary": "EventParticipantORM 是 SQLAlchemy ORM 映射，用于持久化对应的业务记录。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:CharacterORM": {
+      "name": "CharacterORM",
+      "type": "class",
+      "summary": "CharacterORM 是 SQLAlchemy ORM 映射，用于持久化对应的业务记录。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:CharacterEntityOperationORM": {
+      "name": "CharacterEntityOperationORM",
+      "type": "class",
+      "summary": "CharacterEntityOperationORM 是 SQLAlchemy ORM 映射，用于持久化对应的业务记录。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:SceneORM": {
+      "name": "SceneORM",
+      "type": "class",
+      "summary": "SceneORM 是 SQLAlchemy ORM 映射，用于持久化对应的业务记录。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:PipelineRunORM": {
+      "name": "PipelineRunORM",
+      "type": "class",
+      "summary": "PipelineRunORM 是 SQLAlchemy ORM 映射，用于持久化对应的业务记录。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:PipelineStepORM": {
+      "name": "PipelineStepORM",
+      "type": "class",
+      "summary": "PipelineStepORM 是 SQLAlchemy ORM 映射，用于持久化对应的业务记录。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:RunEventORM": {
+      "name": "RunEventORM",
+      "type": "class",
+      "summary": "RunEventORM 是 SQLAlchemy ORM 映射，用于持久化对应的业务记录。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:MentionSpanORM": {
+      "name": "MentionSpanORM",
+      "type": "class",
+      "summary": "MentionSpanORM 是 SQLAlchemy ORM 映射，用于持久化对应的业务记录。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:AliasAssertionORM": {
+      "name": "AliasAssertionORM",
+      "type": "class",
+      "summary": "AliasAssertionORM 是 SQLAlchemy ORM 映射，用于持久化对应的业务记录。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:FeatureObservationORM": {
+      "name": "FeatureObservationORM",
+      "type": "class",
+      "summary": "FeatureObservationORM 是 SQLAlchemy ORM 映射，用于持久化对应的业务记录。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:FeatureSuggestionORM": {
+      "name": "FeatureSuggestionORM",
+      "type": "class",
+      "summary": "FeatureSuggestionORM 是 SQLAlchemy ORM 映射，用于持久化对应的业务记录。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:ExpressionObservationORM": {
+      "name": "ExpressionObservationORM",
+      "type": "class",
+      "summary": "ExpressionObservationORM 是 SQLAlchemy ORM 映射，用于持久化对应的业务记录。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:CharacterAppearanceStateORM": {
+      "name": "CharacterAppearanceStateORM",
+      "type": "class",
+      "summary": "CharacterAppearanceStateORM 是 SQLAlchemy ORM 映射，用于持久化对应的业务记录。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:CharacterRenderProfileORM": {
+      "name": "CharacterRenderProfileORM",
+      "type": "class",
+      "summary": "CharacterRenderProfileORM 是 SQLAlchemy ORM 映射，用于持久化对应的业务记录。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:CharacterConflictORM": {
+      "name": "CharacterConflictORM",
+      "type": "class",
+      "summary": "CharacterConflictORM 是 SQLAlchemy ORM 映射，用于持久化对应的业务记录。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:CharacterImageSetORM": {
+      "name": "CharacterImageSetORM",
+      "type": "class",
+      "summary": "CharacterImageSetORM 是 SQLAlchemy ORM 映射，用于持久化对应的业务记录。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:GeneratedImageORM": {
+      "name": "GeneratedImageORM",
+      "type": "class",
+      "summary": "GeneratedImageORM 是 SQLAlchemy ORM 映射，用于持久化对应的业务记录。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:CharacterStageImageORM": {
+      "name": "CharacterStageImageORM",
+      "type": "class",
+      "summary": "CharacterStageImageORM 是 SQLAlchemy ORM 映射，用于持久化对应的业务记录。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:ArtifactORM": {
+      "name": "ArtifactORM",
+      "type": "class",
+      "summary": "ArtifactORM 是 SQLAlchemy ORM 映射，用于持久化对应的业务记录。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:ExternalOperationORM": {
+      "name": "ExternalOperationORM",
+      "type": "class",
+      "summary": "ExternalOperationORM 是 SQLAlchemy ORM 映射，用于持久化对应的业务记录。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:ModelCallORM": {
+      "name": "ModelCallORM",
+      "type": "class",
+      "summary": "ModelCallORM 是 SQLAlchemy ORM 映射，用于持久化对应的业务记录。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:AgentRunORM": {
+      "name": "AgentRunORM",
+      "type": "class",
+      "summary": "AgentRunORM 是 SQLAlchemy ORM 映射，用于持久化对应的业务记录。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:AgentTurnORM": {
+      "name": "AgentTurnORM",
+      "type": "class",
+      "summary": "AgentTurnORM 是 SQLAlchemy ORM 映射，用于持久化对应的业务记录。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:ToolCallORM": {
+      "name": "ToolCallORM",
+      "type": "class",
+      "summary": "ToolCallORM 是 SQLAlchemy ORM 映射，用于持久化对应的业务记录。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:DecisionRecordORM": {
+      "name": "DecisionRecordORM",
+      "type": "class",
+      "summary": "DecisionRecordORM 是 SQLAlchemy ORM 映射，用于持久化对应的业务记录。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:HumanApprovalORM": {
+      "name": "HumanApprovalORM",
+      "type": "class",
+      "summary": "HumanApprovalORM 是 SQLAlchemy ORM 映射，用于持久化对应的业务记录。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:AgentEvaluationORM": {
+      "name": "AgentEvaluationORM",
+      "type": "class",
+      "summary": "AgentEvaluationORM 是 SQLAlchemy ORM 映射，用于持久化对应的业务记录。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:EvalDatasetORM": {
+      "name": "EvalDatasetORM",
+      "type": "class",
+      "summary": "EvalDatasetORM 是 SQLAlchemy ORM 映射，用于持久化对应的业务记录。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:EvalCaseORM": {
+      "name": "EvalCaseORM",
+      "type": "class",
+      "summary": "EvalCaseORM 是 SQLAlchemy ORM 映射，用于持久化对应的业务记录。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:GraderVersionORM": {
+      "name": "GraderVersionORM",
+      "type": "class",
+      "summary": "GraderVersionORM 是 SQLAlchemy ORM 映射，用于持久化对应的业务记录。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:EvalRunORM": {
+      "name": "EvalRunORM",
+      "type": "class",
+      "summary": "EvalRunORM 是 SQLAlchemy ORM 映射，用于持久化对应的业务记录。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/infrastructure/db/orm.py:EvalResultORM": {
+      "name": "EvalResultORM",
+      "type": "class",
+      "summary": "EvalResultORM 是 SQLAlchemy ORM 映射，用于持久化对应的业务记录。"
+    },
+    "file:novel-character-generator/src/novel_character_generator/infrastructure/db/repositories/evaluation.py": {
+      "name": "evaluation.py",
+      "type": "file",
+      "summary": "评测仓储，实现评测数据集、用例、评分器、评测运行和结果的事务性读写与冲突检查。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/infrastructure/db/repositories/evaluation.py:EvaluationConflict": {
+      "name": "EvaluationConflict",
+      "type": "class",
+      "summary": "EvaluationConflict 表示该模块在校验、并发或状态迁移时抛出的业务异常。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/infrastructure/db/repositories/evaluation.py:EvaluationRepository": {
+      "name": "EvaluationRepository",
+      "type": "class",
+      "summary": "EvaluationRepository 封装相关持久化记录的查询、创建和一致性控制。"
+    },
+    "file:novel-character-generator/src/novel_character_generator/infrastructure/db/repositories/external_operations.py": {
+      "name": "external_operations.py",
+      "type": "file",
+      "summary": "外部操作仓储，创建、租约式迁移和查询异步外部操作记录。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/infrastructure/db/repositories/external_operations.py:ExternalOperationConflict": {
+      "name": "ExternalOperationConflict",
+      "type": "class",
+      "summary": "ExternalOperationConflict 表示该模块在校验、并发或状态迁移时抛出的业务异常。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/infrastructure/db/repositories/external_operations.py:ExternalOperationRepository": {
+      "name": "ExternalOperationRepository",
+      "type": "class",
+      "summary": "ExternalOperationRepository 封装相关持久化记录的查询、创建和一致性控制。"
+    },
+    "file:novel-character-generator/src/novel_character_generator/application/ports/extraction.py": {
+      "name": "extraction.py",
+      "type": "file",
+      "summary": "定义文本片段角色信息抽取的输入草稿模型、聚合结果模型与异步抽取提供者协议，是应用层与具体 LLM 实现之间的稳定契约。"
+    },
+    "file:novel-character-generator/src/novel_character_generator/domain/policies/grounding.py": {
+      "name": "grounding.py",
+      "type": "file",
+      "summary": "提供证据片段的定位校验及观测记录指纹计算，确保抽取结果可追溯、可去重。"
+    },
+    "file:novel-character-generator/src/novel_character_generator/infrastructure/db/repositories/extraction.py": {
+      "name": "extraction.py",
+      "type": "file",
+      "summary": "实现抽取工作流的数据访问与持久化：读取文本块、维护角色和时间线，并将有证据支撑的提及、别名、外观和表情观测写入数据库。"
+    },
+    "file:novel-character-generator/src/novel_character_generator/infrastructure/llm/mock.py": {
+      "name": "mock.py",
+      "type": "file",
+      "summary": "提供基于正则与固定词表的确定性抽取器，用于无需远程 LLM 的本地开发和测试场景。"
+    },
+    "file:novel-character-generator/src/novel_character_generator/infrastructure/llm/openai_compatible.py": {
+      "name": "openai_compatible.py",
+      "type": "file",
+      "summary": "通过 OpenAI 兼容的聊天补全接口执行结构化角色信息抽取，并校验返回结果符合应用层 Pydantic 模式。"
+    },
+    "file:novel-character-generator/src/novel_character_generator/workers/handlers/extraction.py": {
+      "name": "extraction.py",
+      "type": "file",
+      "summary": "编排单个角色抽取任务：领取并启动步骤、逐块调用抽取器、保存结果和检查点，并将失败或取消状态交给租约管理逻辑。"
+    },
+    "file:novel-character-generator/src/novel_character_generator/workers/main.py": {
+      "name": "main.py",
+      "type": "file",
+      "summary": "提供工作进程命令行入口，按配置选择抽取提供者，并轮询、领取和分派摄取或角色抽取流水线步骤。"
+    },
+    "file:novel-character-generator/src/novel_character_generator/workers/task_claim.py": {
+      "name": "task_claim.py",
+      "type": "file",
+      "summary": "以数据库租约代际围栏实现流水线步骤的原子领取、启动、检查点、成功、取消、重试及后继步骤入队。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/application/ports/extraction.py:MentionDraft": {
+      "name": "MentionDraft",
+      "type": "class",
+      "summary": "描述文本中的角色提及及其可选规范名称和字符区间。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/application/ports/extraction.py:AliasDraft": {
+      "name": "AliasDraft",
+      "type": "class",
+      "summary": "描述称谓、化名等别名假设及其可能归属的角色。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/application/ports/extraction.py:ObservationDraft": {
+      "name": "ObservationDraft",
+      "type": "class",
+      "summary": "封装角色属性观测、原文证据、认识状态与置信度。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/application/ports/extraction.py:ExpressionDraft": {
+      "name": "ExpressionDraft",
+      "type": "class",
+      "summary": "记录角色外显情绪、表情文本、可见线索和可选内在情绪。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/application/ports/extraction.py:SceneHypothesisDraft": {
+      "name": "SceneHypothesisDraft",
+      "type": "class",
+      "summary": "表示场景边界、时间线、叙事呈现方式和真实性状态的抽取假设。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/application/ports/extraction.py:TimelineHypothesisDraft": {
+      "name": "TimelineHypothesisDraft",
+      "type": "class",
+      "summary": "表示候选时间线的名称、正典属性和原文证据。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/application/ports/extraction.py:RelationDraft": {
+      "name": "RelationDraft",
+      "type": "class",
+      "summary": "描述两个角色间关系类型及其文本证据和置信度。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/application/ports/extraction.py:ReferenceDraft": {
+      "name": "ReferenceDraft",
+      "type": "class",
+      "summary": "保存尚未消歧的指代文本、位置和候选角色名称。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/application/ports/extraction.py:ChunkExtractionResult": {
+      "name": "ChunkExtractionResult",
+      "type": "class",
+      "summary": "聚合一个文本块的提及、别名、属性、表情、场景、时间线、关系和未解决指代结果。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/application/ports/extraction.py:ExtractionProvider": {
+      "name": "ExtractionProvider",
+      "type": "class",
+      "summary": "定义异步文本块抽取器必须提供版本标识和结构化抽取方法的协议。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/infrastructure/db/repositories/extraction.py:ExtractionRepository": {
+      "name": "ExtractionRepository",
+      "type": "class",
+      "summary": "封装角色抽取结果的查询和写入事务，将 LLM 草稿转换为带时间线、场景和溯源信息的 ORM 记录。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/infrastructure/llm/mock.py:MockExtractionProvider": {
+      "name": "MockExtractionProvider",
+      "type": "class",
+      "summary": "使用规则模式识别人名、别名、外观特征和表情，生成可预测的文本块抽取结果。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/infrastructure/llm/openai_compatible.py:OpenAICompatibleExtractionProvider": {
+      "name": "OpenAICompatibleExtractionProvider",
+      "type": "class",
+      "summary": "将端口模式转为 OpenAI 兼容聊天请求，并通过 Pydantic 严格解析结构化响应。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/workers/task_claim.py:LeaseLostError": {
+      "name": "LeaseLostError",
+      "type": "class",
+      "summary": "表示工作线程因租约代际变化而失去更新步骤状态权限的错误。"
+    },
+    "function:novel-character-generator/src/novel_character_generator/domain/policies/grounding.py:validate_evidence": {
+      "name": "validate_evidence",
+      "type": "function",
+      "summary": "校验给定字符区间和引文是否精确或近似匹配原文本，并返回落地状态。"
+    },
+    "function:novel-character-generator/src/novel_character_generator/domain/policies/grounding.py:observation_fingerprint": {
+      "name": "observation_fingerprint",
+      "type": "function",
+      "summary": "将来源版本、偏移、字段和值规范序列化后计算 SHA-256 指纹，以支持观测去重。"
+    },
+    "function:novel-character-generator/src/novel_character_generator/workers/handlers/extraction.py:process_extraction_run": {
+      "name": "process_extraction_run",
+      "type": "function",
+      "summary": "执行角色抽取流水线步骤，逐文本块调用提供者、持久化结果、续租写入进度并处理取消或失败。"
+    },
+    "function:novel-character-generator/src/novel_character_generator/workers/main.py:extraction_provider": {
+      "name": "extraction_provider",
+      "type": "function",
+      "summary": "根据应用设置选择模拟抽取器或 OpenAI 兼容抽取器实例。"
+    },
+    "function:novel-character-generator/src/novel_character_generator/workers/main.py:run_once": {
+      "name": "run_once",
+      "type": "function",
+      "summary": "在指定运行中选择一个可执行步骤，并路由到摄取或角色抽取处理器。"
+    },
+    "function:novel-character-generator/src/novel_character_generator/workers/main.py:run_worker": {
+      "name": "run_worker",
+      "type": "function",
+      "summary": "持续领取可执行步骤并调用单次处理器，在非单次模式下按轮询间隔循环。"
+    },
+    "function:novel-character-generator/src/novel_character_generator/workers/main.py:main": {
+      "name": "main",
+      "type": "function",
+      "summary": "解析命令行参数，并启动指定运行的单次处理或常驻工作进程。"
+    },
+    "function:novel-character-generator/src/novel_character_generator/workers/task_claim.py:_runnable": {
+      "name": "_runnable",
+      "type": "function",
+      "summary": "构造 SQLAlchemy 条件，筛选待执行、待重试或租约已过期的流水线步骤。"
+    },
+    "function:novel-character-generator/src/novel_character_generator/workers/task_claim.py:claim_next_step": {
+      "name": "claim_next_step",
+      "type": "function",
+      "summary": "原子选择并领取一个到期步骤，设置租约代际并记录步骤领取事件。"
+    },
+    "function:novel-character-generator/src/novel_character_generator/workers/task_claim.py:record_step_error": {
+      "name": "record_step_error",
+      "type": "function",
+      "summary": "在租约代际仍有效时记录任务错误，计算退避重试或标记失败，并同步运行状态。"
+    },
+    "function:novel-character-generator/src/novel_character_generator/workers/task_claim.py:mark_cancelled": {
+      "name": "mark_cancelled",
+      "type": "function",
+      "summary": "以代际围栏将步骤和所属运行标记为已取消，并写入取消事件。"
+    },
+    "function:novel-character-generator/src/novel_character_generator/workers/task_claim.py:start_step": {
+      "name": "start_step",
+      "type": "function",
+      "summary": "将已领取或直接执行的步骤安全转换为运行中，并返回用于后续围栏检查的代际。"
+    },
+    "function:novel-character-generator/src/novel_character_generator/workers/task_claim.py:checkpoint_step": {
+      "name": "checkpoint_step",
+      "type": "function",
+      "summary": "仅在工作线程仍拥有租约时保存步骤游标、心跳和续租信息。"
+    },
+    "function:novel-character-generator/src/novel_character_generator/workers/task_claim.py:complete_step": {
+      "name": "complete_step",
+      "type": "function",
+      "summary": "将当前步骤标记成功、释放租约、记录完成事件并完成所属运行。"
+    },
+    "function:novel-character-generator/src/novel_character_generator/workers/task_claim.py:complete_step_and_enqueue": {
+      "name": "complete_step_and_enqueue",
+      "type": "function",
+      "summary": "在同一事务中完成当前步骤并创建或恢复后继步骤，使流水线继续可执行。"
+    },
+    "file:novel-character-generator/src/novel_character_generator/agents/structured_runtime.py": {
+      "name": "structured_runtime.py",
+      "type": "file",
+      "summary": "实现受限的结构化智能体运行时：驱动模型回合、校验工具调用与输出，并强制执行令牌、成本、时限和权限边界。"
+    },
+    "file:novel-character-generator/src/novel_character_generator/application/ports/agent_runtime.py": {
+      "name": "agent_runtime.py",
+      "type": "file",
+      "summary": "定义智能体规范、工具契约、上下文包、执行结果和运行时协议等应用层数据模型与端口。"
+    },
+    "file:novel-character-generator/src/novel_character_generator/application/services/agent_execution_service.py": {
+      "name": "agent_execution_service.py",
+      "type": "file",
+      "summary": "协调一次智能体执行并持久化运行、回合和工具调用审计记录；在需要人工确认时创建审批请求。"
+    },
+    "file:novel-character-generator/src/novel_character_generator/application/services/approval_service.py": {
+      "name": "approval_service.py",
+      "type": "file",
+      "summary": "管理人工审批请求的创建、分页查询和并发安全的决议处理，并更新相应流水线步骤与运行事件。"
+    },
+    "file:novel-character-generator/src/novel_character_generator/application/services/run_service.py": {
+      "name": "run_service.py",
+      "type": "file",
+      "summary": "提供流水线运行详情、取消和失败重试的应用服务，并写入运行事件以供状态跟踪。"
+    },
+    "file:novel-character-generator/src/novel_character_generator/infrastructure/db/repositories/run_events.py": {
+      "name": "run_events.py",
+      "type": "file",
+      "summary": "封装运行事件的顺序追加和增量读取，为流水线状态变化提供可查询的事件流。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/agents/structured_runtime.py:AgentRuntimeError": {
+      "name": "AgentRuntimeError",
+      "type": "class",
+      "summary": "携带稳定错误代码的智能体运行时异常。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/agents/structured_runtime.py:RegisteredTool": {
+      "name": "RegisteredTool",
+      "type": "class",
+      "summary": "将工具规范、输入输出 Pydantic 模型和异步处理器组合为可校验、可超时控制的已注册工具。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/agents/structured_runtime.py:ToolRegistry": {
+      "name": "ToolRegistry",
+      "type": "class",
+      "summary": "按工具名注册并检索已注册工具，拒绝重复注册和未知工具访问。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/agents/structured_runtime.py:StructuredCallAgentRuntime": {
+      "name": "StructuredCallAgentRuntime",
+      "type": "class",
+      "summary": "执行结构化模型—工具回合循环，在运行时策略、权限、预算和审批要求下返回可审计的智能体结果。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/application/ports/agent_runtime.py:ToolPermission": {
+      "name": "ToolPermission",
+      "type": "class",
+      "summary": "定义工具访问级别的有序枚举。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/application/ports/agent_runtime.py:AgentSpec": {
+      "name": "AgentSpec",
+      "type": "class",
+      "summary": "描述智能体身份、模型策略、输出契约、工具白名单及资源上限，并验证工具名称唯一性。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/application/ports/agent_runtime.py:ToolSpec": {
+      "name": "ToolSpec",
+      "type": "class",
+      "summary": "声明工具输入输出契约、副作用、幂等性、权限、审批和成本策略。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/application/ports/agent_runtime.py:AgentContextPacket": {
+      "name": "AgentContextPacket",
+      "type": "class",
+      "summary": "携带智能体目标、小说上下文、可用工具与令牌预算，并校验工具名称唯一性。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/application/ports/agent_runtime.py:TokenUsage": {
+      "name": "TokenUsage",
+      "type": "class",
+      "summary": "记录一次或累计模型调用的输入令牌、输出令牌和成本。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/application/ports/agent_runtime.py:ToolCallRequest": {
+      "name": "ToolCallRequest",
+      "type": "class",
+      "summary": "表示模型提出的带唯一调用标识和参数的工具调用请求。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/application/ports/agent_runtime.py:AgentHistoryEntry": {
+      "name": "AgentHistoryEntry",
+      "type": "class",
+      "summary": "保存一个智能体回合的输出、工具调用、工具结果、耗时和用量。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/application/ports/agent_runtime.py:AgentModelTurn": {
+      "name": "AgentModelTurn",
+      "type": "class",
+      "summary": "约束模型回合只能产出最终输出或工具调用之一，并记录停止原因与用量。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/application/ports/agent_runtime.py:ApprovalRequest": {
+      "name": "ApprovalRequest",
+      "type": "class",
+      "summary": "表示需要人工决定的工具操作、证据、成本和可选决策。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/application/ports/agent_runtime.py:AgentLimitReached": {
+      "name": "AgentLimitReached",
+      "type": "class",
+      "summary": "描述触发的智能体资源限制及其阈值和观测值。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/application/ports/agent_runtime.py:AgentRunResult": {
+      "name": "AgentRunResult",
+      "type": "class",
+      "summary": "封装完成、等待审批或达到限制三种运行结果，并验证各状态所需载荷。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/application/ports/agent_runtime.py:AgentModelClient": {
+      "name": "AgentModelClient",
+      "type": "class",
+      "summary": "定义生成单个结构化模型回合的客户端协议。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/application/ports/agent_runtime.py:AgentRuntime": {
+      "name": "AgentRuntime",
+      "type": "class",
+      "summary": "定义按规范、上下文和权限执行智能体的运行时协议。"
+    },
+    "function:novel-character-generator/src/novel_character_generator/application/services/agent_execution_service.py:_hash_json": {
+      "name": "_hash_json",
+      "type": "function",
+      "summary": "以稳定 JSON 序列化方式计算对象哈希，用于执行审计。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/application/services/agent_execution_service.py:AgentExecution": {
+      "name": "AgentExecution",
+      "type": "class",
+      "summary": "返回已创建的智能体运行标识、运行结果以及可选审批记录。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/application/services/agent_execution_service.py:AgentExecutionService": {
+      "name": "AgentExecutionService",
+      "type": "class",
+      "summary": "启动受围栏保护的智能体执行，持久化回合和工具审计数据，并在失败时写入终止状态。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/application/services/approval_service.py:ApprovalConflict": {
+      "name": "ApprovalConflict",
+      "type": "class",
+      "summary": "表示审批去重、版本或流水线租约围栏冲突。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/application/services/approval_service.py:CreatedApproval": {
+      "name": "CreatedApproval",
+      "type": "class",
+      "summary": "封装新建审批实体及仅在创建时返回的恢复令牌。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/application/services/approval_service.py:ApprovalPage": {
+      "name": "ApprovalPage",
+      "type": "class",
+      "summary": "表示待处理审批列表的游标分页结果。"
+    },
+    "function:novel-character-generator/src/novel_character_generator/application/services/approval_service.py:_canonical_hash": {
+      "name": "_canonical_hash",
+      "type": "function",
+      "summary": "对审批操作或决议载荷进行规范化 JSON 哈希，支持幂等去重与审计。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/application/services/approval_service.py:ApprovalService": {
+      "name": "ApprovalService",
+      "type": "class",
+      "summary": "通过事务、版本号和租约代际保护审批状态迁移，并同步恢复流水线步骤与运行状态。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/application/services/run_service.py:StepDetails": {
+      "name": "StepDetails",
+      "type": "class",
+      "summary": "提供流水线步骤的状态、尝试次数、游标和错误详情。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/application/services/run_service.py:RunDetails": {
+      "name": "RunDetails",
+      "type": "class",
+      "summary": "提供流水线运行及其步骤集合的完整查询视图。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/application/services/run_service.py:RunService": {
+      "name": "RunService",
+      "type": "class",
+      "summary": "查询运行详情，并协调运行取消和失败步骤的受限重试。"
+    },
+    "function:novel-character-generator/src/novel_character_generator/infrastructure/db/repositories/run_events.py:append_run_event": {
+      "name": "append_run_event",
+      "type": "function",
+      "summary": "在同一运行内计算下一序号并暂存一条新的运行事件。"
+    },
+    "function:novel-character-generator/src/novel_character_generator/infrastructure/db/repositories/run_events.py:read_run_events": {
+      "name": "read_run_events",
+      "type": "function",
+      "summary": "按事件序号读取指定运行的后续事件，支持增量消费和数量限制。"
+    },
+    "file:novel-character-generator/src/novel_character_generator/application/ports/artifact_store.py": {
+      "name": "artifact_store.py",
+      "type": "file",
+      "summary": "定义工件存储端口，抽象上传原始小说文件和按 URI 读取内容的能力。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/application/ports/artifact_store.py:ArtifactStore": {
+      "name": "ArtifactStore",
+      "type": "class",
+      "summary": "规定工件存储实现必须提供写入内容和按存储 URI 读取字节的异步接口。"
+    },
+    "file:novel-character-generator/src/novel_character_generator/application/services/ingestion_service.py": {
+      "name": "ingestion_service.py",
+      "type": "file",
+      "summary": "提供小说上传、版本上传、详情查询及导入、抽取和分析运行创建的应用服务。它协调存储端口、数据库仓储与事务提交。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/application/services/ingestion_service.py:NovelDetails": {
+      "name": "NovelDetails",
+      "type": "class",
+      "summary": "封装小说状态、源文件哈希以及章节和文本块统计信息的不可变详情数据。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/application/services/ingestion_service.py:IngestionService": {
+      "name": "IngestionService",
+      "type": "class",
+      "summary": "处理小说及版本上传，并以幂等键创建文本导入、角色抽取和文本分析运行。"
+    },
+    "file:novel-character-generator/src/novel_character_generator/domain/entities/document.py": {
+      "name": "document.py",
+      "type": "file",
+      "summary": "定义源文档版本、规范化映射、章节边界与文本块等领域数据结构，用于保留文本位置的可追溯性。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/domain/entities/document.py:SourceDocumentVersion": {
+      "name": "SourceDocumentVersion",
+      "type": "class",
+      "summary": "描述源文档的不可变版本、内容哈希、存储位置和版本继承关系。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/domain/entities/document.py:NormalizationMap": {
+      "name": "NormalizationMap",
+      "type": "class",
+      "summary": "保存规范化算法版本和原始文本边界映射，以支持文本坐标回溯。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/domain/entities/document.py:NormalizedText": {
+      "name": "NormalizedText",
+      "type": "class",
+      "summary": "承载规范化文本及原始边界数组，并提供将规范化区间映射回原文的能力。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/domain/entities/document.py:ChapterBoundary": {
+      "name": "ChapterBoundary",
+      "type": "class",
+      "summary": "表示章节序号、标题及其在规范化文本中的起止位置。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/domain/entities/document.py:TextChunk": {
+      "name": "TextChunk",
+      "type": "class",
+      "summary": "表示用于后续分析的文本分块，并记录内容哈希、章节归属和双坐标范围。"
+    },
+    "file:novel-character-generator/src/novel_character_generator/domain/policies/text_processing.py": {
+      "name": "text_processing.py",
+      "type": "file",
+      "summary": "实现小说文本解码、Unicode 规范化、中文章节识别和受 token 预算约束的重叠分块策略。"
+    },
+    "function:novel-character-generator/src/novel_character_generator/domain/policies/text_processing.py:decode_text": {
+      "name": "decode_text",
+      "type": "function",
+      "summary": "按带 BOM 的 UTF-16、UTF-8-SIG 与 GB18030 顺序尝试解码小说字节，并拒绝空内容或不受支持的编码。"
+    },
+    "function:novel-character-generator/src/novel_character_generator/domain/policies/text_processing.py:normalize_text": {
+      "name": "normalize_text",
+      "type": "function",
+      "summary": "统一换行符、移除不可见字符并执行 NFC 规范化，同时生成原始字符边界映射。"
+    },
+    "function:novel-character-generator/src/novel_character_generator/domain/policies/text_processing.py:detect_chapters": {
+      "name": "detect_chapters",
+      "type": "function",
+      "summary": "依据中文卷章标题正则识别章节；未命中时将整篇文本视为单一章节。"
+    },
+    "function:novel-character-generator/src/novel_character_generator/domain/policies/text_processing.py:estimate_tokens": {
+      "name": "estimate_tokens",
+      "type": "function",
+      "summary": "以非 ASCII 字符和 ASCII 字符的近似权重估算文本 token 数量。"
+    },
+    "function:novel-character-generator/src/novel_character_generator/domain/policies/text_processing.py:_paragraph_ranges": {
+      "name": "_paragraph_ranges",
+      "type": "function",
+      "summary": "按空行分隔符生成指定文本范围内的非空段落坐标。"
+    },
+    "function:novel-character-generator/src/novel_character_generator/domain/policies/text_processing.py:_split_range": {
+      "name": "_split_range",
+      "type": "function",
+      "summary": "将过长范围优先按句末分割，必要时按目标 token 上限继续切分。"
+    },
+    "function:novel-character-generator/src/novel_character_generator/domain/policies/text_processing.py:build_chunks": {
+      "name": "build_chunks",
+      "type": "function",
+      "summary": "结合章节、段落与 token 预算生成可重叠文本块，并维护原文和规范化文本的双重范围。"
+    },
+    "file:novel-character-generator/src/novel_character_generator/infrastructure/db/repositories/ingestion.py": {
+      "name": "ingestion.py",
+      "type": "file",
+      "summary": "实现 SQLAlchemy 导入仓储，负责文档版本、流水线运行、规范化映射、章节和文本块的持久化与查询。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/infrastructure/db/repositories/ingestion.py:IngestionRepository": {
+      "name": "IngestionRepository",
+      "type": "class",
+      "summary": "封装导入领域的数据库读写和运行创建，保证文档版本及规范化映射的不可变约束。"
+    },
+    "file:novel-character-generator/src/novel_character_generator/workers/handlers/ingestion.py": {
+      "name": "ingestion.py",
+      "type": "file",
+      "summary": "实现后台导入任务处理器：读取原始文件、规范化并分块文本、持久化结果，再按运行类型完成或串联后续步骤。"
+    },
+    "function:novel-character-generator/src/novel_character_generator/workers/handlers/ingestion.py:process_ingestion_run": {
+      "name": "process_ingestion_run",
+      "type": "function",
+      "summary": "领取并执行文本导入或分析运行的规范化和分块步骤，记录状态、失败信息并在分析运行中继续入队角色抽取。"
+    },
+    "config:novel-character-generator/.env.example": {
+      "name": ".env.example",
+      "type": "config",
+      "summary": "提供服务运行所需的环境变量样例，覆盖日志、OpenTelemetry、指标、数据库、制品存储、LLM、智能体运行时与 API 密钥认证配置。它定义了开发环境可直接采用的默认运行参数。"
+    },
+    "config:novel-character-generator/alembic.ini": {
+      "name": "alembic.ini",
+      "type": "config",
+      "summary": "配置 Alembic 数据库迁移环境，包括迁移脚本位置、Python 源码路径、SQLite 异步数据库连接以及 Alembic 和 SQLAlchemy 的日志行为。"
+    },
+    "config:novel-character-generator/pyproject.toml": {
+      "name": "pyproject.toml",
+      "type": "config",
+      "summary": "定义 Python 3.12 服务的构建方式、运行与开发依赖，以及 Hatch 打包、pytest、Ruff 和 mypy 的项目级质量配置。它将 FastAPI、SQLAlchemy、异步 SQLite 与 LLM 客户端等运行依赖集中声明。"
+    },
+    "file:.DS_Store": {
+      "name": ".DS_Store",
+      "type": "file",
+      "summary": "macOS Finder 生成的目录显示元数据，不承载应用功能。"
+    },
+    "file:.understand-anything/.understandignore": {
+      "name": ".understandignore",
+      "type": "file",
+      "summary": "定义知识图谱扫描时应忽略的文件与目录模式，控制分析范围。"
+    },
+    "config:.understand-anything/config.json": {
+      "name": "config.json",
+      "type": "config",
+      "summary": "保存知识图谱生成的输出语言等项目级配置。"
+    },
+    "file:novel-character-generator/_shared/.DS_Store": {
+      "name": ".DS_Store",
+      "type": "file",
+      "summary": "macOS Finder 为共享目录生成的显示元数据，不参与运行时逻辑。"
+    },
+    "file:novel-character-generator/.DS_Store": {
+      "name": ".DS_Store",
+      "type": "file",
+      "summary": "macOS Finder 为应用目录生成的显示元数据，不参与服务运行。"
+    },
+    "file:novel-character-generator/.python-version": {
+      "name": ".python-version",
+      "type": "file",
+      "summary": "指定项目开发与运行所使用的 Python 版本。"
+    },
+    "document:novel-character-generator/data/fixtures/upload-character-novel.txt": {
+      "name": "upload-character-novel.txt",
+      "type": "document",
+      "summary": "包含角色名称与对话场景的小说文本夹具，用于验证小说上传及角色提取流程。"
+    },
+    "document:novel-character-generator/data/fixtures/upload-smoke-novel.txt": {
+      "name": "upload-smoke-novel.txt",
+      "type": "document",
+      "summary": "用于上传流程冒烟测试的原创分章小说文本夹具。"
+    },
+    "file:novel-character-generator/migrations/env.py": {
+      "name": "env.py",
+      "type": "file",
+      "summary": "配置 Alembic 迁移环境，通过应用设置创建异步 SQLAlchemy 引擎，并在离线或在线模式下执行迁移。"
+    },
+    "file:novel-character-generator/migrations/script.py.mako": {
+      "name": "script.py.mako",
+      "type": "file",
+      "summary": "定义 Alembic 自动生成迁移版本文件时使用的 Mako 模板，包括版本元数据及升级、降级函数骨架。"
+    },
+    "file:novel-character-generator/migrations/versions/7af44def6f21_support_structured_extraction.py": {
+      "name": "7af44def6f21_support_structured_extraction.py",
+      "type": "file",
+      "summary": "为别名断言增加类型和指纹字段，并回填既有数据以支持结构化角色提取。"
+    },
+    "file:novel-character-generator/migrations/versions/a91c4e72d530_add_character_entity_operations.py": {
+      "name": "a91c4e72d530_add_character_entity_operations.py",
+      "type": "file",
+      "summary": "扩展角色实体的修订与合并信息，并创建角色实体操作记录以追踪人工或管线变更。"
+    },
+    "file:novel-character-generator/migrations/versions/b21d91f4c8aa_version_source_documents.py": {
+      "name": "b21d91f4c8aa_version_source_documents.py",
+      "type": "file",
+      "summary": "为源文档建立版本化、规范化与事件/特征记录的数据结构，并把现有文本与外部操作关联到可追溯的版本上下文。"
+    },
+    "file:novel-character-generator/migrations/versions/c8e1a9d42f30_add_versioned_evaluation_tables.py": {
+      "name": "c8e1a9d42f30_add_versioned_evaluation_tables.py",
+      "type": "file",
+      "summary": "创建版本化评测数据集、评分器、样例、运行与结果表，用于评估角色生成与抽取能力。"
+    },
+    "file:novel-character-generator/migrations/versions/d91f6a73b204_complete_agent_runtime_and_approvals.py": {
+      "name": "d91f6a73b204_complete_agent_runtime_and_approvals.py",
+      "type": "file",
+      "summary": "补全智能体运行时、审批与执行记录所需的数据库字段、表和索引。"
+    },
+    "file:novel-character-generator/migrations/versions/e4b7281ca650_persist_scene_temporal_bindings.py": {
+      "name": "e4b7281ca650_persist_scene_temporal_bindings.py",
+      "type": "file",
+      "summary": "持久化场景与时间线绑定信息，使角色叙事场景能够关联可查询的时间维度。"
+    },
+    "file:novel-character-generator/migrations/versions/ed400f92bdfe_create_revised_core_schema.py": {
+      "name": "ed400f92bdfe_create_revised_core_schema.py",
+      "type": "file",
+      "summary": "创建修订后的核心业务模式，集中定义文档、角色、抽取管线与关联实体的基础持久化结构。"
+    },
+    "file:novel-character-generator/migrations/versions/f6a2d07c19be_add_character_appearance_resolution.py": {
+      "name": "f6a2d07c19be_add_character_appearance_resolution.py",
+      "type": "file",
+      "summary": "增加角色外观解析相关的数据字段与约束，支撑视觉化角色描述的存储和解析。"
+    },
+    "file:novel-character-generator/src/novel_character_generator/__init__.py": {
+      "name": "__init__.py",
+      "type": "file",
+      "summary": "标识 novel_character_generator 的顶层 Python 包。"
+    },
+    "file:novel-character-generator/src/novel_character_generator/agents/__init__.py": {
+      "name": "__init__.py",
+      "type": "file",
+      "summary": "标识智能体相关功能的 Python 子包。"
+    },
+    "file:novel-character-generator/src/novel_character_generator/agents/tools/__init__.py": {
+      "name": "__init__.py",
+      "type": "file",
+      "summary": "标识智能体工具实现的 Python 子包。"
+    },
+    "file:novel-character-generator/src/novel_character_generator/api/__init__.py": {
+      "name": "__init__.py",
+      "type": "file",
+      "summary": "标识 FastAPI 接口层的 Python 子包。"
+    },
+    "file:novel-character-generator/src/novel_character_generator/application/__init__.py": {
+      "name": "__init__.py",
+      "type": "file",
+      "summary": "标识应用服务与用例编排所在的 Python 子包。"
+    },
+    "file:novel-character-generator/src/novel_character_generator/application/commands/__init__.py": {
+      "name": "__init__.py",
+      "type": "file",
+      "summary": "标识应用命令和写操作用例所在的 Python 子包。"
+    },
+    "function:novel-character-generator/migrations/env.py:get_database_url": {
+      "name": "get_database_url",
+      "type": "function",
+      "summary": "优先读取 Alembic 命令行参数中的数据库地址，否则回退到应用设置。"
+    },
+    "function:novel-character-generator/migrations/env.py:run_migrations_offline": {
+      "name": "run_migrations_offline",
+      "type": "function",
+      "summary": "以 SQL 文本生成模式配置 Alembic 并执行离线迁移。"
+    },
+    "function:novel-character-generator/migrations/env.py:do_run_migrations": {
+      "name": "do_run_migrations",
+      "type": "function",
+      "summary": "在给定数据库连接的事务中配置并运行 Alembic 迁移。"
+    },
+    "function:novel-character-generator/migrations/env.py:run_migrations_online": {
+      "name": "run_migrations_online",
+      "type": "function",
+      "summary": "创建异步 SQLAlchemy 引擎，在连接生命周期内同步执行 Alembic 迁移后释放资源。"
+    },
+    "function:novel-character-generator/migrations/versions/7af44def6f21_support_structured_extraction.py:upgrade": {
+      "name": "upgrade",
+      "type": "function",
+      "summary": "新增别名类型和指纹字段，回填旧记录并建立索引与非空约束。"
+    },
+    "function:novel-character-generator/migrations/versions/7af44def6f21_support_structured_extraction.py:downgrade": {
+      "name": "downgrade",
+      "type": "function",
+      "summary": "移除为结构化提取新增的别名字段。"
+    },
+    "function:novel-character-generator/migrations/versions/a91c4e72d530_add_character_entity_operations.py:upgrade": {
+      "name": "upgrade",
+      "type": "function",
+      "summary": "为角色增加修订和合并信息，放宽运行关联并创建实体操作审计表及索引。"
+    },
+    "function:novel-character-generator/migrations/versions/a91c4e72d530_add_character_entity_operations.py:downgrade": {
+      "name": "downgrade",
+      "type": "function",
+      "summary": "删除实体操作审计表，并还原角色字段与运行关联约束。"
+    },
+    "function:novel-character-generator/migrations/versions/b21d91f4c8aa_version_source_documents.py:upgrade": {
+      "name": "upgrade",
+      "type": "function",
+      "summary": "创建源文档版本、规范化映射、事件参与者和特征建议等表，并把既有业务记录接入版本溯源。"
+    },
+    "function:novel-character-generator/migrations/versions/b21d91f4c8aa_version_source_documents.py:downgrade": {
+      "name": "downgrade",
+      "type": "function",
+      "summary": "按依赖逆序移除文档版本化、事件与特征扩展的表、列和索引。"
+    },
+    "function:novel-character-generator/migrations/versions/c8e1a9d42f30_add_versioned_evaluation_tables.py:_timestamps": {
+      "name": "_timestamps",
+      "type": "function",
+      "summary": "生成评测表共用的创建与更新时间戳列。"
+    },
+    "function:novel-character-generator/migrations/versions/c8e1a9d42f30_add_versioned_evaluation_tables.py:upgrade": {
+      "name": "upgrade",
+      "type": "function",
+      "summary": "创建评测数据集、评分器版本、评测样例、评测运行和结果表及其查询索引。"
+    },
+    "function:novel-character-generator/migrations/versions/c8e1a9d42f30_add_versioned_evaluation_tables.py:downgrade": {
+      "name": "downgrade",
+      "type": "function",
+      "summary": "移除评测运行、结果、样例、评分器与数据集的表和索引。"
+    },
+    "function:novel-character-generator/migrations/versions/d91f6a73b204_complete_agent_runtime_and_approvals.py:upgrade": {
+      "name": "upgrade",
+      "type": "function",
+      "summary": "创建并扩展智能体运行、审批和执行状态的持久化结构。"
+    },
+    "function:novel-character-generator/migrations/versions/d91f6a73b204_complete_agent_runtime_and_approvals.py:downgrade": {
+      "name": "downgrade",
+      "type": "function",
+      "summary": "回滚智能体运行时和审批流程引入的模式变更。"
+    },
+    "function:novel-character-generator/migrations/versions/e4b7281ca650_persist_scene_temporal_bindings.py:upgrade": {
+      "name": "upgrade",
+      "type": "function",
+      "summary": "创建或扩展场景时间绑定的持久化字段、关联关系和索引。"
+    },
+    "function:novel-character-generator/migrations/versions/e4b7281ca650_persist_scene_temporal_bindings.py:downgrade": {
+      "name": "downgrade",
+      "type": "function",
+      "summary": "撤销场景时间绑定相关的字段、关联关系和索引。"
+    },
+    "function:novel-character-generator/migrations/versions/ed400f92bdfe_create_revised_core_schema.py:upgrade": {
+      "name": "upgrade",
+      "type": "function",
+      "summary": "以完整建表与索引操作创建应用的修订后核心持久化模式。"
+    },
+    "function:novel-character-generator/migrations/versions/ed400f92bdfe_create_revised_core_schema.py:downgrade": {
+      "name": "downgrade",
+      "type": "function",
+      "summary": "按依赖顺序删除修订后核心模式创建的表和索引。"
+    },
+    "function:novel-character-generator/migrations/versions/f6a2d07c19be_add_character_appearance_resolution.py:upgrade": {
+      "name": "upgrade",
+      "type": "function",
+      "summary": "增加角色外观解析结果所需的字段、关联和索引。"
+    },
+    "function:novel-character-generator/migrations/versions/f6a2d07c19be_add_character_appearance_resolution.py:downgrade": {
+      "name": "downgrade",
+      "type": "function",
+      "summary": "移除角色外观解析引入的数据字段、关联和索引。"
+    },
+    "file:novel-character-generator/src/novel_character_generator/application/ports/__init__.py": {
+      "name": "__init__.py",
+      "type": "file",
+      "summary": "将应用层端口目录声明为 Python 包，为仓储、模型和外部能力的抽象接口预留命名空间。"
+    },
+    "file:novel-character-generator/src/novel_character_generator/application/queries/__init__.py": {
+      "name": "__init__.py",
+      "type": "file",
+      "summary": "将应用查询目录声明为 Python 包，用于组织面向读取场景的查询对象和处理逻辑。"
+    },
+    "file:novel-character-generator/src/novel_character_generator/application/services/__init__.py": {
+      "name": "__init__.py",
+      "type": "file",
+      "summary": "将应用服务目录声明为 Python 包，为编排领域对象与基础设施的用例服务提供命名空间。"
+    },
+    "file:novel-character-generator/src/novel_character_generator/domain/__init__.py": {
+      "name": "__init__.py",
+      "type": "file",
+      "summary": "将核心领域目录声明为 Python 包，承载角色、故事与文本等业务模型。"
+    },
+    "file:novel-character-generator/src/novel_character_generator/domain/entities/__init__.py": {
+      "name": "__init__.py",
+      "type": "file",
+      "summary": "将领域实体目录声明为 Python 包，聚合角色、叙事和文本实体定义。"
+    },
+    "file:novel-character-generator/src/novel_character_generator/domain/entities/character.py": {
+      "name": "character.py",
+      "type": "file",
+      "summary": "定义角色特征观测、候选建议、表情观测、外观状态与渲染档案等领域实体，并校验文本证据与字符区间的一致性。"
+    },
+    "file:novel-character-generator/src/novel_character_generator/domain/entities/image.py": {
+      "name": "image.py",
+      "type": "file",
+      "summary": "定义角色图像集及按外观阶段组织候选图像的领域数据结构。"
+    },
+    "file:novel-character-generator/src/novel_character_generator/domain/entities/story.py": {
+      "name": "story.py",
+      "type": "file",
+      "summary": "定义时间线、故事事件、事件参与者和场景实体，以表达小说的叙事顺序、分支与证据位置。"
+    },
+    "file:novel-character-generator/src/novel_character_generator/domain/entities/text.py": {
+      "name": "text.py",
+      "type": "file",
+      "summary": "定义文本提及片段和别名断言实体，用于将小说文本中的称谓及其证据绑定到角色。"
+    },
+    "file:novel-character-generator/src/novel_character_generator/domain/policies/__init__.py": {
+      "name": "__init__.py",
+      "type": "file",
+      "summary": "将领域策略目录声明为 Python 包，为业务决策规则提供独立命名空间。"
+    },
+    "file:novel-character-generator/src/novel_character_generator/domain/value_objects/__init__.py": {
+      "name": "__init__.py",
+      "type": "file",
+      "summary": "将领域值对象目录声明为 Python 包，集中管理不可变的业务值定义。"
+    },
+    "file:novel-character-generator/src/novel_character_generator/domain/value_objects/temporal.py": {
+      "name": "temporal.py",
+      "type": "file",
+      "summary": "定义时间范围值对象，统一描述时间线、事件、场景和章节维度的叙事适用范围。"
+    },
+    "file:novel-character-generator/src/novel_character_generator/infrastructure/__init__.py": {
+      "name": "__init__.py",
+      "type": "file",
+      "summary": "将基础设施目录声明为 Python 包，容纳数据库、LLM、存储与可观测性适配器。"
+    },
+    "file:novel-character-generator/src/novel_character_generator/infrastructure/db/__init__.py": {
+      "name": "__init__.py",
+      "type": "file",
+      "summary": "将数据库基础设施目录声明为 Python 包，为连接、ORM 与持久化实现提供命名空间。"
+    },
+    "file:novel-character-generator/src/novel_character_generator/infrastructure/db/repositories/__init__.py": {
+      "name": "__init__.py",
+      "type": "file",
+      "summary": "将数据库仓储实现目录声明为 Python 包，隔离领域仓储端口的持久化适配器。"
+    },
+    "file:novel-character-generator/src/novel_character_generator/infrastructure/image/__init__.py": {
+      "name": "__init__.py",
+      "type": "file",
+      "summary": "将图像基础设施目录声明为 Python 包，用于实现角色图像生成和存储能力。"
+    },
+    "file:novel-character-generator/src/novel_character_generator/infrastructure/llm/__init__.py": {
+      "name": "__init__.py",
+      "type": "file",
+      "summary": "将 LLM 基础设施目录声明为 Python 包，用于封装模型调用和结构化生成适配器。"
+    },
+    "file:novel-character-generator/src/novel_character_generator/infrastructure/observability/__init__.py": {
+      "name": "__init__.py",
+      "type": "file",
+      "summary": "将可观测性基础设施目录声明为 Python 包，为日志、指标和追踪实现提供命名空间。"
+    },
+    "file:novel-character-generator/src/novel_character_generator/infrastructure/storage/__init__.py": {
+      "name": "__init__.py",
+      "type": "file",
+      "summary": "将存储基础设施目录声明为 Python 包，用于实现本地或远程工件存储适配器。"
+    },
+    "file:novel-character-generator/src/novel_character_generator/workers/__init__.py": {
+      "name": "__init__.py",
+      "type": "file",
+      "summary": "将后台工作器目录声明为 Python 包，用于运行异步任务和流水线执行单元。"
+    },
+    "file:novel-character-generator/src/novel_character_generator/workers/handlers/__init__.py": {
+      "name": "__init__.py",
+      "type": "file",
+      "summary": "将工作器处理器目录声明为 Python 包，为具体后台任务处理逻辑提供命名空间。"
+    },
+    "file:novel-character-generator/src/novel_character_generator/workflows/__init__.py": {
+      "name": "__init__.py",
+      "type": "file",
+      "summary": "将工作流目录声明为 Python 包，用于组织文本解析与角色生成的业务流程。"
+    },
+    "file:novel-character-generator/src/novel_character_generator/workflows/nodes/__init__.py": {
+      "name": "__init__.py",
+      "type": "file",
+      "summary": "将工作流节点目录声明为 Python 包，为可组合的流程步骤提供命名空间。"
+    },
+    "file:novel-character-generator/tests/integration/test_agent_execution_service.py": {
+      "name": "test_agent_execution_service.py",
+      "type": "file",
+      "summary": "通过临时 SQLite 数据库、工件存储和受控模型，集成验证智能体执行服务会持久化轨迹并在工具审批处暂停。"
+    },
+    "file:novel-character-generator/tests/integration/test_approval_and_agent_api.py": {
+      "name": "test_approval_and_agent_api.py",
+      "type": "file",
+      "summary": "集成验证审批请求的乐观并发恢复流程，以及智能体运行轨迹和审批接口的 HTTP 行为。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/domain/entities/character.py:FeatureObservation": {
+      "name": "FeatureObservation",
+      "type": "class",
+      "summary": "保存角色字段的带证据观测记录，并校验文本来源、字符位置和证据引用之间的约束。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/domain/entities/character.py:FeatureSuggestion": {
+      "name": "FeatureSuggestion",
+      "type": "class",
+      "summary": "表示待人工或自动处理的角色字段建议及其置信度、理由和审批状态。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/domain/entities/character.py:ExpressionObservation": {
+      "name": "ExpressionObservation",
+      "type": "class",
+      "summary": "记录角色在文本中的表情、情绪和可见线索，并校验引用的字符区间有效性。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/domain/entities/character.py:CharacterAppearanceState": {
+      "name": "CharacterAppearanceState",
+      "type": "class",
+      "summary": "描述角色在特定叙事范围内的外貌状态、来源字段和合并优先级。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/domain/entities/character.py:CharacterRenderProfile": {
+      "name": "CharacterRenderProfile",
+      "type": "class",
+      "summary": "维护角色绘制用的身份锚点、默认外貌状态、调色板和待解决冲突。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/domain/entities/image.py:CharacterImageSet": {
+      "name": "CharacterImageSet",
+      "type": "class",
+      "summary": "聚合角色渲染档案对应的图像版本、默认代表图和阶段图像集合。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/domain/entities/image.py:CharacterStageImage": {
+      "name": "CharacterStageImage",
+      "type": "class",
+      "summary": "描述某个角色外观阶段的候选图像、基线图像和选择依据。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/domain/entities/story.py:Timeline": {
+      "name": "Timeline",
+      "type": "class",
+      "summary": "表示小说的主线或分支时间线及其规范性信息。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/domain/entities/story.py:StoryEvent": {
+      "name": "StoryEvent",
+      "type": "class",
+      "summary": "表示时间线上的故事事件及其排序和时间边界。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/domain/entities/story.py:EventParticipant": {
+      "name": "EventParticipant",
+      "type": "class",
+      "summary": "关联故事事件、角色参与身份及其支持性观测证据。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/domain/entities/story.py:Scene": {
+      "name": "Scene",
+      "type": "class",
+      "summary": "表示来自源文本的叙事场景，并关联时间线、事件、视角和文本区间。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/domain/entities/text.py:MentionSpan": {
+      "name": "MentionSpan",
+      "type": "class",
+      "summary": "表示源文本中的角色提及区间及其候选和已消歧角色，并校验区间合法性。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/domain/entities/text.py:AliasAssertion": {
+      "name": "AliasAssertion",
+      "type": "class",
+      "summary": "表示别名与候选角色之间的断言，并保存支持和反对该断言的证据。"
+    },
+    "class:novel-character-generator/src/novel_character_generator/domain/value_objects/temporal.py:TemporalScope": {
+      "name": "TemporalScope",
+      "type": "class",
+      "summary": "封装角色或叙事事实在时间线、事件、场景和章节上的适用范围。"
+    },
+    "class:novel-character-generator/tests/integration/test_agent_execution_service.py:PublishInput": {
+      "name": "PublishInput",
+      "type": "class",
+      "summary": "为集成测试中的发布工具构造仅含档案标识的输入模型。"
+    },
+    "class:novel-character-generator/tests/integration/test_agent_execution_service.py:PublishOutput": {
+      "name": "PublishOutput",
+      "type": "class",
+      "summary": "为集成测试中的发布工具构造发布结果输出模型。"
+    },
+    "class:novel-character-generator/tests/integration/test_agent_execution_service.py:ReviewOutput": {
+      "name": "ReviewOutput",
+      "type": "class",
+      "summary": "为集成测试中的审核工具构造接受状态输出模型。"
+    },
+    "class:novel-character-generator/tests/integration/test_agent_execution_service.py:ApprovalModel": {
+      "name": "ApprovalModel",
+      "type": "class",
+      "summary": "测试专用模型替身，生成包含需审批工具调用的智能体轮次。"
+    },
+    "function:novel-character-generator/tests/integration/test_agent_execution_service.py:test_agent_execution_persists_trajectory_and_waiting_approval": {
+      "name": "test_agent_execution_persists_trajectory_and_waiting_approval",
+      "type": "function",
+      "summary": "端到端执行智能体服务，并断言轨迹、工具调用、人工审批记录及等待状态均正确持久化。"
+    },
+    "function:novel-character-generator/tests/integration/test_approval_and_agent_api.py:test_approval_cas_resume_and_agent_trajectory_api": {
+      "name": "test_approval_cas_resume_and_agent_trajectory_api",
+      "type": "function",
+      "summary": "验证审批请求的比较交换恢复语义，并通过 ASGI 客户端验证智能体轨迹和审批 HTTP 接口。"
+    },
+    "file:novel-character-generator/tests/integration/test_approval_decisions.py": {
+      "name": "test_approval_decisions.py",
+      "type": "file",
+      "summary": "集成测试延迟审批请求在后续被拒绝时的状态转换、截止时间与持久化结果。"
+    },
+    "function:novel-character-generator/tests/integration/test_approval_decisions.py:test_deferred_approval_can_later_be_rejected": {
+      "name": "test_deferred_approval_can_later_be_rejected",
+      "type": "function",
+      "summary": "验证“test_deferred_approval_can_later_be_rejected”覆盖的业务契约、状态变化与异常边界。"
+    },
+    "file:novel-character-generator/tests/integration/test_character_appearance_api.py": {
+      "name": "test_character_appearance_api.py",
+      "type": "file",
+      "summary": "集成测试角色外观档案接口的冲突消解、审批流程与时间快照读取。"
+    },
+    "function:novel-character-generator/tests/integration/test_character_appearance_api.py:test_render_profile_conflict_resolution_and_temporal_snapshot": {
+      "name": "test_render_profile_conflict_resolution_and_temporal_snapshot",
+      "type": "function",
+      "summary": "验证“test_render_profile_conflict_resolution_and_temporal_snapshot”覆盖的业务契约、状态变化与异常边界。"
+    },
+    "file:novel-character-generator/tests/integration/test_character_entity_api.py": {
+      "name": "test_character_entity_api.py",
+      "type": "file",
+      "summary": "集成测试角色实体合并与拆分操作的审计、幂等性和并发版本安全。"
+    },
+    "function:novel-character-generator/tests/integration/test_character_entity_api.py:test_character_merge_and_split_are_audited_idempotent_and_revision_safe": {
+      "name": "test_character_merge_and_split_are_audited_idempotent_and_revision_safe",
+      "type": "function",
+      "summary": "验证“test_character_merge_and_split_are_audited_idempotent_and_revision_safe”覆盖的业务契约、状态变化与异常边界。"
+    },
+    "file:novel-character-generator/tests/integration/test_document_versions.py": {
+      "name": "test_document_versions.py",
+      "type": "file",
+      "summary": "集成测试新上传文档会创建不可变源版本的版本管理约束。"
+    },
+    "function:novel-character-generator/tests/integration/test_document_versions.py:test_new_upload_creates_immutable_source_version": {
+      "name": "test_new_upload_creates_immutable_source_version",
+      "type": "function",
+      "summary": "验证“test_new_upload_creates_immutable_source_version”覆盖的业务契约、状态变化与异常边界。"
+    },
+    "file:novel-character-generator/tests/integration/test_evaluation_repository.py": {
+      "name": "test_evaluation_repository.py",
+      "type": "file",
+      "summary": "集成测试评测数据集的租户隔离、冻结语义与评测结果唯一性。"
+    },
+    "function:novel-character-generator/tests/integration/test_evaluation_repository.py:test_evaluation_dataset_isolation_freeze_and_result_uniqueness": {
+      "name": "test_evaluation_dataset_isolation_freeze_and_result_uniqueness",
+      "type": "function",
+      "summary": "验证“test_evaluation_dataset_isolation_freeze_and_result_uniqueness”覆盖的业务契约、状态变化与异常边界。"
+    },
+    "file:novel-character-generator/tests/integration/test_extraction_slice.py": {
+      "name": "test_extraction_slice.py",
+      "type": "file",
+      "summary": "集成测试角色抽取切片的证据溯源和重复执行幂等性。"
+    },
+    "function:novel-character-generator/tests/integration/test_extraction_slice.py:test_character_extraction_slice_is_grounded_and_idempotent": {
+      "name": "test_character_extraction_slice_is_grounded_and_idempotent",
+      "type": "function",
+      "summary": "验证“test_character_extraction_slice_is_grounded_and_idempotent”覆盖的业务契约、状态变化与异常边界。"
+    },
+    "file:novel-character-generator/tests/integration/test_ingestion_slice.py": {
+      "name": "test_ingestion_slice.py",
+      "type": "file",
+      "summary": "集成测试从文本上传、运行创建、后台处理到查询结果的最小摄取流程。"
+    },
+    "function:novel-character-generator/tests/integration/test_ingestion_slice.py:test_upload_run_worker_and_query": {
+      "name": "test_upload_run_worker_and_query",
+      "type": "function",
+      "summary": "验证“test_upload_run_worker_and_query”覆盖的业务契约、状态变化与异常边界。"
+    },
+    "file:novel-character-generator/tests/integration/test_migrations.py": {
+      "name": "test_migrations.py",
+      "type": "file",
+      "summary": "集成测试 Alembic 初始迁移的升级与降级可执行性。"
+    },
+    "function:novel-character-generator/tests/integration/test_migrations.py:test_initial_migration_upgrade_and_downgrade": {
+      "name": "test_initial_migration_upgrade_and_downgrade",
+      "type": "function",
+      "summary": "验证“test_initial_migration_upgrade_and_downgrade”覆盖的业务契约、状态变化与异常边界。"
+    },
+    "file:novel-character-generator/tests/integration/test_run_events_and_external_operations.py": {
+      "name": "test_run_events_and_external_operations.py",
+      "type": "file",
+      "summary": "集成测试运行事件的追加式恢复，以及外部操作的幂等键与围栏令牌保护。"
+    },
+    "function:novel-character-generator/tests/integration/test_run_events_and_external_operations.py:test_run_events_are_append_only_and_support_resume": {
+      "name": "test_run_events_are_append_only_and_support_resume",
+      "type": "function",
+      "summary": "验证“test_run_events_are_append_only_and_support_resume”覆盖的业务契约、状态变化与异常边界。"
+    },
+    "function:novel-character-generator/tests/integration/test_run_events_and_external_operations.py:test_external_operation_enforces_idempotency_and_fencing": {
+      "name": "test_external_operation_enforces_idempotency_and_fencing",
+      "type": "function",
+      "summary": "验证“test_external_operation_enforces_idempotency_and_fencing”覆盖的业务契约、状态变化与异常边界。"
+    },
+    "file:novel-character-generator/tests/integration/test_story_temporal_api.py": {
+      "name": "test_story_temporal_api.py",
+      "type": "file",
+      "summary": "集成测试场景假设的证据绑定、时间查询与人工校正接口。"
+    },
+    "function:novel-character-generator/tests/integration/test_story_temporal_api.py:test_scene_hypotheses_are_grounded_queryable_and_correctable": {
+      "name": "test_scene_hypotheses_are_grounded_queryable_and_correctable",
+      "type": "function",
+      "summary": "验证“test_scene_hypotheses_are_grounded_queryable_and_correctable”覆盖的业务契约、状态变化与异常边界。"
+    },
+    "class:novel-character-generator/tests/integration/test_story_temporal_api.py:TemporalProvider": {
+      "name": "TemporalProvider",
+      "type": "class",
+      "summary": "为时间叙事接口测试提供确定性的抽取结果，以驱动场景假设和时间范围断言。"
+    },
+    "file:novel-character-generator/tests/integration/test_task_recovery.py": {
+      "name": "test_task_recovery.py",
+      "type": "file",
+      "summary": "集成测试任务分片在处理失败后可重新认领并从游标续跑。"
+    },
+    "function:novel-character-generator/tests/integration/test_task_recovery.py:test_claim_failure_and_cursor_resume": {
+      "name": "test_claim_failure_and_cursor_resume",
+      "type": "function",
+      "summary": "验证“test_claim_failure_and_cursor_resume”覆盖的业务契约、状态变化与异常边界。"
+    },
+    "class:novel-character-generator/tests/integration/test_task_recovery.py:FailOnSecondChunk": {
+      "name": "FailOnSecondChunk",
+      "type": "class",
+      "summary": "在第二个文本分片处理时故意失败的测试提供方，用于验证任务恢复逻辑。"
+    },
+    "class:novel-character-generator/tests/integration/test_task_recovery.py:RecordingProvider": {
+      "name": "RecordingProvider",
+      "type": "class",
+      "summary": "记录已处理分片的测试提供方，用于断言恢复任务的游标与重试行为。"
+    },
+    "file:novel-character-generator/tests/integration/test_text_analysis_run.py": {
+      "name": "test_text_analysis_run.py",
+      "type": "file",
+      "summary": "集成测试公共文本分析接口先执行摄取再执行角色抽取的完整链路。"
+    },
+    "function:novel-character-generator/tests/integration/test_text_analysis_run.py:test_public_run_endpoint_executes_ingestion_then_extraction": {
+      "name": "test_public_run_endpoint_executes_ingestion_then_extraction",
+      "type": "function",
+      "summary": "验证“test_public_run_endpoint_executes_ingestion_then_extraction”覆盖的业务契约、状态变化与异常边界。"
+    },
+    "file:novel-character-generator/tests/unit/domain/test_models.py": {
+      "name": "test_models.py",
+      "type": "file",
+      "summary": "单元测试领域模型的区间、证据、状态转换、评测冻结与评分溯源约束。"
+    },
+    "function:novel-character-generator/tests/unit/domain/test_models.py:test_mention_span_rejects_reversed_offsets": {
+      "name": "test_mention_span_rejects_reversed_offsets",
+      "type": "function",
+      "summary": "验证“test_mention_span_rejects_reversed_offsets”覆盖的业务契约、状态变化与异常边界。"
+    },
+    "function:novel-character-generator/tests/unit/domain/test_models.py:test_text_observation_requires_temporal_scope": {
+      "name": "test_text_observation_requires_temporal_scope",
+      "type": "function",
+      "summary": "验证“test_text_observation_requires_temporal_scope”覆盖的业务契约、状态变化与异常边界。"
+    },
+    "function:novel-character-generator/tests/unit/domain/test_models.py:test_text_observation_accepts_grounded_evidence": {
+      "name": "test_text_observation_accepts_grounded_evidence",
+      "type": "function",
+      "summary": "验证“test_text_observation_accepts_grounded_evidence”覆盖的业务契约、状态变化与异常边界。"
+    },
+    "function:novel-character-generator/tests/unit/domain/test_models.py:test_pipeline_step_uses_explicit_transition_rules": {
+      "name": "test_pipeline_step_uses_explicit_transition_rules",
+      "type": "function",
+      "summary": "验证“test_pipeline_step_uses_explicit_transition_rules”覆盖的业务契约、状态变化与异常边界。"
+    },
+    "function:novel-character-generator/tests/unit/domain/test_models.py:test_frozen_eval_dataset_requires_freeze_timestamp": {
+      "name": "test_frozen_eval_dataset_requires_freeze_timestamp",
+      "type": "function",
+      "summary": "验证“test_frozen_eval_dataset_requires_freeze_timestamp”覆盖的业务契约、状态变化与异常边界。"
+    },
+    "function:novel-character-generator/tests/unit/domain/test_models.py:test_model_grader_requires_reproducible_provenance": {
+      "name": "test_model_grader_requires_reproducible_provenance",
+      "type": "function",
+      "summary": "验证“test_model_grader_requires_reproducible_provenance”覆盖的业务契约、状态变化与异常边界。"
+    },
+    "file:novel-character-generator/tests/unit/domain/test_text_processing.py": {
+      "name": "test_text_processing.py",
+      "type": "file",
+      "summary": "单元测试文本规范化、编码探测、章节识别和切片哈希的确定性。"
+    },
+    "function:novel-character-generator/tests/unit/domain/test_text_processing.py:test_normalization_preserves_reverse_offsets": {
+      "name": "test_normalization_preserves_reverse_offsets",
+      "type": "function",
+      "summary": "验证“test_normalization_preserves_reverse_offsets”覆盖的业务契约、状态变化与异常边界。"
+    },
+    "function:novel-character-generator/tests/unit/domain/test_text_processing.py:test_decode_text_distinguishes_gb18030_from_utf16": {
+      "name": "test_decode_text_distinguishes_gb18030_from_utf16",
+      "type": "function",
+      "summary": "验证“test_decode_text_distinguishes_gb18030_from_utf16”覆盖的业务契约、状态变化与异常边界。"
+    },
+    "function:novel-character-generator/tests/unit/domain/test_text_processing.py:test_chapter_detection_and_chunk_hashes_are_stable": {
+      "name": "test_chapter_detection_and_chunk_hashes_are_stable",
+      "type": "function",
+      "summary": "验证“test_chapter_detection_and_chunk_hashes_are_stable”覆盖的业务契约、状态变化与异常边界。"
+    },
+    "file:novel-character-generator/tests/unit/test_mock_extraction.py": {
+      "name": "test_mock_extraction.py",
+      "type": "file",
+      "summary": "单元测试模拟抽取提供方返回带证据的角色数据及指纹稳定性。"
+    },
+    "function:novel-character-generator/tests/unit/test_mock_extraction.py:test_mock_extraction_returns_grounded_character_data": {
+      "name": "test_mock_extraction_returns_grounded_character_data",
+      "type": "function",
+      "summary": "验证“test_mock_extraction_returns_grounded_character_data”覆盖的业务契约、状态变化与异常边界。"
+    },
+    "function:novel-character-generator/tests/unit/test_mock_extraction.py:test_grounding_and_fingerprint_are_deterministic": {
+      "name": "test_grounding_and_fingerprint_are_deterministic",
+      "type": "function",
+      "summary": "验证“test_grounding_and_fingerprint_are_deterministic”覆盖的业务契约、状态变化与异常边界。"
+    },
+    "file:novel-character-generator/tests/unit/test_openai_compatible_extraction.py": {
+      "name": "test_openai_compatible_extraction.py",
+      "type": "file",
+      "summary": "单元测试 OpenAI 兼容提供方发出结构化 JSON 请求并解析响应。"
+    },
+    "function:novel-character-generator/tests/unit/test_openai_compatible_extraction.py:test_openai_compatible_provider_requests_structured_json": {
+      "name": "test_openai_compatible_provider_requests_structured_json",
+      "type": "function",
+      "summary": "验证“test_openai_compatible_provider_requests_structured_json”覆盖的业务契约、状态变化与异常边界。"
+    },
+    "file:novel-character-generator/tests/unit/test_settings.py": {
+      "name": "test_settings.py",
+      "type": "file",
+      "summary": "单元测试默认 SQLite 配置、生产环境提供方约束和密钥隔离规则。"
+    },
+    "function:novel-character-generator/tests/unit/test_settings.py:test_default_settings_use_async_sqlite": {
+      "name": "test_default_settings_use_async_sqlite",
+      "type": "function",
+      "summary": "验证“test_default_settings_use_async_sqlite”覆盖的业务契约、状态变化与异常边界。"
+    },
+    "function:novel-character-generator/tests/unit/test_settings.py:test_production_rejects_mock_provider": {
+      "name": "test_production_rejects_mock_provider",
+      "type": "function",
+      "summary": "验证“test_production_rejects_mock_provider”覆盖的业务契约、状态变化与异常边界。"
+    },
+    "function:novel-character-generator/tests/unit/test_settings.py:test_remote_provider_requires_credentials": {
+      "name": "test_remote_provider_requires_credentials",
+      "type": "function",
+      "summary": "验证“test_remote_provider_requires_credentials”覆盖的业务契约、状态变化与异常边界。"
+    },
+    "function:novel-character-generator/tests/unit/test_settings.py:test_production_requires_distinct_user_and_admin_keys": {
+      "name": "test_production_requires_distinct_user_and_admin_keys",
+      "type": "function",
+      "summary": "验证“test_production_requires_distinct_user_and_admin_keys”覆盖的业务契约、状态变化与异常边界。"
+    },
+    "file:novel-character-generator/tests/unit/test_structured_agent_runtime.py": {
+      "name": "test_structured_agent_runtime.py",
+      "type": "file",
+      "summary": "单元测试结构化智能体运行时的工具调用、权限阻止、审批预检和成本上限处理。"
+    },
+    "function:novel-character-generator/tests/unit/test_structured_agent_runtime.py:agent_spec": {
+      "name": "agent_spec",
+      "type": "function",
+      "summary": "验证“agent_spec”覆盖的业务契约、状态变化与异常边界。"
+    },
+    "function:novel-character-generator/tests/unit/test_structured_agent_runtime.py:context": {
+      "name": "context",
+      "type": "function",
+      "summary": "验证“context”覆盖的业务契约、状态变化与异常边界。"
+    },
+    "function:novel-character-generator/tests/unit/test_structured_agent_runtime.py:runtime_settings": {
+      "name": "runtime_settings",
+      "type": "function",
+      "summary": "验证“runtime_settings”覆盖的业务契约、状态变化与异常边界。"
+    },
+    "function:novel-character-generator/tests/unit/test_structured_agent_runtime.py:registered_tool": {
+      "name": "registered_tool",
+      "type": "function",
+      "summary": "验证“registered_tool”覆盖的业务契约、状态变化与异常边界。"
+    },
+    "function:novel-character-generator/tests/unit/test_structured_agent_runtime.py:test_runtime_executes_typed_tool_then_validates_final_output": {
+      "name": "test_runtime_executes_typed_tool_then_validates_final_output",
+      "type": "function",
+      "summary": "验证“test_runtime_executes_typed_tool_then_validates_final_output”覆盖的业务契约、状态变化与异常边界。"
+    },
+    "function:novel-character-generator/tests/unit/test_structured_agent_runtime.py:test_runtime_rejects_tool_permission_escalation": {
+      "name": "test_runtime_rejects_tool_permission_escalation",
+      "type": "function",
+      "summary": "验证“test_runtime_rejects_tool_permission_escalation”覆盖的业务契约、状态变化与异常边界。"
+    },
+    "function:novel-character-generator/tests/unit/test_structured_agent_runtime.py:test_approval_preflight_prevents_partial_side_effects": {
+      "name": "test_approval_preflight_prevents_partial_side_effects",
+      "type": "function",
+      "summary": "验证“test_approval_preflight_prevents_partial_side_effects”覆盖的业务契约、状态变化与异常边界。"
+    },
+    "function:novel-character-generator/tests/unit/test_structured_agent_runtime.py:test_runtime_returns_structured_cost_limit": {
+      "name": "test_runtime_returns_structured_cost_limit",
+      "type": "function",
+      "summary": "验证“test_runtime_returns_structured_cost_limit”覆盖的业务契约、状态变化与异常边界。"
+    },
+    "class:novel-character-generator/tests/unit/test_structured_agent_runtime.py:EchoInput": {
+      "name": "EchoInput",
+      "type": "class",
+      "summary": "结构化运行时测试使用的回显工具输入数据模型。"
+    },
+    "class:novel-character-generator/tests/unit/test_structured_agent_runtime.py:EchoOutput": {
+      "name": "EchoOutput",
+      "type": "class",
+      "summary": "结构化运行时测试使用的回显工具输出数据模型。"
+    },
+    "class:novel-character-generator/tests/unit/test_structured_agent_runtime.py:FinalOutput": {
+      "name": "FinalOutput",
+      "type": "class",
+      "summary": "结构化运行时测试中用于校验最终回答格式的数据模型。"
+    },
+    "class:novel-character-generator/tests/unit/test_structured_agent_runtime.py:SequenceModel": {
+      "name": "SequenceModel",
+      "type": "class",
+      "summary": "按预设顺序返回模型轮次的测试替身，用于可重复验证智能体运行时。"
+    },
+    "document:novel-character-generator/README.md": {
+      "name": "README.md",
+      "type": "document",
+      "summary": "项目入口文档，说明已跑通的文本分析主链、尚未实现的图像能力、本地启动方式、Worker 进程边界与常用质量检查。"
+    },
+    "document:novel-character-generator/docs/00-code-navigation.md": {
+      "name": "00-code-navigation.md",
+      "type": "document",
+      "summary": "为开发者提供从 HTTP 请求到路由、应用服务、领域、基础设施和 Worker 的代码导航，并列出常见功能的实现与测试入口。"
+    },
+    "document:novel-character-generator/docs/00-current-status.md": {
+      "name": "00-current-status.md",
+      "type": "document",
+      "summary": "按源码、API、Worker 和测试证据列出功能实现状态，明确现有闭环、设计缺口与建议的下一阶段优先级。"
+    },
+    "document:novel-character-generator/docs/00-start-here.md": {
+      "name": "00-start-here.md",
+      "type": "document",
+      "summary": "面向新读者说明小说到角色视觉档案的完整业务目标、当前可运行主链、核心领域概念与推荐阅读路径。"
+    },
+    "document:novel-character-generator/docs/01-project-overview-and-principles.md": {
+      "name": "01-project-overview-and-principles.md",
+      "type": "document",
+      "summary": "定义项目的阶段范围与设计原则，包括证据优先、长任务解耦、可追溯性、有界自治和视觉防漂移。"
+    },
+    "document:novel-character-generator/docs/02-architecture-and-tech-stack.md": {
+      "name": "02-architecture-and-tech-stack.md",
+      "type": "document",
+      "summary": "描述 FastAPI、SQLAlchemy、独立 Worker、Provider 与 AgentRuntime 的逻辑架构、运行时拓扑、处理流程和技术选型。"
+    },
+    "document:novel-character-generator/docs/03-domain-data-model.md": {
+      "name": "03-domain-data-model.md",
+      "type": "document",
+      "summary": "定义角色、证据观察、时间线、外观状态、渲染档案及可恢复任务状态机等核心领域模型和数据库设计。"
+    },
+    "document:novel-character-generator/docs/04-text-understanding-pipeline.md": {
+      "name": "04-text-understanding-pipeline.md",
+      "type": "document",
+      "summary": "规定小说导入、分块、批量抽取、实体链接、时间定位和增量处理的文本理解流水线。"
+    },
+    "document:novel-character-generator/docs/05-character-render-profile.md": {
+      "name": "05-character-render-profile.md",
+      "type": "document",
+      "summary": "说明角色渲染档案的聚合优先级、冲突处置、目标时点快照和阶段形象集的决策规则。"
+    },
+    "document:novel-character-generator/docs/06-image-generation-and-drift-control.md": {
+      "name": "06-image-generation-and-drift-control.md",
+      "type": "document",
+      "summary": "规划图像工作流、质量评测、生成上下文冻结与视觉漂移审计、门禁和重生成闭环。"
+    },
+    "document:novel-character-generator/docs/07-agent-architecture.md": {
+      "name": "07-agent-architecture.md",
+      "type": "document",
+      "summary": "定义专项 Agent 的职责边界、注册与版本、强类型工具契约、上下文工程、模型路由、审批和轨迹评测。"
+    },
+    "document:novel-character-generator/docs/08-task-recovery.md": {
+      "name": "08-task-recovery.md",
+      "type": "document",
+      "summary": "规定以 PipelineRun、PipelineStep 和外部操作账本为核心的持久化任务执行模型，覆盖租约、围栏令牌、取消、重试与未知提交的对账边界。文档同时说明一期单 Worker 约束及二期迁移至分布式队列的条件。"
+    },
+    "document:novel-character-generator/docs/09-api-specification.md": {
+      "name": "09-api-specification.md",
+      "type": "document",
+      "summary": "定义 FastAPI 服务的统一 API 契约，并逐项区分当前已注册端点、尚未实现的图像生成目标接口和二期扩展边界。内容涵盖异步任务响应、幂等键、并发更新、认证及运行时能力声明。"
+    },
+    "document:novel-character-generator/docs/10-provider-and-workflow-versioning.md": {
+      "name": "10-provider-and-workflow-versioning.md",
+      "type": "document",
+      "summary": "描述 LLM 与图像 Provider 的端口契约、异步外部任务恢复，以及 Prompt、AgentSpec、ToolSpec 和工作流配置的版本治理方式。明确将多轮编排、权限和预算收敛至 AgentRuntime，并规定能力探测与可降级原则。"
+    },
+    "document:novel-character-generator/docs/11-security-and-data-governance.md": {
+      "name": "11-security-and-data-governance.md",
+      "type": "document",
+      "summary": "列出当前 Settings 与环境变量真正支持的配置，并将尚未实现的目标配置单独隔离。文档规定文件路径防护、敏感数据最小化、日志脱敏、API Key 与 Agent 工具权限边界。"
+    },
+    "document:novel-character-generator/docs/12-evaluation-and-acceptance.md": {
+      "name": "12-evaluation-and-acceptance.md",
+      "type": "document",
+      "summary": "建立从单元、集成、Provider、Agent、图像到恢复与安全测试的评测分层，并定义 EvalCase、EvalRun、数据隔离、指标和人工盲评方法。文档给出一期发布门禁、执行频率及失败样本回流规则。"
+    },
+    "document:novel-character-generator/docs/13-observability-logging-and-cost.md": {
+      "name": "13-observability-logging-and-cost.md",
+      "type": "document",
+      "summary": "定义 OpenTelemetry 运行时观测与 Run/Step 业务追溯并行的双层模型，规定关联字段、关键业务日志、检查规则、指标、告警、采样和成本核算。强调遥测不可阻断业务流程，且正文、密钥和敏感产物不得进入观测数据。"
+    },
+    "document:novel-character-generator/docs/14-roadmap.md": {
+      "name": "14-roadmap.md",
+      "type": "document",
+      "summary": "按 PoC、工程基础、文本 Agent、图像生成和安全验收划分一期实施阶段，并列出每阶段的交付物与时间预估。后续章节规划生产化、批量图像、LoRA、3D、知识图谱及高级 Agent 互操作能力。"
+    },
+    "document:novel-character-generator/docs/15-risks-decisions-and-references.md": {
+      "name": "15-risks-decisions-and-references.md",
+      "type": "document",
+      "summary": "汇总模型、任务、数据、安全、遥测和 Agent 风险的表现形式及降级策略，并记录一期架构的关键决策依据。附录提供用于实现和评审的外部规范与技术参考。"
+    },
+    "document:novel-character-generator/docs/README.md": {
+      "name": "README.md",
+      "type": "document",
+      "summary": "作为技术设计文档的总索引，按首次阅读、主题设计与实施交付三类内容组织阅读入口。文档还提供按角色和任务划分的推荐阅读路径，以及跨文档维护和状态同步约定。"
+    },
+    "document:novel-character-generator/docs/16-local-development-and-runbook.md": {
+      "name": "16-local-development-and-runbook.md",
+      "type": "document",
+      "summary": "说明本地 FastAPI 与单写 Worker 的安装、启动、迁移、验证、备份恢复及排障流程，并界定一期 SQLite 部署约束。"
+    },
+    "document:novel-character-generator/docs/17-appearance-aggregation-contract.md": {
+      "name": "17-appearance-aggregation-contract.md",
+      "type": "document",
+      "summary": "定义从提取观察到外观状态、冲突和渲染档案草稿的确定性聚合闭环，包括版本、幂等、事务、审核和验收要求。"
+    },
+    "document:novel-character-generator/docs/18-image-generation-implementation-contract.md": {
+      "name": "18-image-generation-implementation-contract.md",
+      "type": "document",
+      "summary": "定义尚未实现的图像 Run API、冻结生成上下文、Provider 外部操作、漂移审计、门禁及人工锁定的端到端契约。"
+    },
+    "document:novel-character-generator/docs/19-feature-traceability-matrix.md": {
+      "name": "19-feature-traceability-matrix.md",
+      "type": "document",
+      "summary": "以功能、代码、Worker、测试和日志维度记录当前能力状态，并定义后续纵向切片的验收与状态升级规则。"
+    },
+    "document:novel-character-generator/docs/20-api-cookbook-and-error-catalog.md": {
+      "name": "20-api-cookbook-and-error-catalog.md",
+      "type": "document",
+      "summary": "提供已注册 API 的调用示例、认证与并发约定、SSE 续传、错误信封和错误码目录，同时明确未上线图像接口。"
+    },
+    "file:novel-character-generator/src/novel_character_generator/api/app.py": {
+      "name": "app.py",
+      "type": "file",
+      "summary": "创建 FastAPI 应用，装配错误处理、静态工作台、指标中间件、鉴权依赖及各领域路由，并在生命周期结束时释放数据库引擎。"
+    },
+    "file:novel-character-generator/src/novel_character_generator/api/routes/ui.py": {
+      "name": "ui.py",
+      "type": "file",
+      "summary": "提供无需 API 鉴权的根路径重定向和工作台 HTML 壳路由，并暴露静态资源目录位置。"
+    },
+    "file:novel-character-generator/src/novel_character_generator/web/app.css": {
+      "name": "app.css",
+      "type": "file",
+      "summary": "定义角色造像工作台的响应式视觉样式，包括侧栏、任务步骤、角色详情、图像生成区和状态反馈。"
+    },
+    "file:novel-character-generator/src/novel_character_generator/web/app.js": {
+      "name": "app.js",
+      "type": "file",
+      "summary": "实现轻量工作台的浏览器状态、API 调用、小说上传、文本 Run 轮询、角色证据展示及受 capability 控制的图像任务请求。"
+    },
+    "file:novel-character-generator/src/novel_character_generator/web/favicon.svg": {
+      "name": "favicon.svg",
+      "type": "file",
+      "summary": "为角色造像工作台提供浏览器标签页图标的矢量资源。"
+    },
+    "file:novel-character-generator/src/novel_character_generator/web/index.html": {
+      "name": "index.html",
+      "type": "file",
+      "summary": "定义中文角色造像工作台的页面结构，涵盖连接、上传、分析、角色证据和 capability 门控的图像生成界面。"
+    },
+    "file:novel-character-generator/tests/integration/test_health.py": {
+      "name": "test_health.py",
+      "type": "file",
+      "summary": "通过 TestClient 覆盖健康检查、免鉴权 UI 静态资源、统一校验错误、OpenAPI 路由、API Key 权限、能力声明和指标端点。"
+    },
+    "document:novel_character_generator_tech_doc.md": {
+      "name": "novel_character_generator_tech_doc.md",
+      "type": "document",
+      "summary": "作为已拆分技术设计文档的兼容入口，指向主题文档索引并声明其为项目设计的唯一正文来源。"
+    },
+    "function:novel-character-generator/src/novel_character_generator/api/app.py:lifespan": {
+      "name": "lifespan",
+      "type": "function",
+      "summary": "在应用关闭阶段异步释放数据库引擎。"
+    },
+    "function:novel-character-generator/src/novel_character_generator/api/app.py:create_app": {
+      "name": "create_app",
+      "type": "function",
+      "summary": "构造并配置 FastAPI 实例，注册中间件、静态资源、指标端点、鉴权和业务路由。"
+    },
+    "function:novel-character-generator/src/novel_character_generator/api/routes/ui.py:ui_redirect": {
+      "name": "ui_redirect",
+      "type": "function",
+      "summary": "将根路径请求重定向到工作台入口。"
+    },
+    "function:novel-character-generator/src/novel_character_generator/api/routes/ui.py:ui_shell": {
+      "name": "ui_shell",
+      "type": "function",
+      "summary": "以禁用缓存的 HTML 响应返回工作台页面壳。"
+    },
+    "function:novel-character-generator/src/novel_character_generator/web/app.js:humanStatus": {
+      "name": "humanStatus",
+      "type": "function",
+      "summary": "将后端任务状态转换为面向用户的中文状态文案。"
+    },
+    "function:novel-character-generator/src/novel_character_generator/web/app.js:api": {
+      "name": "api",
+      "type": "function",
+      "summary": "封装同源 API 请求、API Key 传递、JSON 序列化和错误响应转换。"
+    },
+    "function:novel-character-generator/src/novel_character_generator/web/app.js:loadCapabilities": {
+      "name": "loadCapabilities",
+      "type": "function",
+      "summary": "读取服务端能力声明并更新连接状态、能力标签和图像生成功能门控。"
+    },
+    "function:novel-character-generator/src/novel_character_generator/web/app.js:chooseFile": {
+      "name": "chooseFile",
+      "type": "function",
+      "summary": "校验并选定待上传的 TXT 文件，刷新文件摘要和上传操作状态。"
+    },
+    "function:novel-character-generator/src/novel_character_generator/web/app.js:uploadNovel": {
+      "name": "uploadNovel",
+      "type": "function",
+      "summary": "以 multipart 请求上传小说，保存返回的小说状态并开放文本分析操作。"
+    },
+    "function:novel-character-generator/src/novel_character_generator/web/app.js:renderNovelSummary": {
+      "name": "renderNovelSummary",
+      "type": "function",
+      "summary": "渲染当前小说的名称、标识和上传状态摘要。"
+    },
+    "function:novel-character-generator/src/novel_character_generator/web/app.js:startAnalysis": {
+      "name": "startAnalysis",
+      "type": "function",
+      "summary": "为当前小说创建文本分析 Run，并启动状态轮询与进度展示。"
+    },
+    "function:novel-character-generator/src/novel_character_generator/web/app.js:refreshRun": {
+      "name": "refreshRun",
+      "type": "function",
+      "summary": "查询当前 Run 的最新状态并刷新任务进度界面。"
+    },
+    "function:novel-character-generator/src/novel_character_generator/web/app.js:renderRun": {
+      "name": "renderRun",
+      "type": "function",
+      "summary": "根据 Run 及其步骤渲染进度、状态和可用操作，并在成功后推进角色加载流程。"
+    },
+    "function:novel-character-generator/src/novel_character_generator/web/app.js:selectCharacter": {
+      "name": "selectCharacter",
+      "type": "function",
+      "summary": "加载选中角色的观察、神情、阶段和冲突数据，并同步图像生成所需状态。"
+    },
+    "function:novel-character-generator/src/novel_character_generator/web/app.js:renderCharacterDetail": {
+      "name": "renderCharacterDetail",
+      "type": "function",
+      "summary": "渲染角色概要、外观事实、原文证据、置信度和开放冲突计数。"
+    },
+    "function:novel-character-generator/src/novel_character_generator/web/app.js:updateGenerationAvailability": {
+      "name": "updateGenerationAvailability",
+      "type": "function",
+      "summary": "依据 capability、所选角色和时间线状态决定图像生成界面的提示和按钮可用性。"
+    },
+    "function:novel-character-generator/src/novel_character_generator/web/app.js:generateImages": {
+      "name": "generateImages",
+      "type": "function",
+      "summary": "组装目标时间线、阶段、候选数和预算，带幂等键请求目标图像 Run 接口并展示排队状态。"
+    },
+    "function:novel-character-generator/src/novel_character_generator/web/app.js:resetPage": {
+      "name": "resetPage",
+      "type": "function",
+      "summary": "停止轮询、清空工作台内存状态并刷新页面恢复初始界面。"
+    },
+    "function:novel-character-generator/src/novel_character_generator/web/app.js:bindEvents": {
+      "name": "bindEvents",
+      "type": "function",
+      "summary": "绑定连接、文件拖放、上传、分析、角色选择、图像请求和重置等浏览器交互事件。"
+    },
+    "function:novel-character-generator/tests/integration/test_health.py:test_health_endpoints": {
+      "name": "test_health_endpoints",
+      "type": "function",
+      "summary": "验证存活和就绪健康检查端点均可成功响应。"
+    },
+    "function:novel-character-generator/tests/integration/test_health.py:test_ui_shell_and_static_assets_are_served_without_api_auth": {
+      "name": "test_ui_shell_and_static_assets_are_served_without_api_auth",
+      "type": "function",
+      "summary": "验证工作台页面、样式、脚本和图标无需 API Key 即可访问且 OpenAPI 不暴露 UI 路由。"
+    },
+    "function:novel-character-generator/tests/integration/test_health.py:test_validation_errors_use_stable_envelope": {
+      "name": "test_validation_errors_use_stable_envelope",
+      "type": "function",
+      "summary": "验证请求校验失败采用稳定的错误信封和错误码。"
+    },
+    "function:novel-character-generator/tests/integration/test_health.py:test_openapi_exposes_documented_phase_one_routes": {
+      "name": "test_openapi_exposes_documented_phase_one_routes",
+      "type": "function",
+      "summary": "验证 OpenAPI 暴露一期已文档化业务路由且不含尚未上线的图像接口。"
+    },
+    "function:novel-character-generator/tests/integration/test_health.py:test_api_key_roles_capabilities_and_metrics": {
+      "name": "test_api_key_roles_capabilities_and_metrics",
+      "type": "function",
+      "summary": "验证用户与管理员 Key 的角色边界、capability 响应和指标端点权限。"
+    }
+  },
+  "totalNodes": 502,
+  "totalEdges": 951
+}

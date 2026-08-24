@@ -1,0 +1,2576 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 13,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "novel-character-generator/docs/16-local-development-and-runbook.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 198,
+      "nonEmptyLines": 144,
+      "sections": [
+        {
+          "heading": "本地开发、部署与运维手册",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "1. 运行拓扑",
+          "level": 2,
+          "line": 9
+        },
+        {
+          "heading": "2. 首次安装",
+          "level": 2,
+          "line": 23
+        },
+        {
+          "heading": "3. 启动与停止",
+          "level": 2,
+          "line": 50
+        },
+        {
+          "heading": "4. 最小烟雾测试",
+          "level": 2,
+          "line": 87
+        },
+        {
+          "heading": "5. 数据库迁移",
+          "level": 2,
+          "line": 115
+        },
+        {
+          "heading": "6. 验证顺序",
+          "level": 2,
+          "line": 131
+        },
+        {
+          "heading": "7. 备份与恢复",
+          "level": 2,
+          "line": 150
+        },
+        {
+          "heading": "8. 故障排查",
+          "level": 2,
+          "line": 169
+        },
+        {
+          "heading": "9. 发布前检查",
+          "level": 2,
+          "line": 185
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 10
+      }
+    },
+    {
+      "path": "novel-character-generator/docs/17-appearance-aggregation-contract.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 203,
+      "nonEmptyLines": 149,
+      "sections": [
+        {
+          "heading": "外观状态聚合实现契约",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "1. 要解决的问题",
+          "level": 2,
+          "line": 9
+        },
+        {
+          "heading": "2. Pipeline 接入",
+          "level": 2,
+          "line": 27
+        },
+        {
+          "heading": "3. 输入选择规则",
+          "level": 2,
+          "line": 47
+        },
+        {
+          "heading": "4. 分层与作用域",
+          "level": 2,
+          "line": 60
+        },
+        {
+          "heading": "5. 字段合并算法",
+          "level": 2,
+          "line": 74
+        },
+        {
+          "heading": "6. 幂等与版本",
+          "level": 2,
+          "line": 88
+        },
+        {
+          "heading": "7. 事务边界",
+          "level": 2,
+          "line": 112
+        },
+        {
+          "heading": "8. 人工审核状态机",
+          "level": 2,
+          "line": 125
+        },
+        {
+          "heading": "9. API 与代码落点",
+          "level": 2,
+          "line": 140
+        },
+        {
+          "heading": "10. 必打日志",
+          "level": 2,
+          "line": 161
+        },
+        {
+          "heading": "11. 验收测试",
+          "level": 2,
+          "line": 175
+        },
+        {
+          "heading": "12. 完成定义",
+          "level": 2,
+          "line": 190
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 13
+      }
+    },
+    {
+      "path": "novel-character-generator/docs/18-image-generation-implementation-contract.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 215,
+      "nonEmptyLines": 165,
+      "sections": [
+        {
+          "heading": "图像生成端到端实现契约",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "1. 前置条件",
+          "level": 2,
+          "line": 9
+        },
+        {
+          "heading": "2. API 契约",
+          "level": 2,
+          "line": 23
+        },
+        {
+          "heading": "3. Step 图",
+          "level": 2,
+          "line": 61
+        },
+        {
+          "heading": "4. 确定性代码与 Agent 边界",
+          "level": 2,
+          "line": 81
+        },
+        {
+          "heading": "5. GenerationContext 冻结",
+          "level": 2,
+          "line": 95
+        },
+        {
+          "heading": "6. Provider 端口",
+          "level": 2,
+          "line": 108
+        },
+        {
+          "heading": "7. 外部提交与事务边界",
+          "level": 2,
+          "line": 121
+        },
+        {
+          "heading": "8. 错误分类与恢复",
+          "level": 2,
+          "line": 140
+        },
+        {
+          "heading": "9. 候选、审计与锁定",
+          "level": 2,
+          "line": 153
+        },
+        {
+          "heading": "10. 关键日志",
+          "level": 2,
+          "line": 169
+        },
+        {
+          "heading": "11. 实现顺序",
+          "level": 2,
+          "line": 186
+        },
+        {
+          "heading": "12. 完成定义",
+          "level": 2,
+          "line": 200
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 13
+      }
+    },
+    {
+      "path": "novel-character-generator/docs/19-feature-traceability-matrix.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 73,
+      "nonEmptyLines": 59,
+      "sections": [
+        {
+          "heading": "功能—代码—测试追踪矩阵",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "1. 用法",
+          "level": 2,
+          "line": 7
+        },
+        {
+          "heading": "2. 当前能力矩阵",
+          "level": 2,
+          "line": 21
+        },
+        {
+          "heading": "3. 下一实现批次的纵向切片",
+          "level": 2,
+          "line": 49
+        },
+        {
+          "heading": "4. 状态升级规则",
+          "level": 2,
+          "line": 62
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 5
+      }
+    },
+    {
+      "path": "novel-character-generator/docs/20-api-cookbook-and-error-catalog.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 267,
+      "nonEmptyLines": 197,
+      "sections": [
+        {
+          "heading": "API 调用手册与错误目录",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "1. 基础约定",
+          "level": 2,
+          "line": 9
+        },
+        {
+          "heading": "2. 错误信封",
+          "level": 2,
+          "line": 33
+        },
+        {
+          "heading": "3. 上传小说",
+          "level": 2,
+          "line": 55
+        },
+        {
+          "heading": "4. 创建并处理文本 Run",
+          "level": 2,
+          "line": 89
+        },
+        {
+          "heading": "5. SSE 续传",
+          "level": 2,
+          "line": 125
+        },
+        {
+          "heading": "6. 取消与重试",
+          "level": 2,
+          "line": 150
+        },
+        {
+          "heading": "7. 人物与证据查询",
+          "level": 2,
+          "line": 159
+        },
+        {
+          "heading": "8. ETag、If-Match 与档案更新",
+          "level": 2,
+          "line": 173
+        },
+        {
+          "heading": "9. 目标时点 Snapshot",
+          "level": 2,
+          "line": 215
+        },
+        {
+          "heading": "10. 常见错误目录",
+          "level": 2,
+          "line": 227
+        },
+        {
+          "heading": "11. 当前不存在的接口",
+          "level": 2,
+          "line": 252
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 12
+      }
+    },
+    {
+      "path": "novel-character-generator/src/novel_character_generator/api/app.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 56,
+      "nonEmptyLines": 48,
+      "functions": [
+        {
+          "name": "lifespan",
+          "startLine": 26,
+          "endLine": 28,
+          "params": [
+            "_"
+          ]
+        },
+        {
+          "name": "create_app",
+          "startLine": 31,
+          "endLine": 53,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "lifespan",
+          "line": 25,
+          "isDefault": false
+        },
+        {
+          "name": "create_app",
+          "line": 31,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "lifespan",
+          "callee": "dispose_engine",
+          "lineNumber": 28
+        },
+        {
+          "caller": "create_app",
+          "callee": "FastAPI",
+          "lineNumber": 32
+        },
+        {
+          "caller": "create_app",
+          "callee": "configure_error_handling",
+          "lineNumber": 33
+        },
+        {
+          "caller": "create_app",
+          "callee": "app.mount",
+          "lineNumber": 34
+        },
+        {
+          "caller": "create_app",
+          "callee": "StaticFiles",
+          "lineNumber": 34
+        },
+        {
+          "caller": "create_app",
+          "callee": "get_settings",
+          "lineNumber": 35
+        },
+        {
+          "caller": "create_app",
+          "callee": "app.add_middleware",
+          "lineNumber": 36
+        },
+        {
+          "caller": "create_app",
+          "callee": "app.add_api_route",
+          "lineNumber": 37
+        },
+        {
+          "caller": "create_app",
+          "callee": "get_settings",
+          "lineNumber": 38
+        },
+        {
+          "caller": "create_app",
+          "callee": "Depends",
+          "lineNumber": 41
+        },
+        {
+          "caller": "create_app",
+          "callee": "app.include_router",
+          "lineNumber": 44
+        },
+        {
+          "caller": "create_app",
+          "callee": "app.include_router",
+          "lineNumber": 45
+        },
+        {
+          "caller": "create_app",
+          "callee": "Depends",
+          "lineNumber": 45
+        },
+        {
+          "caller": "create_app",
+          "callee": "app.include_router",
+          "lineNumber": 46
+        },
+        {
+          "caller": "create_app",
+          "callee": "app.include_router",
+          "lineNumber": 47
+        },
+        {
+          "caller": "create_app",
+          "callee": "app.include_router",
+          "lineNumber": 48
+        },
+        {
+          "caller": "create_app",
+          "callee": "app.include_router",
+          "lineNumber": 49
+        },
+        {
+          "caller": "create_app",
+          "callee": "app.include_router",
+          "lineNumber": 50
+        },
+        {
+          "caller": "create_app",
+          "callee": "app.include_router",
+          "lineNumber": 51
+        },
+        {
+          "caller": "create_app",
+          "callee": "app.include_router",
+          "lineNumber": 52
+        }
+      ],
+      "metrics": {
+        "importCount": 14,
+        "exportCount": 2,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "novel-character-generator/src/novel_character_generator/api/routes/ui.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 22,
+      "nonEmptyLines": 15,
+      "functions": [
+        {
+          "name": "ui_redirect",
+          "startLine": 12,
+          "endLine": 13,
+          "params": []
+        },
+        {
+          "name": "ui_shell",
+          "startLine": 17,
+          "endLine": 22,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "ui_redirect",
+          "line": 11,
+          "isDefault": false
+        },
+        {
+          "name": "ui_shell",
+          "line": 16,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "ui_redirect",
+          "callee": "RedirectResponse",
+          "lineNumber": 13
+        },
+        {
+          "caller": "ui_shell",
+          "callee": "FileResponse",
+          "lineNumber": 18
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 2,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "novel-character-generator/src/novel_character_generator/web/app.css",
+      "language": "css",
+      "fileCategory": "markup",
+      "totalLines": 295,
+      "nonEmptyLines": 275,
+      "metrics": {}
+    },
+    {
+      "path": "novel-character-generator/src/novel_character_generator/web/app.js",
+      "language": "javascript",
+      "fileCategory": "code",
+      "totalLines": 506,
+      "nonEmptyLines": 469,
+      "functions": [
+        {
+          "name": "$",
+          "startLine": 3,
+          "endLine": 3,
+          "params": [
+            "selector"
+          ]
+        },
+        {
+          "name": "$$",
+          "startLine": 4,
+          "endLine": 4,
+          "params": [
+            "selector"
+          ]
+        },
+        {
+          "name": "escapeHtml",
+          "startLine": 31,
+          "endLine": 38,
+          "params": [
+            "value"
+          ]
+        },
+        {
+          "name": "shortId",
+          "startLine": 40,
+          "endLine": 43,
+          "params": [
+            "value"
+          ]
+        },
+        {
+          "name": "formatBytes",
+          "startLine": 45,
+          "endLine": 49,
+          "params": [
+            "bytes"
+          ]
+        },
+        {
+          "name": "humanStatus",
+          "startLine": 51,
+          "endLine": 68,
+          "params": [
+            "value"
+          ]
+        },
+        {
+          "name": "toast",
+          "startLine": 70,
+          "endLine": 76,
+          "params": [
+            "message"
+          ]
+        },
+        {
+          "name": "setBusy",
+          "startLine": 78,
+          "endLine": 82,
+          "params": [
+            "button",
+            "busy",
+            "busyLabel"
+          ]
+        },
+        {
+          "name": "api",
+          "startLine": 84,
+          "endLine": 101,
+          "params": [
+            "path"
+          ]
+        },
+        {
+          "name": "apiErrorMessage",
+          "startLine": 103,
+          "endLine": 111,
+          "params": [
+            "error"
+          ]
+        },
+        {
+          "name": "loadCapabilities",
+          "startLine": 113,
+          "endLine": 149,
+          "params": []
+        },
+        {
+          "name": "chooseFile",
+          "startLine": 151,
+          "endLine": 164,
+          "params": [
+            "file"
+          ]
+        },
+        {
+          "name": "removeFile",
+          "startLine": 166,
+          "endLine": 173,
+          "params": []
+        },
+        {
+          "name": "uploadNovel",
+          "startLine": 175,
+          "endLine": 197,
+          "params": []
+        },
+        {
+          "name": "renderNovelSummary",
+          "startLine": 199,
+          "endLine": 210,
+          "params": []
+        },
+        {
+          "name": "startAnalysis",
+          "startLine": 212,
+          "endLine": 229,
+          "params": []
+        },
+        {
+          "name": "refreshRun",
+          "startLine": 231,
+          "endLine": 244,
+          "params": []
+        },
+        {
+          "name": "beginPolling",
+          "startLine": 246,
+          "endLine": 250,
+          "params": []
+        },
+        {
+          "name": "stopPolling",
+          "startLine": 252,
+          "endLine": 255,
+          "params": []
+        },
+        {
+          "name": "renderRun",
+          "startLine": 257,
+          "endLine": 279,
+          "params": []
+        },
+        {
+          "name": "afterAnalysisSucceeded",
+          "startLine": 281,
+          "endLine": 286,
+          "params": []
+        },
+        {
+          "name": "loadCharacters",
+          "startLine": 288,
+          "endLine": 294,
+          "params": []
+        },
+        {
+          "name": "renderCharacterList",
+          "startLine": 296,
+          "endLine": 309,
+          "params": []
+        },
+        {
+          "name": "selectCharacter",
+          "startLine": 311,
+          "endLine": 333,
+          "params": [
+            "characterId"
+          ]
+        },
+        {
+          "name": "renderCharacterDetail",
+          "startLine": 335,
+          "endLine": 361,
+          "params": []
+        },
+        {
+          "name": "loadTimelines",
+          "startLine": 363,
+          "endLine": 371,
+          "params": []
+        },
+        {
+          "name": "renderGenerationCharacterOptions",
+          "startLine": 373,
+          "endLine": 379,
+          "params": []
+        },
+        {
+          "name": "renderStageOptions",
+          "startLine": 381,
+          "endLine": 386,
+          "params": []
+        },
+        {
+          "name": "updateGenerationAvailability",
+          "startLine": 388,
+          "endLine": 400,
+          "params": []
+        },
+        {
+          "name": "generateImages",
+          "startLine": 402,
+          "endLine": 432,
+          "params": [
+            "event"
+          ]
+        },
+        {
+          "name": "renderImageRunPending",
+          "startLine": 434,
+          "endLine": 441,
+          "params": [
+            "imageRun"
+          ]
+        },
+        {
+          "name": "setStage",
+          "startLine": 443,
+          "endLine": 450,
+          "params": [
+            "stage"
+          ]
+        },
+        {
+          "name": "resetPage",
+          "startLine": 452,
+          "endLine": 462,
+          "params": []
+        },
+        {
+          "name": "bindEvents",
+          "startLine": 464,
+          "endLine": 501,
+          "params": []
+        }
+      ],
+      "classes": [
+        {
+          "name": "ApiError",
+          "startLine": 23,
+          "endLine": 29,
+          "methods": [
+            "constructor"
+          ],
+          "properties": []
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "$",
+          "callee": "document.querySelector",
+          "lineNumber": 3
+        },
+        {
+          "caller": "$$",
+          "callee": "document.querySelectorAll",
+          "lineNumber": 4
+        },
+        {
+          "caller": "constructor",
+          "callee": "super",
+          "lineNumber": 25
+        },
+        {
+          "caller": "escapeHtml",
+          "callee": "String(value ?? \"\")\n    .replaceAll(\"&\", \"&amp;\")\n    .replaceAll(\"<\", \"&lt;\")\n    .replaceAll(\">\", \"&gt;\")\n    .replaceAll('\"', \"&quot;\")\n    .replaceAll",
+          "lineNumber": 32
+        },
+        {
+          "caller": "escapeHtml",
+          "callee": "String(value ?? \"\")\n    .replaceAll(\"&\", \"&amp;\")\n    .replaceAll(\"<\", \"&lt;\")\n    .replaceAll(\">\", \"&gt;\")\n    .replaceAll",
+          "lineNumber": 32
+        },
+        {
+          "caller": "escapeHtml",
+          "callee": "String(value ?? \"\")\n    .replaceAll(\"&\", \"&amp;\")\n    .replaceAll(\"<\", \"&lt;\")\n    .replaceAll",
+          "lineNumber": 32
+        },
+        {
+          "caller": "escapeHtml",
+          "callee": "String(value ?? \"\")\n    .replaceAll(\"&\", \"&amp;\")\n    .replaceAll",
+          "lineNumber": 32
+        },
+        {
+          "caller": "escapeHtml",
+          "callee": "String(value ?? \"\")\n    .replaceAll",
+          "lineNumber": 32
+        },
+        {
+          "caller": "escapeHtml",
+          "callee": "String",
+          "lineNumber": 32
+        },
+        {
+          "caller": "shortId",
+          "callee": "String(value).slice",
+          "lineNumber": 42
+        },
+        {
+          "caller": "shortId",
+          "callee": "String",
+          "lineNumber": 42
+        },
+        {
+          "caller": "formatBytes",
+          "callee": "(bytes / 1024).toFixed",
+          "lineNumber": 47
+        },
+        {
+          "caller": "formatBytes",
+          "callee": "(bytes / 1024 / 1024).toFixed",
+          "lineNumber": 48
+        },
+        {
+          "caller": "toast",
+          "callee": "document.createElement",
+          "lineNumber": 71
+        },
+        {
+          "caller": "toast",
+          "callee": "$(\"#toast-region\").append",
+          "lineNumber": 74
+        },
+        {
+          "caller": "toast",
+          "callee": "$",
+          "lineNumber": 74
+        },
+        {
+          "caller": "toast",
+          "callee": "window.setTimeout",
+          "lineNumber": 75
+        },
+        {
+          "caller": "toast",
+          "callee": "item.remove",
+          "lineNumber": 75
+        },
+        {
+          "caller": "api",
+          "callee": "headers.set",
+          "lineNumber": 86
+        },
+        {
+          "caller": "api",
+          "callee": "headers.has",
+          "lineNumber": 87
+        },
+        {
+          "caller": "api",
+          "callee": "headers.set",
+          "lineNumber": 88
+        },
+        {
+          "caller": "api",
+          "callee": "fetch",
+          "lineNumber": 90
+        },
+        {
+          "caller": "api",
+          "callee": "response.headers.get",
+          "lineNumber": 91
+        },
+        {
+          "caller": "api",
+          "callee": "contentType.includes",
+          "lineNumber": 92
+        },
+        {
+          "caller": "api",
+          "callee": "response.json",
+          "lineNumber": 93
+        },
+        {
+          "caller": "api",
+          "callee": "response.text",
+          "lineNumber": 94
+        },
+        {
+          "caller": "loadCapabilities",
+          "callee": "$",
+          "lineNumber": 114
+        },
+        {
+          "caller": "loadCapabilities",
+          "callee": "$",
+          "lineNumber": 115
+        },
+        {
+          "caller": "loadCapabilities",
+          "callee": "banner.querySelector",
+          "lineNumber": 117
+        },
+        {
+          "caller": "loadCapabilities",
+          "callee": "banner.querySelector",
+          "lineNumber": 118
+        },
+        {
+          "caller": "loadCapabilities",
+          "callee": "api",
+          "lineNumber": 120
+        },
+        {
+          "caller": "loadCapabilities",
+          "callee": "banner.querySelector",
+          "lineNumber": 123
+        },
+        {
+          "caller": "loadCapabilities",
+          "callee": "banner.querySelector",
+          "lineNumber": 124
+        },
+        {
+          "caller": "loadCapabilities",
+          "callee": "$",
+          "lineNumber": 127
+        },
+        {
+          "caller": "loadCapabilities",
+          "callee": "[\n      [\"TXT\", capabilities.source_formats?.includes(\"txt\")],\n      [\"角色提取\", capabilities.extraction],\n      [\"任务恢复\", capabilities.run_events_sse],\n      [\"人工审核\", capabilities.human_approvals],\n      [\"2D 图像\", capabilities.image_generation],\n    ].map(([label, enabled]) => `<span class=\"capability-chip ${enabled ? \"\" : \"off\"}\">${escapeHtml(label)} · ${enabled ? \"ON\" : \"OFF\"}</span>`).join",
+          "lineNumber": 127
+        },
+        {
+          "caller": "loadCapabilities",
+          "callee": "[\n      [\"TXT\", capabilities.source_formats?.includes(\"txt\")],\n      [\"角色提取\", capabilities.extraction],\n      [\"任务恢复\", capabilities.run_events_sse],\n      [\"人工审核\", capabilities.human_approvals],\n      [\"2D 图像\", capabilities.image_generation],\n    ].map",
+          "lineNumber": 127
+        },
+        {
+          "caller": "loadCapabilities",
+          "callee": "capabilities.source_formats?.includes",
+          "lineNumber": 128
+        },
+        {
+          "caller": "loadCapabilities",
+          "callee": "escapeHtml",
+          "lineNumber": 133
+        },
+        {
+          "caller": "loadCapabilities",
+          "callee": "$",
+          "lineNumber": 135
+        },
+        {
+          "caller": "loadCapabilities",
+          "callee": "updateGenerationAvailability",
+          "lineNumber": 136
+        },
+        {
+          "caller": "loadCapabilities",
+          "callee": "banner.querySelector",
+          "lineNumber": 140
+        },
+        {
+          "caller": "loadCapabilities",
+          "callee": "banner.querySelector",
+          "lineNumber": 141
+        },
+        {
+          "caller": "loadCapabilities",
+          "callee": "apiErrorMessage",
+          "lineNumber": 143
+        },
+        {
+          "caller": "loadCapabilities",
+          "callee": "$",
+          "lineNumber": 144
+        },
+        {
+          "caller": "loadCapabilities",
+          "callee": "$",
+          "lineNumber": 146
+        },
+        {
+          "caller": "loadCapabilities",
+          "callee": "updateGenerationAvailability",
+          "lineNumber": 147
+        },
+        {
+          "caller": "chooseFile",
+          "callee": "file.name.toLowerCase().endsWith",
+          "lineNumber": 153
+        },
+        {
+          "caller": "chooseFile",
+          "callee": "file.name.toLowerCase",
+          "lineNumber": 153
+        },
+        {
+          "caller": "chooseFile",
+          "callee": "toast",
+          "lineNumber": 154
+        },
+        {
+          "caller": "chooseFile",
+          "callee": "$",
+          "lineNumber": 158
+        },
+        {
+          "caller": "chooseFile",
+          "callee": "$",
+          "lineNumber": 159
+        },
+        {
+          "caller": "chooseFile",
+          "callee": "formatBytes",
+          "lineNumber": 159
+        },
+        {
+          "caller": "chooseFile",
+          "callee": "$(\"#file-summary\").classList.remove",
+          "lineNumber": 160
+        },
+        {
+          "caller": "chooseFile",
+          "callee": "$",
+          "lineNumber": 160
+        },
+        {
+          "caller": "chooseFile",
+          "callee": "$",
+          "lineNumber": 161
+        },
+        {
+          "caller": "chooseFile",
+          "callee": "$",
+          "lineNumber": 162
+        },
+        {
+          "caller": "chooseFile",
+          "callee": "$",
+          "lineNumber": 163
+        },
+        {
+          "caller": "removeFile",
+          "callee": "$",
+          "lineNumber": 168
+        },
+        {
+          "caller": "removeFile",
+          "callee": "$(\"#file-summary\").classList.add",
+          "lineNumber": 169
+        },
+        {
+          "caller": "removeFile",
+          "callee": "$",
+          "lineNumber": 169
+        },
+        {
+          "caller": "removeFile",
+          "callee": "$",
+          "lineNumber": 170
+        },
+        {
+          "caller": "removeFile",
+          "callee": "$",
+          "lineNumber": 171
+        },
+        {
+          "caller": "removeFile",
+          "callee": "$",
+          "lineNumber": 172
+        },
+        {
+          "caller": "uploadNovel",
+          "callee": "$",
+          "lineNumber": 177
+        },
+        {
+          "caller": "uploadNovel",
+          "callee": "setBusy",
+          "lineNumber": 178
+        },
+        {
+          "caller": "uploadNovel",
+          "callee": "body.append",
+          "lineNumber": 180
+        },
+        {
+          "caller": "uploadNovel",
+          "callee": "api",
+          "lineNumber": 182
+        },
+        {
+          "caller": "uploadNovel",
+          "callee": "renderNovelSummary",
+          "lineNumber": 183
+        },
+        {
+          "caller": "uploadNovel",
+          "callee": "$",
+          "lineNumber": 184
+        },
+        {
+          "caller": "uploadNovel",
+          "callee": "$",
+          "lineNumber": 185
+        },
+        {
+          "caller": "uploadNovel",
+          "callee": "shortId",
+          "lineNumber": 185
+        },
+        {
+          "caller": "uploadNovel",
+          "callee": "$",
+          "lineNumber": 186
+        },
+        {
+          "caller": "uploadNovel",
+          "callee": "setStage",
+          "lineNumber": 187
+        },
+        {
+          "caller": "uploadNovel",
+          "callee": "toast",
+          "lineNumber": 188
+        },
+        {
+          "caller": "uploadNovel",
+          "callee": "$",
+          "lineNumber": 190
+        },
+        {
+          "caller": "uploadNovel",
+          "callee": "$(\"#upload-status\").classList.add",
+          "lineNumber": 191
+        },
+        {
+          "caller": "uploadNovel",
+          "callee": "$",
+          "lineNumber": 191
+        },
+        {
+          "caller": "uploadNovel",
+          "callee": "toast",
+          "lineNumber": 192
+        },
+        {
+          "caller": "uploadNovel",
+          "callee": "apiErrorMessage",
+          "lineNumber": 192
+        },
+        {
+          "caller": "uploadNovel",
+          "callee": "setBusy",
+          "lineNumber": 194
+        },
+        {
+          "caller": "renderNovelSummary",
+          "callee": "$",
+          "lineNumber": 200
+        },
+        {
+          "caller": "renderNovelSummary",
+          "callee": "summary.classList.remove",
+          "lineNumber": 202
+        },
+        {
+          "caller": "renderNovelSummary",
+          "callee": "escapeHtml",
+          "lineNumber": 206
+        },
+        {
+          "caller": "renderNovelSummary",
+          "callee": "escapeHtml",
+          "lineNumber": 207
+        },
+        {
+          "caller": "renderNovelSummary",
+          "callee": "humanStatus",
+          "lineNumber": 207
+        },
+        {
+          "caller": "renderNovelSummary",
+          "callee": "escapeHtml",
+          "lineNumber": 208
+        },
+        {
+          "caller": "startAnalysis",
+          "callee": "$",
+          "lineNumber": 214
+        },
+        {
+          "caller": "startAnalysis",
+          "callee": "setBusy",
+          "lineNumber": 215
+        },
+        {
+          "caller": "startAnalysis",
+          "callee": "api",
+          "lineNumber": 217
+        },
+        {
+          "caller": "startAnalysis",
+          "callee": "$",
+          "lineNumber": 221
+        },
+        {
+          "caller": "startAnalysis",
+          "callee": "renderRun",
+          "lineNumber": 222
+        },
+        {
+          "caller": "startAnalysis",
+          "callee": "beginPolling",
+          "lineNumber": 223
+        },
+        {
+          "caller": "startAnalysis",
+          "callee": "toast",
+          "lineNumber": 224
+        },
+        {
+          "caller": "startAnalysis",
+          "callee": "toast",
+          "lineNumber": 226
+        },
+        {
+          "caller": "startAnalysis",
+          "callee": "apiErrorMessage",
+          "lineNumber": 226
+        },
+        {
+          "caller": "startAnalysis",
+          "callee": "setBusy",
+          "lineNumber": 227
+        },
+        {
+          "caller": "refreshRun",
+          "callee": "api",
+          "lineNumber": 234
+        },
+        {
+          "caller": "refreshRun",
+          "callee": "renderRun",
+          "lineNumber": 235
+        },
+        {
+          "caller": "refreshRun",
+          "callee": "terminalRunStates.has",
+          "lineNumber": 236
+        },
+        {
+          "caller": "refreshRun",
+          "callee": "stopPolling",
+          "lineNumber": 237
+        },
+        {
+          "caller": "refreshRun",
+          "callee": "afterAnalysisSucceeded",
+          "lineNumber": 238
+        },
+        {
+          "caller": "refreshRun",
+          "callee": "stopPolling",
+          "lineNumber": 241
+        },
+        {
+          "caller": "refreshRun",
+          "callee": "toast",
+          "lineNumber": 242
+        },
+        {
+          "caller": "refreshRun",
+          "callee": "apiErrorMessage",
+          "lineNumber": 242
+        },
+        {
+          "caller": "beginPolling",
+          "callee": "stopPolling",
+          "lineNumber": 247
+        },
+        {
+          "caller": "beginPolling",
+          "callee": "refreshRun",
+          "lineNumber": 248
+        },
+        {
+          "caller": "beginPolling",
+          "callee": "window.setInterval",
+          "lineNumber": 249
+        },
+        {
+          "caller": "stopPolling",
+          "callee": "window.clearInterval",
+          "lineNumber": 253
+        },
+        {
+          "caller": "renderRun",
+          "callee": "steps.filter",
+          "lineNumber": 260
+        },
+        {
+          "caller": "renderRun",
+          "callee": "completedStepStates.has",
+          "lineNumber": 260
+        },
+        {
+          "caller": "renderRun",
+          "callee": "Math.max",
+          "lineNumber": 261
+        },
+        {
+          "caller": "renderRun",
+          "callee": "terminalRunStates.has",
+          "lineNumber": 262
+        },
+        {
+          "caller": "renderRun",
+          "callee": "Math.round",
+          "lineNumber": 263
+        },
+        {
+          "caller": "renderRun",
+          "callee": "$",
+          "lineNumber": 264
+        },
+        {
+          "caller": "renderRun",
+          "callee": "humanStatus",
+          "lineNumber": 265
+        },
+        {
+          "caller": "renderRun",
+          "callee": "$",
+          "lineNumber": 267
+        },
+        {
+          "caller": "renderRun",
+          "callee": "humanStatus",
+          "lineNumber": 267
+        },
+        {
+          "caller": "renderRun",
+          "callee": "$",
+          "lineNumber": 268
+        },
+        {
+          "caller": "renderRun",
+          "callee": "$",
+          "lineNumber": 269
+        },
+        {
+          "caller": "renderRun",
+          "callee": "$",
+          "lineNumber": 270
+        },
+        {
+          "caller": "renderRun",
+          "callee": "steps.map((step, index) => {\n        const className = completedStepStates.has(step.status) ? \"complete\" : runningStepStates.has(step.status) ? \"running\" : step.status === \"failed\" ? \"failed\" : \"\";\n        const icon = className === \"complete\" ? \"✓\" : className === \"failed\" ? \"!\" : index + 1;\n        return `<div class=\"run-step ${className}\"><span class=\"step-state\">${icon}</span><strong>${escapeHtml(step.step_key)}</strong><small>${escapeHtml(humanStatus(step.status))} · attempt ${escapeHtml(step.attempt)}</small></div>`;\n      }).join",
+          "lineNumber": 271
+        },
+        {
+          "caller": "renderRun",
+          "callee": "steps.map",
+          "lineNumber": 271
+        },
+        {
+          "caller": "renderRun",
+          "callee": "completedStepStates.has",
+          "lineNumber": 272
+        },
+        {
+          "caller": "renderRun",
+          "callee": "runningStepStates.has",
+          "lineNumber": 272
+        },
+        {
+          "caller": "renderRun",
+          "callee": "escapeHtml",
+          "lineNumber": 274
+        },
+        {
+          "caller": "renderRun",
+          "callee": "escapeHtml",
+          "lineNumber": 274
+        },
+        {
+          "caller": "renderRun",
+          "callee": "humanStatus",
+          "lineNumber": 274
+        },
+        {
+          "caller": "renderRun",
+          "callee": "escapeHtml",
+          "lineNumber": 274
+        },
+        {
+          "caller": "renderRun",
+          "callee": "$",
+          "lineNumber": 277
+        },
+        {
+          "caller": "renderRun",
+          "callee": "$",
+          "lineNumber": 278
+        },
+        {
+          "caller": "afterAnalysisSucceeded",
+          "callee": "Promise.all",
+          "lineNumber": 283
+        },
+        {
+          "caller": "afterAnalysisSucceeded",
+          "callee": "loadCharacters",
+          "lineNumber": 283
+        },
+        {
+          "caller": "afterAnalysisSucceeded",
+          "callee": "loadTimelines",
+          "lineNumber": 283
+        },
+        {
+          "caller": "afterAnalysisSucceeded",
+          "callee": "setStage",
+          "lineNumber": 284
+        },
+        {
+          "caller": "afterAnalysisSucceeded",
+          "callee": "toast",
+          "lineNumber": 285
+        },
+        {
+          "caller": "loadCharacters",
+          "callee": "api",
+          "lineNumber": 290
+        },
+        {
+          "caller": "loadCharacters",
+          "callee": "$",
+          "lineNumber": 291
+        },
+        {
+          "caller": "loadCharacters",
+          "callee": "renderCharacterList",
+          "lineNumber": 292
+        },
+        {
+          "caller": "loadCharacters",
+          "callee": "renderGenerationCharacterOptions",
+          "lineNumber": 293
+        },
+        {
+          "caller": "renderCharacterList",
+          "callee": "$",
+          "lineNumber": 297
+        },
+        {
+          "caller": "renderCharacterList",
+          "callee": "state.characters.map((character) => `\n    <button class=\"character-card\" type=\"button\" data-character-id=\"${escapeHtml(character.id)}\">\n      <span class=\"avatar\">${escapeHtml(character.canonical_name.slice(0, 1))}</span>\n      <span><strong>${escapeHtml(character.canonical_name)}</strong><small>${escapeHtml(humanStatus(character.status))} · revision ${escapeHtml(character.revision)}</small></span>\n      <span class=\"arrow\">›</span>\n    </button>`).join",
+          "lineNumber": 302
+        },
+        {
+          "caller": "renderCharacterList",
+          "callee": "state.characters.map",
+          "lineNumber": 302
+        },
+        {
+          "caller": "renderCharacterList",
+          "callee": "escapeHtml",
+          "lineNumber": 303
+        },
+        {
+          "caller": "renderCharacterList",
+          "callee": "escapeHtml",
+          "lineNumber": 304
+        },
+        {
+          "caller": "renderCharacterList",
+          "callee": "character.canonical_name.slice",
+          "lineNumber": 304
+        },
+        {
+          "caller": "renderCharacterList",
+          "callee": "escapeHtml",
+          "lineNumber": 305
+        },
+        {
+          "caller": "renderCharacterList",
+          "callee": "escapeHtml",
+          "lineNumber": 305
+        },
+        {
+          "caller": "renderCharacterList",
+          "callee": "humanStatus",
+          "lineNumber": 305
+        },
+        {
+          "caller": "renderCharacterList",
+          "callee": "escapeHtml",
+          "lineNumber": 305
+        },
+        {
+          "caller": "renderCharacterList",
+          "callee": "$$(\".character-card\").forEach",
+          "lineNumber": 308
+        },
+        {
+          "caller": "renderCharacterList",
+          "callee": "$$",
+          "lineNumber": 308
+        },
+        {
+          "caller": "renderCharacterList",
+          "callee": "button.addEventListener",
+          "lineNumber": 308
+        },
+        {
+          "caller": "renderCharacterList",
+          "callee": "selectCharacter",
+          "lineNumber": 308
+        },
+        {
+          "caller": "selectCharacter",
+          "callee": "state.characters.find",
+          "lineNumber": 312
+        },
+        {
+          "caller": "selectCharacter",
+          "callee": "$$(\".character-card\").forEach",
+          "lineNumber": 315
+        },
+        {
+          "caller": "selectCharacter",
+          "callee": "$$",
+          "lineNumber": 315
+        },
+        {
+          "caller": "selectCharacter",
+          "callee": "button.classList.toggle",
+          "lineNumber": 315
+        },
+        {
+          "caller": "selectCharacter",
+          "callee": "$",
+          "lineNumber": 316
+        },
+        {
+          "caller": "selectCharacter",
+          "callee": "$",
+          "lineNumber": 317
+        },
+        {
+          "caller": "selectCharacter",
+          "callee": "Promise.all",
+          "lineNumber": 319
+        },
+        {
+          "caller": "selectCharacter",
+          "callee": "api",
+          "lineNumber": 320
+        },
+        {
+          "caller": "selectCharacter",
+          "callee": "api",
+          "lineNumber": 321
+        },
+        {
+          "caller": "selectCharacter",
+          "callee": "api",
+          "lineNumber": 322
+        },
+        {
+          "caller": "selectCharacter",
+          "callee": "api",
+          "lineNumber": 323
+        },
+        {
+          "caller": "selectCharacter",
+          "callee": "renderCharacterDetail",
+          "lineNumber": 326
+        },
+        {
+          "caller": "selectCharacter",
+          "callee": "renderStageOptions",
+          "lineNumber": 327
+        },
+        {
+          "caller": "selectCharacter",
+          "callee": "setStage",
+          "lineNumber": 328
+        },
+        {
+          "caller": "selectCharacter",
+          "callee": "updateGenerationAvailability",
+          "lineNumber": 329
+        },
+        {
+          "caller": "selectCharacter",
+          "callee": "toast",
+          "lineNumber": 331
+        },
+        {
+          "caller": "selectCharacter",
+          "callee": "apiErrorMessage",
+          "lineNumber": 331
+        },
+        {
+          "caller": "renderCharacterDetail",
+          "callee": "details.observations.slice",
+          "lineNumber": 339
+        },
+        {
+          "caller": "renderCharacterDetail",
+          "callee": "facts.map((fact) => `\n        <div class=\"fact-card\">\n          <small>${escapeHtml(fact.field_path)}</small>\n          <strong>${escapeHtml(typeof fact.value === \"string\" ? fact.value : JSON.stringify(fact.value))}</strong>\n          <em title=\"${escapeHtml(fact.evidence_quote || \"无引用\")}\">“${escapeHtml(fact.evidence_quote || \"暂无原文引用\")}”</em>\n          <span class=\"confidence\">置信度 ${Math.round(Number(fact.confidence || 0) * 100)}%</span>\n        </div>`).join",
+          "lineNumber": 341
+        },
+        {
+          "caller": "renderCharacterDetail",
+          "callee": "facts.map",
+          "lineNumber": 341
+        },
+        {
+          "caller": "renderCharacterDetail",
+          "callee": "escapeHtml",
+          "lineNumber": 343
+        },
+        {
+          "caller": "renderCharacterDetail",
+          "callee": "escapeHtml",
+          "lineNumber": 344
+        },
+        {
+          "caller": "renderCharacterDetail",
+          "callee": "JSON.stringify",
+          "lineNumber": 344
+        },
+        {
+          "caller": "renderCharacterDetail",
+          "callee": "escapeHtml",
+          "lineNumber": 345
+        },
+        {
+          "caller": "renderCharacterDetail",
+          "callee": "escapeHtml",
+          "lineNumber": 345
+        },
+        {
+          "caller": "renderCharacterDetail",
+          "callee": "Math.round",
+          "lineNumber": 346
+        },
+        {
+          "caller": "renderCharacterDetail",
+          "callee": "Number",
+          "lineNumber": 346
+        },
+        {
+          "caller": "renderCharacterDetail",
+          "callee": "$",
+          "lineNumber": 349
+        },
+        {
+          "caller": "renderCharacterDetail",
+          "callee": "escapeHtml",
+          "lineNumber": 351
+        },
+        {
+          "caller": "renderCharacterDetail",
+          "callee": "character.canonical_name.slice",
+          "lineNumber": 351
+        },
+        {
+          "caller": "renderCharacterDetail",
+          "callee": "escapeHtml",
+          "lineNumber": 352
+        },
+        {
+          "caller": "renderCharacterDetail",
+          "callee": "escapeHtml",
+          "lineNumber": 352
+        },
+        {
+          "caller": "renderCharacterDetail",
+          "callee": "shortId",
+          "lineNumber": 352
+        },
+        {
+          "caller": "renderCharacterDetail",
+          "callee": "escapeHtml",
+          "lineNumber": 352
+        },
+        {
+          "caller": "renderCharacterDetail",
+          "callee": "details.conflicts.filter",
+          "lineNumber": 358
+        },
+        {
+          "caller": "loadTimelines",
+          "callee": "api",
+          "lineNumber": 365
+        },
+        {
+          "caller": "loadTimelines",
+          "callee": "$",
+          "lineNumber": 366
+        },
+        {
+          "caller": "loadTimelines",
+          "callee": "state.timelines.map((timeline) => `<option value=\"${escapeHtml(timeline.id)}\">${escapeHtml(timeline.name)} · ${escapeHtml(timeline.canonicality)}</option>`).join",
+          "lineNumber": 368
+        },
+        {
+          "caller": "loadTimelines",
+          "callee": "state.timelines.map",
+          "lineNumber": 368
+        },
+        {
+          "caller": "loadTimelines",
+          "callee": "escapeHtml",
+          "lineNumber": 368
+        },
+        {
+          "caller": "loadTimelines",
+          "callee": "escapeHtml",
+          "lineNumber": 368
+        },
+        {
+          "caller": "loadTimelines",
+          "callee": "escapeHtml",
+          "lineNumber": 368
+        },
+        {
+          "caller": "renderGenerationCharacterOptions",
+          "callee": "$",
+          "lineNumber": 374
+        },
+        {
+          "caller": "renderGenerationCharacterOptions",
+          "callee": "state.characters.map((character) => `<option value=\"${escapeHtml(character.id)}\">${escapeHtml(character.canonical_name)}</option>`).join",
+          "lineNumber": 376
+        },
+        {
+          "caller": "renderGenerationCharacterOptions",
+          "callee": "state.characters.map",
+          "lineNumber": 376
+        },
+        {
+          "caller": "renderGenerationCharacterOptions",
+          "callee": "escapeHtml",
+          "lineNumber": 376
+        },
+        {
+          "caller": "renderGenerationCharacterOptions",
+          "callee": "escapeHtml",
+          "lineNumber": 376
+        },
+        {
+          "caller": "renderStageOptions",
+          "callee": "$",
+          "lineNumber": 382
+        },
+        {
+          "caller": "renderStageOptions",
+          "callee": "states.map((item) => `<option value=\"${escapeHtml(item.label || item.id)}\">${escapeHtml(item.label || item.age_stage || shortId(item.id))}</option>`).join",
+          "lineNumber": 384
+        },
+        {
+          "caller": "renderStageOptions",
+          "callee": "states.map",
+          "lineNumber": 384
+        },
+        {
+          "caller": "renderStageOptions",
+          "callee": "escapeHtml",
+          "lineNumber": 384
+        },
+        {
+          "caller": "renderStageOptions",
+          "callee": "escapeHtml",
+          "lineNumber": 384
+        },
+        {
+          "caller": "renderStageOptions",
+          "callee": "shortId",
+          "lineNumber": 384
+        },
+        {
+          "caller": "updateGenerationAvailability",
+          "callee": "Boolean",
+          "lineNumber": 389
+        },
+        {
+          "caller": "updateGenerationAvailability",
+          "callee": "$",
+          "lineNumber": 391
+        },
+        {
+          "caller": "updateGenerationAvailability",
+          "callee": "$",
+          "lineNumber": 392
+        },
+        {
+          "caller": "updateGenerationAvailability",
+          "callee": "$",
+          "lineNumber": 399
+        },
+        {
+          "caller": "generateImages",
+          "callee": "event.preventDefault",
+          "lineNumber": 403
+        },
+        {
+          "caller": "generateImages",
+          "callee": "$",
+          "lineNumber": 405
+        },
+        {
+          "caller": "generateImages",
+          "callee": "setBusy",
+          "lineNumber": 406
+        },
+        {
+          "caller": "generateImages",
+          "callee": "$",
+          "lineNumber": 407
+        },
+        {
+          "caller": "generateImages",
+          "callee": "$",
+          "lineNumber": 409
+        },
+        {
+          "caller": "generateImages",
+          "callee": "Number",
+          "lineNumber": 414
+        },
+        {
+          "caller": "generateImages",
+          "callee": "$",
+          "lineNumber": 414
+        },
+        {
+          "caller": "generateImages",
+          "callee": "$",
+          "lineNumber": 415
+        },
+        {
+          "caller": "generateImages",
+          "callee": "Number($(\"#budget-limit\").value).toFixed",
+          "lineNumber": 417
+        },
+        {
+          "caller": "generateImages",
+          "callee": "Number",
+          "lineNumber": 417
+        },
+        {
+          "caller": "generateImages",
+          "callee": "$",
+          "lineNumber": 417
+        },
+        {
+          "caller": "generateImages",
+          "callee": "api",
+          "lineNumber": 420
+        },
+        {
+          "caller": "generateImages",
+          "callee": "crypto.randomUUID",
+          "lineNumber": 422
+        },
+        {
+          "caller": "generateImages",
+          "callee": "JSON.stringify",
+          "lineNumber": 423
+        },
+        {
+          "caller": "generateImages",
+          "callee": "renderImageRunPending",
+          "lineNumber": 425
+        },
+        {
+          "caller": "generateImages",
+          "callee": "toast",
+          "lineNumber": 426
+        },
+        {
+          "caller": "generateImages",
+          "callee": "toast",
+          "lineNumber": 428
+        },
+        {
+          "caller": "generateImages",
+          "callee": "apiErrorMessage",
+          "lineNumber": 428
+        },
+        {
+          "caller": "generateImages",
+          "callee": "setBusy",
+          "lineNumber": 429
+        },
+        {
+          "caller": "generateImages",
+          "callee": "updateGenerationAvailability",
+          "lineNumber": 430
+        },
+        {
+          "caller": "renderImageRunPending",
+          "callee": "$",
+          "lineNumber": 435
+        },
+        {
+          "caller": "renderImageRunPending",
+          "callee": "escapeHtml",
+          "lineNumber": 439
+        },
+        {
+          "caller": "renderImageRunPending",
+          "callee": "shortId",
+          "lineNumber": 439
+        },
+        {
+          "caller": "setStage",
+          "callee": "order.indexOf",
+          "lineNumber": 445
+        },
+        {
+          "caller": "setStage",
+          "callee": "$$(\".progress-rail li\").forEach",
+          "lineNumber": 446
+        },
+        {
+          "caller": "setStage",
+          "callee": "$$",
+          "lineNumber": 446
+        },
+        {
+          "caller": "setStage",
+          "callee": "item.classList.toggle",
+          "lineNumber": 447
+        },
+        {
+          "caller": "setStage",
+          "callee": "item.classList.toggle",
+          "lineNumber": 448
+        },
+        {
+          "caller": "resetPage",
+          "callee": "stopPolling",
+          "lineNumber": 453
+        },
+        {
+          "caller": "resetPage",
+          "callee": "window.location.reload",
+          "lineNumber": 461
+        },
+        {
+          "caller": "bindEvents",
+          "callee": "$(\"#connect-button\").addEventListener",
+          "lineNumber": 465
+        },
+        {
+          "caller": "bindEvents",
+          "callee": "$",
+          "lineNumber": 465
+        },
+        {
+          "caller": "bindEvents",
+          "callee": "$(\"#api-key\").value.trim",
+          "lineNumber": 466
+        },
+        {
+          "caller": "bindEvents",
+          "callee": "$",
+          "lineNumber": 466
+        },
+        {
+          "caller": "bindEvents",
+          "callee": "loadCapabilities",
+          "lineNumber": 467
+        },
+        {
+          "caller": "bindEvents",
+          "callee": "$(\"#toggle-key\").addEventListener",
+          "lineNumber": 469
+        },
+        {
+          "caller": "bindEvents",
+          "callee": "$",
+          "lineNumber": 469
+        },
+        {
+          "caller": "bindEvents",
+          "callee": "$",
+          "lineNumber": 470
+        },
+        {
+          "caller": "bindEvents",
+          "callee": "$",
+          "lineNumber": 472
+        },
+        {
+          "caller": "bindEvents",
+          "callee": "$(\"#novel-file\").addEventListener",
+          "lineNumber": 474
+        },
+        {
+          "caller": "bindEvents",
+          "callee": "$",
+          "lineNumber": 474
+        },
+        {
+          "caller": "bindEvents",
+          "callee": "chooseFile",
+          "lineNumber": 474
+        },
+        {
+          "caller": "bindEvents",
+          "callee": "$(\"#drop-zone\").addEventListener",
+          "lineNumber": 475
+        },
+        {
+          "caller": "bindEvents",
+          "callee": "$",
+          "lineNumber": 475
+        },
+        {
+          "caller": "bindEvents",
+          "callee": "event.preventDefault",
+          "lineNumber": 477
+        },
+        {
+          "caller": "bindEvents",
+          "callee": "$(\"#novel-file\").click",
+          "lineNumber": 478
+        },
+        {
+          "caller": "bindEvents",
+          "callee": "$",
+          "lineNumber": 478
+        },
+        {
+          "caller": "bindEvents",
+          "callee": "$(\"#drop-zone\").addEventListener",
+          "lineNumber": 482
+        },
+        {
+          "caller": "bindEvents",
+          "callee": "$",
+          "lineNumber": 482
+        },
+        {
+          "caller": "bindEvents",
+          "callee": "event.preventDefault",
+          "lineNumber": 483
+        },
+        {
+          "caller": "bindEvents",
+          "callee": "$(\"#drop-zone\").classList.add",
+          "lineNumber": 484
+        },
+        {
+          "caller": "bindEvents",
+          "callee": "$",
+          "lineNumber": 484
+        },
+        {
+          "caller": "bindEvents",
+          "callee": "$(\"#drop-zone\").addEventListener",
+          "lineNumber": 488
+        },
+        {
+          "caller": "bindEvents",
+          "callee": "$",
+          "lineNumber": 488
+        },
+        {
+          "caller": "bindEvents",
+          "callee": "event.preventDefault",
+          "lineNumber": 489
+        },
+        {
+          "caller": "bindEvents",
+          "callee": "$(\"#drop-zone\").classList.remove",
+          "lineNumber": 490
+        },
+        {
+          "caller": "bindEvents",
+          "callee": "$",
+          "lineNumber": 490
+        },
+        {
+          "caller": "bindEvents",
+          "callee": "$(\"#drop-zone\").addEventListener",
+          "lineNumber": 493
+        },
+        {
+          "caller": "bindEvents",
+          "callee": "$",
+          "lineNumber": 493
+        },
+        {
+          "caller": "bindEvents",
+          "callee": "chooseFile",
+          "lineNumber": 493
+        },
+        {
+          "caller": "bindEvents",
+          "callee": "$(\"#remove-file\").addEventListener",
+          "lineNumber": 494
+        },
+        {
+          "caller": "bindEvents",
+          "callee": "$",
+          "lineNumber": 494
+        },
+        {
+          "caller": "bindEvents",
+          "callee": "event.preventDefault",
+          "lineNumber": 494
+        },
+        {
+          "caller": "bindEvents",
+          "callee": "removeFile",
+          "lineNumber": 494
+        },
+        {
+          "caller": "bindEvents",
+          "callee": "$(\"#upload-button\").addEventListener",
+          "lineNumber": 495
+        },
+        {
+          "caller": "bindEvents",
+          "callee": "$",
+          "lineNumber": 495
+        },
+        {
+          "caller": "bindEvents",
+          "callee": "$(\"#analyse-button\").addEventListener",
+          "lineNumber": 496
+        },
+        {
+          "caller": "bindEvents",
+          "callee": "$",
+          "lineNumber": 496
+        },
+        {
+          "caller": "bindEvents",
+          "callee": "$(\"#refresh-run-button\").addEventListener",
+          "lineNumber": 497
+        },
+        {
+          "caller": "bindEvents",
+          "callee": "$",
+          "lineNumber": 497
+        },
+        {
+          "caller": "bindEvents",
+          "callee": "$(\"#generation-character\").addEventListener",
+          "lineNumber": 498
+        },
+        {
+          "caller": "bindEvents",
+          "callee": "$",
+          "lineNumber": 498
+        },
+        {
+          "caller": "bindEvents",
+          "callee": "selectCharacter",
+          "lineNumber": 498
+        },
+        {
+          "caller": "bindEvents",
+          "callee": "$(\"#generation-form\").addEventListener",
+          "lineNumber": 499
+        },
+        {
+          "caller": "bindEvents",
+          "callee": "$",
+          "lineNumber": 499
+        },
+        {
+          "caller": "bindEvents",
+          "callee": "$(\"#reset-button\").addEventListener",
+          "lineNumber": 500
+        },
+        {
+          "caller": "bindEvents",
+          "callee": "$",
+          "lineNumber": 500
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 34,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "novel-character-generator/src/novel_character_generator/web/favicon.svg",
+      "language": "svg",
+      "fileCategory": "markup",
+      "totalLines": 5,
+      "nonEmptyLines": 5,
+      "metrics": {}
+    },
+    {
+      "path": "novel-character-generator/src/novel_character_generator/web/index.html",
+      "language": "html",
+      "fileCategory": "markup",
+      "totalLines": 239,
+      "nonEmptyLines": 213,
+      "metrics": {}
+    },
+    {
+      "path": "novel-character-generator/tests/integration/test_health.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 96,
+      "nonEmptyLines": 82,
+      "functions": [
+        {
+          "name": "test_health_endpoints",
+          "startLine": 7,
+          "endLine": 10,
+          "params": []
+        },
+        {
+          "name": "test_ui_shell_and_static_assets_are_served_without_api_auth",
+          "startLine": 13,
+          "endLine": 35,
+          "params": []
+        },
+        {
+          "name": "test_validation_errors_use_stable_envelope",
+          "startLine": 38,
+          "endLine": 44,
+          "params": []
+        },
+        {
+          "name": "test_openapi_exposes_documented_phase_one_routes",
+          "startLine": 47,
+          "endLine": 70,
+          "params": []
+        },
+        {
+          "name": "test_api_key_roles_capabilities_and_metrics",
+          "startLine": 73,
+          "endLine": 96,
+          "params": [
+            "monkeypatch"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "test_health_endpoints",
+          "line": 7,
+          "isDefault": false
+        },
+        {
+          "name": "test_ui_shell_and_static_assets_are_served_without_api_auth",
+          "line": 13,
+          "isDefault": false
+        },
+        {
+          "name": "test_validation_errors_use_stable_envelope",
+          "line": 38,
+          "isDefault": false
+        },
+        {
+          "name": "test_openapi_exposes_documented_phase_one_routes",
+          "line": 47,
+          "isDefault": false
+        },
+        {
+          "name": "test_api_key_roles_capabilities_and_metrics",
+          "line": 73,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "test_health_endpoints",
+          "callee": "TestClient",
+          "lineNumber": 8
+        },
+        {
+          "caller": "test_health_endpoints",
+          "callee": "create_app",
+          "lineNumber": 8
+        },
+        {
+          "caller": "test_health_endpoints",
+          "callee": "client.get(\"/health/live\").json",
+          "lineNumber": 9
+        },
+        {
+          "caller": "test_health_endpoints",
+          "callee": "client.get",
+          "lineNumber": 9
+        },
+        {
+          "caller": "test_health_endpoints",
+          "callee": "client.get(\"/health/ready\").json",
+          "lineNumber": 10
+        },
+        {
+          "caller": "test_health_endpoints",
+          "callee": "client.get",
+          "lineNumber": 10
+        },
+        {
+          "caller": "test_ui_shell_and_static_assets_are_served_without_api_auth",
+          "callee": "TestClient",
+          "lineNumber": 14
+        },
+        {
+          "caller": "test_ui_shell_and_static_assets_are_served_without_api_auth",
+          "callee": "create_app",
+          "lineNumber": 14
+        },
+        {
+          "caller": "test_ui_shell_and_static_assets_are_served_without_api_auth",
+          "callee": "client.get",
+          "lineNumber": 15
+        },
+        {
+          "caller": "test_ui_shell_and_static_assets_are_served_without_api_auth",
+          "callee": "client.get",
+          "lineNumber": 19
+        },
+        {
+          "caller": "test_ui_shell_and_static_assets_are_served_without_api_auth",
+          "callee": "client.get",
+          "lineNumber": 25
+        },
+        {
+          "caller": "test_ui_shell_and_static_assets_are_served_without_api_auth",
+          "callee": "client.get",
+          "lineNumber": 26
+        },
+        {
+          "caller": "test_ui_shell_and_static_assets_are_served_without_api_auth",
+          "callee": "client.get",
+          "lineNumber": 27
+        },
+        {
+          "caller": "test_ui_shell_and_static_assets_are_served_without_api_auth",
+          "callee": "css.headers[\"content-type\"].startswith",
+          "lineNumber": 29
+        },
+        {
+          "caller": "test_ui_shell_and_static_assets_are_served_without_api_auth",
+          "callee": "favicon.headers[\"content-type\"].startswith",
+          "lineNumber": 33
+        },
+        {
+          "caller": "test_ui_shell_and_static_assets_are_served_without_api_auth",
+          "callee": "create_app().openapi",
+          "lineNumber": 35
+        },
+        {
+          "caller": "test_ui_shell_and_static_assets_are_served_without_api_auth",
+          "callee": "create_app",
+          "lineNumber": 35
+        },
+        {
+          "caller": "test_validation_errors_use_stable_envelope",
+          "callee": "TestClient",
+          "lineNumber": 39
+        },
+        {
+          "caller": "test_validation_errors_use_stable_envelope",
+          "callee": "create_app",
+          "lineNumber": 39
+        },
+        {
+          "caller": "test_validation_errors_use_stable_envelope",
+          "callee": "client.get",
+          "lineNumber": 40
+        },
+        {
+          "caller": "test_validation_errors_use_stable_envelope",
+          "callee": "response.json",
+          "lineNumber": 42
+        },
+        {
+          "caller": "test_validation_errors_use_stable_envelope",
+          "callee": "response.json",
+          "lineNumber": 43
+        },
+        {
+          "caller": "test_validation_errors_use_stable_envelope",
+          "callee": "response.json",
+          "lineNumber": 44
+        },
+        {
+          "caller": "test_openapi_exposes_documented_phase_one_routes",
+          "callee": "create_app().openapi",
+          "lineNumber": 48
+        },
+        {
+          "caller": "test_openapi_exposes_documented_phase_one_routes",
+          "callee": "create_app",
+          "lineNumber": 48
+        },
+        {
+          "caller": "test_openapi_exposes_documented_phase_one_routes",
+          "callee": "set",
+          "lineNumber": 49
+        },
+        {
+          "caller": "test_api_key_roles_capabilities_and_metrics",
+          "callee": "monkeypatch.setenv",
+          "lineNumber": 74
+        },
+        {
+          "caller": "test_api_key_roles_capabilities_and_metrics",
+          "callee": "monkeypatch.setenv",
+          "lineNumber": 75
+        },
+        {
+          "caller": "test_api_key_roles_capabilities_and_metrics",
+          "callee": "monkeypatch.setenv",
+          "lineNumber": 76
+        },
+        {
+          "caller": "test_api_key_roles_capabilities_and_metrics",
+          "callee": "get_settings.cache_clear",
+          "lineNumber": 77
+        },
+        {
+          "caller": "test_api_key_roles_capabilities_and_metrics",
+          "callee": "TestClient",
+          "lineNumber": 79
+        },
+        {
+          "caller": "test_api_key_roles_capabilities_and_metrics",
+          "callee": "create_app",
+          "lineNumber": 79
+        },
+        {
+          "caller": "test_api_key_roles_capabilities_and_metrics",
+          "callee": "client.get",
+          "lineNumber": 80
+        },
+        {
+          "caller": "test_api_key_roles_capabilities_and_metrics",
+          "callee": "client.get",
+          "lineNumber": 81
+        },
+        {
+          "caller": "test_api_key_roles_capabilities_and_metrics",
+          "callee": "client.get",
+          "lineNumber": 82
+        },
+        {
+          "caller": "test_api_key_roles_capabilities_and_metrics",
+          "callee": "capabilities.json",
+          "lineNumber": 86
+        },
+        {
+          "caller": "test_api_key_roles_capabilities_and_metrics",
+          "callee": "capabilities.json",
+          "lineNumber": 87
+        },
+        {
+          "caller": "test_api_key_roles_capabilities_and_metrics",
+          "callee": "capabilities.json",
+          "lineNumber": 88
+        },
+        {
+          "caller": "test_api_key_roles_capabilities_and_metrics",
+          "callee": "capabilities.json",
+          "lineNumber": 89
+        },
+        {
+          "caller": "test_api_key_roles_capabilities_and_metrics",
+          "callee": "client.get",
+          "lineNumber": 90
+        },
+        {
+          "caller": "test_api_key_roles_capabilities_and_metrics",
+          "callee": "client.get",
+          "lineNumber": 91
+        },
+        {
+          "caller": "test_api_key_roles_capabilities_and_metrics",
+          "callee": "get_settings.cache_clear",
+          "lineNumber": 96
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 5,
+        "functionCount": 5,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "novel_character_generator_tech_doc.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 35,
+      "nonEmptyLines": 32,
+      "sections": [
+        {
+          "heading": "小说角色插画与 3D 建模生成器——技术设计文档",
+          "level": 1,
+          "line": 1
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 1
+      }
+    }
+  ]
+}

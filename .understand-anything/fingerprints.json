@@ -1,7 +1,7 @@
 {
   "version": "1.0.0",
-  "gitCommitHash": "cf1c5b6bf251ce74cb981fcf403d8ffd3110367e",
-  "generatedAt": "2026-08-22T11:25:57.106Z",
+  "gitCommitHash": "a86ac88066f0cf257a9827cb746880b500d1bfaa",
+  "generatedAt": "2026-08-24T04:26:07.673Z",
   "files": {
     ".DS_Store": {
       "filePath": ".DS_Store",
@@ -33,26 +33,6 @@
       "totalLines": 4,
       "hasStructuralAnalysis": true
     },
-    "novel_character_generator_tech_doc.md": {
-      "filePath": "novel_character_generator_tech_doc.md",
-      "contentHash": "5a229bb853caab503db2842cf8df3de1da05f5176d7ad9aeb335554f20d8bc96",
-      "functions": [],
-      "classes": [],
-      "imports": [],
-      "exports": [],
-      "totalLines": 31,
-      "hasStructuralAnalysis": true
-    },
-    "novel-character-generator/_shared/.DS_Store": {
-      "filePath": "novel-character-generator/_shared/.DS_Store",
-      "contentHash": "1579536e1bfabdfe5cf57867c544c1c921c55c04fbbe80fd8c18be2a2640e503",
-      "functions": [],
-      "classes": [],
-      "imports": [],
-      "exports": [],
-      "totalLines": 1,
-      "hasStructuralAnalysis": false
-    },
     "novel-character-generator/.DS_Store": {
       "filePath": "novel-character-generator/.DS_Store",
       "contentHash": "3b16055c781ba4ce41eadc47a5fa18442f3a72e8adf36c410c497a2438439cb1",
@@ -81,6 +61,26 @@
       "imports": [],
       "exports": [],
       "totalLines": 2,
+      "hasStructuralAnalysis": false
+    },
+    "novel-character-generator/README.md": {
+      "filePath": "novel-character-generator/README.md",
+      "contentHash": "ca1f5fa12ce0c20d87a018a586ec8407dafc161096e5b9569d0e4c452b827e19",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 45,
+      "hasStructuralAnalysis": true
+    },
+    "novel-character-generator/_shared/.DS_Store": {
+      "filePath": "novel-character-generator/_shared/.DS_Store",
+      "contentHash": "1579536e1bfabdfe5cf57867c544c1c921c55c04fbbe80fd8c18be2a2640e503",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 1,
       "hasStructuralAnalysis": false
     },
     "novel-character-generator/alembic.ini": {
@@ -115,177 +115,127 @@
     },
     "novel-character-generator/docs/00-code-navigation.md": {
       "filePath": "novel-character-generator/docs/00-code-navigation.md",
-      "contentHash": "e1d4cdf3f2ba4f97dd6de7bb5b915492768aba2a22e10247df056ea693785181",
+      "contentHash": "6ed0f27b6fce5c8b63509f90e2431b9f5042b73572085271d33f28c457783cfd",
       "functions": [],
       "classes": [],
       "imports": [],
       "exports": [],
-      "totalLines": 157,
+      "totalLines": 163,
       "hasStructuralAnalysis": true
     },
     "novel-character-generator/docs/00-current-status.md": {
       "filePath": "novel-character-generator/docs/00-current-status.md",
-      "contentHash": "29a70ad78d7fe384fa9f202d5db925cc5515335426adc209a34d1c3eb8eac76c",
+      "contentHash": "db1e0ea01792721648a4b287cf38ffa74abcfd624fa91753e3ce97548cc3f542",
       "functions": [],
       "classes": [],
       "imports": [],
       "exports": [],
-      "totalLines": 88,
+      "totalLines": 91,
       "hasStructuralAnalysis": true
     },
     "novel-character-generator/docs/00-start-here.md": {
       "filePath": "novel-character-generator/docs/00-start-here.md",
-      "contentHash": "295bc5d80e1f4f0140cf1bcbc118eb5764ed66a3ab94bb64e0c5d3a18efa43b1",
+      "contentHash": "779297848a2bfe93153e965b653dcdd89486bbf040965e543b78c0c907b2d64b",
       "functions": [],
       "classes": [],
       "imports": [],
       "exports": [],
-      "totalLines": 123,
+      "totalLines": 126,
       "hasStructuralAnalysis": true
     },
     "novel-character-generator/docs/01-project-overview-and-principles.md": {
       "filePath": "novel-character-generator/docs/01-project-overview-and-principles.md",
-      "contentHash": "7b4c8e27bfa1dfff784c52d74678691c108a6362126078d8ec35d59ab5fb281d",
+      "contentHash": "cd44465f64ce436afbefd5d1e23d436b1f274b9d730e621e64768b10fc94586b",
       "functions": [],
       "classes": [],
       "imports": [],
       "exports": [],
-      "totalLines": 118,
+      "totalLines": 120,
       "hasStructuralAnalysis": true
     },
     "novel-character-generator/docs/02-architecture-and-tech-stack.md": {
       "filePath": "novel-character-generator/docs/02-architecture-and-tech-stack.md",
-      "contentHash": "5683a66c81fc2eba29876acabff011aa519da3ab49d18ff9c3fd7823fdf82c1d",
+      "contentHash": "ade57c16a23825679fba5370ccd4485259460600fe039d30c37f59d324fc81c5",
       "functions": [],
       "classes": [],
       "imports": [],
       "exports": [],
-      "totalLines": 288,
+      "totalLines": 292,
       "hasStructuralAnalysis": true
     },
     "novel-character-generator/docs/03-domain-data-model.md": {
       "filePath": "novel-character-generator/docs/03-domain-data-model.md",
-      "contentHash": "6763876df7cda8aa0428d88380a0fbd2888cf723fc170e6ee3839e1444f6b21f",
+      "contentHash": "28d5e834eb87f2ff426effe72040cda724edc0d8d31b4dd2fce1cf928cacf07a",
       "functions": [],
       "classes": [],
       "imports": [],
       "exports": [],
-      "totalLines": 410,
+      "totalLines": 412,
       "hasStructuralAnalysis": true
     },
     "novel-character-generator/docs/04-text-understanding-pipeline.md": {
       "filePath": "novel-character-generator/docs/04-text-understanding-pipeline.md",
-      "contentHash": "1976d664f2d084e61a1fb229677e44fa406934b01889797218073a94760a5b0a",
+      "contentHash": "55a1c265abf31b596462b33a9b82587609437951b476783a986c2344de7df5cc",
       "functions": [],
       "classes": [],
       "imports": [],
       "exports": [],
-      "totalLines": 112,
+      "totalLines": 114,
       "hasStructuralAnalysis": true
     },
     "novel-character-generator/docs/05-character-render-profile.md": {
       "filePath": "novel-character-generator/docs/05-character-render-profile.md",
-      "contentHash": "b786a5485626590d406d714b9e5d077813483bc85ae5b692008b0b6b31b4ef2b",
+      "contentHash": "62868f223abe6041ee8d0d7976b6735b7ab95bad9365f8c5d918921413c9235f",
       "functions": [],
       "classes": [],
       "imports": [],
       "exports": [],
-      "totalLines": 144,
+      "totalLines": 146,
       "hasStructuralAnalysis": true
     },
     "novel-character-generator/docs/06-image-generation-and-drift-control.md": {
       "filePath": "novel-character-generator/docs/06-image-generation-and-drift-control.md",
-      "contentHash": "c4924ecc93848e9480b696b0fd96cd6e1ad33fb1f68016c4d8e7507ab8748e8f",
+      "contentHash": "13d853b5f82bd806732cbaf2b012ab77445da6ac6d0af2e81bce3bc97325a451",
       "functions": [],
       "classes": [],
       "imports": [],
       "exports": [],
-      "totalLines": 209,
+      "totalLines": 211,
       "hasStructuralAnalysis": true
     },
     "novel-character-generator/docs/07-agent-architecture.md": {
       "filePath": "novel-character-generator/docs/07-agent-architecture.md",
-      "contentHash": "66226b04bfd1bf9f69b83961c75429e1c93766165db0966ec275605f933161d7",
+      "contentHash": "3aa7c672bc910dc93c06209bfb6f851c79fe15fa0b5149609b23037de7193bdf",
       "functions": [],
       "classes": [],
       "imports": [],
       "exports": [],
-      "totalLines": 331,
+      "totalLines": 347,
       "hasStructuralAnalysis": true
     },
     "novel-character-generator/docs/08-task-recovery.md": {
       "filePath": "novel-character-generator/docs/08-task-recovery.md",
-      "contentHash": "6e1af7e375c6f792fd3c8df469590088e95d13166492c4a680e13b325186b474",
+      "contentHash": "d8fccf5c1e22b65874f7e8b3df975a2420d1a5a47119669de7acfb8ce68c7143",
       "functions": [],
       "classes": [],
       "imports": [],
       "exports": [],
-      "totalLines": 50,
+      "totalLines": 52,
       "hasStructuralAnalysis": true
     },
     "novel-character-generator/docs/09-api-specification.md": {
       "filePath": "novel-character-generator/docs/09-api-specification.md",
-      "contentHash": "d05403c771d3173e11bd98fcaf3fcae66ffc5f17ffe0c62aece850168f64108a",
+      "contentHash": "f5773036c355bca251ab8f2ca93c7a0803abc550b779bb84a869d455c2da7606",
       "functions": [],
       "classes": [],
       "imports": [],
       "exports": [],
-      "totalLines": 72,
+      "totalLines": 84,
       "hasStructuralAnalysis": true
     },
     "novel-character-generator/docs/10-provider-and-workflow-versioning.md": {
       "filePath": "novel-character-generator/docs/10-provider-and-workflow-versioning.md",
-      "contentHash": "7ba573118d9c468877d506a620338b45b279b7e911ce8a5b1869332e556b7039",
-      "functions": [],
-      "classes": [],
-      "imports": [],
-      "exports": [],
-      "totalLines": 96,
-      "hasStructuralAnalysis": true
-    },
-    "novel-character-generator/docs/11-security-and-data-governance.md": {
-      "filePath": "novel-character-generator/docs/11-security-and-data-governance.md",
-      "contentHash": "a4b125c1a8a44f19a1b7a0f93662d6153c088ec513ac99eaa0adde6c4ebf332a",
-      "functions": [],
-      "classes": [],
-      "imports": [],
-      "exports": [],
-      "totalLines": 86,
-      "hasStructuralAnalysis": true
-    },
-    "novel-character-generator/docs/12-evaluation-and-acceptance.md": {
-      "filePath": "novel-character-generator/docs/12-evaluation-and-acceptance.md",
-      "contentHash": "90999803b4f46d6d8c8b41402fae782ca321bc45f6a1542dd713f0818a16a8c7",
-      "functions": [],
-      "classes": [],
-      "imports": [],
-      "exports": [],
-      "totalLines": 195,
-      "hasStructuralAnalysis": true
-    },
-    "novel-character-generator/docs/13-observability-logging-and-cost.md": {
-      "filePath": "novel-character-generator/docs/13-observability-logging-and-cost.md",
-      "contentHash": "02ca362ac30ece48869fc8a6a1b99ea48d92d8feee7d9dba66b6d9e4df58d5af",
-      "functions": [],
-      "classes": [],
-      "imports": [],
-      "exports": [],
-      "totalLines": 280,
-      "hasStructuralAnalysis": true
-    },
-    "novel-character-generator/docs/14-roadmap.md": {
-      "filePath": "novel-character-generator/docs/14-roadmap.md",
-      "contentHash": "efb91adf3a10daea55c6a16522eee445260686f7f22b9c2f8e51b279c3412b1a",
-      "functions": [],
-      "classes": [],
-      "imports": [],
-      "exports": [],
-      "totalLines": 167,
-      "hasStructuralAnalysis": true
-    },
-    "novel-character-generator/docs/15-risks-decisions-and-references.md": {
-      "filePath": "novel-character-generator/docs/15-risks-decisions-and-references.md",
-      "contentHash": "e8ef8da3effb8b523d8417d258bae30045a3206c4cc337bf7a6b6dc757a4ab52",
+      "contentHash": "dd7298bb394226c2df7dca9d1980284fb0d41da6c3ecc87fc1a0ff7b02ff2b4e",
       "functions": [],
       "classes": [],
       "imports": [],
@@ -293,14 +243,114 @@
       "totalLines": 98,
       "hasStructuralAnalysis": true
     },
-    "novel-character-generator/docs/README.md": {
-      "filePath": "novel-character-generator/docs/README.md",
-      "contentHash": "cad60b3fecc92c5c50e754f83e14653739a7080fd34df612de8c10663905e2ab",
+    "novel-character-generator/docs/11-security-and-data-governance.md": {
+      "filePath": "novel-character-generator/docs/11-security-and-data-governance.md",
+      "contentHash": "f822fcddc1ad35cb2a072583be5ed693e5d31ae6f136ae9929850f6851428b28",
       "functions": [],
       "classes": [],
       "imports": [],
       "exports": [],
-      "totalLines": 52,
+      "totalLines": 108,
+      "hasStructuralAnalysis": true
+    },
+    "novel-character-generator/docs/12-evaluation-and-acceptance.md": {
+      "filePath": "novel-character-generator/docs/12-evaluation-and-acceptance.md",
+      "contentHash": "6c8b8c352ac0bb19edb9bcfaf6ff9382e3ed52077f88c8db8462c92ebb0f7360",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 197,
+      "hasStructuralAnalysis": true
+    },
+    "novel-character-generator/docs/13-observability-logging-and-cost.md": {
+      "filePath": "novel-character-generator/docs/13-observability-logging-and-cost.md",
+      "contentHash": "2d6b516686253b05c5afb7fa9ed0f6e6fc90596d20e60c3c097c34e730d3a76d",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 282,
+      "hasStructuralAnalysis": true
+    },
+    "novel-character-generator/docs/14-roadmap.md": {
+      "filePath": "novel-character-generator/docs/14-roadmap.md",
+      "contentHash": "826f217c4940c4e8ae6a78318d08f02f78bf2b2f3e98116372c10a8ef11acb12",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 169,
+      "hasStructuralAnalysis": true
+    },
+    "novel-character-generator/docs/15-risks-decisions-and-references.md": {
+      "filePath": "novel-character-generator/docs/15-risks-decisions-and-references.md",
+      "contentHash": "0120072989d0adb3daaa1ebbe3e7d73c644049bec514ddc5b4cd2be20278c743",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 100,
+      "hasStructuralAnalysis": true
+    },
+    "novel-character-generator/docs/16-local-development-and-runbook.md": {
+      "filePath": "novel-character-generator/docs/16-local-development-and-runbook.md",
+      "contentHash": "8ada0b2cf23a8aa7c095f6e6c710b74475ec158504aa2d5322436779a34ce386",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 199,
+      "hasStructuralAnalysis": true
+    },
+    "novel-character-generator/docs/17-appearance-aggregation-contract.md": {
+      "filePath": "novel-character-generator/docs/17-appearance-aggregation-contract.md",
+      "contentHash": "133818ae442d99dc9b26dda925960f981b21cb627fffa5a2059f95e2abc7a124",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 204,
+      "hasStructuralAnalysis": true
+    },
+    "novel-character-generator/docs/18-image-generation-implementation-contract.md": {
+      "filePath": "novel-character-generator/docs/18-image-generation-implementation-contract.md",
+      "contentHash": "b5119e7dc3fbee45d6b224fb1293d1a6b0e63aaa83a0fdfa180c3b44c0cfe608",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 216,
+      "hasStructuralAnalysis": true
+    },
+    "novel-character-generator/docs/19-feature-traceability-matrix.md": {
+      "filePath": "novel-character-generator/docs/19-feature-traceability-matrix.md",
+      "contentHash": "d71160bc476ed82364d47617bb4e59ad02d2869eaf8483038ab5f72089b3affa",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 74,
+      "hasStructuralAnalysis": true
+    },
+    "novel-character-generator/docs/20-api-cookbook-and-error-catalog.md": {
+      "filePath": "novel-character-generator/docs/20-api-cookbook-and-error-catalog.md",
+      "contentHash": "86b50db6dd2307c2f2df8de4b281673ed0b149b04f401f1e5167a10216690657",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 268,
+      "hasStructuralAnalysis": true
+    },
+    "novel-character-generator/docs/README.md": {
+      "filePath": "novel-character-generator/docs/README.md",
+      "contentHash": "a0e92fd4b1efa9ecc3d37cd528b6a8f159618701ca4db3a7fa8fecdeb52e8583",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 67,
       "hasStructuralAnalysis": true
     },
     "novel-character-generator/migrations/env.py": {
@@ -998,7 +1048,7 @@
     },
     "novel-character-generator/src/novel_character_generator/api/app.py": {
       "filePath": "novel-character-generator/src/novel_character_generator/api/app.py",
-      "contentHash": "b5c68e506b2b541f88751f7a1b5d8d985a543ca4ccb11859cae2ee133852451d",
+      "contentHash": "57377a515e45f6d3ae15137ee95ee35ad39b37c882d51d1a11972be1dc18c6e0",
       "functions": [
         {
           "name": "lifespan",
@@ -1014,7 +1064,7 @@
           "params": [],
           "returnType": "FastAPI",
           "exported": true,
-          "lineCount": 21
+          "lineCount": 23
         }
       ],
       "classes": [],
@@ -1036,6 +1086,12 @@
           "specifiers": [
             "Depends",
             "FastAPI"
+          ]
+        },
+        {
+          "source": "fastapi.staticfiles",
+          "specifiers": [
+            "StaticFiles"
           ]
         },
         {
@@ -1068,7 +1124,8 @@
             "health",
             "novels",
             "runs",
-            "story"
+            "story",
+            "ui"
           ]
         },
         {
@@ -1088,7 +1145,7 @@
         "lifespan",
         "create_app"
       ],
-      "totalLines": 53,
+      "totalLines": 57,
       "hasStructuralAnalysis": true
     },
     "novel-character-generator/src/novel_character_generator/api/auth.py": {
@@ -3258,6 +3315,54 @@
         "update_scene_temporal_binding"
       ],
       "totalLines": 185,
+      "hasStructuralAnalysis": true
+    },
+    "novel-character-generator/src/novel_character_generator/api/routes/ui.py": {
+      "filePath": "novel-character-generator/src/novel_character_generator/api/routes/ui.py",
+      "contentHash": "697954a1dfb1402c65a4ab950958cd4d9d9d1556acbedfccc3b772a230a924cb",
+      "functions": [
+        {
+          "name": "ui_redirect",
+          "params": [],
+          "returnType": "RedirectResponse",
+          "exported": true,
+          "lineCount": 2
+        },
+        {
+          "name": "ui_shell",
+          "params": [],
+          "returnType": "FileResponse",
+          "exported": true,
+          "lineCount": 6
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "pathlib",
+          "specifiers": [
+            "Path"
+          ]
+        },
+        {
+          "source": "fastapi",
+          "specifiers": [
+            "APIRouter"
+          ]
+        },
+        {
+          "source": "fastapi.responses",
+          "specifiers": [
+            "FileResponse",
+            "RedirectResponse"
+          ]
+        }
+      ],
+      "exports": [
+        "ui_redirect",
+        "ui_shell"
+      ],
+      "totalLines": 23,
       "hasStructuralAnalysis": true
     },
     "novel-character-generator/src/novel_character_generator/application/__init__.py": {
@@ -7618,6 +7723,293 @@
       "totalLines": 60,
       "hasStructuralAnalysis": true
     },
+    "novel-character-generator/src/novel_character_generator/web/app.css": {
+      "filePath": "novel-character-generator/src/novel_character_generator/web/app.css",
+      "contentHash": "2c3a64e56fea8ffb5776c1e20d9ae9bec5f27132248c602d5795bb3d041be20b",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 296,
+      "hasStructuralAnalysis": false
+    },
+    "novel-character-generator/src/novel_character_generator/web/app.js": {
+      "filePath": "novel-character-generator/src/novel_character_generator/web/app.js",
+      "contentHash": "a0fa56e26c4c26512f0a5f7010f09d5c5944d97fcc21764c3c6848394565efa1",
+      "functions": [
+        {
+          "name": "$",
+          "params": [
+            "selector"
+          ],
+          "exported": false,
+          "lineCount": 1
+        },
+        {
+          "name": "$$",
+          "params": [
+            "selector"
+          ],
+          "exported": false,
+          "lineCount": 1
+        },
+        {
+          "name": "escapeHtml",
+          "params": [
+            "value"
+          ],
+          "exported": false,
+          "lineCount": 8
+        },
+        {
+          "name": "shortId",
+          "params": [
+            "value"
+          ],
+          "exported": false,
+          "lineCount": 4
+        },
+        {
+          "name": "formatBytes",
+          "params": [
+            "bytes"
+          ],
+          "exported": false,
+          "lineCount": 5
+        },
+        {
+          "name": "humanStatus",
+          "params": [
+            "value"
+          ],
+          "exported": false,
+          "lineCount": 18
+        },
+        {
+          "name": "toast",
+          "params": [
+            "message"
+          ],
+          "exported": false,
+          "lineCount": 7
+        },
+        {
+          "name": "setBusy",
+          "params": [
+            "button",
+            "busy",
+            "busyLabel"
+          ],
+          "exported": false,
+          "lineCount": 5
+        },
+        {
+          "name": "api",
+          "params": [
+            "path"
+          ],
+          "exported": false,
+          "lineCount": 18
+        },
+        {
+          "name": "apiErrorMessage",
+          "params": [
+            "error"
+          ],
+          "exported": false,
+          "lineCount": 9
+        },
+        {
+          "name": "loadCapabilities",
+          "params": [],
+          "exported": false,
+          "lineCount": 37
+        },
+        {
+          "name": "chooseFile",
+          "params": [
+            "file"
+          ],
+          "exported": false,
+          "lineCount": 14
+        },
+        {
+          "name": "removeFile",
+          "params": [],
+          "exported": false,
+          "lineCount": 8
+        },
+        {
+          "name": "uploadNovel",
+          "params": [],
+          "exported": false,
+          "lineCount": 23
+        },
+        {
+          "name": "renderNovelSummary",
+          "params": [],
+          "exported": false,
+          "lineCount": 12
+        },
+        {
+          "name": "startAnalysis",
+          "params": [],
+          "exported": false,
+          "lineCount": 18
+        },
+        {
+          "name": "refreshRun",
+          "params": [],
+          "exported": false,
+          "lineCount": 14
+        },
+        {
+          "name": "beginPolling",
+          "params": [],
+          "exported": false,
+          "lineCount": 5
+        },
+        {
+          "name": "stopPolling",
+          "params": [],
+          "exported": false,
+          "lineCount": 4
+        },
+        {
+          "name": "renderRun",
+          "params": [],
+          "exported": false,
+          "lineCount": 23
+        },
+        {
+          "name": "afterAnalysisSucceeded",
+          "params": [],
+          "exported": false,
+          "lineCount": 6
+        },
+        {
+          "name": "loadCharacters",
+          "params": [],
+          "exported": false,
+          "lineCount": 7
+        },
+        {
+          "name": "renderCharacterList",
+          "params": [],
+          "exported": false,
+          "lineCount": 14
+        },
+        {
+          "name": "selectCharacter",
+          "params": [
+            "characterId"
+          ],
+          "exported": false,
+          "lineCount": 23
+        },
+        {
+          "name": "renderCharacterDetail",
+          "params": [],
+          "exported": false,
+          "lineCount": 27
+        },
+        {
+          "name": "loadTimelines",
+          "params": [],
+          "exported": false,
+          "lineCount": 9
+        },
+        {
+          "name": "renderGenerationCharacterOptions",
+          "params": [],
+          "exported": false,
+          "lineCount": 7
+        },
+        {
+          "name": "renderStageOptions",
+          "params": [],
+          "exported": false,
+          "lineCount": 6
+        },
+        {
+          "name": "updateGenerationAvailability",
+          "params": [],
+          "exported": false,
+          "lineCount": 13
+        },
+        {
+          "name": "generateImages",
+          "params": [
+            "event"
+          ],
+          "exported": false,
+          "lineCount": 31
+        },
+        {
+          "name": "renderImageRunPending",
+          "params": [
+            "imageRun"
+          ],
+          "exported": false,
+          "lineCount": 8
+        },
+        {
+          "name": "setStage",
+          "params": [
+            "stage"
+          ],
+          "exported": false,
+          "lineCount": 8
+        },
+        {
+          "name": "resetPage",
+          "params": [],
+          "exported": false,
+          "lineCount": 11
+        },
+        {
+          "name": "bindEvents",
+          "params": [],
+          "exported": false,
+          "lineCount": 38
+        }
+      ],
+      "classes": [
+        {
+          "name": "ApiError",
+          "methods": [
+            "constructor"
+          ],
+          "properties": [],
+          "exported": false,
+          "lineCount": 7
+        }
+      ],
+      "imports": [],
+      "exports": [],
+      "totalLines": 507,
+      "hasStructuralAnalysis": true
+    },
+    "novel-character-generator/src/novel_character_generator/web/favicon.svg": {
+      "filePath": "novel-character-generator/src/novel_character_generator/web/favicon.svg",
+      "contentHash": "6b4cd56437ceaedcb7614b9634c9fbf506ee4f338a3723a15eb9898c284ce550",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 6,
+      "hasStructuralAnalysis": false
+    },
+    "novel-character-generator/src/novel_character_generator/web/index.html": {
+      "filePath": "novel-character-generator/src/novel_character_generator/web/index.html",
+      "contentHash": "32a459c734b69ad22b05c8f4ebdd1aee211b5d3fc34a2fe924fc44ab2137a545",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 240,
+      "hasStructuralAnalysis": false
+    },
     "novel-character-generator/src/novel_character_generator/workers/__init__.py": {
       "filePath": "novel-character-generator/src/novel_character_generator/workers/__init__.py",
       "contentHash": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6",
@@ -9122,7 +9514,7 @@
     },
     "novel-character-generator/tests/integration/test_health.py": {
       "filePath": "novel-character-generator/tests/integration/test_health.py",
-      "contentHash": "e201963fdc5debb9bea40f08691a73a89bb039945080dda1016dbdca4dba494d",
+      "contentHash": "c7d41f9b1267d6d6654bfbf8b5d59c2b2b0d9dc5fc349e76991194b3011f29e2",
       "functions": [
         {
           "name": "test_health_endpoints",
@@ -9130,6 +9522,13 @@
           "returnType": "None",
           "exported": true,
           "lineCount": 4
+        },
+        {
+          "name": "test_ui_shell_and_static_assets_are_served_without_api_auth",
+          "params": [],
+          "returnType": "None",
+          "exported": true,
+          "lineCount": 23
         },
         {
           "name": "test_validation_errors_use_stable_envelope",
@@ -9178,11 +9577,12 @@
       ],
       "exports": [
         "test_health_endpoints",
+        "test_ui_shell_and_static_assets_are_served_without_api_auth",
         "test_validation_errors_use_stable_envelope",
         "test_openapi_exposes_documented_phase_one_routes",
         "test_api_key_roles_capabilities_and_metrics"
       ],
-      "totalLines": 72,
+      "totalLines": 97,
       "hasStructuralAnalysis": true
     },
     "novel-character-generator/tests/integration/test_ingestion_slice.py": {
@@ -10340,6 +10740,16 @@
         "test_runtime_returns_structured_cost_limit"
       ],
       "totalLines": 284,
+      "hasStructuralAnalysis": true
+    },
+    "novel_character_generator_tech_doc.md": {
+      "filePath": "novel_character_generator_tech_doc.md",
+      "contentHash": "590ad36babf672117d4613d0578a813c0ca644d859c7db87aa5818a0cda96b49",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 36,
       "hasStructuralAnalysis": true
     }
   }

@@ -1,0 +1,15 @@
+{
+  "projectRoot": "E:\\project\\agent\\novel-character-generator",
+  "batchFiles": [
+    {"path":"novel-character-generator/docs/08-task-recovery.md","language":"markdown","sizeLines":49,"fileCategory":"docs"},
+    {"path":"novel-character-generator/docs/09-api-specification.md","language":"markdown","sizeLines":71,"fileCategory":"docs"},
+    {"path":"novel-character-generator/docs/10-provider-and-workflow-versioning.md","language":"markdown","sizeLines":95,"fileCategory":"docs"},
+    {"path":"novel-character-generator/docs/11-security-and-data-governance.md","language":"markdown","sizeLines":85,"fileCategory":"docs"},
+    {"path":"novel-character-generator/docs/12-evaluation-and-acceptance.md","language":"markdown","sizeLines":194,"fileCategory":"docs"},
+    {"path":"novel-character-generator/docs/13-observability-logging-and-cost.md","language":"markdown","sizeLines":279,"fileCategory":"docs"},
+    {"path":"novel-character-generator/docs/14-roadmap.md","language":"markdown","sizeLines":166,"fileCategory":"docs"},
+    {"path":"novel-character-generator/docs/15-risks-decisions-and-references.md","language":"markdown","sizeLines":97,"fileCategory":"docs"},
+    {"path":"novel-character-generator/docs/README.md","language":"markdown","sizeLines":51,"fileCategory":"docs"}
+  ],
+  "batchImportData": {}
+}

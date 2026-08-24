@@ -1,0 +1,39 @@
+{
+  "projectRoot": "E:\\project\\agent\\novel-character-generator",
+  "batchFiles": [
+    {"path":"novel-character-generator/docs/16-local-development-and-runbook.md","language":"markdown","sizeLines":198,"fileCategory":"docs"},
+    {"path":"novel-character-generator/docs/17-appearance-aggregation-contract.md","language":"markdown","sizeLines":203,"fileCategory":"docs"},
+    {"path":"novel-character-generator/docs/18-image-generation-implementation-contract.md","language":"markdown","sizeLines":215,"fileCategory":"docs"},
+    {"path":"novel-character-generator/docs/19-feature-traceability-matrix.md","language":"markdown","sizeLines":73,"fileCategory":"docs"},
+    {"path":"novel-character-generator/docs/20-api-cookbook-and-error-catalog.md","language":"markdown","sizeLines":267,"fileCategory":"docs"},
+    {"path":"novel-character-generator/src/novel_character_generator/api/app.py","language":"python","sizeLines":52,"fileCategory":"code"},
+    {"path":"novel-character-generator/src/novel_character_generator/api/routes/ui.py","language":"python","sizeLines":22,"fileCategory":"code"},
+    {"path":"novel-character-generator/src/novel_character_generator/web/app.css","language":"css","sizeLines":295,"fileCategory":"markup"},
+    {"path":"novel-character-generator/src/novel_character_generator/web/app.js","language":"javascript","sizeLines":506,"fileCategory":"code"},
+    {"path":"novel-character-generator/src/novel_character_generator/web/favicon.svg","language":"svg","sizeLines":5,"fileCategory":"markup"},
+    {"path":"novel-character-generator/src/novel_character_generator/web/index.html","language":"html","sizeLines":239,"fileCategory":"markup"},
+    {"path":"novel-character-generator/tests/integration/test_health.py","language":"python","sizeLines":71,"fileCategory":"code"},
+    {"path":"novel_character_generator_tech_doc.md","language":"markdown","sizeLines":30,"fileCategory":"docs"}
+  ],
+  "batchImportData": {
+    "novel-character-generator/src/novel_character_generator/api/app.py": [
+      "novel-character-generator/src/novel_character_generator/api/auth.py",
+      "novel-character-generator/src/novel_character_generator/api/errors.py",
+      "novel-character-generator/src/novel_character_generator/api/metrics.py",
+      "novel-character-generator/src/novel_character_generator/api/routes/__init__.py",
+      "novel-character-generator/src/novel_character_generator/api/routes/agent_runs.py",
+      "novel-character-generator/src/novel_character_generator/api/routes/approvals.py",
+      "novel-character-generator/src/novel_character_generator/api/routes/capabilities.py",
+      "novel-character-generator/src/novel_character_generator/api/routes/characters.py",
+      "novel-character-generator/src/novel_character_generator/api/routes/health.py",
+      "novel-character-generator/src/novel_character_generator/api/routes/novels.py",
+      "novel-character-generator/src/novel_character_generator/api/routes/runs.py",
+      "novel-character-generator/src/novel_character_generator/api/routes/story.py",
+      "novel-character-generator/src/novel_character_generator/infrastructure/db/session.py",
+      "novel-character-generator/src/novel_character_generator/settings.py"
+    ],
+    "novel-character-generator/src/novel_character_generator/api/routes/ui.py": [],
+    "novel-character-generator/src/novel_character_generator/web/app.js": [],
+    "novel-character-generator/tests/integration/test_health.py": []
+  }
+}

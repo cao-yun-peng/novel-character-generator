@@ -1,0 +1,14 @@
+{
+  "fixedSectionOk": true,
+  "nodesRecovered": 0,
+  "edgesRestored": 0,
+  "crossBatchEdgesAdded": 0,
+  "typesRemapped": 0,
+  "complexityRemapped": 0,
+  "notes": [
+    "Merge report contained no fixed-item, warning, or error entries; the assembled graph contains 502 nodes and 951 edges.",
+    "All 104 import-map relationships were verified against assembled imports edges; no relationships were missing or extra.",
+    "No duplicate node IDs, duplicate edges, dangling edge references, missing required node fields, invalid edge types, or noncanonical import-edge metadata were found.",
+    "Compared with the prior graph, no unchanged nodes were modified or removed, and no edge whose endpoints are both unchanged was removed. The scan inventory predates 11 newly added paths; each exists in the workspace and has a corresponding graph node."
+  ]
+}

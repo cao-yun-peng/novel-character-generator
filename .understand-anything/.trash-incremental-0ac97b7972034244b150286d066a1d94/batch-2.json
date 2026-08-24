@@ -1,0 +1,121 @@
+{
+  "nodes": [
+    {
+      "id": "document:novel-character-generator/docs/08-task-recovery.md",
+      "type": "document",
+      "name": "08-task-recovery.md",
+      "filePath": "novel-character-generator/docs/08-task-recovery.md",
+      "summary": "规定以 PipelineRun、PipelineStep 和外部操作账本为核心的持久化任务执行模型，覆盖租约、围栏令牌、取消、重试与未知提交的对账边界。文档同时说明一期单 Worker 约束及二期迁移至分布式队列的条件。",
+      "tags": ["技术文档", "任务-恢复", "幂等-重试", "租约-围栏"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:novel-character-generator/docs/09-api-specification.md",
+      "type": "document",
+      "name": "09-api-specification.md",
+      "filePath": "novel-character-generator/docs/09-api-specification.md",
+      "summary": "定义 FastAPI 服务的统一 API 契约，并逐项区分当前已注册端点、尚未实现的图像生成目标接口和二期扩展边界。内容涵盖异步任务响应、幂等键、并发更新、认证及运行时能力声明。",
+      "tags": ["技术文档", "接口-规范", "fastapi", "能力-声明"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:novel-character-generator/docs/10-provider-and-workflow-versioning.md",
+      "type": "document",
+      "name": "10-provider-and-workflow-versioning.md",
+      "filePath": "novel-character-generator/docs/10-provider-and-workflow-versioning.md",
+      "summary": "描述 LLM 与图像 Provider 的端口契约、异步外部任务恢复，以及 Prompt、AgentSpec、ToolSpec 和工作流配置的版本治理方式。明确将多轮编排、权限和预算收敛至 AgentRuntime，并规定能力探测与可降级原则。",
+      "tags": ["技术文档", "provider-适配", "版本-治理", "agent-运行时"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:novel-character-generator/docs/11-security-and-data-governance.md",
+      "type": "document",
+      "name": "11-security-and-data-governance.md",
+      "filePath": "novel-character-generator/docs/11-security-and-data-governance.md",
+      "summary": "列出当前 Settings 与环境变量真正支持的配置，并将尚未实现的目标配置单独隔离。文档规定文件路径防护、敏感数据最小化、日志脱敏、API Key 与 Agent 工具权限边界。",
+      "tags": ["技术文档", "安全-治理", "运行时-配置", "权限-控制"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:novel-character-generator/docs/12-evaluation-and-acceptance.md",
+      "type": "document",
+      "name": "12-evaluation-and-acceptance.md",
+      "filePath": "novel-character-generator/docs/12-evaluation-and-acceptance.md",
+      "summary": "建立从单元、集成、Provider、Agent、图像到恢复与安全测试的评测分层，并定义 EvalCase、EvalRun、数据隔离、指标和人工盲评方法。文档给出一期发布门禁、执行频率及失败样本回流规则。",
+      "tags": ["技术文档", "评测-验收", "发布-门禁", "数据集-治理"],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:novel-character-generator/docs/13-observability-logging-and-cost.md",
+      "type": "document",
+      "name": "13-observability-logging-and-cost.md",
+      "filePath": "novel-character-generator/docs/13-observability-logging-and-cost.md",
+      "summary": "定义 OpenTelemetry 运行时观测与 Run/Step 业务追溯并行的双层模型，规定关联字段、关键业务日志、检查规则、指标、告警、采样和成本核算。强调遥测不可阻断业务流程，且正文、密钥和敏感产物不得进入观测数据。",
+      "tags": ["技术文档", "可观测性", "结构化-日志", "成本-控制"],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:novel-character-generator/docs/14-roadmap.md",
+      "type": "document",
+      "name": "14-roadmap.md",
+      "filePath": "novel-character-generator/docs/14-roadmap.md",
+      "summary": "按 PoC、工程基础、文本 Agent、图像生成和安全验收划分一期实施阶段，并列出每阶段的交付物与时间预估。后续章节规划生产化、批量图像、LoRA、3D、知识图谱及高级 Agent 互操作能力。",
+      "tags": ["技术文档", "开发-路线图", "一期-交付", "二期-规划"],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:novel-character-generator/docs/15-risks-decisions-and-references.md",
+      "type": "document",
+      "name": "15-risks-decisions-and-references.md",
+      "filePath": "novel-character-generator/docs/15-risks-decisions-and-references.md",
+      "summary": "汇总模型、任务、数据、安全、遥测和 Agent 风险的表现形式及降级策略，并记录一期架构的关键决策依据。附录提供用于实现和评审的外部规范与技术参考。",
+      "tags": ["技术文档", "风险-决策", "降级-策略", "架构-依据"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:novel-character-generator/docs/README.md",
+      "type": "document",
+      "name": "README.md",
+      "filePath": "novel-character-generator/docs/README.md",
+      "summary": "作为技术设计文档的总索引，按首次阅读、主题设计与实施交付三类内容组织阅读入口。文档还提供按角色和任务划分的推荐阅读路径，以及跨文档维护和状态同步约定。",
+      "tags": ["技术文档", "文档-索引", "阅读-导航", "维护-约定"],
+      "complexity": "moderate",
+      "languageNotes": "使用相对 Markdown 链接维护连续阅读顺序和跨主题契约引用。"
+    }
+  ],
+  "edges": [
+    {"source":"document:novel-character-generator/docs/08-task-recovery.md","target":"document:novel-character-generator/docs/07-agent-architecture.md","type":"related","direction":"forward","weight":0.5},
+    {"source":"document:novel-character-generator/docs/08-task-recovery.md","target":"document:novel-character-generator/docs/09-api-specification.md","type":"related","direction":"forward","weight":0.5},
+    {"source":"document:novel-character-generator/docs/08-task-recovery.md","target":"document:novel-character-generator/docs/03-domain-data-model.md","type":"documents","direction":"forward","weight":0.5},
+    {"source":"document:novel-character-generator/docs/09-api-specification.md","target":"file:novel-character-generator/src/novel_character_generator/api/routes/capabilities.py","type":"documents","direction":"forward","weight":0.5},
+    {"source":"document:novel-character-generator/docs/09-api-specification.md","target":"document:novel-character-generator/docs/08-task-recovery.md","type":"related","direction":"forward","weight":0.5},
+    {"source":"document:novel-character-generator/docs/09-api-specification.md","target":"document:novel-character-generator/docs/10-provider-and-workflow-versioning.md","type":"related","direction":"forward","weight":0.5},
+    {"source":"document:novel-character-generator/docs/09-api-specification.md","target":"document:novel-character-generator/docs/20-api-cookbook-and-error-catalog.md","type":"documents","direction":"forward","weight":0.5},
+    {"source":"document:novel-character-generator/docs/10-provider-and-workflow-versioning.md","target":"document:novel-character-generator/docs/09-api-specification.md","type":"related","direction":"forward","weight":0.5},
+    {"source":"document:novel-character-generator/docs/10-provider-and-workflow-versioning.md","target":"document:novel-character-generator/docs/07-agent-architecture.md","type":"related","direction":"forward","weight":0.5},
+    {"source":"document:novel-character-generator/docs/10-provider-and-workflow-versioning.md","target":"document:novel-character-generator/docs/11-security-and-data-governance.md","type":"related","direction":"forward","weight":0.5},
+    {"source":"document:novel-character-generator/docs/11-security-and-data-governance.md","target":"file:novel-character-generator/src/novel_character_generator/settings.py","type":"documents","direction":"forward","weight":0.5},
+    {"source":"document:novel-character-generator/docs/11-security-and-data-governance.md","target":"document:novel-character-generator/docs/10-provider-and-workflow-versioning.md","type":"related","direction":"forward","weight":0.5},
+    {"source":"document:novel-character-generator/docs/11-security-and-data-governance.md","target":"document:novel-character-generator/docs/12-evaluation-and-acceptance.md","type":"related","direction":"forward","weight":0.5},
+    {"source":"document:novel-character-generator/docs/12-evaluation-and-acceptance.md","target":"document:novel-character-generator/docs/11-security-and-data-governance.md","type":"related","direction":"forward","weight":0.5},
+    {"source":"document:novel-character-generator/docs/12-evaluation-and-acceptance.md","target":"document:novel-character-generator/docs/13-observability-logging-and-cost.md","type":"related","direction":"forward","weight":0.5},
+    {"source":"document:novel-character-generator/docs/12-evaluation-and-acceptance.md","target":"document:novel-character-generator/docs/18-image-generation-implementation-contract.md","type":"documents","direction":"forward","weight":0.5},
+    {"source":"document:novel-character-generator/docs/13-observability-logging-and-cost.md","target":"file:novel-character-generator/src/novel_character_generator/api/metrics.py","type":"documents","direction":"forward","weight":0.5},
+    {"source":"document:novel-character-generator/docs/13-observability-logging-and-cost.md","target":"document:novel-character-generator/docs/12-evaluation-and-acceptance.md","type":"related","direction":"forward","weight":0.5},
+    {"source":"document:novel-character-generator/docs/13-observability-logging-and-cost.md","target":"document:novel-character-generator/docs/14-roadmap.md","type":"related","direction":"forward","weight":0.5},
+    {"source":"document:novel-character-generator/docs/14-roadmap.md","target":"document:novel-character-generator/docs/13-observability-logging-and-cost.md","type":"related","direction":"forward","weight":0.5},
+    {"source":"document:novel-character-generator/docs/14-roadmap.md","target":"document:novel-character-generator/docs/15-risks-decisions-and-references.md","type":"related","direction":"forward","weight":0.5},
+    {"source":"document:novel-character-generator/docs/14-roadmap.md","target":"document:novel-character-generator/docs/16-local-development-and-runbook.md","type":"documents","direction":"forward","weight":0.5},
+    {"source":"document:novel-character-generator/docs/15-risks-decisions-and-references.md","target":"document:novel-character-generator/docs/14-roadmap.md","type":"related","direction":"forward","weight":0.5},
+    {"source":"document:novel-character-generator/docs/15-risks-decisions-and-references.md","target":"document:novel-character-generator/docs/01-project-overview-and-principles.md","type":"related","direction":"forward","weight":0.5},
+    {"source":"document:novel-character-generator/docs/15-risks-decisions-and-references.md","target":"document:novel-character-generator/docs/12-evaluation-and-acceptance.md","type":"related","direction":"forward","weight":0.5},
+    {"source":"document:novel-character-generator/docs/15-risks-decisions-and-references.md","target":"document:novel-character-generator/docs/13-observability-logging-and-cost.md","type":"related","direction":"forward","weight":0.5},
+    {"source":"document:novel-character-generator/docs/README.md","target":"document:novel-character-generator/docs/00-start-here.md","type":"documents","direction":"forward","weight":0.5},
+    {"source":"document:novel-character-generator/docs/README.md","target":"document:novel-character-generator/docs/00-current-status.md","type":"documents","direction":"forward","weight":0.5},
+    {"source":"document:novel-character-generator/docs/README.md","target":"document:novel-character-generator/docs/00-code-navigation.md","type":"documents","direction":"forward","weight":0.5},
+    {"source":"document:novel-character-generator/docs/README.md","target":"document:novel-character-generator/docs/08-task-recovery.md","type":"documents","direction":"forward","weight":0.5},
+    {"source":"document:novel-character-generator/docs/README.md","target":"document:novel-character-generator/docs/12-evaluation-and-acceptance.md","type":"documents","direction":"forward","weight":0.5},
+    {"source":"document:novel-character-generator/docs/README.md","target":"document:novel-character-generator/docs/16-local-development-and-runbook.md","type":"documents","direction":"forward","weight":0.5},
+    {"source":"document:novel-character-generator/docs/README.md","target":"document:novel-character-generator/docs/20-api-cookbook-and-error-catalog.md","type":"documents","direction":"forward","weight":0.5}
+  ]
+}
