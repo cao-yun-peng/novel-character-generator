@@ -2,6 +2,7 @@ from collections.abc import AsyncIterator
 from contextlib import asynccontextmanager
 
 from fastapi import Depends, FastAPI
+from fastapi.staticfiles import StaticFiles
 
 from novel_character_generator.api.auth import require_admin_api_key, require_user_api_key
 from novel_character_generator.api.errors import configure_error_handling
@@ -15,6 +16,7 @@ from novel_character_generator.api.routes import (
     novels,
     runs,
     story,
+    ui,
 )
 from novel_character_generator.infrastructure.db.session import dispose_engine
 from novel_character_generator.settings import get_settings
@@ -29,6 +31,7 @@ async def lifespan(_: FastAPI) -> AsyncIterator[None]:
 def create_app() -> FastAPI:
     app = FastAPI(title="Novel Character Generator", version="0.1.0", lifespan=lifespan)
     configure_error_handling(app)
+    app.mount("/ui/assets", StaticFiles(directory=ui.WEB_ROOT), name="ui-assets")
     if get_settings().metrics_enabled:
         app.add_middleware(MetricsMiddleware)
         app.add_api_route(
@@ -46,6 +49,7 @@ def create_app() -> FastAPI:
     app.include_router(approvals.router)
     app.include_router(agent_runs.router)
     app.include_router(story.router)
+    app.include_router(ui.router)
     return app
 
 

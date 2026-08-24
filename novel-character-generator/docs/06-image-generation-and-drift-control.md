@@ -2,7 +2,9 @@
 
 > [← 上一篇](05-character-render-profile.md) · [文档索引](README.md) · [下一篇 →](07-agent-architecture.md)
 >
-> 文档版本：2.8 · 源章节：9. 图像生成与一致性评测 · 修订日期：2026-08-22
+> 文档版本：2.9 · 源章节：9. 图像生成与一致性评测 · 修订日期：2026-08-24
+>
+> 当前状态：本页是目标设计。当前没有 Image Provider、GenerationContextBuilder、Drift Audit 或图像端点，`image_generation=false`；落地顺序见[图像生成实现契约](18-image-generation-implementation-contract.md)。
 
 ## 9. 图像生成与一致性评测
 

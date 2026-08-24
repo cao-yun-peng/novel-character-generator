@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light" />
+    <title>角色造像台 · Novel Character Generator</title>
+    <link rel="icon" href="/ui/assets/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/ui/assets/app.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <a class="brand" href="/ui" aria-label="角色造像台首页">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 40 40" role="img">
+              <path d="M20 4 33 11.5v17L20 36 7 28.5v-17L20 4Z" fill="none" stroke="currentColor" stroke-width="2" />
+              <path d="M13 25.5c1.9-5.4 4.2-8.9 7-10.6 2.8 1.7 5.1 5.2 7 10.6M15.8 13.3 20 10l4.2 3.3" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2" />
+            </svg>
+          </span>
+          <span><strong>角色造像台</strong><small>Character Studio</small></span>
+        </a>
+
+        <nav class="side-nav" aria-label="工作流程">
+          <a class="nav-item active" href="#workspace"><span>01</span>生成工作台</a>
+          <a class="nav-item" href="#characters"><span>02</span>角色与证据</a>
+          <a class="nav-item" href="#gallery"><span>03</span>2D 形象库</a>
+        </nav>
+
+        <div class="side-spacer"></div>
+
+        <section class="connection-card" aria-labelledby="connection-title">
+          <div class="eyebrow" id="connection-title">API 连接</div>
+          <label for="api-key">API Key</label>
+          <div class="secret-field">
+            <input id="api-key" type="password" autocomplete="off" placeholder="开发环境可留空" />
+            <button id="toggle-key" class="icon-button" type="button" aria-label="显示或隐藏 API Key">显示</button>
+          </div>
+          <button id="connect-button" class="button button-secondary button-block" type="button">检查连接</button>
+          <div class="connection-state" id="connection-state">
+            <span class="status-dot idle"></span>
+            <span>正在连接本机 FastAPI</span>
+          </div>
+        </section>
+
+        <a class="docs-link" href="/docs" target="_blank" rel="noreferrer">打开 OpenAPI <span aria-hidden="true">↗</span></a>
+      </aside>
+
+      <main class="main-content" id="workspace">
+        <header class="topbar">
+          <div>
+            <div class="eyebrow">NOVEL CHARACTER GENERATOR</div>
+            <h1>从小说证据到角色形象</h1>
+            <p>上传文本、完成角色分析，再基于已批准档案生成可追溯的 2D 候选图。</p>
+          </div>
+          <div class="topbar-actions">
+            <span class="environment-pill">本地工作台</span>
+            <button id="reset-button" class="button button-ghost" type="button">清空本页</button>
+          </div>
+        </header>
+
+        <div id="capability-banner" class="capability-banner loading" role="status">
+          <div class="capability-icon" aria-hidden="true">⌁</div>
+          <div>
+            <strong>正在读取运行能力</strong>
+            <p>页面会按照 FastAPI 的能力声明开启或关闭操作。</p>
+          </div>
+          <div id="capability-chips" class="capability-chips"></div>
+        </div>
+
+        <ol class="progress-rail" aria-label="生成步骤">
+          <li class="active" data-stage="upload"><span>1</span><div><strong>上传小说</strong><small>TXT 源文件</small></div></li>
+          <li data-stage="analyse"><span>2</span><div><strong>分析角色</strong><small>事实与证据</small></div></li>
+          <li data-stage="select"><span>3</span><div><strong>选择角色</strong><small>阶段与时间线</small></div></li>
+          <li data-stage="generate"><span>4</span><div><strong>生成 2D</strong><small>候选图与审核</small></div></li>
+        </ol>
+
+        <div class="workspace-grid">
+          <section class="panel upload-panel" aria-labelledby="upload-title">
+            <div class="panel-heading">
+              <div>
+                <span class="step-kicker">STEP 01</span>
+                <h2 id="upload-title">上传小说</h2>
+              </div>
+              <span class="panel-status" id="upload-status">等待文件</span>
+            </div>
+
+            <label class="drop-zone" id="drop-zone" for="novel-file" tabindex="0">
+              <input id="novel-file" type="file" accept=".txt,text/plain" hidden />
+              <span class="drop-icon" aria-hidden="true">文</span>
+              <strong>把 TXT 小说拖到这里</strong>
+              <span>或点击选择文件，单文件上限取决于服务端配置</span>
+              <em>不会在浏览器中保存正文</em>
+            </label>
+
+            <div class="file-summary hidden" id="file-summary">
+              <div class="file-glyph">TXT</div>
+              <div class="file-meta">
+                <strong id="file-name">—</strong>
+                <span id="file-size">—</span>
+              </div>
+              <button class="icon-button" id="remove-file" type="button">移除</button>
+            </div>
+
+            <div class="action-row">
+              <button class="button button-primary" id="upload-button" type="button" disabled>上传并创建项目</button>
+              <span id="upload-feedback" class="inline-feedback">请选择 UTF-8 TXT 文件</span>
+            </div>
+          </section>
+
+          <section class="panel analysis-panel" aria-labelledby="analysis-title">
+            <div class="panel-heading">
+              <div>
+                <span class="step-kicker">STEP 02</span>
+                <h2 id="analysis-title">文本分析任务</h2>
+              </div>
+              <span class="panel-status muted" id="run-status">尚未创建</span>
+            </div>
+
+            <div class="novel-summary empty" id="novel-summary">
+              <span class="summary-icon">书</span>
+              <div><strong>项目尚未建立</strong><p>上传小说后，这里会显示小说 ID 与分析状态。</p></div>
+            </div>
+
+            <div class="run-progress">
+              <div class="progress-copy">
+                <span id="run-progress-label">等待上传</span>
+                <strong id="run-progress-percent">0%</strong>
+              </div>
+              <div class="progress-track"><span id="run-progress-bar"></span></div>
+            </div>
+
+            <div class="step-list" id="step-list">
+              <div class="empty-state compact">任务创建后显示 Worker 步骤</div>
+            </div>
+
+            <div class="action-row">
+              <button class="button button-primary" id="analyse-button" type="button" disabled>开始分析角色</button>
+              <button class="button button-secondary" id="refresh-run-button" type="button" disabled>刷新状态</button>
+            </div>
+          </section>
+        </div>
+
+        <section class="panel character-panel" id="characters" aria-labelledby="characters-title">
+          <div class="panel-heading character-heading">
+            <div>
+              <span class="step-kicker">STEP 03</span>
+              <h2 id="characters-title">角色与原文证据</h2>
+              <p>选择角色后查看提取事实、置信度和当前外观阶段。</p>
+            </div>
+            <div class="character-count"><strong id="character-count">0</strong><span>已识别角色</span></div>
+          </div>
+
+          <div class="character-workspace">
+            <div class="character-list" id="character-list">
+              <div class="empty-state">
+                <span class="empty-orbit" aria-hidden="true"></span>
+                <strong>还没有角色数据</strong>
+                <p>完成文本分析后会自动加载角色。</p>
+              </div>
+            </div>
+
+            <article class="character-detail" id="character-detail">
+              <div class="empty-state">
+                <span class="portrait-placeholder" aria-hidden="true">?</span>
+                <strong>选择一个角色</strong>
+                <p>这里将展示外观事实、证据与阶段状态。</p>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel generation-panel" id="gallery" aria-labelledby="generation-title">
+          <div class="panel-heading generation-heading">
+            <div>
+              <span class="step-kicker">STEP 04</span>
+              <h2 id="generation-title">生成 2D 角色形象</h2>
+              <p>生成请求只使用已批准快照；候选图通过漂移审计后才能被人工锁定。</p>
+            </div>
+            <span class="feature-badge unavailable" id="image-feature-badge">能力未启用</span>
+          </div>
+
+          <div class="generation-layout">
+            <form class="generation-form" id="generation-form">
+              <div class="field-group">
+                <label for="generation-character">目标角色</label>
+                <select id="generation-character" disabled><option value="">请先完成角色分析</option></select>
+              </div>
+              <div class="field-row">
+                <div class="field-group">
+                  <label for="timeline-select">时间线</label>
+                  <select id="timeline-select" disabled><option value="">暂无可用时间线</option></select>
+                </div>
+                <div class="field-group">
+                  <label for="stage-select">目标阶段</label>
+                  <select id="stage-select" disabled><option value="">自动解析</option></select>
+                </div>
+              </div>
+              <div class="field-row">
+                <div class="field-group">
+                  <label for="candidate-count">候选数量</label>
+                  <select id="candidate-count"><option>4</option><option>6</option><option>8</option></select>
+                </div>
+                <div class="field-group">
+                  <label for="budget-limit">本次预算</label>
+                  <div class="input-suffix"><input id="budget-limit" type="number" min="0.01" step="0.01" value="2.00" /><span>USD</span></div>
+                </div>
+              </div>
+              <label class="checkbox-row"><input id="character-sheet" type="checkbox" /><span>同时生成一张角色设定图</span></label>
+
+              <div class="generation-lock" id="generation-lock">
+                <strong>图像后端尚未接入</strong>
+                <p>页面已准备好请求结构；完成 Image Provider 与防漂移链路后，会由 capability 自动解锁。</p>
+              </div>
+
+              <button class="button button-accent button-block" id="generate-button" type="submit" disabled>生成 2D 候选图</button>
+            </form>
+
+            <div class="image-gallery" id="image-gallery">
+              <div class="gallery-placeholder">
+                <div class="placeholder-grid" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+                <strong>候选图会出现在这里</strong>
+                <p>每张图片都会显示阶段、审计结果和是否可选为基准图。</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <footer class="footer">
+          <span>Novel Character Generator · FastAPI 工作台</span>
+          <span id="footer-state">等待连接</span>
+        </footer>
+      </main>
+    </div>
+
+    <div class="toast-region" id="toast-region" aria-live="polite" aria-atomic="true"></div>
+    <script src="/ui/assets/app.js" defer></script>
+  </body>
+</html>

@@ -2,7 +2,9 @@
 
 > [← 上一篇](06-image-generation-and-drift-control.md) · [文档索引](README.md) · [下一篇 →](08-task-recovery.md)
 >
-> 文档版本：2.8 · 源章节：10. Agent 增强架构 · 修订日期：2026-08-22
+> 文档版本：2.9 · 源章节：10. Agent 增强架构 · 修订日期：2026-08-24
+>
+> 当前状态：通用 Structured AgentRuntime、审批和轨迹基础已实现但默认关闭；五种专项 Agent 是一期目标角色，并非都已接入主流程。
 
 ## 10. Agent 增强架构
 
@@ -22,6 +24,18 @@ Application Orchestrator
 ```
 
 Application Orchestrator 决定何时调用哪个 Agent、是否重试、何时停止以及是否转人工。专项 Agent 不互相自由对话，也不能绕过应用服务调用另一个 Agent。跨 Agent 传递的是经过 Schema 校验的结构化产物和证据 ID，而不是完整聊天历史。
+
+这里的“五个 Agent”是五种按需调用的职责定义，不是五个常驻进程，也不是五个自由聊天的自治体。当前源码已经实现通用 `StructuredCallAgentRuntime`、轨迹和审批基础，但默认关闭，五种专项 Agent 尚未全部接入业务主流程。
+
+| Agent 角色 | 何时调用 | 是否常规必经 | 当前实现状态 |
+|---|---|---|---|
+| Extraction Agent | 每个待分析文本块 | 文本主流程常规调用 | 当前主流程直接调用 Extraction Provider；尚未改为 AgentRuntime 必经步骤 |
+| Entity Resolution Agent | 规则、别名索引和历史信息无法确定人物时 | 异常/低置信度分支 | 合并拆分 Service 已实现；Agent 提案未接入 |
+| Visual Director Agent | 已批准快照准备生成图像时 | 图像主流程常规调用 | 仅设计 |
+| Multimodal Critic Agent | 候选图落库后执行漂移审计时 | 图像主流程常规调用 | 仅设计 |
+| Review Agent | 复杂证据冲突、审计异常或高风险覆盖时 | 异常/人工升级分支 | 仅设计 |
+
+因此，一期运行时通常不会同时运行五个 Agent：文本阶段主要需要 Extraction，图像阶段主要需要 Visual Director 和 Critic；Entity Resolution 与 Review 仅按条件触发。专项 Agent 数量增加不改变 API 与 Worker 的进程拓扑。
 
 职责边界：
 
@@ -304,7 +318,7 @@ Agent 评测必须同时检查结果和轨迹：
 
 ### 10.14 一期与二期 Agent 能力边界
 
-一期实现：
+一期目标：
 
 - Extraction、Entity Resolution、Visual Director、Multimodal Critic；
 - Review Agent 的最小异常审计能力；
@@ -313,6 +327,8 @@ Agent 评测必须同时检查结果和轨迹：
 - 业务数据库驱动的人工审批等待、Agent 轨迹记录和离线轨迹评测；
 - Provider 不支持工具调用时的结构化输出降级；
 - 一个隔离的 `LangGraphAgentRuntime` PoC，只用于 `POC-WORKFLOW-01`，默认配置关闭且不进入主流程恢复。
+
+上述列表是一期完成态，不代表当前全部已实现。逐项现状见[当前实现状态](00-current-status.md)，能力开关见 `GET /api/v1/capabilities`。
 
 二期实现：
 

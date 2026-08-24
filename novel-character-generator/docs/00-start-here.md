@@ -2,7 +2,7 @@
 
 > [文档索引](README.md) · [当前实现状态](00-current-status.md) · [代码导航](00-code-navigation.md)
 >
-> 文档版本：2.8 · 修订日期：2026-08-22
+> 文档版本：2.9 · 修订日期：2026-08-24
 
 ## 一句话说明
 
@@ -116,6 +116,9 @@ Observation 表示“小说明确写了什么”，例如“她剪短了头发�
 - 想理解角色数据：读[领域模型与数据库设计](03-domain-data-model.md)和[角色渲染档案](05-character-render-profile.md)。
 - 想实现出图：读[图像生成与视觉防漂移](06-image-generation-and-drift-control.md)。
 - 想排查任务和日志：读[任务系统与断点恢复](08-task-recovery.md)和[可观测性、日志检查与成本](13-observability-logging-and-cost.md)。
+- 想把项目实际跑起来：读[本地开发、部署与运维手册](16-local-development-and-runbook.md)和[API 调用手册](20-api-cookbook-and-error-catalog.md)。
+- API 启动后想直接操作：打开 `http://127.0.0.1:8000/ui`；页面会根据 capability 隐藏尚未实现的图像能力。
+- 想实现尚未闭合的主链：先看[外观聚合契约](17-appearance-aggregation-contract.md)、[图像生成实现契约](18-image-generation-implementation-contract.md)和[功能追踪矩阵](19-feature-traceability-matrix.md)。
 
 ---
 

@@ -2,7 +2,7 @@
 
 > [← 当前实现状态](00-current-status.md) · [文档索引](README.md) · [架构蓝图 →](02-architecture-and-tech-stack.md)
 >
-> 文档版本：2.8 · 修订日期：2026-08-22
+> 文档版本：2.9 · 修订日期：2026-08-24
 
 ## 先记住这条调用链
 
@@ -23,6 +23,7 @@ HTTP 请求
 | 目录 | 负责什么 | 不应该放什么 |
 |---|---|---|
 | [`api/`](../src/novel_character_generator/api) | FastAPI 装配、认证、错误格式、Metrics 和路由 | 长事务、复杂聚合、Provider 细节 |
+| [`web/`](../src/novel_character_generator/web) | 无框架工作台 HTML/CSS/JS；只调用公开 API | 业务真值、密钥持久化、绕过 capability 的假功能 |
 | [`application/services/`](../src/novel_character_generator/application/services) | 业务用例、事务、权限后的确定性编排 | HTTP 对象、模型厂商 SDK |
 | [`application/ports/`](../src/novel_character_generator/application/ports) | Artifact、Extraction、AgentRuntime 等抽象协议 | 具体 Provider 配置 |
 | [`domain/entities/`](../src/novel_character_generator/domain/entities) | Pydantic 领域模型和状态约束 | SQLAlchemy 查询、网络调用 |
@@ -41,6 +42,7 @@ HTTP 请求
 | 功能 | API 入口 | 核心实现 | 数据/测试 |
 |---|---|---|---|
 | 应用启动与路由注册 | [`api/app.py`](../src/novel_character_generator/api/app.py) | `create_app()` | [`test_health.py`](../tests/integration/test_health.py) |
+| 可视化工作台 | [`routes/ui.py`](../src/novel_character_generator/api/routes/ui.py) | [`web/index.html`](../src/novel_character_generator/web/index.html)、[`web/app.js`](../src/novel_character_generator/web/app.js) | `test_ui_shell_and_static_assets_are_served_without_api_auth` |
 | 配置和生产校验 | — | [`settings.py`](../src/novel_character_generator/settings.py) | [`test_settings.py`](../tests/unit/test_settings.py) |
 | 小说上传与版本 | [`routes/novels.py`](../src/novel_character_generator/api/routes/novels.py) | [`IngestionService`](../src/novel_character_generator/application/services/ingestion_service.py) | [`document.py`](../src/novel_character_generator/domain/entities/document.py)、[`test_document_versions.py`](../tests/integration/test_document_versions.py) |
 | 章节识别和分块 | 由 Run 触发 | [`text_processing.py`](../src/novel_character_generator/domain/policies/text_processing.py)、[`handlers/ingestion.py`](../src/novel_character_generator/workers/handlers/ingestion.py) | [`test_text_processing.py`](../tests/unit/domain/test_text_processing.py) |
@@ -146,10 +148,14 @@ uv run pytest
 uv run ruff check .
 uv run mypy src
 uv run uvicorn novel_character_generator.api.app:app --reload
-python -m novel_character_generator.workers.main --once
+uv run python -m novel_character_generator.workers.main --once
 ```
 
+API 启动后访问 `http://127.0.0.1:8000/ui` 使用可视化工作台；OpenAPI 位于 `/docs`。
+
 优先跑与修改最接近的测试，再跑全量测试。涉及 ORM 时必须跑 migration 测试；涉及 Worker 时必须跑恢复与幂等测试；涉及权限或 Agent 工具时必须跑审批和越权测试。
+
+完整安装、迁移、双进程启动、烟雾测试、备份恢复和故障排查见[本地开发与运维手册](16-local-development-and-runbook.md)。
 
 ---
 

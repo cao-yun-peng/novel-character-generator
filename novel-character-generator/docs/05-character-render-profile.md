@@ -2,7 +2,9 @@
 
 > [← 上一篇](04-text-understanding-pipeline.md) · [文档索引](README.md) · [下一篇 →](06-image-generation-and-drift-control.md)
 >
-> 文档版本：2.8 · 源章节：8. 角色渲染档案 · 修订日期：2026-08-22
+> 文档版本：2.9 · 源章节：8. 角色渲染档案 · 修订日期：2026-08-24
+>
+> 当前状态：预置 AppearanceState 后的冲突、档案编辑/批准和 Snapshot 已实现核心；真实 Observation 自动形成 State/Profile 尚待[聚合实现契约](17-appearance-aggregation-contract.md)落地。
 
 ## 8. 角色渲染档案
 

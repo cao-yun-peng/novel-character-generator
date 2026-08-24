@@ -2,7 +2,7 @@
 
 > [← 项目总览](00-start-here.md) · [文档索引](README.md) · [代码导航 →](00-code-navigation.md)
 >
-> 文档版本：2.8 · 状态快照日期：2026-08-22 · 项目版本：0.1.0
+> 文档版本：2.9 · 状态快照日期：2026-08-24 · 项目版本：0.1.0
 
 ## 怎么理解状态
 
@@ -32,7 +32,7 @@
 | 时间线、事件和场景查询 | 查看故事时间结构与场景绑定 | 已实现基础 | [`story.py`](../src/novel_character_generator/api/routes/story.py)、[`story_service.py`](../src/novel_character_generator/application/services/story_service.py) |
 | 场景时间绑定修正 | 人工修改 timeline/event/reality status，使用 revision 防冲突 | 已实现 | [`test_story_temporal_api.py`](../tests/integration/test_story_temporal_api.py) |
 | 角色合并与拆分 | 修正重复人物或错误共指，并保留审计记录 | 已实现 | [`character_entity_service.py`](../src/novel_character_generator/application/services/character_entity_service.py)、[`test_character_entity_api.py`](../tests/integration/test_character_entity_api.py) |
-| 外观状态与冲突 | 保存分阶段外观，识别同优先级、重叠时间范围的字段冲突 | 部分实现 | [`appearance_service.py`](../src/novel_character_generator/application/services/appearance_service.py)；状态自动聚合入口尚未闭合 |
+| 外观状态与冲突 | 保存分阶段外观，识别同优先级、重叠时间范围的字段冲突 | 部分实现 | [`appearance_service.py`](../src/novel_character_generator/application/services/appearance_service.py)；状态自动聚合入口尚未闭合，目标见[聚合实现契约](17-appearance-aggregation-contract.md) |
 | 渲染档案审批 | 更新档案、解决冲突、批准档案版本 | 部分实现 | API 与 Service 已实现，但依赖预先存在的 AppearanceState；见 [`test_character_appearance_api.py`](../tests/integration/test_character_appearance_api.py) |
 | 目标时点外观快照 | 按 timeline/event/scene/chapter 解析有效外观并生成 `snapshot_hash` | 已实现核心 | [`AppearanceService.snapshot`](../src/novel_character_generator/application/services/appearance_service.py)、对应集成测试 |
 | 人工审批 | 创建、分页查询、批准/拒绝/修改/延后，并恢复等待任务 | 已实现 | [`approval_service.py`](../src/novel_character_generator/application/services/approval_service.py)、[`approvals.py`](../src/novel_character_generator/api/routes/approvals.py) |
@@ -40,13 +40,14 @@
 | Agent 轨迹查询 | 查询 AgentRun、Turn、ToolCall 和 DecisionRecord | 已实现 | [`agent_runs.py`](../src/novel_character_generator/api/routes/agent_runs.py)、[`test_agent_execution_service.py`](../tests/integration/test_agent_execution_service.py) |
 | 评测数据层 | 数据集冻结、case/result/grader 版本和唯一性 | 已实现基础 | [`evaluation.py`](../src/novel_character_generator/infrastructure/db/repositories/evaluation.py)、[`test_evaluation_repository.py`](../tests/integration/test_evaluation_repository.py) |
 | 指标端点 | API 请求计数、延迟和受保护的 `/metrics` | 已实现基础 | [`metrics.py`](../src/novel_character_generator/api/metrics.py) |
+| 轻量可视化工作台 | 上传 TXT、创建分析任务、查看进度、角色证据和 2D 生成入口 | 已实现基础 | [`web/index.html`](../src/novel_character_generator/web/index.html)、[`web/app.js`](../src/novel_character_generator/web/app.js)、[`ui.py`](../src/novel_character_generator/api/routes/ui.py)；图像区随 capability 关闭 |
 | 完整 OpenTelemetry 链路 | API→Worker→Provider→Artifact Trace 与 Span Link | 仅设计 | 配置字段存在，但尚未看到完整 instrumentation 实现 |
 | 关键结构化业务日志 | 快照、预算、Provider、漂移门禁、审批和锁定事件 | 仅设计 | 事件规范见[日志设计](13-observability-logging-and-cost.md)，当前只有少量 Worker 异常日志 |
 | `log-check` 检查器 | 检查断链、重复收费、context hash 和错误锁定 | 仅设计 | 尚无命令、规则执行器或测试夹具 |
-| 图像生成 Provider | 根据快照生成角色候选图 | 仅设计 | 图像领域模型和 ORM 已预留，但 `image_generation=false`，`infrastructure/image` 尚无实现 |
+| 图像生成 Provider | 根据快照生成角色候选图 | 仅设计 | 图像领域模型和 ORM 已预留，但 `image_generation=false`，`infrastructure/image` 尚无实现；实现边界见[图像生成契约](18-image-generation-implementation-contract.md) |
 | Visual Director / Critic | 规划画面并检查身份、阶段和时间线漂移 | 仅设计 | 设计见[图像生成与视觉防漂移](06-image-generation-and-drift-control.md) |
 | 阶段基准图锁定 | 从候选图中选择每个阶段基准图 | 仅设计 | 数据模型已预留，尚无生成和选择 API |
-| 管理后台 | 可视化审核、冲突、评测和运维入口 | 仅设计 | 当前交互面是 REST API/OpenAPI |
+| 完整管理后台 | 可视化审批、冲突解决、评测、配置和运维入口 | 仅设计 | 当前只有轻量工作台和 REST API/OpenAPI，不等同于管理后台 |
 | LoRA 与 3D | 角色 LoRA、多视图、3D、骨骼和动画 | 二期 | 见[路线图](14-roadmap.md) |
 
 ## 当前最重要的边界
@@ -74,6 +75,8 @@
 4. 实现确定性基础检查和最小 Multimodal Critic，再加入 hard/soft gate。
 5. 在上述关键状态边界打结构化日志，实现最小 `log-check`。
 6. 用评测数据层建立从文本到阶段图的发布门禁。
+
+逐项 API、代码、数据、日志和测试落点见[功能—代码—测试追踪矩阵](19-feature-traceability-matrix.md)。
 
 ## 状态维护规则
 

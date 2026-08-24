@@ -2,7 +2,9 @@
 
 > [← 上一篇](01-project-overview-and-principles.md) · [文档索引](README.md) · [下一篇 →](03-domain-data-model.md)
 >
-> 文档版本：2.8 · 源章节：3. 系统架构、4. 技术选型、5. 项目代码骨架 · 修订日期：2026-08-22
+> 文档版本：2.9 · 源章节：3. 系统架构、4. 技术选型、5. 项目代码骨架 · 修订日期：2026-08-24
+>
+> 当前状态：API、SQLite、Alembic、单 Worker、任务租约和通用 AgentRuntime 已有基础实现；图像 Provider、完整遥测和二期拓扑仍是目标架构。代码真值见[代码导航](00-code-navigation.md)。
 
 ## 3. 系统架构
 
@@ -34,6 +36,8 @@
 ```
 
 依赖方向为 `API → Application → Domain`；Infrastructure 实现 Domain/Application 声明的端口。Domain 不依赖 FastAPI、SQLAlchemy、fal、LangGraph 或具体 Agent 框架。`pipeline_runs`、`pipeline_steps` 和业务审批表是主流程唯一状态真值。
+
+轻量可视化工作台作为 FastAPI 同源静态资源运行在 `/ui`，只通过公开 REST API 和 `/capabilities` 驱动，不直接访问数据库、Repository 或 Worker。它不是新的编排层，也不保存小说正文和 API Key。
 
 ### 3.2 运行时拓扑
 

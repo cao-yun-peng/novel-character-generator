@@ -10,6 +10,31 @@ def test_health_endpoints() -> None:
         assert client.get("/health/ready").json() == {"status": "ok"}
 
 
+def test_ui_shell_and_static_assets_are_served_without_api_auth() -> None:
+    with TestClient(create_app()) as client:
+        root = client.get("/", follow_redirects=False)
+        assert root.status_code == 302
+        assert root.headers["location"] == "/ui"
+
+        page = client.get("/ui")
+        assert page.status_code == 200
+        assert "角色造像台" in page.text
+        assert "/ui/assets/app.css" in page.text
+        assert "/ui/assets/app.js" in page.text
+
+        css = client.get("/ui/assets/app.css")
+        javascript = client.get("/ui/assets/app.js")
+        favicon = client.get("/ui/assets/favicon.svg")
+        assert css.status_code == 200
+        assert css.headers["content-type"].startswith("text/css")
+        assert javascript.status_code == 200
+        assert "loadCapabilities" in javascript.text
+        assert favicon.status_code == 200
+        assert favicon.headers["content-type"].startswith("image/svg+xml")
+
+    assert "/ui" not in create_app().openapi()["paths"]
+
+
 def test_validation_errors_use_stable_envelope() -> None:
     with TestClient(create_app()) as client:
         response = client.get("/api/v1/runs/not-a-uuid")
