@@ -2,9 +2,9 @@
 
 > [← 上一篇](09-api-specification.md) · [文档索引](README.md) · [下一篇 →](11-security-and-data-governance.md)
 >
-> 文档版本：2.9 · 源章节：13. Provider 与工作流版本管理 · 修订日期：2026-08-24
+> 文档版本：3.1 · 源章节：13. Provider 与工作流版本管理 · 修订日期：2026-08-24
 >
-> 当前状态：Mock 和 OpenAI-compatible 文本提取 Provider 已实现；Image Provider、WorkflowProfile 注册与在线配置包治理仍是目标设计。
+> 当前状态：Mock 和 OpenAI-compatible 文本提取 Provider 已实现，视觉提取 Schema 已进入 extractor version；Image Provider、WorkflowProfile 注册与在线配置包治理仍是目标设计。
 
 ## 13. Provider 与工作流版本管理
 
@@ -34,6 +34,43 @@ class LLMProvider(Protocol):
 ```
 
 返回值必须包含 usage、model revision、request ID、finish reason、工具调用关联信息和原始响应哈希。业务层不直接接触厂商 SDK 对象。Provider 只适配一次模型响应及工具调用格式；多轮循环、工具执行、权限、预算、审批、停止和轨迹记录统一由项目 `AgentRuntime` 负责，避免 Provider 与 Runtime 双重编排。
+
+文本提取结果的 `extractor_version` 不能只记录模型名，当前格式为：
+
+```text
+<provider>:<model>:visual-observation-v2
+```
+
+最后一段由 [`visual_fields.py`](../src/novel_character_generator/domain/policies/visual_fields.py) 的 `EXTRACTION_SCHEMA_VERSION` 提供。只要原子字段、人生阶段或证据契约发生不兼容变化，就必须提升该版本并创建新 Run。新 Run 从第一个 chunk 开始时，系统会 supersede 同一源文档版本上由旧 extractor version 产生的活动自动 Observation；人工 Observation 不受影响。相同 extractor version 重跑不会先失效自身结果，而是继续通过 observation fingerprint 幂等复用。
+
+该策略解决的是“新旧抽取契约不能同时成为当前真值”，不是已延期的角色/字段级差异重算；目前 Schema 升级仍按 Run 保守替换自动事实，再按整角色重建派生状态。
+
+### 13.1.1 Embedding Provider 接口（目标设计）
+
+检索增强功能不复用 `LLMProvider` 生成接口，而是声明单独的批量向量端口：
+
+```python
+class EmbeddingProvider(Protocol):
+    async def embed_documents(
+        self,
+        texts: Sequence[str],
+        *,
+        request_options: EmbeddingRequestOptions,
+    ) -> EmbeddingBatchResult: ...
+
+    async def embed_query(
+        self,
+        text: str,
+        *,
+        request_options: EmbeddingRequestOptions,
+    ) -> EmbeddingResult: ...
+
+    async def get_profile(self) -> EmbeddingProfile: ...
+```
+
+`EmbeddingProfile` 至少冻结 provider、model、model revision、dimension、distance metric、normalization、document/query prefix、最大输入长度和 profile version。文档与查询必须使用同一 profile；任何会改变向量空间的字段变化都创建新 Qdrant collection 和检索索引 build。远程 API 与本地 BGE/GTE 适配器实现同一接口，上层 QueryPlan、RRF 和证据链不感知部署方式。
+
+批量结果必须能关联每个输入的稳定 request item ID，并记录请求哈希、token/字符用量、耗时、Provider request ID 和错误类别；不得保存或记录 Provider SDK 原始对象。批处理中部分成功时只重试失败项，已成功的 `content_hash + profile version` 结果通过幂等引用复用。
 
 ### 13.2 图像 Provider 接口
 

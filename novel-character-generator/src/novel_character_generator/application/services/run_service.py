@@ -78,11 +78,25 @@ class RunService:
                 select(PipelineStepORM).where(PipelineStepORM.run_id == run_id)
             )
         )
-        if all(step.status in {"queued", "retry_scheduled", "cancelled"} for step in steps):
+        def can_cancel_immediately(step: PipelineStepORM) -> bool:
+            if step.status in {"queued", "retry_scheduled", "cancelled"}:
+                return True
+            if step.status not in {"claimed", "running"} or step.lease_expires_at is None:
+                return False
+            lease_expires_at = step.lease_expires_at
+            if lease_expires_at.tzinfo is None:
+                lease_expires_at = lease_expires_at.replace(tzinfo=UTC)
+            return lease_expires_at <= now
+
+        if all(can_cancel_immediately(step) for step in steps):
             for step in steps:
                 if step.status != "cancelled":
+                    if step.status in {"claimed", "running"}:
+                        step.lease_generation += 1
                     step.status = "cancelled"
                     step.next_attempt_at = None
+                    step.lease_owner = None
+                    step.lease_expires_at = None
                     step.updated_at = now
             run.status = "cancelled"
             run.completed_at = now

@@ -2,7 +2,7 @@
 
 > [← 上一篇](14-roadmap.md) · [文档索引](README.md)
 >
-> 文档版本：2.9 · 源章节：19. 风险与降级策略、附录 A：关键设计决策、附录 B：参考资料 · 修订日期：2026-08-24
+> 文档版本：3.0 · 源章节：19. 风险与降级策略、附录 A：关键设计决策、附录 B：参考资料 · 修订日期：2026-08-24
 >
 > 当前状态：本页记录风险和设计选择，不声明对应缓解措施已经全部实现；能力状态以[当前实现状态](00-current-status.md)为准。
 
@@ -16,6 +16,9 @@
 | 状态组合爆炸 | 年龄、伤势、伪装、服装组合生成大量完整状态 | AppearanceState 保存部分覆盖层，目标时点按类型/优先级合并并保存扁平快照 |
 | 神情语义误读 | 把内心狂喜画成微笑，或让瞬时表情永久化 | 内外情绪分字段、可见线索证据、场景级默认有效期 |
 | 长文本成本失控 | 调用数随角色数倍增 | 块级批量提取、相关记忆注入、预算门槛 |
+| 中文关键词漏召回 | SQLite 默认分词把连续中文处理成不合适的 token | FTS 入库前中文预分词、人名/别名/专名词典、版本化重建，并以向量召回补盲 |
+| Embedding 索引混用 | 更换模型、维度或前缀后仍查询旧向量 | 冻结 EmbeddingProfile；任何向量空间变化都创建新 collection/index build |
+| Qdrant Local 并发冲突 | API 与多个 Worker 同时直接打开本地向量目录 | PoC 仅单写 Worker持有；实时/多 Worker 需求出现后迁移独立 Qdrant Server |
 | 工作流不兼容 | 模型或节点无法组合 | 固定兼容矩阵、commit 与契约测试 |
 | 单指标误判 | 背景相似导致高 CLIP-I | 主体裁剪、多指标与人工终审 |
 | Worker 崩溃 | 重复提交或任务卡死 | 租约、幂等、远程 request ID、恢复测试 |
@@ -27,6 +30,7 @@
 | Metrics 高基数 | 时序数量和存储成本失控 | 禁止业务 ID 和自由文本作为标签，明细通过 Trace/日志/业务库查询 |
 | 观测数据泄露 | 正文、Prompt、密钥或签名 URL 出现在日志/Trace/告警 | 统一脱敏过滤、属性白名单、泄漏测试和受控保留周期 |
 | 云端数据风险 | 正文或图像泄漏 | 最小发送、明确告知、删除策略、日志脱敏 |
+| 云端 Embedding 成本或限流 | 小说首次索引出现大量 token、429 或部分批次失败 | 批量编码、有界重试、按 content hash 续建和复用、调用预算与本地模型退路 |
 | 局部 LangGraph 升级 | PoC Agent 的旧 checkpoint 无法读取 | Graph State schema version、兼容迁移或显式终止旧 Agent attempt；不影响业务 Run 真值 |
 | Agent 越权 | 自行提交收费/写入/删除动作 | 工具白名单、权限交集、审批门槛和运行时守卫 |
 | Prompt 注入 | 小说文本或工具结果包含恶意指令 | 数据与指令分层、内容标记、工具结果不可信处理 |
@@ -55,6 +59,9 @@
 | 外部副作用 | ExternalOperation 独立状态机 | 关闭提交崩溃窗口，支持未知状态对账和 fencing |
 | ORM | 全异步 SQLAlchemy | 与 FastAPI/外部异步调用保持一致，不混用 Session |
 | 数据库 | 一期 SQLite，二期 PostgreSQL | 一期低运维，明确并发边界 |
+| 视觉精提取检索编排 | 不另建通用 RAG 平台；复用现有 Run/Step、证据模型和审批链，自行实现有界 QueryPlan/RRF/邻居扩展 | 保持业务证据、人物归属、恢复和审核单一真值，避免为一个受控检索用例引入第二套编排状态 |
+| 检索 PoC 存储 | SQLite FTS5 保存中文 BM25 派生索引，Qdrant Local 保存向量，使用 passage ID 关联；正文只以 SQLite 为真值 | 低运维启动，同时保留切换 Qdrant Server 的适配器边界 |
+| Embedding PoC | 先接远程 API，本地 BGE-M3/GTE 作为可替换候选；最终用黄金集按召回、延迟和成本选择 | 先验证检索价值，不让本地显存和模型服务部署阻塞业务 PoC |
 | 图像方案 | 一期固定一套兼容工作流；一个角色形成多个阶段基准图和一个默认代表形象 | 先保证可复现，并避免把完整角色历程压缩成单一形象 |
 | 质量评测 | 多指标 + 人工终审 | CLIP-I 不足以判断身份一致性 |
 | 防漂移 | 冻结 GenerationContext + 结构化 DriftAudit + 硬门禁 + 有界重生成 + 人工锁定 | 避免只靠 Prompt 提醒、模型自审或单一总分；阻止草稿和生成图反向污染事实库 |
@@ -83,6 +90,9 @@
 - [LangGraph Fault Tolerance](https://docs.langchain.com/oss/python/langgraph/fault-tolerance)
 - [SQLAlchemy AsyncIO](https://docs.sqlalchemy.org/en/20/orm/extensions/asyncio.html)
 - [SQLAlchemy Session 并发模型](https://docs.sqlalchemy.org/en/20/orm/session_basics.html)
+- [SQLite FTS5 与 BM25/Tokenizer](https://www.sqlite.org/fts5.html)
+- [Qdrant Local Mode](https://qdrant.tech/documentation/frameworks/langchain/#local-mode)
+- [Qdrant Local/Server Quickstart](https://qdrant.tech/documentation/quick-start/)
 - [FastAPI Background Tasks Caveat](https://fastapi.tiangolo.com/tutorial/background-tasks/)
 - [DeepSeek Models & Pricing](https://api-docs.deepseek.com/quick_start/pricing)
 - [fal Model API Pricing](https://fal.ai/docs/documentation/model-apis/pricing)

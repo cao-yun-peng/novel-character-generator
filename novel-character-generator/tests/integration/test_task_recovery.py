@@ -1,4 +1,5 @@
 from asyncio import to_thread
+from datetime import UTC, datetime, timedelta
 from pathlib import Path
 
 import pytest
@@ -9,6 +10,7 @@ from sqlalchemy.ext.asyncio import async_sessionmaker, create_async_engine
 
 from novel_character_generator.application.ports.extraction import ChunkExtractionResult
 from novel_character_generator.application.services.ingestion_service import IngestionService
+from novel_character_generator.application.services.run_service import RunService
 from novel_character_generator.infrastructure.db.orm import (
     PipelineRunORM,
     PipelineStepORM,
@@ -112,5 +114,44 @@ async def test_claim_failure_and_cursor_resume(tmp_path: Path) -> None:
             )
         )
         assert aggregate_step is not None and aggregate_step.status == "queued"
+
+    await engine.dispose()
+
+
+@pytest.mark.asyncio
+async def test_cancel_marks_expired_running_step_cancelled(tmp_path: Path) -> None:
+    database_url = f"sqlite+aiosqlite:///{tmp_path / 'stale-cancel.db'}"
+    config = Config("alembic.ini")
+    config.cmd_opts = type("Options", (), {"x": [f"database_url={database_url}"]})()
+    await to_thread(command.upgrade, config, "head")
+    engine = create_async_engine(database_url)
+    sessions = async_sessionmaker(engine, expire_on_commit=False)
+    store = LocalArtifactStore(tmp_path / "artifacts")
+
+    async with sessions() as session:
+        ingestion = IngestionService(session, store)
+        novel = await ingestion.upload(filename="stale.txt", data="第一章\n测试".encode())
+        run = await ingestion.create_run(novel.id, "stale-ingestion")
+        assert run is not None
+        step = await session.scalar(
+            select(PipelineStepORM).where(PipelineStepORM.run_id == run.id)
+        )
+        stored_run = await session.get(PipelineRunORM, run.id)
+        assert step is not None and stored_run is not None
+        stored_run.status = "running"
+        step.status = "running"
+        step.lease_owner = "dead-worker"
+        step.lease_expires_at = datetime.now(UTC) - timedelta(seconds=1)
+        await session.commit()
+
+        details = await RunService(session).request_cancel(run.id)
+        assert details is not None
+        assert details.status == "cancelled"
+        assert details.cancel_requested is True
+        assert details.steps[0].status == "cancelled"
+        await session.refresh(step)
+        assert step.lease_owner is None
+        assert step.lease_expires_at is None
+        assert step.lease_generation == 1
 
     await engine.dispose()

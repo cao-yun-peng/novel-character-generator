@@ -2,7 +2,7 @@
 
 > [← 上一篇](19-feature-traceability-matrix.md) · [文档索引](README.md)
 >
-> 文档版本：2.9 · 修订日期：2026-08-24
+> 文档版本：3.0 · 修订日期：2026-08-24
 >
 > 当前适用范围：只覆盖源码已经注册的 `0.1.0` 接口。图像目标接口见[图像生成实现契约](18-image-generation-implementation-contract.md)，当前不可调用。
 
@@ -108,7 +108,9 @@ $run
 }
 ```
 
-相同 Key 和相同目标返回已有 Run；相同 Key 被用于不同请求时返回 `409 idempotency_key_conflict`。当前公开的文本分析 Run 会先执行 `normalize_and_chunk`，再执行 `extract_characters`，上传后可以直接创建，不要求客户端先单独分块。
+相同 Key 和相同目标返回已有 Run；相同 Key 被用于不同请求时返回 `409 idempotency_key_conflict`。当前公开的文本分析 Run 会依次执行 `normalize_and_chunk → extract_characters → aggregate_appearance`，上传后可以直接创建，不要求客户端先单独分块。默认切块上限为 5,000 个估算 Token，相邻块重叠 300 Token；修改配置后需重启 Worker。已经分块的源文档版本保持不可变，新参数只用于之后新上传的小说或内容确实变化的新源版本。
+
+更新视觉提取 Schema、Prompt 或 Provider 代码后，应先停止旧 Worker，在工作台打开历史小说并点击“重启分析/重新分析角色”创建新 Run，再启动新 Worker。新的 extractor version 会 supersede 同一源文档版本上的旧自动 Observation，人工 Observation 保留；这不会删除旧审计记录，也不是角色/字段级精细差异重算。
 
 持续 Worker：
 
@@ -168,7 +170,11 @@ Invoke-RestMethod "http://127.0.0.1:8000/api/v1/characters/$characterId/expressi
 Invoke-RestMethod "http://127.0.0.1:8000/api/v1/characters/$characterId/appearance-states"
 ```
 
-当前真实提取链路尚不会自动形成完整 AppearanceState/Profile；测试中的预置状态不代表自动聚合已经完成。
+`observations` 同时返回 `chapter_ordinal`、`temporal_scope`、`life_phase_key`、
+`life_phase_label`、`is_visual` 和 `visual_category`。视觉事实使用规范路径，例如
+`skin.color`、`hair.color`、`hair.length`、`clothing.style`、`cleanliness` 和
+`body.build`。AppearanceState/Profile 只会在 `aggregate_appearance` 完成后形成；运行中
+看到阶段数和冲突数为零，表示尚未完成聚合，不代表已经确认没有冲突。
 
 ## 8. ETag、If-Match 与档案更新
 

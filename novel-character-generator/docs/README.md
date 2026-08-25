@@ -1,6 +1,6 @@
 # 技术文档索引
 
-> 文档版本：2.9 · 修订日期：2026-08-24
+> 文档版本：3.1 · 修订日期：2026-08-24
 >
 > 本目录是技术设计的唯一正文来源。第一次接触项目请先读“开始这里”，不要直接从数据模型或 Agent 架构开始。
 
@@ -19,7 +19,7 @@
 | [项目目标与设计原则](01-project-overview-and-principles.md) | 项目目标、一期/二期范围、证据优先与防漂移基本原则 |
 | [架构蓝图与技术栈](02-architecture-and-tech-stack.md) | 逻辑架构、运行拓扑、技术选型和代码骨架 |
 | [领域模型与数据库设计](03-domain-data-model.md) | 核心表、证据模型、时间线、神情、外观状态和任务状态机 |
-| [文本理解流水线](04-text-understanding-pipeline.md) | 导入分块、结构化提取、实体链接、时间定位与增量处理 |
+| [文本理解流水线](04-text-understanding-pipeline.md) | 导入分块、原子视觉字段、人生阶段、结构化提取与版本替换 |
 | [角色渲染档案](05-character-render-profile.md) | 聚合优先级、冲突处理、目标时点快照、阶段形象集与身份原型 |
 | [图像生成与视觉防漂移](06-image-generation-and-drift-control.md) | 工作流、质量评测、生成上下文、漂移审计、门禁与失效传播 |
 | [Agent 增强架构](07-agent-architecture.md) | Agent 边界、Runtime、专项 Agent、工具契约、上下文与有界反思 |
@@ -41,6 +41,7 @@
 | [图像生成端到端实现契约](18-image-generation-implementation-contract.md) | Image Run、Step 图、Provider、ExternalOperation、漂移门禁和完成定义 |
 | [功能—代码—测试追踪矩阵](19-feature-traceability-matrix.md) | 功能到 API、Service、数据、Worker、日志、测试与状态的映射 |
 | [API 调用手册与错误目录](20-api-cookbook-and-error-catalog.md) | 当前真实接口的认证、请求响应、SSE、并发更新和错误码示例 |
+| [检索增强的角色视觉精提取实现设计](21-retrieval-augmented-visual-enrichment.md) | 上传后细粒度文本库、SQLite FTS5 + Embedding API + Qdrant Local 混合召回、邻居上下文、视觉精提取与证据回映 |
 
 ## 推荐读取路径
 
@@ -51,6 +52,7 @@
 - Agent 与任务恢复：当前实现状态 → 02 → 07 → 08 → 11 → 13。
 - API 开发：代码导航 → 02 → 03 → 08 → 09 → 11。
 - API 联调：16 → 20 → 09 → 19。
+- 角色视觉精提取：04 → 21 → 03 → 05 → 12 → 19。
 - 外观聚合实现：当前实现状态 → 17 → 03 → 04 → 05 → 08 → 13 → 19。
 - 图像生成实现：当前实现状态 → 18 → 05 → 06 → 08 → 10 → 12 → 13 → 19。
 - 运维与排障：16 → 08 → 10 → 11 → 13 → 15。

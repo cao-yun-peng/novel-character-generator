@@ -2,7 +2,7 @@
 
 > [← 上一篇](16-local-development-and-runbook.md) · [文档索引](README.md) · [下一篇 →](18-image-generation-implementation-contract.md)
 >
-> 文档版本：2.9 · 修订日期：2026-08-24
+> 文档版本：3.0 · 修订日期：2026-08-24
 >
 > 当前状态：核心链路已实现。`aggregate_appearance` 已接入文本 Pipeline，能够从真实 Observation 幂等形成 AppearanceState、Conflict 和待审核 RenderProfile；源版本替换会失效旧观察和派生状态、保留 stale 历史批准档案并生成新草稿。父子时间线继承和人工确认值冲突保护已有集成测试；角色/字段级精细差异重算已延期，当前继续采用整角色保守重建。
 
@@ -57,6 +57,18 @@ Step 成功只表示草稿和冲突已经一致落库，不表示档案已批准
 
 低置信度推断、身份原型建议和画风默认值可以成为 `field_suggestions`，不能冒充原文事实写入锁定身份锚点。
 
+### 3.1 规范视觉字段与兼容输入
+
+聚合器只消费规范化后的原子字段。当前视觉根字段为 `skin`、`hair`、`face`、`body`、`clothing`、`cleanliness`、`age`/`age_stage`、`accessory`/`accessories`、`injury`/`injuries`、`distinctive_marks` 和 `disguise`。
+
+- `appearance.build` 统一为 `body.build`；
+- 综合 `appearance` 在持久化前拆成 `skin.color`、`hair.color`、`hair.length`、`clothing.style`、`cleanliness`、`body.build` 等事实；
+- 不能可靠拆分的综合文本降级为 `body.description`，不凭空补字段；
+- 字段路径中的精确角色名前缀会被移除；
+- 每个拆分事实共享原 Observation 的证据区间和人生阶段，但拥有自己的稳定指纹。
+
+LLM Prompt 已要求直接输出原子字段；确定性拆分主要用于兼容旧 Provider 结果，不替代语义提取。
+
 ## 4. 分层与作用域
 
 聚合器按三层保存，不把所有信息压成单一人物 JSON：
@@ -73,7 +85,7 @@ Step 成功只表示草稿和冲突已经一致落库，不表示档案已批准
 
 ## 5. 字段合并算法
 
-对每个 `character_id + field_path + effective_timeline_domain`：
+对每个 `character_id + field_path + effective_timeline_domain + life_phase_key`：
 
 1. 按故事作用域计算有效区间，不按数据库写入时间覆盖；
 2. 过滤被人工否决或已失效的观察；
@@ -84,6 +96,8 @@ Step 成功只表示草稿和冲突已经一致落库，不表示档案已批准
 7. 输出稳定排序的 `appearance` 与 `field_sources`，计算聚合指纹。
 
 人工值不能被后续自动运行静默覆盖。新证据与人工值冲突时创建 `conflict_kind=human_confirmation` 的待审核冲突，并保留当前已批准版本直到用户决定；身份锚点与阶段状态都受此规则保护。
+
+`life_phase_key` 是聚合作用域的一部分。“前世”和“转生幼年”即使出现在同一章节、同一 canonical timeline，也形成不同阶段；它们不会仅因字段值不同而互相冲突。阶段标签会进入 State label，并在缺少显式 `age_stage` 时作为阶段展示值。
 
 ## 6. 幂等与版本
 
@@ -148,13 +162,13 @@ approved
 - `POST /characters/{id}/approve`；
 - `GET /characters/{id}/snapshot`。
 
-实现时新增：
+当前实现落点：
 
 - `domain/policies/appearance_aggregation.py`：无数据库依赖的合并、持续性和冲突规则；
 - `application/services/appearance_aggregation_service.py`：事务、版本和失效传播；
 - `workers/handlers/appearance_aggregation.py`：Step 恢复和 cursor；
 - `workers/main.py` 中的 `aggregate_appearance` 分发；
-- Repository 方法与 Alembic migration，仅在现有字段不足时增加。
+- Extraction/Appearance Repository 与现有 Alembic Schema；人生阶段当前保存在 `temporal_scope` JSON，无新增表列。
 
 不要继续把聚合规则堆进已经复杂的 `AppearanceService`；现有 Service 保留查询、编辑、批准和 Snapshot 解析职责。
 
@@ -181,7 +195,8 @@ approved
 - 子时间线分支前继承、分支后独立；
 - 临时表情不跨场景延续，持久疤痕在没有终止证据时继续有效；
 - 人工确认值不被后续自动聚合覆盖；
-- 源版本替换只重算受影响人物，并保留历史批准版本；
+- extractor version 升级会失效同一源版本上的旧自动事实、保留人工事实，并按整角色保守重建派生状态；
+- 角色/字段级精细差异重算尚未实现，不得把上述版本替换描述成只重算变化字段；
 - Worker 在保存前后崩溃均可恢复，不产生重复记录；
 - 陈旧 `lease_generation` 和错误 `If-Match` 都被拒绝；
 - Profile 有开放冲突时不能批准或进入图像生成；

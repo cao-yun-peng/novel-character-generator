@@ -111,3 +111,34 @@ def test_dream_observation_does_not_enter_canonical_identity_anchor() -> None:
 
     assert result.identity_anchor == {}
     assert result.states[0].temporal_scope["reality_status"] == "subjective"
+
+
+def test_same_chapter_different_life_phases_do_not_conflict() -> None:
+    timeline_id = str(uuid4())
+    past_life = observation(
+        field_path="age",
+        value="29",
+        chapter=1,
+        timeline_id=timeline_id,
+    )
+    childhood = observation(
+        field_path="age",
+        value="六岁",
+        chapter=1,
+        timeline_id=timeline_id,
+    )
+    past_life.temporal_scope["life_phase_key"] = "past_life"
+    past_life.temporal_scope["life_phase_label"] = "前世"
+    childhood.temporal_scope["life_phase_key"] = "reincarnated_childhood"
+    childhood.temporal_scope["life_phase_label"] = "转生幼年"
+
+    result = aggregate_appearance(
+        character_id=uuid4(),
+        source_document_version_id=uuid4(),
+        observations=[past_life, childhood],
+        timeline_graph_version="timeline-v1",
+    )
+
+    assert len(result.states) == 2
+    assert result.conflicts == ()
+    assert {item.age_stage for item in result.states} == {"前世", "转生幼年"}

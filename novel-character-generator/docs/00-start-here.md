@@ -2,7 +2,7 @@
 
 > [文档索引](README.md) · [当前实现状态](00-current-status.md) · [代码导航](00-code-navigation.md)
 >
-> 文档版本：2.9 · 修订日期：2026-08-24
+> 文档版本：3.0 · 修订日期：2026-08-24
 
 ## 一句话说明
 
@@ -57,6 +57,7 @@ POST /api/v1/novels/{novel_id}/runs
 Worker
   → normalize_and_chunk
   → extract_characters
+  → aggregate_appearance
 
 GET /api/v1/runs/{run_id}
 GET /api/v1/runs/{run_id}/events
@@ -64,7 +65,9 @@ GET /api/v1/runs/{run_id}/events
 
 GET /api/v1/novels/{novel_id}/characters
 GET /api/v1/characters/{character_id}/observations
-  → 查看角色与原文证据
+GET /api/v1/characters/{character_id}/appearance-states
+GET /api/v1/characters/{character_id}/conflicts
+  → 查看角色、原文证据、人生阶段、外观状态与冲突
 ```
 
 随后可以通过 API：
@@ -75,7 +78,7 @@ GET /api/v1/characters/{character_id}/observations
 - 处理需要管理员批准的 Agent 或业务动作；
 - 取消、重试和恢复失败任务。
 
-需要注意：外观状态自动聚合到可批准档案的完整工作流尚未闭合；当前测试通过预置状态验证冲突处理和快照解析。图像生成端点目前不存在。
+需要注意：真实 Observation 已能自动聚合为阶段状态、冲突和待审核档案，人工确认值也不会被后续自动运行静默覆盖。当前提取会把综合外观规范成原子视觉字段，并区分“前世”“转生幼年”等人生阶段；图像生成端点仍不存在。
 
 ## 五个最重要的概念
 

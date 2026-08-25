@@ -2,7 +2,7 @@
 
 > [← 上一篇](02-architecture-and-tech-stack.md) · [文档索引](README.md) · [下一篇 →](04-text-understanding-pipeline.md)
 >
-> 文档版本：2.9 · 源章节：6. 数据模型 · 修订日期：2026-08-24
+> 文档版本：3.1 · 源章节：6. 数据模型 · 修订日期：2026-08-24
 >
 > 当前状态：核心文本、人物、时间、任务、审批和评测表已有基础实现；部分图像与审计模型仅为预留或目标设计。实际 Schema 以 Alembic migration 和 ORM 为准，功能闭环见[追踪矩阵](19-feature-traceability-matrix.md)。
 
@@ -18,6 +18,7 @@
 | `normalization_maps` | 规范化文本到原文件偏移的可逆映射 | 关联 source document version 和算法版本 |
 | `chapters` | 章节边界和顺序 | `(novel_id, ordinal)` 唯一 |
 | `text_chunks` | 稳定文本块、原文区间和内容哈希 | 关联 source document version；`(version_id, ordinal, content_hash)` |
+| `retrieval_index_builds`、`retrieval_passages`、`retrieval_passages_fts`、`retrieval_passage_embeddings` | 上传后可重建的细粒度文本库和 BM25/向量混合索引 | 目标设计；SQLite 保存正文/FTS/索引引用，完整向量进入 Qdrant Local；绑定不可变源版本、lexical/index/embedding profile，不替代 `text_chunks` |
 | `timelines` | 主时间线、分支时间线及继承关系 | 分支点以前继承父时间线状态 |
 | `story_events` | 故事时间中的事件与因果顺序 | `story_order` 与叙事出场顺序分离 |
 | `event_participants` | 事件中的 actor、patient、observer 等角色及证据 | `(event_id, character_id, role)` 唯一 |
@@ -26,6 +27,7 @@
 | `character_aliases` | 别名、称谓、有效范围 | `(novel_id, normalized_alias)` 建索引 |
 | `feature_observations` | 字段级观察、证据与来源 | 不覆盖旧观察 |
 | `feature_suggestions` | 身份原型、画风默认值等非事实建议 | 不得伪装成原文 Observation |
+| `retrieval_query_runs`、`retrieval_query_hits` | 视觉精提取的 QueryPlan、候选段和排序审计 | 目标设计；可重放“为何将这些段交给模型” |
 | `expression_observations` | 外显神情、内在情绪、对象和诱因 | 默认只在当前场景有效 |
 | `character_appearance_states` | 角色在特定时间段的外观状态 | 同一时间线内有效区间可计算 |
 | `character_image_sets` | 一个角色的阶段形象集合、默认代表形象和集合版本 | 每个集合关联已批准阶段，不按章节穷举 |
@@ -114,7 +116,7 @@ class AliasAssertion(BaseModel):
 class FeatureObservation(BaseModel):
     id: UUID
     character_id: UUID
-    field_path: str                 # 例如 face.eye_color
+    field_path: str                 # 字段路径；视觉事实使用 skin.color、body.build 等规范路径
     value: JsonValue
     source_kind: Literal["text", "manual"]
     source_document_version_id: UUID | None
@@ -154,8 +156,14 @@ class FeatureSuggestion(BaseModel):
     approval_id: UUID | None
 ```
 
+当前数据库的 `temporal_scope` 是 JSON。提取链路在其中保存 `life_phase_key` 和 `life_phase_label` 扩展键，Observation API 再将它们投影为同名顶层响应字段；没有为人生阶段新增独立数据库列。领域值对象的强类型化扩展可在后续迁移中完成。
+
 规则：
 
+- 可出图视觉事实必须使用原子规范路径，主要根字段为 `skin`、`hair`、`face`、`body`、`clothing`、`cleanliness`、`age`/`age_stage`、`accessory`/`accessories`、`injury`/`injuries`、`distinctive_marks` 和 `disguise`；
+- `appearance.build` 规范为 `body.build`；综合 `appearance` 只作为旧输入兼容层，持久化前拆成 `skin.color`、`hair.color`、`hair.length`、`clothing.style`、`cleanliness`、`body.build` 等原子事实，无法安全拆分时降级为 `body.description`；
+- `field_path` 不带角色名前缀，例如使用 `hair.color`，不能使用 `唐三.hair.color`；
+- `life_phase_key` 是同一人物规范人生历程中的阶段维度，不等于 `timeline_id`。例如“前世”和“转生幼年”通常是同一 canonical 时间线上的两个阶段，平行世界、假设分支才建立父子时间线；
 - 原文观察永远不被身份原型覆盖；
 - `inferred` 与 `text/asserted` 必须区分；
 - 同一字段允许存在多条观察和冲突；
@@ -230,6 +238,7 @@ class TemporalScope(BaseModel):
 - `narrative_order` 与 `story_order` 独立保存，禁止互相替代；
 - 同一场景内“先微笑、后皱眉”使用 `scene_order` 区分连续瞬时状态，不误判为同时冲突；
 - 新分支时间线从父时间线继承分支事件以前的角色状态，分支后独立演化；
+- 同一时间线、章节和字段在不同 `life_phase_key` 下分别聚合，避免“前世黑发”和“转生幼年短发”被误判成同阶段冲突；
 - 无法定位时使用 `unknown`，不得强行绑定到“当前时间”；
 - 梦境、幻觉、传闻和假设保留为证据，但不自动更新 canonical 角色状态；
 - 时间线重绑定属于可审计决策，修改后只重算受影响角色的状态和快照。

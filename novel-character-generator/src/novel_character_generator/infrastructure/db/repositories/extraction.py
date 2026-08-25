@@ -2,20 +2,37 @@ from datetime import UTC, datetime
 from decimal import Decimal
 from uuid import UUID, uuid4
 
-from sqlalchemy import select
+from sqlalchemy import select, update
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from novel_character_generator.application.ports.extraction import ChunkExtractionResult
+from novel_character_generator.application.ports.extraction import (
+    ChunkExtractionResult,
+    ObservationDraft,
+)
 from novel_character_generator.domain.policies.grounding import (
+    GroundingStatus,
     observation_fingerprint,
+    repair_evidence_span,
     validate_evidence,
+)
+from novel_character_generator.domain.policies.relationships import (
+    canonical_relation_type,
+    kinship_placeholder_names,
+    relation_type_for_family_field,
+)
+from novel_character_generator.domain.policies.visual_fields import (
+    normalize_life_phase,
+    normalize_observation_fields,
 )
 from novel_character_generator.infrastructure.db.orm import (
     AliasAssertionORM,
     ChapterORM,
+    CharacterAppearanceStateORM,
     CharacterORM,
+    CharacterRelationORM,
     ExpressionObservationORM,
     FeatureObservationORM,
+    FeatureSuggestionORM,
     MentionSpanORM,
     NormalizationMapORM,
     PipelineRunORM,
@@ -26,6 +43,25 @@ from novel_character_generator.infrastructure.db.orm import (
     TextChunkORM,
     TimelineORM,
 )
+
+CANONICAL_TIMELINE_ALIASES = frozenset(
+    {
+        "main",
+        "main_timeline",
+        "canonical",
+        "canonical_timeline",
+        "主线",
+        "主时间线",
+        "主线时间线",
+    }
+)
+
+
+def is_canonical_timeline_name(name: str | None) -> bool:
+    if not name:
+        return False
+    token = name.strip().casefold().replace("-", "_").replace(" ", "_")
+    return token in CANONICAL_TIMELINE_ALIASES
 
 
 class ExtractionRepository:
@@ -88,6 +124,180 @@ class ExtractionRepository:
             await self.session.flush()
         return timeline
 
+    async def supersede_prior_extractor_observations(
+        self,
+        *,
+        run: PipelineRunORM,
+        document: SourceDocumentVersionORM,
+        extractor_version: str,
+    ) -> None:
+        now = datetime.now(UTC)
+        await self.session.execute(
+            update(FeatureObservationORM)
+            .where(
+                FeatureObservationORM.source_document_version_id == document.id,
+                FeatureObservationORM.source_kind == "text",
+                FeatureObservationORM.record_status == "active",
+                FeatureObservationORM.extraction_run_id.is_not(None),
+                FeatureObservationORM.extraction_run_id != run.id,
+                FeatureObservationORM.extractor_version != extractor_version,
+            )
+            .values(
+                record_status="superseded",
+                valid_to=now,
+                invalidated_at=now,
+                invalidated_by_run_id=run.id,
+                updated_at=now,
+            )
+        )
+        await self.session.execute(
+            update(CharacterRelationORM)
+            .where(
+                CharacterRelationORM.source_document_version_id == document.id,
+                CharacterRelationORM.record_status == "active",
+                CharacterRelationORM.extraction_run_id != run.id,
+                CharacterRelationORM.extractor_version != extractor_version,
+            )
+            .values(record_status="superseded", updated_at=now)
+        )
+
+    async def activate_run_observations(self, *, run: PipelineRunORM) -> None:
+        """Publish observations only after every chunk in the run has succeeded."""
+        now = datetime.now(UTC)
+        await self.session.execute(
+            update(FeatureObservationORM)
+            .where(
+                FeatureObservationORM.extraction_run_id == run.id,
+                FeatureObservationORM.record_status == "pending",
+            )
+            .values(record_status="active", recorded_at=now, updated_at=now)
+        )
+        await self.session.execute(
+            update(CharacterRelationORM)
+            .where(
+                CharacterRelationORM.extraction_run_id == run.id,
+                CharacterRelationORM.record_status == "pending",
+            )
+            .values(record_status="active", updated_at=now)
+        )
+
+    async def kinship_name_aliases(
+        self,
+        *,
+        novel_id: UUID,
+        observations: list[tuple[ObservationDraft, GroundingStatus]],
+    ) -> dict[str, str]:
+        aliases: dict[str, str] = {}
+
+        def add(source_name: str, field_path: str, value: object) -> None:
+            relation_type = relation_type_for_family_field(field_path)
+            if relation_type is None or not isinstance(value, str) or not value.strip():
+                return
+            target_name = value.strip()
+            for placeholder in kinship_placeholder_names(source_name, relation_type):
+                aliases[placeholder] = target_name
+
+        rows = await self.session.execute(
+            select(
+                CharacterORM.canonical_name,
+                FeatureObservationORM.field_path,
+                FeatureObservationORM.value,
+            )
+            .join(CharacterORM, CharacterORM.id == FeatureObservationORM.character_id)
+            .where(
+                CharacterORM.novel_id == novel_id,
+                FeatureObservationORM.field_path.like("family.%"),
+                FeatureObservationORM.record_status.in_(("active", "pending")),
+            )
+        )
+        for source_name, field_path, value in rows:
+            add(source_name, field_path, value)
+        for observation, _ in observations:
+            add(observation.character_name, observation.field_path, observation.value)
+        return aliases
+
+    async def reconcile_kinship_placeholders(
+        self, *, novel_id: UUID, aliases: dict[str, str]
+    ) -> None:
+        """Merge empty kinship placeholders without deleting their audit identity."""
+        now = datetime.now(UTC)
+        for placeholder_name, target_name in sorted(aliases.items()):
+            if placeholder_name == target_name:
+                continue
+            placeholder = await self.session.scalar(
+                select(CharacterORM).where(
+                    CharacterORM.novel_id == novel_id,
+                    CharacterORM.canonical_name == placeholder_name,
+                    CharacterORM.merged_into_character_id.is_(None),
+                )
+            )
+            target = await self.session.scalar(
+                select(CharacterORM).where(
+                    CharacterORM.novel_id == novel_id,
+                    CharacterORM.canonical_name == target_name,
+                )
+            )
+            if placeholder is None or target is None or placeholder.id == target.id:
+                continue
+            substantive = False
+            for model in (
+                FeatureObservationORM,
+                ExpressionObservationORM,
+                CharacterAppearanceStateORM,
+                FeatureSuggestionORM,
+            ):
+                owned_id = await self.session.scalar(
+                    select(model.id).where(model.character_id == placeholder.id).limit(1)
+                )
+                if owned_id is not None:
+                    substantive = True
+                    break
+            if substantive:
+                continue
+            mentions = list(
+                await self.session.scalars(
+                    select(MentionSpanORM).where(
+                        MentionSpanORM.resolved_character_id == placeholder.id
+                    )
+                )
+            )
+            for mention in mentions:
+                mention.resolved_character_id = target.id
+                mention.candidate_character_ids = list(
+                    dict.fromkeys(
+                        str(target.id)
+                        if candidate.replace("-", "").casefold()
+                        == str(placeholder.id).replace("-", "").casefold()
+                        else candidate
+                        for candidate in mention.candidate_character_ids
+                    )
+                )
+                mention.updated_at = now
+            await self.session.execute(
+                update(AliasAssertionORM)
+                .where(AliasAssertionORM.proposed_character_id == placeholder.id)
+                .values(proposed_character_id=target.id, updated_at=now)
+            )
+            await self.session.execute(
+                update(AliasAssertionORM)
+                .where(AliasAssertionORM.speaker_id == placeholder.id)
+                .values(speaker_id=target.id, updated_at=now)
+            )
+            await self.session.execute(
+                update(CharacterRelationORM)
+                .where(CharacterRelationORM.source_character_id == placeholder.id)
+                .values(source_character_id=target.id, updated_at=now)
+            )
+            await self.session.execute(
+                update(CharacterRelationORM)
+                .where(CharacterRelationORM.target_character_id == placeholder.id)
+                .values(target_character_id=target.id, updated_at=now)
+            )
+            placeholder.status = "merged"
+            placeholder.merged_into_character_id = target.id
+            placeholder.revision += 1
+            placeholder.updated_at = now
+
     async def get_or_create_character(self, novel_id: UUID, name: str) -> CharacterORM:
         character = await self.session.scalar(
             select(CharacterORM).where(
@@ -128,7 +338,10 @@ class ExtractionRepository:
             )
             if grounding == "ungrounded":
                 continue
-            if timeline_hypothesis.canonicality == "canonical":
+            if (
+                timeline_hypothesis.canonicality == "canonical"
+                or is_canonical_timeline_name(timeline_hypothesis.name)
+            ):
                 timelines[timeline_hypothesis.name] = canonical_timeline
                 continue
             timeline = await self.session.scalar(
@@ -158,6 +371,9 @@ class ExtractionRepository:
         now = datetime.now(UTC)
         scenes: list[SceneORM] = []
         for index, scene_hypothesis in enumerate(result.scene_hypotheses):
+            if index >= 1_000:
+                raise ValueError("too_many_scenes_in_chunk")
+            narrative_order = chunk.ordinal * 1_000 + index
             quote = chunk.content[scene_hypothesis.start : scene_hypothesis.end]
             if (
                 validate_evidence(
@@ -171,7 +387,11 @@ class ExtractionRepository:
                 continue
             timeline = canonical_timeline
             if scene_hypothesis.timeline_name:
-                timeline = timelines.get(scene_hypothesis.timeline_name)
+                if is_canonical_timeline_name(scene_hypothesis.timeline_name):
+                    timeline = canonical_timeline
+                    timelines[scene_hypothesis.timeline_name] = canonical_timeline
+                else:
+                    timeline = timelines.get(scene_hypothesis.timeline_name)
                 if timeline is None:
                     timeline = await self.session.scalar(
                         select(TimelineORM).where(
@@ -193,17 +413,49 @@ class ExtractionRepository:
                 timelines[scene_hypothesis.timeline_name] = timeline
             scene = await self.session.scalar(
                 select(SceneORM).where(
-                    SceneORM.source_chunk_id == chunk.id,
-                    SceneORM.char_start == scene_hypothesis.start,
-                    SceneORM.char_end == scene_hypothesis.end,
+                    SceneORM.novel_id == run.novel_id,
+                    SceneORM.narrative_order == narrative_order,
                 )
             )
             if scene is not None:
+                scene.chapter_ordinal = chapter_ordinal
+                scene.label = scene_hypothesis.label
+                scene.source_document_version_id = document.id
+                scene.source_chunk_id = chunk.id
+                scene.char_start = scene_hypothesis.start
+                scene.char_end = scene_hypothesis.end
+                scene.confidence = scene_hypothesis.confidence
+                scene.updated_at = now
+                if scene.binding_status != "corrected":
+                    event = (
+                        await self.session.get(StoryEventORM, scene.event_id)
+                        if scene.event_id is not None
+                        else None
+                    )
+                    if scene_hypothesis.label:
+                        if event is None:
+                            event = StoryEventORM(
+                                id=uuid4(),
+                                timeline_id=timeline.id,
+                                name=scene_hypothesis.label,
+                                story_order=Decimal(narrative_order),
+                                starts_at=None,
+                                ends_at=None,
+                            )
+                            self.session.add(event)
+                            await self.session.flush()
+                        else:
+                            event.timeline_id = timeline.id
+                            event.name = scene_hypothesis.label
+                            event.story_order = Decimal(narrative_order)
+                        scene.event_id = event.id
+                    else:
+                        scene.event_id = None
+                    scene.timeline_id = timeline.id
+                    scene.presentation_mode = scene_hypothesis.presentation_mode
+                    scene.reality_status = scene_hypothesis.reality_status
                 scenes.append(scene)
                 continue
-            if index >= 1_000:
-                raise ValueError("too_many_scenes_in_chunk")
-            narrative_order = chunk.ordinal * 1_000 + index
             event = None
             if scene_hypothesis.label:
                 event = StoryEventORM(
@@ -280,27 +532,114 @@ class ExtractionRepository:
             canonical_timeline=timeline,
             result=result,
         )
-        characters: dict[str, CharacterORM] = {}
-        for mention in result.mentions:
-            if mention.canonical_name:
-                characters[mention.canonical_name] = await self.get_or_create_character(
-                    run.novel_id, mention.canonical_name
-                )
+        prepared_observations: list[tuple[ObservationDraft, GroundingStatus]] = []
         for observation in result.observations:
-            characters[observation.character_name] = await self.get_or_create_character(
-                run.novel_id, observation.character_name
+            start, end, grounding = repair_evidence_span(
+                chunk.content,
+                observation.evidence_quote,
+                observation.start,
+                observation.end,
             )
-        for expression in result.expression_observations:
-            characters[expression.character_name] = await self.get_or_create_character(
-                run.novel_id, expression.character_name
+            life_phase_key, life_phase_label = normalize_life_phase(
+                observation.life_phase_key,
+                observation.life_phase_label,
             )
-        for relation in result.relations:
-            characters[relation.source_character_name] = await self.get_or_create_character(
-                run.novel_id, relation.source_character_name
+            for fact in normalize_observation_fields(
+                observation.field_path,
+                observation.value,
+                character_name=observation.character_name,
+                evidence_quote=observation.evidence_quote,
+            ):
+                prepared_observations.append(
+                    (
+                        observation.model_copy(
+                            update={
+                                "field_path": fact.field_path,
+                                "value": fact.value,
+                                "start": start,
+                                "end": end,
+                                "life_phase_key": life_phase_key,
+                                "life_phase_label": life_phase_label,
+                            }
+                        ),
+                        grounding,
+                    )
+                )
+        name_aliases = await self.kinship_name_aliases(
+            novel_id=run.novel_id, observations=prepared_observations
+        )
+        requested_names = {
+            *(mention.canonical_name for mention in result.mentions if mention.canonical_name),
+            *(observation.character_name for observation, _ in prepared_observations),
+            *(expression.character_name for expression in result.expression_observations),
+            *(relation.source_character_name for relation in result.relations),
+            *(relation.target_character_name for relation in result.relations),
+        }
+        for observation, _ in prepared_observations:
+            if (
+                relation_type_for_family_field(observation.field_path) is not None
+                and isinstance(observation.value, str)
+                and observation.value.strip()
+            ):
+                requested_names.add(observation.value.strip())
+        canonical_names = {
+            name: name_aliases.get(name.strip(), name.strip()) for name in requested_names
+        }
+        canonical_characters: dict[str, CharacterORM] = {}
+        for canonical_name in sorted(set(canonical_names.values())):
+            canonical_characters[canonical_name] = await self.get_or_create_character(
+                run.novel_id, canonical_name
             )
-            characters[relation.target_character_name] = await self.get_or_create_character(
-                run.novel_id, relation.target_character_name
+        characters = {
+            name: canonical_characters[canonical_name]
+            for name, canonical_name in canonical_names.items()
+        }
+        character_ids = {character.id for character in characters.values()}
+        reincarnation_character_ids = {
+            character.id
+            for observation, _ in prepared_observations
+            if observation.life_phase_key in {"past_life", "reincarnated_childhood"}
+            if (character := characters.get(observation.character_name)) is not None
+        }
+        if character_ids:
+            existing_scopes = await self.session.execute(
+                select(
+                    FeatureObservationORM.character_id,
+                    FeatureObservationORM.temporal_scope,
+                ).where(
+                    FeatureObservationORM.character_id.in_(character_ids),
+                    FeatureObservationORM.record_status.in_(("active", "pending")),
+                )
             )
+            reincarnation_character_ids.update(
+                character_id
+                for character_id, scope in existing_scopes
+                if (scope or {}).get("life_phase_key")
+                in {"past_life", "reincarnated_childhood"}
+            )
+        phase_adjusted_observations: list[tuple[ObservationDraft, GroundingStatus]] = []
+        for observation, grounding in prepared_observations:
+            character = characters.get(observation.character_name)
+            updates: dict[str, object] = {}
+            if (
+                observation.field_path
+                in {"identity.experienced_age", "identity.mental_age_stage"}
+                and observation.life_phase_key == "adulthood"
+            ):
+                updates.update(life_phase_key=None, life_phase_label=None)
+            elif (
+                character is not None
+                and character.id in reincarnation_character_ids
+                and observation.life_phase_key == "childhood"
+            ):
+                updates.update(
+                    life_phase_key="reincarnated_childhood",
+                    life_phase_label="转生幼年",
+                )
+            phase_adjusted_observations.append(
+                (observation.model_copy(update=updates) if updates else observation, grounding)
+            )
+        prepared_observations = phase_adjusted_observations
 
         mentions_by_span: dict[tuple[int, int], MentionSpanORM] = {}
         for mention in result.mentions:
@@ -402,10 +741,7 @@ class ExtractionRepository:
                     updated_at=now,
                 ))
 
-        for observation in result.observations:
-            grounding = validate_evidence(
-                chunk.content, observation.evidence_quote, observation.start, observation.end
-            )
+        for observation, grounding in prepared_observations:
             absolute_start = chunk.normalized_char_start + observation.start
             absolute_end = chunk.normalized_char_start + observation.end
             fingerprint = observation_fingerprint(
@@ -430,6 +766,25 @@ class ExtractionRepository:
             observation_timeline_id = (
                 observation_scene.timeline_id if observation_scene else timeline.id
             )
+            temporal_scope = {
+                "timeline_id": str(observation_timeline_id),
+                "scope_type": "scene" if observation_scene else "unknown",
+                "start_chapter_ordinal": (
+                    observation_scene.chapter_ordinal
+                    if observation_scene
+                    else chapter_ordinal
+                ),
+                "presentation_mode": (
+                    observation_scene.presentation_mode if observation_scene else "direct"
+                ),
+                "reality_status": (
+                    observation_scene.reality_status if observation_scene else "canonical"
+                ),
+            }
+            if observation.life_phase_key is not None:
+                temporal_scope["life_phase_key"] = observation.life_phase_key
+            if observation.life_phase_label is not None:
+                temporal_scope["life_phase_label"] = observation.life_phase_label
             self.session.add(
                 FeatureObservationORM(
                     id=uuid4(),
@@ -446,25 +801,7 @@ class ExtractionRepository:
                     chapter_ordinal=chapter_ordinal,
                     scene_id=observation_scene.id if observation_scene else None,
                     event_id=observation_scene.event_id if observation_scene else None,
-                    temporal_scope={
-                        "timeline_id": str(observation_timeline_id),
-                        "scope_type": "scene" if observation_scene else "unknown",
-                        "start_chapter_ordinal": (
-                            observation_scene.chapter_ordinal
-                            if observation_scene
-                            else chapter_ordinal
-                        ),
-                        "presentation_mode": (
-                            observation_scene.presentation_mode
-                            if observation_scene
-                            else "direct"
-                        ),
-                        "reality_status": (
-                            observation_scene.reality_status
-                            if observation_scene
-                            else "canonical"
-                        ),
-                    },
+                    temporal_scope=temporal_scope,
                     epistemic_status=observation.epistemic_status,
                     grounding_status=grounding,
                     confidence=observation.confidence,
@@ -475,8 +812,8 @@ class ExtractionRepository:
                     fingerprint=fingerprint,
                     valid_from=now,
                     valid_to=None,
-                    record_status="active",
-                    recorded_at=now,
+                    record_status="pending",
+                    recorded_at=None,
                     invalidated_at=None,
                     invalidated_by_run_id=None,
                     created_at=now,
@@ -555,4 +892,104 @@ class ExtractionRepository:
                     updated_at=now,
                 )
             )
+
+        prepared_relations: list[
+            tuple[str, str, str, str, int, int, float, GroundingStatus]
+        ] = []
+        for relation in result.relations:
+            start, end, grounding = repair_evidence_span(
+                chunk.content,
+                relation.evidence_quote,
+                relation.start,
+                relation.end,
+            )
+            prepared_relations.append(
+                (
+                    relation.source_character_name,
+                    relation.target_character_name,
+                    canonical_relation_type(relation.relation_type),
+                    relation.evidence_quote,
+                    start,
+                    end,
+                    relation.confidence,
+                    grounding,
+                )
+            )
+        for observation, grounding in prepared_observations:
+            relation_type = relation_type_for_family_field(observation.field_path)
+            if (
+                relation_type is None
+                or not isinstance(observation.value, str)
+                or not observation.value.strip()
+            ):
+                continue
+            prepared_relations.append(
+                (
+                    observation.character_name,
+                    observation.value.strip(),
+                    relation_type,
+                    observation.evidence_quote,
+                    observation.start,
+                    observation.end,
+                    observation.confidence,
+                    grounding,
+                )
+            )
+
+        for (
+            source_name,
+            target_name,
+            relation_type,
+            evidence_quote,
+            start,
+            end,
+            confidence,
+            grounding,
+        ) in prepared_relations:
+            if grounding == "ungrounded":
+                continue
+            source_character = characters[source_name]
+            target_character = characters[target_name]
+            fingerprint = observation_fingerprint(
+                source_version=f"{document.source_document_id}:{document.version}",
+                start=chunk.normalized_char_start + start,
+                end=chunk.normalized_char_start + end,
+                field_path=f"relation.{relation_type}.{source_character.id}",
+                value=str(target_character.id),
+                extractor_version=extractor_version,
+            )
+            exists = await self.session.scalar(
+                select(CharacterRelationORM.id).where(
+                    CharacterRelationORM.fingerprint == fingerprint
+                )
+            )
+            if exists is not None:
+                continue
+            relation_scene = self.scene_for_span(scenes, start, end)
+            self.session.add(
+                CharacterRelationORM(
+                    id=uuid4(),
+                    novel_id=run.novel_id,
+                    source_character_id=source_character.id,
+                    target_character_id=target_character.id,
+                    relation_type=relation_type,
+                    source_document_version_id=document.id,
+                    source_chunk_id=chunk.id,
+                    scene_id=relation_scene.id if relation_scene else None,
+                    evidence_quote=evidence_quote,
+                    char_start=start,
+                    char_end=end,
+                    grounding_status=grounding,
+                    confidence=confidence,
+                    extraction_run_id=run.id,
+                    extractor_version=extractor_version,
+                    fingerprint=fingerprint,
+                    record_status="pending",
+                    created_at=now,
+                    updated_at=now,
+                )
+            )
+        await self.reconcile_kinship_placeholders(
+            novel_id=run.novel_id, aliases=name_aliases
+        )
         await self.session.flush()

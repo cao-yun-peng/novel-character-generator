@@ -172,10 +172,20 @@ async def test_real_observations_form_idempotent_reviewable_profile(
             states_response = await client.get(
                 f"/api/v1/characters/{character_id}/appearance-states", headers=headers
             )
+            observations_response = await client.get(
+                f"/api/v1/characters/{character_id}/observations", headers=headers
+            )
             assert profile_response.status_code == 200
             assert profile_response.json()["status"] == "draft"
             assert states_response.status_code == 200
             assert states_response.json()
+            assert observations_response.status_code == 200
+            observation = observations_response.json()[0]
+            assert "chapter_ordinal" in observation
+            assert "temporal_scope" in observation
+            assert "life_phase_key" in observation
+            assert "is_visual" in observation
+            assert "visual_category" in observation
     finally:
         get_settings.cache_clear()
         await engine.dispose()

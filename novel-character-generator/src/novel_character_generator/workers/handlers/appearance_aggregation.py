@@ -7,7 +7,12 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from novel_character_generator.application.services.appearance_aggregation_service import (
     AppearanceAggregationService,
 )
-from novel_character_generator.infrastructure.db.orm import PipelineRunORM, PipelineStepORM
+from novel_character_generator.infrastructure.db.orm import (
+    PipelineRunORM,
+    PipelineStepORM,
+    RetrievalQueryRunORM,
+)
+from novel_character_generator.infrastructure.db.repositories.run_events import append_run_event
 from novel_character_generator.workers.task_claim import (
     checkpoint_step,
     complete_step,
@@ -27,7 +32,11 @@ async def process_appearance_aggregation_run(
     lease_seconds: int = 120,
 ) -> None:
     run = await session.get(PipelineRunORM, run_id)
-    if run is None or run.run_type not in {"character_extraction", "text_analysis"}:
+    if run is None or run.run_type not in {
+        "character_extraction",
+        "text_analysis",
+        "visual_enrichment",
+    }:
         raise ValueError("appearance_aggregation_run_not_found")
     step = await session.scalar(
         select(PipelineStepORM).where(
@@ -55,10 +64,20 @@ async def process_appearance_aggregation_run(
     try:
         service = AppearanceAggregationService(session)
         document = await service.source_document_version(run.novel_id)
-        character_ids = await service.affected_character_ids(
-            novel_id=run.novel_id,
-            source_document_version_id=document.id,
-        )
+        if run.run_type == "visual_enrichment":
+            query_run = await session.scalar(
+                select(RetrievalQueryRunORM).where(
+                    RetrievalQueryRunORM.enrichment_run_id == run.id
+                )
+            )
+            if query_run is None:
+                raise RuntimeError("visual_enrichment_query_run_not_found")
+            character_ids = [query_run.character_id]
+        else:
+            character_ids = await service.affected_character_ids(
+                novel_id=run.novel_id,
+                source_document_version_id=document.id,
+            )
         cursor = step.cursor or {}
         completed = {str(item) for item in cursor.get("completed_character_ids", [])}
         await session.commit()
@@ -93,6 +112,15 @@ async def process_appearance_aggregation_run(
                     "completed_character_ids": sorted(completed),
                 },
                 lease_seconds=lease_seconds,
+            )
+        if run.run_type == "visual_enrichment":
+            # The terminal event contains identifiers and counts only; evidence text stays in
+            # the audited passage/observation records.
+            await append_run_event(
+                session,
+                run_id=run.id,
+                event_type="visual_enrichment.completed",
+                payload={"character_count": len(character_ids)},
             )
         await complete_step(
             session,

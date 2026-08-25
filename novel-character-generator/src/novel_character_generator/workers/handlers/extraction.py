@@ -94,6 +94,12 @@ async def process_extraction_run(
                 },
                 lease_seconds=lease_seconds,
             )
+        await repository.supersede_prior_extractor_observations(
+            run=run,
+            document=document,
+            extractor_version=provider.version,
+        )
+        await repository.activate_run_observations(run=run)
         await complete_step_and_enqueue(
             session,
             step=step,

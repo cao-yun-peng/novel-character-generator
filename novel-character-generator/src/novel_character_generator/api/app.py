@@ -17,6 +17,7 @@ from novel_character_generator.api.routes import (
     runs,
     story,
     ui,
+    visual_enrichment,
 )
 from novel_character_generator.infrastructure.db.session import dispose_engine
 from novel_character_generator.settings import get_settings
@@ -49,6 +50,7 @@ def create_app() -> FastAPI:
     app.include_router(approvals.router)
     app.include_router(agent_runs.router)
     app.include_router(story.router)
+    app.include_router(visual_enrichment.router)
     app.include_router(ui.router)
     return app
 

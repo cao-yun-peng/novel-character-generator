@@ -2,7 +2,7 @@
 
 > [← 上一篇](01-project-overview-and-principles.md) · [文档索引](README.md) · [下一篇 →](03-domain-data-model.md)
 >
-> 文档版本：2.9 · 源章节：3. 系统架构、4. 技术选型、5. 项目代码骨架 · 修订日期：2026-08-24
+> 文档版本：3.0 · 源章节：3. 系统架构、4. 技术选型、5. 项目代码骨架 · 修订日期：2026-08-24
 >
 > 当前状态：API、SQLite、Alembic、单 Worker、任务租约和通用 AgentRuntime 已有基础实现；图像 Provider、完整遥测和二期拓扑仍是目标架构。代码真值见[代码导航](00-code-navigation.md)。
 
@@ -89,6 +89,9 @@ Task Table ◄──────────── Worker Process
 | 数据校验 | Pydantic 2 + pydantic-settings | API 与领域 DTO |
 | ORM | SQLAlchemy 2 Async | 全部 Repository 使用 `AsyncSession`，不混用同步 API |
 | SQLite 驱动 | aiosqlite | 一期单机存储 |
+| 中文关键词检索（目标 PoC） | SQLite FTS5 + 版本化中文预分词/项目词典 | BM25 精确召回；复用现有 SQLite，不新增检索服务；默认分词器不直接承担中文切词 |
+| 向量检索（目标 PoC） | Qdrant Local on-disk | 保存 passage 向量和最小 payload；由单一检索组件持有，超过单进程 PoC 范围后迁移 Qdrant Server |
+| Embedding（目标 PoC） | 独立 `EmbeddingPort`，先接远程 API | 不要求本机部署 BGE-M3；模型、维度、revision、归一化和 profile 版本必须冻结，可后续替换本地模型 |
 | 迁移 | Alembic | 禁止以 `create_all()` 或 `init.sql` 代替版本迁移 |
 | 主流程编排 | Application Orchestrator + PipelineRun/PipelineStep | 确定性应用服务和数据库状态机是一期默认实现 |
 | Agent Runtime | 自定义 `AgentRuntime` 端口；默认 StructuredCall 实现 | 支持单次结构化调用、一次受限修复和有限工具循环 |

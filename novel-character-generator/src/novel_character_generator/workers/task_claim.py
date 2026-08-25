@@ -1,7 +1,7 @@
 from datetime import UTC, datetime, timedelta
 from uuid import UUID, uuid4
 
-from sqlalchemy import and_, or_, select, update
+from sqlalchemy import and_, case, or_, select, update
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.sql.elements import ColumnElement
 
@@ -35,8 +35,13 @@ async def claim_next_step(
     runnable = _runnable(now)
     candidate_id = await session.scalar(
         select(PipelineStepORM.id)
+        .join(PipelineRunORM, PipelineRunORM.id == PipelineStepORM.run_id)
         .where(runnable)
-        .order_by(PipelineStepORM.created_at, PipelineStepORM.id)
+        .order_by(
+            case((PipelineRunORM.run_type == "source_indexing", 1), else_=0),
+            PipelineStepORM.created_at,
+            PipelineStepORM.id,
+        )
         .limit(1)
     )
     if candidate_id is None:
@@ -316,6 +321,7 @@ async def complete_step_and_enqueue(
     expected_generation: int,
     cursor: dict[str, object],
     next_step_key: str,
+    next_cursor: dict[str, object] | None = None,
 ) -> PipelineStepORM:
     """Complete one workflow step and atomically make its successor runnable."""
     now = datetime.now(UTC)
@@ -357,7 +363,7 @@ async def complete_step_and_enqueue(
             lease_generation=0,
             heartbeat_at=None,
             next_attempt_at=None,
-            cursor={"schema_version": "v1", "current_chunk_ordinal": 0},
+            cursor=next_cursor or {"schema_version": "v1", "current_chunk_ordinal": 0},
             error_code=None,
             error_message=None,
             created_at=now,
@@ -365,6 +371,9 @@ async def complete_step_and_enqueue(
         )
         session.add(next_step)
         await session.flush()
+    elif next_cursor is not None:
+        next_step.cursor = next_cursor
+        next_step.updated_at = now
     await append_run_event(
         session,
         run_id=run.id,

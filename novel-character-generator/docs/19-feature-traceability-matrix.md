@@ -2,7 +2,7 @@
 
 > [← 上一篇](18-image-generation-implementation-contract.md) · [文档索引](README.md) · [下一篇 →](20-api-cookbook-and-error-catalog.md)
 >
-> 文档版本：2.9 · 状态快照日期：2026-08-24 · 项目版本：0.1.0
+> 文档版本：3.1 · 状态快照日期：2026-08-24 · 项目版本：0.1.0
 
 ## 1. 用法
 
@@ -26,6 +26,11 @@
 | TXT 上传与源版本 | `POST /novels`、`POST /novels/{id}/versions` | `IngestionService`、Document ORM、LocalArtifactStore、依赖失效传播 | 创建后续 Run | `test_document_versions.py`、`test_source_version_appearance_invalidation.py` | `generation.dependency.invalidated` 已插桩 | 已实现 |
 | 规范化、章节和分块 | 创建文本 Run | `text_processing.py`、文档/Chunk Repository | `normalize_and_chunk` | `test_text_processing.py`、`test_text_analysis_run.py` | Step 完整事件待实现 | 已实现 |
 | 角色、Mention 与外观事实提取 | 文本 Run、角色查询 API | Extraction Provider/Handler/Repository | `extract_characters` | `test_extraction_slice.py`、Provider 单测 | Provider/证据事件待实现 | 已实现基础 |
+| 细粒度检索库与混合召回 | 小说详情返回当前 build/status；Worker 内可执行混合召回 | 检索表、passage、FTS5、中文词典、EmbeddingPort、Qdrant Local、RRF、实体加分与邻居扩展 | `build_retrieval_index` 已接线并按批 checkpoint | `test_retrieval.py`、`test_openai_compatible_embedding.py`、`test_qdrant_local_vector_store.py`、`test_retrieval_indexing.py` 覆盖 429、维度拒绝、过滤、恢复、混合召回和邻居 | `retrieval.index.started/lexical_ready/ready/failed` | 已实现基础（黄金集门禁待做） |
+| 检索增强视觉精提取 | 角色页、field-gaps API、visual-enrichment Run/API、evidence API、Suggestion resolve API | 字段组缺口策略、版本化 QueryPlan、命中审计、邻居扩展、结构化 Provider、唯一 chunk 回映、Observation/Suggestion 分流 | `plan_visual_retrieval → retrieve_visual_evidence → extract_visual_evidence → persist_visual_evidence → aggregate_appearance` | `test_visual_query_plan.py`、`test_visual_enrichment_pipeline.py`、UI 浏览器 smoke；黄金集 Runner/门禁按功能稳定度暂缓 | `visual_enrichment.planned/retrieved/packet_built/extracted/evidence_persisted/suggested/completed` | 已实现基础 |
+| 原子视觉字段、人生阶段与证据修复 | Observation API、工作台角色详情 | `visual_fields.py`、`grounding.py`、`ObservationDraft`、Extraction Repository；阶段保存在 `temporal_scope` | `extract_characters` | `test_visual_fields.py`、`test_extraction_slice.py`、Observation API 测试 | 复用提取/聚合日志；专用规范化事件待实现 | 已实现基础 |
+| extractor version 替换 | 新文本 Run | `<provider>:<model>:visual-observation-v2`；旧自动 Observation superseded，人工 Observation 保留 | `extract_characters` 首 chunk | `test_extraction_slice.py` | 专用 superseded 事件待实现 | 已实现 |
+| 场景重分析覆盖 | 新文本 Run、Story API | `(novel_id, narrative_order)` 稳定槽位；自动结果原位更新，人工 corrected binding 保留 | `extract_characters` | `test_reanalysis_updates_automatic_scene_when_span_changes`、场景人工修正集成测试 | 复用 Step 事件 | 已实现 |
 | Run 查询、SSE、取消、重试 | `/runs/{id}` 及子路径 | `RunService`、RunEvent Repository | 领取与状态推进 | `test_run_events_and_external_operations.py` | 当前只有少量异常日志 | 已实现 |
 | Worker 租约、fencing、恢复 | Worker CLI | `task_claim.py`、Run/Step ORM | 所有 Step | `test_task_recovery.py` | claim/start/complete/fail 待统一 | 已实现 |
 | 外部操作账本 | `/runs/{id}/external-operations` | `ExternalOperationRepository`、ORM | 尚无真实外部图像 Step | Repository/恢复测试 | submit/unknown 事件待实现 | 部分实现 |
@@ -37,7 +42,7 @@
 | 通用 AgentRuntime 与轨迹 | `/agent-runs` | `structured_runtime.py`、`AgentExecutionService`、Agent ORM | 尚未成为文本主流程必经 | `test_structured_agent_runtime.py`、`test_agent_execution_service.py` | 轨迹有业务表，事件待补 | 部分实现、默认关闭 |
 | 评测数据层 | 暂无公开执行 API | Evaluation Repository/ORM | 尚无 Eval Runner | `test_evaluation_repository.py` | 评测事件待实现 | 已实现基础 |
 | Metrics | `/metrics` | `api/metrics.py` | — | Health/Metrics 集成测试 | 请求计数与延迟 | 已实现基础 |
-| 轻量可视化工作台 | `/ui`、`/ui/assets/*` | `api/routes/ui.py`、`web/index.html/css/js` | 通过公开 Run API 间接驱动 | `test_ui_shell_and_static_assets_are_served_without_api_auth` | 浏览器不产生业务真值 | 已实现基础 |
+| 轻量可视化工作台 | `/ui`、`/ui/assets/*` | `api/routes/ui.py`、`web/index.html/css/js`；历史项目、重启分析、视觉优先、人生阶段、字段缺口、精提取进度/证据/Suggestion 审核 | 通过公开 Run API 间接驱动 | UI 静态资源集成测试、Observation/visual-enrichment API 测试、桌面与移动端浏览器 smoke | 浏览器不产生业务真值 | 已实现基础 |
 | OpenTelemetry 全链路 | 配置字段 | 尚无完整 instrumentation | — | 尚无 | 尚无 | 仅设计 |
 | 结构化业务事件与 `log-check` | 目标 CLI | 设计见日志文档 | 覆盖所有关键 Step | 尚无夹具/检查器测试 | 事件规范已设计 | 仅设计 |
 | 外观自动聚合闭环 | 现有查询/审批 API | `appearance_aggregation.py`、`appearance_aggregation_service.py`、聚合指纹与 stale 迁移 | `aggregate_appearance` | 策略单测、Pipeline/API、源版本失效、人工保护与时间线继承集成测试 | 核心聚合与依赖失效事件已插桩 | 已实现核心；精细差异重算已延期，当前保守重建 |
@@ -53,6 +58,7 @@
 | 批次 | 最小可验收结果 | 必须同时完成 |
 |---|---|---|
 | A：外观聚合 | 真实提取结果可形成待审核 Profile | Step、Policy、Service、迁移、API 复用、冲突/幂等/恢复测试、聚合日志 |
+| A0：检索增强视觉精提取 | 上传后混合索引就绪；选定角色可补齐有证据的视觉字段，候选可审核 | 索引迁移、中文分词/BM25、EmbeddingPort/vector index、RRF、QueryPlan/Hit 审计、Worker、精确回映、Suggestion 分流、恢复/黄金集测试 |
 | B：冻结上下文 | 已批准 Profile 可形成稳定 context hash | Builder、持久化、失效传播、hash 测试、frozen/rejected 日志 |
 | C：Mock 图像链路 | 不收费的 Mock Provider 跑通候选→审计→gate | Image Run API、Step 图、ExternalOperation、Artifact、固定审计器、恢复测试 |
 | D：真实 Provider | 单一 WorkflowProfile 安全生成候选图 | 契约测试、submit unknown、下载校验、费用门禁、Provider 日志 |

@@ -2,6 +2,7 @@ from novel_character_generator.domain.policies.text_processing import (
     build_chunks,
     decode_text,
     detect_chapters,
+    estimate_tokens,
     normalize_text,
 )
 
@@ -39,3 +40,20 @@ def test_chapter_detection_and_chunk_hashes_are_stable() -> None:
         chunk.content == normalized.text[chunk.normalized_start : chunk.normalized_end]
         for chunk in first
     )
+
+
+def test_chunk_overlap_is_applied_without_exceeding_target() -> None:
+    normalized = normalize_text("第一章\n" + "山河。" * 2_000)
+    chunks = build_chunks(
+        normalized,
+        detect_chapters(normalized.text),
+        target_tokens=1_000,
+        overlap_tokens=100,
+    )
+
+    assert len(chunks) > 1
+    assert all(estimate_tokens(chunk.content) <= 1_000 for chunk in chunks)
+    for previous, current in zip(chunks, chunks[1:], strict=False):
+        assert current.normalized_start < previous.normalized_end
+        overlap = normalized.text[current.normalized_start : previous.normalized_end]
+        assert 0 < estimate_tokens(overlap) <= 100

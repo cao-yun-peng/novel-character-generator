@@ -7,13 +7,19 @@ from uuid import UUID
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from novel_character_generator.application.ports.artifact_store import ArtifactStore
+from novel_character_generator.application.services.retrieval_indexing_service import (
+    RetrievalIndexingService,
+)
 from novel_character_generator.domain.policies.text_processing import decode_text
 from novel_character_generator.infrastructure.db.orm import (
     NovelORM,
     PipelineRunORM,
+    RetrievalIndexBuildORM,
     SourceDocumentVersionORM,
 )
 from novel_character_generator.infrastructure.db.repositories.ingestion import IngestionRepository
+from novel_character_generator.infrastructure.db.repositories.retrieval import RetrievalRepository
+from novel_character_generator.settings import get_settings
 
 logger = logging.getLogger(__name__)
 
@@ -26,6 +32,9 @@ class NovelDetails:
     source_sha256: str
     chapter_count: int
     chunk_count: int
+    retrieval_index_build_id: UUID | None
+    retrieval_index_status: str | None
+    retrieval_passage_count: int
 
 
 class IngestionService:
@@ -33,6 +42,16 @@ class IngestionService:
         self.session = session
         self.artifact_store = artifact_store
         self.repository = IngestionRepository(session)
+
+    async def list_novels(self, *, limit: int = 50) -> list[NovelORM]:
+        return await self.repository.list_novels(limit=limit)
+
+    async def list_runs(
+        self, novel_id: UUID, *, limit: int = 20
+    ) -> list[PipelineRunORM] | None:
+        if await self.repository.get_novel(novel_id) is None:
+            return None
+        return await self.repository.list_runs(novel_id, limit=limit)
 
     async def upload(self, *, filename: str, data: bytes) -> NovelORM:
         text, encoding = decode_text(data)
@@ -47,15 +66,24 @@ class IngestionService:
             )
             if novel is None:
                 raise RuntimeError("source_document_without_novel")
+            await RetrievalIndexingService(self.session, get_settings()).ensure_run(
+                novel_id=novel.id,
+                source_document_version_id=existing.id,
+            )
+            await self.session.commit()
             return novel
         storage_uri = await self.artifact_store.put(content_hash=sha256, data=data)
         title = Path(filename).stem.strip() or "Untitled"
-        novel, _, _ = await self.repository.create_novel_and_document(
+        novel, _, document_version = await self.repository.create_novel_and_document(
             title=title,
             sha256=sha256,
             encoding=encoding,
             storage_uri=storage_uri,
             byte_size=len(data),
+        )
+        await RetrievalIndexingService(self.session, get_settings()).ensure_run(
+            novel_id=novel.id,
+            source_document_version_id=document_version.id,
         )
         await self.session.commit()
         return novel
@@ -87,6 +115,10 @@ class IngestionService:
             encoding=encoding,
             storage_uri=storage_uri,
             byte_size=len(data),
+        )
+        await RetrievalIndexingService(self.session, get_settings()).ensure_run(
+            novel_id=novel.id,
+            source_document_version_id=document_version.id,
         )
         novel.status = "uploaded"
         await self.session.commit()
@@ -120,6 +152,13 @@ class IngestionService:
         if document_version is None:
             raise RuntimeError("novel_without_source_document")
         chapter_count, chunk_count = await self.repository.get_counts(novel_id)
+        retrieval_repository = RetrievalRepository(self.session)
+        retrieval_build = await retrieval_repository.latest_build_for_source(document_version.id)
+        retrieval_passage_count = (
+            await retrieval_repository.count_passages(retrieval_build.id)
+            if retrieval_build is not None
+            else 0
+        )
         return NovelDetails(
             id=novel.id,
             title=novel.title,
@@ -127,7 +166,25 @@ class IngestionService:
             source_sha256=document_version.content_sha256,
             chapter_count=chapter_count,
             chunk_count=chunk_count,
+            retrieval_index_build_id=retrieval_build.id if retrieval_build else None,
+            retrieval_index_status=retrieval_build.status if retrieval_build else None,
+            retrieval_passage_count=retrieval_passage_count,
         )
+
+    async def ensure_retrieval_index(
+        self, novel_id: UUID
+    ) -> tuple[RetrievalIndexBuildORM, PipelineRunORM] | None:
+        if await self.repository.get_novel(novel_id) is None:
+            return None
+        document_version = await self.repository.latest_document_version(novel_id)
+        if document_version is None:
+            raise RuntimeError("novel_without_source_document")
+        build, run = await RetrievalIndexingService(self.session, get_settings()).ensure_run(
+            novel_id=novel_id,
+            source_document_version_id=document_version.id,
+        )
+        await self.session.commit()
+        return build, run
 
     async def create_run(self, novel_id: UUID, idempotency_key: str) -> PipelineRunORM | None:
         if await self.repository.get_novel(novel_id) is None:

@@ -28,6 +28,8 @@ class ObservationDraft(BaseModel):
     end: int = Field(gt=0)
     epistemic_status: Literal["asserted", "negated", "inferred", "uncertain"] = "asserted"
     confidence: float = Field(ge=0, le=1)
+    life_phase_key: str | None = Field(default=None, max_length=100)
+    life_phase_label: str | None = Field(default=None, max_length=100)
 
 
 class ExpressionDraft(BaseModel):

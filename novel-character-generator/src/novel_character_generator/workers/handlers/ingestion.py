@@ -12,6 +12,7 @@ from novel_character_generator.domain.policies.text_processing import (
 )
 from novel_character_generator.infrastructure.db.orm import PipelineRunORM, PipelineStepORM
 from novel_character_generator.infrastructure.db.repositories.ingestion import IngestionRepository
+from novel_character_generator.infrastructure.db.repositories.retrieval import RetrievalRepository
 from novel_character_generator.workers.task_claim import (
     complete_step,
     complete_step_and_enqueue,
@@ -82,6 +83,7 @@ async def process_ingestion_run(
             chapters=chapters,
             chunks=chunks,
         )
+        await RetrievalRepository(session).map_passages_to_chunks(document_version.id)
         cursor = {
             "schema_version": "v1",
             "current_chunk_ordinal": len(chunks),

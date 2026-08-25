@@ -1,7 +1,8 @@
+from datetime import datetime
 from typing import Annotated
 from uuid import UUID
 
-from fastapi import APIRouter, Depends, File, Header, HTTPException, UploadFile, status
+from fastapi import APIRouter, Depends, File, Header, HTTPException, Query, UploadFile, status
 from pydantic import BaseModel
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -28,6 +29,14 @@ class NovelDetailsResponse(NovelResponse):
     source_sha256: str
     chapter_count: int
     chunk_count: int
+    retrieval_index_build_id: UUID | None
+    retrieval_index_status: str | None
+    retrieval_passage_count: int
+
+
+class NovelHistoryResponse(NovelResponse):
+    created_at: datetime
+    updated_at: datetime
 
 
 class RunResponse(BaseModel):
@@ -37,11 +46,33 @@ class RunResponse(BaseModel):
     run_type: str
 
 
+class RunHistoryResponse(RunResponse):
+    created_at: datetime
+    updated_at: datetime
+
+
+class RetrievalIndexRunResponse(BaseModel):
+    run_id: UUID
+    run_status: str
+    retrieval_index_build_id: UUID
+    retrieval_index_status: str
+
+
 class DocumentVersionResponse(BaseModel):
     id: UUID
     source_document_id: UUID
     version: int
     content_sha256: str
+
+
+@router.get("", response_model=list[NovelHistoryResponse])
+async def list_novels(
+    session: Annotated[AsyncSession, Depends(get_session)],
+    artifact_store: Annotated[LocalArtifactStore, Depends(get_artifact_store)],
+    limit: Annotated[int, Query(ge=1, le=100)] = 50,
+) -> list[NovelHistoryResponse]:
+    novels = await IngestionService(session, artifact_store).list_novels(limit=limit)
+    return [NovelHistoryResponse.model_validate(item, from_attributes=True) for item in novels]
 
 
 @router.post("", response_model=NovelResponse, status_code=status.HTTP_201_CREATED)
@@ -130,5 +161,43 @@ async def create_text_analysis_run(
     if run is None:
         raise HTTPException(status_code=404, detail="novel_not_found")
     return RunResponse(id=run.id, novel_id=run.novel_id, status=run.status, run_type=run.run_type)
+
+
+@router.post(
+    "/{novel_id}/retrieval-index-runs",
+    response_model=RetrievalIndexRunResponse,
+    status_code=status.HTTP_202_ACCEPTED,
+)
+async def ensure_retrieval_index_run(
+    novel_id: UUID,
+    session: Annotated[AsyncSession, Depends(get_session)],
+    artifact_store: Annotated[LocalArtifactStore, Depends(get_artifact_store)],
+) -> RetrievalIndexRunResponse:
+    try:
+        result = await IngestionService(session, artifact_store).ensure_retrieval_index(novel_id)
+    except (RuntimeError, ValueError) as error:
+        raise HTTPException(status_code=409, detail=str(error)) from error
+    if result is None:
+        raise HTTPException(status_code=404, detail="novel_not_found")
+    build, run = result
+    return RetrievalIndexRunResponse(
+        run_id=run.id,
+        run_status=run.status,
+        retrieval_index_build_id=build.id,
+        retrieval_index_status=build.status,
+    )
+
+
+@router.get("/{novel_id}/runs", response_model=list[RunHistoryResponse])
+async def list_novel_runs(
+    novel_id: UUID,
+    session: Annotated[AsyncSession, Depends(get_session)],
+    artifact_store: Annotated[LocalArtifactStore, Depends(get_artifact_store)],
+    limit: Annotated[int, Query(ge=1, le=100)] = 20,
+) -> list[RunHistoryResponse]:
+    runs = await IngestionService(session, artifact_store).list_runs(novel_id, limit=limit)
+    if runs is None:
+        raise HTTPException(status_code=404, detail="novel_not_found")
+    return [RunHistoryResponse.model_validate(item, from_attributes=True) for item in runs]
 
 

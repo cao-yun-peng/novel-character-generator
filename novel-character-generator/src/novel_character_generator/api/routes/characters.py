@@ -4,8 +4,9 @@ from uuid import UUID
 
 from fastapi import APIRouter, Depends, Header, HTTPException, Query, Response
 from pydantic import BaseModel, Field, JsonValue
-from sqlalchemy import select
+from sqlalchemy import or_, select
 from sqlalchemy.ext.asyncio import AsyncSession
+from sqlalchemy.orm import aliased
 
 from novel_character_generator.api.auth import require_admin_api_key, require_user_api_key
 from novel_character_generator.api.deps import get_session
@@ -23,11 +24,19 @@ from novel_character_generator.application.services.character_entity_service imp
     SplitAssignments,
     SplitTarget,
 )
+from novel_character_generator.domain.policies.relationships import is_kinship_placeholder_name
+from novel_character_generator.domain.policies.visual_fields import (
+    canonical_field_path,
+    is_visual_field,
+    visual_category,
+)
 from novel_character_generator.infrastructure.db.orm import (
+    ChapterORM,
     CharacterAppearanceStateORM,
     CharacterConflictORM,
     CharacterEntityOperationORM,
     CharacterORM,
+    CharacterRelationORM,
     CharacterRenderProfileORM,
     ExpressionObservationORM,
     FeatureObservationORM,
@@ -66,6 +75,12 @@ class ObservationResponse(BaseModel):
     evidence_quote: str | None
     grounding_status: str
     confidence: float
+    chapter_ordinal: int | None
+    temporal_scope: dict[str, JsonValue]
+    life_phase_key: str | None
+    life_phase_label: str | None
+    is_visual: bool
+    visual_category: str | None
 
 
 class ExpressionResponse(BaseModel):
@@ -74,6 +89,20 @@ class ExpressionResponse(BaseModel):
     expression_text: str | None
     evidence_quote: str
     confidence: float
+
+
+class CharacterRelationResponse(BaseModel):
+    id: UUID
+    direction: str
+    relation_type: str
+    source_character_id: UUID
+    source_character_name: str
+    target_character_id: UUID
+    target_character_name: str
+    evidence_quote: str
+    grounding_status: str
+    confidence: float
+    chapter_ordinal: int | None
 
 
 class AppearanceStateResponse(BaseModel):
@@ -232,6 +261,32 @@ def _state_response(row: CharacterAppearanceStateORM) -> AppearanceStateResponse
     return AppearanceStateResponse.model_validate(row, from_attributes=True)
 
 
+def _observation_response(
+    row: FeatureObservationORM, character: CharacterORM
+) -> ObservationResponse:
+    field_path = canonical_field_path(
+        row.field_path,
+        character_name=character.canonical_name,
+    )
+    temporal_scope = row.temporal_scope or {}
+    life_phase_key = temporal_scope.get("life_phase_key")
+    life_phase_label = temporal_scope.get("life_phase_label")
+    return ObservationResponse(
+        id=row.id,
+        field_path=field_path,
+        value=row.value,
+        evidence_quote=row.evidence_quote,
+        grounding_status=row.grounding_status,
+        confidence=row.confidence,
+        chapter_ordinal=row.chapter_ordinal,
+        temporal_scope=temporal_scope,
+        life_phase_key=str(life_phase_key) if life_phase_key is not None else None,
+        life_phase_label=str(life_phase_label) if life_phase_label is not None else None,
+        is_visual=is_visual_field(field_path),
+        visual_category=visual_category(field_path),
+    )
+
+
 def _profile_response(row: CharacterRenderProfileORM) -> RenderProfileResponse:
     return RenderProfileResponse.model_validate(row, from_attributes=True)
 
@@ -271,6 +326,10 @@ async def list_characters(
             merged_into_character_id=item.merged_into_character_id,
         )
         for item in result
+        if not (
+            item.merged_into_character_id is not None
+            and is_kinship_placeholder_name(item.canonical_name)
+        )
     ]
 
 
@@ -312,7 +371,7 @@ async def list_mentions(
 async def list_observations(
     character_id: UUID, session: Annotated[AsyncSession, Depends(get_session)]
 ) -> list[ObservationResponse]:
-    await _character_or_404(session, character_id)
+    character = await _character_or_404(session, character_id)
     result = await session.scalars(
         select(FeatureObservationORM)
         .join(
@@ -324,18 +383,69 @@ async def list_observations(
             FeatureObservationORM.character_id == character_id,
             FeatureObservationORM.record_status == "active",
         )
-        .order_by(FeatureObservationORM.created_at)
+        .order_by(FeatureObservationORM.created_at, FeatureObservationORM.id)
+    )
+    return [_observation_response(item, character) for item in result]
+
+
+@router.get(
+    "/characters/{character_id}/relations",
+    response_model=list[CharacterRelationResponse],
+)
+async def list_character_relations(
+    character_id: UUID, session: Annotated[AsyncSession, Depends(get_session)]
+) -> list[CharacterRelationResponse]:
+    await _character_or_404(session, character_id)
+    source_character = aliased(CharacterORM)
+    target_character = aliased(CharacterORM)
+    rows = await session.execute(
+        select(
+            CharacterRelationORM,
+            source_character.canonical_name,
+            target_character.canonical_name,
+            ChapterORM.ordinal,
+        )
+        .join(
+            SourceDocumentORM,
+            CharacterRelationORM.source_document_version_id
+            == SourceDocumentORM.current_version_id,
+        )
+        .join(
+            source_character,
+            source_character.id == CharacterRelationORM.source_character_id,
+        )
+        .join(
+            target_character,
+            target_character.id == CharacterRelationORM.target_character_id,
+        )
+        .join(TextChunkORM, TextChunkORM.id == CharacterRelationORM.source_chunk_id)
+        .outerjoin(ChapterORM, ChapterORM.id == TextChunkORM.chapter_id)
+        .where(
+            CharacterRelationORM.record_status == "active",
+            or_(
+                CharacterRelationORM.source_character_id == character_id,
+                CharacterRelationORM.target_character_id == character_id,
+            ),
+        )
+        .order_by(ChapterORM.ordinal, CharacterRelationORM.created_at)
     )
     return [
-        ObservationResponse(
-            id=item.id,
-            field_path=item.field_path,
-            value=item.value,
-            evidence_quote=item.evidence_quote,
-            grounding_status=item.grounding_status,
-            confidence=item.confidence,
+        CharacterRelationResponse(
+            id=relation.id,
+            direction=(
+                "outgoing" if relation.source_character_id == character_id else "incoming"
+            ),
+            relation_type=relation.relation_type,
+            source_character_id=relation.source_character_id,
+            source_character_name=source_name,
+            target_character_id=relation.target_character_id,
+            target_character_name=target_name,
+            evidence_quote=relation.evidence_quote,
+            grounding_status=relation.grounding_status,
+            confidence=relation.confidence,
+            chapter_ordinal=chapter_ordinal,
         )
-        for item in result
+        for relation, source_name, target_name, chapter_ordinal in rows
     ]
 
 

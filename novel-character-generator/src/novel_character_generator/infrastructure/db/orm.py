@@ -151,6 +151,151 @@ class TextChunkORM(IdMixin, Base):
     normalized_char_end: Mapped[int] = mapped_column(Integer)
 
 
+class RetrievalIndexBuildORM(IdMixin, TimestampMixin, Base):
+    __tablename__ = "retrieval_index_builds"
+    __table_args__ = (
+        UniqueConstraint("source_document_version_id", "index_version"),
+        Index("ix_retrieval_builds_source_status", "source_document_version_id", "status"),
+    )
+
+    source_document_version_id: Mapped[UUID] = mapped_column(
+        ForeignKey("source_document_versions.id", ondelete="CASCADE"), index=True
+    )
+    index_version: Mapped[str] = mapped_column(String(100))
+    status: Mapped[str] = mapped_column(String(32), index=True)
+    pipeline_run_id: Mapped[UUID | None] = mapped_column(
+        ForeignKey("pipeline_runs.id", ondelete="SET NULL"), unique=True
+    )
+    config_hash: Mapped[str] = mapped_column(String(64))
+    passage_algorithm_version: Mapped[str] = mapped_column(String(100))
+    lexical_profile_version: Mapped[str] = mapped_column(String(100))
+    embedding_profile_version: Mapped[str | None] = mapped_column(String(100))
+    error_summary: Mapped[str | None] = mapped_column(Text)
+
+
+class RetrievalPassageORM(IdMixin, TimestampMixin, Base):
+    __tablename__ = "retrieval_passages"
+    __table_args__ = (
+        UniqueConstraint("retrieval_index_build_id", "ordinal"),
+        CheckConstraint("ordinal >= 0", name="ck_retrieval_passages_ordinal_nonnegative"),
+        CheckConstraint("token_count > 0", name="ck_retrieval_passages_token_count_positive"),
+        CheckConstraint(
+            "normalized_char_end > normalized_char_start",
+            name="ck_retrieval_passages_normalized_span",
+        ),
+        CheckConstraint(
+            "original_char_end > original_char_start",
+            name="ck_retrieval_passages_original_span",
+        ),
+    )
+
+    retrieval_index_build_id: Mapped[UUID] = mapped_column(
+        ForeignKey("retrieval_index_builds.id", ondelete="CASCADE"), index=True
+    )
+    chapter_id: Mapped[UUID | None] = mapped_column(
+        ForeignKey("chapters.id", ondelete="SET NULL")
+    )
+    chapter_ordinal: Mapped[int] = mapped_column(Integer)
+    ordinal: Mapped[int] = mapped_column(Integer)
+    normalized_char_start: Mapped[int] = mapped_column(Integer)
+    normalized_char_end: Mapped[int] = mapped_column(Integer)
+    original_char_start: Mapped[int] = mapped_column(Integer)
+    original_char_end: Mapped[int] = mapped_column(Integer)
+    content: Mapped[str] = mapped_column(Text)
+    token_count: Mapped[int] = mapped_column(Integer)
+    content_hash: Mapped[str] = mapped_column(String(64))
+    previous_passage_id: Mapped[UUID | None] = mapped_column(
+        ForeignKey("retrieval_passages.id", ondelete="SET NULL")
+    )
+    next_passage_id: Mapped[UUID | None] = mapped_column(
+        ForeignKey("retrieval_passages.id", ondelete="SET NULL")
+    )
+    oversized_sentence: Mapped[bool] = mapped_column(Boolean, default=False)
+
+
+class RetrievalPassageChunkSpanORM(IdMixin, Base):
+    __tablename__ = "retrieval_passage_chunk_spans"
+    __table_args__ = (
+        UniqueConstraint("retrieval_passage_id", "source_chunk_id"),
+        CheckConstraint("passage_char_end > passage_char_start", name="ck_passage_chunk_span"),
+        CheckConstraint("chunk_char_end > chunk_char_start", name="ck_passage_chunk_source_span"),
+    )
+
+    retrieval_passage_id: Mapped[UUID] = mapped_column(
+        ForeignKey("retrieval_passages.id", ondelete="CASCADE"), index=True
+    )
+    source_chunk_id: Mapped[UUID] = mapped_column(
+        ForeignKey("text_chunks.id", ondelete="CASCADE"), index=True
+    )
+    passage_char_start: Mapped[int] = mapped_column(Integer)
+    passage_char_end: Mapped[int] = mapped_column(Integer)
+    chunk_char_start: Mapped[int] = mapped_column(Integer)
+    chunk_char_end: Mapped[int] = mapped_column(Integer)
+
+
+class RetrievalPassageEmbeddingORM(IdMixin, TimestampMixin, Base):
+    __tablename__ = "retrieval_passage_embeddings"
+    __table_args__ = (
+        UniqueConstraint("retrieval_passage_id", "embedding_profile_version"),
+        CheckConstraint("dimension > 0", name="ck_retrieval_embedding_dimension_positive"),
+    )
+
+    retrieval_passage_id: Mapped[UUID] = mapped_column(
+        ForeignKey("retrieval_passages.id", ondelete="CASCADE"), index=True
+    )
+    embedding_profile_version: Mapped[str] = mapped_column(String(100))
+    dimension: Mapped[int] = mapped_column(Integer)
+    qdrant_collection: Mapped[str] = mapped_column(String(255))
+    qdrant_point_id: Mapped[str] = mapped_column(String(100))
+    content_hash: Mapped[str] = mapped_column(String(64))
+    status: Mapped[str] = mapped_column(String(32), index=True)
+
+
+class RetrievalQueryRunORM(IdMixin, TimestampMixin, Base):
+    __tablename__ = "retrieval_query_runs"
+    __table_args__ = (UniqueConstraint("enrichment_run_id", "query_plan_hash"),)
+
+    enrichment_run_id: Mapped[UUID] = mapped_column(
+        ForeignKey("pipeline_runs.id", ondelete="CASCADE"), index=True
+    )
+    retrieval_index_build_id: Mapped[UUID] = mapped_column(
+        ForeignKey("retrieval_index_builds.id"), index=True
+    )
+    character_id: Mapped[UUID] = mapped_column(
+        ForeignKey("characters.id", ondelete="CASCADE"), index=True
+    )
+    life_phase_key: Mapped[str | None] = mapped_column(String(100))
+    field_groups: Mapped[list[str]] = mapped_column(JSON)
+    query_plan: Mapped[dict[str, Any]] = mapped_column(JSON)
+    query_plan_hash: Mapped[str] = mapped_column(String(64))
+    lexical_profile_version: Mapped[str] = mapped_column(String(100))
+    embedding_profile_version: Mapped[str | None] = mapped_column(String(100))
+
+
+class RetrievalQueryHitORM(IdMixin, TimestampMixin, Base):
+    __tablename__ = "retrieval_query_hits"
+    __table_args__ = (
+        UniqueConstraint("retrieval_query_run_id", "retrieval_passage_id"),
+        CheckConstraint("final_rank > 0", name="ck_retrieval_query_hits_final_rank_positive"),
+    )
+
+    retrieval_query_run_id: Mapped[UUID] = mapped_column(
+        ForeignKey("retrieval_query_runs.id", ondelete="CASCADE"), index=True
+    )
+    retrieval_passage_id: Mapped[UUID] = mapped_column(
+        ForeignKey("retrieval_passages.id", ondelete="CASCADE"), index=True
+    )
+    source_channels: Mapped[list[str]] = mapped_column(JSON)
+    bm25_score: Mapped[float | None] = mapped_column(Float)
+    vector_score: Mapped[float | None] = mapped_column(Float)
+    bm25_rank: Mapped[int | None] = mapped_column(Integer)
+    vector_rank: Mapped[int | None] = mapped_column(Integer)
+    rrf_score: Mapped[float] = mapped_column(Float)
+    expansion_reason: Mapped[str | None] = mapped_column(String(100))
+    final_rank: Mapped[int] = mapped_column(Integer)
+    selected: Mapped[bool] = mapped_column(Boolean)
+
+
 class TimelineORM(IdMixin, Base):
     __tablename__ = "timelines"
 
@@ -223,6 +368,55 @@ class CharacterEntityOperationORM(IdMixin, TimestampMixin, Base):
     status: Mapped[str] = mapped_column(String(32), index=True)
     actor_id: Mapped[str] = mapped_column(String(255))
     reason: Mapped[str] = mapped_column(Text)
+
+
+class CharacterRelationORM(IdMixin, TimestampMixin, Base):
+    __tablename__ = "character_relations"
+    __table_args__ = (
+        UniqueConstraint("fingerprint"),
+        CheckConstraint(
+            "confidence >= 0 AND confidence <= 1",
+            name="ck_character_relations_confidence",
+        ),
+        CheckConstraint("char_end > char_start", name="ck_character_relations_span"),
+        Index(
+            "ix_character_relations_source_status",
+            "source_character_id",
+            "record_status",
+        ),
+        Index(
+            "ix_character_relations_target_status",
+            "target_character_id",
+            "record_status",
+        ),
+    )
+
+    novel_id: Mapped[UUID] = mapped_column(
+        ForeignKey("novels.id", ondelete="CASCADE"), index=True
+    )
+    source_character_id: Mapped[UUID] = mapped_column(
+        ForeignKey("characters.id", ondelete="CASCADE"), index=True
+    )
+    target_character_id: Mapped[UUID] = mapped_column(
+        ForeignKey("characters.id", ondelete="CASCADE"), index=True
+    )
+    relation_type: Mapped[str] = mapped_column(String(64), index=True)
+    source_document_version_id: Mapped[UUID] = mapped_column(
+        ForeignKey("source_document_versions.id", ondelete="CASCADE"), index=True
+    )
+    source_chunk_id: Mapped[UUID] = mapped_column(
+        ForeignKey("text_chunks.id", ondelete="CASCADE"), index=True
+    )
+    scene_id: Mapped[UUID | None] = mapped_column(ForeignKey("scenes.id"))
+    evidence_quote: Mapped[str] = mapped_column(Text)
+    char_start: Mapped[int] = mapped_column(Integer)
+    char_end: Mapped[int] = mapped_column(Integer)
+    grounding_status: Mapped[str] = mapped_column(String(32))
+    confidence: Mapped[float] = mapped_column(Float)
+    extraction_run_id: Mapped[UUID] = mapped_column(ForeignKey("pipeline_runs.id"))
+    extractor_version: Mapped[str] = mapped_column(String(100))
+    fingerprint: Mapped[str] = mapped_column(String(64))
+    record_status: Mapped[str] = mapped_column(String(32), default="pending")
 
 
 class SceneORM(IdMixin, TimestampMixin, Base):
@@ -363,6 +557,9 @@ class FeatureObservationORM(IdMixin, TimestampMixin, Base):
         ForeignKey("source_document_versions.id"), index=True
     )
     source_chunk_id: Mapped[UUID | None] = mapped_column(ForeignKey("text_chunks.id"))
+    retrieval_passage_id: Mapped[UUID | None] = mapped_column(
+        ForeignKey("retrieval_passages.id", ondelete="SET NULL"), index=True
+    )
     mention_span_id: Mapped[UUID | None] = mapped_column(ForeignKey("mention_spans.id"))
     evidence_quote: Mapped[str | None] = mapped_column(Text)
     char_start: Mapped[int | None] = mapped_column(Integer)
@@ -382,7 +579,7 @@ class FeatureObservationORM(IdMixin, TimestampMixin, Base):
     valid_from: Mapped[datetime] = mapped_column(DateTime(timezone=True))
     valid_to: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
     record_status: Mapped[str] = mapped_column(String(32), default="active")
-    recorded_at: Mapped[datetime] = mapped_column(DateTime(timezone=True))
+    recorded_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
     invalidated_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
     invalidated_by_run_id: Mapped[UUID | None] = mapped_column(ForeignKey("pipeline_runs.id"))
 
@@ -402,6 +599,43 @@ class FeatureSuggestionORM(IdMixin, TimestampMixin, Base):
     rationale: Mapped[str] = mapped_column(Text)
     status: Mapped[str] = mapped_column(String(32), index=True)
     approval_id: Mapped[UUID | None] = mapped_column(ForeignKey("human_approvals.id"))
+    source_document_version_id: Mapped[UUID | None] = mapped_column(
+        ForeignKey("source_document_versions.id", ondelete="SET NULL"), index=True
+    )
+    enrichment_run_id: Mapped[UUID | None] = mapped_column(
+        ForeignKey("pipeline_runs.id", ondelete="SET NULL"), index=True
+    )
+    evidence_links: Mapped[list[dict[str, Any]] | None] = mapped_column(JSON)
+    provenance_version: Mapped[str | None] = mapped_column(String(100))
+
+
+class VisualEnrichmentRejectionORM(IdMixin, TimestampMixin, Base):
+    __tablename__ = "visual_enrichment_rejections"
+    __table_args__ = (
+        Index("ix_visual_rejections_run_created", "enrichment_run_id", "created_at"),
+    )
+
+    enrichment_run_id: Mapped[UUID] = mapped_column(
+        ForeignKey("pipeline_runs.id", ondelete="CASCADE"), index=True
+    )
+    retrieval_query_run_id: Mapped[UUID] = mapped_column(
+        ForeignKey("retrieval_query_runs.id", ondelete="CASCADE"), index=True
+    )
+    character_id: Mapped[UUID] = mapped_column(
+        ForeignKey("characters.id", ondelete="CASCADE"), index=True
+    )
+    retrieval_passage_id: Mapped[UUID | None] = mapped_column(
+        ForeignKey("retrieval_passages.id", ondelete="SET NULL"), index=True
+    )
+    field_path: Mapped[str] = mapped_column(String(255))
+    value: Mapped[Any] = mapped_column(JSON)
+    evidence_quote: Mapped[str] = mapped_column(Text)
+    requested_start: Mapped[int] = mapped_column(Integer)
+    requested_end: Mapped[int] = mapped_column(Integer)
+    repaired_start: Mapped[int | None] = mapped_column(Integer)
+    repaired_end: Mapped[int | None] = mapped_column(Integer)
+    reason_codes: Mapped[list[str]] = mapped_column(JSON)
+    draft: Mapped[dict[str, Any]] = mapped_column(JSON)
 
 
 class ExpressionObservationORM(IdMixin, TimestampMixin, Base):

@@ -66,6 +66,19 @@ async def test_public_run_endpoint_executes_ingestion_then_extraction(
             assert response.status_code == 202
             assert response.json()["run_type"] == "text_analysis"
             run_id = UUID(response.json()["id"])
+
+            novels_response = await client.get(
+                "/api/v1/novels", headers={"X-API-Key": "user-secret"}
+            )
+            assert novels_response.status_code == 200
+            assert novels_response.json()[0]["id"] == str(novel_id)
+
+            runs_response = await client.get(
+                f"/api/v1/novels/{novel_id}/runs",
+                headers={"X-API-Key": "user-secret"},
+            )
+            assert runs_response.status_code == 200
+            assert runs_response.json()[0]["id"] == str(run_id)
     finally:
         get_settings.cache_clear()
 

@@ -2,7 +2,7 @@
 
 > [← 上一篇](11-security-and-data-governance.md) · [文档索引](README.md) · [下一篇 →](13-observability-logging-and-cost.md)
 >
-> 文档版本：2.9 · 源章节：15. 测试与验收 · 修订日期：2026-08-24
+> 文档版本：3.0 · 源章节：15. 测试与验收 · 修订日期：2026-08-24
 >
 > 当前状态：单元/集成/恢复测试和评测数据层已有基础；完整 Eval Runner、图像盲评、日志规则检查与发布门禁仍待实现。
 
@@ -105,9 +105,11 @@ Observation 的严格匹配键为：
 |---|---|---|
 | 分块/偏移 | 可重现率、原文往返准确率 | 偏移映射必须可逆 |
 | Observation | micro/macro Precision、Recall、F1 | macro 按字段和 slice 计算，避免高频字段掩盖长尾 |
+| 视觉字段规范化 | canonical-path rate、atomic-field rate、综合字段残留率 | `appearance.build` 不得残留；可拆视觉描述按原子字段评分 |
 | Grounding | exact-span、token-span F1、IoU、unsupported fact rate | 无证据事实单独作为风险指标 |
 | 实体链接 | mention-level F1、cluster B³/CEAF、严重误合并数 | 主角与配角分开报告 |
 | 时间绑定 | timeline/event 准确率、区间 IoU、defer Recall | 复杂分支允许正确 defer |
+| 人生阶段 | phase key 准确率、phase-conditioned field F1、跨阶段误冲突数 | 前世/转生幼年与平行时间线分别评测 |
 | 冲突 | conflict Precision/Recall/F1、误覆盖数 | 父子时间线先解析继承域 |
 | 快照 | 字段准确率、关键字段 exact-match、状态组合正确率 | 在指定 timeline/event/scene 上评测 |
 | 神情 | 外显情绪 Macro-F1、visible-cue span F1、内外情绪混淆率 | 瞬时神情跨场景延续单独计错 |
@@ -165,8 +167,8 @@ Observation 的严格匹配键为：
 | 分块/偏移 | 可稳定重现；原文偏移往返准确率 100% |
 | Grounding | 字段证据定位准确率 ≥ 95%；unsupported fact rate ≤ 2% |
 | 实体 | 主要角色 mention F1 ≥ 0.90；高影响自动误合并数为 0 |
-| Observation | 外貌字段 precision ≥ 0.90；同时报告 recall 与 macro-F1 |
-| 时间/快照 | critical case 的 canonical 跨时间污染数为 0；关键字段 exact-match ≥ 0.90 |
+| Observation | 外貌字段 precision ≥ 0.90；规范路径率 100%；综合 `appearance` 活动事实残留数为 0；同时报告 recall 与 macro-F1 |
+| 时间/快照 | critical case 的 canonical 跨时间污染数为 0；前世/转生幼年跨阶段误冲突数为 0；关键字段 exact-match ≥ 0.90 |
 | 神情 | 可见线索定位准确率 ≥ 90%；内外情绪混淆率单独报告并不劣于基线 |
 | Agent | 权限违规和未经审批收费/合并/发布数为 0；必须升级 case 的 Recall ≥ 0.95 |
 | 图像 | 错时间线/年龄等 critical mismatch ≤ 5%；人工接受率不劣于冻结基线 |

@@ -2,9 +2,9 @@
 
 > [← 上一篇](04-text-understanding-pipeline.md) · [文档索引](README.md) · [下一篇 →](06-image-generation-and-drift-control.md)
 >
-> 文档版本：2.9 · 源章节：8. 角色渲染档案 · 修订日期：2026-08-24
+> 文档版本：3.0 · 源章节：8. 角色渲染档案 · 修订日期：2026-08-24
 >
-> 当前状态：预置 AppearanceState 后的冲突、档案编辑/批准和 Snapshot 已实现核心；真实 Observation 自动形成 State/Profile 尚待[聚合实现契约](17-appearance-aggregation-contract.md)落地。
+> 当前状态：真实 Observation 已能自动形成 AppearanceState、Conflict 和待审核 RenderProfile；冲突编辑/批准、父子时间线继承、人工确认值保护和 Snapshot 已实现核心。角色/字段级精细差异重算仍延期，图像生成尚未实现。
 
 ## 8. 角色渲染档案
 
@@ -50,6 +50,7 @@ AND values_are_incompatible
 
 | 描述组合 | 是否冲突 | 处理 |
 |---|---|---|
+| 前世长发；转生幼年短发 | 否 | 同一 canonical 历程中的两个 `life_phase_key` 阶段 |
 | 少年黑发；老年白发 | 否 | 两个阶段外观状态 |
 | 主线无伤；梦中胸口有伤 | 否 | 不同现实层级 |
 | 分支事件后主时间线蓝衣；分支时间线黑衣 | 否 | 分别绑定时间线 |

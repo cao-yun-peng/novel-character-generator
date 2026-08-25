@@ -24,7 +24,8 @@
         <nav class="side-nav" aria-label="工作流程">
           <a class="nav-item active" href="#workspace"><span>01</span>生成工作台</a>
           <a class="nav-item" href="#characters"><span>02</span>角色与证据</a>
-          <a class="nav-item" href="#gallery"><span>03</span>2D 形象库</a>
+          <a class="nav-item" href="#approvals"><span>03</span>人工审核</a>
+          <a class="nav-item" href="#gallery"><span>04</span>2D 形象库</a>
         </nav>
 
         <div class="side-spacer"></div>
@@ -67,6 +68,22 @@
           </div>
           <div id="capability-chips" class="capability-chips"></div>
         </div>
+
+        <section class="project-history" aria-labelledby="project-history-title">
+          <div class="project-history-copy">
+            <span class="step-kicker">历史项目</span>
+            <h2 id="project-history-title">继续已有小说</h2>
+            <p id="project-history-feedback">连接 API 后会读取保存在数据库中的小说。</p>
+          </div>
+          <div class="project-history-controls">
+            <label class="sr-only" for="project-select">选择历史小说</label>
+            <select id="project-select" disabled>
+              <option value="">暂无历史项目</option>
+            </select>
+            <button class="button button-primary" id="open-project-button" type="button" disabled>打开项目</button>
+            <button class="button button-secondary" id="refresh-projects-button" type="button" disabled>刷新列表</button>
+          </div>
+        </section>
 
         <ol class="progress-rail" aria-label="生成步骤">
           <li class="active" data-stage="upload"><span>1</span><div><strong>上传小说</strong><small>TXT 源文件</small></div></li>
@@ -136,6 +153,8 @@
 
             <div class="action-row">
               <button class="button button-primary" id="analyse-button" type="button" disabled>开始分析角色</button>
+              <button class="button button-secondary" id="restart-run-button" type="button" disabled>重启分析</button>
+              <button class="button button-secondary" id="cancel-run-button" type="button" disabled>停止任务</button>
               <button class="button button-secondary" id="refresh-run-button" type="button" disabled>刷新状态</button>
             </div>
           </section>
@@ -170,10 +189,53 @@
           </div>
         </section>
 
+        <section class="panel approval-panel" id="approvals" aria-labelledby="approvals-title">
+          <div class="panel-heading approval-heading">
+            <div>
+              <span class="step-kicker">REVIEW</span>
+              <h2 id="approvals-title">人工审核中心</h2>
+              <p>处理待审批动作、角色外观冲突，并批准可用于后续生成的 Render Profile。</p>
+            </div>
+            <div class="character-count"><strong id="approval-count">0</strong><span>待处理项目</span></div>
+          </div>
+
+          <div class="review-toolbar">
+            <div class="field-group">
+              <label for="reviewer-id">审核人 ID</label>
+              <input id="reviewer-id" type="text" maxlength="255" autocomplete="off" placeholder="例如 local-reviewer" />
+            </div>
+            <button class="button button-secondary" id="refresh-approvals-button" type="button" disabled>刷新审核队列</button>
+            <span id="review-auth-hint">审批队列需要 ADMIN_API_KEY；审核人 ID 仅随本页请求发送。</span>
+          </div>
+
+          <div class="review-grid">
+            <section class="review-column" aria-labelledby="approval-queue-title">
+              <div class="review-section-heading">
+                <div><span class="step-kicker">QUEUE</span><h3 id="approval-queue-title">待审批动作</h3></div>
+                <span id="approval-queue-state">尚未读取</span>
+              </div>
+              <div class="approval-list" id="approval-list">
+                <div class="empty-state compact">连接管理员 API Key 后读取审批队列。</div>
+              </div>
+            </section>
+
+            <section class="review-column" aria-labelledby="character-review-title">
+              <div class="review-section-heading">
+                <div><span class="step-kicker">CHARACTER</span><h3 id="character-review-title">角色档案审核</h3></div>
+                <span id="character-review-state">尚未选择角色</span>
+              </div>
+              <div id="conflict-review-list">
+                <div class="empty-state compact">先在“角色与原文证据”中选择一个角色。</div>
+              </div>
+              <div id="render-profile-review"></div>
+            </section>
+          </div>
+        </section>
+
         <section class="panel generation-panel" id="gallery" aria-labelledby="generation-title">
           <div class="panel-heading generation-heading">
             <div>
-              <span class="step-kicker">STEP 04</span>
+              <span class="step-kicker">STEP 05</span>
               <h2 id="generation-title">生成 2D 角色形象</h2>
               <p>生成请求只使用已批准快照；候选图通过漂移审计后才能被人工锁定。</p>
             </div>

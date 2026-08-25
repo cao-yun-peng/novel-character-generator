@@ -17,6 +17,9 @@ async def test_openai_compatible_provider_requests_structured_json() -> None:
         assert body["model"] == "model-v1"
         assert body["response_format"] == {"type": "json_object"}
         assert "沈砚黑发" in body["messages"][1]["content"]
+        assert "hair.color" in body["messages"][0]["content"]
+        assert "life_phase_key" in body["messages"][0]["content"]
+        assert "Never emit a combined appearance field" in body["messages"][0]["content"]
         return httpx.Response(
             200,
             json={
@@ -48,4 +51,4 @@ async def test_openai_compatible_provider_requests_structured_json() -> None:
     )
     result = await provider.extract_chunk("沈砚黑发")
     assert result.mentions == []
-    assert provider.version == "deepseek:model-v1"
+    assert provider.version == "deepseek:model-v1:visual-observation-v2"

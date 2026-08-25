@@ -15,6 +15,21 @@ def validate_evidence(text: str, quote: str, start: int, end: int) -> GroundingS
     return "ungrounded"
 
 
+def repair_evidence_span(
+    text: str, quote: str, start: int, end: int
+) -> tuple[int, int, GroundingStatus]:
+    grounding = validate_evidence(text, quote, start, end)
+    if grounding == "exact":
+        return start, end, grounding
+    if not quote:
+        return start, end, grounding
+    first = text.find(quote)
+    if first < 0 or text.find(quote, first + 1) >= 0:
+        return start, end, grounding
+    repaired_end = first + len(quote)
+    return first, repaired_end, "exact"
+
+
 def observation_fingerprint(
     *,
     source_version: str,

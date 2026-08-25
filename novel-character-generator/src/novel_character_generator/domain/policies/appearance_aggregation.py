@@ -6,27 +6,14 @@ from dataclasses import dataclass
 from typing import Any
 from uuid import UUID
 
+from novel_character_generator.domain.policies.visual_fields import VISUAL_FIELD_ROOTS
+
 RESOLVER_VERSION = "appearance-resolver-v2"
 REALITY_COMPATIBILITY_VERSION = "reality-compatibility-v1"
 FIELD_PERSISTENCE_POLICY_VERSION = "appearance-persistence-v1"
 VISUAL_SCHEMA_VERSION = "visual-schema-v1"
 
-ALLOWED_VISUAL_ROOTS = {
-    "accessory",
-    "accessories",
-    "age",
-    "age_stage",
-    "body",
-    "cleanliness",
-    "clothing",
-    "disguise",
-    "distinctive_marks",
-    "face",
-    "hair",
-    "injuries",
-    "injury",
-    "skin",
-}
+ALLOWED_VISUAL_ROOTS = VISUAL_FIELD_ROOTS
 
 IDENTITY_PATHS = {
     "body.build",
@@ -165,11 +152,12 @@ def _normalize_scope(scope: dict[str, Any], field_path: str) -> dict[str, Any]:
     return normalized
 
 
-def _scope_domain(scope: dict[str, Any]) -> tuple[str, str, str]:
+def _scope_domain(scope: dict[str, Any]) -> tuple[str, str, str, str]:
     return (
         str(scope.get("timeline_id", "")),
         str(scope.get("reality_status", "canonical")),
         str(scope.get("presentation_mode", "direct")),
+        str(scope.get("life_phase_key", "")),
     )
 
 
@@ -221,7 +209,7 @@ def _identity_values(
     for path, items in sorted(by_path.items()):
         canonical_values = {canonical_json(item.value) for item in items}
         domains = {_scope_domain(item.temporal_scope) for item in items}
-        canonical_reality = all(domain[1:] == ("canonical", "direct") for domain in domains)
+        canonical_reality = all(domain[1:3] == ("canonical", "direct") for domain in domains)
         if len(canonical_values) != 1 or not canonical_reality:
             continue
         value = min(items, key=lambda item: str(item.id)).value
@@ -234,7 +222,7 @@ def _identity_values(
 def _field_assignments(
     observations: list[AggregationObservation],
 ) -> list[_FieldAssignment]:
-    grouped: dict[tuple[str, tuple[str, str, str]], list[AggregationObservation]] = {}
+    grouped: dict[tuple[str, tuple[str, str, str, str]], list[AggregationObservation]] = {}
     for item in observations:
         grouped.setdefault((item.field_path, _scope_domain(item.temporal_scope)), []).append(item)
 
@@ -283,7 +271,12 @@ def _field_assignments(
 
 
 def _state_label(scope: dict[str, Any], state_kind: str) -> str:
+    phase_label = scope.get("life_phase_label") or scope.get("life_phase_key")
     chapter = scope.get("start_chapter_ordinal")
+    if phase_label and chapter is not None:
+        return f"{phase_label} · Chapter {chapter} · {state_kind}"
+    if phase_label:
+        return f"{phase_label} · {state_kind}"
     if chapter is not None:
         return f"Chapter {chapter} · {state_kind}"
     return f"{scope.get('reality_status', 'canonical')} · {state_kind}"
@@ -350,6 +343,8 @@ def aggregate_appearance(
         age_value = appearance.get("age_stage")
         if age_value is None and isinstance(appearance.get("age"), dict):
             age_value = appearance["age"].get("stage")
+        if age_value is None:
+            age_value = scope.get("life_phase_label") or scope.get("life_phase_key")
         age_stage = str(age_value) if age_value is not None else None
         fingerprint = _hash(
             {

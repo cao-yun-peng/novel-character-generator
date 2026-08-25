@@ -2,7 +2,7 @@
 
 > [← 上一篇](13-observability-logging-and-cost.md) · [文档索引](README.md) · [下一篇 →](15-risks-decisions-and-references.md)
 >
-> 文档版本：2.9 · 源章节：17. 开发计划、18. 二期开发规划 · 修订日期：2026-08-24
+> 文档版本：3.0 · 源章节：17. 开发计划、18. 二期开发规划 · 修订日期：2026-08-24
 >
 > 当前状态：本页是目标路线和退出条件，不是完成进度。实际完成度见[当前实现状态](00-current-status.md)和[追踪矩阵](19-feature-traceability-matrix.md)。
 
@@ -17,6 +17,7 @@
 | ID | 待决定问题 | 对照方案 | 决策输出 |
 |---|---|---|---|
 | `POC-TEXT-01` | 中文小说分块参数 | 场景 1K–3K、段落 2K–4K、大块 6K–12K、小块双 pass、邻块上下文 | 分块策略、重叠、最大上下文和每正确字段成本 |
+| `POC-RETRIEVAL-01` | 角色视觉精提取检索 | 全文重跑、SQLite FTS5/BM25-only、Embedding API + Qdrant Local vector-only、两路 + RRF 混合召回；候选 embedding profile 至少两种 | 中文词典/分词器、embedding profile、各路 top-K、RRF、邻居数、字段召回、误归属率、API 成本/延迟和每正确字段成本 |
 | `POC-AGENT-01` | Extraction Agent 是否值得保留 | 单次结构化调用 vs Agent + 只读工具 | 是否启用 Agent、最大轮次、质量与成本门槛 |
 | `POC-ENTITY-01` | 实体链接策略 | 规则优先、候选召回 + LLM 提案等至少两种方案 | 候选召回、自动链接阈值和强制人工条件 |
 | `POC-TIME-01` | 一期时间线自动化边界 | 主线、回忆、梦境/传闻及复杂分支样本 | 自动支持集、`defer` 条件和污染率上限 |
@@ -42,6 +43,7 @@
 PoC 使用 3–5 个独立合法来源、80–120 个精标 case，至少覆盖 3 个代表角色及其 2 个以上可视阶段，并完成以下验证：
 
 - 用代表性文本片段验证块级结构化提取和精确证据对齐；
+- 对比全文重跑与检索增强视觉精提取，验证名字与描述分离时的字段召回和人物归属；
 - 对比至少两种实体链接/别名策略；
 - 跑通两套图像候选工作流或对无法运行的候选给出明确阻断原因；
 - 比较单一代表形象与阶段形象集的价值、重复率和成本；
@@ -77,6 +79,7 @@ PoC 使用 3–5 个独立合法来源、80–120 个精标 case，至少覆盖 
 - RenderProfile 聚合、多状态叠加、有效时间线继承、目标时点快照解析、冲突和人工编辑；
 - ContextPacket、ModelRouter 和工具契约；
 - 黄金集、Agent 轨迹集与精度报告。
+- 上传后细粒度文本库、SQLite FTS5 中文预分词 BM25、远程 Embedding API + Qdrant Local、RRF、邻居上下文、检索审计与面向缺失字段的视觉精提取；非事实候选进入 Suggestion 审核，不写入 Observation。PoC 由单一检索组件持有 Qdrant Local；多进程并发需求出现后再迁移 Qdrant Server。
 
 ### 17.4 第 3 阶段：图像 Agent 与评测（3 周）
 

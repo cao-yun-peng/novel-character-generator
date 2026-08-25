@@ -18,6 +18,9 @@ class CapabilitiesResponse(BaseModel):
     character_entity_resolution: bool
     appearance_aggregation: bool
     evaluation_framework: bool
+    retrieval_lexical_index: bool
+    retrieval_hybrid_index: bool
+    visual_enrichment: bool
     image_generation: bool
 
 
@@ -36,5 +39,8 @@ async def capabilities() -> CapabilitiesResponse:
         character_entity_resolution=True,
         appearance_aggregation=True,
         evaluation_framework=True,
+        retrieval_lexical_index=True,
+        retrieval_hybrid_index=settings.embedding_provider != "disabled",
+        visual_enrichment=settings.embedding_provider != "disabled",
         image_generation=False,
     )

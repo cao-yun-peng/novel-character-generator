@@ -19,6 +19,13 @@ def test_ui_shell_and_static_assets_are_served_without_api_auth() -> None:
         page = client.get("/ui")
         assert page.status_code == 200
         assert "角色造像台" in page.text
+        assert 'id="approvals"' in page.text
+        assert 'id="reviewer-id"' in page.text
+        assert 'id="approval-list"' in page.text
+        assert 'id="conflict-review-list"' in page.text
+        assert 'id="render-profile-review"' in page.text
+        assert 'id="restart-run-button"' in page.text
+        assert 'id="cancel-run-button"' in page.text
         assert "/ui/assets/app.css" in page.text
         assert "/ui/assets/app.js" in page.text
 
@@ -29,6 +36,22 @@ def test_ui_shell_and_static_assets_are_served_without_api_auth() -> None:
         assert css.headers["content-type"].startswith("text/css")
         assert javascript.status_code == 200
         assert "loadCapabilities" in javascript.text
+        assert "loadApprovals" in javascript.text
+        assert "resolveCharacterConflict" in javascript.text
+        assert "saveRenderProfile" in javascript.text
+        assert "approveRenderProfile" in javascript.text
+        assert "loadPartialAnalysis" in javascript.text
+        assert "current_chunk_ordinal" in javascript.text
+        assert "restartAnalysis" in javascript.text
+        assert "cancelRun" in javascript.text
+        assert "renderFactSection" in javascript.text
+        assert "loadVisualEnrichmentState" in javascript.text
+        assert "startVisualEnrichment" in javascript.text
+        assert "resolveFeatureSuggestion" in javascript.text
+        assert "visual-field-gaps" in javascript.text
+        assert "ensureRetrievalIndex" in javascript.text
+        assert "retrieval-index-runs" in javascript.text
+        assert "life_phase_label" in javascript.text
         assert favicon.status_code == 200
         assert favicon.headers["content-type"].startswith("image/svg+xml")
 
@@ -51,6 +74,7 @@ def test_openapi_exposes_documented_phase_one_routes() -> None:
         "/api/v1/novels",
         "/api/v1/novels/{novel_id}",
         "/api/v1/novels/{novel_id}/runs",
+        "/api/v1/novels/{novel_id}/retrieval-index-runs",
         "/api/v1/runs/{run_id}",
         "/api/v1/runs/{run_id}/events",
         "/api/v1/runs/{run_id}/agent-runs",
@@ -65,6 +89,10 @@ def test_openapi_exposes_documented_phase_one_routes() -> None:
         "/api/v1/scenes/{scene_id}/temporal-binding",
         "/api/v1/characters/merge",
         "/api/v1/characters/{character_id}/split",
+        "/api/v1/characters/{character_id}/visual-enrichment-runs",
+        "/api/v1/characters/{character_id}/visual-field-gaps",
+        "/api/v1/visual-enrichment-runs/{run_id}/evidence",
+        "/api/v1/feature-suggestions/{suggestion_id}/resolve",
         "/api/v1/capabilities",
     } <= paths
     assert "/api/v1/novels/{novel_id}/extraction-runs" not in paths
@@ -87,6 +115,8 @@ def test_api_key_roles_capabilities_and_metrics(monkeypatch) -> None:
             assert capabilities.json()["story_temporal_binding"] is True
             assert capabilities.json()["character_entity_resolution"] is True
             assert capabilities.json()["appearance_aggregation"] is True
+            assert capabilities.json()["retrieval_lexical_index"] is True
+            assert capabilities.json()["retrieval_hybrid_index"] is False
             assert capabilities.json()["external_operation_reconciliation"] is False
             assert client.get("/metrics", headers={"X-API-Key": "user-secret"}).status_code == 403
             metrics = client.get("/metrics", headers={"X-API-Key": "admin-secret"})

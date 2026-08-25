@@ -2,7 +2,7 @@
 
 > [← 上一篇](08-task-recovery.md) · [文档索引](README.md) · [下一篇 →](10-provider-and-workflow-versioning.md)
 >
-> 文档版本：2.9 · 源章节：12. API 设计 · 修订日期：2026-08-24
+> 文档版本：3.0 · 源章节：12. API 设计 · 修订日期：2026-08-24
 >
 > 当前接口以 FastAPI OpenAPI 和 [`GET /api/v1/capabilities`](../src/novel_character_generator/api/routes/capabilities.py) 为运行时真值。本页明确区分“已注册接口”和“目标接口”，不能仅因端点出现在设计中就认为已经可调用。
 
@@ -13,7 +13,7 @@
 - 所有创建长任务的端点返回 `202 Accepted`；
 - 支持 `Idempotency-Key`；
 - 错误响应包含稳定 `code`、可读 `message` 和 `request_id`；
-- 分页使用 cursor；
+- 已实现分页的列表使用 cursor；Observation 列表目前是明确例外；
 - 更新 RenderProfile 使用 `If-Match` 或 revision，防止覆盖他人修改；
 - 管理类端点必须认证，不能裸露 Prompt/Provider 配置。
 
@@ -25,6 +25,7 @@
 | `GET /api/v1/novels/{novel_id}` | 查询小说、源哈希和分块数量 | 已实现 |
 | `POST /api/v1/novels/{novel_id}/versions` | 上传新源文档版本，保留历史版本 | 已实现 |
 | `POST /api/v1/novels/{novel_id}/runs` | 创建文本分析任务 | 已实现，返回 `202` |
+| `POST /api/v1/novels/{novel_id}/retrieval-index-runs` | 为当前源版本幂等创建细粒度检索索引任务，支持旧项目回填 | 已实现，返回 `202` |
 | `GET /api/v1/runs/{run_id}` | 查询 Run 与 Step 状态 | 已实现 |
 | `GET /api/v1/runs/{run_id}/events` | 按 `after` 序号读取或持续跟随 SSE | 已实现 |
 | `POST /api/v1/runs/{run_id}/cancel` | 请求取消 | 已实现，返回 `202` |
@@ -36,9 +37,9 @@
 | `POST /api/v1/approvals/{approval_id}/resolve` | 批准、拒绝、修改或延后 | 已实现 |
 | `GET /api/v1/novels/{novel_id}/characters` | 查询人物 | 已实现基础 |
 | `GET /api/v1/characters/{character_id}/mentions` | 查询人物原文提及区间 | 已实现 |
-| `GET /api/v1/characters/{character_id}/observations` | 查询外观事实与证据 | 已实现基础 |
+| `GET /api/v1/characters/{character_id}/observations` | 查询规范字段、人生阶段、章节与原文证据 | 已实现基础 |
 | `GET /api/v1/characters/{character_id}/expressions` | 查询外显神情观察 | 已实现基础 |
-| `GET /api/v1/characters/{character_id}/appearance-states` | 查询阶段外观状态 | 已实现查询；自动聚合未闭环 |
+| `GET /api/v1/characters/{character_id}/appearance-states` | 查询真实 Observation 自动聚合的阶段外观状态 | 已实现核心 |
 | `GET /api/v1/characters/{character_id}/conflicts` | 查询档案冲突 | 已实现 |
 | `POST /api/v1/conflicts/{conflict_id}/resolve` | 解决冲突 | 已实现 |
 | `GET /api/v1/characters/{character_id}/snapshot` | 按 timeline/event/scene/chapter 解析快照 | 已实现核心 |
@@ -59,9 +60,31 @@
 
 `GET /` 会重定向到轻量工作台 `GET /ui`，静态资源位于 `/ui/assets/*`。这些页面路由不属于业务 API，也不进入 OpenAPI；工作台内部仍按本节公开接口和权限规则调用后端。
 
-### 12.3 一期目标接口：尚未注册
+`GET /api/v1/characters/{character_id}/observations` 当前返回 `chapter_ordinal`、`temporal_scope`、`life_phase_key`、`life_phase_label`、`is_visual` 和 `visual_category`。API 会把旧字段别名投影为规范路径；页面据此先展示视觉事实，按人生阶段分组，并显示章节、grounding、置信度和原文证据。该列表目前未分页，调用方不能假设通用 cursor 规则已覆盖此端点。
 
-以下端点属于图像生成目标契约。当前 `/api/v1/capabilities` 返回 `image_generation=false`，调用这些路径会得到 `404`，实现前不得由客户端依赖：
+当 `aggregate_appearance` 尚未完成时，阶段数和冲突数为零只表示“尚未评估”，不能解释为“已确认无冲突”；工作台会明确区分这两种状态。
+
+小说详情同时返回 `retrieval_index_build_id`、`retrieval_index_status` 和 `retrieval_passage_count`。回填索引直接从不可变源文件重新生成约 1K/100 的 passage、FTS 条目及向量，不创建新的源版本，也不修改已有 Character 或 Observation。相同源版本和索引版本重复请求返回同一 Build/Run；Embedding 未配置时工作台会阻止创建，避免得到不能执行视觉精提取的半成品索引。
+
+### 12.3 检索增强视觉精提取接口
+
+以下接口已注册；`visual_enrichment` capability 只在部署配置了 Embedding Provider 时声明为 `true`：
+
+```text
+GET  /api/v1/characters/{character_id}/visual-field-gaps
+POST /api/v1/characters/{character_id}/visual-enrichment-runs
+GET  /api/v1/characters/{character_id}/visual-enrichment-runs
+GET  /api/v1/visual-enrichment-runs/{run_id}/evidence
+POST /api/v1/feature-suggestions/{suggestion_id}/resolve
+```
+
+字段缺口接口返回当前源版本和可选人生阶段下七个字段组的覆盖状态、已观察字段路径、推荐补齐组及索引状态。当前 v1 是字段组级规划：组内存在至少一个有效、可定位的 asserted Observation 即视为该组已覆盖，不代表组内所有原子字段都完整。
+
+创建请求须使用 `Idempotency-Key`，并携带可选人生阶段和调用预算。调用方可以显式传入目标 `field_groups`；也可以传空列表并保持 `auto_plan=true`，由服务端使用同一缺口策略固化本次目标组。没有可补缺口时返回 `visual_field_gaps_empty`。索引未就绪必须返回 `retrieval_index_not_ready`，不得隐式退化为全文模型调用。完整契约见[检索增强的角色视觉精提取实现设计](21-retrieval-augmented-visual-enrichment.md)。
+
+`field_groups` 当前支持 `hair`、`face`、`body`、`clothing`、`accessories`、`marks_injuries` 和 `disguise_cleanliness`。Suggestion 的接受/拒绝需要管理员 Key 和 `X-Actor-ID`；接受只表示批准该建议，不会把推断伪装成原文 Observation。
+
+图像生成的目标接口如下。当前 `/api/v1/capabilities` 返回 `image_generation=false`，调用这些路径会得到 `404`，实现前不得由客户端依赖：
 
 ```text
 POST   /api/v1/characters/{character_id}/image-runs

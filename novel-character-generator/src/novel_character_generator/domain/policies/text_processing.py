@@ -141,6 +141,18 @@ def _split_range(text: str, start: int, end: int, target_tokens: int) -> list[tu
     return ranges
 
 
+def _suffix_start_within_tokens(text: str, start: int, end: int, token_limit: int) -> int:
+    low = start
+    high = end
+    while low < high:
+        candidate = (low + high) // 2
+        if estimate_tokens(text[candidate:end]) > token_limit:
+            low = candidate + 1
+        else:
+            high = candidate
+    return low
+
+
 def build_chunks(
     normalized: NormalizedText,
     chapters: list[ChapterBoundary],
@@ -153,16 +165,20 @@ def build_chunks(
     if overlap_tokens < 0 or overlap_tokens >= target_tokens:
         raise ValueError("invalid_overlap_tokens")
     chunks: list[TextChunk] = []
+    content_target = max(1, target_tokens - overlap_tokens)
     for chapter in chapters:
         units: list[tuple[int, int]] = []
         for start, end in _paragraph_ranges(
             normalized.text, chapter.normalized_start, chapter.normalized_end
         ):
-            units.extend(_split_range(normalized.text, start, end, target_tokens))
+            units.extend(_split_range(normalized.text, start, end, content_target))
         cursor = 0
+        pending_overlap_start: int | None = None
         while cursor < len(units):
             group_start = cursor
-            start = units[cursor][0]
+            natural_start = units[cursor][0]
+            start = pending_overlap_start if pending_overlap_start is not None else natural_start
+            pending_overlap_start = None
             end = units[cursor][1]
             cursor += 1
             while cursor < len(units):
@@ -187,10 +203,18 @@ def build_chunks(
             )
             if overlap_tokens and cursor < len(units):
                 overlap_start = cursor
-                while overlap_start > group_start + 1:
+                while overlap_start > group_start:
                     candidate = units[overlap_start - 1][0]
                     if estimate_tokens(normalized.text[candidate:end]) > overlap_tokens:
                         break
                     overlap_start -= 1
-                cursor = min(cursor, max(group_start + 1, overlap_start))
+                if overlap_start < cursor:
+                    pending_overlap_start = units[overlap_start][0]
+                else:
+                    pending_overlap_start = _suffix_start_within_tokens(
+                        normalized.text,
+                        start,
+                        end,
+                        overlap_tokens,
+                    )
     return chunks

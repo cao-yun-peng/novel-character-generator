@@ -32,6 +32,23 @@ class IngestionRepository:
     def __init__(self, session: AsyncSession) -> None:
         self.session = session
 
+    async def list_novels(self, *, limit: int = 50) -> list[NovelORM]:
+        return list(
+            await self.session.scalars(
+                select(NovelORM).order_by(NovelORM.updated_at.desc()).limit(limit)
+            )
+        )
+
+    async def list_runs(self, novel_id: UUID, *, limit: int = 20) -> list[PipelineRunORM]:
+        return list(
+            await self.session.scalars(
+                select(PipelineRunORM)
+                .where(PipelineRunORM.novel_id == novel_id)
+                .order_by(PipelineRunORM.created_at.desc())
+                .limit(limit)
+            )
+        )
+
     async def find_document_by_hash(self, sha256: str) -> SourceDocumentVersionORM | None:
         return cast(
             SourceDocumentVersionORM | None,

@@ -25,7 +25,11 @@ from novel_character_generator.infrastructure.db.orm import (
     ExpressionObservationORM,
     FeatureObservationORM,
     SceneORM,
+    StoryEventORM,
     TimelineORM,
+)
+from novel_character_generator.infrastructure.db.repositories.extraction import (
+    is_canonical_timeline_name,
 )
 from novel_character_generator.infrastructure.storage.local import LocalArtifactStore
 from novel_character_generator.settings import get_settings
@@ -95,6 +99,87 @@ class TemporalProvider:
                 )
             ],
         )
+
+
+class RevisedTemporalProvider(TemporalProvider):
+    version = "temporal-test-v2"
+
+    async def extract_chunk(self, text: str) -> ChunkExtractionResult:
+        result = await super().extract_chunk(text)
+        memory_start = text.index("往昔")
+        return result.model_copy(
+            update={
+                "scene_hypotheses": [
+                    SceneHypothesisDraft(
+                        label="重新识别的往昔重逢",
+                        start=memory_start,
+                        end=len(text),
+                        timeline_name="往昔时间线",
+                        presentation_mode="flashback",
+                        reality_status="canonical",
+                        confidence=0.97,
+                    )
+                ]
+            }
+        )
+
+
+def test_main_timeline_aliases_resolve_to_canonical_timeline() -> None:
+    assert is_canonical_timeline_name("main")
+    assert is_canonical_timeline_name("Main Timeline")
+    assert is_canonical_timeline_name("主线时间线")
+    assert not is_canonical_timeline_name("往昔时间线")
+
+
+@pytest.mark.asyncio
+async def test_reanalysis_updates_automatic_scene_when_span_changes(
+    tmp_path: Path,
+) -> None:
+    database_url = f"sqlite+aiosqlite:///{tmp_path / 'scene-reanalysis.db'}"
+    config = Config("alembic.ini")
+    config.cmd_opts = type("Options", (), {"x": [f"database_url={database_url}"]})()
+    await to_thread(command.upgrade, config, "head")
+    engine = create_async_engine(database_url)
+    sessions = async_sessionmaker(engine, expire_on_commit=False)
+    store = LocalArtifactStore(tmp_path / "scene-reanalysis-artifacts")
+    text = "第一章\n往昔，林舟仍是黑发，见到故人时微笑。"
+
+    async with sessions() as session:
+        ingestion = IngestionService(session, store)
+        novel = await ingestion.upload(filename="scene-reanalysis.txt", data=text.encode())
+        ingestion_run = await ingestion.create_run(novel.id, "scene-ingestion")
+        assert ingestion_run is not None
+        await process_ingestion_run(session, store, ingestion_run.id, target_tokens=1_000)
+
+        first_run = await ingestion.create_extraction_run(novel.id, "scene-extraction-v1")
+        assert first_run is not None
+        await process_extraction_run(session, TemporalProvider(), first_run.id)
+        original = await session.scalar(select(SceneORM).where(SceneORM.novel_id == novel.id))
+        assert original is not None
+        original_id = original.id
+        original_event_id = original.event_id
+
+        second_run = await ingestion.create_extraction_run(novel.id, "scene-extraction-v2")
+        assert second_run is not None
+        await process_extraction_run(session, RevisedTemporalProvider(), second_run.id)
+
+        scenes = list(
+            await session.scalars(select(SceneORM).where(SceneORM.novel_id == novel.id))
+        )
+        assert len(scenes) == 1
+        refreshed = scenes[0]
+        assert refreshed.id == original_id
+        assert refreshed.label == "重新识别的往昔重逢"
+        assert refreshed.char_start == text.index("往昔")
+        assert refreshed.char_end == len(text)
+        assert refreshed.binding_status == "hypothesis"
+        assert refreshed.binding_revision == 1
+        assert refreshed.event_id == original_event_id
+        event = await session.get(StoryEventORM, refreshed.event_id)
+        assert event is not None
+        assert event.name == "重新识别的往昔重逢"
+
+    await engine.dispose()
 
 
 @pytest.mark.asyncio
@@ -211,5 +296,27 @@ async def test_scene_hypotheses_are_grounded_queryable_and_correctable(
         assert rebound_observation is not None
         assert rebound_observation.temporal_scope["timeline_id"] == str(canonical.id)
         assert rebound_observation.temporal_scope["presentation_mode"] == "direct"
+
+        replacement = await IngestionService(session, store).create_extraction_run(
+            novel_id, "story-extraction-v2"
+        )
+        assert replacement is not None
+        await process_extraction_run(session, RevisedTemporalProvider(), replacement.id)
+
+        scenes = list(
+            await session.scalars(select(SceneORM).where(SceneORM.novel_id == novel_id))
+        )
+        assert len(scenes) == 1
+        refreshed_scene = scenes[0]
+        assert refreshed_scene.id == scene_id
+        assert refreshed_scene.label == "重新识别的往昔重逢"
+        assert refreshed_scene.char_start == text.index("往昔")
+        assert refreshed_scene.char_end == len(text)
+        assert refreshed_scene.binding_status == "corrected"
+        assert refreshed_scene.binding_revision == 2
+        assert refreshed_scene.timeline_id == canonical.id
+        assert refreshed_scene.event_id is None
+        assert refreshed_scene.presentation_mode == "direct"
+        assert refreshed_scene.reality_status == "canonical"
 
     await engine.dispose()

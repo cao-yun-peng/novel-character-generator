@@ -2,7 +2,7 @@
 
 > [← 上一篇](10-provider-and-workflow-versioning.md) · [文档索引](README.md) · [下一篇 →](12-evaluation-and-acceptance.md)
 >
-> 文档版本：2.9 · 源章节：14. 配置、安全与数据治理 · 修订日期：2026-08-24
+> 文档版本：3.1 · 源章节：14. 配置、安全与数据治理 · 修订日期：2026-08-24
 >
 > 本页先列当前源码真正接受的配置，再单独列目标配置。运行时字段以 [`settings.py`](../src/novel_character_generator/settings.py) 和 [`.env.example`](../.env.example) 为准。
 
@@ -30,10 +30,12 @@ LLM_PROVIDER=mock
 LLM_API_KEY=
 LLM_BASE_URL=https://api.deepseek.com
 LLM_MODEL=
+LLM_TIMEOUT_SECONDS=180
 
-MAX_CHUNK_INPUT_TOKENS=10000
+MAX_CHUNK_INPUT_TOKENS=5000
+CHUNK_OVERLAP_TOKENS=300
 MAX_TASK_ATTEMPTS=3
-WORKER_LEASE_SECONDS=120
+WORKER_LEASE_SECONDS=240
 
 AGENT_RUNTIME_ENABLED=false
 AGENT_MAX_TURNS_DEFAULT=3
@@ -72,6 +74,20 @@ LANGGRAPH_AGENT_RUNTIME_ENABLED=false
 
 # LLM 并发调度器实现后
 MAX_CONCURRENT_LLM_CALLS=3
+
+# 检索增强视觉精提取实现后；PoC 先接远程 Embedding API
+RETRIEVAL_LEXICAL_PROVIDER=sqlite_fts5
+RETRIEVAL_LEXICAL_PROFILE_VERSION=zh-jieba-visual-v1
+RETRIEVAL_VECTOR_STORE=qdrant_local
+QDRANT_LOCAL_PATH=./data/qdrant
+EMBEDDING_PROVIDER=openai_compatible
+EMBEDDING_BASE_URL=
+EMBEDDING_API_KEY=
+EMBEDDING_MODEL=
+EMBEDDING_DIMENSION=
+EMBEDDING_PROFILE_VERSION=
+EMBEDDING_BATCH_SIZE=16
+EMBEDDING_TIMEOUT_SECONDS=60
 ```
 
 新增配置字段时必须同时修改 `Settings`、`.env.example`、配置测试和本页；未接入代码的候选配置只能留在“目标配置”段落。
@@ -90,10 +106,12 @@ MAX_CONCURRENT_LLM_CALLS=3
 
 - 用户确认拥有处理权限；
 - 哪些内容会发送到哪个云端 Provider；
+- 远程 Embedding API 同样会接收小说 passage，不能因为其输出只是向量就把它视为纯本地处理；
 - Provider 的数据保留和训练使用政策；
 - 本地与云端产物保留周期；
 - 删除小说时如何级联删除或匿名化观察、调用日志和产物；
 - 日志只保存必要摘要，不记录完整正文和密钥。
+- 删除小说时须同时删除 FTS 派生索引、Qdrant point/collection 中属于该源版本的向量，以及失败批次缓存；备份中的延迟删除策略必须明确。
 - Agent 轨迹不保存隐藏思维链，只保存输入上下文清单、可见输出、工具调用、决策依据和使用量。
 
 ### 14.5 认证与权限

@@ -2,7 +2,7 @@
 
 > [← 项目总览](00-start-here.md) · [文档索引](README.md) · [代码导航 →](00-code-navigation.md)
 >
-> 文档版本：2.9 · 状态快照日期：2026-08-24 · 项目版本：0.1.0
+> 文档版本：3.2 · 状态快照日期：2026-08-25 · 项目版本：0.1.0
 
 ## 怎么理解状态
 
@@ -24,7 +24,9 @@
 | 源文档版本 | 中途重新上传时保留历史版本和替代关系 | 已实现 | [`document.py`](../src/novel_character_generator/domain/entities/document.py)、[`test_document_versions.py`](../tests/integration/test_document_versions.py) |
 | 章节识别与分块 | 规范化文本、识别章节、生成稳定文本块 | 已实现 | [`text_processing.py`](../src/novel_character_generator/domain/policies/text_processing.py)、[`ingestion.py`](../src/novel_character_generator/workers/handlers/ingestion.py) |
 | 文本分析 Run | 一次请求顺序执行分块、角色提取和外观聚合 | 已实现 | [`novels.py`](../src/novel_character_generator/api/routes/novels.py)、[`test_text_analysis_run.py`](../tests/integration/test_text_analysis_run.py) |
-| 角色与视觉事实提取 | 提取角色、mention、外观观察及原文证据 | 已实现基础 | [`extraction.py`](../src/novel_character_generator/workers/handlers/extraction.py)、[`openai_compatible.py`](../src/novel_character_generator/infrastructure/llm/openai_compatible.py)、[`test_extraction_slice.py`](../tests/integration/test_extraction_slice.py) |
+| 角色与视觉事实提取 | 提取角色、mention、原子视觉字段、人生阶段及精确原文证据 | 已实现基础 | [`extraction.py`](../src/novel_character_generator/workers/handlers/extraction.py)、[`visual_fields.py`](../src/novel_character_generator/domain/policies/visual_fields.py)、[`openai_compatible.py`](../src/novel_character_generator/infrastructure/llm/openai_compatible.py)、[`test_visual_fields.py`](../tests/unit/domain/test_visual_fields.py)、[`test_extraction_slice.py`](../tests/integration/test_extraction_slice.py) |
+| 细粒度文本库与混合召回 | 上传后建立 1K/100 passage、中文 BM25、向量召回、RRF 融合和邻居上下文 | 已实现基础 | 已有检索表迁移、`source_indexing` Run、安全切分、FTS5/BM25、OpenAI-compatible EmbeddingPort、Qdrant Local、批量续建、RRF、实体加分、同章双向邻居和证据区间映射；Embedding 未配置时明确降级，完整黄金集评测仍待执行 |
+| 检索增强角色视觉精提取 | 只对选定角色/字段组召回证据并精提取；推断进入审核建议 | 已实现基础 | 已注册字段缺口、visual-enrichment Run、evidence 和 Suggestion 审核 API；角色页已接入索引状态、阶段选择、字段缺口自动规划、任务进度、证据和建议审核。确定性 QueryPlan、精确 passage→chunk 回映及 Observation/Suggestion 分流见 [`visual_enrichment_service.py`](../src/novel_character_generator/application/services/visual_enrichment_service.py)、[`visual_enrichment.py`](../src/novel_character_generator/workers/handlers/visual_enrichment.py) 和 [`test_visual_enrichment_pipeline.py`](../tests/integration/test_visual_enrichment_pipeline.py)；黄金集执行与发布门禁按当前产品阶段暂缓 |
 | Mock/远程 LLM Provider | 本地稳定测试或调用 OpenAI-compatible 结构化输出 | 已实现 | [`mock.py`](../src/novel_character_generator/infrastructure/llm/mock.py)、[`workers/main.py`](../src/novel_character_generator/workers/main.py) |
 | Run 查询、SSE、取消和重试 | 查看进度，断线后续传事件，取消或重试任务 | 已实现 | [`runs.py`](../src/novel_character_generator/api/routes/runs.py)、[`run_service.py`](../src/novel_character_generator/application/services/run_service.py) |
 | Worker 租约与恢复 | claim、checkpoint、retry、fencing，避免旧 Worker 写入 | 已实现 | [`task_claim.py`](../src/novel_character_generator/workers/task_claim.py)、[`test_task_recovery.py`](../tests/integration/test_task_recovery.py) |
@@ -40,7 +42,7 @@
 | Agent 轨迹查询 | 查询 AgentRun、Turn、ToolCall 和 DecisionRecord | 已实现 | [`agent_runs.py`](../src/novel_character_generator/api/routes/agent_runs.py)、[`test_agent_execution_service.py`](../tests/integration/test_agent_execution_service.py) |
 | 评测数据层 | 数据集冻结、case/result/grader 版本和唯一性 | 已实现基础 | [`evaluation.py`](../src/novel_character_generator/infrastructure/db/repositories/evaluation.py)、[`test_evaluation_repository.py`](../tests/integration/test_evaluation_repository.py) |
 | 指标端点 | API 请求计数、延迟和受保护的 `/metrics` | 已实现基础 | [`metrics.py`](../src/novel_character_generator/api/metrics.py) |
-| 轻量可视化工作台 | 上传 TXT、创建分析任务、查看进度、角色证据和 2D 生成入口 | 已实现基础 | [`web/index.html`](../src/novel_character_generator/web/index.html)、[`web/app.js`](../src/novel_character_generator/web/app.js)、[`ui.py`](../src/novel_character_generator/api/routes/ui.py)；图像区随 capability 关闭 |
+| 轻量可视化工作台 | 上传 TXT、恢复历史项目和失败任务的部分角色、回填旧项目精细索引，并按人生阶段展示视觉事实、字段缺口、精提取证据和审核建议 | 已实现基础 | [`web/index.html`](../src/novel_character_generator/web/index.html)、[`web/app.js`](../src/novel_character_generator/web/app.js)、[`ui.py`](../src/novel_character_generator/api/routes/ui.py)；图像区随 capability 关闭 |
 | 完整 OpenTelemetry 链路 | API→Worker→Provider→Artifact Trace 与 Span Link | 仅设计 | 配置字段存在，但尚未看到完整 instrumentation 实现 |
 | 关键结构化业务日志 | 快照、预算、Provider、漂移门禁、审批和锁定事件 | 仅设计 | 事件规范见[日志设计](13-observability-logging-and-cost.md)，当前只有少量 Worker 异常日志 |
 | `log-check` 检查器 | 检查断链、重复收费、context hash 和错误锁定 | 仅设计 | 尚无命令、规则执行器或测试夹具 |
@@ -55,10 +57,12 @@
 ### 已经形成闭环
 
 - TXT 上传 → 不可变源版本 → 分块 → 角色提取 → 查询角色与证据。
+- 综合 `appearance`/旧别名 → 原子视觉字段 → 人生阶段标记 → 精确证据区间 → 视觉优先页面展示。
 - Observation → 确定性聚合 → AppearanceState/Conflict → 待审核 RenderProfile。
 - Run/Step 创建 → Worker 领取 → checkpoint → 完成或重试 → SSE 查询。
 - 人物合并/拆分 → revision 与幂等保护 → 审计记录。
-- 预置外观状态 → 冲突检测/解决 → 档案批准 → 目标时点快照。
+- 真实提取结果 → 冲突检测/解决 → 档案编辑与批准 → 目标时点快照。
+- 角色/字段组 → 版本化 QueryPlan → 混合召回与命中审计 → 结构化精提取 → 精确事实/审核建议分流 → 外观重聚合。
 
 ### 还没有形成闭环
 
@@ -66,19 +70,20 @@
 - 已批准快照提交图像 Provider，保存候选图与费用。
 - 候选图执行漂移审计、门禁、有界重生成和人工锁定。
 - 关键业务事件统一结构化输出，再由 `log-check` 对账。
-- 评测数据层自动执行完整 EvalRun、报告和发布门禁。
+- 评测数据层目前只保留数据仓储和后续 Runner/Grader 接口；完整 EvalRun、报告和发布门禁将在功能契约稳定后实现。
 
 ## 建议的下一阶段实现顺序
 
-1. 实现 `GenerationContextBuilder`，冻结生成与审计共用的 context hash。
-2. 接入一套固定 Image Provider/WorkflowProfile，先跑通单阶段候选图。
-3. 实现确定性基础检查和最小 Multimodal Critic，再加入 hard/soft gate。
-4. 在上述关键状态边界实现最小 `log-check`。
-5. 用评测数据层建立从文本到阶段图的发布门禁。
+1. 在真实小说上迭代字段分组、缺口判定和精提取交互，先稳定功能契约。
+2. 实现 `GenerationContextBuilder`，冻结生成与审计共用的 context hash。
+3. 接入一套固定 Image Provider/WorkflowProfile，先跑通单阶段候选图。
+4. 实现确定性基础检查和最小 Multimodal Critic，再加入 hard/soft gate。
+5. 功能契约稳定后，基于现有评测数据接口实现黄金集 Runner、成本/召回报告和发布门禁。
 
 ### 已延期事项
 
 - 角色/字段级精细差异重算：不影响当前 TXT 上传、角色提取、外观聚合和人工审批闭环；在小说源版本替换时暂时以更多重算换取一致性与实现安全性。
+- 这里的延期项与“抽取 Schema 升级时失效旧自动事实”不同：后者已经实现，但目前仍以一次 Run 的保守替换和整角色聚合为边界，不会只重算真正变化的单个字段。
 
 逐项 API、代码、数据、日志和测试落点见[功能—代码—测试追踪矩阵](19-feature-traceability-matrix.md)。
 

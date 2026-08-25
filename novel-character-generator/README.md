@@ -2,7 +2,7 @@
 
 从中文小说中提取带原文证据的角色视觉事实，整理角色在不同时间线和阶段的外观状态，并为后续可追溯的角色图像生成提供稳定输入。
 
-当前版本已经跑通 TXT 上传、源文档版本、分块、角色与视觉事实提取、任务恢复、人物合并/拆分、时间绑定修正、档案编辑审批和目标时点快照。图像生成、视觉防漂移、完整结构化业务日志和 `log-check` 仍在设计或待实现阶段。
+当前版本已经跑通 TXT 上传、源文档版本、分块、角色与视觉事实提取、任务恢复、人物合并/拆分、时间绑定修正、档案编辑审批和目标时点快照，并实现上传后的细粒度 passage、SQLite FTS5/BM25、远程 Embedding、Qdrant Local、RRF、邻居扩展，以及面向角色的 QueryPlan、检索审计、视觉精提取和 Observation/Suggestion 分流。图像生成、视觉防漂移、完整结构化业务日志和 `log-check` 仍在设计或待实现阶段。
 
 ## 从这里开始
 
@@ -29,9 +29,23 @@ uv run uvicorn novel_character_generator.api.app:app --reload
 uv run python -m novel_character_generator.workers.main
 ```
 
-浏览器打开 `http://127.0.0.1:8000/ui` 进入“角色造像台”。页面可以上传 TXT、创建分析 Run、查看 Worker 进度和角色证据；2D 图像区域根据 `/api/v1/capabilities` 自动启用，当前图像后端未实现时会保持禁用并明确提示。
+浏览器打开 `http://127.0.0.1:8000/ui` 进入“角色造像台”。页面可以上传 TXT、创建分析 Run、查看 Worker 进度和角色证据；角色详情页还会显示当前检索索引状态，按人生阶段自动规划视觉字段缺口，并可创建精提取任务、查看证据和审核 Suggestion。2D 图像区域根据 `/api/v1/capabilities` 自动启用，当前图像后端未实现时会保持禁用并明确提示。
 
 默认开发配置使用 Mock LLM；普通和管理员 API Key 均为空时，本地请求无需认证。生产环境禁止该降级方式。完整上传和分析示例见 [API 调用手册](docs/20-api-cookbook-and-error-catalog.md)。
+
+### 上传一本小说并查看角色
+
+1. 首次运行先执行 `Copy-Item .env.example .env` 和 `uv run alembic upgrade head`。当前默认按每块 5,000 个估算 Token、相邻块重叠 300 Token 处理文本。
+2. 在终端 A 启动 API，看到 Uvicorn 监听 `127.0.0.1:8000` 后保持终端运行。
+3. 在终端 B 启动 Worker，保持该终端运行；API 只创建任务，实际分块、提取和聚合由 Worker 完成。
+4. 打开 `http://127.0.0.1:8000/ui`。如果 `.env` 配置了 `USER_API_KEY`，先在左侧输入相同 Key 并连接。
+   页面刷新后，可在“历史项目”中重新打开数据库里已有的小说和最近一次任务；失败或取消的任务也会显示已经持久化的部分角色。旧项目若没有细粒度索引，可在项目摘要中点击“构建精细索引”，该任务复用原始文本，不会重跑或覆盖角色抽取。
+5. 在“上传小说”区域选择大小限制内的 `.txt` 文件，点击“上传小说”。页面显示“上传完成”后点击“开始分析角色”。
+6. 等待任务依次完成 `normalize_and_chunk → extract_characters → aggregate_appearance`。页面显示“任务成功”后会自动加载角色列表。
+   `extract_characters` 运行期间页面会显示“已完成块数/总块数”，并逐步加载已经落库的部分角色与证据；停止 Worker 不会删除这些结果，重启后仍可从游标继续。
+7. 点击角色卡片查看外观事实、原文证据、置信度和阶段状态；索引就绪后，可在“视觉精提取”面板选择阶段和仍缺失的字段组，创建任务并查看新增事实、证据与待审核建议。在“人工审核中心”填写审核人 ID 后，可处理 Suggestion、审批队列、冲突值和 Render Profile。图像生成仍未启用。
+
+默认 Mock Provider 只适合验证流程，只识别有限的测试句式。分析任意真实小说前，应在 `.env` 配置 `LLM_PROVIDER=deepseek` 或 `openai_compatible`，并填写对应 `LLM_API_KEY`、`LLM_MODEL`、必要时的 `LLM_BASE_URL`，以及远程响应较慢时的 `LLM_TIMEOUT_SECONDS`，然后重启 API 与 Worker。
 
 ## 常用检查
 
