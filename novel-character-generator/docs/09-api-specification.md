@@ -2,7 +2,7 @@
 
 > [← 上一篇](08-task-recovery.md) · [文档索引](README.md) · [下一篇 →](10-provider-and-workflow-versioning.md)
 >
-> 文档版本：3.0 · 源章节：12. API 设计 · 修订日期：2026-08-24
+> 文档版本：3.2 · 源章节：12. API 设计 · 修订日期：2026-08-27
 >
 > 当前接口以 FastAPI OpenAPI 和 [`GET /api/v1/capabilities`](../src/novel_character_generator/api/routes/capabilities.py) 为运行时真值。本页明确区分“已注册接口”和“目标接口”，不能仅因端点出现在设计中就认为已经可调用。
 
@@ -27,6 +27,9 @@
 | `POST /api/v1/novels/{novel_id}/runs` | 创建文本分析任务 | 已实现，返回 `202` |
 | `POST /api/v1/novels/{novel_id}/retrieval-index-runs` | 为当前源版本幂等创建细粒度检索索引任务，支持旧项目回填 | 已实现，返回 `202` |
 | `GET /api/v1/runs/{run_id}` | 查询 Run 与 Step 状态 | 已实现 |
+| `GET /api/v1/runs/{run_id}/inspection` | 查询 R1–R3 阶段进度、诊断指标、调用用量和产出引用 | 已实现 |
+| `GET /api/v1/runs/{run_id}/inspection/outputs/{kind}/{output_id}` | 按引用读取某个阶段的结构化产出 | 已实现；仅允许归属该 Run 的产出 |
+| `GET /api/v1/runs/{run_id}/inspection/outputs/{kind}/{output_id}/raw-response` | 读取 R1/R2 Provider 原始响应 | 已实现；仅 development + 显式开关 + 管理员 Key；R3 当前为代码策略阶段 |
 | `GET /api/v1/runs/{run_id}/events` | 按 `after` 序号读取或持续跟随 SSE | 已实现 |
 | `POST /api/v1/runs/{run_id}/cancel` | 请求取消 | 已实现，返回 `202` |
 | `POST /api/v1/runs/{run_id}/retry` | 重试允许重试的失败步骤 | 已实现，返回 `202` |
@@ -60,6 +63,8 @@
 
 `GET /` 会重定向到轻量工作台 `GET /ui`，静态资源位于 `/ui/assets/*`。这些页面路由不属于业务 API，也不进入 OpenAPI；工作台内部仍按本节公开接口和权限规则调用后端。
 
+Run Inspector 的摘要和普通产出详情只返回阶段状态、聚合计数、已记录的模型 usage/latency、关注原因、结构化结果和中间状态，不复制小说正文、完整 Prompt 或 Provider 原始 payload。开发原始响应由独立管理员端点按 R1 Chunk、R2 Chunk 或 R2 收敛批次读取，只有显式启用后新执行的请求才会持久化；R3 当前是代码策略阶段，没有模型原始响应，生产环境禁止启用。其中计数用于排障和进度判断，未关联黄金集时不能解释为 precision、recall 或发布门禁分数。
+
 `GET /api/v1/characters/{character_id}/observations` 当前返回 `chapter_ordinal`、`temporal_scope`、`life_phase_key`、`life_phase_label`、`is_visual` 和 `visual_category`。API 会把旧字段别名投影为规范路径；页面据此先展示视觉事实，按人生阶段分组，并显示章节、grounding、置信度和原文证据。该列表目前未分页，调用方不能假设通用 cursor 规则已覆盖此端点。
 
 当 `aggregate_appearance` 尚未完成时，阶段数和冲突数为零只表示“尚未评估”，不能解释为“已确认无冲突”；工作台会明确区分这两种状态。
@@ -78,7 +83,7 @@ GET  /api/v1/visual-enrichment-runs/{run_id}/evidence
 POST /api/v1/feature-suggestions/{suggestion_id}/resolve
 ```
 
-字段缺口接口返回当前源版本和可选人生阶段下七个字段组的覆盖状态、已观察字段路径、推荐补齐组及索引状态。当前 v1 是字段组级规划：组内存在至少一个有效、可定位的 asserted Observation 即视为该组已覆盖，不代表组内所有原子字段都完整。
+字段缺口接口返回当前源版本和可选人生阶段下七个字段组的覆盖状态、已观察字段路径、推荐补齐组及索引状态。当前 `visual-field-gap-v2` 使用组内维度和阈值评分，不代表组内所有原子字段都完整，也不代表角色已经满足出图就绪度；运行时版本以 `FIELD_GAP_POLICY_VERSION` 为准。
 
 创建请求须使用 `Idempotency-Key`，并携带可选人生阶段和调用预算。调用方可以显式传入目标 `field_groups`；也可以传空列表并保持 `auto_plan=true`，由服务端使用同一缺口策略固化本次目标组。没有可补缺口时返回 `visual_field_gaps_empty`。索引未就绪必须返回 `retrieval_index_not_ready`，不得隐式退化为全文模型调用。完整契约见[检索增强的角色视觉精提取实现设计](21-retrieval-augmented-visual-enrichment.md)。
 

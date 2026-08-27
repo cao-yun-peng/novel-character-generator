@@ -2,7 +2,7 @@
 
 > [← 上一篇](13-observability-logging-and-cost.md) · [文档索引](README.md) · [下一篇 →](15-risks-decisions-and-references.md)
 >
-> 文档版本：3.0 · 源章节：17. 开发计划、18. 二期开发规划 · 修订日期：2026-08-24
+> 文档版本：3.1 · 源章节：17. 开发计划、18. 二期开发规划 · 修订日期：2026-08-26
 >
 > 当前状态：本页是目标路线和退出条件，不是完成进度。实际完成度见[当前实现状态](00-current-status.md)和[追踪矩阵](19-feature-traceability-matrix.md)。
 
@@ -103,6 +103,38 @@ PoC 使用 3–5 个独立合法来源、80–120 个精标 case，至少覆盖 
 - 6–10 个独立来源、300–500 个文本/Agent case 和 200–300 张评测图像跑批；
 - 指标阈值标定；
 - 按实际部署能力更新[本地开发、部署与运维手册](16-local-development-and-runbook.md)，完成生产 SLO/RPO/RTO 与二期接口评审。
+
+### 17.6 从当前代码基线实施视觉重构的增量排期
+
+前述 13–16 周是从项目早期状态估算的一期总计划；当前已经具备上传、分块、v3 视觉候选抽取、检索增强、外观聚合、Profile/Snapshot、Structured AgentRuntime 和 Mock 图像链路。下面给出从当前基线落地[视觉优先的出图字段与全文抽取重构方案](23-visual-first-extraction-refactor.md)的增量排期。
+
+估算前提：1 名熟悉现有代码的后端/LLM 工程师 + 1 名兼职标注/审核人员，不包含完整管理后台和真实收费图像 Provider。各阶段必须通过退出门禁再进入下一阶段；质量门禁失败时延长本阶段，不用日期压力降低标准。
+
+| 阶段 | 估算 | 主要工作 | 完成后效果 | 验收方法/退出门禁 |
+|---|---:|---|---|---|
+| R0 基线与契约冻结 | 已完成开发基线 | 保留可增量扩充的开发种子集、历史 v2 usage/响应和字段注册表；完整黄金集不阻塞开发 | 能用低成本确定性门禁开始 v3 开发，不再为旧协议新增付费调用 | 当前 25-case 可重复运行；Provider 预算/截止/失败分类和主链回归通过；发布前再扩充并冻结 80–120 case |
+| R1 视觉候选 v3 与 Provider 治理 | 5–8 个工作日 | `VisualCandidateExtractionResult`、`local_id/entity_ref`、服务端 evidence locator；显式 reasoning/output/deadline/item 上限；最小 GroundedVisual 持久化 DTO；删除旧八类联合入口 | 每 Chunk 只付费执行一次视觉候选调用，模型不再计算 offset；旧 v2 仅保留历史数据读取和离线 fixture | exact evidence ≥95%、规范字段路径 100%、视觉 precision ≥90%；P95 延迟/每正确字段成本相对历史 v2 基线改善；`length/incomplete` 不会持久化为成功 |
+| R2 分层人物身份收敛 | 已实现基础主链；质量 Gate 待评测 | local/provisional/final 三态；每 Chunk 模型判断读取累计记忆；每 10 Chunk 固定收敛并执行尾批最终检查；final-only Observation；调用预算、指纹和恢复 | 泛称仅为局部 mention，不按字符串全局合并；长篇过程中保存候选，收敛后才发布事实 | 已有累计记忆、十章/尾批、失败关闭、幂等和“后文另一男孩不污染唐三”自动测试；主要角色 mention F1 ≥0.90、跨作品黄金集高影响误合并为 0、增量影响闭包和人工 split 审计仍是 R2 完整 Gate |
+| R3 分层人生阶段与故事时间解析 | 7–10 个工作日 | 每 Chunk 保存信号、每章/批次 provisional scope、全文 final phase graph；处理回忆/梦境/传闻/分支/变身；人工修正和依赖失效 | 幼年、成年、前世、伪装和瞬时状态不会互相污染；出图时只做确定性目标时点解析 | 显式阶段信号绑定 precision ≥95%；critical slice 跨人物/跨阶段污染为 0；主要角色存在显式阶段证据时覆盖率 ≥95%；新增“多年后”只影响目标人物相邻阶段；Snapshot 重放 hash 稳定 |
+| R4 有界 VisualEvidenceAgent | 7–10 个工作日 | 在现有 Direct visual-enrichment 旁增加 Agent 模式；只读检索工具、候选提交工具、预算/截止/停止条件；保存 coverage trace 和 `not_stated` 依据；Direct/Agent A/B | Agent 可根据缺口、别名和首次命中自主改写查询，判断人物/阶段是否匹配，但不能污染正式事实 | 相比 Direct，验证集正确缺失字段召回至少提高 5 个百分点，或人工检索时间至少降低 20%；错误 asserted 不上升、每正确字段成本不超过 Direct 的 1.5 倍、越权写入为 0；所有停止分支可恢复；`not_stated` 可回放。达不到净收益则不默认启用 |
+| R5 确定性质量报告 + Review Agent 分支 | 5–8 个工作日 | 实现 `DecompositionQualityReport`、版本化指标/阻断代码/API；确定性 QualityEvaluator 常规执行；复杂问题才调用 Review Agent | 技术成功与语义质量正式分离，用户能知道为什么需要审核或补证据 | 相同输入报告完全一致；注入的错人物、错阶段、无 grounding、hard conflict 等阻断故障召回率 100%；Review Agent 关闭时主流程仍工作；模型建议不能直接改 `quality_status` |
+| R6 设计缺口到出图字段桥梁 | 7–10 个工作日 | `CharacterDesignGap`、字段来源、三档 `RenderReadinessReport`、`SceneRenderBrief`、Provider 中立 `ImageRenderSpec` 和 Prompt compiler；Mock 链路接入 | 原著事实、人工设计、场景和 Provider 参数分层；能明确生成探索图、角色设定图或一致性场景图 | 唐三幼年样例每个 Prompt 字段均可追溯来源；小说未写字段不进入 Observation；三档门禁覆盖正反例；同输入 `spec_hash` 稳定；Provider Adapter 不可新增人物事实 |
+
+串行实施约为 41–61 个工程工作日，即约 8–12 个自然周。若 2 名工程师在 R1 契约稳定后并行开发“实体解析”和“阶段解析/质量夹具”，可压缩到约 5–7 周，但 R4 必须等待 R2/R3 的人物与阶段输入稳定，R6 必须等待 R5 的质量和来源边界稳定。
+
+阶段性演示与验收产物：
+
+```text
+R0：基线报告和黄金集
+R1：v3 真实诊断报告 + 历史 v2 fixture/usage 离线对照
+R2：人物候选 → final character_id 的可视审计
+R3：人物阶段图、Observation 作用域和目标快照重放
+R4：Agent 查询轨迹、命中证据和 not_stated 覆盖记录
+R5：正式质量报告、阻断代码和 Review 建议
+R6：角色设计缺口、三档就绪度、SceneRenderBrief 和 ImageRenderSpec
+```
+
+每个阶段都要保留上一版本可回放和 feature flag。新版本未通过门禁时，不替换当前生产默认；数据库迁移只新增版本化派生结果，不原地改写已批准事实或历史 Profile。
 
 ---
 

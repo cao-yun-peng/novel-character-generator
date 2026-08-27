@@ -12,8 +12,9 @@ from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_asyn
 from novel_character_generator.api.app import create_app
 from novel_character_generator.api.deps import get_session
 from novel_character_generator.application.ports.extraction import (
-    ChunkExtractionResult,
-    ObservationDraft,
+    VisualCandidateExtractionResult,
+    VisualEntityCandidate,
+    VisualFactCandidate,
 )
 from novel_character_generator.application.services.ingestion_service import IngestionService
 from novel_character_generator.infrastructure.db.orm import (
@@ -33,35 +34,42 @@ from novel_character_generator.workers.handlers.appearance_aggregation import (
 )
 from novel_character_generator.workers.handlers.extraction import process_extraction_run
 from novel_character_generator.workers.handlers.ingestion import process_ingestion_run
+from novel_character_generator.workers.handlers.phase_resolution import (
+    process_phase_resolution_run,
+)
 
 
 class ConflictingAppearanceProvider:
     version = "conflicting-appearance-v1"
 
-    async def extract_chunk(self, text: str) -> ChunkExtractionResult:
-        black_start = text.index("黑眼")
-        blue_start = text.index("蓝眼")
-        return ChunkExtractionResult(
-            observations=[
-                ObservationDraft(
-                    character_name="林舟",
+    async def extract_chunk(self, text: str) -> VisualCandidateExtractionResult:
+        assert "黑眼" in text and "蓝眼" in text
+        return VisualCandidateExtractionResult(
+            entities=[
+                VisualEntityCandidate(
+                    local_id="e1",
+                    representative_name="林舟",
+                    mention_quote="林舟",
+                    mention_kind="name",
+                    confidence=1.0,
+                )
+            ],
+            visual_candidates=[
+                VisualFactCandidate(
+                    entity_ref="e1",
                     field_path="face.eye_color",
                     value="black",
                     evidence_quote="黑眼",
-                    start=black_start,
-                    end=black_start + len("黑眼"),
                     confidence=1.0,
                 ),
-                ObservationDraft(
-                    character_name="林舟",
+                VisualFactCandidate(
+                    entity_ref="e1",
                     field_path="face.eye_color",
                     value="blue",
                     evidence_quote="蓝眼",
-                    start=blue_start,
-                    end=blue_start + len("蓝眼"),
                     confidence=1.0,
                 ),
-            ]
+            ],
         )
 
 
@@ -85,6 +93,7 @@ async def test_real_observations_form_idempotent_reviewable_profile(
         assert run is not None
         await process_ingestion_run(session, store, run.id, target_tokens=1_000)
         await process_extraction_run(session, MockExtractionProvider(), run.id)
+        await process_phase_resolution_run(session, run.id)
         await process_appearance_aggregation_run(session, run.id)
 
         character = await session.scalar(
@@ -210,6 +219,7 @@ async def test_same_scope_conflict_blocks_automatic_profile_approval(tmp_path: P
         assert run is not None
         await process_ingestion_run(session, store, run.id, target_tokens=1_000)
         await process_extraction_run(session, ConflictingAppearanceProvider(), run.id)
+        await process_phase_resolution_run(session, run.id)
         await process_appearance_aggregation_run(session, run.id)
 
         character = await session.scalar(

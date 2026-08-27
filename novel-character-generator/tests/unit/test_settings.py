@@ -11,6 +11,21 @@ def test_default_settings_use_async_sqlite() -> None:
     assert settings.max_chunk_input_tokens == 5_000
     assert settings.chunk_overlap_tokens == 300
     assert settings.llm_timeout_seconds == 180
+    assert settings.llm_wire_api == "chat_completions"
+    assert settings.llm_thinking_enabled is False
+    assert settings.llm_reasoning_effort == "none"
+    assert settings.llm_max_output_tokens == 8_192
+    assert settings.llm_total_deadline_seconds == 120
+    assert settings.llm_max_items_per_result == 256
+    assert settings.llm_max_retries == 1
+    assert settings.llm_raw_response_capture_enabled is False
+    assert settings.entity_resolution_memory_max_records == 64
+    assert settings.entity_resolution_memory_recent_records == 16
+    assert settings.entity_convergence_shard_max_records == 16
+    assert settings.entity_convergence_shard_max_mentions == 32
+    assert settings.entity_convergence_shard_max_input_tokens == 12_000
+    assert settings.entity_convergence_shard_max_output_tokens == 4_500
+    assert settings.entity_convergence_repair_max_attempts == 2
     assert settings.worker_lease_seconds > settings.llm_timeout_seconds
 
 
@@ -53,9 +68,51 @@ def test_llm_timeout_must_be_positive() -> None:
         Settings(_env_file=None, llm_timeout_seconds=0)
 
 
+def test_llm_deadline_must_fit_inside_worker_lease() -> None:
+    with pytest.raises(ValidationError, match="llm_deadline_must_be_shorter_than_worker_lease"):
+        Settings(
+            _env_file=None,
+            llm_total_deadline_seconds=240,
+            worker_lease_seconds=240,
+        )
+
+
+def test_entity_resolution_recent_memory_must_fit_inside_record_limit() -> None:
+    with pytest.raises(
+        ValidationError,
+        match="entity_resolution_memory_recent_exceeds_max_records",
+    ):
+        Settings(
+            _env_file=None,
+            entity_resolution_memory_max_records=4,
+            entity_resolution_memory_recent_records=5,
+        )
+
+
+def test_entity_convergence_output_budget_must_fit_provider_limit() -> None:
+    with pytest.raises(
+        ValidationError,
+        match="entity_convergence_output_budget_exceeds_provider_limit",
+    ):
+        Settings(
+            _env_file=None,
+            llm_max_output_tokens=1_000,
+            entity_convergence_shard_max_output_tokens=1_001,
+        )
+
+
 def test_production_rejects_mock_provider() -> None:
     with pytest.raises(ValidationError, match="mock_llm_provider_forbidden_in_production"):
         Settings(_env_file=None, app_env="production")
+    with pytest.raises(ValidationError, match="mock_image_provider_forbidden_in_production"):
+        Settings(
+            _env_file=None,
+            app_env="production",
+            llm_provider="deepseek",
+            llm_api_key="secret",
+            llm_model="model-v1",
+            image_provider="mock",
+        )
 
 
 def test_remote_provider_requires_credentials() -> None:
@@ -78,4 +135,21 @@ def test_production_requires_distinct_user_and_admin_keys() -> None:
             **provider,
             user_api_key="same",
             admin_api_key="same",
+        )
+
+
+def test_production_rejects_raw_model_response_capture() -> None:
+    with pytest.raises(
+        ValidationError,
+        match="llm_raw_response_capture_forbidden_in_production",
+    ):
+        Settings(
+            _env_file=None,
+            app_env="production",
+            llm_provider="deepseek",
+            llm_api_key="llm-secret",
+            llm_model="model-v1",
+            user_api_key="user-secret",
+            admin_api_key="admin-secret",
+            llm_raw_response_capture_enabled=True,
         )

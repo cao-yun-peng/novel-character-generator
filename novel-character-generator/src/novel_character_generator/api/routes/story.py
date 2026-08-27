@@ -11,6 +11,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from novel_character_generator.api.auth import require_user_api_key
 from novel_character_generator.api.deps import get_session
 from novel_character_generator.application.services.story_service import (
+    LifePhaseUpdate,
     StoryService,
     TemporalBindingConflict,
     TemporalBindingUpdate,
@@ -80,6 +81,63 @@ class TemporalBindingRequest(BaseModel):
     reality_status: Literal["canonical", "subjective", "alleged", "counterfactual"]
 
 
+class LifePhaseResponse(BaseModel):
+    id: UUID
+    character_id: UUID
+    timeline_id: UUID
+    phase_key: str
+    label: str
+    phase_order: Decimal | None
+    age_stage: str | None
+    start_event_id: UUID | None
+    end_event_id: UUID | None
+    start_chapter_ordinal: int | None
+    end_chapter_ordinal: int | None
+    evidence_signal_ids: list[str]
+    confidence: float
+    status: str
+    resolver_version: str
+    revision: int
+    record_status: str
+
+
+class LifePhaseResolutionRequest(BaseModel):
+    label: str
+    start_chapter_ordinal: int | None = None
+    end_chapter_ordinal: int | None = None
+    status: Literal["active", "rejected"]
+    reason: str
+
+
+class TemporalSignalReviewResponse(BaseModel):
+    id: UUID
+    source_chunk_id: UUID
+    mention_span_id: UUID | None
+    kind: str
+    label: str
+    evidence_quote: str
+    char_start: int
+    char_end: int
+    confidence: float
+    resolution_status: str
+
+
+class ScopeBindingReviewResponse(BaseModel):
+    id: UUID
+    observation_id: UUID
+    phase_id: UUID | None
+    timeline_id: UUID
+    temporal_scope: dict[str, object]
+    status: str
+    confidence: float
+    revision: int
+
+
+class TemporalReviewResponse(BaseModel):
+    unresolved_signals: list[TemporalSignalReviewResponse]
+    scope_bindings_needing_review: list[ScopeBindingReviewResponse]
+
+
 def _if_match_revision(if_match: str) -> int:
     value = if_match.strip().strip('"')
     try:
@@ -116,13 +174,17 @@ async def list_events(
     await _require_novel(service, novel_id)
     events = await service.events(novel_id)
     event_ids = [event.id for event in events]
-    participants = list(
-        await session.scalars(
-            select(EventParticipantORM)
-            .where(EventParticipantORM.event_id.in_(event_ids))
-            .order_by(EventParticipantORM.created_at, EventParticipantORM.id)
+    participants = (
+        list(
+            await session.scalars(
+                select(EventParticipantORM)
+                .where(EventParticipantORM.event_id.in_(event_ids))
+                .order_by(EventParticipantORM.created_at, EventParticipantORM.id)
+            )
         )
-    ) if event_ids else []
+        if event_ids
+        else []
+    )
     by_event: dict[UUID, list[EventParticipantResponse]] = {}
     for participant in participants:
         by_event.setdefault(participant.event_id, []).append(
@@ -152,6 +214,79 @@ async def list_scenes(
         SceneResponse.model_validate(item, from_attributes=True)
         for item in await service.scenes(novel_id)
     ]
+
+
+@router.get(
+    "/novels/{novel_id}/temporal-review",
+    response_model=TemporalReviewResponse,
+)
+async def get_temporal_review(
+    novel_id: UUID,
+    session: Annotated[AsyncSession, Depends(get_session)],
+) -> TemporalReviewResponse:
+    result = await StoryService(session).temporal_review(novel_id)
+    if result is None:
+        raise HTTPException(status_code=404, detail="novel_not_found")
+    signals, bindings = result
+    return TemporalReviewResponse(
+        unresolved_signals=[
+            TemporalSignalReviewResponse.model_validate(item, from_attributes=True)
+            for item in signals
+        ],
+        scope_bindings_needing_review=[
+            ScopeBindingReviewResponse.model_validate(item, from_attributes=True)
+            for item in bindings
+        ],
+    )
+
+
+@router.get(
+    "/characters/{character_id}/life-phases",
+    response_model=list[LifePhaseResponse],
+)
+async def list_character_life_phases(
+    character_id: UUID,
+    session: Annotated[AsyncSession, Depends(get_session)],
+) -> list[LifePhaseResponse]:
+    rows = await StoryService(session).life_phases(character_id)
+    if rows is None:
+        raise HTTPException(status_code=404, detail="character_not_found")
+    return [LifePhaseResponse.model_validate(item, from_attributes=True) for item in rows]
+
+
+@router.post(
+    "/characters/{character_id}/life-phases/{phase_id}/resolve",
+    response_model=LifePhaseResponse,
+)
+async def resolve_character_life_phase(
+    character_id: UUID,
+    phase_id: UUID,
+    request: LifePhaseResolutionRequest,
+    session: Annotated[AsyncSession, Depends(get_session)],
+    if_match: Annotated[str, Header(alias="If-Match")],
+    actor_id: Annotated[str, Header(alias="X-Actor-ID", min_length=1, max_length=255)],
+) -> LifePhaseResponse:
+    try:
+        phase = await StoryService(session).resolve_life_phase(
+            character_id,
+            phase_id,
+            update_request=LifePhaseUpdate(
+                label=request.label,
+                start_chapter_ordinal=request.start_chapter_ordinal,
+                end_chapter_ordinal=request.end_chapter_ordinal,
+                status=request.status,
+                reason=request.reason,
+            ),
+            expected_revision=_if_match_revision(if_match),
+            actor_id=actor_id,
+        )
+    except TemporalBindingConflict as error:
+        raise HTTPException(status_code=409, detail=str(error)) from error
+    except ValueError as error:
+        raise HTTPException(status_code=422, detail=str(error)) from error
+    if phase is None:
+        raise HTTPException(status_code=404, detail="life_phase_not_found")
+    return LifePhaseResponse.model_validate(phase, from_attributes=True)
 
 
 @router.put("/scenes/{scene_id}/temporal-binding", response_model=SceneResponse)

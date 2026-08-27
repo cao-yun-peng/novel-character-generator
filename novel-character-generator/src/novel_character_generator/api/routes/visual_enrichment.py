@@ -56,6 +56,9 @@ class VisualFieldGroupGapResponse(BaseModel):
     covered: bool
     priority: str
     observed_field_paths: list[str]
+    completeness_score: float
+    required_score: float
+    missing_dimensions: list[str]
 
 
 class VisualFieldGapPlanResponse(BaseModel):

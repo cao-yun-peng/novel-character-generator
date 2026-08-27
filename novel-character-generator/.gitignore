@@ -9,3 +9,4 @@ __pycache__/
 data/*.db
 data/*.db-*
 data/artifacts/
+tests/测试/*.extraction.*.json

@@ -13,6 +13,7 @@ from novel_character_generator.api.routes import (
     capabilities,
     characters,
     health,
+    image_generation,
     novels,
     runs,
     story,
@@ -51,6 +52,7 @@ def create_app() -> FastAPI:
     app.include_router(agent_runs.router)
     app.include_router(story.router)
     app.include_router(visual_enrichment.router)
+    app.include_router(image_generation.router)
     app.include_router(ui.router)
     return app
 

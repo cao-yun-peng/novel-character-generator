@@ -1,0 +1,134 @@
+{
+  "dataset": {
+    "name": "visual-extraction-developer-seed",
+    "version": "v0",
+    "rubric_version": "visual-observation-seed-v2"
+  },
+  "source_report": "data\\diagnostics\\r1-v3-prompt-semantics\\visual-extraction-prompt-v2.2.live.json",
+  "source_provider_version": "deepseek:deepseek-v4-flash:visual-observation-v3:visual-extraction-prompt-v2.2",
+  "execution_mode": "offline_rescore",
+  "case_count": 3,
+  "passed_case_count": 2,
+  "needs_review_case_count": 1,
+  "failed_case_count": 0,
+  "records": [
+    {
+      "case_id": "clothing-coverage-not-body-build",
+      "score": {
+        "case_id": "clothing-coverage-not-body-build",
+        "status": "pass",
+        "true_positive": 1,
+        "false_positive": 0,
+        "false_negative": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "accepted_value_rate": 1.0,
+        "exact_evidence_rate": 1.0,
+        "compatible_evidence_rate": 1.0,
+        "needs_review_count": 0,
+        "failed_observation_count": 0,
+        "passed": true,
+        "observations": [
+          {
+            "character_name": "顾川",
+            "field_path": "clothing.coverage",
+            "status": "pass",
+            "reason_codes": [
+              "accepted_value_variant"
+            ],
+            "expected_value": "上身未着衣",
+            "actual_value": "赤着上身",
+            "value_match": "accepted",
+            "expected_evidence_quote": "赤着上身",
+            "actual_evidence_quote": "赤着上身",
+            "evidence_match": "exact"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "tattoo-not-scar",
+      "score": {
+        "case_id": "tattoo-not-scar",
+        "status": "needs_review",
+        "true_positive": 1,
+        "false_positive": 0,
+        "false_negative": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "accepted_value_rate": 0.0,
+        "exact_evidence_rate": 1.0,
+        "compatible_evidence_rate": 1.0,
+        "needs_review_count": 1,
+        "failed_observation_count": 0,
+        "passed": false,
+        "observations": [
+          {
+            "character_name": "顾川",
+            "field_path": "distinctive_marks.tattoo",
+            "status": "needs_review",
+            "reason_codes": [
+              "unrecognized_value_variant"
+            ],
+            "expected_value": "左肩墨色飞鸟纹身",
+            "actual_value": "左肩有一片墨色飞鸟纹身",
+            "value_match": "unrecognized",
+            "expected_evidence_quote": "左肩有一片墨色飞鸟纹身",
+            "actual_evidence_quote": "左肩有一片墨色飞鸟纹身",
+            "evidence_match": "exact"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "white-hair-and-beard-atomic",
+      "score": {
+        "case_id": "white-hair-and-beard-atomic",
+        "status": "pass",
+        "true_positive": 2,
+        "false_positive": 0,
+        "false_negative": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "accepted_value_rate": 1.0,
+        "exact_evidence_rate": 0.5,
+        "compatible_evidence_rate": 1.0,
+        "needs_review_count": 0,
+        "failed_observation_count": 0,
+        "passed": true,
+        "observations": [
+          {
+            "character_name": "陆伯",
+            "field_path": "distinctive_marks.beard",
+            "status": "pass",
+            "reason_codes": [
+              "accepted_value_variant",
+              "compatible_evidence_span"
+            ],
+            "expected_value": "雪白长须",
+            "actual_value": "长须雪白",
+            "value_match": "accepted",
+            "expected_evidence_quote": "头发和长须都已雪白",
+            "actual_evidence_quote": "长须都已雪白",
+            "evidence_match": "contained"
+          },
+          {
+            "character_name": "陆伯",
+            "field_path": "hair.color",
+            "status": "pass",
+            "reason_codes": [],
+            "expected_value": "雪白",
+            "actual_value": "雪白",
+            "value_match": "canonical",
+            "expected_evidence_quote": "头发和长须都已雪白",
+            "actual_evidence_quote": "头发和长须都已雪白",
+            "evidence_match": "exact"
+          }
+        ]
+      }
+    }
+  ]
+}

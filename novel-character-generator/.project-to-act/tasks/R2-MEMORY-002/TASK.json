@@ -1,0 +1,35 @@
+{
+  "id": "R2-MEMORY-002",
+  "title": "R2 逐 Chunk 相关记忆裁剪与可观测性",
+  "status": "review",
+  "owner": "Codex",
+  "objective": "以确定性的候选检索限制逐 Chunk 人物解析携带的累计记忆，同时保留完整运行时记忆，并在现有 RunEvent 与 Run Inspector 中展示裁剪前后关键数据。",
+  "allowed_paths": [
+    "src/novel_character_generator/application/services/entity_resolution_service.py",
+    "src/novel_character_generator/application/services/run_inspector_service.py",
+    "src/novel_character_generator/workers/handlers/extraction.py",
+    "src/novel_character_generator/workers/main.py",
+    "src/novel_character_generator/settings.py",
+    "src/novel_character_generator/web/app.js",
+    "tests/unit/test_entity_resolution_service.py",
+    "tests/unit/test_settings.py",
+    "tests/integration/test_entity_resolution_pipeline.py",
+    "tests/integration/test_text_analysis_run.py",
+    ".project-to-act"
+  ],
+  "invariants": [
+    "记忆选择只决定给模型看的候选上下文，不直接决定人物身份绑定",
+    "未被本次请求选中的历史记忆不得从运行时累计 memory 中丢失或被改写",
+    "姓名或别名精确命中优先，其次保留上一 Chunk 活跃记录，再以最近记录补足有界候选",
+    "候选不足时身份解析继续失败关闭为 unresolved，不以视觉相似度自动绑定",
+    "RunEvent 和 Inspector 只记录计数、策略版本与状态构成，不记录小说正文、证据原文或凭据"
+  ],
+  "acceptance": [
+    "累计 memory 超过上限时，逐 Chunk 请求中的 cumulative_memory 保持有界",
+    "精确名称命中和上一 Chunk 活跃人物优先进入有界请求",
+    "应用解析结果后，未入选请求的完整历史 memory 仍然存在",
+    "provider.entity_resolution.completed 事件记录裁剪前、入选、丢弃和状态构成",
+    "Run Inspector 的 R2 Chunk 详情可看到相同的 memory selection trace",
+    "定向单元/集成测试、Ruff 和 Mypy 通过"
+  ]
+}

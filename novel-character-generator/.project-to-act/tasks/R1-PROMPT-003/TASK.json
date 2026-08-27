@@ -1,0 +1,26 @@
+{
+  "id": "R1-PROMPT-003",
+  "title": "收紧通用视觉语义边界提示词",
+  "status": "review",
+  "owner": "Codex",
+  "objective": "用跨作品通用语义规则减少视觉字段混淆和复合事实合并，不引入字段注册表或额外模型调用。",
+  "allowed_paths": [
+    "src/novel_character_generator/infrastructure/llm/openai_compatible.py",
+    "tests/unit/test_openai_compatible_extraction.py",
+    "tests/测试/evaluate_visual_prompt_cases.py",
+    "data/diagnostics/r1-v3-prompt-semantics",
+    ".project-to-act"
+  ],
+  "invariants": [
+    "规则不得包含作品名、角色名、世界观词汇或测试原句",
+    "保持 visual-observation-v3 数据结构和自由字符串 field_path",
+    "只调用 v3，不调用 v2，不增加第二次 LLM 校验",
+    "每个评测 case 独立走生产 v3 请求、Schema 校验和服务端 evidence locator，不拼接 case"
+  ],
+  "acceptance": [
+    "Prompt 明确按语义维度选字段且禁止就近硬塞",
+    "Prompt 覆盖整体面容与脸型、眼色与目光、覆盖状态与体型、纹身与伤疤、复合服饰和共享证据原子化",
+    "Prompt 单元测试和项目回归通过",
+    "七类 case 分别完成真实 v3 调用、逐项评分并记录总成本与未解决项"
+  ]
+}

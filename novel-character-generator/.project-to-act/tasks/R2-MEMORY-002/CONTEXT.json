@@ -1,0 +1,11 @@
+{
+  "task_id": "R2-MEMORY-002",
+  "created_at": "2026-08-27T00:00:00+08:00",
+  "project_stage": 5,
+  "lifecycle_revision": 2,
+  "risk_level": "L1",
+  "entity_resolution_contract": "character-entity-resolution-v1",
+  "selection_policy": "exact name or alias matches, previous Chunk records, then recent fallback under hard record limits",
+  "observability_policy": "bounded counts and status summaries in existing RunEvent and Run Inspector; no source text or evidence quotes",
+  "scope_boundary": "This increment does not change ten-Chunk convergence, omission repair, or direct materialization."
+}

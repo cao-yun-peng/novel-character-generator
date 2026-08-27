@@ -4,7 +4,7 @@
 >
 > 文档版本：3.0 · 修订日期：2026-08-24
 >
-> 当前适用范围：只覆盖源码已经注册的 `0.1.0` 接口。图像目标接口见[图像生成实现契约](18-image-generation-implementation-contract.md)，当前不可调用。
+> 当前适用范围：只覆盖源码已经注册的 `0.1.0` 接口。Mock Image Run 接口已注册但默认关闭；真实图像 Provider 和后续审计接口见[图像生成实现契约](18-image-generation-implementation-contract.md)。
 
 ## 1. 基础约定
 
@@ -259,11 +259,24 @@ GET /api/v1/characters/{character_id}/snapshot
 
 错误码会随功能增加，但已有 code 的语义不能静默改变。新增或删除 code 时必须同步路由测试、本目录和 OpenAPI 示例。
 
-## 11. 当前不存在的接口
+## 11. Mock Image Run
+
+开发环境设置 `IMAGE_PROVIDER=mock` 并重启 API/Worker 后，可对已 approved/locked、无开放冲突的 RenderProfile 创建测试 Run：
+
+```http
+POST /api/v1/characters/{character_id}/image-runs
+Idempotency-Key: demo-image-001
+Content-Type: application/json
+
+{"timeline_id":"<uuid>","stage_keys":["childhood"],"candidate_count":2,"budget_limit":"0"}
+```
+
+使用 `GET /api/v1/image-runs/{run_id}` 查询 context hash、状态和候选图；使用 `GET /api/v1/characters/{character_id}/image-runs` 查询历史。Mock 返回固定测试 PNG，只验证上下文冻结、幂等、落库和恢复，不验证人物画面质量。默认关闭时创建请求返回 `503 image_generation_disabled`。
+
+## 12. 当前不存在的接口
 
 以下能力在设计文档中存在，但当前请求会得到 `404`：
 
-- `/api/v1/characters/{id}/image-runs`；
 - `/api/v1/characters/{id}/images`；
 - `/api/v1/characters/{id}/image-set`；
 - 阶段 baseline 和默认代表图设置接口；

@@ -5,7 +5,7 @@ import json
 from dataclasses import dataclass
 
 QUERY_PLAN_VERSION = "visual-query-plan-v1"
-FIELD_GAP_POLICY_VERSION = "visual-field-gap-v1"
+FIELD_GAP_POLICY_VERSION = "visual-field-gap-v2"
 
 FIELD_GROUPS: dict[str, tuple[tuple[str, ...], str]] = {
     "hair": (
@@ -39,6 +39,107 @@ FIELD_GROUPS: dict[str, tuple[tuple[str, ...], str]] = {
 }
 
 CORE_FIELD_GROUPS = frozenset({"hair", "face", "body", "clothing"})
+
+FIELD_GROUP_DIMENSIONS: dict[str, dict[str, tuple[str, ...]]] = {
+    "hair": {
+        "color": ("hair.color",),
+        "form": ("hair.length", "hair.style", "hair.texture", "hair.cut"),
+    },
+    "face": {
+        "shape": ("face.shape", "face.description", "face.contour"),
+        "eyes": ("face.eye_shape", "face.eye_color", "face.eyes"),
+        "features": (
+            "face.eyebrows",
+            "face.nose",
+            "face.mouth",
+            "face.lips",
+            "face.distinctive_mark",
+        ),
+    },
+    "body": {
+        "age": ("age", "age_stage"),
+        "build": ("body.build", "body.height", "body.description"),
+        "skin": ("skin.color", "skin.description"),
+    },
+    "clothing": {
+        "form": ("clothing.style", "clothing.type", "clothing.outerwear"),
+        "color_or_material": ("clothing.color", "clothing.material"),
+    },
+    "accessories": {"presence": ("accessory.", "accessories.")},
+    "marks_injuries": {
+        "presence_or_absence": (
+            "injury.",
+            "injuries.",
+            "distinctive_marks.",
+            "face.injury",
+            "face.distinctive_mark",
+        )
+    },
+    "disguise_cleanliness": {
+        "state": ("disguise.", "cleanliness", "cleanliness.")
+    },
+}
+
+FIELD_GROUP_REQUIRED_SCORES = {
+    "hair": 1.0,
+    "face": 2 / 3,
+    "body": 2 / 3,
+    "clothing": 1.0,
+    "accessories": 1.0,
+    "marks_injuries": 1.0,
+    "disguise_cleanliness": 1.0,
+}
+
+
+def _matches_dimension(field_path: str, patterns: tuple[str, ...]) -> bool:
+    return any(
+        field_path == pattern or (pattern.endswith(".") and field_path.startswith(pattern))
+        for pattern in patterns
+    )
+
+
+def score_visual_field_group(
+    field_group: str, observed_field_paths: set[str]
+) -> tuple[float, float, tuple[str, ...]]:
+    dimensions = FIELD_GROUP_DIMENSIONS[field_group]
+    missing = tuple(
+        dimension
+        for dimension, patterns in dimensions.items()
+        if not any(_matches_dimension(path, patterns) for path in observed_field_paths)
+    )
+    score = (len(dimensions) - len(missing)) / len(dimensions)
+    return score, FIELD_GROUP_REQUIRED_SCORES[field_group], missing
+
+
+def resolve_requested_life_phase(
+    requested: str | None,
+    *,
+    phase_age_stages: dict[str, set[str]],
+    normalized_age_stage: str | None,
+) -> str | None:
+    if requested is None or not requested.strip():
+        return None
+    token = requested.strip()
+    if normalized_age_stage is None:
+        return token
+    candidates = sorted(
+        phase
+        for phase, age_stages in phase_age_stages.items()
+        if normalized_age_stage in age_stages
+    )
+    if len(candidates) > 1:
+        raise ValueError("ambiguous_life_phase")
+    return candidates[0] if candidates else token
+
+
+def observation_applies_to_phase(
+    observation_phase: str | None, requested_phase: str | None
+) -> bool:
+    if requested_phase is None:
+        return True
+    # Unscoped facts are not silently promoted across narrative phases. Stable
+    # cross-phase identity belongs in an approved RenderProfile instead.
+    return observation_phase == requested_phase
 
 
 def visual_field_group(field_path: str) -> str | None:

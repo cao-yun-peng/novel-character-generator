@@ -1,0 +1,12 @@
+{
+  "task_id": "R2-ENTITY-001",
+  "created_at": "2026-08-26T00:00:00+08:00",
+  "project_stage": 5,
+  "lifecycle_revision": 2,
+  "risk_level": "L1",
+  "extraction_contract": "visual-observation-v3",
+  "entity_resolution_contract": "character-entity-resolution-v1",
+  "convergence_batch_size": 10,
+  "context_policy": "current chapter + current candidates + cumulative memory + previous tail + selected historical evidence",
+  "materialization_policy": "final bindings only"
+}

@@ -1,0 +1,29 @@
+{
+  "id": "OBS-RUN-001",
+  "title": "R1-R3 Run Inspector 纵向切片",
+  "status": "review",
+  "owner": "Codex",
+  "objective": "基于现有业务审计表提供 R1、R2、R3 的分阶段进度、产出摘要与按需结构化产出查看能力，并在工作台中可视化。",
+  "allowed_paths": [
+    "src/novel_character_generator/application/services",
+    "src/novel_character_generator/api/routes/runs.py",
+    "src/novel_character_generator/web",
+    "tests/integration",
+    "docs",
+    ".project-to-act"
+  ],
+  "invariants": [
+    "PipelineRun、PipelineStep 和 R1-R3 业务表继续作为事实源，Inspector 不复制或修改业务结果",
+    "摘要接口不返回小说正文、完整 Prompt、密钥或隐藏推理",
+    "完整结构化产出只通过已鉴权的按需详情接口读取，不写入 RunEvent 或普通日志",
+    "没有黄金标签时只展示运行信号，不把计数或完成状态伪装成正确率",
+    "R1/R2 虽共享 extract_characters 物理 Step，展示层必须保持独立逻辑阶段"
+  ],
+  "acceptance": [
+    "Run Inspector 摘要接口返回 R1/R2/R3 的状态、进度、调用/用量与关键质量信号",
+    "按需详情接口可读取 R1 候选、R2 逐章/收敛和 R3 确定性解析的结构化产出",
+    "工作台显示三条阶段卡片并可展开查看产出 JSON",
+    "不存在的 Run、阶段或产出返回稳定 404，摘要不泄露正文",
+    "Ruff、Mypy 和相关 Pytest 通过"
+  ]
+}

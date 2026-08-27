@@ -1,0 +1,190 @@
+{
+  "schemaVersion": 1,
+  "projectId": "novel-character-generator",
+  "projectName": "Novel Character Generator",
+  "revision": 2,
+  "projectStatus": "active",
+  "currentStage": "5",
+  "updatedAt": "2026-08-26T13:03:21.321Z",
+  "historicalLimitations": [
+    "Adopt existing R1 v3 development at stage 5; earlier lifecycle gates are legacy_unverified and production readiness is not claimed."
+  ],
+  "stages": [
+    {
+      "id": "0",
+      "name": "立项与风险分级",
+      "status": "legacy_unverified",
+      "expectedArtifacts": [
+        "项目简报",
+        "风险等级",
+        "责任人与停止条件"
+      ],
+      "taskIds": [],
+      "evidenceIds": [],
+      "artifacts": [],
+      "decisions": [],
+      "startedAt": null,
+      "updatedAt": "2026-08-26T13:03:09.747Z"
+    },
+    {
+      "id": "1",
+      "name": "需求调研与问题定义",
+      "status": "legacy_unverified",
+      "expectedArtifacts": [
+        "用户旅程",
+        "任务样本",
+        "现状基线与成功指标"
+      ],
+      "taskIds": [],
+      "evidenceIds": [],
+      "artifacts": [],
+      "decisions": [],
+      "startedAt": null,
+      "updatedAt": "2026-08-26T13:03:09.747Z"
+    },
+    {
+      "id": "2",
+      "name": "AI 能力边界与成功标准",
+      "status": "legacy_unverified",
+      "expectedArtifacts": [
+        "能力边界矩阵",
+        "权限表",
+        "评测计划"
+      ],
+      "taskIds": [],
+      "evidenceIds": [],
+      "artifacts": [],
+      "decisions": [],
+      "startedAt": null,
+      "updatedAt": "2026-08-26T13:03:09.747Z"
+    },
+    {
+      "id": "3",
+      "name": "技术栈选型与可行性试验",
+      "status": "legacy_unverified",
+      "expectedArtifacts": [
+        "技术尖峰",
+        "候选对比",
+        "最小可行原型"
+      ],
+      "taskIds": [],
+      "evidenceIds": [],
+      "artifacts": [],
+      "decisions": [],
+      "startedAt": null,
+      "updatedAt": "2026-08-26T13:03:09.747Z"
+    },
+    {
+      "id": "4",
+      "name": "架构与契约设计",
+      "status": "legacy_unverified",
+      "expectedArtifacts": [
+        "架构与数据流",
+        "Schema 与状态机",
+        "威胁模型与 ADR"
+      ],
+      "taskIds": [],
+      "evidenceIds": [],
+      "artifacts": [],
+      "decisions": [],
+      "startedAt": null,
+      "updatedAt": "2026-08-26T13:03:09.747Z"
+    },
+    {
+      "id": "5",
+      "name": "具体功能与纵向切片开发",
+      "status": "in_progress",
+      "expectedArtifacts": [
+        "Task Contract",
+        "纵向切片",
+        "自动测试与运行手册"
+      ],
+      "taskIds": [
+        "R1-EVAL-002"
+      ],
+      "evidenceIds": [],
+      "artifacts": [],
+      "decisions": [],
+      "startedAt": "2026-08-26T13:03:21.321Z",
+      "updatedAt": "2026-08-26T13:03:21.321Z"
+    },
+    {
+      "id": "6",
+      "name": "评测、安全测试与调优",
+      "status": "pending",
+      "expectedArtifacts": [
+        "分切片评测",
+        "红队报告",
+        "错误分类与回归集"
+      ],
+      "taskIds": [],
+      "evidenceIds": [],
+      "artifacts": [],
+      "decisions": [],
+      "startedAt": null,
+      "updatedAt": null
+    },
+    {
+      "id": "7",
+      "name": "定型发布与产品化",
+      "status": "pending",
+      "expectedArtifacts": [
+        "版本与发布清单",
+        "SLO 与监控",
+        "灰度、停止和回滚方案"
+      ],
+      "taskIds": [],
+      "evidenceIds": [],
+      "artifacts": [],
+      "decisions": [],
+      "startedAt": null,
+      "updatedAt": null
+    },
+    {
+      "id": "8",
+      "name": "运营、学习与退役",
+      "status": "pending",
+      "expectedArtifacts": [
+        "线上健康与漂移报告",
+        "失败回灌与迭代队列",
+        "迁移或退役计划"
+      ],
+      "taskIds": [],
+      "evidenceIds": [],
+      "artifacts": [],
+      "decisions": [],
+      "startedAt": null,
+      "updatedAt": null
+    }
+  ],
+  "transitions": [
+    {
+      "at": "2026-08-26T13:03:09.747Z",
+      "action": "adopt",
+      "fromStage": "legacy",
+      "toStage": "5",
+      "taskId": "R1-EVAL-002",
+      "decision": "legacy_unverified",
+      "evidenceIds": [
+        "historical-r1-v3-tests-and-docs"
+      ],
+      "artifacts": [],
+      "summary": "Adopt existing R1 v3 development at stage 5; earlier lifecycle gates are legacy_unverified and production readiness is not claimed.",
+      "revision": 1
+    },
+    {
+      "at": "2026-08-26T13:03:21.321Z",
+      "action": "start",
+      "fromStage": "5",
+      "toStage": "5",
+      "fromStatus": "ready",
+      "toStatus": "in_progress",
+      "taskId": "R1-EVAL-002",
+      "decision": null,
+      "evidenceIds": [],
+      "artifacts": [],
+      "summary": "Run bounded cross-genre v3 sampling and convert novel-specific failures into generic evaluation cases.",
+      "revision": 2
+    }
+  ]
+}

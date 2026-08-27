@@ -1,0 +1,18 @@
+{
+  "task_id": "DEV-RAW-001",
+  "current_behavior": "Provider 原始响应只短暂存在于 Adapter 内存，Schema 转换后被丢弃；页面只能看到业务结构化结果。",
+  "desired_behavior": "开发者可在 Run Inspector 按模型调用查看原始消息和 Provider 完整响应，及时比较模型输出与后续门禁结果。",
+  "dependencies": [
+    "DetailedExtractionResult 和 OpenAI-compatible Provider",
+    "CharacterResolutionChunk/CharacterConvergenceBatch",
+    "Run Inspector、管理员鉴权与工作台轮询",
+    "Alembic"
+  ],
+  "validation": [
+    "Provider raw 保留单元测试",
+    "生产配置与管理员权限反例",
+    "R1/R2 集成和普通 JSON 隔离测试",
+    "迁移升降级、Ruff、Mypy、Node、完整 Pytest",
+    "本地工作台浏览器检查"
+  ]
+}

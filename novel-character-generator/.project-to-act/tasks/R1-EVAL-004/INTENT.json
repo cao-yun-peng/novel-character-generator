@@ -1,0 +1,16 @@
+{
+  "task_id": "R1-EVAL-004",
+  "current_behavior": "value 被包含在语义主键中，任何措辞差异都会同时产生 false positive 与 false negative；evidence 必须逐字等于唯一人工范围。",
+  "desired_behavior": "先一对一匹配人物、字段、状态和生命阶段结构，再独立判断 value 白名单/拒绝列表与 evidence 精确/包含/未知/未落地状态。",
+  "dependencies": [
+    "25-case visual extraction seed",
+    "GroundedVisualExtractionResult",
+    "现有确定性 evidence locator"
+  ],
+  "validation": [
+    "评测器单元测试",
+    "Ruff",
+    "Mypy src",
+    "全量 Pytest"
+  ]
+}

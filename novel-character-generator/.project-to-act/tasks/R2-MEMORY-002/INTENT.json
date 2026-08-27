@@ -1,0 +1,18 @@
+{
+  "task_id": "R2-MEMORY-002",
+  "current_behavior": "每个 Chunk 的人物解析请求携带完整累计 memory；历史 unresolved 会持续增长，且现有 R2 Chunk 详情没有展示 memory 裁剪或状态变化。",
+  "desired_behavior": "每个 Chunk 只携带有界的相关人物候选，但解析后的更新合并回完整累计 memory；现有 RunEvent 与 Run Inspector 展示裁剪前后数量和状态构成。",
+  "dependencies": [
+    "character-entity-resolution-v1",
+    "RunEventORM 与 append_run_event",
+    "R1-R3 Run Inspector"
+  ],
+  "validation": [
+    "相关 memory 选择与优先级单元测试",
+    "隐藏 memory 保留回归测试",
+    "R2 事件 payload 与 Inspector trace 集成测试",
+    "Ruff",
+    "Mypy src",
+    "定向 Pytest"
+  ]
+}

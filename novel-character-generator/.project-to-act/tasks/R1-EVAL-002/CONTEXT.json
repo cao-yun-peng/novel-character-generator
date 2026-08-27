@@ -1,0 +1,9 @@
+{
+  "task_id": "R1-EVAL-002",
+  "created_at": "2026-08-26T00:00:00+08:00",
+  "project_stage": 5,
+  "dataset_version": "visual-extraction-developer-seed:v0",
+  "provider_contract": "visual-observation-v3",
+  "input_files": ["tests/测试/斗破苍穹前四章.txt", "tests/测试/水浒传前两章.txt"],
+  "sampling_plan": "每部先选一个 2500-token 外观密集分块；依据错误新颖度决定是否追加。"
+}

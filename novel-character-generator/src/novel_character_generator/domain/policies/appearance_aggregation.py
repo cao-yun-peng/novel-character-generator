@@ -2,6 +2,8 @@ from __future__ import annotations
 
 import hashlib
 import json
+import re
+import unicodedata
 from dataclasses import dataclass
 from typing import Any
 from uuid import UUID
@@ -16,8 +18,6 @@ VISUAL_SCHEMA_VERSION = "visual-schema-v1"
 ALLOWED_VISUAL_ROOTS = VISUAL_FIELD_ROOTS
 
 IDENTITY_PATHS = {
-    "body.build",
-    "body.height",
     "face.distinctive_mark",
     "face.eye_color",
     "face.shape",
@@ -80,6 +80,26 @@ class _FieldAssignment:
     conflict_key: str | None = None
 
 
+_MULTI_VALUE_PATHS = frozenset({"face.description", "face.eyes", "body.description"})
+_COLOR_FAMILIES = {
+    "black": ("黑", "墨", "black"),
+    "white": ("白", "银白", "white"),
+    "gray": ("灰", "gray", "grey"),
+    "red": ("红", "赤", "red"),
+    "yellow": ("黄", "蜡黄", "暗黄", "yellow"),
+    "brown": ("棕", "褐", "古铜", "brown", "bronze"),
+    "blue": ("蓝", "靛", "blue"),
+    "green": ("绿", "青绿", "green"),
+    "purple": ("紫", "purple", "violet"),
+}
+_EYE_STATE_FAMILIES = {
+    "tired": ("朦胧", "惺忪", "昏黄", "呆滞", "疲惫", "sleepy", "dull", "tired"),
+    "bright": ("明亮", "清澈", "炯炯", "bright", "clear"),
+    "closed": ("闭眼", "紧闭", "closed"),
+    "open": ("睁开", "圆睁", "open"),
+}
+
+
 def canonical_json(value: Any) -> str:
     return json.dumps(
         value,
@@ -112,9 +132,49 @@ def _allowed(field_path: str) -> bool:
     return field_path.split(".", 1)[0] in ALLOWED_VISUAL_ROOTS
 
 
-def _state_kind(field_path: str, source_kind: str) -> tuple[str, int]:
+def _semantic_value_key(field_path: str, value: Any) -> str:
+    if not isinstance(value, str):
+        return canonical_json(value)
+    normalized = unicodedata.normalize("NFKC", value).casefold().strip()
+    compact = re.sub(r"[\s\W_]+", "", normalized)
+    if field_path.endswith((".color", ".complexion")):
+        for family, markers in _COLOR_FAMILIES.items():
+            if any(marker in normalized for marker in markers):
+                return f"color:{family}"
+    if field_path == "face.eyes":
+        for family, markers in _EYE_STATE_FAMILIES.items():
+            if any(marker in normalized for marker in markers):
+                return f"eye-state:{family}"
+    return compact
+
+
+def _representative(items: list[AggregationObservation]) -> AggregationObservation:
+    return min(
+        items,
+        key=lambda item: (
+            -item.confidence,
+            -len(str(item.value)),
+            str(item.id),
+        ),
+    )
+
+
+def _is_multi_value_path(field_path: str) -> bool:
+    return field_path in _MULTI_VALUE_PATHS or field_path.split(".", 1)[0] in {
+        "accessory",
+        "accessories",
+    }
+
+
+def _state_kind(
+    field_path: str,
+    source_kind: str,
+    scope: dict[str, Any],
+) -> tuple[str, int]:
     if source_kind == "manual":
         return "manual_override", 1_000
+    if scope.get("transformation_state"):
+        return "transformation", 60
     root = field_path.split(".", 1)[0]
     if root in {"clothing", "accessory", "accessories"}:
         return "clothing", 30
@@ -140,9 +200,10 @@ def _normalize_scope(scope: dict[str, Any], field_path: str) -> dict[str, Any]:
     normalized.setdefault("reality_status", "canonical")
     root = field_path.split(".", 1)[0]
     temporary = root in {"accessory", "accessories", "cleanliness", "clothing", "disguise"}
-    if normalized["scope_type"] != "unknown":
+    transformation = bool(normalized.get("transformation_state"))
+    if normalized["scope_type"] != "unknown" and not transformation:
         normalized["scope_type"] = "scene" if temporary else "persistent"
-    if temporary:
+    if temporary or transformation:
         if normalized.get("start_chapter_ordinal") is not None:
             normalized.setdefault("end_chapter_ordinal", normalized["start_chapter_ordinal"])
         if normalized.get("start_event_id") is not None:
@@ -152,12 +213,13 @@ def _normalize_scope(scope: dict[str, Any], field_path: str) -> dict[str, Any]:
     return normalized
 
 
-def _scope_domain(scope: dict[str, Any]) -> tuple[str, str, str, str]:
+def _scope_domain(scope: dict[str, Any]) -> tuple[str, str, str, str, str]:
     return (
         str(scope.get("timeline_id", "")),
         str(scope.get("reality_status", "canonical")),
         str(scope.get("presentation_mode", "direct")),
         str(scope.get("life_phase_key", "")),
+        str(scope.get("transformation_state", "")),
     )
 
 
@@ -201,18 +263,20 @@ def _identity_values(
 ) -> tuple[dict[str, Any], dict[str, list[str]], set[UUID]]:
     by_path: dict[str, list[AggregationObservation]] = {}
     for item in observations:
-        if item.field_path in IDENTITY_PATHS:
+        if item.field_path in IDENTITY_PATHS and not item.temporal_scope.get(
+            "transformation_state"
+        ):
             by_path.setdefault(item.field_path, []).append(item)
     anchor: dict[str, Any] = {}
     sources: dict[str, list[str]] = {}
     consumed: set[UUID] = set()
     for path, items in sorted(by_path.items()):
-        canonical_values = {canonical_json(item.value) for item in items}
+        canonical_values = {_semantic_value_key(path, item.value) for item in items}
         domains = {_scope_domain(item.temporal_scope) for item in items}
         canonical_reality = all(domain[1:3] == ("canonical", "direct") for domain in domains)
         if len(canonical_values) != 1 or not canonical_reality:
             continue
-        value = min(items, key=lambda item: str(item.id)).value
+        value = _representative(items).value
         _put_path(anchor, path, value)
         sources[path] = sorted(str(item.id) for item in items)
         consumed.update(item.id for item in items)
@@ -222,7 +286,9 @@ def _identity_values(
 def _field_assignments(
     observations: list[AggregationObservation],
 ) -> list[_FieldAssignment]:
-    grouped: dict[tuple[str, tuple[str, str, str, str]], list[AggregationObservation]] = {}
+    grouped: dict[
+        tuple[str, tuple[str, str, str, str, str]], list[AggregationObservation]
+    ] = {}
     for item in observations:
         grouped.setdefault((item.field_path, _scope_domain(item.temporal_scope)), []).append(item)
 
@@ -247,15 +313,43 @@ def _field_assignments(
                 )
             by_value: dict[str, list[AggregationObservation]] = {}
             for item in position_items:
-                by_value.setdefault(canonical_json(item.value), []).append(item)
+                by_value.setdefault(_semantic_value_key(field_path, item.value), []).append(item)
+            if _is_multi_value_path(field_path):
+                representatives = [_representative(by_value[key]) for key in sorted(by_value)]
+                value: Any = (
+                    representatives[0].value
+                    if len(representatives) == 1
+                    else [item.value for item in representatives]
+                )
+                representative = _representative(position_items)
+                kind, priority = _state_kind(
+                    field_path,
+                    representative.source_kind,
+                    normalized_scope,
+                )
+                assignments.append(
+                    _FieldAssignment(
+                        field_path=field_path,
+                        value=value,
+                        source_ids=tuple(sorted(str(item.id) for item in position_items)),
+                        scope=normalized_scope,
+                        state_kind=kind,
+                        merge_priority=priority,
+                    )
+                )
+                continue
             conflict_key = (
                 _hash({"field_path": field_path, "scope": normalized_scope})
                 if len(by_value) > 1
                 else None
             )
             for value_items in (by_value[key] for key in sorted(by_value)):
-                representative = min(value_items, key=lambda item: str(item.id))
-                kind, priority = _state_kind(field_path, representative.source_kind)
+                representative = _representative(value_items)
+                kind, priority = _state_kind(
+                    field_path,
+                    representative.source_kind,
+                    normalized_scope,
+                )
                 assignments.append(
                     _FieldAssignment(
                         field_path=field_path,

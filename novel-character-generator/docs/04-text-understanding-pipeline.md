@@ -2,9 +2,9 @@
 
 > [← 上一篇](03-domain-data-model.md) · [文档索引](README.md) · [下一篇 →](05-character-render-profile.md)
 >
-> 文档版本：3.1 · 源章节：7. 文本理解流水线 · 修订日期：2026-08-24
+> 文档版本：3.2 · 源章节：7. 文本理解流水线 · 修订日期：2026-08-26
 >
-> 当前状态：TXT 规范化、5,000 估算 Token 分块与少量重叠、角色/原子视觉事实提取、人生阶段标记和 Observation 自动聚合已经运行；复杂共指、上传后细粒度检索库和检索增强视觉精提取仍未实现。
+> 当前状态：TXT 规范化、5,000 估算 Token 分块与少量重叠、视觉候选 v3、服务端证据定位、Observation 自动聚合，以及上传后细粒度检索与视觉精提取基础链路已经运行；复杂共指、小说级阶段 resolver、设计缺口和出图就绪度仍是目标设计。
 
 ## 7. 文本理解流水线
 
@@ -24,19 +24,15 @@
 每个块一次调用，结构化输出：
 
 ```python
-class ChunkExtractionResult(BaseModel):
-    mentions: list[CharacterMention]
-    alias_hypotheses: list[AliasHypothesis]
-    observations: list[ObservationDraft]
-    expression_observations: list[ExpressionObservationDraft]
-    scene_hypotheses: list[SceneHypothesis]
-    timeline_hypotheses: list[TimelineHypothesis]
-    relations: list[RelationDraft]
-    unresolved_references: list[ReferenceDraft]
-    warnings: list[str]
+class VisualCandidateExtractionResult(BaseModel):
+    entities: list[VisualEntityCandidate]
+    visual_candidates: list[VisualFactCandidate]
+    deferred_items: list[VisualDeferredCandidate]
 ```
 
-当前 `ObservationDraft` 的视觉契约为：
+这是当前 `visual-observation-v3.1` 的视觉候选契约。它保留每块一次主要批量调用，但只处理“人物候选 + 原子视觉候选 + 显式时间信号”；offset 定位交给服务端。Provider 输出经 locator 变成带 mention_id 的候选包并先持久化，随后由实体解析模型逐 Chunk 读取累计人物记忆，每 10 Chunk 固定收敛。收敛确认的 final mention→character 绑定只生成 pending Observation；R3 再解析人物阶段、呈现方式、现实状态、形态和时间范围，只有 final 作用域才激活并进入聚合。开发阶段不再付费运行 v2 Shadow，也不自动回退 v2。完整边界见[R2 人物实体解析契约](24-character-entity-resolution-contract.md)和[R3 人物阶段与时间作用域解析契约](25-character-phase-resolution-contract.md)，重构动机和评测计划见[视觉优先的全文抽取重构方案](23-visual-first-extraction-refactor.md)。
+
+服务端 Adapter 生成的内部 `ObservationDraft` 为：
 
 ```python
 class ObservationDraft(BaseModel):
@@ -44,7 +40,7 @@ class ObservationDraft(BaseModel):
     field_path: str
     value: JsonValue
     evidence_quote: str
-    start: int                         # 当前 chunk 内零基偏移
+    start: int                         # evidence locator 计算
     end: int
     confidence: float
     epistemic_status: str = "asserted"
@@ -52,9 +48,9 @@ class ObservationDraft(BaseModel):
     life_phase_label: str | None = None
 ```
 
-视觉字段必须原子化。Provider 应直接返回 `skin.color`、`hair.color`、`hair.length`、`clothing.style`、`cleanliness`、`body.build`、`face.*`、`age`/`age_stage`、`accessories.*`、`injuries.*`、`distinctive_marks.*` 或 `disguise.*`，不能返回综合 `appearance`，也不能在字段前加角色名。Repository 仍保留兼容归一化：旧 `appearance.build` 转为 `body.build`，综合中文外观按可确定规则拆分；无法可靠拆分时保存为 `body.description`。
+视觉字段必须原子化。Provider 必须直接返回 `skin.color`、`hair.color`、`hair.length`、`clothing.style`、`cleanliness`、`body.build`、`face.*`、`age`/`age_stage`、`accessories.*`、`injuries.*`、`distinctive_marks.*` 或 `disguise.*`，不能返回综合 `appearance`、旧字段别名或角色名前缀。v3 Adapter 会拒绝非视觉、非规范和 inferred/uncertain 候选；Repository 中的旧归一化逻辑仅用于历史数据兼容。
 
-证据必须精确落在当前 chunk。若模型给出的引用文本在 chunk 中仅出现一次，但偏移写错，系统会修复到唯一精确位置；若引用重复或无法唯一定位，则不会猜测迁移，继续按 grounding 规则降级处理。
+证据必须精确落在当前 chunk。模型只抄写 quote，不提供数字偏移；服务端先唯一精确匹配，再结合人物 mention、句界和距离处理重复引用，只允许受控的空白归一化。仍重复或找不到时拒绝该候选并记录 warning，不猜测写入。
 
 Prompt 只注入：
 
@@ -91,10 +87,10 @@ Prompt 只注入：
   → TemporalScope 规范化
   → 观察绑定角色与作用域
   → 按目标时间解析 CharacterAppearanceState
-  → 产生 ResolvedCharacterSnapshot 或待审核项
+  → 产生 ResolvedAppearanceFacts/Profile 草稿或待审核项
 ```
 
-时间定位优先使用原文明确时间、事件因果和年龄阶段；章节位置只作为弱证据。当前稳定人生阶段键包括 `past_life`、`reincarnated_childhood`、`childhood`、`adolescence` 和 `adulthood`。人生阶段与时间线是两个维度：“前世→转生幼年”可以属于同一 canonical 人生顺序，平行世界、时间循环分支和假设世界才使用独立 timeline。无法唯一确定时保留候选作用域并进入人工审核，不得让 LLM 静默选择一个版本。
+时间定位优先使用原文明确时间、事件因果和年龄阶段；章节位置只作为排序与区间边界，不单独证明人生阶段。当前稳定人生阶段键包括 `past_life`、`reincarnated_childhood`、`childhood`、`adolescence` 和 `adulthood`。人生阶段与时间线是两个维度：“前世→转生幼年”可以属于同一 canonical 人生顺序，平行世界、时间循环分支和假设世界才使用独立 timeline。R3 基础主链已经把歧义作用域保留为 `needs_review` 并阻止其进入聚合；完整规则和限制见[R3 契约](25-character-phase-resolution-contract.md)。
 
 神情提取与外观事实同时进行，但保存为独立 Observation。只有可见线索进入图像渲染；内心独白用于语义理解，不直接转为笑容、哭泣等视觉指令。
 
@@ -108,9 +104,9 @@ Prompt 只注入：
 - Prompt、模型或 Schema 升级：创建新的 extraction run。Run 从第一个 chunk 开始时，会把同一源文档版本、不同 `extractor_version` 的旧自动 Observation 标记为 `superseded`，人工 Observation 保留；相同版本重跑继续依赖稳定指纹去重；
 - 聚合档案重新计算不需要再次调用 LLM。
 - 场景或事件被重新绑定时间线时，只失效受影响作用域的状态快照，不重跑无关章节；
-- `ResolvedCharacterSnapshot` 是派生产物，可按 resolver 版本重建，不作为唯一事实源。
+- `ResolvedAppearanceFacts`、Profile 草稿和最终 `ResolvedCharacterSnapshot` 都是派生产物，可按 resolver/Profile 版本重建，不作为唯一事实源；Snapshot 只在已批准 Profile 和明确目标时间上解析。
 
-当前 extractor version 形如 `<provider>:<model>:visual-observation-v2`，其中尾部是视觉提取 Schema 版本。这个版本替换机制保证新旧自动事实不会同时参与聚合，但不等于角色/字段级精细差异重算：后者已延期，目前仍会对 Run 涉及的人物进行保守聚合重建。
+当前 extractor version 形如 `<provider>:<model>:visual-observation-v3`，其中尾部是视觉提取 Schema 版本。这个版本替换机制保证新旧自动事实不会同时参与聚合，但不等于角色/字段级精细差异重算：后者已延期，目前仍会对 Run 涉及的人物进行保守聚合重建。
 
 场景采用 `(novel_id, narrative_order)` 作为稳定槽位，其中 `narrative_order = chunk.ordinal * 1000 + scene_index`。重新分析时，同一槽位的新自动结果直接更新原 Scene 的标签、来源范围和置信度；自动时间绑定随新结果更新，`binding_status=corrected` 的人工时间绑定保持不变。不能再把“来源范围稍有变化”当成新 Scene 插入。
 

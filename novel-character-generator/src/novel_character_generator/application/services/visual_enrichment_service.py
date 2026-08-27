@@ -28,6 +28,7 @@ from novel_character_generator.domain.policies.grounding import (
 from novel_character_generator.domain.policies.visual_fields import (
     canonical_field_path,
     is_visual_field,
+    normalize_age_stage,
     normalize_life_phase,
 )
 from novel_character_generator.domain.policies.visual_query_plan import (
@@ -36,6 +37,9 @@ from novel_character_generator.domain.policies.visual_query_plan import (
     FIELD_GROUPS,
     QUERY_PLAN_VERSION,
     build_visual_query_plan,
+    observation_applies_to_phase,
+    resolve_requested_life_phase,
+    score_visual_field_group,
     visual_field_group,
 )
 from novel_character_generator.infrastructure.db.orm import (
@@ -75,6 +79,9 @@ class VisualFieldGroupGap:
     covered: bool
     priority: str
     observed_field_paths: list[str]
+    completeness_score: float
+    required_score: float
+    missing_dimensions: list[str]
 
 
 @dataclass(frozen=True)
@@ -120,11 +127,18 @@ class VisualEnrichmentService:
         build = await self.retrieval_repository.latest_build_for_source(source.id)
         if build is None or build.status != "ready":
             raise RuntimeError("retrieval_index_not_ready")
-        auto_planned = auto_plan and not field_groups
-        if auto_planned:
-            gap_plan = await self.field_gap_plan(
+        gap_plan = (
+            await self.field_gap_plan(
                 character_id=character.id, life_phase_key=life_phase_key
             )
+            if life_phase_key or (auto_plan and not field_groups)
+            else None
+        )
+        if gap_plan is not None:
+            life_phase_key = gap_plan.life_phase_key
+        auto_planned = auto_plan and not field_groups
+        if auto_planned:
+            assert gap_plan is not None
             field_groups = gap_plan.recommended_field_groups
             if not field_groups:
                 raise RuntimeError("visual_field_gaps_empty")
@@ -222,7 +236,6 @@ class VisualEnrichmentService:
         if source is None:
             raise ValueError("source_document_not_found")
         build = await self.retrieval_repository.latest_build_for_source(source.id)
-        normalized_phase = life_phase_key.strip() if life_phase_key else None
         rows = list(
             await self.session.scalars(
                 select(FeatureObservationORM).where(
@@ -236,27 +249,50 @@ class VisualEnrichmentService:
             )
         )
         phases: dict[str, str] = {}
-        covered_paths: dict[str, set[str]] = {group: set() for group in FIELD_GROUPS}
+        phase_age_stages: dict[str, set[str]] = {}
         for row in rows:
             scope = row.temporal_scope or {}
             row_phase = scope.get("life_phase_key")
             row_label = scope.get("life_phase_label")
             if row_phase:
-                phases[str(row_phase)] = str(row_label or row_phase)
-            if normalized_phase and row_phase not in {None, normalized_phase}:
+                phase = str(row_phase)
+                phases[phase] = str(row_label or row_phase)
+                if canonical_field_path(row.field_path) == "age_stage":
+                    age_stage = normalize_age_stage(str(row.value))
+                    if age_stage:
+                        phase_age_stages.setdefault(phase, set()).add(age_stage)
+        normalized_phase = resolve_requested_life_phase(
+            life_phase_key,
+            phase_age_stages=phase_age_stages,
+            normalized_age_stage=normalize_age_stage(life_phase_key),
+        )
+        covered_paths: dict[str, set[str]] = {group: set() for group in FIELD_GROUPS}
+        for row in rows:
+            scope = row.temporal_scope or {}
+            row_phase = scope.get("life_phase_key")
+            if not observation_applies_to_phase(
+                str(row_phase) if row_phase is not None else None, normalized_phase
+            ):
                 continue
             group = visual_field_group(canonical_field_path(row.field_path))
             if group is not None:
                 covered_paths[group].add(canonical_field_path(row.field_path))
-        groups = [
-            VisualFieldGroupGap(
-                field_group=group,
-                covered=bool(covered_paths[group]),
-                priority="core" if group in CORE_FIELD_GROUPS else "optional",
-                observed_field_paths=sorted(covered_paths[group]),
+        groups: list[VisualFieldGroupGap] = []
+        for group in FIELD_GROUPS:
+            score, required_score, missing = score_visual_field_group(
+                group, covered_paths[group]
             )
-            for group in FIELD_GROUPS
-        ]
+            groups.append(
+                VisualFieldGroupGap(
+                    field_group=group,
+                    covered=score >= required_score,
+                    priority="core" if group in CORE_FIELD_GROUPS else "optional",
+                    observed_field_paths=sorted(covered_paths[group]),
+                    completeness_score=score,
+                    required_score=required_score,
+                    missing_dimensions=list(missing),
+                )
+            )
         recommended = [item.field_group for item in groups if not item.covered]
         return VisualFieldGapPlan(
             character_id=character.id,

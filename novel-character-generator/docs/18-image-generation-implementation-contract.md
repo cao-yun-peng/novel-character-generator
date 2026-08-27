@@ -2,9 +2,9 @@
 
 > [← 上一篇](17-appearance-aggregation-contract.md) · [文档索引](README.md) · [下一篇 →](19-feature-traceability-matrix.md)
 >
-> 文档版本：2.9 · 修订日期：2026-08-24
+> 文档版本：3.0 · 修订日期：2026-08-26
 >
-> 当前状态：仅设计，目标接口尚未注册，`GET /api/v1/capabilities` 返回 `image_generation=false`。本页定义实现边界，不声明当前已经支持图像生成。
+> 当前状态：基础链路部分实现。`GenerationContextBuilder`、Mock Provider、Image Run API、候选 Artifact 落库和恢复测试已存在；默认 `IMAGE_PROVIDER=disabled`，配置为 `mock` 后 capability 才开启。当前 Mock 上下文冻结不等于已实现角色设计缺口、`SceneRenderBrief`、Provider 中立 `ImageRenderSpec` 或高质量 Prompt 编译；真实收费 Provider、漂移审计、gate 与 baseline 仍未实现。
 
 ## 1. 前置条件
 
@@ -17,6 +17,8 @@
 - 唯一一期 WorkflowProfile 已经过契约测试并发布；
 - Provider 能力、许可证、预算和目标候选数量已经确认；
 - 当前 capability 已由部署实例显式启用。
+
+此外，生成模式必须与就绪度匹配：探索性概念候选要求 `concept_ready=true` 并在产物上记录 `exploratory=true`；角色设定图要求 `character_design_ready=true`；可锁定的一致性场景图要求 `consistent_scene_ready=true`。探索图不能绕过审批成为 baseline。
 
 缺少任一条件时在收费提交前失败，不能创建“看似运行、实际永远无法完成”的远程任务。
 
@@ -63,6 +65,8 @@ Content-Type: application/json
 ```text
 validate_image_request
   → freeze_generation_context
+  → build_scene_render_brief
+  → compile_image_render_spec
   → plan_image
   → submit_image
   → poll_image
@@ -83,7 +87,9 @@ validate_image_request
 | 工作 | 执行者 |
 |---|---|
 | 解析目标时点、选择有效状态、冻结 context hash | 确定性 Application Service |
-| 选择构图、灯光、Prompt 表达 | Visual Director Agent |
+| 形成姿势、表情、环境、美术和镜头简报 | 用户输入 + Visual Director Agent |
+| 将已批准字段编译为 Provider 中立 Prompt 块 | 确定性 Prompt Compiler |
+| 将中立规格绑定为具体工作流/Provider 请求 | Image Provider Adapter |
 | Workflow 兼容、预算、权限、幂等键 | 确定性策略层 |
 | 提交、查询、下载远程任务 | Image Provider Adapter |
 | 判断候选图可见属性和异常 | Multimodal Critic Agent + 确定性检查器 |
@@ -94,16 +100,31 @@ Agent 不能直接提交收费任务、修改 Profile、锁定基准图或提升
 
 ## 5. GenerationContext 冻结
 
-`freeze_generation_context` 按[角色渲染档案](05-character-render-profile.md)解析 `ResolvedCharacterSnapshot`，再按[视觉防漂移设计](06-image-generation-and-drift-control.md)形成不可变上下文。至少冻结：
+`freeze_generation_context` 按[角色渲染档案](05-character-render-profile.md)从已批准的 `CharacterRenderProfile` 解析 `ResolvedCharacterSnapshot`，再按[视觉防漂移设计](06-image-generation-and-drift-control.md)形成不可变上下文。Snapshot 已包含目标时间点适用的小说事实和已批准角色设计，但不包含画风/镜头。至少冻结：
 
 - Profile、AppearanceState、timeline/event/scene 和 Snapshot 版本；
-- 身份、阶段、场景和负向约束；
+- 身份与阶段事实、已批准角色设计、设计缺口决策和字段来源；
+- `SceneRenderBrief`、`ImageRenderSpec`、正向分块、负向约束和各自版本/哈希；
 - Evidence IDs 与阶段基准图引用；
 - Workflow、Prompt、AgentSpec、Evaluator Bundle 版本；
 - 候选数量、预算和裁剪原因；
 - `context_hash`。
 
 Provider、Agent 和审计器只读取冻结上下文，不在运行中重新查询“最新 Profile”。Profile 后续变化通过失效传播处理，不能静默改变已提交 Run。
+
+### 5.1 从字段到请求的唯一编译路径
+
+```text
+ResolvedCharacterSnapshot
+  + approved SceneRenderBrief
+  + WorkflowProfile capabilities/defaults
+  → ImageRenderSpec
+  → Provider Adapter Request
+```
+
+`ImageRenderSpec` 至少分开保存 identity、stage、outfit、performance、environment、art direction 和 negative blocks，并绑定 reference assets、尺寸、seed 和编译器版本。编译器只选择、排序、去重和序列化已批准输入；不得从“铁匠”“贵族”“善良”等身份或性格标签擅自补出围裙、珠宝、笑容等视觉事实。
+
+Provider Adapter 可以根据模型能力把块转为自然语言 Prompt、节点参数或结构化控制输入，但不得改变字段来源和语义。完整 Prompt 可作为受限 Artifact 保存，日志只写 hash、版本和裁剪摘要。
 
 ## 6. Provider 端口
 
@@ -185,15 +206,17 @@ Profile、目标状态、关键证据、Workflow 或 Evaluator 发生影响语�
 
 ## 11. 实现顺序
 
-1. `GenerationContextBuilder`、持久化 Schema 和 hash 稳定性测试；
-2. WorkflowProfile 注册、固定 Mock Image Provider 和契约测试；
-3. Image Run API、Step 图与 ExternalOperation 恢复；
-4. 一个真实 Provider Adapter 的 submit/query/download；
-5. Artifact 原子落库和完整性检查；
-6. 确定性基础审计，再接 Multimodal Critic；
-7. gate、一次受控重生成、人工审批和 baseline 锁定；
-8. 结构化日志与最小 `log-check`；
-9. 评测集、成本门禁和 capability 开启。
+1. `GenerationContextBuilder`、持久化 Schema 和 hash 稳定性测试（已完成基础）；
+2. WorkflowProfile 注册、固定 Mock Image Provider 和契约测试（已完成基础）；
+3. Image Run API、Step 图与 ExternalOperation 恢复（已完成基础）；
+4. 设计缺口、三档出图就绪度、`SceneRenderBrief` 和 `ImageRenderSpec`；
+5. Prompt Compiler 契约测试，证明事实、设计、场景、画风和 Provider 参数不会串层；
+6. 一个真实 Provider Adapter 的 submit/query/download；
+7. Artifact 原子落库和完整性检查（Mock 已完成，真实下载待验证）；
+8. 确定性基础审计，再接 Multimodal Critic；
+9. gate、一次受控重生成、人工审批和 baseline 锁定；
+10. 结构化日志与最小 `log-check`；
+11. 评测集、成本门禁和 capability 开启。
 
 不能先注册空图像端点、返回假成功或仅保存 Provider URL，再回头补 ExternalOperation、context hash 和审计。
 
@@ -207,6 +230,9 @@ Profile、目标状态、关键证据、Workflow 或 Evaluator 发生影响语�
 - hard fail 无法无记录锁定；
 - Profile 变化会使依赖产物 stale；
 - Provider、Workflow、模型、Prompt、seed、context hash、费用和文件哈希可追溯；
+- 每个正向/负向 Prompt 字段都能追溯到小说事实、人工决定、已批准建议、工作流默认或参考资产；
+- 小说未写的字段以设计缺口处理，Provider/Visual Director 不会把临时补全反写为小说事实；
+- 概念图、角色设定图和一致性场景图使用不同就绪门禁，探索候选不能成为 baseline；
 - Provider 契约、恢复、安全、评测和日志检查测试通过；
 - [API 规范](09-api-specification.md)、[当前实现状态](00-current-status.md)和[追踪矩阵](19-feature-traceability-matrix.md)同步更新。
 

@@ -142,3 +142,117 @@ def test_same_chapter_different_life_phases_do_not_conflict() -> None:
     assert len(result.states) == 2
     assert result.conflicts == ()
     assert {item.age_stage for item in result.states} == {"前世", "转生幼年"}
+
+
+def test_transformation_state_is_separate_from_identity_anchor() -> None:
+    timeline_id = str(uuid4())
+    normal = observation(
+        field_path="face.eye_color",
+        value="blue",
+        chapter=3,
+        timeline_id=timeline_id,
+    )
+    transformed = observation(
+        field_path="face.eye_color",
+        value="red",
+        chapter=3,
+        timeline_id=timeline_id,
+    )
+    transformed.temporal_scope["transformation_state"] = "powered_form"
+
+    result = aggregate_appearance(
+        character_id=uuid4(),
+        source_document_version_id=uuid4(),
+        observations=[normal, transformed],
+        timeline_graph_version="timeline-v1",
+    )
+
+    assert result.conflicts == ()
+    assert result.identity_anchor == {"face": {"eye_color": "blue"}}
+    assert {state.state_kind for state in result.states} == {"transformation"}
+
+
+def test_near_synonym_colors_do_not_create_false_conflict() -> None:
+    timeline_id = str(uuid4())
+    result = aggregate_appearance(
+        character_id=uuid4(),
+        source_document_version_id=uuid4(),
+        observations=[
+            observation(
+                field_path="skin.color",
+                value="黄色",
+                chapter=3,
+                timeline_id=timeline_id,
+            ),
+            observation(
+                field_path="skin.color",
+                value="暗黄色",
+                chapter=3,
+                timeline_id=timeline_id,
+            ),
+        ],
+        timeline_graph_version="timeline-v1",
+    )
+
+    assert result.conflicts == ()
+    assert result.states == ()
+    assert result.identity_anchor["skin"]["color"] in {"黄色", "暗黄色"}
+
+
+def test_multiple_compatible_eye_descriptions_are_combined() -> None:
+    timeline_id = str(uuid4())
+    result = aggregate_appearance(
+        character_id=uuid4(),
+        source_document_version_id=uuid4(),
+        observations=[
+            observation(
+                field_path="face.eyes",
+                value="眼中带着疲惫",
+                chapter=3,
+                timeline_id=timeline_id,
+            ),
+            observation(
+                field_path="face.eyes",
+                value="目光略显疲倦",
+                chapter=3,
+                timeline_id=timeline_id,
+            ),
+        ],
+        timeline_graph_version="timeline-v1",
+    )
+
+    assert result.conflicts == ()
+    assert len(result.states) == 1
+    assert result.states[0].appearance["face"]["eyes"] == [
+        "眼中带着疲惫",
+        "目光略显疲倦",
+    ]
+
+
+def test_multiple_accessories_of_same_type_are_not_a_conflict() -> None:
+    timeline_id = str(uuid4())
+    result = aggregate_appearance(
+        character_id=uuid4(),
+        source_document_version_id=uuid4(),
+        observations=[
+            observation(
+                field_path="accessories.badge",
+                value="圆形徽章",
+                chapter=3,
+                timeline_id=timeline_id,
+            ),
+            observation(
+                field_path="accessories.badge",
+                value="剑形徽章",
+                chapter=3,
+                timeline_id=timeline_id,
+            ),
+        ],
+        timeline_graph_version="timeline-v1",
+    )
+
+    assert result.conflicts == ()
+    assert result.states[0].appearance["accessories"]["badge"] == [
+        "剑形徽章",
+        "圆形徽章",
+    ]

@@ -38,7 +38,7 @@ class LLMProvider(Protocol):
 文本提取结果的 `extractor_version` 不能只记录模型名，当前格式为：
 
 ```text
-<provider>:<model>:visual-observation-v2
+<provider>:<model>:visual-observation-v3
 ```
 
 最后一段由 [`visual_fields.py`](../src/novel_character_generator/domain/policies/visual_fields.py) 的 `EXTRACTION_SCHEMA_VERSION` 提供。只要原子字段、人生阶段或证据契约发生不兼容变化，就必须提升该版本并创建新 Run。新 Run 从第一个 chunk 开始时，系统会 supersede 同一源文档版本上由旧 extractor version 产生的活动自动 Observation；人工 Observation 不受影响。相同 extractor version 重跑不会先失效自身结果，而是继续通过 observation fingerprint 幂等复用。

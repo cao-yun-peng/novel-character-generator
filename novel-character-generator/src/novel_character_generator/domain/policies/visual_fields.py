@@ -4,7 +4,7 @@ import re
 from dataclasses import dataclass
 from typing import Any
 
-EXTRACTION_SCHEMA_VERSION = "visual-observation-v2"
+EXTRACTION_SCHEMA_VERSION = "visual-observation-v3.2"
 
 VISUAL_FIELD_ROOTS = frozenset(
     {
@@ -54,6 +54,8 @@ FIELD_PATH_ALIASES = {
     "appearance.cleanliness": "cleanliness",
     "build": "body.build",
     "body.type": "body.build",
+    "age.age_stage": "age_stage",
+    "face.hands": "body.hands",
     "hair.colour": "hair.color",
     "skin.colour": "skin.color",
     "martial_soul": "abilities.martial_spirit",
@@ -112,6 +114,14 @@ AGE_STAGE_ALIASES = {
     "老年": "elderly",
 }
 
+
+def normalize_age_stage(value: str | None) -> str | None:
+    if value is None or not value.strip():
+        return None
+    token = value.strip().casefold().replace("-", "_").replace(" ", "_")
+    return AGE_STAGE_ALIASES.get(token, token)
+
+
 EXPERIENCED_AGE_MARKERS = (
     "实际年龄",
     "两世为人",
@@ -128,6 +138,248 @@ LIFE_PHASE_LABELS = {
     "adolescence": "少年期",
     "adulthood": "成年期",
 }
+
+_AGE_MARKERS = (
+    "岁",
+    "周岁",
+    "年龄",
+    "年纪",
+    "年岁",
+    "旬",
+    "years old",
+    "year old",
+    "aged ",
+    "age ",
+)
+_NON_AGE_RANK_MARKERS = (
+    "等级",
+    "级",
+    "品阶",
+    "阶位",
+    "段位",
+    "境界",
+    "level",
+    "rank",
+    "tier",
+)
+_CLOTHING_MARKERS = (
+    "衣",
+    "袍",
+    "裙",
+    "衫",
+    "装",
+    "服",
+    "裤",
+    "鞋",
+    "靴",
+    "披风",
+    "斗篷",
+    "甲",
+    "帽",
+    "袖",
+    "garment",
+    "clothes",
+    "clothing",
+    "shirt",
+    "robe",
+    "dress",
+    "coat",
+    "cloak",
+    "armor",
+    "trousers",
+    "pants",
+    "boots",
+    "shoes",
+)
+_COVERAGE_MARKERS = (
+    "赤裸",
+    "裸露",
+    "露出",
+    "遮住",
+    "包裹",
+    "covered",
+    "exposed",
+    "bare",
+    "naked",
+)
+_SCAR_MARKERS = (
+    "疤",
+    "伤疤",
+    "疤痕",
+    "瘢痕",
+    "旧伤",
+    "scar",
+)
+_CLOTHING_STYLE_MARKERS = (
+    "朴素",
+    "华丽",
+    "简洁",
+    "简约",
+    "正式",
+    "休闲",
+    "plain",
+    "ornate",
+    "formal",
+    "casual",
+)
+_CLEANLINESS_MARKERS = (
+    "干净",
+    "整洁",
+    "脏污",
+    "污渍",
+    "邋遢",
+    "clean",
+    "tidy",
+    "dirty",
+    "stained",
+)
+_EYE_MARKERS = ("眼", "眸", "瞳", "iris", "eye")
+_COLOR_MARKERS = (
+    "黑",
+    "白",
+    "灰",
+    "红",
+    "赤",
+    "黄",
+    "棕",
+    "褐",
+    "蓝",
+    "青",
+    "绿",
+    "紫",
+    "金",
+    "银",
+    "black",
+    "white",
+    "gray",
+    "grey",
+    "red",
+    "yellow",
+    "brown",
+    "blue",
+    "green",
+    "purple",
+    "gold",
+    "silver",
+)
+_CLAW_MARKERS = ("爪", "利爪", "claw", "talon")
+_TRANSFORMATION_MARKERS = (
+    "变身",
+    "变形",
+    "变成",
+    "变为",
+    "变化",
+    "形态",
+    "附体",
+    "兽化",
+    "魔化",
+    "化身",
+    "膨胀",
+    "长出",
+    "探出",
+    "出现",
+    "覆盖",
+    "收回",
+    "解除",
+    "激活",
+    "展开",
+    "部署",
+    "transform",
+    "shapeshift",
+    "possess",
+    "powered form",
+    "activate",
+    "deploy",
+    "revert",
+)
+
+
+def is_plausible_age_signal(label: str, evidence_quote: str) -> bool:
+    """Accept explicit age evidence and reject rank, level, and plain-duration lookalikes."""
+
+    text = f"{label} {evidence_quote}".strip().casefold()
+    has_age_marker = any(marker in text for marker in _AGE_MARKERS)
+    if not has_age_marker:
+        return False
+    if any(marker in text for marker in _NON_AGE_RANK_MARKERS) and not any(
+        marker in text for marker in ("岁", "年龄", "年纪", "years old", "year old")
+    ):
+        return False
+    return True
+
+
+def is_plausible_transformation_signal(label: str, evidence_quote: str) -> bool:
+    """Reject ordinary temporary conditions mislabeled as a form transformation."""
+
+    text = f"{label} {evidence_quote}".strip().casefold()
+    return any(marker in text for marker in _TRANSFORMATION_MARKERS)
+
+
+def transformation_applies_to_visual_fact(
+    field_path: str,
+    value: Any,
+    evidence_quote: str,
+) -> bool:
+    """Narrow a mention-level form signal to facts that explicitly describe the changed form."""
+
+    text = f"{value} {evidence_quote}".casefold()
+    if field_path in {"age", "age_stage"}:
+        return False
+    return any(marker in text for marker in _TRANSFORMATION_MARKERS)
+
+
+def semantic_visual_field_path(field_path: str, value: Any, evidence_quote: str) -> str:
+    """Apply only high-confidence, cross-genre semantic corrections."""
+
+    text = f"{value} {evidence_quote}".casefold()
+    if field_path == "clothing.condition":
+        if any(marker in text for marker in _CLEANLINESS_MARKERS):
+            return "cleanliness"
+        if any(marker in text for marker in _CLOTHING_STYLE_MARKERS):
+            return "clothing.style"
+    if field_path == "clothing.type" and any(
+        marker in text for marker in (*_CLOTHING_STYLE_MARKERS, "光鲜", "朴素")
+    ):
+        return "clothing.style"
+    if field_path == "face.eye_color":
+        has_eye = any(marker in text for marker in _EYE_MARKERS)
+        has_color = any(marker in text for marker in _COLOR_MARKERS)
+        if has_eye and not has_color:
+            return "face.eyes"
+    if field_path == "accessories.gloves" and any(marker in text for marker in _CLAW_MARKERS):
+        return "distinctive_marks.claws"
+    return field_path
+
+
+def visual_field_semantic_issue(
+    field_path: str,
+    value: Any,
+    evidence_quote: str,
+) -> str | None:
+    """Return a stable reason code when a field contradicts its evidence dimension."""
+
+    text = f"{value} {evidence_quote}".casefold()
+    if field_path == "age" and not is_plausible_age_signal(str(value), evidence_quote):
+        return "invalid_age_semantics"
+    if field_path == "face.eye_color" and not any(marker in text for marker in _EYE_MARKERS):
+        return "eye_color_without_eye_evidence"
+    if field_path == "clothing.color" and not any(
+        marker in text for marker in _CLOTHING_MARKERS
+    ):
+        return "clothing_color_without_garment"
+    if field_path == "clothing.coverage" and not any(
+        marker in text for marker in (*_CLOTHING_MARKERS, *_COVERAGE_MARKERS)
+    ):
+        return "clothing_coverage_without_coverage"
+    if field_path == "clothing.condition" and not any(
+        marker in text for marker in _CLOTHING_MARKERS
+    ):
+        return "clothing_condition_without_garment"
+    if field_path == "distinctive_marks.scar" and not any(
+        marker in text for marker in _SCAR_MARKERS
+    ):
+        return "scar_without_scar_evidence"
+    return None
 
 
 @dataclass(frozen=True)
@@ -167,9 +419,7 @@ def visual_category(field_path: str) -> str | None:
     return VISUAL_CATEGORY_LABELS.get(canonical.split(".", 1)[0])
 
 
-def normalize_life_phase(
-    key: str | None, label: str | None
-) -> tuple[str | None, str | None]:
+def normalize_life_phase(key: str | None, label: str | None) -> tuple[str | None, str | None]:
     normalized_key = key.strip() if key and key.strip() else None
     normalized_label = label.strip() if label and label.strip() else None
     if normalized_key:
@@ -200,9 +450,7 @@ def _flatten_mapping(value: dict[str, Any], prefix: str = "") -> list[tuple[str,
     return flattened
 
 
-def _append_unique(
-    facts: list[NormalizedVisualFact], field_path: str, value: Any
-) -> None:
+def _append_unique(facts: list[NormalizedVisualFact], field_path: str, value: Any) -> None:
     candidate = NormalizedVisualFact(field_path=field_path, value=value)
     if candidate not in facts:
         facts.append(candidate)
@@ -252,12 +500,10 @@ def normalize_observation_fields(
     quote = evidence_quote or ""
     if canonical == "age" and any(marker in quote for marker in EXPERIENCED_AGE_MARKERS):
         canonical = "identity.experienced_age"
-    elif canonical == "age_stage" and any(
-        marker in quote for marker in EXPERIENCED_AGE_MARKERS
-    ):
+    elif canonical == "age_stage" and any(marker in quote for marker in EXPERIENCED_AGE_MARKERS):
         canonical = "identity.mental_age_stage"
     if canonical == "age_stage" and isinstance(value, str):
-        value = AGE_STAGE_ALIASES.get(value.strip().casefold(), value.strip())
+        value = normalize_age_stage(value)
     if canonical == "abilities.innate_soul_power" and value is True:
         value = "先天满魂力"
     if canonical != "appearance":
@@ -270,9 +516,7 @@ def normalize_observation_fields(
             )
             for path, item in _flatten_mapping(value)
         ]
-        return tuple(facts) or (
-            NormalizedVisualFact(field_path="body.description", value=value),
-        )
+        return tuple(facts) or (NormalizedVisualFact(field_path="body.description", value=value),)
     if isinstance(value, str):
         return _split_appearance_text(value)
     return (NormalizedVisualFact(field_path="body.description", value=value),)

@@ -1,0 +1,17 @@
+{
+  "task_id": "OBS-RUN-001",
+  "current_behavior": "工作台只按四个 Worker Step 显示粗略进度，R1 与 R2 合并在 extract_characters；R1/R2/R3 结构化产出虽已落库，但没有统一查询与可视化入口。",
+  "desired_behavior": "用户可从一个 Run 视图分别掌握 R1 候选抽取、R2 人物解析、R3 阶段作用域的进度、调用和质量信号，并按需查看每个模型或代码步骤的结构化产出。",
+  "dependencies": [
+    "CharacterResolutionChunk/CharacterConvergenceBatch 审计记录",
+    "CharacterPhaseResolution/TemporalSignal/ObservationScopeBinding 审计记录",
+    "RunEvent Provider usage 元数据",
+    "现有 FastAPI 鉴权与工作台"
+  ],
+  "validation": [
+    "Run Inspector 服务与 API 集成测试",
+    "摘要敏感字段边界测试",
+    "详情类型和归属校验测试",
+    "Ruff、Mypy src、相关 Pytest"
+  ]
+}

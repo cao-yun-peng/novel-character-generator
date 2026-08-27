@@ -1,0 +1,11 @@
+{
+  "task_id": "R2-FRONTIER-003",
+  "created_at": "2026-08-27T00:00:00+08:00",
+  "project_stage": 5,
+  "lifecycle_revision": 2,
+  "risk_level": "L1",
+  "frontier_policy": "non-stable memory records whose mention_ids intersect current convergence batch mention_ids",
+  "stable_context_policy": "retain stable memory as confirm_link target context in this increment",
+  "recovery_policy": "derive frontier deterministically from persisted batch packets and current full memory",
+  "scope_boundary": "This increment does not shard one frontier across calls and does not repair provider omissions."
+}

@@ -1,0 +1,157 @@
+{
+  "source": {
+    "name": "斗罗大陆前20章.txt",
+    "bytes": 110951,
+    "sha256": "8bcb7305a759571b1fec70813b0631f2c884eba79697c3259170a7635d639741"
+  },
+  "provider": {
+    "name": "deepseek",
+    "model": "deepseek-v4-flash"
+  },
+  "novel_id": "c8e0d0e0-a9e6-47de-bda6-784a54ec0b63",
+  "run_id": "ec455a03-9a30-45fe-a7ca-0d2505af7ee9",
+  "run_status": "succeeded",
+  "steps": [
+    {
+      "step": "normalize_and_chunk",
+      "status": "succeeded",
+      "error_code": null,
+      "error_message": null,
+      "cursor": {
+        "schema_version": "v1",
+        "current_chunk_ordinal": 19,
+        "completed_step_keys": [
+          "normalize_and_chunk"
+        ]
+      }
+    },
+    {
+      "step": "extract_characters",
+      "status": "succeeded",
+      "error_code": null,
+      "error_message": null,
+      "cursor": {
+        "schema_version": "v3",
+        "entity_resolution_schema": "character-entity-resolution-v1",
+        "stage": "completed",
+        "current_chunk_ordinal": 19,
+        "extractor_version": "deepseek:deepseek-v4-flash:visual-observation-v3.1:visual-extraction-prompt-v2.3|deepseek:deepseek-v4-flash:character-entity-resolution-v1:entity-resolution-prompt-v1.3",
+        "completed_step_keys": [
+          "extract_characters"
+        ]
+      }
+    },
+    {
+      "step": "resolve_character_phases",
+      "status": "succeeded",
+      "error_code": null,
+      "error_message": null,
+      "cursor": {
+        "schema_version": "character-phase-resolution-v1",
+        "current_character_index": 4,
+        "character_count": 4,
+        "needs_review_count": 3,
+        "completed_step_keys": [
+          "resolve_character_phases"
+        ]
+      }
+    },
+    {
+      "step": "aggregate_appearance",
+      "status": "succeeded",
+      "error_code": null,
+      "error_message": null,
+      "cursor": {
+        "schema_version": "v1",
+        "source_document_version_id": "4ea7cd52-4f3d-42fb-a9f3-b405f6c26a2c",
+        "completed_character_ids": [
+          "0c79ca9e-64ca-4291-b2c8-18741509ce84",
+          "2e4a08ee-e494-49b1-ab5f-ed872eb744ee",
+          "847eb13b-138f-43f9-9524-e0ff9380c9a2",
+          "a16ad5bc-1dbd-4fa6-bc29-6d535242c762"
+        ],
+        "completed_step_keys": [
+          "aggregate_appearance"
+        ]
+      }
+    }
+  ],
+  "counts": {
+    "chunks": 19,
+    "characters": 4,
+    "active_observations": 59,
+    "pending_observations": 3,
+    "temporal_signals": 14,
+    "life_phases": 0,
+    "appearance_states": 33,
+    "render_profiles": 4,
+    "conflicts": 5
+  },
+  "temporal_signal_statuses": {
+    "bound": 8,
+    "unresolved": 6
+  },
+  "temporal_signal_kinds": {
+    "age": 11,
+    "time_jump": 3
+  },
+  "scope_binding_statuses": {
+    "final": 59,
+    "needs_review": 3
+  },
+  "characters": [
+    {
+      "id": "847eb13b-138f-43f9-9524-e0ff9380c9a2",
+      "name": "唐三",
+      "active_observations": 21,
+      "pending_observations": 3,
+      "phases": []
+    },
+    {
+      "id": "0c79ca9e-64ca-4291-b2c8-18741509ce84",
+      "name": "唐昊",
+      "active_observations": 12,
+      "pending_observations": 0,
+      "phases": []
+    },
+    {
+      "id": "a16ad5bc-1dbd-4fa6-bc29-6d535242c762",
+      "name": "素云涛",
+      "active_observations": 15,
+      "pending_observations": 0,
+      "phases": []
+    },
+    {
+      "id": "2e4a08ee-e494-49b1-ab5f-ed872eb744ee",
+      "name": "老杰克",
+      "active_observations": 11,
+      "pending_observations": 0,
+      "phases": []
+    }
+  ],
+  "event_type_counts": {
+    "run.created": 1,
+    "step.running": 15,
+    "step.succeeded": 4,
+    "step.queued": 3,
+    "provider.extraction.completed": 19,
+    "provider.entity_resolution.completed": 19,
+    "step.progress": 27,
+    "step.retry_scheduled": 3,
+    "provider.extraction.failed": 8,
+    "step.failed": 8,
+    "provider.extraction.deferred": 2,
+    "run.retry_requested": 8,
+    "provider.entity_convergence.completed": 2,
+    "appearance.aggregation.started": 4,
+    "appearance.state.derived": 33,
+    "appearance.conflict.detected": 5,
+    "appearance.profile.drafted": 4
+  },
+  "recorded_token_usage": {
+    "prompt_tokens": 198253,
+    "completion_tokens": 48380,
+    "total_tokens": 246633,
+    "note": "Summed from persisted RunEvent payload fields; zero means provider usage was not recorded."
+  }
+}

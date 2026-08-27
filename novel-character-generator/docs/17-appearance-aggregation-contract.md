@@ -2,9 +2,9 @@
 
 > [← 上一篇](16-local-development-and-runbook.md) · [文档索引](README.md) · [下一篇 →](18-image-generation-implementation-contract.md)
 >
-> 文档版本：3.0 · 修订日期：2026-08-24
+> 文档版本：4.0 · 修订日期：2026-08-26
 >
-> 当前状态：核心链路已实现。`aggregate_appearance` 已接入文本 Pipeline，能够从真实 Observation 幂等形成 AppearanceState、Conflict 和待审核 RenderProfile；源版本替换会失效旧观察和派生状态、保留 stale 历史批准档案并生成新草稿。父子时间线继承和人工确认值冲突保护已有集成测试；角色/字段级精细差异重算已延期，当前继续采用整角色保守重建。
+> 当前状态：核心链路已实现。`aggregate_appearance` 已接入文本 Pipeline，能够从真实 Observation 幂等形成 AppearanceState、Conflict 和待审核 RenderProfile；源版本替换会失效旧观察和派生状态、保留 stale 历史批准档案并生成新草稿。本文新增的六级持续性、设计缺口和出图就绪度是目标语义，当前实现仍以既有三层状态和整角色保守重建为主。
 
 ## 1. 要解决的问题
 
@@ -16,10 +16,12 @@ FeatureObservation
   → 时间/现实层级归组
   → 字段持续性与优先级合并
   → CharacterAppearanceState(draft)
+  → ResolvedAppearanceFacts（目标时点事实视图，可重建）
   → CharacterConflict(open)
   → CharacterRenderProfile(draft)
   → 人工解决冲突、编辑和批准
   → ResolvedCharacterSnapshot
+  → 识别设计缺口与出图就绪度（独立策略，不改写事实）
 ```
 
 聚合器只做确定性整理和冲突发现，不调用图像模型，也不自动批准档案。
@@ -55,7 +57,7 @@ Step 成功只表示草稿和冲突已经一致落库，不表示档案已批准
 5. 时间、场景或现实层级能够解析；不能解析的观察进入待审核队列；
 6. 字段属于允许的视觉 Schema，值通过规范化和类型校验。
 
-低置信度推断、身份原型建议和画风默认值可以成为 `field_suggestions`，不能冒充原文事实写入锁定身份锚点。
+低置信度推断和身份原型建议可以成为 `field_suggestions`，不能冒充原文事实写入锁定身份锚点。画风、镜头、灯光设计和 Provider 默认值不属于外观聚合输入，应由场景简报/渲染规格处理。
 
 ### 3.1 规范视觉字段与兼容输入
 
@@ -69,17 +71,20 @@ Step 成功只表示草稿和冲突已经一致落库，不表示档案已批准
 
 LLM Prompt 已要求直接输出原子字段；确定性拆分主要用于兼容旧 Provider 结果，不替代语义提取。
 
-## 4. 分层与作用域
+## 4. 分层、持续性与作用域
 
-聚合器按三层保存，不把所有信息压成单一人物 JSON：
+现有存储仍可保留 Identity、AppearanceState、Scene/Expression 三层，但解析策略必须使用更细的六级持续性，不能根据 `hair`、`clothing` 等字段根路径直接猜生命周期：
 
-| 层 | 典型字段 | 默认持续范围 |
+| 持续性类别 | 典型内容 | 默认持续范围 |
 |---|---|---|
-| Identity | 稳定脸型、瞳色、先天标记 | 跨阶段持续，直到明确改变或证据失效 |
-| AppearanceState | 年龄、发色、长期伤势、长期服装/伪装 | timeline + event/chapter 区间 |
-| Scene/Expression | 表情、姿势、污渍、一次性换装 | 当前 scene 或明确短区间 |
+| `identity_anchor` | 稳定脸型、固有瞳色、先天标记 | 跨阶段持续，直到明确改变或证据失效 |
+| `phase_base` | 幼年体型、成年发长、某阶段常态肤色 | `timeline + life_phase` |
+| `persistent_change` | 新增疤痕、永久残缺、明确长期染发 | 从起始事件延续到终止/逆转证据 |
+| `outfit_state` | 校服、礼服、长期制服、一次换装 | 由原文作用域决定；不得一律当长期字段 |
+| `transformation_state` | 伪装、变身、附体、特殊形态 | 变换开始到解除；与 canonical base 分离 |
+| `scene_temporary` | 表情、姿势、血迹、灰尘、湿发、临时伤势 | 当前 scene 或明确短区间 |
 
-每个 `CharacterAppearanceState` 是部分覆盖层，只保存该阶段相对稳定身份锚点发生变化或需要明确表达的字段。目标时点由 Snapshot Resolver 按优先级叠加，不预先生成所有状态组合。
+每个 `CharacterAppearanceState` 是部分覆盖层，只保存该阶段相对稳定身份锚点发生变化或需要明确表达的字段。目标时点由 Snapshot Resolver 按优先级叠加，不预先生成所有状态组合。持续性可来自直接时间词、阶段/场景边界、变化事件和版本化字段策略；无法判断时进入审核，不能仅因为字段是 `injuries.*` 就自动永久延续，也不能仅因为字段是 `clothing.*` 就自动场景过期。
 
 子时间线在 `branch_event_id` 之前继承父时间线状态；分支后独立计算。梦境、传闻、想象和现实使用版本化兼容矩阵，不能只比较 timeline ID 或使用未定义布尔值。
 
@@ -90,12 +95,14 @@ LLM Prompt 已要求直接输出原子字段；确定性拆分主要用于兼容
 1. 按故事作用域计算有效区间，不按数据库写入时间覆盖；
 2. 过滤被人工否决或已失效的观察；
 3. 将相同规范值合并，保留全部证据 ID；
-4. 按“用户确认 > 明确原文 > 多证据推断 > 已审核原型 > 画风默认”排序；
+4. 事实候选按“用户确认的事实裁决 > 明确原文 > 多证据一致且已审核的推断”排序；已审核设计建议属于 Profile 设计层，不参与 Observation 事实竞争，画风默认值完全不进入该算法；
 5. 同优先级、作用域重叠且值不兼容时创建或复用 `CharacterConflict`；
 6. 持久字段延续到明确终止事件，瞬时字段不得跨场景延续；
 7. 输出稳定排序的 `appearance` 与 `field_sources`，计算聚合指纹。
 
 人工值不能被后续自动运行静默覆盖。新证据与人工值冲突时创建 `conflict_kind=human_confirmation` 的待审核冲突，并保留当前已批准版本直到用户决定；身份锚点与阶段状态都受此规则保护。
+
+聚合器不得为了让档案“看起来完整”而制造值。字段没有有效 Observation 时只返回空缺状态：尚未完成覆盖为 `unknown`，达到检索预算仍无描述为 `not_stated`，同作用域不兼容为 `conflicted`，原文明示没有某特征则保留 `negated` Observation。设计缺口由后续 Profile 策略生成，人工补全也不能反写为小说 Observation。
 
 `life_phase_key` 是聚合作用域的一部分。“前世”和“转生幼年”即使出现在同一章节、同一 canonical timeline，也形成不同阶段；它们不会仅因字段值不同而互相冲突。阶段标签会进入 State label，并在缺少显式 `age_stage` 时作为阶段展示值。
 
@@ -194,6 +201,9 @@ approved
 - 梦境状态不污染现实 canonical 状态；
 - 子时间线分支前继承、分支后独立；
 - 临时表情不跨场景延续，持久疤痕在没有终止证据时继续有效；
+- 同为 `clothing.*` 的阶段制服和一次性换装按各自作用域解析，不能只靠根路径决定持续时间；
+- 未发现配饰/伤疤不自动形成“无配饰/无伤疤”，有界搜索耗尽后形成 `not_stated` 设计缺口；
+- 画风、镜头、灯光设计和 Provider 默认值不会进入 AppearanceState 或小说事实来源；
 - 人工确认值不被后续自动聚合覆盖；
 - extractor version 升级会失效同一源版本上的旧自动事实、保留人工事实，并按整角色保守重建派生状态；
 - 角色/字段级精细差异重算尚未实现，不得把上述版本替换描述成只重算变化字段；

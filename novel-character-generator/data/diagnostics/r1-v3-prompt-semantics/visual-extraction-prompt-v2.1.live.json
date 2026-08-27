@@ -1,0 +1,909 @@
+{
+  "dataset": {
+    "name": "visual-extraction-developer-seed",
+    "version": "v0",
+    "rubric_version": "visual-observation-seed-v1"
+  },
+  "provider_version": "deepseek:deepseek-v4-flash:visual-observation-v3:visual-extraction-prompt-v2.1",
+  "execution_mode": "one_provider_call_per_case",
+  "case_count": 7,
+  "passed_case_count": 2,
+  "records": [
+    {
+      "case": {
+        "id": "face-description-not-shape",
+        "text": "程岳面容清俊，轮廓并未作具体说明。",
+        "expected_observations": [
+          {
+            "character_name": "程岳",
+            "field_path": "face.description",
+            "value": "清俊",
+            "evidence_quote": "面容清俊",
+            "epistemic_status": "asserted",
+            "life_phase_key": null
+          }
+        ],
+        "slice_tags": [
+          "direct",
+          "canonical-field",
+          "face-description",
+          "negative-field-confusion"
+        ],
+        "severity": "important",
+        "notes": "清俊、清秀等整体面容描述不是几何脸型，不得写入 face.shape。"
+      },
+      "provider_metadata": {
+        "wire_api": "chat_completions",
+        "provider_request_id": "03a93d0d-c6c0-4a66-9a09-d2d2149fb1a9",
+        "response_model": "deepseek-v4-flash",
+        "status": "completed",
+        "finish_reason": "stop",
+        "attempts": 1,
+        "latency_ms": 3807.0770000013,
+        "usage": {
+          "input_tokens": 1734,
+          "cache_hit_tokens": 0,
+          "cache_miss_tokens": 1734,
+          "reasoning_tokens": 0,
+          "output_tokens": 186,
+          "total_tokens": 1920
+        }
+      },
+      "visual_candidates": {
+        "entities": [
+          {
+            "local_id": "chengyue",
+            "representative_name": "程岳",
+            "mention_quote": "程岳",
+            "mention_kind": "name",
+            "confidence": 1.0
+          }
+        ],
+        "visual_candidates": [
+          {
+            "entity_ref": "chengyue",
+            "field_path": "face.description",
+            "value": "清俊",
+            "evidence_quote": "面容清俊",
+            "epistemic_status": "asserted",
+            "confidence": 1.0,
+            "temporal_signals": []
+          }
+        ],
+        "deferred_items": [
+          {
+            "reason_code": "unsupported_visual_field",
+            "evidence_quote": "轮廓并未作具体说明",
+            "detail": "轮廓未具体说明，无法提取具体视觉事实"
+          }
+        ]
+      },
+      "grounded_visual_result": {
+        "mentions": [
+          {
+            "text": "程岳",
+            "canonical_name": "程岳",
+            "start": 0,
+            "end": 2,
+            "kind": "name"
+          }
+        ],
+        "observations": [
+          {
+            "character_name": "程岳",
+            "field_path": "face.description",
+            "value": "清俊",
+            "evidence_quote": "面容清俊",
+            "start": 2,
+            "end": 6,
+            "epistemic_status": "asserted",
+            "confidence": 1.0,
+            "life_phase_key": null,
+            "life_phase_label": null
+          }
+        ],
+        "warnings": [
+          "provider_deferred:unsupported_visual_field"
+        ]
+      },
+      "score": {
+        "case_id": "face-description-not-shape",
+        "true_positive": 1,
+        "false_positive": 0,
+        "false_negative": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "exact_evidence_rate": 1.0,
+        "passed": true
+      }
+    },
+    {
+      "case": {
+        "id": "eye-color-versus-gaze-state",
+        "text": "岑雾有一双乌黑的眼眸，凝视时目光沉静。",
+        "expected_observations": [
+          {
+            "character_name": "岑雾",
+            "field_path": "face.eye_color",
+            "value": "乌黑",
+            "evidence_quote": "乌黑的眼眸",
+            "epistemic_status": "asserted",
+            "life_phase_key": null
+          },
+          {
+            "character_name": "岑雾",
+            "field_path": "face.eyes",
+            "value": "沉静",
+            "evidence_quote": "目光沉静",
+            "epistemic_status": "asserted",
+            "life_phase_key": null
+          }
+        ],
+        "slice_tags": [
+          "direct",
+          "canonical-field",
+          "eyes",
+          "atomic"
+        ],
+        "severity": "critical",
+        "notes": "眼睛颜色进入 face.eye_color；可见目光状态进入 face.eyes。"
+      },
+      "provider_metadata": {
+        "wire_api": "chat_completions",
+        "provider_request_id": "5f85366c-c613-49c8-a21b-2b97d25bc64a",
+        "response_model": "deepseek-v4-flash",
+        "status": "completed",
+        "finish_reason": "stop",
+        "attempts": 1,
+        "latency_ms": 2950.3984000002674,
+        "usage": {
+          "input_tokens": 1736,
+          "cache_hit_tokens": 1664,
+          "cache_miss_tokens": 72,
+          "reasoning_tokens": 0,
+          "output_tokens": 182,
+          "total_tokens": 1918
+        }
+      },
+      "visual_candidates": {
+        "entities": [
+          {
+            "local_id": "e1",
+            "representative_name": "岑雾",
+            "mention_quote": "岑雾",
+            "mention_kind": "name",
+            "confidence": 1.0
+          }
+        ],
+        "visual_candidates": [
+          {
+            "entity_ref": "e1",
+            "field_path": "face.eye_color",
+            "value": "乌黑",
+            "evidence_quote": "乌黑的眼眸",
+            "epistemic_status": "asserted",
+            "confidence": 1.0,
+            "temporal_signals": []
+          },
+          {
+            "entity_ref": "e1",
+            "field_path": "face.eyes",
+            "value": "目光沉静",
+            "evidence_quote": "凝视时目光沉静",
+            "epistemic_status": "asserted",
+            "confidence": 1.0,
+            "temporal_signals": []
+          }
+        ],
+        "deferred_items": []
+      },
+      "grounded_visual_result": {
+        "mentions": [
+          {
+            "text": "岑雾",
+            "canonical_name": "岑雾",
+            "start": 0,
+            "end": 2,
+            "kind": "name"
+          }
+        ],
+        "observations": [
+          {
+            "character_name": "岑雾",
+            "field_path": "face.eye_color",
+            "value": "乌黑",
+            "evidence_quote": "乌黑的眼眸",
+            "start": 5,
+            "end": 10,
+            "epistemic_status": "asserted",
+            "confidence": 1.0,
+            "life_phase_key": null,
+            "life_phase_label": null
+          },
+          {
+            "character_name": "岑雾",
+            "field_path": "face.eyes",
+            "value": "目光沉静",
+            "evidence_quote": "凝视时目光沉静",
+            "start": 11,
+            "end": 18,
+            "epistemic_status": "asserted",
+            "confidence": 1.0,
+            "life_phase_key": null,
+            "life_phase_label": null
+          }
+        ],
+        "warnings": []
+      },
+      "score": {
+        "case_id": "eye-color-versus-gaze-state",
+        "true_positive": 1,
+        "false_positive": 1,
+        "false_negative": 1,
+        "precision": 0.5,
+        "recall": 0.5,
+        "f1": 0.5,
+        "exact_evidence_rate": 0.5,
+        "passed": false
+      }
+    },
+    {
+      "case": {
+        "id": "reported-attractiveness-not-complexion",
+        "text": "旁人都说苏绫看起来妩媚动人。",
+        "expected_observations": [],
+        "slice_tags": [
+          "reported",
+          "subjective",
+          "negative",
+          "complexion"
+        ],
+        "severity": "important",
+        "notes": "转述的主观吸引力评价不是面色、肤色或稳定 asserted 视觉事实。"
+      },
+      "provider_metadata": {
+        "wire_api": "chat_completions",
+        "provider_request_id": "363b2f38-5b65-45f7-9802-fd0e40d6d317",
+        "response_model": "deepseek-v4-flash",
+        "status": "completed",
+        "finish_reason": "stop",
+        "attempts": 1,
+        "latency_ms": 2734.511599999678,
+        "usage": {
+          "input_tokens": 1731,
+          "cache_hit_tokens": 1664,
+          "cache_miss_tokens": 67,
+          "reasoning_tokens": 0,
+          "output_tokens": 129,
+          "total_tokens": 1860
+        }
+      },
+      "visual_candidates": {
+        "entities": [
+          {
+            "local_id": "e1",
+            "representative_name": "苏绫",
+            "mention_quote": "苏绫",
+            "mention_kind": "name",
+            "confidence": 1.0
+          }
+        ],
+        "visual_candidates": [],
+        "deferred_items": [
+          {
+            "reason_code": "unsupported_visual_field",
+            "evidence_quote": "妩媚动人",
+            "detail": "The description '妩媚动人' is an opinion about charm/beauty, not a directly narrated visual fact."
+          }
+        ]
+      },
+      "grounded_visual_result": {
+        "mentions": [],
+        "observations": [],
+        "warnings": [
+          "provider_deferred:unsupported_visual_field"
+        ]
+      },
+      "score": {
+        "case_id": "reported-attractiveness-not-complexion",
+        "true_positive": 0,
+        "false_positive": 0,
+        "false_negative": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "exact_evidence_rate": 1.0,
+        "passed": true
+      }
+    },
+    {
+      "case": {
+        "id": "clothing-coverage-not-body-build",
+        "text": "少年顾川赤着上身站在雨中，文中没有描述他的高矮胖瘦。",
+        "expected_observations": [
+          {
+            "character_name": "顾川",
+            "field_path": "clothing.coverage",
+            "value": "上身未着衣",
+            "evidence_quote": "赤着上身",
+            "epistemic_status": "asserted",
+            "life_phase_key": null
+          }
+        ],
+        "slice_tags": [
+          "direct",
+          "clothing",
+          "coverage",
+          "negative-field-confusion"
+        ],
+        "severity": "critical",
+        "notes": "衣物覆盖状态不得写入 body.build；显式否认也不得触发体型猜测。"
+      },
+      "provider_metadata": {
+        "wire_api": "chat_completions",
+        "provider_request_id": "9fed7f73-98a7-4eca-8dea-406ac9cf33b5",
+        "response_model": "deepseek-v4-flash",
+        "status": "completed",
+        "finish_reason": "stop",
+        "attempts": 1,
+        "latency_ms": 3299.6767000004184,
+        "usage": {
+          "input_tokens": 1740,
+          "cache_hit_tokens": 1664,
+          "cache_miss_tokens": 76,
+          "reasoning_tokens": 0,
+          "output_tokens": 209,
+          "total_tokens": 1949
+        }
+      },
+      "visual_candidates": {
+        "entities": [
+          {
+            "local_id": "gu_chuan",
+            "representative_name": "顾川",
+            "mention_quote": "少年顾川",
+            "mention_kind": "name",
+            "confidence": 1.0
+          }
+        ],
+        "visual_candidates": [
+          {
+            "entity_ref": "gu_chuan",
+            "field_path": "clothing.coverage",
+            "value": "upper body bare",
+            "evidence_quote": "赤着上身",
+            "epistemic_status": "asserted",
+            "confidence": 1.0,
+            "temporal_signals": []
+          }
+        ],
+        "deferred_items": [
+          {
+            "reason_code": "unsupported_visual_field",
+            "evidence_quote": "文中没有描述他的高矮胖瘦",
+            "detail": "The text explicitly states that height and build are not described, so no visual fact is asserted."
+          }
+        ]
+      },
+      "grounded_visual_result": {
+        "mentions": [
+          {
+            "text": "少年顾川",
+            "canonical_name": "顾川",
+            "start": 0,
+            "end": 4,
+            "kind": "name"
+          }
+        ],
+        "observations": [
+          {
+            "character_name": "顾川",
+            "field_path": "clothing.coverage",
+            "value": "upper body bare",
+            "evidence_quote": "赤着上身",
+            "start": 4,
+            "end": 8,
+            "epistemic_status": "asserted",
+            "confidence": 1.0,
+            "life_phase_key": null,
+            "life_phase_label": null
+          }
+        ],
+        "warnings": [
+          "provider_deferred:unsupported_visual_field"
+        ]
+      },
+      "score": {
+        "case_id": "clothing-coverage-not-body-build",
+        "true_positive": 0,
+        "false_positive": 1,
+        "false_negative": 1,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "exact_evidence_rate": 0.0,
+        "passed": false
+      }
+    },
+    {
+      "case": {
+        "id": "tattoo-not-scar",
+        "text": "顾川左肩有一片墨色飞鸟纹身。",
+        "expected_observations": [
+          {
+            "character_name": "顾川",
+            "field_path": "distinctive_marks.tattoo",
+            "value": "左肩墨色飞鸟纹身",
+            "evidence_quote": "左肩有一片墨色飞鸟纹身",
+            "epistemic_status": "asserted",
+            "life_phase_key": null
+          }
+        ],
+        "slice_tags": [
+          "direct",
+          "persistent-change",
+          "tattoo",
+          "negative-field-confusion"
+        ],
+        "severity": "critical",
+        "notes": "纹身与疤痕是不同的持久视觉标记，不得互相替代。"
+      },
+      "provider_metadata": {
+        "wire_api": "chat_completions",
+        "provider_request_id": "b84caa84-523e-4dc9-ab05-aacb84134a1a",
+        "response_model": "deepseek-v4-flash",
+        "status": "completed",
+        "finish_reason": "stop",
+        "attempts": 1,
+        "latency_ms": 3194.1717000008794,
+        "usage": {
+          "input_tokens": 1735,
+          "cache_hit_tokens": 1664,
+          "cache_miss_tokens": 71,
+          "reasoning_tokens": 0,
+          "output_tokens": 168,
+          "total_tokens": 1903
+        }
+      },
+      "visual_candidates": {
+        "entities": [
+          {
+            "local_id": "gu_chuan",
+            "representative_name": "顾川",
+            "mention_quote": "顾川",
+            "mention_kind": "name",
+            "confidence": 1.0
+          }
+        ],
+        "visual_candidates": [
+          {
+            "entity_ref": "gu_chuan",
+            "field_path": "distinctive_marks.tattoo",
+            "value": "左肩，墨色，飞鸟纹身",
+            "evidence_quote": "左肩有一片墨色飞鸟纹身",
+            "epistemic_status": "asserted",
+            "confidence": 1.0,
+            "temporal_signals": []
+          }
+        ],
+        "deferred_items": []
+      },
+      "grounded_visual_result": {
+        "mentions": [
+          {
+            "text": "顾川",
+            "canonical_name": "顾川",
+            "start": 0,
+            "end": 2,
+            "kind": "name"
+          }
+        ],
+        "observations": [
+          {
+            "character_name": "顾川",
+            "field_path": "distinctive_marks.tattoo",
+            "value": "左肩，墨色，飞鸟纹身",
+            "evidence_quote": "左肩有一片墨色飞鸟纹身",
+            "start": 2,
+            "end": 13,
+            "epistemic_status": "asserted",
+            "confidence": 1.0,
+            "life_phase_key": null,
+            "life_phase_label": null
+          }
+        ],
+        "warnings": []
+      },
+      "score": {
+        "case_id": "tattoo-not-scar",
+        "true_positive": 0,
+        "false_positive": 1,
+        "false_negative": 1,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "exact_evidence_rate": 0.0,
+        "passed": false
+      }
+    },
+    {
+      "case": {
+        "id": "compound-outfit-atomic",
+        "text": "梁策戴毡帽，穿青布短褂，束棕色腰带，脚蹬黑靴。",
+        "expected_observations": [
+          {
+            "character_name": "梁策",
+            "field_path": "accessories.headwear",
+            "value": "毡帽",
+            "evidence_quote": "戴毡帽",
+            "epistemic_status": "asserted",
+            "life_phase_key": null
+          },
+          {
+            "character_name": "梁策",
+            "field_path": "clothing.type",
+            "value": "短褂",
+            "evidence_quote": "青布短褂",
+            "epistemic_status": "asserted",
+            "life_phase_key": null
+          },
+          {
+            "character_name": "梁策",
+            "field_path": "clothing.color",
+            "value": "青色",
+            "evidence_quote": "青布短褂",
+            "epistemic_status": "asserted",
+            "life_phase_key": null
+          },
+          {
+            "character_name": "梁策",
+            "field_path": "clothing.material",
+            "value": "布",
+            "evidence_quote": "青布短褂",
+            "epistemic_status": "asserted",
+            "life_phase_key": null
+          },
+          {
+            "character_name": "梁策",
+            "field_path": "accessories.belt",
+            "value": "棕色腰带",
+            "evidence_quote": "束棕色腰带",
+            "epistemic_status": "asserted",
+            "life_phase_key": null
+          },
+          {
+            "character_name": "梁策",
+            "field_path": "clothing.footwear",
+            "value": "黑靴",
+            "evidence_quote": "脚蹬黑靴",
+            "epistemic_status": "asserted",
+            "life_phase_key": null
+          }
+        ],
+        "slice_tags": [
+          "direct",
+          "clothing",
+          "accessories",
+          "atomic",
+          "multiple-fields"
+        ],
+        "severity": "critical",
+        "notes": "复合服饰描写必须按视觉维度拆分，不能把整句塞入一个 clothing.style。"
+      },
+      "provider_metadata": {
+        "wire_api": "chat_completions",
+        "provider_request_id": "f93fb339-3679-45e5-b64d-87b3bc191cda",
+        "response_model": "deepseek-v4-flash",
+        "status": "completed",
+        "finish_reason": "stop",
+        "attempts": 1,
+        "latency_ms": 3914.4999999989523,
+        "usage": {
+          "input_tokens": 1743,
+          "cache_hit_tokens": 1664,
+          "cache_miss_tokens": 79,
+          "reasoning_tokens": 0,
+          "output_tokens": 390,
+          "total_tokens": 2133
+        }
+      },
+      "visual_candidates": {
+        "entities": [
+          {
+            "local_id": "e1",
+            "representative_name": "梁策",
+            "mention_quote": "梁策",
+            "mention_kind": "name",
+            "confidence": 1.0
+          }
+        ],
+        "visual_candidates": [
+          {
+            "entity_ref": "e1",
+            "field_path": "accessories.headwear",
+            "value": "毡帽",
+            "evidence_quote": "戴毡帽",
+            "epistemic_status": "asserted",
+            "confidence": 1.0,
+            "temporal_signals": []
+          },
+          {
+            "entity_ref": "e1",
+            "field_path": "clothing.type",
+            "value": "短褂",
+            "evidence_quote": "穿青布短褂",
+            "epistemic_status": "asserted",
+            "confidence": 1.0,
+            "temporal_signals": []
+          },
+          {
+            "entity_ref": "e1",
+            "field_path": "clothing.color",
+            "value": "青色",
+            "evidence_quote": "青布短褂",
+            "epistemic_status": "asserted",
+            "confidence": 1.0,
+            "temporal_signals": []
+          },
+          {
+            "entity_ref": "e1",
+            "field_path": "clothing.material",
+            "value": "布",
+            "evidence_quote": "青布短褂",
+            "epistemic_status": "asserted",
+            "confidence": 1.0,
+            "temporal_signals": []
+          },
+          {
+            "entity_ref": "e1",
+            "field_path": "accessories.belt",
+            "value": "棕色腰带",
+            "evidence_quote": "束棕色腰带",
+            "epistemic_status": "asserted",
+            "confidence": 1.0,
+            "temporal_signals": []
+          },
+          {
+            "entity_ref": "e1",
+            "field_path": "clothing.footwear",
+            "value": "黑靴",
+            "evidence_quote": "脚蹬黑靴",
+            "epistemic_status": "asserted",
+            "confidence": 1.0,
+            "temporal_signals": []
+          }
+        ],
+        "deferred_items": []
+      },
+      "grounded_visual_result": {
+        "mentions": [
+          {
+            "text": "梁策",
+            "canonical_name": "梁策",
+            "start": 0,
+            "end": 2,
+            "kind": "name"
+          }
+        ],
+        "observations": [
+          {
+            "character_name": "梁策",
+            "field_path": "accessories.headwear",
+            "value": "毡帽",
+            "evidence_quote": "戴毡帽",
+            "start": 2,
+            "end": 5,
+            "epistemic_status": "asserted",
+            "confidence": 1.0,
+            "life_phase_key": null,
+            "life_phase_label": null
+          },
+          {
+            "character_name": "梁策",
+            "field_path": "clothing.type",
+            "value": "短褂",
+            "evidence_quote": "穿青布短褂",
+            "start": 6,
+            "end": 11,
+            "epistemic_status": "asserted",
+            "confidence": 1.0,
+            "life_phase_key": null,
+            "life_phase_label": null
+          },
+          {
+            "character_name": "梁策",
+            "field_path": "clothing.color",
+            "value": "青色",
+            "evidence_quote": "青布短褂",
+            "start": 7,
+            "end": 11,
+            "epistemic_status": "asserted",
+            "confidence": 1.0,
+            "life_phase_key": null,
+            "life_phase_label": null
+          },
+          {
+            "character_name": "梁策",
+            "field_path": "clothing.material",
+            "value": "布",
+            "evidence_quote": "青布短褂",
+            "start": 7,
+            "end": 11,
+            "epistemic_status": "asserted",
+            "confidence": 1.0,
+            "life_phase_key": null,
+            "life_phase_label": null
+          },
+          {
+            "character_name": "梁策",
+            "field_path": "accessories.belt",
+            "value": "棕色腰带",
+            "evidence_quote": "束棕色腰带",
+            "start": 12,
+            "end": 17,
+            "epistemic_status": "asserted",
+            "confidence": 1.0,
+            "life_phase_key": null,
+            "life_phase_label": null
+          },
+          {
+            "character_name": "梁策",
+            "field_path": "clothing.footwear",
+            "value": "黑靴",
+            "evidence_quote": "脚蹬黑靴",
+            "start": 18,
+            "end": 22,
+            "epistemic_status": "asserted",
+            "confidence": 1.0,
+            "life_phase_key": null,
+            "life_phase_label": null
+          }
+        ],
+        "warnings": []
+      },
+      "score": {
+        "case_id": "compound-outfit-atomic",
+        "true_positive": 6,
+        "false_positive": 0,
+        "false_negative": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "exact_evidence_rate": 0.8333333333333334,
+        "passed": false
+      }
+    },
+    {
+      "case": {
+        "id": "white-hair-and-beard-atomic",
+        "text": "陆伯的头发和长须都已雪白。",
+        "expected_observations": [
+          {
+            "character_name": "陆伯",
+            "field_path": "hair.color",
+            "value": "雪白",
+            "evidence_quote": "头发和长须都已雪白",
+            "epistemic_status": "asserted",
+            "life_phase_key": null
+          },
+          {
+            "character_name": "陆伯",
+            "field_path": "distinctive_marks.beard",
+            "value": "雪白长须",
+            "evidence_quote": "头发和长须都已雪白",
+            "epistemic_status": "asserted",
+            "life_phase_key": null
+          }
+        ],
+        "slice_tags": [
+          "direct",
+          "hair",
+          "beard",
+          "atomic",
+          "shared-evidence"
+        ],
+        "severity": "important",
+        "notes": "共享证据中的头发与胡须是两个可独立用于出图的原子事实。"
+      },
+      "provider_metadata": {
+        "wire_api": "chat_completions",
+        "provider_request_id": "4852faa4-953a-417d-b3c0-c6062e7edb94",
+        "response_model": "deepseek-v4-flash",
+        "status": "completed",
+        "finish_reason": "stop",
+        "attempts": 1,
+        "latency_ms": 3075.46050000019,
+        "usage": {
+          "input_tokens": 1733,
+          "cache_hit_tokens": 1664,
+          "cache_miss_tokens": 69,
+          "reasoning_tokens": 0,
+          "output_tokens": 214,
+          "total_tokens": 1947
+        }
+      },
+      "visual_candidates": {
+        "entities": [
+          {
+            "local_id": "e1",
+            "representative_name": "陆伯",
+            "mention_quote": "陆伯",
+            "mention_kind": "name",
+            "confidence": 1.0
+          }
+        ],
+        "visual_candidates": [
+          {
+            "entity_ref": "e1",
+            "field_path": "hair.color",
+            "value": "雪白",
+            "evidence_quote": "头发和长须都已雪白",
+            "epistemic_status": "asserted",
+            "confidence": 1.0,
+            "temporal_signals": []
+          },
+          {
+            "entity_ref": "e1",
+            "field_path": "distinctive_marks.beard",
+            "value": "长须，雪白",
+            "evidence_quote": "头发和长须都已雪白",
+            "epistemic_status": "asserted",
+            "confidence": 1.0,
+            "temporal_signals": []
+          }
+        ],
+        "deferred_items": []
+      },
+      "grounded_visual_result": {
+        "mentions": [
+          {
+            "text": "陆伯",
+            "canonical_name": "陆伯",
+            "start": 0,
+            "end": 2,
+            "kind": "name"
+          }
+        ],
+        "observations": [
+          {
+            "character_name": "陆伯",
+            "field_path": "hair.color",
+            "value": "雪白",
+            "evidence_quote": "头发和长须都已雪白",
+            "start": 3,
+            "end": 12,
+            "epistemic_status": "asserted",
+            "confidence": 1.0,
+            "life_phase_key": null,
+            "life_phase_label": null
+          },
+          {
+            "character_name": "陆伯",
+            "field_path": "distinctive_marks.beard",
+            "value": "长须，雪白",
+            "evidence_quote": "头发和长须都已雪白",
+            "start": 3,
+            "end": 12,
+            "epistemic_status": "asserted",
+            "confidence": 1.0,
+            "life_phase_key": null,
+            "life_phase_label": null
+          }
+        ],
+        "warnings": []
+      },
+      "score": {
+        "case_id": "white-hair-and-beard-atomic",
+        "true_positive": 1,
+        "false_positive": 1,
+        "false_negative": 1,
+        "precision": 0.5,
+        "recall": 0.5,
+        "f1": 0.5,
+        "exact_evidence_rate": 0.5,
+        "passed": false
+      }
+    }
+  ]
+}

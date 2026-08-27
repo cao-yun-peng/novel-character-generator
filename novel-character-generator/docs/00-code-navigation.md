@@ -2,7 +2,7 @@
 
 > [← 当前实现状态](00-current-status.md) · [文档索引](README.md) · [架构蓝图 →](02-architecture-and-tech-stack.md)
 >
-> 文档版本：3.0 · 修订日期：2026-08-24
+> 文档版本：3.1 · 修订日期：2026-08-27
 
 ## 先记住这条调用链
 
@@ -31,6 +31,7 @@ HTTP 请求
 | [`domain/value_objects/`](../src/novel_character_generator/domain/value_objects) | 时间作用域等不可变值对象 | API 路由逻辑 |
 | [`infrastructure/db/`](../src/novel_character_generator/infrastructure/db) | ORM、Session、Repository、数据库持久化 | 用户流程编排 |
 | [`infrastructure/llm/`](../src/novel_character_generator/infrastructure/llm) | Mock 与 OpenAI-compatible 抽取 Provider | 角色合并、审批等业务决策 |
+| [`infrastructure/image/`](../src/novel_character_generator/infrastructure/image) | Image Provider 适配器；当前只有不收费的 Mock | Profile 审批、阶段解析和候选锁定规则 |
 | [`infrastructure/storage/`](../src/novel_character_generator/infrastructure/storage) | 本地产物存储 | 业务状态机 |
 | [`agents/`](../src/novel_character_generator/agents) | 有界 AgentRuntime、工具执行与结构化结果 | 无限制循环或直接数据库写入 |
 | [`workers/`](../src/novel_character_generator/workers) | 长任务领取、租约、checkpoint、重试和步骤处理 | 新的业务真值体系 |
@@ -49,15 +50,17 @@ HTTP 请求
 | 角色与原子视觉事实提取 | 由分析 Run 触发 | [`handlers/extraction.py`](../src/novel_character_generator/workers/handlers/extraction.py)、[`visual_fields.py`](../src/novel_character_generator/domain/policies/visual_fields.py)、[`repositories/extraction.py`](../src/novel_character_generator/infrastructure/db/repositories/extraction.py) | [`test_visual_fields.py`](../tests/unit/domain/test_visual_fields.py)、[`test_extraction_slice.py`](../tests/integration/test_extraction_slice.py) |
 | LLM 抽取适配 | — | [`openai_compatible.py`](../src/novel_character_generator/infrastructure/llm/openai_compatible.py)、[`mock.py`](../src/novel_character_generator/infrastructure/llm/mock.py) | 对应 `tests/unit/test_*_extraction.py` |
 | Run、SSE、取消、重试 | [`routes/runs.py`](../src/novel_character_generator/api/routes/runs.py) | [`RunService`](../src/novel_character_generator/application/services/run_service.py)、[`run_events.py`](../src/novel_character_generator/infrastructure/db/repositories/run_events.py) | [`test_run_events_and_external_operations.py`](../tests/integration/test_run_events_and_external_operations.py) |
+| R1–R3 运行观察台 | [`routes/runs.py`](../src/novel_character_generator/api/routes/runs.py) | [`RunInspectorService`](../src/novel_character_generator/application/services/run_inspector_service.py)、[`web/app.js`](../src/novel_character_generator/web/app.js) | [`test_text_analysis_run.py`](../tests/integration/test_text_analysis_run.py)、[`test_phase_resolution_pipeline.py`](../tests/integration/test_phase_resolution_pipeline.py)、[`test_health.py`](../tests/integration/test_health.py) |
 | Worker 租约和 fencing | — | [`task_claim.py`](../src/novel_character_generator/workers/task_claim.py)、[`workers/main.py`](../src/novel_character_generator/workers/main.py) | [`test_task_recovery.py`](../tests/integration/test_task_recovery.py) |
 | 时间线、事件、场景 | [`routes/story.py`](../src/novel_character_generator/api/routes/story.py) | [`StoryService`](../src/novel_character_generator/application/services/story_service.py) | [`story.py`](../src/novel_character_generator/domain/entities/story.py)、[`test_story_temporal_api.py`](../tests/integration/test_story_temporal_api.py) |
+| 人物阶段与观察时间作用域 | [`routes/story.py`](../src/novel_character_generator/api/routes/story.py) | [`phase_resolution_service.py`](../src/novel_character_generator/application/services/phase_resolution_service.py)、[`repositories/phase_resolution.py`](../src/novel_character_generator/infrastructure/db/repositories/phase_resolution.py)、[`handlers/phase_resolution.py`](../src/novel_character_generator/workers/handlers/phase_resolution.py) | [`test_phase_resolution_service.py`](../tests/unit/test_phase_resolution_service.py)、[`test_phase_resolution_pipeline.py`](../tests/integration/test_phase_resolution_pipeline.py) |
 | 角色查询、合并和拆分 | [`routes/characters.py`](../src/novel_character_generator/api/routes/characters.py) | [`CharacterEntityService`](../src/novel_character_generator/application/services/character_entity_service.py) | [`test_character_entity_api.py`](../tests/integration/test_character_entity_api.py) |
 | 外观聚合、冲突、档案和快照 | [`routes/characters.py`](../src/novel_character_generator/api/routes/characters.py) | [`AppearanceAggregationService`](../src/novel_character_generator/application/services/appearance_aggregation_service.py)、[`appearance_aggregation.py`](../src/novel_character_generator/domain/policies/appearance_aggregation.py)、[`AppearanceService`](../src/novel_character_generator/application/services/appearance_service.py) | [`test_appearance_aggregation_pipeline.py`](../tests/integration/test_appearance_aggregation_pipeline.py)、[`test_character_appearance_api.py`](../tests/integration/test_character_appearance_api.py) |
 | 人工审批 | [`routes/approvals.py`](../src/novel_character_generator/api/routes/approvals.py) | [`ApprovalService`](../src/novel_character_generator/application/services/approval_service.py) | [`test_approval_and_agent_api.py`](../tests/integration/test_approval_and_agent_api.py) |
 | AgentRuntime | [`routes/agent_runs.py`](../src/novel_character_generator/api/routes/agent_runs.py) | [`structured_runtime.py`](../src/novel_character_generator/agents/structured_runtime.py)、[`AgentExecutionService`](../src/novel_character_generator/application/services/agent_execution_service.py) | [`test_structured_agent_runtime.py`](../tests/unit/test_structured_agent_runtime.py) |
 | 评测数据层 | 暂无公开执行 API | [`repositories/evaluation.py`](../src/novel_character_generator/infrastructure/db/repositories/evaluation.py) | [`evaluation.py`](../src/novel_character_generator/domain/entities/evaluation.py)、[`test_evaluation_repository.py`](../tests/integration/test_evaluation_repository.py) |
-| 图像生成 | 尚无 | 只有 [`domain/entities/image.py`](../src/novel_character_generator/domain/entities/image.py) 和 ORM 预留 | 设计见 [`06-image-generation-and-drift-control.md`](06-image-generation-and-drift-control.md) |
-| 日志检查 | 尚无 | 需要新增 observability 事件层和 checker | 设计见 [`13-observability-logging-and-cost.md`](13-observability-logging-and-cost.md) |
+| Mock 图像生成 | [`routes/image_generation.py`](../src/novel_character_generator/api/routes/image_generation.py) | [`GenerationContextBuilder`](../src/novel_character_generator/application/services/generation_context_service.py)、[`handlers/image_generation.py`](../src/novel_character_generator/workers/handlers/image_generation.py)、[`mock.py`](../src/novel_character_generator/infrastructure/image/mock.py) | [`test_image_generation_pipeline.py`](../tests/integration/test_image_generation_pipeline.py)；真实 Provider、审计和 baseline 见 [`18-image-generation-implementation-contract.md`](18-image-generation-implementation-contract.md) |
+| 日志检查 | 尚无 | 当前 Run Inspector 读取业务产物与 RunEvent，但仍需 OpenTelemetry 关联、统一事件层和 checker | 设计见 [`13-observability-logging-and-cost.md`](13-observability-logging-and-cost.md) |
 
 ## 新开发者推荐阅读顺序
 
@@ -69,13 +72,13 @@ HTTP 请求
 
 从 [`routes/novels.py`](../src/novel_character_generator/api/routes/novels.py) 进入 [`IngestionService`](../src/novel_character_generator/application/services/ingestion_service.py)，观察如何保存源文件、创建版本和 PipelineRun。
 
-### 第三步：跟 Worker 推进三个步骤
+### 第三步：跟 Worker 推进四个步骤
 
-读 [`workers/main.py`](../src/novel_character_generator/workers/main.py)，再读 [`task_claim.py`](../src/novel_character_generator/workers/task_claim.py)。当前文本 Run 依次处理 `normalize_and_chunk`、`extract_characters` 和 `aggregate_appearance`。
+读 [`workers/main.py`](../src/novel_character_generator/workers/main.py)，再读 [`task_claim.py`](../src/novel_character_generator/workers/task_claim.py)。当前文本 Run 依次处理 `normalize_and_chunk`、`extract_characters`、`resolve_character_phases` 和 `aggregate_appearance`。
 
 ### 第四步：看证据如何落库
 
-读 [`handlers/extraction.py`](../src/novel_character_generator/workers/handlers/extraction.py)、[`ports/extraction.py`](../src/novel_character_generator/application/ports/extraction.py)、[`visual_fields.py`](../src/novel_character_generator/domain/policies/visual_fields.py) 和 [`repositories/extraction.py`](../src/novel_character_generator/infrastructure/db/repositories/extraction.py)。重点理解原子字段规范化、人生阶段、证据区间修复、extractor version、source version、fingerprint 和幂等。
+读 [`handlers/extraction.py`](../src/novel_character_generator/workers/handlers/extraction.py)、[`ports/extraction.py`](../src/novel_character_generator/application/ports/extraction.py)、[`visual_fields.py`](../src/novel_character_generator/domain/policies/visual_fields.py)、[`repositories/entity_resolution.py`](../src/novel_character_generator/infrastructure/db/repositories/entity_resolution.py)和 [`repositories/phase_resolution.py`](../src/novel_character_generator/infrastructure/db/repositories/phase_resolution.py)。重点理解人物归属与时间作用域分离、事实级信号不扩散、pending/final 门禁、extractor version、source version、fingerprint 和幂等。
 
 ### 第五步：看人工修正如何工作
 

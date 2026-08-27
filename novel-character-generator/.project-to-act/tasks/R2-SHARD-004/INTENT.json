@@ -1,0 +1,17 @@
+{
+  "task_id": "R2-SHARD-004",
+  "current_behavior": "dirty frontier 已避免重复提交旧 unresolved，但单个 frontier 仍是一次模型调用；Provider 原始遗漏只被记录，随后直接保守补成 keep_unresolved。",
+  "desired_behavior": "按失败数据校准的 record、mention、完整请求输入和预计输出预算生成原子 shard，逐 shard 校验安全覆盖；只对未覆盖记录发起有限 repair，最终仍不完整时显式降级并标出警告。",
+  "dependencies": [
+    "R2-FRONTIER-003 dirty frontier",
+    "EntityConvergenceInput/Result Schema",
+    "CharacterConvergenceBatch 恢复与幂等",
+    "RunEvent、Run Inspector 与开发 raw response 查看器"
+  ],
+  "validation": [
+    "record/mention/完整请求输入/输出预算分片和单记录超预算单元测试",
+    "遗漏 repair 成功与 repair 耗尽集成测试",
+    "恢复、调用预算和 Trace/Inspector 契约测试",
+    "全量 Pytest、Ruff、Mypy、Node"
+  ]
+}

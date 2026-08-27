@@ -10,6 +10,11 @@ const state = {
   file: null,
   novel: null,
   run: null,
+  runInspection: null,
+  inspectorOutput: null,
+  inspectorOutputTab: "structured",
+  rawModelResponse: null,
+  rawModelResponseError: null,
   pollTimer: null,
   indexPollTimer: null,
   characters: [],
@@ -40,6 +45,28 @@ const visualFieldGroupLabels = {
   accessories: "配饰",
   marks_injuries: "标记与伤势",
   disguise_cleanliness: "伪装与整洁",
+};
+const inspectorMetricLabels = {
+  visual_candidates: "视觉候选",
+  entity_mentions: "人物提及",
+  grounded_facts: "已定位事实",
+  grounding_acceptance_rate: "定位接受率 %",
+  temporal_signals: "时间信号",
+  deferred_items: "延后项",
+  warnings: "定位警告",
+  provider_failures: "调用异常",
+  resolved_chunks: "已解析块",
+  convergence_batches: "收敛批次",
+  stable_entities: "稳定人物",
+  provisional_entities: "候选人物",
+  unresolved_entities: "未决人物",
+  phase_resolutions: "人物解析",
+  life_phases: "人生阶段",
+  final_bindings: "最终作用域",
+  needs_review_bindings: "待审作用域",
+  unresolved_temporal_signals: "未决时间信号",
+  active_observations: "有效事实",
+  pending_observations: "待审事实",
 };
 
 class ApiError extends Error {
@@ -89,6 +116,7 @@ function humanStatus(value) {
     waiting_approval: "等待审核",
     succeeded: "已完成",
     completed: "已完成",
+    completed_with_warnings: "已完成（有警告）",
     failed: "失败",
     cancelled: "已取消",
     uploaded: "已上传",
@@ -168,6 +196,7 @@ async function loadCapabilities() {
       ["角色提取", capabilities.extraction],
       ["外观聚合", capabilities.appearance_aggregation],
       ["任务恢复", capabilities.run_events_sse],
+      ["原始响应", capabilities.raw_model_response_viewer],
       ["人工审核", capabilities.human_approvals],
       ["视觉精提取", capabilities.visual_enrichment],
       ["2D 图像", capabilities.image_generation],
@@ -227,6 +256,10 @@ function resetProjectWorkspace() {
   stopPolling();
   stopIndexPolling();
   state.run = null;
+  state.runInspection = null;
+  state.inspectorOutput = null;
+  state.rawModelResponse = null;
+  state.rawModelResponseError = null;
   state.characters = [];
   state.selectedCharacter = null;
   state.details = null;
@@ -244,9 +277,15 @@ function resetProjectWorkspace() {
   renderGenerationCharacterOptions();
   $("#character-detail").innerHTML = '<div class="empty-state"><span class="portrait-placeholder" aria-hidden="true">?</span><strong>选择一个角色</strong><p>这里将展示外观事实、证据与阶段状态。</p></div>';
   renderCharacterReview();
+  renderRunInspector();
+  renderInspectorOutput();
 }
 
 function renderNoRun() {
+  state.runInspection = null;
+  state.inspectorOutput = null;
+  state.rawModelResponse = null;
+  state.rawModelResponseError = null;
   $("#run-status").textContent = "尚未创建";
   $("#run-status").className = "panel-status muted";
   $("#run-progress-label").textContent = "等待创建任务";
@@ -259,6 +298,8 @@ function renderNoRun() {
   $("#cancel-run-button").disabled = true;
   $("#cancel-run-button").textContent = "停止任务";
   $("#refresh-run-button").disabled = true;
+  renderRunInspector();
+  renderInspectorOutput();
 }
 
 async function openProject(novelId = $("#project-select").value) {
@@ -284,6 +325,7 @@ async function openProject(novelId = $("#project-select").value) {
       return;
     }
     state.run = await api(`/api/v1/runs/${analysisRun.id}`);
+    await loadRunInspection();
     $("#refresh-run-button").disabled = false;
     renderRun();
     await loadPartialAnalysis();
@@ -432,6 +474,10 @@ async function startAnalysis() {
       headers: { "Idempotency-Key": `ui-analysis-${state.novel.id}-${crypto.randomUUID()}` },
     });
     state.characters = [];
+    state.runInspection = null;
+    state.inspectorOutput = null;
+    state.rawModelResponse = null;
+    state.rawModelResponseError = null;
     state.selectedCharacter = null;
     state.details = null;
     state.timelines = [];
@@ -439,6 +485,8 @@ async function startAnalysis() {
     state.restartAfterCancel = false;
     $("#refresh-run-button").disabled = false;
     renderRun();
+    renderRunInspector();
+    renderInspectorOutput();
     beginPolling();
     toast("分析任务已创建，Worker 将异步处理。 ");
   } catch (error) {
@@ -451,6 +499,7 @@ async function refreshRun() {
   if (!state.run) return;
   try {
     state.run = await api(`/api/v1/runs/${state.run.id}`);
+    await loadRunInspection();
     renderRun();
     await loadPartialAnalysis();
     if (terminalRunStates.has(state.run.status)) {
@@ -526,7 +575,7 @@ function renderRun() {
   if (!state.run) return;
   const steps = state.run.steps || [];
   const completed = steps.filter((step) => completedStepStates.has(step.status)).length;
-  const expectedStepCount = 3;
+  const expectedStepCount = 4;
   const extractionStep = steps.find((step) => step.step_key === "extract_characters");
   const extractedChunks = Number(extractionStep?.cursor?.current_chunk_ordinal || 0);
   const totalChunks = Number(state.novel?.chunk_count || 0);
@@ -559,6 +608,281 @@ function renderRun() {
   $("#restart-run-button").textContent = state.restartAfterCancel ? "停止后自动重启…" : "重启分析";
   $("#cancel-run-button").disabled = terminal || state.run.cancel_requested;
   $("#cancel-run-button").textContent = !terminal && state.run.cancel_requested ? "正在停止…" : "停止任务";
+}
+
+async function loadRunInspection() {
+  if (!state.run) return;
+  try {
+    state.runInspection = await api(`/api/v1/runs/${state.run.id}/inspection`);
+    renderRunInspector();
+  } catch (error) {
+    console.warn("Unable to load run inspection", error);
+  }
+}
+
+function inspectorStageClass(stage) {
+  if (stage.status === "failed") return "failed";
+  if (["claimed", "running", "retry_scheduled"].includes(stage.status)) return "running";
+  if (stage.attention_reasons?.length) return "attention";
+  if (completedStepStates.has(stage.status)) return "complete";
+  return "";
+}
+
+function renderRunInspector() {
+  const grid = $("#run-inspector-grid");
+  if (!grid) return;
+  const stages = state.runInspection?.stages || [];
+  if (!stages.length) {
+    grid.innerHTML = '<div class="empty-state compact">分析开始后展示各阶段进度、指标与结构化产出</div>';
+    return;
+  }
+  grid.innerHTML = stages.map((stage) => {
+    const metrics = Object.entries(stage.metrics || {}).map(([key, value]) => `
+      <div class="inspector-metric"><strong>${escapeHtml(value ?? "—")}</strong><span>${escapeHtml(inspectorMetricLabels[key] || key)}</span></div>
+    `).join("");
+    const outputs = (stage.outputs || []).map((output) => `
+      <option value="${escapeHtml(output.id)}" data-kind="${escapeHtml(output.kind)}">${escapeHtml(output.label)} · ${escapeHtml(humanStatus(output.status))}</option>
+    `).join("");
+    const usage = stage.usage?.calls
+      ? `${stage.usage.calls} 次模型调用 · ${stage.usage.total_tokens || 0} tokens · ${Math.round(stage.usage.latency_ms || 0)} ms`
+      : stage.execution_kind === "code" ? "代码策略阶段 · 无模型调用" : "尚无模型调用记录";
+    const attention = stage.attention_reasons?.length
+      ? `<p class="inspector-attention">需关注：${escapeHtml(stage.attention_reasons.join(" · "))}</p>`
+      : "";
+    const progressTotal = Number(stage.progress_total || 0);
+    const progressText = progressTotal
+      ? `${stage.progress_current} / ${progressTotal}`
+      : completedStepStates.has(stage.status) ? "已完成" : "等待输入";
+    return `
+      <article class="inspector-stage ${inspectorStageClass(stage)}">
+        <div class="inspector-stage-head"><strong>${escapeHtml(stage.title)}</strong><span>${escapeHtml(humanStatus(stage.status))} · ${escapeHtml(stage.execution_kind)}</span></div>
+        <div class="inspector-progress"><span>阶段进度</span><strong>${escapeHtml(progressText)}</strong></div>
+        <div class="inspector-metrics">${metrics}</div>
+        <p class="inspector-usage">${escapeHtml(usage)}</p>
+        ${attention}
+        <p class="inspector-note">${escapeHtml(stage.quality_note)}</p>
+        <div class="inspector-output-picker">
+          <select id="inspector-output-${escapeHtml(stage.key)}" ${outputs ? "" : "disabled"}>${outputs || '<option>暂无产出</option>'}</select>
+          <button class="button button-secondary inspector-view-output" data-stage="${escapeHtml(stage.key)}" type="button" ${outputs ? "" : "disabled"}>查看产出</button>
+        </div>
+      </article>
+    `;
+  }).join("");
+  $$(".inspector-view-output").forEach((button) => {
+    button.addEventListener("click", () => {
+      const select = $(`#inspector-output-${button.dataset.stage}`);
+      const option = select?.selectedOptions?.[0];
+      if (option) loadInspectorOutput(option.dataset.kind, option.value, button);
+    });
+  });
+}
+
+async function loadInspectorOutput(kind, outputId, button) {
+  if (!state.run || !kind || !outputId) return;
+  setBusy(button, true, "读取中…");
+  try {
+    state.inspectorOutput = await api(
+      `/api/v1/runs/${state.run.id}/inspection/outputs/${encodeURIComponent(kind)}/${encodeURIComponent(outputId)}`,
+    );
+    state.inspectorOutputTab = "structured";
+    state.rawModelResponse = null;
+    state.rawModelResponseError = null;
+    renderInspectorOutput();
+    $("#inspector-output").scrollIntoView({ behavior: "smooth", block: "nearest" });
+  } catch (error) {
+    toast(apiErrorMessage(error), "error");
+  } finally {
+    setBusy(button, false);
+  }
+}
+
+function renderInspectorOutput() {
+  const panel = $("#inspector-output");
+  if (!panel) return;
+  if (!state.inspectorOutput) {
+    panel.classList.add("hidden");
+    $("#inspector-output-content").innerHTML = "";
+    $("#inspector-output-json").textContent = "";
+    state.rawModelResponse = null;
+    state.rawModelResponseError = null;
+    return;
+  }
+  panel.classList.remove("hidden");
+  $("#inspector-output-title").textContent = state.inspectorOutput.label || "阶段产出";
+  $("#inspector-output-content").innerHTML = renderInspectorOutputContent(state.inspectorOutput);
+  $("#inspector-output-json").textContent = JSON.stringify(state.inspectorOutput, null, 2);
+  const rawAvailable = Boolean(
+    state.capabilities?.raw_model_response_viewer
+      && ["r1_chunk", "r2_chunk", "r2_convergence"].includes(state.inspectorOutput.kind),
+  );
+  $("#raw-model-output-tab").classList.toggle("hidden", !rawAvailable);
+  if (!rawAvailable && state.inspectorOutputTab === "raw") state.inspectorOutputTab = "structured";
+  renderInspectorOutputTab();
+}
+
+function renderInspectorOutputTab() {
+  const rawSelected = state.inspectorOutputTab === "raw";
+  $("#structured-output-tab").classList.toggle("active", !rawSelected);
+  $("#structured-output-tab").setAttribute("aria-selected", String(!rawSelected));
+  $("#raw-model-output-tab").classList.toggle("active", rawSelected);
+  $("#raw-model-output-tab").setAttribute("aria-selected", String(rawSelected));
+  $("#structured-output-pane").classList.toggle("hidden", rawSelected);
+  $("#raw-model-output-pane").classList.toggle("hidden", !rawSelected);
+
+  const response = state.rawModelResponse;
+  const stateBox = $("#raw-model-output-state");
+  const meta = $("#raw-model-output-meta");
+  if (!rawSelected) return;
+  if (state.rawModelResponseError) {
+    stateBox.classList.remove("hidden");
+    stateBox.textContent = state.rawModelResponseError;
+    meta.classList.add("hidden");
+    $("#raw-model-message-content").textContent = "";
+    $("#raw-model-response-json").textContent = "";
+    return;
+  }
+  if (!response) {
+    stateBox.classList.remove("hidden");
+    stateBox.textContent = "正在读取模型原始响应…";
+    meta.classList.add("hidden");
+    return;
+  }
+  stateBox.classList.add("hidden");
+  meta.classList.remove("hidden");
+  meta.innerHTML = [
+    [response.kind === "r2_convergence" ? "批次" : "Chunk", response.ordinal],
+    ["捕获时间", formatTimestamp(response.captured_at)],
+    ["响应哈希", shortId(response.payload_hash)],
+    ["输出 ID", shortId(response.output_id)],
+  ].map(([label, value]) => `<div><span>${escapeHtml(label)}</span><strong title="${escapeHtml(value)}">${escapeHtml(value)}</strong></div>`).join("");
+  $("#raw-model-message-content").textContent = typeof response.message_content === "string"
+    ? response.message_content
+    : JSON.stringify(response.message_content, null, 2);
+  $("#raw-model-response-json").textContent = JSON.stringify(response.response_payload, null, 2);
+}
+
+async function loadRawModelResponse() {
+  if (!state.run || !["r1_chunk", "r2_chunk", "r2_convergence"].includes(state.inspectorOutput?.kind)) return;
+  state.rawModelResponse = null;
+  state.rawModelResponseError = null;
+  renderInspectorOutputTab();
+  try {
+    state.rawModelResponse = await api(
+      `/api/v1/runs/${state.run.id}/inspection/outputs/${encodeURIComponent(state.inspectorOutput.kind)}/${encodeURIComponent(state.inspectorOutput.id)}/raw-response`,
+    );
+  } catch (error) {
+    if (error instanceof ApiError && error.code === "raw_model_response_not_captured") {
+      state.rawModelResponseError = "这个 Chunk 来自启用捕获前的旧 Run，数据库里没有原始响应；请新建一次分析 Run。";
+    } else if (error instanceof ApiError && error.code === "raw_model_response_viewer_disabled") {
+      state.rawModelResponseError = "开发原始响应查看器未启用。请配置 LLM_RAW_RESPONSE_CAPTURE_ENABLED=true 并重启 API 与 Worker。";
+    } else {
+      state.rawModelResponseError = apiErrorMessage(error);
+    }
+  }
+  renderInspectorOutputTab();
+}
+
+function selectInspectorOutputTab(tab) {
+  if (!state.inspectorOutput) return;
+  state.inspectorOutputTab = tab;
+  renderInspectorOutputTab();
+  if (tab === "raw") loadRawModelResponse();
+}
+
+function inspectorItems(value, key) {
+  const items = value?.[key];
+  return Array.isArray(items) ? items : [];
+}
+
+function inspectorTraceCard(trace) {
+  if (!trace) return '<div class="inspector-empty">当前记录没有模型调用 trace（可能来自旧 run 或缓存恢复）。</div>';
+  const usage = trace.usage || {};
+  const memory = trace.memory_selection || null;
+  const frontier = trace.convergence_frontier || null;
+  const sharding = trace.convergence_sharding || null;
+  const rows = [
+    ["输入哈希", trace.input_hash ? shortId(trace.input_hash) : "—"],
+    ["结果哈希", trace.result_hash ? shortId(trace.result_hash) : "—"],
+    ["请求 ID", trace.provider_request_id || "—"],
+    ["响应模型", trace.response_model || "—"],
+    ["调用方式", trace.wire_api || "—"],
+    ["尝试次数", trace.attempts ?? "—"],
+    ["耗时", trace.latency_ms != null ? `${Math.round(trace.latency_ms)} ms` : "—"],
+    ["Tokens", usage.total_tokens ?? "—"],
+  ];
+  if (memory) {
+    rows.push(
+      ["Memory 策略", memory.policy || "—"],
+      ["模型视图裁剪", `${memory.records_before ?? 0} → ${memory.records_selected ?? 0}`],
+      ["Memory 丢弃", memory.records_dropped ?? 0],
+      ["完整 Memory 更新", memory.records_after != null ? `${memory.records_before ?? 0} → ${memory.records_after}` : "—"],
+      ["本块净新增", memory.records_added ?? "—"],
+      ["精确命中", memory.reason_counts?.exact_match ?? 0],
+      ["上块活跃", memory.reason_counts?.previous_chunk ?? 0],
+      ["最近补足", memory.reason_counts?.recent_fallback ?? 0],
+      ["入选状态", `stable ${memory.status_selected?.stable ?? 0} / provisional ${memory.status_selected?.provisional ?? 0} / unresolved ${memory.status_selected?.unresolved ?? 0}`],
+      ["更新后状态", `stable ${memory.status_after?.stable ?? 0} / provisional ${memory.status_after?.provisional ?? 0} / unresolved ${memory.status_after?.unresolved ?? 0}`],
+    );
+  }
+  if (frontier) {
+    rows.push(
+      ["收敛策略", frontier.policy || "—"],
+      ["非稳定记录", `${frontier.nonstable_records_before ?? 0} → frontier ${frontier.frontier_records ?? 0}`],
+      ["延后记录", frontier.deferred_records ?? 0],
+      ["Frontier mentions", frontier.frontier_mentions ?? 0],
+      ["延后 mentions", frontier.deferred_mentions ?? 0],
+      ["Provider 覆盖", `${frontier.provider_covered_mentions ?? 0} / ${frontier.frontier_mentions ?? 0}`],
+      ["Provider 遗漏", frontier.provider_omitted_mentions ?? 0],
+      ["保守补全后覆盖", frontier.completed_covered_mentions ?? 0],
+      ["收敛动作", JSON.stringify(frontier.action_counts || {})],
+      ["收敛后状态", `stable ${frontier.status_after?.stable ?? 0} / provisional ${frontier.status_after?.provisional ?? 0} / unresolved ${frontier.status_after?.unresolved ?? 0}`],
+    );
+  }
+  if (sharding) {
+    const budget = sharding.budget || {};
+    rows.push(
+      ["分片策略", sharding.policy || "—"],
+      ["Shard 数", sharding.shard_count ?? 0],
+      ["Shard 预算", `records ${budget.max_records ?? "—"} / mentions ${budget.max_mentions ?? "—"} / input ${budget.max_input_tokens ?? "—"} / output ${budget.max_output_tokens ?? "—"}`],
+      ["输入估算", `${sharding.input_estimator || "—"} / 固定开销 ${sharding.input_token_overhead ?? "—"}`],
+      ["最大 Shard records", sharding.max_shard_records ?? 0],
+      ["最大 Shard mentions", sharding.max_shard_mentions ?? 0],
+      ["最大预计输入", sharding.max_estimated_input_tokens ?? 0],
+      ["最大预计输出", sharding.max_estimated_output_tokens ?? 0],
+      ["Provider 调用", sharding.provider_calls ?? 0],
+      ["Repair 策略", `${sharding.repair_policy || "—"} / 最多 ${sharding.repair_max_attempts ?? 0} 轮`],
+      ["初始未覆盖", sharding.initial_uncovered_mentions ?? 0],
+      ["Repair 次数", sharding.repair_attempts ?? 0],
+      ["Repair 调用预算耗尽", sharding.repair_call_budget_exhausted ? "是" : "否"],
+      ["Repair 补齐", sharding.repaired_mentions ?? 0],
+      ["最终降级 unresolved", sharding.fallback_mentions ?? 0],
+      ["最终 Provider 覆盖率", sharding.final_provider_coverage_ratio != null ? `${(sharding.final_provider_coverage_ratio * 100).toFixed(1)}%` : "—"],
+    );
+  }
+  return `<div class="inspector-trace-grid">${rows.map(([label, value]) => `<div><span>${escapeHtml(label)}</span><strong title="${escapeHtml(value)}">${escapeHtml(value)}</strong></div>`).join("")}</div>`;
+}
+
+function inspectorList(items, emptyText, renderItem) {
+  if (!items.length) return `<div class="inspector-empty">${escapeHtml(emptyText)}</div>`;
+  return `<div class="inspector-detail-list">${items.map(renderItem).join("")}</div>`;
+}
+
+function renderInspectorOutputContent(detail) {
+  if (detail.kind !== "r1_chunk") {
+    return `<section class="inspector-detail-section"><h5>产出摘要</h5><div class="inspector-trace-grid"><div><span>状态</span><strong>${escapeHtml(humanStatus(detail.status))}</strong></div><div><span>版本</span><strong>${escapeHtml(detail.version || "—")}</strong></div><div><span>输入哈希</span><strong>${escapeHtml(detail.input_hash ? shortId(detail.input_hash) : "—")}</strong></div></div></section>${detail.trace ? `<section class="inspector-detail-section"><h5>调用 trace</h5>${inspectorTraceCard(detail.trace)}</section>` : ""}`;
+  }
+  const entities = inspectorItems(detail.output, "entities");
+  const candidates = inspectorItems(detail.output, "visual_candidates");
+  const temporal = inspectorItems(detail.intermediate, "temporal_signals");
+  const facts = inspectorItems(detail.intermediate, "facts");
+  const warnings = inspectorItems(detail.intermediate, "warnings");
+  return `
+    <section class="inspector-detail-section"><h5>调用 trace</h5>${inspectorTraceCard(detail.trace)}</section>
+    <section class="inspector-detail-section"><h5>人物候选 <span>${entities.length}</span></h5>${inspectorList(entities, "本块没有人物候选", (item) => `<div class="inspector-detail-row"><strong>${escapeHtml(item.representative_name || item.mention_quote || "未命名")}</strong><span>${escapeHtml(item.mention_kind || "—")} · 置信度 ${escapeHtml(item.confidence ?? "—")}</span><code>${escapeHtml(item.mention_quote || "")}</code></div>`)}</section>
+    <section class="inspector-detail-section"><h5>已定位视觉事实 <span>${facts.length} / 候选 ${candidates.length}</span></h5>${inspectorList(facts, "本块没有通过门禁的视觉事实", (item) => `<div class="inspector-detail-row"><strong>${escapeHtml(item.field_path || "—")}: ${escapeHtml(typeof item.value === "string" ? item.value : JSON.stringify(item.value))}</strong><span>置信度 ${escapeHtml(item.confidence ?? "—")} · ${escapeHtml(item.epistemic_status || "—")}</span><code>${escapeHtml(item.evidence_quote || "")}</code></div>`)}</section>
+    <section class="inspector-detail-section"><h5>时间 / 状态信号 <span>${temporal.length}</span></h5>${inspectorList(temporal, "本块没有时间或状态信号", (item) => `<div class="inspector-detail-row"><strong>${escapeHtml(item.kind || "—")}: ${escapeHtml(item.label || "—")}</strong><span>置信度 ${escapeHtml(item.confidence ?? "—")}</span><code>${escapeHtml(item.evidence_quote || "")}</code></div>`)}</section>
+    <section class="inspector-detail-section"><h5>门禁提示 <span>${warnings.length}</span></h5>${inspectorList(warnings, "没有定位警告", (item) => `<div class="inspector-warning-row">${escapeHtml(item)}</div>`)}</section>
+  `;
 }
 
 async function afterAnalysisSucceeded() {
@@ -799,7 +1123,7 @@ function renderVisualEnrichmentPanel(errorMessage = "") {
         ${groups.map((group) => `
           <label class="field-gap ${group.covered ? "covered" : "missing"}">
             <input type="checkbox" value="${escapeHtml(group.field_group)}"${recommended.has(group.field_group) ? " checked" : ""}${group.covered ? " disabled" : ""} />
-            <span><strong>${escapeHtml(visualFieldGroupLabels[group.field_group] || group.field_group)}</strong><small>${group.covered ? `已覆盖：${group.observed_field_paths.map((path) => escapeHtml(path)).join("、")}` : `${group.priority === "core" ? "核心缺口" : "可选缺口"}`}</small></span>
+            <span><strong>${escapeHtml(visualFieldGroupLabels[group.field_group] || group.field_group)} · ${Math.round(Number(group.completeness_score || 0) * 100)}%</strong><small>${group.covered ? `完整度达标：${group.observed_field_paths.map((path) => escapeHtml(path)).join("、")}` : `${group.priority === "core" ? "核心缺口" : "可选缺口"} · 待补 ${escapeHtml((group.missing_dimensions || []).join("、") || "有效证据")}`}</small></span>
           </label>`).join("")}
       </div>
       <div class="enrichment-action-row">
@@ -1384,6 +1708,15 @@ function bindEvents() {
   $("#restart-run-button").addEventListener("click", restartAnalysis);
   $("#cancel-run-button").addEventListener("click", () => cancelRun());
   $("#refresh-run-button").addEventListener("click", refreshRun);
+  $("#structured-output-tab").addEventListener("click", () => selectInspectorOutputTab("structured"));
+  $("#raw-model-output-tab").addEventListener("click", () => selectInspectorOutputTab("raw"));
+  $("#close-inspector-output").addEventListener("click", () => {
+    state.inspectorOutput = null;
+    state.rawModelResponse = null;
+    state.rawModelResponseError = null;
+    state.inspectorOutputTab = "structured";
+    renderInspectorOutput();
+  });
   $("#generation-character").addEventListener("change", (event) => selectCharacter(event.target.value));
   $("#generation-form").addEventListener("submit", generateImages);
   $("#reset-button").addEventListener("click", resetPage);

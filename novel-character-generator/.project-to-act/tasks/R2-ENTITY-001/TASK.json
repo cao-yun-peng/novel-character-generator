@@ -1,0 +1,35 @@
+{
+  "id": "R2-ENTITY-001",
+  "title": "人物实体逐章判断与十章收敛",
+  "status": "review",
+  "owner": "Codex",
+  "objective": "在视觉候选抽取后增加模型驱动的人物实体解析，以累计记忆逐章判断、每十章固定收敛，并且只让最终确认的绑定生成正式视觉观察。",
+  "allowed_paths": [
+    "src/novel_character_generator/application/ports",
+    "src/novel_character_generator/application/services",
+    "src/novel_character_generator/infrastructure/db",
+    "src/novel_character_generator/infrastructure/llm",
+    "src/novel_character_generator/workers",
+    "src/novel_character_generator/settings.py",
+    "migrations",
+    "tests",
+    "docs",
+    ".project-to-act"
+  ],
+  "invariants": [
+    "一个 Chunk 等于一章，实体解析按章节顺序消费累计人物记忆",
+    "男孩、孩子、男人、老师、父亲和黑衣人等通用称呼只属于具体 mention，不得成为跨全文全局别名",
+    "代码不根据称呼或视觉特征决定人物身份；逐章 link/create/unresolved 由实体解析模型给出",
+    "每满十个已处理 Chunk 固定执行一次收敛，文末不足十个 Chunk 也必须执行尾批收敛",
+    "只有收敛确认的 mention 到 character 绑定可以生成 FeatureObservation；候选和 unresolved 必须失败关闭",
+    "模型输出必须经过 Schema、ID、引用证据、预算和幂等校验后才能写入"
+  ],
+  "acceptance": [
+    "第 3 章解析输入包含第 1 至 2 章形成的累计人物记忆，而非仅第 2 章",
+    "第 1 章男孩与第 2 章唐三可经模型证据绑定，后文无证据的另一男孩不会继承唐三特征",
+    "第 10、20 等硬边界执行收敛，文末余数执行一次尾批收敛",
+    "未最终确认的视觉事实不进入 FeatureObservation 和外观聚合",
+    "恢复重跑不会重复实体决策、收敛批次或正式观察",
+    "数据库迁移、单元测试、集成测试、Ruff 和 Mypy 全部通过"
+  ]
+}

@@ -14,6 +14,8 @@ EXPECTED_TABLES = {
     "character_appearance_states",
     "character_conflicts",
     "character_entity_operations",
+    "character_resolution_chunks",
+    "character_convergence_batches",
     "character_image_sets",
     "character_render_profiles",
     "character_stage_images",
@@ -29,6 +31,7 @@ EXPECTED_TABLES = {
     "feature_observations",
     "feature_suggestions",
     "generated_images",
+    "generation_contexts",
     "grader_versions",
     "human_approvals",
     "mention_spans",
@@ -64,7 +67,31 @@ def test_initial_migration_upgrade_and_downgrade(tmp_path: Path) -> None:
 
     command.upgrade(config, "head")
     engine = create_engine(f"sqlite:///{database_path}")
-    assert EXPECTED_TABLES <= set(inspect(engine).get_table_names())
+    inspector = inspect(engine)
+    assert EXPECTED_TABLES <= set(inspector.get_table_names())
+    resolution_columns = {
+        column["name"] for column in inspector.get_columns("character_resolution_chunks")
+    }
+    assert {
+        "provider_raw_response",
+        "provider_raw_message_content",
+        "provider_raw_response_hash",
+        "resolver_raw_response",
+        "resolver_raw_message_content",
+        "resolver_raw_response_hash",
+    } <= resolution_columns
+    convergence_columns = {
+        column["name"] for column in inspector.get_columns("character_convergence_batches")
+    }
+    assert {
+        "resolver_raw_response",
+        "resolver_raw_message_content",
+        "resolver_raw_response_hash",
+    } <= convergence_columns
+    assert not any(
+        set(item["column_names"]) == {"novel_id", "canonical_name"}
+        for item in inspector.get_unique_constraints("characters")
+    )
     engine.dispose()
 
     command.downgrade(config, "base")

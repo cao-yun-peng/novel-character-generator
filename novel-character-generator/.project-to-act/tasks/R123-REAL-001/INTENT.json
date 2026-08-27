@@ -1,0 +1,19 @@
+{
+  "task_id": "R123-REAL-001",
+  "current_behavior": "R2/R3 基础主链只有 Mock 和小型反例证据，缺少长篇真实 Provider 的全流程归属、阶段和最终画像验证。",
+  "desired_behavior": "使用同一输入 source hash 完成隔离全链路运行，既验证 checkpoint 恢复，也检查实体污染、时间信号、阶段和聚合画像是否达到可使用标准。",
+  "dependencies": [
+    "DeepSeek deepseek-v4-flash",
+    "visual-observation-v3.1",
+    "character-entity-resolution-v1",
+    "character-phase-resolution-v1",
+    "appearance aggregation"
+  ],
+  "validation": [
+    "隔离数据库与诊断 summary",
+    "R2 convergence memory 审核",
+    "R3 temporal signal/life phase/scope binding 审核",
+    "appearance state/render profile/conflict 审核",
+    "Ruff、Mypy 和完整 Pytest"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "task_id": "R2-SHARD-004",
+  "created_at": "2026-08-27T00:00:00+08:00",
+  "project_stage": 5,
+  "lifecycle_revision": 2,
+  "risk_level": "L1",
+  "shard_atomicity": "EntityMemoryRecord",
+  "budget_policy": "maximum 16 records, 32 mentions, 12000 full-request estimated input tokens, and 4500 estimated output tokens; live Provider prompt/schema overhead is included",
+  "repair_policy": "retry only records without safe full-record coverage; maximum attempts are configured and counted against the run call budget",
+  "fallback_policy": "deterministic keep_unresolved plus completed_with_warnings batch status",
+  "scope_boundary": "Calibration uses one historical local Run and automated regressions. No conversational continuation state, stable-memory retrieval, final historical sweep, or new paid Provider run in this increment."
+}

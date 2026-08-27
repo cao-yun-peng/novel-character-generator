@@ -97,6 +97,20 @@ CHUNK_OVERLAP_TOKENS=300
 
 新 extractor version 会把同一源版本上旧版本产生的活动自动 Observation 标记为 `superseded`，人工事实不会被替换。同一叙事槽位的自动 Scene 由新结果原位更新，人工修正过的时间绑定保留。若旧 Run 仍持有未过期租约，新 Run 不会复用旧 Run 的执行状态；不要直接编辑数据库中的 Step 状态。
 
+### 3.2 开发时查看模型原始响应
+
+原始响应查看器默认关闭，只允许开发环境启用。配置：
+
+```ini
+APP_ENV=development
+LLM_RAW_RESPONSE_CAPTURE_ENABLED=true
+ADMIN_API_KEY=<local-admin-key>
+```
+
+执行 `uv run alembic upgrade head`，并同时重启 API 和 Worker。之后用 `ADMIN_API_KEY` 连接工作台，打开 Run Inspector → R1 Chunk、R2 Chunk 或 R2 收敛批次 → “模型原始响应（开发）”。页面分别显示模型消息正文和 Provider 完整响应 JSON；R3 当前是代码策略阶段，没有模型响应。普通结构化详情、RunEvent 和应用日志不会复制这些内容。
+
+捕获粒度是“一次模型请求完成并通过结构校验后立即落库”，当前 Provider 使用 `stream=false`，因此不是逐 token 输出。只有启用后新执行的 Chunk 有数据；checkpoint 中已经完成的旧 Chunk 不会重新付费调用或自动补录。原始响应可能包含小说正文衍生内容且会增加数据库体积，完成调试后应关闭开关；生产配置开启时应用会以 `llm_raw_response_capture_forbidden_in_production` 拒绝启动。
+
 仅领取并处理一次可运行 Step：
 
 ```powershell

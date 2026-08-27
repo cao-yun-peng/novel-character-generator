@@ -1,0 +1,41 @@
+{
+  "id": "R2-SHARD-004",
+  "title": "R2 收敛预算分片与遗漏修复",
+  "status": "review",
+  "owner": "Codex",
+  "objective": "把单个 dirty frontier 按 record、mention、完整请求预计输入和预计输出预算拆成有界 shard；使用历史失败 Run 校准保守默认值，对 Provider 未安全覆盖的 shard 记录执行最多两轮 repair，并把主请求、修复和最终降级完整写入 Trace/Inspector。",
+  "allowed_paths": [
+    "src/novel_character_generator/application/ports/entity_resolution.py",
+    "src/novel_character_generator/application/services/entity_resolution_service.py",
+    "src/novel_character_generator/application/services/run_inspector_service.py",
+    "src/novel_character_generator/infrastructure/db/repositories/entity_resolution.py",
+    "src/novel_character_generator/infrastructure/llm/entity_resolution.py",
+    "src/novel_character_generator/settings.py",
+    "src/novel_character_generator/web/app.js",
+    "src/novel_character_generator/workers/handlers/extraction.py",
+    "src/novel_character_generator/workers/main.py",
+    ".env.example",
+    "tests/unit/test_entity_resolution_service.py",
+    "tests/unit/test_settings.py",
+    "tests/integration/test_entity_resolution_pipeline.py",
+    "tests/integration/test_text_analysis_run.py",
+    ".project-to-act"
+  ],
+  "invariants": [
+    "dirty frontier 和完整 memory 保留语义不变",
+    "一个 EntityMemoryRecord 在主请求分片时不可拆分",
+    "每个 shard 同时满足 record、mention、完整请求预计输入和预计输出预算；单记录超预算必须失败关闭",
+    "repair 只处理尚未安全覆盖的记录，次数和全 Run 调用数均有上限",
+    "只有覆盖完整、ID 合法、目标合法且证据可定位的 Provider 决策可以进入累计结果",
+    "repair 耗尽后使用确定性 keep_unresolved 补全，不静默冒充 Provider 已覆盖",
+    "trace 只保存计数、预算、哈希和状态，不保存姓名、正文或证据原文"
+  ],
+  "acceptance": [
+    "超过任一 record、mention、完整请求预计输入或预计输出预算的多记录 frontier 被确定性拆成多个 shard",
+    "主请求遗漏可由只含遗漏记录的 repair 请求补齐",
+    "repair 两轮后仍遗漏时批次标记为 completed_with_warnings，最终结果仍保持 100% 结构覆盖",
+    "恢复执行复用 completed 或 completed_with_warnings 批次，不重复付费调用",
+    "RunEvent、Inspector 和前端展示 shard、repair、初始遗漏及最终降级数量",
+    "定向与全量 Pytest、Ruff、Mypy、Node 全部通过"
+  ]
+}

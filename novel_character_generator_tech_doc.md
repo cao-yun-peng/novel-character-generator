@@ -1,8 +1,8 @@
 # 小说角色插画与 3D 建模生成器——技术设计文档
 
-> 文档版本：2.9
+> 文档版本：3.2
 >
-> 修订日期：2026-08-24
+> 修订日期：2026-08-25
 >
 > 文档状态：已按主题拆分；正文位于 [`novel-character-generator/docs`](novel-character-generator/docs/README.md)。
 
@@ -33,3 +33,6 @@
 | [图像生成端到端实现契约](novel-character-generator/docs/18-image-generation-implementation-contract.md) | Image Run、Provider、恢复、漂移审计和锁定边界 |
 | [功能—代码—测试追踪矩阵](novel-character-generator/docs/19-feature-traceability-matrix.md) | 功能与实现、日志、测试、状态的对应关系 |
 | [API 调用手册与错误目录](novel-character-generator/docs/20-api-cookbook-and-error-catalog.md) | 真实接口调用、SSE、并发更新和稳定错误码 |
+| [检索增强的角色视觉精提取实现设计](novel-character-generator/docs/21-retrieval-augmented-visual-enrichment.md) | 1K/100 文本库、SQLite FTS5、Embedding API、Qdrant Local、混合召回与证据回映 |
+| [通用小说分解质量改进方案](novel-character-generator/docs/22-general-novel-decomposition-quality-plan.md) | 实体收敛、阶段解析、外观聚合、质量报告和跨作品验收 |
+| [视觉优先的全文抽取重构方案](novel-character-generator/docs/23-visual-first-extraction-refactor.md) | 八类联合抽取诊断、外部实践核验、DeepSeek Provider 治理、视觉优先主调用和分阶段迁移 |

@@ -26,6 +26,9 @@ def test_ui_shell_and_static_assets_are_served_without_api_auth() -> None:
         assert 'id="render-profile-review"' in page.text
         assert 'id="restart-run-button"' in page.text
         assert 'id="cancel-run-button"' in page.text
+        assert 'id="run-inspector-grid"' in page.text
+        assert 'id="inspector-output"' in page.text
+        assert "R1 → R3 阶段产出观察台" in page.text
         assert "/ui/assets/app.css" in page.text
         assert "/ui/assets/app.js" in page.text
 
@@ -44,6 +47,10 @@ def test_ui_shell_and_static_assets_are_served_without_api_auth() -> None:
         assert "current_chunk_ordinal" in javascript.text
         assert "restartAnalysis" in javascript.text
         assert "cancelRun" in javascript.text
+        assert "loadRunInspection" in javascript.text
+        assert "loadInspectorOutput" in javascript.text
+        assert "loadRawModelResponse" in javascript.text
+        assert "模型原始响应（开发）" in client.get("/ui").text
         assert "renderFactSection" in javascript.text
         assert "loadVisualEnrichmentState" in javascript.text
         assert "startVisualEnrichment" in javascript.text
@@ -58,13 +65,19 @@ def test_ui_shell_and_static_assets_are_served_without_api_auth() -> None:
     assert "/ui" not in create_app().openapi()["paths"]
 
 
-def test_validation_errors_use_stable_envelope() -> None:
-    with TestClient(create_app()) as client:
-        response = client.get("/api/v1/runs/not-a-uuid")
-    assert response.status_code == 422
-    assert response.json()["code"] == "validation_error"
-    assert response.json()["message"] == "Request validation failed"
-    assert response.json()["request_id"] == response.headers["X-Request-ID"]
+def test_validation_errors_use_stable_envelope(monkeypatch) -> None:
+    monkeypatch.setenv("USER_API_KEY", "")
+    monkeypatch.setenv("ADMIN_API_KEY", "")
+    get_settings.cache_clear()
+    try:
+        with TestClient(create_app()) as client:
+            response = client.get("/api/v1/runs/not-a-uuid")
+        assert response.status_code == 422
+        assert response.json()["code"] == "validation_error"
+        assert response.json()["message"] == "Request validation failed"
+        assert response.json()["request_id"] == response.headers["X-Request-ID"]
+    finally:
+        get_settings.cache_clear()
 
 
 def test_openapi_exposes_documented_phase_one_routes() -> None:
@@ -76,6 +89,9 @@ def test_openapi_exposes_documented_phase_one_routes() -> None:
         "/api/v1/novels/{novel_id}/runs",
         "/api/v1/novels/{novel_id}/retrieval-index-runs",
         "/api/v1/runs/{run_id}",
+        "/api/v1/runs/{run_id}/inspection",
+        "/api/v1/runs/{run_id}/inspection/outputs/{kind}/{output_id}",
+        "/api/v1/runs/{run_id}/inspection/outputs/{kind}/{output_id}/raw-response",
         "/api/v1/runs/{run_id}/events",
         "/api/v1/runs/{run_id}/agent-runs",
         "/api/v1/runs/{run_id}/external-operations",
@@ -93,6 +109,8 @@ def test_openapi_exposes_documented_phase_one_routes() -> None:
         "/api/v1/characters/{character_id}/visual-field-gaps",
         "/api/v1/visual-enrichment-runs/{run_id}/evidence",
         "/api/v1/feature-suggestions/{suggestion_id}/resolve",
+        "/api/v1/characters/{character_id}/image-runs",
+        "/api/v1/image-runs/{run_id}",
         "/api/v1/capabilities",
     } <= paths
     assert "/api/v1/novels/{novel_id}/extraction-runs" not in paths
@@ -102,6 +120,9 @@ def test_api_key_roles_capabilities_and_metrics(monkeypatch) -> None:
     monkeypatch.setenv("APP_ENV", "development")
     monkeypatch.setenv("USER_API_KEY", "user-secret")
     monkeypatch.setenv("ADMIN_API_KEY", "admin-secret")
+    monkeypatch.setenv("EMBEDDING_PROVIDER", "disabled")
+    monkeypatch.setenv("IMAGE_PROVIDER", "disabled")
+    monkeypatch.setenv("LLM_RAW_RESPONSE_CAPTURE_ENABLED", "true")
     get_settings.cache_clear()
     try:
         with TestClient(create_app()) as client:
@@ -117,6 +138,8 @@ def test_api_key_roles_capabilities_and_metrics(monkeypatch) -> None:
             assert capabilities.json()["appearance_aggregation"] is True
             assert capabilities.json()["retrieval_lexical_index"] is True
             assert capabilities.json()["retrieval_hybrid_index"] is False
+            assert capabilities.json()["image_generation"] is False
+            assert capabilities.json()["raw_model_response_viewer"] is True
             assert capabilities.json()["external_operation_reconciliation"] is False
             assert client.get("/metrics", headers={"X-API-Key": "user-secret"}).status_code == 403
             metrics = client.get("/metrics", headers={"X-API-Key": "admin-secret"})

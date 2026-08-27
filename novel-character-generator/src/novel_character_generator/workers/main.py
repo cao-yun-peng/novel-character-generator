@@ -19,7 +19,14 @@ from novel_character_generator.infrastructure.db.session import session_factory
 from novel_character_generator.infrastructure.embedding.openai_compatible import (
     OpenAICompatibleEmbeddingProvider,
 )
-from novel_character_generator.infrastructure.llm.mock import MockExtractionProvider
+from novel_character_generator.infrastructure.image.mock import MockImageProvider
+from novel_character_generator.infrastructure.llm.entity_resolution import (
+    OpenAICompatibleEntityResolutionProvider,
+)
+from novel_character_generator.infrastructure.llm.mock import (
+    MockEntityResolutionProvider,
+    MockExtractionProvider,
+)
 from novel_character_generator.infrastructure.llm.openai_compatible import (
     OpenAICompatibleExtractionProvider,
 )
@@ -37,7 +44,13 @@ from novel_character_generator.workers.handlers.appearance_aggregation import (
     process_appearance_aggregation_run,
 )
 from novel_character_generator.workers.handlers.extraction import process_extraction_run
+from novel_character_generator.workers.handlers.image_generation import (
+    process_image_generation_run,
+)
 from novel_character_generator.workers.handlers.ingestion import process_ingestion_run
+from novel_character_generator.workers.handlers.phase_resolution import (
+    process_phase_resolution_run,
+)
 from novel_character_generator.workers.handlers.retrieval_indexing import (
     process_retrieval_indexing_run,
 )
@@ -61,11 +74,40 @@ def extraction_provider() -> MockExtractionProvider | OpenAICompatibleExtraction
         api_key=settings.llm_api_key.get_secret_value(),
         model=settings.llm_model,
         timeout_seconds=settings.llm_timeout_seconds,
+        wire_api=settings.llm_wire_api,
+        thinking_enabled=settings.llm_thinking_enabled,
+        reasoning_effort=settings.llm_reasoning_effort,
+        max_output_tokens=settings.llm_max_output_tokens,
+        total_deadline_seconds=settings.llm_total_deadline_seconds,
+        max_items_per_result=settings.llm_max_items_per_result,
+        max_retries=settings.llm_max_retries,
     )
 
 
-def visual_enrichment_provider(
-) -> VisualEnrichmentProvider:
+def entity_resolution_provider() -> (
+    MockEntityResolutionProvider | OpenAICompatibleEntityResolutionProvider
+):
+    settings = get_settings()
+    if settings.llm_provider == "mock":
+        return MockEntityResolutionProvider()
+    assert settings.llm_api_key is not None
+    assert settings.llm_model is not None
+    return OpenAICompatibleEntityResolutionProvider(
+        provider=settings.llm_provider,
+        base_url=settings.llm_base_url,
+        api_key=settings.llm_api_key.get_secret_value(),
+        model=settings.llm_model,
+        timeout_seconds=settings.llm_timeout_seconds,
+        wire_api=settings.llm_wire_api,
+        thinking_enabled=settings.llm_thinking_enabled,
+        reasoning_effort=settings.llm_reasoning_effort,
+        max_output_tokens=settings.llm_max_output_tokens,
+        total_deadline_seconds=settings.llm_total_deadline_seconds,
+        max_retries=settings.llm_max_retries,
+    )
+
+
+def visual_enrichment_provider() -> VisualEnrichmentProvider:
     settings = get_settings()
     if settings.llm_provider == "mock":
         return MockVisualEnrichmentProvider()
@@ -174,6 +216,34 @@ async def run_once(run_id: UUID, *, step_key: str | None = None) -> None:
                 session,
                 extraction_provider(),
                 run_id,
+                entity_provider=entity_resolution_provider(),
+                entity_context_budget_tokens=(settings.entity_resolution_context_budget_tokens),
+                entity_memory_max_records=settings.entity_resolution_memory_max_records,
+                entity_memory_recent_records=settings.entity_resolution_memory_recent_records,
+                entity_convergence_shard_max_records=(
+                    settings.entity_convergence_shard_max_records
+                ),
+                entity_convergence_shard_max_mentions=(
+                    settings.entity_convergence_shard_max_mentions
+                ),
+                entity_convergence_shard_max_input_tokens=(
+                    settings.entity_convergence_shard_max_input_tokens
+                ),
+                entity_convergence_shard_max_output_tokens=(
+                    settings.entity_convergence_shard_max_output_tokens
+                ),
+                entity_convergence_repair_max_attempts=(
+                    settings.entity_convergence_repair_max_attempts
+                ),
+                entity_max_calls=settings.entity_resolution_max_calls_per_run,
+                capture_raw_responses=settings.llm_raw_response_capture_enabled,
+                max_attempts=settings.max_task_attempts,
+                lease_seconds=settings.worker_lease_seconds,
+            )
+        elif step.step_key == "resolve_character_phases":
+            await process_phase_resolution_run(
+                session,
+                run_id,
                 max_attempts=settings.max_task_attempts,
                 lease_seconds=settings.worker_lease_seconds,
             )
@@ -250,6 +320,23 @@ async def run_once(run_id: UUID, *, step_key: str | None = None) -> None:
                 max_attempts=settings.max_task_attempts,
                 lease_seconds=settings.worker_lease_seconds,
             )
+        elif step.step_key in {
+            "freeze_generation_context",
+            "submit_image",
+            "poll_image",
+            "persist_image",
+        }:
+            if settings.image_provider != "mock":
+                raise RuntimeError("image_generation_provider_required")
+            await process_image_generation_run(
+                session,
+                LocalArtifactStore(settings.artifact_local_root),
+                MockImageProvider(),
+                run_id,
+                workflow_profile=settings.image_workflow_profile,
+                workflow_version=settings.image_workflow_version,
+                max_attempts=settings.max_task_attempts,
+            )
         else:
             raise ValueError("unsupported_step_key")
 
@@ -281,9 +368,7 @@ def main() -> None:
     parser.add_argument("run_id", type=UUID, nargs="?")
     parser.add_argument("--once", action="store_true")
     parser.add_argument("--poll-interval", type=float, default=1.0)
-    parser.add_argument(
-        "--worker-id", default=f"{socket.gethostname()}-{os.getpid()}"
-    )
+    parser.add_argument("--worker-id", default=f"{socket.gethostname()}-{os.getpid()}")
     arguments = parser.parse_args()
     if arguments.run_id is not None:
         asyncio.run(run_once(arguments.run_id))

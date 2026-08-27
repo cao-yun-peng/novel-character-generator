@@ -1,0 +1,10 @@
+{
+  "task_id": "R1-EVAL-004",
+  "created_at": "2026-08-26T00:00:00+08:00",
+  "project_stage": 5,
+  "lifecycle_revision": 2,
+  "dataset_version": "visual-extraction-developer-seed:v0",
+  "rubric_from": "visual-observation-seed-v1",
+  "rubric_to": "visual-observation-seed-v2",
+  "production_contract": "visual-observation-v3 unchanged"
+}

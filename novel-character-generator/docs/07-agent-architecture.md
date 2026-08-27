@@ -2,9 +2,9 @@
 
 > [← 上一篇](06-image-generation-and-drift-control.md) · [文档索引](README.md) · [下一篇 →](08-task-recovery.md)
 >
-> 文档版本：2.9 · 源章节：10. Agent 增强架构 · 修订日期：2026-08-24
+> 文档版本：3.0 · 源章节：10. Agent 增强架构 · 修订日期：2026-08-26
 >
-> 当前状态：通用 Structured AgentRuntime、审批和轨迹基础已实现但默认关闭；五种专项 Agent 是一期目标角色，并非都已接入主流程。
+> 当前状态：通用 Structured AgentRuntime、审批和轨迹基础已实现但默认关闭；六种专项 Agent 是目标职责，并非都已接入主流程。现有 visual-enrichment 是确定性 Direct 流水线，`VisualEvidenceAgent` 仍是待 A/B 验证的可选模式。
 
 ## 10. Agent 增强架构
 
@@ -17,6 +17,7 @@ Application Orchestrator
   ├── StructuredCallAgentRuntime     一期默认
   │   ├── Extraction Agent           块级事实提取
   │   ├── Entity Resolution Agent    实体、别名和共指提案
+  │   ├── Visual Evidence Agent      缺失视觉证据的有界自主检索
   │   ├── Visual Director Agent      生成视觉方案
   │   ├── Multimodal Critic Agent    审核候选图
   │   └── Review Agent               复杂证据与冲突审计
@@ -25,17 +26,18 @@ Application Orchestrator
 
 Application Orchestrator 决定何时调用哪个 Agent、是否重试、何时停止以及是否转人工。专项 Agent 不互相自由对话，也不能绕过应用服务调用另一个 Agent。跨 Agent 传递的是经过 Schema 校验的结构化产物和证据 ID，而不是完整聊天历史。
 
-这里的“五个 Agent”是五种按需调用的职责定义，不是五个常驻进程，也不是五个自由聊天的自治体。当前源码已经实现通用 `StructuredCallAgentRuntime`、轨迹和审批基础，但默认关闭，五种专项 Agent 尚未全部接入业务主流程。
+这里的“六个 Agent”是六种按需调用的职责定义，不是六个常驻进程，也不是自由聊天的自治体。当前源码已经实现通用 `StructuredCallAgentRuntime`、轨迹和审批基础，但默认关闭，专项 Agent 尚未全部接入业务主流程。
 
 | Agent 角色 | 何时调用 | 是否常规必经 | 当前实现状态 |
 |---|---|---|---|
 | Extraction Agent | 每个待分析文本块 | 文本主流程常规调用 | 当前主流程直接调用 Extraction Provider；尚未改为 AgentRuntime 必经步骤 |
 | Entity Resolution Agent | 规则、别名索引和历史信息无法确定人物时 | 异常/低置信度分支 | 合并拆分 Service 已实现；Agent 提案未接入 |
+| Visual Evidence Agent | 选定人物/阶段存在原文证据缺口，且 Direct 检索不足时 | 条件执行 | Direct visual-enrichment 已实现；自主多轮模式仅设计 |
 | Visual Director Agent | 已批准快照准备生成图像时 | 图像主流程常规调用 | 仅设计 |
 | Multimodal Critic Agent | 候选图落库后执行漂移审计时 | 图像主流程常规调用 | 仅设计 |
 | Review Agent | 复杂证据冲突、审计异常或高风险覆盖时 | 异常/人工升级分支 | 仅设计 |
 
-因此，一期运行时通常不会同时运行五个 Agent：文本阶段主要需要 Extraction，图像阶段主要需要 Visual Director 和 Critic；Entity Resolution 与 Review 仅按条件触发。专项 Agent 数量增加不改变 API 与 Worker 的进程拓扑。
+因此，一期运行时通常不会同时运行六个 Agent：文本阶段主要需要 Extraction；Visual Evidence、Entity Resolution 与 Review 只按条件触发；图像阶段主要需要 Visual Director 和 Critic。专项 Agent 数量增加不改变 API 与 Worker 的进程拓扑。
 
 职责边界：
 
@@ -119,7 +121,30 @@ class EntityResolutionProposal(BaseModel):
 
 批准通过后由 Application Service 在事务内执行合并/拆分，并写入 `decision_records` 与 `human_approvals`。
 
-### 10.5 Visual Director Agent
+### 10.5 Visual Evidence Agent
+
+Visual Evidence Agent 只面向“人物 × 人生阶段 × 缺失字段组”的有界证据搜索，不重新阅读整本小说。它读取已有 Observation、别名、阶段和检索索引状态，使用以下典型工具：
+
+```text
+get_visual_field_gaps       读取原文证据缺口
+get_character_summary       读取人物和已确认别名
+get_character_life_phase    读取目标阶段边界
+search_visual_passages      执行受控 BM25/vector 检索
+expand_passage_neighbors    读取命中相邻上下文
+validate_evidence_quote     校验引用和位置
+check_evidence_coverage     检查字段覆盖和重复结果
+submit_evidence_candidates  只提交候选，不写正式事实
+```
+
+Agent 可以根据首轮命中调整查询、尝试已确认别名、扩大到受控相邻章节，并判断描述是否属于目标人物和阶段。它不能直接创建 Observation、声明人物合并、修改阶段、把推断升级成 asserted，或自行提高预算。
+
+停止条件由 Orchestrator 强制执行：证据充分、结果重复、达到 turn/tool/provider/passage/token/cost/deadline 任一上限、索引不可用或需要人工判断。Agent 输出 `EvidenceCandidate`、`deferred` 和 coverage conclusion；确定性 Service 完成 grounding、Schema、人物/阶段门禁及 Observation/Suggestion 分流。
+
+`not_stated` 不是 Agent 的自由判断。只有版本化 QueryPlan 达到覆盖预算，并保存查询、别名、字段词、章节范围、passage 和停止原因后，策略层才能形成 `evidence_exhausted/not_stated`。
+
+Direct是否充分、哪些原因允许进入 Agent、哪些问题必须转实体/阶段审核，统一使用[视觉精提取设计 21.5.2](21-retrieval-augmented-visual-enrichment.md)的路由契约，不在 Agent Prompt 中复制另一套隐式判断。
+
+### 10.6 Visual Director Agent
 
 Visual Director Agent 只读取经过确定性解析并已批准的 `ResolvedCharacterSnapshot`，不得自行选择角色处于哪个年龄、时间线或现实层级，也不得从身份标签编造新的角色事实。它负责：
 
@@ -144,7 +169,7 @@ class VisualPlan(BaseModel):
 
 Agent 只生成计划。Workflow 兼容性、预算检查和收费任务提交由确定性代码完成。
 
-### 10.6 Multimodal Critic Agent
+### 10.7 Multimodal Critic Agent
 
 Multimodal Critic Agent 读取候选图、ResolvedCharacterSnapshot、关键证据和生成快照，按三层一致性检查：
 
@@ -168,7 +193,7 @@ class ImageCritique(BaseModel):
 
 Critic 输出与 ArcFace、DINO、CLIP-I 等确定性指标并列保存。Agent 不得自行选择最终基准图，也不得无限触发重新生成。
 
-### 10.7 Review Agent
+### 10.8 Review Agent
 
 Review Agent 处理高价值、低频的复杂审计：
 
@@ -182,7 +207,9 @@ Review Agent 处理高价值、低频的复杂审计：
 
 它只为主要角色、异常案例或回归失败运行，不参与每个文本块，以控制费用和延迟。其意见作为 `ReviewFinding` 保存，最终修改仍由聚合规则或人工完成。
 
-### 10.8 强类型工具契约
+正式 `DecompositionQualityReport` 首先由确定性 QualityEvaluator 生成，不由 Review Agent 自由打总分。只有报告发现人物误合并疑点、阶段语义歧义、冲突分类困难或检索覆盖争议时才调用 Review Agent；它返回带证据建议，最终状态和阻断代码仍由策略层决定。
+
+### 10.9 强类型工具契约
 
 所有 Agent 工具通过统一元数据注册：
 
@@ -211,7 +238,7 @@ class ToolSpec(BaseModel):
 - 每次调用记录输入输出哈希、耗时、错误码和 `call_id`；
 - 工具结果视为不可信输入，进入下一个 Prompt 前执行长度、类型和内容校验。
 
-### 10.9 上下文工程
+### 10.10 上下文工程
 
 每次 Agent 运行构建最小上下文包：
 
@@ -237,7 +264,7 @@ class AgentContextPacket(BaseModel):
 5. 超预算时先删除低相关摘要，再缩短证据引用，最后拆分任务；
 6. 保存上下文选择清单和哈希，以便复现，不保存隐藏推理内容。
 
-### 10.10 模型路由与能力路由
+### 10.11 模型路由与能力路由
 
 模型选择由 `ModelRouter` 根据任务和 `LLMCapabilities` 决定，而不是由 Agent 自行升级：
 
@@ -252,7 +279,7 @@ class AgentContextPacket(BaseModel):
 
 Provider 不支持工具调用时，Extraction 退化为单次结构化输出；不支持视觉输入时，Critic 退化为确定性指标加人工审核。模型升级必须先通过同一评测集，对比正确率、证据完整性、工具轨迹、延迟和费用。
 
-### 10.11 有界反思与停止条件
+### 10.12 有界反思与停止条件
 
 只在测量证明有效的环节启用“生成→批评→修订”，例如 Visual Director 与 Critic：
 
@@ -276,7 +303,7 @@ deadline_seconds = 180
 
 每个 AgentSpec 可以更严格，但不能在运行时自行放宽。达到轮次、费用、时间或重试上限时返回结构化 `AgentLimitReached`，不得用“继续思考”绕过限制。
 
-### 10.12 人工审批与可恢复等待
+### 10.13 人工审批与可恢复等待
 
 Agent 需要审批时返回序列化的 `ApprovalRequest`。Application Service 在业务数据库中创建 `human_approvals`，将对应 `PipelineStep` 标记为 `waiting_approval`，随后释放 Worker。审批内容包括：
 
@@ -288,7 +315,7 @@ Agent 需要审批时返回序列化的 `ApprovalRequest`。Application Service 
 
 审批完成后，API 通过 compare-and-set 写入决策并将 Step 重新放回队列；Worker 根据业务状态继续下一确定性步骤。等待和恢复不依赖 Graph checkpoint。一期局部 LangGraph Agent 不使用 `interrupt()` 承担业务审批；需要人工决定时必须把请求转换成业务 `ApprovalRequest` 并退出本次 Agent 运行。审批后由应用服务启动新的 Agent attempt，checkpoint 既不作为授权，也不作为业务任务游标。若二期确需恢复同一语义运行，必须单独设计 thread/checkpoint 生命周期和副作用重放测试后再开放。
 
-### 10.13 Agent 轨迹与评测
+### 10.14 Agent 轨迹与评测
 
 `AgentTrajectory` 记录可观察执行过程，不记录厂商隐藏思维链：
 
@@ -316,7 +343,7 @@ Agent 评测必须同时检查结果和轨迹：
 - 应当转人工时是否正确升级；
 - 最终结果正确但使用危险或越权路径时仍判失败。
 
-### 10.14 一期与二期 Agent 能力边界
+### 10.15 一期与二期 Agent 能力边界
 
 一期目标：
 

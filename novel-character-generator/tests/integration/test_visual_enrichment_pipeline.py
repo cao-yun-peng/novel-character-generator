@@ -297,7 +297,13 @@ async def test_visual_enrichment_persists_exact_facts_and_auditable_hits(
             character_id=character.id, life_phase_key="adolescence"
         )
         covered_groups = {item.field_group for item in updated_gaps.groups if item.covered}
-        assert {"hair", "clothing"} <= covered_groups
+        assert "hair" in covered_groups
+        clothing_gap = next(
+            item for item in updated_gaps.groups if item.field_group == "clothing"
+        )
+        assert clothing_gap.covered is False
+        assert clothing_gap.completeness_score == 0.5
+        assert clothing_gap.missing_dimensions == ["form"]
 
         repair_run = await visual_service.create_run(
             character_id=character.id,

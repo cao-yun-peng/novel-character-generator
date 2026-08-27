@@ -2,13 +2,13 @@
 
 > [← 上一篇](20-api-cookbook-and-error-catalog.md) · [文档索引](README.md) · [下一篇 →](01-project-overview-and-principles.md)
 >
-> 文档版本：1.3 · 修订日期：2026-08-25
+> 文档版本：1.6 · 修订日期：2026-08-26
 >
 > 当前状态：**产品基础闭环已实现**。系统已建立版本化 `retrieval_passages`、SQLite FTS5 中文预分词、OpenAI-compatible EmbeddingPort、Qdrant Local、批量断点续建、BM25/vector RRF、同章邻居扩展、确定性 QueryPlan、query/hit 审计、结构化精提取 Provider、passage→`text_chunk` 唯一回映、Observation/Suggestion 分流、Suggestion 审核 API 与外观重聚合。角色页面已接入索引状态、阶段选择、字段缺口自动规划、精提取任务、证据和 Suggestion 审核。Embedding 未配置时 build 保持 `degraded_lexical_only`，visual-enrichment API 返回 `retrieval_index_not_ready`。黄金集保留数据与扩展接口，Runner 和发布门禁在功能契约稳定后再实现。
 
 ## 21.1 目标与边界
 
-目标是在不重新把整本小说发送给大模型的前提下，为选定的重要角色补充可出图的、可追溯的视觉信息。系统先从全文召回可能相关的细粒度段落及相邻上下文，再以结构化模型调用确认人物归属和字段。
+目标是在不重新把整本小说发送给大模型的前提下，为选定的重要角色补充有原文证据、可追溯的视觉信息。它提高小说事实覆盖率，但不负责补齐最终出图所需的全部设计、场景、美术和 Provider 字段；完整字段桥梁见[视觉优先的出图字段与全文抽取重构方案](23-visual-first-extraction-refactor.md)。
 
 本能力能解决“人名和外貌描述不在同一句或同一小段”的召回问题，但不允许把小说未写的脸型、瞳色、服装纹样伪装为原文事实。
 
@@ -16,9 +16,9 @@
 |---|---|---|
 | `asserted` + `exact` | 原文直接、可精确定位地支持的字段 | 可以 |
 | `inferred` / `uncertain` | 由职业、行为、比喻、关系或上下文得到的候选 | 不可以；仅供审核 |
-| `style_default` | 原文没有答案时的设计默认值 | 不可以；须人工接受后作为渲染决策 |
+| `style_default` | 原文没有答案时的设计候选 | 不可以；须人工接受后作为角色设计或工作流决策 |
 
-`FeatureObservation` 仍是唯一的原文事实载体；`FeatureSuggestion` 是候选和设计默认值载体。现有聚合器只采纳 `asserted` Observation，这一规则保持不变。
+`FeatureObservation` 仍是唯一的原文事实载体；`FeatureSuggestion` 是候选和设计建议载体。现有聚合器只采纳 `asserted` Observation，这一规则保持不变。检索缺口回答“原文证据是否覆盖”，设计缺口回答“要生成这类图还缺哪些已批准决定”，二者不得使用同一状态或同一个自动补齐循环。
 
 非目标：本阶段不接入图像 Provider、不训练 LoRA、不自动把推断写入 RenderProfile，也不取代当前大块文本分析中的角色、别名、场景和时间线发现。
 
@@ -151,7 +151,157 @@ novel_passages__<embedding_profile_version>__d<dimension>__<index_version>
 
 无实体字段查询用于找“一个瘦小的身影、黑发凌乱”这类名字稍后才出现的描写。它只能生成候选；模型必须根据证据包明确绑定人物，否则写为 `unresolved`，不得强行分配给查询目标角色。
 
-创建精提取任务前，系统根据当前源版本和所选阶段的有效 asserted Observation 计算缺失字段组；自动规划只为仍缺失的组固化 QueryPlan，避免为已有事实重复调用模型。当前 `visual-field-gap-v1` 按七个字段组判断覆盖：核心组为 hair、face、body、clothing，可选组为 accessories、marks_injuries、disguise_cleanliness；组内已有任意一个有效字段即视为该组已覆盖。更细的原子字段完整度和单次 Run 内自动多轮追加暂不启用，待真实使用验证后再细化。
+### 21.5.1 Direct 与 Agent 两种执行模式
+
+当前已实现的是 `direct`：确定性 QueryPlan → 一次混合检索 → evidence packet → 一次结构化精提取。目标新增的 `agent` 模式复用同一索引、QueryPlan、hit 审计和持久化门禁，只允许在预算内根据首轮结果调整查询、读取邻居或受控相邻章节，再提交候选。
+
+```text
+direct：稳定、便宜、容易重放，默认基线
+agent：只在别名/间接描写/阶段歧义导致 Direct 不足时条件启用
+```
+
+Agent 不能绕过 `retrieval_query_runs/hits` 直接读取未审计全文，也不能直接写 Observation。两种模式必须在同一黄金集比较新增有效字段、错误 asserted、人物/阶段误归属、人工查找时间、调用数、延迟和每正确字段成本；没有稳定净收益时继续使用 Direct。详细工具和停止边界见[Agent 增强架构](07-agent-architecture.md)。
+
+### 21.5.2 Direct → Agent 确定性路由契约
+
+本节是**目标契约，当前尚未实现**。是否调用 Agent 由版本化 `VisualEnrichmentRoutingPolicy` 决定，不能让 Direct 模型或 Agent 自行选择执行模式。路由输入必须来自已持久化的 gap、query/hit 审计、精提取结果和人物/阶段 resolver 状态。
+
+Direct 完成后形成：
+
+```python
+class DirectEnrichmentOutcome(BaseModel):
+    run_id: UUID
+    character_id: UUID
+    life_phase_key: str | None
+    requested_field_groups: list[str]
+    gaps_before: list[str]
+    gaps_after: list[str]
+
+    exact_asserted_count: int
+    suggestion_count: int
+    unresolved_count: int
+    rejected_count: int
+
+    canonical_name_hit_count: int
+    confirmed_alias_hit_count: int
+    semantic_only_hit_count: int
+    neighbor_context_needed_count: int
+    unbound_character_count: int
+    unbound_phase_count: int
+    conflicting_phase_count: int
+
+    query_coverage_status: Literal[
+        "incomplete", "complete", "evidence_exhausted"
+    ]
+    retrieval_index_status: str
+    budget_remaining: bool
+    routing_decision: Literal[
+        "complete", "run_visual_evidence_agent",
+        "entity_review", "phase_review", "not_stated", "stop"
+    ]
+    reason_codes: list[str]
+    routing_policy_version: str
+    input_fingerprint: str
+```
+
+`gaps_after` 必须在新 asserted Observation 持久化后，使用同一字段缺口策略重新计算。命中数和 unresolved 数不能由模型自由报告，必须由保存的 query hits、evidence packet 和持久化分流结果确定性统计。
+
+#### 决策顺序
+
+```text
+无 gaps_before
+  → complete
+
+运行 Direct
+  → 新 exact asserted 已关闭目标缺口
+      → complete
+  → 索引未就绪、预算/功能关闭或结果不可重放
+      → stop
+  → 人物归属需要改变实体真值
+      → entity_review
+  → 阶段归属需要改变阶段/时间线真值
+      → phase_review
+  → 缺口仍存在 + 有可利用语义线索 + 可由补查上下文解决 + 仍有预算
+      → run_visual_evidence_agent
+  → 已完成规定查询覆盖且没有可利用线索
+      → not_stated
+  → 其他情况
+      → stop/人工检查
+```
+
+调用 Agent 必须同时满足：
+
+```text
+gaps_after 非空
+AND retrieval_index_status = ready
+AND budget_remaining = true
+AND agent capability enabled
+AND 至少存在一个 agent_eligible reason code
+AND 不存在 entity/phase hard-review reason code
+```
+
+Agent用于“继续搜索或读取局部上下文可能解决”的问题，不用于裁决人物或时间业务真值。
+
+#### 稳定原因码
+
+| reason code | 观察信号 | 路由 |
+|---|---|---|
+| `direct_sufficient` | 新增 exact asserted 且目标缺口已关闭 | `complete` |
+| `indirect_description_candidate` | 视觉命中没有目标姓名，但存在描述性人物或相邻上下文线索 | Agent eligible |
+| `visual_hit_without_canonical_name` | 主要命中来自无实体/语义查询，字段相关但人物未绑定 | Agent eligible |
+| `neighbor_context_needed` | 当前 passage 不足，前后邻居可能给出姓名、代词先行项或时间词 | Agent eligible |
+| `confirmed_alias_hit_without_context` | 命中已确认别名/称谓，但当前 packet 不足以绑定该视觉描述 | Agent eligible |
+| `local_temporal_context_needed` | 外观命中缺少局部阶段信号，相邻段落可能补足 | Agent eligible |
+| `multi_phase_hits_locally_resolvable` | 命中横跨多个阶段，但章节邻域和显式时间词可能消歧 | Agent eligible |
+| `only_inferred_or_uncertain` | Direct 只产生 Suggestion，仍存在可追查证据线索 | Agent eligible；无可利用线索时停止 |
+| `unconfirmed_alias_ownership` | 称谓/别名可能属于多个角色，需要建立或修改 AliasAssertion | `entity_review` |
+| `entity_merge_or_split_required` | 需要合并/拆分人物才能决定归属 | `entity_review` |
+| `ambiguous_life_phase` | 一个年龄/标签映射到多个正式阶段 | `phase_review` |
+| `timeline_or_branch_ambiguous` | 需要改变 timeline/branch/reality truth | `phase_review` |
+| `hard_observation_conflict` | 同作用域存在不兼容的已绑定事实 | 转冲突审核，不调用证据 Agent |
+| `evidence_exhausted` | 规定的姓名、已确认别名、字段、语义和邻居覆盖完成，仍无相关证据 | `not_stated` |
+| `retrieval_index_not_ready` | 当前源版本索引未 ready | `stop` |
+| `agent_budget_unavailable` | Agent 被关闭或调用/成本/时间预算不足 | `stop` |
+
+`confirmed_alias_hit_without_context` 与 `unconfirmed_alias_ownership` 必须分开：前者只补查上下文，后者会改变人物身份真值，必须交给 Entity Resolution/人工。类似地，`local_temporal_context_needed` 可以由证据 Agent读取邻居，而 `ambiguous_life_phase`、时间线分支裁决必须交给阶段 resolver/人工。
+
+#### `not_stated` 的覆盖门禁
+
+只有以下计划内查询都已执行或被版本化策略明确裁剪，才能把 `query_coverage_status` 标为 `evidence_exhausted`：
+
+- canonical name + 目标字段组；
+- 所有已接受别名/有范围称谓 + 目标字段组；
+- 目标字段的自然语言语义查询；
+- 无实体视觉描述查询；
+- 目标人生阶段/年龄/事件查询（存在目标阶段时）；
+- 选中高分命中的强制双向邻居；
+- 查询、命中、裁剪、章节范围、索引版本和停止原因全部已持久化。
+
+“零命中”本身不能直接等于 `not_stated`。若索引降级、查询被预算提前裁剪或人物/阶段仍有未解决歧义，只能 `stop`、`deferred` 或转审核。
+
+#### 最小验收用例
+
+| 场景 | 预期路由 |
+|---|---|
+| Direct 找到唐三幼年“黑色短发”，证据、人物、阶段均明确 | `complete/direct_sufficient` |
+| “瘦小身影”先出现，后邻居才写“正是唐三” | `run_visual_evidence_agent/neighbor_context_needed` |
+| 命中已确认昵称“小三”，需要扩大邻居确认视觉句归属 | `run_visual_evidence_agent/confirmed_alias_hit_without_context` |
+| “小三”可能指两个不同角色，AliasAssertion 未确认 | `entity_review/unconfirmed_alias_ownership` |
+| 紫色眼眸命中需要读取修炼上下文判断瞬时状态 | `run_visual_evidence_agent/local_temporal_context_needed` |
+| 同一年龄对应两个已存在人生阶段 | `phase_review/ambiguous_life_phase` |
+| 全部规定查询和邻居覆盖完成，仍没有常态瞳色证据 | `not_stated/evidence_exhausted` |
+| 当前源版本检索索引未完成 | `stop/retrieval_index_not_ready` |
+
+路由结果按 `input_fingerprint + routing_policy_version` 幂等。相同输入不得因为重复 Worker 执行改变决定；Agent 关闭时 Direct 主链仍可完成，Agent eligible 项转为 `stop/deferred`，不得静默扩大调用。
+
+创建精提取任务前，系统根据当前源版本和所选阶段的有效 asserted Observation 计算缺失字段组；自动规划只为仍缺失的组固化 QueryPlan，避免为已有事实重复调用模型。当前实现使用 `visual-field-gap-v2`，按七组及组内维度评分：hair 要覆盖 color 与 form；face、body 按维度阈值；clothing 要覆盖 form 与 color/material；accessories、marks_injuries、disguise_cleanliness 仍使用组级存在性规则。具体版本以 `FIELD_GAP_POLICY_VERSION` 为准。
+
+这只是“是否值得继续找原文”的召回启发式，不是“是否已经足够出图”的判定。尤其：
+
+- accessories 或 marks/injuries 没有 Observation 只表示尚未发现描述，不表示角色明确没有配饰、伤痕；
+- `presence_or_absence` 是当前维度名，不代表系统已证明 absence；只有直接否定证据才能形成 `negated` Observation；
+- 某组达到 v2 阈值不代表该组所有原子字段完整，也不代表角色设计或一致性场景已经 ready；
+- 一个字段组在有界 QueryPlan 后仍无证据时，目标设计应记录 `not_stated/evidence_exhausted`，停止重复检索并转成设计缺口。当前 API 尚未完整持久化该终止状态。
 
 ## 21.6 LLM 精提取契约
 
@@ -177,6 +327,9 @@ LLM 输入是带稳定 ID 的 evidence packet，而不是整本书。每段携�
 | `visual_enrichment / retrieve_visual_evidence` | 上一步成功 | query plan hash | 召回、邻居扩展、重排并保存 hits |
 | `visual_enrichment / extract_visual_evidence` | evidence packet 就绪 | packet hash + provider/prompt version | 外部 LLM 调用及可恢复 checkpoint |
 | `visual_enrichment / persist_visual_evidence` | 结构化结果返回 | evidence fingerprint | 校验证据、分流 Observation/Suggestion |
+| `visual_enrichment / evaluate_direct_outcome`（目标） | Direct 持久化完成 | input fingerprint + routing policy version | 重算 gaps，生成 `DirectEnrichmentOutcome` 和确定性路由决定 |
+| `visual_enrichment / run_visual_evidence_agent`（条件目标） | 决定为 `run_visual_evidence_agent` | Direct outcome hash + AgentSpec/tool/budget version | 有界自主补查并提交候选；不是默认必经步骤 |
+| `visual_enrichment / persist_agent_evidence`（条件目标） | Agent 候选返回 | agent result hash + evidence fingerprint | 复用相同 grounding/人物/阶段门禁和分流规则 |
 | `visual_enrichment / aggregate_appearance` | 有新 asserted Observation | 复用现有聚合指纹 | 只重算受影响角色 |
 
 每个外部 LLM 调用通过现有 `model_calls` 记录 Provider、模型、请求哈希、用量与费用；Worker 仍遵守 claim、lease generation、checkpoint 和取消语义。不得用 Web 请求线程执行索引或 Provider 调用。
@@ -192,6 +345,8 @@ POST /api/v1/feature-suggestions/{suggestion_id}/resolve
 ```
 
 创建请求包含可选目标 `field_groups`、`auto_plan`、可选 `life_phase_key`、最大调用/上下文预算和 `Idempotency-Key`。`field_groups=[]` 且 `auto_plan=true` 时，服务端按当前缺口策略选择字段组并将策略版本写入 Run 游标；没有缺口时返回 `visual_field_gaps_empty`。响应返回 `202` 和 Run ID；索引未就绪时返回稳定的 `retrieval_index_not_ready`，而不是退化成全文隐式调用。
+
+目标请求增加 `routing_mode: "direct_only" | "auto_after_direct"`。当前和 R4 验收前默认必须为 `direct_only`；`auto_after_direct` 也必须先执行 Direct，再由 21.5.2 的策略决定是否运行 Agent，调用方不能用该参数强制跳过证据门禁或强制 Agent 改写结果。响应和 evidence API 暴露 routing policy version、decision、reason codes、Direct outcome hash 和可选 AgentRun ID。
 
 ## 21.8 配置、观测、评测与验收
 
@@ -217,11 +372,11 @@ EMBEDDING_TIMEOUT_SECONDS=60
 
 还须版本化 BM25/vector top-K、RRF 参数、邻居数、每角色最大 packet/call 数和 enrichment Provider timeout。`EMBEDDING_API_KEY` 只能来自 Secret/环境变量；受保护诊断可以显示 provider、model、dimension 和 profile version，但密钥、全文、完整向量和完整 prompt 不进入日志或 Metrics 标签。
 
-最小事件为：`retrieval.index.started|ready|failed`、`visual_enrichment.planned|retrieved|packet_built|extracted|evidence_persisted|suggested|completed`。事件记录 run/step、源版本、索引/词典/Prompt/Provider 版本、计数、哈希、耗时和成本，不记录正文。
+最小事件为：`retrieval.index.started|ready|failed`、`visual_enrichment.planned|retrieved|packet_built|extracted|evidence_persisted|suggested|completed`。路由落地后增加 `visual_enrichment.direct_evaluated|routed|agent_started|agent_stopped`，记录 outcome/routing policy hash、decision、reason codes、预算与停止原因，不在事件中记录正文。所有事件记录 run/step、源版本、索引/词典/Prompt/Provider 版本、计数、哈希、耗时和成本。
 
 黄金集执行当前暂缓，只保留既有 Evaluation Repository/ORM 和后续 Runner/Grader 接入边界，不把尚未稳定的字段组与交互规则固化为发布门禁。功能契约稳定后，PoC 至少比较：仅现有大块提取、1K/100 BM25-only + 邻居、1K/100 vector-only + 邻居、1K/100 hybrid + RRF + 邻居，以及至少一个不同 passage/overlap 参数。主指标为字段组证据 precision/recall、人物归属准确率、精确 span 准确率、每角色新增的已确认视觉字段、每正确字段成本、p95 延迟和“无依据推断进入 Observation”的零容忍率。
 
-索引构建、中文词典、人名/别名扩展、跨块 offsets、重试/取消、旧源版本隔离、多人代词歧义和 Suggestion 审批都必须有自动测试。PoC 还必须覆盖：两字人名和专名分词、FTS/Qdrant passage ID 对齐、Embedding API 批处理及 429/5xx 恢复、部分批次成功后的断点续建、向量维度不匹配拒绝、模型切换强制新 collection、Qdrant Local 数据目录恢复，以及远程 Provider 请求/日志不泄漏正文和密钥。
+索引构建、中文词典、人名/别名扩展、跨块 offsets、重试/取消、旧源版本隔离、多人代词歧义和 Suggestion 审批都必须有自动测试。路由测试必须覆盖 21.5.2 的最小用例、相同 input fingerprint 幂等、Agent capability 关闭、预算耗尽、Worker 在 Direct/Agent 边界崩溃恢复、实体/阶段 hard-review 优先于 Agent，以及“零命中但覆盖不完整”不得写 `not_stated`。PoC 还必须覆盖：两字人名和专名分词、FTS/Qdrant passage ID 对齐、Embedding API 批处理及 429/5xx 恢复、部分批次成功后的断点续建、向量维度不匹配拒绝、模型切换强制新 collection、Qdrant Local 数据目录恢复，以及远程 Provider 请求/日志不泄漏正文和密钥。
 
 ## 21.9 实施顺序与完成定义
 
@@ -231,10 +386,12 @@ EMBEDDING_TIMEOUT_SECONDS=60
 4. RetrievalPort、QueryPlan、BM25/vector 并行召回、RRF、邻居扩展和 query/hit 审计；
 5. `visual_enrichment` Run、精提取 Schema、证据回映和 Observation/Suggestion 分流；
 6. 角色页面的索引状态、字段缺口、证据包和 Suggestion 审核入口（已实现）；
-7. 功能契约稳定后实现黄金集 PoC、成本/延迟基线和发布门禁；需要多进程并发时再迁移 Qdrant Server。
+7. 实现 `DirectEnrichmentOutcome`、`VisualEnrichmentRoutingPolicy`、原因码、路由 API/事件和纯策略单元测试，保持 `direct_only` 默认；
+8. 接入有界 VisualEvidenceAgent、恢复测试和 Direct/Agent A/B，达成 R4 门禁后才允许 `auto_after_direct` 成为可选默认；
+9. 功能契约稳定后实现黄金集 PoC、成本/延迟基线和发布门禁；需要多进程并发时再迁移 Qdrant Server。
 
 完成不等于“建了 FTS 表”。当前阶段的产品闭环要求用户能上传小说后看到索引状态、对选定角色自动规划或手选缺口字段、创建精提取任务、查看新增事实的原文证据、审核推断建议，并重新聚合得到可追溯档案；这些入口与恢复/安全测试已经形成基础闭环。黄金集 Runner、报告和发布门禁是后续独立验收阶段，不阻塞当前功能迭代。
 
 ---
 
-[← 上一篇](20-api-cookbook-and-error-catalog.md) · [文档索引](README.md) · [下一篇 →](01-project-overview-and-principles.md)
+[← 上一篇](20-api-cookbook-and-error-catalog.md) · [文档索引](README.md) · [下一篇 →](22-general-novel-decomposition-quality-plan.md)

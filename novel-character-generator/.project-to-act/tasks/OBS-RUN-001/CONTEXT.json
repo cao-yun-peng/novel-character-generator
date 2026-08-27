@@ -1,0 +1,20 @@
+{
+  "task_id": "OBS-RUN-001",
+  "created_at": "2026-08-27T13:00:00+08:00",
+  "project_stage": 5,
+  "lifecycle_revision": 2,
+  "risk_level": "L1",
+  "summary_contract": "run-inspector-v1",
+  "detail_kinds": [
+    "r1_chunk",
+    "r2_chunk",
+    "r2_convergence",
+    "r3_character"
+  ],
+  "source_of_truth": "business database; telemetry backends remain derived views",
+  "deferred": [
+    "OpenTelemetry instrumentation and context propagation",
+    "Langfuse generation/evaluation export",
+    "production sampling and retention policy enforcement"
+  ]
+}

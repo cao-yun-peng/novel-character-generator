@@ -59,6 +59,36 @@ class Settings(BaseSettings):
     llm_base_url: str = "https://api.deepseek.com"
     llm_model: str | None = None
     llm_timeout_seconds: float = Field(default=180.0, gt=0)
+    llm_wire_api: Literal["chat_completions", "responses"] = "chat_completions"
+    llm_thinking_enabled: bool = False
+    llm_reasoning_effort: Literal["none", "low", "medium", "high"] = "none"
+    llm_max_output_tokens: int = Field(default=8_192, ge=256, le=65_536)
+    llm_total_deadline_seconds: float = Field(default=120.0, gt=0)
+    llm_max_items_per_result: int = Field(default=256, ge=1, le=2_000)
+    llm_max_retries: int = Field(default=1, ge=0, le=3)
+    llm_raw_response_capture_enabled: bool = False
+    entity_resolution_context_budget_tokens: int = Field(
+        default=12_000, ge=2_000, le=64_000
+    )
+    entity_resolution_memory_max_records: int = Field(default=64, ge=1, le=2_000)
+    entity_resolution_memory_recent_records: int = Field(default=16, ge=0, le=2_000)
+    # Provisional failure-informed limits: one observed 35-mention/21-record batch reached
+    # 100% coverage, while 46 mentions/27 records collapsed to 32.6%. Recalibrate from
+    # traced p95/p99 coverage and token usage after representative Provider reruns.
+    entity_convergence_shard_max_records: int = Field(default=16, ge=1, le=2_000)
+    entity_convergence_shard_max_mentions: int = Field(default=32, ge=1, le=2_000)
+    entity_convergence_shard_max_input_tokens: int = Field(
+        default=12_000, ge=1_000, le=128_000
+    )
+    entity_convergence_shard_max_output_tokens: int = Field(
+        default=4_500, ge=256, le=65_536
+    )
+    entity_convergence_repair_max_attempts: int = Field(default=2, ge=0, le=4)
+    entity_resolution_max_calls_per_run: int = Field(default=2_000, ge=1, le=100_000)
+    image_provider: Literal["disabled", "mock"] = "disabled"
+    image_workflow_profile: str = "mock-character-portrait"
+    image_workflow_version: str = "1"
+    image_candidate_count_max: int = Field(default=4, ge=1, le=8)
     agent_runtime_enabled: bool = False
     agent_max_turns_default: int = Field(default=3, ge=1)
     agent_max_tool_calls_default: int = Field(default=12, ge=0)
@@ -93,8 +123,21 @@ class Settings(BaseSettings):
             or not self.embedding_profile_version
         ):
             raise ValueError("embedding_provider_configuration_required")
+        if self.llm_total_deadline_seconds >= self.worker_lease_seconds:
+            raise ValueError("llm_deadline_must_be_shorter_than_worker_lease")
+        if (
+            self.entity_resolution_memory_recent_records
+            > self.entity_resolution_memory_max_records
+        ):
+            raise ValueError("entity_resolution_memory_recent_exceeds_max_records")
+        if self.entity_convergence_shard_max_output_tokens > self.llm_max_output_tokens:
+            raise ValueError("entity_convergence_output_budget_exceeds_provider_limit")
         if self.app_env == "production" and self.llm_provider == "mock":
             raise ValueError("mock_llm_provider_forbidden_in_production")
+        if self.app_env == "production" and self.image_provider == "mock":
+            raise ValueError("mock_image_provider_forbidden_in_production")
+        if self.app_env == "production" and self.llm_raw_response_capture_enabled:
+            raise ValueError("llm_raw_response_capture_forbidden_in_production")
         if self.llm_provider != "mock" and (self.llm_api_key is None or not self.llm_model):
             raise ValueError("llm_provider_credentials_required")
         if self.app_env == "production":

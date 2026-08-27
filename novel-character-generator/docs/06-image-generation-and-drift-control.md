@@ -2,9 +2,9 @@
 
 > [← 上一篇](05-character-render-profile.md) · [文档索引](README.md) · [下一篇 →](07-agent-architecture.md)
 >
-> 文档版本：2.9 · 源章节：9. 图像生成与一致性评测 · 修订日期：2026-08-24
+> 文档版本：3.0 · 源章节：9. 图像生成与一致性评测 · 修订日期：2026-08-26
 >
-> 当前状态：本页是目标设计。当前没有 Image Provider、GenerationContextBuilder、Drift Audit 或图像端点，`image_generation=false`；落地顺序见[图像生成实现契约](18-image-generation-implementation-contract.md)。
+> 当前状态：本页主体是目标设计。`GenerationContextBuilder`、Mock Provider、图像 Run API 和候选落库已有基础实现，但真实 Provider、角色设计补全、场景简报/Prompt 编译、Drift Audit、gate 与 baseline 尚未形成闭环；默认 `image_generation=false`。落地顺序见[图像生成实现契约](18-image-generation-implementation-contract.md)。
 
 ## 9. 图像生成与一致性评测
 
@@ -128,7 +128,7 @@ class VisualConstraint(BaseModel):
     rule: Literal["must_match", "must_include", "must_not_include", "reference_only"]
 ```
 
-约束按以下顺序组装：人工批准的本次覆盖 > 已批准的场景状态 > 已批准的目标阶段状态 > 锁定身份锚点 > 仅允许填充的画风默认值。低置信度推断、未解决冲突、其他时间线状态、已失效观察和未经批准的身份原型不得进入正向事实约束；必要时以 `negative_constraints` 明确阻止模型混入错误年龄、旧伤、其他伪装或分支状态。
+角色约束按以下顺序组装：人工批准的本次角色覆盖 > 已批准的场景状态 > 已批准的目标阶段状态 > 锁定身份锚点。画风、构图、镜头和设计性灯光由 `SceneRenderBrief`/`ImageRenderSpec` 单独提供，不作为低优先级人物事实混入快照。低置信度推断、未解决冲突、其他时间线状态、已失效观察和未经批准的身份原型不得进入正向事实约束；必要时以 `negative_constraints` 明确阻止模型混入错误年龄、旧伤、其他伪装或分支状态。
 
 上下文构建必须保存字段选择清单、裁剪原因、来源 ID 和 `context_hash`。超出预算时先删除低优先级参考说明，再缩短证据摘要，最后拆分任务；不得裁掉 `critical` 身份属性、目标时间线和硬性负约束。完整 Prompt 可以只保存在受限业务表或加密产物中，普通日志只记录版本和哈希。
 

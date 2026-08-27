@@ -31,6 +31,7 @@ LLM_API_KEY=
 LLM_BASE_URL=https://api.deepseek.com
 LLM_MODEL=
 LLM_TIMEOUT_SECONDS=180
+LLM_RAW_RESPONSE_CAPTURE_ENABLED=false
 
 MAX_CHUNK_INPUT_TOKENS=5000
 CHUNK_OVERLAP_TOKENS=300
@@ -50,9 +51,9 @@ USER_API_KEY=
 ADMIN_API_KEY=
 ```
 
-开发环境未配置两个 API Key 时允许以 `development` 身份调用；生产环境必须配置不同的普通和管理员 Key。`LLM_PROVIDER=mock` 只用于本地开发和测试，生产启动会拒绝；启用 `deepseek` 或 `openai_compatible` 时必须同时提供 `LLM_API_KEY` 和 `LLM_MODEL`。
+开发环境未配置两个 API Key 时允许以 `development` 身份调用；生产环境必须配置不同的普通和管理员 Key。`LLM_PROVIDER=mock` 只用于本地开发和测试，生产启动会拒绝；启用 `deepseek` 或 `openai_compatible` 时必须同时提供 `LLM_API_KEY` 和 `LLM_MODEL`。`LLM_RAW_RESPONSE_CAPTURE_ENABLED` 默认关闭；启用后只由管理员端点读取完整 Provider 响应，不进入 RunEvent 或普通 Inspector JSON，生产环境会拒绝该配置。原始响应可能包含小说内容，应仅短期调试并按本地数据库同等级保护。
 
-当前 `OTEL_*` 字段只是配置入口，完整 API→Worker→Provider instrumentation 尚未实现；`AGENT_RUNTIME_ENABLED` 默认关闭。敏感值只通过环境变量或 secret manager 注入，不写入日志、数据库快照或 `.env.example`。缺少生产必需配置时启动失败，不以匿名管理权限或无限预算降级。
+当前 `OTEL_*` 字段只是配置入口，完整 API→Worker→Provider instrumentation 尚未实现；`AGENT_RUNTIME_ENABLED` 默认关闭。敏感配置值只通过环境变量或 secret manager 注入，不写入日志或 `.env.example`；开发原始响应是明确受控的诊断数据例外，不包含 API Key，但可能包含模型输出和小说衍生内容。缺少生产必需配置时启动失败，不以匿名管理权限或无限预算降级。
 
 ### 14.2 目标配置：实现对应能力后再加入
 

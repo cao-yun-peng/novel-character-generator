@@ -8,12 +8,20 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from novel_character_generator.infrastructure.db.orm import (
     AliasAssertionORM,
+    CharacterAppearanceStateORM,
+    CharacterConflictORM,
+    CharacterLifePhaseORM,
+    CharacterORM,
+    CharacterRenderProfileORM,
     DecisionRecordORM,
     ExpressionObservationORM,
     FeatureObservationORM,
     NovelORM,
+    ObservationScopeBindingORM,
+    PipelineRunORM,
     SceneORM,
     StoryEventORM,
+    TemporalSignalORM,
     TimelineORM,
 )
 
@@ -30,6 +38,15 @@ class TemporalBindingUpdate:
         "direct", "flashback", "flashforward", "dream", "illusion", "rumor", "hypothetical"
     ]
     reality_status: Literal["canonical", "subjective", "alleged", "counterfactual"]
+
+
+@dataclass(frozen=True)
+class LifePhaseUpdate:
+    label: str
+    start_chapter_ordinal: int | None
+    end_chapter_ordinal: int | None
+    status: Literal["active", "rejected"]
+    reason: str
 
 
 class StoryService:
@@ -66,6 +83,207 @@ class StoryService:
                 .order_by(SceneORM.narrative_order, SceneORM.id)
             )
         )
+
+    async def life_phases(self, character_id: UUID) -> list[CharacterLifePhaseORM] | None:
+        if await self.session.get(CharacterORM, character_id) is None:
+            return None
+        return list(
+            await self.session.scalars(
+                select(CharacterLifePhaseORM)
+                .where(
+                    CharacterLifePhaseORM.character_id == character_id,
+                    CharacterLifePhaseORM.record_status == "active",
+                )
+                .order_by(
+                    CharacterLifePhaseORM.timeline_id,
+                    CharacterLifePhaseORM.phase_order,
+                    CharacterLifePhaseORM.id,
+                )
+            )
+        )
+
+    async def temporal_review(
+        self, novel_id: UUID
+    ) -> tuple[list[TemporalSignalORM], list[ObservationScopeBindingORM]] | None:
+        if await self.session.get(NovelORM, novel_id) is None:
+            return None
+        signals = list(
+            await self.session.scalars(
+                select(TemporalSignalORM)
+                .join(PipelineRunORM, TemporalSignalORM.run_id == PipelineRunORM.id)
+                .where(
+                    PipelineRunORM.novel_id == novel_id,
+                    TemporalSignalORM.resolution_status == "unresolved",
+                )
+                .order_by(
+                    TemporalSignalORM.source_chunk_id,
+                    TemporalSignalORM.char_start,
+                    TemporalSignalORM.id,
+                )
+            )
+        )
+        bindings = list(
+            await self.session.scalars(
+                select(ObservationScopeBindingORM)
+                .join(
+                    FeatureObservationORM,
+                    ObservationScopeBindingORM.observation_id == FeatureObservationORM.id,
+                )
+                .join(CharacterORM, FeatureObservationORM.character_id == CharacterORM.id)
+                .where(
+                    CharacterORM.novel_id == novel_id,
+                    ObservationScopeBindingORM.status == "needs_review",
+                    ObservationScopeBindingORM.record_status == "active",
+                )
+                .order_by(
+                    ObservationScopeBindingORM.created_at,
+                    ObservationScopeBindingORM.id,
+                )
+            )
+        )
+        return signals, bindings
+
+    async def resolve_life_phase(
+        self,
+        character_id: UUID,
+        phase_id: UUID,
+        *,
+        update_request: LifePhaseUpdate,
+        expected_revision: int,
+        actor_id: str,
+    ) -> CharacterLifePhaseORM | None:
+        phase = await self.session.get(CharacterLifePhaseORM, phase_id)
+        if phase is None or phase.character_id != character_id:
+            return None
+        if phase.record_status != "active":
+            raise ValueError("life_phase_stale")
+        if (
+            update_request.start_chapter_ordinal is not None
+            and update_request.end_chapter_ordinal is not None
+            and update_request.end_chapter_ordinal < update_request.start_chapter_ordinal
+        ):
+            raise ValueError("life_phase_invalid_chapter_range")
+        now = datetime.now(UTC)
+        previous = {
+            "label": phase.label,
+            "start_chapter_ordinal": phase.start_chapter_ordinal,
+            "end_chapter_ordinal": phase.end_chapter_ordinal,
+            "status": phase.status,
+            "revision": phase.revision,
+        }
+        updated_id = await self.session.scalar(
+            update(CharacterLifePhaseORM)
+            .where(
+                CharacterLifePhaseORM.id == phase.id,
+                CharacterLifePhaseORM.revision == expected_revision,
+                CharacterLifePhaseORM.record_status == "active",
+            )
+            .values(
+                label=update_request.label,
+                start_chapter_ordinal=update_request.start_chapter_ordinal,
+                end_chapter_ordinal=update_request.end_chapter_ordinal,
+                status=update_request.status,
+                resolver_version="manual-phase-resolution-v1",
+                revision=expected_revision + 1,
+                updated_at=now,
+            )
+            .returning(CharacterLifePhaseORM.id)
+        )
+        if updated_id is None:
+            await self.session.rollback()
+            raise TemporalBindingConflict("life_phase_revision_conflict")
+
+        bindings = list(
+            await self.session.scalars(
+                select(ObservationScopeBindingORM).where(
+                    ObservationScopeBindingORM.phase_id == phase.id,
+                    ObservationScopeBindingORM.record_status == "active",
+                )
+            )
+        )
+        for binding in bindings:
+            scope = dict(binding.temporal_scope)
+            scope.update(
+                {
+                    "life_phase_label": update_request.label,
+                    "start_chapter_ordinal": update_request.start_chapter_ordinal,
+                    "scope_resolution_status": (
+                        "final" if update_request.status == "active" else "needs_review"
+                    ),
+                    "phase_resolver_version": "manual-phase-resolution-v1",
+                }
+            )
+            if update_request.end_chapter_ordinal is None:
+                scope.pop("end_chapter_ordinal", None)
+            else:
+                scope["end_chapter_ordinal"] = update_request.end_chapter_ordinal
+            binding.temporal_scope = scope
+            binding.status = "final" if update_request.status == "active" else "needs_review"
+            binding.resolver_version = "manual-phase-resolution-v1"
+            binding.revision += 1
+            binding.updated_at = now
+            observation = await self.session.get(FeatureObservationORM, binding.observation_id)
+            if observation is not None:
+                observation.temporal_scope = scope
+                observation.record_status = (
+                    "active" if update_request.status == "active" else "pending"
+                )
+                observation.recorded_at = now if update_request.status == "active" else None
+                observation.updated_at = now
+
+        await self.session.execute(
+            update(CharacterAppearanceStateORM)
+            .where(
+                CharacterAppearanceStateORM.character_id == character_id,
+                CharacterAppearanceStateORM.record_status == "active",
+            )
+            .values(record_status="invalidated", updated_at=now)
+        )
+        await self.session.execute(
+            update(CharacterRenderProfileORM)
+            .where(
+                CharacterRenderProfileORM.character_id == character_id,
+                CharacterRenderProfileORM.record_status == "active",
+            )
+            .values(record_status="invalidated", updated_at=now)
+        )
+        await self.session.execute(
+            update(CharacterConflictORM)
+            .where(
+                CharacterConflictORM.character_id == character_id,
+                CharacterConflictORM.status == "pending",
+            )
+            .values(status="superseded", updated_at=now)
+        )
+        self.session.add(
+            DecisionRecordORM(
+                id=uuid4(),
+                pipeline_run_id=phase.run_id,
+                agent_run_id=None,
+                decision_kind="life_phase_resolution",
+                subject_type="character_life_phase",
+                subject_id=phase.id,
+                decision={
+                    "actor_id": actor_id,
+                    "reason": update_request.reason,
+                    "previous": previous,
+                    "updated": {
+                        "label": update_request.label,
+                        "start_chapter_ordinal": update_request.start_chapter_ordinal,
+                        "end_chapter_ordinal": update_request.end_chapter_ordinal,
+                        "status": update_request.status,
+                        "revision": expected_revision + 1,
+                    },
+                    "reaggregation_required": True,
+                },
+                evidence_ids=phase.evidence_signal_ids,
+                source_kind="manual",
+                created_at=now,
+                updated_at=now,
+            )
+        )
+        await self.session.commit()
+        return await self.session.get_one(CharacterLifePhaseORM, phase.id)
 
     async def update_temporal_binding(
         self,

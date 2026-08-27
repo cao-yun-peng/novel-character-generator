@@ -1,0 +1,35 @@
+{
+  "id": "R3-PHASE-001",
+  "title": "人物阶段与时间作用域解析基础主链",
+  "status": "review",
+  "owner": "Codex",
+  "objective": "在 R2 人物归属之后解析人生阶段、叙事呈现、现实状态、形态与时间范围，只让 final 作用域观察进入外观聚合。",
+  "allowed_paths": [
+    "src/novel_character_generator/application/ports",
+    "src/novel_character_generator/application/services",
+    "src/novel_character_generator/infrastructure/db",
+    "src/novel_character_generator/infrastructure/llm",
+    "src/novel_character_generator/workers",
+    "src/novel_character_generator/api/routes",
+    "src/novel_character_generator/web",
+    "migrations",
+    "tests",
+    "docs",
+    ".project-to-act"
+  ],
+  "invariants": [
+    "R2 只确定人物归属；R3 独立确定观察的阶段与时间作用域",
+    "事实级时间信号只约束所属事实，不得扩散到同 mention 的其他事实",
+    "R2 物化的观察保持 pending，只有 R3 final binding 可以激活",
+    "needs_review 和未绑定信号必须可查询且不得进入外观聚合",
+    "原文没有明确阶段时不得仅凭章节位置臆造人生阶段",
+    "阶段与作用域写入必须保存输入哈希、解析版本、证据和人工 revision"
+  ],
+  "acceptance": [
+    "R1 的 life_phase、time_jump、presentation 和 transformation 信号可被完整定位并持久化",
+    "明确前世事实进入 past_life，只有 time_jump 的事实保持 needs_review/pending",
+    "R2 完成后排队 resolve_character_phases，R3 完成后才排队 aggregate_appearance",
+    "审核列表、人生阶段查询和 If-Match 人工修订 API 可运行并写审计",
+    "Alembic 唯一 head、迁移测试、Ruff、Mypy 和全量 Pytest 通过"
+  ]
+}

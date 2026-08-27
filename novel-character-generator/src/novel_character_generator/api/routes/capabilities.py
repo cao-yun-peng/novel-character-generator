@@ -22,6 +22,7 @@ class CapabilitiesResponse(BaseModel):
     retrieval_hybrid_index: bool
     visual_enrichment: bool
     image_generation: bool
+    raw_model_response_viewer: bool
 
 
 @router.get("", response_model=CapabilitiesResponse)
@@ -42,5 +43,9 @@ async def capabilities() -> CapabilitiesResponse:
         retrieval_lexical_index=True,
         retrieval_hybrid_index=settings.embedding_provider != "disabled",
         visual_enrichment=settings.embedding_provider != "disabled",
-        image_generation=False,
+        image_generation=settings.image_provider != "disabled",
+        raw_model_response_viewer=(
+            settings.app_env == "development"
+            and settings.llm_raw_response_capture_enabled
+        ),
     )

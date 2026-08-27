@@ -1,0 +1,10 @@
+{
+  "task_id": "R1-PROMPT-003",
+  "created_at": "2026-08-26T00:00:00+08:00",
+  "project_stage": 5,
+  "lifecycle_revision": 2,
+  "dataset_version": "visual-extraction-developer-seed:v0",
+  "provider_contract": "visual-observation-v3",
+  "prompt_scope": "通用语义分类、原子事实拆分、推断失败关闭",
+  "paid_validation_scope": "7 个跨作品合成差异 case，各自独立运行完整 v3 抽取与定位流程"
+}

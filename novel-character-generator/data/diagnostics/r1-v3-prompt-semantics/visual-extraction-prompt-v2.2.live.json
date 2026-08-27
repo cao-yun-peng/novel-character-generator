@@ -1,0 +1,346 @@
+{
+  "dataset": {
+    "name": "visual-extraction-developer-seed",
+    "version": "v0",
+    "rubric_version": "visual-observation-seed-v1"
+  },
+  "provider_version": "deepseek:deepseek-v4-flash:visual-observation-v3:visual-extraction-prompt-v2.2",
+  "execution_mode": "one_provider_call_per_case",
+  "case_count": 3,
+  "passed_case_count": 0,
+  "records": [
+    {
+      "case": {
+        "id": "clothing-coverage-not-body-build",
+        "text": "少年顾川赤着上身站在雨中，文中没有描述他的高矮胖瘦。",
+        "expected_observations": [
+          {
+            "character_name": "顾川",
+            "field_path": "clothing.coverage",
+            "value": "上身未着衣",
+            "evidence_quote": "赤着上身",
+            "epistemic_status": "asserted",
+            "life_phase_key": null
+          }
+        ],
+        "slice_tags": [
+          "direct",
+          "clothing",
+          "coverage",
+          "negative-field-confusion"
+        ],
+        "severity": "critical",
+        "notes": "衣物覆盖状态不得写入 body.build；显式否认也不得触发体型猜测。"
+      },
+      "provider_metadata": {
+        "wire_api": "chat_completions",
+        "provider_request_id": "9e1abe72-b69f-49e6-a61b-082a7e5d04b7",
+        "response_model": "deepseek-v4-flash",
+        "status": "completed",
+        "finish_reason": "stop",
+        "attempts": 1,
+        "latency_ms": 3501.040800001647,
+        "usage": {
+          "input_tokens": 1783,
+          "cache_hit_tokens": 0,
+          "cache_miss_tokens": 1783,
+          "reasoning_tokens": 0,
+          "output_tokens": 151,
+          "total_tokens": 1934
+        }
+      },
+      "visual_candidates": {
+        "entities": [
+          {
+            "local_id": "gu_chuan",
+            "representative_name": "顾川",
+            "mention_quote": "少年顾川",
+            "mention_kind": "name",
+            "confidence": 1.0
+          }
+        ],
+        "visual_candidates": [
+          {
+            "entity_ref": "gu_chuan",
+            "field_path": "clothing.coverage",
+            "value": "赤着上身",
+            "evidence_quote": "赤着上身",
+            "epistemic_status": "asserted",
+            "confidence": 1.0,
+            "temporal_signals": []
+          }
+        ],
+        "deferred_items": []
+      },
+      "grounded_visual_result": {
+        "mentions": [
+          {
+            "text": "少年顾川",
+            "canonical_name": "顾川",
+            "start": 0,
+            "end": 4,
+            "kind": "name"
+          }
+        ],
+        "observations": [
+          {
+            "character_name": "顾川",
+            "field_path": "clothing.coverage",
+            "value": "赤着上身",
+            "evidence_quote": "赤着上身",
+            "start": 4,
+            "end": 8,
+            "epistemic_status": "asserted",
+            "confidence": 1.0,
+            "life_phase_key": null,
+            "life_phase_label": null
+          }
+        ],
+        "warnings": []
+      },
+      "score": {
+        "case_id": "clothing-coverage-not-body-build",
+        "true_positive": 0,
+        "false_positive": 1,
+        "false_negative": 1,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "exact_evidence_rate": 0.0,
+        "passed": false
+      }
+    },
+    {
+      "case": {
+        "id": "tattoo-not-scar",
+        "text": "顾川左肩有一片墨色飞鸟纹身。",
+        "expected_observations": [
+          {
+            "character_name": "顾川",
+            "field_path": "distinctive_marks.tattoo",
+            "value": "左肩墨色飞鸟纹身",
+            "evidence_quote": "左肩有一片墨色飞鸟纹身",
+            "epistemic_status": "asserted",
+            "life_phase_key": null
+          }
+        ],
+        "slice_tags": [
+          "direct",
+          "persistent-change",
+          "tattoo",
+          "negative-field-confusion"
+        ],
+        "severity": "critical",
+        "notes": "纹身与疤痕是不同的持久视觉标记，不得互相替代。"
+      },
+      "provider_metadata": {
+        "wire_api": "chat_completions",
+        "provider_request_id": "832e681c-ba71-4355-ab5e-112e2e2c4d35",
+        "response_model": "deepseek-v4-flash",
+        "status": "completed",
+        "finish_reason": "stop",
+        "attempts": 1,
+        "latency_ms": 2685.5467000023054,
+        "usage": {
+          "input_tokens": 1778,
+          "cache_hit_tokens": 1664,
+          "cache_miss_tokens": 114,
+          "reasoning_tokens": 0,
+          "output_tokens": 168,
+          "total_tokens": 1946
+        }
+      },
+      "visual_candidates": {
+        "entities": [
+          {
+            "local_id": "gu_chuan",
+            "representative_name": "顾川",
+            "mention_quote": "顾川",
+            "mention_kind": "name",
+            "confidence": 1.0
+          }
+        ],
+        "visual_candidates": [
+          {
+            "entity_ref": "gu_chuan",
+            "field_path": "distinctive_marks.tattoo",
+            "value": "左肩有一片墨色飞鸟纹身",
+            "evidence_quote": "左肩有一片墨色飞鸟纹身",
+            "epistemic_status": "asserted",
+            "confidence": 1.0,
+            "temporal_signals": []
+          }
+        ],
+        "deferred_items": []
+      },
+      "grounded_visual_result": {
+        "mentions": [
+          {
+            "text": "顾川",
+            "canonical_name": "顾川",
+            "start": 0,
+            "end": 2,
+            "kind": "name"
+          }
+        ],
+        "observations": [
+          {
+            "character_name": "顾川",
+            "field_path": "distinctive_marks.tattoo",
+            "value": "左肩有一片墨色飞鸟纹身",
+            "evidence_quote": "左肩有一片墨色飞鸟纹身",
+            "start": 2,
+            "end": 13,
+            "epistemic_status": "asserted",
+            "confidence": 1.0,
+            "life_phase_key": null,
+            "life_phase_label": null
+          }
+        ],
+        "warnings": []
+      },
+      "score": {
+        "case_id": "tattoo-not-scar",
+        "true_positive": 0,
+        "false_positive": 1,
+        "false_negative": 1,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "exact_evidence_rate": 0.0,
+        "passed": false
+      }
+    },
+    {
+      "case": {
+        "id": "white-hair-and-beard-atomic",
+        "text": "陆伯的头发和长须都已雪白。",
+        "expected_observations": [
+          {
+            "character_name": "陆伯",
+            "field_path": "hair.color",
+            "value": "雪白",
+            "evidence_quote": "头发和长须都已雪白",
+            "epistemic_status": "asserted",
+            "life_phase_key": null
+          },
+          {
+            "character_name": "陆伯",
+            "field_path": "distinctive_marks.beard",
+            "value": "雪白长须",
+            "evidence_quote": "头发和长须都已雪白",
+            "epistemic_status": "asserted",
+            "life_phase_key": null
+          }
+        ],
+        "slice_tags": [
+          "direct",
+          "hair",
+          "beard",
+          "atomic",
+          "shared-evidence"
+        ],
+        "severity": "important",
+        "notes": "共享证据中的头发与胡须是两个可独立用于出图的原子事实。"
+      },
+      "provider_metadata": {
+        "wire_api": "chat_completions",
+        "provider_request_id": "d2f43afd-2d4c-4aa0-a980-c2600e2d323c",
+        "response_model": "deepseek-v4-flash",
+        "status": "completed",
+        "finish_reason": "stop",
+        "attempts": 1,
+        "latency_ms": 3107.585099998687,
+        "usage": {
+          "input_tokens": 1776,
+          "cache_hit_tokens": 1664,
+          "cache_miss_tokens": 112,
+          "reasoning_tokens": 0,
+          "output_tokens": 230,
+          "total_tokens": 2006
+        }
+      },
+      "visual_candidates": {
+        "entities": [
+          {
+            "local_id": "lu_bo",
+            "representative_name": "陆伯",
+            "mention_quote": "陆伯",
+            "mention_kind": "name",
+            "confidence": 1.0
+          }
+        ],
+        "visual_candidates": [
+          {
+            "entity_ref": "lu_bo",
+            "field_path": "hair.color",
+            "value": "雪白",
+            "evidence_quote": "头发和长须都已雪白",
+            "epistemic_status": "asserted",
+            "confidence": 1.0,
+            "temporal_signals": []
+          },
+          {
+            "entity_ref": "lu_bo",
+            "field_path": "distinctive_marks.beard",
+            "value": "长须雪白",
+            "evidence_quote": "长须都已雪白",
+            "epistemic_status": "asserted",
+            "confidence": 1.0,
+            "temporal_signals": []
+          }
+        ],
+        "deferred_items": []
+      },
+      "grounded_visual_result": {
+        "mentions": [
+          {
+            "text": "陆伯",
+            "canonical_name": "陆伯",
+            "start": 0,
+            "end": 2,
+            "kind": "name"
+          }
+        ],
+        "observations": [
+          {
+            "character_name": "陆伯",
+            "field_path": "hair.color",
+            "value": "雪白",
+            "evidence_quote": "头发和长须都已雪白",
+            "start": 3,
+            "end": 12,
+            "epistemic_status": "asserted",
+            "confidence": 1.0,
+            "life_phase_key": null,
+            "life_phase_label": null
+          },
+          {
+            "character_name": "陆伯",
+            "field_path": "distinctive_marks.beard",
+            "value": "长须雪白",
+            "evidence_quote": "长须都已雪白",
+            "start": 6,
+            "end": 12,
+            "epistemic_status": "asserted",
+            "confidence": 1.0,
+            "life_phase_key": null,
+            "life_phase_label": null
+          }
+        ],
+        "warnings": []
+      },
+      "score": {
+        "case_id": "white-hair-and-beard-atomic",
+        "true_positive": 1,
+        "false_positive": 1,
+        "false_negative": 1,
+        "precision": 0.5,
+        "recall": 0.5,
+        "f1": 0.5,
+        "exact_evidence_rate": 0.5,
+        "passed": false
+      }
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "id": "R1-EVAL-004",
+  "title": "评测器三态评分与等价值边界",
+  "status": "review",
+  "owner": "Codex",
+  "objective": "将字段/原子结构、值措辞和证据范围分开评分，让未登记的等价候选进入 needs_review，而不是误判为结构失败或自动放行。",
+  "allowed_paths": [
+    "src/novel_character_generator/application/services/extraction_evaluation_service.py",
+    "tests/evaluation/visual_extraction_seed_v0.json",
+    "tests/unit/test_extraction_evaluation_service.py",
+    "tests/测试/evaluate_visual_prompt_cases.py",
+    "data/diagnostics/r1-v3-prompt-semantics",
+    ".project-to-act"
+  ],
+  "invariants": [
+    "不修改生产 visual-observation-v3 Schema、Prompt、Adapter 或持久化",
+    "未登记的新 value 不能自动 pass",
+    "错误字段、缺失/多余原子事实、已拒绝值和无原文证据必须 fail",
+    "等价值仅在具体 expected observation 范围内生效，不建立全局同义词表",
+    "不使用 LLM、Embedding 或模糊相似度作为评测裁判"
+  ],
+  "acceptance": [
+    "case 和 observation 均能返回 pass、needs_review 或 fail 及稳定原因码",
+    "canonical/accepted value 自动通过，unknown value 保守进入 needs_review，rejected value 失败",
+    "证据完全一致或包含关系可通过，落地但范围未知进入 needs_review，无原文证据失败",
+    "既有 25-case 数据兼容加载，rubric 版本更新，相关和全量回归通过"
+  ]
+}

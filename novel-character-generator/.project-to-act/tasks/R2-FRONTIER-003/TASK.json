@@ -1,0 +1,34 @@
+{
+  "id": "R2-FRONTIER-003",
+  "title": "R2 十章收敛 Dirty Memory Frontier",
+  "status": "review",
+  "owner": "Codex",
+  "objective": "十章和尾批收敛只处理本批次新增或更新的非 stable memory，保留但不重复提交没有新证据的历史 unresolved，并在 RunEvent/Inspector 中显示 frontier、覆盖率和遗漏变化。",
+  "allowed_paths": [
+    "src/novel_character_generator/application/services/entity_resolution_service.py",
+    "src/novel_character_generator/application/services/run_inspector_service.py",
+    "src/novel_character_generator/workers/handlers/extraction.py",
+    "src/novel_character_generator/web/app.js",
+    "tests/unit/test_entity_resolution_service.py",
+    "tests/integration/test_entity_resolution_pipeline.py",
+    "tests/integration/test_text_analysis_run.py",
+    ".project-to-act"
+  ],
+  "invariants": [
+    "每 10 Chunk 和文末余数仍各触发一次固定收敛批次",
+    "frontier 只决定本批次要求模型决策的非 stable 记录，不删除完整 memory",
+    "包含本批次 mention 的历史 unresolved/provisional 视为 dirty，必须进入 frontier",
+    "没有新 mention 的历史 unresolved 保留原状态，不在后续批次无条件重复提交",
+    "stable memory 继续作为 confirm_link 目标上下文，本增量不引入确定性身份绑定",
+    "Provider 原始遗漏仍失败关闭；本增量只记录遗漏，不实现 continuation/repair",
+    "trace 仅记录数量、覆盖率、动作构成和策略版本，不记录正文、姓名或证据原文"
+  ],
+  "acceptance": [
+    "第二收敛批次不再包含第一批未变化的 unresolved mention",
+    "第一批 unresolved 若在第二批出现新关联 mention，则对应 memory 重新进入 frontier",
+    "frontier 外历史 memory 在 materialize 后仍完整保留",
+    "Provider 覆盖率在保守补全之前计量，遗漏数可在 RunEvent 和 Inspector 查看",
+    "恢复执行复用已完成收敛批次，不产生重复决策或丢失 frontier 外 memory",
+    "定向与全量 Pytest、Ruff、Mypy、Node 全部通过"
+  ]
+}

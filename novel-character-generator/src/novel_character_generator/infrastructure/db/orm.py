@@ -192,9 +192,7 @@ class RetrievalPassageORM(IdMixin, TimestampMixin, Base):
     retrieval_index_build_id: Mapped[UUID] = mapped_column(
         ForeignKey("retrieval_index_builds.id", ondelete="CASCADE"), index=True
     )
-    chapter_id: Mapped[UUID | None] = mapped_column(
-        ForeignKey("chapters.id", ondelete="SET NULL")
-    )
+    chapter_id: Mapped[UUID | None] = mapped_column(ForeignKey("chapters.id", ondelete="SET NULL"))
     chapter_ordinal: Mapped[int] = mapped_column(Integer)
     ordinal: Mapped[int] = mapped_column(Integer)
     normalized_char_start: Mapped[int] = mapped_column(Integer)
@@ -334,10 +332,7 @@ class EventParticipantORM(IdMixin, TimestampMixin, Base):
 
 class CharacterORM(IdMixin, TimestampMixin, Base):
     __tablename__ = "characters"
-    __table_args__ = (
-        UniqueConstraint("novel_id", "canonical_name"),
-        CheckConstraint("revision >= 1", name="ck_characters_revision_positive"),
-    )
+    __table_args__ = (CheckConstraint("revision >= 1", name="ck_characters_revision_positive"),)
 
     novel_id: Mapped[UUID] = mapped_column(ForeignKey("novels.id", ondelete="CASCADE"), index=True)
     canonical_name: Mapped[str] = mapped_column(String(255))
@@ -356,9 +351,7 @@ class CharacterEntityOperationORM(IdMixin, TimestampMixin, Base):
     )
 
     operation_type: Mapped[str] = mapped_column(String(32))
-    novel_id: Mapped[UUID] = mapped_column(
-        ForeignKey("novels.id", ondelete="CASCADE"), index=True
-    )
+    novel_id: Mapped[UUID] = mapped_column(ForeignKey("novels.id", ondelete="CASCADE"), index=True)
     idempotency_key: Mapped[str] = mapped_column(String(255))
     request_hash: Mapped[str] = mapped_column(String(64))
     source_character_ids: Mapped[list[str]] = mapped_column(JSON)
@@ -391,9 +384,7 @@ class CharacterRelationORM(IdMixin, TimestampMixin, Base):
         ),
     )
 
-    novel_id: Mapped[UUID] = mapped_column(
-        ForeignKey("novels.id", ondelete="CASCADE"), index=True
-    )
+    novel_id: Mapped[UUID] = mapped_column(ForeignKey("novels.id", ondelete="CASCADE"), index=True)
     source_character_id: Mapped[UUID] = mapped_column(
         ForeignKey("characters.id", ondelete="CASCADE"), index=True
     )
@@ -517,6 +508,65 @@ class MentionSpanORM(IdMixin, TimestampMixin, Base):
     normalization_map_version: Mapped[str] = mapped_column(String(64))
 
 
+class CharacterResolutionChunkORM(IdMixin, TimestampMixin, Base):
+    __tablename__ = "character_resolution_chunks"
+    __table_args__ = (
+        UniqueConstraint("run_id", "source_chunk_id"),
+        UniqueConstraint("run_id", "chunk_ordinal"),
+        CheckConstraint("chunk_ordinal >= 0", name="ck_character_resolution_chunk_ordinal"),
+    )
+
+    run_id: Mapped[UUID] = mapped_column(
+        ForeignKey("pipeline_runs.id", ondelete="CASCADE"), index=True
+    )
+    source_chunk_id: Mapped[UUID] = mapped_column(
+        ForeignKey("text_chunks.id", ondelete="CASCADE"), index=True
+    )
+    chunk_ordinal: Mapped[int] = mapped_column(Integer)
+    extraction_result: Mapped[dict[str, Any]] = mapped_column(JSON)
+    candidate_packet: Mapped[dict[str, Any]] = mapped_column(JSON)
+    provider_raw_response: Mapped[Any | None] = mapped_column(JSON)
+    provider_raw_message_content: Mapped[Any | None] = mapped_column(JSON)
+    provider_raw_response_hash: Mapped[str | None] = mapped_column(String(64))
+    resolver_raw_response: Mapped[Any | None] = mapped_column(JSON)
+    resolver_raw_message_content: Mapped[Any | None] = mapped_column(JSON)
+    resolver_raw_response_hash: Mapped[str | None] = mapped_column(String(64))
+    resolution_input_hash: Mapped[str | None] = mapped_column(String(64))
+    resolution_result: Mapped[dict[str, Any] | None] = mapped_column(JSON)
+    memory_after: Mapped[list[dict[str, Any]] | None] = mapped_column(JSON)
+    resolver_version: Mapped[str | None] = mapped_column(String(255))
+    context_truncated: Mapped[bool] = mapped_column(Boolean, default=False)
+    status: Mapped[str] = mapped_column(String(32), index=True)
+
+
+class CharacterConvergenceBatchORM(IdMixin, TimestampMixin, Base):
+    __tablename__ = "character_convergence_batches"
+    __table_args__ = (
+        UniqueConstraint("run_id", "batch_index"),
+        CheckConstraint("batch_index >= 0", name="ck_character_convergence_batch_index"),
+        CheckConstraint(
+            "end_chunk_ordinal >= start_chunk_ordinal",
+            name="ck_character_convergence_chunk_range",
+        ),
+    )
+
+    run_id: Mapped[UUID] = mapped_column(
+        ForeignKey("pipeline_runs.id", ondelete="CASCADE"), index=True
+    )
+    batch_index: Mapped[int] = mapped_column(Integer)
+    start_chunk_ordinal: Mapped[int] = mapped_column(Integer)
+    end_chunk_ordinal: Mapped[int] = mapped_column(Integer)
+    final_batch: Mapped[bool] = mapped_column(Boolean)
+    input_hash: Mapped[str] = mapped_column(String(64))
+    result: Mapped[dict[str, Any] | None] = mapped_column(JSON)
+    memory_after: Mapped[list[dict[str, Any]] | None] = mapped_column(JSON)
+    resolver_raw_response: Mapped[Any | None] = mapped_column(JSON)
+    resolver_raw_message_content: Mapped[Any | None] = mapped_column(JSON)
+    resolver_raw_response_hash: Mapped[str | None] = mapped_column(String(64))
+    resolver_version: Mapped[str] = mapped_column(String(255))
+    status: Mapped[str] = mapped_column(String(32), index=True)
+
+
 class AliasAssertionORM(IdMixin, TimestampMixin, Base):
     __tablename__ = "alias_assertions"
     __table_args__ = (Index("ix_alias_assertions_normalized", "normalized_alias"),)
@@ -584,6 +634,148 @@ class FeatureObservationORM(IdMixin, TimestampMixin, Base):
     invalidated_by_run_id: Mapped[UUID | None] = mapped_column(ForeignKey("pipeline_runs.id"))
 
 
+class TemporalSignalORM(IdMixin, TimestampMixin, Base):
+    __tablename__ = "temporal_signals"
+    __table_args__ = (
+        UniqueConstraint("signal_id"),
+        UniqueConstraint("fingerprint"),
+        CheckConstraint("char_end > char_start", name="ck_temporal_signals_span"),
+        CheckConstraint(
+            "confidence >= 0 AND confidence <= 1",
+            name="ck_temporal_signals_confidence",
+        ),
+        Index("ix_temporal_signals_character_status", "character_id", "resolution_status"),
+    )
+
+    run_id: Mapped[UUID] = mapped_column(
+        ForeignKey("pipeline_runs.id", ondelete="CASCADE"), index=True
+    )
+    source_document_version_id: Mapped[UUID] = mapped_column(
+        ForeignKey("source_document_versions.id", ondelete="CASCADE"), index=True
+    )
+    source_chunk_id: Mapped[UUID] = mapped_column(
+        ForeignKey("text_chunks.id", ondelete="CASCADE"), index=True
+    )
+    mention_span_id: Mapped[UUID | None] = mapped_column(ForeignKey("mention_spans.id"))
+    character_id: Mapped[UUID | None] = mapped_column(ForeignKey("characters.id"), index=True)
+    feature_observation_ids: Mapped[list[str]] = mapped_column(JSON)
+    signal_id: Mapped[str] = mapped_column(String(256))
+    fact_candidate_key: Mapped[str | None] = mapped_column(String(256))
+    kind: Mapped[str] = mapped_column(String(32), index=True)
+    label: Mapped[str] = mapped_column(String(100))
+    evidence_quote: Mapped[str] = mapped_column(Text)
+    char_start: Mapped[int] = mapped_column(Integer)
+    char_end: Mapped[int] = mapped_column(Integer)
+    grounding_status: Mapped[str] = mapped_column(String(32))
+    confidence: Mapped[float] = mapped_column(Float)
+    resolution_status: Mapped[str] = mapped_column(String(32), index=True)
+    fingerprint: Mapped[str] = mapped_column(String(64))
+
+
+class CharacterLifePhaseORM(IdMixin, TimestampMixin, Base):
+    __tablename__ = "character_life_phases"
+    __table_args__ = (
+        UniqueConstraint("fingerprint"),
+        CheckConstraint("revision >= 1", name="ck_character_life_phases_revision"),
+        CheckConstraint(
+            "confidence >= 0 AND confidence <= 1",
+            name="ck_character_life_phases_confidence",
+        ),
+        Index(
+            "ix_character_life_phases_character_status",
+            "character_id",
+            "status",
+            "record_status",
+        ),
+    )
+
+    run_id: Mapped[UUID] = mapped_column(
+        ForeignKey("pipeline_runs.id", ondelete="CASCADE"), index=True
+    )
+    source_document_version_id: Mapped[UUID] = mapped_column(
+        ForeignKey("source_document_versions.id", ondelete="CASCADE"), index=True
+    )
+    character_id: Mapped[UUID] = mapped_column(
+        ForeignKey("characters.id", ondelete="CASCADE"), index=True
+    )
+    timeline_id: Mapped[UUID] = mapped_column(
+        ForeignKey("timelines.id", ondelete="CASCADE"), index=True
+    )
+    phase_key: Mapped[str] = mapped_column(String(100))
+    label: Mapped[str] = mapped_column(String(100))
+    phase_order: Mapped[Decimal | None] = mapped_column(Numeric(20, 8))
+    age_stage: Mapped[str | None] = mapped_column(String(100))
+    start_event_id: Mapped[UUID | None] = mapped_column(ForeignKey("story_events.id"))
+    end_event_id: Mapped[UUID | None] = mapped_column(ForeignKey("story_events.id"))
+    start_chapter_ordinal: Mapped[int | None] = mapped_column(Integer)
+    end_chapter_ordinal: Mapped[int | None] = mapped_column(Integer)
+    evidence_signal_ids: Mapped[list[str]] = mapped_column(JSON)
+    confidence: Mapped[float] = mapped_column(Float)
+    status: Mapped[str] = mapped_column(String(32), index=True)
+    resolver_version: Mapped[str] = mapped_column(String(100))
+    input_fingerprint: Mapped[str] = mapped_column(String(64), index=True)
+    fingerprint: Mapped[str] = mapped_column(String(64))
+    revision: Mapped[int] = mapped_column(Integer, default=1)
+    record_status: Mapped[str] = mapped_column(String(32), default="active", index=True)
+
+
+class ObservationScopeBindingORM(IdMixin, TimestampMixin, Base):
+    __tablename__ = "observation_scope_bindings"
+    __table_args__ = (
+        UniqueConstraint("fingerprint"),
+        CheckConstraint("revision >= 1", name="ck_observation_scope_bindings_revision"),
+        CheckConstraint(
+            "confidence >= 0 AND confidence <= 1",
+            name="ck_observation_scope_bindings_confidence",
+        ),
+        Index(
+            "ix_observation_scope_bindings_observation_status",
+            "observation_id",
+            "status",
+            "record_status",
+        ),
+    )
+
+    run_id: Mapped[UUID] = mapped_column(
+        ForeignKey("pipeline_runs.id", ondelete="CASCADE"), index=True
+    )
+    observation_id: Mapped[UUID] = mapped_column(
+        ForeignKey("feature_observations.id", ondelete="CASCADE"), index=True
+    )
+    phase_id: Mapped[UUID | None] = mapped_column(ForeignKey("character_life_phases.id"))
+    timeline_id: Mapped[UUID] = mapped_column(ForeignKey("timelines.id"), index=True)
+    temporal_scope: Mapped[dict[str, Any]] = mapped_column(JSON)
+    presentation_mode: Mapped[str] = mapped_column(String(32))
+    reality_status: Mapped[str] = mapped_column(String(32))
+    transformation_state: Mapped[str | None] = mapped_column(String(100))
+    status: Mapped[str] = mapped_column(String(32), index=True)
+    confidence: Mapped[float] = mapped_column(Float)
+    resolver_version: Mapped[str] = mapped_column(String(100))
+    input_fingerprint: Mapped[str] = mapped_column(String(64), index=True)
+    fingerprint: Mapped[str] = mapped_column(String(64))
+    revision: Mapped[int] = mapped_column(Integer, default=1)
+    record_status: Mapped[str] = mapped_column(String(32), default="active", index=True)
+
+
+class CharacterPhaseResolutionORM(IdMixin, TimestampMixin, Base):
+    __tablename__ = "character_phase_resolutions"
+    __table_args__ = (UniqueConstraint("run_id", "character_id"),)
+
+    run_id: Mapped[UUID] = mapped_column(
+        ForeignKey("pipeline_runs.id", ondelete="CASCADE"), index=True
+    )
+    source_document_version_id: Mapped[UUID] = mapped_column(
+        ForeignKey("source_document_versions.id", ondelete="CASCADE"), index=True
+    )
+    character_id: Mapped[UUID] = mapped_column(
+        ForeignKey("characters.id", ondelete="CASCADE"), index=True
+    )
+    input_hash: Mapped[str] = mapped_column(String(64))
+    result: Mapped[dict[str, Any]] = mapped_column(JSON)
+    resolver_version: Mapped[str] = mapped_column(String(100))
+    status: Mapped[str] = mapped_column(String(32), index=True)
+
+
 class FeatureSuggestionORM(IdMixin, TimestampMixin, Base):
     __tablename__ = "feature_suggestions"
 
@@ -611,9 +803,7 @@ class FeatureSuggestionORM(IdMixin, TimestampMixin, Base):
 
 class VisualEnrichmentRejectionORM(IdMixin, TimestampMixin, Base):
     __tablename__ = "visual_enrichment_rejections"
-    __table_args__ = (
-        Index("ix_visual_rejections_run_created", "enrichment_run_id", "created_at"),
-    )
+    __table_args__ = (Index("ix_visual_rejections_run_created", "enrichment_run_id", "created_at"),)
 
     enrichment_run_id: Mapped[UUID] = mapped_column(
         ForeignKey("pipeline_runs.id", ondelete="CASCADE"), index=True
@@ -694,9 +884,7 @@ class CharacterAppearanceStateORM(IdMixin, TimestampMixin, Base):
     appearance: Mapped[dict[str, Any]] = mapped_column(JSON)
     field_sources: Mapped[dict[str, list[str]]] = mapped_column(JSON)
     resolver_version: Mapped[str] = mapped_column(String(100), default="appearance-resolver-v1")
-    aggregation_fingerprint: Mapped[str | None] = mapped_column(
-        String(64), unique=True, index=True
-    )
+    aggregation_fingerprint: Mapped[str | None] = mapped_column(String(64), unique=True, index=True)
     created_by_run_id: Mapped[UUID | None] = mapped_column(ForeignKey("pipeline_runs.id"))
     record_status: Mapped[str] = mapped_column(String(32), default="active")
     status: Mapped[str] = mapped_column(String(32))
@@ -773,6 +961,34 @@ class CharacterImageSetORM(IdMixin, TimestampMixin, Base):
     default_representative_image_id: Mapped[UUID | None] = mapped_column(index=True)
     stage_image_ids: Mapped[list[str]] = mapped_column(JSON)
     selection_policy_version: Mapped[str] = mapped_column(String(100))
+
+
+class GenerationContextORM(IdMixin, TimestampMixin, Base):
+    __tablename__ = "generation_contexts"
+    __table_args__ = (
+        UniqueConstraint("run_id"),
+        CheckConstraint("candidate_count >= 1", name="ck_generation_context_candidate_count"),
+    )
+
+    run_id: Mapped[UUID] = mapped_column(
+        ForeignKey("pipeline_runs.id", ondelete="CASCADE"), index=True
+    )
+    character_id: Mapped[UUID] = mapped_column(
+        ForeignKey("characters.id", ondelete="CASCADE"), index=True
+    )
+    render_profile_id: Mapped[UUID] = mapped_column(
+        ForeignKey("character_render_profiles.id"), index=True
+    )
+    render_profile_version: Mapped[int] = mapped_column(Integer)
+    snapshot_hash: Mapped[str] = mapped_column(String(64), index=True)
+    context_hash: Mapped[str] = mapped_column(String(64), index=True)
+    workflow_profile: Mapped[str] = mapped_column(String(100))
+    workflow_version: Mapped[str] = mapped_column(String(100))
+    provider: Mapped[str] = mapped_column(String(100))
+    target: Mapped[dict[str, Any]] = mapped_column(JSON)
+    context_payload: Mapped[dict[str, Any]] = mapped_column(JSON)
+    candidate_count: Mapped[int] = mapped_column(Integer)
+    status: Mapped[str] = mapped_column(String(32), index=True)
 
 
 class GeneratedImageORM(IdMixin, TimestampMixin, Base):

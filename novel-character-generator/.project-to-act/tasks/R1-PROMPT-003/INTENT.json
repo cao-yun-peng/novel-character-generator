@@ -1,0 +1,17 @@
+{
+  "task_id": "R1-PROMPT-003",
+  "current_behavior": "现有 Prompt 虽列出若干字段边界，但规则集中在长段落中，缺少统一的语义选择步骤和共享证据拆分原则。",
+  "desired_behavior": "模型先识别独立视觉语义，再选择对应字段；遇到不匹配或不确定语义时不使用相邻字段兜底。",
+  "dependencies": [
+    "visual-observation-v3 Provider",
+    "25-case 开发种子集",
+    "用户授权付费 API 验证"
+  ],
+  "validation": [
+    "Prompt 静态契约测试",
+    "Ruff",
+    "Mypy src",
+    "Pytest",
+    "七类合成文本各自独立的真实 v3 调用与服务端定位"
+  ]
+}

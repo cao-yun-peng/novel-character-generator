@@ -1,0 +1,7 @@
+{
+  "task_id": "R1-EVAL-002",
+  "current_behavior": "诊断器只能选择前 N 个分块，18-case 种子集尚未覆盖两部新增小说暴露的差异。",
+  "desired_behavior": "能按 ordinal 精确选择高信息分块，并将真实失败抽象为普适回归 case。",
+  "dependencies": ["本地 .env Provider 配置", "用户已授权付费 API 测试"],
+  "validation": ["Ruff", "Mypy src", "Pytest", "真实 v3 诊断 metadata 审核"]
+}

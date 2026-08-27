@@ -1,7 +1,7 @@
 import asyncio
 import json
 from collections.abc import AsyncIterator
-from typing import Annotated
+from typing import Annotated, Literal
 from uuid import UUID
 
 from fastapi import APIRouter, Depends, HTTPException, Query, status
@@ -10,11 +10,17 @@ from pydantic import BaseModel
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from novel_character_generator.api.auth import require_user_api_key
+from novel_character_generator.api.auth import require_admin_api_key, require_user_api_key
 from novel_character_generator.api.deps import get_session
 from novel_character_generator.api.routes.agent_runs import (
     AgentRunSummaryResponse,
     agent_run_summary,
+)
+from novel_character_generator.application.services.run_inspector_service import (
+    InspectorOutputDetail,
+    RawModelResponseDetail,
+    RunInspectorService,
+    RunInspectorSummary,
 )
 from novel_character_generator.application.services.run_service import RunService
 from novel_character_generator.infrastructure.db.orm import (
@@ -78,6 +84,52 @@ async def get_run(
     run_id: UUID, session: Annotated[AsyncSession, Depends(get_session)]
 ) -> RunDetailsResponse:
     return await _run_or_404(RunService(session), run_id)
+
+
+@router.get("/{run_id}/inspection", response_model=RunInspectorSummary)
+async def inspect_run(
+    run_id: UUID, session: Annotated[AsyncSession, Depends(get_session)]
+) -> RunInspectorSummary:
+    summary = await RunInspectorService(session).summary(run_id)
+    if summary is None:
+        raise HTTPException(status_code=404, detail="run_not_found")
+    return summary
+
+
+@router.get(
+    "/{run_id}/inspection/outputs/{kind}/{output_id}",
+    response_model=InspectorOutputDetail,
+)
+async def inspect_run_output(
+    run_id: UUID,
+    kind: Literal["r1_chunk", "r2_chunk", "r2_convergence", "r3_character"],
+    output_id: UUID,
+    session: Annotated[AsyncSession, Depends(get_session)],
+) -> InspectorOutputDetail:
+    detail = await RunInspectorService(session).output(run_id, kind, output_id)
+    if detail is None:
+        raise HTTPException(status_code=404, detail="run_inspector_output_not_found")
+    return detail
+
+
+@router.get(
+    "/{run_id}/inspection/outputs/{kind}/{output_id}/raw-response",
+    response_model=RawModelResponseDetail,
+    dependencies=[Depends(require_admin_api_key)],
+)
+async def inspect_raw_model_response(
+    run_id: UUID,
+    kind: Literal["r1_chunk", "r2_chunk", "r2_convergence"],
+    output_id: UUID,
+    session: Annotated[AsyncSession, Depends(get_session)],
+) -> RawModelResponseDetail:
+    settings = get_settings()
+    if settings.app_env != "development" or not settings.llm_raw_response_capture_enabled:
+        raise HTTPException(status_code=404, detail="raw_model_response_viewer_disabled")
+    detail = await RunInspectorService(session).raw_model_response(run_id, kind, output_id)
+    if detail is None:
+        raise HTTPException(status_code=404, detail="raw_model_response_not_captured")
+    return detail
 
 
 @router.get("/{run_id}/events", response_class=StreamingResponse)

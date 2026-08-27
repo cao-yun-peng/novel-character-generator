@@ -1,0 +1,29 @@
+{
+  "id": "DEV-RAW-001",
+  "title": "开发环境模型原始响应查看器",
+  "status": "review",
+  "owner": "Codex",
+  "objective": "在开发环境按 R1/R2 模型调用保存并展示 Provider 原始响应，支持字段调试，同时保持生产和普通 Inspector 数据边界。",
+  "allowed_paths": [
+    "src/novel_character_generator",
+    "migrations/versions",
+    "tests",
+    "docs",
+    ".env.example",
+    ".project-to-act"
+  ],
+  "invariants": [
+    "默认关闭且生产环境拒绝启用",
+    "原始响应只由管理员端点读取，不进入普通 Inspector、RunEvent 或日志",
+    "只保存 Provider 响应和模型消息，不保存 API Key",
+    "旧 checkpoint 不重新付费调用或伪造原始响应",
+    "R3 代码策略阶段不显示模型原始响应页签"
+  ],
+  "acceptance": [
+    "R1 Chunk、R2 Chunk 和 R2 收敛调用可保存消息正文、完整响应和哈希",
+    "开发管理员接口可读取且普通用户被拒绝",
+    "工作台页签可读，旧 Run 明确提示未捕获",
+    "生产配置失败关闭，迁移可升降级",
+    "Ruff、Mypy、Node、完整 Pytest 和浏览器验证通过"
+  ]
+}

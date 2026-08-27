@@ -1,0 +1,28 @@
+{
+  "id": "R1-EVAL-002",
+  "title": "新增小说的 v3 付费采样与通用 case 扩充",
+  "status": "review",
+  "owner": "Codex",
+  "objective": "从两部新增小说中有界采样 v3 输出，审核差异并扩充跨题材开发回归集。",
+  "allowed_paths": [
+    "tests/测试/inspect_visual_candidates.py",
+    "tests/evaluation/visual_extraction_seed_v0.json",
+    "src/novel_character_generator/infrastructure/llm/openai_compatible.py",
+    "tests/unit",
+    "docs",
+    "data/diagnostics/r1-v3-cross-genre",
+    ".project-to-act"
+  ],
+  "invariants": [
+    "只调用 v3，不发起 v2 付费调用",
+    "不把作品专名、世界观设定或原句照搬为规则",
+    "Provider 输出必须经过服务端 evidence locator 和字段门禁",
+    "先小样本调用，新增信息不足时不扩大费用"
+  ],
+  "acceptance": [
+    "两部小说各至少一个外观密集分块完成真实 v3 调用",
+    "保存 usage、候选、grounded 结果和 warnings",
+    "有新增价值的差异被改写为跨作品通用 case",
+    "相关及全量回归通过"
+  ]
+}

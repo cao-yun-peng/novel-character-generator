@@ -1,0 +1,18 @@
+{
+  "task_id": "R2-FRONTIER-003",
+  "current_behavior": "每次十章收敛把完整 memory 中所有非 stable 记录放入 provisional_memory；历史 unresolved 即使没有新证据也会被重复要求输出决定，导致输入、输出和 omission 随章节增长。",
+  "desired_behavior": "根据当前收敛批次 packet 的 mention_ids 构建 dirty frontier；只让包含当前 mention 的非 stable 记录进入 provisional_memory，旧 unresolved 保留在完整 memory，等新证据触发时再进入 frontier。",
+  "dependencies": [
+    "R2-MEMORY-002 完整 memory 保留约束",
+    "CharacterResolutionChunk candidate_packet",
+    "CharacterConvergenceBatch 恢复与幂等",
+    "RunEvent 与 Run Inspector"
+  ],
+  "validation": [
+    "frontier 选择单元测试",
+    "两批次旧 unresolved 不重跑集成测试",
+    "新 mention 重新激活旧 unresolved 测试",
+    "收敛 trace/Inspector 契约测试",
+    "全量 Pytest、Ruff、Mypy、Node"
+  ]
+}

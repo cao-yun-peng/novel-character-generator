@@ -1,0 +1,146 @@
+{
+  "name": "r1-quality-regression-baseline",
+  "version": "v1",
+  "scope": "R1 local mention typing, visual-field gating, and source evidence grounding only",
+  "frozen_at": "2026-08-27",
+  "source": "Generalized from the four-chapter short-text quality review; no work-specific identity rule is encoded.",
+  "cases": [
+    {
+      "id": "descriptor-mention-is-preserved",
+      "layer": "schema-and-grounding",
+      "baseline_state": "xfail",
+      "text": "少女娇嫩的耳垂上吊有绿色玉坠。",
+      "provider_output": {
+        "entities": [
+          {
+            "local_id": "e1",
+            "representative_name": "少女",
+            "mention_quote": "少女",
+            "mention_kind": "descriptor",
+            "confidence": 0.95
+          }
+        ],
+        "visual_candidates": [
+          {
+            "entity_ref": "e1",
+            "field_path": "accessories.earrings",
+            "value": "绿色玉坠",
+            "evidence_quote": "绿色玉坠",
+            "epistemic_status": "asserted",
+            "confidence": 0.93
+          }
+        ]
+      },
+      "expected": {
+        "mention_kind": "descriptor",
+        "field_paths": ["accessories.earrings"]
+      }
+    },
+    {
+      "id": "nested-age-path-is-normalized",
+      "layer": "field-gate",
+      "baseline_state": "xfail",
+      "text": "沈砚今年十五岁。",
+      "provider_output": {
+        "entities": [
+          {
+            "local_id": "e1",
+            "representative_name": "沈砚",
+            "mention_quote": "沈砚",
+            "mention_kind": "name",
+            "confidence": 0.98
+          }
+        ],
+        "visual_candidates": [
+          {
+            "entity_ref": "e1",
+            "field_path": "age.age",
+            "value": "十五岁",
+            "evidence_quote": "十五岁",
+            "epistemic_status": "asserted",
+            "confidence": 0.96
+          }
+        ]
+      },
+      "expected": {
+        "field_paths": ["age"],
+        "warning_contains": "normalized_visual_candidate:0:age.age:age"
+      }
+    },
+    {
+      "id": "book-is-not-clothing",
+      "layer": "field-gate",
+      "baseline_state": "xfail",
+      "text": "沈砚合拢了手中厚厚的书籍。",
+      "provider_output": {
+        "entities": [
+          {
+            "local_id": "e1",
+            "representative_name": "沈砚",
+            "mention_quote": "沈砚",
+            "mention_kind": "name",
+            "confidence": 0.98
+          }
+        ],
+        "visual_candidates": [
+          {
+            "entity_ref": "e1",
+            "field_path": "clothing.type",
+            "value": "书籍",
+            "evidence_quote": "厚厚的书籍",
+            "epistemic_status": "asserted",
+            "confidence": 0.91
+          }
+        ]
+      },
+      "expected": {
+        "field_paths": [],
+        "warning_contains": "rejected_visual_candidate:0:clothing_type_without_garment"
+      }
+    },
+    {
+      "id": "unique-one-character-omission-is-repaired",
+      "layer": "evidence-locator",
+      "baseline_state": "xfail",
+      "text": "老者衣袍胸口处，赫然绘有一弯银色浅月。",
+      "quote": "赫然绘有弯银色浅月",
+      "expected": {
+        "status": "repaired",
+        "source_quote": "赫然绘有一弯银色浅月"
+      }
+    },
+    {
+      "id": "ambiguous-one-character-omission-is-rejected",
+      "layer": "evidence-locator",
+      "baseline_state": "xfail",
+      "text": "老者袍上绘有一弯银月，青年袍上也绘有一弯银月。",
+      "quote": "绘有弯银月",
+      "expected": {
+        "status": "ambiguous",
+        "source_quote": null
+      }
+    },
+    {
+      "id": "semantic-substitution-is-not-repaired",
+      "layer": "evidence-locator",
+      "baseline_state": "pass",
+      "text": "老者衣袍胸口处，赫然绘有一弯银色浅月。",
+      "quote": "赫然绘有一弯浅银月",
+      "expected": {
+        "status": "not_found",
+        "source_quote": null
+      }
+    },
+    {
+      "id": "exact-source-quote-is-preserved",
+      "layer": "evidence-locator",
+      "baseline_state": "pass",
+      "text": "老者衣袍胸口处，赫然绘有一弯银色浅月。",
+      "quote": "赫然绘有一弯银色浅月",
+      "expected": {
+        "status": "exact",
+        "source_quote": "赫然绘有一弯银色浅月"
+      }
+    }
+  ]
+}

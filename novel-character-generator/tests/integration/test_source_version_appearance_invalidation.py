@@ -9,9 +9,10 @@ from sqlalchemy import func, select
 from sqlalchemy.ext.asyncio import async_sessionmaker, create_async_engine
 
 from novel_character_generator.application.ports.extraction import (
-    ChunkExtractionResult,
     ExtractionProvider,
-    ObservationDraft,
+    VisualCandidateExtractionResult,
+    VisualEntityCandidate,
+    VisualFactCandidate,
 )
 from novel_character_generator.application.services.appearance_service import (
     AppearanceResolutionError,
@@ -33,52 +34,67 @@ from novel_character_generator.workers.handlers.appearance_aggregation import (
 )
 from novel_character_generator.workers.handlers.extraction import process_extraction_run
 from novel_character_generator.workers.handlers.ingestion import process_ingestion_run
+from novel_character_generator.workers.handlers.phase_resolution import (
+    process_phase_resolution_run,
+)
 
 
 class VersionedHairProvider:
     version = "versioned-hair-v1"
 
-    async def extract_chunk(self, text: str) -> ChunkExtractionResult:
+    async def extract_chunk(self, text: str) -> VisualCandidateExtractionResult:
         for phrase, value in (("黑发", "black"), ("白发", "white")):
-            start = text.find(phrase)
-            if start >= 0:
-                return ChunkExtractionResult(
-                    observations=[
-                        ObservationDraft(
-                            character_name="林舟",
+            if phrase in text:
+                return VisualCandidateExtractionResult(
+                    entities=[
+                        VisualEntityCandidate(
+                            local_id="e1",
+                            representative_name="林舟",
+                            mention_quote="林舟",
+                            mention_kind="name",
+                            confidence=1.0,
+                        )
+                    ],
+                    visual_candidates=[
+                        VisualFactCandidate(
+                            entity_ref="e1",
                             field_path="hair.color",
                             value=value,
                             evidence_quote=phrase,
-                            start=start,
-                            end=start + len(phrase),
                             confidence=1.0,
                         )
-                    ]
+                    ],
                 )
-        return ChunkExtractionResult()
+        return VisualCandidateExtractionResult()
 
 
 class VersionedEyeProvider:
     version = "versioned-eye-v1"
 
-    async def extract_chunk(self, text: str) -> ChunkExtractionResult:
+    async def extract_chunk(self, text: str) -> VisualCandidateExtractionResult:
         for phrase, value in (("黑眼", "black"), ("蓝眼", "blue")):
-            start = text.find(phrase)
-            if start >= 0:
-                return ChunkExtractionResult(
-                    observations=[
-                        ObservationDraft(
-                            character_name="林舟",
+            if phrase in text:
+                return VisualCandidateExtractionResult(
+                    entities=[
+                        VisualEntityCandidate(
+                            local_id="e1",
+                            representative_name="林舟",
+                            mention_quote="林舟",
+                            mention_kind="name",
+                            confidence=1.0,
+                        )
+                    ],
+                    visual_candidates=[
+                        VisualFactCandidate(
+                            entity_ref="e1",
                             field_path="face.eye_color",
                             value=value,
                             evidence_quote=phrase,
-                            start=start,
-                            end=start + len(phrase),
                             confidence=1.0,
                         )
-                    ]
+                    ],
                 )
-        return ChunkExtractionResult()
+        return VisualCandidateExtractionResult()
 
 
 async def run_analysis(
@@ -96,6 +112,7 @@ async def run_analysis(
         provider or VersionedHairProvider(),
         run.id,
     )
+    await process_phase_resolution_run(service.session, run.id)
     await process_appearance_aggregation_run(service.session, run.id)
 
 

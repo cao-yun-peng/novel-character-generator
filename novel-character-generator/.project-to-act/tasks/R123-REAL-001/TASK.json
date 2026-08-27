@@ -1,0 +1,29 @@
+{
+  "id": "R123-REAL-001",
+  "title": "斗罗大陆前20章真实全链路质量验收",
+  "status": "review",
+  "owner": "Codex",
+  "objective": "从 checkpoint 完成 19 个 Chunk 的 R1/R2/R3/聚合真实 Provider 流程，检查工程恢复能力、人物归属、阶段解析与最终画像质量，并如实记录成本和失败项。",
+  "allowed_paths": [
+    "src/novel_character_generator/application/services",
+    "src/novel_character_generator/infrastructure/db",
+    "src/novel_character_generator/infrastructure/llm",
+    "src/novel_character_generator/workers",
+    "tests",
+    "data/diagnostics",
+    ".project-to-act"
+  ],
+  "invariants": [
+    "运行状态 succeeded 不等于语义质量通过",
+    "真实文本、数据库和 Provider 输出只保存在隔离诊断目录，不写入项目证据正文",
+    "低证据人物归属必须失败关闭，不得为了提高覆盖率自动绑定",
+    "R3 必须把人生阶段和暂态变身与基础外观分离后才能通过质量 Gate",
+    "成本统计必须注明重试和开发失败尝试的影响"
+  ],
+  "acceptance": [
+    "19 个 Chunk 从 checkpoint 完成并生成可复核 summary",
+    "R1、R2、R3、聚合分别给出通过或失败结论及实例",
+    "发现的恢复与状态溯源问题有回归测试，完整测试套件通过",
+    "真实质量 Gate 的失败项和下一轮门槛进入项目验收台账"
+  ]
+}

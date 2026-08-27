@@ -1,0 +1,187 @@
+{
+  "source": {
+    "name": "斗罗大陆前20章.txt",
+    "bytes": 110951,
+    "sha256": "8bcb7305a759571b1fec70813b0631f2c884eba79697c3259170a7635d639741"
+  },
+  "provider": {
+    "name": "deepseek",
+    "model": "deepseek-v4-flash"
+  },
+  "novel_id": "71e10a63-8e73-4904-bdb5-fff5d5b9dac7",
+  "run_id": "1bf78020-a912-4dae-be3a-7b41fc904b0b",
+  "run_status": "succeeded",
+  "steps": [
+    {
+      "step": "normalize_and_chunk",
+      "status": "succeeded",
+      "error_code": null,
+      "error_message": null,
+      "cursor": {
+        "schema_version": "v1",
+        "current_chunk_ordinal": 19,
+        "completed_step_keys": [
+          "normalize_and_chunk"
+        ]
+      }
+    },
+    {
+      "step": "extract_characters",
+      "status": "succeeded",
+      "error_code": null,
+      "error_message": null,
+      "cursor": {
+        "schema_version": "v3",
+        "entity_resolution_schema": "character-entity-resolution-v1",
+        "stage": "completed",
+        "current_chunk_ordinal": 19,
+        "extractor_version": "deepseek:deepseek-v4-flash:visual-observation-v3.2:visual-extraction-prompt-v2.4|deepseek:deepseek-v4-flash:character-entity-resolution-v1:entity-resolution-prompt-v1.4",
+        "completed_step_keys": [
+          "extract_characters"
+        ]
+      }
+    },
+    {
+      "step": "resolve_character_phases",
+      "status": "succeeded",
+      "error_code": null,
+      "error_message": null,
+      "cursor": {
+        "schema_version": "character-phase-resolution-v1",
+        "current_character_index": 5,
+        "character_count": 5,
+        "needs_review_count": 0,
+        "completed_step_keys": [
+          "resolve_character_phases"
+        ]
+      }
+    },
+    {
+      "step": "aggregate_appearance",
+      "status": "succeeded",
+      "error_code": null,
+      "error_message": null,
+      "cursor": {
+        "schema_version": "v1",
+        "source_document_version_id": "7c44d9d7-358a-4c1a-b838-f98556931cdb",
+        "completed_character_ids": [
+          "5ae21551-c958-495e-ad0b-bd12f5b009ac",
+          "6a7ce6c2-f34d-44ef-907d-02e8e2326281",
+          "936b98ee-ce1c-4cad-9644-6fbeb79b0360",
+          "d73f1a06-72d8-4724-ba9d-13fb8374111a",
+          "f088e90d-b8c4-4cd4-9a55-3b2f1a469a19"
+        ],
+        "completed_step_keys": [
+          "aggregate_appearance"
+        ]
+      }
+    }
+  ],
+  "counts": {
+    "chunks": 19,
+    "characters": 5,
+    "active_observations": 74,
+    "pending_observations": 0,
+    "temporal_signals": 16,
+    "life_phases": 3,
+    "appearance_states": 29,
+    "render_profiles": 5,
+    "conflicts": 5
+  },
+  "temporal_signal_statuses": {
+    "bound": 8,
+    "unresolved": 8
+  },
+  "temporal_signal_kinds": {
+    "transformation": 2,
+    "age": 9,
+    "time_jump": 4,
+    "other": 1
+  },
+  "scope_binding_statuses": {
+    "final": 74
+  },
+  "characters": [
+    {
+      "id": "d73f1a06-72d8-4724-ba9d-13fb8374111a",
+      "name": "唐三",
+      "active_observations": 27,
+      "pending_observations": 0,
+      "phases": [
+        {
+          "key": "past_life",
+          "label": "前世",
+          "start_chapter": 0,
+          "end_chapter": 0,
+          "confidence": 1.0,
+          "status": "active"
+        },
+        {
+          "key": "reincarnated_childhood",
+          "label": "转生幼年",
+          "start_chapter": 1,
+          "end_chapter": null,
+          "confidence": 1.0,
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "id": "f088e90d-b8c4-4cd4-9a55-3b2f1a469a19",
+      "name": "唐昊",
+      "active_observations": 18,
+      "pending_observations": 0,
+      "phases": [
+        {
+          "key": "age_adulthood",
+          "label": "成年期",
+          "start_chapter": 2,
+          "end_chapter": null,
+          "confidence": 1.0,
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "id": "5ae21551-c958-495e-ad0b-bd12f5b009ac",
+      "name": "大师",
+      "active_observations": 6,
+      "pending_observations": 0,
+      "phases": []
+    },
+    {
+      "id": "6a7ce6c2-f34d-44ef-907d-02e8e2326281",
+      "name": "素云涛",
+      "active_observations": 16,
+      "pending_observations": 0,
+      "phases": []
+    },
+    {
+      "id": "936b98ee-ce1c-4cad-9644-6fbeb79b0360",
+      "name": "老杰克",
+      "active_observations": 7,
+      "pending_observations": 0,
+      "phases": []
+    }
+  ],
+  "event_type_counts": {
+    "run.created": 1,
+    "step.running": 4,
+    "step.succeeded": 4,
+    "step.queued": 3,
+    "provider.extraction.completed": 19,
+    "provider.entity_resolution.completed": 19,
+    "step.progress": 29,
+    "provider.entity_convergence.completed": 2,
+    "appearance.aggregation.started": 5,
+    "appearance.state.derived": 29,
+    "appearance.profile.drafted": 5,
+    "appearance.conflict.detected": 5
+  },
+  "recorded_token_usage": {
+    "prompt_tokens": 203599,
+    "completion_tokens": 26241,
+    "total_tokens": 229840,
+    "note": "Summed from persisted RunEvent payload fields; zero means provider usage was not recorded."
+  }
+}

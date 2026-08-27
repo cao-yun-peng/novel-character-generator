@@ -1,5 +1,8 @@
 import pytest
 
+from novel_character_generator.application.services.visual_candidate_adapter import (
+    adapt_visual_candidates,
+)
 from novel_character_generator.domain.policies.grounding import (
     observation_fingerprint,
     validate_evidence,
@@ -10,11 +13,10 @@ from novel_character_generator.infrastructure.llm.mock import MockExtractionProv
 @pytest.mark.asyncio
 async def test_mock_extraction_returns_grounded_character_data() -> None:
     text = "少年沈砚披着旧青氅。他左眼下有一颗浅痣，茶摊老板称他为“阿砚”。沈砚嘴角微扬。"
-    result = await MockExtractionProvider().extract_chunk(text)
+    candidates = await MockExtractionProvider().extract_chunk(text)
+    result = adapt_visual_candidates(text, candidates)
     assert any(mention.text == "沈砚" for mention in result.mentions)
-    assert any(alias.alias_text == "阿砚" for alias in result.alias_hypotheses)
     assert any(item.field_path == "face.distinctive_mark" for item in result.observations)
-    assert any(item.outward_emotion == "joy" for item in result.expression_observations)
     for item in result.observations:
         assert validate_evidence(text, item.evidence_quote, item.start, item.end) == "exact"
 

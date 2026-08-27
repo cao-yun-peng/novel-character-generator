@@ -2,7 +2,7 @@
 
 > [← 上一篇](02-architecture-and-tech-stack.md) · [文档索引](README.md) · [下一篇 →](04-text-understanding-pipeline.md)
 >
-> 文档版本：3.1 · 源章节：6. 数据模型 · 修订日期：2026-08-24
+> 文档版本：3.2 · 源章节：6. 数据模型 · 修订日期：2026-08-26
 >
 > 当前状态：核心文本、人物、时间、任务、审批和评测表已有基础实现；部分图像与审计模型仅为预留或目标设计。实际 Schema 以 Alembic migration 和 ORM 为准，功能闭环见[追踪矩阵](19-feature-traceability-matrix.md)。
 
@@ -377,6 +377,8 @@ class CharacterRenderProfile(BaseModel):
 ```
 
 `CharacterRenderProfile` 是用户确认过的角色规则与可用状态集合，不再代表唯一的“当前外观”。源文档版本替换时，旧批准档案保持 `status=approved` 和原 revision 不变，同时将 `record_status` 标记为 `stale`；新版本分析形成新的活动草稿。每次生成前必须解析出 `ResolvedCharacterSnapshot`，stale 档案不得生成快照。所有 Block 使用 Enum 或受约束字符串，未知值为 `None`。不要使用无法区分缺失、空列表和明确“无”的字段定义。
+
+上面的类保留当前实现兼容字段。目标版本需要把 `field_sources` 扩展为带 `source_kind` 的字段级 provenance，至少区分 `novel_asserted`、`human_decision`、`approved_suggestion` 和 `reference_asset`。`style_preset` 逐步从角色 Profile 迁出，进入 `SceneRenderBrief`/WorkflowProfile；`palette` 只有在它是该角色经批准的固有配色时才保留在 Profile。`ResolvedCharacterSnapshot` 只保存目标时间点的已批准角色外观，不保存画风、镜头、设计性灯光或 Provider 参数。详见[角色渲染档案](05-character-render-profile.md)和[视觉优先的出图字段与全文抽取重构方案](23-visual-first-extraction-refactor.md)。
 
 ### 6.8 任务状态机
 

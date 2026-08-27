@@ -151,6 +151,50 @@
               <div class="empty-state compact">任务创建后显示 Worker 步骤</div>
             </div>
 
+            <section class="run-inspector" aria-labelledby="run-inspector-title">
+              <div class="run-inspector-heading">
+                <div>
+                  <span class="step-kicker">RUN INSPECTOR</span>
+                  <h3 id="run-inspector-title">R1 → R3 阶段产出观察台</h3>
+                </div>
+                <p>计数用于定位运行异常，不等同于准确率或召回率。</p>
+              </div>
+              <div class="run-inspector-grid" id="run-inspector-grid">
+                <div class="empty-state compact">分析开始后展示各阶段进度、指标与结构化产出</div>
+              </div>
+              <article class="inspector-output hidden" id="inspector-output">
+                <div class="inspector-output-heading">
+                  <div>
+                    <span class="step-kicker">STRUCTURED OUTPUT</span>
+                    <h4 id="inspector-output-title">阶段产出</h4>
+                  </div>
+                  <button class="button button-ghost" id="close-inspector-output" type="button">关闭</button>
+                </div>
+                <div class="inspector-output-tabs" role="tablist" aria-label="产出视图">
+                  <button class="inspector-output-tab active" id="structured-output-tab" type="button" role="tab" aria-selected="true">结构化结果</button>
+                  <button class="inspector-output-tab hidden" id="raw-model-output-tab" type="button" role="tab" aria-selected="false">模型原始响应（开发）</button>
+                </div>
+                <div id="structured-output-pane" role="tabpanel">
+                  <div class="inspector-output-content" id="inspector-output-content"></div>
+                  <details class="inspector-output-raw">
+                    <summary>查看完整结构化 JSON</summary>
+                    <pre id="inspector-output-json"></pre>
+                  </details>
+                </div>
+                <section class="raw-model-output-pane hidden" id="raw-model-output-pane" role="tabpanel">
+                  <p class="raw-model-output-note">每个模型请求完成并通过结构校验后立即保存；这里按 Chunk 更新，不是逐 token 流式输出。仅开发环境和 ADMIN_API_KEY 可读。</p>
+                  <div id="raw-model-output-state" class="inspector-empty">切换到本页签后读取原始响应。</div>
+                  <div id="raw-model-output-meta" class="inspector-trace-grid hidden"></div>
+                  <h5>模型消息正文</h5>
+                  <pre id="raw-model-message-content"></pre>
+                  <details class="inspector-output-raw">
+                    <summary>查看 Provider 完整响应 JSON</summary>
+                    <pre id="raw-model-response-json"></pre>
+                  </details>
+                </section>
+              </article>
+            </section>
+
             <div class="action-row">
               <button class="button button-primary" id="analyse-button" type="button" disabled>开始分析角色</button>
               <button class="button button-secondary" id="restart-run-button" type="button" disabled>重启分析</button>

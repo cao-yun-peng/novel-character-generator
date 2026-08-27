@@ -1,0 +1,20 @@
+{
+  "task_id": "R2-ENTITY-001",
+  "current_behavior": "每章视觉候选会立即按 representative_name 创建或复用 Character，并直接写入 MentionSpan 和 FeatureObservation；相同通用称呼可能造成错误的跨章身份继承。",
+  "desired_behavior": "视觉候选先持久化为 mention scoped 的临时候选；实体解析模型读取当前章原文、当前候选、累计人物记忆和相关历史证据逐章判断；每十章固定收敛，只有 final 绑定才物化正式 Observation。",
+  "dependencies": [
+    "visual-observation-v3 候选抽取",
+    "OpenAI-compatible 结构化模型 Provider",
+    "PipelineRun/PipelineStep 恢复机制",
+    "SQLite/PostgreSQL SQLAlchemy 持久化"
+  ],
+  "validation": [
+    "实体解析与收敛 Schema 单元测试",
+    "累计记忆、十章边界、尾批和称呼隔离集成测试",
+    "任务恢复和幂等测试",
+    "Alembic upgrade head",
+    "Ruff",
+    "Mypy src",
+    "Pytest"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "task_id": "R3-PHASE-001",
+  "current_behavior": "R2 物化视觉观察时写入默认 canonical/direct/unknown 作用域并直接激活，除 life_phase 外的显式时间信号被丢弃，外观聚合无法区分前世、梦境、时间跳跃和形态变化。",
+  "desired_behavior": "保留并定位所有显式时间信号；R2 只写 pending 观察；独立 R3 步骤按人物生成可审计阶段和观察作用域，final 才激活，歧义进入人工审核。",
+  "dependencies": [
+    "visual-observation-v3.1 候选抽取",
+    "R2 character-entity-resolution-v1",
+    "canonical Timeline",
+    "PipelineRun/PipelineStep 恢复机制",
+    "Appearance aggregation active-record gate"
+  ],
+  "validation": [
+    "阶段解析纯服务单元测试",
+    "事实级信号隔离和 pending/final 集成测试",
+    "审核与人工修订 API 测试",
+    "Alembic migration test 和唯一 head",
+    "Ruff、Mypy src、全量 Pytest"
+  ]
+}

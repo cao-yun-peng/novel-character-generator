@@ -290,6 +290,9 @@ async def complete_step(
             lease_owner=None,
             lease_expires_at=None,
             heartbeat_at=now,
+            next_attempt_at=None,
+            error_code=None,
+            error_message=None,
             updated_at=now,
         )
         .returning(PipelineStepORM.id)
@@ -338,6 +341,9 @@ async def complete_step_and_enqueue(
             lease_owner=None,
             lease_expires_at=None,
             heartbeat_at=now,
+            next_attempt_at=None,
+            error_code=None,
+            error_message=None,
             updated_at=now,
         )
         .returning(PipelineStepORM.id)

@@ -8,15 +8,14 @@ from sqlalchemy import func, select
 from sqlalchemy.ext.asyncio import async_sessionmaker, create_async_engine
 
 from novel_character_generator.application.ports.extraction import (
-    ChunkExtractionResult,
-    MentionDraft,
-    ObservationDraft,
-    RelationDraft,
+    VisualCandidateExtractionResult,
+    VisualEntityCandidate,
+    VisualFactCandidate,
+    VisualTemporalSignal,
 )
 from novel_character_generator.application.services.ingestion_service import IngestionService
 from novel_character_generator.infrastructure.db.orm import (
     CharacterORM,
-    CharacterRelationORM,
     ExpressionObservationORM,
     FeatureObservationORM,
     MentionSpanORM,
@@ -25,112 +24,63 @@ from novel_character_generator.infrastructure.llm.mock import MockExtractionProv
 from novel_character_generator.infrastructure.storage.local import LocalArtifactStore
 from novel_character_generator.workers.handlers.extraction import process_extraction_run
 from novel_character_generator.workers.handlers.ingestion import process_ingestion_run
+from novel_character_generator.workers.handlers.phase_resolution import (
+    process_phase_resolution_run,
+)
 
 
-class LegacyVisualProvider:
-    version = "legacy-visual-test-v1"
+class VisualProvider:
+    version = "visual-candidate-test-v3"
 
-    async def extract_chunk(self, text: str) -> ChunkExtractionResult:
+    async def extract_chunk(self, text: str) -> VisualCandidateExtractionResult:
         appearance_quote = "皮肤呈现出健康的小麦色，黑色短发，一身衣服虽然朴素但很干净"
-        appearance_start = text.index(appearance_quote)
         build_quote = "身材瘦小"
-        build_start = text.index(build_quote)
-        return ChunkExtractionResult(
-            observations=[
-                ObservationDraft(
-                    character_name="唐三",
-                    field_path="appearance",
-                    value=appearance_quote,
-                    evidence_quote=appearance_quote,
-                    start=appearance_start + 1,
-                    end=appearance_start + len(appearance_quote) + 1,
+        assert appearance_quote in text and build_quote in text
+        phase = VisualTemporalSignal(
+            kind="life_phase",
+            label="转生幼年",
+            evidence_quote="唐三",
+        )
+        facts = [
+            ("skin.color", "小麦色", "健康的小麦色"),
+            ("hair.color", "黑色", "黑色短发"),
+            ("hair.length", "短", "黑色短发"),
+            ("clothing.style", "朴素", "一身衣服虽然朴素但很干净"),
+            ("cleanliness", "干净", "一身衣服虽然朴素但很干净"),
+            ("body.build", "瘦小", build_quote),
+        ]
+        return VisualCandidateExtractionResult(
+            entities=[
+                VisualEntityCandidate(
+                    local_id="e1",
+                    representative_name="唐三",
+                    mention_quote="唐三",
+                    mention_kind="name",
+                    confidence=1.0,
+                )
+            ],
+            visual_candidates=[
+                VisualFactCandidate(
+                    entity_ref="e1",
+                    field_path=field_path,
+                    value=value,
+                    evidence_quote=quote,
                     confidence=0.97,
-                    life_phase_key="reincarnated_childhood",
-                    life_phase_label="转生幼年",
-                ),
-                ObservationDraft(
-                    character_name="唐三",
-                    field_path="appearance.build",
-                    value="瘦小",
-                    evidence_quote=build_quote,
-                    start=build_start,
-                    end=build_start + len(build_quote),
-                    confidence=0.95,
-                    life_phase_key="reincarnated_childhood",
-                    life_phase_label="转生幼年",
-                ),
-            ]
+                    temporal_signals=[phase],
+                )
+                for field_path, value, quote in facts
+            ],
         )
 
 
-class ModernVisualProvider(LegacyVisualProvider):
-    version = "modern-visual-test-v2"
-
-
-class FailingModernVisualProvider(ModernVisualProvider):
+class FailingVisualProvider(VisualProvider):
     version = "failing-modern-visual-test-v3"
 
-    async def extract_chunk(self, text: str) -> ChunkExtractionResult:
+    async def extract_chunk(self, text: str) -> VisualCandidateExtractionResult:
         result = await super().extract_chunk(text)
         if "第二章" in text:
             raise ValueError("provider_failed_on_second_chunk")
         return result
-
-
-class KinshipRelationProvider:
-    version = "kinship-relation-test-v1"
-
-    async def extract_chunk(self, text: str) -> ChunkExtractionResult:
-        quote = "唐三的父亲唐昊"
-        start = text.index(quote)
-        father_start = text.index("父亲", start)
-        return ChunkExtractionResult(
-            mentions=[
-                MentionDraft(
-                    text="唐三",
-                    canonical_name="唐三",
-                    start=start,
-                    end=start + 2,
-                    kind="name",
-                ),
-                MentionDraft(
-                    text="父亲",
-                    canonical_name="唐三的父亲",
-                    start=father_start,
-                    end=father_start + 2,
-                    kind="kinship",
-                ),
-                MentionDraft(
-                    text="唐昊",
-                    canonical_name="唐昊",
-                    start=start + len(quote) - 2,
-                    end=start + len(quote),
-                    kind="name",
-                ),
-            ],
-            observations=[
-                ObservationDraft(
-                    character_name="唐三",
-                    field_path="family.father",
-                    value="唐昊",
-                    evidence_quote=quote,
-                    start=start,
-                    end=start + len(quote),
-                    confidence=1.0,
-                )
-            ],
-            relations=[
-                RelationDraft(
-                    source_character_name="唐三",
-                    target_character_name="唐三的父亲",
-                    relation_type="父亲",
-                    evidence_quote=quote,
-                    start=start,
-                    end=start + len(quote),
-                    confidence=1.0,
-                )
-            ],
-        )
 
 
 @pytest.mark.asyncio
@@ -167,7 +117,7 @@ async def test_character_extraction_slice_is_grounded_and_idempotent(tmp_path: P
         assert all(item.grounding_status == "exact" for item in observations)
         assert all(item.evidence_quote is not None for item in observations)
         expressions = list(await session.scalars(select(ExpressionObservationORM)))
-        assert expressions
+        assert expressions == []
         mentions = list(await session.scalars(select(MentionSpanORM)))
         assert any(item.mention_text == "沈砚" for item in mentions)
         counts_before = (
@@ -180,52 +130,6 @@ async def test_character_extraction_slice_is_grounded_and_idempotent(tmp_path: P
             await session.scalar(select(func.count()).select_from(ExpressionObservationORM)),
         )
         assert counts_after == counts_before
-    await engine.dispose()
-
-
-@pytest.mark.asyncio
-async def test_family_fact_persists_relation_and_resolves_kinship_placeholder(
-    tmp_path: Path,
-) -> None:
-    database_url = f"sqlite+aiosqlite:///{tmp_path / 'kinship-relation.db'}"
-    config = Config("alembic.ini")
-    config.cmd_opts = type("Options", (), {"x": [f"database_url={database_url}"]})()
-    await to_thread(command.upgrade, config, "head")
-    engine = create_async_engine(database_url)
-    sessions = async_sessionmaker(engine, expire_on_commit=False)
-    store = LocalArtifactStore(tmp_path / "kinship-relation-artifacts")
-
-    async with sessions() as session:
-        service = IngestionService(session, store)
-        novel = await service.upload(
-            filename="kinship.txt", data="第一章\n唐三的父亲唐昊是一名铁匠。".encode()
-        )
-        ingestion = await service.create_run(novel.id, "kinship-ingest")
-        assert ingestion is not None
-        await process_ingestion_run(session, store, ingestion.id, target_tokens=1_000)
-        extraction = await service.create_extraction_run(novel.id, "kinship-extract")
-        assert extraction is not None
-        await process_extraction_run(session, KinshipRelationProvider(), extraction.id)
-
-        characters = list(
-            await session.scalars(
-                select(CharacterORM).where(CharacterORM.novel_id == novel.id)
-            )
-        )
-        assert {item.canonical_name for item in characters} == {"唐三", "唐昊"}
-        by_name = {item.canonical_name: item for item in characters}
-        relation = await session.scalar(select(CharacterRelationORM))
-        assert relation is not None
-        assert relation.source_character_id == by_name["唐三"].id
-        assert relation.target_character_id == by_name["唐昊"].id
-        assert relation.relation_type == "father"
-        assert relation.record_status == "active"
-        kinship_mention = await session.scalar(
-            select(MentionSpanORM).where(MentionSpanORM.mention_text == "父亲")
-        )
-        assert kinship_mention is not None
-        assert kinship_mention.resolved_character_id == by_name["唐昊"].id
-
     await engine.dispose()
 
 
@@ -255,14 +159,15 @@ async def test_failed_replacement_keeps_old_facts_active_and_new_facts_pending(
         await process_ingestion_run(session, store, ingestion.id, target_tokens=1_000)
         original = await service.create_extraction_run(novel.id, "original-extract")
         assert original is not None
-        await process_extraction_run(session, LegacyVisualProvider(), original.id)
+        await process_extraction_run(session, VisualProvider(), original.id)
+        await process_phase_resolution_run(session, original.id)
 
         replacement = await service.create_extraction_run(novel.id, "failed-extract")
         assert replacement is not None
         with pytest.raises(ValueError, match="provider_failed_on_second_chunk"):
             await process_extraction_run(
                 session,
-                FailingModernVisualProvider(),
+                FailingVisualProvider(),
                 replacement.id,
                 max_attempts=1,
             )
@@ -282,14 +187,15 @@ async def test_failed_replacement_keeps_old_facts_active_and_new_facts_pending(
             )
         )
         assert old_rows and all(item.record_status == "active" for item in old_rows)
-        assert replacement_rows
-        assert all(item.record_status == "pending" for item in replacement_rows)
+        # R2 fails closed: a run that never reaches its convergence boundary
+        # leaves candidates persisted for recovery but publishes no observations.
+        assert replacement_rows == []
 
     await engine.dispose()
 
 
 @pytest.mark.asyncio
-async def test_legacy_visual_fields_are_normalized_and_phase_scoped(tmp_path: Path) -> None:
+async def test_v3_visual_fields_are_phase_scoped_and_superseded(tmp_path: Path) -> None:
     database_url = f"sqlite+aiosqlite:///{tmp_path / 'visual-normalization.db'}"
     config = Config("alembic.ini")
     config.cmd_opts = type("Options", (), {"x": [f"database_url={database_url}"]})()
@@ -297,10 +203,7 @@ async def test_legacy_visual_fields_are_normalized_and_phase_scoped(tmp_path: Pa
     engine = create_async_engine(database_url)
     sessions = async_sessionmaker(engine, expire_on_commit=False)
     store = LocalArtifactStore(tmp_path / "visual-artifacts")
-    text = (
-        "第一章\n唐三皮肤呈现出健康的小麦色，黑色短发，"
-        "一身衣服虽然朴素但很干净，而且身材瘦小。"
-    )
+    text = "第一章\n唐三皮肤呈现出健康的小麦色，黑色短发，一身衣服虽然朴素但很干净，而且身材瘦小。"
 
     async with sessions() as session:
         service = IngestionService(session, store)
@@ -310,7 +213,8 @@ async def test_legacy_visual_fields_are_normalized_and_phase_scoped(tmp_path: Pa
         await process_ingestion_run(session, store, ingestion.id, target_tokens=1_000)
         extraction = await service.create_extraction_run(novel.id, "visual-extract")
         assert extraction is not None
-        await process_extraction_run(session, LegacyVisualProvider(), extraction.id)
+        await process_extraction_run(session, VisualProvider(), extraction.id)
+        await process_phase_resolution_run(session, extraction.id)
 
         observations = list(
             await session.scalars(
@@ -332,18 +236,19 @@ async def test_legacy_visual_fields_are_normalized_and_phase_scoped(tmp_path: Pa
             for item in observations
         )
 
-        replacement = await service.create_extraction_run(novel.id, "visual-extract-v2")
+        replacement = await service.create_extraction_run(novel.id, "visual-extract-v3-repeat")
         assert replacement is not None
-        await process_extraction_run(session, ModernVisualProvider(), replacement.id)
+        replacement_provider = VisualProvider()
+        replacement_provider.version = "visual-candidate-test-v3-revision"
+        await process_extraction_run(session, replacement_provider, replacement.id)
+        await process_phase_resolution_run(session, replacement.id)
         all_observations = list(
             await session.scalars(
                 select(FeatureObservationORM).order_by(FeatureObservationORM.created_at)
             )
         )
         active = [item for item in all_observations if item.record_status == "active"]
-        superseded = [
-            item for item in all_observations if item.record_status == "superseded"
-        ]
+        superseded = [item for item in all_observations if item.record_status == "superseded"]
         assert len(active) == 6
         assert len(superseded) == 6
         assert all(item.extraction_run_id == replacement.id for item in active)
