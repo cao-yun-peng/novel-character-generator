@@ -1,0 +1,59 @@
+{
+  "m1-ambiguous-owner-012": {
+    "schema_version": "local-observation-discovery-v1.1",
+    "chunk_id": "m1-ambiguous-owner-012",
+    "entities": [
+      {
+        "local_entity_id": "e1",
+        "mention_quote": "其中一人",
+        "mention_kind": "descriptor",
+        "representative_name": "其中一人"
+      }
+    ],
+    "facts": [
+      {
+        "local_fact_id": "f1",
+        "entity_ref": "e1",
+        "evidence_quote": "戴着青铜面具",
+        "raw_proposition": "其中一人戴着青铜面具",
+        "coarse_family": "disguise",
+        "epistemic_status": "asserted"
+      }
+    ],
+    "temporal_signals": [],
+    "unresolved_items": []
+  },
+  "m1-presentation-change-015": {
+    "schema_version": "local-observation-discovery-v1.1",
+    "chunk_id": "m1-presentation-change-015",
+    "entities": [
+      {
+        "local_entity_id": "e1",
+        "mention_quote": "苏璃",
+        "mention_kind": "explicit_name",
+        "representative_name": "苏璃"
+      }
+    ],
+    "facts": [
+      {
+        "local_fact_id": "f1",
+        "entity_ref": "e1",
+        "evidence_quote": "换上了一袭白裙",
+        "raw_proposition": "苏璃穿着一袭白裙。",
+        "coarse_family": "clothing",
+        "epistemic_status": "asserted"
+      }
+    ],
+    "temporal_signals": [
+      {
+        "local_signal_id": "t1",
+        "entity_ref": "e1",
+        "fact_ref": "f1",
+        "evidence_quote": "换上了",
+        "signal_kind": "presentation",
+        "raw_label": "换上了"
+      }
+    ],
+    "unresolved_items": []
+  }
+}

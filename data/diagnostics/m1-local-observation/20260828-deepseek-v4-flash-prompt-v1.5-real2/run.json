@@ -1,0 +1,90 @@
+{
+  "run_schema_version": "m1-real-evaluation-run-v1",
+  "run_mode": "quality_gate",
+  "started_at": "2026-08-28T09:53:18.113838+00:00",
+  "finished_at": "2026-08-28T09:53:21.459067+00:00",
+  "dataset": {
+    "path": "tests/evaluation/m1_local_observation_real_v1.json",
+    "version": "m1-local-observation-real-v1.1",
+    "sha256": "1f64ad27908062c7b84abd3ad8ea6d49f7317f39a2b6fc61d94dcbc8990f6bbf",
+    "case_count": 6,
+    "selected_case_ids": [
+      "m1-real-presentation-no-result-001",
+      "m1-real-two-approximate-ages-002",
+      "m1-real-inferred-age-003",
+      "m1-real-relative-age-and-accessories-004",
+      "m1-real-transformation-not-presentation-005",
+      "m1-real-classic-apparel-no-held-items-006"
+    ],
+    "review_status": "approved"
+  },
+  "configuration": {
+    "provider": "deepseek",
+    "model": "deepseek-v4-flash",
+    "wire_api": "chat_completions",
+    "thinking_enabled": false,
+    "reasoning_effort": "none",
+    "max_output_tokens": 8192,
+    "configured_max_retries": 1,
+    "max_retries": 1,
+    "prompt_version": "local-observation-discovery-prompt-v1.5",
+    "prompt_hash": "7e62242e97ada0dc7e802b61efdbb8c03c3a955f1698ac48b93a96eb9eceb419",
+    "model_config_version": "local-observation-model-config-v1:f367e57b69c1d311",
+    "raw_provider_response_capture": false
+  },
+  "cases": [
+    {
+      "case_id": "m1-real-presentation-no-result-001",
+      "status": "provider_failed",
+      "error_code": "provider_transport_error",
+      "retryable": true,
+      "attempts": 2,
+      "elapsed_ms": 757.6245999953244
+    },
+    {
+      "case_id": "m1-real-two-approximate-ages-002",
+      "status": "provider_failed",
+      "error_code": "provider_transport_error",
+      "retryable": true,
+      "attempts": 2,
+      "elapsed_ms": 506.13769999472424
+    },
+    {
+      "case_id": "m1-real-inferred-age-003",
+      "status": "provider_failed",
+      "error_code": "provider_transport_error",
+      "retryable": true,
+      "attempts": 2,
+      "elapsed_ms": 512.2878999973182
+    },
+    {
+      "case_id": "m1-real-relative-age-and-accessories-004",
+      "status": "provider_failed",
+      "error_code": "provider_transport_error",
+      "retryable": true,
+      "attempts": 2,
+      "elapsed_ms": 513.7269999977434
+    },
+    {
+      "case_id": "m1-real-transformation-not-presentation-005",
+      "status": "provider_failed",
+      "error_code": "provider_transport_error",
+      "retryable": true,
+      "attempts": 2,
+      "elapsed_ms": 506.59030000679195
+    },
+    {
+      "case_id": "m1-real-classic-apparel-no-held-items-006",
+      "status": "provider_failed",
+      "error_code": "provider_transport_error",
+      "retryable": true,
+      "attempts": 2,
+      "elapsed_ms": 522.5871000002371
+    }
+  ],
+  "summary": {
+    "completed_cases": 0,
+    "failed_cases": 6,
+    "total_attempts": 12
+  }
+}

@@ -1,0 +1,1 @@
+{"task_id":"CLEANUP-V2-016","requested_by":"user","intent":"永久删除不再使用的完整旧实现，不保留运行或回滚能力，并清理项目账本。","execution":"stage-5-repository-cleanup","provider_calls":0,"database_mutation":true,"production_route_mutation":true,"authorization":"用户于 2026-08-28 明确确认永久删除，不保留运行或回滚能力。"}

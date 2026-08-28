@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "projectId": "novel-character-generator",
+  "projectName": "Novel Character Generator",
+  "revision": 1,
+  "projectStatus": "active",
+  "currentStage": "5",
+  "updatedAt": "2026-08-28T16:00:00+08:00",
+  "historicalLimitations": [],
+  "stages": [
+    {"id":"0","name":"立项与风险分级","status":"completed","expectedArtifacts":["项目简报"],"taskIds":[],"evidenceIds":[],"artifacts":[".project-to-act/PROJECT_OVERVIEW.md"],"decisions":[],"startedAt":"2026-08-28T00:00:00+08:00","updatedAt":"2026-08-28T16:00:00+08:00"},
+    {"id":"1","name":"需求调研与问题定义","status":"completed","expectedArtifacts":["问题定义"],"taskIds":[],"evidenceIds":[],"artifacts":[".project-to-act/PROJECT_OVERVIEW.md"],"decisions":[],"startedAt":"2026-08-28T00:00:00+08:00","updatedAt":"2026-08-28T16:00:00+08:00"},
+    {"id":"2","name":"AI 能力边界与成功标准","status":"completed","expectedArtifacts":["评测标准"],"taskIds":[],"evidenceIds":[],"artifacts":[".project-to-act/PROJECT_ACCEPTANCE.md"],"decisions":[],"startedAt":"2026-08-28T00:00:00+08:00","updatedAt":"2026-08-28T16:00:00+08:00"},
+    {"id":"3","name":"技术栈选型与可行性试验","status":"completed","expectedArtifacts":["最小实现"],"taskIds":[],"evidenceIds":[],"artifacts":["pyproject.toml"],"decisions":[],"startedAt":"2026-08-28T00:00:00+08:00","updatedAt":"2026-08-28T16:00:00+08:00"},
+    {"id":"4","name":"架构与契约设计","status":"completed","expectedArtifacts":["架构与 Schema"],"taskIds":["PIPELINE-V2-DESIGN-012"],"evidenceIds":["E-20260828-PIPELINE-V2-DESIGN-012"],"artifacts":["docs/27-semantic-pipeline-v2-contract.md","docs/contracts/semantic-pipeline-v2-model-schemas.json"],"decisions":[],"startedAt":"2026-08-28T00:00:00+08:00","updatedAt":"2026-08-28T16:00:00+08:00"},
+    {"id":"5","name":"具体功能与纵向切片开发","status":"in_progress","expectedArtifacts":["纵向切片","自动测试"],"taskIds":["PIPELINE-V2-M1-013","PIPELINE-V2-N2-014","PIPELINE-V2-M2-015","CLEANUP-V2-016"],"evidenceIds":["E-20260828-PIPELINE-V2-M1-013","E-20260828-PIPELINE-V2-N2-014","E-20260828-PIPELINE-V2-M2-015","E-20260828-CLEANUP-V2-016"],"artifacts":["src/novel_character_generator","tests"],"decisions":[],"startedAt":"2026-08-28T00:00:00+08:00","updatedAt":"2026-08-28T16:00:00+08:00"},
+    {"id":"6","name":"评测、安全测试与调优","status":"pending","expectedArtifacts":["真实模型评测"],"taskIds":[],"evidenceIds":[],"artifacts":[],"decisions":[],"startedAt":null,"updatedAt":"2026-08-28T16:00:00+08:00"},
+    {"id":"7","name":"定型发布与产品化","status":"pending","expectedArtifacts":["发布清单"],"taskIds":[],"evidenceIds":[],"artifacts":[],"decisions":[],"startedAt":null,"updatedAt":"2026-08-28T16:00:00+08:00"},
+    {"id":"8","name":"运营、学习与退役","status":"pending","expectedArtifacts":["运行报告"],"taskIds":[],"evidenceIds":[],"artifacts":[],"decisions":[],"startedAt":null,"updatedAt":"2026-08-28T16:00:00+08:00"}
+  ],
+  "transitions": [
+    {"at":"2026-08-28T00:00:00+08:00","action":"start","fromStage":"4","toStage":"4","fromStatus":"ready","toStatus":"in_progress","taskId":"PIPELINE-V2-DESIGN-012","decision":"approved","evidenceIds":[],"artifacts":["docs/27-semantic-pipeline-v2-contract.md"],"summary":"启动 V2 架构与契约设计。","revision":1},
+    {"at":"2026-08-28T16:00:00+08:00","action":"advance","fromStage":"4","toStage":"5","fromStatus":"completed","toStatus":"in_progress","taskId":"PIPELINE-V2-M1-013","decision":"approved","evidenceIds":["E-20260828-PIPELINE-V2-DESIGN-012"],"artifacts":["docs/27-semantic-pipeline-v2-contract.md"],"summary":"架构契约完成，进入纵向切片开发。","revision":1}
+  ]
+}

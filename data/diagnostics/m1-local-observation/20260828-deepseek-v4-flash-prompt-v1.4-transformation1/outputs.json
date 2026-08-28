@@ -1,0 +1,35 @@
+{
+  "m1-transformation-008": {
+    "schema_version": "local-observation-discovery-v1.1",
+    "chunk_id": "m1-transformation-008",
+    "entities": [
+      {
+        "local_entity_id": "e1",
+        "mention_quote": "他",
+        "mention_kind": "pronoun",
+        "representative_name": "他"
+      }
+    ],
+    "facts": [
+      {
+        "local_fact_id": "f1",
+        "entity_ref": "e1",
+        "evidence_quote": "他的双臂化作覆满青鳞的利爪",
+        "raw_proposition": "他的双臂化作覆满青鳞的利爪",
+        "coarse_family": "body",
+        "epistemic_status": "asserted"
+      }
+    ],
+    "temporal_signals": [
+      {
+        "local_signal_id": "t1",
+        "entity_ref": "e1",
+        "fact_ref": null,
+        "evidence_quote": "化作",
+        "signal_kind": "transformation",
+        "raw_label": "化作"
+      }
+    ],
+    "unresolved_items": []
+  }
+}

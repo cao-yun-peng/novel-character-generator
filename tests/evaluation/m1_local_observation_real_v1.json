@@ -1,0 +1,902 @@
+{
+  "schema_version": "local-observation-evaluation-dataset-v1",
+  "dataset_version": "m1-local-observation-real-v1.1",
+  "node_contract_version": "local-observation-contract-v1.1",
+  "prompt_version": "local-observation-discovery-prompt-v1.6",
+  "review_status": "approved",
+  "review_notes": [
+    "六个输入均由生产 text_processing.build_chunks(target_tokens=1000) 从 tests/测试 原文生成，并记录原文件、chunk ordinal、chapter ordinal 与 SHA-256。",
+    "真实长 Chunk 使用标注切片：required/forbidden、全部 temporal_signals 与全部 unresolved_items 参与评分；其他合理 facts 允许补充但记为 unscored。",
+    "本集专门复验年龄、presentation/transformation 和 unresolved 误报；用户已于 2026-08-28 确认安全扩展引文、Chunk 内 owner 表面词、脱掉铁鞋 presentation 与直接近似年龄 asserted 四项口径。",
+    "当前真实原文中没有找到可信且必须进入 unresolved_items 的正例，因此本集只能检验 unresolved 精确率/误报，不能证明正例召回率。",
+    "同一 Chunk 的多个表面词可以共同命中一个金标 owner；这只影响 M1 局部评分，不声明跨 Chunk 身份相同。"
+  ],
+  "cases": [
+    {
+      "id": "m1-real-presentation-no-result-001",
+      "category": "presentation_and_unresolved_false_positive",
+      "purpose": "换衣动作应产生 presentation 信号；原文没有说明换成什么衣服，所以 fact_ref 必须为空，非视觉动作与身份未归一不能进入 unresolved。",
+      "source_chunk": {
+        "path": "tests/测试/斗破苍穹前四章.txt",
+        "chunk_tokens": 1000,
+        "chunk_ordinal": 9,
+        "chapter_ordinal": 3,
+        "text_sha256": "1e96fd4e7d35b060f8411eb7255bfbeb4adab7064fcd585f6b0d9cbfe4149fd0"
+      },
+      "input": {
+        "schema_version": "local-observation-discovery-input-v1.1",
+        "chunk_id": "m1-real-presentation-no-result-001",
+        "chunk_text": "第3章 客人\n　　床榻之上，少年闭目盘腿而坐，双手在身前摆出奇异的手印，胸膛轻微起伏，一呼一吸间，形成完美的循环，而在气息循环间，有着淡淡的白色气流顺着口鼻，钻入了体内，温养着骨骼与肉体。\n　　在少年闭目修炼之时，手指上那古朴的黑色戒指，再次诡异的微微发光，旋即沉寂……\n　　“呼……”缓缓的吐出一口浊气，少年双眼乍然睁开，一抹淡淡的白芒在漆黑的眼中闪过，那是刚刚被吸收，而又未被完全炼化的斗之气。\n　　“好不容易修炼而来的斗之气，又在消失……我，我草！”沉神感应了一下体内，少年脸庞猛然的愤怒了起来，声音有些尖锐的骂道。\n　　拳头死死的捏在了一起，半晌后，少年苦笑着摇了摇头，身心疲惫的爬下了床，舒展了一下有些发麻的脚腕与大腿，仅仅拥有三段斗之气的他，可没有能力无视各种疲累。\n　　简单的在房间中活动了下身体，房间外传来苍老的声音：“三少爷，族长请你去大厅！”\n　　三少爷，萧炎在家中排行老三，上面还有两位哥哥，不过他们早已经外出历练，只有年终，才会偶尔回家，总的说来，两位哥哥对萧炎这位亲弟弟，也很是不错。\n　　“哦。”随口的应了下来，换了一身衣衫，萧炎走出房间，对着房外的一名青衫老者微笑道：“走吧，墨管家。”\n　　望着少年稚嫩的脸庞，青衫老者和善的点了点头，转身的霎那，浑浊的老眼，掠过一抹不易察觉的惋惜，唉，以三少爷以前的天赋，恐怕早该成为一名出色的斗者了吧，可惜……\n　　跟着老管家从后院穿过，最后在肃穆的迎客大厅外停了下来，恭敬的敲了门，方才轻轻的推门而入。\n　　大厅很是宽敞，其中的人数也是不少，坐于最上方的几位，便是萧战与三位脸色淡漠的老者，他们是族中的长老，权利不比族长小。\n　　在四人的左手下方，坐着家族中一些有话语权且实力不弱的长辈，在他们的身旁，也有一些在家族中表现杰出的年轻一辈。\n　　另外一边，坐着三位陌生人，想必他们便是昨夜萧战口中所说的贵客。\n　　有些疑惑的目光在陌生的三人身上扫过，三人之中，有一位身穿月白衣袍的老者，老者满脸笑容，神采奕奕，一双有些细小的双眼，却是精光偶闪，萧炎的视线微微下移，最后停在了老者胸口上，心头猛然一凛，在老者的衣袍胸口处，赫然绘有一弯银色浅月，在浅月周围，还有点缀着七颗金光闪闪的星辰。\n　　“七星大斗师！这老人竟然是一位七星大斗师？真是人不可貌相！”萧炎心中大感惊异，这老者的实力，竟然比自己的父亲，还要高出两星。",
+        "previous_tail": null,
+        "allowed_coarse_families": [
+          "physical_identity",
+          "hair",
+          "face",
+          "body",
+          "clothing",
+          "worn_accessory",
+          "cleanliness",
+          "injury",
+          "distinctive_mark",
+          "disguise",
+          "other_visual"
+        ]
+      },
+      "expected": {
+        "entities": [
+          {
+            "key": "xiao_yan",
+            "accepted_mentions": [
+              "萧炎",
+              "少年"
+            ],
+            "mention_kind": "explicit_name",
+            "alias_mention_kinds": [
+              "descriptor"
+            ]
+          }
+        ],
+        "required_facts": [
+          {
+            "key": "young_face",
+            "owner_key": "xiao_yan",
+            "evidence_quotes": [
+              "稚嫩的脸庞",
+              "少年稚嫩的脸庞"
+            ],
+            "coarse_family": "face",
+            "epistemic_status": "asserted",
+            "proposition_concept_groups": [
+              [
+                "稚嫩"
+              ]
+            ]
+          }
+        ],
+        "allowed_facts": [],
+        "temporal_signals": [
+          {
+            "key": "changed_clothes",
+            "owner_key": "xiao_yan",
+            "fact_key": null,
+            "evidence_quotes": [
+              "换了一身衣衫"
+            ],
+            "signal_kind": "presentation"
+          }
+        ],
+        "unresolved_items": [],
+        "forbidden_facts": [
+          {
+            "reason": "nonvisual_action_is_not_appearance",
+            "terms_any": [
+              "走出房间",
+              "推门而入",
+              "修炼"
+            ],
+            "coarse_family": null
+          }
+        ],
+        "allow_additional_facts": true,
+        "allow_additional_temporal_signals": false,
+        "allow_additional_unresolved_items": false
+      }
+    },
+    {
+      "id": "m1-real-two-approximate-ages-002",
+      "category": "age_owner_and_fact_binding",
+      "purpose": "相邻的一男一女各自年龄必须成为 physical_identity 事实和同 owner、同 fact_ref 的 age 信号；年龄近似表达保留 uncertain。",
+      "source_chunk": {
+        "path": "tests/测试/斗破苍穹前四章.txt",
+        "chunk_tokens": 1000,
+        "chunk_ordinal": 10,
+        "chapter_ordinal": 3,
+        "text_sha256": "b8974bbed6dc57c794c626e8130fb03775e767bb6b1103dbfd31bf78648a64fa"
+      },
+      "input": {
+        "schema_version": "local-observation-discovery-input-v1.1",
+        "chunk_id": "m1-real-two-approximate-ages-002",
+        "chunk_text": "\n　　能够成为大斗师的人，至少都是名动一方的强者，那样的实力，将会让得任何势力趋之若鹜，而忽然间看见一位如此等级的强者，也难怪萧炎会感到诧异。\n　　老者身旁，坐有一对年轻的男女，他们的身上同样穿着相同的月白袍服，男子年龄在二十左右，英俊的相貌，配上挺拔的身材，很是具有魅力，当然，最重要的，还是其胸口处所绘的五颗金星，这代表着青年的实力：五星斗者！\n　　能够以二十岁左右的年龄成为一名五星斗者，这说明青年的修炼天赋，也很是不一般。\n　　英俊的相貌，加上不俗的实力，这位青年，不仅将家族中的一些无知少女迷得神魂颠倒，就是连那坐在一旁的萧媚，美眸中在移向这边之时，也是微放着异彩。\n　　少女虽然暗送秋波，不过这似乎对青年并没有什么吸引力，此时，这位青年正将所有的注意力，集中在自己身旁的美丽少女身上……\n　　这位少女年龄和萧炎相仿，让萧炎有些意外的，她的容貌，竟然比萧媚还要美上几分，在这家族之中，恐怕也只有那犹如青莲一般的萧熏儿能够与之相比，难怪这男子对族中的这些胭脂俗粉不屑一顾。\n　　少女娇嫩的耳垂上吊有着绿色的玉坠，微微摇动间，发出清脆的玉响，突兀的现出一抹娇贵……\n　　另外，在少女那已经开始发育的玲珑小胸脯旁，绘有三颗金星。\n　　“三星斗者，这女孩……如果没有靠外物激发的话，那便是一个绝顶天才！”心头轻轻的吸了一口凉气，萧炎的目光却只是在少女冷艳的小脸上停留了瞬间便是移了开去，不管如何说，在他幼稚的外貌下，也是拥有一个成熟的灵魂，虽然少女很美丽，不过他也没闲心露出流口水的猪哥状来讨人嫌。\n　　萧炎的这举动似乎有些让得少女略感诧异，虽然她并不是那种以为世界围着自己转的女孩，不过自己的美貌与气质如何，她再清楚不过，萧炎的这番随意动作，倒真让她有点意外，当然，也仅此而已！\n　　“父亲，三位长老！”快步上前，对着上位的萧战四人恭敬的行了一礼。\n　　“呵呵，炎儿，来了啊，快坐下吧。”望着萧炎的到来，萧战止住了与客人的笑谈，冲着他点了点头，挥手道。\n　　微笑点头，萧炎只当做没有看见一旁三位长老射来的不耐以及淡淡的不屑，回头在厅中扫了扫，却是愕然发现，竟然没自己的位置……\n　　“唉，自己在这家族中的地位，看来还真是越来越低啊，往日倒好，现在竟然是当着客人的面给我难堪，这三个老不死的啊……”心头自嘲的一笑，萧炎暗自摇头。",
+        "previous_tail": null,
+        "allowed_coarse_families": [
+          "physical_identity",
+          "hair",
+          "face",
+          "body",
+          "clothing",
+          "worn_accessory",
+          "cleanliness",
+          "injury",
+          "distinctive_mark",
+          "disguise",
+          "other_visual"
+        ]
+      },
+      "expected": {
+        "entities": [
+          {
+            "key": "young_man",
+            "accepted_mentions": [
+              "男子",
+              "青年",
+              "这位青年"
+            ],
+            "mention_kind": "descriptor"
+          },
+          {
+            "key": "young_woman",
+            "accepted_mentions": [
+              "少女",
+              "这位少女"
+            ],
+            "mention_kind": "descriptor"
+          }
+        ],
+        "required_facts": [
+          {
+            "key": "man_age",
+            "owner_key": "young_man",
+            "evidence_quotes": [
+              "男子年龄在二十左右",
+              "年龄在二十左右"
+            ],
+            "coarse_family": "physical_identity",
+            "epistemic_status": "asserted",
+            "proposition_concept_groups": [
+              [
+                "二十",
+                "20"
+              ],
+              [
+                "左右",
+                "大约",
+                "约"
+              ]
+            ]
+          },
+          {
+            "key": "man_build",
+            "owner_key": "young_man",
+            "evidence_quotes": [
+              "挺拔的身材"
+            ],
+            "coarse_family": "body",
+            "epistemic_status": "asserted",
+            "proposition_concept_groups": [
+              [
+                "挺拔"
+              ]
+            ]
+          },
+          {
+            "key": "woman_relative_age",
+            "owner_key": "young_woman",
+            "evidence_quotes": [
+              "这位少女年龄和萧炎相仿",
+              "少女年龄和萧炎相仿"
+            ],
+            "coarse_family": "physical_identity",
+            "epistemic_status": "asserted",
+            "proposition_concept_groups": [
+              [
+                "年龄"
+              ],
+              [
+                "相仿",
+                "相近"
+              ]
+            ]
+          },
+          {
+            "key": "woman_jade_pendant",
+            "owner_key": "young_woman",
+            "evidence_quotes": [
+              "耳垂上吊有着绿色的玉坠",
+              "绿色的玉坠"
+            ],
+            "coarse_family": "worn_accessory",
+            "epistemic_status": "asserted",
+            "proposition_concept_groups": [
+              [
+                "绿"
+              ],
+              [
+                "玉坠"
+              ]
+            ]
+          }
+        ],
+        "allowed_facts": [],
+        "temporal_signals": [
+          {
+            "key": "man_age_signal",
+            "owner_key": "young_man",
+            "fact_key": "man_age",
+            "evidence_quotes": [
+              "男子年龄在二十左右",
+              "年龄在二十左右"
+            ],
+            "signal_kind": "age"
+          },
+          {
+            "key": "woman_age_signal",
+            "owner_key": "young_woman",
+            "fact_key": "woman_relative_age",
+            "evidence_quotes": [
+              "这位少女年龄和萧炎相仿",
+              "少女年龄和萧炎相仿"
+            ],
+            "signal_kind": "age"
+          }
+        ],
+        "unresolved_items": [],
+        "forbidden_facts": [
+          {
+            "reason": "cultivation_stars_are_not_age",
+            "terms_any": [
+              "五颗金星",
+              "三颗金星",
+              "五星斗者",
+              "三星斗者"
+            ],
+            "coarse_family": "physical_identity"
+          }
+        ],
+        "allow_additional_facts": true,
+        "allow_additional_temporal_signals": false,
+        "allow_additional_unresolved_items": false
+      }
+    },
+    {
+      "id": "m1-real-inferred-age-003",
+      "category": "appearance_inferred_age",
+      "purpose": "唐昊的年龄来自与同龄父亲及祖父形象的外观比较，应标 inferred 并绑定 age 信号；泛指父亲的三十岁不能误归给唐昊。",
+      "source_chunk": {
+        "path": "tests/测试/第2章 斗罗大陆，异界唐三（一）.txt",
+        "chunk_tokens": 1000,
+        "chunk_ordinal": 4,
+        "chapter_ordinal": 1,
+        "text_sha256": "7f3277380926aca6f15020de6fb07582c10b7ede725821f6b9af4017654dde53"
+      },
+      "input": {
+        "schema_version": "local-observation-discovery-input-v1.1",
+        "chunk_id": "m1-real-inferred-age-003",
+        "chunk_text": " \n　　从小到大，唐三就不知道什么叫父爱，唐昊对他，从来都是不管不顾的，刚开始的时候，还会做点饭给他吃，但随着时间的推移，当唐三开始主动做饭之后，唐昊就更是什么都不管了。家里如此贫穷，甚至连像样的桌椅都没有，吃饭也成问题，最主要的原因就是唐昊将那份微薄的铁匠收入都换了酒喝。和唐三一边大的孩子，父亲一般也就是三十岁左右，结婚早的甚至还不到三十岁，可唐昊看起来却要比他们苍老的多，反倒像是唐三的爷爷一般。 \n　　对于唐昊的态度，唐三并没有怨恨过，前一世，他是孤儿，这一世，尽管唐昊对他不好，但至少有个亲人。对于唐三来说，这已经让他十分满足了。至少，在这里有个让他叫爸爸的人。 \n　　唐昊抓起桌子上的碗，也不怕烫，大口大口的把粥灌入自己腹中，暗黄的脸色这才看上去多了几分光泽。 \n　　“爸爸，你慢点喝，还有。”唐三接过父亲手中的碗，再给他盛了一碗粥。自己也拿起粥碗喝了起来。 \n　　在唐门的时候，他就从来没有离开过那里，对于外面的事更是很少接触。本来就如同白纸一般，到了这个世界，重新做回小孩子，并没有什么不能接受的。 \n　　很快，一锅粥有七、八成都进入了唐昊的肚子，长出口气，将碗放在桌子上。耷拉的眼皮睁开了几分，看向唐三。 \n　　“有工作你就先接下，下午我再做。我去再睡一会儿。” \n　　唐昊的作息习惯很有规律，上午都是睡觉，下午打造一些农具，作为收入，晚上喝酒。 \n　　“好的，爸爸。”唐三点了点头。 \n　　唐昊站起身，喝了不少粥，他的身体也终于不再摇晃了，朝着里间走去。 \n　　“爸爸。”唐三突然叫了一声。 \n　　唐昊站住身体，扭头看向他，眉宇间明显多了几分不耐。 \n　　唐三指着角落里一块有一层淡淡乌光的生铁道：“这块铁能不能给我用？”前世他是唐门最出色的外门弟子，对于制造各种暗器极其熟悉，当然，那时候各种材料都是由唐门来提供的。而到了这个世界之后，他虽然也修炼了几年，但实力还远远不足，同时，他也从未想过要将自己最擅长的暗器制造放下，他现在已经开始尝试着锻造一些暗器了，但材料却成了大问题。 \n　　唐昊打造农具的金属都是村里人送来的，都是杂质很多的凡铁，很难制造出精良的暗器。此时唐三所指的这块生铁是昨天刚刚送来，令唐三惊讶的是，这块铁矿里竟然包含着一定的铁母，用来打造暗器再合适不过。 \n　　唐昊的目光转移到生铁上，“咦。这里面有铁精？”走过去低下头看了看，再扭头看向唐三，“你以后想做个铁匠么？” \n　　(本章完)\n\n",
+        "previous_tail": null,
+        "allowed_coarse_families": [
+          "physical_identity",
+          "hair",
+          "face",
+          "body",
+          "clothing",
+          "worn_accessory",
+          "cleanliness",
+          "injury",
+          "distinctive_mark",
+          "disguise",
+          "other_visual"
+        ]
+      },
+      "expected": {
+        "entities": [
+          {
+            "key": "tang_hao",
+            "accepted_mentions": [
+              "唐昊"
+            ],
+            "mention_kind": "explicit_name"
+          }
+        ],
+        "required_facts": [
+          {
+            "key": "older_appearance",
+            "owner_key": "tang_hao",
+            "evidence_quotes": [
+              "唐昊看起来却要比他们苍老的多，反倒像是唐三的爷爷一般",
+              "看起来却要比他们苍老的多，反倒像是唐三的爷爷一般",
+              "唐昊看起来却要比他们苍老的多",
+              "反倒像是唐三的爷爷一般"
+            ],
+            "coarse_family": "physical_identity",
+            "epistemic_status": "inferred",
+            "proposition_concept_groups": [
+              [
+                "苍老",
+                "年老"
+              ]
+            ]
+          },
+          {
+            "key": "sallow_face",
+            "owner_key": "tang_hao",
+            "evidence_quotes": [
+              "暗黄的脸色"
+            ],
+            "coarse_family": "face",
+            "epistemic_status": "asserted",
+            "proposition_concept_groups": [
+              [
+                "暗黄"
+              ]
+            ]
+          },
+          {
+            "key": "drooping_eyelids",
+            "owner_key": "tang_hao",
+            "evidence_quotes": [
+              "耷拉的眼皮"
+            ],
+            "coarse_family": "face",
+            "epistemic_status": "asserted",
+            "proposition_concept_groups": [
+              [
+                "耷拉",
+                "下垂"
+              ],
+              [
+                "眼皮",
+                "眼睑"
+              ]
+            ]
+          }
+        ],
+        "allowed_facts": [],
+        "temporal_signals": [
+          {
+            "key": "inferred_age_signal",
+            "owner_key": "tang_hao",
+            "fact_key": "older_appearance",
+            "evidence_quotes": [
+              "唐昊看起来却要比他们苍老的多，反倒像是唐三的爷爷一般",
+              "看起来却要比他们苍老的多，反倒像是唐三的爷爷一般",
+              "唐昊看起来却要比他们苍老的多",
+              "反倒像是唐三的爷爷一般"
+            ],
+            "signal_kind": "age"
+          }
+        ],
+        "unresolved_items": [],
+        "forbidden_facts": [
+          {
+            "reason": "generic_peer_parent_age_is_not_tang_hao_age",
+            "terms_any": [
+              "三十岁左右",
+              "不到三十岁"
+            ],
+            "coarse_family": "physical_identity"
+          }
+        ],
+        "allow_additional_facts": true,
+        "allow_additional_temporal_signals": false,
+        "allow_additional_unresolved_items": false
+      }
+    },
+    {
+      "id": "m1-real-relative-age-and-accessories-004",
+      "category": "approximate_age_and_nonvisual_omission",
+      "purpose": "十一二岁的近似年龄、辫子与脚踝金环需要抽取；对话中讲述的牛变女人不是当前人物外观，也不能进入 unresolved 或 transformation。",
+      "source_chunk": {
+        "path": "tests/测试/牧神纪前20章.txt",
+        "chunk_tokens": 1000,
+        "chunk_ordinal": 54,
+        "chapter_ordinal": 16,
+        "text_sha256": "9fb3d9582648721499f53091a5097793c0100479120f2ad1ffee3837b931e3e8"
+      },
+      "input": {
+        "schema_version": "local-observation-discovery-input-v1.1",
+        "chunk_id": "m1-real-relative-age-and-accessories-004",
+        "chunk_text": "\n　　这一番祷祝过后，秦牧坐在石阶上，脱掉脚上的铁鞋，解开缚在小腿上的铁锭，呼吸吐纳，恢复体力。\n　　这一路，他都是脚穿铁鞋腿绑铁锭在江上奔行，铁鞋铁锭是铁匠哑巴为他重新打造的，比上次还要沉重。\n　　突然，他背后的庙宇中传来一声女孩的轻笑，脆生生道：“你说话倒还有趣儿，也罢，便不吃你了。”\n　　秦牧急忙转身，只见那佛像手掌上不知何时坐着一个小女孩儿，年纪与他仿佛，也是十一二岁，梳着三根小辫，两根较细的辫子垂在胸前，粗的辫子垂在身后，正晃着脚丫子笑嘻嘻的看着他。\n　　那女孩儿脚丫晃啊晃，脚踝处的金环碰来碰去，当当作响，让她的笑声似乎也变得如早春的阳光般明媚起来。\n　　秦牧连忙起身，道：“这位神仙姐姐……”\n　　“哪里来的神仙姐姐？”\n　　那女孩儿从佛像手中跳了下来，笑得很开心，露出两只小虎牙：“我叫仙清儿，就住在附近，从没有见过什么神仙姐姐。你叫什么名字？”\n　　秦牧见她笑得明媚，不似坏人，松了口气，道：“我叫秦牧，就是姓秦的放牛娃的意思。我原本有一头牛，村里的婆婆和爷爷总是让我放牛。”\n　　仙清儿走到古庙的门后，拉开另一扇庙门，上下打量他，又朝他身后看了看，突然噗嗤笑道：“你的牛呢？”\n　　秦牧迟疑一下，道：“牛变成了女人，现在没有牛了。”\n　　仙清儿惊讶，雀跃道：“还有这么好玩的事情？怎么变的？你会变吗？”\n　　秦牧摇头道：“目前还不太会，我婆婆会。”\n　　仙清儿有些失望，道：“我还以为你会呢。你还有什么好玩的事情，快进来跟我说说！”\n　　秦牧抬起脚步，正要走入古庙，突然他的目光越过仙清儿，只见那座破庙的佛像后面露出几根白骨，心中不由一突，脚步悬空，没有落下，迟疑道：“瞎爷爷说进庙上香，要先拜一拜庙里的佛，我没有带香，还是不进去了。”\n　　“进来嘛！”仙清儿甜甜笑道。\n　　秦牧眨眨眼睛，悬空的脚退了回来，笑得比瘸子还要憨厚：“还是不进去了，你出来，我告诉你一些好玩的事情便是。”\n　　仙清儿目光闪动，贝齿咬着红唇，吃吃笑道：“我知道一些男孩子和女孩子才能玩的羞羞的好事儿，你进来，我教你。”\n　　她气吐芝兰，声音中带着魅惑，刚才她是青春明媚，现在则有些妩媚动人了。\n　　秦牧憋红了脸，吭吭哧哧道：“我自幼肾虚……”\n　　“你进来！”雷霆般的怒吼声从小女孩的口中传来。\n\n\n",
+        "previous_tail": null,
+        "allowed_coarse_families": [
+          "physical_identity",
+          "hair",
+          "face",
+          "body",
+          "clothing",
+          "worn_accessory",
+          "cleanliness",
+          "injury",
+          "distinctive_mark",
+          "disguise",
+          "other_visual"
+        ]
+      },
+      "expected": {
+        "entities": [
+          {
+            "key": "qin_mu",
+            "accepted_mentions": [
+              "秦牧"
+            ],
+            "mention_kind": "explicit_name"
+          },
+          {
+            "key": "little_girl",
+            "accepted_mentions": [
+              "小女孩儿",
+              "那女孩儿",
+              "女孩儿"
+            ],
+            "mention_kind": "descriptor"
+          }
+        ],
+        "required_facts": [
+          {
+            "key": "girl_age",
+            "owner_key": "little_girl",
+            "evidence_quotes": [
+              "年纪与他仿佛，也是十一二岁",
+              "也是十一二岁"
+            ],
+            "coarse_family": "physical_identity",
+            "epistemic_status": "asserted",
+            "proposition_concept_groups": [
+              [
+                "十一二岁",
+                "十一岁",
+                "十二岁"
+              ],
+              [
+                "仿佛",
+                "约",
+                "左右"
+              ]
+            ]
+          },
+          {
+            "key": "three_braids",
+            "owner_key": "little_girl",
+            "evidence_quotes": [
+              "梳着三根小辫",
+              "三根小辫"
+            ],
+            "coarse_family": "hair",
+            "epistemic_status": "asserted",
+            "proposition_concept_groups": [
+              [
+                "三根"
+              ],
+              [
+                "辫"
+              ]
+            ]
+          },
+          {
+            "key": "ankle_ring",
+            "owner_key": "little_girl",
+            "evidence_quotes": [
+              "脚踝处的金环"
+            ],
+            "coarse_family": "worn_accessory",
+            "epistemic_status": "asserted",
+            "proposition_concept_groups": [
+              [
+                "脚踝"
+              ],
+              [
+                "金环"
+              ]
+            ]
+          },
+          {
+            "key": "tiger_teeth",
+            "owner_key": "little_girl",
+            "evidence_quotes": [
+              "露出两只小虎牙",
+              "两只小虎牙"
+            ],
+            "coarse_family": "face",
+            "epistemic_status": "asserted",
+            "proposition_concept_groups": [
+              [
+                "虎牙"
+              ]
+            ]
+          }
+        ],
+        "allowed_facts": [],
+        "temporal_signals": [
+          {
+            "key": "girl_age_signal",
+            "owner_key": "little_girl",
+            "fact_key": "girl_age",
+            "evidence_quotes": [
+              "年纪与他仿佛，也是十一二岁",
+              "也是十一二岁"
+            ],
+            "signal_kind": "age"
+          },
+          {
+            "key": "removed_iron_shoes",
+            "owner_key": "qin_mu",
+            "fact_key": null,
+            "evidence_quotes": [
+              "脱掉脚上的铁鞋，解开缚在小腿上的铁锭",
+              "脱掉脚上的铁鞋"
+            ],
+            "signal_kind": "presentation"
+          }
+        ],
+        "unresolved_items": [],
+        "forbidden_facts": [
+          {
+            "reason": "reported_plot_transformation_is_not_current_visual",
+            "terms_any": [
+              "牛变成了女人"
+            ],
+            "coarse_family": null
+          }
+        ],
+        "allow_additional_facts": true,
+        "allow_additional_temporal_signals": false,
+        "allow_additional_unresolved_items": false
+      }
+    },
+    {
+      "id": "m1-real-transformation-not-presentation-005",
+      "category": "transformation_vs_presentation",
+      "purpose": "身体怪物化和恢复女孩模样是两次 transformation；衣衫半解只是结果状态，不能单独升级为 presentation 信号。",
+      "source_chunk": {
+        "path": "tests/测试/牧神纪前20章.txt",
+        "chunk_tokens": 1000,
+        "chunk_ordinal": 55,
+        "chapter_ordinal": 17,
+        "text_sha256": "b8621d0b5150a8539ff7fc66df530b7aae69d85db937c2c2655858eeb0ff4e3a"
+      },
+      "input": {
+        "schema_version": "local-observation-discovery-input-v1.1",
+        "chunk_id": "m1-real-transformation-not-presentation-005",
+        "chunk_text": "第17章 灵胎破壁\n　　仙清儿脸色陡变，霎时间变得无比狰狞丑陋，这个小女孩的身体膨胀起来，下身发出嗤嗤嗤的声响，一条条骨节嶙峋的腿刺破她的裙子，铮铮扎在地面上，身体变得又粗又长，像是一只由骨头组成的大蜈蚣！\n　　她的上身背后则有骨甲高高隆起，让她的身子佝偻起来，一条条骨骼组成的手臂张开，指骨利爪，锋利无比！\n　　她的脑后也有长出一根根鹿角般弯曲的骨刺，脸上丘壑纵横，说不出的可怕，口中发出尖锐至极的声音，像是无数个女人声嘶力竭的叫声混在一起，厉声道：“你给我进来！”\n　　秦牧抬头打量这个长满骨骼的女人蜈蚣，露出惊讶之色，摇头道：“不进。”\n　　庙中的怪物气得嘶吼连连，一条条腿飞速游走，在庙里走了一圈又一圈，猛地扑向古庙门户，此时却听得哗啦啦的声响传来，这座绿洲震动一下，一条条粗大的锁链晃动不已。\n　　秦牧连忙看去，只见这些锁链一端沉江，链子缠绕住庙中的那个大金佛，而锁链的这一端却锁在庙中怪物的身上。\n　　那怪物身上挂着一个个金环，锁链正是扣在这些金环上，当她要扑出庙宇的门户便又被锁链扯了回来。\n　　那怪物张牙舞爪，但始终无法走出庙门半步。\n　　秦牧好整以暇的坐下，继续呼吸吐纳，修炼“霸体三丹功”，恢复体能。\n　　过了片刻，他身后安静下来，那怪物无法挣脱锁链，突然折向，冲向庙中的金佛，叫道：“天杀的贼秃，将老娘镇压在这里！你要饿死老娘不成？这小孩没有向你敬香，为何不让我吃掉他？”\n　　佛像被它冲撞，岿然不动，那怪物暴怒，围绕佛像转来转去，那佛像后面不知多少具白骨被它撞飞。\n　　秦牧回头看去，心中暗暗吃惊，那里的白骨竟然都是人骨，不知有多少人死在这个小破庙中！\n　　又过不久，那庙中怪物安静下来，将这些白骨一根根捡起，藏在金佛身后，瞪着布满血丝的眼睛死死的盯住庙外的秦牧。\n　　“贼秃，送上门的肉，送上门的肉啊……”它又来到庙门后，盯着秦牧的后脑勺，口水像是溪流般绵绵不绝。\n　　没过多久，它又变成小女孩仙清儿的模样，衣衫半解，吃吃笑道：“少年，一起来羞耻啊——”\n　　秦牧定力好得很，充耳不闻，总算恢复了力气，元气也重归巅峰，只觉经过这一天的苦修元气再有不小的进步。\n　　他心中微动，索性鼓荡元气，默诵魔音，再次冲击灵胎壁。",
+        "previous_tail": null,
+        "allowed_coarse_families": [
+          "physical_identity",
+          "hair",
+          "face",
+          "body",
+          "clothing",
+          "worn_accessory",
+          "cleanliness",
+          "injury",
+          "distinctive_mark",
+          "disguise",
+          "other_visual"
+        ]
+      },
+      "expected": {
+        "entities": [
+          {
+            "key": "xian_qing_er",
+            "accepted_mentions": [
+              "仙清儿",
+              "这个小女孩",
+              "庙中的怪物"
+            ],
+            "mention_kind": "explicit_name",
+            "alias_mention_kinds": [
+              "descriptor"
+            ]
+          }
+        ],
+        "required_facts": [
+          {
+            "key": "body_expansion",
+            "owner_key": "xian_qing_er",
+            "evidence_quotes": [
+              "这个小女孩的身体膨胀起来",
+              "身体膨胀起来"
+            ],
+            "coarse_family": "body",
+            "epistemic_status": "asserted",
+            "proposition_concept_groups": [
+              [
+                "身体"
+              ],
+              [
+                "膨胀"
+              ]
+            ]
+          },
+          {
+            "key": "centipede_body",
+            "owner_key": "xian_qing_er",
+            "evidence_quotes": [
+              "身体变得又粗又长，像是一只由骨头组成的大蜈蚣",
+              "像是一只由骨头组成的大蜈蚣"
+            ],
+            "coarse_family": "body",
+            "epistemic_status": "asserted",
+            "proposition_concept_groups": [
+              [
+                "骨"
+              ],
+              [
+                "蜈蚣"
+              ]
+            ]
+          },
+          {
+            "key": "bone_claws",
+            "owner_key": "xian_qing_er",
+            "evidence_quotes": [
+              "一条条骨骼组成的手臂张开，指骨利爪，锋利无比",
+              "指骨利爪，锋利无比"
+            ],
+            "coarse_family": "body",
+            "epistemic_status": "asserted",
+            "proposition_concept_groups": [
+              [
+                "骨"
+              ],
+              [
+                "利爪",
+                "爪"
+              ]
+            ]
+          },
+          {
+            "key": "bloodshot_eyes",
+            "owner_key": "xian_qing_er",
+            "evidence_quotes": [
+              "布满血丝的眼睛"
+            ],
+            "coarse_family": "face",
+            "epistemic_status": "asserted",
+            "proposition_concept_groups": [
+              [
+                "血丝"
+              ],
+              [
+                "眼"
+              ]
+            ]
+          },
+          {
+            "key": "little_girl_form",
+            "owner_key": "xian_qing_er",
+            "evidence_quotes": [
+              "又变成小女孩仙清儿的模样",
+              "小女孩仙清儿的模样"
+            ],
+            "coarse_family": "physical_identity",
+            "epistemic_status": "asserted",
+            "proposition_concept_groups": [
+              [
+                "小女孩"
+              ],
+              [
+                "模样",
+                "形态"
+              ]
+            ]
+          }
+        ],
+        "allowed_facts": [],
+        "temporal_signals": [
+          {
+            "key": "monster_transformation",
+            "owner_key": "xian_qing_er",
+            "fact_key": "body_expansion",
+            "evidence_quotes": [
+              "这个小女孩的身体膨胀起来",
+              "身体膨胀起来"
+            ],
+            "signal_kind": "transformation"
+          },
+          {
+            "key": "girl_transformation",
+            "owner_key": "xian_qing_er",
+            "fact_key": "little_girl_form",
+            "evidence_quotes": [
+              "又变成小女孩仙清儿的模样",
+              "变成小女孩仙清儿的模样"
+            ],
+            "signal_kind": "transformation"
+          }
+        ],
+        "unresolved_items": [],
+        "forbidden_facts": [],
+        "allow_additional_facts": true,
+        "allow_additional_temporal_signals": false,
+        "allow_additional_unresolved_items": false
+      }
+    },
+    {
+      "id": "m1-real-classic-apparel-no-held-items-006",
+      "category": "apparel_and_unresolved_false_positive",
+      "purpose": "古典服饰可以抽取；弓箭、刀矛、坐骑和战斗动作不是人物外观，也不能作为 unresolved 的兜底。",
+      "source_chunk": {
+        "path": "tests/测试/水浒传前两章.txt",
+        "chunk_tokens": 1000,
+        "chunk_ordinal": 19,
+        "chapter_ordinal": 0,
+        "text_sha256": "7d4d242678a51ce37fda491c17f61953c7932ef7e82776eedefb3cb247b102f2"
+      },
+      "input": {
+        "schema_version": "local-observation-discovery-input-v1.1",
+        "chunk_id": "m1-real-classic-apparel-no-held-items-006",
+        "chunk_text": "    喝叫小喽罗：“快备我的马来！如今便去先打史家庄，后取华阴县。”朱武、杨春再三谏劝，陈达那里肯听。随即披挂上马，点了一百四五十小喽罗，鸣锣擂鼓下山，望史家村去了且说史进正在庄前整制刀马，只见庄客报知此事。史进听得，就庄上敲起梆子来。那庄前庄后，庄东庄西，三四百史家庄户，听得梆子响，都拖枪拽棒，聚起三四百人，一齐都到史家庄上。看了史进头戴一字巾，身披朱红甲，上穿青锦袄，下着抹绿靴，腰系皮搭膊，前后铁掩心，一张弓，一壶箭，手里拿一把三尖两刃四窍八环刀。庄客牵过那匹火炭赤马。史进上了马，绰了刀，前面摆着三四十壮健的庄客，后面列着八九十村蠢的乡夫。各史家庄户，都跟在后头，一齐呐喊，直到村北路口。\n\n    那少华山陈达引了人马，飞奔到山坡下，便将小喽罗摆开。\n\n    史进看时，见陈达头戴干红凹面巾，身披裹金生铁甲，上穿一领红衲袄，脚穿一对吊墩靴，腰系七尺攒线搭膊，坐骑一匹高头白马，手中横着丈八点钢矛。小喽罗两势下呐喊，二员将就马上相见。\n\n    陈达在马上看着史进，欠身施行。史进喝道：“汝等杀人放火，打家劫舍，犯着迷天大罪，都是该死的。你也须有耳朵，好大胆，直来太岁头上动土！”陈达在马上答道：“俺山寨里欠少些粮食，欲往华阴县借粮，经由贵庄，借一条路，并不敢动一根草。可放我们过村中过，回来自当拜谢。”史进道：“胡说，俺家现当里正，正要来拿你这伙贼。今日倒来经由我村中过，却不拿你，倒放你过去！本县知道，须连累于我。”陈达道：“‘四海之内，皆兄弟也’，相烦借一条路。”史进道：“甚么闲话！我便肯时，有一个不肯。你问得他肯，便去。”\n\n    陈达道：“好汉教我问谁？”史进道：“你问得我手里这口刀肯，便放你去。”陈达大怒道：“赶人不要赶上，休得要逞精神！”史进也怒，抡手中刀，骤坐下马，来战陈达。陈达也拍马挺枪，来迎史进。两个交马，但见：\n\n    一来一往，一上一下。一来一往，有如深水戏珠龙；一上一下，却似半岩争食虎。九纹龙忿怒，三尖刀只望顶门飞；跳涧虎生嗔，丈八矛不离心坎刺。好手中间逞好手，红心里面夺红心。\n\n    史进、陈达两个斗了多时，史进卖了个破绽，让陈达把枪望心窝里搠来，史进却把腰一闪，陈达和枪?入怀里来。史进轻舒猿臂，款扭狼腰，只一挟，把陈达轻轻摘离了嵌花鞍，款款揪住了线搭膊，只一丢，丢落地，那匹战马拨风也似去了。\n\n",
+        "previous_tail": null,
+        "allowed_coarse_families": [
+          "physical_identity",
+          "hair",
+          "face",
+          "body",
+          "clothing",
+          "worn_accessory",
+          "cleanliness",
+          "injury",
+          "distinctive_mark",
+          "disguise",
+          "other_visual"
+        ]
+      },
+      "expected": {
+        "entities": [
+          {
+            "key": "shi_jin",
+            "accepted_mentions": [
+              "史进"
+            ],
+            "mention_kind": "explicit_name"
+          },
+          {
+            "key": "chen_da",
+            "accepted_mentions": [
+              "陈达"
+            ],
+            "mention_kind": "explicit_name"
+          }
+        ],
+        "required_facts": [
+          {
+            "key": "shi_jin_headwear",
+            "owner_key": "shi_jin",
+            "evidence_quotes": [
+              "头戴一字巾",
+              "一字巾"
+            ],
+            "coarse_family": "clothing",
+            "epistemic_status": "asserted",
+            "proposition_concept_groups": [
+              [
+                "一字巾"
+              ]
+            ]
+          },
+          {
+            "key": "shi_jin_armor",
+            "owner_key": "shi_jin",
+            "evidence_quotes": [
+              "身披朱红甲",
+              "朱红甲"
+            ],
+            "coarse_family": "clothing",
+            "epistemic_status": "asserted",
+            "proposition_concept_groups": [
+              [
+                "朱红"
+              ],
+              [
+                "甲"
+              ]
+            ]
+          },
+          {
+            "key": "shi_jin_robe",
+            "owner_key": "shi_jin",
+            "evidence_quotes": [
+              "上穿青锦袄",
+              "青锦袄"
+            ],
+            "coarse_family": "clothing",
+            "epistemic_status": "asserted",
+            "proposition_concept_groups": [
+              [
+                "青"
+              ],
+              [
+                "锦袄"
+              ]
+            ]
+          },
+          {
+            "key": "chen_da_headwear",
+            "owner_key": "chen_da",
+            "evidence_quotes": [
+              "头戴干红凹面巾",
+              "干红凹面巾"
+            ],
+            "coarse_family": "clothing",
+            "epistemic_status": "asserted",
+            "proposition_concept_groups": [
+              [
+                "干红"
+              ],
+              [
+                "凹面巾"
+              ]
+            ]
+          },
+          {
+            "key": "chen_da_armor",
+            "owner_key": "chen_da",
+            "evidence_quotes": [
+              "身披裹金生铁甲",
+              "裹金生铁甲"
+            ],
+            "coarse_family": "clothing",
+            "epistemic_status": "asserted",
+            "proposition_concept_groups": [
+              [
+                "裹金"
+              ],
+              [
+                "生铁甲",
+                "铁甲"
+              ]
+            ]
+          },
+          {
+            "key": "chen_da_robe",
+            "owner_key": "chen_da",
+            "evidence_quotes": [
+              "上穿一领红衲袄",
+              "一领红衲袄",
+              "红衲袄"
+            ],
+            "coarse_family": "clothing",
+            "epistemic_status": "asserted",
+            "proposition_concept_groups": [
+              [
+                "红"
+              ],
+              [
+                "衲袄"
+              ]
+            ]
+          }
+        ],
+        "allowed_facts": [],
+        "temporal_signals": [],
+        "unresolved_items": [],
+        "forbidden_facts": [
+          {
+            "reason": "held_weapon_or_mount_is_not_appearance",
+            "terms_any": [
+              "一张弓",
+              "一壶箭",
+              "三尖两刃四窍八环刀",
+              "火炭赤马",
+              "高头白马",
+              "丈八点钢矛"
+            ],
+            "coarse_family": null
+          }
+        ],
+        "allow_additional_facts": true,
+        "allow_additional_temporal_signals": false,
+        "allow_additional_unresolved_items": false
+      }
+    }
+  ]
+}

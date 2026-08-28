@@ -1,0 +1,152 @@
+{
+  "run_schema_version": "m1-real-evaluation-run-v1",
+  "started_at": "2026-08-28T05:20:01.430518+00:00",
+  "finished_at": "2026-08-28T05:20:09.472291+00:00",
+  "dataset": {
+    "path": "tests/evaluation/m1_local_observation_discovery_v1.json",
+    "version": "m1-local-observation-v1",
+    "sha256": "7589b17c67b36cce0a7a50f2fc03a42091e33e905299d21224ebbfc66c4ff7f5",
+    "case_count": 15,
+    "review_status": "approved"
+  },
+  "configuration": {
+    "provider": "deepseek",
+    "model": "deepseek-v4-flash",
+    "wire_api": "chat_completions",
+    "thinking_enabled": false,
+    "reasoning_effort": "none",
+    "max_output_tokens": 8192,
+    "max_retries": 1,
+    "prompt_version": "local-observation-discovery-prompt-v1.1",
+    "prompt_hash": "9c34f8861dc1b824c1be3268ede0950755bae6ed7f64beb503bf33e823f1efad",
+    "model_config_version": "local-observation-model-config-v1:94e1c0cc373ac212",
+    "raw_provider_response_capture": false
+  },
+  "cases": [
+    {
+      "case_id": "m1-direct-two-facts-001",
+      "status": "provider_failed",
+      "error_code": "provider_transport_error",
+      "retryable": true,
+      "attempts": 2,
+      "elapsed_ms": 725.3652000072179
+    },
+    {
+      "case_id": "m1-multi-owner-002",
+      "status": "provider_failed",
+      "error_code": "provider_transport_error",
+      "retryable": true,
+      "attempts": 2,
+      "elapsed_ms": 525.4461000004085
+    },
+    {
+      "case_id": "m1-descriptor-owner-003",
+      "status": "provider_failed",
+      "error_code": "provider_transport_error",
+      "retryable": true,
+      "attempts": 2,
+      "elapsed_ms": 538.9374999940628
+    },
+    {
+      "case_id": "m1-negated-scar-004",
+      "status": "provider_failed",
+      "error_code": "provider_transport_error",
+      "retryable": true,
+      "attempts": 2,
+      "elapsed_ms": 503.7925000069663
+    },
+    {
+      "case_id": "m1-uncertain-accessory-005",
+      "status": "provider_failed",
+      "error_code": "provider_transport_error",
+      "retryable": true,
+      "attempts": 2,
+      "elapsed_ms": 519.8330999992322
+    },
+    {
+      "case_id": "m1-inferred-age-006",
+      "status": "provider_failed",
+      "error_code": "provider_transport_error",
+      "retryable": true,
+      "attempts": 2,
+      "elapsed_ms": 513.5950999974739
+    },
+    {
+      "case_id": "m1-explicit-age-007",
+      "status": "provider_failed",
+      "error_code": "provider_transport_error",
+      "retryable": true,
+      "attempts": 2,
+      "elapsed_ms": 514.9194999976316
+    },
+    {
+      "case_id": "m1-transformation-008",
+      "status": "provider_failed",
+      "error_code": "provider_transport_error",
+      "retryable": true,
+      "attempts": 2,
+      "elapsed_ms": 523.2683000067482
+    },
+    {
+      "case_id": "m1-nonvisual-empty-009",
+      "status": "provider_failed",
+      "error_code": "provider_transport_error",
+      "retryable": true,
+      "attempts": 2,
+      "elapsed_ms": 520.648000005167
+    },
+    {
+      "case_id": "m1-held-object-exclusion-010",
+      "status": "provider_failed",
+      "error_code": "provider_transport_error",
+      "retryable": true,
+      "attempts": 2,
+      "elapsed_ms": 511.72049999877345
+    },
+    {
+      "case_id": "m1-internal-emotion-empty-011",
+      "status": "provider_failed",
+      "error_code": "provider_transport_error",
+      "retryable": true,
+      "attempts": 2,
+      "elapsed_ms": 514.7831000067526
+    },
+    {
+      "case_id": "m1-ambiguous-owner-012",
+      "status": "provider_failed",
+      "error_code": "provider_transport_error",
+      "retryable": true,
+      "attempts": 2,
+      "elapsed_ms": 504.3112999992445
+    },
+    {
+      "case_id": "m1-previous-tail-is-context-only-013",
+      "status": "provider_failed",
+      "error_code": "provider_transport_error",
+      "retryable": true,
+      "attempts": 2,
+      "elapsed_ms": 519.4472000002861
+    },
+    {
+      "case_id": "m1-untrusted-instruction-014",
+      "status": "provider_failed",
+      "error_code": "provider_transport_error",
+      "retryable": true,
+      "attempts": 2,
+      "elapsed_ms": 515.1630999898771
+    },
+    {
+      "case_id": "m1-presentation-change-015",
+      "status": "provider_failed",
+      "error_code": "provider_transport_error",
+      "retryable": true,
+      "attempts": 2,
+      "elapsed_ms": 521.1252000008244
+    }
+  ],
+  "summary": {
+    "completed_cases": 0,
+    "failed_cases": 15,
+    "total_attempts": 30
+  }
+}

@@ -1,0 +1,191 @@
+{
+  "run_schema_version": "m1-real-evaluation-run-v1",
+  "run_mode": "quality_gate",
+  "started_at": "2026-08-28T10:33:24.522030+00:00",
+  "finished_at": "2026-08-28T10:33:59.652273+00:00",
+  "dataset": {
+    "path": "tests/evaluation/m1_local_observation_real_v1.json",
+    "version": "m1-local-observation-real-v1.1",
+    "sha256": "10cc472f5e2a3dbd31686758a2fffbc81162e64baedfd7d9e775f67d88908f29",
+    "case_count": 6,
+    "selected_case_ids": [
+      "m1-real-presentation-no-result-001",
+      "m1-real-two-approximate-ages-002",
+      "m1-real-inferred-age-003",
+      "m1-real-relative-age-and-accessories-004",
+      "m1-real-transformation-not-presentation-005",
+      "m1-real-classic-apparel-no-held-items-006"
+    ],
+    "review_status": "approved"
+  },
+  "configuration": {
+    "provider": "deepseek",
+    "model": "deepseek-v4-flash",
+    "wire_api": "chat_completions",
+    "thinking_enabled": false,
+    "reasoning_effort": "none",
+    "max_output_tokens": 8192,
+    "configured_max_retries": 1,
+    "max_retries": 1,
+    "prompt_version": "local-observation-discovery-prompt-v1.6",
+    "prompt_hash": "ed826f0e101ff1e2ec1362af29dd61d72bf9e5987a25a52c41c9beb4143d57c8",
+    "model_config_version": "local-observation-model-config-v1:f367e57b69c1d311",
+    "raw_provider_response_capture": false
+  },
+  "cases": [
+    {
+      "case_id": "m1-real-presentation-no-result-001",
+      "status": "succeeded",
+      "contract_error": null,
+      "attempts": 1,
+      "latency_ms": 7301.346399995964,
+      "usage": {
+        "input_tokens": 3177,
+        "cache_hit_tokens": 0,
+        "cache_miss_tokens": 3177,
+        "reasoning_tokens": 0,
+        "output_tokens": 1104,
+        "total_tokens": 4281
+      },
+      "provider_request_id": "5a805347-45fd-4ce0-8e24-c1ae4abd9504",
+      "response_model": "deepseek-v4-flash",
+      "elapsed_ms": 7310.987999997451
+    },
+    {
+      "case_id": "m1-real-two-approximate-ages-002",
+      "status": "succeeded",
+      "contract_error": null,
+      "attempts": 1,
+      "latency_ms": 5979.23099999025,
+      "usage": {
+        "input_tokens": 3159,
+        "cache_hit_tokens": 256,
+        "cache_miss_tokens": 2903,
+        "reasoning_tokens": 0,
+        "output_tokens": 831,
+        "total_tokens": 3990
+      },
+      "provider_request_id": "66adc42c-0bca-439f-8db7-13e92c850e5f",
+      "response_model": "deepseek-v4-flash",
+      "elapsed_ms": 5989.508400001796
+    },
+    {
+      "case_id": "m1-real-inferred-age-003",
+      "status": "succeeded",
+      "contract_error": null,
+      "attempts": 1,
+      "latency_ms": 4363.0512000090675,
+      "usage": {
+        "input_tokens": 3176,
+        "cache_hit_tokens": 2432,
+        "cache_miss_tokens": 744,
+        "reasoning_tokens": 0,
+        "output_tokens": 399,
+        "total_tokens": 3575
+      },
+      "provider_request_id": "0afa0032-ed73-4462-9df7-00f4e4d397bc",
+      "response_model": "deepseek-v4-flash",
+      "elapsed_ms": 4373.686100007035
+    },
+    {
+      "case_id": "m1-real-relative-age-and-accessories-004",
+      "status": "succeeded",
+      "contract_error": null,
+      "attempts": 1,
+      "latency_ms": 5290.201700001489,
+      "usage": {
+        "input_tokens": 3179,
+        "cache_hit_tokens": 2432,
+        "cache_miss_tokens": 747,
+        "reasoning_tokens": 0,
+        "output_tokens": 714,
+        "total_tokens": 3893
+      },
+      "provider_request_id": "5a1ff214-0783-4fda-8075-8daec7c4c8f2",
+      "response_model": "deepseek-v4-flash",
+      "elapsed_ms": 5301.342600010685
+    },
+    {
+      "case_id": "m1-real-transformation-not-presentation-005",
+      "status": "succeeded",
+      "contract_error": null,
+      "attempts": 1,
+      "latency_ms": 6891.120400003274,
+      "usage": {
+        "input_tokens": 3185,
+        "cache_hit_tokens": 2432,
+        "cache_miss_tokens": 753,
+        "reasoning_tokens": 0,
+        "output_tokens": 1071,
+        "total_tokens": 4256
+      },
+      "provider_request_id": "47f29ef7-1cbd-4888-b21f-66ca080e6659",
+      "response_model": "deepseek-v4-flash",
+      "elapsed_ms": 6900.14009999868
+    },
+    {
+      "case_id": "m1-real-classic-apparel-no-held-items-006",
+      "status": "succeeded",
+      "contract_error": null,
+      "attempts": 1,
+      "latency_ms": 5210.403699995368,
+      "usage": {
+        "input_tokens": 3362,
+        "cache_hit_tokens": 2432,
+        "cache_miss_tokens": 930,
+        "reasoning_tokens": 0,
+        "output_tokens": 760,
+        "total_tokens": 4122
+      },
+      "provider_request_id": "6c792df6-84f7-429b-b163-7b8716eab330",
+      "response_model": "deepseek-v4-flash",
+      "elapsed_ms": 5219.677799992496
+    }
+  ],
+  "summary": {
+    "completed_cases": 6,
+    "failed_cases": 0,
+    "total_attempts": 6,
+    "usage": {
+      "input_tokens": 19238,
+      "cache_hit_tokens": 9984,
+      "cache_miss_tokens": 9254,
+      "reasoning_tokens": 0,
+      "output_tokens": 4879,
+      "total_tokens": 24117
+    },
+    "report": {
+      "rubric_version": "local-observation-evaluation-rubric-v1.1",
+      "dataset_version": "m1-local-observation-real-v1.1",
+      "dataset_review_status": "approved",
+      "quality_gate": "measured_no_release_gate",
+      "pass_count": 4,
+      "review_count": 0,
+      "fail_count": 2,
+      "required_fact_total": 23,
+      "required_fact_matched": 22,
+      "actual_fact_total": 58,
+      "scored_actual_fact_total": 22,
+      "unscored_fact_total": 36,
+      "supported_fact_total": 22,
+      "temporal_signal_total": 8,
+      "temporal_signal_matched": 7,
+      "actual_temporal_signal_total": 8,
+      "scored_actual_temporal_signal_total": 8,
+      "unscored_temporal_signal_total": 0,
+      "unresolved_item_total": 0,
+      "unresolved_item_matched": 0,
+      "actual_unresolved_item_total": 0,
+      "scored_actual_unresolved_item_total": 0,
+      "unscored_unresolved_item_total": 0,
+      "required_fact_recall": 0.9565217391304348,
+      "supported_fact_precision": 1.0,
+      "quote_fidelity": 1.0,
+      "epistemic_accuracy": 1.0,
+      "temporal_signal_recall": 0.875,
+      "temporal_signal_precision": 0.875,
+      "unresolved_item_recall": 1.0,
+      "unresolved_item_precision": 1.0
+    }
+  }
+}

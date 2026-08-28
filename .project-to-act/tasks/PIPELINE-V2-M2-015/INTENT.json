@@ -1,0 +1,1 @@
+{"task_id":"PIPELINE-V2-M2-015","requested_by":"user","intent":"实现字段目录冻结后的 M2 最小模型线。","execution":"stage-5-m2-offline-slice","provider_calls":0,"database_mutation":false,"production_route_mutation":false,"upstream_gate":"N2 engineering passed; M1 quality remains 5_of_6","downstream_gate":"M2 real evaluation remains closed pending dataset review"}

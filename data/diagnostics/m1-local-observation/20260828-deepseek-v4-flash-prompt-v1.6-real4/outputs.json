@@ -1,0 +1,673 @@
+{
+  "m1-real-presentation-no-result-001": {
+    "schema_version": "local-observation-discovery-v1.1",
+    "chunk_id": "m1-real-presentation-no-result-001",
+    "entities": [
+      {
+        "local_entity_id": "e1",
+        "mention_quote": "少年",
+        "mention_kind": "descriptor",
+        "representative_name": "少年"
+      },
+      {
+        "local_entity_id": "e2",
+        "mention_quote": "萧炎",
+        "mention_kind": "explicit_name",
+        "representative_name": "萧炎"
+      },
+      {
+        "local_entity_id": "e3",
+        "mention_quote": "青衫老者",
+        "mention_kind": "descriptor",
+        "representative_name": "青衫老者"
+      },
+      {
+        "local_entity_id": "e4",
+        "mention_quote": "老者",
+        "mention_kind": "descriptor",
+        "representative_name": "老者"
+      }
+    ],
+    "facts": [
+      {
+        "local_fact_id": "f1",
+        "entity_ref": "e1",
+        "evidence_quote": "少年闭目盘腿而坐",
+        "raw_proposition": "少年闭目盘腿而坐",
+        "coarse_family": "body",
+        "epistemic_status": "asserted"
+      },
+      {
+        "local_fact_id": "f2",
+        "entity_ref": "e1",
+        "evidence_quote": "双手在身前摆出奇异的手印",
+        "raw_proposition": "双手在身前摆出奇异的手印",
+        "coarse_family": "body",
+        "epistemic_status": "asserted"
+      },
+      {
+        "local_fact_id": "f3",
+        "entity_ref": "e1",
+        "evidence_quote": "胸膛轻微起伏",
+        "raw_proposition": "胸膛轻微起伏",
+        "coarse_family": "body",
+        "epistemic_status": "asserted"
+      },
+      {
+        "local_fact_id": "f4",
+        "entity_ref": "e1",
+        "evidence_quote": "淡淡的白色气流顺着口鼻，钻入了体内",
+        "raw_proposition": "有淡淡的白色气流顺着口鼻钻入体内",
+        "coarse_family": "other_visual",
+        "epistemic_status": "asserted"
+      },
+      {
+        "local_fact_id": "f5",
+        "entity_ref": "e1",
+        "evidence_quote": "手指上那古朴的黑色戒指",
+        "raw_proposition": "手指上戴着古朴的黑色戒指",
+        "coarse_family": "worn_accessory",
+        "epistemic_status": "asserted"
+      },
+      {
+        "local_fact_id": "f6",
+        "entity_ref": "e1",
+        "evidence_quote": "少年双眼乍然睁开，一抹淡淡的白芒在漆黑的眼中闪过",
+        "raw_proposition": "少年双眼睁开，眼中闪过淡淡的白芒，眼睛是漆黑的",
+        "coarse_family": "face",
+        "epistemic_status": "asserted"
+      },
+      {
+        "local_fact_id": "f7",
+        "entity_ref": "e1",
+        "evidence_quote": "少年脸庞猛然的愤怒了起来",
+        "raw_proposition": "少年脸庞表现出愤怒的表情",
+        "coarse_family": "face",
+        "epistemic_status": "asserted"
+      },
+      {
+        "local_fact_id": "f8",
+        "entity_ref": "e1",
+        "evidence_quote": "换了一身衣衫",
+        "raw_proposition": "换了一身衣衫",
+        "coarse_family": "clothing",
+        "epistemic_status": "asserted"
+      },
+      {
+        "local_fact_id": "f9",
+        "entity_ref": "e2",
+        "evidence_quote": "少年稚嫩的脸庞",
+        "raw_proposition": "少年脸庞稚嫩",
+        "coarse_family": "face",
+        "epistemic_status": "asserted"
+      },
+      {
+        "local_fact_id": "f10",
+        "entity_ref": "e3",
+        "evidence_quote": "青衫老者",
+        "raw_proposition": "老者身穿青衫",
+        "coarse_family": "clothing",
+        "epistemic_status": "asserted"
+      },
+      {
+        "local_fact_id": "f11",
+        "entity_ref": "e3",
+        "evidence_quote": "浑浊的老眼",
+        "raw_proposition": "老眼浑浊",
+        "coarse_family": "face",
+        "epistemic_status": "asserted"
+      },
+      {
+        "local_fact_id": "f12",
+        "entity_ref": "e4",
+        "evidence_quote": "身穿月白衣袍的老者",
+        "raw_proposition": "老者身穿月白衣袍",
+        "coarse_family": "clothing",
+        "epistemic_status": "asserted"
+      },
+      {
+        "local_fact_id": "f13",
+        "entity_ref": "e4",
+        "evidence_quote": "老者满脸笑容，神采奕奕",
+        "raw_proposition": "老者满脸笑容，神采奕奕",
+        "coarse_family": "face",
+        "epistemic_status": "asserted"
+      },
+      {
+        "local_fact_id": "f14",
+        "entity_ref": "e4",
+        "evidence_quote": "一双有些细小的双眼",
+        "raw_proposition": "双眼细小",
+        "coarse_family": "face",
+        "epistemic_status": "asserted"
+      },
+      {
+        "local_fact_id": "f15",
+        "entity_ref": "e4",
+        "evidence_quote": "衣袍胸口处，赫然绘有一弯银色浅月，在浅月周围，还有点缀着七颗金光闪闪的星辰",
+        "raw_proposition": "衣袍胸口绘有银色浅月和七颗金色星辰",
+        "coarse_family": "clothing",
+        "epistemic_status": "asserted"
+      }
+    ],
+    "temporal_signals": [
+      {
+        "local_signal_id": "t1",
+        "entity_ref": "e1",
+        "fact_ref": "f8",
+        "evidence_quote": "换了一身衣衫",
+        "signal_kind": "presentation",
+        "raw_label": "换了一身衣衫"
+      }
+    ],
+    "unresolved_items": []
+  },
+  "m1-real-two-approximate-ages-002": {
+    "schema_version": "local-observation-discovery-v1.1",
+    "chunk_id": "m1-real-two-approximate-ages-002",
+    "entities": [
+      {
+        "local_entity_id": "e1",
+        "mention_quote": "男子",
+        "mention_kind": "descriptor",
+        "representative_name": "男子"
+      },
+      {
+        "local_entity_id": "e2",
+        "mention_quote": "少女",
+        "mention_kind": "descriptor",
+        "representative_name": "少女"
+      },
+      {
+        "local_entity_id": "e3",
+        "mention_quote": "萧炎",
+        "mention_kind": "explicit_name",
+        "representative_name": "萧炎"
+      }
+    ],
+    "facts": [
+      {
+        "local_fact_id": "f1",
+        "entity_ref": "e1",
+        "evidence_quote": "男子年龄在二十左右，英俊的相貌，配上挺拔的身材",
+        "raw_proposition": "男子年龄在二十左右，相貌英俊，身材挺拔。",
+        "coarse_family": "physical_identity",
+        "epistemic_status": "asserted"
+      },
+      {
+        "local_fact_id": "f2",
+        "entity_ref": "e1",
+        "evidence_quote": "身上同样穿着相同的月白袍服",
+        "raw_proposition": "男子穿着月白袍服。",
+        "coarse_family": "clothing",
+        "epistemic_status": "asserted"
+      },
+      {
+        "local_fact_id": "f3",
+        "entity_ref": "e1",
+        "evidence_quote": "胸口处所绘的五颗金星",
+        "raw_proposition": "男子胸口绘有五颗金星。",
+        "coarse_family": "distinctive_mark",
+        "epistemic_status": "asserted"
+      },
+      {
+        "local_fact_id": "f4",
+        "entity_ref": "e2",
+        "evidence_quote": "少女年龄和萧炎相仿",
+        "raw_proposition": "少女年龄和萧炎相仿。",
+        "coarse_family": "physical_identity",
+        "epistemic_status": "asserted"
+      },
+      {
+        "local_fact_id": "f5",
+        "entity_ref": "e2",
+        "evidence_quote": "她的容貌，竟然比萧媚还要美上几分",
+        "raw_proposition": "少女容貌比萧媚还要美上几分。",
+        "coarse_family": "face",
+        "epistemic_status": "asserted"
+      },
+      {
+        "local_fact_id": "f6",
+        "entity_ref": "e2",
+        "evidence_quote": "少女娇嫩的耳垂上吊有着绿色的玉坠",
+        "raw_proposition": "少女娇嫩的耳垂上吊着绿色的玉坠。",
+        "coarse_family": "worn_accessory",
+        "epistemic_status": "asserted"
+      },
+      {
+        "local_fact_id": "f7",
+        "entity_ref": "e2",
+        "evidence_quote": "已经开始发育的玲珑小胸脯旁，绘有三颗金星",
+        "raw_proposition": "少女已经开始发育的玲珑小胸脯旁绘有三颗金星。",
+        "coarse_family": "distinctive_mark",
+        "epistemic_status": "asserted"
+      },
+      {
+        "local_fact_id": "f8",
+        "entity_ref": "e2",
+        "evidence_quote": "少女冷艳的小脸",
+        "raw_proposition": "少女的脸冷艳。",
+        "coarse_family": "face",
+        "epistemic_status": "asserted"
+      },
+      {
+        "local_fact_id": "f9",
+        "entity_ref": "e3",
+        "evidence_quote": "幼稚的外貌",
+        "raw_proposition": "萧炎的外貌幼稚。",
+        "coarse_family": "face",
+        "epistemic_status": "asserted"
+      }
+    ],
+    "temporal_signals": [
+      {
+        "local_signal_id": "t1",
+        "entity_ref": "e1",
+        "fact_ref": "f1",
+        "evidence_quote": "男子年龄在二十左右",
+        "signal_kind": "age",
+        "raw_label": "男子年龄在二十左右"
+      },
+      {
+        "local_signal_id": "t2",
+        "entity_ref": "e2",
+        "fact_ref": "f4",
+        "evidence_quote": "少女年龄和萧炎相仿",
+        "signal_kind": "age",
+        "raw_label": "少女年龄和萧炎相仿"
+      }
+    ],
+    "unresolved_items": []
+  },
+  "m1-real-inferred-age-003": {
+    "schema_version": "local-observation-discovery-v1.1",
+    "chunk_id": "m1-real-inferred-age-003",
+    "entities": [
+      {
+        "local_entity_id": "e1",
+        "mention_quote": "唐昊",
+        "mention_kind": "explicit_name",
+        "representative_name": "唐昊"
+      }
+    ],
+    "facts": [
+      {
+        "local_fact_id": "f1",
+        "entity_ref": "e1",
+        "evidence_quote": "唐昊看起来却要比他们苍老的多",
+        "raw_proposition": "唐昊看起来比三十岁左右的父亲们苍老得多",
+        "coarse_family": "physical_identity",
+        "epistemic_status": "inferred"
+      },
+      {
+        "local_fact_id": "f2",
+        "entity_ref": "e1",
+        "evidence_quote": "暗黄的脸色这才看上去多了几分光泽",
+        "raw_proposition": "唐昊的脸色暗黄，喝粥后多了几分光泽",
+        "coarse_family": "face",
+        "epistemic_status": "asserted"
+      },
+      {
+        "local_fact_id": "f3",
+        "entity_ref": "e1",
+        "evidence_quote": "耷拉的眼皮睁开了几分",
+        "raw_proposition": "唐昊的眼皮耷拉着，睁开了几分",
+        "coarse_family": "face",
+        "epistemic_status": "asserted"
+      },
+      {
+        "local_fact_id": "f4",
+        "entity_ref": "e1",
+        "evidence_quote": "他的身体也终于不再摇晃了",
+        "raw_proposition": "唐昊的身体不再摇晃",
+        "coarse_family": "body",
+        "epistemic_status": "asserted"
+      }
+    ],
+    "temporal_signals": [
+      {
+        "local_signal_id": "t1",
+        "entity_ref": "e1",
+        "fact_ref": "f1",
+        "evidence_quote": "唐昊看起来却要比他们苍老的多",
+        "signal_kind": "age",
+        "raw_label": "唐昊看起来却要比他们苍老的多"
+      }
+    ],
+    "unresolved_items": []
+  },
+  "m1-real-relative-age-and-accessories-004": {
+    "schema_version": "local-observation-discovery-v1.1",
+    "chunk_id": "m1-real-relative-age-and-accessories-004",
+    "entities": [
+      {
+        "local_entity_id": "e1",
+        "mention_quote": "秦牧",
+        "mention_kind": "explicit_name",
+        "representative_name": "秦牧"
+      },
+      {
+        "local_entity_id": "e2",
+        "mention_quote": "小女孩儿",
+        "mention_kind": "descriptor",
+        "representative_name": "小女孩儿"
+      }
+    ],
+    "facts": [
+      {
+        "local_fact_id": "f1",
+        "entity_ref": "e1",
+        "evidence_quote": "脱掉脚上的铁鞋，解开缚在小腿上的铁锭",
+        "raw_proposition": "秦牧脱掉脚上的铁鞋，解开缚在小腿上的铁锭。",
+        "coarse_family": "clothing",
+        "epistemic_status": "asserted"
+      },
+      {
+        "local_fact_id": "f2",
+        "entity_ref": "e1",
+        "evidence_quote": "脚穿铁鞋腿绑铁锭",
+        "raw_proposition": "秦牧脚穿铁鞋，腿绑铁锭。",
+        "coarse_family": "clothing",
+        "epistemic_status": "asserted"
+      },
+      {
+        "local_fact_id": "f3",
+        "entity_ref": "e2",
+        "evidence_quote": "年纪与他仿佛，也是十一二岁",
+        "raw_proposition": "小女孩儿年纪与秦牧仿佛，也是十一二岁。",
+        "coarse_family": "physical_identity",
+        "epistemic_status": "asserted"
+      },
+      {
+        "local_fact_id": "f4",
+        "entity_ref": "e2",
+        "evidence_quote": "梳着三根小辫，两根较细的辫子垂在胸前，粗的辫子垂在身后",
+        "raw_proposition": "小女孩儿梳着三根小辫，两根较细的辫子垂在胸前，粗的辫子垂在身后。",
+        "coarse_family": "hair",
+        "epistemic_status": "asserted"
+      },
+      {
+        "local_fact_id": "f5",
+        "entity_ref": "e2",
+        "evidence_quote": "脚踝处的金环碰来碰去",
+        "raw_proposition": "小女孩儿脚踝处戴着金环。",
+        "coarse_family": "worn_accessory",
+        "epistemic_status": "asserted"
+      },
+      {
+        "local_fact_id": "f6",
+        "entity_ref": "e2",
+        "evidence_quote": "露出两只小虎牙",
+        "raw_proposition": "小女孩儿露出两只小虎牙。",
+        "coarse_family": "face",
+        "epistemic_status": "asserted"
+      },
+      {
+        "local_fact_id": "f7",
+        "entity_ref": "e2",
+        "evidence_quote": "贝齿咬着红唇",
+        "raw_proposition": "小女孩儿贝齿咬着红唇。",
+        "coarse_family": "face",
+        "epistemic_status": "asserted"
+      }
+    ],
+    "temporal_signals": [
+      {
+        "local_signal_id": "t1",
+        "entity_ref": "e1",
+        "fact_ref": "f1",
+        "evidence_quote": "脱掉脚上的铁鞋，解开缚在小腿上的铁锭",
+        "signal_kind": "presentation",
+        "raw_label": "脱掉脚上的铁鞋，解开缚在小腿上的铁锭"
+      },
+      {
+        "local_signal_id": "t2",
+        "entity_ref": "e2",
+        "fact_ref": "f3",
+        "evidence_quote": "年纪与他仿佛，也是十一二岁",
+        "signal_kind": "age",
+        "raw_label": "年纪与他仿佛，也是十一二岁"
+      }
+    ],
+    "unresolved_items": []
+  },
+  "m1-real-transformation-not-presentation-005": {
+    "schema_version": "local-observation-discovery-v1.1",
+    "chunk_id": "m1-real-transformation-not-presentation-005",
+    "entities": [
+      {
+        "local_entity_id": "e1",
+        "mention_quote": "仙清儿",
+        "mention_kind": "explicit_name",
+        "representative_name": "仙清儿"
+      }
+    ],
+    "facts": [
+      {
+        "local_fact_id": "f1",
+        "entity_ref": "e1",
+        "evidence_quote": "脸色陡变，霎时间变得无比狰狞丑陋",
+        "raw_proposition": "脸色变得狰狞丑陋",
+        "coarse_family": "face",
+        "epistemic_status": "asserted"
+      },
+      {
+        "local_fact_id": "f2",
+        "entity_ref": "e1",
+        "evidence_quote": "这个小女孩的身体膨胀起来",
+        "raw_proposition": "身体膨胀",
+        "coarse_family": "body",
+        "epistemic_status": "asserted"
+      },
+      {
+        "local_fact_id": "f3",
+        "entity_ref": "e1",
+        "evidence_quote": "一条条骨节嶙峋的腿刺破她的裙子",
+        "raw_proposition": "骨节嶙峋的腿刺破裙子",
+        "coarse_family": "body",
+        "epistemic_status": "asserted"
+      },
+      {
+        "local_fact_id": "f4",
+        "entity_ref": "e1",
+        "evidence_quote": "身体变得又粗又长，像是一只由骨头组成的大蜈蚣",
+        "raw_proposition": "身体变得又粗又长，像骨头组成的大蜈蚣",
+        "coarse_family": "body",
+        "epistemic_status": "asserted"
+      },
+      {
+        "local_fact_id": "f5",
+        "entity_ref": "e1",
+        "evidence_quote": "她的上身背后则有骨甲高高隆起",
+        "raw_proposition": "上身背后有骨甲高高隆起",
+        "coarse_family": "body",
+        "epistemic_status": "asserted"
+      },
+      {
+        "local_fact_id": "f6",
+        "entity_ref": "e1",
+        "evidence_quote": "一条条骨骼组成的手臂张开，指骨利爪，锋利无比",
+        "raw_proposition": "骨骼组成的手臂张开，指骨利爪锋利",
+        "coarse_family": "body",
+        "epistemic_status": "asserted"
+      },
+      {
+        "local_fact_id": "f7",
+        "entity_ref": "e1",
+        "evidence_quote": "她的脑后也有长出一根根鹿角般弯曲的骨刺",
+        "raw_proposition": "脑后长出一根根鹿角般弯曲的骨刺",
+        "coarse_family": "body",
+        "epistemic_status": "asserted"
+      },
+      {
+        "local_fact_id": "f8",
+        "entity_ref": "e1",
+        "evidence_quote": "脸上丘壑纵横",
+        "raw_proposition": "脸上丘壑纵横",
+        "coarse_family": "face",
+        "epistemic_status": "asserted"
+      },
+      {
+        "local_fact_id": "f9",
+        "entity_ref": "e1",
+        "evidence_quote": "那怪物身上挂着一个个金环",
+        "raw_proposition": "身上挂着一个个金环",
+        "coarse_family": "worn_accessory",
+        "epistemic_status": "asserted"
+      },
+      {
+        "local_fact_id": "f10",
+        "entity_ref": "e1",
+        "evidence_quote": "瞪着布满血丝的眼睛",
+        "raw_proposition": "眼睛布满血丝",
+        "coarse_family": "face",
+        "epistemic_status": "asserted"
+      },
+      {
+        "local_fact_id": "f11",
+        "entity_ref": "e1",
+        "evidence_quote": "口水像是溪流般绵绵不绝",
+        "raw_proposition": "口水像溪流般流下",
+        "coarse_family": "other_visual",
+        "epistemic_status": "asserted"
+      },
+      {
+        "local_fact_id": "f12",
+        "entity_ref": "e1",
+        "evidence_quote": "它又变成小女孩仙清儿的模样，衣衫半解",
+        "raw_proposition": "变成小女孩仙清儿的模样，衣衫半解",
+        "coarse_family": "physical_identity",
+        "epistemic_status": "asserted"
+      }
+    ],
+    "temporal_signals": [
+      {
+        "local_signal_id": "t1",
+        "entity_ref": "e1",
+        "fact_ref": "f2",
+        "evidence_quote": "这个小女孩的身体膨胀起来",
+        "signal_kind": "transformation",
+        "raw_label": "这个小女孩的身体膨胀起来"
+      },
+      {
+        "local_signal_id": "t2",
+        "entity_ref": "e1",
+        "fact_ref": "f12",
+        "evidence_quote": "它又变成小女孩仙清儿的模样",
+        "signal_kind": "transformation",
+        "raw_label": "它又变成小女孩仙清儿的模样"
+      }
+    ],
+    "unresolved_items": []
+  },
+  "m1-real-classic-apparel-no-held-items-006": {
+    "schema_version": "local-observation-discovery-v1.1",
+    "chunk_id": "m1-real-classic-apparel-no-held-items-006",
+    "entities": [
+      {
+        "local_entity_id": "e1",
+        "mention_quote": "史进",
+        "mention_kind": "explicit_name",
+        "representative_name": "史进"
+      },
+      {
+        "local_entity_id": "e2",
+        "mention_quote": "陈达",
+        "mention_kind": "explicit_name",
+        "representative_name": "陈达"
+      }
+    ],
+    "facts": [
+      {
+        "local_fact_id": "f1",
+        "entity_ref": "e1",
+        "evidence_quote": "头戴一字巾",
+        "raw_proposition": "头戴一字巾",
+        "coarse_family": "clothing",
+        "epistemic_status": "asserted"
+      },
+      {
+        "local_fact_id": "f2",
+        "entity_ref": "e1",
+        "evidence_quote": "身披朱红甲",
+        "raw_proposition": "身披朱红甲",
+        "coarse_family": "clothing",
+        "epistemic_status": "asserted"
+      },
+      {
+        "local_fact_id": "f3",
+        "entity_ref": "e1",
+        "evidence_quote": "上穿青锦袄",
+        "raw_proposition": "上穿青锦袄",
+        "coarse_family": "clothing",
+        "epistemic_status": "asserted"
+      },
+      {
+        "local_fact_id": "f4",
+        "entity_ref": "e1",
+        "evidence_quote": "下着抹绿靴",
+        "raw_proposition": "下着抹绿靴",
+        "coarse_family": "clothing",
+        "epistemic_status": "asserted"
+      },
+      {
+        "local_fact_id": "f5",
+        "entity_ref": "e1",
+        "evidence_quote": "腰系皮搭膊",
+        "raw_proposition": "腰系皮搭膊",
+        "coarse_family": "clothing",
+        "epistemic_status": "asserted"
+      },
+      {
+        "local_fact_id": "f6",
+        "entity_ref": "e1",
+        "evidence_quote": "前后铁掩心",
+        "raw_proposition": "前后铁掩心",
+        "coarse_family": "clothing",
+        "epistemic_status": "asserted"
+      },
+      {
+        "local_fact_id": "f7",
+        "entity_ref": "e2",
+        "evidence_quote": "头戴干红凹面巾",
+        "raw_proposition": "头戴干红凹面巾",
+        "coarse_family": "clothing",
+        "epistemic_status": "asserted"
+      },
+      {
+        "local_fact_id": "f8",
+        "entity_ref": "e2",
+        "evidence_quote": "身披裹金生铁甲",
+        "raw_proposition": "身披裹金生铁甲",
+        "coarse_family": "clothing",
+        "epistemic_status": "asserted"
+      },
+      {
+        "local_fact_id": "f9",
+        "entity_ref": "e2",
+        "evidence_quote": "上穿一领红衲袄",
+        "raw_proposition": "上穿一领红衲袄",
+        "coarse_family": "clothing",
+        "epistemic_status": "asserted"
+      },
+      {
+        "local_fact_id": "f10",
+        "entity_ref": "e2",
+        "evidence_quote": "脚穿一对吊墩靴",
+        "raw_proposition": "脚穿一对吊墩靴",
+        "coarse_family": "clothing",
+        "epistemic_status": "asserted"
+      },
+      {
+        "local_fact_id": "f11",
+        "entity_ref": "e2",
+        "evidence_quote": "腰系七尺攒线搭膊",
+        "raw_proposition": "腰系七尺攒线搭膊",
+        "coarse_family": "clothing",
+        "epistemic_status": "asserted"
+      }
+    ],
+    "temporal_signals": [],
+    "unresolved_items": []
+  }
+}
