@@ -14,7 +14,8 @@ M1/N2/M2 的离线工程链可用，但整体模型质量与端到端 Gate 未�
 | N2 唯一证据定位、哈希、上下文和失败关闭 | 通过 | E-20260828-PIPELINE-V2-N2-014 |
 | M2 使用唯一精确字段目录和 string-only 值 | 通过 | E-20260828-PIPELINE-V2-M2-015 |
 | M2 用户审核集和真实模型质量 Gate | blocked | E-20260828-PIPELINE-V2-M2-015 |
-| Git 工作树只保留 V2 当前实现与资料 | 通过；本机仍有 ACL 锁定的忽略缓存 | E-20260828-CLEANUP-V2-016 |
+| Git 工作树只保留 V2 当前实现与资料 | 通过 | E-20260828-CLEANUP-V2-016 |
+| 当前仓库无需旧项目即可独立导入和验证 | 通过 | E-20260828-ENV-ISOLATION-017 |
 
 ## 证据索引
 
@@ -23,7 +24,9 @@ M1/N2/M2 的离线工程链可用，但整体模型质量与端到端 Gate 未�
 - `.project-to-act/tasks/PIPELINE-V2-N2-014/evidence/`
 - `.project-to-act/tasks/PIPELINE-V2-M2-015/evidence/`
 - `.project-to-act/tasks/CLEANUP-V2-016/evidence/`
+- `.project-to-act/tasks/ENV-ISOLATION-017/evidence/`
 
 ## 验收记录
 
+- 2026-08-28：删除旧项目后，当前工作区的导入来源、59 项测试、Ruff、Mypy、diff check 和账本校验重新通过。
 - 2026-08-28：V2 清理后的测试、静态检查和账本校验作为 `E-20260828-CLEANUP-V2-016` 的最终证据。

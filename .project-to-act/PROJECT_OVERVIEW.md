@@ -6,6 +6,7 @@
 - 阶段：Stage 5，V2 纵向切片开发
 - 发布状态：未发布
 - 当前实现：M1、N2、M2 离线语义链
+- 唯一工作区：`E:\project\agent\novel-cahracter-generator`
 
 ## 项目目标
 

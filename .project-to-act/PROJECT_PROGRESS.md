@@ -9,13 +9,13 @@
 | PIPELINE-V2-N2-014 | completed | grounding/context 工程 Gate 通过 |
 | PIPELINE-V2-M2-015 | completed | 离线工程 Gate 通过，数据集待审核 |
 | CLEANUP-V2-016 | completed | 仓库和项目账本精简为 V2 单一路线 |
+| ENV-ISOLATION-017 | completed | 当前仓库可独立导入、测试和静态检查；旧项目目录已删除 |
 
 ## 阻塞项
 
 - M1 仍漏掉 1/6 样本中的独立 body fact。
 - M2 的 9 条 draft 数据集尚未获得用户审核，也没有真实 Provider 结果。
 - M3–M5 尚未实现，端到端 Promotion Gate 不具备执行条件。
-- `data/test-tmp` 仍有约 585.9 MB 被 Windows ACL 拒绝删除；目录已被 Git 忽略，160 个原已跟踪文件均处于删除状态，不影响 V2 代码或测试。
 
 ## 下一步
 
@@ -25,4 +25,5 @@
 
 ## 进度历史
 
+- 2026-08-28：当前仓库成为唯一工作区；修复包布局和虚拟环境路径，删除旧项目根目录并完成删除后复验。
 - 2026-08-28：完成仓库清理，当前代码与账本统一为 V2 单一路线。

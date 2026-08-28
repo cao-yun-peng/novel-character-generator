@@ -19,7 +19,9 @@
 | F-V2-M4-006 | M4 时间与持续性解析 | planned | 尚未实现 |
 | F-V2-M5-007 | M5 联合复核 | planned | 尚未实现 |
 | F-CLEANUP-V2-008 | V2 仓库精简 | completed | 无关代码、文档、测试和缓存已删除 |
+| F-ENV-ISOLATION-009 | 当前仓库独立运行 | completed | 包目录、editable 环境和验证均只引用唯一工作区 |
 
 ## 功能变更历史
 
+- 2026-08-28：修正 `src/novel_character_generator` 包布局，切断旧仓库 editable 引用并删除旧项目目录。
 - 2026-08-28：移除与当前 V2 无关的运行能力，只保留 M1/N2/M2 和后续节点设计。
