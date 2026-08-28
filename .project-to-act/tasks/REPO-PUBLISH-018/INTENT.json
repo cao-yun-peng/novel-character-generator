@@ -1,0 +1,1 @@
+{"task_id":"REPO-PUBLISH-018","requested_by":"user","intent":"继续使用原 GitHub 仓库，但把当前项目作为不合并回旧 main 的独立历史分支。","execution":"independent-history-branch-publish","provider_calls":0,"database_mutation":false,"production_route_mutation":false,"authorization":"用户提供原 GitHub 地址并选择独立历史分支方案。"}

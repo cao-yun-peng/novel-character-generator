@@ -10,6 +10,7 @@
 | PIPELINE-V2-M2-015 | completed | 离线工程 Gate 通过，数据集待审核 |
 | CLEANUP-V2-016 | completed | 仓库和项目账本精简为 V2 单一路线 |
 | ENV-ISOLATION-017 | completed | 当前仓库可独立导入、测试和静态检查；旧项目目录已删除 |
+| REPO-PUBLISH-018 | completed | 独立历史分支 `v2-semantic-pipeline` 已推送并跟踪 GitHub remote |
 
 ## 阻塞项
 
@@ -25,5 +26,6 @@
 
 ## 进度历史
 
+- 2026-08-28：当前独立历史已发布到原 GitHub 仓库的 `v2-semantic-pipeline` 分支；未修改或合并 `main`。
 - 2026-08-28：当前仓库成为唯一工作区；修复包布局和虚拟环境路径，删除旧项目根目录并完成删除后复验。
 - 2026-08-28：完成仓库清理，当前代码与账本统一为 V2 单一路线。

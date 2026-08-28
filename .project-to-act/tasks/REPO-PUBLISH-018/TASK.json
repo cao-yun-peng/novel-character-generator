@@ -1,0 +1,1 @@
+{"id":"REPO-PUBLISH-018","title":"发布独立历史 GitHub 分支","status":"completed","owner":"Codex","objective":"将当前 V2 独立历史推送到原 GitHub 仓库的新分支，不修改或合并旧 main。","allowed_paths":[".git",".project-to-act"],"invariants":["禁止 force push","禁止修改 origin/main","分支历史保持独立","本地分支跟踪同名远程分支"],"acceptance":["origin 指向用户指定仓库","远程不存在同名分支后再首次推送","本地与远程提交一致","main 未被推送或合并"]}

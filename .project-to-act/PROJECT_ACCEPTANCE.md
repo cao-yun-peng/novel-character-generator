@@ -16,6 +16,7 @@ M1/N2/M2 的离线工程链可用，但整体模型质量与端到端 Gate 未�
 | M2 用户审核集和真实模型质量 Gate | blocked | E-20260828-PIPELINE-V2-M2-015 |
 | Git 工作树只保留 V2 当前实现与资料 | 通过 | E-20260828-CLEANUP-V2-016 |
 | 当前仓库无需旧项目即可独立导入和验证 | 通过 | E-20260828-ENV-ISOLATION-017 |
+| 独立历史分支已发布且不修改旧 `main` | 通过 | E-20260828-REPO-PUBLISH-018 |
 
 ## 证据索引
 
@@ -25,8 +26,10 @@ M1/N2/M2 的离线工程链可用，但整体模型质量与端到端 Gate 未�
 - `.project-to-act/tasks/PIPELINE-V2-M2-015/evidence/`
 - `.project-to-act/tasks/CLEANUP-V2-016/evidence/`
 - `.project-to-act/tasks/ENV-ISOLATION-017/evidence/`
+- `.project-to-act/tasks/REPO-PUBLISH-018/evidence/`
 
 ## 验收记录
 
+- 2026-08-28：通过已验证的 GitHub SSH 身份新建并推送 `v2-semantic-pipeline`，本地与远程提交一致。
 - 2026-08-28：删除旧项目后，当前工作区的导入来源、59 项测试、Ruff、Mypy、diff check 和账本校验重新通过。
 - 2026-08-28：V2 清理后的测试、静态检查和账本校验作为 `E-20260828-CLEANUP-V2-016` 的最终证据。
