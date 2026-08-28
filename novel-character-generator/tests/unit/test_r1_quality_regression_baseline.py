@@ -4,8 +4,9 @@ import json
 from pathlib import Path
 from typing import Any
 
-import pytest
-
+from novel_character_generator.application.ports.entity_resolution import (
+    GroundedCandidatePacket,
+)
 from novel_character_generator.application.ports.extraction import (
     VisualCandidateExtractionResult,
 )
@@ -25,7 +26,7 @@ def _case(case_id: str) -> dict[str, Any]:
     return next(item for item in _baseline()["cases"] if item["id"] == case_id)
 
 
-def _ground(case_id: str):  # type: ignore[no-untyped-def]
+def _ground(case_id: str) -> GroundedCandidatePacket:
     case = _case(case_id)
     candidates = VisualCandidateExtractionResult.model_validate(case["provider_output"])
     return ground_visual_candidates(
@@ -54,14 +55,10 @@ def test_r1_quality_baseline_scope_and_states_are_frozen() -> None:
         "field-gate",
         "evidence-locator",
     }
-    assert sum(item["baseline_state"] == "xfail" for item in cases.values()) == 5
-    assert sum(item["baseline_state"] == "pass" for item in cases.values()) == 2
+    assert sum(item["baseline_state"] == "xfail" for item in cases.values()) == 0
+    assert sum(item["baseline_state"] == "pass" for item in cases.values()) == 7
 
 
-@pytest.mark.xfail(
-    strict=True,
-    reason="R1 red baseline: descriptor is not yet part of the extraction contract",
-)
 def test_r1_descriptor_mention_is_preserved_for_r2_without_identity_binding() -> None:
     result = _ground("descriptor-mention-is-preserved")
 
@@ -69,10 +66,6 @@ def test_r1_descriptor_mention_is_preserved_for_r2_without_identity_binding() ->
     assert [fact.field_path for fact in result.facts] == ["accessories.earrings"]
 
 
-@pytest.mark.xfail(
-    strict=True,
-    reason="R1 red baseline: age.age is not yet a safe field alias",
-)
 def test_r1_nested_age_path_is_normalized_to_canonical_age() -> None:
     case = _case("nested-age-path-is-normalized")
     result = _ground(case["id"])
@@ -81,10 +74,6 @@ def test_r1_nested_age_path_is_normalized_to_canonical_age() -> None:
     assert case["expected"]["warning_contains"] in result.warnings
 
 
-@pytest.mark.xfail(
-    strict=True,
-    reason="R1 red baseline: clothing.type does not yet require garment evidence",
-)
 def test_r1_non_garment_object_is_rejected_from_clothing_type() -> None:
     case = _case("book-is-not-clothing")
     result = _ground(case["id"])
@@ -93,10 +82,6 @@ def test_r1_non_garment_object_is_rejected_from_clothing_type() -> None:
     assert case["expected"]["warning_contains"] in result.warnings
 
 
-@pytest.mark.xfail(
-    strict=True,
-    reason="R1 red baseline: narrow one-character evidence repair is not implemented",
-)
 def test_r1_unique_one_character_omission_repairs_to_exact_source_quote() -> None:
     case = _case("unique-one-character-omission-is-repaired")
     location = locate_evidence_span(case["text"], case["quote"])
@@ -105,10 +90,6 @@ def test_r1_unique_one_character_omission_repairs_to_exact_source_quote() -> Non
     assert location.source_quote == case["expected"]["source_quote"]
 
 
-@pytest.mark.xfail(
-    strict=True,
-    reason="R1 red baseline: ambiguous narrow repairs are not classified yet",
-)
 def test_r1_ambiguous_one_character_omission_remains_unresolved() -> None:
     case = _case("ambiguous-one-character-omission-is-rejected")
     location = locate_evidence_span(case["text"], case["quote"])
@@ -117,11 +98,17 @@ def test_r1_ambiguous_one_character_omission_remains_unresolved() -> None:
     assert location.source_quote is None
 
 
-@pytest.mark.parametrize(
-    "case_id",
-    ["semantic-substitution-is-not-repaired", "exact-source-quote-is-preserved"],
-)
-def test_r1_existing_evidence_safety_boundaries_remain_green(case_id: str) -> None:
+def test_r1_semantic_substitution_is_not_repaired() -> None:
+    case_id = "semantic-substitution-is-not-repaired"
+    case = _case(case_id)
+    location = locate_evidence_span(case["text"], case["quote"])
+
+    assert location.status == case["expected"]["status"]
+    assert location.source_quote == case["expected"]["source_quote"]
+
+
+def test_r1_exact_source_quote_is_preserved() -> None:
+    case_id = "exact-source-quote-is-preserved"
     case = _case(case_id)
     location = locate_evidence_span(case["text"], case["quote"])
 

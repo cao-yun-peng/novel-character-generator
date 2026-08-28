@@ -1,0 +1,16 @@
+{
+  "task_id": "R1-DATA-006",
+  "current_behavior": "R1 缺少 descriptor/unknown，age.age 未规范化，clothing.type 可接收非衣物，locator 不支持标点归一化或窄漏字修复。",
+  "desired_behavior": "R1 四类 mention 可审计，字段门禁失败关闭，证据按精确、软规范、唯一低信息单字遗漏顺序定位，并始终保存原文精确片段。",
+  "dependencies": [
+    "R1-BASELINE-005",
+    "visual-observation-v3.2",
+    "character-entity-resolution-v1"
+  ],
+  "validation": [
+    "R1 baseline 与 Adapter/locator/provider 单元测试",
+    "R2 explicit_names 兼容反例",
+    "全部单元与完整 Pytest",
+    "Ruff 和 Mypy"
+  ]
+}

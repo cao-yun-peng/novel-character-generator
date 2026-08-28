@@ -10,6 +10,11 @@ from alembic.config import Config
 from sqlalchemy import func, select
 from sqlalchemy.ext.asyncio import async_sessionmaker, create_async_engine
 
+from novel_character_generator.application.ports.image_generation import (
+    ImageRemoteStatus,
+    ImageSubmission,
+    ImageSubmitRequest,
+)
 from novel_character_generator.application.services.generation_context_service import (
     ImageRunRequest,
     ImageRunService,
@@ -24,6 +29,7 @@ from novel_character_generator.infrastructure.db.orm import (
     GenerationContextORM,
     NovelORM,
     PipelineRunORM,
+    PipelineStepORM,
     TimelineORM,
 )
 from novel_character_generator.infrastructure.image.mock import MockImageProvider
@@ -31,6 +37,33 @@ from novel_character_generator.infrastructure.storage.local import LocalArtifact
 from novel_character_generator.workers.handlers.image_generation import (
     process_image_generation_run,
 )
+
+
+class UnknownSubmissionMockProvider(MockImageProvider):
+    def __init__(self) -> None:
+        self.submit_calls = 0
+
+    async def submit(self, request: ImageSubmitRequest) -> ImageSubmission:
+        self.submit_calls += 1
+        raise RuntimeError("simulated_submit_timeout")
+
+
+class PendingOnceMockProvider(MockImageProvider):
+    def __init__(self) -> None:
+        self.query_calls = 0
+
+    async def submit(self, request: ImageSubmitRequest) -> ImageSubmission:
+        submission = await super().submit(request)
+        return ImageSubmission(
+            provider_request_id=submission.provider_request_id,
+            status="submitted",
+        )
+
+    async def query(self, provider_request_id: str) -> ImageRemoteStatus:
+        self.query_calls += 1
+        if self.query_calls == 1:
+            return ImageRemoteStatus(status="running")
+        return await super().query(provider_request_id)
 
 
 @pytest.mark.asyncio
@@ -189,6 +222,43 @@ async def test_generation_context_and_mock_provider_are_deterministic_and_recove
         assert context is not None
         assert context.status == "completed"
         assert len(context.context_hash) == 64
+        assert context.context_payload["generation_mode"] == "concept"
+        assert context.context_payload["render_readiness"] == {
+            "concept_ready": True,
+            "character_design_ready": False,
+            "consistent_scene_ready": False,
+            "blocking_conflict_ids": [],
+            "blocking_design_gaps": [
+                {
+                    "field_path": "field_provenance",
+                    "state": "unknown",
+                    "importance": "blocking",
+                    "target_stage_key": None,
+                    "candidate_suggestion_ids": [],
+                    "resolution_source": None,
+                }
+            ],
+            "missing_scene_fields": ["environment", "art_direction", "composition"],
+            "missing_reference_roles": ["identity"],
+            "policy_version": "render-readiness-v1",
+        }
+        render_spec = context.context_payload["image_render_spec"]
+        assert render_spec["schema_version"] == "image-render-spec-v1"
+        assert render_spec["render_layout"] == "single_image"
+        assert len(render_spec["spec_hash"]) == 64
+        assert render_spec["identity_prompt_block"] == [
+            "face.shape: oval",
+            "hair.color: black",
+            "hair.length: short",
+        ]
+        assert render_spec["stage_prompt_block"] == ["age_stage: adolescence"]
+        assert render_spec["outfit_prompt_block"] == [
+            "clothing.color: blue",
+            "clothing.style: school uniform",
+        ]
+        assert render_spec["art_direction_prompt_block"] == [
+            "style_preset: illustration-v1"
+        ]
         assert await session.scalar(
             select(func.count())
             .select_from(GeneratedImageORM)
@@ -202,6 +272,62 @@ async def test_generation_context_and_mock_provider_are_deterministic_and_recove
         )
         assert len(operations) == 2
         assert {item.status for item in operations} == {"succeeded"}
+        assert all(item.result_refs for item in operations)
+        generated = await session.scalar(
+            select(GeneratedImageORM).where(GeneratedImageORM.run_id == run.id)
+        )
+        assert generated is not None
+        assert generated.evaluation["provider"] == "mock"
+        assert generated.evaluation["provider_version"] == "mock-image-v1"
+        assert generated.evaluation["prompt_renderer"] == "none"
+        assert generated.evaluation["prompt_renderer_version"] == "none"
+
+        pending_request = ImageRunRequest(
+            timeline_id=timeline_id,
+            target_chapter_ordinal=1,
+            stage_keys=["academy_years"],
+            candidate_count=1,
+            render_overrides={"action": "pending-once"},
+            budget_limit=Decimal("0"),
+        )
+        pending_run = await service.create_run(
+            character_id=character_id,
+            request=pending_request,
+            idempotency_key="mock-image-run-pending",
+        )
+        pending_provider = PendingOnceMockProvider()
+        for _ in range(3):
+            await process_image_generation_run(
+                session,
+                store,
+                pending_provider,
+                pending_run.id,
+                workflow_profile="mock-character-portrait",
+                workflow_version="1",
+                poll_interval_seconds=1,
+            )
+        poll_step = await session.scalar(
+            select(PipelineStepORM).where(
+                PipelineStepORM.run_id == pending_run.id,
+                PipelineStepORM.step_key == "poll_image",
+            )
+        )
+        assert poll_step is not None
+        assert poll_step.status == "retry_scheduled"
+        assert poll_step.attempt == 0
+        for _ in range(2):
+            await process_image_generation_run(
+                session,
+                store,
+                pending_provider,
+                pending_run.id,
+                workflow_profile="mock-character-portrait",
+                workflow_version="1",
+                poll_interval_seconds=1,
+            )
+        await session.refresh(pending_run)
+        assert pending_run.status == "succeeded"
+        assert pending_provider.query_calls == 2
 
         second = await service.create_run(
             character_id=character_id,
@@ -233,6 +359,55 @@ async def test_generation_context_and_mock_provider_are_deterministic_and_recove
             select(func.count())
             .select_from(PipelineRunORM)
             .where(PipelineRunORM.run_type == "image_generation")
-        ) == 2
+        ) == 3
+
+        unknown_request = ImageRunRequest(
+            timeline_id=timeline_id,
+            target_chapter_ordinal=1,
+            stage_keys=["academy_years"],
+            candidate_count=2,
+            render_overrides={"action": "timeout-case"},
+            budget_limit=Decimal("0"),
+        )
+        unknown_run = await service.create_run(
+            character_id=character_id,
+            request=unknown_request,
+            idempotency_key="mock-image-run-unknown",
+        )
+        failing_provider = UnknownSubmissionMockProvider()
+        await process_image_generation_run(
+            session,
+            store,
+            failing_provider,
+            unknown_run.id,
+            workflow_profile="mock-character-portrait",
+            workflow_version="1",
+        )
+        with pytest.raises(RuntimeError, match="simulated_submit_timeout"):
+            await process_image_generation_run(
+                session,
+                store,
+                failing_provider,
+                unknown_run.id,
+                workflow_profile="mock-character-portrait",
+                workflow_version="1",
+            )
+        unknown_operation = await session.scalar(
+            select(ExternalOperationORM).where(
+                ExternalOperationORM.run_id == unknown_run.id
+            )
+        )
+        assert unknown_operation is not None
+        assert unknown_operation.status == "submission_unknown"
+        with pytest.raises(RuntimeError, match="image_operation_not_submittable"):
+            await process_image_generation_run(
+                session,
+                store,
+                failing_provider,
+                unknown_run.id,
+                workflow_profile="mock-character-portrait",
+                workflow_version="1",
+            )
+        assert failing_provider.submit_calls == 1
 
     await engine.dispose()

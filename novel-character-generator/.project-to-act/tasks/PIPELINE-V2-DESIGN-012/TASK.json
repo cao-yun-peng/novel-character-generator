@@ -1,0 +1,33 @@
+{
+  "id": "PIPELINE-V2-DESIGN-012",
+  "title": "重规划质量优先的语义流水线 V2",
+  "status": "review",
+  "owner": "Codex",
+  "objective": "把当前宽职责 R1/R2/R3 链路重构为专用模型语义节点与确定性证据/状态门禁，并完整定义每个节点的输入、输出、系统提示词、失败路由、指标和迁移 Gate。",
+  "allowed_paths": [
+    "docs/27-semantic-pipeline-v2-contract.md",
+    "docs/prompts/semantic-pipeline-v2",
+    "docs/contracts/semantic-pipeline-v2-model-schemas.json",
+    "docs/README.md",
+    ".project-to-act"
+  ],
+  "invariants": [
+    "本任务只设计和规划，不修改生产代码、数据库、默认 Prompt 指针或 Worker 路由",
+    "字段、身份、时间和持续性的开放语义由专用模型节点判断，不由字符串或关键词规则冒充主解析器",
+    "确定性代码保留证据定位、Schema/ID、硬冲突、状态转换、Promotion 权限和持久化",
+    "所有模型输出均是不可信候选，模型不能直接激活 Observation、批准 Profile 或触发生图",
+    "V2 第一目标是端到端质量；成本与延迟先完整观测并设置硬上限，再在质量 Gate 后优化",
+    "不发起真实 Provider 调用，不宣称 V2 已实现或质量 Gate 已通过"
+  ],
+  "acceptance": [
+    "N0-N11 节点的输入、输出、触发、失败路由和指标完整",
+    "M1-M5 的系统提示词独立版本化且职责单一",
+    "M1-M5 的输入与输出字段有机器可读 JSON Schema，条件约束与服务端完整性校验一致",
+    "Candidate 到 active Observation 的 downgrade-only 复核与确定性 Promotion Gate 明确",
+    "M1 默认覆盖全部有效 Chunk，M3 组件召回与重开、M4 scene/event 边界、M5 分组冲突复核有明确契约",
+    "质量 Gate 同时约束 precision、safe-fact recall、promotion coverage、人工审核负担和重复运行稳定性",
+    "模型配置、上下文组包、数据保留、幂等重跑、取消恢复和运维处置有版本化边界",
+    "离线回放、分节点 A/B、shadow、灰度和 V1 回滚计划明确",
+    "项目路线、功能、进度、版本和验收账本同步，治理验证通过"
+  ]
+}

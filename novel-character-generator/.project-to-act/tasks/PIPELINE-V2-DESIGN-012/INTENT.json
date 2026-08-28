@@ -1,0 +1,15 @@
+{
+  "task_id": "PIPELINE-V2-DESIGN-012",
+  "requested_by": "user",
+  "intent": "先以效果提升为目标重新规划语义流程，并根据用户复核要求修补入口召回、全局一致性、时间粒度、强 Schema、评测、恢复与数据治理缺口。",
+  "execution": "architecture-contract-and-prompt-schema-design",
+  "provider_calls": 0,
+  "production_code_mutation": false,
+  "priority_order": [
+    "end_to_end_quality",
+    "identity_and_temporal_pollution_control",
+    "traceability_and_reviewability",
+    "reliability",
+    "cost_and_latency_optimization_after_quality_gate"
+  ]
+}

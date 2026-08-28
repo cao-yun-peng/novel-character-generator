@@ -1,0 +1,13 @@
+{
+  "task_id": "R1-GOLD-RUN-010",
+  "project_mode": "managed",
+  "lifecycle_stage": "5",
+  "lifecycle_revision": 2,
+  "risk_level": "L1",
+  "dataset": "tests/evaluation/visual_extraction_seed_v1.json",
+  "real_manifest": "tests/evaluation/r1_prompt_ab_real_v1.json",
+  "prompt_a": "visual-extraction-prompt-v2.5",
+  "prompt_b": "visual-extraction-prompt-v2.6",
+  "output": "data/diagnostics/r1-gold-v1-ab-20260828/report.json",
+  "user_authorization": "User explicitly requested a run; prior authorization permits sending the specified novel chunks to DeepSeek."
+}

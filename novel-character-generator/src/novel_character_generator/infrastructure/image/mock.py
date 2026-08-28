@@ -18,12 +18,15 @@ _MOCK_PNG = base64.b64decode(
 class MockImageProvider:
     provider = "mock"
     version = "mock-image-v1"
+    prompt_renderer = "none"
+    prompt_renderer_version = "none"
 
     async def submit(self, request: ImageSubmitRequest) -> ImageSubmission:
         fingerprint = hashlib.sha256(request.model_dump_json().encode()).hexdigest()
         return ImageSubmission(
             provider_request_id=f"mock-{fingerprint}",
             status="succeeded",
+            artifact_refs=[f"mock-{fingerprint}"],
         )
 
     async def query(self, provider_request_id: str) -> ImageRemoteStatus:
@@ -43,3 +46,6 @@ class MockImageProvider:
             request_fingerprint_lookup=True,
             cost_reporting=False,
         )
+
+    async def close(self) -> None:
+        return None

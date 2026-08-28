@@ -1,0 +1,11 @@
+{
+  "task_id": "R6-ALIYUN-009",
+  "created_at": "2026-08-27T23:30:00+08:00",
+  "project_stage": 5,
+  "lifecycle_revision": 2,
+  "input_contract": "provider-neutral ImageRenderSpec v1",
+  "output_contract": "versioned natural-language prompt with clause provenance, persisted PNG, and provider operation audit trail",
+  "provider_scope": "pluggable PromptRenderer plus dashscope qwen-image-plus and a restart-safe OpenAI-compatible synchronous adapter registered for timicc gpt-image-2; one candidate per live smoke",
+  "database_migration": true,
+  "upstream_gate": "live smoke is an isolated visual probe and does not approve R1-R3 semantic quality or batch generation"
+}

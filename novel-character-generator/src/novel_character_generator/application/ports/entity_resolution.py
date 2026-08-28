@@ -3,9 +3,18 @@ from __future__ import annotations
 from typing import Literal, Protocol
 from uuid import UUID
 
-from pydantic import BaseModel, ConfigDict, Field, model_validator
+from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
 
-ENTITY_RESOLUTION_SCHEMA_VERSION = "character-entity-resolution-v1"
+from novel_character_generator.domain.policies.grounding import (
+    EvidenceLocationStatus,
+    EvidenceRepairKind,
+)
+from novel_character_generator.domain.policies.mention_kinds import (
+    MentionKind,
+    normalize_mention_kind,
+)
+
+ENTITY_RESOLUTION_SCHEMA_VERSION = "character-entity-resolution-v1.1"
 ENTITY_CONVERGENCE_BATCH_SIZE = 10
 
 
@@ -16,10 +25,15 @@ class GroundedMentionCandidate(BaseModel):
     local_entity_id: str = Field(min_length=1, max_length=64)
     representative_name: str = Field(min_length=1, max_length=100)
     mention_text: str = Field(min_length=1, max_length=200)
-    mention_kind: Literal["name", "title", "kinship", "disguise", "nickname"]
+    mention_kind: MentionKind
     start: int = Field(ge=0)
     end: int = Field(gt=0)
     confidence: float = Field(ge=0, le=1)
+
+    @field_validator("mention_kind", mode="before")
+    @classmethod
+    def normalize_legacy_mention_kind(cls, value: object) -> object:
+        return normalize_mention_kind(value)
 
 
 class GroundedFactCandidate(BaseModel):
@@ -29,6 +43,8 @@ class GroundedFactCandidate(BaseModel):
     field_path: str = Field(min_length=1, max_length=200)
     value: object
     evidence_quote: str = Field(min_length=1, max_length=500)
+    evidence_status: EvidenceLocationStatus = "exact"
+    evidence_repair_kind: EvidenceRepairKind | None = None
     start: int = Field(ge=0)
     end: int = Field(gt=0)
     epistemic_status: Literal["asserted", "negated"]
@@ -36,6 +52,16 @@ class GroundedFactCandidate(BaseModel):
     candidate_key: str | None = Field(default=None, max_length=256)
     life_phase_key: str | None = Field(default=None, max_length=100)
     life_phase_label: str | None = Field(default=None, max_length=100)
+
+    @model_validator(mode="after")
+    def validate_evidence_audit(self) -> GroundedFactCandidate:
+        if self.evidence_status in {"ambiguous", "not_found"}:
+            raise ValueError("grounded_fact_requires_located_evidence")
+        if self.evidence_status == "repaired" and self.evidence_repair_kind is None:
+            raise ValueError("repaired_evidence_requires_repair_kind")
+        if self.evidence_status == "exact" and self.evidence_repair_kind is not None:
+            raise ValueError("exact_evidence_cannot_have_repair_kind")
+        return self
 
 
 class GroundedTemporalSignal(BaseModel):
@@ -96,9 +122,9 @@ class EntityMemoryRecord(BaseModel):
         default_factory=list,
         max_length=64,
         description=(
-            "Names originating from mention_kind=name. They are kept separate from titles, "
-            "kinship terms, disguises, and nicknames so deterministic identity gates can fail "
-            "closed on cross-name merges."
+            "Names originating from mention_kind=explicit_name (or legacy name). They are kept "
+            "separate from descriptors, pronouns, and unknown mentions so deterministic identity "
+            "gates can fail closed on cross-name merges."
         ),
     )
     evidence_quotes: list[str] = Field(default_factory=list, max_length=64)

@@ -1045,6 +1045,7 @@ class ExternalOperationORM(IdMixin, TimestampMixin, Base):
     lease_generation: Mapped[int] = mapped_column(Integer)
     attempt: Mapped[int] = mapped_column(Integer)
     provider_request_id: Mapped[str | None] = mapped_column(String(255), index=True)
+    result_refs: Mapped[list[str]] = mapped_column(JSON, default=list)
     response_hash: Mapped[str | None] = mapped_column(String(64))
     artifact_id: Mapped[UUID | None] = mapped_column(ForeignKey("artifacts.id"))
     submitted_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))

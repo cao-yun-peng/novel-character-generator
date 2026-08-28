@@ -2,6 +2,11 @@ from typing import Any, Literal, Protocol, runtime_checkable
 
 from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
 
+from novel_character_generator.domain.policies.mention_kinds import (
+    MentionKind,
+    normalize_mention_kind,
+)
+
 EPISTEMIC_STATUS_ALIASES = {
     "asserted": "asserted",
     "stated": "asserted",
@@ -34,8 +39,13 @@ class VisualEntityCandidate(BaseModel):
     local_id: str = Field(pattern=r"^[A-Za-z][A-Za-z0-9_-]{0,63}$")
     representative_name: str = Field(min_length=1, max_length=100)
     mention_quote: str = Field(min_length=1, max_length=200)
-    mention_kind: Literal["name", "title", "kinship", "disguise", "nickname"]
+    mention_kind: MentionKind
     confidence: float = Field(ge=0, le=1)
+
+    @field_validator("mention_kind", mode="before")
+    @classmethod
+    def normalize_legacy_mention_kind(cls, value: object) -> object:
+        return normalize_mention_kind(value)
 
 
 class VisualTemporalSignal(BaseModel):
@@ -86,7 +96,9 @@ class VisualDeferredCandidate(BaseModel):
     reason_code: Literal[
         "ambiguous_entity",
         "ambiguous_evidence",
+        "inferred_visual_fact",
         "uncertain_scope",
+        "uncertain_visual_fact",
         "unsupported_visual_field",
     ]
     evidence_quote: str | None = Field(default=None, max_length=500)
@@ -130,7 +142,12 @@ class MentionDraft(BaseModel):
     canonical_name: str | None
     start: int = Field(ge=0)
     end: int = Field(gt=0)
-    kind: Literal["name", "title", "kinship", "disguise", "nickname", "pronoun"]
+    kind: MentionKind
+
+    @field_validator("kind", mode="before")
+    @classmethod
+    def normalize_legacy_mention_kind(cls, value: object) -> object:
+        return normalize_mention_kind(value)
 
 
 class ObservationDraft(BaseModel):

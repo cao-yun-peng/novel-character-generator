@@ -31,6 +31,8 @@
 
 模型对每个当前 mention 返回 `link_existing`、`create_candidate` 或 `unresolved`。代码只验证决策覆盖、ID 存在性和引文存在性，不按称呼或外观替模型判断身份。
 
+R1 传入的 `mention_kind` 为 `explicit_name`、`descriptor`、`pronoun` 或 `unknown`。只有 `explicit_name` 会进入人物记忆的 `explicit_names`；其余类型即使 `representative_name` 文本重复，也只能作为局部候选名称，不能获得显式姓名门禁的身份权重。历史 `name` 兼容读取为 `explicit_name`，历史称谓类标签保守读取为 `descriptor`。
+
 ## 3. 十章收敛
 
 批次大小是代码常量 `10`。第 10、20、30……个 Chunk 后各执行一次；全文结束时若有余数，再执行一次 `final_batch=true` 的尾批。整十章结束时，该十章批次本身标记为最终批。

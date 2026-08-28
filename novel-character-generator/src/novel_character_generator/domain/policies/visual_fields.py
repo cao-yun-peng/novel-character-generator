@@ -4,7 +4,7 @@ import re
 from dataclasses import dataclass
 from typing import Any
 
-EXTRACTION_SCHEMA_VERSION = "visual-observation-v3.2"
+EXTRACTION_SCHEMA_VERSION = "visual-observation-v3.4"
 
 VISUAL_FIELD_ROOTS = frozenset(
     {
@@ -54,6 +54,7 @@ FIELD_PATH_ALIASES = {
     "appearance.cleanliness": "cleanliness",
     "build": "body.build",
     "body.type": "body.build",
+    "age.age": "age",
     "age.age_stage": "age_stage",
     "face.hands": "body.hands",
     "hair.colour": "hair.color",
@@ -177,6 +178,12 @@ _CLOTHING_MARKERS = (
     "甲",
     "帽",
     "袖",
+    "褂",
+    "氅",
+    "袄",
+    "裘",
+    "袜",
+    "铠",
     "garment",
     "clothes",
     "clothing",
@@ -190,6 +197,85 @@ _CLOTHING_MARKERS = (
     "pants",
     "boots",
     "shoes",
+)
+_NON_CLOTHING_OBJECT_MARKERS = (
+    "书",
+    "书籍",
+    "卷轴",
+    "剑",
+    "刀",
+    "枪",
+    "矛",
+    "弓",
+    "箭",
+    "斧",
+    "锤",
+    "武器",
+    "丹药",
+    "药丸",
+    "药剂",
+    "药瓶",
+    "medicine",
+    "potion",
+    "book",
+    "scroll",
+    "sword",
+    "blade",
+    "weapon",
+)
+_NON_WORN_ACCESSORY_FIELD_MARKERS = (
+    "held",
+    "vehicle",
+    "weapon",
+    "book",
+    "medicine",
+    "tool",
+    "手持",
+    "坐骑",
+    "武器",
+    "书籍",
+    "药物",
+    "工具",
+)
+_HELD_OR_RIDDEN_MARKERS = (
+    "手持",
+    "拿着",
+    "握着",
+    "提着",
+    "捧着",
+    "怀抱",
+    "骑着",
+    "坐骑",
+    "held",
+    "holding",
+    "carrying",
+    "riding",
+)
+_WORN_INSIGNIA_FIELD_MARKERS = ("insignia", "badge", "emblem", "徽章", "徽记", "标志")
+_INSIGNIA_EVIDENCE_MARKERS = (
+    "绘",
+    "绣",
+    "纹在衣",
+    "印在衣",
+    "徽",
+    "图案",
+    "标志",
+    "badge",
+    "emblem",
+    "embroider",
+    "printed on",
+)
+_CANONICAL_CLOTHING_FIELDS = frozenset(
+    {
+        "clothing.type",
+        "clothing.color",
+        "clothing.material",
+        "clothing.condition",
+        "clothing.coverage",
+        "clothing.footwear",
+        "clothing.outerwear",
+        "clothing.style",
+    }
 )
 _COVERAGE_MARKERS = (
     "赤裸",
@@ -233,7 +319,88 @@ _CLEANLINESS_MARKERS = (
     "dirty",
     "stained",
 )
-_EYE_MARKERS = ("眼", "眸", "瞳", "iris", "eye")
+_EYE_MARKERS = ("眼", "眸", "瞳", "目光", "视线", "iris", "eye", "gaze")
+_COMPLEXION_MARKERS = (
+    "面色",
+    "脸色",
+    "肤色",
+    "皮肤",
+    "苍白",
+    "惨白",
+    "红润",
+    "蜡黄",
+    "暗黄",
+    "黝黑",
+    "白皙",
+    "绯红",
+    "泛红",
+    "红晕",
+    "complexion",
+    "skin tone",
+)
+_FACE_PHYSICAL_MARKERS = (
+    "脸",
+    "面容",
+    "容貌",
+    "面庞",
+    "脸庞",
+    "五官",
+    "轮廓",
+    "face",
+    "facial",
+)
+_TRANSIENT_EXPRESSION_MARKERS = (
+    "笑",
+    "哭",
+    "皱眉",
+    "嫉妒",
+    "愤怒",
+    "落寞",
+    "表情",
+    "神色",
+    "神情",
+    "smile",
+    "laugh",
+    "frown",
+    "expression",
+)
+_AESTHETIC_DEMEANOR_MARKERS = (
+    "美丽",
+    "漂亮",
+    "英俊",
+    "俊美",
+    "清秀",
+    "冷艳",
+    "魅力",
+    "吸引",
+    "漠然",
+    "颓废",
+    "beautiful",
+    "handsome",
+    "attractive",
+    "charming",
+)
+_TATTOO_MARKERS = (
+    "纹身",
+    "刺青",
+    "文身",
+    "墨纹",
+    "烙印",
+    "tattoo",
+    "inked",
+)
+_APPEARANCE_INFERENCE_MARKERS = (
+    "看起来",
+    "看上去",
+    "瞧着",
+    "仿佛",
+    "似乎",
+    "宛如",
+    "像是",
+    "looks like",
+    "appears to be",
+    "seems",
+)
 _COLOR_MARKERS = (
     "黑",
     "白",
@@ -359,26 +526,65 @@ def visual_field_semantic_issue(
     """Return a stable reason code when a field contradicts its evidence dimension."""
 
     text = f"{value} {evidence_quote}".casefold()
-    if field_path == "age" and not is_plausible_age_signal(str(value), evidence_quote):
-        return "invalid_age_semantics"
+    value_text = str(value).casefold()
+    if field_path == "age":
+        if any(marker in text for marker in _APPEARANCE_INFERENCE_MARKERS):
+            return "inferred_age"
+        if not is_plausible_age_signal(str(value), evidence_quote):
+            return "invalid_age_semantics"
+    if field_path == "age_stage" and any(
+        marker in text for marker in _APPEARANCE_INFERENCE_MARKERS
+    ):
+        return "inferred_age_stage"
     if field_path == "face.eye_color" and not any(marker in text for marker in _EYE_MARKERS):
         return "eye_color_without_eye_evidence"
-    if field_path == "clothing.color" and not any(
-        marker in text for marker in _CLOTHING_MARKERS
+    if field_path == "face.eyes" and not any(marker in text for marker in _EYE_MARKERS):
+        return "eye_state_without_eye_evidence"
+    if field_path == "face.complexion" and not any(
+        marker in text for marker in _COMPLEXION_MARKERS
     ):
-        return "clothing_color_without_garment"
-    if field_path == "clothing.coverage" and not any(
-        marker in text for marker in (*_CLOTHING_MARKERS, *_COVERAGE_MARKERS)
-    ):
-        return "clothing_coverage_without_coverage"
-    if field_path == "clothing.condition" and not any(
-        marker in text for marker in _CLOTHING_MARKERS
-    ):
-        return "clothing_condition_without_garment"
+        return "complexion_without_skin_evidence"
+    if field_path == "face.expression":
+        return "transient_expression_as_character_fact"
+    if field_path == "face.description":
+        if not any(marker in text for marker in _FACE_PHYSICAL_MARKERS):
+            return "face_description_without_face_evidence"
+        if any(marker in text for marker in _TRANSIENT_EXPRESSION_MARKERS):
+            return "transient_expression_as_face_description"
+        if any(marker in text for marker in _AESTHETIC_DEMEANOR_MARKERS):
+            return "aesthetic_impression_as_face_description"
+    if field_path.startswith("clothing."):
+        if field_path not in _CANONICAL_CLOTHING_FIELDS:
+            return "unsupported_clothing_field"
+        if any(marker in value_text for marker in _NON_CLOTHING_OBJECT_MARKERS):
+            return "non_garment_object_as_clothing"
+        if field_path == "clothing.coverage":
+            if not any(marker in text for marker in (*_CLOTHING_MARKERS, *_COVERAGE_MARKERS)):
+                return "clothing_coverage_without_coverage"
+        elif not any(marker in text for marker in _CLOTHING_MARKERS):
+            leaf = field_path.removeprefix("clothing.").replace(".", "_")
+            return f"clothing_{leaf}_without_garment"
+    if field_path.startswith("accessories."):
+        leaf = field_path.removeprefix("accessories.").casefold()
+        is_worn_insignia = any(
+            marker in leaf for marker in _WORN_INSIGNIA_FIELD_MARKERS
+        ) and any(marker in text for marker in _INSIGNIA_EVIDENCE_MARKERS)
+        if any(marker in leaf for marker in _NON_WORN_ACCESSORY_FIELD_MARKERS):
+            return "non_worn_object_as_accessory"
+        if not is_worn_insignia and any(
+            marker in value_text for marker in _NON_CLOTHING_OBJECT_MARKERS
+        ):
+            return "non_worn_object_as_accessory"
+        if any(marker in text for marker in _HELD_OR_RIDDEN_MARKERS):
+            return "held_or_ridden_object_as_accessory"
     if field_path == "distinctive_marks.scar" and not any(
         marker in text for marker in _SCAR_MARKERS
     ):
         return "scar_without_scar_evidence"
+    if field_path == "distinctive_marks.tattoo" and not any(
+        marker in text for marker in _TATTOO_MARKERS
+    ):
+        return "tattoo_without_tattoo_evidence"
     return None
 
 
@@ -409,6 +615,8 @@ def is_visual_field(field_path: str) -> bool:
     canonical = canonical_field_path(field_path)
     if canonical == "appearance":
         return True
+    if canonical.startswith("age."):
+        return False
     return canonical.split(".", 1)[0] in VISUAL_FIELD_ROOTS
 
 

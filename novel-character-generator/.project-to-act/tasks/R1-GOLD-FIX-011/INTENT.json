@@ -1,0 +1,8 @@
+{
+  "task_id": "R1-GOLD-FIX-011",
+  "requested_by": "user",
+  "intent": "先修黄金集和评分器，再基于已保存模型输出离线重评分。",
+  "execution": "offline-measurement-fix-and-rescore",
+  "provider_calls": 0,
+  "production_prompt_mutation": false
+}

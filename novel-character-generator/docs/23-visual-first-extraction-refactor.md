@@ -352,7 +352,7 @@ class VisualEntityCandidate(BaseModel):
     representative_name: str
     mention_quote: str
     mention_kind: Literal[
-        "name", "title", "kinship", "disguise", "nickname"
+        "explicit_name", "descriptor", "pronoun", "unknown"
     ]
     confidence: float
 
@@ -380,7 +380,8 @@ class VisualFactCandidate(BaseModel):
 class VisualDeferredCandidate(BaseModel):
     reason_code: Literal[
         "ambiguous_entity", "ambiguous_evidence",
-        "uncertain_scope", "unsupported_visual_field"
+        "uncertain_scope", "unsupported_visual_field",
+        "inferred_visual_fact", "uncertain_visual_fact"
     ]
     evidence_quote: str | None
     detail: str | None
@@ -394,9 +395,15 @@ class VisualCandidateExtractionResult(BaseModel):
 
 `local_id` 只在当前块内使用，例如 `c1`、`c2`。视觉候选引用 `entity_ref`，避免模型在每条结果里重复生成自由文本人物名，也防止 Repository 因拼写变化创建新人物。
 
+`explicit_name` 只表示原文明确出现的人名；少女、少年、老者、青年、称谓和亲属称呼统一属于 `descriptor`。代词只有在承载有效视觉候选或时间信号时才保留为 `pronoun`，无法安全分类时使用 `unknown`。历史 `name/title/kinship/disguise/nickname` 输入在边界层保守归一化，但只有 `explicit_name` 能进入 R2 的 `explicit_names`。
+
 ### 第 2 步：代码定位证据区间
 
 模型只需要抄写足够完整的 `evidence_quote`，offset 由代码计算。
+
+定位顺序固定为：原文精确匹配；忽略空格和软标点的唯一匹配；仅修复一个被遗漏的低信息字符且候选位置唯一。多位置、语义替换或跨句硬标点均失败关闭。接受修复时仍保存原文中的精确片段，并在候选包 warning 中记录 `normalized` 或 `repaired` 类型。
+
+字段门禁只允许规范 `age`/`age_stage`，`age.age` 和 `age.age_stage` 可安全归一化，其他 `age.*` 拒绝。所有 `clothing.*` 必须有衣物、鞋履或明确覆盖状态证据；书籍、武器、药物、工具、乘骑和手持物也不能借 `accessories.*` 进入人物外观，只有原文明示佩戴的徽章/标志等例外。服务端同时拒绝外貌估龄、把目光当眼睛、把审美/气质/瞬时表情当面部物理特征，以及无纹身语义的 `distinctive_marks.tattoo`；这些线索由 deferred、动作/物品或后续专用契约承载。当前确定性字段契约为 `visual-observation-v3.4`。
 
 ```text
 在 chunk 中精确查找 quote

@@ -15,6 +15,12 @@ from novel_character_generator.application.services.appearance_service import (
     AppearanceService,
     SnapshotTarget,
 )
+from novel_character_generator.domain.entities.image import GenerationMode
+from novel_character_generator.domain.policies.image_rendering import (
+    adapt_resolved_character_fields,
+    build_scene_render_brief,
+    compile_image_render_spec,
+)
 from novel_character_generator.infrastructure.db.orm import (
     CharacterAppearanceStateORM,
     CharacterConflictORM,
@@ -26,7 +32,7 @@ from novel_character_generator.infrastructure.db.orm import (
 )
 from novel_character_generator.infrastructure.db.repositories.run_events import append_run_event
 
-GENERATION_CONTEXT_SCHEMA_VERSION = "generation-context-v1"
+GENERATION_CONTEXT_SCHEMA_VERSION = "generation-context-v2"
 
 
 def canonical_json(value: object) -> str:
@@ -52,8 +58,17 @@ class ImageRunRequest:
     stage_keys: list[str] = field(default_factory=list)
     candidate_count: int = 1
     generate_character_sheet: bool = False
+    generation_mode: GenerationMode = "concept"
     render_overrides: dict[str, object] = field(default_factory=dict)
     budget_limit: Decimal = Decimal("0")
+
+    def __post_init__(self) -> None:
+        if self.generation_mode not in {
+            "concept",
+            "character_design",
+            "consistent_scene",
+        }:
+            raise ValueError("invalid_generation_mode")
 
     def as_dict(self) -> dict[str, object]:
         return {
@@ -64,6 +79,7 @@ class ImageRunRequest:
             "stage_keys": list(self.stage_keys),
             "candidate_count": self.candidate_count,
             "generate_character_sheet": self.generate_character_sheet,
+            "generation_mode": self.generation_mode,
             "render_overrides": self.render_overrides,
             "budget_limit": str(self.budget_limit),
         }
@@ -129,6 +145,17 @@ class GenerationContextBuilder:
             ),
         )
         await self._validate_stage_keys(character_id, snapshot, request.stage_keys)
+        scene_brief = build_scene_render_brief(snapshot, request.render_overrides)
+        resolved_fields = adapt_resolved_character_fields(snapshot)
+        readiness, render_spec = compile_image_render_spec(
+            resolved_fields,
+            scene_brief,
+            generation_mode=request.generation_mode,
+            generate_character_sheet=request.generate_character_sheet,
+            style_preset=str(snapshot.get("style_preset") or "") or None,
+            profile_approved=profile.status in {"approved", "locked"},
+            workflow_frozen=bool(self.workflow_profile and self.workflow_version),
+        )
         target = {
             "timeline_id": str(request.timeline_id),
             "event_id": str(request.target_event_id) if request.target_event_id else None,
@@ -142,13 +169,17 @@ class GenerationContextBuilder:
             "render_profile_id": str(profile.id),
             "render_profile_version": profile.version,
             "snapshot": snapshot,
+            "resolved_render_fields": resolved_fields.model_dump(mode="json"),
             "target": target,
             "workflow_profile": self.workflow_profile,
             "workflow_version": self.workflow_version,
             "provider": self.provider,
             "candidate_count": request.candidate_count,
             "generate_character_sheet": request.generate_character_sheet,
-            "render_overrides": request.render_overrides,
+            "generation_mode": request.generation_mode,
+            "scene_render_brief": scene_brief.model_dump(mode="json"),
+            "render_readiness": readiness.model_dump(mode="json"),
+            "image_render_spec": render_spec.model_dump(mode="json"),
             "budget_limit": str(request.budget_limit),
         }
         context_hash = canonical_hash(payload)
@@ -182,6 +213,11 @@ class GenerationContextBuilder:
                 "context_hash": context.context_hash,
                 "snapshot_hash": context.snapshot_hash,
                 "profile_version": context.render_profile_version,
+                "generation_mode": request.generation_mode,
+                "spec_hash": render_spec.spec_hash,
+                "concept_ready": readiness.concept_ready,
+                "character_design_ready": readiness.character_design_ready,
+                "consistent_scene_ready": readiness.consistent_scene_ready,
             },
         )
         return context

@@ -6,6 +6,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from novel_character_generator.application.ports.entity_resolution import (
     ENTITY_CONVERGENCE_BATCH_SIZE,
+    ENTITY_RESOLUTION_SCHEMA_VERSION,
     EntityConvergenceResult,
     EntityMemoryRecord,
     EntityResolutionProvider,
@@ -331,7 +332,7 @@ async def process_extraction_run(
                 expected_generation=expected_generation,
                 cursor={
                     "schema_version": "v3",
-                    "entity_resolution_schema": "character-entity-resolution-v1",
+                    "entity_resolution_schema": ENTITY_RESOLUTION_SCHEMA_VERSION,
                     "stage": "chunk_resolved",
                     "current_chunk_ordinal": chunk.ordinal + 1,
                     "completed_artifact_hash": result_hash,
@@ -372,7 +373,7 @@ async def process_extraction_run(
             expected_generation=expected_generation,
             cursor={
                 "schema_version": "v3",
-                "entity_resolution_schema": "character-entity-resolution-v1",
+                "entity_resolution_schema": ENTITY_RESOLUTION_SCHEMA_VERSION,
                 "stage": "completed",
                 "current_chunk_ordinal": len(chunks),
                 "extractor_version": f"{provider.version}|{resolver.version}",

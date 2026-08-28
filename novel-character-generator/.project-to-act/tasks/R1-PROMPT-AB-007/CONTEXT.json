@@ -1,0 +1,16 @@
+{
+  "task_id": "R1-PROMPT-AB-007",
+  "created_at": "2026-08-27T00:00:00+08:00",
+  "project_stage": 5,
+  "lifecycle_revision": 2,
+  "risk_level": "L1",
+  "prompt_a": "visual-extraction-prompt-v2.5",
+  "prompt_b_target": "visual-extraction-prompt-v2.6",
+  "schema_from": "visual-observation-v3.3",
+  "schema_target": "visual-observation-v3.4",
+  "decision": "keep_prompt_v2.5_reject_v2.6_switch_retain_v3.4_gates",
+  "provider_calls": 130,
+  "recorded_tokens": 426190,
+  "database_migration": false,
+  "external_effect": "completed bounded paid Provider calls for A/B after explicit user authorization"
+}

@@ -1,0 +1,28 @@
+{
+  "id": "R1-GOLD-RUN-010",
+  "title": "运行 R1 v1 黄金集真实 A/B 并归因失败",
+  "status": "done",
+  "owner": "Codex",
+  "objective": "使用当前 DeepSeek 配置在同链路分别运行冻结 v2.5 与候选 v2.6，覆盖 31 个硬黄金案例和 6 个真实审计 Chunk，并区分 Prompt、适配层与黄金标注问题。",
+  "allowed_paths": [
+    "data/diagnostics/r1-gold-v1-ab-20260828",
+    "tests/evaluation",
+    "tests/测试/ab_evaluate_visual_prompts.py",
+    ".project-to-act"
+  ],
+  "invariants": [
+    "A/B 使用同 Provider、模型、参数、Schema 和样例，只改变 Prompt",
+    "最多执行 37 个样例乘 2 个版本，共 74 次真实调用",
+    "不输出、复制或写入 API key",
+    "不修改生产 Prompt 指针或黄金答案来迎合模型输出",
+    "报告保存输入哈希和结构化结果，不在项目账本复制小说正文",
+    "失败先按黄金契约、模型输出、服务端适配和评分器四层归因"
+  ],
+  "acceptance": [
+    "74 次以内调用完成且两组 Schema 成功情况可审计",
+    "31 个硬黄金与 6 个真实审计切片分别汇总 pass/review/fail",
+    "逐失败案例给出黄金问题、Prompt 问题、适配层问题或待人工复核分类",
+    "重复事实和 asserted/deferred 双写指标进入结论",
+    "原始报告、分析证据和项目 Gate 状态同步"
+  ]
+}

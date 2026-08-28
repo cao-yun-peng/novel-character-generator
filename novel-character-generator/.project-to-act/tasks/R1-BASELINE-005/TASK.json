@@ -1,0 +1,25 @@
+{
+  "id": "R1-BASELINE-005",
+  "title": "冻结 R1 数据质量回归基线",
+  "status": "done",
+  "owner": "Codex",
+  "objective": "将短文本复测暴露的 R1 提及类型、字段语义和证据定位问题抽象为独立、离线、可执行的红灯基线，与 R2 身份解析测试分离。",
+  "allowed_paths": [
+    "tests/evaluation/r1_quality_regression_v1.json",
+    "tests/unit/test_r1_quality_regression_baseline.py",
+    ".project-to-act"
+  ],
+  "invariants": [
+    "本任务不修改生产 Schema、Prompt、Adapter、evidence locator 或 R2 实现",
+    "不写入作品专名身份规则，真实问题必须抽象为跨作品通用模式",
+    "当前缺失行为使用 strict xfail；实现生效后的 XPASS 必须转成正式回归",
+    "语义替换不得作为近似引文修复，歧义修复必须失败关闭",
+    "不得读取、复制或记录 .env 内容"
+  ],
+  "acceptance": [
+    "R1 fixture 独立版本化并明确排除跨 Chunk 身份归并",
+    "descriptor、age.age、非衣物进入 clothing.type、唯一漏字修复和歧义漏字拒绝均有 strict xfail",
+    "语义替换拒绝和精确原文保留保持普通通过",
+    "定向 R1 回归与 Ruff 退出 0，并记录通过/xfail 数量"
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "id": "R1-PROMPT-AB-007",
+  "title": "重构 R1 Prompt 并执行真实样例 A/B 实验",
+  "status": "done",
+  "owner": "Codex",
+  "objective": "冻结 visual-extraction-prompt-v2.5 作为 A 组，重构阶段化 R1 Prompt 与配套 Schema 作为 B 组，并用同模型、同参数、同真实文本样例决定是否切换当前版本。",
+  "allowed_paths": [
+    "src/novel_character_generator/application/ports/extraction.py",
+    "src/novel_character_generator/infrastructure/llm",
+    "src/novel_character_generator/application/services/visual_candidate_adapter.py",
+    "tests",
+    "docs",
+    "data/diagnostics/r1-prompt-ab-v2.6",
+    ".project-to-act"
+  ],
+  "invariants": [
+    "A/B 两组使用相同 Provider、模型、参数、样例和输出 Schema",
+    "A 组保存冻结的 v2.5 原文，不依赖 Git 历史恢复",
+    "local_id 只在当前 Chunk 内有效，不表示跨 Chunk 身份",
+    "模糊代词和人物所有权失败关闭，不以 unknown 接住歧义事实",
+    "真实小说文本和 Provider 原始输出不粘贴进项目管理账本",
+    "密钥只由现有 Settings/.env 读取，不输出或写入诊断文件",
+    "B 组只有在关键安全项不回退且整体评分优于或等于 A 组时才切换"
+  ],
+  "acceptance": [
+    "Prompt 分阶段且消除 local_id、同字段多实例、代词局部共指、age 双轨和 unknown 歧义",
+    "deferred reason 能区分 unsupported、inferred、uncertain 和 ambiguous owner",
+    "自动契约测试、Ruff、Mypy 和完整 Pytest 通过",
+    "真实样例 A/B 报告记录逐样例差异、token、延迟、拒绝 warning 和评分",
+    "若切换，版本与回滚点清晰；若不切换，保留实验结果且当前版本不变"
+  ]
+}

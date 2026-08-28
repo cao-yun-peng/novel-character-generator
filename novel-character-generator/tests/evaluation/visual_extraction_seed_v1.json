@@ -1,0 +1,399 @@
+{
+  "name": "visual-extraction-developer-seed",
+  "version": "v1.1",
+  "rubric_version": "visual-observation-seed-v3.1",
+  "cases": [
+    {
+      "id": "direct-hair",
+      "text": "沈砚有一头黑色短发。",
+      "required_observations": [
+        {"character_name": "沈砚", "field_path": "hair.color", "value": "黑色", "evidence_quote": "黑色短发"},
+        {"character_name": "沈砚", "field_path": "hair.length", "value": "短", "accepted_values": ["短发"], "evidence_quote": "黑色短发", "accepted_evidence_quotes": ["短发"]}
+      ],
+      "expected_mentions": [{"surface": "沈砚", "mention_kind": "explicit_name", "max_count": 1}],
+      "slice_tags": ["direct", "hair"],
+      "severity": "important"
+    },
+    {
+      "id": "direct-skin-build",
+      "text": "林澈肤色苍白，身形消瘦。",
+      "required_observations": [
+        {"character_name": "林澈", "field_path": "skin.color", "value": "苍白", "evidence_quote": "肤色苍白"},
+        {"character_name": "林澈", "field_path": "body.build", "value": "消瘦", "evidence_quote": "身形消瘦"}
+      ],
+      "expected_mentions": [{"surface": "林澈", "mention_kind": "explicit_name", "max_count": 1}],
+      "slice_tags": ["direct", "multiple-fields"]
+    },
+    {
+      "id": "direct-clothing-atomic",
+      "text": "顾遥穿着整洁的灰色长袍。",
+      "required_observations": [
+        {"character_name": "顾遥", "field_path": "clothing.type", "value": "长袍", "evidence_quote": "灰色长袍", "accepted_evidence_quotes": ["长袍"]},
+        {"character_name": "顾遥", "field_path": "clothing.color", "value": "灰色", "evidence_quote": "灰色长袍"},
+        {"character_name": "顾遥", "field_path": "cleanliness", "value": "整洁", "evidence_quote": "整洁的灰色长袍", "accepted_evidence_quotes": ["整洁"]}
+      ],
+      "forbidden_observations": [
+        {"character_name": "顾遥", "field_path": "clothing.style", "values": ["灰色长袍"], "reason": "garment_bundle_is_not_clothing_style"}
+      ],
+      "expected_mentions": [{"surface": "顾遥", "mention_kind": "explicit_name", "max_count": 1}],
+      "slice_tags": ["direct", "clothing", "atomic", "gold-correction"],
+      "severity": "critical",
+      "notes": "v0 将灰色长袍错误标成 clothing.style；v1 按种类、颜色和整洁度拆分。"
+    },
+    {
+      "id": "phase-childhood",
+      "text": "幼年时的苏棠只有七岁，脸颊圆润。",
+      "required_observations": [
+        {"character_name": "苏棠", "field_path": "age", "value": "七岁", "evidence_quote": "只有七岁", "accepted_evidence_quotes": ["七岁"]},
+        {"character_name": "苏棠", "field_path": "face.shape", "value": "圆润", "evidence_quote": "脸颊圆润"}
+      ],
+      "expected_mentions": [{"surface": "苏棠", "mention_kind": "explicit_name", "max_count": 1}],
+      "expected_temporal_signals": [
+        {"kind": "life_phase", "label": "幼年", "accepted_labels": ["幼年时"], "evidence_quote": "幼年时", "character_name": "苏棠"},
+        {"kind": "age", "label": "七岁", "evidence_quote": "只有七岁", "accepted_evidence_quotes": ["七岁"], "character_name": "苏棠"}
+      ],
+      "slice_tags": ["life-phase", "childhood", "temporal"],
+      "severity": "critical"
+    },
+    {
+      "id": "phase-adulthood",
+      "text": "十年后，成年的苏棠留起了齐肩长发。",
+      "required_observations": [
+        {"character_name": "苏棠", "field_path": "hair.length", "value": "齐肩", "accepted_values": ["齐肩长发"], "evidence_quote": "齐肩长发"}
+      ],
+      "expected_mentions": [{"surface": "苏棠", "mention_kind": "explicit_name", "max_count": 1}],
+      "expected_temporal_signals": [
+        {"kind": "time_jump", "label": "十年后", "evidence_quote": "十年后"},
+        {"kind": "life_phase", "label": "成年", "accepted_labels": ["成年期"], "evidence_quote": "成年的苏棠", "accepted_evidence_quotes": ["成年"], "character_name": "苏棠"}
+      ],
+      "slice_tags": ["life-phase", "time-jump", "temporal"],
+      "severity": "critical"
+    },
+    {
+      "id": "persistent-mark",
+      "text": "陆峥左眉上方有一道旧疤。",
+      "required_observations": [
+        {"character_name": "陆峥", "field_path": "distinctive_marks.scar", "value": "左眉上方旧疤", "accepted_values": ["左眉上方一道旧疤", "左眉上方有一道旧疤"], "evidence_quote": "左眉上方有一道旧疤"}
+      ],
+      "expected_mentions": [{"surface": "陆峥", "mention_kind": "explicit_name", "max_count": 1}],
+      "slice_tags": ["persistent-change", "scar"]
+    },
+    {
+      "id": "negative-occupation",
+      "text": "周宁是一名经验丰富的医生。",
+      "required_observations": [],
+      "slice_tags": ["negative", "occupation"],
+      "severity": "important",
+      "notes": "职业不能用于推断外貌。"
+    },
+    {
+      "id": "negative-personality",
+      "text": "许舟性格冷静，处理危机从不慌乱。",
+      "required_observations": [],
+      "slice_tags": ["negative", "personality"],
+      "severity": "important"
+    },
+    {
+      "id": "negative-ability",
+      "text": "叶岚能够操纵风，并精通剑术。",
+      "required_observations": [],
+      "slice_tags": ["negative", "capability"],
+      "severity": "important"
+    },
+    {
+      "id": "explicit-absence",
+      "text": "季衡脸上没有疤痕。",
+      "required_observations": [
+        {"character_name": "季衡", "field_path": "distinctive_marks.scar", "value": "无", "accepted_values": ["没有疤痕", "无疤痕"], "evidence_quote": "没有疤痕", "epistemic_status": "negated"}
+      ],
+      "expected_mentions": [{"surface": "季衡", "mention_kind": "explicit_name", "max_count": 1}],
+      "slice_tags": ["negated", "explicit-absence"]
+    },
+    {
+      "id": "disguise-overlay",
+      "text": "为了潜入宴会，闻溪戴上银色假发并换上礼服。",
+      "required_observations": [
+        {"character_name": "闻溪", "field_path": "disguise.hair_color", "value": "银色", "accepted_values": ["银色假发"], "evidence_quote": "戴上银色假发", "accepted_evidence_quotes": ["银色假发"]},
+        {"character_name": "闻溪", "field_path": "clothing.type", "value": "礼服", "evidence_quote": "换上礼服", "accepted_evidence_quotes": ["礼服"]}
+      ],
+      "allowed_observations": [
+        {"character_name": "闻溪", "field_path": "accessories.wig", "value": "银色假发", "evidence_quote": "戴上银色假发", "accepted_evidence_quotes": ["银色假发"]},
+        {"character_name": "闻溪", "field_path": "accessories.headwear", "value": "银色假发", "evidence_quote": "戴上银色假发", "accepted_evidence_quotes": ["银色假发"]}
+      ],
+      "forbidden_observations": [
+        {"character_name": "闻溪", "field_path": "clothing.style", "values": ["礼服"], "reason": "garment_kind_is_not_clothing_style"}
+      ],
+      "expected_mentions": [{"surface": "闻溪", "mention_kind": "explicit_name", "max_count": 1}],
+      "allow_unlisted_temporal_signals": true,
+      "slice_tags": ["disguise", "scene-overlay", "gold-correction"],
+      "severity": "critical"
+    },
+    {
+      "id": "ambiguous-owner",
+      "text": "陈川站在赵临身后。他的头发已经全白了。",
+      "required_observations": [],
+      "expected_deferred_items": [
+        {"reason_code": "ambiguous_entity", "evidence_quote": "他的头发已经全白了", "accepted_evidence_quotes": ["头发已经全白了"], "max_count": 1}
+      ],
+      "slice_tags": ["ambiguous-pronoun", "deferred"],
+      "severity": "critical",
+      "notes": "所有权不唯一时不得自动形成 asserted Observation。"
+    },
+    {
+      "id": "repeated-phrase-two-owners",
+      "text": "沈砚穿白衣。顾清遥也穿白衣。",
+      "required_observations": [
+        {"character_name": "沈砚", "field_path": "clothing.color", "value": "白色", "accepted_values": ["白"], "evidence_quote": "穿白衣", "accepted_evidence_quotes": ["白衣"]},
+        {"character_name": "顾清遥", "field_path": "clothing.color", "value": "白色", "accepted_values": ["白"], "evidence_quote": "穿白衣", "accepted_evidence_quotes": ["白衣"]}
+      ],
+      "allowed_observations": [
+        {"character_name": "沈砚", "field_path": "clothing.type", "value": "衣", "accepted_values": ["白衣"], "evidence_quote": "穿白衣", "accepted_evidence_quotes": ["白衣"]},
+        {"character_name": "顾清遥", "field_path": "clothing.type", "value": "衣", "accepted_values": ["白衣"], "evidence_quote": "穿白衣", "accepted_evidence_quotes": ["白衣"]}
+      ],
+      "expected_mentions": [
+        {"surface": "沈砚", "mention_kind": "explicit_name", "max_count": 1},
+        {"surface": "顾清遥", "mention_kind": "explicit_name", "max_count": 1}
+      ],
+      "slice_tags": ["repeated-evidence", "entity-binding", "allowed-observation", "gold-correction"],
+      "severity": "critical"
+    },
+    {
+      "id": "repeated-phrase-ambiguous-owner",
+      "text": "白衣，沈砚，白衣。",
+      "required_observations": [],
+      "expected_deferred_items": [
+        {"reason_code": "ambiguous_evidence", "evidence_quote": "白衣", "max_count": 2}
+      ],
+      "slice_tags": ["repeated-evidence", "ambiguous-owner", "deferred"],
+      "severity": "critical"
+    },
+    {
+      "id": "approximate-age-perception",
+      "text": "昏黄灯光下，门边的陌生人看上去约有四十岁。",
+      "required_observations": [],
+      "forbidden_observations": [
+        {"field_path": "age", "values": ["四十岁", "约四十岁", "约有四十岁"], "reason": "appearance_estimate_is_not_asserted_age"}
+      ],
+      "expected_deferred_items": [
+        {"reason_code": "inferred_visual_fact", "evidence_quote": "看上去约有四十岁", "accepted_evidence_quotes": ["约有四十岁"], "max_count": 1}
+      ],
+      "slice_tags": ["negative", "approximate-age", "perception", "deferred"],
+      "severity": "critical"
+    },
+    {
+      "id": "canonical-beard-field",
+      "text": "顾峤下巴蓄着浓密的络腮胡。",
+      "required_observations": [
+        {"character_name": "顾峤", "field_path": "distinctive_marks.beard", "value": "浓密的络腮胡", "accepted_values": ["络腮胡浓密"], "evidence_quote": "浓密的络腮胡"}
+      ],
+      "expected_mentions": [{"surface": "顾峤", "mention_kind": "explicit_name", "max_count": 1}],
+      "slice_tags": ["direct", "canonical-field", "beard"],
+      "severity": "important"
+    },
+    {
+      "id": "canonical-eye-state-field",
+      "text": "闻栖抬起头，目光疲惫而涣散。",
+      "required_observations": [
+        {"character_name": "闻栖", "field_path": "face.eyes", "value": "疲惫而涣散", "evidence_quote": "目光疲惫而涣散"}
+      ],
+      "expected_mentions": [{"surface": "闻栖", "mention_kind": "explicit_name", "max_count": 1}],
+      "slice_tags": ["direct", "canonical-field", "eyes"],
+      "severity": "important"
+    },
+    {
+      "id": "no-inferred-cleanliness-from-grooming",
+      "text": "裴准的头发乱得像鸟窝，胡须已有多日未修整。",
+      "required_observations": [
+        {"character_name": "裴准", "field_path": "hair.style", "value": "乱得像鸟窝", "evidence_quote": "头发乱得像鸟窝"},
+        {"character_name": "裴准", "field_path": "distinctive_marks.beard", "value": "多日未修整的胡须", "accepted_values": ["多日未修整", "胡须多日未修整", "胡须已有多日未修整", "已有多日未修整"], "evidence_quote": "胡须已有多日未修整"}
+      ],
+      "forbidden_observations": [
+        {"character_name": "裴准", "field_path": "cleanliness", "reason": "grooming_does_not_imply_cleanliness"}
+      ],
+      "expected_mentions": [{"surface": "裴准", "mention_kind": "explicit_name", "max_count": 1}],
+      "slice_tags": ["direct", "negative-inference", "cleanliness", "grooming"],
+      "severity": "critical"
+    },
+    {
+      "id": "face-description-direct-not-reported",
+      "text": "程岳面容清俊，轮廓并未作具体说明。",
+      "required_observations": [
+        {"character_name": "程岳", "field_path": "face.description", "value": "清俊", "evidence_quote": "面容清俊"}
+      ],
+      "forbidden_observations": [
+        {"character_name": "程岳", "field_path": "face.shape", "values": ["清俊"], "reason": "overall_face_description_is_not_geometry"}
+      ],
+      "expected_mentions": [{"surface": "程岳", "mention_kind": "explicit_name", "max_count": 1}],
+      "allowed_deferred_items": [
+        {"reason_code": "unsupported_visual_field", "evidence_quote": "轮廓并未作具体说明"}
+      ],
+      "slice_tags": ["direct", "canonical-field", "face-description", "narration-boundary"],
+      "severity": "important",
+      "notes": "直接叙述的整体可见面容允许 face.description；转述或纯吸引力评价仍禁止。"
+    },
+    {
+      "id": "eye-color-versus-gaze-state",
+      "text": "岑雾有一双乌黑的眼眸，凝视时目光沉静。",
+      "required_observations": [
+        {"character_name": "岑雾", "field_path": "face.eye_color", "value": "乌黑", "evidence_quote": "乌黑的眼眸"},
+        {"character_name": "岑雾", "field_path": "face.eyes", "value": "沉静", "accepted_values": ["目光沉静"], "evidence_quote": "目光沉静"}
+      ],
+      "expected_mentions": [{"surface": "岑雾", "mention_kind": "explicit_name", "max_count": 1}],
+      "slice_tags": ["direct", "canonical-field", "eyes", "atomic"],
+      "severity": "critical"
+    },
+    {
+      "id": "reported-attractiveness-not-complexion",
+      "text": "旁人都说苏绫看起来妩媚动人。",
+      "required_observations": [],
+      "forbidden_observations": [
+        {"character_name": "苏绫", "field_path": "face.complexion", "reason": "reported_attractiveness_is_not_complexion"},
+        {"character_name": "苏绫", "field_path": "face.description", "reason": "reported_subjective_attractiveness_is_not_stable_face_fact"}
+      ],
+      "allowed_deferred_items": [
+        {"reason_code": "unsupported_visual_field", "evidence_quote": "妩媚动人"}
+      ],
+      "slice_tags": ["reported", "subjective", "negative", "complexion"],
+      "severity": "critical"
+    },
+    {
+      "id": "clothing-coverage-not-body-build",
+      "text": "少年顾川赤着上身站在雨中，文中没有描述他的高矮胖瘦。",
+      "required_observations": [
+        {"character_name": "顾川", "field_path": "clothing.coverage", "value": "上身未着衣", "accepted_values": ["赤着上身", "上身裸露"], "evidence_quote": "赤着上身"}
+      ],
+      "forbidden_observations": [
+        {"character_name": "顾川", "field_path": "body.build", "reason": "coverage_and_meta_absence_do_not_define_build"}
+      ],
+      "expected_mentions": [{"surface": "顾川", "mention_kind": "explicit_name", "max_count": 1}],
+      "slice_tags": ["direct", "clothing", "coverage", "negative-field-confusion"],
+      "severity": "critical"
+    },
+    {
+      "id": "tattoo-not-scar",
+      "text": "顾川左肩有一片墨色飞鸟纹身。",
+      "required_observations": [
+        {"character_name": "顾川", "field_path": "distinctive_marks.tattoo", "value": "左肩墨色飞鸟纹身", "accepted_values": ["左肩墨色飞鸟", "左肩有一片墨色飞鸟纹身", "墨色飞鸟纹身"], "evidence_quote": "左肩有一片墨色飞鸟纹身"}
+      ],
+      "forbidden_observations": [
+        {"character_name": "顾川", "field_path": "distinctive_marks.scar", "reason": "tattoo_is_not_scar"}
+      ],
+      "expected_mentions": [{"surface": "顾川", "mention_kind": "explicit_name", "max_count": 1}],
+      "slice_tags": ["direct", "persistent-change", "tattoo", "negative-field-confusion"],
+      "severity": "critical"
+    },
+    {
+      "id": "compound-outfit-atomic",
+      "text": "梁策戴毡帽，穿青布短褂，束棕色腰带，脚蹬黑靴。",
+      "required_observations": [
+        {"character_name": "梁策", "field_path": "accessories.headwear", "value": "毡帽", "evidence_quote": "戴毡帽", "accepted_evidence_quotes": ["毡帽"]},
+        {"character_name": "梁策", "field_path": "clothing.type", "value": "短褂", "accepted_values": ["青布短褂"], "evidence_quote": "青布短褂", "accepted_evidence_quotes": ["短褂"]},
+        {"character_name": "梁策", "field_path": "clothing.color", "value": "青色短褂", "accepted_values": ["青色", "青", "青布短褂"], "evidence_quote": "青布短褂"},
+        {"character_name": "梁策", "field_path": "clothing.material", "value": "布制短褂", "accepted_values": ["布", "青布短褂"], "evidence_quote": "青布短褂"},
+        {"character_name": "梁策", "field_path": "accessories.belt", "value": "棕色腰带", "evidence_quote": "束棕色腰带", "accepted_evidence_quotes": ["棕色腰带"]},
+        {"character_name": "梁策", "field_path": "clothing.footwear", "value": "黑靴", "accepted_values": ["靴"], "evidence_quote": "脚蹬黑靴", "accepted_evidence_quotes": ["黑靴"]}
+      ],
+      "allowed_observations": [
+        {"character_name": "梁策", "field_path": "clothing.color", "value": "黑色靴子", "accepted_values": ["黑色", "黑靴"], "evidence_quote": "脚蹬黑靴", "accepted_evidence_quotes": ["黑靴"]}
+      ],
+      "expected_mentions": [{"surface": "梁策", "mention_kind": "explicit_name", "max_count": 1}],
+      "slice_tags": ["direct", "clothing", "accessories", "atomic", "multiple-fields", "gold-correction"],
+      "severity": "critical",
+      "notes": "衣物颜色和材质值在多物品场景保留载体；黑靴作为 footwear 必须，额外拆出带载体的颜色允许但不强制。"
+    },
+    {
+      "id": "white-hair-and-beard-atomic",
+      "text": "陆伯的头发和长须都已雪白。",
+      "required_observations": [
+        {"character_name": "陆伯", "field_path": "hair.color", "value": "雪白", "evidence_quote": "头发和长须都已雪白"},
+        {"character_name": "陆伯", "field_path": "distinctive_marks.beard", "value": "雪白长须", "accepted_values": ["长须雪白", "雪白"], "evidence_quote": "头发和长须都已雪白"}
+      ],
+      "expected_mentions": [{"surface": "陆伯", "mention_kind": "explicit_name", "max_count": 1}],
+      "slice_tags": ["direct", "hair", "beard", "atomic", "shared-evidence"],
+      "severity": "important"
+    },
+    {
+      "id": "descriptor-not-explicit-name",
+      "text": "少女娇嫩的耳垂上吊着绿色玉坠。",
+      "required_observations": [
+        {"character_name": "少女", "field_path": "accessories.earrings", "value": "绿色玉坠", "evidence_quote": "绿色玉坠"}
+      ],
+      "expected_mentions": [{"surface": "少女", "mention_kind": "descriptor", "max_count": 1}],
+      "slice_tags": ["descriptor", "mention-kind", "accessories"],
+      "severity": "critical"
+    },
+    {
+      "id": "held-book-not-worn",
+      "text": "青年合拢了手中厚厚的书籍。",
+      "required_observations": [],
+      "forbidden_observations": [
+        {"character_name": "青年", "field_path": "clothing.type", "reason": "held_book_is_not_clothing"},
+        {"character_name": "青年", "field_path": "accessories.other", "reason": "held_book_is_not_worn_accessory"},
+        {"character_name": "青年", "field_path": "accessories.book", "reason": "book_is_outside_visual_worn_accessory_contract"}
+      ],
+      "allow_unlisted_deferred": true,
+      "slice_tags": ["descriptor", "held-object", "negative", "clothing", "accessories"],
+      "severity": "critical"
+    },
+    {
+      "id": "inferred-age-exclusive-deferred",
+      "text": "那名男子看起来像四十岁左右。",
+      "required_observations": [],
+      "forbidden_observations": [
+        {"character_name": "那名男子", "field_path": "age", "reason": "inferred_age_must_not_be_asserted"},
+        {"character_name": "那名男子", "field_path": "age_stage", "reason": "inferred_age_stage_must_not_be_asserted"}
+      ],
+      "expected_deferred_items": [
+        {"reason_code": "inferred_visual_fact", "evidence_quote": "看起来像四十岁左右", "accepted_evidence_quotes": ["四十岁左右"], "max_count": 1}
+      ],
+      "slice_tags": ["descriptor", "age", "inferred", "deferred", "exclusive-branch"],
+      "severity": "critical"
+    },
+    {
+      "id": "multiple-same-field-garments",
+      "text": "秦月穿青色上衣和白色长裙。",
+      "required_observations": [
+        {"character_name": "秦月", "field_path": "clothing.type", "value": "上衣", "evidence_quote": "青色上衣"},
+        {"character_name": "秦月", "field_path": "clothing.type", "value": "长裙", "evidence_quote": "白色长裙"},
+        {"character_name": "秦月", "field_path": "clothing.color", "value": "青色上衣", "accepted_values": ["上衣青色"], "evidence_quote": "青色上衣"},
+        {"character_name": "秦月", "field_path": "clothing.color", "value": "白色长裙", "accepted_values": ["长裙白色"], "evidence_quote": "白色长裙"}
+      ],
+      "forbidden_observations": [
+        {"character_name": "秦月", "field_path": "clothing.style", "reason": "multiple_garments_must_not_be_bundled_as_style"}
+      ],
+      "expected_mentions": [{"surface": "秦月", "mention_kind": "explicit_name", "max_count": 1}],
+      "slice_tags": ["clothing", "atomic", "same-field-multiple", "ownership"],
+      "severity": "critical"
+    },
+    {
+      "id": "eye-color-not-expression",
+      "text": "叶青眼眸碧绿，脸上笑吟吟。",
+      "required_observations": [
+        {"character_name": "叶青", "field_path": "face.eye_color", "value": "碧绿", "evidence_quote": "眼眸碧绿"}
+      ],
+      "forbidden_observations": [
+        {"character_name": "叶青", "field_path": "face.expression", "reason": "transient_expression_is_outside_r1_character_fact"},
+        {"character_name": "叶青", "field_path": "face.description", "values": ["笑吟吟"], "reason": "transient_expression_is_not_face_description"}
+      ],
+      "expected_mentions": [{"surface": "叶青", "mention_kind": "explicit_name", "max_count": 1}],
+      "allowed_deferred_items": [
+        {"reason_code": "unsupported_visual_field", "evidence_quote": "脸上笑吟吟"}
+      ],
+      "slice_tags": ["eyes", "expression", "negative-field-confusion"],
+      "severity": "critical"
+    },
+    {
+      "id": "relative-age-with-temporal-signal",
+      "text": "纳兰嫣然的年纪和萧炎相仿。",
+      "required_observations": [
+        {"character_name": "纳兰嫣然", "field_path": "age", "value": "和萧炎相仿", "accepted_values": ["相仿", "年纪和萧炎相仿", "与萧炎年纪相仿", "和萧炎年纪相仿"], "evidence_quote": "年纪和萧炎相仿", "accepted_evidence_quotes": ["和萧炎相仿"]}
+      ],
+      "expected_mentions": [{"surface": "纳兰嫣然", "mention_kind": "explicit_name", "max_count": 1}],
+      "expected_temporal_signals": [
+        {"kind": "age", "label": "和萧炎相仿", "accepted_labels": ["相仿", "年纪和萧炎相仿", "与萧炎年纪相仿", "和萧炎年纪相仿"], "evidence_quote": "年纪和萧炎相仿", "accepted_evidence_quotes": ["和萧炎相仿"], "character_name": "纳兰嫣然"}
+      ],
+      "slice_tags": ["age", "relative-age", "temporal", "explicit-name"],
+      "severity": "critical"
+    }
+  ]
+}

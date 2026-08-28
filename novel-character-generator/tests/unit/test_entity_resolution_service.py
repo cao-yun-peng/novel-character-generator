@@ -359,7 +359,9 @@ def test_unverifiable_evidence_is_downgraded_without_publishing_a_binding() -> N
 
 
 def test_resolution_prompt_constrains_related_mentions_to_historical_ids() -> None:
-    assert ENTITY_RESOLUTION_PROMPT_VERSION == "entity-resolution-prompt-v1.4"
+    assert ENTITY_RESOLUTION_PROMPT_VERSION == "entity-resolution-prompt-v1.5"
+    assert "Only mention_kind=explicit_name" in RESOLUTION_SYSTEM_PROMPT
+    assert "never enter explicit_names" in RESOLUTION_SYSTEM_PROMPT
     assert "cumulative_memory[*].mention_ids" in RESOLUTION_SYSTEM_PROMPT
     assert "Never put the current decision mention_id" in RESOLUTION_SYSTEM_PROMPT
     schema = EntityMentionDecision.model_json_schema()
@@ -367,6 +369,49 @@ def test_resolution_prompt_constrains_related_mentions_to_historical_ids() -> No
     assert "Historical mention IDs" in description
     assert "shortest continuous verbatim substring" in RESOLUTION_SYSTEM_PROMPT
     assert "different explicit proper name" in RESOLUTION_SYSTEM_PROMPT
+
+
+def test_descriptor_never_enters_explicit_names() -> None:
+    packet = GroundedCandidatePacket(
+        mentions=[
+            GroundedMentionCandidate(
+                mention_id="m-girl",
+                local_entity_id="e1",
+                representative_name="少女",
+                mention_text="少女",
+                mention_kind="descriptor",
+                start=0,
+                end=2,
+                confidence=0.95,
+            )
+        ]
+    )
+    request = build_resolution_input(
+        chunk_id=uuid4(),
+        chunk_ordinal=0,
+        chunk_text="少女站在门边。",
+        previous_chunk_tail="",
+        packet=packet,
+        memory=[],
+        max_context_tokens=2_000,
+    )
+    result = EntityResolutionResult(
+        decisions=[
+            EntityMentionDecision(
+                mention_id="m-girl",
+                action="create_candidate",
+                evidence_quotes=["少女"],
+                confidence=0.8,
+                rationale="local descriptor only",
+            )
+        ]
+    )
+
+    memory = apply_resolution_result(request, result)
+
+    assert packet.mentions[0].mention_kind == "descriptor"
+    assert memory[0].names == ["少女"]
+    assert memory[0].explicit_names == []
 
 
 def test_explicit_name_link_gate_blocks_cross_person_binding() -> None:

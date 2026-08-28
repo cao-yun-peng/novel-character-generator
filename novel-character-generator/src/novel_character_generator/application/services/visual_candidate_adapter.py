@@ -15,7 +15,10 @@ from novel_character_generator.application.ports.extraction import (
     ObservationDraft,
     VisualCandidateExtractionResult,
 )
-from novel_character_generator.domain.policies.grounding import locate_evidence_span
+from novel_character_generator.domain.policies.grounding import (
+    EvidenceLocation,
+    locate_evidence_span,
+)
 from novel_character_generator.domain.policies.visual_fields import (
     canonical_field_path,
     is_plausible_age_signal,
@@ -26,7 +29,20 @@ from novel_character_generator.domain.policies.visual_fields import (
     visual_field_semantic_issue,
 )
 
-_SAFE_FIELD_ALIASES = frozenset({"age.age_stage", "face.hands"})
+_SAFE_FIELD_ALIASES = frozenset({"age.age", "age.age_stage", "face.hands"})
+
+
+def _record_evidence_adjustment(
+    warnings: list[str],
+    *,
+    source: str,
+    location: EvidenceLocation,
+) -> None:
+    if location.status not in {"normalized", "repaired"}:
+        return
+    warnings.append(
+        f"{location.status}_evidence:{source}:{location.repair_kind or 'unspecified'}"
+    )
 
 
 def adapt_visual_candidates(
@@ -88,6 +104,11 @@ def adapt_visual_candidates(
         if evidence.start is None or evidence.end is None or evidence.source_quote is None:
             warnings.append(f"rejected_visual_candidate:{index}:evidence_{evidence.status}")
             continue
+        _record_evidence_adjustment(
+            warnings,
+            source=f"visual_candidate:{index}",
+            location=evidence,
+        )
         owner = locate_evidence_span(
             text,
             entity.mention_quote,
@@ -96,6 +117,11 @@ def adapt_visual_candidates(
         if owner.start is None or owner.end is None or owner.source_quote is None:
             warnings.append(f"rejected_visual_candidate:{index}:owner_{owner.status}")
             continue
+        _record_evidence_adjustment(
+            warnings,
+            source=f"visual_candidate_owner:{index}",
+            location=owner,
+        )
 
         life_phase_key: str | None = None
         life_phase_label: str | None = None
@@ -122,6 +148,11 @@ def adapt_visual_candidates(
                     f"ignored_temporal_signal:{index}:{signal.kind}:{signal_location.status}"
                 )
                 continue
+            _record_evidence_adjustment(
+                warnings,
+                source=f"visual_candidate_signal:{index}:{signal.kind}",
+                location=signal_location,
+            )
             if signal.kind == "life_phase":
                 life_phase_key, life_phase_label = normalize_life_phase(None, signal.label)
                 break
@@ -191,6 +222,11 @@ def ground_visual_candidates(
         if owner.start is None or owner.end is None or owner.source_quote is None:
             warnings.append(f"rejected_entity:{entity.local_id}:owner_{owner.status}")
             continue
+        _record_evidence_adjustment(
+            warnings,
+            source=f"entity:{entity.local_id}",
+            location=owner,
+        )
         mention_id = f"{mention_id_prefix}:{entity.local_id}:{owner.start}:{owner.end}"
         mention_ids_by_entity[entity.local_id] = mention_id
         mentions[mention_id] = GroundedMentionCandidate(
@@ -256,6 +292,11 @@ def ground_visual_candidates(
         if evidence.start is None or evidence.end is None or evidence.source_quote is None:
             warnings.append(f"rejected_visual_candidate:{index}:evidence_{evidence.status}")
             continue
+        _record_evidence_adjustment(
+            warnings,
+            source=f"visual_candidate:{index}",
+            location=evidence,
+        )
         candidate_key = (
             "fact:"
             + hashlib.sha256(
@@ -299,6 +340,11 @@ def ground_visual_candidates(
                     f"ignored_temporal_signal:{index}:{signal.kind}:{signal_location.status}"
                 )
                 continue
+            _record_evidence_adjustment(
+                warnings,
+                source=f"visual_candidate_signal:{index}:{signal_index}",
+                location=signal_location,
+            )
             assert signal_location.end is not None
             assert signal_location.source_quote is not None
             signal_id = (
@@ -332,6 +378,8 @@ def ground_visual_candidates(
                 field_path=semantic_path,
                 value=candidate.value,
                 evidence_quote=evidence.source_quote,
+                evidence_status=evidence.status,
+                evidence_repair_kind=evidence.repair_kind,
                 start=evidence.start,
                 end=evidence.end,
                 epistemic_status=(
@@ -375,6 +423,11 @@ def ground_visual_candidates(
                 f"ignored_temporal_signal:top:{signal_index}:{signal.kind}:{location.status}"
             )
             continue
+        _record_evidence_adjustment(
+            warnings,
+            source=f"temporal_signal:{signal_index}",
+            location=location,
+        )
         signal_id = (
             "signal:"
             + hashlib.sha256(

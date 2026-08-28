@@ -1,0 +1,419 @@
+{
+  "provider": "timicc",
+  "model": "gpt-image-2",
+  "provider_request_id": "image-b4ce6cb502a51fc62846bc27",
+  "quality": "medium",
+  "requested_size": "1328x1328",
+  "actual_size": "1024x1536",
+  "size_match": false,
+  "requested_seed": 270827,
+  "seed_supported_by_provider": false,
+  "spec_hash": "745e8f438aa13c84ed1892ae5de286709596cd8015601b557a50660edd47adc2",
+  "latency_seconds": 32.364,
+  "rendered_prompt": {
+    "renderer": "canonical-zh",
+    "version": "canonical-zh-character-v1",
+    "positive_prompt": "生成单张角色图；只呈现一个主要角色，严格遵循已声明设定，不添加人物事实。\n角色身份：头发颜色为黑色；发型为短发；肤色为健康的小麦色。\n当前阶段：年龄为五、六岁；年龄阶段为儿童阶段；体型为瘦小。\n服装配饰：穿着朴素的灰色旧布衣。\n动作与表演：身体姿势为安静坐在山石上；视线望向东方晨光。\n场景环境：地点为山顶；时间为黎明；背景为远处群山与薄雾。\n美术与构图：采用东方玄幻小说角色概念插画表现；光线为柔和晨光；景别为全身。",
+    "negative_prompt": "文字，水印，现代服装，成年人体型，夸张肌肉，肢体畸形，多余手指，模糊面部",
+    "clauses": [
+      {
+        "text": "生成单张角色图；只呈现一个主要角色，严格遵循已声明设定，不添加人物事实。",
+        "polarity": "positive",
+        "block": "instruction",
+        "source_bindings": []
+      },
+      {
+        "text": "头发颜色为黑色",
+        "polarity": "positive",
+        "block": "identity",
+        "source_bindings": [
+          {
+            "field_path": "hair.color",
+            "source_refs": [
+              {
+                "source_kind": "novel_asserted",
+                "source_id": null,
+                "evidence_ids": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "text": "发型为短发",
+        "polarity": "positive",
+        "block": "identity",
+        "source_bindings": [
+          {
+            "field_path": "hair.length",
+            "source_refs": [
+              {
+                "source_kind": "novel_asserted",
+                "source_id": null,
+                "evidence_ids": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "text": "肤色为健康的小麦色",
+        "polarity": "positive",
+        "block": "identity",
+        "source_bindings": [
+          {
+            "field_path": "skin.color",
+            "source_refs": [
+              {
+                "source_kind": "novel_asserted",
+                "source_id": null,
+                "evidence_ids": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "text": "年龄为五、六岁",
+        "polarity": "positive",
+        "block": "stage",
+        "source_bindings": [
+          {
+            "field_path": "age",
+            "source_refs": [
+              {
+                "source_kind": "novel_asserted",
+                "source_id": null,
+                "evidence_ids": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "text": "年龄阶段为儿童阶段",
+        "polarity": "positive",
+        "block": "stage",
+        "source_bindings": [
+          {
+            "field_path": "age_stage",
+            "source_refs": [
+              {
+                "source_kind": "novel_asserted",
+                "source_id": null,
+                "evidence_ids": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "text": "体型为瘦小",
+        "polarity": "positive",
+        "block": "stage",
+        "source_bindings": [
+          {
+            "field_path": "body.build",
+            "source_refs": [
+              {
+                "source_kind": "novel_asserted",
+                "source_id": null,
+                "evidence_ids": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "text": "穿着朴素的灰色旧布衣",
+        "polarity": "positive",
+        "block": "outfit",
+        "source_bindings": [
+          {
+            "field_path": "clothing.style",
+            "source_refs": [
+              {
+                "source_kind": "novel_asserted",
+                "source_id": null,
+                "evidence_ids": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "text": "身体姿势为安静坐在山石上",
+        "polarity": "positive",
+        "block": "performance",
+        "source_bindings": [
+          {
+            "field_path": "pose.body",
+            "source_refs": [
+              {
+                "source_kind": "workflow_default",
+                "source_id": null,
+                "evidence_ids": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "text": "视线望向东方晨光",
+        "polarity": "positive",
+        "block": "performance",
+        "source_bindings": [
+          {
+            "field_path": "gaze",
+            "source_refs": [
+              {
+                "source_kind": "workflow_default",
+                "source_id": null,
+                "evidence_ids": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "text": "地点为山顶",
+        "polarity": "positive",
+        "block": "environment",
+        "source_bindings": [
+          {
+            "field_path": "environment.location",
+            "source_refs": [
+              {
+                "source_kind": "workflow_default",
+                "source_id": null,
+                "evidence_ids": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "text": "时间为黎明",
+        "polarity": "positive",
+        "block": "environment",
+        "source_bindings": [
+          {
+            "field_path": "environment.time",
+            "source_refs": [
+              {
+                "source_kind": "workflow_default",
+                "source_id": null,
+                "evidence_ids": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "text": "背景为远处群山与薄雾",
+        "polarity": "positive",
+        "block": "environment",
+        "source_bindings": [
+          {
+            "field_path": "environment.background",
+            "source_refs": [
+              {
+                "source_kind": "workflow_default",
+                "source_id": null,
+                "evidence_ids": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "text": "采用东方玄幻小说角色概念插画表现",
+        "polarity": "positive",
+        "block": "art_direction",
+        "source_bindings": [
+          {
+            "field_path": "art_direction.medium",
+            "source_refs": [
+              {
+                "source_kind": "workflow_default",
+                "source_id": null,
+                "evidence_ids": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "text": "光线为柔和晨光",
+        "polarity": "positive",
+        "block": "art_direction",
+        "source_bindings": [
+          {
+            "field_path": "art_direction.lighting",
+            "source_refs": [
+              {
+                "source_kind": "workflow_default",
+                "source_id": null,
+                "evidence_ids": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "text": "景别为全身",
+        "polarity": "positive",
+        "block": "art_direction",
+        "source_bindings": [
+          {
+            "field_path": "composition.shot",
+            "source_refs": [
+              {
+                "source_kind": "workflow_default",
+                "source_id": null,
+                "evidence_ids": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "text": "文字",
+        "polarity": "negative",
+        "block": "negative",
+        "source_bindings": [
+          {
+            "field_path": "negative_constraints[0]",
+            "source_refs": [
+              {
+                "source_kind": "workflow_default",
+                "source_id": null,
+                "evidence_ids": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "text": "水印",
+        "polarity": "negative",
+        "block": "negative",
+        "source_bindings": [
+          {
+            "field_path": "negative_constraints[1]",
+            "source_refs": [
+              {
+                "source_kind": "workflow_default",
+                "source_id": null,
+                "evidence_ids": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "text": "现代服装",
+        "polarity": "negative",
+        "block": "negative",
+        "source_bindings": [
+          {
+            "field_path": "negative_constraints[2]",
+            "source_refs": [
+              {
+                "source_kind": "workflow_default",
+                "source_id": null,
+                "evidence_ids": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "text": "成年人体型",
+        "polarity": "negative",
+        "block": "negative",
+        "source_bindings": [
+          {
+            "field_path": "negative_constraints[3]",
+            "source_refs": [
+              {
+                "source_kind": "workflow_default",
+                "source_id": null,
+                "evidence_ids": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "text": "夸张肌肉",
+        "polarity": "negative",
+        "block": "negative",
+        "source_bindings": [
+          {
+            "field_path": "negative_constraints[4]",
+            "source_refs": [
+              {
+                "source_kind": "workflow_default",
+                "source_id": null,
+                "evidence_ids": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "text": "肢体畸形",
+        "polarity": "negative",
+        "block": "negative",
+        "source_bindings": [
+          {
+            "field_path": "negative_constraints[5]",
+            "source_refs": [
+              {
+                "source_kind": "workflow_default",
+                "source_id": null,
+                "evidence_ids": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "text": "多余手指",
+        "polarity": "negative",
+        "block": "negative",
+        "source_bindings": [
+          {
+            "field_path": "negative_constraints[6]",
+            "source_refs": [
+              {
+                "source_kind": "workflow_default",
+                "source_id": null,
+                "evidence_ids": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "text": "模糊面部",
+        "polarity": "negative",
+        "block": "negative",
+        "source_bindings": [
+          {
+            "field_path": "negative_constraints[7]",
+            "source_refs": [
+              {
+                "source_kind": "workflow_default",
+                "source_id": null,
+                "evidence_ids": []
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "image_sha256": "b4ce6cb502a51fc62846bc270bf37fac0dae24bba7ace98129dbfcf9c578b236"
+}

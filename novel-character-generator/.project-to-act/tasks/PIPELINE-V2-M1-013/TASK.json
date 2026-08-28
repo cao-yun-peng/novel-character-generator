@@ -1,0 +1,47 @@
+{
+  "id": "PIPELINE-V2-M1-013",
+  "title": "语义流水线 V2 第一阶段：M1 局部观察发现纵向切片",
+  "status": "in_progress",
+  "owner": "Codex",
+  "objective": "实现不接管现有生产主链的 M1 局部观察发现纵向切片，冻结版本化输入输出、严格服务端校验、可复用结构化模型适配、离线/shadow 执行工件，并建立由用户把关的独立效果测试集。",
+  "allowed_paths": [
+    "src/novel_character_generator/application/ports/local_observation.py",
+    "src/novel_character_generator/application/services/local_observation_service.py",
+    "src/novel_character_generator/application/services/local_observation_evaluation_service.py",
+    "src/novel_character_generator/infrastructure/llm/openai_compatible.py",
+    "src/novel_character_generator/infrastructure/llm/entity_resolution.py",
+    "src/novel_character_generator/infrastructure/llm/local_observation.py",
+    "src/novel_character_generator/infrastructure/llm/prompts/01-local-observation-discovery.system.md",
+    "docs/27-semantic-pipeline-v2-contract.md",
+    "docs/28-m1-local-observation-evaluation.md",
+    "docs/README.md",
+    "docs/prompts/semantic-pipeline-v2/01-local-observation-discovery.system.md",
+    "tests/evaluation/m1_local_observation_discovery_v1.json",
+    "tests/unit/test_local_observation_contract.py",
+    "tests/unit/test_local_observation_provider.py",
+    "tests/unit/test_local_observation_evaluation_service.py",
+    "tests/unit/test_entity_resolution_provider.py",
+    "tests/integration/test_local_observation_shadow_slice.py",
+    "scripts/evaluate_m1_local_observation.py",
+    "scripts/run_m1_evaluation.py",
+    "data/diagnostics/m1-local-observation",
+    ".project-to-act"
+  ],
+  "invariants": [
+    "M1 只发现 Chunk 局部实体、原始视觉命题和显式时间/状态信号，不做 canonical 字段、跨 Chunk 身份、人生阶段、持续性或最终激活",
+    "确定性代码只校验 Schema、局部引用、引文、版本、指纹、重复和执行状态，不用关键词规则补写开放语义",
+    "M1 输出不得写入 active Observation，不修改 Worker 默认路由，不改变 V1 Provider 与 Prompt 默认指针",
+    "测试集与评分器只评价 M1 职责，不用 canonical field_path 或最终人物身份反向污染评分",
+    "真实 Provider 仅对用户批准的 M1 测试集运行，不读取其他小说、数据库或 active Observation；不保存密钥或完整 Provider 响应",
+    "旧 V1 代码和测试只有在引用与行为证明已被完整替代后才允许删除"
+  ],
+  "acceptance": [
+    "M1 输入输出 DTO 与设计 v1.1 对齐，extra 字段、非法局部 ID、悬空引用、跨 Chunk 引文和排他双写失败关闭",
+    "OpenAI-compatible 请求、JSON 解码、有限重试与调用元数据可复用，V1 既有行为保持通过",
+    "离线/shadow 服务生成含输入/输出/Prompt/模型配置指纹的不可变决策工件，不产生数据库副作用",
+    "M1 v1 测试集覆盖正例、空结果、多人 owner、否定、不确定/推断、时间/形态信号、非视觉干扰和未决项",
+    "评分器输出逐 case 错误、raw fact recall、unsupported precision、quote/owner/epistemic/temporal 指标，并明确用户审核状态",
+    "定向测试、完整 Pytest、Ruff、Mypy 与项目治理验证通过",
+    "用户已授权当前 M1 测试集首轮真实效果验证；本次仍是开发集基线，不得据此启动 M2 或宣称生产效果通过"
+  ]
+}

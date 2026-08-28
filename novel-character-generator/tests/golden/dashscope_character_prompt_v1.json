@@ -1,0 +1,29 @@
+{
+  "renderer": "canonical-zh",
+  "version": "canonical-zh-character-v1",
+  "positive_prompt": "生成单张角色图；只呈现一个主要角色，严格遵循已声明设定，不添加人物事实。\n角色身份：头发颜色为黑色；发型为短发；肤色为健康的小麦色。\n当前阶段：年龄为五、六岁；年龄阶段为儿童阶段；体型为瘦小。\n服装配饰：穿着朴素的灰色旧布衣。\n动作与表演：身体姿势为安静坐在山石上；视线望向东方晨光。\n场景环境：地点为山顶；时间为黎明；背景为远处群山与薄雾。\n美术与构图：采用东方玄幻小说角色概念插画表现；光线为柔和晨光；景别为全身。",
+  "negative_prompt": "文字，水印，现代服装，成年人体型，多余手指，模糊面部",
+  "source_paths": [
+    "hair.color",
+    "hair.length",
+    "skin.color",
+    "age",
+    "age_stage",
+    "body.build",
+    "clothing.style",
+    "pose.body",
+    "gaze",
+    "environment.location",
+    "environment.time",
+    "environment.background",
+    "art_direction.medium",
+    "art_direction.lighting",
+    "composition.shot",
+    "negative_constraints[0]",
+    "negative_constraints[1]",
+    "negative_constraints[2]",
+    "negative_constraints[3]",
+    "negative_constraints[4]",
+    "negative_constraints[5]"
+  ]
+}

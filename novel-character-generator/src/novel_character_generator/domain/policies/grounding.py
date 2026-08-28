@@ -1,11 +1,14 @@
 import hashlib
 import json
-import re
 from dataclasses import dataclass
 from typing import Any, Literal
 
 GroundingStatus = Literal["exact", "fuzzy", "ungrounded"]
-EvidenceLocationStatus = Literal["exact", "normalized", "ambiguous", "not_found"]
+EvidenceLocationStatus = Literal["exact", "normalized", "repaired", "ambiguous", "not_found"]
+EvidenceRepairKind = Literal["whitespace_or_punctuation", "single_character_omission"]
+
+_NARROW_OMISSION_CHARACTERS = frozenset("一的地得了着之其所而于有在")
+_IGNORABLE_PUNCTUATION = frozenset(",，、:：'‘’\"“”（）()【】[]《》<>—-…")
 
 
 @dataclass(frozen=True)
@@ -15,6 +18,7 @@ class EvidenceLocation:
     end: int | None = None
     source_quote: str | None = None
     occurrence_count: int = 0
+    repair_kind: EvidenceRepairKind | None = None
 
 
 def _occurrences(text: str, quote: str) -> list[tuple[int, int]]:
@@ -56,15 +60,32 @@ def _nearest_unique_match(
     return ranked[0][1]
 
 
-def _collapsed_whitespace(value: str) -> tuple[str, list[int]]:
+def _collapsed_surface(value: str) -> tuple[str, list[int]]:
     normalized: list[str] = []
     source_indices: list[int] = []
     for index, character in enumerate(value):
-        if character.isspace():
+        if character.isspace() or character in _IGNORABLE_PUNCTUATION:
             continue
         normalized.append(character)
         source_indices.append(index)
     return "".join(normalized), source_indices
+
+
+def _narrow_omission_matches(text: str, quote: str) -> list[tuple[int, int]]:
+    """Find spans where the provider omitted exactly one low-information character."""
+
+    window_size = len(quote) + 1
+    if not quote or window_size > len(text):
+        return []
+    matches: set[tuple[int, int]] = set()
+    for start in range(0, len(text) - window_size + 1):
+        window = text[start : start + window_size]
+        for omitted_index, omitted_character in enumerate(window):
+            if omitted_character not in _NARROW_OMISSION_CHARACTERS:
+                continue
+            if window[:omitted_index] + window[omitted_index + 1 :] == quote:
+                matches.add((start, start + window_size))
+    return sorted(matches)
 
 
 def locate_evidence_span(
@@ -77,7 +98,9 @@ def locate_evidence_span(
 
     Exact unique matches are preferred. Repeated quotes may be disambiguated only
     when one occurrence is uniquely nearest to an entity anchor. The sole tolerant
-    fallback ignores whitespace while preserving a mapping to the original source.
+    First fallback ignores whitespace and punctuation while preserving a mapping to the original
+    source. The final fallback repairs one omitted low-information character only when the source
+    span is unique. Semantic substitutions and ambiguous repairs remain rejected.
     """
 
     if not quote.strip():
@@ -94,18 +117,46 @@ def locate_evidence_span(
             return EvidenceLocation("exact", start, end, text[start:end], len(matches))
         return EvidenceLocation(status="ambiguous", occurrence_count=len(matches))
 
-    normalized_text, source_indices = _collapsed_whitespace(text)
-    normalized_quote = re.sub(r"\s+", "", quote)
+    normalized_text, source_indices = _collapsed_surface(text)
+    normalized_quote, _ = _collapsed_surface(quote)
+    if not normalized_quote:
+        return EvidenceLocation(status="not_found")
     normalized_matches = _occurrences(normalized_text, normalized_quote)
-    if len(normalized_matches) != 1 or not source_indices:
+    if len(normalized_matches) > 1:
         return EvidenceLocation(
-            status="ambiguous" if len(normalized_matches) > 1 else "not_found",
+            status="ambiguous",
             occurrence_count=len(normalized_matches),
         )
-    normalized_start, normalized_end = normalized_matches[0]
-    start = source_indices[normalized_start]
-    end = source_indices[normalized_end - 1] + 1
-    return EvidenceLocation("normalized", start, end, text[start:end], 1)
+    if len(normalized_matches) == 1 and source_indices:
+        normalized_start, normalized_end = normalized_matches[0]
+        start = source_indices[normalized_start]
+        end = source_indices[normalized_end - 1] + 1
+        return EvidenceLocation(
+            "normalized",
+            start,
+            end,
+            text[start:end],
+            1,
+            "whitespace_or_punctuation",
+        )
+
+    repaired_matches = _narrow_omission_matches(normalized_text, normalized_quote)
+    if len(repaired_matches) != 1 or not source_indices:
+        return EvidenceLocation(
+            status="ambiguous" if len(repaired_matches) > 1 else "not_found",
+            occurrence_count=len(repaired_matches),
+        )
+    repaired_start, repaired_end = repaired_matches[0]
+    start = source_indices[repaired_start]
+    end = source_indices[repaired_end - 1] + 1
+    return EvidenceLocation(
+        "repaired",
+        start,
+        end,
+        text[start:end],
+        1,
+        "single_character_omission",
+    )
 
 
 def validate_evidence(text: str, quote: str, start: int, end: int) -> GroundingStatus:

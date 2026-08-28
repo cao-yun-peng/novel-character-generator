@@ -1,0 +1,35 @@
+{
+  "id": "R6-IMAGE-SPEC-008",
+  "title": "按期望角色字段实现 Provider 中立生图规格纵向切片",
+  "status": "done",
+  "owner": "Codex",
+  "objective": "在不依赖 R1-R3 当前真实质量 Gate 的前提下，以冻结的期望字段契约构建 SceneRenderBrief、RenderReadinessReport 和 ImageRenderSpec，并让 Mock 生图链路只消费可审计的中立规格。",
+  "allowed_paths": [
+    "src/novel_character_generator/domain/entities/image.py",
+    "src/novel_character_generator/domain/policies/image_rendering.py",
+    "src/novel_character_generator/application/ports/image_generation.py",
+    "src/novel_character_generator/application/services/generation_context_service.py",
+    "src/novel_character_generator/workers/handlers/image_generation.py",
+    "src/novel_character_generator/api/routes/image_generation.py",
+    "tests/unit/domain/test_image_rendering.py",
+    "tests/integration/test_image_generation_pipeline.py",
+    "docs",
+    ".project-to-act"
+  ],
+  "invariants": [
+    "原著事实、人工场景指令、美术指令和 Provider 参数必须分层",
+    "编译器不得从职业、身份、性格或缺失字段推断新人物事实",
+    "同一规范输入必须产生稳定 spec_hash 和 context_hash",
+    "Provider 只接收 ImageRenderSpec，不接收可变业务表或未分层原始上下文",
+    "默认概念模式保持现有 Mock API 兼容；更高就绪度模式失败关闭",
+    "不接真实收费 Provider，不宣称视觉质量或 R1-R3 质量 Gate 通过",
+    "不读取或记录 .env 内容"
+  ],
+  "acceptance": [
+    "期望字段可确定性映射到 identity/stage/outfit/performance/environment/art_direction/negative 块",
+    "未知场景字段和越层 character overrides 被拒绝",
+    "三档就绪度和模式门禁具有正反例",
+    "Mock 提交、恢复、Artifact 落库和幂等回归保持通过",
+    "Ruff、Mypy 与相关 Pytest 退出 0"
+  ]
+}

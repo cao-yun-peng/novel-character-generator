@@ -19,7 +19,7 @@ from novel_character_generator.infrastructure.db.session import session_factory
 from novel_character_generator.infrastructure.embedding.openai_compatible import (
     OpenAICompatibleEmbeddingProvider,
 )
-from novel_character_generator.infrastructure.image.mock import MockImageProvider
+from novel_character_generator.infrastructure.image.registry import create_image_provider
 from novel_character_generator.infrastructure.llm.entity_resolution import (
     OpenAICompatibleEntityResolutionProvider,
 )
@@ -326,17 +326,20 @@ async def run_once(run_id: UUID, *, step_key: str | None = None) -> None:
             "poll_image",
             "persist_image",
         }:
-            if settings.image_provider != "mock":
-                raise RuntimeError("image_generation_provider_required")
-            await process_image_generation_run(
-                session,
-                LocalArtifactStore(settings.artifact_local_root),
-                MockImageProvider(),
-                run_id,
-                workflow_profile=settings.image_workflow_profile,
-                workflow_version=settings.image_workflow_version,
-                max_attempts=settings.max_task_attempts,
-            )
+            provider = create_image_provider(settings)
+            try:
+                await process_image_generation_run(
+                    session,
+                    LocalArtifactStore(settings.artifact_local_root),
+                    provider,
+                    run_id,
+                    workflow_profile=settings.image_workflow_profile,
+                    workflow_version=settings.image_workflow_version,
+                    max_attempts=settings.max_task_attempts,
+                    poll_interval_seconds=settings.image_poll_interval_seconds,
+                )
+            finally:
+                await provider.close()
         else:
             raise ValueError("unsupported_step_key")
 

@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import asyncio
 import json
 from typing import Literal, TypeVar
 
@@ -16,13 +15,13 @@ from novel_character_generator.application.ports.entity_resolution import (
 )
 from novel_character_generator.domain.policies.text_processing import estimate_tokens
 from novel_character_generator.infrastructure.llm.openai_compatible import (
+    OpenAICompatibleStructuredClient,
     ProviderExtractionError,
-    _provider_response_parts,
-    _token_usage,
+    RawProviderExtraction,
     decode_provider_json,
 )
 
-ENTITY_RESOLUTION_PROMPT_VERSION = "entity-resolution-prompt-v1.4"
+ENTITY_RESOLUTION_PROMPT_VERSION = "entity-resolution-prompt-v1.5"
 
 RESOLUTION_SYSTEM_PROMPT = (
     "You resolve novel character identity from grounded chapter-local mentions. "
@@ -32,10 +31,11 @@ RESOLUTION_SYSTEM_PROMPT = (
     "must never become a global alias merely because the same words recur. Use explicit naming, "
     "explicit alias statements, narrative continuity, and relationship continuity as primary "
     "identity evidence. Visual similarity is weak supporting evidence and cannot by itself prove "
-    "identity. An explicit proper name must never be linked to a memory carrying a different "
-    "explicit proper name; keep it unresolved unless the names are exactly the same. Titles, "
-    "kinship terms, disguises, and nicknames do not count as explicit proper names for this hard "
-    "rule. The cumulative memory contains all earlier chapters, not only the previous one. "
+    "identity. Only mention_kind=explicit_name counts as an explicit proper name. descriptor, "
+    "pronoun, and unknown mentions never enter explicit_names. An explicit proper name must never "
+    "be linked to a memory carrying a different explicit proper name; keep it unresolved unless "
+    "the names are exactly the same. The cumulative memory contains all earlier chapters, not "
+    "only the previous one. "
     "related_mention_ids must be an exact subset of IDs copied from cumulative_memory[*]."
     "mention_ids. Never put the current decision mention_id, a local_entity_id, a name, or an "
     "invented ID in related_mention_ids; use an empty list when no historical mention is needed. "
@@ -89,17 +89,11 @@ class OpenAICompatibleEntityResolutionProvider:
         transport: httpx.AsyncBaseTransport | None = None,
     ) -> None:
         self.provider = provider
-        self.base_url = base_url.rstrip("/") + "/"
-        self.api_key = api_key
         self.model = model
-        self.timeout_seconds = timeout_seconds
         self.wire_api = wire_api
         self.thinking_enabled = thinking_enabled
         self.reasoning_effort = reasoning_effort
         self.max_output_tokens = max_output_tokens
-        self.total_deadline_seconds = total_deadline_seconds
-        self.max_retries = max_retries
-        self.transport = transport
         self.last_call_metadata: dict[str, object] | None = None
         self.last_raw_response: object | None = None
         self.last_raw_message_content: object | None = None
@@ -115,6 +109,15 @@ class OpenAICompatibleEntityResolutionProvider:
         self.version = (
             f"{provider}:{model}:{ENTITY_RESOLUTION_SCHEMA_VERSION}:"
             f"{ENTITY_RESOLUTION_PROMPT_VERSION}"
+        )
+        self._structured_client = OpenAICompatibleStructuredClient(
+            base_url=base_url,
+            api_key=api_key,
+            timeout_seconds=timeout_seconds,
+            wire_api=wire_api,
+            total_deadline_seconds=total_deadline_seconds,
+            max_retries=max_retries,
+            transport=transport,
         )
 
     def _body(self, prompt: str, payload: BaseModel, output: type[T]) -> dict[str, object]:
@@ -152,67 +155,48 @@ class OpenAICompatibleEntityResolutionProvider:
             "reasoning_effort": self.reasoning_effort,
         }
 
-    async def _call(self, prompt: str, payload: BaseModel, output: type[T]) -> T:
-        attempts = 0
-        last_error: ProviderExtractionError | None = None
+    def _validate_raw(self, raw: RawProviderExtraction, output: type[T]) -> T:
         try:
-            async with asyncio.timeout(self.total_deadline_seconds):
-                async with httpx.AsyncClient(
-                    base_url=self.base_url,
-                    headers={"Authorization": f"Bearer {self.api_key}"},
-                    timeout=self.timeout_seconds,
-                    transport=self.transport,
-                ) as client:
-                    while attempts <= self.max_retries:
-                        attempts += 1
-                        try:
-                            endpoint = (
-                                "responses" if self.wire_api == "responses" else "chat/completions"
-                            )
-                            response = await client.post(
-                                endpoint, json=self._body(prompt, payload, output)
-                            )
-                            response.raise_for_status()
-                            raw = response.json()
-                            content, _, _ = _provider_response_parts(raw, wire_api=self.wire_api)
-                            self.last_raw_response = raw
-                            self.last_raw_message_content = content
-                            raw_mapping = raw if isinstance(raw, dict) else {}
-                            self.last_call_metadata = {
-                                "wire_api": self.wire_api,
-                                "provider_request_id": (
-                                    response.headers.get("x-request-id") or raw_mapping.get("id")
-                                ),
-                                "response_model": raw_mapping.get("model"),
-                                "attempts": attempts,
-                                "usage": _token_usage(raw_mapping).model_dump(mode="json"),
-                            }
-                            return output.model_validate(decode_provider_json(content))
-                        except httpx.HTTPStatusError as error:
-                            status = error.response.status_code
-                            last_error = ProviderExtractionError(
-                                f"entity_provider_http_{status}",
-                                retryable=status in {408, 409, 429} or status >= 500,
-                                attempts=attempts,
-                            )
-                        except (httpx.TransportError, ValueError, ValidationError) as error:
-                            last_error = ProviderExtractionError(
-                                "entity_provider_invalid_response",
-                                retryable=True,
-                                attempts=attempts,
-                            )
-                            last_error.__cause__ = error
-                        if not last_error.retryable or attempts > self.max_retries:
-                            raise last_error
-        except TimeoutError as error:
+            return output.model_validate(decode_provider_json(raw.message_content))
+        except (ValueError, ValidationError) as error:
             raise ProviderExtractionError(
-                "entity_provider_total_deadline_exceeded",
+                "entity_provider_invalid_response",
                 retryable=True,
-                attempts=max(attempts, 1),
             ) from error
-        if last_error is not None:
-            raise last_error
-        raise ProviderExtractionError("entity_provider_failed", retryable=False)
+
+    async def _call(self, prompt: str, payload: BaseModel, output: type[T]) -> T:
+        try:
+            validated = await self._structured_client.request_validated(
+                self._body(prompt, payload, output),
+                lambda raw: self._validate_raw(raw, output),
+            )
+        except ProviderExtractionError as error:
+            code = error.code
+            if code.startswith("provider_http_"):
+                code = f"entity_{code}"
+            elif code == "provider_transport_error":
+                code = "entity_provider_invalid_response"
+            elif code == "provider_total_deadline_exceeded":
+                code = "entity_provider_total_deadline_exceeded"
+            if code == error.code:
+                raise
+            raise ProviderExtractionError(
+                code,
+                retryable=error.retryable,
+                attempts=error.attempts,
+            ) from error
+
+        self.last_raw_response = validated.raw.response_payload
+        self.last_raw_message_content = validated.raw.message_content
+        metadata = validated.raw.metadata
+        self.last_call_metadata = {
+            "wire_api": metadata.wire_api,
+            "provider_request_id": metadata.provider_request_id,
+            "response_model": metadata.response_model,
+            "attempts": metadata.attempts,
+            "usage": metadata.usage.model_dump(mode="json"),
+        }
+        return validated.output
 
     async def resolve_chunk(self, request: EntityResolutionInput) -> EntityResolutionResult:
         return await self._call(RESOLUTION_SYSTEM_PROMPT, request, EntityResolutionResult)

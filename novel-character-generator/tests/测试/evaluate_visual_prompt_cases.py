@@ -14,6 +14,7 @@ if str(PROJECT_ROOT) not in sys.path:
 
 from novel_character_generator.application.ports.extraction import (  # noqa: E402
     GroundedVisualExtractionResult,
+    VisualCandidateExtractionResult,
 )
 from novel_character_generator.application.services.extraction_evaluation_service import (  # noqa: E402
     evaluate_extraction_case,
@@ -21,13 +22,14 @@ from novel_character_generator.application.services.extraction_evaluation_servic
 )
 from novel_character_generator.application.services.visual_candidate_adapter import (  # noqa: E402
     adapt_visual_candidates,
+    ground_visual_candidates,
 )
 from novel_character_generator.infrastructure.llm.openai_compatible import (  # noqa: E402
     OpenAICompatibleExtractionProvider,
 )
 from novel_character_generator.workers.main import extraction_provider  # noqa: E402
 
-DEFAULT_DATASET = PROJECT_ROOT / "tests" / "evaluation" / "visual_extraction_seed_v0.json"
+DEFAULT_DATASET = PROJECT_ROOT / "tests" / "evaluation" / "visual_extraction_seed_v1.json"
 
 
 def _case_ids(value: str) -> list[str]:
@@ -71,13 +73,20 @@ async def evaluate_cases(
             candidates = await provider.extract_chunk(case.text)
             metadata = {"provider": "mock"}
         grounded = adapt_visual_candidates(case.text, candidates)
-        score = evaluate_extraction_case(case, grounded)
+        packet = ground_visual_candidates(case.text, candidates, mention_id_prefix=case.id)
+        score = evaluate_extraction_case(
+            case,
+            grounded,
+            candidates=candidates,
+            packet=packet,
+        )
         status_counts[score.status] += 1
         records.append(
             {
                 "case": case.model_dump(mode="json"),
                 "provider_metadata": metadata,
                 "visual_candidates": candidates.model_dump(mode="json"),
+                "grounded_candidate_packet": packet.model_dump(mode="json"),
                 "grounded_visual_result": grounded.model_dump(mode="json"),
                 "score": score.model_dump(mode="json"),
             }
@@ -123,7 +132,27 @@ def rescore_report(dataset_path: Path, report_path: Path, output: Path) -> None:
         grounded = GroundedVisualExtractionResult.model_validate(
             raw_record.get("grounded_visual_result")
         )
-        score = evaluate_extraction_case(by_id[case_id], grounded)
+        raw_candidates = raw_record.get("visual_candidates")
+        candidates = (
+            VisualCandidateExtractionResult.model_validate(raw_candidates)
+            if raw_candidates is not None
+            else None
+        )
+        packet = (
+            ground_visual_candidates(
+                by_id[case_id].text,
+                candidates,
+                mention_id_prefix=case_id,
+            )
+            if candidates is not None
+            else None
+        )
+        score = evaluate_extraction_case(
+            by_id[case_id],
+            grounded,
+            candidates=candidates,
+            packet=packet,
+        )
         status_counts[score.status] += 1
         records.append(
             {

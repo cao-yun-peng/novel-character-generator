@@ -1,0 +1,9 @@
+{
+  "task_id": "R1-BASELINE-005",
+  "created_at": "2026-08-27T00:00:00+08:00",
+  "project_stage": 5,
+  "lifecycle_revision": 1,
+  "baseline_dataset": "r1-quality-regression-baseline:v1",
+  "production_contract": "visual-observation-v3.2 unchanged",
+  "separate_follow_up": "R2 identity-resolution baseline is handled in a separate Codex task"
+}

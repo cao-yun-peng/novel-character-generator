@@ -1,0 +1,160 @@
+{
+  "name": "r1-prompt-ab-real-novel-samples",
+  "version": "1.1",
+  "chunk_tokens": 1000,
+  "samples": [
+    {
+      "id": "doupo-chunk-3-name-clothing-skin",
+      "source": "tests/测试/斗破苍穹前四章.txt",
+      "chunk_ordinal": 3,
+      "focus": ["explicit-name", "compound-clothing", "skin", "rank-not-age"],
+      "annotation_status": "audited-slice-v1.1",
+      "gold": {
+        "required_observations": [
+          {"character_name": "萧薰儿", "field_path": "clothing.type", "value": "衣袖", "accepted_values": ["紫袖", "袖"], "evidence_quote": "镶着黑金丝的紫袖"},
+          {"character_name": "萧薰儿", "field_path": "clothing.color", "value": "紫色衣袖", "accepted_values": ["紫色", "紫袖"], "evidence_quote": "镶着黑金丝的紫袖", "accepted_evidence_quotes": ["紫袖"]},
+          {"character_name": "萧薰儿", "field_path": "skin.color", "value": "雪白", "accepted_values": ["雪白娇嫩"], "evidence_quote": "雪白娇嫩的皓腕"},
+          {"character_name": "萧薰儿", "field_path": "age", "value": "十四岁", "evidence_quote": "十四岁年龄", "accepted_evidence_quotes": ["十四岁"]}
+        ],
+        "forbidden_observations": [
+          {"field_path": "age", "values": ["九段", "斗之气九段"], "reason": "cultivation_rank_is_not_age"}
+        ],
+        "expected_mentions": [
+          {"surface": "萧薰儿", "mention_kind": "explicit_name"}
+        ],
+        "expected_temporal_signals": [
+          {"kind": "age", "label": "十四岁", "accepted_labels": ["十四岁年龄"], "evidence_quote": "十四岁年龄", "accepted_evidence_quotes": ["十四岁", "以十四岁年龄"], "character_name": "萧薰儿"}
+        ],
+        "allow_unlisted_observations": true,
+        "allow_unlisted_deferred": true,
+        "allow_unlisted_temporal_signals": true
+      }
+    },
+    {
+      "id": "doupo-chunk-4-local-coreference",
+      "source": "tests/测试/斗破苍穹前四章.txt",
+      "chunk_ordinal": 4,
+      "focus": ["local-pronoun-coreference", "descriptor", "aesthetic-boundary"],
+      "annotation_status": "audited-slice-v1.1",
+      "gold": {
+        "required_observations": [
+          {"character_name": "萧薰儿", "field_path": "face.eyebrows", "value": "纤细", "accepted_values": ["纤细的眉毛"], "evidence_quote": "纤细的眉毛"},
+          {"character_name": "萧薰儿", "field_path": "face.complexion", "value": "白皙", "accepted_values": ["白皙的俏脸"], "evidence_quote": "少女白皙的俏脸", "accepted_evidence_quotes": ["白皙的俏脸"]}
+        ],
+        "allowed_observations": [
+          {"character_name": "萧薰儿", "field_path": "face.complexion", "value": "淡淡的绯红", "accepted_values": ["绯红"], "evidence_quote": "露出淡淡的绯红", "accepted_evidence_quotes": ["淡淡的绯红"]}
+        ],
+        "forbidden_observations": [
+          {"character_name": "萧薰儿", "field_path": "face.description", "values": ["吸引人", "很吸引人"], "reason": "reported_attractiveness_is_not_stable_face_fact"}
+        ],
+        "expected_mentions": [
+          {"surface": "萧薰儿", "mention_kind": "explicit_name"}
+        ],
+        "allow_unlisted_observations": true,
+        "allow_unlisted_deferred": true,
+        "allow_unlisted_temporal_signals": true
+      }
+    },
+    {
+      "id": "doupo-chunk-10-multiple-people",
+      "source": "tests/测试/斗破苍穹前四章.txt",
+      "chunk_ordinal": 10,
+      "focus": ["multiple-entities", "explicit-age", "clothing-owner", "subjective-attractiveness"],
+      "annotation_status": "audited-slice-v1.1",
+      "gold": {
+        "required_observations": [
+          {"character_name": "男子", "accepted_character_names": ["青年"], "field_path": "age", "value": "二十岁左右", "accepted_values": ["二十左右"], "evidence_quote": "男子年龄在二十左右", "accepted_evidence_quotes": ["二十左右"]},
+          {"character_name": "男子", "accepted_character_names": ["青年"], "field_path": "body.build", "value": "挺拔", "accepted_values": ["挺拔的身材"], "evidence_quote": "挺拔的身材"},
+          {"character_name": "少女", "field_path": "age", "value": "和萧炎相仿", "accepted_values": ["相仿", "年纪和萧炎相仿", "年龄和萧炎相仿"], "evidence_quote": "少女年龄和萧炎相仿"},
+          {"character_name": "少女", "field_path": "accessories.earrings", "value": "绿色玉坠", "accepted_values": ["娇嫩耳垂上吊着绿色玉坠", "娇嫩的耳垂上吊有着绿色的玉坠"], "evidence_quote": "绿色的玉坠", "accepted_evidence_quotes": ["少女娇嫩的耳垂上吊有着绿色的玉坠"]},
+          {"character_name": "少女", "field_path": "accessories.insignia", "value": "三颗金星", "evidence_quote": "绘有三颗金星"}
+        ],
+        "forbidden_observations": [
+          {"character_name": "少女", "field_path": "face.description", "values": ["美丽", "冷艳", "娇贵"], "reason": "subjective_attractiveness_is_not_stable_face_fact"}
+        ],
+        "expected_mentions": [
+          {"surface": "老者", "mention_kind": "descriptor"},
+          {"surface": "男子", "accepted_surfaces": ["青年"], "mention_kind": "descriptor"},
+          {"surface": "少女", "mention_kind": "descriptor"}
+        ],
+        "expected_temporal_signals": [
+          {"kind": "age", "label": "二十岁左右", "accepted_labels": ["二十左右"], "evidence_quote": "男子年龄在二十左右", "accepted_evidence_quotes": ["二十左右"], "character_name": "男子", "accepted_character_names": ["青年"]},
+          {"kind": "age", "label": "和萧炎相仿", "accepted_labels": ["相仿", "年纪和萧炎相仿", "年龄和萧炎相仿"], "evidence_quote": "少女年龄和萧炎相仿", "accepted_evidence_quotes": ["年纪和萧炎相仿", "和萧炎相仿"], "character_name": "少女"}
+        ],
+        "allow_unlisted_observations": true,
+        "allow_unlisted_deferred": true,
+        "allow_unlisted_temporal_signals": true
+      }
+    },
+    {
+      "id": "doupo-chunk-12-held-book",
+      "source": "tests/测试/斗破苍穹前四章.txt",
+      "chunk_ordinal": 12,
+      "focus": ["descriptor", "held-book-not-clothing", "adjacent-people"],
+      "annotation_status": "audited-slice-v1.1",
+      "gold": {
+        "required_observations": [
+          {"character_name": "熏儿", "field_path": "body.hands", "value": "纤细", "accepted_values": ["纤指", "纤细指尖"], "evidence_quote": "纤指再次翻开古朴的书页", "accepted_evidence_quotes": ["纤细指尖"]}
+        ],
+        "forbidden_observations": [
+          {"character_name": "熏儿", "field_path": "clothing.type", "values": ["书", "书籍", "书页"], "reason": "held_book_is_not_clothing"},
+          {"character_name": "熏儿", "field_path": "accessories.book", "reason": "held_book_is_not_worn_accessory"},
+          {"character_name": "熏儿", "field_path": "accessories.other", "values": ["书", "书籍", "书页"], "reason": "held_book_is_not_worn_accessory"}
+        ],
+        "expected_mentions": [
+          {"surface": "熏儿", "mention_kind": "explicit_name"}
+        ],
+        "allow_unlisted_observations": true,
+        "allow_unlisted_deferred": true,
+        "allow_unlisted_temporal_signals": true
+      }
+    },
+    {
+      "id": "douluo-chunk-4-estimated-age",
+      "source": "tests/测试/第2章 斗罗大陆，异界唐三（一）.txt",
+      "chunk_ordinal": 4,
+      "focus": ["appearance-estimated-age", "explicit-name", "multiple-people"],
+      "annotation_status": "audited-slice-v1.1",
+      "gold": {
+        "required_observations": [
+          {"character_name": "唐昊", "field_path": "face.complexion", "value": "暗黄", "accepted_values": ["暗黄的脸色"], "evidence_quote": "暗黄的脸色"},
+          {"character_name": "唐昊", "field_path": "face.eyes", "value": "眼皮耷拉", "accepted_values": ["耷拉的眼皮"], "evidence_quote": "耷拉的眼皮"}
+        ],
+        "forbidden_observations": [
+          {"character_name": "唐昊", "field_path": "age", "reason": "appearance_estimate_is_not_asserted_age"},
+          {"character_name": "唐昊", "field_path": "age_stage", "reason": "appearance_estimate_is_not_asserted_age_stage"}
+        ],
+        "expected_mentions": [
+          {"surface": "唐昊", "mention_kind": "explicit_name"}
+        ],
+        "expected_deferred_items": [
+          {"reason_code": "inferred_visual_fact", "evidence_quote": "唐昊看起来却要比他们苍老的多，反倒像是唐三的爷爷一般", "accepted_evidence_quotes": ["看起来却要比他们苍老的多", "反倒像是唐三的爷爷一般"]}
+        ],
+        "allow_unlisted_observations": true,
+        "allow_unlisted_deferred": true,
+        "allow_unlisted_temporal_signals": true
+      }
+    },
+    {
+      "id": "shuihu-chunk-5-descriptor-dialogue",
+      "source": "tests/测试/水浒传前两章.txt",
+      "chunk_ordinal": 5,
+      "focus": ["descriptor", "dialogue", "held-object-not-accessory"],
+      "annotation_status": "audited-slice-v1.1",
+      "gold": {
+        "required_observations": [],
+        "forbidden_observations": [
+          {"field_path": "accessories.other", "values": ["铁笛", "笛"], "reason": "held_instrument_is_not_worn_accessory"},
+          {"field_path": "clothing.type", "values": ["铁笛", "笛"], "reason": "held_instrument_is_not_clothing"},
+          {"field_path": "face.expression", "reason": "transient_expression_is_outside_r1_character_fact"}
+        ],
+        "expected_mentions": [
+          {"surface": "道童", "mention_kind": "descriptor"}
+        ],
+        "allow_unlisted_observations": true,
+        "allow_unlisted_deferred": true,
+        "allow_unlisted_temporal_signals": true
+      }
+    }
+  ]
+}

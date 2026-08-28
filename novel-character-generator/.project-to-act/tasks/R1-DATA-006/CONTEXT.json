@@ -1,0 +1,13 @@
+{
+  "task_id": "R1-DATA-006",
+  "created_at": "2026-08-27T00:00:00+08:00",
+  "project_stage": 5,
+  "lifecycle_revision": 1,
+  "extraction_schema_from": "visual-observation-v3.2",
+  "extraction_schema_to": "visual-observation-v3.3",
+  "extraction_prompt_from": "visual-extraction-prompt-v2.4",
+  "extraction_prompt_to": "visual-extraction-prompt-v2.5",
+  "entity_boundary_from": "character-entity-resolution-v1/entity-resolution-prompt-v1.4",
+  "entity_boundary_to": "character-entity-resolution-v1.1/entity-resolution-prompt-v1.5",
+  "database_migration": false
+}

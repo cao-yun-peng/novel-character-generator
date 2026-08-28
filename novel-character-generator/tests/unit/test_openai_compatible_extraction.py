@@ -7,6 +7,8 @@ import pytest
 from novel_character_generator.infrastructure.llm.openai_compatible import (
     EXTRACTION_PROMPT_VERSION,
     EXTRACTION_SYSTEM_PROMPT,
+    EXTRACTION_SYSTEM_PROMPT_V2_5,
+    EXTRACTION_SYSTEM_PROMPT_V2_6,
     OpenAICompatibleExtractionProvider,
     ProviderExtractionError,
     build_chunk_extraction_request,
@@ -16,7 +18,11 @@ from novel_character_generator.infrastructure.llm.openai_compatible import (
 
 
 def test_chunk_request_builder_matches_production_contract_without_credentials() -> None:
-    body = build_chunk_extraction_request("沈砚黑发", model="model-v1")
+    body = build_chunk_extraction_request(
+        "沈砚黑发",
+        model="model-v1",
+        system_prompt=EXTRACTION_SYSTEM_PROMPT_V2_6,
+    )
 
     assert body["model"] == "model-v1"
     assert body["response_format"] == {"type": "json_object"}
@@ -29,37 +35,46 @@ def test_chunk_request_builder_matches_production_contract_without_credentials()
     assert "distinctive_marks.beard" in body["messages"][0]["content"]
     assert "face.eyes" in body["messages"][0]["content"]
     assert "Never invent roots such as eyes.* or facial_hair.*" in body["messages"][0]["content"]
-    assert "An age estimated from appearance is inferred" in body["messages"][0]["content"]
-    assert "do not infer it from damaged clothing" in body["messages"][0]["content"]
-    assert "choose a field from the fact's semantic dimension" in body["messages"][0]["content"]
-    assert "unsupported_visual_field instead of forcing" in body["messages"][0]["content"]
-    assert "face.eye_color is eye or iris color" in body["messages"][0]["content"]
+    assert "Appearance-based age estimates are inferred" in body["messages"][0]["content"]
+    assert "damaged clothing, messy hair" in body["messages"][0]["content"]
+    assert "MAP EACH FACT TO ITS SEMANTIC FIELD" in body["messages"][0]["content"]
+    assert "unsupported_visual_field" in body["messages"][0]["content"]
+    assert "face.eye_color is eye/iris color" in body["messages"][0]["content"]
     assert "belong to clothing.coverage" in body["messages"][0]["content"]
-    assert "never substitute one mark type for another" in body["messages"][0]["content"]
-    assert (
-        "Split compound outfit descriptions into separate facts" in body["messages"][0]["content"]
-    )
-    assert "distribute a shared explicit attribute" in body["messages"][0]["content"]
-    assert "shortest continuous verbatim span" in body["messages"][0]["content"]
-    assert "preserve every explicit visual modifier" in body["messages"][0]["content"]
-    assert "same language as the source text" in body["messages"][0]["content"]
-    assert "not as a comma-separated attribute tuple" in body["messages"][0]["content"]
-    assert "must be omitted, not deferred" in body["messages"][0]["content"]
+    assert "Never substitute one mark type for another" in body["messages"][0]["content"]
+    assert "Split every explicit garment kind" in body["messages"][0]["content"]
+    assert "shared modifier must be distributed" in body["messages"][0]["content"]
+    assert "shortest continuous span" in body["messages"][0]["content"]
+    assert "preserving explicit location" in body["messages"][0]["content"]
+    assert "source-language semantic value" in body["messages"][0]["content"]
+    assert "comma-separated attribute tuple" in body["messages"][0]["content"]
+    assert "meta-statement" in body["messages"][0]["content"]
     assert "api_key" not in json.dumps(body)
 
 
 def test_visual_prompt_rules_are_generic_and_do_not_embed_evaluation_examples() -> None:
-    assert EXTRACTION_PROMPT_VERSION == "visual-extraction-prompt-v2.4"
-    assert "directly narrated overall visible facial appearance" in EXTRACTION_SYSTEM_PROMPT
-    assert "opinions or reports about beauty" in EXTRACTION_SYSTEM_PROMPT
-    assert "one candidate per entity and semantic dimension" in EXTRACTION_SYSTEM_PROMPT
-    assert "ranks, levels, cultivation tiers, grades" in EXTRACTION_SYSTEM_PROMPT
-    assert "powered forms, disguise activation" in EXTRACTION_SYSTEM_PROMPT
-    assert "Do not invent a novel-specific field" in EXTRACTION_SYSTEM_PROMPT
-    assert "do not attach it to unchanged age" in EXTRACTION_SYSTEM_PROMPT
-    assert "沈砚" not in EXTRACTION_SYSTEM_PROMPT
-    assert "顾川" not in EXTRACTION_SYSTEM_PROMPT
-    assert "梁策" not in EXTRACTION_SYSTEM_PROMPT
+    assert EXTRACTION_PROMPT_VERSION == "visual-extraction-prompt-v2.5"
+    assert EXTRACTION_SYSTEM_PROMPT == EXTRACTION_SYSTEM_PROMPT_V2_5
+    assert "explicit_name: only an explicit proper name" in EXTRACTION_SYSTEM_PROMPT_V2_6
+    assert "is never explicit_name" in EXTRACTION_SYSTEM_PROMPT_V2_6
+    assert "weapons, medicines, tools" in EXTRACTION_SYSTEM_PROMPT_V2_6
+    assert "emit nested age.*" in EXTRACTION_SYSTEM_PROMPT_V2_6
+    assert "physically visible overall face" in EXTRACTION_SYSTEM_PROMPT_V2_6
+    assert "beauty, charm, desirability" in EXTRACTION_SYSTEM_PROMPT_V2_6
+    assert "one candidate per independently renderable fact" in EXTRACTION_SYSTEM_PROMPT_V2_6
+    assert "Multiple candidates may use the same field_path" in EXTRACTION_SYSTEM_PROMPT_V2_6
+    assert "cultivation tiers" in EXTRACTION_SYSTEM_PROMPT_V2_6
+    assert "powered forms, disguise activation" in EXTRACTION_SYSTEM_PROMPT_V2_6
+    assert "novel-specific/non-visual field" in EXTRACTION_SYSTEM_PROMPT_V2_6
+    assert "Do not attach it to unchanged age" in EXTRACTION_SYSTEM_PROMPT_V2_6
+    assert "never implies identity across chunks" in EXTRACTION_SYSTEM_PROMPT_V2_6
+    assert "unknown is not a container for ambiguous ownership" in EXTRACTION_SYSTEM_PROMPT_V2_6
+    assert "inferred_visual_fact" in EXTRACTION_SYSTEM_PROMPT_V2_6
+    assert "Do not duplicate that same signal at top level" in EXTRACTION_SYSTEM_PROMPT_V2_6
+    assert "PHASE 7 — FINAL VALIDATION" in EXTRACTION_SYSTEM_PROMPT_V2_6
+    assert "沈砚" not in EXTRACTION_SYSTEM_PROMPT_V2_6
+    assert "顾川" not in EXTRACTION_SYSTEM_PROMPT_V2_6
+    assert "梁策" not in EXTRACTION_SYSTEM_PROMPT_V2_6
 
 
 def test_responses_request_uses_json_schema_and_total_output_budget() -> None:
@@ -94,7 +109,7 @@ async def test_openai_compatible_provider_requests_structured_json() -> None:
         assert "hair.color" in body["messages"][0]["content"]
         assert "mention_quote" in body["messages"][0]["content"]
         assert "Do not calculate character offsets" in body["messages"][0]["content"]
-        assert "never emit the combined appearance field" in body["messages"][0]["content"]
+        assert "combined appearance field" in body["messages"][0]["content"]
         return httpx.Response(
             200,
             json={
@@ -143,8 +158,24 @@ async def test_openai_compatible_provider_requests_structured_json() -> None:
     assert result.entities[0].representative_name == "沈砚"
     assert result.visual_candidates[0].evidence_quote == "黑发"
     assert provider.version == (
-        "deepseek:model-v1:visual-observation-v3.2:visual-extraction-prompt-v2.4"
+        "deepseek:model-v1:visual-observation-v3.4:visual-extraction-prompt-v2.5"
     )
+
+
+def test_provider_can_freeze_a_prompt_variant_for_ab_and_rollback() -> None:
+    provider = OpenAICompatibleExtractionProvider(
+        provider="deepseek",
+        base_url="https://llm.example/v1",
+        api_key="secret",
+        model="model-v1",
+        system_prompt=EXTRACTION_SYSTEM_PROMPT_V2_5,
+        prompt_version="visual-extraction-prompt-v2.5",
+    )
+
+    body = provider._request_body("少女佩戴玉坠。")
+
+    assert body["messages"][0]["content"] == EXTRACTION_SYSTEM_PROMPT_V2_5
+    assert provider.version.endswith(":visual-observation-v3.4:visual-extraction-prompt-v2.5")
 
 
 def test_provider_payload_normalizes_common_epistemic_aliases() -> None:
@@ -173,6 +204,65 @@ def test_provider_payload_normalizes_common_epistemic_aliases() -> None:
     )
 
     assert result.visual_candidates[0].epistemic_status == "asserted"
+    assert result.entities[0].mention_kind == "explicit_name"
+
+
+def test_provider_schema_exposes_only_r1_mention_kinds_and_normalizes_legacy_labels() -> None:
+    schema = build_chunk_extraction_request(
+        "少女佩戴玉坠。",
+        model="model-v1",
+        wire_api="responses",
+    )["text"]["format"]["schema"]
+    definition = schema["$defs"]["VisualEntityCandidate"]
+    assert definition["properties"]["mention_kind"]["enum"] == [
+        "explicit_name",
+        "descriptor",
+        "pronoun",
+        "unknown",
+    ]
+    deferred_reasons = schema["$defs"]["VisualDeferredCandidate"]["properties"][
+        "reason_code"
+    ]["enum"]
+    assert "inferred_visual_fact" in deferred_reasons
+    assert "uncertain_visual_fact" in deferred_reasons
+
+    legacy = validate_provider_visual_candidate_payload(
+        {
+            "entities": [
+                {
+                    "local_id": "e1",
+                    "representative_name": "少女",
+                    "mention_quote": "少女",
+                    "mention_kind": "title",
+                    "confidence": 0.9,
+                }
+            ]
+        }
+    )
+
+    assert legacy.entities[0].mention_kind == "descriptor"
+
+
+@pytest.mark.parametrize(
+    "mention_kind",
+    ["explicit_name", "descriptor", "pronoun", "unknown"],
+)
+def test_provider_accepts_each_r1_mention_kind(mention_kind: str) -> None:
+    result = validate_provider_visual_candidate_payload(
+        {
+            "entities": [
+                {
+                    "local_id": "e1",
+                    "representative_name": "她",
+                    "mention_quote": "她",
+                    "mention_kind": mention_kind,
+                    "confidence": 0.9,
+                }
+            ]
+        }
+    )
+
+    assert result.entities[0].mention_kind == mention_kind
 
 
 def test_provider_payload_rejects_dangling_entity_reference() -> None:

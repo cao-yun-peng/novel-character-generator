@@ -54,6 +54,7 @@ class ExternalOperationRepository:
             lease_generation=lease_generation,
             attempt=0,
             provider_request_id=None,
+            result_refs=[],
             response_hash=None,
             artifact_id=None,
             submitted_at=None,
@@ -73,6 +74,7 @@ class ExternalOperationRepository:
         target: ExternalOperationState,
         expected_generation: int,
         provider_request_id: str | None = None,
+        result_refs: list[str] | None = None,
         response_hash: str | None = None,
     ) -> ExternalOperationORM:
         operation = await self.session.get(ExternalOperationORM, operation_id)
@@ -88,6 +90,8 @@ class ExternalOperationRepository:
         if target == ExternalOperationState.SUBMITTED:
             values["submitted_at"] = now
             values["provider_request_id"] = provider_request_id
+            if result_refs is not None:
+                values["result_refs"] = result_refs
         if target in {
             ExternalOperationState.SUCCEEDED,
             ExternalOperationState.FAILED,

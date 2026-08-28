@@ -1,10 +1,10 @@
 from datetime import datetime
 from decimal import Decimal
-from typing import Annotated, Any
+from typing import Annotated, Any, Literal
 from uuid import UUID
 
 from fastapi import APIRouter, Depends, Header, HTTPException, Query, status
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, ConfigDict, Field
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -33,6 +33,8 @@ router = APIRouter(
 
 
 class CreateImageRunRequest(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
     timeline_id: UUID
     target_event_id: UUID | None = None
     target_scene_id: UUID | None = None
@@ -40,6 +42,7 @@ class CreateImageRunRequest(BaseModel):
     stage_keys: list[str] = Field(default_factory=list, max_length=1)
     candidate_count: int = Field(default=1, ge=1, le=8)
     generate_character_sheet: bool = False
+    generation_mode: Literal["concept", "character_design", "consistent_scene"] = "concept"
     render_overrides: dict[str, Any] = Field(default_factory=dict)
     budget_limit: Decimal = Field(default=Decimal("0"), ge=0)
 
@@ -70,6 +73,10 @@ class ImageRunDetailsResponse(BaseModel):
     status: str
     context_hash: str | None
     context_status: str | None
+    generation_mode: str | None
+    scene_brief_hash: str | None
+    render_spec_hash: str | None
+    render_readiness: dict[str, Any] | None
     created_at: datetime
     updated_at: datetime
     images: list[GeneratedImageResponse]
@@ -112,6 +119,7 @@ async def create_image_run(
                 stage_keys=request.stage_keys,
                 candidate_count=request.candidate_count,
                 generate_character_sheet=request.generate_character_sheet,
+                generation_mode=request.generation_mode,
                 render_overrides=request.render_overrides,
                 budget_limit=request.budget_limit,
             ),
@@ -164,6 +172,24 @@ async def get_image_run(
         status=run.status,
         context_hash=context.context_hash if context else None,
         context_status=context.status if context else None,
+        generation_mode=(
+            str(context.context_payload.get("generation_mode")) if context else None
+        ),
+        scene_brief_hash=(
+            str(context.context_payload.get("scene_render_brief", {}).get("brief_hash"))
+            if context
+            and isinstance(context.context_payload.get("scene_render_brief"), dict)
+            else None
+        ),
+        render_spec_hash=(
+            str(context.context_payload.get("image_render_spec", {}).get("spec_hash"))
+            if context
+            and isinstance(context.context_payload.get("image_render_spec"), dict)
+            else None
+        ),
+        render_readiness=(
+            dict(context.context_payload.get("render_readiness", {})) if context else None
+        ),
         created_at=run.created_at,
         updated_at=run.updated_at,
         images=[

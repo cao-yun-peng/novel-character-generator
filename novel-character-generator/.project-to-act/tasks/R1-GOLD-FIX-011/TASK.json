@@ -1,0 +1,31 @@
+{
+  "id": "R1-GOLD-FIX-011",
+  "title": "修正 R1 黄金集与评分器并离线重评",
+  "status": "done",
+  "owner": "Codex",
+  "objective": "修正首轮真实 A/B 暴露的黄金标注和评分逻辑误差，用原始候选离线重评分，并把剩余问题可靠归因到 Prompt、adapter 或字段政策。",
+  "allowed_paths": [
+    "src/novel_character_generator/application/services/extraction_evaluation_service.py",
+    "tests/evaluation",
+    "tests/unit/test_extraction_evaluation_service.py",
+    "tests/测试/ab_evaluate_visual_prompts.py",
+    "data/diagnostics/r1-gold-v1-ab-20260828",
+    "docs/25-r1-prompt-ab-evaluation.md",
+    ".project-to-act"
+  ],
+  "invariants": [
+    "不修改生产 Prompt 指针",
+    "不调用外部模型，只重放已保存 candidates",
+    "泛称别名必须由黄金逐项列出，不做自动身份归并",
+    "安全 deferred 只能按 allowlist 放行，未列项仍失败",
+    "asserted/deferred 同引文双写必须失败",
+    "不通过删除安全反例来提高分数"
+  ],
+  "acceptance": [
+    "阶段键、合法字段、值异体、安全 deferred 与真实身份依赖标注修正",
+    "owner/surface alias、raw mention、temporal 包含/去重和排他双写进入评分器",
+    "同字段无关事实不能遮蔽 required 缺失",
+    "74 份历史原始输出离线重评分并保存可审计报告",
+    "定向与完整 Pytest、Ruff、Mypy 和项目账本验证通过"
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "task_id": "PIPELINE-V2-M1-013",
+  "project_mode": "managed",
+  "lifecycle_stage": "5",
+  "lifecycle_revision": 6,
+  "risk_level": "L1",
+  "git_revision": "faa06d03696c76bbee6451b5c75c27b95ca4fc9a",
+  "design_task": "PIPELINE-V2-DESIGN-012",
+  "design_artifact": "docs/27-semantic-pipeline-v2-contract.md",
+  "design_version": "semantic-pipeline-v2-design-v1.1",
+  "known_evidence": [
+    "E-20260828-PIPELINE-V2-DESIGN-012-R1",
+    "E-20260828-R1-GOLD-FIX-011",
+    "E-20260828-PIPELINE-V2-M1-013-REAL1"
+  ],
+  "baseline_constraints": {
+    "current_worker_route": "V1 unchanged",
+    "current_default_prompt": "visual-extraction-prompt-v2.5",
+    "m1_contract": "local-observation-discovery-v1.1",
+    "m1_prompt": "local-observation-discovery-prompt-v1.1",
+    "database_mutation": false,
+    "real_provider_calls": {
+      "expected": 15,
+      "hard_max_with_retries": 30
+    }
+  },
+  "latest_evidence": "E-20260828-PIPELINE-V2-M1-013-REAL1",
+  "engineering_gate": "passed",
+  "model_quality_gate": "failed_pending_dataset_review_and_m1_fix",
+  "evaluation_config": {
+    "provider": "deepseek",
+    "model": "deepseek-v4-flash",
+    "wire_api": "chat_completions",
+    "thinking_enabled": false,
+    "reasoning_effort": "none",
+    "max_output_tokens": 8192,
+    "max_retries": 1,
+    "run_dataset_version": "m1-local-observation-v1",
+    "corrected_dataset_version": "m1-local-observation-v1.1-draft2",
+    "repetitions": 1,
+    "raw_provider_response_capture": false,
+    "actual_provider_calls": 15,
+    "actual_attempts": 15,
+    "successful_contract_outputs": 15,
+    "corrected_case_result": "11_pass_0_review_4_fail"
+  }
+}

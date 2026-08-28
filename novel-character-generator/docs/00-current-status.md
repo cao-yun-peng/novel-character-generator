@@ -39,12 +39,12 @@
 | 外观状态与冲突 | 真实 Observation 自动形成分阶段外观，并识别同一范围内的不兼容字段 | 已实现核心 | [`appearance_aggregation.py`](../src/novel_character_generator/domain/policies/appearance_aggregation.py)、[`appearance_aggregation_service.py`](../src/novel_character_generator/application/services/appearance_aggregation_service.py)、[`test_appearance_aggregation_pipeline.py`](../tests/integration/test_appearance_aggregation_pipeline.py)；源版本替换及人工确认保护见 [`test_source_version_appearance_invalidation.py`](../tests/integration/test_source_version_appearance_invalidation.py)，父子时间线继承见 [`test_timeline_inheritance.py`](../tests/integration/test_timeline_inheritance.py) |
 | 渲染档案审批 | 聚合结果自动形成待审核档案，可解决冲突、编辑和批准版本 | 已实现核心 | 聚合 Worker 已接入现有 API 与 [`appearance_service.py`](../src/novel_character_generator/application/services/appearance_service.py)，真实提取链路见 [`test_appearance_aggregation_pipeline.py`](../tests/integration/test_appearance_aggregation_pipeline.py) |
 | 目标时点外观快照 | 按 timeline/event/scene/chapter 解析有效外观并生成 `snapshot_hash` | 已实现核心 | [`AppearanceService.snapshot`](../src/novel_character_generator/application/services/appearance_service.py)、对应集成测试 |
-| 角色设计缺口与出图就绪度 | 区分小说未写、明确无、冲突与人工设计缺口，并分别判断概念图、角色设定图和一致性场景图资格 | 仅设计 | 目标契约见[角色渲染档案](05-character-render-profile.md)和[视觉优先的出图字段与全文抽取重构方案](23-visual-first-extraction-refactor.md) |
-| 场景简报与 Prompt 编译 | 将角色快照、场景表演、美术镜头、负向约束和参考资产编译为 Provider 中立 `ImageRenderSpec` | 仅设计 | 当前 `GenerationContextBuilder` 只形成基础冻结上下文，尚无 `SceneRenderBrief`、字段来源编译和 Provider 中立 Prompt blocks |
+| 角色设计缺口与出图就绪度 | 区分小说未写、明确无、冲突与人工设计缺口，并分别判断概念图、角色设定图和一致性场景图资格 | 部分实现 | `render-readiness-v1` 已在 Mock 链路按来源完整度、身份/阶段/造型、可信简报、负向约束和身份参考图失败关闭；完整 `CharacterDesignGap` 持久化与审批闭环仍待实现。见 [`image_rendering.py`](../src/novel_character_generator/domain/policies/image_rendering.py) |
+| 场景简报与 Prompt 编译 | 将角色快照、场景表演、美术镜头、负向约束和参考资产编译为 Provider 中立 `ImageRenderSpec` | 部分实现 | 已有 strict `SceneRenderBrief`、稳定 `brief_hash/spec_hash` 和六类分块；`canonical-zh-character-v1` 可插拔 Renderer 将字段转为自然中文并保存逐短句 provenance，golden test 防止内部字段路径泄漏。真实 approved/locked 上游和持久化简报审批仍待闭环 |
 | 人工审批 | 创建、分页查询、批准/拒绝/修改/延后，并恢复等待任务 | 已实现 | [`approval_service.py`](../src/novel_character_generator/application/services/approval_service.py)、[`approvals.py`](../src/novel_character_generator/api/routes/approvals.py) |
 | Structured AgentRuntime | 强类型工具、权限、预算、停止原因和轨迹持久化 | 部分实现 | [`structured_runtime.py`](../src/novel_character_generator/agents/structured_runtime.py)；默认 `agent_runtime_enabled=false`，尚未成为文本主流程必经步骤 |
 | Agent 轨迹查询 | 查询 AgentRun、Turn、ToolCall 和 DecisionRecord | 已实现 | [`agent_runs.py`](../src/novel_character_generator/api/routes/agent_runs.py)、[`test_agent_execution_service.py`](../tests/integration/test_agent_execution_service.py) |
-| 评测数据层 | 数据集冻结、case/result/grader 版本和唯一性 | 已实现基础 | 正式 Evaluation Repository 已有；视觉抽取开发种子集已从 12 个增长到 25 个，并配有确定性 precision/recall/F1/exact-evidence 评分器。新增 case 来自 R1 定位器与跨题材真实 v3 差异，但均已抽象为通用叙事模式，用于边开发边防回归；它尚不等同于 80–120 case 冻结黄金集或公开 Eval Runner。见 [`extraction_evaluation_service.py`](../src/novel_character_generator/application/services/extraction_evaluation_service.py)、[`visual_extraction_seed_v0.json`](../tests/evaluation/visual_extraction_seed_v0.json)和[`test_evaluation_repository.py`](../tests/integration/test_evaluation_repository.py) |
+| 评测数据层 | 数据集冻结、case/result/grader 版本和唯一性 | 已实现基础 | 正式 Evaluation Repository 已有；当前默认是 31-case dataset v1.1 / rubric v3.1，并有 6 个 source-backed 真实审计切片。评分器覆盖 required/allowed/forbidden、mention、deferred、temporal、重复与 asserted/deferred 排他；首轮 74 份候选已离线重评。旧 25-case v0 只保留用于历史复现；当前规模仍不等同于 80–120 case 发布黄金集或公开 Eval Runner。见 [`extraction_evaluation_service.py`](../src/novel_character_generator/application/services/extraction_evaluation_service.py)、[`visual_extraction_seed_v1.json`](../tests/evaluation/visual_extraction_seed_v1.json)和[`test_evaluation_repository.py`](../tests/integration/test_evaluation_repository.py) |
 | 小说分解质量报告 | 用确定性指标评价 grounding、人物绑定、阶段覆盖、污染、冲突、检索覆盖和成本；复杂问题条件调用 Review Agent | 仅设计 | 当前本地检查器只能评价格式、局部 grounding 和 Provider 用量；正式 `DecompositionQualityReport`、API 和 Review 分支尚未接入 Pipeline |
 | 指标端点 | API 请求计数、延迟和受保护的 `/metrics` | 已实现基础 | [`metrics.py`](../src/novel_character_generator/api/metrics.py) |
 | R1–R3 Run Inspector | 按 Run 查看 R1 候选/定位、R2 人物解析/收敛、R3 阶段/作用域的进度、运行指标、调用用量、异常原因和结构化产出 | 已实现基础 | [`run_inspector_service.py`](../src/novel_character_generator/application/services/run_inspector_service.py)、[`runs.py`](../src/novel_character_generator/api/routes/runs.py)、[`test_text_analysis_run.py`](../tests/integration/test_text_analysis_run.py)、[`test_phase_resolution_pipeline.py`](../tests/integration/test_phase_resolution_pipeline.py)；当前指标是诊断信号，不等同于黄金集质量分数 |
@@ -52,7 +52,7 @@
 | 完整 OpenTelemetry 链路 | API→Worker→Provider→Artifact Trace 与 Span Link | 仅设计 | 配置字段存在，但尚未看到完整 instrumentation 实现 |
 | 关键结构化业务日志 | 快照、预算、Provider、漂移门禁、审批和锁定事件 | 仅设计 | 事件规范见[日志设计](13-observability-logging-and-cost.md)，当前只有少量 Worker 异常日志 |
 | `log-check` 检查器 | 检查断链、重复收费、context hash 和错误锁定 | 仅设计 | 尚无命令、规则执行器或测试夹具 |
-| Mock 图像生成链路 | 根据 approved/locked Profile 冻结基础上下文并保存测试候选图 | 部分实现、默认关闭 | `IMAGE_PROVIDER=mock` 时开放 Image Run API；[`generation_context_service.py`](../src/novel_character_generator/application/services/generation_context_service.py)、[`image_generation.py`](../src/novel_character_generator/workers/handlers/image_generation.py) 和 [`test_image_generation_pipeline.py`](../tests/integration/test_image_generation_pipeline.py) 覆盖 hash 稳定性、Artifact/候选图落库、幂等和恢复。Mock 不代表 Prompt 字段已完备或画面质量，真实收费 Provider 尚未接入 |
+| 可插拔图像生成链路 | 根据冻结渲染规格，通过 Mock 或市场 Provider 生成并保存候选图 | 部分实现、默认关闭 | Provider/PromptRenderer 均经注册表构造；DashScope `qwen-image-plus` 已完成一张 1328×1328 真实候选图，Prompt/版本/provenance sidecar 已保存。可信审批、漂移 Gate、费用回填和 baseline 锁定尚未实现，默认仍关闭 |
 | Visual Director / Critic | 规划画面并检查身份、阶段和时间线漂移 | 仅设计 | 设计见[图像生成与视觉防漂移](06-image-generation-and-drift-control.md) |
 | 阶段基准图锁定 | 从候选图中选择每个阶段基准图 | 仅设计 | 数据模型已预留，尚无生成和选择 API |
 | 完整管理后台 | 可视化审批、冲突解决、评测、配置和运维入口 | 仅设计 | 当前只有轻量工作台和 REST API/OpenAPI，不等同于管理后台 |
@@ -70,14 +70,14 @@
 - 人物合并/拆分 → revision 与幂等保护 → 审计记录。
 - 真实提取结果 → 冲突检测/解决 → 档案编辑与批准 → 目标时点快照。
 - 角色/字段组 → 版本化 QueryPlan → 混合召回与命中审计 → 结构化精提取 → 精确事实/审核建议分流 → 外观重聚合。
-- 已批准档案 → GenerationContext 冻结 → Mock submit/query/download → 候选 Artifact 与 GeneratedImage 落库；同一上下文 hash 稳定，Worker 可恢复。
+- 期望字段 → Provider 中立 `ImageRenderSpec` → 版本化自然语言 Renderer/provenance → DashScope 单图 submit/query/download → 本地 PNG 与 Prompt sidecar；同一规格 hash 稳定，明确拒绝与提交未知分流。
 
 ### 还没有形成闭环
 
 - 角色/字段级精细差异重算已延期；当前源版本替换继续采用安全的整角色保守重建。更大规模多层分支黄金集仍待完善。
 - 文本 Provider 已用 output/deadline/retry 控制最坏调用规模，但按真实币种执行的调用前金额门禁仍需版本化价格表或 Provider 计费报价，当前不能把 Token 上限描述成完整费用门禁。
-- 已批准快照提交真实收费图像 Provider，并保存真实费用。
-- 小说事实缺口 → 人工角色设计补全 → 三档出图就绪度 → `SceneRenderBrief` → `ImageRenderSpec` 的可审核桥梁。
+- approved/locked 快照经正式 Image Run 提交真实收费 Provider，并把费用、Prompt Artifact 和图片记录统一落库；当前真实图来自有界 expected-field smoke，不是已批准档案。
+- 小说事实缺口 → 人工角色设计补全与持久化审批 → 更高两档出图就绪度的完整可审核桥梁；当前只有契约、编译器和失败关闭门禁。
 - 候选图执行漂移审计、门禁、有界重生成和人工锁定。
 - 关键业务事件统一结构化输出，再由 `log-check` 对账。
 - 评测数据层目前只保留数据仓储和后续 Runner/Grader 接口；完整 EvalRun、报告和发布门禁将在功能契约稳定后实现。
@@ -87,8 +87,8 @@
 1. 用现有 25-case 种子集和 locator/Adapter 边界测试验证已切换的 v3；运行真实 v3 诊断时，把每个新失败抽象为跨作品通用 case 后回填，逐步扩充到 30–40 个。
 2. 不再进行付费 v2/v3 Shadow；成本对照只读取已保存的 v2 响应、usage 和 fixture。用多部不同类型小说补齐实体、阶段、留白和关键污染 case，发布前再冻结 80–120 case。
 3. 为 Mock 候选补确定性基础检查和最小 gate，再接 Multimodal Critic。
-4. 接入一个真实图像 Provider Adapter，并验证 submit unknown、下载完整性和费用门禁。
-5. 实现候选选择、阶段 baseline 锁定和依赖失效传播；功能契约稳定后再实现正式 Eval Runner 和发布门禁。
+4. 把已实现的 DashScope Provider 接到 approved/locked Profile 正式 Run，并补费用回填与 Prompt Artifact 持久化。
+5. 实现候选漂移审计、人工选择、阶段 baseline 锁定和依赖失效传播；功能契约稳定后再实现正式 Eval Runner 和发布门禁。
 
 ### 已延期事项
 

@@ -89,7 +89,7 @@ class MentionSpan(BaseModel):
     char_start: int
     char_end: int
     mention_text: str
-    mention_kind: Literal["name", "title", "kinship", "disguise", "nickname", "pronoun"]
+    mention_kind: Literal["explicit_name", "descriptor", "pronoun", "unknown"]
     candidate_character_ids: list[UUID]
     resolved_character_id: UUID | None
     grounding_status: Literal["exact", "fuzzy", "ungrounded", "manually_grounded"]

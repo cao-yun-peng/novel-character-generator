@@ -26,6 +26,15 @@ def test_default_settings_use_async_sqlite() -> None:
     assert settings.entity_convergence_shard_max_input_tokens == 12_000
     assert settings.entity_convergence_shard_max_output_tokens == 4_500
     assert settings.entity_convergence_repair_max_attempts == 2
+    assert settings.image_provider == "disabled"
+    assert settings.image_prompt_renderer == "canonical-zh"
+    assert settings.dashscope_image_model == "qwen-image-plus"
+    assert settings.dashscope_image_default_size == "1328*1328"
+    assert settings.timicc_base_url == "https://timicc.com"
+    assert settings.timicc_image_model == "gpt-image-2"
+    assert settings.timicc_image_quality == "medium"
+    assert settings.timicc_image_default_size == "1328x1328"
+    assert settings.image_poll_interval_seconds == 10
     assert settings.worker_lease_seconds > settings.llm_timeout_seconds
 
 
@@ -118,6 +127,32 @@ def test_production_rejects_mock_provider() -> None:
 def test_remote_provider_requires_credentials() -> None:
     with pytest.raises(ValidationError, match="llm_provider_credentials_required"):
         Settings(_env_file=None, llm_provider="deepseek")
+    with pytest.raises(
+        ValidationError, match="dashscope_image_provider_configuration_required"
+    ):
+        Settings(_env_file=None, image_provider="dashscope")
+
+    with pytest.raises(
+        ValidationError, match="timicc_image_provider_configuration_required"
+    ):
+        Settings(_env_file=None, image_provider="timicc", timicc_api_key="")
+
+    settings = Settings(
+        _env_file=None,
+        image_provider="dashscope",
+        dashscope_api_key="secret",
+        dashscope_base_url="https://workspace.cn-beijing.maas.aliyuncs.com",
+    )
+    assert settings.dashscope_api_key is not None
+    assert settings.dashscope_api_key.get_secret_value() == "secret"
+
+    timicc = Settings(
+        _env_file=None,
+        image_provider="timicc",
+        timicc_api_key="secret",
+    )
+    assert timicc.timicc_api_key is not None
+    assert timicc.timicc_api_key.get_secret_value() == "secret"
 
 
 def test_production_requires_distinct_user_and_admin_keys() -> None:

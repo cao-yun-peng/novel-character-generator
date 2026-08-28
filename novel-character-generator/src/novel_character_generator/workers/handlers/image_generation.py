@@ -3,6 +3,7 @@ from __future__ import annotations
 import hashlib
 from datetime import UTC, datetime
 from decimal import Decimal
+from typing import cast
 from uuid import UUID, uuid4
 
 from sqlalchemy import select
@@ -11,12 +12,14 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from novel_character_generator.application.ports.artifact_store import ArtifactStore
 from novel_character_generator.application.ports.image_generation import (
     ImageProvider,
+    ImageProviderSubmissionRejected,
     ImageSubmitRequest,
 )
 from novel_character_generator.application.services.generation_context_service import (
     GenerationContextBuilder,
     ImageRunRequest,
 )
+from novel_character_generator.domain.entities.image import GenerationMode, ImageRenderSpec
 from novel_character_generator.domain.entities.pipeline import ExternalOperationState
 from novel_character_generator.infrastructure.db.orm import (
     ArtifactORM,
@@ -33,16 +36,24 @@ from novel_character_generator.infrastructure.db.repositories.run_events import 
 from novel_character_generator.workers.task_claim import (
     complete_step,
     complete_step_and_enqueue,
+    defer_step,
     mark_cancelled,
     record_step_error,
     start_step,
 )
 
 
+class ImageProviderNotReady(RuntimeError):
+    pass
+
+
 def _request_from_cursor(cursor: dict[str, object]) -> ImageRunRequest:
     raw = cursor.get("request")
     if not isinstance(raw, dict):
         raise ValueError("image_request_cursor_missing")
+    raw_generation_mode = str(raw.get("generation_mode", "concept"))
+    if raw_generation_mode not in {"concept", "character_design", "consistent_scene"}:
+        raise ValueError("invalid_generation_mode_cursor")
     return ImageRunRequest(
         timeline_id=UUID(str(raw["timeline_id"])),
         target_event_id=UUID(str(raw["target_event_id"]))
@@ -57,6 +68,7 @@ def _request_from_cursor(cursor: dict[str, object]) -> ImageRunRequest:
         stage_keys=[str(item) for item in raw.get("stage_keys", [])],
         candidate_count=int(raw.get("candidate_count", 1)),
         generate_character_sheet=bool(raw.get("generate_character_sheet", False)),
+        generation_mode=cast(GenerationMode, raw_generation_mode),
         render_overrides={
             str(key): value for key, value in dict(raw.get("render_overrides", {})).items()
         },
@@ -73,6 +85,7 @@ async def process_image_generation_run(
     workflow_profile: str,
     workflow_version: str,
     max_attempts: int = 3,
+    poll_interval_seconds: float = 10.0,
 ) -> None:
     run = await session.get(PipelineRunORM, run_id)
     if run is None or run.run_type != "image_generation":
@@ -220,6 +233,16 @@ async def process_image_generation_run(
                 "completed_step_keys": [step.step_key],
             },
         )
+    except ImageProviderNotReady:
+        await defer_step(
+            session,
+            step_id=step_id,
+            run_id=run.id,
+            expected_generation=expected_generation,
+            delay_seconds=poll_interval_seconds,
+            reason="image_provider_not_ready",
+        )
+        return
     except Exception as error:
         await record_step_error(
             session,
@@ -244,6 +267,9 @@ async def _submit_candidates(
 ) -> list[UUID]:
     repository = ExternalOperationRepository(session)
     operation_ids: list[UUID] = []
+    render_spec = ImageRenderSpec.model_validate(
+        context.context_payload.get("image_render_spec")
+    )
     for candidate_index in range(context.candidate_count):
         request = ImageSubmitRequest(
             context_hash=context.context_hash,
@@ -251,7 +277,7 @@ async def _submit_candidates(
             workflow_version=context.workflow_version,
             candidate_index=candidate_index,
             seed=candidate_index,
-            context_payload=context.context_payload,
+            render_spec=render_spec,
         )
         fingerprint = hashlib.sha256(request.model_dump_json().encode()).hexdigest()
         operation = await repository.prepare(
@@ -276,12 +302,50 @@ async def _submit_candidates(
             await session.commit()
             state = ExternalOperationState(operation.status)
         if state == ExternalOperationState.SUBMITTING:
-            submission = await provider.submit(request)
+            try:
+                submission = await provider.submit(request)
+            except ImageProviderSubmissionRejected:
+                await repository.transition(
+                    operation.id,
+                    target=ExternalOperationState.FAILED,
+                    expected_generation=operation.lease_generation,
+                )
+                await append_run_event(
+                    session,
+                    run_id=run.id,
+                    event_type="provider.operation.submit_rejected",
+                    payload={
+                        "operation_id": str(operation.id),
+                        "candidate_index": candidate_index,
+                        "request_fingerprint": fingerprint,
+                    },
+                )
+                await session.commit()
+                raise
+            except Exception:
+                await repository.transition(
+                    operation.id,
+                    target=ExternalOperationState.SUBMISSION_UNKNOWN,
+                    expected_generation=operation.lease_generation,
+                )
+                await append_run_event(
+                    session,
+                    run_id=run.id,
+                    event_type="provider.operation.submit_unknown",
+                    payload={
+                        "operation_id": str(operation.id),
+                        "candidate_index": candidate_index,
+                        "request_fingerprint": fingerprint,
+                    },
+                )
+                await session.commit()
+                raise
             await repository.transition(
                 operation.id,
                 target=ExternalOperationState.SUBMITTED,
                 expected_generation=operation.lease_generation,
                 provider_request_id=submission.provider_request_id,
+                result_refs=submission.artifact_refs,
                 response_hash=hashlib.sha256(submission.model_dump_json().encode()).hexdigest(),
             )
             await append_run_event(
@@ -324,6 +388,9 @@ async def _poll_candidates(
                 expected_generation=operation.lease_generation,
             )
             await session.commit()
+        if operation.result_refs:
+            artifact_refs[str(operation.id)] = operation.result_refs[0]
+            continue
         if operation.provider_request_id is None:
             raise RuntimeError("image_provider_request_id_missing")
         remote = await provider.query(operation.provider_request_id)
@@ -336,7 +403,7 @@ async def _poll_candidates(
             await session.commit()
             raise RuntimeError(remote.error_code or "image_provider_failed")
         if remote.status != "succeeded" or not remote.artifact_refs:
-            raise RuntimeError("image_provider_not_ready")
+            raise ImageProviderNotReady("image_provider_not_ready")
         artifact_refs[str(operation.id)] = remote.artifact_refs[0]
     return artifact_refs
 
@@ -408,6 +475,9 @@ async def _persist_candidates(
                 "candidate_index": candidate_index,
                 "context_hash": context.context_hash,
                 "provider": provider.provider,
+                "provider_version": provider.version,
+                "prompt_renderer": provider.prompt_renderer,
+                "prompt_renderer_version": provider.prompt_renderer_version,
                 "provider_request_id": operation.provider_request_id,
                 "mock": provider.provider == "mock",
             },

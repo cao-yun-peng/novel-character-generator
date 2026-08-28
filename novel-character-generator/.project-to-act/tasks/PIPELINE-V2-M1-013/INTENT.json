@@ -1,0 +1,20 @@
+{
+  "task_id": "PIPELINE-V2-M1-013",
+  "requested_by": "user",
+  "intent": "从第一阶段开始按节点输入输出重构；每完成一个模型节点就同步建立独立测试集并由用户把关，优先提升效果，避免旧实现和新实现无边界叠加。",
+  "execution": "stage-5-m1-shadow-vertical-slice",
+  "provider_calls": {
+    "expected": 15,
+    "hard_max_with_retries": 30,
+    "authorized_by": "user request: 验证m1效果"
+  },
+  "production_route_mutation": false,
+  "human_gate": "current_m1_dataset_approved_for_one_real_baseline; results_require_review_before_tuning_or_m2",
+  "priority_order": [
+    "semantic_quality_measurability",
+    "contract_and_evidence_integrity",
+    "nonredundant_reusable_infrastructure",
+    "safe_shadow_execution",
+    "cost_and_latency_after_quality_gate"
+  ]
+}

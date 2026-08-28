@@ -1,0 +1,35 @@
+{
+  "id": "R1-DATA-006",
+  "title": "修正 R1 提及类型、字段语义与证据门禁",
+  "status": "done",
+  "owner": "Codex",
+  "objective": "将 R1-BASELINE-005 的五项红灯转绿：四类人物提及、age 字段规范、非衣物服装门禁，以及可审计的窄证据修复。",
+  "allowed_paths": [
+    "src/novel_character_generator/domain/policies/mention_kinds.py",
+    "src/novel_character_generator/domain/policies/grounding.py",
+    "src/novel_character_generator/domain/policies/visual_fields.py",
+    "src/novel_character_generator/application/ports",
+    "src/novel_character_generator/application/services/visual_candidate_adapter.py",
+    "src/novel_character_generator/application/services/entity_resolution_service.py",
+    "src/novel_character_generator/infrastructure/llm",
+    "src/novel_character_generator/workers/handlers/extraction.py",
+    "tests",
+    "docs",
+    ".project-to-act"
+  ],
+  "invariants": [
+    "descriptor、pronoun、unknown 不得进入 explicit_names",
+    "旧 name/title/kinship/disguise/nickname 输入必须保守兼容读取",
+    "除 age.age 与 age.age_stage 外的 age.* 不得进入视觉事实",
+    "书籍、武器、药物和工具不得进入 clothing.*",
+    "证据修复不得接受语义替换、跨句硬标点或多位置候选",
+    "最终候选保存原文精确片段并携带 evidence_status/repair_kind",
+    "不增加模型调用，不读取或记录 .env 内容"
+  ],
+  "acceptance": [
+    "R1 Schema 仅暴露 explicit_name、descriptor、pronoun、unknown",
+    "R1-BASELINE-005 的 7 个 case 全部普通通过，无 xfail",
+    "单元、完整 Pytest、Ruff、Mypy 全部退出 0",
+    "Schema/Prompt 版本更新且无数据库迁移"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "task_id": "R1-BASELINE-005",
+  "current_behavior": "R1 不接受 descriptor，age.age 未规范化，clothing.type 缺少衣物语义门禁，evidence locator 只支持精确与空白归一化。",
+  "desired_behavior": "R1 保留 descriptor 供 R2 判断，安全归一化 age.age，拒绝非衣物 clothing.type，并仅在唯一、窄范围漏字时恢复精确原文；歧义或语义替换保持拒绝。",
+  "dependencies": [
+    "VisualCandidateExtractionResult",
+    "ground_visual_candidates",
+    "locate_evidence_span"
+  ],
+  "validation": [
+    "R1 baseline fixture contract",
+    "strict xfail red baseline",
+    "相关 Adapter、evidence locator 与 evaluation 单元回归",
+    "Ruff"
+  ]
+}

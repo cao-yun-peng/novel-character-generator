@@ -147,6 +147,62 @@ async def record_step_error(
     await session.commit()
 
 
+async def defer_step(
+    session: AsyncSession,
+    *,
+    step_id: UUID,
+    run_id: UUID,
+    expected_generation: int,
+    delay_seconds: float,
+    reason: str,
+) -> None:
+    """Release a lease for expected remote waiting without consuming a retry."""
+    await session.rollback()
+    step = await session.get(PipelineStepORM, step_id)
+    run = await session.get(PipelineRunORM, run_id)
+    if step is None or run is None or step.lease_generation != expected_generation:
+        await session.rollback()
+        return
+    now = datetime.now(UTC)
+    updated_id = await session.scalar(
+        update(PipelineStepORM)
+        .where(
+            PipelineStepORM.id == step_id,
+            PipelineStepORM.lease_generation == expected_generation,
+        )
+        .values(
+            status="retry_scheduled",
+            attempt=max(0, step.attempt - 1),
+            next_attempt_at=now + timedelta(seconds=delay_seconds),
+            error_code=None,
+            error_message=None,
+            lease_owner=None,
+            lease_expires_at=None,
+            heartbeat_at=now,
+            updated_at=now,
+        )
+        .returning(PipelineStepORM.id)
+    )
+    if updated_id is None:
+        await session.rollback()
+        return
+    await append_run_event(
+        session,
+        run_id=run_id,
+        event_type="step.deferred",
+        payload={
+            "step_id": str(step_id),
+            "reason": reason,
+            "delay_seconds": delay_seconds,
+            "lease_generation": expected_generation,
+        },
+    )
+    run.status = "queued"
+    run.completed_at = None
+    run.updated_at = now
+    await session.commit()
+
+
 async def mark_cancelled(
     session: AsyncSession,
     *,

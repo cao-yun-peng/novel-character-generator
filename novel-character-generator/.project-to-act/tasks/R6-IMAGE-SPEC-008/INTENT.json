@@ -1,0 +1,16 @@
+{
+  "task_id": "R6-IMAGE-SPEC-008",
+  "current_behavior": "GenerationContext 冻结当前快照后，Mock Provider 直接接收整份 context_payload；尚无可审核的 SceneRenderBrief、三档就绪度或 Provider 中立 ImageRenderSpec。",
+  "desired_behavior": "期望角色输出字段先经严格适配与分层编译形成稳定 ImageRenderSpec；Mock 生图链路据此独立联调，未来真实 R1-R3 输出只替换上游适配输入。",
+  "dependencies": [
+    "approved/locked CharacterRenderProfile",
+    "ResolvedCharacterSnapshot current shape",
+    "existing Image Run and ExternalOperation recovery"
+  ],
+  "validation": [
+    "Image rendering domain unit tests",
+    "Image generation integration test",
+    "Ruff and Mypy",
+    "Project-to-Act and lifecycle validation"
+  ]
+}

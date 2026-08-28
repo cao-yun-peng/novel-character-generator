@@ -1,0 +1,9 @@
+{
+  "task_id": "R1-GOLD-RUN-010",
+  "requested_by": "user",
+  "intent": "跑一次新的黄金测评，判断失败来自其他系统环节还是测评集本身仍有问题。",
+  "execution": "real-provider-ab",
+  "provider_scope": "configured DeepSeek provider",
+  "call_budget": 74,
+  "production_mutation": false
+}

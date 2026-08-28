@@ -34,20 +34,21 @@
 | 场景重分析覆盖 | 新文本 Run、Story API | `(novel_id, narrative_order)` 稳定槽位；自动结果原位更新，人工 corrected binding 保留 | `extract_characters` | `test_reanalysis_updates_automatic_scene_when_span_changes`、场景人工修正集成测试 | 复用 Step 事件 | 已实现 |
 | Run 查询、SSE、取消、重试 | `/runs/{id}` 及子路径 | `RunService`、RunEvent Repository | 领取与状态推进 | `test_run_events_and_external_operations.py` | 当前只有少量异常日志 | 已实现 |
 | Worker 租约、fencing、恢复 | Worker CLI | `task_claim.py`、Run/Step ORM | 所有 Step | `test_task_recovery.py` | claim/start/complete/fail 待统一 | 已实现 |
-| 外部操作账本 | `/runs/{id}/external-operations` | `ExternalOperationRepository`、ORM | Mock `submit_image/poll_image/persist_image` 已使用；真实 Provider 待接 | Repository 与 `test_image_generation_pipeline.py` 恢复测试 | submit/unknown 事件待补 | 部分实现 |
+| 外部操作账本 | `/runs/{id}/external-operations` | `ExternalOperationRepository`、ORM | Mock `submit_image/poll_image/persist_image` 已使用；submit 异常转 `submission_unknown`，禁止盲重提；真实 reconciliation 待接 | Repository 与 `test_image_generation_pipeline.py` 恢复/未知提交测试 | `provider.operation.submit_succeeded/submit_unknown`；完整 reconcile 事件待补 | 部分实现 |
 | 时间线、事件、场景 | `/novels/{id}/timelines|events|scenes` | `StoryService`、Story ORM；历史数据可读 | v3 Extraction 不再生产，后续按需步骤待实现 | 路由声明测试；新的独立 producer 测试待补 | 修正审计事件待统一 | 部分实现（读取/修正保留，上游待重建） |
 | 人物合并/拆分 | `/characters/merge|split` | `CharacterEntityService`、操作审计表 | — | `test_character_entity_api.py` | 依赖失效事件待实现 | 已实现 |
 | 外观状态、冲突、档案 | 角色 appearance/profile/conflict API | `AppearanceAggregationService`、`AppearanceService`、Character ORM；`conflict_kind` 区分人工保护 | `aggregate_appearance` | `test_appearance_aggregation_pipeline.py`、`test_source_version_appearance_invalidation.py` | started/derived/conflict/drafted/unchanged 已插桩 | 已实现核心 |
 | 目标时点 Snapshot | `GET /characters/{id}/snapshot` | `AppearanceService.snapshot`，按父链分支点继承 | — | `test_character_appearance_api.py`、`test_timeline_inheritance.py` | `generation.snapshot.resolved` 待实现 | 已实现核心 |
 | 人工审批 | `/approvals` | `ApprovalService`、Approval ORM | 恢复等待 Step | `test_approval_and_agent_api.py` | requested/decided/resumed 待统一 | 已实现 |
 | 通用 AgentRuntime 与轨迹 | `/agent-runs` | `structured_runtime.py`、`AgentExecutionService`、Agent ORM | 尚未成为文本主流程必经 | `test_structured_agent_runtime.py`、`test_agent_execution_service.py` | 轨迹有业务表，事件待补 | 部分实现、默认关闭 |
-| 评测数据层 | 暂无公开执行 API | Evaluation Repository/ORM；25-case 视觉抽取开发种子集与确定性评分器 | 尚无正式 Eval Runner | `test_evaluation_repository.py`、`test_extraction_evaluation_service.py` | 评测事件待实现 | 已实现基础；真实差异先抽象为跨作品通用 case 再增补，冻结黄金集待扩充 |
+| 评测数据层 | 暂无公开执行 API | Evaluation Repository/ORM；31-case v1.1 硬黄金、6 个真实审计切片与确定性评分器 | 离线 A/B/重评分脚本；尚无正式产品 Eval Runner | `test_evaluation_repository.py`、`test_extraction_evaluation_service.py` | 评测事件待实现 | 已实现基础；required/allowed/forbidden、mention/deferred/temporal 与排他双写可审计，发布黄金集仍待扩充 |
 | Metrics | `/metrics` | `api/metrics.py` | — | Health/Metrics 集成测试 | 请求计数与延迟 | 已实现基础 |
 | 轻量可视化工作台 | `/ui`、`/ui/assets/*` | `api/routes/ui.py`、`web/index.html/css/js`；历史项目、重启分析、视觉优先、人生阶段、字段缺口、精提取进度/证据/Suggestion 审核 | 通过公开 Run API 间接驱动 | UI 静态资源集成测试、Observation/visual-enrichment API 测试、桌面与移动端浏览器 smoke | 浏览器不产生业务真值 | 已实现基础 |
 | OpenTelemetry 全链路 | 配置字段 | 尚无完整 instrumentation | — | 尚无 | 尚无 | 仅设计 |
 | 结构化业务事件与 `log-check` | 目标 CLI | 设计见日志文档 | 覆盖所有关键 Step | 尚无夹具/检查器测试 | 事件规范已设计 | 仅设计 |
 | 外观自动聚合闭环 | 现有查询/审批 API | `appearance_aggregation.py`、`appearance_aggregation_service.py`、聚合指纹与 stale 迁移 | `aggregate_appearance` | 策略单测、Pipeline/API、源版本失效、人工保护与时间线继承集成测试 | 核心聚合与依赖失效事件已插桩 | 已实现核心；精细差异重算已延期，当前保守重建 |
 | GenerationContext | `POST /characters/{id}/image-runs` | `GenerationContextBuilder`、GenerationContext ORM、规范 JSON/hash | `freeze_generation_context` | `test_image_generation_pipeline.py` | `generation.context.frozen` | 已实现基础 |
+| 期望字段到 ImageRenderSpec | Image Run 请求中的 generation mode/scene overrides | `ResolvedCharacterRenderFields`、`SceneRenderBrief`、`RenderReadinessReport`、`ImageRenderSpec`、`image_rendering.py` | 在 `freeze_generation_context` 内原子适配/编译/冻结 | `test_image_rendering.py`、`test_image_generation_pipeline.py` | frozen 事件含 mode/spec hash/readiness | 部分实现；Mock 可联调，真实上游 provenance/审批待接 |
 | Mock 图像 Provider 与候选图 | `POST /characters/{id}/image-runs`、`GET /image-runs/{id}`、角色 Image Run 列表 | Image Provider Port、Mock Adapter、Artifact/GeneratedImage ORM | `submit_image → poll_image → persist_image` | `test_image_generation_pipeline.py` 覆盖候选落库、幂等、去重和恢复 | 复用 Run/ExternalOperation 状态；Provider 结构化事件待补 | 部分实现、默认关闭；真实 Provider 待做 |
 | Drift Audit 与门禁 | 目标图像 API | DriftAudit、Gate、Critic 目标模型 | audit/gate/regenerate | 尚无 | audit/gate/regen 未插桩 | 仅设计 |
 | 阶段 baseline 与 ImageSet | 目标 image-set API | Image ORM 预留 | 等待人工选择 | 尚无 | baseline/imageset 未插桩 | 仅设计 |

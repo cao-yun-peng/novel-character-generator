@@ -1,0 +1,24 @@
+{
+  "task_id": "PIPELINE-V2-DESIGN-012",
+  "project_mode": "managed",
+  "lifecycle_stage": "5",
+  "lifecycle_revision": 5,
+  "risk_level": "L1",
+  "git_revision": "faa06d03696c76bbee6451b5c75c27b95ca4fc9a",
+  "known_evidence": [
+    "E-20260827-R1-PROMPT-AB-007",
+    "E-20260827-R123-REAL-001",
+    "E-20260828-R1-GOLD-RUN-010",
+    "E-20260828-R1-GOLD-FIX-011"
+  ],
+  "baseline_constraints": {
+    "current_default_prompt": "visual-extraction-prompt-v2.5",
+    "current_visual_schema": "visual-observation-v3.4",
+    "current_entity_schema": "character-entity-resolution-v1.1",
+    "current_entity_prompt": "entity-resolution-prompt-v1.5",
+    "production_semantic_gate": "not_passed"
+  },
+  "design_artifact": "docs/27-semantic-pipeline-v2-contract.md",
+  "design_version": "semantic-pipeline-v2-design-v1.1",
+  "latest_evidence": "E-20260828-PIPELINE-V2-DESIGN-012-R1"
+}

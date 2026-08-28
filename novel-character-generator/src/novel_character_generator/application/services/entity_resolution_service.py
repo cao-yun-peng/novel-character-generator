@@ -17,6 +17,9 @@ from novel_character_generator.application.ports.entity_resolution import (
     EntityResolutionResult,
     GroundedCandidatePacket,
 )
+from novel_character_generator.domain.policies.mention_kinds import (
+    is_explicit_name_mention_kind,
+)
 from novel_character_generator.domain.policies.text_processing import estimate_tokens
 
 ENTITY_MEMORY_SELECTION_POLICY = "entity-memory-selection-v1"
@@ -477,7 +480,7 @@ def enforce_explicit_name_link_gate(
     decisions: list[EntityMentionDecision] = []
     for decision in result.decisions:
         mention = mentions.get(decision.mention_id)
-        if mention is None or mention.mention_kind != "name":
+        if mention is None or not is_explicit_name_mention_kind(mention.mention_kind):
             decisions.append(decision)
             continue
         historical_records = [
@@ -585,7 +588,7 @@ def apply_resolution_result(
             names.extend(target_record.names)
             explicit_names.extend(target_record.explicit_names)
         names.append(mention.representative_name)
-        if mention.mention_kind == "name":
+        if is_explicit_name_mention_kind(mention.mention_kind):
             explicit_names.append(mention.representative_name)
         evidence = [item for record in prior_records for item in record.evidence_quotes]
         if target_record is not None:

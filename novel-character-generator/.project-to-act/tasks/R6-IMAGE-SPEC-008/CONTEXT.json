@@ -1,0 +1,11 @@
+{
+  "task_id": "R6-IMAGE-SPEC-008",
+  "created_at": "2026-08-27T00:00:00+08:00",
+  "project_stage": 5,
+  "lifecycle_revision": 2,
+  "input_contract": "ResolvedCharacterSnapshot plus typed scene brief fields",
+  "output_contract": "provider-neutral ImageRenderSpec v1",
+  "provider_scope": "mock only",
+  "database_migration": false,
+  "upstream_gate": "R123 real semantic quality remains unpassed; this task uses expected-field fixtures and does not authorize batch generation"
+}

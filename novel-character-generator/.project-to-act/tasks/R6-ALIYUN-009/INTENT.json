@@ -1,0 +1,18 @@
+{
+  "task_id": "R6-ALIYUN-009",
+  "current_behavior": "真实 Provider 已离线接线，但 Prompt 仍直接泄漏字段路径、缺少独立 Renderer 版本和逐短句 provenance；官方共享 DashScope 域名也被白名单错误拒绝。",
+  "desired_behavior": "以可插拔、单图、可恢复、可审计方式接入阿里云百炼 qwen-image-plus；经版本化 PromptRenderer 把冻结字段翻译为自然视觉语言并保留逐短句来源，让后续市场模型通过注册 Provider/Renderer 适配器参与同一规格、状态机和评测闭环。",
+  "dependencies": [
+    "R6-IMAGE-SPEC-008 provider-neutral ImageRenderSpec",
+    "Alibaba Cloud Model Studio API key",
+    "existing ExternalOperation recovery and local ArtifactStore"
+  ],
+  "validation": [
+    "DashScope provider contract tests",
+    "provider registry and lifecycle contract tests",
+    "PromptRenderer golden and provenance tests",
+    "image pipeline regression",
+    "one explicitly authorized live image call when credentials are configured",
+    "Ruff, Mypy and Project-to-Act validation"
+  ]
+}

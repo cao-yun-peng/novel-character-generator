@@ -15,6 +15,9 @@ from novel_character_generator.application.ports.extraction import (
     VisualEntityCandidate,
     VisualFactCandidate,
 )
+from novel_character_generator.domain.policies.mention_kinds import (
+    is_explicit_name_mention_kind,
+)
 from novel_character_generator.domain.policies.visual_fields import EXTRACTION_SCHEMA_VERSION
 
 NAME_CONTEXT = re.compile(
@@ -50,7 +53,7 @@ class MockExtractionProvider:
                 local_id=entity_ids[name],
                 representative_name=name,
                 mention_quote=name,
-                mention_kind="name",
+                mention_kind="explicit_name",
                 confidence=1.0,
             )
             for name in names
@@ -101,7 +104,7 @@ class MockEntityResolutionProvider:
     async def resolve_chunk(self, request: EntityResolutionInput) -> EntityResolutionResult:
         decisions: list[EntityMentionDecision] = []
         for mention in request.candidates.mentions:
-            if mention.mention_kind != "name":
+            if not is_explicit_name_mention_kind(mention.mention_kind):
                 decisions.append(
                     EntityMentionDecision(
                         mention_id=mention.mention_id,

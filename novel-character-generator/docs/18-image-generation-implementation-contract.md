@@ -2,9 +2,9 @@
 
 > [← 上一篇](17-appearance-aggregation-contract.md) · [文档索引](README.md) · [下一篇 →](19-feature-traceability-matrix.md)
 >
-> 文档版本：3.0 · 修订日期：2026-08-26
+> 文档版本：3.1 · 修订日期：2026-08-27
 >
-> 当前状态：基础链路部分实现。`GenerationContextBuilder`、Mock Provider、Image Run API、候选 Artifact 落库和恢复测试已存在；默认 `IMAGE_PROVIDER=disabled`，配置为 `mock` 后 capability 才开启。当前 Mock 上下文冻结不等于已实现角色设计缺口、`SceneRenderBrief`、Provider 中立 `ImageRenderSpec` 或高质量 Prompt 编译；真实收费 Provider、漂移审计、gate 与 baseline 仍未实现。
+> 当前状态：Mock 纵向切片、可插拔 Provider registry、版本化 `ImagePromptRenderer` 和 DashScope 单图真实 smoke 已实现。`GenerationContextBuilder`、目标字段适配器、strict `SceneRenderBrief`、三档就绪度、Provider 中立 `ImageRenderSpec`、Image Run API、候选 Artifact 落库和恢复测试已存在；Provider 只消费冻结规格，提交结果未知时禁止盲重提。真实上游 approved/locked Profile、持久化简报审批、漂移审计、gate 与 baseline 锁定仍未闭环。
 
 ## 1. 前置条件
 
@@ -64,9 +64,10 @@ Content-Type: application/json
 
 ```text
 validate_image_request
-  → freeze_generation_context
+  → resolve_expected_render_fields
   → build_scene_render_brief
   → compile_image_render_spec
+  → freeze_generation_context
   → plan_image
   → submit_image
   → poll_image
@@ -80,7 +81,7 @@ validate_image_request
   → lock_image_set
 ```
 
-每个 Step 必须有稳定 `step_key`、输入/输出 Schema、最大 attempt、可重试错误集合和取消语义。`regenerate_once` 最多执行一次；人工重新发起的新 Run 不计入同一自动循环，但必须引用上一 Run 和原因。
+当前 Mock 实现把 resolve/build/compile/freeze 作为 `freeze_generation_context` 内的原子确定性子阶段，只有完整 payload 和 hash 都成功后才落库，避免冻结后修改不可变上下文。接真实 Provider/独立耗时 Agent 后若拆分 Step，每个 Step 必须有稳定 `step_key`、输入/输出 Schema、最大 attempt、可重试错误集合和取消语义。`regenerate_once` 最多执行一次；人工重新发起的新 Run 不计入同一自动循环，但必须引用上一 Run 和原因。
 
 ## 4. 确定性代码与 Agent 边界
 
@@ -124,7 +125,9 @@ ResolvedCharacterSnapshot
 
 `ImageRenderSpec` 至少分开保存 identity、stage、outfit、performance、environment、art direction 和 negative blocks，并绑定 reference assets、尺寸、seed 和编译器版本。编译器只选择、排序、去重和序列化已批准输入；不得从“铁匠”“贵族”“善良”等身份或性格标签擅自补出围裙、珠宝、笑容等视觉事实。
 
-Provider Adapter 可以根据模型能力把块转为自然语言 Prompt、节点参数或结构化控制输入，但不得改变字段来源和语义。完整 Prompt 可作为受限 Artifact 保存，日志只写 hash、版本和裁剪摘要。
+当前适配缝使用 `ResolvedCharacterRenderFields`：每个期望字段携带 `field_path`、`value`、`block` 和 `source_refs`。现有 Snapshot 通过兼容适配器转换；后续真实 R1–R3 输出只替换适配器，不改变编译器或 Provider 端口。普通 Image Run 请求形成的简报固定为 `draft`，不能通过 `render_overrides` 自我提升为 `approved`；一致性场景批准必须来自后续持久化审批记录。
+
+Provider Adapter 通过可插拔 `ImagePromptRenderer` 把块转为自然语言 Prompt、节点参数或结构化控制输入，但不得改变字段来源和语义。Renderer 输出必须记录 ID、版本和逐短句字段绑定；完整 Prompt 可作为受限 Artifact 保存，日志只写 hash、版本和裁剪摘要。当前 `canonical-zh-character-v1` 对内部字段路径进行确定性中文翻译，缺少结构化字段或 provenance 时在收费提交前失败关闭。
 
 ## 6. Provider 端口
 
@@ -209,8 +212,8 @@ Profile、目标状态、关键证据、Workflow 或 Evaluator 发生影响语�
 1. `GenerationContextBuilder`、持久化 Schema 和 hash 稳定性测试（已完成基础）；
 2. WorkflowProfile 注册、固定 Mock Image Provider 和契约测试（已完成基础）；
 3. Image Run API、Step 图与 ExternalOperation 恢复（已完成基础）；
-4. 设计缺口、三档出图就绪度、`SceneRenderBrief` 和 `ImageRenderSpec`；
-5. Prompt Compiler 契约测试，证明事实、设计、场景、画风和 Provider 参数不会串层；
+4. 设计缺口、三档出图就绪度、`SceneRenderBrief` 和 `ImageRenderSpec`（已完成 Mock 契约与失败关闭基础，持久化缺口/审批待补）；
+5. Prompt Compiler 契约测试，证明事实、设计、场景、画风和 Provider 参数不会串层（已完成目标字段/来源/分块/hash 基础，真实上游适配待验证）；
 6. 一个真实 Provider Adapter 的 submit/query/download；
 7. Artifact 原子落库和完整性检查（Mock 已完成，真实下载待验证）；
 8. 确定性基础审计，再接 Multimodal Critic；

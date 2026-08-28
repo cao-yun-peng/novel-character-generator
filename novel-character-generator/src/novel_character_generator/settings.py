@@ -85,10 +85,30 @@ class Settings(BaseSettings):
     )
     entity_convergence_repair_max_attempts: int = Field(default=2, ge=0, le=4)
     entity_resolution_max_calls_per_run: int = Field(default=2_000, ge=1, le=100_000)
-    image_provider: Literal["disabled", "mock"] = "disabled"
+    image_provider: str = "disabled"
+    image_prompt_renderer: str = "canonical-zh"
     image_workflow_profile: str = "mock-character-portrait"
     image_workflow_version: str = "1"
     image_candidate_count_max: int = Field(default=4, ge=1, le=8)
+    dashscope_api_key: SecretStr | None = None
+    dashscope_base_url: str | None = None
+    dashscope_image_model: Literal["qwen-image-plus", "qwen-image"] = (
+        "qwen-image-plus"
+    )
+    dashscope_image_default_size: Literal[
+        "1664*928", "1472*1104", "1328*1328", "1104*1472", "928*1664"
+    ] = "1328*1328"
+    dashscope_timeout_seconds: float = Field(default=30.0, gt=0, le=120)
+    timicc_api_key: SecretStr | None = None
+    timicc_base_url: str = "https://timicc.com"
+    timicc_image_model: Literal["gpt-image-2", "gpt-image-2-2026-04-21"] = (
+        "gpt-image-2"
+    )
+    timicc_image_quality: Literal["low", "medium", "high", "auto"] = "medium"
+    timicc_image_default_size: str = "1328x1328"
+    timicc_image_staging_root: Path = Path("data/provider-staging/timicc")
+    timicc_timeout_seconds: float = Field(default=180.0, gt=0, le=600)
+    image_poll_interval_seconds: float = Field(default=10.0, ge=1, le=60)
     agent_runtime_enabled: bool = False
     agent_max_turns_default: int = Field(default=3, ge=1)
     agent_max_tool_calls_default: int = Field(default=12, ge=0)
@@ -102,9 +122,17 @@ class Settings(BaseSettings):
 
     @model_validator(mode="after")
     def validate_provider_configuration(self) -> "Settings":
+        self.image_provider = self.image_provider.strip().lower()
+        self.image_prompt_renderer = self.image_prompt_renderer.strip().lower()
+        if not self.image_provider:
+            raise ValueError("invalid_image_provider_name")
+        if not self.image_prompt_renderer:
+            raise ValueError("invalid_image_prompt_renderer_name")
         for field_name in (
             "llm_api_key",
             "embedding_api_key",
+            "dashscope_api_key",
+            "timicc_api_key",
             "user_api_key",
             "admin_api_key",
         ):
@@ -136,6 +164,14 @@ class Settings(BaseSettings):
             raise ValueError("mock_llm_provider_forbidden_in_production")
         if self.app_env == "production" and self.image_provider == "mock":
             raise ValueError("mock_image_provider_forbidden_in_production")
+        if self.image_provider == "dashscope" and (
+            self.dashscope_api_key is None or not self.dashscope_base_url
+        ):
+            raise ValueError("dashscope_image_provider_configuration_required")
+        if self.image_provider == "timicc" and (
+            self.timicc_api_key is None or not self.timicc_base_url
+        ):
+            raise ValueError("timicc_image_provider_configuration_required")
         if self.app_env == "production" and self.llm_raw_response_capture_enabled:
             raise ValueError("llm_raw_response_capture_forbidden_in_production")
         if self.llm_provider != "mock" and (self.llm_api_key is None or not self.llm_model):

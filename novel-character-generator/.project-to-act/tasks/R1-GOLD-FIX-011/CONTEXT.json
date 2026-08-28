@@ -1,0 +1,11 @@
+{
+  "task_id": "R1-GOLD-FIX-011",
+  "project_mode": "managed",
+  "lifecycle_stage": "5",
+  "lifecycle_revision": 2,
+  "risk_level": "L1",
+  "source_report": "data/diagnostics/r1-gold-v1-ab-20260828/report.json",
+  "rescored_report": "data/diagnostics/r1-gold-v1-ab-20260828/report-rescored-v1.1.json",
+  "dataset": "tests/evaluation/visual_extraction_seed_v1.json",
+  "real_manifest": "tests/evaluation/r1_prompt_ab_real_v1.json"
+}

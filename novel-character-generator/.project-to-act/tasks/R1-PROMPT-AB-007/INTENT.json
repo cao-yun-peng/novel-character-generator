@@ -1,0 +1,19 @@
+{
+  "task_id": "R1-PROMPT-AB-007",
+  "current_behavior": "v2.5 规则平铺，local_id 的 Chunk 作用域、同字段多实例、明确代词局部共指、age 双轨输出和 unknown/ambiguous owner 边界存在歧义。",
+  "desired_behavior": "以阶段化生成与最终检查组织同等语义规则，配套可执行 Schema/适配边界，并用真实文本 A/B 数据而非主观判断决定是否全量替换。",
+  "dependencies": [
+    "R1-DATA-006",
+    "visual-observation-v3.3",
+    "visual-extraction-prompt-v2.5",
+    "tests/evaluation/visual_extraction_seed_v0.json",
+    "tests/测试/斗破苍穹前四章.txt"
+  ],
+  "validation": [
+    "Prompt/Schema/Adapter 定向单元测试",
+    "冻结 seed 回归集离线测试",
+    "真实 Provider A/B 调用",
+    "Ruff、Mypy 和完整 Pytest",
+    "Project-to-Act 与 Agent lifecycle validate"
+  ]
+}

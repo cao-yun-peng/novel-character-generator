@@ -1,0 +1,11 @@
+{
+  "task_id": "R1-GOLD-008",
+  "created_at": "2026-08-28T00:00:00+08:00",
+  "project_stage": 5,
+  "lifecycle_revision": 2,
+  "risk_level": "L1",
+  "dataset_from": "visual-extraction-developer-seed:v0:visual-observation-seed-v2",
+  "dataset_target": "visual-extraction-developer-seed:v1:visual-observation-seed-v3",
+  "provider_calls": 0,
+  "database_migration": false
+}

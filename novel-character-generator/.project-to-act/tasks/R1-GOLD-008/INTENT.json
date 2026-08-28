@@ -1,0 +1,12 @@
+{
+  "task_id": "R1-GOLD-008",
+  "requested_by": "user",
+  "intent": "更新黄金测评集，使 Prompt 选择建立在一致、可审计、失败关闭的质量定义上。",
+  "current_behavior": "v0 只区分 expected observations；真实 Chunk 只有 focus；mention/deferred/temporal 与可选/禁止事实没有完整黄金评分。",
+  "expected_behavior": "v1 明确 required、allowed、forbidden 事实及人物提及、deferred、temporal 边界，评分器逐层输出三态结果。",
+  "non_goals": [
+    "不修改默认 Prompt",
+    "不解决 R2 跨 Chunk 身份归并",
+    "不通过本任务宣称进入生产发布阶段"
+  ]
+}

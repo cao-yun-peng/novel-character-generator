@@ -2,10 +2,10 @@
   "schemaVersion": 1,
   "projectId": "novel-character-generator",
   "projectName": "Novel Character Generator",
-  "revision": 2,
+  "revision": 6,
   "projectStatus": "active",
   "currentStage": "5",
-  "updatedAt": "2026-08-26T13:03:21.321Z",
+  "updatedAt": "2026-08-28T05:10:02.020Z",
   "historicalLimitations": [
     "Adopt existing R1 v3 development at stage 5; earlier lifecycle gates are legacy_unverified and production readiness is not claimed."
   ],
@@ -77,18 +77,37 @@
     {
       "id": "4",
       "name": "架构与契约设计",
-      "status": "legacy_unverified",
+      "status": "conditional",
       "expectedArtifacts": [
         "架构与数据流",
         "Schema 与状态机",
         "威胁模型与 ADR"
       ],
-      "taskIds": [],
-      "evidenceIds": [],
-      "artifacts": [],
-      "decisions": [],
-      "startedAt": null,
-      "updatedAt": "2026-08-26T13:03:09.747Z"
+      "taskIds": [
+        "PIPELINE-V2-DESIGN-012"
+      ],
+      "evidenceIds": [
+        "E-20260828-PIPELINE-V2-DESIGN-012-R1"
+      ],
+      "artifacts": [
+        "docs/27-semantic-pipeline-v2-contract.md"
+      ],
+      "decisions": [
+        {
+          "at": "2026-08-28T03:54:33.293Z",
+          "decision": "conditional",
+          "evidenceIds": [
+            "E-20260828-PIPELINE-V2-DESIGN-012-R1"
+          ],
+          "artifacts": [
+            "docs/27-semantic-pipeline-v2-contract.md"
+          ],
+          "summary": "V2 architecture v1.1 is statically complete; Stage 5 may begin with P0, while numeric promotion coverage and human-review capacity thresholds remain to be frozen from P0 evidence before limited switching.",
+          "nextStage": null
+        }
+      ],
+      "startedAt": "2026-08-28T03:54:22.275Z",
+      "updatedAt": "2026-08-28T03:54:33.293Z"
     },
     {
       "id": "5",
@@ -100,13 +119,34 @@
         "自动测试与运行手册"
       ],
       "taskIds": [
-        "R1-EVAL-002"
+        "R1-EVAL-002",
+        "PIPELINE-V2-M1-013"
       ],
-      "evidenceIds": [],
-      "artifacts": [],
-      "decisions": [],
+      "evidenceIds": [
+        "E-20260828-PIPELINE-V2-DESIGN-012-R1",
+        "E-20260828-PIPELINE-V2-M1-013"
+      ],
+      "artifacts": [
+        "docs/27-semantic-pipeline-v2-contract.md",
+        "tests/evaluation/m1_local_observation_discovery_v1.json",
+        "docs/28-m1-local-observation-evaluation.md"
+      ],
+      "decisions": [
+        {
+          "at": "2026-08-28T03:54:13.694Z",
+          "decision": "returned",
+          "evidenceIds": [
+            "E-20260828-PIPELINE-V2-DESIGN-012-R1"
+          ],
+          "artifacts": [
+            "docs/27-semantic-pipeline-v2-contract.md"
+          ],
+          "summary": "Core semantic workflow redesign requires a fresh architecture and contract gate before implementation.",
+          "nextStage": "4"
+        }
+      ],
       "startedAt": "2026-08-26T13:03:21.321Z",
-      "updatedAt": "2026-08-26T13:03:21.321Z"
+      "updatedAt": "2026-08-28T05:10:02.020Z"
     },
     {
       "id": "6",
@@ -122,7 +162,7 @@
       "artifacts": [],
       "decisions": [],
       "startedAt": null,
-      "updatedAt": null
+      "updatedAt": "2026-08-28T03:54:13.694Z"
     },
     {
       "id": "7",
@@ -138,7 +178,7 @@
       "artifacts": [],
       "decisions": [],
       "startedAt": null,
-      "updatedAt": null
+      "updatedAt": "2026-08-28T03:54:13.694Z"
     },
     {
       "id": "8",
@@ -154,7 +194,7 @@
       "artifacts": [],
       "decisions": [],
       "startedAt": null,
-      "updatedAt": null
+      "updatedAt": "2026-08-28T03:54:13.694Z"
     }
   ],
   "transitions": [
@@ -185,6 +225,68 @@
       "artifacts": [],
       "summary": "Run bounded cross-genre v3 sampling and convert novel-specific failures into generic evaluation cases.",
       "revision": 2
+    },
+    {
+      "at": "2026-08-28T03:54:13.694Z",
+      "action": "decision",
+      "fromStage": "5",
+      "toStage": "4",
+      "taskId": "R1-EVAL-002",
+      "decision": "returned",
+      "evidenceIds": [
+        "E-20260828-PIPELINE-V2-DESIGN-012-R1"
+      ],
+      "artifacts": [
+        "docs/27-semantic-pipeline-v2-contract.md"
+      ],
+      "summary": "Core semantic workflow redesign requires a fresh architecture and contract gate before implementation.",
+      "revision": 3
+    },
+    {
+      "at": "2026-08-28T03:54:22.275Z",
+      "action": "start",
+      "fromStage": "4",
+      "toStage": "4",
+      "fromStatus": "ready",
+      "toStatus": "in_progress",
+      "taskId": "PIPELINE-V2-DESIGN-012",
+      "decision": null,
+      "evidenceIds": [],
+      "artifacts": [],
+      "summary": "Review and repair Semantic Pipeline V2 architecture, typed contracts, quality gates, recovery, and data boundaries.",
+      "revision": 4
+    },
+    {
+      "at": "2026-08-28T03:54:33.293Z",
+      "action": "decision",
+      "fromStage": "4",
+      "toStage": "5",
+      "taskId": "PIPELINE-V2-DESIGN-012",
+      "decision": "conditional",
+      "evidenceIds": [
+        "E-20260828-PIPELINE-V2-DESIGN-012-R1"
+      ],
+      "artifacts": [
+        "docs/27-semantic-pipeline-v2-contract.md"
+      ],
+      "summary": "V2 architecture v1.1 is statically complete; Stage 5 may begin with P0, while numeric promotion coverage and human-review capacity thresholds remain to be frozen from P0 evidence before limited switching.",
+      "revision": 5
+    },
+    {
+      "at": "2026-08-28T04:06:33.808Z",
+      "action": "start",
+      "fromStage": "5",
+      "toStage": "5",
+      "fromStatus": "ready",
+      "toStatus": "in_progress",
+      "taskId": "PIPELINE-V2-M1-013",
+      "decision": null,
+      "evidenceIds": [],
+      "artifacts": [
+        "docs/27-semantic-pipeline-v2-contract.md"
+      ],
+      "summary": "Build the M1 local-observation shadow slice, strict contract, reusable structured-provider boundary, and user-reviewed node-level evaluation set without changing the V1 production route.",
+      "revision": 6
     }
   ]
 }

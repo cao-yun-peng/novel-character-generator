@@ -1,0 +1,31 @@
+{
+  "id": "R1-GOLD-008",
+  "title": "升级 R1 黄金测评集与失败关闭评分契约",
+  "status": "done",
+  "owner": "Codex",
+  "objective": "保留旧 v0 评测集，建立与当前 R1 字段契约一致的 v1 黄金集，并让 required/allowed/forbidden、mention、deferred 和 temporal 信号进入确定性评分。",
+  "allowed_paths": [
+    "src/novel_character_generator/application/services/extraction_evaluation_service.py",
+    "tests/evaluation",
+    "tests/unit/test_extraction_evaluation_service.py",
+    "tests/测试/ab_evaluate_visual_prompts.py",
+    "tests/测试/evaluate_visual_prompt_cases.py",
+    "docs",
+    ".project-to-act"
+  ],
+  "invariants": [
+    "旧 visual_extraction_seed_v0.json 保持不变以复现既有 A/B",
+    "新黄金答案由当前通用视觉字段契约决定，不为 v2.5 或 v2.6 输出量身定制",
+    "required 缺失和 forbidden 命中失败关闭，allowed 缺失不扣分",
+    "泛称提及类型、deferred reason 和 temporal signal 可单独评分",
+    "真实小说正文不复制到项目管理账本",
+    "本任务不发起真实 Provider 调用"
+  ],
+  "acceptance": [
+    "v1 数据集 Schema 可由 Pydantic 严格校验且黄金引文均存在于案例文本",
+    "已识别的服装、礼服、白衣、鞋靴和清俊旧答案冲突被显式消除",
+    "评分器覆盖 required/allowed/forbidden、mention、deferred、temporal 正反例",
+    "A/B 与逐 case 工具默认使用 v1 且旧报告仍可离线重评分",
+    "定向、完整 Pytest、Ruff 和 Mypy 通过"
+  ]
+}

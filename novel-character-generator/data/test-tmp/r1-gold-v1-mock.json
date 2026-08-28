@@ -1,0 +1,350 @@
+{
+  "dataset": {
+    "name": "visual-extraction-developer-seed",
+    "version": "v1",
+    "rubric_version": "visual-observation-seed-v3"
+  },
+  "provider_version": "mock:visual-observation-v3.4",
+  "execution_mode": "one_provider_call_per_case",
+  "case_count": 3,
+  "passed_case_count": 0,
+  "needs_review_case_count": 0,
+  "failed_case_count": 3,
+  "records": [
+    {
+      "case": {
+        "id": "direct-hair",
+        "text": "沈砚有一头黑色短发。",
+        "expected_observations": [],
+        "required_observations": [
+          {
+            "character_name": "沈砚",
+            "field_path": "hair.color",
+            "value": "黑色",
+            "accepted_values": [],
+            "rejected_values": [],
+            "evidence_quote": "黑色短发",
+            "accepted_evidence_quotes": [],
+            "rejected_evidence_quotes": [],
+            "epistemic_status": "asserted",
+            "life_phase_key": null
+          },
+          {
+            "character_name": "沈砚",
+            "field_path": "hair.length",
+            "value": "短",
+            "accepted_values": [
+              "短发"
+            ],
+            "rejected_values": [],
+            "evidence_quote": "黑色短发",
+            "accepted_evidence_quotes": [
+              "短发"
+            ],
+            "rejected_evidence_quotes": [],
+            "epistemic_status": "asserted",
+            "life_phase_key": null
+          }
+        ],
+        "allowed_observations": [],
+        "forbidden_observations": [],
+        "expected_mentions": [
+          {
+            "surface": "沈砚",
+            "mention_kind": "explicit_name",
+            "min_count": 1,
+            "max_count": 1
+          }
+        ],
+        "expected_deferred_items": [],
+        "expected_temporal_signals": [],
+        "allow_unlisted_observations": false,
+        "allow_unlisted_deferred": false,
+        "allow_unlisted_temporal_signals": false,
+        "slice_tags": [
+          "direct",
+          "hair"
+        ],
+        "severity": "important",
+        "notes": null
+      },
+      "provider_metadata": {
+        "provider": "mock"
+      },
+      "visual_candidates": {
+        "entities": [],
+        "visual_candidates": [],
+        "temporal_signals": [],
+        "deferred_items": []
+      },
+      "grounded_candidate_packet": {
+        "mentions": [],
+        "facts": [],
+        "temporal_signals": [],
+        "warnings": []
+      },
+      "grounded_visual_result": {
+        "mentions": [],
+        "observations": [],
+        "warnings": []
+      },
+      "score": {
+        "case_id": "direct-hair",
+        "status": "fail",
+        "true_positive": 0,
+        "false_positive": 0,
+        "false_negative": 2,
+        "precision": 1.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "accepted_value_rate": 0.0,
+        "exact_evidence_rate": 0.0,
+        "compatible_evidence_rate": 0.0,
+        "needs_review_count": 0,
+        "failed_observation_count": 2,
+        "allowed_observation_count": 0,
+        "unlisted_observation_count": 0,
+        "forbidden_observation_count": 0,
+        "mention_failure_count": 1,
+        "deferred_failure_count": 0,
+        "temporal_failure_count": 0,
+        "contract_reason_codes": [
+          "missing_mention:沈砚:explicit_name:0"
+        ],
+        "passed": false,
+        "observations": [
+          {
+            "character_name": "沈砚",
+            "field_path": "hair.color",
+            "status": "fail",
+            "reason_codes": [
+              "missing_observation"
+            ],
+            "expected_value": "黑色",
+            "actual_value": null,
+            "value_match": "missing",
+            "expected_evidence_quote": "黑色短发",
+            "actual_evidence_quote": null,
+            "evidence_match": "missing"
+          },
+          {
+            "character_name": "沈砚",
+            "field_path": "hair.length",
+            "status": "fail",
+            "reason_codes": [
+              "missing_observation"
+            ],
+            "expected_value": "短",
+            "actual_value": null,
+            "value_match": "missing",
+            "expected_evidence_quote": "黑色短发",
+            "actual_evidence_quote": null,
+            "evidence_match": "missing"
+          }
+        ]
+      }
+    },
+    {
+      "case": {
+        "id": "descriptor-not-explicit-name",
+        "text": "少女娇嫩的耳垂上吊着绿色玉坠。",
+        "expected_observations": [],
+        "required_observations": [
+          {
+            "character_name": "少女",
+            "field_path": "accessories.earrings",
+            "value": "绿色玉坠",
+            "accepted_values": [],
+            "rejected_values": [],
+            "evidence_quote": "绿色玉坠",
+            "accepted_evidence_quotes": [],
+            "rejected_evidence_quotes": [],
+            "epistemic_status": "asserted",
+            "life_phase_key": null
+          }
+        ],
+        "allowed_observations": [],
+        "forbidden_observations": [],
+        "expected_mentions": [
+          {
+            "surface": "少女",
+            "mention_kind": "descriptor",
+            "min_count": 1,
+            "max_count": 1
+          }
+        ],
+        "expected_deferred_items": [],
+        "expected_temporal_signals": [],
+        "allow_unlisted_observations": false,
+        "allow_unlisted_deferred": false,
+        "allow_unlisted_temporal_signals": false,
+        "slice_tags": [
+          "descriptor",
+          "mention-kind",
+          "accessories"
+        ],
+        "severity": "critical",
+        "notes": null
+      },
+      "provider_metadata": {
+        "provider": "mock"
+      },
+      "visual_candidates": {
+        "entities": [],
+        "visual_candidates": [],
+        "temporal_signals": [],
+        "deferred_items": []
+      },
+      "grounded_candidate_packet": {
+        "mentions": [],
+        "facts": [],
+        "temporal_signals": [],
+        "warnings": []
+      },
+      "grounded_visual_result": {
+        "mentions": [],
+        "observations": [],
+        "warnings": []
+      },
+      "score": {
+        "case_id": "descriptor-not-explicit-name",
+        "status": "fail",
+        "true_positive": 0,
+        "false_positive": 0,
+        "false_negative": 1,
+        "precision": 1.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "accepted_value_rate": 0.0,
+        "exact_evidence_rate": 0.0,
+        "compatible_evidence_rate": 0.0,
+        "needs_review_count": 0,
+        "failed_observation_count": 1,
+        "allowed_observation_count": 0,
+        "unlisted_observation_count": 0,
+        "forbidden_observation_count": 0,
+        "mention_failure_count": 1,
+        "deferred_failure_count": 0,
+        "temporal_failure_count": 0,
+        "contract_reason_codes": [
+          "missing_mention:少女:descriptor:0"
+        ],
+        "passed": false,
+        "observations": [
+          {
+            "character_name": "少女",
+            "field_path": "accessories.earrings",
+            "status": "fail",
+            "reason_codes": [
+              "missing_observation"
+            ],
+            "expected_value": "绿色玉坠",
+            "actual_value": null,
+            "value_match": "missing",
+            "expected_evidence_quote": "绿色玉坠",
+            "actual_evidence_quote": null,
+            "evidence_match": "missing"
+          }
+        ]
+      }
+    },
+    {
+      "case": {
+        "id": "inferred-age-exclusive-deferred",
+        "text": "那名男子看起来像四十岁左右。",
+        "expected_observations": [],
+        "required_observations": [],
+        "allowed_observations": [],
+        "forbidden_observations": [
+          {
+            "character_name": "那名男子",
+            "field_path": "age",
+            "values": [],
+            "epistemic_status": null,
+            "life_phase_key": null,
+            "reason": "inferred_age_must_not_be_asserted"
+          },
+          {
+            "character_name": "那名男子",
+            "field_path": "age_stage",
+            "values": [],
+            "epistemic_status": null,
+            "life_phase_key": null,
+            "reason": "inferred_age_stage_must_not_be_asserted"
+          }
+        ],
+        "expected_mentions": [],
+        "expected_deferred_items": [
+          {
+            "reason_code": "inferred_visual_fact",
+            "evidence_quote": "看起来像四十岁左右",
+            "accepted_evidence_quotes": [
+              "四十岁左右"
+            ],
+            "min_count": 1,
+            "max_count": 1
+          }
+        ],
+        "expected_temporal_signals": [],
+        "allow_unlisted_observations": false,
+        "allow_unlisted_deferred": false,
+        "allow_unlisted_temporal_signals": false,
+        "slice_tags": [
+          "descriptor",
+          "age",
+          "inferred",
+          "deferred",
+          "exclusive-branch"
+        ],
+        "severity": "critical",
+        "notes": null
+      },
+      "provider_metadata": {
+        "provider": "mock"
+      },
+      "visual_candidates": {
+        "entities": [],
+        "visual_candidates": [],
+        "temporal_signals": [],
+        "deferred_items": []
+      },
+      "grounded_candidate_packet": {
+        "mentions": [],
+        "facts": [],
+        "temporal_signals": [],
+        "warnings": []
+      },
+      "grounded_visual_result": {
+        "mentions": [],
+        "observations": [],
+        "warnings": []
+      },
+      "score": {
+        "case_id": "inferred-age-exclusive-deferred",
+        "status": "fail",
+        "true_positive": 0,
+        "false_positive": 0,
+        "false_negative": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "accepted_value_rate": 1.0,
+        "exact_evidence_rate": 1.0,
+        "compatible_evidence_rate": 1.0,
+        "needs_review_count": 0,
+        "failed_observation_count": 0,
+        "allowed_observation_count": 0,
+        "unlisted_observation_count": 0,
+        "forbidden_observation_count": 0,
+        "mention_failure_count": 0,
+        "deferred_failure_count": 1,
+        "temporal_failure_count": 0,
+        "contract_reason_codes": [
+          "missing_deferred:inferred_visual_fact:看起来像四十岁左右:0"
+        ],
+        "passed": false,
+        "observations": []
+      }
+    }
+  ]
+}
