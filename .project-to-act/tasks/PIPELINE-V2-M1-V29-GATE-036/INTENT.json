@@ -1,9 +1,0 @@
-{
-  "task_id": "PIPELINE-V2-M1-V29-GATE-036",
-  "requested_by": "user",
-  "intent": "调用 .env 配置的外部 LLM Provider，运行 Prompt v2.9 短集 16 条与真实集 10 条检查。",
-  "execution": "authorized-two-dataset-provider-evaluation",
-  "provider_call": true,
-  "database_mutation": false,
-  "production_route_mutation": false
-}

@@ -1,0 +1,10 @@
+{
+  "task_id": "PIPELINE-V3-SIMPLIFIED-039",
+  "requested_by": "user",
+  "intent": "放弃继续扩展原 M1/N2/M2 复杂映射，在新分支按候选人物结构块重建简化契约；跨人物重复 evidence 允许通过，M2 按单人物解析，人物记忆后续再议。",
+  "execution": "stage-4-v3-contract-reset",
+  "provider_calls": 0,
+  "database_mutation": false,
+  "production_route_mutation": false,
+  "git_branch_created": "v3-simplified-character-evidence"
+}

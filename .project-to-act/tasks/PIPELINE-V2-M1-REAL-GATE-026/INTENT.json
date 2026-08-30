@@ -1,9 +1,0 @@
-{
-  "task_id": "PIPELINE-V2-M1-REAL-GATE-026",
-  "requested_by": "user",
-  "intent": "确认 10 条真实 Chunk 已审核完毕并开始真实测试。",
-  "execution": "approved-real-dataset-provider-evaluation",
-  "provider_call_authorized": true,
-  "database_mutation": false,
-  "production_route_mutation": false
-}

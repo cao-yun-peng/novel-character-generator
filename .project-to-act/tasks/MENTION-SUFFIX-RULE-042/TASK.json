@@ -1,0 +1,24 @@
+{
+  "id": "MENTION-SUFFIX-RULE-042",
+  "title": "冻结 describe 泛称后缀规则",
+  "status": "completed",
+  "owner": "Codex",
+  "objective": "使用版本化后缀表将红衣女子等描述性提及稳定归一为 describe。",
+  "allowed_paths": [
+    "README.md",
+    "docs/33-simplified-character-evidence-pipeline-v3.md",
+    ".project-to-act"
+  ],
+  "invariants": [
+    "通配符语义按 endswith 实现",
+    "明确人物名称优先抽取为最小 exact 提及",
+    "泛称后缀命中时归一为 describe",
+    "归一只修改 mention type 并记录 trace，不删除 evidence"
+  ],
+  "acceptance": [
+    "红衣女子命中女子后缀",
+    "月袍老人命中老人后缀",
+    "null 和明确名称优先级明确",
+    "契约和项目台账校验通过"
+  ]
+}

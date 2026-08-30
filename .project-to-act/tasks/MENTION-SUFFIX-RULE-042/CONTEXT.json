@@ -1,0 +1,9 @@
+{
+  "task_id": "MENTION-SUFFIX-RULE-042",
+  "project_mode": "managed",
+  "risk_level": "L1",
+  "branch": "v3-simplified-character-evidence",
+  "design_artifact": "docs/33-simplified-character-evidence-pipeline-v3.md",
+  "rule_version": "describe-suffix-v1",
+  "latest_evidence": "E-20260830-MENTION-SUFFIX-RULE-042"
+}

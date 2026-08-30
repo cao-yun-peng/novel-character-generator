@@ -1,0 +1,9 @@
+{
+  "task_id": "MENTION-SUFFIX-RULE-042",
+  "requested_by": "user",
+  "intent": "确认红衣女子可以直接通过 *女子 规则匹配为 describe。",
+  "execution": "contract-refinement",
+  "provider_calls": 0,
+  "database_mutation": false,
+  "production_route_mutation": false
+}

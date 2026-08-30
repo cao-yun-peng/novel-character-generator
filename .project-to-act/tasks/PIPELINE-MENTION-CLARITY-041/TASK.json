@@ -1,0 +1,31 @@
+{
+  "id": "PIPELINE-MENTION-CLARITY-041",
+  "title": "增加 exact describe null 与 describe 证据循环",
+  "status": "completed",
+  "owner": "Codex",
+  "objective": "区分明确人物名称、描述性人物提及和无提及证据，并让每个 describe 与每个 exact 组合进入 M2，由 N3 消费唯一归属片段并重跑剩余证据。",
+  "allowed_paths": [
+    "README.md",
+    "docs/README.md",
+    "docs/33-simplified-character-evidence-pipeline-v3.md",
+    "docs/contracts/simplified-character-evidence-v3-model-schemas.json",
+    ".project-to-act"
+  ],
+  "invariants": [
+    "describe 不是独立人物，不生成 local_character_ref",
+    "明确人物名称才可标记 exact",
+    "人、老者、老人、女孩、男人、女人及带衣着外貌修饰的泛称均为 describe",
+    "每个 describe 与每个 exact 都进入 M2",
+    "N2 原始 approved evidence 不可变",
+    "N3 只从待处理池消费唯一归属的最小原文片段",
+    "冲突、无进展和超过轮次上限时停止自动循环"
+  ],
+  "acceptance": [
+    "契约与 Schema 同时包含 exact describe null",
+    "null 与 mention_quote 的条件约束可机器校验",
+    "M2 支持 exact 自身任务和 exact×describe 组合任务",
+    "N3 Schema 可记录唯一消费、冲突、剩余片段和下一动作",
+    "项目台账与静态验证通过",
+    "不冒充运行时和模型质量完成"
+  ]
+}

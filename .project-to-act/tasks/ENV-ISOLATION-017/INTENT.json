@@ -1,1 +1,0 @@
-{"task_id":"ENV-ISOLATION-017","requested_by":"user","intent":"只使用当前项目并永久删除旧项目，消除虚拟环境和包导入对旧路径的依赖。","execution":"package-layout-and-workspace-isolation","provider_calls":0,"database_mutation":false,"production_route_mutation":false,"authorization":"用户于 2026-08-28 明确要求只使用当前项目并删除旧项目。"}

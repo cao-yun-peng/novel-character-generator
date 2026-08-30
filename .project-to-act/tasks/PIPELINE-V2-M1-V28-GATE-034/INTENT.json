@@ -1,9 +1,0 @@
-{
-  "task_id": "PIPELINE-V2-M1-V28-GATE-034",
-  "requested_by": "user",
-  "intent": "经用户明确确认，将短集 16 条与真实集 10 条 Chunk 文本发送至 .env 配置的外部 LLM Provider，运行 Prompt v2.8 并保存可复验评测证据。",
-  "execution": "authorized-two-dataset-provider-evaluation",
-  "provider_call": true,
-  "database_mutation": false,
-  "production_route_mutation": false
-}

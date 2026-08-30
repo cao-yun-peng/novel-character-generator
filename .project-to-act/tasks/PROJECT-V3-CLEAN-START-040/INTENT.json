@@ -1,0 +1,9 @@
+{
+  "task_id": "PROJECT-V3-CLEAN-START-040",
+  "requested_by": "user",
+  "intent": "新分支不再保留之前的代码和文档，项目完全重新开始。",
+  "execution": "clean-start",
+  "provider_calls": 0,
+  "database_mutation": false,
+  "production_route_mutation": false
+}

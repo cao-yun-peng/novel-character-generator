@@ -1,0 +1,426 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://novel-character-generator.local/contracts/simplified-character-evidence-v3-model-schemas.json",
+  "title": "Simplified Character Evidence Pipeline V3 Schemas",
+  "description": "Target machine contracts for exact/describe/null mention discovery, deterministic grounding, exact-by-describe appearance parsing, and residual describe evidence resolution.",
+  "version": "3.1.0-draft1",
+  "$defs": {
+    "SourceSpan": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["start", "end"],
+      "properties": {
+        "start": {"type": "integer", "minimum": 0},
+        "end": {"type": "integer", "minimum": 1}
+      }
+    },
+    "MentionType": {
+      "type": ["string", "null"],
+      "enum": ["exact", "describe", null]
+    },
+    "LocalCharacterRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source_document_version_id", "chunk_id", "local_mention_id", "mention_type", "packet_hash"],
+      "properties": {
+        "source_document_version_id": {"type": "string", "minLength": 1},
+        "chunk_id": {"type": "string", "minLength": 1},
+        "local_mention_id": {"type": "string", "pattern": "^m[1-9][0-9]*$"},
+        "mention_type": {"const": "exact"},
+        "packet_hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      }
+    },
+    "DescribeEvidenceRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["local_mention_id", "packet_hash"],
+      "properties": {
+        "local_mention_id": {"type": "string", "pattern": "^m[1-9][0-9]*$"},
+        "packet_hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      }
+    },
+    "EvidenceFragment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source_evidence_quote", "fragment_quote"],
+      "properties": {
+        "source_evidence_quote": {"type": "string", "minLength": 1},
+        "fragment_quote": {"type": "string", "minLength": 1}
+      }
+    },
+    "M1MentionDiscoveryInput": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["chunk_id", "chunk_text"],
+      "properties": {
+        "chunk_id": {"type": "string", "minLength": 1},
+        "chunk_text": {"type": "string", "minLength": 1}
+      }
+    },
+    "M1MentionDiscoveryResult": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["chunk_id", "candidate_mentions"],
+      "properties": {
+        "chunk_id": {"type": "string", "minLength": 1},
+        "candidate_mentions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["mention_type", "mention_quote", "evidence_quotes"],
+            "properties": {
+              "mention_type": {"$ref": "#/$defs/MentionType"},
+              "mention_quote": {"type": ["string", "null"], "minLength": 1},
+              "evidence_quotes": {
+                "type": "array",
+                "minItems": 1,
+                "uniqueItems": true,
+                "items": {"type": "string", "minLength": 1}
+              }
+            },
+            "allOf": [
+              {
+                "if": {
+                  "properties": {"mention_type": {"const": null}},
+                  "required": ["mention_type"]
+                },
+                "then": {"properties": {"mention_quote": {"type": "null"}}}
+              },
+              {
+                "if": {
+                  "properties": {"mention_type": {"enum": ["exact", "describe"]}},
+                  "required": ["mention_type"]
+                },
+                "then": {"properties": {"mention_quote": {"type": "string", "minLength": 1}}}
+              }
+            ]
+          }
+        }
+      }
+    },
+    "N2ApprovedEvidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["evidence_quote", "occurrence_count", "source_spans", "quote_hash"],
+      "properties": {
+        "evidence_quote": {"type": "string", "minLength": 1},
+        "occurrence_count": {"type": "integer", "minimum": 1},
+        "source_spans": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"$ref": "#/$defs/SourceSpan"}
+        },
+        "quote_hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      }
+    },
+    "N2GroundedMentionPacket": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schema_version", "source_document_version_id", "chunk_id", "chunk_hash", "grounded_mentions", "rejected_evidence"],
+      "properties": {
+        "schema_version": {"const": "grounded-character-packet-v3"},
+        "source_document_version_id": {"type": "string", "minLength": 1},
+        "chunk_id": {"type": "string", "minLength": 1},
+        "chunk_hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "grounded_mentions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["local_mention_id", "mention_type", "mention_quote", "approved_evidence", "packet_hash"],
+            "properties": {
+              "local_mention_id": {"type": "string", "pattern": "^m[1-9][0-9]*$"},
+              "mention_type": {"$ref": "#/$defs/MentionType"},
+              "mention_quote": {"type": ["string", "null"], "minLength": 1},
+              "approved_evidence": {
+                "type": "array",
+                "minItems": 1,
+                "items": {"$ref": "#/$defs/N2ApprovedEvidence"}
+              },
+              "packet_hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+            },
+            "allOf": [
+              {
+                "if": {
+                  "properties": {"mention_type": {"const": null}},
+                  "required": ["mention_type"]
+                },
+                "then": {"properties": {"mention_quote": {"type": "null"}}}
+              },
+              {
+                "if": {
+                  "properties": {"mention_type": {"enum": ["exact", "describe"]}},
+                  "required": ["mention_type"]
+                },
+                "then": {"properties": {"mention_quote": {"type": "string", "minLength": 1}}}
+              }
+            ]
+          }
+        },
+        "rejected_evidence": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["mention_index", "evidence_quote", "reason_code"],
+            "properties": {
+              "mention_index": {"type": "integer", "minimum": 0},
+              "evidence_quote": {"type": "string", "minLength": 1},
+              "reason_code": {"enum": ["mention_not_in_chunk", "evidence_not_in_chunk", "duplicate_within_mention"]}
+            }
+          }
+        }
+      }
+    },
+    "M2AppearanceFact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["category", "attribute", "value", "support_quote", "epistemic_status"],
+      "properties": {
+        "category": {"enum": ["age", "body", "face", "hair", "clothing", "accessory", "distinctive_mark", "appearance_state", "other_visual"]},
+        "attribute": {"type": "string", "minLength": 1},
+        "value": {"type": "string", "minLength": 1},
+        "support_quote": {"type": "string", "minLength": 1},
+        "epistemic_status": {"enum": ["asserted", "negated", "uncertain", "inferred"]}
+      }
+    },
+    "M2DescribeEvidenceAssessment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source_evidence_quote", "fragment_quote", "attribution_status", "claimed_evidence_quote", "appearance_facts"],
+      "properties": {
+        "source_evidence_quote": {"type": "string", "minLength": 1},
+        "fragment_quote": {"type": "string", "minLength": 1},
+        "attribution_status": {"enum": ["belongs_to_target", "not_target", "uncertain"]},
+        "claimed_evidence_quote": {"type": ["string", "null"], "minLength": 1},
+        "appearance_facts": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/M2AppearanceFact"}
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {"attribution_status": {"const": "belongs_to_target"}},
+            "required": ["attribution_status"]
+          },
+          "then": {
+            "properties": {
+              "claimed_evidence_quote": {"type": "string", "minLength": 1},
+              "appearance_facts": {"minItems": 1}
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {"attribution_status": {"enum": ["not_target", "uncertain"]}},
+            "required": ["attribution_status"]
+          },
+          "then": {
+            "properties": {
+              "claimed_evidence_quote": {"type": "null"},
+              "appearance_facts": {"maxItems": 0}
+            }
+          }
+        }
+      ]
+    },
+    "M2CandidateAppearanceParsingInput": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["target_character_ref", "target_mention_quote", "target_approved_evidence_quotes", "describe_source", "resolution_round", "chunk_text"],
+      "properties": {
+        "target_character_ref": {"$ref": "#/$defs/LocalCharacterRef"},
+        "target_mention_quote": {"type": "string", "minLength": 1},
+        "target_approved_evidence_quotes": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"type": "string", "minLength": 1}
+        },
+        "describe_source": {
+          "oneOf": [
+            {"type": "null"},
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["local_mention_id", "mention_type", "mention_quote", "packet_hash", "available_evidence_fragments"],
+              "properties": {
+                "local_mention_id": {"type": "string", "pattern": "^m[1-9][0-9]*$"},
+                "mention_type": {"const": "describe"},
+                "mention_quote": {"type": "string", "minLength": 1},
+                "packet_hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+                "available_evidence_fragments": {
+                  "type": "array",
+                  "minItems": 1,
+                  "items": {"$ref": "#/$defs/EvidenceFragment"}
+                }
+              }
+            }
+          ]
+        },
+        "resolution_round": {"type": "integer", "minimum": 1},
+        "chunk_text": {"type": "string", "minLength": 1}
+      }
+    },
+    "M2CandidateAppearanceParsingResult": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["target_character_ref", "target_appearance_facts", "describe_source_ref", "describe_evidence_assessments"],
+      "properties": {
+        "target_character_ref": {"$ref": "#/$defs/LocalCharacterRef"},
+        "target_appearance_facts": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/M2AppearanceFact"}
+        },
+        "describe_source_ref": {
+          "oneOf": [
+            {"type": "null"},
+            {"$ref": "#/$defs/DescribeEvidenceRef"}
+          ]
+        },
+        "describe_evidence_assessments": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/M2DescribeEvidenceAssessment"}
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {"describe_source_ref": {"type": "null"}},
+            "required": ["describe_source_ref"]
+          },
+          "then": {"properties": {"describe_evidence_assessments": {"maxItems": 0}}}
+        },
+        {
+          "if": {
+            "properties": {"describe_source_ref": {"type": "object"}},
+            "required": ["describe_source_ref"]
+          },
+          "then": {"properties": {"describe_evidence_assessments": {"minItems": 1}}}
+        }
+      ]
+    },
+    "N3ValidatedAppearancePacket": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schema_version", "target_character_ref", "facts"],
+      "properties": {
+        "schema_version": {"const": "validated-appearance-packet-v3"},
+        "target_character_ref": {"$ref": "#/$defs/LocalCharacterRef"},
+        "facts": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["category", "attribute", "value", "support_quote", "epistemic_status", "source_mention_id", "source_mention_type", "source_evidence_quote", "claimed_evidence_quote", "validation_status", "reason_code"],
+            "properties": {
+              "category": {"type": "string", "minLength": 1},
+              "attribute": {"type": "string", "minLength": 1},
+              "value": {"type": "string", "minLength": 1},
+              "support_quote": {"type": "string", "minLength": 1},
+              "epistemic_status": {"enum": ["asserted", "negated", "uncertain", "inferred"]},
+              "source_mention_id": {"type": "string", "pattern": "^m[1-9][0-9]*$"},
+              "source_mention_type": {"enum": ["exact", "describe"]},
+              "source_evidence_quote": {"type": "string", "minLength": 1},
+              "claimed_evidence_quote": {"type": ["string", "null"], "minLength": 1},
+              "validation_status": {"enum": ["approved", "review_context_only", "rejected_hallucination"]},
+              "reason_code": {"enum": ["support_in_approved_evidence", "support_only_in_chunk_context", "support_not_in_chunk"]}
+            },
+            "allOf": [
+              {
+                "if": {"properties": {"validation_status": {"const": "approved"}}},
+                "then": {"properties": {"reason_code": {"const": "support_in_approved_evidence"}}}
+              },
+              {
+                "if": {"properties": {"validation_status": {"const": "review_context_only"}}},
+                "then": {"properties": {"reason_code": {"const": "support_only_in_chunk_context"}}}
+              },
+              {
+                "if": {"properties": {"validation_status": {"const": "rejected_hallucination"}}},
+                "then": {"properties": {"reason_code": {"const": "support_not_in_chunk"}}}
+              },
+              {
+                "if": {
+                  "properties": {"source_mention_type": {"const": "describe"}},
+                  "required": ["source_mention_type"]
+                },
+                "then": {"properties": {"claimed_evidence_quote": {"type": "string", "minLength": 1}}}
+              }
+            ]
+          }
+        }
+      }
+    },
+    "N3DescribePoolResolutionResult": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schema_version", "chunk_id", "resolution_round", "describe_source_ref", "consumed_fragments", "conflicted_fragments", "remaining_evidence_fragments", "progress_made", "next_action", "pool_hash"],
+      "properties": {
+        "schema_version": {"const": "describe-pool-resolution-v3"},
+        "chunk_id": {"type": "string", "minLength": 1},
+        "resolution_round": {"type": "integer", "minimum": 1},
+        "describe_source_ref": {"$ref": "#/$defs/DescribeEvidenceRef"},
+        "consumed_fragments": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["source_evidence_quote", "claimed_evidence_quote", "claimed_span", "assigned_target_mention_id", "status"],
+            "properties": {
+              "source_evidence_quote": {"type": "string", "minLength": 1},
+              "claimed_evidence_quote": {"type": "string", "minLength": 1},
+              "claimed_span": {"$ref": "#/$defs/SourceSpan"},
+              "assigned_target_mention_id": {"type": "string", "pattern": "^m[1-9][0-9]*$"},
+              "status": {"const": "consumed_unique"}
+            }
+          }
+        },
+        "conflicted_fragments": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["source_evidence_quote", "claimed_evidence_quote", "claimed_span", "competing_target_mention_ids", "status"],
+            "properties": {
+              "source_evidence_quote": {"type": "string", "minLength": 1},
+              "claimed_evidence_quote": {"type": "string", "minLength": 1},
+              "claimed_span": {"$ref": "#/$defs/SourceSpan"},
+              "competing_target_mention_ids": {
+                "type": "array",
+                "minItems": 2,
+                "uniqueItems": true,
+                "items": {"type": "string", "pattern": "^m[1-9][0-9]*$"}
+              },
+              "status": {"const": "conflicted"}
+            }
+          }
+        },
+        "remaining_evidence_fragments": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/EvidenceFragment"}
+        },
+        "progress_made": {"type": "boolean"},
+        "next_action": {"enum": ["resolved", "requeue_m2", "defer_unresolved"]},
+        "pool_hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {"next_action": {"const": "resolved"}},
+            "required": ["next_action"]
+          },
+          "then": {"properties": {"remaining_evidence_fragments": {"maxItems": 0}}}
+        },
+        {
+          "if": {
+            "properties": {"next_action": {"const": "requeue_m2"}},
+            "required": ["next_action"]
+          },
+          "then": {"properties": {"remaining_evidence_fragments": {"minItems": 1}}}
+        }
+      ]
+    }
+  }
+}

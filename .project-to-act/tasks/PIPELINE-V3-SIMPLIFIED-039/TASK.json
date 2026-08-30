@@ -1,0 +1,29 @@
+{
+  "id": "PIPELINE-V3-SIMPLIFIED-039",
+  "title": "创建简化人物证据流水线 V3 契约",
+  "status": "completed",
+  "owner": "Codex",
+  "objective": "在独立分支建立按局部人物归拢 evidence、N2 最小存在性验证、M2 单人物并行解析和 N3 三态证据校验的新目标契约。",
+  "allowed_paths": [
+    "README.md",
+    "docs/README.md",
+    "docs/33-simplified-character-evidence-pipeline-v3.md",
+    "docs/contracts/simplified-character-evidence-v3-model-schemas.json",
+    ".project-to-act"
+  ],
+  "invariants": [
+    "当前分支只保留本任务形成的新契约与机器 Schema",
+    "同一 evidence 可以存在于多个局部候选人物块",
+    "N2 验证 mention/evidence 存在但暂不判断跨人物冲突",
+    "M2 每次只处理一个 local character",
+    "只有 support quote 位于 approved evidence 的事实可直接批准",
+    "人物记忆具体策略不在本任务实现"
+  ],
+  "acceptance": [
+    "新分支创建成功",
+    "V3 设计文档和机器 Schema 一致",
+    "Schema 通过 Draft 2020-12 静态验证",
+    "五份项目事实源同步且校验通过",
+    "不冒充 V3 运行时或质量 Gate 完成"
+  ]
+}

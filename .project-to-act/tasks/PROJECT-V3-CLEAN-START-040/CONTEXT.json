@@ -1,0 +1,11 @@
+{
+  "task_id": "PROJECT-V3-CLEAN-START-040",
+  "project_mode": "managed",
+  "risk_level": "L2",
+  "branch": "v3-simplified-character-evidence",
+  "source_revision": "2b61d2e3dc7dfc370343655d07d1f5f9fd4d83d6",
+  "local_backup": "E:\\project\\agent\\novel-cahracter-generator-v2-local-backup-20260830",
+  "retained_contract": "docs/33-simplified-character-evidence-pipeline-v3.md",
+  "retained_schema": "docs/contracts/simplified-character-evidence-v3-model-schemas.json",
+  "latest_evidence": "E-20260830-PROJECT-V3-CLEAN-START-040"
+}

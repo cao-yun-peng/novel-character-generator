@@ -1,1 +1,0 @@
-{"task_id":"PIPELINE-V2-M1-013","requested_by":"user","intent":"实现并评测 M1 局部观察发现。","execution":"stage-5-m1-offline-slice","provider_calls":30,"database_mutation":false,"production_route_mutation":false,"downstream_gate":"M1 real quality remains 5_of_6"}

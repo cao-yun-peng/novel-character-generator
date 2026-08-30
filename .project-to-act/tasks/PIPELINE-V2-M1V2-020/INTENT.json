@@ -1,1 +1,0 @@
-{"task_id":"PIPELINE-V2-M1V2-020","requested_by":"user","intent":"重新构建 M1 提示词与 Schema，并按新职责修改测评集。","execution":"stage-5-vertical-slice","provider_calls":0,"database_mutation":false,"production_route_mutation":false}

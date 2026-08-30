@@ -1,0 +1,9 @@
+{
+  "task_id": "PIPELINE-MENTION-CLARITY-041",
+  "requested_by": "user",
+  "intent": "M1 增加 exact describe null；每个 describe 与每个 exact 进入 M2；N3 删除已归属 describe 证据并让剩余 describe 再次细分。",
+  "execution": "contract-and-schema",
+  "provider_calls": 0,
+  "database_mutation": false,
+  "production_route_mutation": false
+}

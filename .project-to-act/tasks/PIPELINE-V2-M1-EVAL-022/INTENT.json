@@ -1,9 +1,0 @@
-{
-  "task_id": "PIPELINE-V2-M1-EVAL-022",
-  "requested_by": "user",
-  "intent": "先修正 M1 v2 测评集和评分器，再以真实小说 Chunk 建立 10 条 source-backed draft 数据集。",
-  "execution": "stage-5-evaluation-contract-and-dataset",
-  "provider_calls": 0,
-  "database_mutation": false,
-  "production_route_mutation": false
-}

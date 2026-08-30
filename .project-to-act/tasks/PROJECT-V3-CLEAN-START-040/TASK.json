@@ -1,0 +1,32 @@
+{
+  "id": "PROJECT-V3-CLEAN-START-040",
+  "title": "将 V3 分支重置为干净的新项目起点",
+  "status": "completed",
+  "owner": "Codex",
+  "objective": "从当前分支移除旧版源码、测试、数据、提示词、依赖和历史文档，只保留新流程契约与最小治理文件。",
+  "allowed_paths": [
+    "README.md",
+    ".gitignore",
+    "docs",
+    ".project-to-act",
+    "src",
+    "tests",
+    "scripts",
+    "data",
+    "pyproject.toml",
+    "uv.lock",
+    "alembic.ini"
+  ],
+  "invariants": [
+    "保留 Git 仓库和分支历史",
+    "保留新流程契约和机器 Schema",
+    "不把旧实现作为新项目运行时",
+    "未跟踪的本地密钥与环境先备份再移出仓库"
+  ],
+  "acceptance": [
+    "旧源码、测试、数据、提示词、依赖和旧文档不在当前工作目录",
+    "README 和五份项目事实源只描述新路线",
+    "Schema 与项目台账校验通过",
+    "不冒充运行时已经实现"
+  ]
+}

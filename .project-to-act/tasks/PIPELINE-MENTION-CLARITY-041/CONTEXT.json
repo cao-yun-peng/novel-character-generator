@@ -1,0 +1,11 @@
+{
+  "task_id": "PIPELINE-MENTION-CLARITY-041",
+  "project_mode": "managed",
+  "risk_level": "L1",
+  "branch": "v3-simplified-character-evidence",
+  "source_revision": "2b61d2e3dc7dfc370343655d07d1f5f9fd4d83d6",
+  "design_artifact": "docs/33-simplified-character-evidence-pipeline-v3.md",
+  "schema_artifact": "docs/contracts/simplified-character-evidence-v3-model-schemas.json",
+  "schema_version": "3.1.0-draft1",
+  "latest_evidence": "E-20260830-PIPELINE-MENTION-CLARITY-041"
+}
