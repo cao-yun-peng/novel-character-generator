@@ -1,0 +1,37 @@
+{
+  "id": "PIPELINE-V2-M1-PROMPT-031",
+  "title": "M1 Prompt v2.7 剩余失败归因修正",
+  "status": "completed",
+  "owner": "Codex",
+  "objective": "将 005/008 的真实失败归因为可泛化 Prompt 缺口，并用最小规则变更提高唯一定位、语义完整性和短视觉线索覆盖。",
+  "allowed_paths": [
+    "src/novel_character_generator/infrastructure/llm/prompts/01-visual-evidence-discovery.system.md",
+    "src/novel_character_generator/application/ports/visual_evidence.py",
+    "src/novel_character_generator/application/services/visual_evidence_evaluation_service.py",
+    "scripts/build_m1_visual_evidence_real_dataset.py",
+    "tests/evaluation/m1_visual_evidence_discovery_v2.json",
+    "tests/evaluation/m1_visual_evidence_real_v2.json",
+    "tests/unit/test_visual_evidence_provider.py",
+    "tests/unit/test_visual_evidence_evaluation_service.py",
+    "README.md",
+    ".project-to-act"
+  ],
+  "invariants": [
+    "Prompt 规则必须由 005/008 根因推广而来，不写入这两个 case 的金标答案",
+    "Dataset 版本、review_status、owners、candidates 与金标跨度不变，只更新被测 Prompt 版本",
+    "不改变模型 wire Schema、Rubric v2.5 或 Source Match Policy v2",
+    "不调用 Provider，不把静态检查冒充 Prompt 质量 Gate",
+    "不使用 v2.6 outputs 评价 v2.7",
+    "不写数据库、不产生 active Observation",
+    "不手工修改既有 AGENT_LIFECYCLE revision 或转换历史"
+  ],
+  "acceptance": [
+    "Prompt 版本升级为 visual-evidence-discovery-prompt-v2.7",
+    "Prompt 明确执行语义边界、唯一定位边界和逐句覆盖复扫",
+    "Prompt 明确 owner mention 不能弥补非唯一 evidence quote",
+    "Prompt 覆盖观察、动作和对话结构中的短小独立视觉线索",
+    "两套 draft Dataset 仅更新 prompt_version 且仍可重建、加载和金标自评分",
+    "Prompt 契约测试、Ruff、Mypy、Pytest、diff check 与 Project-to-Act validate 通过",
+    "项目进度、功能、版本、验收、证据和交接同步"
+  ]
+}

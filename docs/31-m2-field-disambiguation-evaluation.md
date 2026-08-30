@@ -1,10 +1,12 @@
-# M2 字段消歧开发与测试集审核说明
+# M2 v1 字段消歧：历史开发与测试集审核说明
 
-> 当前状态：离线工程已实现；测试集为 `m2-field-disambiguation-v1-draft1`，需要用户审核。没有运行真实 Provider，也不产生 active Observation。
+> 当前状态：M2 v1 离线工程已实现；`m2-field-disambiguation-v1-draft1` 未审核、未运行真实 Provider。自 `semantic-pipeline-v2-design-v1.3` 起，该数据集暂停作为当前 Gate，不再请求直接批准；它只能作为 M2 v2 重标注素材。
+>
+> M2 v2 已扩展为“局部视觉语义解析与规范字段映射”，统一承担 semantic units、载体、field/value、epistemic 和显式 signal。新协议见 [`32-m1-m2-evidence-semantic-boundary-v2.md`](32-m1-m2-evidence-semantic-boundary-v2.md)。
 
 ## 1. 本阶段解决什么
 
-M2 消费 N2 已唯一定位的 grounded facts，只负责把每条事实拆成原子视觉维度、绑定修饰载体并映射到规范字段。它不补 M1 漏掉的事实，不判断跨 Chunk 人物身份、时间持续性或 Promotion。
+本节描述已实现的旧 M2 v1：它消费 N2 已唯一定位的 grounded facts，拆成原子视觉维度、绑定修饰载体并映射到规范字段。目标 M2 v2 改为消费 grounded evidence candidates，并额外负责 epistemic 与原文明示 signal；仍不改变局部 owner，不判断跨 Chunk 身份、时间作用域、持续性或 Promotion。
 
 本版本冻结三项决定：
 

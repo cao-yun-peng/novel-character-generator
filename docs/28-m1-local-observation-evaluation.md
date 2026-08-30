@@ -1,12 +1,14 @@
-# M1 局部观察发现：测试集审核说明
+# M1 v1 局部观察发现：历史测试集审核说明
 
-> 当前状态：15 条短回归集为 `m1-local-observation-v1.2 / approved`，6 条 source-backed 真实集为 `m1-local-observation-real-v1.1 / approved`，两者均绑定 Prompt v1.6。批准测试集不等于模型质量 Gate 已通过。
+> 当前状态：15 条短回归集 `m1-local-observation-v1.2` 与 6 条 source-backed 真实集 `m1-local-observation-real-v1.1` 曾按 M1 v1 职责批准，并绑定 Prompt v1.6。自 `semantic-pipeline-v2-design-v1.3` 起，本文件只保留为历史测量说明，不再是 M1 v2 验收口径。
+>
+> M1 v2 只评分视觉证据覆盖、逐字引文和局部 owner；事实拆分、coarse family、epistemic 与显式 signal 已转交 M2。新边界见 [`32-m1-m2-evidence-semantic-boundary-v2.md`](32-m1-m2-evidence-semantic-boundary-v2.md)。
 
 ## 1. 本节点到底测什么
 
-M1 只回答：“当前 Chunk 原文明确说了哪些人物局部外观命题、归谁、是什么认知状态，并出现了哪些显式时间或形态信号？”
+本节描述旧 M1 v1 口径：“当前 Chunk 原文明确说了哪些人物局部外观命题、归谁、是什么认知状态，并出现了哪些显式时间或形态信号？”
 
-本测试集不测 canonical `field_path`、跨 Chunk 是否同一人物、最终人生阶段、事实持续多久、是否写入正式 Observation。这些属于后续节点，提前加入会再次把单个模型节点做宽。
+这些职责在 v1 中曾用于诊断，但 v2 已进一步收窄 M1。现有样本可以迁移为 evidence coverage 金标，不能直接沿用 required facts、coarse family、epistemic 和 signal 分数作为 v2 Gate。
 
 ## 2. 当前 15 个审核项
 

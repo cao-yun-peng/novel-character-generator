@@ -1,19 +1,19 @@
 # 语义流水线 V2：专用语义节点与 Promotion Gate 契约
 
-> 状态：总体仍为开发稿；M1、N2、M2 已有离线工程切片。当前没有 active 写入或持久化运行时。
+> 状态：总体仍为开发稿；M1 v2 已完成可运行 shadow 切片并按用户批准带残余风险条件推进，N2 v2 确定性 `GroundedEvidencePacket` 工程 Gate 已通过，M2 v2 尚未迁移。当前没有 active 写入或持久化运行时。
 >
-> 设计版本：`semantic-pipeline-v2-design-v1.2`
+> 设计版本：`semantic-pipeline-v2-design-v1.3`
 >
 > 模型输出 Schema 原型：[contracts/semantic-pipeline-v2-model-schemas.json](contracts/semantic-pipeline-v2-model-schemas.json)
 
 ## 1. 决策摘要
 
-V2 不再让一个模型节点同时承担多种语义任务，也不再假设开放语义可以主要靠确定性规则解决。正常主链把语义判断拆给专用模型：M1 发现原文命题，M2 对全部 grounded facts 做语义拆分与字段映射，M3 对全部相关人物证据组件做身份解析，M4 对全部稳定人物观察做时间作用域与持续性解析，M5 在激活前执行一次只允许降级的联合语义复核。确定性代码只负责证据、Schema、ID、硬冲突、不变量、状态转换、Promotion 权限和持久化。
+V2 不再让一个模型节点同时承担多种语义任务，也不再假设开放语义可以主要靠确定性规则解决。正常主链把语义判断拆给专用模型：M1 只召回人物视觉相关的连续原文证据与可选局部 owner，不做事实分类、原子化或解释；M2 对全部 grounded evidence candidates 做局部语义解析、原子化、认知状态、显式信号与规范字段映射；M3 对全部相关人物证据组件做身份解析；M4 对全部稳定人物观察做时间作用域与持续性解析；M5 在激活前执行一次只允许降级的联合语义复核。确定性代码只负责证据、Schema、ID、硬冲突、不变量、状态转换、Promotion 权限和持久化。
 
 核心预算：
 
 - 质量验证与默认主链中，M1 对每个非空、未损坏的有效 Chunk 调用；在 M1 之前不得用关键词、旧字段规则或模型猜测“是否有视觉信息”来跳过 Chunk；
-- M2 对全部 N2 接受的 grounded facts 批量调用，不由规则替代字段语义判断；
+- M2 对全部 N2 接受的 grounded evidence candidates 批量调用，不由规则替代局部语义判断；
 - M3 对全部携带视觉事实的人物证据组件调用，不按固定十章周期重复全量收敛；
 - M4 对全部 owner 已稳定的观察批次调用，显式判断 phase、scope 和 persistence；
 - M5 按 `character + bounded scope` 的一致性复核组覆盖全部拟进入 active 的候选，既看单条证据链也看同组互斥候选，并保持 downgrade-only；
@@ -45,7 +45,7 @@ V2 的目标不是追求更多模型，而是把错误限制在最早可见的�
 
 ### 3.2 本契约不包含
 
-- 不在本任务中修改生产实现、数据库迁移或默认 Prompt 指针；
+- 不在本任务中修改数据库迁移、默认生产链或 active 写入路由；M1 v2 仅以可回放 shadow 实现提供；
 - 不新增多 Agent、自主规划循环、长期对话记忆或模型互评；
 - 不让模型直接创建数据库 ID、批准人物档案或触发生图；
 - 不以单一置信分数代替证据、作用域和状态门禁；
@@ -56,11 +56,11 @@ V2 的目标不是追求更多模型，而是把错误限制在最早可见的�
 ```text
 N0 固定源版本、切块、证据索引                         [代码]
   ↓
-N1 局部观察发现：实体表述 + 原始视觉命题 + 显式时间信号 [模型，必经]
+N1 / M1 视觉证据发现：人物表述 + 视觉相关连续引文       [模型，必经]
   ↓
-N2 引文定位、引用完整性、去重、基础语义拒绝             [代码]
+N2 引文定位、引用完整性、去重、结构安全分流             [代码]
   ↓
-N3 / M2 语义拆分与规范字段映射                          [模型，全部 grounded facts]
+N3 / M2 局部视觉语义解析与规范字段映射                  [模型，全部 grounded evidence]
   ↓
 N4 人物证据图、候选边与硬冲突                            [代码]
   ↓
@@ -97,7 +97,7 @@ N11 PromptRenderer 与图片 Provider                       [未来阶段]
 8. transformation、outfit 和 scene temporary 不得回退到默认 canonical anchor。
 9. 模型节点只接收完成本职责所需的最小上下文，不读取无关的全书自由文本、Profile 或图片结果。
 10. 每个节点记录 input fingerprint、contract version、policy/prompt/model version、数量变化、耗时、token 和结果状态。
-11. M1 的空结果不是“该 Chunk 无视觉事实”的证明；必须进入覆盖率统计，并在开发集、回归集和保留集上做漏检审计。
+11. M1 的空结果不是“该 Chunk 无视觉证据”的证明；必须进入覆盖率统计，并在开发集、回归集和保留集上做漏检审计。
 12. M5 是第二次语义判断，不是独立事实证明；其增量纠错率、错误降级率和模型相关性必须单独评测。
 13. scene/event 范围必须引用服务端生成的边界 ID；只有章节序号不能证明章内换装、变身、梦境或恢复原状的起止。
 
@@ -166,230 +166,194 @@ N11 PromptRenderer 与图片 Provider                       [未来阶段]
 | `scene_boundaries` | array | 服务端切分或人工确认的 scene ID、范围、来源和版本；未知时为空，不由模型伪造 |
 | `event_boundaries` | array | 可引用的显式事件 ID、范围和来源；用于章内时间起止，不等于开放语义结论 |
 
+`PreparedChunk` 的冻结来源字段不保存稳定 `owner/character_id`。M1 此时只有 Chunk 内局部 mention，且一个 Chunk 可以涉及零个、一个或多个人物。M3 完成稳定身份绑定后，服务端可以为查询性能维护按 `chunk_id` 挂接的派生 owner 元数据，但该元数据必须位于不参与 `chunk_hash` 的独立命名空间或 sidecar 索引中：
+
+| 派生字段 | 类型 | 说明 |
+|---|---|---|
+| `stable_owner_ids` | UUID[] | 当前 M3 版本下与该 Chunk 已稳定绑定的人物集合；不得包含 unresolved mention |
+| `owner_binding_version` | string | 生成该缓存所依据的绑定/策略版本 |
+| `owner_index_status` | enum | `fresh/stale/rebuilding`；非 fresh 时不得作为下游完整性依据 |
+
+这组字段只是可重建的读优化，不是身份事实源，不传给 M1，也不能据此修改冻结正文或 Chunk hash。权威关系始终是带 provenance 和版本的 `mention/evidence -> character` 绑定；绑定被 supersede 时，派生 owner 元数据必须失效并重建。
+
 ### 7.4 失败与指标
 
 - 空文本、源版本变化、章节顺序冲突、Chunk hash 不稳定：`failed`，不进入 N1。
 - 指标：Chunk 数、字符/token 分布、p95 长度、截断数、源版本冲突数。
 
-## 8. N1 / M1：局部观察发现
+## 8. N1 / M1：视觉证据发现
 
 ### 8.1 类型与唯一职责
 
-必经模型节点。默认处理 N0 产生的全部有效 Chunk，只发现一个 Chunk 中有原文支持的局部观察单元，不做 canonical 字段、跨 Chunk 身份、人生阶段、持续性或最终激活。
+必经模型节点。默认处理 N0 产生的全部有效 Chunk，只回答“当前 Chunk 哪些连续原文可能包含人物视觉信息，以及局部 owner 在原文中如何表述”。M1 不输出视觉类别、规范命题、认知状态、时间信号、字段、身份、作用域、持续性或激活结论。
 
-M1 之前不设置“视觉 Chunk”语义预筛。后续若为成本增加 prefilter，必须独立版本化，并在保留集证明其 Chunk 级视觉召回达到已批准阈值；未通过时只能用于排序，不能跳过 M1。
+M1 是高召回证据发现器，不是事实解析器。一个候选引文可以同时包含年龄、脸、身体、服装等多个维度；不得为了 `face/body/clothing` 等下游类别提前拆分。只有 owner 不同、原文证据不连续，或一个候选会把明显无关的大段正文一起带入时，才拆成不同 evidence candidates。
 
-系统提示词（运行时唯一来源）：[`01-local-observation-discovery.system.md`](../src/novel_character_generator/infrastructure/llm/prompts/01-local-observation-discovery.system.md)
+M1 之前不设置“视觉 Chunk”语义预筛。后续若为成本增加 prefilter，必须独立版本化，并在保留集证明其 Chunk 级视觉证据召回达到已批准阈值；未通过时只能用于排序，不能跳过 M1。
 
-模型线输出 Schema：`LocalObservationModelOutput`（`local-observation-model-wire-v1`）
-
-内部领域输出仍为 `LocalObservationDiscoveryResult`（`local-observation-discovery-v1.1`）。Provider 在模型响应通过索引校验后，以确定性代码补齐 Chunk 标识、局部 ID 和引用；两种对象不能混称为“模型输出”。
+目标模型线 Schema：`VisualEvidenceDiscoveryOutput`（`visual-evidence-discovery-model-wire-v2`）。当前运行时 Prompt v1.6 和 `LocalObservationModelOutput` 仍是旧实现，迁移前不得把二者当作 v2 已落地。
 
 ### 8.2 模型输入
 
 | 字段 | 类型 | 说明 |
 |---|---|---|
-| `chunk_text` | string | 当前 Chunk 全文或 N0 已记录的预算裁剪版本；这是模型唯一的业务输入 |
-| `output_schema` | JSON Schema | 由传输层提供的 `LocalObservationModelOutput` 严格 Schema，不属于小说业务数据 |
+| `chunk_text` | string | 当前冻结 Chunk 全文或 N0 记录的预算裁剪版本；模型唯一业务输入 |
+| `output_schema` | JSON Schema | `VisualEvidenceDiscoveryOutput` 严格 Schema，不属于小说业务数据 |
 
-服务内部仍持有 `schema_version`、`chunk_id`、`previous_tail` 和 `allowed_coarse_families` 的来源信封，但不发送给 M1：版本和 Chunk 对应关系由调用代码掌握；M1 不做跨 Chunk 身份，`previous_tail` 会扩大事实污染面；粗类别枚举已经同时固化在 Prompt 与输出 Schema。
+服务内部保留 `run/source/chunk`、版本、预算和数据政策信封，但不把机械字段、`previous_tail`、类别目录、人物记忆、Profile 或图片发送给 M1。
 
 ### 8.3 模型输出字段
 
-#### 顶层
+| 字段 | 类型 | 说明 |
+|---|---|---|
+| `mentions` | array | 为候选提供局部 owner 锚点的原文表述 |
+| `evidence_candidates` | array | 可能包含人物视觉语义的最小充分连续引文 |
+
+`mentions[]` 只包含 `mention_quote`。它是当前 Chunk 内可定位的姓名、泛称或代词原文，不输出 `mention_kind`，也不声明跨 Chunk 身份。
+
+`evidence_candidates[]` 字段：
 
 | 字段 | 类型 | 说明 |
 |---|---|---|
-| `entities` | array | 为事实或信号提供局部 owner 的表述 |
-| `facts` | array | 未做 canonical 字段映射的原始视觉命题 |
-| `temporal_signals` | array | 原文明示的时间、呈现或形态信号 |
-| `unresolved_items` | array | 当前 Chunk 内无法安全表示的显式视觉命题 |
+| `owner_index` | integer/null | owner 明确时引用 `mentions` 的零基位置；歧义时为 null，不在 M1 猜测 |
+| `evidence_quote` | string | 逐字、连续、包含完整相关视觉语义的最小充分原文 |
 
-#### `entities[]`
+M1 明确不返回 `raw_proposition`、`coarse_family/coarse_families`、`epistemic_status`、`temporal_signals`、`unresolved_items`、`field_path` 或任何稳定 ID。年龄、否定、似乎、换装、变身等表达只需被候选引文覆盖，具体语义由 M2 解析。
 
-| 字段 | 类型 | 说明 |
-|---|---|---|
-| `mention_quote` | string | 原文连续引文 |
-| `mention_kind` | enum | `explicit_name/descriptor/pronoun/unknown` |
+### 8.4 确定性物化与失败路由
 
-数组位置就是零基 `owner_index`。`local_entity_id=e{index+1}` 与 `representative_name=mention_quote` 由代码生成。
-
-#### `facts[]`
-
-| 字段 | 类型 | 说明 |
-|---|---|---|
-| `owner_index` | integer | owner 在 `entities` 中的零基位置 |
-| `evidence_quote` | string | 支持完整命题的最短连续引文 |
-| `raw_proposition` | string | 源语言、可读但未 canonicalize 的命题 |
-| `coarse_family` | enum | 只做大类路由，不决定最终 field_path |
-| `epistemic_status` | enum | `asserted/negated/uncertain/inferred` |
-
-`local_fact_id=f{index+1}` 和 `entity_ref=e{owner_index+1}` 由代码生成。
-
-#### `temporal_signals[]`
-
-| 字段 | 类型 | 说明 |
-|---|---|---|
-| `owner_index` | integer/null | 没有直接 fact、但 owner 明确时填写 |
-| `fact_index` | integer/null | 信号直接约束的 fact 在 `facts` 中的零基位置 |
-| `evidence_quote` | string | 原文连续引文 |
-| `signal_kind` | enum | `age/life_phase/time_jump/presentation/transformation/other_state` |
-
-`fact_index` 与 `owner_index` 不得同时填写；前者存在时由 fact 反推 owner。代码生成 `local_signal_id`、`entity_ref`、`fact_ref`，并令 `raw_label=evidence_quote`。
-
-#### `unresolved_items[]`
-
-| 字段 | 类型 | 说明 |
-|---|---|---|
-| `owner_index` | integer/null | 可确定 owner 时填写其在 `entities` 中的零基位置 |
-| `evidence_quote` | string | 显式视觉命题引文 |
-| `raw_proposition` | string | 未决命题 |
-| `reason_code` | enum | owner/evidence/local scope/unsupported content 歧义 |
-
-代码生成 `local_item_id` 和 `entity_ref`。
-
-### 8.4 确定性物化边界
-
-模型不返回 `schema_version`、`chunk_id`、任何 `local_*_id`、`representative_name`、`raw_label`、`entity_ref` 或 `fact_ref`。Provider 只接受索引落在本响应数组范围内的结果，裁剪没有拥有任何输出项的多余 entity，然后生成内部 `LocalObservationDiscoveryResult`。当 signal 未给 `fact_index`，且其逐字引文只被同 owner 的唯一一个 fact 引文包含时，代码可确定性补齐该引用；零个或多个候选均保持未绑定。后续原文引文和重复写入校验仍按原契约执行。
-
-### 8.5 失败路由
+代码校验索引范围、空白字段和重复候选，生成局部 mention/candidate ID，并保留 Chunk 版本。逐字定位、span/hash、唯一性和上下文构建仍由 N2 完成。
 
 - Schema 或索引结构失败：有限重试；仍失败则 Chunk `failed`，不进入 N2。
-- 输出为空：允许，但记录 `empty_discovery`；不能自动重试以追求更多事实。
-- `uncertain/inferred/unresolved` 保留为候选，不进入 asserted 主路。
-- 全空响应进入覆盖率审计样本池；抽样或黄金标注发现漏检时，问题归因给 M1/上下文，而不是由下游规则补写事实。
+- 输出为空：允许并记录 `empty_evidence_discovery`，不能为追求更多输出自动语义重试。
+- owner 不明确：保留 `owner_index=null`，不得在 M1 虚构 owner 或转写自由解释。
+- 全空响应进入覆盖率审计样本池；发现漏检时归因给 M1/输入上下文，不由规则补写证据。
 
-### 8.6 指标
+### 8.5 指标与 Gate
 
-- Schema 成功率、verbatim quote 初检率、每 Chunk entity/fact/signal 数；
-- asserted/inferred/uncertain/unresolved 比率；
-- input/output tokens、p50/p95 延迟、每发现事实 token；
-- 与黄金集比较 raw proposition recall，不在本节点评分最终字段或身份。
-- 记录 `valid_chunks/m1_called_chunks/empty_chunks/audited_empty_false_negative`，任何跳过都必须携带 prefilter 版本和可复核原因。
+- evidence coverage recall：每个批准的视觉证据金标是否被某个候选引文覆盖；
+- quote fidelity：mention/evidence quote 是否逐字、连续存在；
+- owner anchor recall/precision：局部 owner 明确时是否正确绑定，歧义时是否保守留空；
+- irrelevant candidate rate：明显非视觉候选比例；
+- valid chunks、M1 called chunks、empty chunks、audited empty false negatives；
+- tokens、p50/p95 latency、每个 grounded evidence candidate 成本。
 
-### 8.7 当前实现与人工 Gate
+M1 v2 不再评分 face/body/clothing 分类、事实原子化、raw proposition、epistemic 或 signal kind。旧 v1 的 5/6 结果只保留为历史诊断；其中“合并年龄、脸和身材但完整保留原文”的样本不再自动判为 M1 v2 失败。
 
-- 运行时 DTO 与 Provider 端口：`application/ports/local_observation.py`；
-- 服务端确定性校验与无副作用 shadow 工件：`application/services/local_observation_service.py`；
-- OpenAI-compatible M1 适配器：`infrastructure/llm/local_observation.py`，复用公共 HTTP、重试、响应解码和 usage 元数据底层；
-- M1 独立测试集：[`m1_local_observation_discovery_v1.json`](../tests/evaluation/m1_local_observation_discovery_v1.json)；
-- 审核说明：[`28-m1-local-observation-evaluation.md`](28-m1-local-observation-evaluation.md)。
+## 9. N2：证据定位与结构固化
 
-15 条短回归集 `m1-local-observation-v1.2` 与六条真实 Chunk `m1-local-observation-real-v1.1` 均已由用户批准。Prompt v1.6 在真实集一次运行后离线按最终 rubric 重评分为 5/6，通过项的引文、认知状态、时间信号和 unresolved 精确率均为 1.0；仍有一条把年龄、脸和身材合并进同一 `physical_identity` fact，漏掉独立 body fact。因此 M1 模型质量 Gate 尚未通过，不得产生 active Observation。
+### 9.1 类型与职责
 
-## 9. N2：证据定位与候选净化
-
-### 9.1 类型
-
-确定性代码；不调用模型。
+确定性代码；不调用模型。N2 只验证 M1 候选和 owner 表述能否回到冻结原文，并生成 span、hash、局部上下文、稳定候选 ID 与结构安全分流；不判断视觉类别、认知状态、显式信号或字段。
 
 ### 9.2 输入
 
 - `PreparedChunk`；
-- `LocalObservationDiscoveryResult`；
-- evidence locator、quote normalization、局部 ID 校验和重复策略版本。
+- `VisualEvidenceDiscoveryResult`；
+- evidence locator、quote normalization、局部 ID 和重复策略版本。
 
-### 9.3 输出 `GroundedLocalPacket`
-
-| 字段 | 类型 | 说明 |
-|---|---|---|
-| `mention_nodes` | array | 每个局部 entity 的唯一/歧义定位结果 |
-| `grounded_facts` | array | 事实、精确 span、原始 quote、定位等级 |
-| `grounded_signals` | array | 时间信号及事实/人物局部绑定 |
-| `rejected_items` | array | 无法定位、交叉引用错误、排他双写等 |
-| `deferred_items` | array | 可定位但 epistemic/owner/scope 不安全的项 |
-
-`grounded_facts[]` 关键字段：
+### 9.3 输出 `GroundedEvidencePacket`
 
 | 字段 | 类型 | 说明 |
 |---|---|---|
-| `fact_id` | stable ID | `run + chunk + local_fact` 的稳定业务候选键 |
-| `local_entity_id` | string | N1 owner 引用 |
-| `evidence_span` | object | 服务端计算的 start/end 和 quote hash |
-| `grounding_status` | enum | `exact/normalized_unique/rejected` |
-| `raw_proposition` | string | N1 原始命题 |
-| `coarse_family` | enum | N1 路由类别 |
-| `epistemic_status` | enum | N1 认知状态，不可由 N2 自动升级 |
+| `mention_nodes` | array | 每个局部 mention 的唯一/歧义定位结果 |
+| `grounded_candidates` | array | 已定位候选、span/hash、owner 引用和局部上下文 |
+| `rejected_items` | array | 引文缺失、语义改写、非法索引或结构冲突 |
+| `deferred_items` | array | 重复引文无法唯一定位等可保守等待的候选 |
 
-### 9.4 失败关闭
+`grounded_candidates[]` 关键字段：
 
-- 多处匹配不能唯一定位：`ambiguous_evidence`；
+| 字段 | 类型 | 说明 |
+|---|---|---|
+| `candidate_id` | stable ID | `run + source version + chunk + local candidate` 的稳定键 |
+| `local_owner_id` | string/null | M1 局部 owner 引用；未知时保持 null |
+| `evidence_quote` | string | 冻结 Chunk 中的服务端确认原文 |
+| `evidence_span` | object | start/end、source quote 和 quote hash |
+| `grounding_status` | enum | `exact/normalized_unique` |
+| `local_context` | object | 载体、否定、推断和显式信号解析所需的最小窗口 |
+
+### 9.4 失败关闭与指标
+
+- 多处匹配不能唯一定位：`ambiguous_evidence`，进入 deferred；
 - quote 语义替换、跨句拼接、局部 ID 外部引用：reject；
-- asserted/deferred 同事实双写：reject 两侧并记录硬失败；
-- 同一实体、quote、raw proposition 精确重复：确定性去重，保留 provenance。
+- 同一 owner 与 quote 的精确重复：确定性去重并保留 provenance；
+- N2 不用关键词或字段目录判断视觉语义，疑似误召回仍交 M2 `reject`。
 
-### 9.5 指标
+指标包括 grounding 接受率、唯一 normalization 率、拒绝/deferred 原因、重复率和每 Chunk 可进入 M2 的 grounded candidate 数。
 
-grounding 接受率、唯一修复率、拒绝原因分布、重复率、双写数、每 Chunk 可进入 N3 的事实数。
+当前 `GroundedLocalPacket` v1 已通过旧工程 Gate，但它消费 M1 已解析 facts/signals，不能代表目标 `GroundedEvidencePacket` v2 已实现。
 
-### 9.6 当前实现
-
-N2 已实现为不调用模型、无数据库副作用的确定性 shadow 切片：
-
-- 版本化 DTO 与不可变 packet/artifact：`application/ports/local_grounding.py`；
-- 唯一引文定位、稳定 grounded ID、句级最小上下文、去重及 grounded/rejected/deferred 分流：`application/services/local_grounding_service.py`；
-- 精确匹配和唯一 whitespace/punctuation normalization 可以进入 M2；重复引文保守 deferred；缺失引文和单字符补写 rejected；
-- M1 unresolved 保持 deferred，不被 N2 提升；被去重 fact 的 signal 确定性重绑到保留的 grounded fact；
-- mention 定位歧义保留在 `mention_nodes`，不以此阻断 owner-independent 的 M2 字段语义；
-- N2 不以关键词判断 held object、字段类别或视觉语义，这些仍属于 M2。
-
-当前仅完成 N2 工程 Gate，不代表 M1 模型质量通过、M2 已启动或任何候选可写入 active Observation。
-
-## 10. N3 / M2：语义拆分与规范字段映射
+## 10. N3 / M2：局部视觉语义解析与规范字段映射
 
 ### 10.1 类型与职责
 
-必经模型节点。N2 接受的每个 grounded fact 都进入 M2；确定性代码不替代开放字段语义，只提供完整 canonical field catalog 并验证输出。
+必经模型节点。N2 接受的每个 grounded evidence candidate 都进入 M2。M2 集中回答“这段已验证原文具体表达了哪些视觉语义”：原子语义单元、修饰载体、精确字段、源语言值、认知状态和原文明示的年龄/呈现/变形等局部信号。
 
-系统提示词（运行时唯一来源）：[`02-field-disambiguation.system.md`](../src/novel_character_generator/infrastructure/llm/prompts/02-field-disambiguation.system.md)
+M2 不读取人物全局记忆，不改变 M1 的局部 owner，不解析跨 Chunk 身份，不决定 phase、scope、persistence 或 Promotion。M2 可以拆解候选引文中已经存在的全部语义，但不能引入候选证据和局部上下文之外的新事实。
 
-模型线输出 Schema：`FieldDisambiguationModelOutput`（`field-disambiguation-model-wire-v1`）。内部领域输出为 `FieldDisambiguationResult`（`field-disambiguation-result-v1`），两者不得混称。
-
-M2 v1 的唯一字段权威为运行时 `visual-field-catalog-v1`。Catalog 只含精确叶子路径，不接受 root 通配、alias 或临时扩展；全部值类型冻结为 `string`，值必须保持源语言。未来若确需 number/boolean/list，必须升级 catalog、wire、内部输出和评测版本，不能在 v1 内静默混用。
+目标模型线 Schema：`LocalVisualSemanticParsingInput/Result`（`local-visual-semantic-model-wire-v2`）。当前运行时 `FieldDisambiguationModelOutput` v1、Prompt v1 和 9 条 draft 集只记录旧实现，不代表 v2 Gate。
 
 ### 10.2 模型输入
 
 | 字段 | 类型 | 说明 |
 |---|---|---|
-| `evidence_quote` | string | 已验证引文 |
-| `raw_proposition` | string | 原始命题 |
-| `coarse_family` | enum | 注册表初筛依据 |
-| `epistemic_status` | enum | 不改变 |
-| `local_context` | string | 只包含理解载体/修饰关系所需的短窗口 |
-| `canonical_field_catalog` | array | 完整精确字段、固定 `string` 值类型和字段说明；由运行时代码生成，coarse family 只是提示 |
+| `evidence_quote` | string | N2 已验证的连续原文 |
+| `owner_mention_quote` | string/null | 局部 owner 锚点，仅用于防止串人物；模型不得修改 |
+| `local_context` | string | 理解修饰、否定、推断和显式变化所需的最小窗口 |
+| `canonical_field_catalog` | array | 完整精确字段、固定 string 值类型与说明 |
 
-事实按 Chunk 或 token 预算批量提交。数组位置是零基 `fact_index`；N2 `fact_id`、Chunk/registry 版本、span/hash 和其他来源信封留在服务内部，不发给模型。不提供人物全局记忆、时间线、Profile 或图片。
+N2 `candidate_id`、span/hash、Chunk/registry 版本和其他来源信封留在服务内部。M2 不再接收 M1 生成的 `raw_proposition`、`coarse_family` 或 `epistemic_status`。
 
 ### 10.3 模型输出字段
 
+每个输入 candidate 恰好返回一条 decision：
+
 | 字段 | 类型 | 说明 |
 |---|---|---|
-| `fact_index` | integer | 输入 facts 数组的零基位置；每个位置恰好一条决策 |
-| `decision` | enum | `map/defer/reject` |
-| `mappings` | array | map 时一个或多个原子字段映射；defer/reject 时为空 |
-| `mappings[].semantic_unit_index` | integer | 模型给出的事实内局部分组索引；同一衣物/部位/配饰的多个维度共享该索引 |
-| `mappings[].referent_kind` | enum | `whole_character/body_part/garment/accessory/appearance_state/other_visual` |
-| `mappings[].referent_quote` | string/null | 原文中用于区分载体的连续短引文；服务端必须验证属于 grounded quote/local context |
-| `mappings[].field_path` | string | 必须属于 canonical catalog |
-| `mappings[].normalized_value` | string | 非空源语言规范值；v1 禁止 number/boolean/list/enum code |
-| `reason_code` | enum | 显式原子映射、拆分歧义、缺上下文或非视觉分类 |
+| `candidate_index` | integer | 输入 candidate 的零基位置 |
+| `decision` | enum | `map/signal_only/defer/reject` |
+| `semantic_units` | array | map 时一个或多个原子视觉语义单元 |
+| `temporal_signals` | array | 原文明示的年龄、人生阶段、时间跳转、呈现、变形或其他状态信号 |
+| `reason_code` | enum | 显式映射、语义歧义、缺上下文、非视觉等 |
 
-模型不返回 `fact_id`、`evidence_quote`、`mapping_id` 或 `semantic_unit_id`。Provider 校验 `fact_index` 完整覆盖后，按 N2 facts 注入稳定 `fact_id/evidence_quote`，并将排序后的 mapping 与局部分组确定性物化为 `m1...` 和 `s1...`。
+`semantic_units[]` 字段：
+
+| 字段 | 类型 | 说明 |
+|---|---|---|
+| `semantic_unit_index` | integer | 当前 candidate 内的局部分组索引 |
+| `referent_kind` | enum | `whole_character/body_part/garment/accessory/appearance_state/other_visual` |
+| `referent_quote` | string/null | 区分载体的连续短引文 |
+| `field_path` | string | canonical catalog 的精确叶子 |
+| `normalized_value` | string | 非空源语言值 |
+| `epistemic_status` | enum | `asserted/negated/uncertain/inferred` |
+
+`temporal_signals[]` 字段：
+
+| 字段 | 类型 | 说明 |
+|---|---|---|
+| `signal_quote` | string | 明示年龄、变化或状态的连续原文 |
+| `signal_kind` | enum | `age/life_phase/time_jump/presentation/transformation/other_state` |
+| `semantic_unit_indices` | integer[] | 此信号直接限定的语义单元；无明确结果时允许为空 |
+
+M2 只识别局部显式信号；N6/M4 仍负责其叙事窗口、起止范围和持续性。
 
 ### 10.4 服务端验收与失败
 
-- M2 可以把一个 source fact 拆成多个显式原子维度，但不能新增原文没有的事实或越过 canonical catalog；
-- `蓝色布衣` 一类命题可产生 type/color/material 多个 mapping，共享同一 `semantic_unit_id`、载体引文和已验证 quote；`蓝衣红裤` 必须用不同 semantic unit 区分颜色归属；
-- 模型输出的 fact index 遗漏、重复、越界或无效组合触发有限 Schema 重试；耗尽后本批未处理事实保守 `deferred`，不得部分猜测物化；
-- JSON Schema 强制 `map` 至少一个 mapping，`defer/reject` 的 mappings 为空；服务端再校验每个输入 fact 恰好一条决策、同一 semantic unit 的载体一致、同一 unit/field 不重复、referent 引文可定位、field 精确属于 catalog 且 value 为非空字符串；
-- 模型的 `map` 只形成 `MappedFactCandidate`，不代表可激活；
-- 调用预算耗尽时未处理事实全部保守 `deferred`。
+- 每个 candidate index 必须完整覆盖且只出现一次；
+- map 至少一个 semantic unit；`signal_only` 没有字段但至少一个显式 signal；defer/reject 不得物化字段或 signal；
+- 同一 semantic unit 的载体一致，同一 unit/field 不重复；
+- referent/signal 引文必须位于 grounded quote 或受控 local context；
+- field 必须属于完整 catalog，value 必须为非空字符串；
+- temporal signal 只能引用本 candidate 内存在的 semantic unit index；
+- 代码注入 `candidate_id/evidence_quote` 并物化 mapping、semantic-unit、signal ID；
+- 预算或 Schema 重试耗尽时相关 candidates 全部 deferred，不得部分猜测；
+- map 只形成 mapped candidates，不代表可激活。
 
-### 10.5 指标
+### 10.5 指标与迁移 Gate
 
-M2 map/defer/reject、每 source fact 原子 mapping 数、字段准确率、载体绑定准确率、过拆/漏拆率、token 和每个最终 mapped fact 成本。
+M2 v2 评测 evidence candidate 的 map/signal-only/defer/reject 决策准确率、semantic-unit 召回/精度、过拆/漏拆、载体绑定、field/value、epistemic、显式 signal 及 signal-unit 绑定准确率，以及 token/grounded candidate 和 token/mapped unit。
 
-当前运行时工程入口：`application/ports/field_disambiguation.py`、`application/services/field_disambiguation_service.py`、`infrastructure/llm/field_disambiguation.py`；独立 draft 集为 [`m2_field_disambiguation_v1.json`](../tests/evaluation/m2_field_disambiguation_v1.json)，在用户批准与真实运行前保持 `blocked_pending_user_review`。本切片不进行持久化或 Promotion；M1 真实质量 5/6 的失败结论不因 M2 工程启动而消失。
+进入 M3 前必须：实现 M1/N2/M2 v2 DTO、Prompt、Provider、服务与一次性 shadow 组合；重新设计 M1 evidence-coverage 数据集和 M2 复合证据数据集；在批准数据上分别通过 M1 召回 Gate 与 M2 语义 Gate。旧 M1 5/6 和 M2 draft1 不能直接作为 v2 通过证据。
 
 ## 11. N4：人物证据图构建
 
@@ -488,7 +452,34 @@ M2 map/defer/reject、每 source fact 原子 mapping 数、字段准确率、载
 - `component_completeness` 为 partial/blocked、输入 current binding 未覆盖或 supersedes 引用非法时，相关 mention 全部 unresolved；
 - 不再按固定十章无条件全量收敛。
 
-### 12.5 指标
+### 12.5 稳定 owner 物化与双向索引
+
+M3 的模型结果不是直接写入 Chunk 的人物标签。服务端验收并为 `create_group` 分配正式人物 ID 后，物化版本化的 `OwnerBinding`：
+
+| 字段 | 类型 | 说明 |
+|---|---|---|
+| `binding_id` | stable ID | 不可变绑定记录 ID |
+| `mention_id` | stable ID | M1/N2 物化的 Chunk 局部 mention |
+| `character_id` | UUID/null | 稳定人物；unresolved 时为空 |
+| `owner_status` | enum | `stable/unresolved/superseded` |
+| `evidence_edge_ids` | ID[] | M3 决策所依赖的身份边 |
+| `binding_version` | string | source/model/policy 与 input fingerprint 组合版本 |
+| `supersedes_binding_ids` | ID[] | 被新证据替代的旧绑定；旧记录不原地覆盖 |
+
+mapped semantic unit 通过 `candidate_id + mention_id + binding_id` 获得 owner。只有 `owner_status=stable` 时，服务端才物化带 `character_id` 的人物观察关系，并维护同一权威关系的两个可重建访问方向：
+
+```text
+Chunk 方向：chunk_id -> candidates/mentions -> stable character_ids
+人物方向：character_id -> observations -> candidate_id/chunk_id/span
+```
+
+- Chunk 方向用于 M1/M2 顺序摄取、追踪一个 Chunk 涉及的人物以及失效影响分析；它可以投影为 7.3 的派生 owner 元数据。
+- 人物方向用于 N6/M4 组包，必须保留 observation、candidate、Chunk、span、章节顺序和 binding provenance，不能只保存一个人物标签。
+- 两个方向必须由同一组 `OwnerBinding` 和 observation-owner 关系生成，不维护两份可独立修改的身份事实。
+- 一个 Chunk 的 `stable_owner_ids` 是集合而非单值；同一人物也可以关联多个 Chunk。`local_owner_id`、`mention_id` 与稳定 `character_id` 不得混用。
+- M3 reopen、人工改绑或版本变化时，旧 binding 标记 superseded，并同时失效两个方向的索引及其下游 M4 批次；不得只改 Chunk 缓存。
+
+### 12.6 指标
 
 候选边召回率、组件覆盖率、每组件 mention/edge/token、link/create/unresolved 比率、跨人物污染数、错误 merge/split、局部 reopen/失效重算次数、每个稳定绑定成本。
 
@@ -500,8 +491,8 @@ M2 map/defer/reject、每 source fact 原子 mapping 数、字段准确率、载
 
 ### 13.2 输入
 
-- owner 已稳定的 mapped fact；
-- N2 grounded temporal signals；
+- owner 已稳定的 mapped semantic units；
+- M2 解析且由服务端完成引文校验的 explicit temporal signals；
 - 章节、Chunk、事实 span 顺序；
 - 服务端已有的 scene/event boundary ID、边界范围与来源；
 - 已确认 phase、presentation、reality 和 transformation 状态；
@@ -513,8 +504,8 @@ M2 map/defer/reject、每 source fact 原子 mapping 数、字段准确率、载
 |---|---|---|
 | `batch_id` | ID | 一个人物的有界观察批次 |
 | `character_id` | UUID | 已由 M3 稳定的人物 |
-| `observations` | array | mapped fact、章节、span、owner evidence 引用 |
-| `signals` | array | grounded signal 与事实/人物边 |
+| `observations` | array | mapped semantic unit、章节、span、owner evidence 引用 |
+| `signals` | array | M2 explicit signal 与 semantic unit/人物边 |
 | `existing_phases` | array | 已确认 phase 与证据摘要 |
 | `narrative_windows` | array | 最小必要短窗口、window ID，以及可引用的 scene/event boundary ID |
 | `hard_conflicts` | array | 冲突 phase、范围倒置、外部 ID、显式排他信号 |
@@ -528,6 +519,8 @@ M2 map/defer/reject、每 source fact 原子 mapping 数、字段准确率、载
 - owner unresolved、输入缺失或窗口越界时 batch blocked，不允许 M4 猜测；
 - field type 只能作为语义上下文，不能由代码直接决定 persistence。
 - scene/event boundary 只提供可引用坐标，不代表事实一定属于该边界；开放语义归属仍由 M4 判断，服务端只验证引用与范围。
+- N6 只从人物方向索引选择同一 `character_id` 的 stable observations，按章节、Chunk 和 span 顺序组包；超出 token 预算时切为多个有界、有序子批次，并保持 signal 与其关联 observation 不被无证据拆散。
+- Chunk 方向处理是上游摄取与查询方式，不是 M4 的另一种模型输入形态。N6 可以从 Chunk 索引发现受影响人物，但最终仍必须转为单人物 `TemporalResolutionBatch`。
 
 ### 13.5 指标
 
@@ -538,6 +531,8 @@ batch 完整率、每 batch observation/signal/window 数、硬冲突数、被�
 ### 14.1 类型与触发
 
 必经模型节点。N6 的每个完整 `TemporalResolutionBatch` 都进入 M4；输入按一个人物和 token 预算切分，不按每条 Observation 单独调用。
+
+M4 只接受人物中心输入：每个 batch 恰好一个已稳定 `character_id`，不得把同一 Chunk 内的其他人物一并放入，也不得把完整原始 Chunk 当作默认输入。需要原文时只附带已引用 observation/signal 所需的最小叙事窗口。所谓“逐 Chunk 输入并归入人物”属于 M1/N2/M2/M3 与 N6 的编排过程；“按人物输入其相关 Chunk 证据”才是 M4 的调用语义。
 
 系统提示词：[`04-temporal-ambiguity-resolution.system.md`](prompts/semantic-pipeline-v2/04-temporal-ambiguity-resolution.system.md)
 
@@ -752,8 +747,8 @@ V2 新增的约束是：Snapshot provenance 必须能追溯到 N8 promotion deci
 
 | 节点 | 输入 Schema/version | 输出 Schema/version |
 |---|---|---|
-| M1 | `LocalObservationDiscoveryInput` / `local-observation-discovery-input-v1.1` | `LocalObservationDiscoveryResult` / `local-observation-discovery-v1.1` |
-| M2 | 服务内部 `field-disambiguation-input-v1`；模型业务输入无机械版本字段 | 模型 `field-disambiguation-model-wire-v1`；内部 `field-disambiguation-result-v1` |
+| M1 target | `VisualEvidenceDiscoveryInput` / `visual-evidence-discovery-input-v2` | `VisualEvidenceDiscoveryResult` / `visual-evidence-discovery-v2` |
+| M2 target | `LocalVisualSemanticParsingInput` / `local-visual-semantic-input-v2` | `LocalVisualSemanticParsingResult` / `local-visual-semantic-result-v2` |
 | M3 | `IdentityComponentResolutionInput` / `identity-component-resolution-input-v1.1` | `IdentityComponentResolutionResult` / `identity-component-resolution-v1.1` |
 | M4 | `TemporalAmbiguityResolutionInput` / `temporal-ambiguity-resolution-input-v1.1` | `TemporalAmbiguityResolutionResult` / `temporal-ambiguity-resolution-v1.1` |
 | M5 | `SemanticPromotionReviewInput` / `semantic-promotion-review-input-v1.1` | `SemanticPromotionReviewResult` / `semantic-promotion-review-v1.1` |
@@ -762,8 +757,8 @@ JSON Schema 负责字段、类型、枚举和同一对象内的条件关系；�
 
 | 模型节点 | 是否必经 | 调用单位 | 默认输入 | 明确不输入 | 预算耗尽 |
 |---|---|---|---|---|---|
-| M1 局部观察发现 | 全部有效 Chunk 必经 | 1 Chunk | Chunk + 可选短前文 | 全书、人物 memory、Profile | Chunk failed/deferred；不得以预筛结果冒充空发现 |
-| M2 字段语义 | 全部 grounded facts | 1 Chunk/小批事实 | quote、命题、完整 field catalog | 人物图、时间线、全书 | facts deferred |
+| M1 视觉证据发现 | 全部有效 Chunk 必经 | 1 Chunk | 冻结 Chunk | 类别目录、全书、人物 memory、Profile | Chunk failed/deferred；不得以预筛结果冒充空发现 |
+| M2 局部视觉语义 | 全部 grounded evidence candidates | 1 Chunk/小批候选 | quote、owner anchor、局部上下文、完整 field catalog | 人物图、时间线、全书 | candidates deferred |
 | M3 身份组件 | 全部相关组件 | 1 人物证据组件 | mentions、edges、最小 stable summary | 全量 memory、Profile、图片 | component unresolved |
 | M4 时间与持续性 | 全部稳定人物观察 | 1 人物观察批次 | observations、signals、最小窗口 | 其他人物、全书自由文本 | observations needs_review |
 | M5 联合语义复核 | 全部拟激活候选 | 1 个 character+scope 一致性复核组 | fact/mapping/identity/scope 证据链 + 必要 peer candidates | 全书、未引用事实、完整 Profile | 相关 review group needs_review |
@@ -771,7 +766,7 @@ JSON Schema 负责字段、类型、枚举和同一对象内的条件关系；�
 第一版建议预算是实验参数而非发布承诺：
 
 - M1：每 Chunk 最多一次成功调用；Schema/传输错误可有限重试，但语义空结果不重试；
-- M2：覆盖全部 grounded facts，按 Chunk/事实完整性切批，不能因为预算跳过后把旧规则结果当成新语义结论；
+- M2：覆盖全部 grounded evidence candidates，按 Chunk/候选完整性切批，不能因为预算跳过后把旧规则结果当成新语义结论；
 - M3：每个 component input fingerprint 最多一次成功调用；只有新增影响边才局部 reopen；
 - M4：覆盖全部稳定人物观察，每个 batch fingerprint 最多一次成功调用；canonical anchor 影响仍可被 M5/人工降级；
 - M5：每个 review-group fingerprint 最多一次成功复核，互斥候选不得跨批拆开，永远不允许升级硬门禁失败；
@@ -782,11 +777,12 @@ V2 第一目标是端到端质量。调用量和 token 需要完整记录并设�
 ## 20. 状态机
 
 ```text
-discovered
+evidence_discovered
   ├─ quote/structure invalid → rejected
-  └─ grounded
-       ├─ inferred/uncertain → deferred
-       └─ mapped
+  └─ evidence_grounded
+       ├─ M2 semantic defer/reject → deferred/rejected
+       └─ semantic_mapped
+            ├─ inferred/uncertain → deferred
             ├─ owner unresolved → unresolved_identity
             └─ owner stable
                  ├─ scope conflict → needs_temporal_review
@@ -812,9 +808,10 @@ discovered
 
 ```text
 chunks
-→ discovered facts
-→ grounded facts
-→ mapped facts
+→ discovered evidence candidates
+→ grounded evidence candidates
+→ parsed semantic units
+→ mapped candidates
 → stable-owner facts
 → final-scope facts
 → promoted observations
@@ -833,7 +830,7 @@ chunks
 | 时间安全 | 阶段错绑、scene/event 边界完整率、持续状态结束准确率、transformation 扩散、unknown scope promote 数 |
 | 聚合安全 | default anchor 污染、跨层冲突、人工保护值覆盖数 |
 | 覆盖完整性 | safe-fact promotion recall、promotion coverage、人物档案必需字段完整率、空 Chunk 漏检率 |
-| 成本 | calls/Chunk、tokens/grounded fact、tokens/promoted fact、M1–M5 各节点调用与批大小 |
+| 成本 | calls/Chunk、tokens/grounded evidence candidate、tokens/promoted fact、M1–M5 各节点调用与批大小 |
 | 可靠性 | Schema 失败、预算耗尽、恢复重复调用、p50/p95 时延 |
 | 人工 | review 数/率、原因、队列深度、p50/p95 处理时间、接受/改写/拒绝率、超容量停止次数 |
 
@@ -843,8 +840,8 @@ chunks
 
 固定三类互不替代的数据集：可查看的开发集、历史失败回归集、限制暴露的保留集。模型、Prompt、context builder、字段目录和评测 rubric 分别版本化；概率输出在 Gate 集至少重复三次并报告方差，不报告最好一次。分别评测：
 
-- M1：局部视觉事实发现；
-- M2：事实拆分、载体绑定与字段映射；
+- M1：视觉相关证据召回、逐字引文和局部 owner 锚点；
+- M2：局部语义单元、载体、字段、认知状态与显式信号；
 - M3：证据组件级身份解析；
 - M4：时间范围、持续性与形态边界；
 - M5：downgrade-only 联合复核。
@@ -853,8 +850,8 @@ chunks
 
 节点金标最低覆盖：
 
-- M1：显式/否定/不确定视觉命题与空 Chunk 漏检；
-- M2：原子字段、语义载体、过拆/漏拆和非视觉拒绝；
+- M1：视觉证据覆盖、局部 owner、无关候选和空 Chunk 漏检；
+- M2：原子字段、语义载体、认知状态、显式信号、过拆/漏拆和非视觉拒绝；
 - M3：同名人物、别名、泛称、代词、错误 merge/split、组件候选边召回与新证据重开；
 - M4：章内换装、scene/event、闪回、梦境、变身与恢复、永久改变和 phase 边界；
 - M5：组内互斥、跨节点矛盾、新增纠错与错误降级；
@@ -864,7 +861,7 @@ chunks
 
 ### 22.2 组合链评测
 
-M1→N2→M2 先以无持久化方式组合，逐层记录输入、输出、拒绝与版本。M3–M5 实现后再扩展端到端评测。真实 Provider 调用必须由用户明确授权。
+M1 v2→N2 v2→M2 v2 先以无持久化方式组合，逐层记录输入、输出、拒绝与版本。M3–M5 实现后再扩展端到端评测。真实 Provider 调用必须由用户明确授权。
 
 ## 23. 建议 Gate
 
@@ -881,7 +878,8 @@ M1→N2→M2 先以无持久化方式组合，逐层记录输入、输出、拒�
 
 ### 23.2 质量优先 Gate
 
-- approved 数据集上的 required fact recall 达到用户冻结阈值；
+- M1 approved 数据集上的 evidence coverage recall 达到用户冻结阈值，且不得用类别/字段正确率冒充证据召回；
+- M2 approved 数据集上的 semantic-unit recall、字段、认知状态与显式信号质量达到用户冻结阈值；
 - promoted precision 达到用户冻结阈值，且所有差异可归因到 reason code；
 - `safe-fact promotion recall` 与 `promotion coverage` 必须同时报告；临时阈值为不低于基线 5 个百分点且不低于保留集可安全激活金标的 85%，P0 后由用户基于真实分布确认；
 - 人物档案必需字段完整率不得因大量 quarantine/review 而伪提升 precision；每个切片必须满足同一覆盖门槛；
@@ -892,7 +890,7 @@ M1→N2→M2 先以无持久化方式组合，逐层记录输入、输出、拒�
 
 ### 23.3 成本与容量护栏
 
-- 必须报告 calls/Chunk、tokens/promoted fact、p50/p95 和费用；
+- 必须报告 calls/Chunk、tokens/grounded evidence candidate、tokens/promoted fact、p50/p95 和费用；
 - 必须配置每 Run 硬调用/token/费用/deadline 上限，耗尽后失败关闭；
 - 只有质量 Gate 通过后，才启动缓存、批处理、小模型路由或条件跳过的成本优化；
 - 任何成本优化都必须重新运行端到端质量 Gate。
@@ -923,10 +921,11 @@ M1→N2→M2 先以无持久化方式组合，逐层记录输入、输出、拒�
 - 不创建 active Observation 写入路径。
 - 加入不可变 ModelDecisionArtifact、execution/business 双状态、cancel/superseded、依赖失效图和 partial-batch 失败注入；先演练恢复再接真实模型。
 
-### P2：M1 与 M2 局部事实语义链
+### P2：M1 证据发现与 M2 局部语义链
 
+- 先迁移 M1 v2 最小 evidence candidate wire、N2 v2 `GroundedEvidencePacket` 和 M2 v2 local semantic wire；
 - 实现 M1/M2 独立 Provider version 和严格 JSON Schema；
-- 分开评分发现与字段语义；
+- M1 只评分 evidence coverage/quote/owner，M2 评分 semantic units/field/epistemic/explicit signals；
 - 只有局部发现和字段 Gate 都通过后才进入 shadow 全链路。
 
 ### P3：M3 身份组件
@@ -961,7 +960,7 @@ M1→N2→M2 先以无持久化方式组合，逐层记录输入、输出、拒�
 
 ### 模型语义判断
 
-- M1 局部观察发现；M2 全量字段语义拆分；M3 全量相关身份证据组件；M4 全量稳定人物的时间/持续性；M5 全量拟激活候选的 downgrade-only 联合复核。
+- M1 全 Chunk 视觉证据发现；M2 全量 grounded evidence 的局部语义解析与字段映射；M3 全量相关身份证据组件；M4 全量稳定人物的时间/持续性；M5 全量拟激活候选的 downgrade-only 联合复核。
 
 ### 必须人工
 
@@ -975,7 +974,7 @@ M1→N2→M2 先以无持久化方式组合，逐层记录输入、输出、拒�
 
 ### 预期效果
 
-- 单个模型节点不再同时解决字段、身份、时间和业务状态，每个模型只承担一种语义职责；
+- M1 只做相关证据召回，M2 统一完成局部语义理解；身份、时间范围和业务状态继续由后续专用节点处理；
 - M3 按有视觉事实的人物证据组件调用；
 - 字段、身份、时间的开放语义由模型处理，代码负责阻止无证据和跨节点不一致结果被激活；
 - 上游不确定性在 Promotion 前保持可见，减少人物和默认锚点污染；
@@ -986,7 +985,7 @@ M1→N2→M2 先以无持久化方式组合，逐层记录输入、输出、拒�
 
 - Promotion 更严格后，短期 active Observation 数可能下降，review/unresolved 会增加；
 - 证据图和多节点诊断工件会增加状态与迁移复杂度；
-- M1 窄 Schema 可能提高局部 recall，也可能丢失当前 field-guided 提示带来的细节；
+- M1 最小证据 Schema 可能提高证据 recall，也会把更多 false positives 和语义成本转移到 M2；
 - M1–M5 全量语义链会显著增加调用、延迟和成本，必须靠批处理、组件化上下文和 Run 硬预算防失控；
 - 多个模型节点可能产生跨节点不一致，因此 M5 与确定性 Gate 只能降级，不能用“多数同意”冒充事实；
 - 没有跨作品真实数据前，任何质量提升或成本结论都只是待验证假设。
@@ -1003,11 +1002,11 @@ M1→N2→M2 先以无持久化方式组合，逐层记录输入、输出、拒�
 - fallback 只能在同一契约和已通过的节点 Gate 内切换，并写入新的 model config version；没有合格 fallback 时失败关闭；
 - M5 与上游同模型族时必须报告相关错误；使用不同模型也不能自动视为独立真值；
 - ContextBuilder 记录候选来源、排名、去重、截断前后计数和关键证据保留。M3/M4 的上下文召回率单独评测，不能只检查模型最终输出；
-- 完整 field catalog 超预算时只能做保持全集语义的版本化压缩/索引，不得按 coarse family 静默隐藏可能字段。
+- 完整 field catalog 超预算时只能做保持全集语义的版本化压缩/索引；M1 v2 不再产生 coarse family，任何节点都不得据此静默隐藏可能字段。
 
 ## 30. 数据最小化、保留与安全
 
-- M1 发送冻结 Chunk；M2 只发送 grounded fact 与必要局部窗口；M3/M4/M5 只发送具名引用的最小证据组。禁止默认重复发送全书、完整 Profile、图片或其他人物无关上下文；
+- M1 发送冻结 Chunk；M2 只发送 grounded evidence candidate、可选 owner anchor 与必要局部窗口；M3/M4/M5 只发送具名引用的最小证据组。禁止默认重复发送全书、完整 Profile、图片或其他人物无关上下文；
 - 原始 Provider request/response、Prompt、trace 和小说片段分别配置保留级别、访问角色、脱敏、到期删除和导出策略；密钥永不进入 Prompt、Artifact 或治理证据；
 - Provider/model config 记录数据保留、训练使用和地域政策；政策不满足项目要求时该配置不可启用；
 - 小说内容和结构化候选始终作为不可信数据，用明确数据字段传递，不得拼接为新的系统指令；
@@ -1036,7 +1035,7 @@ M1→N2→M2 先以无持久化方式组合，逐层记录输入、输出、拒�
 
 ## 33. 修订后的设计 Gate
 
-`semantic-pipeline-v2-design-v1.1` 只有在以下静态条件满足时才可进入 P0：M1 全有效 Chunk 默认覆盖；M1–M5 输入/输出 Schema 可验证；M2 载体绑定、M3 组件召回与 supersede、M4 scene/event 起止、M5 分组互斥复核均有明确契约；precision 与覆盖率联合 Gate 已定义；模型配置、数据保留、取消/重跑/恢复和人工容量均有失败关闭路径。
+`semantic-pipeline-v2-design-v1.3` 只有在以下静态条件满足时才可进入 P0：M1 全有效 Chunk 默认覆盖且只输出 evidence candidates；M1–M5 输入/输出 Schema 可验证；M2 语义单元、认知状态、显式信号与载体绑定，M3 组件召回与 supersede，M4 scene/event 起止，M5 分组互斥复核均有明确契约；precision 与覆盖率联合 Gate 已定义；模型配置、数据保留、取消/重跑/恢复和人工容量均有失败关闭路径。
 
 这些是设计完整性条件，不代表模型效果已经改善。P0 之后仍需由用户确认数值阈值；P2–P5 的真实 Provider、shadow、有限写入和发布决定分别需要新的证据与授权。
 

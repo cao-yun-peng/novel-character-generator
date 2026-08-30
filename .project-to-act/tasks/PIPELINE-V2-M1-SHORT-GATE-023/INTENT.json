@@ -1,0 +1,9 @@
+{
+  "task_id": "PIPELINE-V2-M1-SHORT-GATE-023",
+  "requested_by": "user",
+  "intent": "用户确认短测评集审查无问题，并要求现在测试该数据集。",
+  "execution": "stage-6-approved-short-evaluation",
+  "provider_scope": "16 approved short cases only",
+  "database_mutation": false,
+  "production_route_mutation": false
+}

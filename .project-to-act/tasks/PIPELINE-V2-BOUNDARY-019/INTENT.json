@@ -1,0 +1,1 @@
+{"task_id":"PIPELINE-V2-BOUNDARY-019","requested_by":"user","intent":"确认 M1 只寻找人物视觉相关原文，分类、原子化、认知状态和显式信号由 M2 处理，并更新相关技术文档。","execution":"stage-4-contract-revision","provider_calls":0,"database_mutation":false,"production_route_mutation":false}

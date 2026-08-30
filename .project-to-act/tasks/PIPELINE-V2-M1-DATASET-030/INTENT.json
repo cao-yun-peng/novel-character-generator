@@ -1,0 +1,9 @@
+{
+  "task_id": "PIPELINE-V2-M1-DATASET-030",
+  "requested_by": "user",
+  "intent": "将短集升级为 v2.3-draft、真实集升级为 v2.5-draft，并复用现有 Prompt v2.6 outputs 离线重评分。",
+  "execution": "approved-alias-and-span-revision-with-offline-rescore",
+  "provider_call": false,
+  "database_mutation": false,
+  "production_route_mutation": false
+}

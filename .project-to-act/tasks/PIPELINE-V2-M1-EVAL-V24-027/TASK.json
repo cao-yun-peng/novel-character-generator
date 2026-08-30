@@ -1,0 +1,37 @@
+{
+  "id": "PIPELINE-V2-M1-EVAL-V24-027",
+  "title": "M1 真实集与 Rubric v2.4 测量有效性修正",
+  "status": "completed",
+  "owner": "Codex",
+  "objective": "根据 approved 真实集首次运行暴露的假失败，形成 v2.4-draft 数据集与 Rubric，并使用已有模型输出离线重评分。",
+  "allowed_paths": [
+    "scripts/build_m1_visual_evidence_real_dataset.py",
+    "scripts/evaluate_m1_visual_evidence.py",
+    "scripts/run_m1_visual_evidence_evaluation.py",
+    "src/novel_character_generator/application/services/visual_evidence_evaluation_service.py",
+    "tests/evaluation/m1_visual_evidence_real_v2.json",
+    "tests/evaluation/m1_visual_evidence_discovery_v2.json",
+    "tests/unit/test_visual_evidence_evaluation_service.py",
+    "data/diagnostics/m1-v2.5-real-v2.3",
+    ".project-to-act"
+  ],
+  "invariants": [
+    "不修改 Prompt v2.5 或已有 v2.3 Provider 输出",
+    "真实集 v2.4 必须回到 draft_user_review_required",
+    "新增 owner alias 必须逐字存在于对应 Chunk，且不同 owner 不得共享同一标准化 alias",
+    "替代 evidence quote 必须逐字、唯一定位且语义完整",
+    "不放宽 deterministic validation；非逐字和不唯一引文仍直接失败",
+    "不调用真实 Provider",
+    "不手工修改无效 AGENT_LIFECYCLE revision 或转换历史"
+  ],
+  "acceptance": [
+    "真实集升级为 m1-visual-evidence-real-v2.4-draft，Dataset Schema v2.4",
+    "001/002/003 owner accepted mentions 覆盖真实运行中的有效明确人物锚点",
+    "007 增加经唯一定位验证的可接受逐字替代跨度",
+    "Rubric v2.4 拒绝跨 owner alias 冲突、显式报告单候选匹配多个金标，并按唯一定位计算 evidence quote fidelity",
+    "v2.4 金标自评分 10/10",
+    "使用 v2.3 已保存 outputs 离线重评分并保存报告，不调用 Provider",
+    "Ruff、Mypy、Pytest、diff check 与 Project-to-Act validate 通过",
+    "项目版本、进度、验收和证据同步"
+  ]
+}

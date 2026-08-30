@@ -1,0 +1,17 @@
+{
+  "task_id": "PIPELINE-V2-M1-V29-GATE-036",
+  "project_mode": "managed",
+  "lifecycle_stage": "5/6 boundary",
+  "lifecycle_revision": 1,
+  "lifecycle_validation": "preexisting_invalid_blocked_for_transition",
+  "risk_level": "L1",
+  "parent_task": "PIPELINE-V2-M1-PROMPT-035",
+  "base_git_revision": "01a4930",
+  "prompt": "visual-evidence-discovery-prompt-v2.9",
+  "short_dataset": "m1-visual-evidence-short-v2.3-draft",
+  "real_dataset": "m1-visual-evidence-real-v2.5-draft",
+  "rubric": "visual-evidence-evaluation-rubric-v2.5",
+  "source_match_policy": "visual-evidence-source-match-policy-v2",
+  "authorization": "user explicitly requested Provider check on 2026-08-29",
+  "scope": "short 16 cases and real 10 cases; no database or production writes"
+}

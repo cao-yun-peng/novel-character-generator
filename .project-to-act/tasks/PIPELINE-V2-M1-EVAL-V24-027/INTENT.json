@@ -1,0 +1,9 @@
+{
+  "task_id": "PIPELINE-V2-M1-EVAL-V24-027",
+  "requested_by": "user",
+  "intent": "修改 Dataset/Rubric，形成 v2.4-draft。",
+  "execution": "evaluation-validity-revision-and-offline-rescore",
+  "provider_call": false,
+  "database_mutation": false,
+  "production_route_mutation": false
+}

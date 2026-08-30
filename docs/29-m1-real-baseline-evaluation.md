@@ -1,6 +1,8 @@
-# M1 局部观察发现：首次真实效果基线
+# M1 v1 局部观察发现：首次真实效果基线
 
-> 结论：工程可靠性通过，模型语义效果未通过。M1 当前只能用于离线诊断，不得产生 active 事实。
+> 历史结论：M1 v1 工程可靠性通过，按旧语义 rubric 未通过。自 `semantic-pipeline-v2-design-v1.3` 起，该结果只用于迁移对照，不再决定 M1 v2 Gate；任何版本仍不得产生 active 事实。
+>
+> 新职责边界见 [`32-m1-m2-evidence-semantic-boundary-v2.md`](32-m1-m2-evidence-semantic-boundary-v2.md)。M1 v2 只召回证据；旧失败中的事实分类、认知状态和显式信号问题应在 M2 v2 重新评测。
 
 ## 1. 运行边界
 

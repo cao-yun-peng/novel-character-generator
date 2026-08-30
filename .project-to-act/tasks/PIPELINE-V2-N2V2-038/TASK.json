@@ -1,0 +1,31 @@
+{
+  "id": "PIPELINE-V2-N2V2-038",
+  "title": "N2 v2 GroundedEvidencePacket 纵向切片",
+  "status": "completed",
+  "owner": "Codex",
+  "objective": "实现 M1 v2 输出到 GroundedEvidencePacket v2 的确定性定位、哈希、上下文与安全分流。",
+  "allowed_paths": [
+    "src/novel_character_generator/application/ports/evidence_grounding.py",
+    "src/novel_character_generator/application/services/evidence_grounding_service.py",
+    "tests/unit/test_evidence_grounding_service.py",
+    "tests/integration/test_visual_evidence_grounding_shadow_slice.py",
+    "docs/contracts/semantic-pipeline-v2-model-schemas.json",
+    "docs/32-m1-m2-evidence-semantic-boundary-v2.md",
+    ".project-to-act"
+  ],
+  "invariants": [
+    "N2 只判断来源、跨度和结构，不做视觉语义分类",
+    "逐字唯一或仅空白差异唯一的候选可固化",
+    "重复引文进入 deferred，非逐字或标点改写进入 rejected",
+    "N2 不使用 owner anchor 猜测重复引文 occurrence",
+    "稳定 ID、输入输出 fingerprint 和 quote/context hash 可复现",
+    "不写数据库、不产生 active Observation"
+  ],
+  "acceptance": [
+    "新增 evidence-grounding-input-v2 与 grounded-evidence-packet-v2 运行时契约",
+    "唯一定位生成 start/end/source_quote/hash 和最小句级上下文",
+    "005 类型的重复逐字引文进入 deferred 而非猜测定位",
+    "非逐字和标点改写进入 rejected",
+    "单元、集成、Ruff、Mypy 和 Project-to-Act validate 通过"
+  ]
+}

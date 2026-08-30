@@ -1,0 +1,40 @@
+{
+  "id": "PIPELINE-V2-M1-PROMPT-024",
+  "title": "M1 Prompt v2.3–v2.5 召回、跨度与 owner 优化",
+  "status": "completed",
+  "owner": "Codex",
+  "objective": "根据 Prompt v2.2 approved 短集的两类真实失败，优化否定外貌召回和推断关系完整跨度，并以同一冻结金标进行对照测试。",
+  "allowed_paths": [
+    "src/novel_character_generator/application/ports/visual_evidence.py",
+    "src/novel_character_generator/application/services/visual_evidence_evaluation_service.py",
+    "src/novel_character_generator/infrastructure/llm/prompts/01-visual-evidence-discovery.system.md",
+    "scripts/build_m1_visual_evidence_real_dataset.py",
+    "scripts/run_m1_visual_evidence_evaluation.py",
+    "tests/evaluation/m1_visual_evidence_discovery_v2.json",
+    "tests/evaluation/m1_visual_evidence_real_v2.json",
+    "tests/unit/test_visual_evidence_evaluation_service.py",
+    "tests/unit/test_visual_evidence_provider.py",
+    "data/diagnostics/m1-v2.3",
+    "data/diagnostics/m1-v2.4",
+    "data/diagnostics/m1-v2.5",
+    "README.md",
+    "docs",
+    ".project-to-act"
+  ],
+  "invariants": [
+    "已批准的 16 条短集金标内容、owner 策略与 Rubric 不变",
+    "Prompt 规则采用可泛化优先级与边界定义，不复制失败样本原句",
+    "否定外貌是视觉证据，不能因描述不存在而过滤",
+    "语义完整性和唯一定位优先于最短，引文保留推断起点、主语、连接词和结论",
+    "真实输出必须经过 deterministic validation",
+    "不手工修改无效 AGENT_LIFECYCLE revision 或转换历史"
+  ],
+  "acceptance": [
+    "Prompt 版本经过 v2.3/v2.4 对照后升级到 visual-evidence-discovery-prompt-v2.5",
+    "数据集仅更新兼容 Prompt 元数据，不修改人工金标",
+    "Prompt 单测覆盖否定召回和完整推断跨度规则",
+    "approved 短集真实对照运行分别保存 v2.3、v2.4、v2.5 输出、报告和 manifest",
+    "Ruff、Mypy、Pytest、diff check 与 Project-to-Act validate 通过",
+    "项目版本、进度、验收和证据同步"
+  ]
+}

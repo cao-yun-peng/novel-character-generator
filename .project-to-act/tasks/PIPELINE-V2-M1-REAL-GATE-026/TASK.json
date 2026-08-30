@@ -1,0 +1,33 @@
+{
+  "id": "PIPELINE-V2-M1-REAL-GATE-026",
+  "title": "M1 v2.5 approved 真实 Chunk 测试",
+  "status": "completed",
+  "owner": "Codex",
+  "objective": "冻结用户已审核的 10 条真实 Chunk 金标，并使用 Prompt v2.5 执行可复现的真实 Provider 评测。",
+  "allowed_paths": [
+    "scripts/build_m1_visual_evidence_real_dataset.py",
+    "scripts/run_m1_visual_evidence_evaluation.py",
+    "src/novel_character_generator/application/services/visual_evidence_service.py",
+    "tests/evaluation/m1_visual_evidence_real_v2.json",
+    "tests/unit/test_visual_evidence_evaluation_service.py",
+    "data/diagnostics/m1-v2.5-real-v2.3",
+    ".project-to-act"
+  ],
+  "invariants": [
+    "用户审核后的金标内容、owner 策略与源 Chunk 不再改动",
+    "真实输出必须先经过 deterministic validation",
+    "运行工件不得包含 API key",
+    "保存 Prompt、Dataset、Rubric、validation hash 与模型运行元数据",
+    "测试结果不产生 active Observation，不代表发布 Gate",
+    "不手工修改无效 AGENT_LIFECYCLE revision 或转换历史"
+  ],
+  "acceptance": [
+    "真实数据集冻结为 m1-visual-evidence-real-v2.3 approved",
+    "10 个 source-backed Chunk 可重建且金标自评分通过",
+    "10 条真实调用均保存结构化输出、逐条运行状态、usage 和指纹",
+    "评分报告保存逐条 pass/review/fail 与聚合指标",
+    "run manifest 保存版本、hash、模型配置和工件 hash",
+    "Ruff、Mypy、Pytest、diff check 与 Project-to-Act validate 通过",
+    "项目进度、版本、验收和证据同步"
+  ]
+}

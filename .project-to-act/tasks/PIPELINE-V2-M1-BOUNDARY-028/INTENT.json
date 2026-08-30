@@ -1,0 +1,9 @@
+{
+  "task_id": "PIPELINE-V2-M1-BOUNDARY-028",
+  "requested_by": "user",
+  "intent": "根据 004/005/008/010 人工审查结论修订 v2.4-draft Rubric/Dataset，并优化 Prompt。",
+  "execution": "evaluation-boundary-revision-prompt-iteration-and-offline-replay",
+  "provider_call": false,
+  "database_mutation": false,
+  "production_route_mutation": false
+}

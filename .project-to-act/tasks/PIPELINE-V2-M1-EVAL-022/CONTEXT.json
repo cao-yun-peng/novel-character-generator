@@ -1,0 +1,14 @@
+{
+  "task_id": "PIPELINE-V2-M1-EVAL-022",
+  "project_mode": "managed",
+  "lifecycle_stage": "5",
+  "lifecycle_revision": 1,
+  "lifecycle_validation": "preexisting_invalid_blocked_for_transition",
+  "risk_level": "L1",
+  "parent_task": "PIPELINE-V2-M1V2-020",
+  "base_git_revision": "01a4930",
+  "dataset_target": "m1-visual-evidence-v2.2-draft",
+  "rubric_target": "visual-evidence-evaluation-rubric-v2.2",
+  "prompt_target": "visual-evidence-discovery-prompt-v2.2",
+  "provider_run_status": "not_run_user_review_required"
+}

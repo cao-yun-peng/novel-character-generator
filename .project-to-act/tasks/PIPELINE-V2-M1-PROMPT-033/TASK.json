@@ -1,0 +1,37 @@
+{
+  "id": "PIPELINE-V2-M1-PROMPT-033",
+  "title": "M1 Prompt v2.8 候选颗粒度修正",
+  "status": "completed",
+  "owner": "Codex",
+  "objective": "用 Prompt 单变量修正跨 owner 混绑、同 owner 连续外观描述原子化及覆盖复扫制造重复/纯动作候选的问题。",
+  "allowed_paths": [
+    "src/novel_character_generator/infrastructure/llm/prompts/01-visual-evidence-discovery.system.md",
+    "src/novel_character_generator/application/ports/visual_evidence.py",
+    "src/novel_character_generator/application/services/visual_evidence_evaluation_service.py",
+    "scripts/build_m1_visual_evidence_real_dataset.py",
+    "tests/evaluation/m1_visual_evidence_discovery_v2.json",
+    "tests/evaluation/m1_visual_evidence_real_v2.json",
+    "tests/unit/test_visual_evidence_provider.py",
+    "tests/unit/test_visual_evidence_evaluation_service.py",
+    "docs/32-m1-m2-evidence-semantic-boundary-v2.md",
+    "README.md",
+    ".project-to-act"
+  ],
+  "invariants": [
+    "只修改 Prompt 颗粒度规则及其版本元数据，不修改 Dataset 金标、Dataset 版本、Rubric 或 Source Match Policy",
+    "跨人物 owner 转换是候选硬边界；一个候选最多绑定一个本地人物",
+    "同一人物连续外观画像、变形或 presentation 事件保持复合跨度，不按身体部位或维度原子化",
+    "二次覆盖复扫只检查事实遗漏，不重复已有证据、不提升纯动作候选",
+    "不调用外部 Provider，不把 v2.7 outputs 当作 v2.8 质量结果",
+    "不写数据库、不产生 active Observation",
+    "不手工修改既有 AGENT_LIFECYCLE revision 或转换历史"
+  ],
+  "acceptance": [
+    "Prompt 版本升级为 visual-evidence-discovery-prompt-v2.8",
+    "Prompt 明确跨 owner 拆分、同 owner 连续复合跨度合并和覆盖复扫去重规则",
+    "两套 Dataset 只更新被测 Prompt 元数据并明确 v2.8 尚未真实运行",
+    "真实 Dataset 可由构建脚本无漂移重建为 10 条",
+    "Ruff、Mypy、Pytest、diff check 与 Project-to-Act validate 通过",
+    "项目进度、功能、版本、验收、证据和交接同步"
+  ]
+}

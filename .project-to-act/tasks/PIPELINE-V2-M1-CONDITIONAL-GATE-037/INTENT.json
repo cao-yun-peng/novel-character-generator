@@ -1,0 +1,8 @@
+{
+  "task_id": "PIPELINE-V2-M1-CONDITIONAL-GATE-037",
+  "requested_by": "user",
+  "intent": "回退到主 Prompt v2.8，把 005 算作可接受并继续开发。",
+  "provider_call": false,
+  "database_mutation": false,
+  "production_route_mutation": false
+}

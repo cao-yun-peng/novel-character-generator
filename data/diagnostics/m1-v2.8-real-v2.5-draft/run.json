@@ -1,0 +1,291 @@
+{
+  "schema_version": "m1-visual-evidence-evaluation-run-v1",
+  "run_id": "m1-v2.8-real-v2.5-draft-20260829",
+  "evaluation_attempt_id": "m1-v2.8-real-v2.5-draft-20260829-attempt-1",
+  "started_at": "2026-08-29T11:39:32.925599+00:00",
+  "finished_at": "2026-08-29T11:40:09.383189+00:00",
+  "dataset": {
+    "path": "tests/evaluation/m1_visual_evidence_real_v2.json",
+    "version": "m1-visual-evidence-real-v2.5-draft",
+    "review_status": "draft_user_review_required",
+    "sha256": "1ad18fde6809d6c90296f8324cac1d19e02b5d72462270b64b28864e99d0ce22"
+  },
+  "rubric": {
+    "version": "visual-evidence-evaluation-rubric-v2.5",
+    "implementation_path": "src/novel_character_generator/application/services/visual_evidence_evaluation_service.py",
+    "sha256": "5414a676056afaacd28ad2a85486673626ba96c64207c7f69179159006cd343f"
+  },
+  "deterministic_validation": {
+    "source_match_policy_version": "visual-evidence-source-match-policy-v2",
+    "implementation_path": "src/novel_character_generator/application/services/visual_evidence_service.py",
+    "sha256": "2d1f9318085bc7755777004a292962c84a81a8db8f769a0b01e9a61cf8b9745e"
+  },
+  "prompt": {
+    "version": "visual-evidence-discovery-prompt-v2.8",
+    "sha256": "3d0a85a66b3a52c78304556643dd71cea58f873796fee9ff46c5919a16418543"
+  },
+  "model": {
+    "provider": "deepseek",
+    "requested_model": "deepseek-v4-flash",
+    "wire_api": "chat_completions",
+    "reasoning_effort": "none",
+    "max_output_tokens": 4096,
+    "model_config_version": "visual-evidence-model-config-v2:4a16eeec596fd2c9"
+  },
+  "data_policy_version": "m1-visual-evidence-evaluation-data-policy-v1",
+  "case_count": 10,
+  "case_runs": [
+    {
+      "case_id": "m1-v2-real-xiao-yan-xiao-mei-001",
+      "status": "succeeded",
+      "reason_codes": [],
+      "input_fingerprint": "0df2f64ccec4544b40ee5b24848d98d431d89b81bb507b8a595558f99463da92",
+      "output_fingerprint": "4d0e2667d4c4caea460f370bace7f4361c3826a30de553dd70c2592dc4cb81a1",
+      "usage": {
+        "wire_api": "chat_completions",
+        "provider_request_id": "10194843-a18d-4c17-8ff6-0e366885927b",
+        "response_model": "deepseek-v4-flash",
+        "status": "completed",
+        "finish_reason": "stop",
+        "attempts": 1,
+        "latency_ms": 3859.232900000279,
+        "usage": {
+          "input_tokens": 2712,
+          "cache_hit_tokens": 2048,
+          "cache_miss_tokens": 664,
+          "reasoning_tokens": 0,
+          "output_tokens": 250,
+          "total_tokens": 2962
+        }
+      }
+    },
+    {
+      "case_id": "m1-v2-real-xun-er-002",
+      "status": "succeeded",
+      "reason_codes": [],
+      "input_fingerprint": "5fa493dcc588e3c0ba28f6e6ce3a9bb7a4d0faa089e5495558f1fd010a7a70e9",
+      "output_fingerprint": "31e54cf137b781501da65f856891b4cb9eb6fc3d8fdd7abfded159872ddccbbd",
+      "usage": {
+        "wire_api": "chat_completions",
+        "provider_request_id": "4c730ccd-06f4-4d27-9809-9971c8ded84c",
+        "response_model": "deepseek-v4-flash",
+        "status": "completed",
+        "finish_reason": "stop",
+        "attempts": 1,
+        "latency_ms": 3211.6237999998702,
+        "usage": {
+          "input_tokens": 2725,
+          "cache_hit_tokens": 2048,
+          "cache_miss_tokens": 677,
+          "reasoning_tokens": 0,
+          "output_tokens": 296,
+          "total_tokens": 3021
+        }
+      }
+    },
+    {
+      "case_id": "m1-v2-real-tang-san-child-003",
+      "status": "succeeded",
+      "reason_codes": [],
+      "input_fingerprint": "7b4debdc9dd99f63fed4dac4b6bf33d890f42ba9adeb88d08a52879385dcec5b",
+      "output_fingerprint": "d7ad39b3669d9d68f44fec305ddbe47245f843ac36b7e122a02857545e7e202b",
+      "usage": {
+        "wire_api": "chat_completions",
+        "provider_request_id": "ea56fbf9-3e80-452f-a709-4c4c30c13e08",
+        "response_model": "deepseek-v4-flash",
+        "status": "completed",
+        "finish_reason": "stop",
+        "attempts": 1,
+        "latency_ms": 3521.2030000002414,
+        "usage": {
+          "input_tokens": 2793,
+          "cache_hit_tokens": 2048,
+          "cache_miss_tokens": 745,
+          "reasoning_tokens": 0,
+          "output_tokens": 270,
+          "total_tokens": 3063
+        }
+      }
+    },
+    {
+      "case_id": "m1-v2-real-tang-hao-dense-004",
+      "status": "succeeded",
+      "reason_codes": [],
+      "input_fingerprint": "e55881b12e52e21aa6af6d63561ff659173cfc5074c5de73903ea1ae727815a8",
+      "output_fingerprint": "589b1c83d9c0bc501b8ac8035f41bb7fc3aa1e82c01f97bda2f4ce0430805aa9",
+      "usage": {
+        "wire_api": "chat_completions",
+        "provider_request_id": "eada3fb8-a6fd-4c59-bbdb-b487683c0cd6",
+        "response_model": "deepseek-v4-flash",
+        "status": "completed",
+        "finish_reason": "stop",
+        "attempts": 1,
+        "latency_ms": 3213.9164000000164,
+        "usage": {
+          "input_tokens": 2814,
+          "cache_hit_tokens": 2048,
+          "cache_miss_tokens": 766,
+          "reasoning_tokens": 0,
+          "output_tokens": 246,
+          "total_tokens": 3060
+        }
+      }
+    },
+    {
+      "case_id": "m1-v2-real-presentation-and-elder-005",
+      "status": "deterministic_validation_failed",
+      "reason_codes": [
+        "visual_evidence_quote_not_unique_in_chunk"
+      ],
+      "input_fingerprint": "8e439e90f4be57d3165b358a021d3f61abd46c19b4baaa95824e2e492775a135",
+      "output_fingerprint": "43854ce4af9c53074fb5e0776bb75ef7b4a37cd29ce65bd35a0909769c127efc",
+      "usage": {
+        "wire_api": "chat_completions",
+        "provider_request_id": "d06402fc-9c36-40e4-92f2-b6ed997309d5",
+        "response_model": "deepseek-v4-flash",
+        "status": "completed",
+        "finish_reason": "stop",
+        "attempts": 1,
+        "latency_ms": 3954.090900000665,
+        "usage": {
+          "input_tokens": 2788,
+          "cache_hit_tokens": 2048,
+          "cache_miss_tokens": 740,
+          "reasoning_tokens": 0,
+          "output_tokens": 362,
+          "total_tokens": 3150
+        }
+      }
+    },
+    {
+      "case_id": "m1-v2-real-multi-owner-age-006",
+      "status": "succeeded",
+      "reason_codes": [],
+      "input_fingerprint": "23b829e49074447d9eb17d835bf8252aeab7576beb8c2b91ee6a26470d50ff43",
+      "output_fingerprint": "27f43ea48f11e97e32b72bbfd097d9d3ddd5d54516ac7760448927b9104687c5",
+      "usage": {
+        "wire_api": "chat_completions",
+        "provider_request_id": "97f53b65-b651-46d7-bf10-088cf3312ae3",
+        "response_model": "deepseek-v4-flash",
+        "status": "completed",
+        "finish_reason": "stop",
+        "attempts": 1,
+        "latency_ms": 4047.363400000904,
+        "usage": {
+          "input_tokens": 2770,
+          "cache_hit_tokens": 2048,
+          "cache_miss_tokens": 722,
+          "reasoning_tokens": 0,
+          "output_tokens": 381,
+          "total_tokens": 3151
+        }
+      }
+    },
+    {
+      "case_id": "m1-v2-real-inferred-age-007",
+      "status": "succeeded",
+      "reason_codes": [],
+      "input_fingerprint": "07186092440af1b32cae9bff18b7d18476391e5d50d8dc83466e8560d81e3930",
+      "output_fingerprint": "46dfe5dd0f5a9f67d6be36f2f55a1975255a47d0460f75de70b16559df721313",
+      "usage": {
+        "wire_api": "chat_completions",
+        "provider_request_id": "190da157-7114-4aa1-8874-5d50ddaed187",
+        "response_model": "deepseek-v4-flash",
+        "status": "completed",
+        "finish_reason": "stop",
+        "attempts": 1,
+        "latency_ms": 3010.5440999996063,
+        "usage": {
+          "input_tokens": 2787,
+          "cache_hit_tokens": 2048,
+          "cache_miss_tokens": 739,
+          "reasoning_tokens": 0,
+          "output_tokens": 168,
+          "total_tokens": 2955
+        }
+      }
+    },
+    {
+      "case_id": "m1-v2-real-relative-age-accessory-008",
+      "status": "succeeded",
+      "reason_codes": [],
+      "input_fingerprint": "653a3fb4dff0d81f93eb037ef12699807333db31c65126c99628d0f19ea3855d",
+      "output_fingerprint": "397e38870babedd91ebf270a646308b228e4cb4dd74ff0c9592c0a3bfe35019b",
+      "usage": {
+        "wire_api": "chat_completions",
+        "provider_request_id": "329e9ce2-66a5-4d4c-9444-8231c4175604",
+        "response_model": "deepseek-v4-flash",
+        "status": "completed",
+        "finish_reason": "stop",
+        "attempts": 1,
+        "latency_ms": 4112.214400000084,
+        "usage": {
+          "input_tokens": 2790,
+          "cache_hit_tokens": 2048,
+          "cache_miss_tokens": 742,
+          "reasoning_tokens": 0,
+          "output_tokens": 324,
+          "total_tokens": 3114
+        }
+      }
+    },
+    {
+      "case_id": "m1-v2-real-transformation-009",
+      "status": "succeeded",
+      "reason_codes": [],
+      "input_fingerprint": "d774d46daeb08cba174ab73aa39b0bb57ecc6ccf85bfbe5419d1981164317afc",
+      "output_fingerprint": "dc7cd57fc236ba42f133527b77875c01360e82c9114965e3ea20ec96a6359775",
+      "usage": {
+        "wire_api": "chat_completions",
+        "provider_request_id": "7b07edb2-fee1-4a11-af9b-e7d193ab25d2",
+        "response_model": "deepseek-v4-flash",
+        "status": "completed",
+        "finish_reason": "stop",
+        "attempts": 1,
+        "latency_ms": 3908.1888000000617,
+        "usage": {
+          "input_tokens": 2796,
+          "cache_hit_tokens": 2048,
+          "cache_miss_tokens": 748,
+          "reasoning_tokens": 0,
+          "output_tokens": 370,
+          "total_tokens": 3166
+        }
+      }
+    },
+    {
+      "case_id": "m1-v2-real-classic-apparel-010",
+      "status": "succeeded",
+      "reason_codes": [],
+      "input_fingerprint": "eabab3136f88fd87c6506b6586efe7a2b06978631638733f7c926a7c553384f9",
+      "output_fingerprint": "4cbf046fc8fac26299fc6e3b19e77f29b0128a184b9e030e42ea627cd110c129",
+      "usage": {
+        "wire_api": "chat_completions",
+        "provider_request_id": "55410a1b-d23c-4df0-8693-8526499202e2",
+        "response_model": "deepseek-v4-flash",
+        "status": "completed",
+        "finish_reason": "stop",
+        "attempts": 1,
+        "latency_ms": 3257.0588999988104,
+        "usage": {
+          "input_tokens": 2973,
+          "cache_hit_tokens": 2048,
+          "cache_miss_tokens": 925,
+          "reasoning_tokens": 0,
+          "output_tokens": 193,
+          "total_tokens": 3166
+        }
+      }
+    }
+  ],
+  "artifacts": {
+    "outputs": {
+      "path": "data/diagnostics/m1-v2.8-real-v2.5-draft/outputs.json",
+      "sha256": "4a52abdf223ade3c70f0272b061aa8aa1b0bcdce4be913268ab529ede9498b62"
+    },
+    "report": {
+      "path": "data/diagnostics/m1-v2.8-real-v2.5-draft/report.json",
+      "sha256": "6a0e74406e0dfd1501afe138759f87a9e3998e7296e6bba7cacf08ce34fb5f9e"
+    }
+  }
+}

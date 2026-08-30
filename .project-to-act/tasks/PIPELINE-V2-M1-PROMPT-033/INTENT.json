@@ -1,0 +1,9 @@
+{
+  "task_id": "PIPELINE-V2-M1-PROMPT-033",
+  "requested_by": "user",
+  "intent": "继续修改 M1 Prompt，修正跨人物证据混绑与同一人物连续外观变化被过度拆分的问题。",
+  "execution": "prompt-only-local-engineering",
+  "provider_call": false,
+  "database_mutation": false,
+  "production_route_mutation": false
+}

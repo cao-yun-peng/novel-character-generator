@@ -1,0 +1,9 @@
+{
+  "task_id": "PIPELINE-V2-M1-PROMPT-035",
+  "requested_by": "user",
+  "intent": "优化 Prompt 解决真实案例 005 的重复裸描述引文与少年脸貌漏召回。",
+  "execution": "prompt-only-local-engineering",
+  "provider_call": false,
+  "database_mutation": false,
+  "production_route_mutation": false
+}

@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "semantic-pipeline-v2-model-schemas-v1.3",
+  "$id": "semantic-pipeline-v2-model-schemas-v1.5",
   "title": "Semantic Pipeline V2 model input and output contracts",
   "$defs": {
     "BoundaryRef": {
@@ -122,7 +122,249 @@
         "conflict_ids": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true}
       }
     },
+    "VisualEvidenceDiscoveryInput": {
+      "description": "Target M1 v2 input. The model receives only the frozen chunk text.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["chunk_text"],
+      "properties": {
+        "chunk_text": {"type": "string", "minLength": 1}
+      }
+    },
+    "VisualEvidenceDiscoveryOutput": {
+      "description": "Target M1 v2 output. It discovers verbatim evidence only and performs no semantic classification.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["mentions", "evidence_candidates"],
+      "properties": {
+        "mentions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["mention_quote"],
+            "properties": {
+              "mention_quote": {"type": "string", "minLength": 1}
+            }
+          }
+        },
+        "evidence_candidates": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["owner_index", "evidence_quote"],
+            "properties": {
+              "owner_index": {"type": ["integer", "null"], "minimum": 0},
+              "evidence_quote": {"type": "string", "minLength": 1}
+            }
+          }
+        }
+      }
+    },
+    "EvidenceGroundingInput": {
+      "description": "Deterministic N2 v2 input over the frozen chunk and M1 v2 discovery output.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schema_version", "run_id", "source_document_version_id", "chunk_id", "chunk_text", "discovery", "max_context_chars"],
+      "properties": {
+        "schema_version": {"const": "evidence-grounding-input-v2"},
+        "run_id": {"type": "string", "minLength": 1},
+        "source_document_version_id": {"type": "string", "minLength": 1},
+        "chunk_id": {"type": "string", "minLength": 1},
+        "chunk_text": {"type": "string", "minLength": 1},
+        "discovery": {"$ref": "#/$defs/VisualEvidenceDiscoveryOutput"},
+        "max_context_chars": {"type": "integer", "minimum": 64, "maximum": 4000}
+      }
+    },
+    "GroundedEvidencePacket": {
+      "description": "Deterministic N2 v2 packet. It grounds source spans and routes structural failures without visual-semantic interpretation.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schema_version", "run_id", "source_document_version_id", "chunk_id", "grounding_policy_version", "context_policy_version", "mention_nodes", "grounded_candidates", "rejected_items", "deferred_items"],
+      "properties": {
+        "schema_version": {"const": "grounded-evidence-packet-v2"},
+        "run_id": {"type": "string", "minLength": 1},
+        "source_document_version_id": {"type": "string", "minLength": 1},
+        "chunk_id": {"type": "string", "minLength": 1},
+        "grounding_policy_version": {"const": "evidence-grounding-policy-v2"},
+        "context_policy_version": {"const": "evidence-context-sentence-window-v2"},
+        "mention_nodes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["local_owner_id", "mention_quote", "grounding_status", "occurrence_count", "evidence_span"],
+            "properties": {
+              "local_owner_id": {"type": "string", "pattern": "^m[1-9][0-9]*$"},
+              "mention_quote": {"type": "string", "minLength": 1},
+              "grounding_status": {"enum": ["exact", "whitespace_unique", "ambiguous", "not_found"]},
+              "occurrence_count": {"type": "integer", "minimum": 0},
+              "evidence_span": {"anyOf": [{"$ref": "#/$defs/EvidenceSpanV2"}, {"type": "null"}]}
+            }
+          }
+        },
+        "grounded_candidates": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["candidate_id", "source_candidate_id", "local_owner_id", "evidence_quote", "evidence_span", "grounding_status", "local_context"],
+            "properties": {
+              "candidate_id": {"type": "string", "pattern": "^ge_[0-9a-f]{32}$"},
+              "source_candidate_id": {"type": "string", "pattern": "^c[1-9][0-9]*$"},
+              "local_owner_id": {"type": ["string", "null"], "pattern": "^m[1-9][0-9]*$"},
+              "evidence_quote": {"type": "string", "minLength": 1},
+              "evidence_span": {"$ref": "#/$defs/EvidenceSpanV2"},
+              "grounding_status": {"enum": ["exact", "whitespace_unique"]},
+              "local_context": {"$ref": "#/$defs/EvidenceContextWindowV2"}
+            }
+          }
+        },
+        "rejected_items": {"type": "array", "items": {"$ref": "#/$defs/EvidenceGroundingIssueV2"}},
+        "deferred_items": {"type": "array", "items": {"$ref": "#/$defs/EvidenceGroundingIssueV2"}}
+      }
+    },
+    "EvidenceSpanV2": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["start", "end", "source_quote", "quote_hash"],
+      "properties": {
+        "start": {"type": "integer", "minimum": 0},
+        "end": {"type": "integer", "minimum": 1},
+        "source_quote": {"type": "string", "minLength": 1},
+        "quote_hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      }
+    },
+    "EvidenceContextWindowV2": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["policy_version", "start", "end", "text", "focus_start", "focus_end", "context_hash"],
+      "properties": {
+        "policy_version": {"const": "evidence-context-sentence-window-v2"},
+        "start": {"type": "integer", "minimum": 0},
+        "end": {"type": "integer", "minimum": 1},
+        "text": {"type": "string", "minLength": 1},
+        "focus_start": {"type": "integer", "minimum": 0},
+        "focus_end": {"type": "integer", "minimum": 1},
+        "context_hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      }
+    },
+    "EvidenceGroundingIssueV2": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source_candidate_id", "local_owner_id", "evidence_quote", "reason_code", "occurrence_count"],
+      "properties": {
+        "source_candidate_id": {"type": "string", "pattern": "^c[1-9][0-9]*$"},
+        "local_owner_id": {"type": ["string", "null"], "pattern": "^m[1-9][0-9]*$"},
+        "evidence_quote": {"type": "string", "minLength": 1},
+        "reason_code": {"enum": ["quote_not_in_chunk", "ambiguous_evidence", "local_context_budget_exceeded", "deterministic_duplicate"]},
+        "occurrence_count": {"type": "integer", "minimum": 0}
+      }
+    },
+    "LocalVisualSemanticParsingInput": {
+      "description": "Target M2 v2 input over N2-grounded evidence candidates.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["candidates", "canonical_field_catalog"],
+      "properties": {
+        "candidates": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["evidence_quote", "owner_mention_quote", "local_context"],
+            "properties": {
+              "evidence_quote": {"type": "string", "minLength": 1},
+              "owner_mention_quote": {"type": ["string", "null"], "minLength": 1},
+              "local_context": {"type": "string", "minLength": 1}
+            }
+          }
+        },
+        "canonical_field_catalog": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["field_path", "value_type", "description"],
+            "properties": {
+              "field_path": {"type": "string", "minLength": 1},
+              "value_type": {"const": "string"},
+              "description": {"type": "string", "minLength": 1}
+            }
+          }
+        }
+      }
+    },
+    "LocalVisualSemanticParsingResult": {
+      "description": "Target M2 v2 result with semantic units, epistemic status and explicit local signals.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["decisions"],
+      "properties": {
+        "decisions": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["candidate_index", "decision", "semantic_units", "temporal_signals", "reason_code"],
+            "properties": {
+              "candidate_index": {"type": "integer", "minimum": 0},
+              "decision": {"enum": ["map", "signal_only", "defer", "reject"]},
+              "semantic_units": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": ["semantic_unit_index", "referent_kind", "referent_quote", "field_path", "normalized_value", "epistemic_status"],
+                  "properties": {
+                    "semantic_unit_index": {"type": "integer", "minimum": 0},
+                    "referent_kind": {"enum": ["whole_character", "body_part", "garment", "accessory", "appearance_state", "other_visual"]},
+                    "referent_quote": {"type": ["string", "null"], "minLength": 1},
+                    "field_path": {"type": "string", "minLength": 1},
+                    "normalized_value": {"type": "string", "minLength": 1},
+                    "epistemic_status": {"enum": ["asserted", "negated", "uncertain", "inferred"]}
+                  }
+                }
+              },
+              "temporal_signals": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": ["signal_quote", "signal_kind", "semantic_unit_indices"],
+                  "properties": {
+                    "signal_quote": {"type": "string", "minLength": 1},
+                    "signal_kind": {"enum": ["age", "life_phase", "time_jump", "presentation", "transformation", "other_state"]},
+                    "semantic_unit_indices": {"type": "array", "items": {"type": "integer", "minimum": 0}, "uniqueItems": true}
+                  }
+                }
+              },
+              "reason_code": {"enum": ["explicit_semantic_mapping", "explicit_signal_only", "ambiguous_semantic_decomposition", "missing_semantic_context", "unsupported_visual_candidate", "held_or_nearby_object", "non_visual_content"]}
+            },
+            "allOf": [
+              {
+                "if": {"properties": {"decision": {"const": "map"}}},
+                "then": {"properties": {"semantic_units": {"minItems": 1}, "reason_code": {"const": "explicit_semantic_mapping"}}}
+              },
+              {
+                "if": {"properties": {"decision": {"const": "signal_only"}}},
+                "then": {"properties": {"semantic_units": {"maxItems": 0}, "temporal_signals": {"minItems": 1}, "reason_code": {"const": "explicit_signal_only"}}}
+              },
+              {
+                "if": {"properties": {"decision": {"enum": ["defer", "reject"]}}},
+                "then": {"properties": {"semantic_units": {"maxItems": 0}, "temporal_signals": {"maxItems": 0}}}
+              }
+            ]
+          }
+        }
+      }
+    },
     "LocalObservationModelInput": {
+      "description": "Legacy implemented M1 v1 input retained for historical compatibility.",
       "type": "object",
       "additionalProperties": false,
       "required": ["chunk_text"],
@@ -131,6 +373,7 @@
       }
     },
     "LocalObservationModelOutput": {
+      "description": "Legacy implemented M1 v1 output; not the target v2 boundary.",
       "type": "object",
       "additionalProperties": false,
       "required": ["entities", "facts", "temporal_signals", "unresolved_items"],
@@ -193,6 +436,7 @@
       }
     },
     "FieldDisambiguationInput": {
+      "description": "Legacy implemented M2 v1 input retained for historical compatibility.",
       "type": "object",
       "additionalProperties": false,
       "required": ["facts", "canonical_field_catalog"],
@@ -230,6 +474,7 @@
       }
     },
     "FieldDisambiguationResult": {
+      "description": "Legacy implemented M2 v1 result; not the target v2 boundary.",
       "type": "object",
       "additionalProperties": false,
       "required": ["decisions"],

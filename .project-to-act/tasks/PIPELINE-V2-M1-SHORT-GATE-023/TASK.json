@@ -1,0 +1,29 @@
+{
+  "id": "PIPELINE-V2-M1-SHORT-GATE-023",
+  "title": "M1 v2.2 短测评集批准与真实测试",
+  "status": "completed",
+  "owner": "Codex",
+  "objective": "记录用户对 16 条短金标的批准，完成离线验证，并使用 Prompt v2.2 对 approved 短集执行可复现真实诊断。",
+  "allowed_paths": [
+    "tests/evaluation/m1_visual_evidence_discovery_v2.json",
+    "tests/unit/test_visual_evidence_evaluation_service.py",
+    "data/diagnostics/m1-v2.2",
+    "docs",
+    ".project-to-act"
+  ],
+  "invariants": [
+    "只批准 16 条短集，10 条真实 Chunk 集继续保持 draft",
+    "真实调用仅覆盖 approved 短集并使用 Prompt v2.2",
+    "所有模型输出先通过 deterministic validation",
+    "诊断工件不得保存 API key 或原始 Provider 响应",
+    "真实测试结果不自动等于发布 Gate 或 active 事实授权",
+    "不手工修改无效 AGENT_LIFECYCLE revision 或转换历史"
+  ],
+  "acceptance": [
+    "短数据集 review_status 为 approved 且版本不再带 draft 后缀",
+    "16 条金标自测全部通过",
+    "真实运行保存输出、Rubric 报告及含三类 hash 的 run manifest",
+    "Ruff、Mypy、Pytest、diff check 与 Project-to-Act validate 通过",
+    "项目进度、版本、验收与任务证据同步"
+  ]
+}

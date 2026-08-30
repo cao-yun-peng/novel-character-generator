@@ -1,0 +1,9 @@
+{
+  "task_id": "PIPELINE-V2-M1-PROMPT-031",
+  "requested_by": "user",
+  "intent": "归因真实集 005/008 的剩余失败，并按根因升级 M1 Prompt 以降低非唯一引文、语义截断和短视觉线索漏召回。",
+  "execution": "prompt-only-causal-remediation",
+  "provider_call": false,
+  "database_mutation": false,
+  "production_route_mutation": false
+}

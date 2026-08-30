@@ -1,0 +1,30 @@
+{
+  "id": "PIPELINE-V2-M1-CONDITIONAL-GATE-037",
+  "title": "M1 Prompt v2.8 回退与条件通过",
+  "status": "completed",
+  "owner": "Codex",
+  "objective": "回退主 Prompt 到 v2.8，并按用户决定把 005 作为已接受残余风险，不再阻塞 N2 开发。",
+  "allowed_paths": [
+    "src/novel_character_generator/infrastructure/llm/prompts/01-visual-evidence-discovery.system.md",
+    "src/novel_character_generator/application/ports/visual_evidence.py",
+    "src/novel_character_generator/application/services/visual_evidence_evaluation_service.py",
+    "scripts/build_m1_visual_evidence_real_dataset.py",
+    "tests/evaluation",
+    "tests/unit/test_visual_evidence_provider.py",
+    "tests/unit/test_visual_evidence_evaluation_service.py",
+    "docs/32-m1-m2-evidence-semantic-boundary-v2.md",
+    ".project-to-act"
+  ],
+  "invariants": [
+    "保留 v2.9 运行工件和历史分数，不将失败报告改写成通过",
+    "Dataset、Rubric、Source Match Policy 和金标不因本次决定变化",
+    "005 的逐字但非唯一引文与少年脸貌漏召回作为 M1 已知残余风险",
+    "不调用 Provider、不写数据库、不产生 active Observation"
+  ],
+  "acceptance": [
+    "运行时、评测和 Dataset Prompt 元数据均回退到 visual-evidence-discovery-prompt-v2.8",
+    "v2.9 新增规则从主 Prompt 移除",
+    "项目 Gate 记录为用户批准的 conditional，而非伪造测评 pass",
+    "工程回归通过"
+  ]
+}

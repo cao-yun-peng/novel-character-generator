@@ -1,0 +1,9 @@
+{
+  "task_id": "PIPELINE-V2-M1-V27-GATE-032",
+  "requested_by": "user",
+  "intent": "使用 Prompt v2.7 重新运行短集 v2.3-draft 与真实集 v2.5-draft，并保存完整可复验运行证据。",
+  "execution": "authorized-two-dataset-provider-evaluation",
+  "provider_call": true,
+  "database_mutation": false,
+  "production_route_mutation": false
+}

@@ -1,0 +1,9 @@
+{
+  "task_id": "PIPELINE-V2-M1-PROMPT-024",
+  "requested_by": "user",
+  "intent": "优化 M1 Prompt，修复 approved 短集真实诊断中的否定漏召回和推断跨度不完整。",
+  "execution": "stage-6-prompt-tuning-and-controlled-rerun",
+  "comparison_baseline": "m1-v22-short-approved-20260829",
+  "database_mutation": false,
+  "production_route_mutation": false
+}

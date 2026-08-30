@@ -1,0 +1,21 @@
+# E-20260829-PIPELINE-V2-M1-SHORT-GATE-023
+
+- 时间：2026-08-29，Asia/Shanghai。
+- 用户审批：用户明确确认 `tests/evaluation/m1_visual_evidence_discovery_v2.json` 审查无问题，并要求现在测试。
+- 数据集：`m1-visual-evidence-short-v2.2`，`review_status=approved`，16 条；运行时 SHA-256 `dc9882538571ff1f4de186af965dea78d0bcd58ccdb55d64e3727163cc08e6b4`。
+- Prompt：`visual-evidence-discovery-prompt-v2.2`，运行时 hash `0beff7949671d5a13f3b6ed95b7ca910bb843d9dee0f265642adb64d30cdf94d`。
+- Rubric：`visual-evidence-evaluation-rubric-v2.2`，实现 SHA-256 `a9df4e73ecd1dbb723c8096efa9bd542f79de8f9be9cb31323644d54c8f0413b`。
+- deterministic validation SHA-256：`1a8f8a4dd552b29bba1a07e0f301c618a740c4a0661df1989576ef8eca6eef68`。
+- 模型配置：provider `deepseek`，model `deepseek-v4-flash`，wire API `chat_completions`，reasoning `none`，max output tokens `4096`。
+- 运行：`m1-v22-short-approved-20260829`；16/16 调用成功，全部一次完成；总 Provider latency 37504.34 ms。
+- Token：input 12844，cache hit 11520，cache miss 1324，output 641，total 13485。
+- Rubric：14 pass / 0 review / 2 fail；evidence coverage recall 84.62%，candidate precision 91.67%，quote fidelity 100%，required owner recall 100%，owner binding precision 90.91%，must-be-null accuracy 100%。
+- 失败 1：`m1-v2-negated-004` 返回空候选，错误 `missing_required_candidate:no-scar`。
+- 失败 2：`m1-v2-inferred-age-006` 返回逐字引文“满头白发看来，他约莫已有六十岁”，但批准金标要求“从他满头白发看来，他约莫已有六十岁”；错误为 unexpected candidate 与 missing required candidate。
+- 产物：`data/diagnostics/m1-v2.2/short-approved-outputs.json`，SHA-256 `09bdb1599c25cbefa1c1a884d102a6fb75775aa0b8f77e2150a723b289382fec`。
+- 报告：`data/diagnostics/m1-v2.2/short-approved-report.json`，SHA-256 `ae7f1faece4ee897ad09cce325e9c19eba7e3841c165c576b041ba8cca6b2c54`。
+- 运行清单：`data/diagnostics/m1-v2.2/short-approved-run.json`，SHA-256 `50662895a2d217408b6f7819395ad024e3e7c5914763e54cc62f591e26508320`。
+- 网络记录：沙箱内第一次连接在发出有效 Provider 响应前失败；获得用户授权后在允许联网环境重试，同一逻辑 attempt ID 完成全部 16 条。Manifest 记录的是成功运行。
+- 自动验证：短集相关测试 14 项通过；最终全量 Pytest 79 passed；Ruff、Mypy strict、`git diff --check` 和 Project-to-Act `--validate` 均通过。
+- Gate 结论：数据审核 Gate 通过；Prompt v2.2 质量 Gate 未通过。10 条真实 Chunk 数据集仍为 draft。
+- 生命周期限制：既有 `AGENT_LIFECYCLE.json` 不符合当前 validator，本任务未伪造 revision、状态或转换历史。

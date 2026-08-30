@@ -1,0 +1,16 @@
+{
+  "task_id": "PIPELINE-V2-M1-DATASET-030",
+  "project_mode": "managed",
+  "lifecycle_stage": "5/6 boundary",
+  "lifecycle_revision": 1,
+  "lifecycle_validation": "preexisting_invalid_blocked_for_transition",
+  "risk_level": "L1",
+  "parent_task": "PIPELINE-V2-M1-V26-GATE-029",
+  "base_git_revision": "01a4930",
+  "short_dataset_from": "m1-visual-evidence-short-v2.2-approved",
+  "short_dataset_to": "m1-visual-evidence-short-v2.3-draft",
+  "real_dataset_from": "m1-visual-evidence-real-v2.4-draft",
+  "real_dataset_to": "m1-visual-evidence-real-v2.5-draft",
+  "rubric": "visual-evidence-evaluation-rubric-v2.5",
+  "prompt": "visual-evidence-discovery-prompt-v2.6"
+}

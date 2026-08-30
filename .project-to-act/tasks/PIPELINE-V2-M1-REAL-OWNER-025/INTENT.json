@@ -1,0 +1,9 @@
+{
+  "task_id": "PIPELINE-V2-M1-REAL-OWNER-025",
+  "requested_by": "user",
+  "intent": "在真实 Chunk 金标中增加青衫老者示例，并避免多个老者的 owner 混淆。",
+  "execution": "dataset-gold-owner-disambiguation",
+  "database_mutation": false,
+  "production_route_mutation": false,
+  "provider_call": false
+}

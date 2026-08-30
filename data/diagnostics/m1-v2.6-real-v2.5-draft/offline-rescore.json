@@ -1,0 +1,42 @@
+{
+  "schema_version": "m1-visual-evidence-offline-rescore-v1",
+  "rescored_at": "2026-08-29T18:21:08.2839001+08:00",
+  "mode": "offline_existing_outputs",
+  "provider_called": false,
+  "source_run": {
+    "run_id": "m1-v2.6-real-v2.4-20260829",
+    "evaluation_attempt_id": "m1-v2.6-real-v2.4-20260829-attempt-1",
+    "run_manifest_path": "data/diagnostics/m1-v2.6-real-v2.4/run.json",
+    "outputs_path": "data/diagnostics/m1-v2.6-real-v2.4/outputs.json",
+    "outputs_sha256": "6f491b89bdea8c90522ef8e6f46a8b2a0ac0d931b9307249c1e592f79c633d5d",
+    "provider": "deepseek",
+    "requested_model": "deepseek-v4-flash"
+  },
+  "prompt": {
+    "version": "visual-evidence-discovery-prompt-v2.6",
+    "sha256": "cbb889fe0703b5fe964fce4e2d99696561093a6d0aa4b4b23051e4b8bfafc844"
+  },
+  "dataset": {
+    "path": "tests/evaluation/m1_visual_evidence_real_v2.json",
+    "version": "m1-visual-evidence-real-v2.5-draft",
+    "review_status": "draft_user_review_required",
+    "sha256": "800086d9d4d6f127e63fa64bd3bbea96de469402d15c23259c67e434ab7b5f69"
+  },
+  "rubric": {
+    "version": "visual-evidence-evaluation-rubric-v2.5",
+    "implementation_path": "src/novel_character_generator/application/services/visual_evidence_evaluation_service.py",
+    "sha256": "9f74c9ea65dc24932d1b11845f90d044ec426bc703e3801eb70044ffb4de3f88"
+  },
+  "report": {
+    "path": "data/diagnostics/m1-v2.6-real-v2.5-draft/report-offline-existing-outputs.json",
+    "sha256": "926c1ac58e08e5af2a4ec15e2d2b73f8ef37a046c0c414a79ce6963c9c352077",
+    "pass_count": 2,
+    "review_count": 6,
+    "fail_count": 2,
+    "quality_gate": "blocked_pending_user_review",
+    "failed_case_ids": [
+      "m1-v2-real-presentation-and-elder-005",
+      "m1-v2-real-relative-age-accessory-008"
+    ]
+  }
+}

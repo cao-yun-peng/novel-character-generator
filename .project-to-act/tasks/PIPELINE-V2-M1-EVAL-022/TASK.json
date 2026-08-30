@@ -1,0 +1,36 @@
+{
+  "id": "PIPELINE-V2-M1-EVAL-022",
+  "title": "M1 v2.2 评测契约与真实 Chunk 数据集",
+  "status": "completed",
+  "owner": "Codex",
+  "objective": "修正 M1 evidence-coverage 金标、owner 策略和确定性评测路径，并从 tests/测试 按生产章节分块选取 10 个真实 Chunk 建立 source-backed draft 数据集。",
+  "allowed_paths": [
+    "src/novel_character_generator/application/services/visual_evidence_evaluation_service.py",
+    "scripts/evaluate_m1_visual_evidence.py",
+    "scripts/run_m1_visual_evidence_evaluation.py",
+    "scripts/build_m1_visual_evidence_real_dataset.py",
+    "tests/evaluation/m1_visual_evidence_discovery_v2.json",
+    "tests/evaluation/m1_visual_evidence_real_v2.json",
+    "tests/unit/test_visual_evidence_evaluation_service.py",
+    "tests/unit/test_visual_evidence_evaluation_runner.py",
+    "docs",
+    ".project-to-act"
+  ],
+  "invariants": [
+    "本任务不修改 M1 模型输出 Schema 或调用真实 Provider",
+    "真实 Chunk 必须由 production text_processing 按章节和 target_tokens=1000 可重建",
+    "所有数据集保持 draft_user_review_required，用户审核前不得形成发布 Gate",
+    "非逐字引文必须确定性失败",
+    "运行元数据不得保存 API key、原始 Provider 响应或无关小说内容",
+    "不手工修改无效 AGENT_LIFECYCLE revision 或转换历史"
+  ],
+  "acceptance": [
+    "inferred-age-006 和 explicit-age-007 保留完整下游语义",
+    "owner 策略支持 required、allowed、must_be_null",
+    "Prompt、Dataset 与 Rubric 升级版本且旧诊断不会冒充新版本结果",
+    "真实评测通过 deterministic output validation",
+    "run manifest 保存 prompt、dataset、rubric hash 和模型运行元数据",
+    "10 个真实 Chunk 数据集通过来源重建与金标自测",
+    "pytest、Ruff、Mypy、git diff check 与 Project-to-Act validate 通过"
+  ]
+}

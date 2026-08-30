@@ -3,9 +3,9 @@
 ## 基本信息
 
 - 项目：Novel Character Generator
-- 阶段：Stage 5，V2 纵向切片开发
+- 阶段：Stage 4/5 边界重构完成，等待 v2 协议迁移实现
 - 发布状态：未发布
-- 当前实现：M1、N2、M2 离线语义链
+- 当前实现：M1 v2 shadow 主 Prompt v2.8（用户批准条件 Gate）、Source Match Policy v2、Rubric v2.5、v2.3-draft 短评测与 v2.5-draft 真实 Chunk 评测；N2 v2 `GroundedEvidencePacket` 确定性纵向切片已实现；M2 仍为 legacy v1
 - 唯一工作区：`E:\project\agent\novel-cahracter-generator`
 
 ## 项目目标
@@ -16,9 +16,9 @@
 
 ### 包含
 
-- M1 局部观察发现
-- N2 原文定位、证据哈希和局部上下文
-- M2 事实拆分、载体绑定和精确字段映射
+- M1 v2 视觉相关连续证据发现
+- N2 v2 原文定位、证据哈希和局部上下文固化
+- M2 v2 局部语义原子化、载体、字段、认知状态和显式信号
 - M3–M5 身份、时间和联合复核设计
 - 分节点数据集、评分器与真实模型诊断
 
@@ -30,7 +30,7 @@
 
 ## 当前焦点
 
-审核 M2 数据集，修复 M1 剩余的独立 body fact 漏召回，再决定是否启动 M3。
+完成 N2 v2 工程 Gate 后迁移 M2 v2 与一次性 M1→N2→M2 shadow 组合；M1 的 005 残余风险由 N2 deferred 安全分流，不得进入 active Observation。三段 Gate 具备证据后再启动 M3。
 
 ## 数据与安全边界
 

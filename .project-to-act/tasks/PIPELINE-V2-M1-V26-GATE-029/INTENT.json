@@ -1,0 +1,10 @@
+{
+  "task_id": "PIPELINE-V2-M1-V26-GATE-029",
+  "requested_by": "user",
+  "intent": "允许仅空白格式差异的引文在唯一匹配后回填原文，并使用 Prompt v2.6 跑 approved 短集和 v2.4-draft 真实集。",
+  "execution": "source-match-policy-revision-and-two-provider-evaluations",
+  "provider_call": true,
+  "provider_authorization": "explicit_user_authorization_in_current_turn",
+  "database_mutation": false,
+  "production_route_mutation": false
+}

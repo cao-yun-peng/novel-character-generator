@@ -1,0 +1,23 @@
+# E-20260829-PIPELINE-V2-M1-REAL-GATE-026
+
+- 时间：2026-08-29，Asia/Shanghai。
+- 授权：用户批准 10 条真实 Chunk 金标，并在获知目的地后明确允许发送至 DeepSeek `https://api.deepseek.com`、模型 `deepseek-v4-flash`。
+- 数据集：`m1-visual-evidence-real-v2.3` approved；SHA-256 `c0db5c974fbe5620d94f338af0844b5dc76f21e12c4c45ffc9901b6555f0cfb6`。
+- Prompt：`visual-evidence-discovery-prompt-v2.5`；运行时 hash `0a7098393109014333fc34dd91616e10eeb03a1ff1a4d6f8fc39c7b799dbb79a`；Prompt 文件 SHA-256 `45bc188e40f0acc59c6cc6e510d1f3c0bf9d881e611df04c80e1469891b3f6b9`。
+- Rubric：`visual-evidence-evaluation-rubric-v2.2`；SHA-256 `d2e3ba0fb897370a5dc3447fe322fe9edbda7d0c3583e9fe3a33c15453751563`。
+- Deterministic validation SHA-256：`ea8992a0284d0e0ad6a867c99d059e7d8577a8b96d44044709792fd57e27faa4`。
+- Run：`m1-v25-real-v23-approved-20260829`；完整工件为 `attempt-2`。
+- attempt 1：完成前 4 条并在第 5 条 deterministic validation error 中止；旧运行器未落盘，精确 usage 不可恢复。本失败触发运行器修正，未伪造或合并到 attempt 2。
+- attempt 2：10/10 Provider 调用完成，8 succeeded，2 deterministic validation failed；每条均保存 status、reason code、usage、input/output fingerprint。
+- attempt 2 usage：input 18,388；cache hit 14,464；cache miss 3,924；output 2,576；total 20,964；Provider latency 合计 33,418.67 ms；10 次均一次完成。
+- Rubric：0 pass / 1 review / 9 fail；evidence recall 0.50；candidate precision 0.2453；quote fidelity 0.9878；required owner recall 0.4091；owner binding precision 0.2453；must-be-null accuracy 1.0。
+- Deterministic failures：004 为 `visual_evidence_quote_not_in_chunk`；005 为 `visual_evidence_quote_not_unique_in_chunk`。
+- 测量限制：001/002/003 的 owner accepted mentions 未覆盖模型给出的有效明确人名或完整人物短语；007 需要复核可接受跨度。原始 0 pass 不能全部归因于 Prompt。
+- 输出：`data/diagnostics/m1-v2.5-real-v2.3/real-approved-outputs.json`，SHA-256 `7d03cb4b41bad7899e097da9b302278c996729195d60c87ef038cba2a9f5861b`。
+- 报告：`data/diagnostics/m1-v2.5-real-v2.3/real-approved-report.json`，SHA-256 `c568f0e95ed2eeec680d61bd208c5dbbe31fe8326d22fd03faf99e252826452d`。
+- Manifest：`data/diagnostics/m1-v2.5-real-v2.3/real-approved-run.json`，SHA-256 `ed8e679fb8375aba710e40153de41e1cfdb92cf84a51184e4ba06c55531a982e`。
+- 失败分析：`data/diagnostics/m1-v2.5-real-v2.3/failure-analysis.md`，SHA-256 `39537cf4aa00c56e7550a35783f913b5869dae191a83404d1d1924dec02a0c99`。
+- 运行器修正：SHA-256 `6d41a33ba32715859579945a6ecaec3355219e5d8e69ef8eb645a3eb038a7e7c`；单条 deterministic failure 现在落盘并继续，不绕过评分失败。
+- 自动验证：Pytest 80 passed；Ruff 全仓通过；Mypy strict 通过（36 source files）；`git diff --check` 退出 0；Project-to-Act validate 通过。
+- Gate：真实 Chunk Gate 未通过；无 active Observation、持久化或发布授权。
+- 生命周期限制：既有 `AGENT_LIFECYCLE.json` 不符合当前 validator，本任务未修改其 revision、状态或转换历史。

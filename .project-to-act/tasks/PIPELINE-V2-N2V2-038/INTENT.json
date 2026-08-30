@@ -1,0 +1,9 @@
+{
+  "task_id": "PIPELINE-V2-N2V2-038",
+  "requested_by": "user",
+  "intent": "M1 条件通过后继续往下开发 N2 v2。",
+  "execution": "deterministic-local-engineering",
+  "provider_call": false,
+  "database_mutation": false,
+  "production_route_mutation": false
+}

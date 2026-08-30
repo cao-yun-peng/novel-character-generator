@@ -1,8 +1,10 @@
-# M1 Prompt、模型线字段与真实 Chunk 审核指南
+# M1 v1 Prompt、模型线字段与真实 Chunk 审核指南
 
-> 当前结论：15 条短回归集 `m1-local-observation-v1.2` 与 6 条真实 Chunk `m1-local-observation-real-v1.1` 均已由用户批准；M1 Prompt 为 `local-observation-discovery-prompt-v1.6`，模型线协议为 `local-observation-model-wire-v1`。真实 v1.6 最终重评分 5/6，仍有一条事实拆分漏召回，因此不启动 M2。
+> 历史结论：15 条短回归集与 6 条真实 Chunk 均按 M1 v1 rubric 批准；Prompt `local-observation-discovery-prompt-v1.6` 最终重评分 5/6。该 Prompt、wire 和评分口径现为 legacy implemented v1，不再代表目标 M1 v2。
+>
+> 已确认的新边界是：M1 只返回人物视觉相关的连续证据和可选局部 owner；事实原子化、field、epistemic 与显式 signal 由 M2 负责。完整目标协议见 [`32-m1-m2-evidence-semantic-boundary-v2.md`](32-m1-m2-evidence-semantic-boundary-v2.md)。在 v2 rubric 下，完整保留“年龄、英俊、身材挺拔”但未按 body 拆 fact 不再自动算 M1 失败。
 
-## 1. 修复后的完整 Prompt 在哪里
+## 1. 当前已实现 v1 Prompt 在哪里
 
 运行时唯一提示词是 [`01-local-observation-discovery.system.md`](../src/novel_character_generator/infrastructure/llm/prompts/01-local-observation-discovery.system.md)。该文件就是 Provider 实际加载的完整 system prompt，不在本文复制第二份，以免两份内容以后漂移。
 
@@ -11,7 +13,7 @@
 - 模型线 schema：`local-observation-model-wire-v1`
 - 内部输出 contract/schema：`local-observation-contract-v1.1` / `local-observation-discovery-v1.1`
 
-v1.2 修复年龄、presentation、unresolved，v1.3 删除模型不应负责的机械字段，v1.4 明确变化信号与事实类别，v1.5 重定直接近似年龄并确认脱下穿戴物，v1.6 加强逐字引文、独立穿戴物拆分、外观推龄比较基线和手持物排除；都不扩大 M1 语义职责：
+以下内容记录 v1 的历史演进，不再作为 v2 目标边界。v1.2 修复年龄、presentation、unresolved，v1.3 删除机械字段，v1.4 明确变化信号与事实类别，v1.5 重定直接近似年龄并确认脱下穿戴物，v1.6 加强逐字引文、独立穿戴物拆分、外观推龄比较基线和手持物排除：
 
 1. **年龄**：当前/呈现年龄必须同时输出 `physical_identity` fact 和 `age` signal；signal 的 `fact_index` 精确指向年龄 fact。叙述者直接给出的精确值、近似区间或相对年龄均用 `asserted`；只有“似乎/可能”等显式认知不确定用 `uncertain`；从外观推断年龄用 `inferred`。
 2. **presentation**：换衣、穿脱、整理发型/妆容、伪装等外在呈现改变用 `presentation`。引文必须是改变动作；若结果外观没有说清，signal 的 `fact_index` 为 `null`，不能虚构 fact。身体/物种变化仍用 `transformation`，普通背景时间和地点不是 `other_state`。
@@ -57,7 +59,7 @@ v1.2 修复年龄、presentation、unresolved，v1.3 删除模型不应负责的
 | 字段 | 含义 | 例子/约束 |
 |---|---|---|
 | `owner_index` | 此事实属于哪个局部人物 | 必须是 `entities` 中存在的零基位置 |
-| `evidence_quote` | 能完整证明命题的最短连续原文 | 必须逐字存在于 `chunk_text` |
+| `evidence_quote` | 最小但语义完整、且适合下游唯一定位的连续原文 | 必须逐字存在于 `chunk_text`；不得裁掉否定、推断、年龄或变化关系 |
 | `raw_proposition` | 对原文视觉命题的简洁同语种表达 | 可自然改写，但不能增加原文没有的信息 |
 | `coarse_family` | 粗粒度视觉类别 | 如 `physical_identity`、`hair`、`face`、`body`、`clothing`、`worn_accessory`；精细字段留给 M2 |
 | `epistemic_status` | 原文如何支持该命题 | `asserted` 直接陈述（含直接近似值/区间）；`negated` 明确不存在；`uncertain` 原文明示似乎/可能；`inferred` 原文明示由外观推断 |
@@ -165,7 +167,7 @@ Prompt 要求 `owner_index` 与 `fact_index` 不同时填写。若模型仍同�
 | 类型 | 结果 | 当前处理 |
 |---|---|---|
 | 已修复 | 直接近似年龄 asserted、脱鞋 presentation、外观推龄、同 Chunk owner aliases、逐字引文、古典服饰拆分、武器/坐骑排除、静态“衣衫半解”不升 presentation | 5 条真实 case 通过 |
-| 剩余真失败 | 模型把“男子二十左右、英俊、身材挺拔”合并成一个 `physical_identity` fact，未单独产出 `body` fact | 保留失败，不用规则拆写模型语义；下一轮应针对“一个跨度含多个独立外观维度”做最小实验 |
+| v1 rubric 失败、v2 重新归类 | 模型把“男子二十左右、英俊、身材挺拔”合并成一个 `physical_identity` fact，但 quote/raw proposition 完整保留相关语义 | v1 保留历史分数；v2 将其作为合格 evidence candidate，拆分与分类转入 M2 |
 | 未覆盖 | 真实集无可靠 unresolved 正例 | 只声明无误报，不声明正例召回已验证 |
 
 诊断产物：
