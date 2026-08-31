@@ -1,0 +1,62 @@
+{
+  "schema_version": "identity-task-result-v1",
+  "task_index": 6,
+  "current_label_quote": "萧炎",
+  "candidate_label_quote": "萧炎",
+  "task_cache_key": "ed6f069d97208299b0c4efb85860ed3f998cc566f0494b3beefbbbac7588e163",
+  "model_output": {
+    "identity_relation": "same_character",
+    "label_relation": "same_surface",
+    "identity_evidence_quotes": [
+      "在萧炎抬头的那一刹，手指中的黑色古戒，却是忽然亮起了一抹极其微弱的诡异毫光",
+      "山崖之颠，萧炎斜躺在草地之上，嘴中叼中一根青草，微微嚼动"
+    ]
+  },
+  "grounded_result": {
+    "schema_version": "grounded-identity-decision-v1",
+    "current_node_key": "4564f07d274b4fff14e1b26c6ab387c154910b32148975474a33a750b43bbc45",
+    "candidate_node_key": "44faa02eb94cb6424093f987886661e5e99bab93a8132d2ac9e0e5d2b6024688",
+    "task_cache_key": "ed6f069d97208299b0c4efb85860ed3f998cc566f0494b3beefbbbac7588e163",
+    "requested_identity_relation": "same_character",
+    "identity_relation": "same_character",
+    "label_relation": "same_surface",
+    "grounded_identity_evidence": [
+      {
+        "evidence_quote": "山崖之颠，萧炎斜躺在草地之上，嘴中叼中一根青草，微微嚼动",
+        "document_span": {
+          "start": 2976,
+          "end": 3004
+        },
+        "match_mode": "exact"
+      },
+      {
+        "evidence_quote": "在萧炎抬头的那一刹，手指中的黑色古戒，却是忽然亮起了一抹极其微弱的诡异毫光",
+        "document_span": {
+          "start": 6755,
+          "end": 6792
+        },
+        "match_mode": "exact"
+      }
+    ],
+    "issues": []
+  },
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 7172,
+    "http_status": 200,
+    "response_id": "07394896-f7de-4225-98fd-341e06e49aad",
+    "usage": {
+      "input_tokens": 2516,
+      "cached_input_tokens": 512,
+      "output_tokens": 644,
+      "reasoning_tokens": 552,
+      "total_tokens": 3160
+    },
+    "error_kind": null
+  }
+}

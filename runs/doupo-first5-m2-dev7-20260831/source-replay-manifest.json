@@ -1,0 +1,9 @@
+{
+  "schema_version": "m2-source-replay-manifest-v1",
+  "source_run_dir": "E:\\project\\agent\\novel-cahracter-generator\\runs\\doupo-first5-m1-scope-v4",
+  "source_manifest_hash": "dd71ace2b0df0a5e9e5aed5dadfbdffd9ad3e6d7ecffea1023195365108c0ce2",
+  "source_model_outputs_hash": "e714fa584e6c204bafce267d9b6a5298c896303cb692daf7ebad9ea4d0a121f9",
+  "source_document_version_id": "doupo-first5-7ca3fd295b5d0d45",
+  "document_hash": "7ca3fd295b5d0d454ca0b0bac2f4a49f2271602fc8e55bca2f120bb11d85172a",
+  "chunking_policy_version": "fixed-codepoint-window-2500-overlap-250-v1"
+}

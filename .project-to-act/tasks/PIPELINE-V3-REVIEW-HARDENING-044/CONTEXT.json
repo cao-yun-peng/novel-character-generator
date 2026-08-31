@@ -1,0 +1,12 @@
+{
+  "task_id": "PIPELINE-V3-REVIEW-HARDENING-044",
+  "project_mode": "managed",
+  "risk_level": "L1",
+  "branch": "v3-simplified-character-evidence",
+  "design_artifact": "docs/33-simplified-character-evidence-pipeline-v3.md",
+  "research_artifact": "docs/34-open-source-novel-character-visualization-research.md",
+  "review_artifact": "docs/35-v3-contract-review-adjustments.md",
+  "schema_artifact": "docs/contracts/simplified-character-evidence-v3-model-schemas.json",
+  "schema_version": "3.2.0-draft1",
+  "latest_evidence": "E-20260830-PIPELINE-V3-REVIEW-HARDENING-044"
+}

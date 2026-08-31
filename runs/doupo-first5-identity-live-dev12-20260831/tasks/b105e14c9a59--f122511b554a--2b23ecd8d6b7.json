@@ -1,0 +1,62 @@
+{
+  "schema_version": "identity-task-result-v1",
+  "task_index": 4,
+  "current_label_quote": "萧炎",
+  "candidate_label_quote": "萧炎",
+  "task_cache_key": "2b23ecd8d6b76bca890d443a3b5a69243986200043cb1d7b85e15adde1eb85a4",
+  "model_output": {
+    "identity_relation": "same_character",
+    "label_relation": "same_surface",
+    "identity_evidence_quotes": [
+      "萧炎少年老成的摇了摇头",
+      "萧炎，斗之力，三段！"
+    ]
+  },
+  "grounded_result": {
+    "schema_version": "grounded-identity-decision-v1",
+    "current_node_key": "b105e14c9a599acbd6eacb0b5a9a8922c2488a2bff5ce652dee8c6295a2aaa06",
+    "candidate_node_key": "f122511b554a203ea4e4f3eb252b8a88add3ef96073997ded08640f3bc514f49",
+    "task_cache_key": "2b23ecd8d6b76bca890d443a3b5a69243986200043cb1d7b85e15adde1eb85a4",
+    "requested_identity_relation": "same_character",
+    "identity_relation": "same_character",
+    "label_relation": "same_surface",
+    "grounded_identity_evidence": [
+      {
+        "evidence_quote": "萧炎，斗之力，三段！",
+        "document_span": {
+          "start": 115,
+          "end": 125
+        },
+        "match_mode": "exact"
+      },
+      {
+        "evidence_quote": "萧炎少年老成的摇了摇头",
+        "document_span": {
+          "start": 6041,
+          "end": 6052
+        },
+        "match_mode": "exact"
+      }
+    ],
+    "issues": []
+  },
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 5500,
+    "http_status": 200,
+    "response_id": "14876ea9-75f8-4fc3-8f24-4a1fb0259189",
+    "usage": {
+      "input_tokens": 1626,
+      "cached_input_tokens": 512,
+      "output_tokens": 445,
+      "reasoning_tokens": 388,
+      "total_tokens": 2071
+    },
+    "error_kind": null
+  }
+}

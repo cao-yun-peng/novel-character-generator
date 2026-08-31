@@ -1,0 +1,361 @@
+{
+  "schema_version": "m1-chunk-result-v1",
+  "chunk_index": 2,
+  "chunk_id": "chunk-000002-2250-4750-11d2797b6ebb",
+  "chunk_hash": "11d2797b6ebb5af91467b40ca982ac040b0c1179132dcb6c26848a4160d86df2",
+  "chunk_source_span": {
+    "start": 2250,
+    "end": 4750
+  },
+  "model_output": {
+    "candidate_mentions": [
+      {
+        "mention_type": "exact",
+        "mention_quote": "唐三",
+        "evidence_quotes": [
+          "却已经多了一道瘦小的身影。",
+          "那是个只有五、六岁的孩子，显然，他经常承受太阳的温暖，皮肤呈现出健康的小麦色，黑色短发看上去很利落，一身衣服虽然朴素，到也干净。",
+          "他眼眸中竟然闪烁着一层淡淡的紫意，尽管这紫色并没有持续太长时间就悄然收敛，但当它存在的时候，却是那么清晰。",
+          "瘦小的身体"
+        ]
+      },
+      {
+        "mention_type": "describe",
+        "mention_quote": "男孩儿",
+        "evidence_quotes": [
+          "却已经多了一道瘦小的身影。",
+          "那是个只有五、六岁的孩子，显然，他经常承受太阳的温暖，皮肤呈现出健康的小麦色，黑色短发看上去很利落，一身衣服虽然朴素，到也干净。",
+          "男孩儿在山顶上坐了下来，他的双眼死死的盯视着东方那抹渐渐明亮的鱼肚白色",
+          "他眼眸中竟然闪烁着一层淡淡的紫意，尽管这紫色并没有持续太长时间就悄然收敛，但当它存在的时候，却是那么清晰。",
+          "男孩儿做出一个绝不应该出现在他这个年龄的无奈表情",
+          "瘦小的身体"
+        ]
+      },
+      {
+        "mention_type": "describe",
+        "mention_quote": "孩子",
+        "evidence_quotes": [
+          "那是个只有五、六岁的孩子，显然，他经常承受太阳的温暖，皮肤呈现出健康的小麦色，黑色短发看上去很利落，一身衣服虽然朴素，到也干净。",
+          "对于他这么大的孩子来说，攀爬这百米高的山丘可并不是什么容易的事"
+        ]
+      }
+    ]
+  },
+  "grounded_packet": {
+    "schema_version": "grounded-character-packet-v3",
+    "source_document_version_id": "source-4dd3d57c99f4b254",
+    "chunking_policy_version": "fixed-codepoint-window-2500-overlap-250-v1",
+    "chunk_id": "chunk-000002-2250-4750-11d2797b6ebb",
+    "chunk_hash": "11d2797b6ebb5af91467b40ca982ac040b0c1179132dcb6c26848a4160d86df2",
+    "chunk_source_span": {
+      "start": 2250,
+      "end": 4750
+    },
+    "grounded_mentions": [
+      {
+        "local_mention_id": "m1",
+        "mention_type": "exact",
+        "mention_quote": "唐三",
+        "mention_occurrence_count": 17,
+        "mention_source_spans": [
+          {
+            "start": 133,
+            "end": 135
+          },
+          {
+            "start": 156,
+            "end": 158
+          },
+          {
+            "start": 219,
+            "end": 221
+          },
+          {
+            "start": 337,
+            "end": 339
+          },
+          {
+            "start": 442,
+            "end": 444
+          },
+          {
+            "start": 461,
+            "end": 463
+          },
+          {
+            "start": 1604,
+            "end": 1606
+          },
+          {
+            "start": 1685,
+            "end": 1687
+          },
+          {
+            "start": 1715,
+            "end": 1717
+          },
+          {
+            "start": 1727,
+            "end": 1729
+          },
+          {
+            "start": 1932,
+            "end": 1934
+          },
+          {
+            "start": 1957,
+            "end": 1959
+          },
+          {
+            "start": 2045,
+            "end": 2047
+          },
+          {
+            "start": 2111,
+            "end": 2113
+          },
+          {
+            "start": 2217,
+            "end": 2219
+          },
+          {
+            "start": 2248,
+            "end": 2250
+          },
+          {
+            "start": 2483,
+            "end": 2485
+          }
+        ],
+        "mention_quote_hash": "04af9a5f2d9cca67d65d424e41820e11063f4cb679035d66b8ef30ed334d2c48",
+        "approved_evidence": [
+          {
+            "evidence_quote": "却已经多了一道瘦小的身影。",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 788,
+                "end": 801
+              }
+            ],
+            "quote_hash": "1aa4d8cf83e4bed15e934829c040ca771e4be2e3629e9f972d4bab56d2b8fd8f",
+            "relation_to_mention": "contextual"
+          },
+          {
+            "evidence_quote": "那是个只有五、六岁的孩子，显然，他经常承受太阳的温暖，皮肤呈现出健康的小麦色，黑色短发看上去很利落，一身衣服虽然朴素，到也干净。",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 805,
+                "end": 869
+              }
+            ],
+            "quote_hash": "f2e9714f7b1258cdc2d9714d625de1818a6af40db91482c9a22e84cd3ec78639",
+            "relation_to_mention": "contextual"
+          },
+          {
+            "evidence_quote": "他眼眸中竟然闪烁着一层淡淡的紫意，尽管这紫色并没有持续太长时间就悄然收敛，但当它存在的时候，却是那么清晰。",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1300,
+                "end": 1353
+              }
+            ],
+            "quote_hash": "a7f30e0ff07b1653de1c0fc6a2de08e2fe564a9d7101e1f4ab02d7c1623201e5",
+            "relation_to_mention": "contextual"
+          },
+          {
+            "evidence_quote": "瘦小的身体",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 2255,
+                "end": 2260
+              }
+            ],
+            "quote_hash": "c7ee12376f2e41f2d1d5ca82ea260d1e4ce66e2923c46bb7d2f09af25a7ff7ef",
+            "relation_to_mention": "contextual"
+          }
+        ],
+        "packet_hash": "aa70edc74a4c1bb2e4fc42d50b54171792f4857f7446f3c20cae43d1bfc0542b"
+      },
+      {
+        "local_mention_id": "m2",
+        "mention_type": "describe",
+        "mention_quote": "男孩儿",
+        "mention_occurrence_count": 5,
+        "mention_source_spans": [
+          {
+            "start": 945,
+            "end": 948
+          },
+          {
+            "start": 1110,
+            "end": 1113
+          },
+          {
+            "start": 1214,
+            "end": 1217
+          },
+          {
+            "start": 1276,
+            "end": 1279
+          },
+          {
+            "start": 1358,
+            "end": 1361
+          }
+        ],
+        "mention_quote_hash": "d5c7850a5185913a61c7530126cd15e70c639b8c70f70817e6a1413bc9af4e40",
+        "approved_evidence": [
+          {
+            "evidence_quote": "却已经多了一道瘦小的身影。",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 788,
+                "end": 801
+              }
+            ],
+            "quote_hash": "1aa4d8cf83e4bed15e934829c040ca771e4be2e3629e9f972d4bab56d2b8fd8f",
+            "relation_to_mention": "contextual"
+          },
+          {
+            "evidence_quote": "那是个只有五、六岁的孩子，显然，他经常承受太阳的温暖，皮肤呈现出健康的小麦色，黑色短发看上去很利落，一身衣服虽然朴素，到也干净。",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 805,
+                "end": 869
+              }
+            ],
+            "quote_hash": "f2e9714f7b1258cdc2d9714d625de1818a6af40db91482c9a22e84cd3ec78639",
+            "relation_to_mention": "contextual"
+          },
+          {
+            "evidence_quote": "男孩儿在山顶上坐了下来，他的双眼死死的盯视着东方那抹渐渐明亮的鱼肚白色",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 945,
+                "end": 980
+              }
+            ],
+            "quote_hash": "9c8ac723aed04d5cb1daa2688fa102226920fd11946f6c39586876155fea3411",
+            "relation_to_mention": "contains_mention"
+          },
+          {
+            "evidence_quote": "他眼眸中竟然闪烁着一层淡淡的紫意，尽管这紫色并没有持续太长时间就悄然收敛，但当它存在的时候，却是那么清晰。",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1300,
+                "end": 1353
+              }
+            ],
+            "quote_hash": "a7f30e0ff07b1653de1c0fc6a2de08e2fe564a9d7101e1f4ab02d7c1623201e5",
+            "relation_to_mention": "contextual"
+          },
+          {
+            "evidence_quote": "男孩儿做出一个绝不应该出现在他这个年龄的无奈表情",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1358,
+                "end": 1382
+              }
+            ],
+            "quote_hash": "67f9e051e134ce6c0e7bf4cacec610442c23b28b05ddcfebc1e06113c71e261c",
+            "relation_to_mention": "contains_mention"
+          },
+          {
+            "evidence_quote": "瘦小的身体",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 2255,
+                "end": 2260
+              }
+            ],
+            "quote_hash": "c7ee12376f2e41f2d1d5ca82ea260d1e4ce66e2923c46bb7d2f09af25a7ff7ef",
+            "relation_to_mention": "contextual"
+          }
+        ],
+        "packet_hash": "b1ce451fa60850c0aa851593140e10834e747d61433066d752b714532c82fa96"
+      },
+      {
+        "local_mention_id": "m3",
+        "mention_type": "describe",
+        "mention_quote": "孩子",
+        "mention_occurrence_count": 4,
+        "mention_source_spans": [
+          {
+            "start": 815,
+            "end": 817
+          },
+          {
+            "start": 880,
+            "end": 882
+          },
+          {
+            "start": 1589,
+            "end": 1591
+          },
+          {
+            "start": 1944,
+            "end": 1946
+          }
+        ],
+        "mention_quote_hash": "5f887419f463425a6f06d8823b08d2583f65830a488952bb2ee78ec6f70d9959",
+        "approved_evidence": [
+          {
+            "evidence_quote": "那是个只有五、六岁的孩子，显然，他经常承受太阳的温暖，皮肤呈现出健康的小麦色，黑色短发看上去很利落，一身衣服虽然朴素，到也干净。",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 805,
+                "end": 869
+              }
+            ],
+            "quote_hash": "f2e9714f7b1258cdc2d9714d625de1818a6af40db91482c9a22e84cd3ec78639",
+            "relation_to_mention": "contains_mention"
+          },
+          {
+            "evidence_quote": "对于他这么大的孩子来说，攀爬这百米高的山丘可并不是什么容易的事",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 873,
+                "end": 904
+              }
+            ],
+            "quote_hash": "32a665f87026dda17daaaefadef31b687c794b3823ab5e56fe0c92f9e6e7db70",
+            "relation_to_mention": "contains_mention"
+          }
+        ],
+        "packet_hash": "3835e5b7f861181daef73c94badea1419262d327d584062e874a24754766aa5d"
+      }
+    ],
+    "rejected_evidence": []
+  },
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 23141,
+    "http_status": 200,
+    "response_id": "d7b07045-7887-4c3e-a661-4b9438e0bcc8",
+    "usage": {
+      "input_tokens": 2361,
+      "cached_input_tokens": 2304,
+      "output_tokens": 2758,
+      "reasoning_tokens": 2355,
+      "total_tokens": 5119
+    },
+    "error_kind": null
+  }
+}

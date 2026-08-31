@@ -1,0 +1,395 @@
+{
+  "schema_version": "m1-chunk-result-v2",
+  "chunk_index": 5,
+  "chunk_id": "chunk-000005-9000-11500-0cb89a2a0c18",
+  "chunk_hash": "0cb89a2a0c18510101274d1f3886815b22021b909e097568792b50088060a727",
+  "chunk_source_span": {
+    "start": 9000,
+    "end": 11500
+  },
+  "model_output": {
+    "candidate_mentions": [
+      {
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "萧熏儿",
+        "evidence_quotes": [
+          "微笑的小脸",
+          "小脸上露出可爱的小酒窝",
+          "纤细的指尖",
+          "修长的睫毛",
+          "光洁侧脸",
+          "小嘴泛起了柔和的笑意",
+          "美丽的眼睛微弯",
+          "小小年纪"
+        ]
+      },
+      {
+        "mention_type": "describe",
+        "mention_scope": "individual",
+        "mention_quote": "少女",
+        "evidence_quotes": [
+          "微笑的小脸",
+          "小脸上露出可爱的小酒窝",
+          "纤细的指尖",
+          "修长的睫毛",
+          "光洁侧脸",
+          "小嘴泛起了柔和的笑意",
+          "美丽的眼睛微弯",
+          "小小年纪"
+        ]
+      },
+      {
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "纳兰嫣然",
+        "evidence_quotes": [
+          "对面的少女虽然美丽",
+          "美丽娇俏"
+        ]
+      },
+      {
+        "mention_type": "describe",
+        "mention_scope": "individual",
+        "mention_quote": "娇贵少女",
+        "evidence_quotes": [
+          "对面的少女虽然美丽",
+          "美丽娇俏"
+        ]
+      }
+    ]
+  },
+  "grounded_packet": {
+    "schema_version": "grounded-character-packet-v4",
+    "source_document_version_id": "doupo-first5-7ca3fd295b5d0d45",
+    "chunking_policy_version": "fixed-codepoint-window-2500-overlap-250-v1",
+    "chunk_id": "chunk-000005-9000-11500-0cb89a2a0c18",
+    "chunk_hash": "0cb89a2a0c18510101274d1f3886815b22021b909e097568792b50088060a727",
+    "chunk_source_span": {
+      "start": 9000,
+      "end": 11500
+    },
+    "grounded_mentions": [
+      {
+        "local_mention_id": "m1",
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "萧熏儿",
+        "mention_quote_hash": "666b8d6ca5c359d27ab9be23823e66ae793de4dd8a3fb074aeb27ee0aea74db5",
+        "approved_evidence": [
+          {
+            "evidence_quote": "微笑的小脸",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 130,
+                "end": 135
+              }
+            ],
+            "quote_hash": "b92547e35a0cce10cb8a7498b634c5f5692077a2480f6273497cd6fe3c5c7bf4",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "小脸上露出可爱的小酒窝",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 225,
+                "end": 236
+              }
+            ],
+            "quote_hash": "8939b55d13ff4ef26c9cffa9f4936c4249dab3415ee4d44057a04a9ab874adff",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "纤细的指尖",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 237,
+                "end": 242
+              }
+            ],
+            "quote_hash": "02e8a3f551773cc1662748c2c5ba63d985b40762dd661071046bdfb6aba586fe",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "修长的睫毛",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 274,
+                "end": 279
+              }
+            ],
+            "quote_hash": "8c7e59163e4ffe919be404938d479dbf8928c0346a8a607c583d6dbb674c478a",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "光洁侧脸",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 360,
+                "end": 364
+              }
+            ],
+            "quote_hash": "c3a0016e8c6850df7f83df90ecc40c9bc383ad8aeaabc51e753302151a0916df",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "小嘴泛起了柔和的笑意",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 604,
+                "end": 614
+              }
+            ],
+            "quote_hash": "7ca770550c8414205df5d74870a743d4607be8be5c639a75007a76b90337cdf8",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "美丽的眼睛微弯",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1891,
+                "end": 1898
+              }
+            ],
+            "quote_hash": "95ab5def7ff9cc6e336326053ee74195f2f3fccae34768091182472121babb2f",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "小小年纪",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 256,
+                "end": 260
+              }
+            ],
+            "quote_hash": "e8a5fad9ab1b30d6045354e2e5ff1bfec35b8d45a3047d5206958eb727814ef5",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "6838faa9218838b83136745fecc8eb927242ca0ccb17e8297fdc01bae385337c"
+      },
+      {
+        "local_mention_id": "m2",
+        "mention_type": "describe",
+        "mention_scope": "individual",
+        "mention_quote": "少女",
+        "mention_quote_hash": "def0173ec2e72ea2c7ec872269b9ea0b2d634c92a2aeea96e3ef3e19a988ca85",
+        "approved_evidence": [
+          {
+            "evidence_quote": "微笑的小脸",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 130,
+                "end": 135
+              }
+            ],
+            "quote_hash": "b92547e35a0cce10cb8a7498b634c5f5692077a2480f6273497cd6fe3c5c7bf4",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "小脸上露出可爱的小酒窝",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 225,
+                "end": 236
+              }
+            ],
+            "quote_hash": "8939b55d13ff4ef26c9cffa9f4936c4249dab3415ee4d44057a04a9ab874adff",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "纤细的指尖",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 237,
+                "end": 242
+              }
+            ],
+            "quote_hash": "02e8a3f551773cc1662748c2c5ba63d985b40762dd661071046bdfb6aba586fe",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "修长的睫毛",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 274,
+                "end": 279
+              }
+            ],
+            "quote_hash": "8c7e59163e4ffe919be404938d479dbf8928c0346a8a607c583d6dbb674c478a",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "光洁侧脸",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 360,
+                "end": 364
+              }
+            ],
+            "quote_hash": "c3a0016e8c6850df7f83df90ecc40c9bc383ad8aeaabc51e753302151a0916df",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "小嘴泛起了柔和的笑意",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 604,
+                "end": 614
+              }
+            ],
+            "quote_hash": "7ca770550c8414205df5d74870a743d4607be8be5c639a75007a76b90337cdf8",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "美丽的眼睛微弯",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1891,
+                "end": 1898
+              }
+            ],
+            "quote_hash": "95ab5def7ff9cc6e336326053ee74195f2f3fccae34768091182472121babb2f",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "小小年纪",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 256,
+                "end": 260
+              }
+            ],
+            "quote_hash": "e8a5fad9ab1b30d6045354e2e5ff1bfec35b8d45a3047d5206958eb727814ef5",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "8d65cec72da7f8c55ec85d250240ed3c1ca913c9d5c34331aded5ce48552a620"
+      },
+      {
+        "local_mention_id": "m3",
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "纳兰嫣然",
+        "mention_quote_hash": "57a3e0e1c52ed1d4a1b38b519209c48d73bff8e7b9ab908c0b3ae41b556d65de",
+        "approved_evidence": [
+          {
+            "evidence_quote": "对面的少女虽然美丽",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 2098,
+                "end": 2107
+              }
+            ],
+            "quote_hash": "26ffa4a1fd0c6278528117c3bec2467a173d2e6ac54affbe640fe00d8c81da45",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "美丽娇俏",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 2218,
+                "end": 2222
+              }
+            ],
+            "quote_hash": "9c1c81d696a4b28e8ce49847f88eae034db4d2e01fbeb07e7ab1bf8bf1931522",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "0aae41aaac9aac42882398e9c424adfd138eb4a4dea010b37abcfcd486dd1c48"
+      },
+      {
+        "local_mention_id": "m4",
+        "mention_type": "describe",
+        "mention_scope": "individual",
+        "mention_quote": "娇贵少女",
+        "mention_quote_hash": "0ac5016db109a0bda6feb94c279f94c78ef2ae6e580977514923841deea0fd5a",
+        "approved_evidence": [
+          {
+            "evidence_quote": "对面的少女虽然美丽",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 2098,
+                "end": 2107
+              }
+            ],
+            "quote_hash": "26ffa4a1fd0c6278528117c3bec2467a173d2e6ac54affbe640fe00d8c81da45",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "美丽娇俏",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 2218,
+                "end": 2222
+              }
+            ],
+            "quote_hash": "9c1c81d696a4b28e8ce49847f88eae034db4d2e01fbeb07e7ab1bf8bf1931522",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "27d7e1767c8a0b42beed415fa81222ff26cdc582654c20a34086ab88e3de916e"
+      }
+    ],
+    "rejected_evidence": []
+  },
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 43140,
+    "http_status": 200,
+    "response_id": "e4654399-f3c0-4241-9c43-9afe75ad0665",
+    "usage": {
+      "input_tokens": 2674,
+      "cached_input_tokens": 2560,
+      "output_tokens": 4952,
+      "reasoning_tokens": 4633,
+      "total_tokens": 7626
+    },
+    "error_kind": null
+  }
+}

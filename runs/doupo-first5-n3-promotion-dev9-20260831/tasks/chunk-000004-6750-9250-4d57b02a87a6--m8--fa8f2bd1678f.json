@@ -1,0 +1,87 @@
+{
+  "schema_version": "n3-promotion-task-result-v1",
+  "chunk_index": 4,
+  "chunk_id": "chunk-000004-6750-9250-4d57b02a87a6",
+  "describe_local_mention_id": "m8",
+  "mention_quote": "黄袍老者",
+  "promotion_hash": "fa8f2bd1678f399d8ef4d094c347bf4c976189b30799e3517a4056700682bf27",
+  "model_output": {
+    "characters": [
+      {
+        "character_label_quote": "黄袍老者",
+        "belongs_to_character": [
+          {
+            "fact_quote": "黄袍",
+            "category": "clothing",
+            "attribute": "袍色",
+            "value": "黄袍"
+          }
+        ]
+      }
+    ]
+  },
+  "grounded_result": {
+    "schema_version": "grounded-promoted-describe-characters-v5",
+    "describe_source_ref": {
+      "local_mention_id": "m8",
+      "packet_hash": "60f1a203eda1a498ab79db91495699e02bdfc97602868a5fefc1d210a9a5d42d"
+    },
+    "promotion_hash": "fa8f2bd1678f399d8ef4d094c347bf4c976189b30799e3517a4056700682bf27",
+    "promoted_characters": [
+      {
+        "promoted_character_ref": {
+          "source_document_version_id": "doupo-first5-7ca3fd295b5d0d45",
+          "chunk_id": "chunk-000004-6750-9250-4d57b02a87a6",
+          "source_local_mention_id": "m8",
+          "source_mention_type": "describe",
+          "promotion_index": 1,
+          "character_origin": "remaining_describe",
+          "packet_hash": "60f1a203eda1a498ab79db91495699e02bdfc97602868a5fefc1d210a9a5d42d",
+          "promotion_hash": "fa8f2bd1678f399d8ef4d094c347bf4c976189b30799e3517a4056700682bf27"
+        },
+        "character_label_quote": "黄袍老者",
+        "grounded_belongs_to_character": [
+          {
+            "fact_quote": "黄袍",
+            "category": "clothing",
+            "attribute": "袍色",
+            "value": "黄袍",
+            "source_mention_id": "m8",
+            "source_mention_type": "describe",
+            "source_evidence_quote": "黄袍",
+            "source_evidence_span": {
+              "start": 2199,
+              "end": 2201
+            },
+            "fact_chunk_span": {
+              "start": 2199,
+              "end": 2201
+            },
+            "match_mode": "exact"
+          }
+        ]
+      }
+    ],
+    "unassigned_fragments": []
+  },
+  "grounding_issues": [],
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 2156,
+    "http_status": 200,
+    "response_id": "b21d32cf-0184-4fe2-91b0-9b9790242684",
+    "usage": {
+      "input_tokens": 2182,
+      "cached_input_tokens": 384,
+      "output_tokens": 141,
+      "reasoning_tokens": 94,
+      "total_tokens": 2323
+    },
+    "error_kind": null
+  }
+}

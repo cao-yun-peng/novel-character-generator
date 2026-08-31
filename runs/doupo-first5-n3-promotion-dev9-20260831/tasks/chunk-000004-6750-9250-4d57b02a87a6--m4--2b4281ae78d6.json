@@ -1,0 +1,186 @@
+{
+  "schema_version": "n3-promotion-task-result-v1",
+  "chunk_index": 4,
+  "chunk_id": "chunk-000004-6750-9250-4d57b02a87a6",
+  "describe_local_mention_id": "m4",
+  "mention_quote": "身穿月白衣袍的老者",
+  "promotion_hash": "2b4281ae78d612591b23cb70805d3e46d3b49391e8c8c398d4448af060669bd0",
+  "model_output": {
+    "characters": [
+      {
+        "character_label_quote": "身穿月白衣袍的老者",
+        "belongs_to_character": [
+          {
+            "fact_quote": "满脸笑容",
+            "category": "face",
+            "attribute": "笑容",
+            "value": "满脸笑容"
+          },
+          {
+            "fact_quote": "神采奕奕",
+            "category": "appearance_state",
+            "attribute": "精神",
+            "value": "神采奕奕"
+          },
+          {
+            "fact_quote": "一双有些细小的双眼",
+            "category": "face",
+            "attribute": "双眼",
+            "value": "有些细小"
+          },
+          {
+            "fact_quote": "衣袍胸口处，赫然绘有一弯银色浅月",
+            "category": "clothing",
+            "attribute": "衣袍图案",
+            "value": "一弯银色浅月"
+          }
+        ]
+      }
+    ]
+  },
+  "grounded_result": {
+    "schema_version": "grounded-promoted-describe-characters-v5",
+    "describe_source_ref": {
+      "local_mention_id": "m4",
+      "packet_hash": "b28ebae690c504efd0df0f23c05e4d1f899f8bb433d337a7297d320fefb6c61c"
+    },
+    "promotion_hash": "2b4281ae78d612591b23cb70805d3e46d3b49391e8c8c398d4448af060669bd0",
+    "promoted_characters": [
+      {
+        "promoted_character_ref": {
+          "source_document_version_id": "doupo-first5-7ca3fd295b5d0d45",
+          "chunk_id": "chunk-000004-6750-9250-4d57b02a87a6",
+          "source_local_mention_id": "m4",
+          "source_mention_type": "describe",
+          "promotion_index": 1,
+          "character_origin": "remaining_describe",
+          "packet_hash": "b28ebae690c504efd0df0f23c05e4d1f899f8bb433d337a7297d320fefb6c61c",
+          "promotion_hash": "2b4281ae78d612591b23cb70805d3e46d3b49391e8c8c398d4448af060669bd0"
+        },
+        "character_label_quote": "身穿月白衣袍的老者",
+        "grounded_belongs_to_character": [
+          {
+            "fact_quote": "满脸笑容",
+            "category": "face",
+            "attribute": "笑容",
+            "value": "满脸笑容",
+            "source_mention_id": "m4",
+            "source_mention_type": "describe",
+            "source_evidence_quote": "满脸笑容，神采奕奕，一双有些细小的双眼",
+            "source_evidence_span": {
+              "start": 911,
+              "end": 930
+            },
+            "fact_chunk_span": {
+              "start": 911,
+              "end": 915
+            },
+            "match_mode": "exact"
+          },
+          {
+            "fact_quote": "神采奕奕",
+            "category": "appearance_state",
+            "attribute": "精神",
+            "value": "神采奕奕",
+            "source_mention_id": "m4",
+            "source_mention_type": "describe",
+            "source_evidence_quote": "满脸笑容，神采奕奕，一双有些细小的双眼",
+            "source_evidence_span": {
+              "start": 911,
+              "end": 930
+            },
+            "fact_chunk_span": {
+              "start": 916,
+              "end": 920
+            },
+            "match_mode": "exact"
+          },
+          {
+            "fact_quote": "一双有些细小的双眼",
+            "category": "face",
+            "attribute": "双眼",
+            "value": "有些细小",
+            "source_mention_id": "m4",
+            "source_mention_type": "describe",
+            "source_evidence_quote": "满脸笑容，神采奕奕，一双有些细小的双眼",
+            "source_evidence_span": {
+              "start": 911,
+              "end": 930
+            },
+            "fact_chunk_span": {
+              "start": 921,
+              "end": 930
+            },
+            "match_mode": "exact"
+          },
+          {
+            "fact_quote": "衣袍胸口处，赫然绘有一弯银色浅月",
+            "category": "clothing",
+            "attribute": "衣袍图案",
+            "value": "一弯银色浅月",
+            "source_mention_id": "m4",
+            "source_mention_type": "describe",
+            "source_evidence_quote": "衣袍胸口处，赫然绘有一弯银色浅月",
+            "source_evidence_span": {
+              "start": 970,
+              "end": 986
+            },
+            "fact_chunk_span": {
+              "start": 970,
+              "end": 986
+            },
+            "match_mode": "exact"
+          }
+        ]
+      }
+    ],
+    "unassigned_fragments": [
+      {
+        "fragment_ref": "d1-f1",
+        "source_evidence_quote": "满脸笑容，神采奕奕，一双有些细小的双眼",
+        "source_evidence_span": {
+          "start": 911,
+          "end": 930
+        },
+        "fragment_quote": "，",
+        "fragment_span": {
+          "start": 915,
+          "end": 916
+        }
+      },
+      {
+        "fragment_ref": "d1-f2",
+        "source_evidence_quote": "满脸笑容，神采奕奕，一双有些细小的双眼",
+        "source_evidence_span": {
+          "start": 911,
+          "end": 930
+        },
+        "fragment_quote": "，",
+        "fragment_span": {
+          "start": 920,
+          "end": 921
+        }
+      }
+    ]
+  },
+  "grounding_issues": [],
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 14860,
+    "http_status": 200,
+    "response_id": "5276385d-7b6e-4847-9968-50933bc33f02",
+    "usage": {
+      "input_tokens": 2209,
+      "cached_input_tokens": 0,
+      "output_tokens": 1539,
+      "reasoning_tokens": 1329,
+      "total_tokens": 3748
+    },
+    "error_kind": null
+  }
+}

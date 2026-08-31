@@ -1,0 +1,375 @@
+{
+  "schema_version": "m1-chunk-result-v1",
+  "chunk_index": 3,
+  "chunk_id": "chunk-000003-4500-7000-423c00b50f5f",
+  "chunk_hash": "423c00b50f5f89d737132c5ceb8687a7be0a7a002f33231ccf565c2dadeb5099",
+  "chunk_source_span": {
+    "start": 4500,
+    "end": 7000
+  },
+  "model_output": {
+    "candidate_mentions": [
+      {
+        "mention_type": "exact",
+        "mention_quote": "唐三",
+        "evidence_quotes": [
+          "瘦小的身体",
+          "他的身体如此纤瘦",
+          "身高还够不到灶台"
+        ]
+      },
+      {
+        "mention_type": "exact",
+        "mention_quote": "唐昊",
+        "evidence_quotes": [
+          "那是一名中年男子，看上去大约有接近五十岁的样子，但身材却非常高大魁梧，只是他的打扮却令人不敢恭维。破损的袍子穿在身上，上面甚至连补丁都没有，露出下面古铜色的皮肤，原本还算端正的五官却蒙着一层蜡黄色，一副睡眼朦胧的样子，头发乱糟糟的像鸟窝一般，一脸的胡子已经不知道有多少日子没有整理过了。目光呆滞而昏黄",
+          "唐昊看起来却要比他们苍老的多，反倒像是唐三的爷爷一般",
+          "暗黄的脸色这才看上去多了几分光泽"
+        ]
+      },
+      {
+        "mention_type": "describe",
+        "mention_quote": "中年男子",
+        "evidence_quotes": [
+          "那是一名中年男子，看上去大约有接近五十岁的样子，但身材却非常高大魁梧，只是他的打扮却令人不敢恭维。破损的袍子穿在身上，上面甚至连补丁都没有，露出下面古铜色的皮肤，原本还算端正的五官却蒙着一层蜡黄色，一副睡眼朦胧的样子，头发乱糟糟的像鸟窝一般，一脸的胡子已经不知道有多少日子没有整理过了。目光呆滞而昏黄"
+        ]
+      }
+    ]
+  },
+  "grounded_packet": {
+    "schema_version": "grounded-character-packet-v3",
+    "source_document_version_id": "source-4dd3d57c99f4b254",
+    "chunking_policy_version": "fixed-codepoint-window-2500-overlap-250-v1",
+    "chunk_id": "chunk-000003-4500-7000-423c00b50f5f",
+    "chunk_hash": "423c00b50f5f89d737132c5ceb8687a7be0a7a002f33231ccf565c2dadeb5099",
+    "chunk_source_span": {
+      "start": 4500,
+      "end": 7000
+    },
+    "grounded_mentions": [
+      {
+        "local_mention_id": "m1",
+        "mention_type": "exact",
+        "mention_quote": "唐三",
+        "mention_occurrence_count": 33,
+        "mention_source_spans": [
+          {
+            "start": 233,
+            "end": 235
+          },
+          {
+            "start": 252,
+            "end": 254
+          },
+          {
+            "start": 389,
+            "end": 391
+          },
+          {
+            "start": 411,
+            "end": 413
+          },
+          {
+            "start": 511,
+            "end": 513
+          },
+          {
+            "start": 615,
+            "end": 617
+          },
+          {
+            "start": 652,
+            "end": 654
+          },
+          {
+            "start": 698,
+            "end": 700
+          },
+          {
+            "start": 773,
+            "end": 775
+          },
+          {
+            "start": 844,
+            "end": 846
+          },
+          {
+            "start": 895,
+            "end": 897
+          },
+          {
+            "start": 941,
+            "end": 943
+          },
+          {
+            "start": 986,
+            "end": 988
+          },
+          {
+            "start": 1210,
+            "end": 1212
+          },
+          {
+            "start": 1230,
+            "end": 1232
+          },
+          {
+            "start": 1250,
+            "end": 1252
+          },
+          {
+            "start": 1303,
+            "end": 1305
+          },
+          {
+            "start": 1379,
+            "end": 1381
+          },
+          {
+            "start": 1434,
+            "end": 1436
+          },
+          {
+            "start": 1454,
+            "end": 1456
+          },
+          {
+            "start": 1495,
+            "end": 1497
+          },
+          {
+            "start": 1594,
+            "end": 1596
+          },
+          {
+            "start": 1749,
+            "end": 1751
+          },
+          {
+            "start": 1835,
+            "end": 1837
+          },
+          {
+            "start": 1887,
+            "end": 1889
+          },
+          {
+            "start": 1929,
+            "end": 1931
+          },
+          {
+            "start": 2136,
+            "end": 2138
+          },
+          {
+            "start": 2154,
+            "end": 2156
+          },
+          {
+            "start": 2231,
+            "end": 2233
+          },
+          {
+            "start": 2268,
+            "end": 2270
+          },
+          {
+            "start": 2287,
+            "end": 2289
+          },
+          {
+            "start": 2296,
+            "end": 2298
+          },
+          {
+            "start": 2482,
+            "end": 2484
+          }
+        ],
+        "mention_quote_hash": "04af9a5f2d9cca67d65d424e41820e11063f4cb679035d66b8ef30ed334d2c48",
+        "approved_evidence": [
+          {
+            "evidence_quote": "瘦小的身体",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 5,
+                "end": 10
+              }
+            ],
+            "quote_hash": "c7ee12376f2e41f2d1d5ca82ea260d1e4ce66e2923c46bb7d2f09af25a7ff7ef",
+            "relation_to_mention": "contextual"
+          },
+          {
+            "evidence_quote": "他的身体如此纤瘦",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 961,
+                "end": 969
+              }
+            ],
+            "quote_hash": "7886af0d97fef98da341d2c5a1485c8ad7269ec6a765d3fb0b4baf45db5f6554",
+            "relation_to_mention": "contextual"
+          },
+          {
+            "evidence_quote": "身高还够不到灶台",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 701,
+                "end": 709
+              }
+            ],
+            "quote_hash": "cc0e68871b30f1b6c044a245527cdd0b5d2d0f1b837db78919872342e441d845",
+            "relation_to_mention": "contextual"
+          }
+        ],
+        "packet_hash": "843a31f2e847e4ee3ec93a6ba1659403aeaf9da3c6cbea4eb59068c2e2c8a608"
+      },
+      {
+        "local_mention_id": "m2",
+        "mention_type": "exact",
+        "mention_quote": "唐昊",
+        "mention_occurrence_count": 19,
+        "mention_source_spans": [
+          {
+            "start": 516,
+            "end": 518
+          },
+          {
+            "start": 670,
+            "end": 672
+          },
+          {
+            "start": 683,
+            "end": 685
+          },
+          {
+            "start": 755,
+            "end": 757
+          },
+          {
+            "start": 1227,
+            "end": 1229
+          },
+          {
+            "start": 1262,
+            "end": 1264
+          },
+          {
+            "start": 1314,
+            "end": 1316
+          },
+          {
+            "start": 1360,
+            "end": 1362
+          },
+          {
+            "start": 1415,
+            "end": 1417
+          },
+          {
+            "start": 1448,
+            "end": 1450
+          },
+          {
+            "start": 1478,
+            "end": 1480
+          },
+          {
+            "start": 1531,
+            "end": 1533
+          },
+          {
+            "start": 1717,
+            "end": 1719
+          },
+          {
+            "start": 1785,
+            "end": 1787
+          },
+          {
+            "start": 1846,
+            "end": 1848
+          },
+          {
+            "start": 1900,
+            "end": 1902
+          },
+          {
+            "start": 2095,
+            "end": 2097
+          },
+          {
+            "start": 2193,
+            "end": 2195
+          },
+          {
+            "start": 2398,
+            "end": 2400
+          }
+        ],
+        "mention_quote_hash": "081118b106b6bea10da0e0a6c94ec329ae8ae1f2ec304529a0c642688e4bc39d",
+        "approved_evidence": [
+          {
+            "evidence_quote": "唐昊看起来却要比他们苍老的多，反倒像是唐三的爷爷一般",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1415,
+                "end": 1441
+              }
+            ],
+            "quote_hash": "32c1822bf3d550c4de248c79f6be77eeaf42a1fa30b69d853efa6ee7413739d7",
+            "relation_to_mention": "contains_mention"
+          },
+          {
+            "evidence_quote": "暗黄的脸色这才看上去多了几分光泽",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1560,
+                "end": 1576
+              }
+            ],
+            "quote_hash": "b68da6f54464b961cb9689b4924ab92c28372a89eb872d8c4d4bca1a2f1abd6d",
+            "relation_to_mention": "contextual"
+          }
+        ],
+        "packet_hash": "e422313eaa844b67508a70150ccebbe836c1dc8fedab8fd874d55b3f98cdcc10"
+      }
+    ],
+    "rejected_evidence": [
+      {
+        "mention_index": 1,
+        "evidence_quote": "那是一名中年男子，看上去大约有接近五十岁的样子，但身材却非常高大魁梧，只是他的打扮却令人不敢恭维。破损的袍子穿在身上，上面甚至连补丁都没有，露出下面古铜色的皮肤，原本还算端正的五官却蒙着一层蜡黄色，一副睡眼朦胧的样子，头发乱糟糟的像鸟窝一般，一脸的胡子已经不知道有多少日子没有整理过了。目光呆滞而昏黄",
+        "reason_code": "evidence_not_in_chunk"
+      },
+      {
+        "mention_index": 2,
+        "evidence_quote": "那是一名中年男子，看上去大约有接近五十岁的样子，但身材却非常高大魁梧，只是他的打扮却令人不敢恭维。破损的袍子穿在身上，上面甚至连补丁都没有，露出下面古铜色的皮肤，原本还算端正的五官却蒙着一层蜡黄色，一副睡眼朦胧的样子，头发乱糟糟的像鸟窝一般，一脸的胡子已经不知道有多少日子没有整理过了。目光呆滞而昏黄",
+        "reason_code": "evidence_not_in_chunk"
+      }
+    ]
+  },
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 27954,
+    "http_status": 200,
+    "response_id": "9e5430fb-1970-45b3-914e-2567e43364a7",
+    "usage": {
+      "input_tokens": 2417,
+      "cached_input_tokens": 2304,
+      "output_tokens": 3297,
+      "reasoning_tokens": 2939,
+      "total_tokens": 5714
+    },
+    "error_kind": null
+  }
+}

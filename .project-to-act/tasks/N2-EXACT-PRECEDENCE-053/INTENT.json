@@ -1,0 +1,22 @@
+{
+  "task_id": "N2-EXACT-PRECEDENCE-053",
+  "decision_id": "DEC-20260830-N2-EXACT-PRECEDENCE-053",
+  "current_behavior": "N2 允许相同 grounded evidence 同时保留在 exact 与 describe 块中。",
+  "desired_behavior": "同一 Chunk 内 exact 对相同 raw evidence_quote 拥有优先权；describe 删除重复项，空块整体删除。",
+  "comparison_key": "Grounding 后 raw evidence_quote 的逐字字符串相等",
+  "execution_order": [
+    "M1 output schema validation",
+    "mention/evidence raw grounding",
+    "mention type normalization",
+    "exact evidence precedence filtering",
+    "filtered packet hash materialization"
+  ],
+  "non_goals": [
+    "修改 M1 Prompt 或模型输出",
+    "语义相似度或同义改写去重",
+    "describe 之间去重",
+    "跨 Chunk 去重或人物合并",
+    "M2/N3 实现",
+    "重新调用 DeepSeek"
+  ]
+}

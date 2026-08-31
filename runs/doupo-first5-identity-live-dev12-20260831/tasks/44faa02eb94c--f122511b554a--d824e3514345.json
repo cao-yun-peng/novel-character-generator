@@ -1,0 +1,71 @@
+{
+  "schema_version": "identity-task-result-v1",
+  "task_index": 2,
+  "current_label_quote": "萧炎",
+  "candidate_label_quote": "萧炎",
+  "task_cache_key": "d824e3514345debd427bfb8dcc50ea224a9fcfaa05a6c986a326b6a69f45f59f",
+  "model_output": {
+    "identity_relation": "same_character",
+    "label_relation": "same_surface",
+    "identity_evidence_quotes": [
+      "山崖之颠，萧炎斜躺在草地之上",
+      "萧炎，斗之力，三段！级别：低级！",
+      "苦涩的一笑，萧炎落寞的转身"
+    ]
+  },
+  "grounded_result": {
+    "schema_version": "grounded-identity-decision-v1",
+    "current_node_key": "44faa02eb94cb6424093f987886661e5e99bab93a8132d2ac9e0e5d2b6024688",
+    "candidate_node_key": "f122511b554a203ea4e4f3eb252b8a88add3ef96073997ded08640f3bc514f49",
+    "task_cache_key": "d824e3514345debd427bfb8dcc50ea224a9fcfaa05a6c986a326b6a69f45f59f",
+    "requested_identity_relation": "same_character",
+    "identity_relation": "same_character",
+    "label_relation": "same_surface",
+    "grounded_identity_evidence": [
+      {
+        "evidence_quote": "萧炎，斗之力，三段！级别：低级！",
+        "document_span": {
+          "start": 115,
+          "end": 131
+        },
+        "match_mode": "exact"
+      },
+      {
+        "evidence_quote": "苦涩的一笑，萧炎落寞的转身",
+        "document_span": {
+          "start": 592,
+          "end": 605
+        },
+        "match_mode": "exact"
+      },
+      {
+        "evidence_quote": "山崖之颠，萧炎斜躺在草地之上",
+        "document_span": {
+          "start": 2976,
+          "end": 2990
+        },
+        "match_mode": "exact"
+      }
+    ],
+    "issues": []
+  },
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 9625,
+    "http_status": 200,
+    "response_id": "7e6a6a0c-3e40-495f-9986-af7dced7a4d7",
+    "usage": {
+      "input_tokens": 2132,
+      "cached_input_tokens": 0,
+      "output_tokens": 946,
+      "reasoning_tokens": 867,
+      "total_tokens": 3078
+    },
+    "error_kind": null
+  }
+}

@@ -1,0 +1,737 @@
+[
+  {
+    "chunk_index": 1,
+    "chunk_id": "chunk-000001-0-2500-9e703d44e117",
+    "chunk_source_span": {
+      "start": 0,
+      "end": 2500
+    },
+    "model_output": {
+      "candidate_mentions": [
+        {
+          "mention_type": "describe",
+          "mention_quote": "一名身穿灰衣的青年",
+          "evidence_quotes": [
+            "一名身穿灰衣的青年",
+            "他今年二十九岁",
+            "唐三脸上的表情很丰富，时而笑，时而哭",
+            "全身赤裸的唐三",
+            "高大昂扬的身躯"
+          ]
+        },
+        {
+          "mention_type": "exact",
+          "mention_quote": "唐三",
+          "evidence_quotes": [
+            "一名身穿灰衣的青年",
+            "他今年二十九岁",
+            "唐三脸上的表情很丰富，时而笑，时而哭",
+            "全身赤裸的唐三",
+            "高大昂扬的身躯",
+            "唐三的眼睛湿润了",
+            "唐三粲然一笑",
+            "他的笑容很灿烂",
+            "从他胸口处那斗大的唐字"
+          ]
+        },
+        {
+          "mention_type": "describe",
+          "mention_quote": "三少",
+          "evidence_quotes": [
+            "一名身穿灰衣的青年",
+            "他今年二十九岁"
+          ]
+        },
+        {
+          "mention_type": "exact",
+          "mention_quote": "唐大先生",
+          "evidence_quotes": [
+            "唐大先生的眼睛湿润了"
+          ]
+        },
+        {
+          "mention_type": "describe",
+          "mention_quote": "掌门",
+          "evidence_quotes": [
+            "唐大先生的眼睛湿润了"
+          ]
+        },
+        {
+          "mention_type": "describe",
+          "mention_quote": "白色的身影",
+          "evidence_quotes": [
+            "十七道白色的身影",
+            "他们身穿的白袍",
+            "年纪最小的也超过了五旬"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "chunk_index": 2,
+    "chunk_id": "chunk-000002-2250-4750-11d2797b6ebb",
+    "chunk_source_span": {
+      "start": 2250,
+      "end": 4750
+    },
+    "model_output": {
+      "candidate_mentions": [
+        {
+          "mention_type": "exact",
+          "mention_quote": "唐三",
+          "evidence_quotes": [
+            "却已经多了一道瘦小的身影。",
+            "那是个只有五、六岁的孩子，显然，他经常承受太阳的温暖，皮肤呈现出健康的小麦色，黑色短发看上去很利落，一身衣服虽然朴素，到也干净。",
+            "他眼眸中竟然闪烁着一层淡淡的紫意，尽管这紫色并没有持续太长时间就悄然收敛，但当它存在的时候，却是那么清晰。",
+            "瘦小的身体"
+          ]
+        },
+        {
+          "mention_type": "describe",
+          "mention_quote": "男孩儿",
+          "evidence_quotes": [
+            "却已经多了一道瘦小的身影。",
+            "那是个只有五、六岁的孩子，显然，他经常承受太阳的温暖，皮肤呈现出健康的小麦色，黑色短发看上去很利落，一身衣服虽然朴素，到也干净。",
+            "男孩儿在山顶上坐了下来，他的双眼死死的盯视着东方那抹渐渐明亮的鱼肚白色",
+            "他眼眸中竟然闪烁着一层淡淡的紫意，尽管这紫色并没有持续太长时间就悄然收敛，但当它存在的时候，却是那么清晰。",
+            "男孩儿做出一个绝不应该出现在他这个年龄的无奈表情",
+            "瘦小的身体"
+          ]
+        },
+        {
+          "mention_type": "describe",
+          "mention_quote": "孩子",
+          "evidence_quotes": [
+            "那是个只有五、六岁的孩子，显然，他经常承受太阳的温暖，皮肤呈现出健康的小麦色，黑色短发看上去很利落，一身衣服虽然朴素，到也干净。",
+            "对于他这么大的孩子来说，攀爬这百米高的山丘可并不是什么容易的事"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "chunk_index": 3,
+    "chunk_id": "chunk-000003-4500-7000-423c00b50f5f",
+    "chunk_source_span": {
+      "start": 4500,
+      "end": 7000
+    },
+    "model_output": {
+      "candidate_mentions": [
+        {
+          "mention_type": "exact",
+          "mention_quote": "唐三",
+          "evidence_quotes": [
+            "瘦小的身体",
+            "他的身体如此纤瘦",
+            "身高还够不到灶台"
+          ]
+        },
+        {
+          "mention_type": "exact",
+          "mention_quote": "唐昊",
+          "evidence_quotes": [
+            "那是一名中年男子，看上去大约有接近五十岁的样子，但身材却非常高大魁梧，只是他的打扮却令人不敢恭维。破损的袍子穿在身上，上面甚至连补丁都没有，露出下面古铜色的皮肤，原本还算端正的五官却蒙着一层蜡黄色，一副睡眼朦胧的样子，头发乱糟糟的像鸟窝一般，一脸的胡子已经不知道有多少日子没有整理过了。目光呆滞而昏黄",
+            "唐昊看起来却要比他们苍老的多，反倒像是唐三的爷爷一般",
+            "暗黄的脸色这才看上去多了几分光泽"
+          ]
+        },
+        {
+          "mention_type": "describe",
+          "mention_quote": "中年男子",
+          "evidence_quotes": [
+            "那是一名中年男子，看上去大约有接近五十岁的样子，但身材却非常高大魁梧，只是他的打扮却令人不敢恭维。破损的袍子穿在身上，上面甚至连补丁都没有，露出下面古铜色的皮肤，原本还算端正的五官却蒙着一层蜡黄色，一副睡眼朦胧的样子，头发乱糟糟的像鸟窝一般，一脸的胡子已经不知道有多少日子没有整理过了。目光呆滞而昏黄"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "chunk_index": 4,
+    "chunk_id": "chunk-000004-6750-9250-9170b4d8a29d",
+    "chunk_source_span": {
+      "start": 6750,
+      "end": 9250
+    },
+    "model_output": {
+      "candidate_mentions": [
+        {
+          "mention_type": "exact",
+          "mention_quote": "唐三",
+          "evidence_quotes": [
+            "普通五、六岁的孩子",
+            "他那双稚嫩的小手看上去却并没有任何变化",
+            "他的身体变得结实了几分",
+            "一个水泡都没有起过"
+          ]
+        },
+        {
+          "mention_type": "exact",
+          "mention_quote": "小三",
+          "evidence_quotes": [
+            "普通五、六岁的孩子",
+            "他那双稚嫩的小手看上去却并没有任何变化",
+            "他的身体变得结实了几分",
+            "一个水泡都没有起过"
+          ]
+        },
+        {
+          "mention_type": "describe",
+          "mention_quote": "儿子",
+          "evidence_quotes": [
+            "普通五、六岁的孩子",
+            "他那双稚嫩的小手看上去却并没有任何变化",
+            "他的身体变得结实了几分",
+            "一个水泡都没有起过"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "chunk_index": 5,
+    "chunk_id": "chunk-000005-9000-11500-345f9a4e80bb",
+    "chunk_source_span": {
+      "start": 9000,
+      "end": 11500
+    },
+    "model_output": {
+      "candidate_mentions": [
+        {
+          "mention_type": "exact",
+          "mention_quote": "老杰克",
+          "evidence_quotes": [
+            "只见来的是一名老人，看上去六十多岁的样子，身材瘦长，但精神矍铄，衣服干净整洁，头发也梳理的一丝不苟"
+          ]
+        },
+        {
+          "mention_type": "describe",
+          "mention_quote": "老人",
+          "evidence_quotes": [
+            "只见来的是一名老人，看上去六十多岁的样子，身材瘦长，但精神矍铄，衣服干净整洁，头发也梳理的一丝不苟"
+          ]
+        },
+        {
+          "mention_type": "describe",
+          "mention_quote": "村长",
+          "evidence_quotes": [
+            "只见来的是一名老人，看上去六十多岁的样子，身材瘦长，但精神矍铄，衣服干净整洁，头发也梳理的一丝不苟"
+          ]
+        },
+        {
+          "mention_type": "describe",
+          "mention_quote": "杰克爷爷",
+          "evidence_quotes": [
+            "只见来的是一名老人，看上去六十多岁的样子，身材瘦长，但精神矍铄，衣服干净整洁，头发也梳理的一丝不苟"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "chunk_index": 6,
+    "chunk_id": "chunk-000006-11250-13750-00c04f3805a1",
+    "chunk_source_span": {
+      "start": 11250,
+      "end": 13750
+    },
+    "model_output": {
+      "candidate_mentions": [
+        {
+          "mention_type": "exact",
+          "mention_quote": "素云涛",
+          "evidence_quotes": [
+            "此人看上去二十多岁的样子，剑眉星目，相貌甚是俊朗。一身白色劲装，背后是黑色披风，胸前正中心的位置，有一个拳头大小的魂字。",
+            "左胸上，有一枚雕刻着长剑的徽章，徽章上一共是三柄长剑交错。"
+          ]
+        },
+        {
+          "mention_type": "describe",
+          "mention_quote": "年轻人",
+          "evidence_quotes": [
+            "此人看上去二十多岁的样子，剑眉星目，相貌甚是俊朗。一身白色劲装，背后是黑色披风，胸前正中心的位置，有一个拳头大小的魂字。",
+            "左胸上，有一枚雕刻着长剑的徽章，徽章上一共是三柄长剑交错。"
+          ]
+        },
+        {
+          "mention_type": "describe",
+          "mention_quote": "青年",
+          "evidence_quotes": [
+            "此人看上去二十多岁的样子，剑眉星目，相貌甚是俊朗。一身白色劲装，背后是黑色披风，胸前正中心的位置，有一个拳头大小的魂字。",
+            "左胸上，有一枚雕刻着长剑的徽章，徽章上一共是三柄长剑交错。"
+          ]
+        },
+        {
+          "mention_type": "exact",
+          "mention_quote": "唐三",
+          "evidence_quotes": [
+            "他的身材和同龄的孩子相比，要瘦小一些。"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "chunk_index": 7,
+    "chunk_id": "chunk-000007-13500-16000-1d0d8714df0c",
+    "chunk_source_span": {
+      "start": 13500,
+      "end": 16000
+    },
+    "model_output": {
+      "candidate_mentions": [
+        {
+          "mention_type": "exact",
+          "mention_quote": "素云涛",
+          "evidence_quotes": [
+            "素云涛的头发原本是黑色的，但当那青光注入之后，瞬间就变成了灰色，并且快速的变长，同色毛发出现在他裸露在外的双手之上，同时，他的身体也似乎比之前膨胀了许多。全身充满了肌肉感。",
+            "武魂殿的特定服装弹性很好，并没有因为他的体型变大而撑爆。素云涛的眼睛已经变成了幽幽的绿色，双手十指上探出的利爪闪烁着淡淡的寒光。",
+            "素云涛眼中绿油油的光芒确实吓人"
+          ]
+        },
+        {
+          "mention_type": "describe",
+          "mention_quote": "年轻人",
+          "evidence_quotes": [
+            "素云涛的头发原本是黑色的，但当那青光注入之后，瞬间就变成了灰色，并且快速的变长，同色毛发出现在他裸露在外的双手之上，同时，他的身体也似乎比之前膨胀了许多。全身充满了肌肉感。",
+            "武魂殿的特定服装弹性很好，并没有因为他的体型变大而撑爆。素云涛的眼睛已经变成了幽幽的绿色，双手十指上探出的利爪闪烁着淡淡的寒光。",
+            "素云涛眼中绿油油的光芒确实吓人"
+          ]
+        },
+        {
+          "mention_type": "exact",
+          "mention_quote": "唐三",
+          "evidence_quotes": [
+            "他的身材和同龄的孩子相比，要瘦小一些。"
+          ]
+        },
+        {
+          "mention_type": "describe",
+          "mention_quote": "男孩儿",
+          "evidence_quotes": [
+            "男孩儿稚嫩的小手与素云涛的狼爪分别在水晶球上下位置，看上去对比度极为明显。"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "chunk_index": 8,
+    "chunk_id": "chunk-000008-15750-18250-ba2b3b5d3175",
+    "chunk_source_span": {
+      "start": 15750,
+      "end": 18250
+    },
+    "model_output": {
+      "candidate_mentions": [
+        {
+          "mention_type": "exact",
+          "mention_quote": "唐三",
+          "evidence_quotes": [
+            "对上了唐三那平静而有些坚定的目光"
+          ]
+        },
+        {
+          "mention_type": "describe",
+          "mention_quote": "男孩儿",
+          "evidence_quotes": [
+            "对上了唐三那平静而有些坚定的目光"
+          ]
+        },
+        {
+          "mention_type": "describe",
+          "mention_quote": "老杰克",
+          "evidence_quotes": [
+            "老杰克一脸紧张的迎上了素云涛",
+            "杰克眼中流露出惊疑不定的神色"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "chunk_index": 9,
+    "chunk_id": "chunk-000009-18000-20500-c75bfa8ddd08",
+    "chunk_source_span": {
+      "start": 18000,
+      "end": 20500
+    },
+    "model_output": {
+      "candidate_mentions": [
+        {
+          "mention_type": "exact",
+          "mention_quote": "杰克",
+          "evidence_quotes": [
+            "老杰克一脸紧张",
+            "杰克眼中流露出惊疑不定的神色",
+            "杰克脸上失望的表情",
+            "他年纪已经不小了"
+          ]
+        },
+        {
+          "mention_type": "describe",
+          "mention_quote": "老杰克",
+          "evidence_quotes": [
+            "老杰克一脸紧张",
+            "杰克眼中流露出惊疑不定的神色",
+            "杰克脸上失望的表情",
+            "他年纪已经不小了"
+          ]
+        },
+        {
+          "mention_type": "exact",
+          "mention_quote": "唐昊",
+          "evidence_quotes": [
+            "唐昊依旧是一副懒洋洋的样子",
+            "那个邋遢鬼",
+            "这个邋遢铁匠"
+          ]
+        },
+        {
+          "mention_type": "describe",
+          "mention_quote": "邋遢铁匠",
+          "evidence_quotes": [
+            "这个邋遢铁匠",
+            "那个邋遢鬼",
+            "唐昊依旧是一副懒洋洋的样子"
+          ]
+        },
+        {
+          "mention_type": "describe",
+          "mention_quote": "邋遢鬼",
+          "evidence_quotes": [
+            "那个邋遢鬼",
+            "这个邋遢铁匠"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "chunk_index": 10,
+    "chunk_id": "chunk-000010-20250-22750-4c682b56720a",
+    "chunk_source_span": {
+      "start": 20250,
+      "end": 22750
+    },
+    "model_output": {
+      "candidate_mentions": [
+        {
+          "mention_type": "exact",
+          "mention_quote": "唐昊",
+          "evidence_quotes": [
+            "已经现出苍老的面庞",
+            "唐昊的胸膛很宽阔，或许是因为长期做铁匠的原因，尽管表面上他看上去很懒散，可他身上的肌肉却并没有因为岁月而减少",
+            "他的双眼通红"
+          ]
+        },
+        {
+          "mention_type": "exact",
+          "mention_quote": "唐三",
+          "evidence_quotes": [
+            "他的脸色已经变得有些苍白了"
+          ]
+        },
+        {
+          "mention_type": "describe",
+          "mention_quote": "爸爸",
+          "evidence_quotes": [
+            "已经现出苍老的面庞",
+            "唐昊的胸膛很宽阔，或许是因为长期做铁匠的原因，尽管表面上他看上去很懒散，可他身上的肌肉却并没有因为岁月而减少",
+            "他的双眼通红"
+          ]
+        },
+        {
+          "mention_type": "describe",
+          "mention_quote": "父亲",
+          "evidence_quotes": [
+            "已经现出苍老的面庞",
+            "唐昊的胸膛很宽阔，或许是因为长期做铁匠的原因，尽管表面上他看上去很懒散，可他身上的肌肉却并没有因为岁月而减少",
+            "他的双眼通红"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "chunk_index": 11,
+    "chunk_id": "chunk-000011-22500-25000-c1d7bed99ed9",
+    "chunk_source_span": {
+      "start": 22500,
+      "end": 25000
+    },
+    "model_output": {
+      "candidate_mentions": [
+        {
+          "mention_type": "exact",
+          "mention_quote": "唐三",
+          "evidence_quotes": [
+            "唐三幼小的身体",
+            "他身上的衣服已经被汗水浸透了",
+            "挥汗如雨的唐三"
+          ]
+        },
+        {
+          "mention_type": "exact",
+          "mention_quote": "小三",
+          "evidence_quotes": [
+            "唐三幼小的身体",
+            "他身上的衣服已经被汗水浸透了",
+            "挥汗如雨的唐三"
+          ]
+        },
+        {
+          "mention_type": "exact",
+          "mention_quote": "唐昊",
+          "evidence_quotes": [
+            "面庞看上去更加苍老了几分",
+            "高大的父亲",
+            "裸露在破烂裤管外的两条小腿"
+          ]
+        },
+        {
+          "mention_type": "describe",
+          "mention_quote": "父亲",
+          "evidence_quotes": [
+            "高大的父亲",
+            "面庞看上去更加苍老了几分",
+            "裸露在破烂裤管外的两条小腿"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "chunk_index": 12,
+    "chunk_id": "chunk-000012-24750-27250-4e6d58a77495",
+    "chunk_source_span": {
+      "start": 24750,
+      "end": 27250
+    },
+    "model_output": {
+      "candidate_mentions": [
+        {
+          "mention_type": "exact",
+          "mention_quote": "唐昊",
+          "evidence_quotes": [
+            "面不红，气不喘",
+            "唐昊的双眼变得专注起来"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "chunk_index": 13,
+    "chunk_id": "chunk-000013-27000-29500-341d7afc9a8a",
+    "chunk_source_span": {
+      "start": 27000,
+      "end": 29500
+    },
+    "model_output": {
+      "candidate_mentions": [
+        {
+          "mention_type": "exact",
+          "mention_quote": "唐三",
+          "evidence_quotes": [
+            "自己现在年纪还小",
+            "唐三脸上流露出一丝满足的笑容"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "chunk_index": 14,
+    "chunk_id": "chunk-000014-29250-31750-c63050dffeac",
+    "chunk_source_span": {
+      "start": 29250,
+      "end": 31750
+    },
+    "model_output": {
+      "candidate_mentions": [
+        {
+          "mention_type": "exact",
+          "mention_quote": "唐三",
+          "evidence_quotes": [
+            "才不过六岁",
+            "眼中紫意莹然",
+            "身体比以前健壮了一些",
+            "那些有着大小补丁的衣服"
+          ]
+        },
+        {
+          "mention_type": "exact",
+          "mention_quote": "唐昊",
+          "evidence_quotes": [
+            "高大苍老的男人"
+          ]
+        },
+        {
+          "mention_type": "describe",
+          "mention_quote": "高大苍老的男人",
+          "evidence_quotes": [
+            "高大苍老的男人"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "chunk_index": 15,
+    "chunk_id": "chunk-000015-31500-34000-bdf8856912cc",
+    "chunk_source_span": {
+      "start": 31500,
+      "end": 34000
+    },
+    "model_output": {
+      "candidate_mentions": [
+        {
+          "mention_type": "exact",
+          "mention_quote": "唐三",
+          "evidence_quotes": [
+            "依稀还能看到老杰克和唐三瘦弱的身体",
+            "你才多大，还没有铸造锤高吧。",
+            "才不过六岁"
+          ]
+        },
+        {
+          "mention_type": "exact",
+          "mention_quote": "唐昊",
+          "evidence_quotes": [
+            "高大的身影"
+          ]
+        },
+        {
+          "mention_type": "describe",
+          "mention_quote": "老杰克",
+          "evidence_quotes": [
+            "今天的老杰克特意穿了一身新衣服，看上去更添几分矍铄。"
+          ]
+        },
+        {
+          "mention_type": "exact",
+          "mention_quote": "杰克",
+          "evidence_quotes": [
+            "今天的老杰克特意穿了一身新衣服，看上去更添几分矍铄。"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "chunk_index": 16,
+    "chunk_id": "chunk-000016-33750-36250-f8db4e145f59",
+    "chunk_source_span": {
+      "start": 33750,
+      "end": 36250
+    },
+    "model_output": {
+      "candidate_mentions": [
+        {
+          "mention_type": "exact",
+          "mention_quote": "老杰克",
+          "evidence_quotes": [
+            "老杰克的穿着在圣魂村已经算是光鲜了，可到了诺丁城，却完全是一副乡下人的样子"
+          ]
+        },
+        {
+          "mention_type": "describe",
+          "mention_quote": "看门的青年",
+          "evidence_quotes": [
+            "看门的青年"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "chunk_index": 17,
+    "chunk_id": "chunk-000017-36000-37655-53af18f02d16",
+    "chunk_source_span": {
+      "start": 36000,
+      "end": 37655
+    },
+    "model_output": {
+      "candidate_mentions": [
+        {
+          "mention_type": "describe",
+          "mention_quote": "门房",
+          "evidence_quotes": [
+            "他那满脸的怒气"
+          ]
+        },
+        {
+          "mention_type": "exact",
+          "mention_quote": "杰克",
+          "evidence_quotes": [
+            "不就是个老头儿么",
+            "气势汹汹的老杰克"
+          ]
+        },
+        {
+          "mention_type": "describe",
+          "mention_quote": "老杰克",
+          "evidence_quotes": [
+            "不就是个老头儿么",
+            "气势汹汹的老杰克"
+          ]
+        },
+        {
+          "mention_type": "describe",
+          "mention_quote": "老先生",
+          "evidence_quotes": [
+            "不就是个老头儿么"
+          ]
+        },
+        {
+          "mention_type": "exact",
+          "mention_quote": "唐三",
+          "evidence_quotes": [
+            "瘦小的身影",
+            "细嫩的小手",
+            "施展的人实在矮小了一些",
+            "唐三人虽然不大",
+            "身上衣服全是补丁"
+          ]
+        },
+        {
+          "mention_type": "exact",
+          "mention_quote": "小三",
+          "evidence_quotes": [
+            "瘦小的身影",
+            "细嫩的小手",
+            "施展的人实在矮小了一些",
+            "唐三人虽然不大",
+            "身上衣服全是补丁"
+          ]
+        },
+        {
+          "mention_type": "describe",
+          "mention_quote": "小穷鬼",
+          "evidence_quotes": [
+            "身上衣服全是补丁"
+          ]
+        },
+        {
+          "mention_type": "describe",
+          "mention_quote": "孩子",
+          "evidence_quotes": [
+            "瘦小的身影",
+            "细嫩的小手"
+          ]
+        },
+        {
+          "mention_type": "describe",
+          "mention_quote": "大师",
+          "evidence_quotes": [
+            "中等身材，略微有些偏瘦",
+            "大约四、五十岁的样子，黑色短发三七分开，相貌很普通",
+            "双眼开阖之间带着几分懒散和颓废"
+          ]
+        }
+      ]
+    }
+  }
+]

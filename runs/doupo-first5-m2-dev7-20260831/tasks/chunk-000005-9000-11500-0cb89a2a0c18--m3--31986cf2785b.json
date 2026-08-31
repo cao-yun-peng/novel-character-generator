@@ -1,0 +1,93 @@
+{
+  "schema_version": "m2-attribution-task-result-v1",
+  "source_run_dir": "E:\\project\\agent\\novel-cahracter-generator\\runs\\doupo-first5-m1-scope-v4",
+  "chunk_index": 5,
+  "chunk_id": "chunk-000005-9000-11500-0cb89a2a0c18",
+  "target_local_mention_id": "m3",
+  "target_mention_quote": "纳兰嫣然",
+  "task_cache_key": "31986cf2785b50d2b3237cc753b777a6b698feb7f842ec160b80ad325c75447d",
+  "model_output": {
+    "belongs_to_target": [
+      {
+        "fact_quote": "对面的少女虽然美丽",
+        "category": "other_visual",
+        "attribute": "外貌",
+        "value": "美丽"
+      },
+      {
+        "fact_quote": "美丽娇俏",
+        "category": "other_visual",
+        "attribute": "外貌",
+        "value": "美丽娇俏"
+      }
+    ]
+  },
+  "grounded_result": {
+    "target_character_ref": {
+      "source_document_version_id": "doupo-first5-7ca3fd295b5d0d45",
+      "chunk_id": "chunk-000005-9000-11500-0cb89a2a0c18",
+      "local_mention_id": "m3",
+      "mention_type": "exact",
+      "packet_hash": "3c7b2fd29d4b81f5061be86b8c2b63adb376b05c31c8316146e15bf3ba827d1b"
+    },
+    "task_cache_key": "31986cf2785b50d2b3237cc753b777a6b698feb7f842ec160b80ad325c75447d",
+    "grounded_belongs_to_target": [
+      {
+        "fact_quote": "对面的少女虽然美丽",
+        "category": "other_visual",
+        "attribute": "外貌",
+        "value": "美丽",
+        "source_mention_id": "m3",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "对面的少女虽然美丽",
+        "source_evidence_span": {
+          "start": 2098,
+          "end": 2107
+        },
+        "fact_chunk_span": {
+          "start": 2098,
+          "end": 2107
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "美丽娇俏",
+        "category": "other_visual",
+        "attribute": "外貌",
+        "value": "美丽娇俏",
+        "source_mention_id": "m3",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "美丽娇俏",
+        "source_evidence_span": {
+          "start": 2218,
+          "end": 2222
+        },
+        "fact_chunk_span": {
+          "start": 2218,
+          "end": 2222
+        },
+        "match_mode": "exact"
+      }
+    ]
+  },
+  "grounding_issues": [],
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 5453,
+    "http_status": 200,
+    "response_id": "12aa62bd-c543-44d1-af34-5aea514814c8",
+    "usage": {
+      "input_tokens": 2178,
+      "cached_input_tokens": 384,
+      "output_tokens": 545,
+      "reasoning_tokens": 487,
+      "total_tokens": 2723
+    },
+    "error_kind": null
+  }
+}

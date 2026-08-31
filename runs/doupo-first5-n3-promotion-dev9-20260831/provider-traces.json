@@ -1,0 +1,97 @@
+[
+  {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 4094,
+    "http_status": 200,
+    "response_id": "69636aa8-fc1b-44b1-baa6-64cf956c2411",
+    "usage": {
+      "input_tokens": 2186,
+      "cached_input_tokens": 0,
+      "output_tokens": 455,
+      "reasoning_tokens": 342,
+      "total_tokens": 2641
+    },
+    "error_kind": null
+  },
+  {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 14860,
+    "http_status": 200,
+    "response_id": "5276385d-7b6e-4847-9968-50933bc33f02",
+    "usage": {
+      "input_tokens": 2209,
+      "cached_input_tokens": 0,
+      "output_tokens": 1539,
+      "reasoning_tokens": 1329,
+      "total_tokens": 3748
+    },
+    "error_kind": null
+  },
+  {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 2531,
+    "http_status": 200,
+    "response_id": "4a970ee5-91c9-4fc9-8b00-9c31b3149d68",
+    "usage": {
+      "input_tokens": 2191,
+      "cached_input_tokens": 384,
+      "output_tokens": 222,
+      "reasoning_tokens": 135,
+      "total_tokens": 2413
+    },
+    "error_kind": null
+  },
+  {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 3531,
+    "http_status": 200,
+    "response_id": "dd84d976-296b-4f62-a15d-552b916ed147",
+    "usage": {
+      "input_tokens": 2201,
+      "cached_input_tokens": 384,
+      "output_tokens": 367,
+      "reasoning_tokens": 257,
+      "total_tokens": 2568
+    },
+    "error_kind": null
+  },
+  {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 2156,
+    "http_status": 200,
+    "response_id": "b21d32cf-0184-4fe2-91b0-9b9790242684",
+    "usage": {
+      "input_tokens": 2182,
+      "cached_input_tokens": 384,
+      "output_tokens": 141,
+      "reasoning_tokens": 94,
+      "total_tokens": 2323
+    },
+    "error_kind": null
+  }
+]

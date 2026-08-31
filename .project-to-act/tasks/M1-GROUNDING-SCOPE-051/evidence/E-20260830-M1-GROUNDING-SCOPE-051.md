@@ -1,0 +1,27 @@
+# E-20260830-M1-GROUNDING-SCOPE-051
+
+- 时间：2026-08-30，Asia/Shanghai。
+- 用户决定：取消人物称谓 occurrence 位置与数量；只要求 `mention_quote` 能在正文中逐字匹配。新增 `mention_scope`，允许 `describe + collective`，群体不得 promotion 成单个人物。
+- 决策：`DEC-20260830-M1-SCOPE-GROUNDING-051`，替代诊断阶段的 occurrence anchor 建议。
+- 契约：Schema `3.5.0-draft1`；M1 输出新增必填 `mention_scope`；grounded packet 升级为 `grounded-character-packet-v4`。
+- 运行时：Python `0.1.0.dev4`；批次 Chunk 结果升级为 `m1-chunk-result-v2`，旧结果继续续跑会关闭失败并提示新建输出目录。
+- Grounding：evidence 先做严格匹配；失败后删除模型 quote 与 Chunk 的 Unicode 空白并要求字符序列完全一致。成功后输出正文中的真实 raw quote、span、hash 和 `match_mode=whitespace_equivalent`。任一非空白字符增删改或调序均以 `evidence_not_in_chunk` 拒绝。
+- 人物称谓：运行时与机器 Schema 均不再包含 `mention_occurrence_count`、`mention_source_spans` 或 `mention_anchor_spans`；`mention_quote_hash` 保留为非位置审计指纹。
+- Scope：`exact` 只能配 `individual`；`describe` 可配 `individual` 或 `collective`；null type 必须配 null scope。`GroundingResult.single_character_mentions` 只返回 individual，`quarantined_collective_mentions` 单独保留 collective。
+- Provider 调用：0；没有读取 Key、访问网络或修改既有 `runs/` 产物。
+- 测试命令：`$env:PYTHONPATH='src'; python -m unittest discover -s tests -v`。
+- 测试结果：退出状态 0；51 项通过，0 失败，0 跳过。新增覆盖纯空白恢复、raw quote/span 回填、非空白改写拒绝、scope 错误组合、collective quarantine、mention 位置字段删除和旧批次契约拒绝。
+- Schema：`jsonschema.Draft202012Validator.check_schema` 通过；JSON 解析通过。
+- 项目治理：Project-to-Act 验证 `valid: true`、0 issue；Agent Lifecycle 验证 `valid: true`、stage 5 `in_progress`、revision 2；未执行阶段 Gate。
+- Git 检查：`git diff --check` 退出状态 0；只有既有 LF/CRLF 提示，无空白错误。
+- 关键产物 SHA-256：
+  - `pyproject.toml`：`3d83220bca59c1b5cf1884f5328efc7a02768dbbb32ff811580f78c51c618a6e`
+  - `README.md`：`ed104eed125622767198c82d23cea3b178a01044a0b79c1a2da213f1c8f8750a`
+  - `docs/33-simplified-character-evidence-pipeline-v3.md`：`3415a87b4867bd992ce86bec4b277394b5fc80124402e7645c5caed5fafcfc88`
+  - `docs/contracts/simplified-character-evidence-v3-model-schemas.json`：`569981acb698a07d3adf35de4d833c1a8362cc5de6db94d5736444078e28fd2e`
+  - `src/novel_character_generator/m1.py`：`e8e6f174e8b4376763161698d429dcd606b5c26ff489691a9867984d77d69d47`
+  - `src/novel_character_generator/grounding.py`：`fe10f756d7c39b685e9af225715d286cdb4ce817f3daf3fa99ba8c199dcf5b5d`
+  - `src/novel_character_generator/m1_batch.py`：`f78e0383c6ab1af7fe10d517f2789b1eb7badfe54745d9dfb8adda5d1bcd1615`
+  - `tests/test_m1.py`：`e83d888c7ea558cc753cb050f134caed54c2ae1e2e55aafd17933b1270d94895`
+- 验收结论：本次契约升级和实现任务完成；M1 模型质量仍等待人工 shadow 数据集评测，不能据此宣称整个 M1 阶段完成。
+- 有效期：直到 M1 type/scope、Grounding 匹配策略、grounded packet 或批次结果契约再次变化。

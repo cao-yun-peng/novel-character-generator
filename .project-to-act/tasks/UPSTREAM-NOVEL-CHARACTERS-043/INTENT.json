@@ -1,0 +1,9 @@
+{
+  "task_id": "UPSTREAM-NOVEL-CHARACTERS-043",
+  "requested_by": "user",
+  "intent": "下载 eternityspring/shuohao-skills 的 novel-characters 到项目中作为对照和参考。",
+  "execution": "upstream-reference-import",
+  "provider_calls": 0,
+  "database_mutation": false,
+  "production_route_mutation": false
+}

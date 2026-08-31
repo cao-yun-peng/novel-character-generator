@@ -1,0 +1,19 @@
+{
+  "schema_version": "promotion-grounding-replay-v1",
+  "source_run_dir": "E:\\project\\agent\\novel-cahracter-generator\\runs\\doupo-first5-n3-promotion-dev9-20260831",
+  "grounding_policy_version": "promotion-partial-fact-acceptance-v1",
+  "source_artifacts": {
+    "promotion_envelopes": {
+      "path": "E:\\project\\agent\\novel-cahracter-generator\\runs\\doupo-first5-n3-promotion-dev9-20260831\\promotion-envelopes.json",
+      "hash": "c0778d71d273b155a72f3f94de14f9965dca2631ef5818876a2c3fbf7c563323"
+    },
+    "promotion_model_outputs": {
+      "path": "E:\\project\\agent\\novel-cahracter-generator\\runs\\doupo-first5-n3-promotion-dev9-20260831\\promotion-model-outputs.json",
+      "hash": "e3482d872223a546e62efd9fbe6e4599ab12d8495571ccbe847575ef5b7603a9"
+    },
+    "n3_target_packets": {
+      "path": "E:\\project\\agent\\novel-cahracter-generator\\runs\\doupo-first5-n3-promotion-dev9-20260831\\n3-target-appearance-packets.json",
+      "hash": "59fa506e32a052c38897d5810a5ff383969347a0a5de6cf0434a9c6d5faa9b24"
+    }
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "id": "DOCUMENT-CHARACTER-PROFILES-062",
+  "title": "文档人物档案确定性组装",
+  "status": "in_progress",
+  "owner": "Codex",
+  "objective": "将文档人物注册表与文档事实库按 fact_hash 安全连接，生成可追溯、可校验且不调用模型的 document-character-profiles.json。",
+  "risk_level": "L1-deterministic-data-join",
+  "allowed_paths": [
+    "src/novel_character_generator/document_profiles.py",
+    "src/novel_character_generator/__init__.py",
+    "src/novel_character_generator/__main__.py",
+    "tests/test_document_profiles.py",
+    "tests/test_contract_alignment.py",
+    "docs/contracts/simplified-character-evidence-v3-model-schemas.json",
+    "docs/33-simplified-character-evidence-pipeline-v3.md",
+    "README.md",
+    "pyproject.toml",
+    "runs/doupo-first5-character-profiles-dev13-20260831",
+    ".project-to-act"
+  ],
+  "invariants": [
+    "只允许 source_document_version_id 和 document_hash 完全一致的 registry/evidence 连接",
+    "人物与事实只能按 fact_hash 连接，禁止按姓名猜测",
+    "fact_hash 缺失、重复内容冲突或 fact_quote 不一致时失败关闭",
+    "零外貌事实人物必须保留空档案",
+    "未绑定事实、review、cannot-link 和冲突不得静默丢弃",
+    "所有事实绝对 span 与证据 span 必须可回放输入正文",
+    "不调用 DeepSeek，不生成自然语言画像，不修改既有 run 产物"
+  ],
+  "acceptance": [
+    "新增 document-character-profiles-v1 Schema 与确定性构建函数",
+    "新增 CLI，可从 registry、evidence 与原文生成单一档案文件",
+    "覆盖成功连接、文档不一致、缺失/重复/quote 不一致、零事实人物、未绑定事实、冲突与 review 的自动测试",
+    "斗破既有产物离线生成档案且所有事实/证据 span 回放通过",
+    "运行完整自动测试、Schema 实例校验、Project-to-Act 与 Lifecycle 校验",
+    "版本、功能、进度、验收、证据和交接同步"
+  ]
+}

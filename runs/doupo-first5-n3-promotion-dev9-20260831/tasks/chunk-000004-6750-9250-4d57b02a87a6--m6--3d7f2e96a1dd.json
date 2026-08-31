@@ -1,0 +1,135 @@
+{
+  "schema_version": "n3-promotion-task-result-v1",
+  "chunk_index": 4,
+  "chunk_id": "chunk-000004-6750-9250-4d57b02a87a6",
+  "describe_local_mention_id": "m6",
+  "mention_quote": "少女",
+  "promotion_hash": "3d7f2e96a1dd05414e7341eafc4d215e0ca93ae677b198b0b661181801c4dda9",
+  "model_output": {
+    "characters": [
+      {
+        "character_label_quote": "少女",
+        "belongs_to_character": [
+          {
+            "fact_quote": "娇嫩的耳垂上吊有着绿色的玉坠",
+            "category": "accessory",
+            "attribute": "耳部饰品",
+            "value": "绿色玉坠"
+          },
+          {
+            "fact_quote": "已经开始发育的玲珑小胸脯",
+            "category": "body",
+            "attribute": "胸部发育",
+            "value": "刚开始发育的玲珑小胸脯"
+          },
+          {
+            "fact_quote": "冷艳的小脸",
+            "category": "face",
+            "attribute": "脸",
+            "value": "冷艳"
+          }
+        ]
+      }
+    ]
+  },
+  "grounded_result": {
+    "schema_version": "grounded-promoted-describe-characters-v5",
+    "describe_source_ref": {
+      "local_mention_id": "m6",
+      "packet_hash": "dbdfd3c8c484ccf386cc64578ef18019d0e4e1ef27e601b006840405d4b210ec"
+    },
+    "promotion_hash": "3d7f2e96a1dd05414e7341eafc4d215e0ca93ae677b198b0b661181801c4dda9",
+    "promoted_characters": [
+      {
+        "promoted_character_ref": {
+          "source_document_version_id": "doupo-first5-7ca3fd295b5d0d45",
+          "chunk_id": "chunk-000004-6750-9250-4d57b02a87a6",
+          "source_local_mention_id": "m6",
+          "source_mention_type": "describe",
+          "promotion_index": 1,
+          "character_origin": "remaining_describe",
+          "packet_hash": "dbdfd3c8c484ccf386cc64578ef18019d0e4e1ef27e601b006840405d4b210ec",
+          "promotion_hash": "3d7f2e96a1dd05414e7341eafc4d215e0ca93ae677b198b0b661181801c4dda9"
+        },
+        "character_label_quote": "少女",
+        "grounded_belongs_to_character": [
+          {
+            "fact_quote": "娇嫩的耳垂上吊有着绿色的玉坠",
+            "category": "accessory",
+            "attribute": "耳部饰品",
+            "value": "绿色玉坠",
+            "source_mention_id": "m6",
+            "source_mention_type": "describe",
+            "source_evidence_quote": "娇嫩的耳垂上吊有着绿色的玉坠",
+            "source_evidence_span": {
+              "start": 1526,
+              "end": 1540
+            },
+            "fact_chunk_span": {
+              "start": 1526,
+              "end": 1540
+            },
+            "match_mode": "exact"
+          },
+          {
+            "fact_quote": "已经开始发育的玲珑小胸脯",
+            "category": "body",
+            "attribute": "胸部发育",
+            "value": "刚开始发育的玲珑小胸脯",
+            "source_mention_id": "m6",
+            "source_mention_type": "describe",
+            "source_evidence_quote": "已经开始发育的玲珑小胸脯",
+            "source_evidence_span": {
+              "start": 1577,
+              "end": 1589
+            },
+            "fact_chunk_span": {
+              "start": 1577,
+              "end": 1589
+            },
+            "match_mode": "exact"
+          },
+          {
+            "fact_quote": "冷艳的小脸",
+            "category": "face",
+            "attribute": "脸",
+            "value": "冷艳",
+            "source_mention_id": "m6",
+            "source_mention_type": "describe",
+            "source_evidence_quote": "冷艳的小脸",
+            "source_evidence_span": {
+              "start": 1659,
+              "end": 1664
+            },
+            "fact_chunk_span": {
+              "start": 1659,
+              "end": 1664
+            },
+            "match_mode": "exact"
+          }
+        ]
+      }
+    ],
+    "unassigned_fragments": []
+  },
+  "grounding_issues": [],
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 3531,
+    "http_status": 200,
+    "response_id": "dd84d976-296b-4f62-a15d-552b916ed147",
+    "usage": {
+      "input_tokens": 2201,
+      "cached_input_tokens": 384,
+      "output_tokens": 367,
+      "reasoning_tokens": 257,
+      "total_tokens": 2568
+    },
+    "error_kind": null
+  }
+}

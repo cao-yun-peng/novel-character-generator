@@ -1,0 +1,12 @@
+{
+  "task_id": "M2-RUNTIME-FOUNDATION-055",
+  "lifecycle_stage": "5",
+  "lifecycle_revision": 2,
+  "schema_version_before": "3.7.0-draft1",
+  "schema_version_target": "3.8.0-draft1",
+  "runtime_version_before": "0.1.0.dev6",
+  "runtime_version_target": "0.1.0.dev7",
+  "m2_envelope_version": "m2-orchestration-envelope-v4",
+  "promotion_envelope_version": "m2-remaining-describe-promotion-envelope-v4",
+  "grounding_dependency": "grounded-character-packet-v5 / exact-evidence-precedence-v1"
+}

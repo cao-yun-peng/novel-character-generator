@@ -1,0 +1,69 @@
+{
+  "schema_version": "m2-attribution-task-result-v1",
+  "source_run_dir": "E:\\project\\agent\\novel-cahracter-generator\\runs\\doupo-first5-m1-scope-v4",
+  "chunk_index": 7,
+  "chunk_id": "chunk-000007-13500-14160-d83b17f39d7c",
+  "target_local_mention_id": "m1",
+  "target_mention_quote": "萧战",
+  "task_cache_key": "20b266e79701a71c3996edcffe9d7135e35770d6832b55a07fe55b78d4dfa3c4",
+  "model_output": {
+    "belongs_to_target": [
+      {
+        "fact_quote": "萧战脸色淡漠",
+        "category": "appearance_state",
+        "attribute": "脸色",
+        "value": "淡漠"
+      }
+    ]
+  },
+  "grounded_result": {
+    "target_character_ref": {
+      "source_document_version_id": "doupo-first5-7ca3fd295b5d0d45",
+      "chunk_id": "chunk-000007-13500-14160-d83b17f39d7c",
+      "local_mention_id": "m1",
+      "mention_type": "exact",
+      "packet_hash": "1cc32c8d976cf5cbfcf51e9ca928d66269c100deaed2058802198c7d98145ec5"
+    },
+    "task_cache_key": "20b266e79701a71c3996edcffe9d7135e35770d6832b55a07fe55b78d4dfa3c4",
+    "grounded_belongs_to_target": [
+      {
+        "fact_quote": "萧战脸色淡漠",
+        "category": "appearance_state",
+        "attribute": "脸色",
+        "value": "淡漠",
+        "source_mention_id": "m1",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "萧战脸色淡漠",
+        "source_evidence_span": {
+          "start": 282,
+          "end": 288
+        },
+        "fact_chunk_span": {
+          "start": 282,
+          "end": 288
+        },
+        "match_mode": "exact"
+      }
+    ]
+  },
+  "grounding_issues": [],
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 2578,
+    "http_status": 200,
+    "response_id": "8e7be371-11b0-4bd3-ad9d-4ab424cbed47",
+    "usage": {
+      "input_tokens": 948,
+      "cached_input_tokens": 384,
+      "output_tokens": 200,
+      "reasoning_tokens": 167,
+      "total_tokens": 1148
+    },
+    "error_kind": null
+  }
+}

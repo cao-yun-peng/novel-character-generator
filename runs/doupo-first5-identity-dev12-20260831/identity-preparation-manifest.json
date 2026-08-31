@@ -1,0 +1,36 @@
+{
+  "schema_version": "identity-preparation-manifest-v1",
+  "source_document_version_id": "doupo-first5-7ca3fd295b5d0d45",
+  "document_hash": "7ca3fd295b5d0d454ca0b0bac2f4a49f2271602fc8e55bca2f120bb11d85172a",
+  "source_artifacts": {
+    "source_n2_grounded_packets": {
+      "path": "E:\\project\\agent\\novel-cahracter-generator\\runs\\doupo-first5-m2-dev7-20260831\\source-n2-grounded-packets.json",
+      "hash": "053a72e2a4d49e98dd4d4b7c829e8b612555b9f956d27c5e00986e0691f7b1dc"
+    },
+    "n3_target_appearance_packets": {
+      "path": "E:\\project\\agent\\novel-cahracter-generator\\runs\\doupo-first5-n3-promotion-dev11-partial-20260831\\n3-target-appearance-packets.json",
+      "hash": "59fa506e32a052c38897d5810a5ff383969347a0a5de6cf0434a9c6d5faa9b24"
+    },
+    "promotion_grounded_results": {
+      "path": "E:\\project\\agent\\novel-cahracter-generator\\runs\\doupo-first5-n3-promotion-dev11-partial-20260831\\promotion-grounded-results.json",
+      "hash": "3a29aee2622e12e0c6154dbac2761e6e327795b655acf05cad73ef3317b5267c"
+    },
+    "document_character_evidence": {
+      "path": "E:\\project\\agent\\novel-cahracter-generator\\runs\\doupo-first5-n3-promotion-dev11-partial-20260831\\document-character-evidence.json",
+      "hash": "f7553293ad89eb3b89a00ee67ab7c201f775fc1388d207d45314ac3e858c43c1"
+    }
+  },
+  "configuration": {
+    "max_candidates_per_node": 2,
+    "context_radius": 240,
+    "max_contexts_per_node": 4,
+    "max_bridge_characters": 1200
+  },
+  "contracts": {
+    "identity_policy_version": "strict-evidence-identity-v1",
+    "candidate_policy_version": "bounded-local-candidate-retrieval-v1",
+    "context_policy_version": "identity-evidence-window-v1",
+    "system_instruction_hash": "4b20032aa2ff6bb075dc77b74bcea2706ad97eed3ef7b2a0711b09f1313e8ff8",
+    "response_schema_hash": "c6551d90db22745e76ec988000b27a30aadbfefb8384d4b4437058f5f13ce743"
+  }
+}

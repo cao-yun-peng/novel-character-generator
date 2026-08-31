@@ -1,0 +1,71 @@
+{
+  "schema_version": "identity-task-result-v1",
+  "task_index": 10,
+  "current_label_quote": "萧熏儿",
+  "candidate_label_quote": "萧薰儿",
+  "task_cache_key": "a2df77e322ecec9fcb20b42ef05fadc132251fdde8e9629d230ea293d80ad946",
+  "model_output": {
+    "identity_relation": "same_character",
+    "label_relation": "name_variant",
+    "identity_evidence_quotes": [
+      "萧炎哥哥有三年没和熏儿单独坐一起了吧？",
+      "萧炎哥哥。",
+      "恐怕非薰儿小姐莫属了。"
+    ]
+  },
+  "grounded_result": {
+    "schema_version": "grounded-identity-decision-v1",
+    "current_node_key": "2d66ae986dc37d72b1a1cbe87016985f870c9ef27d0d3435e3273cbe149257ea",
+    "candidate_node_key": "8118d8e8d782daf6e6d942bdaee3d2b6ed912b140f73e574095dc5978ebad022",
+    "task_cache_key": "a2df77e322ecec9fcb20b42ef05fadc132251fdde8e9629d230ea293d80ad946",
+    "requested_identity_relation": "same_character",
+    "identity_relation": "same_character",
+    "label_relation": "name_variant",
+    "grounded_identity_evidence": [
+      {
+        "evidence_quote": "恐怕非薰儿小姐莫属了。",
+        "document_span": {
+          "start": 2020,
+          "end": 2031
+        },
+        "match_mode": "exact"
+      },
+      {
+        "evidence_quote": "萧炎哥哥。",
+        "document_span": {
+          "start": 2391,
+          "end": 2396
+        },
+        "match_mode": "exact"
+      },
+      {
+        "evidence_quote": "萧炎哥哥有三年没和熏儿单独坐一起了吧？",
+        "document_span": {
+          "start": 9298,
+          "end": 9317
+        },
+        "match_mode": "exact"
+      }
+    ],
+    "issues": []
+  },
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 18063,
+    "http_status": 200,
+    "response_id": "36ab2aef-0f0b-4c94-8a5f-e93cce36474e",
+    "usage": {
+      "input_tokens": 3254,
+      "cached_input_tokens": 512,
+      "output_tokens": 1812,
+      "reasoning_tokens": 1739,
+      "total_tokens": 5066
+    },
+    "error_kind": null
+  }
+}

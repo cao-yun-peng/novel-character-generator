@@ -1,0 +1,1117 @@
+[
+  {
+    "schema_version": "n3-validated-appearance-packet-v4",
+    "target_character_ref": {
+      "source_document_version_id": "doupo-first5-7ca3fd295b5d0d45",
+      "chunk_id": "chunk-000001-0-2500-8c90daca7aee",
+      "local_mention_id": "m1",
+      "mention_type": "exact",
+      "packet_hash": "8e171bdecd28403c4ab8c26d1664e24765518bdc67dae6b33536aad69094a412"
+    },
+    "grounded_appearance_facts": [
+      {
+        "fact_quote": "面无表情",
+        "category": "face",
+        "attribute": "表情",
+        "value": "面无表情",
+        "source_mention_id": "m1",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "少年面无表情，唇角有着一抹自嘲，紧握的手掌，因为大力，而导致略微尖锐的指甲深深的刺进了掌心之中，带来一阵阵钻心的疼痛……",
+        "source_evidence_span": {
+          "start": 50,
+          "end": 110
+        },
+        "fact_chunk_span": {
+          "start": 52,
+          "end": 56
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "唇角有着一抹自嘲",
+        "category": "face",
+        "attribute": "唇角",
+        "value": "自嘲",
+        "source_mention_id": "m1",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "少年面无表情，唇角有着一抹自嘲，紧握的手掌，因为大力，而导致略微尖锐的指甲深深的刺进了掌心之中，带来一阵阵钻心的疼痛……",
+        "source_evidence_span": {
+          "start": 50,
+          "end": 110
+        },
+        "fact_chunk_span": {
+          "start": 57,
+          "end": 65
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "有些清秀的稚嫩脸庞",
+        "category": "face",
+        "attribute": "脸庞",
+        "value": "清秀稚嫩",
+        "source_mention_id": "m1",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "少年缓缓抬起头来，露出一张有些清秀的稚嫩脸庞，漆黑的眸子木然的在周围那些嘲讽的同龄人身上扫过",
+        "source_evidence_span": {
+          "start": 467,
+          "end": 513
+        },
+        "fact_chunk_span": {
+          "start": 480,
+          "end": 489
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "漆黑的眸子",
+        "category": "face",
+        "attribute": "眸子",
+        "value": "漆黑",
+        "source_mention_id": "m1",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "少年缓缓抬起头来，露出一张有些清秀的稚嫩脸庞，漆黑的眸子木然的在周围那些嘲讽的同龄人身上扫过",
+        "source_evidence_span": {
+          "start": 467,
+          "end": 513
+        },
+        "fact_chunk_span": {
+          "start": 490,
+          "end": 495
+        },
+        "match_mode": "exact"
+      }
+    ]
+  },
+  {
+    "schema_version": "n3-validated-appearance-packet-v4",
+    "target_character_ref": {
+      "source_document_version_id": "doupo-first5-7ca3fd295b5d0d45",
+      "chunk_id": "chunk-000001-0-2500-8c90daca7aee",
+      "local_mention_id": "m3",
+      "mention_type": "exact",
+      "packet_hash": "c3ab74e151303133809ccb9453115a45b5334abcbca94b6544ea47f7458dc943"
+    },
+    "grounded_appearance_facts": [
+      {
+        "fact_quote": "少女年龄不过十四左右",
+        "category": "age",
+        "attribute": "年龄",
+        "value": "十四左右",
+        "source_mention_id": "m3",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "少女年龄不过十四左右，虽然并算不上绝色，不过那张稚气未脱的小脸，却是蕴含着淡淡的妩媚，清纯与妩媚，矛盾的集合",
+        "source_evidence_span": {
+          "start": 727,
+          "end": 781
+        },
+        "fact_chunk_span": {
+          "start": 727,
+          "end": 737
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "稚气未脱的小脸",
+        "category": "face",
+        "attribute": "脸特征",
+        "value": "稚气未脱",
+        "source_mention_id": "m3",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "少女年龄不过十四左右，虽然并算不上绝色，不过那张稚气未脱的小脸，却是蕴含着淡淡的妩媚，清纯与妩媚，矛盾的集合",
+        "source_evidence_span": {
+          "start": 727,
+          "end": 781
+        },
+        "fact_chunk_span": {
+          "start": 751,
+          "end": 758
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "淡淡的妩媚",
+        "category": "face",
+        "attribute": "神情",
+        "value": "淡淡的妩媚",
+        "source_mention_id": "m3",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "少女年龄不过十四左右，虽然并算不上绝色，不过那张稚气未脱的小脸，却是蕴含着淡淡的妩媚，清纯与妩媚，矛盾的集合",
+        "source_evidence_span": {
+          "start": 727,
+          "end": 781
+        },
+        "fact_chunk_span": {
+          "start": 764,
+          "end": 769
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "得意的笑容",
+        "category": "face",
+        "attribute": "笑容",
+        "value": "得意的笑容",
+        "source_mention_id": "m3",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "少女脸颊扬起了得意的笑容",
+        "source_evidence_span": {
+          "start": 924,
+          "end": 936
+        },
+        "fact_chunk_span": {
+          "start": 931,
+          "end": 936
+        },
+        "match_mode": "exact"
+      }
+    ]
+  },
+  {
+    "schema_version": "n3-validated-appearance-packet-v4",
+    "target_character_ref": {
+      "source_document_version_id": "doupo-first5-7ca3fd295b5d0d45",
+      "chunk_id": "chunk-000001-0-2500-8c90daca7aee",
+      "local_mention_id": "m5",
+      "mention_type": "exact",
+      "packet_hash": "20d339056a803bfbf22244af1221f23623c052e9023ec3d2a3c2cdc4687b2121"
+    },
+    "grounded_appearance_facts": [
+      {
+        "fact_quote": "身着紫色衣裙",
+        "category": "clothing",
+        "attribute": "衣着",
+        "value": "紫色衣裙",
+        "source_mention_id": "m5",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "一位身着紫色衣裙的少女，正淡雅的站立，平静的稚嫩俏脸，并未因为众人的注目而改变分毫",
+        "source_evidence_span": {
+          "start": 1704,
+          "end": 1745
+        },
+        "fact_chunk_span": {
+          "start": 1706,
+          "end": 1712
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "稚嫩俏脸",
+        "category": "face",
+        "attribute": "面容",
+        "value": "稚嫩俏丽",
+        "source_mention_id": "m5",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "一位身着紫色衣裙的少女，正淡雅的站立，平静的稚嫩俏脸，并未因为众人的注目而改变分毫",
+        "source_evidence_span": {
+          "start": 1704,
+          "end": 1745
+        },
+        "fact_chunk_span": {
+          "start": 1726,
+          "end": 1730
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "小小年纪",
+        "category": "age",
+        "attribute": "年龄",
+        "value": "年幼",
+        "source_mention_id": "m5",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "少女清冷淡然的气质，犹如清莲初绽，小小年纪，却已初具脱俗气质",
+        "source_evidence_span": {
+          "start": 1750,
+          "end": 1780
+        },
+        "fact_chunk_span": {
+          "start": 1767,
+          "end": 1771
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "镶着黑金丝的紫袖",
+        "category": "clothing",
+        "attribute": "衣袖",
+        "value": "镶黑金丝的紫袖",
+        "source_mention_id": "m5",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "镶着黑金丝的紫袖滑落而下，露出一截雪白娇嫩的皓腕",
+        "source_evidence_span": {
+          "start": 1888,
+          "end": 1912
+        },
+        "fact_chunk_span": {
+          "start": 1888,
+          "end": 1896
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "雪白娇嫩的皓腕",
+        "category": "body",
+        "attribute": "手腕",
+        "value": "雪白娇嫩",
+        "source_mention_id": "m5",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "镶着黑金丝的紫袖滑落而下，露出一截雪白娇嫩的皓腕",
+        "source_evidence_span": {
+          "start": 1888,
+          "end": 1912
+        },
+        "fact_chunk_span": {
+          "start": 1905,
+          "end": 1912
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "美丽的俏脸",
+        "category": "face",
+        "attribute": "面容",
+        "value": "美丽",
+        "source_mention_id": "m5",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "美丽的俏脸上，居然露出了让周围少女为之嫉妒的清雅笑容",
+        "source_evidence_span": {
+          "start": 2426,
+          "end": 2452
+        },
+        "fact_chunk_span": {
+          "start": 2426,
+          "end": 2431
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "清雅笑容",
+        "category": "face",
+        "attribute": "笑容",
+        "value": "清雅",
+        "source_mention_id": "m5",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "美丽的俏脸上，居然露出了让周围少女为之嫉妒的清雅笑容",
+        "source_evidence_span": {
+          "start": 2426,
+          "end": 2452
+        },
+        "fact_chunk_span": {
+          "start": 2448,
+          "end": 2452
+        },
+        "match_mode": "exact"
+      }
+    ]
+  },
+  {
+    "schema_version": "n3-validated-appearance-packet-v4",
+    "target_character_ref": {
+      "source_document_version_id": "doupo-first5-7ca3fd295b5d0d45",
+      "chunk_id": "chunk-000002-2250-4750-84c9baa8a8da",
+      "local_mention_id": "m1",
+      "mention_type": "exact",
+      "packet_hash": "1bec7c230c4eb6de3849615a3ed20f58c4969c492a11469a5dd86f3614ce8c7b"
+    },
+    "grounded_appearance_facts": [
+      {
+        "fact_quote": "平淡的小脸",
+        "category": "appearance_state",
+        "attribute": "表情",
+        "value": "平淡",
+        "source_mention_id": "m1",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "平淡的小脸",
+        "source_evidence_span": {
+          "start": 76,
+          "end": 81
+        },
+        "fact_chunk_span": {
+          "start": 76,
+          "end": 81
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "美丽的俏脸",
+        "category": "face",
+        "attribute": "容貌",
+        "value": "美丽",
+        "source_mention_id": "m1",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "美丽的俏脸",
+        "source_evidence_span": {
+          "start": 176,
+          "end": 181
+        },
+        "fact_chunk_span": {
+          "start": 176,
+          "end": 181
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "萧薰儿纤细的眉毛",
+        "category": "face",
+        "attribute": "眉毛",
+        "value": "纤细",
+        "source_mention_id": "m1",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "萧薰儿纤细的眉毛",
+        "source_evidence_span": {
+          "start": 425,
+          "end": 433
+        },
+        "fact_chunk_span": {
+          "start": 425,
+          "end": 433
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "白皙的俏脸",
+        "category": "face",
+        "attribute": "脸色",
+        "value": "白皙",
+        "source_mention_id": "m1",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "白皙的俏脸",
+        "source_evidence_span": {
+          "start": 507,
+          "end": 512
+        },
+        "fact_chunk_span": {
+          "start": 507,
+          "end": 512
+        },
+        "match_mode": "exact"
+      }
+    ]
+  },
+  {
+    "schema_version": "n3-validated-appearance-packet-v4",
+    "target_character_ref": {
+      "source_document_version_id": "doupo-first5-7ca3fd295b5d0d45",
+      "chunk_id": "chunk-000002-2250-4750-84c9baa8a8da",
+      "local_mention_id": "m3",
+      "mention_type": "exact",
+      "packet_hash": "f6359430e3b38ff88ff31960724351baefe1353524c7e0574b91be685840e7ad"
+    },
+    "grounded_appearance_facts": [
+      {
+        "fact_quote": "孤独背影",
+        "category": "appearance_state",
+        "attribute": "背影状态",
+        "value": "孤独",
+        "source_mention_id": "m3",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "孤独背影",
+        "source_evidence_span": {
+          "start": 649,
+          "end": 653
+        },
+        "fact_chunk_span": {
+          "start": 649,
+          "end": 653
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "有些白皙的手掌",
+        "category": "body",
+        "attribute": "手掌肤色",
+        "value": "白皙",
+        "source_mention_id": "m3",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "有些白皙的手掌",
+        "source_evidence_span": {
+          "start": 778,
+          "end": 785
+        },
+        "fact_chunk_span": {
+          "start": 778,
+          "end": 785
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "脸庞狰狞",
+        "category": "face",
+        "attribute": "面部表情",
+        "value": "狰狞",
+        "source_mention_id": "m3",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "脸庞狰狞",
+        "source_evidence_span": {
+          "start": 2473,
+          "end": 2477
+        },
+        "fact_chunk_span": {
+          "start": 2473,
+          "end": 2477
+        },
+        "match_mode": "exact"
+      }
+    ]
+  },
+  {
+    "schema_version": "n3-validated-appearance-packet-v4",
+    "target_character_ref": {
+      "source_document_version_id": "doupo-first5-7ca3fd295b5d0d45",
+      "chunk_id": "chunk-000003-4500-7000-dbdb791747b5",
+      "local_mention_id": "m1",
+      "mention_type": "exact",
+      "packet_hash": "a9524ad90550049342f6dbddf85058bdd9ee574a06bbae2340030e341ce4e26f"
+    },
+    "grounded_appearance_facts": [
+      {
+        "fact_quote": "那依旧有些稚嫩的清秀脸庞",
+        "category": "face",
+        "attribute": "脸庞",
+        "value": "清秀稚嫩",
+        "source_mention_id": "m1",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "那依旧有些稚嫩的清秀脸庞",
+        "source_evidence_span": {
+          "start": 1575,
+          "end": 1587
+        },
+        "fact_chunk_span": {
+          "start": 1575,
+          "end": 1587
+        },
+        "match_mode": "exact"
+      }
+    ]
+  },
+  {
+    "schema_version": "n3-validated-appearance-packet-v4",
+    "target_character_ref": {
+      "source_document_version_id": "doupo-first5-7ca3fd295b5d0d45",
+      "chunk_id": "chunk-000003-4500-7000-dbdb791747b5",
+      "local_mention_id": "m2",
+      "mention_type": "exact",
+      "packet_hash": "16fbead3b742b715c9f03655c87b49350924146ef7c9d7bef06dc26a7293836f"
+    },
+    "grounded_appearance_facts": [
+      {
+        "fact_quote": "中年人",
+        "category": "age",
+        "attribute": "年龄阶段",
+        "value": "中年",
+        "source_mention_id": "m2",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "中年人身着华贵的灰色衣衫，龙行虎步间颇有几分威严，脸上一对粗眉更是为其添了几分豪气",
+        "source_evidence_span": {
+          "start": 1307,
+          "end": 1348
+        },
+        "fact_chunk_span": {
+          "start": 1307,
+          "end": 1310
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "华贵的灰色衣衫",
+        "category": "clothing",
+        "attribute": "衣着",
+        "value": "华贵的灰色衣衫",
+        "source_mention_id": "m2",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "中年人身着华贵的灰色衣衫，龙行虎步间颇有几分威严，脸上一对粗眉更是为其添了几分豪气",
+        "source_evidence_span": {
+          "start": 1307,
+          "end": 1348
+        },
+        "fact_chunk_span": {
+          "start": 1312,
+          "end": 1319
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "一对粗眉",
+        "category": "face",
+        "attribute": "眉毛",
+        "value": "一对粗眉",
+        "source_mention_id": "m2",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "中年人身着华贵的灰色衣衫，龙行虎步间颇有几分威严，脸上一对粗眉更是为其添了几分豪气",
+        "source_evidence_span": {
+          "start": 1307,
+          "end": 1348
+        },
+        "fact_chunk_span": {
+          "start": 1334,
+          "end": 1338
+        },
+        "match_mode": "exact"
+      }
+    ]
+  },
+  {
+    "schema_version": "n3-validated-appearance-packet-v4",
+    "target_character_ref": {
+      "source_document_version_id": "doupo-first5-7ca3fd295b5d0d45",
+      "chunk_id": "chunk-000004-6750-9250-4d57b02a87a6",
+      "local_mention_id": "m1",
+      "mention_type": "exact",
+      "packet_hash": "8ec15bbca41d0a6794da2f021003cdd6979f755c1095dc9f68593f8b0f218304"
+    },
+    "grounded_appearance_facts": [
+      {
+        "fact_quote": "漆黑的眼中",
+        "category": "face",
+        "attribute": "眼色",
+        "value": "漆黑",
+        "source_mention_id": "m1",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "漆黑的眼中",
+        "source_evidence_span": {
+          "start": 241,
+          "end": 246
+        },
+        "fact_chunk_span": {
+          "start": 241,
+          "end": 246
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "少年稚嫩的脸庞",
+        "category": "face",
+        "attribute": "脸庞",
+        "value": "稚嫩",
+        "source_mention_id": "m1",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "少年稚嫩的脸庞",
+        "source_evidence_span": {
+          "start": 590,
+          "end": 597
+        },
+        "fact_chunk_span": {
+          "start": 590,
+          "end": 597
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "幼稚的外貌",
+        "category": "appearance_state",
+        "attribute": "外貌",
+        "value": "幼稚",
+        "source_mention_id": "m1",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "幼稚的外貌",
+        "source_evidence_span": {
+          "start": 1685,
+          "end": 1690
+        },
+        "fact_chunk_span": {
+          "start": 1685,
+          "end": 1690
+        },
+        "match_mode": "exact"
+      }
+    ]
+  },
+  {
+    "schema_version": "n3-validated-appearance-packet-v4",
+    "target_character_ref": {
+      "source_document_version_id": "doupo-first5-7ca3fd295b5d0d45",
+      "chunk_id": "chunk-000004-6750-9250-4d57b02a87a6",
+      "local_mention_id": "m7",
+      "mention_type": "exact",
+      "packet_hash": "b53050483ba6ac2f423ffe332117be2729eeb3b5bc9bd96648d15bf66a001bf8"
+    },
+    "grounded_appearance_facts": [
+      {
+        "fact_quote": "微笑的小脸",
+        "category": "face",
+        "attribute": "表情",
+        "value": "微笑",
+        "source_mention_id": "m7",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "微笑的小脸",
+        "source_evidence_span": {
+          "start": 2380,
+          "end": 2385
+        },
+        "fact_chunk_span": {
+          "start": 2380,
+          "end": 2385
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "小脸上露出可爱的小酒窝",
+        "category": "face",
+        "attribute": "酒窝",
+        "value": "可爱的小酒窝",
+        "source_mention_id": "m7",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "小脸上露出可爱的小酒窝",
+        "source_evidence_span": {
+          "start": 2475,
+          "end": 2486
+        },
+        "fact_chunk_span": {
+          "start": 2475,
+          "end": 2486
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "纤细的指尖",
+        "category": "body",
+        "attribute": "手指",
+        "value": "纤细",
+        "source_mention_id": "m7",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "纤细的指尖",
+        "source_evidence_span": {
+          "start": 2487,
+          "end": 2492
+        },
+        "fact_chunk_span": {
+          "start": 2487,
+          "end": 2492
+        },
+        "match_mode": "exact"
+      }
+    ]
+  },
+  {
+    "schema_version": "n3-validated-appearance-packet-v4",
+    "target_character_ref": {
+      "source_document_version_id": "doupo-first5-7ca3fd295b5d0d45",
+      "chunk_id": "chunk-000005-9000-11500-0cb89a2a0c18",
+      "local_mention_id": "m1",
+      "mention_type": "exact",
+      "packet_hash": "eccb6f9d8ab164fa2663749ef141b8deab855cbf19a379578bc4e97ca828ebbc"
+    },
+    "grounded_appearance_facts": [
+      {
+        "fact_quote": "微笑的小脸",
+        "category": "face",
+        "attribute": "表情",
+        "value": "微笑",
+        "source_mention_id": "m1",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "微笑的小脸",
+        "source_evidence_span": {
+          "start": 130,
+          "end": 135
+        },
+        "fact_chunk_span": {
+          "start": 130,
+          "end": 135
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "小脸上露出可爱的小酒窝",
+        "category": "face",
+        "attribute": "酒窝",
+        "value": "可爱",
+        "source_mention_id": "m1",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "小脸上露出可爱的小酒窝",
+        "source_evidence_span": {
+          "start": 225,
+          "end": 236
+        },
+        "fact_chunk_span": {
+          "start": 225,
+          "end": 236
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "纤细的指尖",
+        "category": "body",
+        "attribute": "指尖",
+        "value": "纤细",
+        "source_mention_id": "m1",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "纤细的指尖",
+        "source_evidence_span": {
+          "start": 237,
+          "end": 242
+        },
+        "fact_chunk_span": {
+          "start": 237,
+          "end": 242
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "修长的睫毛",
+        "category": "face",
+        "attribute": "睫毛",
+        "value": "修长",
+        "source_mention_id": "m1",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "修长的睫毛",
+        "source_evidence_span": {
+          "start": 274,
+          "end": 279
+        },
+        "fact_chunk_span": {
+          "start": 274,
+          "end": 279
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "光洁侧脸",
+        "category": "face",
+        "attribute": "侧脸",
+        "value": "光洁",
+        "source_mention_id": "m1",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "光洁侧脸",
+        "source_evidence_span": {
+          "start": 360,
+          "end": 364
+        },
+        "fact_chunk_span": {
+          "start": 360,
+          "end": 364
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "小嘴泛起了柔和的笑意",
+        "category": "face",
+        "attribute": "嘴",
+        "value": "柔和笑意",
+        "source_mention_id": "m1",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "小嘴泛起了柔和的笑意",
+        "source_evidence_span": {
+          "start": 604,
+          "end": 614
+        },
+        "fact_chunk_span": {
+          "start": 604,
+          "end": 614
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "美丽的眼睛微弯",
+        "category": "face",
+        "attribute": "眼睛",
+        "value": "美丽微弯",
+        "source_mention_id": "m1",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "美丽的眼睛微弯",
+        "source_evidence_span": {
+          "start": 1891,
+          "end": 1898
+        },
+        "fact_chunk_span": {
+          "start": 1891,
+          "end": 1898
+        },
+        "match_mode": "exact"
+      }
+    ]
+  },
+  {
+    "schema_version": "n3-validated-appearance-packet-v4",
+    "target_character_ref": {
+      "source_document_version_id": "doupo-first5-7ca3fd295b5d0d45",
+      "chunk_id": "chunk-000005-9000-11500-0cb89a2a0c18",
+      "local_mention_id": "m3",
+      "mention_type": "exact",
+      "packet_hash": "3c7b2fd29d4b81f5061be86b8c2b63adb376b05c31c8316146e15bf3ba827d1b"
+    },
+    "grounded_appearance_facts": [
+      {
+        "fact_quote": "对面的少女虽然美丽",
+        "category": "other_visual",
+        "attribute": "外貌",
+        "value": "美丽",
+        "source_mention_id": "m3",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "对面的少女虽然美丽",
+        "source_evidence_span": {
+          "start": 2098,
+          "end": 2107
+        },
+        "fact_chunk_span": {
+          "start": 2098,
+          "end": 2107
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "美丽娇俏",
+        "category": "other_visual",
+        "attribute": "外貌",
+        "value": "美丽娇俏",
+        "source_mention_id": "m3",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "美丽娇俏",
+        "source_evidence_span": {
+          "start": 2218,
+          "end": 2222
+        },
+        "fact_chunk_span": {
+          "start": 2218,
+          "end": 2222
+        },
+        "match_mode": "exact"
+      }
+    ]
+  },
+  {
+    "schema_version": "n3-validated-appearance-packet-v4",
+    "target_character_ref": {
+      "source_document_version_id": "doupo-first5-7ca3fd295b5d0d45",
+      "chunk_id": "chunk-000006-11250-13750-03087dc524e6",
+      "local_mention_id": "m1",
+      "mention_type": "exact",
+      "packet_hash": "08ad3656c135f6b7282d318b355665f37edb8ef74b1f1912fe9afbc32d682977"
+    },
+    "grounded_appearance_facts": [
+      {
+        "fact_quote": "年仅十五岁",
+        "category": "age",
+        "attribute": "年龄",
+        "value": "十五岁",
+        "source_mention_id": "m1",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "年仅十五岁",
+        "source_evidence_span": {
+          "start": 180,
+          "end": 185
+        },
+        "fact_chunk_span": {
+          "start": 180,
+          "end": 185
+        },
+        "match_mode": "exact"
+      }
+    ]
+  },
+  {
+    "schema_version": "n3-validated-appearance-packet-v4",
+    "target_character_ref": {
+      "source_document_version_id": "doupo-first5-7ca3fd295b5d0d45",
+      "chunk_id": "chunk-000006-11250-13750-03087dc524e6",
+      "local_mention_id": "m2",
+      "mention_type": "exact",
+      "packet_hash": "84a96d61fbadfe11239b77fd0a880c61ddce96ab5689c8cb69d286a7f8ac8296"
+    },
+    "grounded_appearance_facts": [
+      {
+        "fact_quote": "一只娇嫩的小手",
+        "category": "body",
+        "attribute": "手",
+        "value": "娇嫩",
+        "source_mention_id": "m2",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "一只娇嫩的小手",
+        "source_evidence_span": {
+          "start": 245,
+          "end": 252
+        },
+        "fact_chunk_span": {
+          "start": 245,
+          "end": 252
+        },
+        "match_mode": "exact"
+      }
+    ]
+  },
+  {
+    "schema_version": "n3-validated-appearance-packet-v4",
+    "target_character_ref": {
+      "source_document_version_id": "doupo-first5-7ca3fd295b5d0d45",
+      "chunk_id": "chunk-000006-11250-13750-03087dc524e6",
+      "local_mention_id": "m3",
+      "mention_type": "exact",
+      "packet_hash": "3a64436368061100f12b2ca4c412e9c08c8e55902fd446c29386f5dffeb55e86"
+    },
+    "grounded_appearance_facts": [
+      {
+        "fact_quote": "硕大的手掌",
+        "category": "body",
+        "attribute": "手掌",
+        "value": "硕大",
+        "source_mention_id": "m3",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "硕大的手掌",
+        "source_evidence_span": {
+          "start": 1614,
+          "end": 1619
+        },
+        "fact_chunk_span": {
+          "start": 1614,
+          "end": 1619
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "阴沉至极的脸色",
+        "category": "face",
+        "attribute": "脸色",
+        "value": "阴沉至极",
+        "source_mention_id": "m3",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "阴沉至极的脸色",
+        "source_evidence_span": {
+          "start": 2106,
+          "end": 2113
+        },
+        "fact_chunk_span": {
+          "start": 2106,
+          "end": 2113
+        },
+        "match_mode": "exact"
+      }
+    ]
+  },
+  {
+    "schema_version": "n3-validated-appearance-packet-v4",
+    "target_character_ref": {
+      "source_document_version_id": "doupo-first5-7ca3fd295b5d0d45",
+      "chunk_id": "chunk-000006-11250-13750-03087dc524e6",
+      "local_mention_id": "m4",
+      "mention_type": "exact",
+      "packet_hash": "34eff393aacfc1bffb46ed2fc7e151eb7bb7090d8af801e314d989f5ca61e0db"
+    },
+    "grounded_appearance_facts": [
+      {
+        "fact_quote": "白袍",
+        "category": "clothing",
+        "attribute": "外衣",
+        "value": "白袍",
+        "source_mention_id": "m4",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "白袍",
+        "source_evidence_span": {
+          "start": 774,
+          "end": 776
+        },
+        "fact_chunk_span": {
+          "start": 774,
+          "end": 776
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "脸庞也顿时凝重了起来",
+        "category": "appearance_state",
+        "attribute": "面部表情",
+        "value": "凝重",
+        "source_mention_id": "m4",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "脸庞也顿时凝重了起来",
+        "source_evidence_span": {
+          "start": 2293,
+          "end": 2303
+        },
+        "fact_chunk_span": {
+          "start": 2293,
+          "end": 2303
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "鹰爪般的双手",
+        "category": "body",
+        "attribute": "手部形态",
+        "value": "鹰爪般",
+        "source_mention_id": "m4",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "鹰爪般的双手",
+        "source_evidence_span": {
+          "start": 2315,
+          "end": 2321
+        },
+        "fact_chunk_span": {
+          "start": 2315,
+          "end": 2321
+        },
+        "match_mode": "exact"
+      }
+    ]
+  },
+  {
+    "schema_version": "n3-validated-appearance-packet-v4",
+    "target_character_ref": {
+      "source_document_version_id": "doupo-first5-7ca3fd295b5d0d45",
+      "chunk_id": "chunk-000007-13500-14160-d83b17f39d7c",
+      "local_mention_id": "m1",
+      "mention_type": "exact",
+      "packet_hash": "1cc32c8d976cf5cbfcf51e9ca928d66269c100deaed2058802198c7d98145ec5"
+    },
+    "grounded_appearance_facts": [
+      {
+        "fact_quote": "萧战脸色淡漠",
+        "category": "appearance_state",
+        "attribute": "脸色",
+        "value": "淡漠",
+        "source_mention_id": "m1",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "萧战脸色淡漠",
+        "source_evidence_span": {
+          "start": 282,
+          "end": 288
+        },
+        "fact_chunk_span": {
+          "start": 282,
+          "end": 288
+        },
+        "match_mode": "exact"
+      }
+    ]
+  },
+  {
+    "schema_version": "n3-validated-appearance-packet-v4",
+    "target_character_ref": {
+      "source_document_version_id": "doupo-first5-7ca3fd295b5d0d45",
+      "chunk_id": "chunk-000007-13500-14160-d83b17f39d7c",
+      "local_mention_id": "m3",
+      "mention_type": "exact",
+      "packet_hash": "d744fff8b247cac4f1867e446c25570055a67ed4d9e0193491022f7374ae489d"
+    },
+    "grounded_appearance_facts": [
+      {
+        "fact_quote": "鹰爪般的双手",
+        "category": "body",
+        "attribute": "双手",
+        "value": "鹰爪般",
+        "source_mention_id": "m3",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "鹰爪般的双手",
+        "source_evidence_span": {
+          "start": 65,
+          "end": 71
+        },
+        "fact_chunk_span": {
+          "start": 65,
+          "end": 71
+        },
+        "match_mode": "exact"
+      }
+    ]
+  },
+  {
+    "schema_version": "n3-validated-appearance-packet-v4",
+    "target_character_ref": {
+      "source_document_version_id": "doupo-first5-7ca3fd295b5d0d45",
+      "chunk_id": "chunk-000007-13500-14160-d83b17f39d7c",
+      "local_mention_id": "m4",
+      "mention_type": "exact",
+      "packet_hash": "6f662e36e15e9fccee37d6c477a38ff8af2feb024da2d5c883bf3f2917d3c13b"
+    },
+    "grounded_appearance_facts": []
+  }
+]

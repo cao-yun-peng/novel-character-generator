@@ -1,0 +1,34 @@
+{
+  "id": "M1-DOUPO-LIVE-RUN-052",
+  "title": "斗破苍穹前5章 M1 新契约真实运行",
+  "status": "completed",
+  "owner": "Codex",
+  "objective": "使用用户指定的斗破苍穹前5章文本，以 M1 type/scope 与 Grounding v4 契约完成真实 DeepSeek 全文运行，并分别交付模型输出和阶段输出。",
+  "risk_level": "L1-real-provider-cost",
+  "allowed_paths": [
+    "runs/doupo-first5-m1-scope-v4",
+    "runs/doupo-first5-m1-scope-v4-auth-failed",
+    "src/novel_character_generator/__main__.py",
+    "src/novel_character_generator/providers/deepseek.py",
+    "tests/test_cli.py",
+    "pyproject.toml",
+    ".project-to-act"
+  ],
+  "invariants": [
+    "API Key 只从本地 .env 注入进程环境，不写入日志或产物",
+    "输入文件只读且必须按 UTF-8 解码",
+    "CLI 必须保留 CRLF/LF 原始换行，不允许 universal-newline 归一化",
+    "使用全新输出目录，不与 v1 Chunk 结果混用",
+    "模型输出与 grounded packet 分开保存",
+    "失败可按同一 manifest 续跑，不覆盖成功 Chunk",
+    "实跑完成不等于人工质量 Gate 通过"
+  ],
+  "acceptance": [
+    "记录输入 hash、字符数、章节标题检查和分块覆盖状态",
+    "所有规划 Chunk 成功或明确列出失败",
+    "m1-model-outputs.json 与 m1-grounded-packets.json 分别存在且可解析",
+    "输出使用 mention_scope 且不包含 mention occurrence 位置字段",
+    "保存脱敏调用统计与运行证据",
+    "Project-to-Act 与 Lifecycle 验证通过"
+  ]
+}

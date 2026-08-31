@@ -1,0 +1,14 @@
+{
+  "task_id": "CROSS-CHUNK-IDENTITY-060",
+  "requested_by": "user",
+  "intent": "在文档事实汇总之后实现跨 Chunk 人物身份层，以少量、可缓存的模型语义判断辅助代码建立全局人物档案，同时优先避免同名和泛称造成误合并。",
+  "current_behavior": "local_character_ref 与 promoted_character_ref 只存在于 Chunk/事实来源中，character_id 为空；同名、别名、称号和泛称没有跨 Chunk 绑定，人物事实不能按全局人物汇总。",
+  "expected_behavior": "代码建立完整本地人物节点和有界候选；模型只返回 same/different/uncertain、标签关系和逐字身份证据；代码 Grounding、聚类、分配全局 ID、聚合事实并保留冲突和 review。",
+  "non_goals": [
+    "不按同名或向量相似度自动合并",
+    "不做代词消解或没有正式本地人物节点的全文实体识别",
+    "不判断事实的时间阶段或解决外貌矛盾",
+    "不生成自然语言人物画像、图像提示词或视觉资产",
+    "不在本轮调用真实 DeepSeek Provider"
+  ]
+}

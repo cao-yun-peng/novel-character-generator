@@ -1,0 +1,162 @@
+{
+  "schema_version": "n3-promotion-task-result-v1",
+  "chunk_index": 4,
+  "chunk_id": "chunk-000004-6750-9250-4d57b02a87a6",
+  "describe_local_mention_id": "m5",
+  "mention_quote": "男子",
+  "promotion_hash": "ac1e0595620b960eed8d57ff880fc2a831aaff8374e9fabc67fc886071a629e2",
+  "model_output": {
+    "characters": [
+      {
+        "character_label_quote": "男子",
+        "belongs_to_character": [
+          {
+            "fact_quote": "年龄在二十左右",
+            "category": "age",
+            "attribute": "年龄",
+            "value": "二十左右"
+          },
+          {
+            "fact_quote": "英俊的相貌",
+            "category": "face",
+            "attribute": "相貌",
+            "value": "英俊"
+          },
+          {
+            "fact_quote": "挺拔的身材",
+            "category": "body",
+            "attribute": "身材",
+            "value": "挺拔"
+          }
+        ]
+      }
+    ]
+  },
+  "grounded_result": {
+    "schema_version": "grounded-promoted-describe-characters-v5",
+    "describe_source_ref": {
+      "local_mention_id": "m5",
+      "packet_hash": "b4864e852d8b5e885c007cf7a1d48648cf8bb14baa44f4609b3cdd09716748a9"
+    },
+    "promotion_hash": "ac1e0595620b960eed8d57ff880fc2a831aaff8374e9fabc67fc886071a629e2",
+    "promoted_characters": [
+      {
+        "promoted_character_ref": {
+          "source_document_version_id": "doupo-first5-7ca3fd295b5d0d45",
+          "chunk_id": "chunk-000004-6750-9250-4d57b02a87a6",
+          "source_local_mention_id": "m5",
+          "source_mention_type": "describe",
+          "promotion_index": 1,
+          "character_origin": "remaining_describe",
+          "packet_hash": "b4864e852d8b5e885c007cf7a1d48648cf8bb14baa44f4609b3cdd09716748a9",
+          "promotion_hash": "ac1e0595620b960eed8d57ff880fc2a831aaff8374e9fabc67fc886071a629e2"
+        },
+        "character_label_quote": "男子",
+        "grounded_belongs_to_character": [
+          {
+            "fact_quote": "年龄在二十左右",
+            "category": "age",
+            "attribute": "年龄",
+            "value": "二十左右",
+            "source_mention_id": "m5",
+            "source_mention_type": "describe",
+            "source_evidence_quote": "年龄在二十左右，英俊的相貌，配上挺拔的身材",
+            "source_evidence_span": {
+              "start": 1184,
+              "end": 1205
+            },
+            "fact_chunk_span": {
+              "start": 1184,
+              "end": 1191
+            },
+            "match_mode": "exact"
+          },
+          {
+            "fact_quote": "英俊的相貌",
+            "category": "face",
+            "attribute": "相貌",
+            "value": "英俊",
+            "source_mention_id": "m5",
+            "source_mention_type": "describe",
+            "source_evidence_quote": "年龄在二十左右，英俊的相貌，配上挺拔的身材",
+            "source_evidence_span": {
+              "start": 1184,
+              "end": 1205
+            },
+            "fact_chunk_span": {
+              "start": 1192,
+              "end": 1197
+            },
+            "match_mode": "exact"
+          },
+          {
+            "fact_quote": "挺拔的身材",
+            "category": "body",
+            "attribute": "身材",
+            "value": "挺拔",
+            "source_mention_id": "m5",
+            "source_mention_type": "describe",
+            "source_evidence_quote": "年龄在二十左右，英俊的相貌，配上挺拔的身材",
+            "source_evidence_span": {
+              "start": 1184,
+              "end": 1205
+            },
+            "fact_chunk_span": {
+              "start": 1200,
+              "end": 1205
+            },
+            "match_mode": "exact"
+          }
+        ]
+      }
+    ],
+    "unassigned_fragments": [
+      {
+        "fragment_ref": "d1-f1",
+        "source_evidence_quote": "年龄在二十左右，英俊的相貌，配上挺拔的身材",
+        "source_evidence_span": {
+          "start": 1184,
+          "end": 1205
+        },
+        "fragment_quote": "，",
+        "fragment_span": {
+          "start": 1191,
+          "end": 1192
+        }
+      },
+      {
+        "fragment_ref": "d1-f2",
+        "source_evidence_quote": "年龄在二十左右，英俊的相貌，配上挺拔的身材",
+        "source_evidence_span": {
+          "start": 1184,
+          "end": 1205
+        },
+        "fragment_quote": "，配上",
+        "fragment_span": {
+          "start": 1197,
+          "end": 1200
+        }
+      }
+    ]
+  },
+  "grounding_issues": [],
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 2531,
+    "http_status": 200,
+    "response_id": "4a970ee5-91c9-4fc9-8b00-9c31b3149d68",
+    "usage": {
+      "input_tokens": 2191,
+      "cached_input_tokens": 384,
+      "output_tokens": 222,
+      "reasoning_tokens": 135,
+      "total_tokens": 2413
+    },
+    "error_kind": null
+  }
+}

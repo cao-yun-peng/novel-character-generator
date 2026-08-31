@@ -1,0 +1,7 @@
+{
+  "user_decision": "建立 Provider，用户可以提供 DeepSeek API。",
+  "implementation_decision": "默认采用 DeepSeek Responses API + deepseek-v4-flash + json_schema；使用 Python 标准库 HTTP 客户端，避免为单一 POST 引入 SDK 依赖。",
+  "source_basis": "2026-08-30 DeepSeek 官方 API 文档：Responses API 支持 json_schema；当前官方兼容指南仅保证 deepseek-v4-flash。",
+  "non_goal": "本任务不保存用户 API Key，不运行付费真实请求，不完成 M1 质量评测，也不实现 M2/N3。"
+}
+

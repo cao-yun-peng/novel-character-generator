@@ -1,0 +1,244 @@
+{
+  "schema_version": "m1-chunk-result-v2",
+  "chunk_index": 6,
+  "chunk_id": "chunk-000006-11250-13750-03087dc524e6",
+  "chunk_hash": "03087dc524e600fec09f2d18279ec668f56b8ef967de5b261538e2b1ee8021c4",
+  "chunk_source_span": {
+    "start": 11250,
+    "end": 13750
+  },
+  "model_output": {
+    "candidate_mentions": [
+      {
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "萧炎",
+        "evidence_quotes": [
+          "年仅十五岁"
+        ]
+      },
+      {
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "熏儿",
+        "evidence_quotes": [
+          "一只娇嫩的小手"
+        ]
+      },
+      {
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "萧战",
+        "evidence_quotes": [
+          "硕大的手掌",
+          "阴沉至极的脸色"
+        ]
+      },
+      {
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "葛叶",
+        "evidence_quotes": [
+          "白袍",
+          "鹰爪般的双手",
+          "脸庞也顿时凝重了起来"
+        ]
+      },
+      {
+        "mention_type": "describe",
+        "mention_scope": "individual",
+        "mention_quote": "白袍老者",
+        "evidence_quotes": [
+          "白袍"
+        ]
+      }
+    ]
+  },
+  "grounded_packet": {
+    "schema_version": "grounded-character-packet-v4",
+    "source_document_version_id": "doupo-first5-7ca3fd295b5d0d45",
+    "chunking_policy_version": "fixed-codepoint-window-2500-overlap-250-v1",
+    "chunk_id": "chunk-000006-11250-13750-03087dc524e6",
+    "chunk_hash": "03087dc524e600fec09f2d18279ec668f56b8ef967de5b261538e2b1ee8021c4",
+    "chunk_source_span": {
+      "start": 11250,
+      "end": 13750
+    },
+    "grounded_mentions": [
+      {
+        "local_mention_id": "m1",
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "萧炎",
+        "mention_quote_hash": "6606fa555d642924e1cf668d0f315a3de95f93749a87047e13fd5c6bdf2401e1",
+        "approved_evidence": [
+          {
+            "evidence_quote": "年仅十五岁",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 180,
+                "end": 185
+              }
+            ],
+            "quote_hash": "adddbeaeaa35126276c425639eddf6301cff9a9a2604f2671ecd430ddf71e1fd",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "695f65a5046125d04c46eb283d4f232c6ecfe332b392abc8b00ecead9f8a2d55"
+      },
+      {
+        "local_mention_id": "m2",
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "熏儿",
+        "mention_quote_hash": "ad17f59380d6b6b9e0d04e2e58fe0fa6901daab5767fec642cdfb35f1d6d2f3f",
+        "approved_evidence": [
+          {
+            "evidence_quote": "一只娇嫩的小手",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 245,
+                "end": 252
+              }
+            ],
+            "quote_hash": "1b87732845966d6afa81e10a98441b1a5f971b0eae0c73ffd5cfddd815ed5131",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "9685c03b0783519577cd03b9ee85ef26ea2d1b538d3fba89dbaf0d34afa7c54f"
+      },
+      {
+        "local_mention_id": "m3",
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "萧战",
+        "mention_quote_hash": "caa9d8f0a9cd5793919f77582fb2e8c7551037b2c6f3c464b788a06b8c033574",
+        "approved_evidence": [
+          {
+            "evidence_quote": "硕大的手掌",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1614,
+                "end": 1619
+              }
+            ],
+            "quote_hash": "03586c63c438ef712517da595ee0f21bf3df60122472a683eb53fce217406535",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "阴沉至极的脸色",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 2106,
+                "end": 2113
+              }
+            ],
+            "quote_hash": "b42f49295f9eab724ab9bb2300b72b41d088536899e1356c3a3eac4acf47bf8b",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "0fc135cbb040108b2319d87eff887e3e32e6d21d75d6f6b453352ae233ee6317"
+      },
+      {
+        "local_mention_id": "m4",
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "葛叶",
+        "mention_quote_hash": "1922c4e632d4a72e42fb14df021dbaad444341e5b03a9aff2f5e4273550b6c3f",
+        "approved_evidence": [
+          {
+            "evidence_quote": "白袍",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 774,
+                "end": 776
+              }
+            ],
+            "quote_hash": "3e632fc6301dcbf1ccc4c730cb7f71f882e44b73cdc4d7d3f6a9c1c12e3fab87",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "鹰爪般的双手",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 2315,
+                "end": 2321
+              }
+            ],
+            "quote_hash": "d44937d07e43f7e7ca7b830ca102c02d437b3931b3047178d076f5fd947b7f61",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "脸庞也顿时凝重了起来",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 2293,
+                "end": 2303
+              }
+            ],
+            "quote_hash": "c83f331894ff656e3c653661042479aa9b85848b974c088f34009ee046dc1ce2",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "bf2f2dd712da2024e1cbcb0caef5a155b036fb6ec9420cf871cf1690fd82116c"
+      },
+      {
+        "local_mention_id": "m5",
+        "mention_type": "describe",
+        "mention_scope": "individual",
+        "mention_quote": "白袍老者",
+        "mention_quote_hash": "14c557f1eb5cafe05498bd5b303841a44ac251b1bea3b6806989f082815cfa94",
+        "approved_evidence": [
+          {
+            "evidence_quote": "白袍",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 774,
+                "end": 776
+              }
+            ],
+            "quote_hash": "3e632fc6301dcbf1ccc4c730cb7f71f882e44b73cdc4d7d3f6a9c1c12e3fab87",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "90acf1252e2a1fc4fa55f9e9daf327a1041e465ad95fb8adc795dda5bad7103e"
+      }
+    ],
+    "rejected_evidence": []
+  },
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 49860,
+    "http_status": 200,
+    "response_id": "1dd67eba-5b1f-480d-bb26-57a540c01a82",
+    "usage": {
+      "input_tokens": 2677,
+      "cached_input_tokens": 2560,
+      "output_tokens": 5678,
+      "reasoning_tokens": 5426,
+      "total_tokens": 8355
+    },
+    "error_kind": null
+  }
+}

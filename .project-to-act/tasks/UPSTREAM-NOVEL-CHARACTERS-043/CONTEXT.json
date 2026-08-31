@@ -1,0 +1,10 @@
+{
+  "task_id": "UPSTREAM-NOVEL-CHARACTERS-043",
+  "project_mode": "managed",
+  "risk_level": "L1",
+  "branch": "v3-simplified-character-evidence",
+  "upstream_repository": "https://github.com/eternityspring/shuohao-skills",
+  "upstream_commit": "4322897e6d2bdaf66365534fd40194360c75a85f",
+  "reference_path": "references/upstream/shuohao-skills",
+  "latest_evidence": "E-20260830-UPSTREAM-NOVEL-CHARACTERS-043"
+}

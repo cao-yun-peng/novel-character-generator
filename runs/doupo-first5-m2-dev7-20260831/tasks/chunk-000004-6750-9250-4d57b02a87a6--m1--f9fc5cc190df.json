@@ -1,0 +1,117 @@
+{
+  "schema_version": "m2-attribution-task-result-v1",
+  "source_run_dir": "E:\\project\\agent\\novel-cahracter-generator\\runs\\doupo-first5-m1-scope-v4",
+  "chunk_index": 4,
+  "chunk_id": "chunk-000004-6750-9250-4d57b02a87a6",
+  "target_local_mention_id": "m1",
+  "target_mention_quote": "萧炎",
+  "task_cache_key": "f9fc5cc190dfe3d88d07913abfa88e88cc293567c2f1316e6be139146e75421f",
+  "model_output": {
+    "belongs_to_target": [
+      {
+        "fact_quote": "漆黑的眼中",
+        "category": "face",
+        "attribute": "眼色",
+        "value": "漆黑"
+      },
+      {
+        "fact_quote": "少年稚嫩的脸庞",
+        "category": "face",
+        "attribute": "脸庞",
+        "value": "稚嫩"
+      },
+      {
+        "fact_quote": "幼稚的外貌",
+        "category": "appearance_state",
+        "attribute": "外貌",
+        "value": "幼稚"
+      }
+    ]
+  },
+  "grounded_result": {
+    "target_character_ref": {
+      "source_document_version_id": "doupo-first5-7ca3fd295b5d0d45",
+      "chunk_id": "chunk-000004-6750-9250-4d57b02a87a6",
+      "local_mention_id": "m1",
+      "mention_type": "exact",
+      "packet_hash": "8ec15bbca41d0a6794da2f021003cdd6979f755c1095dc9f68593f8b0f218304"
+    },
+    "task_cache_key": "f9fc5cc190dfe3d88d07913abfa88e88cc293567c2f1316e6be139146e75421f",
+    "grounded_belongs_to_target": [
+      {
+        "fact_quote": "漆黑的眼中",
+        "category": "face",
+        "attribute": "眼色",
+        "value": "漆黑",
+        "source_mention_id": "m1",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "漆黑的眼中",
+        "source_evidence_span": {
+          "start": 241,
+          "end": 246
+        },
+        "fact_chunk_span": {
+          "start": 241,
+          "end": 246
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "少年稚嫩的脸庞",
+        "category": "face",
+        "attribute": "脸庞",
+        "value": "稚嫩",
+        "source_mention_id": "m1",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "少年稚嫩的脸庞",
+        "source_evidence_span": {
+          "start": 590,
+          "end": 597
+        },
+        "fact_chunk_span": {
+          "start": 590,
+          "end": 597
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "幼稚的外貌",
+        "category": "appearance_state",
+        "attribute": "外貌",
+        "value": "幼稚",
+        "source_mention_id": "m1",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "幼稚的外貌",
+        "source_evidence_span": {
+          "start": 1685,
+          "end": 1690
+        },
+        "fact_chunk_span": {
+          "start": 1685,
+          "end": 1690
+        },
+        "match_mode": "exact"
+      }
+    ]
+  },
+  "grounding_issues": [],
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 5563,
+    "http_status": 200,
+    "response_id": "ec03c591-1908-4d01-9fda-a39fd9c2e311",
+    "usage": {
+      "input_tokens": 2315,
+      "cached_input_tokens": 384,
+      "output_tokens": 578,
+      "reasoning_tokens": 502,
+      "total_tokens": 2893
+    },
+    "error_kind": null
+  }
+}

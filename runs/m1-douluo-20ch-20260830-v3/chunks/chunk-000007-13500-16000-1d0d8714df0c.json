@@ -1,0 +1,403 @@
+{
+  "schema_version": "m1-chunk-result-v1",
+  "chunk_index": 7,
+  "chunk_id": "chunk-000007-13500-16000-1d0d8714df0c",
+  "chunk_hash": "1d0d8714df0c01c5a2f35d5abb088c7f3f50e20aeecfc0261a88626eda334e75",
+  "chunk_source_span": {
+    "start": 13500,
+    "end": 16000
+  },
+  "model_output": {
+    "candidate_mentions": [
+      {
+        "mention_type": "exact",
+        "mention_quote": "素云涛",
+        "evidence_quotes": [
+          "素云涛的头发原本是黑色的，但当那青光注入之后，瞬间就变成了灰色，并且快速的变长，同色毛发出现在他裸露在外的双手之上，同时，他的身体也似乎比之前膨胀了许多。全身充满了肌肉感。",
+          "武魂殿的特定服装弹性很好，并没有因为他的体型变大而撑爆。素云涛的眼睛已经变成了幽幽的绿色，双手十指上探出的利爪闪烁着淡淡的寒光。",
+          "素云涛眼中绿油油的光芒确实吓人"
+        ]
+      },
+      {
+        "mention_type": "describe",
+        "mention_quote": "年轻人",
+        "evidence_quotes": [
+          "素云涛的头发原本是黑色的，但当那青光注入之后，瞬间就变成了灰色，并且快速的变长，同色毛发出现在他裸露在外的双手之上，同时，他的身体也似乎比之前膨胀了许多。全身充满了肌肉感。",
+          "武魂殿的特定服装弹性很好，并没有因为他的体型变大而撑爆。素云涛的眼睛已经变成了幽幽的绿色，双手十指上探出的利爪闪烁着淡淡的寒光。",
+          "素云涛眼中绿油油的光芒确实吓人"
+        ]
+      },
+      {
+        "mention_type": "exact",
+        "mention_quote": "唐三",
+        "evidence_quotes": [
+          "他的身材和同龄的孩子相比，要瘦小一些。"
+        ]
+      },
+      {
+        "mention_type": "describe",
+        "mention_quote": "男孩儿",
+        "evidence_quotes": [
+          "男孩儿稚嫩的小手与素云涛的狼爪分别在水晶球上下位置，看上去对比度极为明显。"
+        ]
+      }
+    ]
+  },
+  "grounded_packet": {
+    "schema_version": "grounded-character-packet-v3",
+    "source_document_version_id": "source-4dd3d57c99f4b254",
+    "chunking_policy_version": "fixed-codepoint-window-2500-overlap-250-v1",
+    "chunk_id": "chunk-000007-13500-16000-1d0d8714df0c",
+    "chunk_hash": "1d0d8714df0c01c5a2f35d5abb088c7f3f50e20aeecfc0261a88626eda334e75",
+    "chunk_source_span": {
+      "start": 13500,
+      "end": 16000
+    },
+    "grounded_mentions": [
+      {
+        "local_mention_id": "m1",
+        "mention_type": "exact",
+        "mention_quote": "素云涛",
+        "mention_occurrence_count": 24,
+        "mention_source_spans": [
+          {
+            "start": 69,
+            "end": 72
+          },
+          {
+            "start": 127,
+            "end": 130
+          },
+          {
+            "start": 180,
+            "end": 183
+          },
+          {
+            "start": 245,
+            "end": 248
+          },
+          {
+            "start": 330,
+            "end": 333
+          },
+          {
+            "start": 448,
+            "end": 451
+          },
+          {
+            "start": 555,
+            "end": 558
+          },
+          {
+            "start": 586,
+            "end": 589
+          },
+          {
+            "start": 685,
+            "end": 688
+          },
+          {
+            "start": 870,
+            "end": 873
+          },
+          {
+            "start": 1127,
+            "end": 1130
+          },
+          {
+            "start": 1227,
+            "end": 1230
+          },
+          {
+            "start": 1300,
+            "end": 1303
+          },
+          {
+            "start": 1402,
+            "end": 1405
+          },
+          {
+            "start": 1467,
+            "end": 1470
+          },
+          {
+            "start": 1509,
+            "end": 1512
+          },
+          {
+            "start": 1546,
+            "end": 1549
+          },
+          {
+            "start": 1646,
+            "end": 1649
+          },
+          {
+            "start": 1693,
+            "end": 1696
+          },
+          {
+            "start": 1915,
+            "end": 1918
+          },
+          {
+            "start": 2027,
+            "end": 2030
+          },
+          {
+            "start": 2052,
+            "end": 2055
+          },
+          {
+            "start": 2242,
+            "end": 2245
+          },
+          {
+            "start": 2411,
+            "end": 2414
+          }
+        ],
+        "mention_quote_hash": "b00cdcecb01547353edebc3daf08c048076802e1d0d43f5cb0716c9da7c48c3d",
+        "approved_evidence": [
+          {
+            "evidence_quote": "素云涛的头发原本是黑色的，但当那青光注入之后，瞬间就变成了灰色，并且快速的变长，同色毛发出现在他裸露在外的双手之上，同时，他的身体也似乎比之前膨胀了许多。全身充满了肌肉感。",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 330,
+                "end": 416
+              }
+            ],
+            "quote_hash": "ece3dc13c8cd282f802bf88388e1967ac6bc48e4ffb4d28ad82c84d33b89696b",
+            "relation_to_mention": "contains_mention"
+          },
+          {
+            "evidence_quote": "武魂殿的特定服装弹性很好，并没有因为他的体型变大而撑爆。素云涛的眼睛已经变成了幽幽的绿色，双手十指上探出的利爪闪烁着淡淡的寒光。",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 420,
+                "end": 484
+              }
+            ],
+            "quote_hash": "b247207af3dd94de3f368b57d71c77f7e93a926682d9d347e039390417561900",
+            "relation_to_mention": "contains_mention"
+          },
+          {
+            "evidence_quote": "素云涛眼中绿油油的光芒确实吓人",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 586,
+                "end": 601
+              }
+            ],
+            "quote_hash": "7cbae5bfa70a9de20227f75217570069ecd6c8b79d1743cdaa1517050afdf6f5",
+            "relation_to_mention": "contains_mention"
+          }
+        ],
+        "packet_hash": "24e52bbaad4da56d5f5bfc6dddf05b721cf6b88185dd849bcb64fc10732e7f8c"
+      },
+      {
+        "local_mention_id": "m2",
+        "mention_type": "describe",
+        "mention_quote": "年轻人",
+        "mention_occurrence_count": 2,
+        "mention_source_spans": [
+          {
+            "start": 20,
+            "end": 23
+          },
+          {
+            "start": 59,
+            "end": 62
+          }
+        ],
+        "mention_quote_hash": "cdbabc164b1c6711267f22be9c26ca1028bd84edf5425a6098360e13211df7f2",
+        "approved_evidence": [
+          {
+            "evidence_quote": "素云涛的头发原本是黑色的，但当那青光注入之后，瞬间就变成了灰色，并且快速的变长，同色毛发出现在他裸露在外的双手之上，同时，他的身体也似乎比之前膨胀了许多。全身充满了肌肉感。",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 330,
+                "end": 416
+              }
+            ],
+            "quote_hash": "ece3dc13c8cd282f802bf88388e1967ac6bc48e4ffb4d28ad82c84d33b89696b",
+            "relation_to_mention": "contextual"
+          },
+          {
+            "evidence_quote": "武魂殿的特定服装弹性很好，并没有因为他的体型变大而撑爆。素云涛的眼睛已经变成了幽幽的绿色，双手十指上探出的利爪闪烁着淡淡的寒光。",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 420,
+                "end": 484
+              }
+            ],
+            "quote_hash": "b247207af3dd94de3f368b57d71c77f7e93a926682d9d347e039390417561900",
+            "relation_to_mention": "contextual"
+          },
+          {
+            "evidence_quote": "素云涛眼中绿油油的光芒确实吓人",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 586,
+                "end": 601
+              }
+            ],
+            "quote_hash": "7cbae5bfa70a9de20227f75217570069ecd6c8b79d1743cdaa1517050afdf6f5",
+            "relation_to_mention": "contextual"
+          }
+        ],
+        "packet_hash": "c75248493c90f7c2ab5ea09f475b713108589d5cadd382d40e600fea8b5f61db"
+      },
+      {
+        "local_mention_id": "m3",
+        "mention_type": "exact",
+        "mention_quote": "唐三",
+        "mention_occurrence_count": 10,
+        "mention_source_spans": [
+          {
+            "start": 28,
+            "end": 30
+          },
+          {
+            "start": 677,
+            "end": 679
+          },
+          {
+            "start": 714,
+            "end": 716
+          },
+          {
+            "start": 819,
+            "end": 821
+          },
+          {
+            "start": 1672,
+            "end": 1674
+          },
+          {
+            "start": 1789,
+            "end": 1791
+          },
+          {
+            "start": 2021,
+            "end": 2023
+          },
+          {
+            "start": 2084,
+            "end": 2086
+          },
+          {
+            "start": 2163,
+            "end": 2165
+          },
+          {
+            "start": 2423,
+            "end": 2425
+          }
+        ],
+        "mention_quote_hash": "04af9a5f2d9cca67d65d424e41820e11063f4cb679035d66b8ef30ed334d2c48",
+        "approved_evidence": [
+          {
+            "evidence_quote": "他的身材和同龄的孩子相比，要瘦小一些。",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 36,
+                "end": 55
+              }
+            ],
+            "quote_hash": "821f990d86eb56931259fc7035a4e2373aabfe4982afb3e8d563dc504cd78bb1",
+            "relation_to_mention": "contextual"
+          }
+        ],
+        "packet_hash": "b099fbd2e938e69f3f208cb3193b3f4180d586f7798312330051ce077d97f980"
+      },
+      {
+        "local_mention_id": "m4",
+        "mention_type": "describe",
+        "mention_quote": "男孩儿",
+        "mention_occurrence_count": 9,
+        "mention_source_spans": [
+          {
+            "start": 548,
+            "end": 551
+          },
+          {
+            "start": 1077,
+            "end": 1080
+          },
+          {
+            "start": 1089,
+            "end": 1092
+          },
+          {
+            "start": 1138,
+            "end": 1141
+          },
+          {
+            "start": 1153,
+            "end": 1156
+          },
+          {
+            "start": 1269,
+            "end": 1272
+          },
+          {
+            "start": 1388,
+            "end": 1391
+          },
+          {
+            "start": 1447,
+            "end": 1450
+          },
+          {
+            "start": 1500,
+            "end": 1503
+          }
+        ],
+        "mention_quote_hash": "d5c7850a5185913a61c7530126cd15e70c639b8c70f70817e6a1413bc9af4e40",
+        "approved_evidence": [
+          {
+            "evidence_quote": "男孩儿稚嫩的小手与素云涛的狼爪分别在水晶球上下位置，看上去对比度极为明显。",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1500,
+                "end": 1537
+              }
+            ],
+            "quote_hash": "972ff2c0dac61763c584348e5f0643fe86fb17c9e07682cbee3564a892ba009c",
+            "relation_to_mention": "contains_mention"
+          }
+        ],
+        "packet_hash": "3a69c054020bb87cf825d647e30469d4f7c1ef30c0ce6fc16e229669d56f1ba2"
+      }
+    ],
+    "rejected_evidence": []
+  },
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 20250,
+    "http_status": 200,
+    "response_id": "b829bd48-6cef-44d1-be00-63eb9649ca47",
+    "usage": {
+      "input_tokens": 2343,
+      "cached_input_tokens": 768,
+      "output_tokens": 2420,
+      "reasoning_tokens": 2007,
+      "total_tokens": 4763
+    },
+    "error_kind": null
+  }
+}

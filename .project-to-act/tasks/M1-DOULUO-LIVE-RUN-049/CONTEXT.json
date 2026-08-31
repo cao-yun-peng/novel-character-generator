@@ -1,0 +1,14 @@
+{
+  "lifecycle_stage": 5,
+  "lifecycle_revision": 2,
+  "runtime_version": "0.1.0.dev2",
+  "schema_version": "3.4.0-draft1",
+  "input_path": "tests/小说/斗罗大陆前20章.txt",
+  "input_characters": 110951,
+  "chunk_size": 8000,
+  "overlap_characters": 500,
+  "estimated_chunks": 15,
+  "default_model": "deepseek-v4-flash",
+  "previous_task": "M1-DEEPSEEK-PROVIDER-048"
+}
+

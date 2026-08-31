@@ -1,0 +1,69 @@
+{
+  "schema_version": "m2-attribution-task-result-v1",
+  "source_run_dir": "E:\\project\\agent\\novel-cahracter-generator\\runs\\doupo-first5-m1-scope-v4",
+  "chunk_index": 3,
+  "chunk_id": "chunk-000003-4500-7000-dbdb791747b5",
+  "target_local_mention_id": "m1",
+  "target_mention_quote": "萧炎",
+  "task_cache_key": "b54c093efa5d8dae124c593d7d8d8b19ab6f5b2383b1074c2580d6411f071d89",
+  "model_output": {
+    "belongs_to_target": [
+      {
+        "fact_quote": "那依旧有些稚嫩的清秀脸庞",
+        "category": "face",
+        "attribute": "脸庞",
+        "value": "清秀稚嫩"
+      }
+    ]
+  },
+  "grounded_result": {
+    "target_character_ref": {
+      "source_document_version_id": "doupo-first5-7ca3fd295b5d0d45",
+      "chunk_id": "chunk-000003-4500-7000-dbdb791747b5",
+      "local_mention_id": "m1",
+      "mention_type": "exact",
+      "packet_hash": "a9524ad90550049342f6dbddf85058bdd9ee574a06bbae2340030e341ce4e26f"
+    },
+    "task_cache_key": "b54c093efa5d8dae124c593d7d8d8b19ab6f5b2383b1074c2580d6411f071d89",
+    "grounded_belongs_to_target": [
+      {
+        "fact_quote": "那依旧有些稚嫩的清秀脸庞",
+        "category": "face",
+        "attribute": "脸庞",
+        "value": "清秀稚嫩",
+        "source_mention_id": "m1",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "那依旧有些稚嫩的清秀脸庞",
+        "source_evidence_span": {
+          "start": 1575,
+          "end": 1587
+        },
+        "fact_chunk_span": {
+          "start": 1575,
+          "end": 1587
+        },
+        "match_mode": "exact"
+      }
+    ]
+  },
+  "grounding_issues": [],
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 7438,
+    "http_status": 200,
+    "response_id": "6d39e8ae-61dc-4793-a400-184a177b1e46",
+    "usage": {
+      "input_tokens": 2131,
+      "cached_input_tokens": 2048,
+      "output_tokens": 752,
+      "reasoning_tokens": 714,
+      "total_tokens": 2883
+    },
+    "error_kind": null
+  }
+}

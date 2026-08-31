@@ -1,0 +1,20 @@
+{
+  "schema_version": "identity-preparation-summary-v1",
+  "candidate_policy_version": "bounded-local-candidate-retrieval-v1",
+  "local_character_nodes": 23,
+  "deterministic_same_edges": 1,
+  "pending_model_tasks": 19,
+  "provider_calls": 0,
+  "complete": true,
+  "candidate_reasons": {
+    "label_contains": 2,
+    "possible_name_variant": 4,
+    "same_exact_label": 13,
+    "shared_fact_quote": 2
+  },
+  "max_tasks_for_one_node": 2,
+  "model_outputs": 0,
+  "grounded_identity_decisions": 0,
+  "registry_built": false,
+  "review_required": true
+}

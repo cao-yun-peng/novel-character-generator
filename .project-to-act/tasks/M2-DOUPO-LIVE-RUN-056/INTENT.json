@@ -1,0 +1,16 @@
+{
+  "task_id": "M2-DOUPO-LIVE-RUN-056",
+  "user_request": "使用之前 N2 产出运行 M2 阶段。",
+  "selected_input": {
+    "source_file": "tests/小说/斗破苍穹前5章.txt",
+    "source_run": "runs/doupo-first5-m1-scope-v4",
+    "document_hash": "7ca3fd295b5d0d454ca0b0bac2f4a49f2271602fc8e55bca2f120bb11d85172a"
+  },
+  "interpretation": "之前最新 N2 exact precedence 只做过内存重放，因此本任务从已保存 M1 model output 重新物化相同 N2 结果，再作为 M2 输入。",
+  "non_goals": [
+    "运行 N3",
+    "运行 remaining-describe promotion",
+    "跨 Chunk 人物合并",
+    "宣称人工质量验收通过"
+  ]
+}

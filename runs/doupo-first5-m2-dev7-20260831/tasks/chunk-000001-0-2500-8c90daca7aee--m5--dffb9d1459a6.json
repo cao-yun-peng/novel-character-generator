@@ -1,0 +1,213 @@
+{
+  "schema_version": "m2-attribution-task-result-v1",
+  "source_run_dir": "E:\\project\\agent\\novel-cahracter-generator\\runs\\doupo-first5-m1-scope-v4",
+  "chunk_index": 1,
+  "chunk_id": "chunk-000001-0-2500-8c90daca7aee",
+  "target_local_mention_id": "m5",
+  "target_mention_quote": "萧薰儿",
+  "task_cache_key": "dffb9d1459a6bd34aaaf0d8c4a3f9174f0976c494785dffbc91bc0337fef87af",
+  "model_output": {
+    "belongs_to_target": [
+      {
+        "fact_quote": "身着紫色衣裙",
+        "category": "clothing",
+        "attribute": "衣着",
+        "value": "紫色衣裙"
+      },
+      {
+        "fact_quote": "镶着黑金丝的紫袖",
+        "category": "clothing",
+        "attribute": "衣袖",
+        "value": "镶黑金丝的紫袖"
+      },
+      {
+        "fact_quote": "雪白娇嫩的皓腕",
+        "category": "body",
+        "attribute": "手腕",
+        "value": "雪白娇嫩"
+      },
+      {
+        "fact_quote": "稚嫩俏脸",
+        "category": "face",
+        "attribute": "面容",
+        "value": "稚嫩俏丽"
+      },
+      {
+        "fact_quote": "美丽的俏脸",
+        "category": "face",
+        "attribute": "面容",
+        "value": "美丽"
+      },
+      {
+        "fact_quote": "清雅笑容",
+        "category": "face",
+        "attribute": "笑容",
+        "value": "清雅"
+      },
+      {
+        "fact_quote": "小小年纪",
+        "category": "age",
+        "attribute": "年龄",
+        "value": "年幼"
+      }
+    ]
+  },
+  "grounded_result": {
+    "target_character_ref": {
+      "source_document_version_id": "doupo-first5-7ca3fd295b5d0d45",
+      "chunk_id": "chunk-000001-0-2500-8c90daca7aee",
+      "local_mention_id": "m5",
+      "mention_type": "exact",
+      "packet_hash": "20d339056a803bfbf22244af1221f23623c052e9023ec3d2a3c2cdc4687b2121"
+    },
+    "task_cache_key": "dffb9d1459a6bd34aaaf0d8c4a3f9174f0976c494785dffbc91bc0337fef87af",
+    "grounded_belongs_to_target": [
+      {
+        "fact_quote": "身着紫色衣裙",
+        "category": "clothing",
+        "attribute": "衣着",
+        "value": "紫色衣裙",
+        "source_mention_id": "m5",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "一位身着紫色衣裙的少女，正淡雅的站立，平静的稚嫩俏脸，并未因为众人的注目而改变分毫",
+        "source_evidence_span": {
+          "start": 1704,
+          "end": 1745
+        },
+        "fact_chunk_span": {
+          "start": 1706,
+          "end": 1712
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "镶着黑金丝的紫袖",
+        "category": "clothing",
+        "attribute": "衣袖",
+        "value": "镶黑金丝的紫袖",
+        "source_mention_id": "m5",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "镶着黑金丝的紫袖滑落而下，露出一截雪白娇嫩的皓腕",
+        "source_evidence_span": {
+          "start": 1888,
+          "end": 1912
+        },
+        "fact_chunk_span": {
+          "start": 1888,
+          "end": 1896
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "雪白娇嫩的皓腕",
+        "category": "body",
+        "attribute": "手腕",
+        "value": "雪白娇嫩",
+        "source_mention_id": "m5",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "镶着黑金丝的紫袖滑落而下，露出一截雪白娇嫩的皓腕",
+        "source_evidence_span": {
+          "start": 1888,
+          "end": 1912
+        },
+        "fact_chunk_span": {
+          "start": 1905,
+          "end": 1912
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "稚嫩俏脸",
+        "category": "face",
+        "attribute": "面容",
+        "value": "稚嫩俏丽",
+        "source_mention_id": "m5",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "一位身着紫色衣裙的少女，正淡雅的站立，平静的稚嫩俏脸，并未因为众人的注目而改变分毫",
+        "source_evidence_span": {
+          "start": 1704,
+          "end": 1745
+        },
+        "fact_chunk_span": {
+          "start": 1726,
+          "end": 1730
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "美丽的俏脸",
+        "category": "face",
+        "attribute": "面容",
+        "value": "美丽",
+        "source_mention_id": "m5",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "美丽的俏脸上，居然露出了让周围少女为之嫉妒的清雅笑容",
+        "source_evidence_span": {
+          "start": 2426,
+          "end": 2452
+        },
+        "fact_chunk_span": {
+          "start": 2426,
+          "end": 2431
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "清雅笑容",
+        "category": "face",
+        "attribute": "笑容",
+        "value": "清雅",
+        "source_mention_id": "m5",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "美丽的俏脸上，居然露出了让周围少女为之嫉妒的清雅笑容",
+        "source_evidence_span": {
+          "start": 2426,
+          "end": 2452
+        },
+        "fact_chunk_span": {
+          "start": 2448,
+          "end": 2452
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "小小年纪",
+        "category": "age",
+        "attribute": "年龄",
+        "value": "年幼",
+        "source_mention_id": "m5",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "少女清冷淡然的气质，犹如清莲初绽，小小年纪，却已初具脱俗气质",
+        "source_evidence_span": {
+          "start": 1750,
+          "end": 1780
+        },
+        "fact_chunk_span": {
+          "start": 1767,
+          "end": 1771
+        },
+        "match_mode": "exact"
+      }
+    ]
+  },
+  "grounding_issues": [],
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 23828,
+    "http_status": 200,
+    "response_id": "7de043f2-8f50-4cca-ab26-616aebd314d7",
+    "usage": {
+      "input_tokens": 2212,
+      "cached_input_tokens": 384,
+      "output_tokens": 2814,
+      "reasoning_tokens": 2636,
+      "total_tokens": 5026
+    },
+    "error_kind": null
+  }
+}

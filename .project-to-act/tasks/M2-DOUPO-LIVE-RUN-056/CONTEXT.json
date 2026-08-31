@@ -1,0 +1,14 @@
+{
+  "task_id": "M2-DOUPO-LIVE-RUN-056",
+  "lifecycle_stage": "5",
+  "lifecycle_revision": 2,
+  "schema_version": "3.8.0-draft1",
+  "runtime_version_at_run": "0.1.0.dev7",
+  "runtime_version_after_recovery_fix": "0.1.0.dev8",
+  "provider": "deepseek",
+  "model": "deepseek-v4-flash",
+  "source_run_schema": "m1-batch-summary-v1",
+  "target_n2_packet": "grounded-character-packet-v5",
+  "target_m2_envelope": "m2-orchestration-envelope-v4",
+  "recovery_fix": "http-client-incomplete-read-transient-retry-v1"
+}

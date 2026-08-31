@@ -1,0 +1,69 @@
+{
+  "schema_version": "m2-attribution-task-result-v1",
+  "source_run_dir": "E:\\project\\agent\\novel-cahracter-generator\\runs\\doupo-first5-m1-scope-v4",
+  "chunk_index": 6,
+  "chunk_id": "chunk-000006-11250-13750-03087dc524e6",
+  "target_local_mention_id": "m2",
+  "target_mention_quote": "熏儿",
+  "task_cache_key": "ae406ec3725fbc4916c342120688e4dfc1bb9f94bc15954dbd3858781793da5d",
+  "model_output": {
+    "belongs_to_target": [
+      {
+        "fact_quote": "一只娇嫩的小手",
+        "category": "body",
+        "attribute": "手",
+        "value": "娇嫩"
+      }
+    ]
+  },
+  "grounded_result": {
+    "target_character_ref": {
+      "source_document_version_id": "doupo-first5-7ca3fd295b5d0d45",
+      "chunk_id": "chunk-000006-11250-13750-03087dc524e6",
+      "local_mention_id": "m2",
+      "mention_type": "exact",
+      "packet_hash": "84a96d61fbadfe11239b77fd0a880c61ddce96ab5689c8cb69d286a7f8ac8296"
+    },
+    "task_cache_key": "ae406ec3725fbc4916c342120688e4dfc1bb9f94bc15954dbd3858781793da5d",
+    "grounded_belongs_to_target": [
+      {
+        "fact_quote": "一只娇嫩的小手",
+        "category": "body",
+        "attribute": "手",
+        "value": "娇嫩",
+        "source_mention_id": "m2",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "一只娇嫩的小手",
+        "source_evidence_span": {
+          "start": 245,
+          "end": 252
+        },
+        "fact_chunk_span": {
+          "start": 245,
+          "end": 252
+        },
+        "match_mode": "exact"
+      }
+    ]
+  },
+  "grounding_issues": [],
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 1735,
+    "http_status": 200,
+    "response_id": "438aa754-e3fb-45b5-b6d2-b9163f7c85d8",
+    "usage": {
+      "input_tokens": 2178,
+      "cached_input_tokens": 384,
+      "output_tokens": 153,
+      "reasoning_tokens": 112,
+      "total_tokens": 2331
+    },
+    "error_kind": null
+  }
+}

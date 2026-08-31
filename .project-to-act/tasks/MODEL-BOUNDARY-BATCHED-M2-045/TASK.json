@@ -1,0 +1,30 @@
+{
+  "id": "MODEL-BOUNDARY-BATCHED-M2-045",
+  "title": "统一模型边界并批量化 M2 describe 输入",
+  "status": "completed",
+  "owner": "Codex",
+  "objective": "所有模型阶段隔离系统编排字段；M2 改为每个 exact 一次携带本轮全部 describe 块。",
+  "allowed_paths": [
+    "README.md",
+    "docs",
+    ".project-to-act"
+  ],
+  "invariants": [
+    "M1 和 M2 模型输入不含来源版本、Chunk ID、hash、cache key 或 trace",
+    "模型输出不生成系统身份字段",
+    "代码信封保存可追溯元数据并负责回填验证",
+    "M2 每轮最多生成 E 个 Provider 任务",
+    "每个 exact 任务携带本轮全部未缓存 describe 块",
+    "N2 和 N3 保持纯代码阶段",
+    "describe 不自动成为正式人物"
+  ],
+  "acceptance": [
+    "主契约明确所有模型阶段的四层边界",
+    "M1 实际模型输入只有 chunk_text 且输出不含 chunk_id",
+    "M2 实际模型输入包含一个 exact、全部 describe 和 chunk_text",
+    "M2 模型输出只使用任务内 ref 和局部证据位置",
+    "Schema 正反样例证明系统字段不能混入模型 payload",
+    "项目台账和 Git diff 校验通过",
+    "不冒充运行时和模型质量完成"
+  ]
+}

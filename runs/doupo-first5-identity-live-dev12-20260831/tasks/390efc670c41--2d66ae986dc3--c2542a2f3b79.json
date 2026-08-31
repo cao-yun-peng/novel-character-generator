@@ -1,0 +1,62 @@
+{
+  "schema_version": "identity-task-result-v1",
+  "task_index": 13,
+  "current_label_quote": "熏儿",
+  "candidate_label_quote": "萧熏儿",
+  "task_cache_key": "c2542a2f3b79f4dfdedf74e304d993fc2f961e725348673cd65bb91b3707f0d3",
+  "model_output": {
+    "identity_relation": "same_character",
+    "label_relation": "name_variant",
+    "identity_evidence_quotes": [
+      "熏儿虽然也姓萧",
+      "萧熏儿浅浅一笑，小脸上露出可爱的小酒窝，纤细的指尖再次翻开手中那本古朴的书籍，小小年纪，却有一种知性的美感，眨动着修长的睫毛在书中徘徊了片刻，忽然有些幽幽的道：“萧炎哥哥有三年没和熏儿单独坐一起了吧？”"
+    ]
+  },
+  "grounded_result": {
+    "schema_version": "grounded-identity-decision-v1",
+    "current_node_key": "390efc670c41c35bb343afc0cc2d7d6c7fb05c1c26e9acea6a4fdd9e3a879c0c",
+    "candidate_node_key": "2d66ae986dc37d72b1a1cbe87016985f870c9ef27d0d3435e3273cbe149257ea",
+    "task_cache_key": "c2542a2f3b79f4dfdedf74e304d993fc2f961e725348673cd65bb91b3707f0d3",
+    "requested_identity_relation": "same_character",
+    "identity_relation": "same_character",
+    "label_relation": "name_variant",
+    "grounded_identity_evidence": [
+      {
+        "evidence_quote": "萧熏儿浅浅一笑，小脸上露出可爱的小酒窝，纤细的指尖再次翻开手中那本古朴的书籍，小小年纪，却有一种知性的美感，眨动着修长的睫毛在书中徘徊了片刻，忽然有些幽幽的道：“萧炎哥哥有三年没和熏儿单独坐一起了吧？”",
+        "document_span": {
+          "start": 9217,
+          "end": 9318
+        },
+        "match_mode": "exact"
+      },
+      {
+        "evidence_quote": "熏儿虽然也姓萧",
+        "document_span": {
+          "start": 11729,
+          "end": 11736
+        },
+        "match_mode": "exact"
+      }
+    ],
+    "issues": []
+  },
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 8907,
+    "http_status": 200,
+    "response_id": "58dd73f8-c7f6-4b6d-a733-566603f6eab4",
+    "usage": {
+      "input_tokens": 2295,
+      "cached_input_tokens": 512,
+      "output_tokens": 1099,
+      "reasoning_tokens": 1000,
+      "total_tokens": 3394
+    },
+    "error_kind": null
+  }
+}

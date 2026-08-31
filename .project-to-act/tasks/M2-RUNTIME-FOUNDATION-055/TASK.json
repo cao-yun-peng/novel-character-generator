@@ -1,0 +1,34 @@
+{
+  "id": "M2-RUNTIME-FOUNDATION-055",
+  "title": "实现 M2 双模式运行时与安全事实绑定",
+  "status": "completed",
+  "owner": "Codex",
+  "objective": "以 Schema 3.7 模型边界为基线，并按项目文档实现 M2 exact 归属和 remaining-describe promotion 两种模型模式，包括最小模型边界、DeepSeek 结构化调用、稳定缓存键、代码侧逐字事实绑定与失败关闭。",
+  "risk_level": "L1-local-runtime",
+  "allowed_paths": [
+    "src",
+    "tests",
+    "docs",
+    "README.md",
+    "pyproject.toml",
+    ".project-to-act"
+  ],
+  "invariants": [
+    "M1 与 N2 已物化结果保持不可变",
+    "M2 模型输入输出不包含 ref、span、hash、状态或审计字段",
+    "fact_quote 严格匹配失败后只允许 Unicode 空白等价恢复",
+    "target evidence 优先；describe fact 必须唯一绑定到一个 occurrence",
+    "collective 和 null mention 不进入单人物 M2",
+    "跨 exact 冲突仲裁和 describe 实际消费仍由 N3 完成",
+    "不发起真实 Provider 调用"
+  ],
+  "acceptance": [
+    "每个 individual exact 可生成一个携带全部 individual describe 的 M2 任务",
+    "D=0 时仍能提取 exact 自身事实；E=0 时不生成 exact 任务",
+    "DeepSeek Provider 使用请求自带的 M2 JSON Schema 名称和 Schema",
+    "模型事实可回填到 exact 或唯一 describe occurrence；歧义、越界和非空白改写失败关闭",
+    "每个 remaining describe 可生成独立 promotion 任务并稳定创建一个或多个人物",
+    "promotion 标签/事实不唯一或跨人物事实重叠时进入复核且不建人",
+    "单测、全量测试、Schema 与项目治理验证通过"
+  ]
+}

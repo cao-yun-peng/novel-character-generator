@@ -1,0 +1,7 @@
+{
+  "branch": "v3-simplified-character-evidence",
+  "contract": "docs/33-simplified-character-evidence-pipeline-v3.md",
+  "schema": "docs/contracts/simplified-character-evidence-v3-model-schemas.json",
+  "schema_version": "3.4.0-draft1",
+  "previous_task": "MODEL-BOUNDARY-BATCHED-M2-045"
+}

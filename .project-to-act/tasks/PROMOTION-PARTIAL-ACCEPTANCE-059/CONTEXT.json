@@ -1,0 +1,18 @@
+{
+  "task_id": "PROMOTION-PARTIAL-ACCEPTANCE-059",
+  "lifecycle_stage": "5",
+  "lifecycle_revision": 2,
+  "schema_version_before": "3.10.0-draft1",
+  "runtime_version_before": "0.1.0.dev10",
+  "promotion_result_before": "grounded-promoted-describe-characters-v5",
+  "source_run": "runs/doupo-first5-n3-promotion-dev9-20260831",
+  "failure_example": {
+    "mention_quote": "青衫老者",
+    "ambiguous_fact_quote": "青衫",
+    "ambiguous_occurrences": 2,
+    "safe_fact_quote": "浑浊的老眼",
+    "current_promoted_characters": 0
+  },
+  "context_freshness": "verified-2026-08-31",
+  "conflicts": []
+}

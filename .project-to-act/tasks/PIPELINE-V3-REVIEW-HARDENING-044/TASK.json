@@ -1,0 +1,31 @@
+{
+  "id": "PIPELINE-V3-REVIEW-HARDENING-044",
+  "title": "结合技术审查与开源调研加固 V3 契约",
+  "status": "completed",
+  "owner": "Codex",
+  "objective": "将 exact 边界、evidence provenance、四层 span、精细冲突、pair 幂等、原始 hash、重叠分块和显式截断加入 V3 技术基线。",
+  "allowed_paths": [
+    "README.md",
+    "docs",
+    ".project-to-act"
+  ],
+  "invariants": [
+    "N2 仍然只做确定性定位和派生，不做人物语义归属",
+    "N3 最小消费单位是 Chunk 字符 span",
+    "不重叠 claims 可以分别归给不同 exact",
+    "N2 原始 approved evidence 不可变",
+    "相同 pair cache key 不重复调用模型",
+    "hash 前不做隐式文本归一化",
+    "截断必须显式报告",
+    "人物记忆与视觉资产继续后置"
+  ],
+  "acceptance": [
+    "技术审查六项建议均有明确处理结论",
+    "调研中与 M1-N3 直接相关的分块和截断结论进入契约",
+    "主契约、审查摘要和 Schema 一致",
+    "Schema 通过 Draft 2020-12 验证",
+    "合法和非法行为样例得到预期结果",
+    "项目台账和 Git diff 校验通过",
+    "不冒充运行时和模型质量完成"
+  ]
+}

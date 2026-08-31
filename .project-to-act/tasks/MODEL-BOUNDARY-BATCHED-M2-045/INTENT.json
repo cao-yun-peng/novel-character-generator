@@ -1,0 +1,5 @@
+{
+  "user_decision": "M2 应为 E 个任务，每个 exact 携带 D 个 describe；所有使用模型的阶段都必须规划并精简模型输入输出。",
+  "design_decision": "采用代码编排信封、最小模型输入、最小模型输出、代码回填验证四层边界。",
+  "non_goal": "本任务不实现 Provider、提示词、运行时或人物记忆。"
+}

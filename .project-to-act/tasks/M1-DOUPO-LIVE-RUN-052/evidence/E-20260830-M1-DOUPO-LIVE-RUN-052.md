@@ -1,0 +1,21 @@
+# E-20260830-M1-DOUPO-LIVE-RUN-052
+
+- 时间：2026-08-30，Asia/Shanghai。
+- 用户请求：对 `tests/小说/斗破苍穹前5章.txt` 重新运行 M1，分别交付模型输出与 Grounding 阶段输出。
+- 输入审计：UTF-8 原始文件 41,496 bytes、14,160 Unicode code points、SHA-256 `7ca3fd295b5d0d454ca0b0bac2f4a49f2271602fc8e55bca2f120bb11d85172a`；检测到第 1–5 章共 5 个标题。
+- 配置：DeepSeek Responses API、`deepseek-v4-flash`、reasoning effort low；固定 Chunk 2500、overlap 250；7 个 Chunk，Manifest 为 complete。
+- 安全：API Key 仅从 `.env` 注入进程环境；只检查过长度/引号形态，没有输出 Key；trace 不含正文、Prompt 或 reasoning。
+- 失败历史：首次临时注入误保留 `.env` Key 的外层引号，7/7 调用返回 401，脱敏产物保存在 `runs/doupo-first5-m1-scope-v4-auth-failed`。随后 4096 输出预算运行 7 次，2 成功、5 次 `max_output_tokens`；8192 续跑只调用 5 个失败块并全部成功。总 HTTP 调用 19 次，其中最终有效 Chunk 7 个。
+- 运行时修复：Python `Path.read_text` 的 universal-newline 把 241 个 CRLF 归一为 LF，使字符数从 14,160 变为 13,919。CLI 改为 `open(..., newline="")` 保留原始换行，运行时升级到 `0.1.0.dev5`；新增 CRLF 回归测试。
+- 最终结果：7/7 Chunk 成功，0 failure；37 candidates（18 exact、19 describe、0 null），37 grounded mentions，94 evidence bindings，53 个跨块去重前的 unique evidence quote。
+- Scope：36 individual、1 collective；collective quote 为“少年们”，保留证据并处于单人物流程隔离边界。
+- Grounding 审计：94 exact match、0 whitespace-equivalent recovery、0 rejected；逐 span 从原始 Chunk 回放 quote 的失败数为 0；`mention_occurrence_count`、`mention_source_spans`、`mention_anchor_spans` 均未出现在交付文件。
+- 最终 summary usage：input 17,346、cached input 14,592、output 33,717、reasoning 30,978、total 51,063。该数字只汇总最终成功 Chunk 的保存 trace，不包含 401 或被截断尝试，不能当作完整账单。
+- 自动测试：`$env:PYTHONPATH='src'; $env:PYTHONDONTWRITEBYTECODE='1'; python -m unittest discover -s tests -v`，退出状态 0；52 项通过，0 失败，0 跳过。
+- 模型输出：`runs/doupo-first5-m1-scope-v4/m1-model-outputs.json`，SHA-256 `68d9776760a11d45c64afb917aa5d2f8168ad820688e4c52c023cd8023f451d3`。
+- Grounding 阶段输出：`runs/doupo-first5-m1-scope-v4/m1-grounded-packets.json`，SHA-256 `e5c459e821eac136e59a57c2f9366c55c6e01d92aeca8cec0d01ccf33ff2acd1`。
+- Summary：`runs/doupo-first5-m1-scope-v4/summary.json`，SHA-256 `1b6f98f01e4aa0d1fd5dc85c6e2617686b0af671cf47f95eb0c101e7e73b7b8e`。
+- Manifest：`runs/doupo-first5-m1-scope-v4/manifest.json`，SHA-256 `312062dd6b2930ea60b80f6d6e241cab54822eea5703455face76436abb1079b`。
+- 代码哈希：`src/novel_character_generator/__main__.py` `e12381ee0a4f2c5b15ac2ee2baeb31ba3e40dffd91bbca1c11b76a0bd8c130d2`；`tests/test_cli.py` `8fa27d1d27f18c3722b597c6c463d5b4a3155a8f1f3a6470a8ce224d7edc918a`。
+- 生命周期：stage 5 `in_progress`、revision 2；该实跑不构成人工模型质量 Gate，未推进阶段。
+- 有效期：输入、模型、Prompt、Schema、Chunk 策略、运行时读取或 Provider 配置变化前。

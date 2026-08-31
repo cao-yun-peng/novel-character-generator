@@ -1,0 +1,62 @@
+{
+  "schema_version": "identity-task-result-v1",
+  "task_index": 18,
+  "current_label_quote": "萧战",
+  "candidate_label_quote": "萧战",
+  "task_cache_key": "4b491f14736fc7113c6136044a14861573561d8ec38f277f19c2826c04a42861",
+  "model_output": {
+    "identity_relation": "same_character",
+    "label_relation": "same_surface",
+    "identity_evidence_quotes": [
+      "你可不要忘记，你是萧家的族长！",
+      "他便是萧家现任族长，同时也是萧炎的父亲，五星大斗师，萧战！"
+    ]
+  },
+  "grounded_result": {
+    "schema_version": "grounded-identity-decision-v1",
+    "current_node_key": "35318bb8623b35a899d7217c387e436a02ade5009074a299c30e62b8db8e6b81",
+    "candidate_node_key": "0064297f50578e6e78bd2dafb75cff6253f8d2346d02a77c48240a363959455a",
+    "task_cache_key": "4b491f14736fc7113c6136044a14861573561d8ec38f277f19c2826c04a42861",
+    "requested_identity_relation": "same_character",
+    "identity_relation": "same_character",
+    "label_relation": "same_surface",
+    "grounded_identity_evidence": [
+      {
+        "evidence_quote": "他便是萧家现任族长，同时也是萧炎的父亲，五星大斗师，萧战！",
+        "document_span": {
+          "start": 5849,
+          "end": 5878
+        },
+        "match_mode": "exact"
+      },
+      {
+        "evidence_quote": "你可不要忘记，你是萧家的族长！",
+        "document_span": {
+          "start": 13721,
+          "end": 13736
+        },
+        "match_mode": "exact"
+      }
+    ],
+    "issues": []
+  },
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 3047,
+    "http_status": 200,
+    "response_id": "3dbc8dad-8221-44d3-948a-29fc54550571",
+    "usage": {
+      "input_tokens": 1366,
+      "cached_input_tokens": 512,
+      "output_tokens": 291,
+      "reasoning_tokens": 228,
+      "total_tokens": 1657
+    },
+    "error_kind": null
+  }
+}

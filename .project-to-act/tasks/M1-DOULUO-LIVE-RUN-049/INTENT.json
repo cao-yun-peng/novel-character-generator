@@ -1,0 +1,7 @@
+{
+  "user_decision": "用户已在 .env 配置 DEEPSEEK_API_KEY，并明确要求连通性测试及用斗罗大陆前20章跑通 M1、交付模型输出。",
+  "run_decision": "使用 deepseek-v4-flash、M1 json_schema、8000 字符窗口、500 字符重叠，顺序调用并保存可恢复的逐 Chunk 结果。",
+  "cost_boundary": "预计约15个模型调用；不自动进入 M2，不重复成功 Chunk，不执行额外模型对比。",
+  "non_goal": "不对小说文本进行再发布，不把单次模型结果认定为人工标注真值，不执行 M2/N3。"
+}
+

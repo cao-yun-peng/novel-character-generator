@@ -1,0 +1,21 @@
+{
+  "task_id": "M1-OUTPUT-DIAGNOSIS-050",
+  "mode": "review-and-rescue",
+  "current_behavior": "17 个 Chunk 均产生 schema-valid 输出并通过字面 grounding，但用户观察到内容问题，尚无错误分类或人工质量指标。",
+  "desired_behavior": "先建立可复核的失败切片和根因假设，再按确定性规则、上下文、Prompt、模型的顺序设计对照实验。",
+  "planned_checks": [
+    "raw candidate 与 grounded packet 差异",
+    "exact/describe 跨 Chunk 和块内一致性",
+    "重叠 Chunk 重复",
+    "外貌语义误报切片",
+    "证据与人物归属歧义",
+    "reasoning/output token 与 incomplete 风险",
+    "Prompt、Schema、grounding 实现与技术文档契约对齐"
+  ],
+  "non_goals": [
+    "本轮直接调 Prompt",
+    "重新调用付费模型",
+    "宣称 precision 或 recall",
+    "实现 M2/N3"
+  ]
+}

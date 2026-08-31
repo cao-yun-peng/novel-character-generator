@@ -1,0 +1,117 @@
+{
+  "schema_version": "m2-attribution-task-result-v1",
+  "source_run_dir": "E:\\project\\agent\\novel-cahracter-generator\\runs\\doupo-first5-m1-scope-v4",
+  "chunk_index": 6,
+  "chunk_id": "chunk-000006-11250-13750-03087dc524e6",
+  "target_local_mention_id": "m4",
+  "target_mention_quote": "葛叶",
+  "task_cache_key": "4760c01d1d9260e42a3c72f2d870185629a22bbd6d07fd90e18202d663addddc",
+  "model_output": {
+    "belongs_to_target": [
+      {
+        "fact_quote": "白袍",
+        "category": "clothing",
+        "attribute": "外衣",
+        "value": "白袍"
+      },
+      {
+        "fact_quote": "脸庞也顿时凝重了起来",
+        "category": "appearance_state",
+        "attribute": "面部表情",
+        "value": "凝重"
+      },
+      {
+        "fact_quote": "鹰爪般的双手",
+        "category": "body",
+        "attribute": "手部形态",
+        "value": "鹰爪般"
+      }
+    ]
+  },
+  "grounded_result": {
+    "target_character_ref": {
+      "source_document_version_id": "doupo-first5-7ca3fd295b5d0d45",
+      "chunk_id": "chunk-000006-11250-13750-03087dc524e6",
+      "local_mention_id": "m4",
+      "mention_type": "exact",
+      "packet_hash": "34eff393aacfc1bffb46ed2fc7e151eb7bb7090d8af801e314d989f5ca61e0db"
+    },
+    "task_cache_key": "4760c01d1d9260e42a3c72f2d870185629a22bbd6d07fd90e18202d663addddc",
+    "grounded_belongs_to_target": [
+      {
+        "fact_quote": "白袍",
+        "category": "clothing",
+        "attribute": "外衣",
+        "value": "白袍",
+        "source_mention_id": "m4",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "白袍",
+        "source_evidence_span": {
+          "start": 774,
+          "end": 776
+        },
+        "fact_chunk_span": {
+          "start": 774,
+          "end": 776
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "脸庞也顿时凝重了起来",
+        "category": "appearance_state",
+        "attribute": "面部表情",
+        "value": "凝重",
+        "source_mention_id": "m4",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "脸庞也顿时凝重了起来",
+        "source_evidence_span": {
+          "start": 2293,
+          "end": 2303
+        },
+        "fact_chunk_span": {
+          "start": 2293,
+          "end": 2303
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "鹰爪般的双手",
+        "category": "body",
+        "attribute": "手部形态",
+        "value": "鹰爪般",
+        "source_mention_id": "m4",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "鹰爪般的双手",
+        "source_evidence_span": {
+          "start": 2315,
+          "end": 2321
+        },
+        "fact_chunk_span": {
+          "start": 2315,
+          "end": 2321
+        },
+        "match_mode": "exact"
+      }
+    ]
+  },
+  "grounding_issues": [],
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 6078,
+    "http_status": 200,
+    "response_id": "2c247061-4388-4535-a564-6472009f6970",
+    "usage": {
+      "input_tokens": 2186,
+      "cached_input_tokens": 384,
+      "output_tokens": 620,
+      "reasoning_tokens": 536,
+      "total_tokens": 2806
+    },
+    "error_kind": null
+  }
+}

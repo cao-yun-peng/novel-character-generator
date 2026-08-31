@@ -1,0 +1,35 @@
+[
+  {
+    "started_at": "2026-08-31T01:19:08.153695Z",
+    "completed_at": "2026-08-31T01:19:35.358202Z",
+    "duration_ms": 27203,
+    "planned_promotion_tasks": 5,
+    "succeeded_promotion_tasks": 5,
+    "failed_promotion_tasks": 0,
+    "resumed_promotion_tasks": 0,
+    "new_provider_calls": 5,
+    "complete": true
+  },
+  {
+    "started_at": "2026-08-31T01:24:57.254769Z",
+    "completed_at": "2026-08-31T01:24:57.333948Z",
+    "duration_ms": 78,
+    "planned_promotion_tasks": 5,
+    "succeeded_promotion_tasks": 5,
+    "failed_promotion_tasks": 0,
+    "resumed_promotion_tasks": 5,
+    "new_provider_calls": 0,
+    "complete": true
+  },
+  {
+    "started_at": "2026-08-31T01:32:44.979571Z",
+    "completed_at": "2026-08-31T01:32:44.992416Z",
+    "duration_ms": 16,
+    "planned_promotion_tasks": 5,
+    "succeeded_promotion_tasks": 5,
+    "failed_promotion_tasks": 0,
+    "resumed_promotion_tasks": 5,
+    "new_provider_calls": 0,
+    "complete": true
+  }
+]

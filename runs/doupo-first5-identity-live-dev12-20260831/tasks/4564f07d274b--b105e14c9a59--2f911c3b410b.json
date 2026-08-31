@@ -1,0 +1,62 @@
+{
+  "schema_version": "identity-task-result-v1",
+  "task_index": 5,
+  "current_label_quote": "萧炎",
+  "candidate_label_quote": "萧炎",
+  "task_cache_key": "2f911c3b410b678eca9e5f79bcc4b45dab5b3a3dd3c79ba7193ae0a5c193f159",
+  "model_output": {
+    "identity_relation": "same_character",
+    "label_relation": "same_surface",
+    "identity_evidence_quotes": [
+      "萧炎有些意外的，她的容貌，竟然比萧媚还要美上几分",
+      "萧炎少年老成的摇了摇头"
+    ]
+  },
+  "grounded_result": {
+    "schema_version": "grounded-identity-decision-v1",
+    "current_node_key": "4564f07d274b4fff14e1b26c6ab387c154910b32148975474a33a750b43bbc45",
+    "candidate_node_key": "b105e14c9a599acbd6eacb0b5a9a8922c2488a2bff5ce652dee8c6295a2aaa06",
+    "task_cache_key": "2f911c3b410b678eca9e5f79bcc4b45dab5b3a3dd3c79ba7193ae0a5c193f159",
+    "requested_identity_relation": "same_character",
+    "identity_relation": "same_character",
+    "label_relation": "same_surface",
+    "grounded_identity_evidence": [
+      {
+        "evidence_quote": "萧炎少年老成的摇了摇头",
+        "document_span": {
+          "start": 6041,
+          "end": 6052
+        },
+        "match_mode": "exact"
+      },
+      {
+        "evidence_quote": "萧炎有些意外的，她的容貌，竟然比萧媚还要美上几分",
+        "document_span": {
+          "start": 8195,
+          "end": 8219
+        },
+        "match_mode": "exact"
+      }
+    ],
+    "issues": []
+  },
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 12766,
+    "http_status": 200,
+    "response_id": "1358eee7-ec3e-4c21-b7a0-bcaf05ae413d",
+    "usage": {
+      "input_tokens": 2010,
+      "cached_input_tokens": 1920,
+      "output_tokens": 1364,
+      "reasoning_tokens": 1299,
+      "total_tokens": 3374
+    },
+    "error_kind": null
+  }
+}

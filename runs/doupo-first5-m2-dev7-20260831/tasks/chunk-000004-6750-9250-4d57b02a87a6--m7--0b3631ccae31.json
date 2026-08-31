@@ -1,0 +1,117 @@
+{
+  "schema_version": "m2-attribution-task-result-v1",
+  "source_run_dir": "E:\\project\\agent\\novel-cahracter-generator\\runs\\doupo-first5-m1-scope-v4",
+  "chunk_index": 4,
+  "chunk_id": "chunk-000004-6750-9250-4d57b02a87a6",
+  "target_local_mention_id": "m7",
+  "target_mention_quote": "萧熏儿",
+  "task_cache_key": "0b3631ccae31d4179c1dc04cde7273397f6eaba6179556f1bc15ad897ba07d6b",
+  "model_output": {
+    "belongs_to_target": [
+      {
+        "fact_quote": "微笑的小脸",
+        "category": "face",
+        "attribute": "表情",
+        "value": "微笑"
+      },
+      {
+        "fact_quote": "小脸上露出可爱的小酒窝",
+        "category": "face",
+        "attribute": "酒窝",
+        "value": "可爱的小酒窝"
+      },
+      {
+        "fact_quote": "纤细的指尖",
+        "category": "body",
+        "attribute": "手指",
+        "value": "纤细"
+      }
+    ]
+  },
+  "grounded_result": {
+    "target_character_ref": {
+      "source_document_version_id": "doupo-first5-7ca3fd295b5d0d45",
+      "chunk_id": "chunk-000004-6750-9250-4d57b02a87a6",
+      "local_mention_id": "m7",
+      "mention_type": "exact",
+      "packet_hash": "b53050483ba6ac2f423ffe332117be2729eeb3b5bc9bd96648d15bf66a001bf8"
+    },
+    "task_cache_key": "0b3631ccae31d4179c1dc04cde7273397f6eaba6179556f1bc15ad897ba07d6b",
+    "grounded_belongs_to_target": [
+      {
+        "fact_quote": "微笑的小脸",
+        "category": "face",
+        "attribute": "表情",
+        "value": "微笑",
+        "source_mention_id": "m7",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "微笑的小脸",
+        "source_evidence_span": {
+          "start": 2380,
+          "end": 2385
+        },
+        "fact_chunk_span": {
+          "start": 2380,
+          "end": 2385
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "小脸上露出可爱的小酒窝",
+        "category": "face",
+        "attribute": "酒窝",
+        "value": "可爱的小酒窝",
+        "source_mention_id": "m7",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "小脸上露出可爱的小酒窝",
+        "source_evidence_span": {
+          "start": 2475,
+          "end": 2486
+        },
+        "fact_chunk_span": {
+          "start": 2475,
+          "end": 2486
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "纤细的指尖",
+        "category": "body",
+        "attribute": "手指",
+        "value": "纤细",
+        "source_mention_id": "m7",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "纤细的指尖",
+        "source_evidence_span": {
+          "start": 2487,
+          "end": 2492
+        },
+        "fact_chunk_span": {
+          "start": 2487,
+          "end": 2492
+        },
+        "match_mode": "exact"
+      }
+    ]
+  },
+  "grounding_issues": [],
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 1906,
+    "http_status": 200,
+    "response_id": "a7f94c5c-1035-4e15-8b9a-fda9f235e813",
+    "usage": {
+      "input_tokens": 2319,
+      "cached_input_tokens": 384,
+      "output_tokens": 194,
+      "reasoning_tokens": 114,
+      "total_tokens": 2513
+    },
+    "error_kind": null
+  }
+}

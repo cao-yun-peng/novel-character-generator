@@ -1,0 +1,42 @@
+{
+  "id": "CROSS-CHUNK-IDENTITY-060",
+  "title": "跨 Chunk 人物身份层纵向切片",
+  "status": "completed",
+  "owner": "Codex",
+  "objective": "把 local_character_ref 和 promoted_character_ref 安全映射到文档级全局 character_id，建立最小 M3 身份判断边界与确定性 N4 注册表、事实汇总、冲突和复核队列。",
+  "risk_level": "L1-identity-resolution-false-merge-risk",
+  "allowed_paths": [
+    "src",
+    "tests",
+    "docs",
+    "README.md",
+    "pyproject.toml",
+    "runs/doupo-first5-identity-dev12-20260831",
+    ".project-to-act"
+  ],
+  "invariants": [
+    "模型不得读取或输出 source ref、character_id、span、hash、cache key 或聚类状态",
+    "模型只判断一个 current local character 与一个 candidate global character 的关系",
+    "同名、外貌相似、相同称号或相同泛称只能召回候选，不能单独触发自动合并",
+    "same_character 和 different_characters 必须至少有一条严格 Grounding 的身份原文证据",
+    "Grounding 只允许严格匹配或纯空白等价恢复，不猜测歧义 occurrence",
+    "一个本地人物同时安全命中多个全局人物时不得合并，必须 unresolved/review",
+    "different_characters 形成 cannot-link，后续传递合并不得覆盖",
+    "contextual_description 不得进入全文唯一别名索引",
+    "character_id 由代码生成且不以姓名作为身份键",
+    "已有文档事实不重新抽取、不覆盖；冲突事实全部保留",
+    "本轮不调用真实 Provider，不生成视觉人物画像，既有 runs 保持只读"
+  ],
+  "acceptance": [
+    "完整本地人物节点目录覆盖 N3 exact 和已接受 promoted 人物，包括零外貌事实节点",
+    "M3 输入输出 Schema 最小且拒绝系统字段、自由解释和模型生成 character_id",
+    "相同 exact 标签只生成候选，不自动合并；共享已去重文档事实来源可确定性连接",
+    "same/different/uncertain 三态及 label relation 经过严格身份证据 Grounding",
+    "候选数量与每节点模型任务数有显式上限且任务 hash 可缓存",
+    "N4 对唯一 same 绑定、多 same 冲突、uncertain、cannot-link 和同名碰撞失败关闭",
+    "人物注册表包含 member_character_refs、appearance_fact_refs、possible_conflicts、unresolved_bindings 和 review_items",
+    "事实汇总引用现有 fact_hash，不重新引入逐 quote hash",
+    "斗破既有产物可在零 Provider 调用下生成节点、确定性连接、候选与待执行任务摘要",
+    "全量自动测试、Schema、治理、Lifecycle 和 diff 验证通过"
+  ]
+}

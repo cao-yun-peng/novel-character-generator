@@ -1,0 +1,16 @@
+{
+  "schema_version": "promotion-grounding-replay-summary-v1",
+  "grounding_policy_version": "promotion-partial-fact-acceptance-v1",
+  "source_promotion_tasks": 5,
+  "replayed_model_outputs": 5,
+  "provider_calls": 0,
+  "promoted_characters": 5,
+  "promoted_grounded_facts": 12,
+  "promotion_grounding_issues": 1,
+  "promotion_grounding_issues_by_code": {
+    "ambiguous_promotion_fact": 1
+  },
+  "promotion_review_required_tasks": 1,
+  "review_required": true,
+  "complete": true
+}

@@ -1,0 +1,30 @@
+{
+  "id": "M3-DOUPO-LIVE-EVAL-061",
+  "title": "斗破苍穹 M3 跨 Chunk 身份真实运行与诊断",
+  "status": "completed",
+  "owner": "Codex",
+  "objective": "使用已冻结的 19 个有界身份任务调用 DeepSeek，严格 Grounding 身份原文，生成文档人物注册表并诊断合并质量。",
+  "risk_level": "L1-identity-resolution-false-merge-risk",
+  "allowed_paths": [
+    "runs/doupo-first5-identity-live-dev12-20260831",
+    ".project-to-act"
+  ],
+  "invariants": [
+    "只从 .env 加载 DEEPSEEK_*，不得打印、保存或提交 API Key",
+    "输入使用已冻结的 N2/N3/document evidence 来源，不修改既有 runs",
+    "每个局部人物最多两个候选，计划任务数必须为 19",
+    "模型不得读取或输出 ref、character_id、span、hash 或 cache key",
+    "same/different 必须有严格或纯空白等价 Grounding 的身份原文，否则降为 uncertain",
+    "歧义 occurrence 不猜测；different 写入 cannot-link；多 same 进入 review",
+    "批次完成只证明真实执行和 Grounding，不等于人工身份质量 Gate"
+  ],
+  "acceptance": [
+    "19 个计划任务均成功或所有失败均明确记录并可恢复",
+    "模型输出、grounded decisions、脱敏 traces、failures、summary 和 run history 分离保存",
+    "完整成功时生成 document-character-registry.json",
+    "所有 grounded identity quote 对原文绝对 span 回放通过",
+    "分析 same/different/uncertain、downgrade、review、unresolved、cannot-link 和人物档案结果",
+    "人工指出明显正确、可疑和无法判断的身份关系",
+    "Project-to-Act 与 Lifecycle 校验通过"
+  ]
+}

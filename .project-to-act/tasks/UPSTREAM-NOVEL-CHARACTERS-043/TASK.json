@@ -1,0 +1,25 @@
+{
+  "id": "UPSTREAM-NOVEL-CHARACTERS-043",
+  "title": "引入 novel-characters 上游参考副本",
+  "status": "completed",
+  "owner": "Codex",
+  "objective": "将指定的 novel-characters Skill、许可证和来源版本固定保存到项目中，供后续对照和参考。",
+  "allowed_paths": [
+    "references",
+    "README.md",
+    "docs/34-open-source-novel-character-visualization-research.md",
+    ".project-to-act"
+  ],
+  "invariants": [
+    "上游 Skill 不接入当前运行时",
+    "保留 Apache-2.0 许可证",
+    "记录精确上游 commit",
+    "当前 M1 优先级和 V3 契约不变"
+  ],
+  "acceptance": [
+    "novel-characters 目录与固定 commit 内容一致",
+    "上游许可证和根 README 完整保存",
+    "项目入口和来源说明可访问",
+    "项目治理校验通过"
+  ]
+}

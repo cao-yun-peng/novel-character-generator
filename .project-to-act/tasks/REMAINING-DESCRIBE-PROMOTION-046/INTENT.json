@@ -1,0 +1,5 @@
+{
+  "user_decision": "每个剩余 describe 单独结合 chunk_text 进入 M2，并允许建立多个正式本地人物。",
+  "supersedes": "MODEL-BOUNDARY-BATCHED-M2-045 中 describe 不自动成为正式人物及剩余池继续 exact 归属的部分语义。",
+  "non_goal": "不设计跨 Chunk character_id 合并和长期人物记忆。"
+}

@@ -1,0 +1,29 @@
+{
+  "id": "M1-OUTPUT-DIAGNOSIS-050",
+  "title": "诊断斗罗大陆 M1 输出问题与根因",
+  "status": "completed",
+  "owner": "Codex",
+  "objective": "对真实 M1 输出做可复核的错误分类，区分需求、Prompt、模型、分块、grounding、聚合和评测缺口，并提出最小可验证修复路线。",
+  "risk_level": "L1-read-only-diagnosis",
+  "allowed_paths": [
+    "src",
+    "tests",
+    "docs",
+    "runs/m1-douluo-20ch-20260830-v3",
+    ".project-to-act"
+  ],
+  "invariants": [
+    "不修改 M1 实现、Prompt、Schema 或真实运行产物",
+    "不把单次模型输出或模型自评当作人工质量基线",
+    "引用问题时保留 Chunk、mention 和 evidence 的可追溯位置",
+    "区分字面 grounding 通过与语义外貌正确",
+    "不推进阶段 Gate"
+  ],
+  "acceptance": [
+    "量化结构错误、语义误报、一致性、重复、grounding rejection 和 token 风险",
+    "为每类主要问题给出实际输出证据和根因层级",
+    "形成按风险排序的最小修复与评测方案",
+    "明确哪些结论因没有人工标注而不能下定论",
+    "Project-to-Act 与 Lifecycle 验证通过"
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "schema_version": "identity-task-result-v1",
+  "task_index": 16,
+  "current_label_quote": "葛叶",
+  "candidate_label_quote": "葛叶",
+  "task_cache_key": "c9436591623285747b269971962484eee7b545afc46df891008870d9acae3aa3",
+  "model_output": {
+    "identity_relation": "same_character",
+    "label_relation": "same_surface",
+    "identity_evidence_quotes": [
+      "“呵呵，萧族长，你可认识她么？”葛叶微微一笑，指着身旁的少女含笑问道。",
+      "无奈的叹了一口气，葛叶淡淡的道。",
+      "望着萧战的反映，葛叶脸庞也顿时凝重了起来，身体挡在纳兰嫣然身前，鹰爪般的双手猛的曲拢，青色斗气在鹰爪中汇聚而起，散发着细小而凌厉的剑气。"
+    ]
+  },
+  "grounded_result": {
+    "schema_version": "grounded-identity-decision-v1",
+    "current_node_key": "54ed92fbf2d777e9e167b1b4a1a04e9f5b6f561be0483fac556d81073ae5fcf2",
+    "candidate_node_key": "d1203cc2f3d9e03105719855f5c660b8f10f951a201546296e1fdc22a5698503",
+    "task_cache_key": "c9436591623285747b269971962484eee7b545afc46df891008870d9acae3aa3",
+    "requested_identity_relation": "same_character",
+    "identity_relation": "same_character",
+    "label_relation": "same_surface",
+    "grounded_identity_evidence": [
+      {
+        "evidence_quote": "“呵呵，萧族长，你可认识她么？”葛叶微微一笑，指着身旁的少女含笑问道。",
+        "document_span": {
+          "start": 12167,
+          "end": 12202
+        },
+        "match_mode": "exact"
+      },
+      {
+        "evidence_quote": "无奈的叹了一口气，葛叶淡淡的道。",
+        "document_span": {
+          "start": 13436,
+          "end": 13452
+        },
+        "match_mode": "exact"
+      },
+      {
+        "evidence_quote": "望着萧战的反映，葛叶脸庞也顿时凝重了起来，身体挡在纳兰嫣然身前，鹰爪般的双手猛的曲拢，青色斗气在鹰爪中汇聚而起，散发着细小而凌厉的剑气。",
+        "document_span": {
+          "start": 13533,
+          "end": 13601
+        },
+        "match_mode": "exact"
+      }
+    ],
+    "issues": []
+  },
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 3156,
+    "http_status": 200,
+    "response_id": "b0a08dcf-65e9-4fb9-beae-92cca3af4a87",
+    "usage": {
+      "input_tokens": 2196,
+      "cached_input_tokens": 512,
+      "output_tokens": 329,
+      "reasoning_tokens": 218,
+      "total_tokens": 2525
+    },
+    "error_kind": null
+  }
+}

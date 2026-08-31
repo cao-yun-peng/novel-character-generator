@@ -1,0 +1,141 @@
+{
+  "schema_version": "m2-attribution-task-result-v1",
+  "source_run_dir": "E:\\project\\agent\\novel-cahracter-generator\\runs\\doupo-first5-m1-scope-v4",
+  "chunk_index": 1,
+  "chunk_id": "chunk-000001-0-2500-8c90daca7aee",
+  "target_local_mention_id": "m3",
+  "target_mention_quote": "萧媚",
+  "task_cache_key": "3f799ac222551006348f28b75ce8ea651bd4b1f4e5a612efeba4d9368508239e",
+  "model_output": {
+    "belongs_to_target": [
+      {
+        "fact_quote": "少女年龄不过十四左右",
+        "category": "age",
+        "attribute": "年龄",
+        "value": "十四左右"
+      },
+      {
+        "fact_quote": "稚气未脱的小脸",
+        "category": "face",
+        "attribute": "脸特征",
+        "value": "稚气未脱"
+      },
+      {
+        "fact_quote": "淡淡的妩媚",
+        "category": "face",
+        "attribute": "神情",
+        "value": "淡淡的妩媚"
+      },
+      {
+        "fact_quote": "得意的笑容",
+        "category": "face",
+        "attribute": "笑容",
+        "value": "得意的笑容"
+      }
+    ]
+  },
+  "grounded_result": {
+    "target_character_ref": {
+      "source_document_version_id": "doupo-first5-7ca3fd295b5d0d45",
+      "chunk_id": "chunk-000001-0-2500-8c90daca7aee",
+      "local_mention_id": "m3",
+      "mention_type": "exact",
+      "packet_hash": "c3ab74e151303133809ccb9453115a45b5334abcbca94b6544ea47f7458dc943"
+    },
+    "task_cache_key": "3f799ac222551006348f28b75ce8ea651bd4b1f4e5a612efeba4d9368508239e",
+    "grounded_belongs_to_target": [
+      {
+        "fact_quote": "少女年龄不过十四左右",
+        "category": "age",
+        "attribute": "年龄",
+        "value": "十四左右",
+        "source_mention_id": "m3",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "少女年龄不过十四左右，虽然并算不上绝色，不过那张稚气未脱的小脸，却是蕴含着淡淡的妩媚，清纯与妩媚，矛盾的集合",
+        "source_evidence_span": {
+          "start": 727,
+          "end": 781
+        },
+        "fact_chunk_span": {
+          "start": 727,
+          "end": 737
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "稚气未脱的小脸",
+        "category": "face",
+        "attribute": "脸特征",
+        "value": "稚气未脱",
+        "source_mention_id": "m3",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "少女年龄不过十四左右，虽然并算不上绝色，不过那张稚气未脱的小脸，却是蕴含着淡淡的妩媚，清纯与妩媚，矛盾的集合",
+        "source_evidence_span": {
+          "start": 727,
+          "end": 781
+        },
+        "fact_chunk_span": {
+          "start": 751,
+          "end": 758
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "淡淡的妩媚",
+        "category": "face",
+        "attribute": "神情",
+        "value": "淡淡的妩媚",
+        "source_mention_id": "m3",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "少女年龄不过十四左右，虽然并算不上绝色，不过那张稚气未脱的小脸，却是蕴含着淡淡的妩媚，清纯与妩媚，矛盾的集合",
+        "source_evidence_span": {
+          "start": 727,
+          "end": 781
+        },
+        "fact_chunk_span": {
+          "start": 764,
+          "end": 769
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "得意的笑容",
+        "category": "face",
+        "attribute": "笑容",
+        "value": "得意的笑容",
+        "source_mention_id": "m3",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "少女脸颊扬起了得意的笑容",
+        "source_evidence_span": {
+          "start": 924,
+          "end": 936
+        },
+        "fact_chunk_span": {
+          "start": 931,
+          "end": 936
+        },
+        "match_mode": "exact"
+      }
+    ]
+  },
+  "grounding_issues": [],
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 12297,
+    "http_status": 200,
+    "response_id": "16d139b5-84a4-47be-be29-2e4092665a18",
+    "usage": {
+      "input_tokens": 2166,
+      "cached_input_tokens": 0,
+      "output_tokens": 1429,
+      "reasoning_tokens": 1297,
+      "total_tokens": 3595
+    },
+    "error_kind": null
+  }
+}

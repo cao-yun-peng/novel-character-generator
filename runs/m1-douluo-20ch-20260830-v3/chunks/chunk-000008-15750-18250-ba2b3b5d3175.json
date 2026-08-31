@@ -1,0 +1,229 @@
+{
+  "schema_version": "m1-chunk-result-v1",
+  "chunk_index": 8,
+  "chunk_id": "chunk-000008-15750-18250-ba2b3b5d3175",
+  "chunk_hash": "ba2b3b5d3175eb38d041f8cc94dbd926cf011fffd78fffb0188efe9aa8db08ea",
+  "chunk_source_span": {
+    "start": 15750,
+    "end": 18250
+  },
+  "model_output": {
+    "candidate_mentions": [
+      {
+        "mention_type": "exact",
+        "mention_quote": "唐三",
+        "evidence_quotes": [
+          "对上了唐三那平静而有些坚定的目光"
+        ]
+      },
+      {
+        "mention_type": "describe",
+        "mention_quote": "男孩儿",
+        "evidence_quotes": [
+          "对上了唐三那平静而有些坚定的目光"
+        ]
+      },
+      {
+        "mention_type": "describe",
+        "mention_quote": "老杰克",
+        "evidence_quotes": [
+          "老杰克一脸紧张的迎上了素云涛",
+          "杰克眼中流露出惊疑不定的神色"
+        ]
+      }
+    ]
+  },
+  "grounded_packet": {
+    "schema_version": "grounded-character-packet-v3",
+    "source_document_version_id": "source-4dd3d57c99f4b254",
+    "chunking_policy_version": "fixed-codepoint-window-2500-overlap-250-v1",
+    "chunk_id": "chunk-000008-15750-18250-ba2b3b5d3175",
+    "chunk_hash": "ba2b3b5d3175eb38d041f8cc94dbd926cf011fffd78fffb0188efe9aa8db08ea",
+    "chunk_source_span": {
+      "start": 15750,
+      "end": 18250
+    },
+    "grounded_mentions": [
+      {
+        "local_mention_id": "m1",
+        "mention_type": "exact",
+        "mention_quote": "唐三",
+        "mention_occurrence_count": 16,
+        "mention_source_spans": [
+          {
+            "start": 173,
+            "end": 175
+          },
+          {
+            "start": 379,
+            "end": 381
+          },
+          {
+            "start": 460,
+            "end": 462
+          },
+          {
+            "start": 571,
+            "end": 573
+          },
+          {
+            "start": 686,
+            "end": 688
+          },
+          {
+            "start": 708,
+            "end": 710
+          },
+          {
+            "start": 829,
+            "end": 831
+          },
+          {
+            "start": 1145,
+            "end": 1147
+          },
+          {
+            "start": 1195,
+            "end": 1197
+          },
+          {
+            "start": 1489,
+            "end": 1491
+          },
+          {
+            "start": 1576,
+            "end": 1578
+          },
+          {
+            "start": 1746,
+            "end": 1748
+          },
+          {
+            "start": 2002,
+            "end": 2004
+          },
+          {
+            "start": 2152,
+            "end": 2154
+          },
+          {
+            "start": 2193,
+            "end": 2195
+          },
+          {
+            "start": 2341,
+            "end": 2343
+          }
+        ],
+        "mention_quote_hash": "04af9a5f2d9cca67d65d424e41820e11063f4cb679035d66b8ef30ed334d2c48",
+        "approved_evidence": [
+          {
+            "evidence_quote": "对上了唐三那平静而有些坚定的目光",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 568,
+                "end": 584
+              }
+            ],
+            "quote_hash": "27039864eabe54995c81c1a7515c20ca1a7b7dfeb1f357f72df000b9eb434aa9",
+            "relation_to_mention": "contains_mention"
+          }
+        ],
+        "packet_hash": "7fa57b129d3d917727982f1605bee9fbc056dd6f343857d55392467ca6e7de13"
+      },
+      {
+        "local_mention_id": "m2",
+        "mention_type": "describe",
+        "mention_quote": "男孩儿",
+        "mention_occurrence_count": 1,
+        "mention_source_spans": [
+          {
+            "start": 1163,
+            "end": 1166
+          }
+        ],
+        "mention_quote_hash": "d5c7850a5185913a61c7530126cd15e70c639b8c70f70817e6a1413bc9af4e40",
+        "approved_evidence": [
+          {
+            "evidence_quote": "对上了唐三那平静而有些坚定的目光",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 568,
+                "end": 584
+              }
+            ],
+            "quote_hash": "27039864eabe54995c81c1a7515c20ca1a7b7dfeb1f357f72df000b9eb434aa9",
+            "relation_to_mention": "contextual"
+          }
+        ],
+        "packet_hash": "774c7320977063a01ec2023aa3b3b333a08adddf52f65a42e2caa0cb81c6e46d"
+      },
+      {
+        "local_mention_id": "m3",
+        "mention_type": "describe",
+        "mention_quote": "老杰克",
+        "mention_occurrence_count": 2,
+        "mention_source_spans": [
+          {
+            "start": 2375,
+            "end": 2378
+          },
+          {
+            "start": 2387,
+            "end": 2390
+          }
+        ],
+        "mention_quote_hash": "758ab0f61a61cd7ae6a18146e27fced2b52de333a88c08351446a957dea3f432",
+        "approved_evidence": [
+          {
+            "evidence_quote": "老杰克一脸紧张的迎上了素云涛",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 2387,
+                "end": 2401
+              }
+            ],
+            "quote_hash": "27d0f3bea770be0593aab0713643978e2a2e181ffb79f7273811978dcfefb93f",
+            "relation_to_mention": "contains_mention"
+          },
+          {
+            "evidence_quote": "杰克眼中流露出惊疑不定的神色",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 2472,
+                "end": 2486
+              }
+            ],
+            "quote_hash": "efc9c51915dfdc8738ffebd88e2719e93f46558d7ad0e01b6b8ab27240c0dcef",
+            "relation_to_mention": "contextual"
+          }
+        ],
+        "packet_hash": "38d982b9451110491fdfde7e6b10d8b179f48a2c141ea27638e96900d019bdf1"
+      }
+    ],
+    "rejected_evidence": []
+  },
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 42766,
+    "http_status": 200,
+    "response_id": "9aa5bce0-e32a-43d0-9cc6-40a0670bbe60",
+    "usage": {
+      "input_tokens": 2310,
+      "cached_input_tokens": 768,
+      "output_tokens": 4488,
+      "reasoning_tokens": 4331,
+      "total_tokens": 6798
+    },
+    "error_kind": null
+  }
+}

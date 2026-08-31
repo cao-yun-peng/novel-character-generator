@@ -1,0 +1,23 @@
+# E-20260830-REMAINING-DESCRIBE-PROMOTION-046
+
+- 时间：2026-08-30，Asia/Shanghai。
+- 用户决定：每个剩余 describe 单独结合 chunk_text 进入 M2，并允许建立多个正式本地人物。
+- Schema：`3.4.0-draft1`。
+- Provider 调用：0。
+- 运行时修改：0。
+- Schema 静态验证：Draft 2020-12 通过，版本 `3.4.0-draft1`，共 30 个定义。
+- 路由验证：N3 接受 `promote_remaining_describe`，旧 `requeue_m2` 被拒绝；exact 冲突 span 不进入 promotion。
+- 一对多验证：同一个剩余 describe 输入分别通过单角色和双角色输出；`characters` 为空被拒绝。
+- 证据验证：人物标签逐字存在；claimed/support quote 与 fragment-local span 切片一致；不同新人物重叠 claimed span 被代码检测。
+- 稳定引用验证：新人物按最早 Chunk claimed span 排序后分配 `promotion_index`；相同 promotion hash 不重复建人。
+- 完整性验证：代码回填后的两个 `PromotedDescribeCharacterRef` 通过 Schema，未认领文字由 `unassigned_fragments` 保存。
+- 模型边界验证：promotion 模型输入不接受 Chunk ID 或 source span，模型输出不接受正式人物引用等系统字段。
+- 项目台账：`valid: true`，无 issue。
+- Git 检查：工作区和 staged `diff --check` 通过；仅有现有 LF/CRLF 提示，无空白错误。
+- 产物 SHA-256：
+  - `docs/33-simplified-character-evidence-pipeline-v3.md`：`74480281fc6095a6ed12a36b1eed255b38c61293e8d72a1af74eb06a00c5f2f0`
+  - `docs/contracts/simplified-character-evidence-v3-model-schemas.json`：`e56c9a14516712fa7e4b896b18f2d161e895b945e9694c5a70471bcb15b9027c`
+  - `README.md`：`b5eaee3f64d2bbca856c98f03483310fce33ad11ef35132c08fefaba26e43a41`
+  - `docs/README.md`：`74327cdfda2d5c8787667332957c1f4eaaddb7e47f900f2552bdf1d12f481490`
+- 验证结论：静态契约完成；Provider、提示词文件、运行时代码、全局 character_id 和真实模型质量尚未实现。
+- 有效期：直到 remaining describe promotion、人物引用或 Schema 变化。

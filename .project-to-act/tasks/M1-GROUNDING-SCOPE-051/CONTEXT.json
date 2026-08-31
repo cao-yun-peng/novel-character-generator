@@ -1,0 +1,25 @@
+{
+  "task_id": "M1-GROUNDING-SCOPE-051",
+  "lifecycle_stage": "5",
+  "lifecycle_revision": 2,
+  "runtime_version_before": "0.1.0.dev3",
+  "schema_version_before": "3.4.0-draft1",
+  "affected_symbols": [
+    "M1_SYSTEM_INSTRUCTION",
+    "M1_RESPONSE_SCHEMA",
+    "M1CandidateMention",
+    "ApprovedEvidence",
+    "GroundedMention",
+    "ground_m1_result"
+  ],
+  "expected_changes": [
+    "src/novel_character_generator/m1.py",
+    "src/novel_character_generator/grounding.py",
+    "tests",
+    "docs/33-simplified-character-evidence-pipeline-v3.md",
+    "docs/contracts/simplified-character-evidence-v3-model-schemas.json",
+    "README.md",
+    "pyproject.toml",
+    ".project-to-act"
+  ]
+}

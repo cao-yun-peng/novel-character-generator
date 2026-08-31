@@ -1,0 +1,509 @@
+{
+  "schema_version": "m1-chunk-result-v1",
+  "chunk_index": 10,
+  "chunk_id": "chunk-000010-20250-22750-4c682b56720a",
+  "chunk_hash": "4c682b56720a7af0d199eb3f098416dd0d3cb39955ccc88b5acaad3b69672d26",
+  "chunk_source_span": {
+    "start": 20250,
+    "end": 22750
+  },
+  "model_output": {
+    "candidate_mentions": [
+      {
+        "mention_type": "exact",
+        "mention_quote": "唐昊",
+        "evidence_quotes": [
+          "已经现出苍老的面庞",
+          "唐昊的胸膛很宽阔，或许是因为长期做铁匠的原因，尽管表面上他看上去很懒散，可他身上的肌肉却并没有因为岁月而减少",
+          "他的双眼通红"
+        ]
+      },
+      {
+        "mention_type": "exact",
+        "mention_quote": "唐三",
+        "evidence_quotes": [
+          "他的脸色已经变得有些苍白了"
+        ]
+      },
+      {
+        "mention_type": "describe",
+        "mention_quote": "爸爸",
+        "evidence_quotes": [
+          "已经现出苍老的面庞",
+          "唐昊的胸膛很宽阔，或许是因为长期做铁匠的原因，尽管表面上他看上去很懒散，可他身上的肌肉却并没有因为岁月而减少",
+          "他的双眼通红"
+        ]
+      },
+      {
+        "mention_type": "describe",
+        "mention_quote": "父亲",
+        "evidence_quotes": [
+          "已经现出苍老的面庞",
+          "唐昊的胸膛很宽阔，或许是因为长期做铁匠的原因，尽管表面上他看上去很懒散，可他身上的肌肉却并没有因为岁月而减少",
+          "他的双眼通红"
+        ]
+      }
+    ]
+  },
+  "grounded_packet": {
+    "schema_version": "grounded-character-packet-v3",
+    "source_document_version_id": "source-4dd3d57c99f4b254",
+    "chunking_policy_version": "fixed-codepoint-window-2500-overlap-250-v1",
+    "chunk_id": "chunk-000010-20250-22750-4c682b56720a",
+    "chunk_hash": "4c682b56720a7af0d199eb3f098416dd0d3cb39955ccc88b5acaad3b69672d26",
+    "chunk_source_span": {
+      "start": 20250,
+      "end": 22750
+    },
+    "grounded_mentions": [
+      {
+        "local_mention_id": "m1",
+        "mention_type": "exact",
+        "mention_quote": "唐昊",
+        "mention_occurrence_count": 25,
+        "mention_source_spans": [
+          {
+            "start": 19,
+            "end": 21
+          },
+          {
+            "start": 121,
+            "end": 123
+          },
+          {
+            "start": 248,
+            "end": 250
+          },
+          {
+            "start": 259,
+            "end": 261
+          },
+          {
+            "start": 486,
+            "end": 488
+          },
+          {
+            "start": 544,
+            "end": 546
+          },
+          {
+            "start": 642,
+            "end": 644
+          },
+          {
+            "start": 673,
+            "end": 675
+          },
+          {
+            "start": 765,
+            "end": 767
+          },
+          {
+            "start": 818,
+            "end": 820
+          },
+          {
+            "start": 865,
+            "end": 867
+          },
+          {
+            "start": 1003,
+            "end": 1005
+          },
+          {
+            "start": 1062,
+            "end": 1064
+          },
+          {
+            "start": 1124,
+            "end": 1126
+          },
+          {
+            "start": 1320,
+            "end": 1322
+          },
+          {
+            "start": 1736,
+            "end": 1738
+          },
+          {
+            "start": 1773,
+            "end": 1775
+          },
+          {
+            "start": 1814,
+            "end": 1816
+          },
+          {
+            "start": 1886,
+            "end": 1888
+          },
+          {
+            "start": 1921,
+            "end": 1923
+          },
+          {
+            "start": 1950,
+            "end": 1952
+          },
+          {
+            "start": 2065,
+            "end": 2067
+          },
+          {
+            "start": 2161,
+            "end": 2163
+          },
+          {
+            "start": 2339,
+            "end": 2341
+          },
+          {
+            "start": 2405,
+            "end": 2407
+          }
+        ],
+        "mention_quote_hash": "081118b106b6bea10da0e0a6c94ec329ae8ae1f2ec304529a0c642688e4bc39d",
+        "approved_evidence": [
+          {
+            "evidence_quote": "已经现出苍老的面庞",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 683,
+                "end": 692
+              }
+            ],
+            "quote_hash": "4a3852c5dbe2112b7df83b295366b6afa9c6f3f586f3a86f39d51650b9f36bea",
+            "relation_to_mention": "contextual"
+          },
+          {
+            "evidence_quote": "唐昊的胸膛很宽阔，或许是因为长期做铁匠的原因，尽管表面上他看上去很懒散，可他身上的肌肉却并没有因为岁月而减少",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1950,
+                "end": 2004
+              }
+            ],
+            "quote_hash": "a9f909ca90714f130cdc2b14183381307d2ac0254a880cbf875319b7072010d7",
+            "relation_to_mention": "contains_mention"
+          },
+          {
+            "evidence_quote": "他的双眼通红",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1352,
+                "end": 1358
+              }
+            ],
+            "quote_hash": "17d5f775965c59e685361413663d707b651aec883f3ef3be16ca7e2580fc2b71",
+            "relation_to_mention": "contextual"
+          }
+        ],
+        "packet_hash": "efc043449c61cfdff686e195c7434a8a19cc24b80bd4046842815402b63c64a2"
+      },
+      {
+        "local_mention_id": "m2",
+        "mention_type": "exact",
+        "mention_quote": "唐三",
+        "mention_occurrence_count": 27,
+        "mention_source_spans": [
+          {
+            "start": 133,
+            "end": 135
+          },
+          {
+            "start": 189,
+            "end": 191
+          },
+          {
+            "start": 404,
+            "end": 406
+          },
+          {
+            "start": 584,
+            "end": 586
+          },
+          {
+            "start": 656,
+            "end": 658
+          },
+          {
+            "start": 788,
+            "end": 790
+          },
+          {
+            "start": 814,
+            "end": 816
+          },
+          {
+            "start": 908,
+            "end": 910
+          },
+          {
+            "start": 994,
+            "end": 996
+          },
+          {
+            "start": 1091,
+            "end": 1093
+          },
+          {
+            "start": 1174,
+            "end": 1176
+          },
+          {
+            "start": 1291,
+            "end": 1293
+          },
+          {
+            "start": 1372,
+            "end": 1374
+          },
+          {
+            "start": 1560,
+            "end": 1562
+          },
+          {
+            "start": 1583,
+            "end": 1585
+          },
+          {
+            "start": 1668,
+            "end": 1670
+          },
+          {
+            "start": 1749,
+            "end": 1751
+          },
+          {
+            "start": 1785,
+            "end": 1787
+          },
+          {
+            "start": 1837,
+            "end": 1839
+          },
+          {
+            "start": 1932,
+            "end": 1934
+          },
+          {
+            "start": 2046,
+            "end": 2048
+          },
+          {
+            "start": 2099,
+            "end": 2101
+          },
+          {
+            "start": 2149,
+            "end": 2151
+          },
+          {
+            "start": 2189,
+            "end": 2191
+          },
+          {
+            "start": 2310,
+            "end": 2312
+          },
+          {
+            "start": 2393,
+            "end": 2395
+          },
+          {
+            "start": 2433,
+            "end": 2435
+          }
+        ],
+        "mention_quote_hash": "04af9a5f2d9cca67d65d424e41820e11063f4cb679035d66b8ef30ed334d2c48",
+        "approved_evidence": [
+          {
+            "evidence_quote": "他的脸色已经变得有些苍白了",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1614,
+                "end": 1627
+              }
+            ],
+            "quote_hash": "93d4100c35029e77dd753529c9fbfc31b9ba960ba8597f4174c4914280f969b0",
+            "relation_to_mention": "contextual"
+          }
+        ],
+        "packet_hash": "77dd1a73cfc1238ca121f8be055e3ab85c1c18ad72249a343cc39ded35c288e0"
+      },
+      {
+        "local_mention_id": "m3",
+        "mention_type": "describe",
+        "mention_quote": "爸爸",
+        "mention_occurrence_count": 9,
+        "mention_source_spans": [
+          {
+            "start": 86,
+            "end": 88
+          },
+          {
+            "start": 196,
+            "end": 198
+          },
+          {
+            "start": 518,
+            "end": 520
+          },
+          {
+            "start": 596,
+            "end": 598
+          },
+          {
+            "start": 825,
+            "end": 827
+          },
+          {
+            "start": 1116,
+            "end": 1118
+          },
+          {
+            "start": 1847,
+            "end": 1849
+          },
+          {
+            "start": 2042,
+            "end": 2044
+          },
+          {
+            "start": 2137,
+            "end": 2139
+          }
+        ],
+        "mention_quote_hash": "d45ce71dd359d0e71e08dcfc2946f92804659f6141180460e366871c95f0bca9",
+        "approved_evidence": [
+          {
+            "evidence_quote": "已经现出苍老的面庞",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 683,
+                "end": 692
+              }
+            ],
+            "quote_hash": "4a3852c5dbe2112b7df83b295366b6afa9c6f3f586f3a86f39d51650b9f36bea",
+            "relation_to_mention": "contextual"
+          },
+          {
+            "evidence_quote": "唐昊的胸膛很宽阔，或许是因为长期做铁匠的原因，尽管表面上他看上去很懒散，可他身上的肌肉却并没有因为岁月而减少",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1950,
+                "end": 2004
+              }
+            ],
+            "quote_hash": "a9f909ca90714f130cdc2b14183381307d2ac0254a880cbf875319b7072010d7",
+            "relation_to_mention": "contextual"
+          },
+          {
+            "evidence_quote": "他的双眼通红",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1352,
+                "end": 1358
+              }
+            ],
+            "quote_hash": "17d5f775965c59e685361413663d707b651aec883f3ef3be16ca7e2580fc2b71",
+            "relation_to_mention": "contextual"
+          }
+        ],
+        "packet_hash": "ac1b682969e7b2d6eb0b8e565bc64ed636fbbf863d71f5899c24956303e97467"
+      },
+      {
+        "local_mention_id": "m4",
+        "mention_type": "describe",
+        "mention_quote": "父亲",
+        "mention_occurrence_count": 4,
+        "mention_source_spans": [
+          {
+            "start": 791,
+            "end": 793
+          },
+          {
+            "start": 2129,
+            "end": 2131
+          },
+          {
+            "start": 2316,
+            "end": 2318
+          },
+          {
+            "start": 2473,
+            "end": 2475
+          }
+        ],
+        "mention_quote_hash": "069af863e908e627e1e2c28c64cd9710605566fba39cdc27e6026df9b352ecef",
+        "approved_evidence": [
+          {
+            "evidence_quote": "已经现出苍老的面庞",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 683,
+                "end": 692
+              }
+            ],
+            "quote_hash": "4a3852c5dbe2112b7df83b295366b6afa9c6f3f586f3a86f39d51650b9f36bea",
+            "relation_to_mention": "contextual"
+          },
+          {
+            "evidence_quote": "唐昊的胸膛很宽阔，或许是因为长期做铁匠的原因，尽管表面上他看上去很懒散，可他身上的肌肉却并没有因为岁月而减少",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1950,
+                "end": 2004
+              }
+            ],
+            "quote_hash": "a9f909ca90714f130cdc2b14183381307d2ac0254a880cbf875319b7072010d7",
+            "relation_to_mention": "contextual"
+          },
+          {
+            "evidence_quote": "他的双眼通红",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1352,
+                "end": 1358
+              }
+            ],
+            "quote_hash": "17d5f775965c59e685361413663d707b651aec883f3ef3be16ca7e2580fc2b71",
+            "relation_to_mention": "contextual"
+          }
+        ],
+        "packet_hash": "18afd8e0171b343f23cf96b42fec5f1bd3daab27fbfd25cf5831fade6f6ea507"
+      }
+    ],
+    "rejected_evidence": []
+  },
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 27688,
+    "http_status": 200,
+    "response_id": "55be00bf-c3b5-4665-be48-3d89cbe8c7c4",
+    "usage": {
+      "input_tokens": 2367,
+      "cached_input_tokens": 768,
+      "output_tokens": 3185,
+      "reasoning_tokens": 2881,
+      "total_tokens": 5552
+    },
+    "error_kind": null
+  }
+}

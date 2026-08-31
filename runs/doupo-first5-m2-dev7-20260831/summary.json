@@ -1,0 +1,46 @@
+{
+  "schema_version": "m2-batch-summary-v1",
+  "runtime_version": "0.1.0.dev7",
+  "recovery_hotfix": "http-client-incomplete-read-transient-retry-v1",
+  "started_at": "2026-08-31T00:36:35.164585Z",
+  "completed_at": "2026-08-31T00:37:32.037194Z",
+  "duration_ms": 56875,
+  "source_run_schema": "m1-batch-summary-v1",
+  "source_document_version_id": "doupo-first5-7ca3fd295b5d0d45",
+  "document_hash": "7ca3fd295b5d0d454ca0b0bac2f4a49f2271602fc8e55bca2f120bb11d85172a",
+  "chunking_policy_version": "fixed-codepoint-window-2500-overlap-250-v1",
+  "chunks": 7,
+  "n2_replay": {
+    "exact_mentions": 18,
+    "individual_describe_mentions": 5,
+    "collective_mentions": 1,
+    "approved_evidence_bindings": 57
+  },
+  "planned_tasks": 18,
+  "succeeded_tasks": 18,
+  "failed_tasks": 0,
+  "resumed_tasks": 5,
+  "new_provider_calls": 13,
+  "recorded_provider_calls": 18,
+  "models": [
+    "deepseek-v4-flash"
+  ],
+  "model_facts": 50,
+  "grounded_facts": 50,
+  "grounded_facts_by_source_type": {
+    "exact": 50,
+    "describe": 0
+  },
+  "grounding_issues": 0,
+  "grounding_issues_by_code": {},
+  "usage": {
+    "input_tokens": 35757,
+    "cached_input_tokens": 7808,
+    "output_tokens": 12954,
+    "reasoning_tokens": 11384,
+    "total_tokens": 48711
+  },
+  "usage_scope": "all_succeeded_task_records",
+  "complete": true,
+  "quality_note": "A complete run proves structured execution and deterministic grounding only; it is not a human-verified M2 attribution quality score. Promotion requires N3 remaining pools."
+}

@@ -1,0 +1,433 @@
+{
+  "schema_version": "m1-chunk-result-v1",
+  "chunk_index": 15,
+  "chunk_id": "chunk-000015-31500-34000-bdf8856912cc",
+  "chunk_hash": "bdf8856912ccc51c93d32d006e66feb15b69e0c6ccf77c681608b08804e572d8",
+  "chunk_source_span": {
+    "start": 31500,
+    "end": 34000
+  },
+  "model_output": {
+    "candidate_mentions": [
+      {
+        "mention_type": "exact",
+        "mention_quote": "唐三",
+        "evidence_quotes": [
+          "依稀还能看到老杰克和唐三瘦弱的身体",
+          "你才多大，还没有铸造锤高吧。",
+          "才不过六岁"
+        ]
+      },
+      {
+        "mention_type": "exact",
+        "mention_quote": "唐昊",
+        "evidence_quotes": [
+          "高大的身影"
+        ]
+      },
+      {
+        "mention_type": "describe",
+        "mention_quote": "老杰克",
+        "evidence_quotes": [
+          "今天的老杰克特意穿了一身新衣服，看上去更添几分矍铄。"
+        ]
+      },
+      {
+        "mention_type": "exact",
+        "mention_quote": "杰克",
+        "evidence_quotes": [
+          "今天的老杰克特意穿了一身新衣服，看上去更添几分矍铄。"
+        ]
+      }
+    ]
+  },
+  "grounded_packet": {
+    "schema_version": "grounded-character-packet-v3",
+    "source_document_version_id": "source-4dd3d57c99f4b254",
+    "chunking_policy_version": "fixed-codepoint-window-2500-overlap-250-v1",
+    "chunk_id": "chunk-000015-31500-34000-bdf8856912cc",
+    "chunk_hash": "bdf8856912ccc51c93d32d006e66feb15b69e0c6ccf77c681608b08804e572d8",
+    "chunk_source_span": {
+      "start": 31500,
+      "end": 34000
+    },
+    "grounded_mentions": [
+      {
+        "local_mention_id": "m1",
+        "mention_type": "exact",
+        "mention_quote": "唐三",
+        "mention_occurrence_count": 25,
+        "mention_source_spans": [
+          {
+            "start": 80,
+            "end": 82
+          },
+          {
+            "start": 393,
+            "end": 395
+          },
+          {
+            "start": 441,
+            "end": 443
+          },
+          {
+            "start": 462,
+            "end": 464
+          },
+          {
+            "start": 516,
+            "end": 518
+          },
+          {
+            "start": 558,
+            "end": 560
+          },
+          {
+            "start": 620,
+            "end": 622
+          },
+          {
+            "start": 665,
+            "end": 667
+          },
+          {
+            "start": 793,
+            "end": 795
+          },
+          {
+            "start": 800,
+            "end": 802
+          },
+          {
+            "start": 913,
+            "end": 915
+          },
+          {
+            "start": 1020,
+            "end": 1022
+          },
+          {
+            "start": 1042,
+            "end": 1044
+          },
+          {
+            "start": 1101,
+            "end": 1103
+          },
+          {
+            "start": 1215,
+            "end": 1217
+          },
+          {
+            "start": 1301,
+            "end": 1303
+          },
+          {
+            "start": 1353,
+            "end": 1355
+          },
+          {
+            "start": 1376,
+            "end": 1378
+          },
+          {
+            "start": 1528,
+            "end": 1530
+          },
+          {
+            "start": 1794,
+            "end": 1796
+          },
+          {
+            "start": 2039,
+            "end": 2041
+          },
+          {
+            "start": 2067,
+            "end": 2069
+          },
+          {
+            "start": 2350,
+            "end": 2352
+          },
+          {
+            "start": 2371,
+            "end": 2373
+          },
+          {
+            "start": 2386,
+            "end": 2388
+          }
+        ],
+        "mention_quote_hash": "04af9a5f2d9cca67d65d424e41820e11063f4cb679035d66b8ef30ed334d2c48",
+        "approved_evidence": [
+          {
+            "evidence_quote": "依稀还能看到老杰克和唐三瘦弱的身体",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1010,
+                "end": 1027
+              }
+            ],
+            "quote_hash": "042f08654b904aeefa49c233843c5ee4bc01ff9c0615dd5bc4fb449026f4f60d",
+            "relation_to_mention": "contains_mention"
+          },
+          {
+            "evidence_quote": "你才多大，还没有铸造锤高吧。",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1864,
+                "end": 1878
+              }
+            ],
+            "quote_hash": "7a67d0fecf8bdc2f997a3b394a310f61a792f2d56fe06be4fd0c1a9bc33c897c",
+            "relation_to_mention": "contextual"
+          },
+          {
+            "evidence_quote": "才不过六岁",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 105,
+                "end": 110
+              }
+            ],
+            "quote_hash": "a6d8a545fbd5bc41e195e05f834f431e94847b056ce54f0e6e4de3eae70e9622",
+            "relation_to_mention": "contextual"
+          }
+        ],
+        "packet_hash": "9484af6fd3fc0d578f63443ca8c2412f0512a2dd5b065ef746895506bce37db5"
+      },
+      {
+        "local_mention_id": "m2",
+        "mention_type": "exact",
+        "mention_quote": "唐昊",
+        "mention_occurrence_count": 7,
+        "mention_source_spans": [
+          {
+            "start": 990,
+            "end": 992
+          },
+          {
+            "start": 1032,
+            "end": 1034
+          },
+          {
+            "start": 1084,
+            "end": 1086
+          },
+          {
+            "start": 1178,
+            "end": 1180
+          },
+          {
+            "start": 1237,
+            "end": 1239
+          },
+          {
+            "start": 1435,
+            "end": 1437
+          },
+          {
+            "start": 1844,
+            "end": 1846
+          }
+        ],
+        "mention_quote_hash": "081118b106b6bea10da0e0a6c94ec329ae8ae1f2ec304529a0c642688e4bc39d",
+        "approved_evidence": [
+          {
+            "evidence_quote": "高大的身影",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 977,
+                "end": 982
+              }
+            ],
+            "quote_hash": "ed2c6cf727709be6f8d3cef090afe2aa74750524c59d96f2cd4cd20f455a9dc9",
+            "relation_to_mention": "contextual"
+          }
+        ],
+        "packet_hash": "8c198a79e243fb840b968e9c6a94d5cbc2c9e51865d750ececde255a8c661cf0"
+      },
+      {
+        "local_mention_id": "m3",
+        "mention_type": "describe",
+        "mention_quote": "老杰克",
+        "mention_occurrence_count": 8,
+        "mention_source_spans": [
+          {
+            "start": 716,
+            "end": 719
+          },
+          {
+            "start": 741,
+            "end": 744
+          },
+          {
+            "start": 1016,
+            "end": 1019
+          },
+          {
+            "start": 1308,
+            "end": 1311
+          },
+          {
+            "start": 1853,
+            "end": 1856
+          },
+          {
+            "start": 2048,
+            "end": 2051
+          },
+          {
+            "start": 2128,
+            "end": 2131
+          },
+          {
+            "start": 2414,
+            "end": 2417
+          }
+        ],
+        "mention_quote_hash": "758ab0f61a61cd7ae6a18146e27fced2b52de333a88c08351446a957dea3f432",
+        "approved_evidence": [
+          {
+            "evidence_quote": "今天的老杰克特意穿了一身新衣服，看上去更添几分矍铄。",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 738,
+                "end": 764
+              }
+            ],
+            "quote_hash": "5ec2646f09b694a978b8bcd7defc1cf066c3c1d5c6c394d1a8c50c0a5f346a2e",
+            "relation_to_mention": "contains_mention"
+          }
+        ],
+        "packet_hash": "20e2ec3b6d21a05f2d10a708285b222cc6759621651300ad823225b0a74dc6ca"
+      },
+      {
+        "local_mention_id": "m4",
+        "mention_type": "exact",
+        "mention_quote": "杰克",
+        "mention_occurrence_count": 19,
+        "mention_source_spans": [
+          {
+            "start": 717,
+            "end": 719
+          },
+          {
+            "start": 742,
+            "end": 744
+          },
+          {
+            "start": 789,
+            "end": 791
+          },
+          {
+            "start": 803,
+            "end": 805
+          },
+          {
+            "start": 893,
+            "end": 895
+          },
+          {
+            "start": 1017,
+            "end": 1019
+          },
+          {
+            "start": 1047,
+            "end": 1049
+          },
+          {
+            "start": 1127,
+            "end": 1129
+          },
+          {
+            "start": 1309,
+            "end": 1311
+          },
+          {
+            "start": 1349,
+            "end": 1351
+          },
+          {
+            "start": 1388,
+            "end": 1390
+          },
+          {
+            "start": 1540,
+            "end": 1542
+          },
+          {
+            "start": 1572,
+            "end": 1574
+          },
+          {
+            "start": 1601,
+            "end": 1603
+          },
+          {
+            "start": 1854,
+            "end": 1856
+          },
+          {
+            "start": 2049,
+            "end": 2051
+          },
+          {
+            "start": 2074,
+            "end": 2076
+          },
+          {
+            "start": 2129,
+            "end": 2131
+          },
+          {
+            "start": 2415,
+            "end": 2417
+          }
+        ],
+        "mention_quote_hash": "18c58ba65f0cd178f68b01d5df76002ab0c757afa0cc0ef8bbf5a05a2e777169",
+        "approved_evidence": [
+          {
+            "evidence_quote": "今天的老杰克特意穿了一身新衣服，看上去更添几分矍铄。",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 738,
+                "end": 764
+              }
+            ],
+            "quote_hash": "5ec2646f09b694a978b8bcd7defc1cf066c3c1d5c6c394d1a8c50c0a5f346a2e",
+            "relation_to_mention": "contains_mention"
+          }
+        ],
+        "packet_hash": "fc8ab831faee66d2be79389a02a2a985b4f4b8a94a8cb49f00a53d29282009c3"
+      }
+    ],
+    "rejected_evidence": []
+  },
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 25984,
+    "http_status": 200,
+    "response_id": "35be1fbd-0b46-44e5-b2f6-b732bd8d18e3",
+    "usage": {
+      "input_tokens": 2350,
+      "cached_input_tokens": 768,
+      "output_tokens": 2878,
+      "reasoning_tokens": 2653,
+      "total_tokens": 5228
+    },
+    "error_kind": null
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "task_id": "PIPELINE-V3-REVIEW-HARDENING-044",
+  "requested_by": "user",
+  "intent": "结合用户粘贴的 V3 契约审查、开源项目调研和当前技术文档，判断并落实需要的技术调整。",
+  "execution": "design-and-schema-hardening",
+  "provider_calls": 0,
+  "database_mutation": false,
+  "production_route_mutation": false
+}

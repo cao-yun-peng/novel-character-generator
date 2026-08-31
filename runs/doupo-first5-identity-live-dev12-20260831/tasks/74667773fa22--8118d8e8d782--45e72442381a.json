@@ -1,0 +1,62 @@
+{
+  "schema_version": "identity-task-result-v1",
+  "task_index": 1,
+  "current_label_quote": "萧薰儿",
+  "candidate_label_quote": "萧薰儿",
+  "task_cache_key": "45e72442381a1713e869fcfc7b737b5921149431066b0063cbf407121b477623",
+  "model_output": {
+    "identity_relation": "same_character",
+    "label_relation": "same_surface",
+    "identity_evidence_quotes": [
+      "萧薰儿微笑着柔声道",
+      "名为萧薰儿的少女行到魔石碑之前"
+    ]
+  },
+  "grounded_result": {
+    "schema_version": "grounded-identity-decision-v1",
+    "current_node_key": "74667773fa222a60a7db957a90f911f6f0b7d3cd00f449c850a3d0fc007192fb",
+    "candidate_node_key": "8118d8e8d782daf6e6d942bdaee3d2b6ed912b140f73e574095dc5978ebad022",
+    "task_cache_key": "45e72442381a1713e869fcfc7b737b5921149431066b0063cbf407121b477623",
+    "requested_identity_relation": "same_character",
+    "identity_relation": "same_character",
+    "label_relation": "same_surface",
+    "grounded_identity_evidence": [
+      {
+        "evidence_quote": "名为萧薰儿的少女行到魔石碑之前",
+        "document_span": {
+          "start": 1867,
+          "end": 1882
+        },
+        "match_mode": "exact"
+      },
+      {
+        "evidence_quote": "萧薰儿微笑着柔声道",
+        "document_span": {
+          "start": 2570,
+          "end": 2579
+        },
+        "match_mode": "exact"
+      }
+    ],
+    "issues": []
+  },
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 4062,
+    "http_status": 200,
+    "response_id": "411db22a-ac0f-4fbf-a019-0fbb9f6308e9",
+    "usage": {
+      "input_tokens": 3391,
+      "cached_input_tokens": 0,
+      "output_tokens": 368,
+      "reasoning_tokens": 309,
+      "total_tokens": 3759
+    },
+    "error_kind": null
+  }
+}

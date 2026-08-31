@@ -1,0 +1,36 @@
+# E-20260830-M1-DEEPSEEK-PROVIDER-048
+
+- 时间：2026-08-30，Asia/Shanghai。
+- 任务：为 M1 建立 DeepSeek Responses API Provider。
+- 风险等级：L1 internal；只有用户显式运行探测命令时才发生外部调用。
+- Git 基线：`a6c6d16a5731f83aded0345fc1de6aef00604025`；工作区已有未提交契约、调研和 M1 基础变更，本任务未覆盖或清理它们。
+- 技术依据：2026-08-30 核对 DeepSeek 官方 Responses API、JSON Output、Chat Completions、错误码和限流文档。当前 Responses API 官方兼容说明保证 `deepseek-v4-flash` 并支持 `text.format.type=json_schema`；因此它成为默认模型和输出模式。
+- 官方来源：
+  - `https://api-docs.deepseek.com/guides/responses_api/`
+  - `https://api-docs.deepseek.com/api/create-response/`
+  - `https://api-docs.deepseek.com/guides/json_mode/`
+  - `https://api-docs.deepseek.com/quick_start/error_codes/`
+  - `https://api-docs.deepseek.com/quick_start/rate_limit/`
+- 运行时：`0.1.0.dev2`，Python 3.11+，零第三方运行时依赖。
+- 自动测试命令：`$env:PYTHONPATH='src'; $env:PYTHONDONTWRITEBYTECODE='1'; python -m unittest discover -s tests -v`。
+- 自动测试结果：退出状态 0；43 项通过，0 失败，0 跳过。Provider 覆盖环境配置、HTTPS、Key 脱敏、Responses/json_schema 请求、M1→Provider→grounding 纵向切片、401/402/422、429/Retry-After、503、网络超时、空输出、无效 JSON、不完整输出和 bounded retries。
+- CLI fail-closed 验证：清除当前进程的 `DEEPSEEK_API_KEY` 后运行 `probe-deepseek-m1`，返回预期配置错误；包装检查退出状态 0，确认未触网且错误不回显正文。
+- 语法与导入：14 个 Python 文件经 `ast.parse` 通过；公共 `DeepSeekConfig` / `DeepSeekProvider` 导入通过。
+- 凭据检查：`.env` 由 `.gitignore` 命中；PCRE2 凭据模式扫描返回 clean；`.env.example` 不含真实 Key。
+- 项目验证：Project-to-Act `valid: true`、0 issue；Agent Lifecycle `valid: true`，阶段 5 `in_progress`，revision 2。
+- Git 检查：`git diff --check` 退出状态 0；只有仓库既有 LF/CRLF 提示，无空白错误。
+- Provider/真实模型调用：0；所有 HTTP 行为通过注入 fake transport 验证，不消耗用户额度，不能作为模型质量证据。
+- 产物 SHA-256：
+  - `.env.example`：`3a2fc3bdcfe74e5a179a20f94e7217abea71348368a530c1c8b60f6fdaa6f340`
+  - `pyproject.toml`：`027c058ad63842c71f8d9b9b0c3d3cc0fa175c4261602783d89c5ecb0c9bea55`
+  - `README.md`：`1634ce111689372dadbf412bef3e5378ffb4af0ca15c9092eca38a4ef0e12c4d`
+  - `src/novel_character_generator/errors.py`：`e8dd1ac145b3633c05aa9dd1e62202bcc3490cddb15f0fce02e1fe3c5c419544`
+  - `src/novel_character_generator/__init__.py`：`55cc09d4b6cf45b09d9a318bcb551f021351484e084acbbdf53e62eab1f1c7ba`
+  - `src/novel_character_generator/__main__.py`：`daece1fdaaa2e901997337279e378106d1b5854498f502a8dbab5229f0b0e709`
+  - `src/novel_character_generator/providers/__init__.py`：`91f7dc8ed6613759993d23a5933232759b443003f1e44636df4de2c7223641c0`
+  - `src/novel_character_generator/providers/deepseek.py`：`3a15006d734889c4b46ce0f807c7f7a55ba11154d4e0881d1608e20615202449`
+  - `tests/test_cli.py`：`7dbd26918ce0dbe790addd898bded43e43f0f762342e3e75a01d4f643733f975`
+  - `tests/test_deepseek_provider.py`：`3c72fa75263a89983e1ad21ba9a2eb3df1871cd7e4ceca04d9512a7465048213`
+- 任务结论：Provider 适配器任务完成；阶段 5 与 M1 功能保持 `in_progress`，直到真实 API smoke 和代表性评测获得新鲜证据。
+- 回退路径：不设置 `DEEPSEEK_API_KEY` 即不会触发外部调用；调用方仍可注入任何实现现有 `M1Provider` 协议的本地或测试 Provider。
+- 有效期：直到 DeepSeek Responses API/model 兼容性、M1 response schema、Provider 重试/trace 策略或上述产物发生变化。

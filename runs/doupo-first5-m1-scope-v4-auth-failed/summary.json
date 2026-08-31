@@ -1,0 +1,34 @@
+{
+  "schema_version": "m1-batch-summary-v1",
+  "started_at": "2026-08-30T13:39:46.473261Z",
+  "completed_at": "2026-08-30T13:39:47.401258Z",
+  "duration_ms": 922,
+  "source_document_version_id": "doupo-first5-7ca3fd295b5d0d45",
+  "document_hash": "34867d3b26e799fb542bb91abffa06abc78e6ceb959d580b7824cfe14bea9385",
+  "total_characters": 13919,
+  "chunking_policy_version": "fixed-codepoint-window-2500-overlap-250-v1",
+  "planned_chunks": 7,
+  "succeeded_chunks": 0,
+  "failed_chunks": 7,
+  "resumed_chunks": 0,
+  "new_provider_calls": 7,
+  "models": [],
+  "candidate_mentions": 0,
+  "candidate_mentions_by_type": {
+    "exact": 0,
+    "describe": 0,
+    "null": 0
+  },
+  "grounded_mentions": 0,
+  "approved_evidence_quotes": 0,
+  "rejected_evidence_quotes": 0,
+  "usage": {
+    "input_tokens": null,
+    "cached_input_tokens": null,
+    "output_tokens": null,
+    "reasoning_tokens": null,
+    "total_tokens": null
+  },
+  "complete": false,
+  "quality_note": "Counts describe schema-valid model output and deterministic quote grounding; they are not a human-verified character-quality score. Overlap may duplicate mentions."
+}

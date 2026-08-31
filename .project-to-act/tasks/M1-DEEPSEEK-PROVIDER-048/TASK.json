@@ -1,0 +1,34 @@
+{
+  "id": "M1-DEEPSEEK-PROVIDER-048",
+  "title": "建立 DeepSeek M1 Provider",
+  "status": "completed",
+  "owner": "Codex",
+  "objective": "为现有 M1Provider 协议实现安全、可测试的 DeepSeek Responses API 适配器，并提供本地配置与探测入口。",
+  "risk_level": "L1-internal",
+  "allowed_paths": [
+    "pyproject.toml",
+    ".env.example",
+    "README.md",
+    "src",
+    "tests",
+    ".project-to-act"
+  ],
+  "invariants": [
+    "DEEPSEEK_API_KEY 只从进程环境读取，不写入仓库、trace、异常或测试快照",
+    "默认使用 HTTPS DeepSeek Responses API 和 json_schema 结构化输出",
+    "模型只收到 M1 system instruction、最小 user payload 和 response schema",
+    "401、402、400、422 等非瞬态错误失败关闭，不盲目重试",
+    "429、5xx 和瞬态网络错误执行有界重试",
+    "Provider 响应仍需通过现有 M1ModelOutput 与 grounding 校验",
+    "测试不发起真实网络请求、不消耗用户额度"
+  ],
+  "acceptance": [
+    "DeepSeek 配置可由环境变量安全构造并拒绝缺失 Key 或不安全 Base URL",
+    "请求体使用 Responses API json_schema 且不混入 Chunk 系统字段",
+    "成功响应、空响应、不完整响应、鉴权、余额、限流、5xx、超时和重试路径有自动测试",
+    "trace 仅包含脱敏元数据、响应 ID、usage、耗时和尝试次数",
+    "README 与 .env.example 提供不粘贴密钥的运行方法",
+    "Project-to-Act、Lifecycle、自动测试和 git diff 检查通过",
+    "没有真实 API 调用时不宣称 DeepSeek 端到端质量完成"
+  ]
+}

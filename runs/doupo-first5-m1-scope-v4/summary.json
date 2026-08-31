@@ -1,0 +1,36 @@
+{
+  "schema_version": "m1-batch-summary-v1",
+  "started_at": "2026-08-30T13:47:11.828824Z",
+  "completed_at": "2026-08-30T13:52:08.965624Z",
+  "duration_ms": 297125,
+  "source_document_version_id": "doupo-first5-7ca3fd295b5d0d45",
+  "document_hash": "7ca3fd295b5d0d454ca0b0bac2f4a49f2271602fc8e55bca2f120bb11d85172a",
+  "total_characters": 14160,
+  "chunking_policy_version": "fixed-codepoint-window-2500-overlap-250-v1",
+  "planned_chunks": 7,
+  "succeeded_chunks": 7,
+  "failed_chunks": 0,
+  "resumed_chunks": 2,
+  "new_provider_calls": 5,
+  "models": [
+    "deepseek-v4-flash"
+  ],
+  "candidate_mentions": 37,
+  "candidate_mentions_by_type": {
+    "exact": 18,
+    "describe": 19,
+    "null": 0
+  },
+  "grounded_mentions": 37,
+  "approved_evidence_quotes": 94,
+  "rejected_evidence_quotes": 0,
+  "usage": {
+    "input_tokens": 17346,
+    "cached_input_tokens": 14592,
+    "output_tokens": 33717,
+    "reasoning_tokens": 30978,
+    "total_tokens": 51063
+  },
+  "complete": true,
+  "quality_note": "Counts describe schema-valid model output and deterministic quote grounding; they are not a human-verified character-quality score. Overlap may duplicate mentions."
+}

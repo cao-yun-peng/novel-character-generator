@@ -1,0 +1,499 @@
+[
+  {
+    "chunk_index": 1,
+    "chunk_id": "chunk-000001-0-2500-8c90daca7aee",
+    "target_local_mention_id": "m1",
+    "target_mention_quote": "萧炎",
+    "task_cache_key": "74a68bd49ea53b9b9a9e524863307b0d144375322c415cb2fb9caf2dd827aff7",
+    "model_output": {
+      "belongs_to_target": [
+        {
+          "fact_quote": "面无表情",
+          "category": "face",
+          "attribute": "表情",
+          "value": "面无表情"
+        },
+        {
+          "fact_quote": "唇角有着一抹自嘲",
+          "category": "face",
+          "attribute": "唇角",
+          "value": "自嘲"
+        },
+        {
+          "fact_quote": "有些清秀的稚嫩脸庞",
+          "category": "face",
+          "attribute": "脸庞",
+          "value": "清秀稚嫩"
+        },
+        {
+          "fact_quote": "漆黑的眸子",
+          "category": "face",
+          "attribute": "眸子",
+          "value": "漆黑"
+        }
+      ]
+    }
+  },
+  {
+    "chunk_index": 1,
+    "chunk_id": "chunk-000001-0-2500-8c90daca7aee",
+    "target_local_mention_id": "m3",
+    "target_mention_quote": "萧媚",
+    "task_cache_key": "3f799ac222551006348f28b75ce8ea651bd4b1f4e5a612efeba4d9368508239e",
+    "model_output": {
+      "belongs_to_target": [
+        {
+          "fact_quote": "少女年龄不过十四左右",
+          "category": "age",
+          "attribute": "年龄",
+          "value": "十四左右"
+        },
+        {
+          "fact_quote": "稚气未脱的小脸",
+          "category": "face",
+          "attribute": "脸特征",
+          "value": "稚气未脱"
+        },
+        {
+          "fact_quote": "淡淡的妩媚",
+          "category": "face",
+          "attribute": "神情",
+          "value": "淡淡的妩媚"
+        },
+        {
+          "fact_quote": "得意的笑容",
+          "category": "face",
+          "attribute": "笑容",
+          "value": "得意的笑容"
+        }
+      ]
+    }
+  },
+  {
+    "chunk_index": 1,
+    "chunk_id": "chunk-000001-0-2500-8c90daca7aee",
+    "target_local_mention_id": "m5",
+    "target_mention_quote": "萧薰儿",
+    "task_cache_key": "dffb9d1459a6bd34aaaf0d8c4a3f9174f0976c494785dffbc91bc0337fef87af",
+    "model_output": {
+      "belongs_to_target": [
+        {
+          "fact_quote": "身着紫色衣裙",
+          "category": "clothing",
+          "attribute": "衣着",
+          "value": "紫色衣裙"
+        },
+        {
+          "fact_quote": "镶着黑金丝的紫袖",
+          "category": "clothing",
+          "attribute": "衣袖",
+          "value": "镶黑金丝的紫袖"
+        },
+        {
+          "fact_quote": "雪白娇嫩的皓腕",
+          "category": "body",
+          "attribute": "手腕",
+          "value": "雪白娇嫩"
+        },
+        {
+          "fact_quote": "稚嫩俏脸",
+          "category": "face",
+          "attribute": "面容",
+          "value": "稚嫩俏丽"
+        },
+        {
+          "fact_quote": "美丽的俏脸",
+          "category": "face",
+          "attribute": "面容",
+          "value": "美丽"
+        },
+        {
+          "fact_quote": "清雅笑容",
+          "category": "face",
+          "attribute": "笑容",
+          "value": "清雅"
+        },
+        {
+          "fact_quote": "小小年纪",
+          "category": "age",
+          "attribute": "年龄",
+          "value": "年幼"
+        }
+      ]
+    }
+  },
+  {
+    "chunk_index": 2,
+    "chunk_id": "chunk-000002-2250-4750-84c9baa8a8da",
+    "target_local_mention_id": "m1",
+    "target_mention_quote": "萧薰儿",
+    "task_cache_key": "d1ddf590eb10788495b06e7443c9bad987ca4ff51b6deb63a7085a40968932d4",
+    "model_output": {
+      "belongs_to_target": [
+        {
+          "fact_quote": "平淡的小脸",
+          "category": "appearance_state",
+          "attribute": "表情",
+          "value": "平淡"
+        },
+        {
+          "fact_quote": "美丽的俏脸",
+          "category": "face",
+          "attribute": "容貌",
+          "value": "美丽"
+        },
+        {
+          "fact_quote": "萧薰儿纤细的眉毛",
+          "category": "face",
+          "attribute": "眉毛",
+          "value": "纤细"
+        },
+        {
+          "fact_quote": "白皙的俏脸",
+          "category": "face",
+          "attribute": "脸色",
+          "value": "白皙"
+        }
+      ]
+    }
+  },
+  {
+    "chunk_index": 2,
+    "chunk_id": "chunk-000002-2250-4750-84c9baa8a8da",
+    "target_local_mention_id": "m3",
+    "target_mention_quote": "萧炎",
+    "task_cache_key": "779c88862e2a17422baaa33ae0b1e837636940366d7c96c3c448a19ba21379de",
+    "model_output": {
+      "belongs_to_target": [
+        {
+          "fact_quote": "孤独背影",
+          "category": "appearance_state",
+          "attribute": "背影状态",
+          "value": "孤独"
+        },
+        {
+          "fact_quote": "有些白皙的手掌",
+          "category": "body",
+          "attribute": "手掌肤色",
+          "value": "白皙"
+        },
+        {
+          "fact_quote": "脸庞狰狞",
+          "category": "face",
+          "attribute": "面部表情",
+          "value": "狰狞"
+        }
+      ]
+    }
+  },
+  {
+    "chunk_index": 3,
+    "chunk_id": "chunk-000003-4500-7000-dbdb791747b5",
+    "target_local_mention_id": "m1",
+    "target_mention_quote": "萧炎",
+    "task_cache_key": "b54c093efa5d8dae124c593d7d8d8b19ab6f5b2383b1074c2580d6411f071d89",
+    "model_output": {
+      "belongs_to_target": [
+        {
+          "fact_quote": "那依旧有些稚嫩的清秀脸庞",
+          "category": "face",
+          "attribute": "脸庞",
+          "value": "清秀稚嫩"
+        }
+      ]
+    }
+  },
+  {
+    "chunk_index": 3,
+    "chunk_id": "chunk-000003-4500-7000-dbdb791747b5",
+    "target_local_mention_id": "m2",
+    "target_mention_quote": "萧战",
+    "task_cache_key": "585c0615dc69bacb194ad4db2b19fc284d0ed89e172638081234f36c9e229d61",
+    "model_output": {
+      "belongs_to_target": [
+        {
+          "fact_quote": "中年人",
+          "category": "age",
+          "attribute": "年龄阶段",
+          "value": "中年"
+        },
+        {
+          "fact_quote": "华贵的灰色衣衫",
+          "category": "clothing",
+          "attribute": "衣着",
+          "value": "华贵的灰色衣衫"
+        },
+        {
+          "fact_quote": "一对粗眉",
+          "category": "face",
+          "attribute": "眉毛",
+          "value": "一对粗眉"
+        }
+      ]
+    }
+  },
+  {
+    "chunk_index": 4,
+    "chunk_id": "chunk-000004-6750-9250-4d57b02a87a6",
+    "target_local_mention_id": "m1",
+    "target_mention_quote": "萧炎",
+    "task_cache_key": "f9fc5cc190dfe3d88d07913abfa88e88cc293567c2f1316e6be139146e75421f",
+    "model_output": {
+      "belongs_to_target": [
+        {
+          "fact_quote": "漆黑的眼中",
+          "category": "face",
+          "attribute": "眼色",
+          "value": "漆黑"
+        },
+        {
+          "fact_quote": "少年稚嫩的脸庞",
+          "category": "face",
+          "attribute": "脸庞",
+          "value": "稚嫩"
+        },
+        {
+          "fact_quote": "幼稚的外貌",
+          "category": "appearance_state",
+          "attribute": "外貌",
+          "value": "幼稚"
+        }
+      ]
+    }
+  },
+  {
+    "chunk_index": 4,
+    "chunk_id": "chunk-000004-6750-9250-4d57b02a87a6",
+    "target_local_mention_id": "m7",
+    "target_mention_quote": "萧熏儿",
+    "task_cache_key": "0b3631ccae31d4179c1dc04cde7273397f6eaba6179556f1bc15ad897ba07d6b",
+    "model_output": {
+      "belongs_to_target": [
+        {
+          "fact_quote": "微笑的小脸",
+          "category": "face",
+          "attribute": "表情",
+          "value": "微笑"
+        },
+        {
+          "fact_quote": "小脸上露出可爱的小酒窝",
+          "category": "face",
+          "attribute": "酒窝",
+          "value": "可爱的小酒窝"
+        },
+        {
+          "fact_quote": "纤细的指尖",
+          "category": "body",
+          "attribute": "手指",
+          "value": "纤细"
+        }
+      ]
+    }
+  },
+  {
+    "chunk_index": 5,
+    "chunk_id": "chunk-000005-9000-11500-0cb89a2a0c18",
+    "target_local_mention_id": "m1",
+    "target_mention_quote": "萧熏儿",
+    "task_cache_key": "d85a6e5c24b52d09c76618d1973c51bf713308321ed7f209718071d5b24813b2",
+    "model_output": {
+      "belongs_to_target": [
+        {
+          "fact_quote": "微笑的小脸",
+          "category": "face",
+          "attribute": "表情",
+          "value": "微笑"
+        },
+        {
+          "fact_quote": "小脸上露出可爱的小酒窝",
+          "category": "face",
+          "attribute": "酒窝",
+          "value": "可爱"
+        },
+        {
+          "fact_quote": "纤细的指尖",
+          "category": "body",
+          "attribute": "指尖",
+          "value": "纤细"
+        },
+        {
+          "fact_quote": "修长的睫毛",
+          "category": "face",
+          "attribute": "睫毛",
+          "value": "修长"
+        },
+        {
+          "fact_quote": "光洁侧脸",
+          "category": "face",
+          "attribute": "侧脸",
+          "value": "光洁"
+        },
+        {
+          "fact_quote": "小嘴泛起了柔和的笑意",
+          "category": "face",
+          "attribute": "嘴",
+          "value": "柔和笑意"
+        },
+        {
+          "fact_quote": "美丽的眼睛微弯",
+          "category": "face",
+          "attribute": "眼睛",
+          "value": "美丽微弯"
+        }
+      ]
+    }
+  },
+  {
+    "chunk_index": 5,
+    "chunk_id": "chunk-000005-9000-11500-0cb89a2a0c18",
+    "target_local_mention_id": "m3",
+    "target_mention_quote": "纳兰嫣然",
+    "task_cache_key": "31986cf2785b50d2b3237cc753b777a6b698feb7f842ec160b80ad325c75447d",
+    "model_output": {
+      "belongs_to_target": [
+        {
+          "fact_quote": "对面的少女虽然美丽",
+          "category": "other_visual",
+          "attribute": "外貌",
+          "value": "美丽"
+        },
+        {
+          "fact_quote": "美丽娇俏",
+          "category": "other_visual",
+          "attribute": "外貌",
+          "value": "美丽娇俏"
+        }
+      ]
+    }
+  },
+  {
+    "chunk_index": 6,
+    "chunk_id": "chunk-000006-11250-13750-03087dc524e6",
+    "target_local_mention_id": "m1",
+    "target_mention_quote": "萧炎",
+    "task_cache_key": "3101f18217f5dc353e535e3fc1dfd6f2a1e4bd51b15b8698b27cd6a3a18c05f6",
+    "model_output": {
+      "belongs_to_target": [
+        {
+          "fact_quote": "年仅十五岁",
+          "category": "age",
+          "attribute": "年龄",
+          "value": "十五岁"
+        }
+      ]
+    }
+  },
+  {
+    "chunk_index": 6,
+    "chunk_id": "chunk-000006-11250-13750-03087dc524e6",
+    "target_local_mention_id": "m2",
+    "target_mention_quote": "熏儿",
+    "task_cache_key": "ae406ec3725fbc4916c342120688e4dfc1bb9f94bc15954dbd3858781793da5d",
+    "model_output": {
+      "belongs_to_target": [
+        {
+          "fact_quote": "一只娇嫩的小手",
+          "category": "body",
+          "attribute": "手",
+          "value": "娇嫩"
+        }
+      ]
+    }
+  },
+  {
+    "chunk_index": 6,
+    "chunk_id": "chunk-000006-11250-13750-03087dc524e6",
+    "target_local_mention_id": "m3",
+    "target_mention_quote": "萧战",
+    "task_cache_key": "3c138ef164aea299b4a86b7795d4249122f1f3c5c7c9c58d7bf79e986862389c",
+    "model_output": {
+      "belongs_to_target": [
+        {
+          "fact_quote": "硕大的手掌",
+          "category": "body",
+          "attribute": "手掌",
+          "value": "硕大"
+        },
+        {
+          "fact_quote": "阴沉至极的脸色",
+          "category": "face",
+          "attribute": "脸色",
+          "value": "阴沉至极"
+        }
+      ]
+    }
+  },
+  {
+    "chunk_index": 6,
+    "chunk_id": "chunk-000006-11250-13750-03087dc524e6",
+    "target_local_mention_id": "m4",
+    "target_mention_quote": "葛叶",
+    "task_cache_key": "4760c01d1d9260e42a3c72f2d870185629a22bbd6d07fd90e18202d663addddc",
+    "model_output": {
+      "belongs_to_target": [
+        {
+          "fact_quote": "白袍",
+          "category": "clothing",
+          "attribute": "外衣",
+          "value": "白袍"
+        },
+        {
+          "fact_quote": "脸庞也顿时凝重了起来",
+          "category": "appearance_state",
+          "attribute": "面部表情",
+          "value": "凝重"
+        },
+        {
+          "fact_quote": "鹰爪般的双手",
+          "category": "body",
+          "attribute": "手部形态",
+          "value": "鹰爪般"
+        }
+      ]
+    }
+  },
+  {
+    "chunk_index": 7,
+    "chunk_id": "chunk-000007-13500-14160-d83b17f39d7c",
+    "target_local_mention_id": "m1",
+    "target_mention_quote": "萧战",
+    "task_cache_key": "20b266e79701a71c3996edcffe9d7135e35770d6832b55a07fe55b78d4dfa3c4",
+    "model_output": {
+      "belongs_to_target": [
+        {
+          "fact_quote": "萧战脸色淡漠",
+          "category": "appearance_state",
+          "attribute": "脸色",
+          "value": "淡漠"
+        }
+      ]
+    }
+  },
+  {
+    "chunk_index": 7,
+    "chunk_id": "chunk-000007-13500-14160-d83b17f39d7c",
+    "target_local_mention_id": "m3",
+    "target_mention_quote": "葛叶",
+    "task_cache_key": "877daf089c986a58f0a51348d0189d8189ce87fb21d2abe2ec428e3686bbfeef",
+    "model_output": {
+      "belongs_to_target": [
+        {
+          "fact_quote": "鹰爪般的双手",
+          "category": "body",
+          "attribute": "双手",
+          "value": "鹰爪般"
+        }
+      ]
+    }
+  },
+  {
+    "chunk_index": 7,
+    "chunk_id": "chunk-000007-13500-14160-d83b17f39d7c",
+    "target_local_mention_id": "m4",
+    "target_mention_quote": "纳兰嫣然",
+    "task_cache_key": "1398d61b2acd74181393814cd604e33ecac20b27027bd2800e3fa19b7da5c325",
+    "model_output": {
+      "belongs_to_target": []
+    }
+  }
+]

@@ -1,0 +1,53 @@
+{
+  "schema_version": "identity-task-result-v1",
+  "task_index": 15,
+  "current_label_quote": "萧战",
+  "candidate_label_quote": "萧战",
+  "task_cache_key": "6940c01075c01d6feb090848030d3b625204df5c59550820ce839c22b8076957",
+  "model_output": {
+    "identity_relation": "same_character",
+    "label_relation": "same_surface",
+    "identity_evidence_quotes": [
+      "他便是萧家现任族长，同时也是萧炎的父亲，五星大斗师，萧战！"
+    ]
+  },
+  "grounded_result": {
+    "schema_version": "grounded-identity-decision-v1",
+    "current_node_key": "64cc050d632779491f4f9216798139ec084df016dac8a8bb7c22d6f734d7f282",
+    "candidate_node_key": "0064297f50578e6e78bd2dafb75cff6253f8d2346d02a77c48240a363959455a",
+    "task_cache_key": "6940c01075c01d6feb090848030d3b625204df5c59550820ce839c22b8076957",
+    "requested_identity_relation": "same_character",
+    "identity_relation": "same_character",
+    "label_relation": "same_surface",
+    "grounded_identity_evidence": [
+      {
+        "evidence_quote": "他便是萧家现任族长，同时也是萧炎的父亲，五星大斗师，萧战！",
+        "document_span": {
+          "start": 5849,
+          "end": 5878
+        },
+        "match_mode": "exact"
+      }
+    ],
+    "issues": []
+  },
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 4813,
+    "http_status": 200,
+    "response_id": "d0d783d4-fcf8-4f70-95a8-905a7871f3e0",
+    "usage": {
+      "input_tokens": 1680,
+      "cached_input_tokens": 512,
+      "output_tokens": 528,
+      "reasoning_tokens": 476,
+      "total_tokens": 2208
+    },
+    "error_kind": null
+  }
+}

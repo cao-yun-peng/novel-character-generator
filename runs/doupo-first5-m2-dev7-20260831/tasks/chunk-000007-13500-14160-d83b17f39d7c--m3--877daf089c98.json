@@ -1,0 +1,69 @@
+{
+  "schema_version": "m2-attribution-task-result-v1",
+  "source_run_dir": "E:\\project\\agent\\novel-cahracter-generator\\runs\\doupo-first5-m1-scope-v4",
+  "chunk_index": 7,
+  "chunk_id": "chunk-000007-13500-14160-d83b17f39d7c",
+  "target_local_mention_id": "m3",
+  "target_mention_quote": "葛叶",
+  "task_cache_key": "877daf089c986a58f0a51348d0189d8189ce87fb21d2abe2ec428e3686bbfeef",
+  "model_output": {
+    "belongs_to_target": [
+      {
+        "fact_quote": "鹰爪般的双手",
+        "category": "body",
+        "attribute": "双手",
+        "value": "鹰爪般"
+      }
+    ]
+  },
+  "grounded_result": {
+    "target_character_ref": {
+      "source_document_version_id": "doupo-first5-7ca3fd295b5d0d45",
+      "chunk_id": "chunk-000007-13500-14160-d83b17f39d7c",
+      "local_mention_id": "m3",
+      "mention_type": "exact",
+      "packet_hash": "d744fff8b247cac4f1867e446c25570055a67ed4d9e0193491022f7374ae489d"
+    },
+    "task_cache_key": "877daf089c986a58f0a51348d0189d8189ce87fb21d2abe2ec428e3686bbfeef",
+    "grounded_belongs_to_target": [
+      {
+        "fact_quote": "鹰爪般的双手",
+        "category": "body",
+        "attribute": "双手",
+        "value": "鹰爪般",
+        "source_mention_id": "m3",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "鹰爪般的双手",
+        "source_evidence_span": {
+          "start": 65,
+          "end": 71
+        },
+        "fact_chunk_span": {
+          "start": 65,
+          "end": 71
+        },
+        "match_mode": "exact"
+      }
+    ]
+  },
+  "grounding_issues": [],
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 4828,
+    "http_status": 200,
+    "response_id": "9e876762-94a8-47a1-b544-e64e2bcf1f74",
+    "usage": {
+      "input_tokens": 960,
+      "cached_input_tokens": 384,
+      "output_tokens": 465,
+      "reasoning_tokens": 432,
+      "total_tokens": 1425
+    },
+    "error_kind": null
+  }
+}

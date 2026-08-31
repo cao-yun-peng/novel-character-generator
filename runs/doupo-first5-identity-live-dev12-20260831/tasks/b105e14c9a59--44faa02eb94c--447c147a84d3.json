@@ -1,0 +1,62 @@
+{
+  "schema_version": "identity-task-result-v1",
+  "task_index": 3,
+  "current_label_quote": "萧炎",
+  "candidate_label_quote": "萧炎",
+  "task_cache_key": "447c147a84d34add30fa08513ec31829e7ff3973db57b4d99eebc5e921619141",
+  "model_output": {
+    "identity_relation": "same_character",
+    "label_relation": "same_surface",
+    "identity_evidence_quotes": [
+      "他便是萧家现任族长，同时也是萧炎的父亲",
+      "想起下午的测试，萧炎轻叹了一口气"
+    ]
+  },
+  "grounded_result": {
+    "schema_version": "grounded-identity-decision-v1",
+    "current_node_key": "b105e14c9a599acbd6eacb0b5a9a8922c2488a2bff5ce652dee8c6295a2aaa06",
+    "candidate_node_key": "44faa02eb94cb6424093f987886661e5e99bab93a8132d2ac9e0e5d2b6024688",
+    "task_cache_key": "447c147a84d34add30fa08513ec31829e7ff3973db57b4d99eebc5e921619141",
+    "requested_identity_relation": "same_character",
+    "identity_relation": "same_character",
+    "label_relation": "same_surface",
+    "grounded_identity_evidence": [
+      {
+        "evidence_quote": "想起下午的测试，萧炎轻叹了一口气",
+        "document_span": {
+          "start": 3073,
+          "end": 3089
+        },
+        "match_mode": "exact"
+      },
+      {
+        "evidence_quote": "他便是萧家现任族长，同时也是萧炎的父亲",
+        "document_span": {
+          "start": 5849,
+          "end": 5868
+        },
+        "match_mode": "exact"
+      }
+    ],
+    "issues": []
+  },
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 18578,
+    "http_status": 200,
+    "response_id": "f8d0a043-01f9-41ff-a609-d173a3cbb807",
+    "usage": {
+      "input_tokens": 1860,
+      "cached_input_tokens": 512,
+      "output_tokens": 1921,
+      "reasoning_tokens": 1858,
+      "total_tokens": 3781
+    },
+    "error_kind": null
+  }
+}

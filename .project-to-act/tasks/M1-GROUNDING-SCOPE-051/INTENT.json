@@ -1,0 +1,17 @@
+{
+  "task_id": "M1-GROUNDING-SCOPE-051",
+  "decision_id": "DEC-20260830-M1-SCOPE-GROUNDING-051",
+  "current_behavior": "Grounded mention 保存所有同文 occurrence 的数量和 span；evidence 只接受严格 substring；M1 无法标记集合人物。",
+  "desired_behavior": "只验证 mention_quote 准确存在；evidence 可做受限空白等价恢复；mention_scope 区分 individual/collective，collective 明确隔离。",
+  "breaking_changes": [
+    "M1 model output 新增必填 mention_scope",
+    "GroundedMention 删除 mention_occurrence_count 和 mention_source_spans",
+    "ApprovedEvidence 增加 match_mode，并在空白恢复时回填 raw evidence_quote"
+  ],
+  "non_goals": [
+    "mention occurrence-specific anchoring",
+    "文档级人物合并",
+    "M2/N3 实现",
+    "重新运行真实模型"
+  ]
+}

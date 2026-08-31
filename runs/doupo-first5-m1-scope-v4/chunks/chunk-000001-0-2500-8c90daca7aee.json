@@ -1,0 +1,474 @@
+{
+  "schema_version": "m1-chunk-result-v2",
+  "chunk_index": 1,
+  "chunk_id": "chunk-000001-0-2500-8c90daca7aee",
+  "chunk_hash": "8c90daca7aee7b6aa98157beedb8c08c41bbb33ad9672b5ed66f588685fc2803",
+  "chunk_source_span": {
+    "start": 0,
+    "end": 2500
+  },
+  "model_output": {
+    "candidate_mentions": [
+      {
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "萧炎",
+        "evidence_quotes": [
+          "少年面无表情，唇角有着一抹自嘲，紧握的手掌，因为大力，而导致略微尖锐的指甲深深的刺进了掌心之中，带来一阵阵钻心的疼痛……",
+          "少年缓缓抬起头来，露出一张有些清秀的稚嫩脸庞，漆黑的眸子木然的在周围那些嘲讽的同龄人身上扫过",
+          "孤单的身影，与周围的世界，有些格格不入"
+        ]
+      },
+      {
+        "mention_type": "describe",
+        "mention_scope": "individual",
+        "mention_quote": "少年",
+        "evidence_quotes": [
+          "少年面无表情，唇角有着一抹自嘲，紧握的手掌，因为大力，而导致略微尖锐的指甲深深的刺进了掌心之中，带来一阵阵钻心的疼痛……",
+          "少年缓缓抬起头来，露出一张有些清秀的稚嫩脸庞，漆黑的眸子木然的在周围那些嘲讽的同龄人身上扫过",
+          "孤单的身影，与周围的世界，有些格格不入"
+        ]
+      },
+      {
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "萧媚",
+        "evidence_quotes": [
+          "少女年龄不过十四左右，虽然并算不上绝色，不过那张稚气未脱的小脸，却是蕴含着淡淡的妩媚，清纯与妩媚，矛盾的集合",
+          "少女脸颊扬起了得意的笑容"
+        ]
+      },
+      {
+        "mention_type": "describe",
+        "mention_scope": "individual",
+        "mention_quote": "少女",
+        "evidence_quotes": [
+          "少女年龄不过十四左右，虽然并算不上绝色，不过那张稚气未脱的小脸，却是蕴含着淡淡的妩媚，清纯与妩媚，矛盾的集合",
+          "少女脸颊扬起了得意的笑容"
+        ]
+      },
+      {
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "萧薰儿",
+        "evidence_quotes": [
+          "一位身着紫色衣裙的少女，正淡雅的站立，平静的稚嫩俏脸，并未因为众人的注目而改变分毫",
+          "少女清冷淡然的气质，犹如清莲初绽，小小年纪，却已初具脱俗气质",
+          "镶着黑金丝的紫袖滑落而下，露出一截雪白娇嫩的皓腕",
+          "美丽的俏脸上，居然露出了让周围少女为之嫉妒的清雅笑容"
+        ]
+      },
+      {
+        "mention_type": "describe",
+        "mention_scope": "individual",
+        "mention_quote": "紫裙少女",
+        "evidence_quotes": [
+          "一位身着紫色衣裙的少女，正淡雅的站立，平静的稚嫩俏脸，并未因为众人的注目而改变分毫",
+          "少女清冷淡然的气质，犹如清莲初绽，小小年纪，却已初具脱俗气质",
+          "镶着黑金丝的紫袖滑落而下，露出一截雪白娇嫩的皓腕",
+          "美丽的俏脸上，居然露出了让周围少女为之嫉妒的清雅笑容"
+        ]
+      },
+      {
+        "mention_type": "describe",
+        "mention_scope": "individual",
+        "mention_quote": "少女",
+        "evidence_quotes": [
+          "一位身着紫色衣裙的少女，正淡雅的站立，平静的稚嫩俏脸，并未因为众人的注目而改变分毫",
+          "少女清冷淡然的气质，犹如清莲初绽，小小年纪，却已初具脱俗气质",
+          "镶着黑金丝的紫袖滑落而下，露出一截雪白娇嫩的皓腕",
+          "美丽的俏脸上，居然露出了让周围少女为之嫉妒的清雅笑容"
+        ]
+      }
+    ]
+  },
+  "grounded_packet": {
+    "schema_version": "grounded-character-packet-v4",
+    "source_document_version_id": "doupo-first5-7ca3fd295b5d0d45",
+    "chunking_policy_version": "fixed-codepoint-window-2500-overlap-250-v1",
+    "chunk_id": "chunk-000001-0-2500-8c90daca7aee",
+    "chunk_hash": "8c90daca7aee7b6aa98157beedb8c08c41bbb33ad9672b5ed66f588685fc2803",
+    "chunk_source_span": {
+      "start": 0,
+      "end": 2500
+    },
+    "grounded_mentions": [
+      {
+        "local_mention_id": "m1",
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "萧炎",
+        "mention_quote_hash": "6606fa555d642924e1cf668d0f315a3de95f93749a87047e13fd5c6bdf2401e1",
+        "approved_evidence": [
+          {
+            "evidence_quote": "少年面无表情，唇角有着一抹自嘲，紧握的手掌，因为大力，而导致略微尖锐的指甲深深的刺进了掌心之中，带来一阵阵钻心的疼痛……",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 50,
+                "end": 110
+              }
+            ],
+            "quote_hash": "a162eb1543d3cad0947cf6d46a5e561da9d7b8cebdb4a629415098768b12ef49",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "少年缓缓抬起头来，露出一张有些清秀的稚嫩脸庞，漆黑的眸子木然的在周围那些嘲讽的同龄人身上扫过",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 467,
+                "end": 513
+              }
+            ],
+            "quote_hash": "67ab82f134a181e0f698f5781abd2fc3fe0636b27367a600961500103132cf6a",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "孤单的身影，与周围的世界，有些格格不入",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 620,
+                "end": 639
+              }
+            ],
+            "quote_hash": "82fd52268079904cf875f02bed65cb3cb28e98a8414d7dcab8b2427e38b3c0f4",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "2d96bd1c277cc70f64248da0f99c51a2cf3680f201f7e188f8e979441e99c63b"
+      },
+      {
+        "local_mention_id": "m2",
+        "mention_type": "describe",
+        "mention_scope": "individual",
+        "mention_quote": "少年",
+        "mention_quote_hash": "749ca46754901e09cb4d09c6070da7dc273286e7b117144473fe8525c2965b93",
+        "approved_evidence": [
+          {
+            "evidence_quote": "少年面无表情，唇角有着一抹自嘲，紧握的手掌，因为大力，而导致略微尖锐的指甲深深的刺进了掌心之中，带来一阵阵钻心的疼痛……",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 50,
+                "end": 110
+              }
+            ],
+            "quote_hash": "a162eb1543d3cad0947cf6d46a5e561da9d7b8cebdb4a629415098768b12ef49",
+            "relation_to_mention": "contains_mention",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "少年缓缓抬起头来，露出一张有些清秀的稚嫩脸庞，漆黑的眸子木然的在周围那些嘲讽的同龄人身上扫过",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 467,
+                "end": 513
+              }
+            ],
+            "quote_hash": "67ab82f134a181e0f698f5781abd2fc3fe0636b27367a600961500103132cf6a",
+            "relation_to_mention": "contains_mention",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "孤单的身影，与周围的世界，有些格格不入",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 620,
+                "end": 639
+              }
+            ],
+            "quote_hash": "82fd52268079904cf875f02bed65cb3cb28e98a8414d7dcab8b2427e38b3c0f4",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "56b9cff393c3a97848a2ef9fac4e86a080244bdd62895f23b239e70682fb9134"
+      },
+      {
+        "local_mention_id": "m3",
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "萧媚",
+        "mention_quote_hash": "9b8404e8f8fd5b96e0a52135b408683dc05e84a0654885303db63ae069759ae1",
+        "approved_evidence": [
+          {
+            "evidence_quote": "少女年龄不过十四左右，虽然并算不上绝色，不过那张稚气未脱的小脸，却是蕴含着淡淡的妩媚，清纯与妩媚，矛盾的集合",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 727,
+                "end": 781
+              }
+            ],
+            "quote_hash": "aba2c585ca4d111d2bb8beb867348d22c5a09fb0ad4696bdbde8f6d122f20047",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "少女脸颊扬起了得意的笑容",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 924,
+                "end": 936
+              }
+            ],
+            "quote_hash": "ed2618341dd1b0191f276aba7d3cbab7d69f286b5a13ff1637acef6bb398a4b5",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "8d0e4251fd81e016d99236b7561cbe4af6f0e7e59b7ae7a95f41824bc47b7678"
+      },
+      {
+        "local_mention_id": "m4",
+        "mention_type": "describe",
+        "mention_scope": "individual",
+        "mention_quote": "少女",
+        "mention_quote_hash": "def0173ec2e72ea2c7ec872269b9ea0b2d634c92a2aeea96e3ef3e19a988ca85",
+        "approved_evidence": [
+          {
+            "evidence_quote": "少女年龄不过十四左右，虽然并算不上绝色，不过那张稚气未脱的小脸，却是蕴含着淡淡的妩媚，清纯与妩媚，矛盾的集合",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 727,
+                "end": 781
+              }
+            ],
+            "quote_hash": "aba2c585ca4d111d2bb8beb867348d22c5a09fb0ad4696bdbde8f6d122f20047",
+            "relation_to_mention": "contains_mention",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "少女脸颊扬起了得意的笑容",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 924,
+                "end": 936
+              }
+            ],
+            "quote_hash": "ed2618341dd1b0191f276aba7d3cbab7d69f286b5a13ff1637acef6bb398a4b5",
+            "relation_to_mention": "contains_mention",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "aef98fb32d220e02a124d95388ae9f7d8cb0203e66a8f27808519fdd541b2ba1"
+      },
+      {
+        "local_mention_id": "m5",
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "萧薰儿",
+        "mention_quote_hash": "ecf7cafd6488b575cbc8fd17e2528e73bc07189a92f9ed77e2da234ad51ab641",
+        "approved_evidence": [
+          {
+            "evidence_quote": "一位身着紫色衣裙的少女，正淡雅的站立，平静的稚嫩俏脸，并未因为众人的注目而改变分毫",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1704,
+                "end": 1745
+              }
+            ],
+            "quote_hash": "aab6ba5768e3c66d3c05275299ae49f1cf58b35f3dc7aed19f7186b2177d293e",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "少女清冷淡然的气质，犹如清莲初绽，小小年纪，却已初具脱俗气质",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1750,
+                "end": 1780
+              }
+            ],
+            "quote_hash": "27cad4a648e72be45c87eabd60dcf0432469e97e4835e9c29f4261a6e91caca6",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "镶着黑金丝的紫袖滑落而下，露出一截雪白娇嫩的皓腕",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1888,
+                "end": 1912
+              }
+            ],
+            "quote_hash": "bcca82240b4b3fa12ca04534023bd309ad37612f37d39cbf4e714f200a0dcd85",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "美丽的俏脸上，居然露出了让周围少女为之嫉妒的清雅笑容",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 2426,
+                "end": 2452
+              }
+            ],
+            "quote_hash": "25f80e787a882fddcf55bc1305de47dd5af20949a1ab8166dab394c4ac42146d",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "a7a4303e1d3b108d8de7d2d8cda8dfbd824184a2f08afe3b84b31881f1165812"
+      },
+      {
+        "local_mention_id": "m6",
+        "mention_type": "describe",
+        "mention_scope": "individual",
+        "mention_quote": "紫裙少女",
+        "mention_quote_hash": "1a3c47632ef7f2ad59f447daca40a3666739da6318d9264e246b1a72e4c06102",
+        "approved_evidence": [
+          {
+            "evidence_quote": "一位身着紫色衣裙的少女，正淡雅的站立，平静的稚嫩俏脸，并未因为众人的注目而改变分毫",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1704,
+                "end": 1745
+              }
+            ],
+            "quote_hash": "aab6ba5768e3c66d3c05275299ae49f1cf58b35f3dc7aed19f7186b2177d293e",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "少女清冷淡然的气质，犹如清莲初绽，小小年纪，却已初具脱俗气质",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1750,
+                "end": 1780
+              }
+            ],
+            "quote_hash": "27cad4a648e72be45c87eabd60dcf0432469e97e4835e9c29f4261a6e91caca6",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "镶着黑金丝的紫袖滑落而下，露出一截雪白娇嫩的皓腕",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1888,
+                "end": 1912
+              }
+            ],
+            "quote_hash": "bcca82240b4b3fa12ca04534023bd309ad37612f37d39cbf4e714f200a0dcd85",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "美丽的俏脸上，居然露出了让周围少女为之嫉妒的清雅笑容",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 2426,
+                "end": 2452
+              }
+            ],
+            "quote_hash": "25f80e787a882fddcf55bc1305de47dd5af20949a1ab8166dab394c4ac42146d",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "e4148329278e403cfc0b1c8dfe98f80196eb4314f351e81464b83074cda8365f"
+      },
+      {
+        "local_mention_id": "m7",
+        "mention_type": "describe",
+        "mention_scope": "individual",
+        "mention_quote": "少女",
+        "mention_quote_hash": "def0173ec2e72ea2c7ec872269b9ea0b2d634c92a2aeea96e3ef3e19a988ca85",
+        "approved_evidence": [
+          {
+            "evidence_quote": "一位身着紫色衣裙的少女，正淡雅的站立，平静的稚嫩俏脸，并未因为众人的注目而改变分毫",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1704,
+                "end": 1745
+              }
+            ],
+            "quote_hash": "aab6ba5768e3c66d3c05275299ae49f1cf58b35f3dc7aed19f7186b2177d293e",
+            "relation_to_mention": "contains_mention",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "少女清冷淡然的气质，犹如清莲初绽，小小年纪，却已初具脱俗气质",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1750,
+                "end": 1780
+              }
+            ],
+            "quote_hash": "27cad4a648e72be45c87eabd60dcf0432469e97e4835e9c29f4261a6e91caca6",
+            "relation_to_mention": "contains_mention",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "镶着黑金丝的紫袖滑落而下，露出一截雪白娇嫩的皓腕",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1888,
+                "end": 1912
+              }
+            ],
+            "quote_hash": "bcca82240b4b3fa12ca04534023bd309ad37612f37d39cbf4e714f200a0dcd85",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "美丽的俏脸上，居然露出了让周围少女为之嫉妒的清雅笑容",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 2426,
+                "end": 2452
+              }
+            ],
+            "quote_hash": "25f80e787a882fddcf55bc1305de47dd5af20949a1ab8166dab394c4ac42146d",
+            "relation_to_mention": "contains_mention",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "e1483af11f4f3c3d74358c5e5b5aeb9e4cb78c1cf15f09af331ea295b595f280"
+      }
+    ],
+    "rejected_evidence": []
+  },
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 50610,
+    "http_status": 200,
+    "response_id": "a6525c7e-b98f-4f0c-a19a-2cf2e82adc44",
+    "usage": {
+      "input_tokens": 2630,
+      "cached_input_tokens": 2560,
+      "output_tokens": 6039,
+      "reasoning_tokens": 5198,
+      "total_tokens": 8669
+    },
+    "error_kind": null
+  }
+}

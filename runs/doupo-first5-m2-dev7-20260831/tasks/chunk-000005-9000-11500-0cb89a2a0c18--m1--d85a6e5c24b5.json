@@ -1,0 +1,213 @@
+{
+  "schema_version": "m2-attribution-task-result-v1",
+  "source_run_dir": "E:\\project\\agent\\novel-cahracter-generator\\runs\\doupo-first5-m1-scope-v4",
+  "chunk_index": 5,
+  "chunk_id": "chunk-000005-9000-11500-0cb89a2a0c18",
+  "target_local_mention_id": "m1",
+  "target_mention_quote": "萧熏儿",
+  "task_cache_key": "d85a6e5c24b52d09c76618d1973c51bf713308321ed7f209718071d5b24813b2",
+  "model_output": {
+    "belongs_to_target": [
+      {
+        "fact_quote": "微笑的小脸",
+        "category": "face",
+        "attribute": "表情",
+        "value": "微笑"
+      },
+      {
+        "fact_quote": "小脸上露出可爱的小酒窝",
+        "category": "face",
+        "attribute": "酒窝",
+        "value": "可爱"
+      },
+      {
+        "fact_quote": "纤细的指尖",
+        "category": "body",
+        "attribute": "指尖",
+        "value": "纤细"
+      },
+      {
+        "fact_quote": "修长的睫毛",
+        "category": "face",
+        "attribute": "睫毛",
+        "value": "修长"
+      },
+      {
+        "fact_quote": "光洁侧脸",
+        "category": "face",
+        "attribute": "侧脸",
+        "value": "光洁"
+      },
+      {
+        "fact_quote": "小嘴泛起了柔和的笑意",
+        "category": "face",
+        "attribute": "嘴",
+        "value": "柔和笑意"
+      },
+      {
+        "fact_quote": "美丽的眼睛微弯",
+        "category": "face",
+        "attribute": "眼睛",
+        "value": "美丽微弯"
+      }
+    ]
+  },
+  "grounded_result": {
+    "target_character_ref": {
+      "source_document_version_id": "doupo-first5-7ca3fd295b5d0d45",
+      "chunk_id": "chunk-000005-9000-11500-0cb89a2a0c18",
+      "local_mention_id": "m1",
+      "mention_type": "exact",
+      "packet_hash": "eccb6f9d8ab164fa2663749ef141b8deab855cbf19a379578bc4e97ca828ebbc"
+    },
+    "task_cache_key": "d85a6e5c24b52d09c76618d1973c51bf713308321ed7f209718071d5b24813b2",
+    "grounded_belongs_to_target": [
+      {
+        "fact_quote": "微笑的小脸",
+        "category": "face",
+        "attribute": "表情",
+        "value": "微笑",
+        "source_mention_id": "m1",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "微笑的小脸",
+        "source_evidence_span": {
+          "start": 130,
+          "end": 135
+        },
+        "fact_chunk_span": {
+          "start": 130,
+          "end": 135
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "小脸上露出可爱的小酒窝",
+        "category": "face",
+        "attribute": "酒窝",
+        "value": "可爱",
+        "source_mention_id": "m1",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "小脸上露出可爱的小酒窝",
+        "source_evidence_span": {
+          "start": 225,
+          "end": 236
+        },
+        "fact_chunk_span": {
+          "start": 225,
+          "end": 236
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "纤细的指尖",
+        "category": "body",
+        "attribute": "指尖",
+        "value": "纤细",
+        "source_mention_id": "m1",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "纤细的指尖",
+        "source_evidence_span": {
+          "start": 237,
+          "end": 242
+        },
+        "fact_chunk_span": {
+          "start": 237,
+          "end": 242
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "修长的睫毛",
+        "category": "face",
+        "attribute": "睫毛",
+        "value": "修长",
+        "source_mention_id": "m1",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "修长的睫毛",
+        "source_evidence_span": {
+          "start": 274,
+          "end": 279
+        },
+        "fact_chunk_span": {
+          "start": 274,
+          "end": 279
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "光洁侧脸",
+        "category": "face",
+        "attribute": "侧脸",
+        "value": "光洁",
+        "source_mention_id": "m1",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "光洁侧脸",
+        "source_evidence_span": {
+          "start": 360,
+          "end": 364
+        },
+        "fact_chunk_span": {
+          "start": 360,
+          "end": 364
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "小嘴泛起了柔和的笑意",
+        "category": "face",
+        "attribute": "嘴",
+        "value": "柔和笑意",
+        "source_mention_id": "m1",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "小嘴泛起了柔和的笑意",
+        "source_evidence_span": {
+          "start": 604,
+          "end": 614
+        },
+        "fact_chunk_span": {
+          "start": 604,
+          "end": 614
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "美丽的眼睛微弯",
+        "category": "face",
+        "attribute": "眼睛",
+        "value": "美丽微弯",
+        "source_mention_id": "m1",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "美丽的眼睛微弯",
+        "source_evidence_span": {
+          "start": 1891,
+          "end": 1898
+        },
+        "fact_chunk_span": {
+          "start": 1891,
+          "end": 1898
+        },
+        "match_mode": "exact"
+      }
+    ]
+  },
+  "grounding_issues": [],
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 10485,
+    "http_status": 200,
+    "response_id": "35686b09-ab09-47be-a7c4-25bd7d25c210",
+    "usage": {
+      "input_tokens": 2210,
+      "cached_input_tokens": 384,
+      "output_tokens": 1276,
+      "reasoning_tokens": 995,
+      "total_tokens": 3486
+    },
+    "error_kind": null
+  }
+}

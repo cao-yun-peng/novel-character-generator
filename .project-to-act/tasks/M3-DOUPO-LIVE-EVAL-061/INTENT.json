@@ -1,0 +1,13 @@
+{
+  "task_id": "M3-DOUPO-LIVE-EVAL-061",
+  "requested_by": "user",
+  "intent": "执行《斗破苍穹》现有 19 个 DeepSeek M3 身份任务，并交付经过代码 Grounding 的人物注册表和质量诊断。",
+  "current_behavior": "离线身份准备已生成 23 个局部人物节点、1 条确定性边和 19 个待执行任务；尚无真实 M3 模型输出或最终注册表。",
+  "expected_behavior": "19 个任务可恢复执行，模型输出经过严格 Grounding，完整批次生成全局人物注册表，并区分系统执行成功与人工身份质量。",
+  "non_goals": [
+    "不修改 M1/M2/N3/promotion 上游产物",
+    "不在本轮重新设计 Prompt 或候选策略，除非真实结果暴露阻断错误",
+    "不生成自然语言人物传记或图像提示词",
+    "不宣称 Stage 5 或身份质量 Gate 自动通过"
+  ]
+}

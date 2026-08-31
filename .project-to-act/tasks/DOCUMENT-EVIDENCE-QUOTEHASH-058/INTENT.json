@@ -1,0 +1,20 @@
+{
+  "task_id": "DOCUMENT-EVIDENCE-QUOTEHASH-058",
+  "user_request": "实现 Chunk-local span 到文档绝对 span、重叠 Chunk 人物事实去重和统一 document-character-evidence.json，并删除 M1/N2 每条 quote_hash 计算。",
+  "dedup_identity": [
+    "character_origin",
+    "character_label_quote",
+    "fact_quote",
+    "document_fact_span",
+    "category",
+    "attribute",
+    "value"
+  ],
+  "hash_policy": "删除 quote_hash/mention_quote_hash；保留用于版本、引用和整条文档事实身份的 packet/chunk/document/fact hashes。",
+  "non_goals": [
+    "同名人物跨章节身份推断",
+    "别名或称号合并",
+    "不同结构化解释自动裁决",
+    "模型调用或 Prompt 调优"
+  ]
+}

@@ -1,0 +1,439 @@
+[
+  {
+    "chunk_index": 1,
+    "chunk_id": "chunk-000001-0-2500-8c90daca7aee",
+    "chunk_source_span": {
+      "start": 0,
+      "end": 2500
+    },
+    "model_output": {
+      "candidate_mentions": [
+        {
+          "mention_type": "exact",
+          "mention_scope": "individual",
+          "mention_quote": "萧炎",
+          "evidence_quotes": [
+            "少年面无表情，唇角有着一抹自嘲，紧握的手掌，因为大力，而导致略微尖锐的指甲深深的刺进了掌心之中，带来一阵阵钻心的疼痛……",
+            "少年缓缓抬起头来，露出一张有些清秀的稚嫩脸庞，漆黑的眸子木然的在周围那些嘲讽的同龄人身上扫过",
+            "孤单的身影，与周围的世界，有些格格不入"
+          ]
+        },
+        {
+          "mention_type": "describe",
+          "mention_scope": "individual",
+          "mention_quote": "少年",
+          "evidence_quotes": [
+            "少年面无表情，唇角有着一抹自嘲，紧握的手掌，因为大力，而导致略微尖锐的指甲深深的刺进了掌心之中，带来一阵阵钻心的疼痛……",
+            "少年缓缓抬起头来，露出一张有些清秀的稚嫩脸庞，漆黑的眸子木然的在周围那些嘲讽的同龄人身上扫过",
+            "孤单的身影，与周围的世界，有些格格不入"
+          ]
+        },
+        {
+          "mention_type": "exact",
+          "mention_scope": "individual",
+          "mention_quote": "萧媚",
+          "evidence_quotes": [
+            "少女年龄不过十四左右，虽然并算不上绝色，不过那张稚气未脱的小脸，却是蕴含着淡淡的妩媚，清纯与妩媚，矛盾的集合",
+            "少女脸颊扬起了得意的笑容"
+          ]
+        },
+        {
+          "mention_type": "describe",
+          "mention_scope": "individual",
+          "mention_quote": "少女",
+          "evidence_quotes": [
+            "少女年龄不过十四左右，虽然并算不上绝色，不过那张稚气未脱的小脸，却是蕴含着淡淡的妩媚，清纯与妩媚，矛盾的集合",
+            "少女脸颊扬起了得意的笑容"
+          ]
+        },
+        {
+          "mention_type": "exact",
+          "mention_scope": "individual",
+          "mention_quote": "萧薰儿",
+          "evidence_quotes": [
+            "一位身着紫色衣裙的少女，正淡雅的站立，平静的稚嫩俏脸，并未因为众人的注目而改变分毫",
+            "少女清冷淡然的气质，犹如清莲初绽，小小年纪，却已初具脱俗气质",
+            "镶着黑金丝的紫袖滑落而下，露出一截雪白娇嫩的皓腕",
+            "美丽的俏脸上，居然露出了让周围少女为之嫉妒的清雅笑容"
+          ]
+        },
+        {
+          "mention_type": "describe",
+          "mention_scope": "individual",
+          "mention_quote": "紫裙少女",
+          "evidence_quotes": [
+            "一位身着紫色衣裙的少女，正淡雅的站立，平静的稚嫩俏脸，并未因为众人的注目而改变分毫",
+            "少女清冷淡然的气质，犹如清莲初绽，小小年纪，却已初具脱俗气质",
+            "镶着黑金丝的紫袖滑落而下，露出一截雪白娇嫩的皓腕",
+            "美丽的俏脸上，居然露出了让周围少女为之嫉妒的清雅笑容"
+          ]
+        },
+        {
+          "mention_type": "describe",
+          "mention_scope": "individual",
+          "mention_quote": "少女",
+          "evidence_quotes": [
+            "一位身着紫色衣裙的少女，正淡雅的站立，平静的稚嫩俏脸，并未因为众人的注目而改变分毫",
+            "少女清冷淡然的气质，犹如清莲初绽，小小年纪，却已初具脱俗气质",
+            "镶着黑金丝的紫袖滑落而下，露出一截雪白娇嫩的皓腕",
+            "美丽的俏脸上，居然露出了让周围少女为之嫉妒的清雅笑容"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "chunk_index": 2,
+    "chunk_id": "chunk-000002-2250-4750-84c9baa8a8da",
+    "chunk_source_span": {
+      "start": 2250,
+      "end": 4750
+    },
+    "model_output": {
+      "candidate_mentions": [
+        {
+          "mention_type": "exact",
+          "mention_scope": "individual",
+          "mention_quote": "萧薰儿",
+          "evidence_quotes": [
+            "萧薰儿纤细的眉毛",
+            "美丽的俏脸",
+            "白皙的俏脸",
+            "平淡的小脸"
+          ]
+        },
+        {
+          "mention_type": "describe",
+          "mention_scope": "individual",
+          "mention_quote": "少女",
+          "evidence_quotes": [
+            "平淡的小脸",
+            "美丽的俏脸",
+            "白皙的俏脸",
+            "萧薰儿纤细的眉毛"
+          ]
+        },
+        {
+          "mention_type": "exact",
+          "mention_scope": "individual",
+          "mention_quote": "萧炎",
+          "evidence_quotes": [
+            "有些白皙的手掌",
+            "脸庞狰狞",
+            "孤独背影"
+          ]
+        },
+        {
+          "mention_type": "describe",
+          "mention_scope": "individual",
+          "mention_quote": "少年",
+          "evidence_quotes": [
+            "有些白皙的手掌",
+            "脸庞狰狞",
+            "孤独背影"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "chunk_index": 3,
+    "chunk_id": "chunk-000003-4500-7000-dbdb791747b5",
+    "chunk_source_span": {
+      "start": 4500,
+      "end": 7000
+    },
+    "model_output": {
+      "candidate_mentions": [
+        {
+          "mention_type": "exact",
+          "mention_scope": "individual",
+          "mention_quote": "萧炎",
+          "evidence_quotes": [
+            "那依旧有些稚嫩的清秀脸庞",
+            "床榻之上，少年闭目盘腿而坐"
+          ]
+        },
+        {
+          "mention_type": "exact",
+          "mention_scope": "individual",
+          "mention_quote": "萧战",
+          "evidence_quotes": [
+            "中年人身着华贵的灰色衣衫，龙行虎步间颇有几分威严，脸上一对粗眉更是为其添了几分豪气"
+          ]
+        },
+        {
+          "mention_type": "describe",
+          "mention_scope": "individual",
+          "mention_quote": "中年人",
+          "evidence_quotes": [
+            "中年人身着华贵的灰色衣衫，龙行虎步间颇有几分威严，脸上一对粗眉更是为其添了几分豪气"
+          ]
+        },
+        {
+          "mention_type": "describe",
+          "mention_scope": "individual",
+          "mention_quote": "少年",
+          "evidence_quotes": [
+            "床榻之上，少年闭目盘腿而坐",
+            "那依旧有些稚嫩的清秀脸庞"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "chunk_index": 4,
+    "chunk_id": "chunk-000004-6750-9250-4d57b02a87a6",
+    "chunk_source_span": {
+      "start": 6750,
+      "end": 9250
+    },
+    "model_output": {
+      "candidate_mentions": [
+        {
+          "mention_type": "exact",
+          "mention_scope": "individual",
+          "mention_quote": "萧炎",
+          "evidence_quotes": [
+            "少年稚嫩的脸庞",
+            "幼稚的外貌",
+            "漆黑的眼中"
+          ]
+        },
+        {
+          "mention_type": "describe",
+          "mention_scope": "individual",
+          "mention_quote": "少年",
+          "evidence_quotes": [
+            "少年稚嫩的脸庞",
+            "幼稚的外貌"
+          ]
+        },
+        {
+          "mention_type": "describe",
+          "mention_scope": "individual",
+          "mention_quote": "青衫老者",
+          "evidence_quotes": [
+            "浑浊的老眼",
+            "青衫"
+          ]
+        },
+        {
+          "mention_type": "describe",
+          "mention_scope": "individual",
+          "mention_quote": "身穿月白衣袍的老者",
+          "evidence_quotes": [
+            "满脸笑容，神采奕奕，一双有些细小的双眼",
+            "衣袍胸口处，赫然绘有一弯银色浅月"
+          ]
+        },
+        {
+          "mention_type": "describe",
+          "mention_scope": "individual",
+          "mention_quote": "男子",
+          "evidence_quotes": [
+            "年龄在二十左右，英俊的相貌，配上挺拔的身材"
+          ]
+        },
+        {
+          "mention_type": "describe",
+          "mention_scope": "individual",
+          "mention_quote": "少女",
+          "evidence_quotes": [
+            "娇嫩的耳垂上吊有着绿色的玉坠",
+            "冷艳的小脸",
+            "已经开始发育的玲珑小胸脯"
+          ]
+        },
+        {
+          "mention_type": "exact",
+          "mention_scope": "individual",
+          "mention_quote": "萧熏儿",
+          "evidence_quotes": [
+            "微笑的小脸",
+            "小脸上露出可爱的小酒窝",
+            "纤细的指尖"
+          ]
+        },
+        {
+          "mention_type": "describe",
+          "mention_scope": "individual",
+          "mention_quote": "黄袍老者",
+          "evidence_quotes": [
+            "黄袍"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "chunk_index": 5,
+    "chunk_id": "chunk-000005-9000-11500-0cb89a2a0c18",
+    "chunk_source_span": {
+      "start": 9000,
+      "end": 11500
+    },
+    "model_output": {
+      "candidate_mentions": [
+        {
+          "mention_type": "exact",
+          "mention_scope": "individual",
+          "mention_quote": "萧熏儿",
+          "evidence_quotes": [
+            "微笑的小脸",
+            "小脸上露出可爱的小酒窝",
+            "纤细的指尖",
+            "修长的睫毛",
+            "光洁侧脸",
+            "小嘴泛起了柔和的笑意",
+            "美丽的眼睛微弯",
+            "小小年纪"
+          ]
+        },
+        {
+          "mention_type": "describe",
+          "mention_scope": "individual",
+          "mention_quote": "少女",
+          "evidence_quotes": [
+            "微笑的小脸",
+            "小脸上露出可爱的小酒窝",
+            "纤细的指尖",
+            "修长的睫毛",
+            "光洁侧脸",
+            "小嘴泛起了柔和的笑意",
+            "美丽的眼睛微弯",
+            "小小年纪"
+          ]
+        },
+        {
+          "mention_type": "exact",
+          "mention_scope": "individual",
+          "mention_quote": "纳兰嫣然",
+          "evidence_quotes": [
+            "对面的少女虽然美丽",
+            "美丽娇俏"
+          ]
+        },
+        {
+          "mention_type": "describe",
+          "mention_scope": "individual",
+          "mention_quote": "娇贵少女",
+          "evidence_quotes": [
+            "对面的少女虽然美丽",
+            "美丽娇俏"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "chunk_index": 6,
+    "chunk_id": "chunk-000006-11250-13750-03087dc524e6",
+    "chunk_source_span": {
+      "start": 11250,
+      "end": 13750
+    },
+    "model_output": {
+      "candidate_mentions": [
+        {
+          "mention_type": "exact",
+          "mention_scope": "individual",
+          "mention_quote": "萧炎",
+          "evidence_quotes": [
+            "年仅十五岁"
+          ]
+        },
+        {
+          "mention_type": "exact",
+          "mention_scope": "individual",
+          "mention_quote": "熏儿",
+          "evidence_quotes": [
+            "一只娇嫩的小手"
+          ]
+        },
+        {
+          "mention_type": "exact",
+          "mention_scope": "individual",
+          "mention_quote": "萧战",
+          "evidence_quotes": [
+            "硕大的手掌",
+            "阴沉至极的脸色"
+          ]
+        },
+        {
+          "mention_type": "exact",
+          "mention_scope": "individual",
+          "mention_quote": "葛叶",
+          "evidence_quotes": [
+            "白袍",
+            "鹰爪般的双手",
+            "脸庞也顿时凝重了起来"
+          ]
+        },
+        {
+          "mention_type": "describe",
+          "mention_scope": "individual",
+          "mention_quote": "白袍老者",
+          "evidence_quotes": [
+            "白袍"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "chunk_index": 7,
+    "chunk_id": "chunk-000007-13500-14160-d83b17f39d7c",
+    "chunk_source_span": {
+      "start": 13500,
+      "end": 14160
+    },
+    "model_output": {
+      "candidate_mentions": [
+        {
+          "mention_type": "exact",
+          "mention_scope": "individual",
+          "mention_quote": "萧战",
+          "evidence_quotes": [
+            "萧战脸色淡漠"
+          ]
+        },
+        {
+          "mention_type": "describe",
+          "mention_scope": "individual",
+          "mention_quote": "萧族长",
+          "evidence_quotes": [
+            "萧战脸色淡漠"
+          ]
+        },
+        {
+          "mention_type": "exact",
+          "mention_scope": "individual",
+          "mention_quote": "葛叶",
+          "evidence_quotes": [
+            "葛叶脸庞也顿时凝重了起来",
+            "鹰爪般的双手",
+            "葛叶大喜"
+          ]
+        },
+        {
+          "mention_type": "exact",
+          "mention_scope": "individual",
+          "mention_quote": "纳兰嫣然",
+          "evidence_quotes": [
+            "娇躯微微一颤"
+          ]
+        },
+        {
+          "mention_type": "describe",
+          "mention_scope": "collective",
+          "mention_quote": "少年们",
+          "evidence_quotes": [
+            "脸色猛的一白"
+          ]
+        }
+      ]
+    }
+  }
+]

@@ -1,0 +1,16 @@
+{
+  "task_id": "M1-DOUPO-LIVE-RUN-052",
+  "user_request": "使用 tests/小说/斗破苍穹前5章.txt 重新运行 M1，并分别交付模型输出与阶段输出。",
+  "input_path": "tests/小说/斗破苍穹前5章.txt",
+  "output_path": "runs/doupo-first5-m1-scope-v4",
+  "chunk_size": 2500,
+  "overlap_characters": 250,
+  "provider": "DeepSeek Responses API",
+  "scope_change": "首次鉴权失败后发现 CLI universal-newline 会把 CRLF 改为 LF；在正式重试前修复原始换行读取并补回归测试。",
+  "non_goals": [
+    "人工标注或模型质量 Gate",
+    "M2/N3 运行",
+    "修改 Prompt、Schema 或除原始 UTF-8 读取修复外的运行时代码",
+    "输出 API Key、完整 Prompt 或模型 reasoning"
+  ]
+}

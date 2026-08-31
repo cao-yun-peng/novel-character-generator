@@ -1,0 +1,36 @@
+{
+  "id": "N3-PROMOTION-DOUPO-RUN-057",
+  "title": "实现 N3 并运行斗破 remaining-describe promotion",
+  "status": "completed",
+  "owner": "Codex",
+  "objective": "实现同一 Chunk 内跨 exact 的 describe fact span 仲裁、唯一消费、冲突隔离和剩余池重建，并使用斗破前5章真实 M2 输出运行 N3 与可恢复 promotion。",
+  "risk_level": "L1-live-provider-cost",
+  "allowed_paths": [
+    "src",
+    "tests",
+    "docs",
+    "README.md",
+    "pyproject.toml",
+    "runs/doupo-first5-n3-promotion-dev9-20260831",
+    ".project-to-act"
+  ],
+  "invariants": [
+    "M1 model output、N2 packet 和 M2 attribution 产物保持不可变",
+    "N3 只消费派生 describe 工作池中的唯一无冲突 fact span",
+    "不同 exact 的相同或重叠 describe claim 必须隔离为 conflict，不能 promotion",
+    "未认领且非冲突的 individual describe 残片才进入 promotion",
+    "collective 不进入 N3 单人物池或 promotion",
+    "promotion 模型不读取 ref、span、hash、状态或审计字段",
+    "character_label_quote 可使用已验证的 source mention_quote；不新增人物名称 occurrence 统计",
+    "API Key、Prompt、正文和 reasoning 不进入 trace 或治理证据",
+    "单次实跑不构成人工人物质量 Gate"
+  ],
+  "acceptance": [
+    "N3 覆盖唯一消费、同 exact 去重、跨 exact 重叠冲突、非重叠独立消费和剩余片段重建测试",
+    "斗破 M2 18 个结果完成 N3，50 个 exact facts 进入 target packets",
+    "5 个 remaining describe 分别生成 promotion 任务并完成或明确进入 review",
+    "模型输出、N3 阶段输出、promotion grounded 输出、失败、summary、trace 和运行历史分离保存",
+    "所有 promoted fact_quote 安全唯一绑定剩余证据，collective 为 0 个 promotion 任务",
+    "全量测试、Schema、治理、Lifecycle 和 diff 验证通过"
+  ]
+}

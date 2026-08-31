@@ -1,0 +1,71 @@
+{
+  "schema_version": "identity-task-result-v1",
+  "task_index": 17,
+  "current_label_quote": "萧战",
+  "candidate_label_quote": "萧战",
+  "task_cache_key": "dd523bf441ad057bb1715c482ad28e3ed88696a607103b0fcf503467dd98b144",
+  "model_output": {
+    "identity_relation": "same_character",
+    "label_relation": "same_surface",
+    "identity_evidence_quotes": [
+      "萧战手中的玉石杯，轰然间化为了一蓬粉末。",
+      "萧战拳头紧握，淡淡的青色斗气，逐渐的覆盖了身躯",
+      "就在萧战的呼吸越加急促之声，三位长老的厉喝声，却是宛如惊雷般的在大厅中响起：“萧战，还不住手！你可不要忘记，你是萧家的族长！”"
+    ]
+  },
+  "grounded_result": {
+    "schema_version": "grounded-identity-decision-v1",
+    "current_node_key": "35318bb8623b35a899d7217c387e436a02ade5009074a299c30e62b8db8e6b81",
+    "candidate_node_key": "64cc050d632779491f4f9216798139ec084df016dac8a8bb7c22d6f734d7f282",
+    "task_cache_key": "dd523bf441ad057bb1715c482ad28e3ed88696a607103b0fcf503467dd98b144",
+    "requested_identity_relation": "same_character",
+    "identity_relation": "same_character",
+    "label_relation": "same_surface",
+    "grounded_identity_evidence": [
+      {
+        "evidence_quote": "萧战手中的玉石杯，轰然间化为了一蓬粉末。",
+        "document_span": {
+          "start": 13141,
+          "end": 13161
+        },
+        "match_mode": "exact"
+      },
+      {
+        "evidence_quote": "萧战拳头紧握，淡淡的青色斗气，逐渐的覆盖了身躯",
+        "document_span": {
+          "start": 13456,
+          "end": 13479
+        },
+        "match_mode": "exact"
+      },
+      {
+        "evidence_quote": "就在萧战的呼吸越加急促之声，三位长老的厉喝声，却是宛如惊雷般的在大厅中响起：“萧战，还不住手！你可不要忘记，你是萧家的族长！”",
+        "document_span": {
+          "start": 13674,
+          "end": 13737
+        },
+        "match_mode": "exact"
+      }
+    ],
+    "issues": []
+  },
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 8937,
+    "http_status": 200,
+    "response_id": "dfcbbbbc-15ed-4eb0-ba2b-bf2cad01b30c",
+    "usage": {
+      "input_tokens": 2288,
+      "cached_input_tokens": 512,
+      "output_tokens": 1060,
+      "reasoning_tokens": 942,
+      "total_tokens": 3348
+    },
+    "error_kind": null
+  }
+}

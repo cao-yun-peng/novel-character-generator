@@ -1,0 +1,183 @@
+{
+  "schema_version": "m1-chunk-result-v1",
+  "chunk_index": 12,
+  "chunk_id": "chunk-000012-24750-27250-4e6d58a77495",
+  "chunk_hash": "4e6d58a77495d886d019b2a45bf6613e901a62f4b11963ec05c92b4b1aebd5ea",
+  "chunk_source_span": {
+    "start": 24750,
+    "end": 27250
+  },
+  "model_output": {
+    "candidate_mentions": [
+      {
+        "mention_type": "exact",
+        "mention_quote": "唐昊",
+        "evidence_quotes": [
+          "面不红，气不喘",
+          "唐昊的双眼变得专注起来"
+        ]
+      }
+    ]
+  },
+  "grounded_packet": {
+    "schema_version": "grounded-character-packet-v3",
+    "source_document_version_id": "source-4dd3d57c99f4b254",
+    "chunking_policy_version": "fixed-codepoint-window-2500-overlap-250-v1",
+    "chunk_id": "chunk-000012-24750-27250-4e6d58a77495",
+    "chunk_hash": "4e6d58a77495d886d019b2a45bf6613e901a62f4b11963ec05c92b4b1aebd5ea",
+    "chunk_source_span": {
+      "start": 24750,
+      "end": 27250
+    },
+    "grounded_mentions": [
+      {
+        "local_mention_id": "m1",
+        "mention_type": "exact",
+        "mention_quote": "唐昊",
+        "mention_occurrence_count": 23,
+        "mention_source_spans": [
+          {
+            "start": 58,
+            "end": 60
+          },
+          {
+            "start": 394,
+            "end": 396
+          },
+          {
+            "start": 445,
+            "end": 447
+          },
+          {
+            "start": 485,
+            "end": 487
+          },
+          {
+            "start": 640,
+            "end": 642
+          },
+          {
+            "start": 709,
+            "end": 711
+          },
+          {
+            "start": 754,
+            "end": 756
+          },
+          {
+            "start": 1054,
+            "end": 1056
+          },
+          {
+            "start": 1153,
+            "end": 1155
+          },
+          {
+            "start": 1191,
+            "end": 1193
+          },
+          {
+            "start": 1247,
+            "end": 1249
+          },
+          {
+            "start": 1284,
+            "end": 1286
+          },
+          {
+            "start": 1445,
+            "end": 1447
+          },
+          {
+            "start": 1541,
+            "end": 1543
+          },
+          {
+            "start": 1610,
+            "end": 1612
+          },
+          {
+            "start": 1714,
+            "end": 1716
+          },
+          {
+            "start": 1893,
+            "end": 1895
+          },
+          {
+            "start": 1915,
+            "end": 1917
+          },
+          {
+            "start": 1961,
+            "end": 1963
+          },
+          {
+            "start": 2080,
+            "end": 2082
+          },
+          {
+            "start": 2215,
+            "end": 2217
+          },
+          {
+            "start": 2272,
+            "end": 2274
+          },
+          {
+            "start": 2495,
+            "end": 2497
+          }
+        ],
+        "mention_quote_hash": "081118b106b6bea10da0e0a6c94ec329ae8ae1f2ec304529a0c642688e4bc39d",
+        "approved_evidence": [
+          {
+            "evidence_quote": "面不红，气不喘",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 2115,
+                "end": 2122
+              }
+            ],
+            "quote_hash": "d399f401d53960fd7a42c74cff09a3372fff6f9f167145d2325056e7b8467463",
+            "relation_to_mention": "contextual"
+          },
+          {
+            "evidence_quote": "唐昊的双眼变得专注起来",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1445,
+                "end": 1456
+              }
+            ],
+            "quote_hash": "93f40614b5c64e3e75cabc22356279ebd1502a3827e711f69126c9e824aa143d",
+            "relation_to_mention": "contains_mention"
+          }
+        ],
+        "packet_hash": "738f235c458d64899ba01d5a07bccd97717f8c222713f54392237de27ef19269"
+      }
+    ],
+    "rejected_evidence": []
+  },
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 17375,
+    "http_status": 200,
+    "response_id": "7bdad7f7-eb75-4394-833a-68ff2b4b3263",
+    "usage": {
+      "input_tokens": 2370,
+      "cached_input_tokens": 768,
+      "output_tokens": 1705,
+      "reasoning_tokens": 1638,
+      "total_tokens": 4075
+    },
+    "error_kind": null
+  }
+}

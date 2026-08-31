@@ -1,0 +1,62 @@
+{
+  "schema_version": "identity-task-result-v1",
+  "task_index": 12,
+  "current_label_quote": "萧炎",
+  "candidate_label_quote": "萧炎",
+  "task_cache_key": "0b61ce108cd5b67ef3df211acec597e4bf64292ea995efb119cdae4d33e43513",
+  "model_output": {
+    "identity_relation": "same_character",
+    "label_relation": "same_surface",
+    "identity_evidence_quotes": [
+      "望着中年男子，萧炎脸庞上的笑容更浓了一分，虽然自己有着前世的记忆，不过自出生以来，面前这位父亲便是对自己百般宠爱，在自己落魄之后，宠爱不减反增，如此行径，却是让得萧炎甘心叫他一声父亲。",
+      "萧炎少年老成的摇了摇头，笑容却是有些勉强。"
+    ]
+  },
+  "grounded_result": {
+    "schema_version": "grounded-identity-decision-v1",
+    "current_node_key": "324282becb22040110bbf37d73e7669d1ec8bdc7a8087ea6af84e44529934a8e",
+    "candidate_node_key": "b105e14c9a599acbd6eacb0b5a9a8922c2488a2bff5ce652dee8c6295a2aaa06",
+    "task_cache_key": "0b61ce108cd5b67ef3df211acec597e4bf64292ea995efb119cdae4d33e43513",
+    "requested_identity_relation": "same_character",
+    "identity_relation": "same_character",
+    "label_relation": "same_surface",
+    "grounded_identity_evidence": [
+      {
+        "evidence_quote": "望着中年男子，萧炎脸庞上的笑容更浓了一分，虽然自己有着前世的记忆，不过自出生以来，面前这位父亲便是对自己百般宠爱，在自己落魄之后，宠爱不减反增，如此行径，却是让得萧炎甘心叫他一声父亲。",
+        "document_span": {
+          "start": 5896,
+          "end": 5988
+        },
+        "match_mode": "exact"
+      },
+      {
+        "evidence_quote": "萧炎少年老成的摇了摇头，笑容却是有些勉强。",
+        "document_span": {
+          "start": 6041,
+          "end": 6062
+        },
+        "match_mode": "exact"
+      }
+    ],
+    "issues": []
+  },
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 6297,
+    "http_status": 200,
+    "response_id": "942652c3-9afc-49df-ba7f-784b40b2ebf9",
+    "usage": {
+      "input_tokens": 1311,
+      "cached_input_tokens": 512,
+      "output_tokens": 723,
+      "reasoning_tokens": 610,
+      "total_tokens": 2034
+    },
+    "error_kind": null
+  }
+}

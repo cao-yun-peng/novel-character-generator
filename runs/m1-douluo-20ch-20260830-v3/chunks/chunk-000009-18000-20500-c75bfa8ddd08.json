@@ -1,0 +1,605 @@
+{
+  "schema_version": "m1-chunk-result-v1",
+  "chunk_index": 9,
+  "chunk_id": "chunk-000009-18000-20500-c75bfa8ddd08",
+  "chunk_hash": "c75bfa8ddd080afca93a89083dde2618b2a4c28f58d9c3718a22aa60c107e1c3",
+  "chunk_source_span": {
+    "start": 18000,
+    "end": 20500
+  },
+  "model_output": {
+    "candidate_mentions": [
+      {
+        "mention_type": "exact",
+        "mention_quote": "杰克",
+        "evidence_quotes": [
+          "老杰克一脸紧张",
+          "杰克眼中流露出惊疑不定的神色",
+          "杰克脸上失望的表情",
+          "他年纪已经不小了"
+        ]
+      },
+      {
+        "mention_type": "describe",
+        "mention_quote": "老杰克",
+        "evidence_quotes": [
+          "老杰克一脸紧张",
+          "杰克眼中流露出惊疑不定的神色",
+          "杰克脸上失望的表情",
+          "他年纪已经不小了"
+        ]
+      },
+      {
+        "mention_type": "exact",
+        "mention_quote": "唐昊",
+        "evidence_quotes": [
+          "唐昊依旧是一副懒洋洋的样子",
+          "那个邋遢鬼",
+          "这个邋遢铁匠"
+        ]
+      },
+      {
+        "mention_type": "describe",
+        "mention_quote": "邋遢铁匠",
+        "evidence_quotes": [
+          "这个邋遢铁匠",
+          "那个邋遢鬼",
+          "唐昊依旧是一副懒洋洋的样子"
+        ]
+      },
+      {
+        "mention_type": "describe",
+        "mention_quote": "邋遢鬼",
+        "evidence_quotes": [
+          "那个邋遢鬼",
+          "这个邋遢铁匠"
+        ]
+      }
+    ]
+  },
+  "grounded_packet": {
+    "schema_version": "grounded-character-packet-v3",
+    "source_document_version_id": "source-4dd3d57c99f4b254",
+    "chunking_policy_version": "fixed-codepoint-window-2500-overlap-250-v1",
+    "chunk_id": "chunk-000009-18000-20500-c75bfa8ddd08",
+    "chunk_hash": "c75bfa8ddd080afca93a89083dde2618b2a4c28f58d9c3718a22aa60c107e1c3",
+    "chunk_source_span": {
+      "start": 18000,
+      "end": 20500
+    },
+    "grounded_mentions": [
+      {
+        "local_mention_id": "m1",
+        "mention_type": "exact",
+        "mention_quote": "杰克",
+        "mention_occurrence_count": 30,
+        "mention_source_spans": [
+          {
+            "start": 126,
+            "end": 128
+          },
+          {
+            "start": 138,
+            "end": 140
+          },
+          {
+            "start": 222,
+            "end": 224
+          },
+          {
+            "start": 332,
+            "end": 334
+          },
+          {
+            "start": 431,
+            "end": 433
+          },
+          {
+            "start": 450,
+            "end": 452
+          },
+          {
+            "start": 471,
+            "end": 473
+          },
+          {
+            "start": 619,
+            "end": 621
+          },
+          {
+            "start": 640,
+            "end": 642
+          },
+          {
+            "start": 666,
+            "end": 668
+          },
+          {
+            "start": 858,
+            "end": 860
+          },
+          {
+            "start": 934,
+            "end": 936
+          },
+          {
+            "start": 1117,
+            "end": 1119
+          },
+          {
+            "start": 1136,
+            "end": 1138
+          },
+          {
+            "start": 1254,
+            "end": 1256
+          },
+          {
+            "start": 1327,
+            "end": 1329
+          },
+          {
+            "start": 1400,
+            "end": 1402
+          },
+          {
+            "start": 1531,
+            "end": 1533
+          },
+          {
+            "start": 1538,
+            "end": 1540
+          },
+          {
+            "start": 1550,
+            "end": 1552
+          },
+          {
+            "start": 1619,
+            "end": 1621
+          },
+          {
+            "start": 1755,
+            "end": 1757
+          },
+          {
+            "start": 1926,
+            "end": 1928
+          },
+          {
+            "start": 2050,
+            "end": 2052
+          },
+          {
+            "start": 2119,
+            "end": 2121
+          },
+          {
+            "start": 2250,
+            "end": 2252
+          },
+          {
+            "start": 2312,
+            "end": 2314
+          },
+          {
+            "start": 2363,
+            "end": 2365
+          },
+          {
+            "start": 2455,
+            "end": 2457
+          },
+          {
+            "start": 2480,
+            "end": 2482
+          }
+        ],
+        "mention_quote_hash": "18c58ba65f0cd178f68b01d5df76002ab0c757afa0cc0ef8bbf5a05a2e777169",
+        "approved_evidence": [
+          {
+            "evidence_quote": "老杰克一脸紧张",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 137,
+                "end": 144
+              }
+            ],
+            "quote_hash": "c73d1ce2b140413bb6c6d73c4691c062d4333c9dd52074d4225319b92d3aad7e",
+            "relation_to_mention": "contains_mention"
+          },
+          {
+            "evidence_quote": "杰克眼中流露出惊疑不定的神色",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 222,
+                "end": 236
+              }
+            ],
+            "quote_hash": "efc9c51915dfdc8738ffebd88e2719e93f46558d7ad0e01b6b8ab27240c0dcef",
+            "relation_to_mention": "contains_mention"
+          },
+          {
+            "evidence_quote": "杰克脸上失望的表情",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 332,
+                "end": 341
+              }
+            ],
+            "quote_hash": "2afcf31a3325d5cf5017b9d44a53f18479906e54ec6f4b6485144a680e356cf6",
+            "relation_to_mention": "contains_mention"
+          },
+          {
+            "evidence_quote": "他年纪已经不小了",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1443,
+                "end": 1451
+              }
+            ],
+            "quote_hash": "a5c555962e47a6e6600ba5777f7f66ee4df795e86eb05f7d738536fbee74ceac",
+            "relation_to_mention": "contextual"
+          }
+        ],
+        "packet_hash": "608f2c6c511186f1ecc51f3cece656c811cbd565de4db2301ababe68f4fe5303"
+      },
+      {
+        "local_mention_id": "m2",
+        "mention_type": "describe",
+        "mention_quote": "老杰克",
+        "mention_occurrence_count": 13,
+        "mention_source_spans": [
+          {
+            "start": 125,
+            "end": 128
+          },
+          {
+            "start": 137,
+            "end": 140
+          },
+          {
+            "start": 449,
+            "end": 452
+          },
+          {
+            "start": 470,
+            "end": 473
+          },
+          {
+            "start": 665,
+            "end": 668
+          },
+          {
+            "start": 933,
+            "end": 936
+          },
+          {
+            "start": 1253,
+            "end": 1256
+          },
+          {
+            "start": 1326,
+            "end": 1329
+          },
+          {
+            "start": 1399,
+            "end": 1402
+          },
+          {
+            "start": 1537,
+            "end": 1540
+          },
+          {
+            "start": 1754,
+            "end": 1757
+          },
+          {
+            "start": 2118,
+            "end": 2121
+          },
+          {
+            "start": 2249,
+            "end": 2252
+          }
+        ],
+        "mention_quote_hash": "758ab0f61a61cd7ae6a18146e27fced2b52de333a88c08351446a957dea3f432",
+        "approved_evidence": [
+          {
+            "evidence_quote": "老杰克一脸紧张",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 137,
+                "end": 144
+              }
+            ],
+            "quote_hash": "c73d1ce2b140413bb6c6d73c4691c062d4333c9dd52074d4225319b92d3aad7e",
+            "relation_to_mention": "contains_mention"
+          },
+          {
+            "evidence_quote": "杰克眼中流露出惊疑不定的神色",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 222,
+                "end": 236
+              }
+            ],
+            "quote_hash": "efc9c51915dfdc8738ffebd88e2719e93f46558d7ad0e01b6b8ab27240c0dcef",
+            "relation_to_mention": "contextual"
+          },
+          {
+            "evidence_quote": "杰克脸上失望的表情",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 332,
+                "end": 341
+              }
+            ],
+            "quote_hash": "2afcf31a3325d5cf5017b9d44a53f18479906e54ec6f4b6485144a680e356cf6",
+            "relation_to_mention": "contextual"
+          },
+          {
+            "evidence_quote": "他年纪已经不小了",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1443,
+                "end": 1451
+              }
+            ],
+            "quote_hash": "a5c555962e47a6e6600ba5777f7f66ee4df795e86eb05f7d738536fbee74ceac",
+            "relation_to_mention": "contextual"
+          }
+        ],
+        "packet_hash": "f5dacda28501f2fb9a296366dd6655428ef57fb6fa923921b3c571167a883163"
+      },
+      {
+        "local_mention_id": "m3",
+        "mention_type": "exact",
+        "mention_quote": "唐昊",
+        "mention_occurrence_count": 19,
+        "mention_source_spans": [
+          {
+            "start": 1168,
+            "end": 1170
+          },
+          {
+            "start": 1295,
+            "end": 1297
+          },
+          {
+            "start": 1319,
+            "end": 1321
+          },
+          {
+            "start": 1322,
+            "end": 1324
+          },
+          {
+            "start": 1332,
+            "end": 1334
+          },
+          {
+            "start": 1380,
+            "end": 1382
+          },
+          {
+            "start": 1396,
+            "end": 1398
+          },
+          {
+            "start": 1479,
+            "end": 1481
+          },
+          {
+            "start": 1612,
+            "end": 1614
+          },
+          {
+            "start": 1698,
+            "end": 1700
+          },
+          {
+            "start": 1738,
+            "end": 1740
+          },
+          {
+            "start": 1798,
+            "end": 1800
+          },
+          {
+            "start": 1866,
+            "end": 1868
+          },
+          {
+            "start": 1942,
+            "end": 1944
+          },
+          {
+            "start": 2043,
+            "end": 2045
+          },
+          {
+            "start": 2201,
+            "end": 2203
+          },
+          {
+            "start": 2269,
+            "end": 2271
+          },
+          {
+            "start": 2371,
+            "end": 2373
+          },
+          {
+            "start": 2498,
+            "end": 2500
+          }
+        ],
+        "mention_quote_hash": "081118b106b6bea10da0e0a6c94ec329ae8ae1f2ec304529a0c642688e4bc39d",
+        "approved_evidence": [
+          {
+            "evidence_quote": "唐昊依旧是一副懒洋洋的样子",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 2269,
+                "end": 2282
+              }
+            ],
+            "quote_hash": "ca13a0f496420d02c7ac012bf5b7a9b2a6a72c37037fab982f0f1bc5fa38164e",
+            "relation_to_mention": "contains_mention"
+          },
+          {
+            "evidence_quote": "那个邋遢鬼",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1203,
+                "end": 1208
+              }
+            ],
+            "quote_hash": "f8a686bf67fa1af5436b4f76dfa73470ba10d45d1a040cd32979a244a0951d6d",
+            "relation_to_mention": "contextual"
+          },
+          {
+            "evidence_quote": "这个邋遢铁匠",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1342,
+                "end": 1348
+              }
+            ],
+            "quote_hash": "fd202a6d64c342a29e49208dacaa81c37a6e55918120d155596c408ff80f040d",
+            "relation_to_mention": "contextual"
+          }
+        ],
+        "packet_hash": "ce3336442b5cd922fbeb7d667d69e57a849f4a1735e227cf1c08896833eb837a"
+      },
+      {
+        "local_mention_id": "m4",
+        "mention_type": "describe",
+        "mention_quote": "邋遢铁匠",
+        "mention_occurrence_count": 2,
+        "mention_source_spans": [
+          {
+            "start": 1344,
+            "end": 1348
+          },
+          {
+            "start": 1764,
+            "end": 1768
+          }
+        ],
+        "mention_quote_hash": "b4f30857d7c56832ecedb37dc37500686e37997ed102c2b656256e3dfc03247a",
+        "approved_evidence": [
+          {
+            "evidence_quote": "这个邋遢铁匠",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1342,
+                "end": 1348
+              }
+            ],
+            "quote_hash": "fd202a6d64c342a29e49208dacaa81c37a6e55918120d155596c408ff80f040d",
+            "relation_to_mention": "contains_mention"
+          },
+          {
+            "evidence_quote": "那个邋遢鬼",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1203,
+                "end": 1208
+              }
+            ],
+            "quote_hash": "f8a686bf67fa1af5436b4f76dfa73470ba10d45d1a040cd32979a244a0951d6d",
+            "relation_to_mention": "contextual"
+          },
+          {
+            "evidence_quote": "唐昊依旧是一副懒洋洋的样子",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 2269,
+                "end": 2282
+              }
+            ],
+            "quote_hash": "ca13a0f496420d02c7ac012bf5b7a9b2a6a72c37037fab982f0f1bc5fa38164e",
+            "relation_to_mention": "contextual"
+          }
+        ],
+        "packet_hash": "0e9d716b77e18049647157c792ec6b66c2613270d7c704998eb10070ffade121"
+      },
+      {
+        "local_mention_id": "m5",
+        "mention_type": "describe",
+        "mention_quote": "邋遢鬼",
+        "mention_occurrence_count": 1,
+        "mention_source_spans": [
+          {
+            "start": 1205,
+            "end": 1208
+          }
+        ],
+        "mention_quote_hash": "8e485787a1702e574303ae8152c44f2429027e39e9fb0005ea4342c848ceebd3",
+        "approved_evidence": [
+          {
+            "evidence_quote": "那个邋遢鬼",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1203,
+                "end": 1208
+              }
+            ],
+            "quote_hash": "f8a686bf67fa1af5436b4f76dfa73470ba10d45d1a040cd32979a244a0951d6d",
+            "relation_to_mention": "contains_mention"
+          },
+          {
+            "evidence_quote": "这个邋遢铁匠",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1342,
+                "end": 1348
+              }
+            ],
+            "quote_hash": "fd202a6d64c342a29e49208dacaa81c37a6e55918120d155596c408ff80f040d",
+            "relation_to_mention": "contextual"
+          }
+        ],
+        "packet_hash": "8851e3d6ef8dd196062ac186d96b35dc1026ab8bcfa255798bd7af8d57b00929"
+      }
+    ],
+    "rejected_evidence": []
+  },
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 37328,
+    "http_status": 200,
+    "response_id": "41b7e7bc-ffe1-4c8f-a2de-9aba45889b12",
+    "usage": {
+      "input_tokens": 2367,
+      "cached_input_tokens": 768,
+      "output_tokens": 4453,
+      "reasoning_tokens": 4126,
+      "total_tokens": 6820
+    },
+    "error_kind": null
+  }
+}

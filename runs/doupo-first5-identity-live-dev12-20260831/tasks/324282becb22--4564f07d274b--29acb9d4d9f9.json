@@ -1,0 +1,62 @@
+{
+  "schema_version": "identity-task-result-v1",
+  "task_index": 11,
+  "current_label_quote": "萧炎",
+  "candidate_label_quote": "萧炎",
+  "task_cache_key": "29acb9d4d9f9143909d496b6492e2895b1ec47ffbde9e2bc5a0ba339e2641ac0",
+  "model_output": {
+    "identity_relation": "same_character",
+    "label_relation": "same_surface",
+    "identity_evidence_quotes": [
+      "他萧炎是癞蛤蟆想吃天鹅肉不成",
+      "萧炎有些意外的"
+    ]
+  },
+  "grounded_result": {
+    "schema_version": "grounded-identity-decision-v1",
+    "current_node_key": "324282becb22040110bbf37d73e7669d1ec8bdc7a8087ea6af84e44529934a8e",
+    "candidate_node_key": "4564f07d274b4fff14e1b26c6ab387c154910b32148975474a33a750b43bbc45",
+    "task_cache_key": "29acb9d4d9f9143909d496b6492e2895b1ec47ffbde9e2bc5a0ba339e2641ac0",
+    "requested_identity_relation": "same_character",
+    "identity_relation": "same_character",
+    "label_relation": "same_surface",
+    "grounded_identity_evidence": [
+      {
+        "evidence_quote": "萧炎有些意外的",
+        "document_span": {
+          "start": 8195,
+          "end": 8202
+        },
+        "match_mode": "exact"
+      },
+      {
+        "evidence_quote": "他萧炎是癞蛤蟆想吃天鹅肉不成",
+        "document_span": {
+          "start": 11250,
+          "end": 11264
+        },
+        "match_mode": "exact"
+      }
+    ],
+    "issues": []
+  },
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 4515,
+    "http_status": 200,
+    "response_id": "043b5ddb-8836-45ed-bb38-8e03b574215d",
+    "usage": {
+      "input_tokens": 1967,
+      "cached_input_tokens": 512,
+      "output_tokens": 479,
+      "reasoning_tokens": 420,
+      "total_tokens": 2446
+    },
+    "error_kind": null
+  }
+}

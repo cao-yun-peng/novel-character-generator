@@ -1,0 +1,160 @@
+[
+  {
+    "chunk_index": 4,
+    "chunk_id": "chunk-000004-6750-9250-4d57b02a87a6",
+    "describe_local_mention_id": "m3",
+    "mention_quote": "青衫老者",
+    "promotion_hash": "1b67fe2978c578036a581e360de3a1e831347a07a8d3286d402a07cfe9017fe7",
+    "model_output": {
+      "characters": [
+        {
+          "character_label_quote": "青衫老者",
+          "belongs_to_character": [
+            {
+              "fact_quote": "青衫",
+              "category": "clothing",
+              "attribute": "衣袍颜色",
+              "value": "青色"
+            },
+            {
+              "fact_quote": "浑浊的老眼",
+              "category": "face",
+              "attribute": "眼睛状态",
+              "value": "浑浊"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "chunk_index": 4,
+    "chunk_id": "chunk-000004-6750-9250-4d57b02a87a6",
+    "describe_local_mention_id": "m4",
+    "mention_quote": "身穿月白衣袍的老者",
+    "promotion_hash": "2b4281ae78d612591b23cb70805d3e46d3b49391e8c8c398d4448af060669bd0",
+    "model_output": {
+      "characters": [
+        {
+          "character_label_quote": "身穿月白衣袍的老者",
+          "belongs_to_character": [
+            {
+              "fact_quote": "满脸笑容",
+              "category": "face",
+              "attribute": "笑容",
+              "value": "满脸笑容"
+            },
+            {
+              "fact_quote": "神采奕奕",
+              "category": "appearance_state",
+              "attribute": "精神",
+              "value": "神采奕奕"
+            },
+            {
+              "fact_quote": "一双有些细小的双眼",
+              "category": "face",
+              "attribute": "双眼",
+              "value": "有些细小"
+            },
+            {
+              "fact_quote": "衣袍胸口处，赫然绘有一弯银色浅月",
+              "category": "clothing",
+              "attribute": "衣袍图案",
+              "value": "一弯银色浅月"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "chunk_index": 4,
+    "chunk_id": "chunk-000004-6750-9250-4d57b02a87a6",
+    "describe_local_mention_id": "m5",
+    "mention_quote": "男子",
+    "promotion_hash": "ac1e0595620b960eed8d57ff880fc2a831aaff8374e9fabc67fc886071a629e2",
+    "model_output": {
+      "characters": [
+        {
+          "character_label_quote": "男子",
+          "belongs_to_character": [
+            {
+              "fact_quote": "年龄在二十左右",
+              "category": "age",
+              "attribute": "年龄",
+              "value": "二十左右"
+            },
+            {
+              "fact_quote": "英俊的相貌",
+              "category": "face",
+              "attribute": "相貌",
+              "value": "英俊"
+            },
+            {
+              "fact_quote": "挺拔的身材",
+              "category": "body",
+              "attribute": "身材",
+              "value": "挺拔"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "chunk_index": 4,
+    "chunk_id": "chunk-000004-6750-9250-4d57b02a87a6",
+    "describe_local_mention_id": "m6",
+    "mention_quote": "少女",
+    "promotion_hash": "3d7f2e96a1dd05414e7341eafc4d215e0ca93ae677b198b0b661181801c4dda9",
+    "model_output": {
+      "characters": [
+        {
+          "character_label_quote": "少女",
+          "belongs_to_character": [
+            {
+              "fact_quote": "娇嫩的耳垂上吊有着绿色的玉坠",
+              "category": "accessory",
+              "attribute": "耳部饰品",
+              "value": "绿色玉坠"
+            },
+            {
+              "fact_quote": "已经开始发育的玲珑小胸脯",
+              "category": "body",
+              "attribute": "胸部发育",
+              "value": "刚开始发育的玲珑小胸脯"
+            },
+            {
+              "fact_quote": "冷艳的小脸",
+              "category": "face",
+              "attribute": "脸",
+              "value": "冷艳"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "chunk_index": 4,
+    "chunk_id": "chunk-000004-6750-9250-4d57b02a87a6",
+    "describe_local_mention_id": "m8",
+    "mention_quote": "黄袍老者",
+    "promotion_hash": "fa8f2bd1678f399d8ef4d094c347bf4c976189b30799e3517a4056700682bf27",
+    "model_output": {
+      "characters": [
+        {
+          "character_label_quote": "黄袍老者",
+          "belongs_to_character": [
+            {
+              "fact_quote": "黄袍",
+              "category": "clothing",
+              "attribute": "袍色",
+              "value": "黄袍"
+            }
+          ]
+        }
+      ]
+    }
+  }
+]

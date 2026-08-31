@@ -1,0 +1,18 @@
+{
+  "task_id": "M1-DOUPO-LIVE-RUN-052",
+  "lifecycle_stage": "5",
+  "lifecycle_revision": 2,
+  "runtime_version_before": "0.1.0.dev4",
+  "runtime_version_target": "0.1.0.dev5",
+  "schema_version": "3.5.0-draft1",
+  "grounded_packet_version": "grounded-character-packet-v4",
+  "chunk_result_version": "m1-chunk-result-v2",
+  "expected_artifacts": [
+    "manifest.json",
+    "m1-model-outputs.json",
+    "m1-grounded-packets.json",
+    "summary.json",
+    "failures.json",
+    "chunks/*.json"
+  ]
+}

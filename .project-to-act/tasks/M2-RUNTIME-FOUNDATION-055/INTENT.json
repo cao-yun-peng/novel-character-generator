@@ -1,0 +1,17 @@
+{
+  "task_id": "M2-RUNTIME-FOUNDATION-055",
+  "decision_id": "DEC-20260830-M2-RUNTIME-FOUNDATION-055",
+  "user_request": "根据项目文档进行 M2 阶段开发。",
+  "implementation_scope": [
+    "M2 exact attribution DTO、Prompt、Schema、编排器与代码 grounding",
+    "M2 remaining-describe promotion DTO、Prompt、Schema、编排器与代码 grounding",
+    "DeepSeek 通用结构化请求适配",
+    "稳定 task_cache_key、pool_hash 与 promotion_hash",
+    "契约和运行时测试"
+  ],
+  "non_goals": [
+    "N3 跨 exact span 仲裁与 describe 工作池消费",
+    "跨 Chunk 人物合并或全局 character_id",
+    "真实 DeepSeek 付费调用或模型质量验收"
+  ]
+}

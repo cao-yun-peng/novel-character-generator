@@ -1,0 +1,243 @@
+{
+  "schema_version": "m1-chunk-result-v1",
+  "chunk_index": 5,
+  "chunk_id": "chunk-000005-9000-11500-345f9a4e80bb",
+  "chunk_hash": "345f9a4e80bb9fd40177f974bbf7dbda84d3868fb183f540623cc05fe9d95244",
+  "chunk_source_span": {
+    "start": 9000,
+    "end": 11500
+  },
+  "model_output": {
+    "candidate_mentions": [
+      {
+        "mention_type": "exact",
+        "mention_quote": "老杰克",
+        "evidence_quotes": [
+          "只见来的是一名老人，看上去六十多岁的样子，身材瘦长，但精神矍铄，衣服干净整洁，头发也梳理的一丝不苟"
+        ]
+      },
+      {
+        "mention_type": "describe",
+        "mention_quote": "老人",
+        "evidence_quotes": [
+          "只见来的是一名老人，看上去六十多岁的样子，身材瘦长，但精神矍铄，衣服干净整洁，头发也梳理的一丝不苟"
+        ]
+      },
+      {
+        "mention_type": "describe",
+        "mention_quote": "村长",
+        "evidence_quotes": [
+          "只见来的是一名老人，看上去六十多岁的样子，身材瘦长，但精神矍铄，衣服干净整洁，头发也梳理的一丝不苟"
+        ]
+      },
+      {
+        "mention_type": "describe",
+        "mention_quote": "杰克爷爷",
+        "evidence_quotes": [
+          "只见来的是一名老人，看上去六十多岁的样子，身材瘦长，但精神矍铄，衣服干净整洁，头发也梳理的一丝不苟"
+        ]
+      }
+    ]
+  },
+  "grounded_packet": {
+    "schema_version": "grounded-character-packet-v3",
+    "source_document_version_id": "source-4dd3d57c99f4b254",
+    "chunking_policy_version": "fixed-codepoint-window-2500-overlap-250-v1",
+    "chunk_id": "chunk-000005-9000-11500-345f9a4e80bb",
+    "chunk_hash": "345f9a4e80bb9fd40177f974bbf7dbda84d3868fb183f540623cc05fe9d95244",
+    "chunk_source_span": {
+      "start": 9000,
+      "end": 11500
+    },
+    "grounded_mentions": [
+      {
+        "local_mention_id": "m1",
+        "mention_type": "exact",
+        "mention_quote": "老杰克",
+        "mention_occurrence_count": 11,
+        "mention_source_spans": [
+          {
+            "start": 1042,
+            "end": 1045
+          },
+          {
+            "start": 1063,
+            "end": 1066
+          },
+          {
+            "start": 1139,
+            "end": 1142
+          },
+          {
+            "start": 1191,
+            "end": 1194
+          },
+          {
+            "start": 1230,
+            "end": 1233
+          },
+          {
+            "start": 1311,
+            "end": 1314
+          },
+          {
+            "start": 1422,
+            "end": 1425
+          },
+          {
+            "start": 1740,
+            "end": 1743
+          },
+          {
+            "start": 2242,
+            "end": 2245
+          },
+          {
+            "start": 2272,
+            "end": 2275
+          },
+          {
+            "start": 2474,
+            "end": 2477
+          }
+        ],
+        "mention_quote_hash": "758ab0f61a61cd7ae6a18146e27fced2b52de333a88c08351446a957dea3f432",
+        "approved_evidence": [
+          {
+            "evidence_quote": "只见来的是一名老人，看上去六十多岁的样子，身材瘦长，但精神矍铄，衣服干净整洁，头发也梳理的一丝不苟",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 962,
+                "end": 1011
+              }
+            ],
+            "quote_hash": "554b9f96cefdd996f045e2274abbb971176c2f17fc3eab07fd8f58ab1f44f60d",
+            "relation_to_mention": "contextual"
+          }
+        ],
+        "packet_hash": "8271137844570cba202a07b62c614d58e6fe5774fb6398f1237ee191ac3521ae"
+      },
+      {
+        "local_mention_id": "m2",
+        "mention_type": "describe",
+        "mention_quote": "老人",
+        "mention_occurrence_count": 1,
+        "mention_source_spans": [
+          {
+            "start": 969,
+            "end": 971
+          }
+        ],
+        "mention_quote_hash": "94c14736de4ee0f78ab983fe012d7b805b197bec206af7f380bd5584942bf311",
+        "approved_evidence": [
+          {
+            "evidence_quote": "只见来的是一名老人，看上去六十多岁的样子，身材瘦长，但精神矍铄，衣服干净整洁，头发也梳理的一丝不苟",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 962,
+                "end": 1011
+              }
+            ],
+            "quote_hash": "554b9f96cefdd996f045e2274abbb971176c2f17fc3eab07fd8f58ab1f44f60d",
+            "relation_to_mention": "contains_mention"
+          }
+        ],
+        "packet_hash": "90f7776cb0623a87412e3aba4eca685fd55d1832f0f12e2eaf0e0b83d49b64a6"
+      },
+      {
+        "local_mention_id": "m3",
+        "mention_type": "describe",
+        "mention_quote": "村长",
+        "mention_occurrence_count": 4,
+        "mention_source_spans": [
+          {
+            "start": 1040,
+            "end": 1042
+          },
+          {
+            "start": 1080,
+            "end": 1082
+          },
+          {
+            "start": 1187,
+            "end": 1189
+          },
+          {
+            "start": 1384,
+            "end": 1386
+          }
+        ],
+        "mention_quote_hash": "611147038c8e7af6320fb13228daa84cfb12d910c991f5c4a05c1ce0bcb0e955",
+        "approved_evidence": [
+          {
+            "evidence_quote": "只见来的是一名老人，看上去六十多岁的样子，身材瘦长，但精神矍铄，衣服干净整洁，头发也梳理的一丝不苟",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 962,
+                "end": 1011
+              }
+            ],
+            "quote_hash": "554b9f96cefdd996f045e2274abbb971176c2f17fc3eab07fd8f58ab1f44f60d",
+            "relation_to_mention": "contextual"
+          }
+        ],
+        "packet_hash": "38ece1f9def6ecae094b0cdd39dd84d786796b911ad9056eaeee250a8b033329"
+      },
+      {
+        "local_mention_id": "m4",
+        "mention_type": "describe",
+        "mention_quote": "杰克爷爷",
+        "mention_occurrence_count": 2,
+        "mention_source_spans": [
+          {
+            "start": 1126,
+            "end": 1130
+          },
+          {
+            "start": 1404,
+            "end": 1408
+          }
+        ],
+        "mention_quote_hash": "a7e19e9efccb03b5356ad3ea414e7961be7f7fd6837f5f8be884fc46bdb41737",
+        "approved_evidence": [
+          {
+            "evidence_quote": "只见来的是一名老人，看上去六十多岁的样子，身材瘦长，但精神矍铄，衣服干净整洁，头发也梳理的一丝不苟",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 962,
+                "end": 1011
+              }
+            ],
+            "quote_hash": "554b9f96cefdd996f045e2274abbb971176c2f17fc3eab07fd8f58ab1f44f60d",
+            "relation_to_mention": "contextual"
+          }
+        ],
+        "packet_hash": "f118445aea3be3c2d46b68bf8a2d1db1f993b8640ce0f12d39318bbed6b5cea3"
+      }
+    ],
+    "rejected_evidence": []
+  },
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 17203,
+    "http_status": 200,
+    "response_id": "c88ed3aa-f339-414f-9c50-db549cb759e7",
+    "usage": {
+      "input_tokens": 2347,
+      "cached_input_tokens": 768,
+      "output_tokens": 1841,
+      "reasoning_tokens": 1564,
+      "total_tokens": 4188
+    },
+    "error_kind": null
+  }
+}

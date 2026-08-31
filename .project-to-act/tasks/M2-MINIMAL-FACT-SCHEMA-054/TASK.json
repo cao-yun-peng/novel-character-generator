@@ -1,0 +1,32 @@
+{
+  "id": "M2-MINIMAL-FACT-SCHEMA-054",
+  "title": "精简 M2 模型输入输出为肯定事实",
+  "status": "completed",
+  "owner": "Codex",
+  "objective": "移除 M2 模型可见 payload 中的编排引用、位置、状态与审计字段，使模型只返回属于当前 exact 的逐字外貌事实，由代码完成来源绑定、归并和 describe 消费。",
+  "risk_level": "L1-contract-breaking-local",
+  "allowed_paths": [
+    "tests/test_contract_alignment.py",
+    "docs",
+    "README.md",
+    ".project-to-act"
+  ],
+  "invariants": [
+    "M1 与 N2 运行时和既有 runs 不修改",
+    "M2 模型输入输出不包含 describe_ref、fragment_ref、evidence_ref、span、状态、hash 或 cache key",
+    "模型只输出肯定属于当前 exact 的事实；未返回内容视为未认领",
+    "fact_quote 必须能在允许 evidence 中严格或纯空白等价匹配",
+    "fact_quote 匹配不唯一时不归并、不删除并进入复核",
+    "只有代码唯一绑定且跨 exact 无冲突的 describe fact span 才能归并 exact 并从派生工作池消费",
+    "N2 grounded packet 和 M1 model output 保持不可变",
+    "不发起真实 Provider 调用"
+  ],
+  "acceptance": [
+    "M2 归属模式输入仅包含 target mention/evidence quotes、describe mention/evidence quotes 和 chunk_text",
+    "M2 归属模式输出只有 belongs_to_target 数组",
+    "每条模型事实只有 fact_quote、category、attribute、value",
+    "M2 promotion 模式同样不暴露 ref 或 span",
+    "代码信封继续保存内部绑定和 task_cache_key",
+    "JSON Schema Draft 2020-12、契约测试、全量测试和治理验证通过"
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "schema_version": "document-chunk-manifest-v3",
+  "source_document_version_id": "source-4dd3d57c99f4b254",
+  "document_hash": "4dd3d57c99f4b2548c45c69a391918a391782e64a4526971b2e6e34a81e2ed0e",
+  "chunking_policy_version": "fixed-codepoint-window-8000-overlap-500-v1",
+  "total_characters": 37655,
+  "coverage_status": "complete",
+  "truncation_reason": null,
+  "processed_source_end": 37655,
+  "chunks": [
+    {
+      "chunk_id": "chunk-000001-0-8000-604d03bf25d0",
+      "chunk_hash": "604d03bf25d05ee3b2158f6839880e0696ada592b822304cff5eef3c594da4cc",
+      "chunk_source_span": {
+        "start": 0,
+        "end": 8000
+      },
+      "overlap_left_characters": 0,
+      "overlap_right_characters": 500
+    },
+    {
+      "chunk_id": "chunk-000002-7500-15500-31a7af2c362b",
+      "chunk_hash": "31a7af2c362b3d25f1b1b26c9fc0aea7adafabc1a425a624c393080b68ce5b5f",
+      "chunk_source_span": {
+        "start": 7500,
+        "end": 15500
+      },
+      "overlap_left_characters": 500,
+      "overlap_right_characters": 500
+    },
+    {
+      "chunk_id": "chunk-000003-15000-23000-c8199e40c8a7",
+      "chunk_hash": "c8199e40c8a730a472dea7b31b5b71b62acbf97e71ff473b8b03f5388a294763",
+      "chunk_source_span": {
+        "start": 15000,
+        "end": 23000
+      },
+      "overlap_left_characters": 500,
+      "overlap_right_characters": 500
+    },
+    {
+      "chunk_id": "chunk-000004-22500-30500-a19ba940d64b",
+      "chunk_hash": "a19ba940d64b3531b0a32e0fe11362cefcaf7ea01203666b7611e5ca633d81ec",
+      "chunk_source_span": {
+        "start": 22500,
+        "end": 30500
+      },
+      "overlap_left_characters": 500,
+      "overlap_right_characters": 500
+    },
+    {
+      "chunk_id": "chunk-000005-30000-37655-b1c30b5419c5",
+      "chunk_hash": "b1c30b5419c5e83c8bc4352554722d8318d51596bc3969539981d8cf5628f2f0",
+      "chunk_source_span": {
+        "start": 30000,
+        "end": 37655
+      },
+      "overlap_left_characters": 500,
+      "overlap_right_characters": 0
+    }
+  ]
+}

@@ -2,11 +2,12 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://novel-character-generator.local/contracts/simplified-character-evidence-v3-model-schemas.json",
   "title": "Simplified Character Evidence Pipeline V3 Schemas",
-  "description": "Target machine contracts for exact/describe/null mention discovery, deterministic grounding, exact-by-describe appearance parsing, and residual describe evidence resolution.",
-  "version": "3.1.0-draft1",
+  "description": "Target machine contracts for model-visible payloads, code-only orchestration envelopes, grounded appearance evidence, and bounded cross-Chunk character identity resolution.",
+  "version": "3.12.0-draft1",
   "$defs": {
     "SourceSpan": {
       "type": "object",
+      "description": "Half-open Unicode code-point interval [start, end). Runtime validation must additionally enforce start < end and containment in the declared text container.",
       "additionalProperties": false,
       "required": ["start", "end"],
       "properties": {
@@ -14,9 +15,63 @@
         "end": {"type": "integer", "minimum": 1}
       }
     },
+    "DocumentChunkManifest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schema_version", "source_document_version_id", "document_hash", "chunking_policy_version", "total_characters", "coverage_status", "truncation_reason", "processed_source_end", "chunks"],
+      "properties": {
+        "schema_version": {"const": "document-chunk-manifest-v3"},
+        "source_document_version_id": {"type": "string", "minLength": 1},
+        "document_hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "chunking_policy_version": {"type": "string", "minLength": 1},
+        "total_characters": {"type": "integer", "minimum": 1},
+        "coverage_status": {"enum": ["complete", "truncated"]},
+        "truncation_reason": {
+          "type": ["string", "null"],
+          "enum": ["max_chunks", "max_characters", "provider_limit", "manual_stop", "source_read_error", null]
+        },
+        "processed_source_end": {"type": "integer", "minimum": 0},
+        "chunks": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["chunk_id", "chunk_hash", "chunk_source_span", "overlap_left_characters", "overlap_right_characters"],
+            "properties": {
+              "chunk_id": {"type": "string", "minLength": 1},
+              "chunk_hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+              "chunk_source_span": {"$ref": "#/$defs/SourceSpan"},
+              "overlap_left_characters": {"type": "integer", "minimum": 0},
+              "overlap_right_characters": {"type": "integer", "minimum": 0}
+            }
+          }
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {"coverage_status": {"const": "complete"}},
+            "required": ["coverage_status"]
+          },
+          "then": {"properties": {"truncation_reason": {"type": "null"}}}
+        },
+        {
+          "if": {
+            "properties": {"coverage_status": {"const": "truncated"}},
+            "required": ["coverage_status"]
+          },
+          "then": {"properties": {"truncation_reason": {"type": "string"}}}
+        }
+      ]
+    },
     "MentionType": {
       "type": ["string", "null"],
       "enum": ["exact", "describe", null]
+    },
+    "MentionScope": {
+      "type": ["string", "null"],
+      "enum": ["individual", "collective", null]
     },
     "LocalCharacterRef": {
       "type": "object",
@@ -39,38 +94,99 @@
         "packet_hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
       }
     },
+    "PromotedDescribeCharacterRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Formal Chunk-local character created from remaining describe evidence after exact attribution arbitration.",
+      "required": ["source_document_version_id", "chunk_id", "source_local_mention_id", "source_mention_type", "promotion_index", "character_origin", "packet_hash", "promotion_hash"],
+      "properties": {
+        "source_document_version_id": {"type": "string", "minLength": 1},
+        "chunk_id": {"type": "string", "minLength": 1},
+        "source_local_mention_id": {"type": "string", "pattern": "^m[1-9][0-9]*$"},
+        "source_mention_type": {"const": "describe"},
+        "promotion_index": {"type": "integer", "minimum": 1},
+        "character_origin": {"const": "remaining_describe"},
+        "packet_hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "promotion_hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      }
+    },
+    "AnyLocalCharacterRef": {
+      "oneOf": [
+        {"$ref": "#/$defs/LocalCharacterRef"},
+        {"$ref": "#/$defs/PromotedDescribeCharacterRef"}
+      ]
+    },
     "EvidenceFragment": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["source_evidence_quote", "fragment_quote"],
+      "required": ["source_evidence_quote", "source_evidence_span", "fragment_quote", "fragment_span"],
       "properties": {
         "source_evidence_quote": {"type": "string", "minLength": 1},
-        "fragment_quote": {"type": "string", "minLength": 1}
+        "source_evidence_span": {"$ref": "#/$defs/SourceSpan"},
+        "fragment_quote": {"type": "string", "minLength": 1},
+        "fragment_span": {"$ref": "#/$defs/SourceSpan"}
+      }
+    },
+    "M2DescribeFragmentInput": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["fragment_ref", "source_evidence_quote", "source_evidence_span", "fragment_quote", "fragment_span"],
+      "properties": {
+        "fragment_ref": {"type": "string", "pattern": "^d[1-9][0-9]*-f[1-9][0-9]*$"},
+        "source_evidence_quote": {"type": "string", "minLength": 1},
+        "source_evidence_span": {"$ref": "#/$defs/SourceSpan"},
+        "fragment_quote": {"type": "string", "minLength": 1},
+        "fragment_span": {"$ref": "#/$defs/SourceSpan"}
+      }
+    },
+    "GroundedEvidenceOccurrence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source_evidence_quote", "source_evidence_span"],
+      "properties": {
+        "source_evidence_quote": {"type": "string", "minLength": 1},
+        "source_evidence_span": {"$ref": "#/$defs/SourceSpan"}
       }
     },
     "M1MentionDiscoveryInput": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["chunk_id", "chunk_text"],
+      "description": "Actual model-visible M1 payload. Source and Chunk metadata remain in M1OrchestrationEnvelope.",
+      "required": ["chunk_text"],
       "properties": {
-        "chunk_id": {"type": "string", "minLength": 1},
         "chunk_text": {"type": "string", "minLength": 1}
+      }
+    },
+    "M1OrchestrationEnvelope": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Code-only M1 envelope; only model_input is sent to the model.",
+      "required": ["schema_version", "source_document_version_id", "chunking_policy_version", "chunk_id", "chunk_hash", "chunk_source_span", "model_input"],
+      "properties": {
+        "schema_version": {"const": "m1-orchestration-envelope-v3"},
+        "source_document_version_id": {"type": "string", "minLength": 1},
+        "chunking_policy_version": {"type": "string", "minLength": 1},
+        "chunk_id": {"type": "string", "minLength": 1},
+        "chunk_hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "chunk_source_span": {"$ref": "#/$defs/SourceSpan"},
+        "model_input": {"$ref": "#/$defs/M1MentionDiscoveryInput"}
       }
     },
     "M1MentionDiscoveryResult": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["chunk_id", "candidate_mentions"],
+      "description": "Actual model output. Code binds it to the M1 orchestration envelope; the model never returns chunk_id.",
+      "required": ["candidate_mentions"],
       "properties": {
-        "chunk_id": {"type": "string", "minLength": 1},
         "candidate_mentions": {
           "type": "array",
           "items": {
             "type": "object",
             "additionalProperties": false,
-            "required": ["mention_type", "mention_quote", "evidence_quotes"],
+            "required": ["mention_type", "mention_scope", "mention_quote", "evidence_quotes"],
             "properties": {
               "mention_type": {"$ref": "#/$defs/MentionType"},
+              "mention_scope": {"$ref": "#/$defs/MentionScope"},
               "mention_quote": {"type": ["string", "null"], "minLength": 1},
               "evidence_quotes": {
                 "type": "array",
@@ -85,14 +201,36 @@
                   "properties": {"mention_type": {"const": null}},
                   "required": ["mention_type"]
                 },
-                "then": {"properties": {"mention_quote": {"type": "null"}}}
+                "then": {
+                  "properties": {
+                    "mention_scope": {"type": "null"},
+                    "mention_quote": {"type": "null"}
+                  }
+                }
               },
               {
                 "if": {
-                  "properties": {"mention_type": {"enum": ["exact", "describe"]}},
+                  "properties": {"mention_type": {"const": "exact"}},
                   "required": ["mention_type"]
                 },
-                "then": {"properties": {"mention_quote": {"type": "string", "minLength": 1}}}
+                "then": {
+                  "properties": {
+                    "mention_scope": {"const": "individual"},
+                    "mention_quote": {"type": "string", "minLength": 1}
+                  }
+                }
+              },
+              {
+                "if": {
+                  "properties": {"mention_type": {"const": "describe"}},
+                  "required": ["mention_type"]
+                },
+                "then": {
+                  "properties": {
+                    "mention_scope": {"enum": ["individual", "collective"]},
+                    "mention_quote": {"type": "string", "minLength": 1}
+                  }
+                }
               }
             ]
           }
@@ -102,7 +240,7 @@
     "N2ApprovedEvidence": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["evidence_quote", "occurrence_count", "source_spans", "quote_hash"],
+      "required": ["evidence_quote", "occurrence_count", "source_spans", "relation_to_mention", "match_mode"],
       "properties": {
         "evidence_quote": {"type": "string", "minLength": 1},
         "occurrence_count": {"type": "integer", "minimum": 1},
@@ -111,27 +249,32 @@
           "minItems": 1,
           "items": {"$ref": "#/$defs/SourceSpan"}
         },
-        "quote_hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+        "relation_to_mention": {"enum": ["contains_mention", "contextual", "no_mention"]},
+        "match_mode": {"enum": ["exact", "whitespace_equivalent"]}
       }
     },
     "N2GroundedMentionPacket": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["schema_version", "source_document_version_id", "chunk_id", "chunk_hash", "grounded_mentions", "rejected_evidence"],
+      "required": ["schema_version", "evidence_precedence_policy_version", "source_document_version_id", "chunking_policy_version", "chunk_id", "chunk_hash", "chunk_source_span", "grounded_mentions", "rejected_evidence"],
       "properties": {
-        "schema_version": {"const": "grounded-character-packet-v3"},
+        "schema_version": {"const": "grounded-character-packet-v6"},
+        "evidence_precedence_policy_version": {"const": "exact-evidence-precedence-v1"},
         "source_document_version_id": {"type": "string", "minLength": 1},
+        "chunking_policy_version": {"type": "string", "minLength": 1},
         "chunk_id": {"type": "string", "minLength": 1},
         "chunk_hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "chunk_source_span": {"$ref": "#/$defs/SourceSpan"},
         "grounded_mentions": {
           "type": "array",
           "items": {
             "type": "object",
             "additionalProperties": false,
-            "required": ["local_mention_id", "mention_type", "mention_quote", "approved_evidence", "packet_hash"],
+            "required": ["local_mention_id", "mention_type", "mention_scope", "mention_quote", "approved_evidence", "packet_hash"],
             "properties": {
               "local_mention_id": {"type": "string", "pattern": "^m[1-9][0-9]*$"},
               "mention_type": {"$ref": "#/$defs/MentionType"},
+              "mention_scope": {"$ref": "#/$defs/MentionScope"},
               "mention_quote": {"type": ["string", "null"], "minLength": 1},
               "approved_evidence": {
                 "type": "array",
@@ -146,14 +289,57 @@
                   "properties": {"mention_type": {"const": null}},
                   "required": ["mention_type"]
                 },
-                "then": {"properties": {"mention_quote": {"type": "null"}}}
+                "then": {
+                  "properties": {
+                    "mention_quote": {"type": "null"},
+                    "mention_scope": {"type": "null"},
+                    "approved_evidence": {
+                      "items": {
+                        "properties": {
+                          "relation_to_mention": {"const": "no_mention"}
+                        }
+                      }
+                    }
+                  }
+                }
               },
               {
                 "if": {
-                  "properties": {"mention_type": {"enum": ["exact", "describe"]}},
+                  "properties": {"mention_type": {"const": "exact"}},
                   "required": ["mention_type"]
                 },
-                "then": {"properties": {"mention_quote": {"type": "string", "minLength": 1}}}
+                "then": {
+                  "properties": {
+                    "mention_quote": {"type": "string", "minLength": 1},
+                    "mention_scope": {"const": "individual"},
+                    "approved_evidence": {
+                      "items": {
+                        "properties": {
+                          "relation_to_mention": {"enum": ["contains_mention", "contextual"]}
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "if": {
+                  "properties": {"mention_type": {"const": "describe"}},
+                  "required": ["mention_type"]
+                },
+                "then": {
+                  "properties": {
+                    "mention_quote": {"type": "string", "minLength": 1},
+                    "mention_scope": {"enum": ["individual", "collective"]},
+                    "approved_evidence": {
+                      "items": {
+                        "properties": {
+                          "relation_to_mention": {"enum": ["contains_mention", "contextual"]}
+                        }
+                      }
+                    }
+                  }
+                }
               }
             ]
           }
@@ -176,204 +362,327 @@
     "M2AppearanceFact": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["category", "attribute", "value", "support_quote", "epistemic_status"],
+      "required": ["category", "attribute", "value", "source_evidence_quote", "source_evidence_span", "support_quote", "support_span", "epistemic_status"],
       "properties": {
         "category": {"enum": ["age", "body", "face", "hair", "clothing", "accessory", "distinctive_mark", "appearance_state", "other_visual"]},
         "attribute": {"type": "string", "minLength": 1},
         "value": {"type": "string", "minLength": 1},
+        "source_evidence_quote": {"type": "string", "minLength": 1},
+        "source_evidence_span": {"$ref": "#/$defs/SourceSpan"},
         "support_quote": {"type": "string", "minLength": 1},
+        "support_span": {"$ref": "#/$defs/SourceSpan"},
         "epistemic_status": {"enum": ["asserted", "negated", "uncertain", "inferred"]}
       }
     },
-    "M2DescribeEvidenceAssessment": {
+    "M2GroundedBelongsToFact": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["source_evidence_quote", "fragment_quote", "attribution_status", "claimed_evidence_quote", "appearance_facts"],
+      "description": "Code-hydrated affirmative M2 fact after fact_quote is safely and uniquely bound to an allowed evidence occurrence.",
+      "required": ["fact_quote", "category", "attribute", "value", "source_mention_id", "source_mention_type", "source_evidence_quote", "source_evidence_span", "fact_chunk_span", "match_mode"],
       "properties": {
+        "fact_quote": {"type": "string", "minLength": 1},
+        "category": {"enum": ["age", "body", "face", "hair", "clothing", "accessory", "distinctive_mark", "appearance_state", "other_visual"]},
+        "attribute": {"type": "string", "minLength": 1},
+        "value": {"type": "string", "minLength": 1},
+        "source_mention_id": {"type": "string", "pattern": "^m[1-9][0-9]*$"},
+        "source_mention_type": {"enum": ["exact", "describe"]},
         "source_evidence_quote": {"type": "string", "minLength": 1},
-        "fragment_quote": {"type": "string", "minLength": 1},
-        "attribution_status": {"enum": ["belongs_to_target", "not_target", "uncertain"]},
-        "claimed_evidence_quote": {"type": ["string", "null"], "minLength": 1},
-        "appearance_facts": {
-          "type": "array",
-          "items": {"$ref": "#/$defs/M2AppearanceFact"}
-        }
-      },
-      "allOf": [
-        {
-          "if": {
-            "properties": {"attribution_status": {"const": "belongs_to_target"}},
-            "required": ["attribution_status"]
-          },
-          "then": {
-            "properties": {
-              "claimed_evidence_quote": {"type": "string", "minLength": 1},
-              "appearance_facts": {"minItems": 1}
-            }
-          }
-        },
-        {
-          "if": {
-            "properties": {"attribution_status": {"enum": ["not_target", "uncertain"]}},
-            "required": ["attribution_status"]
-          },
-          "then": {
-            "properties": {
-              "claimed_evidence_quote": {"type": "null"},
-              "appearance_facts": {"maxItems": 0}
-            }
-          }
-        }
-      ]
+        "source_evidence_span": {"$ref": "#/$defs/SourceSpan"},
+        "fact_chunk_span": {"$ref": "#/$defs/SourceSpan"},
+        "match_mode": {"enum": ["exact", "whitespace_equivalent"]}
+      }
+    },
+    "M2ModelBelongsToFact": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Minimal affirmative appearance fact returned by M2. fact_quote must be a verbatim substring of one allowed evidence quote; code binds its source and span after the model call.",
+      "required": ["fact_quote", "category", "attribute", "value"],
+      "properties": {
+        "fact_quote": {"type": "string", "minLength": 1},
+        "category": {"enum": ["age", "body", "face", "hair", "clothing", "accessory", "distinctive_mark", "appearance_state", "other_visual"]},
+        "attribute": {"type": "string", "minLength": 1},
+        "value": {"type": "string", "minLength": 1}
+      }
     },
     "M2CandidateAppearanceParsingInput": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["target_character_ref", "target_mention_quote", "target_approved_evidence_quotes", "describe_source", "resolution_round", "chunk_text"],
+      "description": "Actual model-visible M2 payload. It contains one exact target, all currently available individual describe evidence, and Chunk text. It contains no refs, spans, statuses, source IDs, hashes, cache keys, or run metadata.",
+      "required": ["target", "describe_blocks", "chunk_text"],
       "properties": {
-        "target_character_ref": {"$ref": "#/$defs/LocalCharacterRef"},
-        "target_mention_quote": {"type": "string", "minLength": 1},
-        "target_approved_evidence_quotes": {
-          "type": "array",
-          "minItems": 1,
-          "uniqueItems": true,
-          "items": {"type": "string", "minLength": 1}
+        "target": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["mention_quote", "approved_evidence_quotes"],
+          "properties": {
+            "mention_quote": {"type": "string", "minLength": 1},
+            "approved_evidence_quotes": {
+              "type": "array",
+              "minItems": 1,
+              "items": {"type": "string", "minLength": 1}
+            }
+          }
         },
-        "describe_source": {
-          "oneOf": [
-            {"type": "null"},
-            {
-              "type": "object",
-              "additionalProperties": false,
-              "required": ["local_mention_id", "mention_type", "mention_quote", "packet_hash", "available_evidence_fragments"],
-              "properties": {
-                "local_mention_id": {"type": "string", "pattern": "^m[1-9][0-9]*$"},
-                "mention_type": {"const": "describe"},
-                "mention_quote": {"type": "string", "minLength": 1},
-                "packet_hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
-                "available_evidence_fragments": {
-                  "type": "array",
-                  "minItems": 1,
-                  "items": {"$ref": "#/$defs/EvidenceFragment"}
-                }
+        "describe_blocks": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["mention_quote", "evidence_quotes"],
+            "properties": {
+              "mention_quote": {"type": "string", "minLength": 1},
+              "evidence_quotes": {
+                "type": "array",
+                "minItems": 1,
+                "items": {"type": "string", "minLength": 1}
               }
             }
-          ]
+          }
         },
-        "resolution_round": {"type": "integer", "minimum": 1},
         "chunk_text": {"type": "string", "minLength": 1}
       }
     },
     "M2CandidateAppearanceParsingResult": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["target_character_ref", "target_appearance_facts", "describe_source_ref", "describe_evidence_assessments"],
+      "description": "Actual model output. It contains only affirmative appearance facts that belong to the current exact target. Code grounds fact_quote, hydrates source refs/spans, merges unique facts into the target, and consumes uniquely bound describe occurrences.",
+      "required": ["belongs_to_target"],
       "properties": {
-        "target_character_ref": {"$ref": "#/$defs/LocalCharacterRef"},
-        "target_appearance_facts": {
+        "belongs_to_target": {
           "type": "array",
-          "items": {"$ref": "#/$defs/M2AppearanceFact"}
-        },
-        "describe_source_ref": {
-          "oneOf": [
-            {"type": "null"},
-            {"$ref": "#/$defs/DescribeEvidenceRef"}
-          ]
-        },
-        "describe_evidence_assessments": {
-          "type": "array",
-          "items": {"$ref": "#/$defs/M2DescribeEvidenceAssessment"}
+          "items": {"$ref": "#/$defs/M2ModelBelongsToFact"}
         }
-      },
-      "allOf": [
-        {
-          "if": {
-            "properties": {"describe_source_ref": {"type": "null"}},
-            "required": ["describe_source_ref"]
-          },
-          "then": {"properties": {"describe_evidence_assessments": {"maxItems": 0}}}
-        },
-        {
-          "if": {
-            "properties": {"describe_source_ref": {"type": "object"}},
-            "required": ["describe_source_ref"]
-          },
-          "then": {"properties": {"describe_evidence_assessments": {"minItems": 1}}}
-        }
-      ]
+      }
     },
-    "N3ValidatedAppearancePacket": {
+    "M2OrchestrationEnvelope": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["schema_version", "target_character_ref", "facts"],
+      "description": "Code-only M2 envelope. Only model_input is sent to the Provider.",
+      "required": ["schema_version", "target_character_ref", "target_evidence_bindings", "describe_source_bindings", "context_version", "resolver_version", "resolution_round", "task_cache_key", "model_input"],
       "properties": {
-        "schema_version": {"const": "validated-appearance-packet-v3"},
+        "schema_version": {"const": "m2-orchestration-envelope-v4"},
         "target_character_ref": {"$ref": "#/$defs/LocalCharacterRef"},
-        "facts": {
+        "target_evidence_bindings": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["evidence_ref", "source_evidence_quote", "source_evidence_span"],
+            "properties": {
+              "evidence_ref": {"type": "string", "pattern": "^t[1-9][0-9]*$"},
+              "source_evidence_quote": {"type": "string", "minLength": 1},
+              "source_evidence_span": {"$ref": "#/$defs/SourceSpan"}
+            }
+          }
+        },
+        "describe_source_bindings": {
           "type": "array",
           "items": {
             "type": "object",
             "additionalProperties": false,
-            "required": ["category", "attribute", "value", "support_quote", "epistemic_status", "source_mention_id", "source_mention_type", "source_evidence_quote", "claimed_evidence_quote", "validation_status", "reason_code"],
+            "required": ["describe_ref", "local_mention_id", "mention_quote", "packet_hash", "available_evidence_fragments"],
             "properties": {
-              "category": {"type": "string", "minLength": 1},
-              "attribute": {"type": "string", "minLength": 1},
-              "value": {"type": "string", "minLength": 1},
-              "support_quote": {"type": "string", "minLength": 1},
-              "epistemic_status": {"enum": ["asserted", "negated", "uncertain", "inferred"]},
-              "source_mention_id": {"type": "string", "pattern": "^m[1-9][0-9]*$"},
-              "source_mention_type": {"enum": ["exact", "describe"]},
-              "source_evidence_quote": {"type": "string", "minLength": 1},
-              "claimed_evidence_quote": {"type": ["string", "null"], "minLength": 1},
-              "validation_status": {"enum": ["approved", "review_context_only", "rejected_hallucination"]},
-              "reason_code": {"enum": ["support_in_approved_evidence", "support_only_in_chunk_context", "support_not_in_chunk"]}
-            },
-            "allOf": [
-              {
-                "if": {"properties": {"validation_status": {"const": "approved"}}},
-                "then": {"properties": {"reason_code": {"const": "support_in_approved_evidence"}}}
-              },
-              {
-                "if": {"properties": {"validation_status": {"const": "review_context_only"}}},
-                "then": {"properties": {"reason_code": {"const": "support_only_in_chunk_context"}}}
-              },
-              {
-                "if": {"properties": {"validation_status": {"const": "rejected_hallucination"}}},
-                "then": {"properties": {"reason_code": {"const": "support_not_in_chunk"}}}
-              },
-              {
-                "if": {
-                  "properties": {"source_mention_type": {"const": "describe"}},
-                  "required": ["source_mention_type"]
-                },
-                "then": {"properties": {"claimed_evidence_quote": {"type": "string", "minLength": 1}}}
+              "describe_ref": {"type": "string", "pattern": "^d[1-9][0-9]*$"},
+              "local_mention_id": {"type": "string", "pattern": "^m[1-9][0-9]*$"},
+              "mention_quote": {"type": "string", "minLength": 1},
+              "packet_hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+              "available_evidence_fragments": {
+                "type": "array",
+                "minItems": 1,
+                "items": {"$ref": "#/$defs/M2DescribeFragmentInput"}
               }
-            ]
+            }
           }
+        },
+        "context_version": {"type": "string", "minLength": 1},
+        "resolver_version": {"type": "string", "minLength": 1},
+        "resolution_round": {"type": "integer", "minimum": 1},
+        "task_cache_key": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "model_input": {"$ref": "#/$defs/M2CandidateAppearanceParsingInput"}
+      }
+    },
+    "M2GroundedCandidateAppearanceParsingResult": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Code-hydrated affirmative M2 result passed to N3 after quote binding. Absent model facts remain unclaimed in the describe work pool; code does not synthesize not_target or uncertain assessments.",
+      "required": ["target_character_ref", "task_cache_key", "grounded_belongs_to_target"],
+      "properties": {
+        "target_character_ref": {"$ref": "#/$defs/LocalCharacterRef"},
+        "task_cache_key": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "grounded_belongs_to_target": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/M2GroundedBelongsToFact"}
+        }
+      }
+    },
+    "M2RemainingDescribePromotionInput": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Actual model-visible payload for creating one or more independent characters from one remaining describe pool. No refs or spans are model-visible.",
+      "required": ["describe", "chunk_text"],
+      "properties": {
+        "describe": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["mention_quote", "remaining_evidence_quotes"],
+          "properties": {
+            "mention_quote": {"type": "string", "minLength": 1},
+            "remaining_evidence_quotes": {
+              "type": "array",
+              "minItems": 1,
+              "items": {"type": "string", "minLength": 1}
+            }
+          }
+        },
+        "chunk_text": {"type": "string", "minLength": 1}
+      }
+    },
+    "M2RemainingDescribePromotionResult": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Actual model output. One remaining describe pool may yield multiple independent characters.",
+      "required": ["characters"],
+      "properties": {
+        "characters": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["character_label_quote", "belongs_to_character"],
+            "properties": {
+              "character_label_quote": {"type": "string", "minLength": 1},
+              "belongs_to_character": {
+                "type": "array",
+                "minItems": 1,
+                "items": {"$ref": "#/$defs/M2ModelBelongsToFact"}
+              }
+            }
+          }
+        }
+      }
+    },
+    "M2RemainingDescribePromotionEnvelope": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Code-only envelope for remaining-describe character promotion. Only model_input is sent to the Provider.",
+      "required": ["schema_version", "source_document_version_id", "chunk_id", "describe_source_ref", "remaining_fragment_bindings", "context_version", "resolver_version", "pool_hash", "promotion_hash", "model_input"],
+      "properties": {
+        "schema_version": {"const": "m2-remaining-describe-promotion-envelope-v4"},
+        "source_document_version_id": {"type": "string", "minLength": 1},
+        "chunk_id": {"type": "string", "minLength": 1},
+        "describe_source_ref": {"$ref": "#/$defs/DescribeEvidenceRef"},
+        "remaining_fragment_bindings": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["fragment_ref", "source_evidence_quote", "source_evidence_span", "fragment_quote", "fragment_span"],
+            "properties": {
+              "fragment_ref": {"type": "string", "pattern": "^d[1-9][0-9]*-f[1-9][0-9]*$"},
+              "source_evidence_quote": {"type": "string", "minLength": 1},
+              "source_evidence_span": {"$ref": "#/$defs/SourceSpan"},
+              "fragment_quote": {"type": "string", "minLength": 1},
+              "fragment_span": {"$ref": "#/$defs/SourceSpan"}
+            }
+          }
+        },
+        "context_version": {"type": "string", "minLength": 1},
+        "resolver_version": {"type": "string", "minLength": 1},
+        "pool_hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "promotion_hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "model_input": {"$ref": "#/$defs/M2RemainingDescribePromotionInput"}
+      }
+    },
+    "M2GroundedPromotedDescribeCharactersResult": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Code-hydrated one-to-many promoted character result using fact-level partial acceptance: uniquely grounded facts are retained, ambiguous facts remain unassigned for review, and cross-character overlap still fails closed. Review issues remain in service trace and are not model-visible.",
+      "required": ["schema_version", "grounding_policy_version", "describe_source_ref", "promotion_hash", "promoted_characters", "unassigned_fragments"],
+      "properties": {
+        "schema_version": {"const": "grounded-promoted-describe-characters-v6"},
+        "grounding_policy_version": {"const": "promotion-partial-fact-acceptance-v1"},
+        "describe_source_ref": {"$ref": "#/$defs/DescribeEvidenceRef"},
+        "promotion_hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "promoted_characters": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["promoted_character_ref", "character_label_quote", "grounded_belongs_to_character"],
+            "properties": {
+              "promoted_character_ref": {"$ref": "#/$defs/PromotedDescribeCharacterRef"},
+              "character_label_quote": {"type": "string", "minLength": 1},
+              "grounded_belongs_to_character": {
+                "type": "array",
+                "minItems": 1,
+                "items": {"$ref": "#/$defs/M2GroundedBelongsToFact"}
+              }
+            }
+          }
+        },
+        "unassigned_fragments": {
+          "type": "array",
+          "description": "Residual source spans not claimed by any promoted character; preserved for review rather than silently discarded.",
+          "items": {"$ref": "#/$defs/M2DescribeFragmentInput"}
+        }
+      }
+    },
+    "N3ValidatedAppearancePacket": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schema_version", "target_character_ref", "grounded_appearance_facts"],
+      "properties": {
+        "schema_version": {"const": "n3-validated-appearance-packet-v4"},
+        "target_character_ref": {"$ref": "#/$defs/LocalCharacterRef"},
+        "grounded_appearance_facts": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/M2GroundedBelongsToFact"}
+        }
+      }
+    },
+    "N3ChunkResolutionResult": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schema_version", "source_document_version_id", "chunk_id", "target_appearance_packets", "describe_pool_results"],
+      "properties": {
+        "schema_version": {"const": "n3-chunk-resolution-v1"},
+        "source_document_version_id": {"type": "string", "minLength": 1},
+        "chunk_id": {"type": "string", "minLength": 1},
+        "target_appearance_packets": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/N3ValidatedAppearancePacket"}
+        },
+        "describe_pool_results": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/N3DescribePoolResolutionResult"}
         }
       }
     },
     "N3DescribePoolResolutionResult": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["schema_version", "chunk_id", "resolution_round", "describe_source_ref", "consumed_fragments", "conflicted_fragments", "remaining_evidence_fragments", "progress_made", "next_action", "pool_hash"],
+      "required": ["schema_version", "chunk_id", "describe_source_ref", "resolver_version", "consumed_fragments", "conflicted_fragments", "remaining_evidence_fragments", "progress_made", "next_action", "pool_hash"],
       "properties": {
-        "schema_version": {"const": "describe-pool-resolution-v3"},
+        "schema_version": {"const": "describe-pool-resolution-v4"},
         "chunk_id": {"type": "string", "minLength": 1},
-        "resolution_round": {"type": "integer", "minimum": 1},
         "describe_source_ref": {"$ref": "#/$defs/DescribeEvidenceRef"},
+        "resolver_version": {"const": "n3-span-arbitration-v1"},
         "consumed_fragments": {
           "type": "array",
           "items": {
             "type": "object",
             "additionalProperties": false,
-            "required": ["source_evidence_quote", "claimed_evidence_quote", "claimed_span", "assigned_target_mention_id", "status"],
+            "required": ["assigned_target_local_mention_id", "fact_quote", "fact_chunk_span", "source_evidence_quote", "source_evidence_span", "status"],
             "properties": {
+              "assigned_target_local_mention_id": {"type": "string", "pattern": "^m[1-9][0-9]*$"},
+              "fact_quote": {"type": "string", "minLength": 1},
+              "fact_chunk_span": {"$ref": "#/$defs/SourceSpan"},
               "source_evidence_quote": {"type": "string", "minLength": 1},
-              "claimed_evidence_quote": {"type": "string", "minLength": 1},
-              "claimed_span": {"$ref": "#/$defs/SourceSpan"},
-              "assigned_target_mention_id": {"type": "string", "pattern": "^m[1-9][0-9]*$"},
-              "status": {"const": "consumed_unique"}
+              "source_evidence_span": {"$ref": "#/$defs/SourceSpan"},
+              "status": {"const": "uniquely_assigned"}
             }
           }
         },
@@ -382,27 +691,28 @@
           "items": {
             "type": "object",
             "additionalProperties": false,
-            "required": ["source_evidence_quote", "claimed_evidence_quote", "claimed_span", "competing_target_mention_ids", "status"],
+            "required": ["conflicted_quote", "conflicted_chunk_span", "source_evidence_quote", "source_evidence_span", "competing_target_local_mention_ids", "status"],
             "properties": {
+              "conflicted_quote": {"type": "string", "minLength": 1},
+              "conflicted_chunk_span": {"$ref": "#/$defs/SourceSpan"},
               "source_evidence_quote": {"type": "string", "minLength": 1},
-              "claimed_evidence_quote": {"type": "string", "minLength": 1},
-              "claimed_span": {"$ref": "#/$defs/SourceSpan"},
-              "competing_target_mention_ids": {
+              "source_evidence_span": {"$ref": "#/$defs/SourceSpan"},
+              "competing_target_local_mention_ids": {
                 "type": "array",
                 "minItems": 2,
                 "uniqueItems": true,
                 "items": {"type": "string", "pattern": "^m[1-9][0-9]*$"}
               },
-              "status": {"const": "conflicted"}
+              "status": {"const": "cross_target_overlap"}
             }
           }
         },
         "remaining_evidence_fragments": {
           "type": "array",
-          "items": {"$ref": "#/$defs/EvidenceFragment"}
+          "items": {"$ref": "#/$defs/M2DescribeFragmentInput"}
         },
         "progress_made": {"type": "boolean"},
-        "next_action": {"enum": ["resolved", "requeue_m2", "defer_unresolved"]},
+        "next_action": {"enum": ["resolved", "promote_remaining_describe", "defer_unresolved"]},
         "pool_hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
       },
       "allOf": [
@@ -415,12 +725,348 @@
         },
         {
           "if": {
-            "properties": {"next_action": {"const": "requeue_m2"}},
+            "properties": {"next_action": {"const": "promote_remaining_describe"}},
             "required": ["next_action"]
           },
           "then": {"properties": {"remaining_evidence_fragments": {"minItems": 1}}}
         }
       ]
+    },
+    "DocumentEvidenceSourceArtifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "hash"],
+      "properties": {
+        "path": {"type": "string", "minLength": 1},
+        "hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      }
+    },
+    "DocumentEvidenceChunk": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["chunk_id", "chunk_hash", "chunk_source_span", "overlap_left_characters", "overlap_right_characters"],
+      "properties": {
+        "chunk_id": {"type": "string", "minLength": 1},
+        "chunk_hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "chunk_source_span": {"$ref": "#/$defs/SourceSpan"},
+        "overlap_left_characters": {"type": "integer", "minimum": 0},
+        "overlap_right_characters": {"type": "integer", "minimum": 0}
+      }
+    },
+    "DocumentFactSourceOccurrence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["chunk_id", "chunk_hash", "chunk_source_span", "source_character_ref", "source_mention_id", "source_mention_type", "source_evidence_quote", "chunk_evidence_span", "document_evidence_span", "chunk_fact_span", "match_mode"],
+      "properties": {
+        "chunk_id": {"type": "string", "minLength": 1},
+        "chunk_hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "chunk_source_span": {"$ref": "#/$defs/SourceSpan"},
+        "source_character_ref": {"$ref": "#/$defs/AnyLocalCharacterRef"},
+        "source_mention_id": {"type": "string", "pattern": "^m[1-9][0-9]*$"},
+        "source_mention_type": {"enum": ["exact", "describe"]},
+        "source_evidence_quote": {"type": "string", "minLength": 1},
+        "chunk_evidence_span": {"$ref": "#/$defs/SourceSpan"},
+        "document_evidence_span": {"$ref": "#/$defs/SourceSpan"},
+        "chunk_fact_span": {"$ref": "#/$defs/SourceSpan"},
+        "match_mode": {"enum": ["exact", "whitespace_equivalent"]}
+      }
+    },
+    "DocumentAppearanceFact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["fact_hash", "character_origin", "character_label_quote", "fact_quote", "category", "attribute", "value", "document_fact_span", "source_occurrences"],
+      "properties": {
+        "fact_hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "character_origin": {"enum": ["exact", "remaining_describe"]},
+        "character_label_quote": {"type": "string", "minLength": 1},
+        "fact_quote": {"type": "string", "minLength": 1},
+        "category": {"enum": ["age", "body", "face", "hair", "clothing", "accessory", "distinctive_mark", "appearance_state", "other_visual"]},
+        "attribute": {"type": "string", "minLength": 1},
+        "value": {"type": "string", "minLength": 1},
+        "document_fact_span": {"$ref": "#/$defs/SourceSpan"},
+        "source_occurrences": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"$ref": "#/$defs/DocumentFactSourceOccurrence"}
+        }
+      }
+    },
+    "DocumentCharacterEvidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schema_version", "dedup_policy_version", "source_document_version_id", "document_hash", "coverage_status", "processed_source_end", "source_artifacts", "source_chunks", "appearance_facts", "summary"],
+      "properties": {
+        "schema_version": {"const": "document-character-evidence-v1"},
+        "dedup_policy_version": {"const": "document-overlap-safe-fact-dedup-v1"},
+        "source_document_version_id": {"type": "string", "minLength": 1},
+        "document_hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "coverage_status": {"enum": ["complete", "truncated"]},
+        "processed_source_end": {"type": "integer", "minimum": 1},
+        "source_artifacts": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["m1_manifest", "m2_grounded_packets", "n3_target_packets", "promotion_grounded_results"],
+          "properties": {
+            "m1_manifest": {"$ref": "#/$defs/DocumentEvidenceSourceArtifact"},
+            "m2_grounded_packets": {"$ref": "#/$defs/DocumentEvidenceSourceArtifact"},
+            "n3_target_packets": {"$ref": "#/$defs/DocumentEvidenceSourceArtifact"},
+            "promotion_grounded_results": {"$ref": "#/$defs/DocumentEvidenceSourceArtifact"}
+          }
+        },
+        "source_chunks": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"$ref": "#/$defs/DocumentEvidenceChunk"}
+        },
+        "appearance_facts": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/DocumentAppearanceFact"}
+        },
+        "summary": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["input_fact_records", "document_facts", "overlap_duplicates_removed", "source_occurrences", "exact_document_facts", "promoted_document_facts", "source_chunks"],
+          "properties": {
+            "input_fact_records": {"type": "integer", "minimum": 0},
+            "document_facts": {"type": "integer", "minimum": 0},
+            "overlap_duplicates_removed": {"type": "integer", "minimum": 0},
+            "source_occurrences": {"type": "integer", "minimum": 0},
+            "exact_document_facts": {"type": "integer", "minimum": 0},
+            "promoted_document_facts": {"type": "integer", "minimum": 0},
+            "source_chunks": {"type": "integer", "minimum": 1}
+          }
+        }
+      }
+    },
+    "M3IdentityCurrentCharacter": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["label_quote", "label_type", "context_quotes", "appearance_fact_quotes"],
+      "properties": {
+        "label_quote": {"type": "string", "minLength": 1},
+        "label_type": {"enum": ["exact", "describe"]},
+        "context_quotes": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
+        "appearance_fact_quotes": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true}
+      }
+    },
+    "M3IdentityCandidateCharacter": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["known_labels", "context_quotes", "appearance_fact_quotes"],
+      "properties": {
+        "known_labels": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
+        "context_quotes": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
+        "appearance_fact_quotes": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true}
+      }
+    },
+    "M3CharacterIdentityInput": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["current_character", "candidate_character", "bridge_context_quotes"],
+      "properties": {
+        "current_character": {"$ref": "#/$defs/M3IdentityCurrentCharacter"},
+        "candidate_character": {"$ref": "#/$defs/M3IdentityCandidateCharacter"},
+        "bridge_context_quotes": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true}
+      }
+    },
+    "M3CharacterIdentityResult": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["identity_relation", "label_relation", "identity_evidence_quotes"],
+      "properties": {
+        "identity_relation": {"enum": ["same_character", "different_characters", "uncertain"]},
+        "label_relation": {
+          "type": ["string", "null"],
+          "enum": ["same_surface", "name_variant", "alias", "title", "contextual_description", "unknown", null]
+        },
+        "identity_evidence_quotes": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true}
+      },
+      "allOf": [
+        {
+          "if": {"properties": {"identity_relation": {"const": "same_character"}}, "required": ["identity_relation"]},
+          "then": {
+            "properties": {
+              "label_relation": {"type": "string", "enum": ["same_surface", "name_variant", "alias", "title", "contextual_description", "unknown"]},
+              "identity_evidence_quotes": {"minItems": 1}
+            }
+          }
+        },
+        {
+          "if": {"properties": {"identity_relation": {"const": "different_characters"}}, "required": ["identity_relation"]},
+          "then": {"properties": {"label_relation": {"type": "null"}, "identity_evidence_quotes": {"minItems": 1}}}
+        },
+        {
+          "if": {"properties": {"identity_relation": {"const": "uncertain"}}, "required": ["identity_relation"]},
+          "then": {"properties": {"label_relation": {"type": "null"}, "identity_evidence_quotes": {"maxItems": 0}}}
+        }
+      ]
+    },
+    "IdentityContextBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["context_quote", "document_span", "source_kind"],
+      "properties": {
+        "context_quote": {"type": "string", "minLength": 1},
+        "document_span": {"$ref": "#/$defs/SourceSpan"},
+        "source_kind": {"enum": ["node", "current", "candidate", "bridge"]}
+      }
+    },
+    "IdentityAppearanceFactRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["fact_hash", "fact_quote", "category", "attribute", "value", "document_fact_span"],
+      "properties": {
+        "fact_hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "fact_quote": {"type": "string", "minLength": 1},
+        "category": {"type": "string", "minLength": 1},
+        "attribute": {"type": "string", "minLength": 1},
+        "value": {"type": "string", "minLength": 1},
+        "document_fact_span": {"$ref": "#/$defs/SourceSpan"}
+      }
+    },
+    "DocumentLocalCharacterNode": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["node_key", "ref_type", "source_character_ref", "character_origin", "label_quote", "label_type", "chunk_id", "chunk_source_span", "context_bindings", "appearance_fact_refs", "order_position"],
+      "properties": {
+        "node_key": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "ref_type": {"enum": ["local", "promoted"]},
+        "source_character_ref": {"$ref": "#/$defs/AnyLocalCharacterRef"},
+        "character_origin": {"enum": ["exact", "remaining_describe"]},
+        "label_quote": {"type": "string", "minLength": 1},
+        "label_type": {"enum": ["exact", "describe"]},
+        "chunk_id": {"type": "string", "minLength": 1},
+        "chunk_source_span": {"$ref": "#/$defs/SourceSpan"},
+        "context_bindings": {"type": "array", "items": {"$ref": "#/$defs/IdentityContextBinding"}},
+        "appearance_fact_refs": {"type": "array", "items": {"$ref": "#/$defs/IdentityAppearanceFactRef"}},
+        "order_position": {"type": "integer", "minimum": 0}
+      }
+    },
+    "DocumentLocalCharacterNodes": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schema_version", "context_policy_version", "source_document_version_id", "document_hash", "nodes", "summary"],
+      "properties": {
+        "schema_version": {"const": "document-local-character-nodes-v1"},
+        "context_policy_version": {"const": "identity-evidence-window-v1"},
+        "source_document_version_id": {"type": "string", "minLength": 1},
+        "document_hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "nodes": {"type": "array", "items": {"$ref": "#/$defs/DocumentLocalCharacterNode"}},
+        "summary": {"type": "object"}
+      }
+    },
+    "M3IdentityEnvelope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schema_version", "current_node_key", "candidate_node_key", "candidate_reasons", "context_bindings", "task_cache_key", "model_input"],
+      "properties": {
+        "schema_version": {"const": "m3-identity-envelope-v1"},
+        "current_node_key": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "candidate_node_key": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "candidate_reasons": {"type": "array", "minItems": 1, "items": {"enum": ["same_exact_label", "label_contains", "possible_name_variant", "shared_fact_quote"]}, "uniqueItems": true},
+        "context_bindings": {"type": "array", "items": {"$ref": "#/$defs/IdentityContextBinding"}},
+        "task_cache_key": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "model_input": {"$ref": "#/$defs/M3CharacterIdentityInput"}
+      }
+    },
+    "GroundedIdentityEvidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["evidence_quote", "document_span", "match_mode"],
+      "properties": {
+        "evidence_quote": {"type": "string", "minLength": 1},
+        "document_span": {"$ref": "#/$defs/SourceSpan"},
+        "match_mode": {"enum": ["exact", "whitespace_equivalent"]}
+      }
+    },
+    "GroundedIdentityDecision": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schema_version", "current_node_key", "candidate_node_key", "task_cache_key", "requested_identity_relation", "identity_relation", "label_relation", "grounded_identity_evidence", "issues"],
+      "properties": {
+        "schema_version": {"const": "grounded-identity-decision-v1"},
+        "current_node_key": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "candidate_node_key": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "task_cache_key": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "requested_identity_relation": {"enum": ["same_character", "different_characters", "uncertain"]},
+        "identity_relation": {"enum": ["same_character", "different_characters", "uncertain"]},
+        "label_relation": {"type": ["string", "null"]},
+        "grounded_identity_evidence": {"type": "array", "items": {"$ref": "#/$defs/GroundedIdentityEvidence"}},
+        "issues": {"type": "array", "items": {"type": "object"}}
+      }
+    },
+    "WrappedLocalCharacterRef": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["ref_type", "local_character_ref"],
+          "properties": {"ref_type": {"const": "local"}, "local_character_ref": {"$ref": "#/$defs/LocalCharacterRef"}}
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["ref_type", "promoted_character_ref"],
+          "properties": {"ref_type": {"const": "promoted"}, "promoted_character_ref": {"$ref": "#/$defs/PromotedDescribeCharacterRef"}}
+        }
+      ]
+    },
+    "DocumentCharacterProfile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["character_id", "identity_status", "canonical_label", "canonical_label_status", "labels", "member_character_refs", "appearance_fact_refs", "possible_conflicts"],
+      "properties": {
+        "character_id": {"type": "string", "pattern": "^char-[0-9a-f]{20}$"},
+        "identity_status": {"enum": ["linked", "singleton"]},
+        "canonical_label": {"type": "string", "minLength": 1},
+        "canonical_label_status": {"enum": ["confirmed_name_like", "provisional_description"]},
+        "labels": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["label_quote", "label_role", "globally_unique"],
+            "properties": {
+              "label_quote": {"type": "string", "minLength": 1},
+              "label_role": {"enum": ["name", "name_variant", "alias", "title", "contextual_description", "unknown"]},
+              "globally_unique": {"type": "boolean"}
+            }
+          }
+        },
+        "member_character_refs": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/WrappedLocalCharacterRef"}},
+        "appearance_fact_refs": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["fact_hash", "fact_quote"],
+            "properties": {
+              "fact_hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+              "fact_quote": {"type": "string", "minLength": 1}
+            }
+          }
+        },
+        "possible_conflicts": {"type": "array", "items": {"type": "object"}}
+      }
+    },
+    "DocumentCharacterRegistry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schema_version", "identity_policy_version", "candidate_policy_version", "conflict_policy_version", "source_document_version_id", "document_hash", "characters", "unresolved_bindings", "review_items", "cannot_link_constraints", "summary"],
+      "properties": {
+        "schema_version": {"const": "document-character-registry-v1"},
+        "identity_policy_version": {"const": "strict-evidence-identity-v1"},
+        "candidate_policy_version": {"const": "bounded-local-candidate-retrieval-v1"},
+        "conflict_policy_version": {"const": "preserve-multiple-values-v1"},
+        "source_document_version_id": {"type": "string", "minLength": 1},
+        "document_hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "characters": {"type": "array", "items": {"$ref": "#/$defs/DocumentCharacterProfile"}},
+        "unresolved_bindings": {"type": "array", "items": {"type": "object"}},
+        "review_items": {"type": "array", "items": {"type": "object"}},
+        "cannot_link_constraints": {"type": "array", "items": {"type": "object"}},
+        "summary": {"type": "object"}
+      }
     }
   }
 }

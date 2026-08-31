@@ -1,0 +1,23 @@
+{
+  "task_id": "M2-MINIMAL-FACT-SCHEMA-054",
+  "decision_id": "DEC-20260830-M2-MINIMAL-FACT-SCHEMA-054",
+  "user_decision": "M2 模型不要读取或输出 describe_ref、fragment_ref、evidence_ref、assessments、attribution_status、claimed/support span 与 quote、epistemic_status；只返回属于当前 exact 的外貌事实，代码后补来源并从 describe 消费。",
+  "model_visible_output": {
+    "belongs_to_target": [
+      {
+        "fact_quote": "逐字事实原文",
+        "category": "外貌类别",
+        "attribute": "属性",
+        "value": "值"
+      }
+    ]
+  },
+  "binding_policy": "代码优先匹配 exact approved evidence，否则要求 fact_quote 在一个 describe evidence occurrence 中安全且唯一匹配；不唯一或越界时失败关闭。",
+  "consumption_policy": "同一 fact span 仅由一个 exact 认领时归并并从 N2 packet 派生的 describe 工作池消费；多 exact 重叠认领保留冲突。",
+  "non_goals": [
+    "实现 M2 Provider 或运行时",
+    "修改 M1/N2 产物",
+    "真实调用 DeepSeek",
+    "跨 Chunk 人物合并"
+  ]
+}

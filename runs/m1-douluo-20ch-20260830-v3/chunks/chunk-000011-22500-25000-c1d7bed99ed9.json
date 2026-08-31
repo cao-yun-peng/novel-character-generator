@@ -1,0 +1,523 @@
+{
+  "schema_version": "m1-chunk-result-v1",
+  "chunk_index": 11,
+  "chunk_id": "chunk-000011-22500-25000-c1d7bed99ed9",
+  "chunk_hash": "c1d7bed99ed9d75f33142c0ac09b1bb7281231e79e98028c10548b1159d2e538",
+  "chunk_source_span": {
+    "start": 22500,
+    "end": 25000
+  },
+  "model_output": {
+    "candidate_mentions": [
+      {
+        "mention_type": "exact",
+        "mention_quote": "唐三",
+        "evidence_quotes": [
+          "唐三幼小的身体",
+          "他身上的衣服已经被汗水浸透了",
+          "挥汗如雨的唐三"
+        ]
+      },
+      {
+        "mention_type": "exact",
+        "mention_quote": "小三",
+        "evidence_quotes": [
+          "唐三幼小的身体",
+          "他身上的衣服已经被汗水浸透了",
+          "挥汗如雨的唐三"
+        ]
+      },
+      {
+        "mention_type": "exact",
+        "mention_quote": "唐昊",
+        "evidence_quotes": [
+          "面庞看上去更加苍老了几分",
+          "高大的父亲",
+          "裸露在破烂裤管外的两条小腿"
+        ]
+      },
+      {
+        "mention_type": "describe",
+        "mention_quote": "父亲",
+        "evidence_quotes": [
+          "高大的父亲",
+          "面庞看上去更加苍老了几分",
+          "裸露在破烂裤管外的两条小腿"
+        ]
+      }
+    ]
+  },
+  "grounded_packet": {
+    "schema_version": "grounded-character-packet-v3",
+    "source_document_version_id": "source-4dd3d57c99f4b254",
+    "chunking_policy_version": "fixed-codepoint-window-2500-overlap-250-v1",
+    "chunk_id": "chunk-000011-22500-25000-c1d7bed99ed9",
+    "chunk_hash": "c1d7bed99ed9d75f33142c0ac09b1bb7281231e79e98028c10548b1159d2e538",
+    "chunk_source_span": {
+      "start": 22500,
+      "end": 25000
+    },
+    "grounded_mentions": [
+      {
+        "local_mention_id": "m1",
+        "mention_type": "exact",
+        "mention_quote": "唐三",
+        "mention_occurrence_count": 30,
+        "mention_source_spans": [
+          {
+            "start": 60,
+            "end": 62
+          },
+          {
+            "start": 143,
+            "end": 145
+          },
+          {
+            "start": 183,
+            "end": 185
+          },
+          {
+            "start": 366,
+            "end": 368
+          },
+          {
+            "start": 389,
+            "end": 391
+          },
+          {
+            "start": 446,
+            "end": 448
+          },
+          {
+            "start": 547,
+            "end": 549
+          },
+          {
+            "start": 614,
+            "end": 616
+          },
+          {
+            "start": 719,
+            "end": 721
+          },
+          {
+            "start": 835,
+            "end": 837
+          },
+          {
+            "start": 857,
+            "end": 859
+          },
+          {
+            "start": 919,
+            "end": 921
+          },
+          {
+            "start": 1009,
+            "end": 1011
+          },
+          {
+            "start": 1137,
+            "end": 1139
+          },
+          {
+            "start": 1166,
+            "end": 1168
+          },
+          {
+            "start": 1213,
+            "end": 1215
+          },
+          {
+            "start": 1271,
+            "end": 1273
+          },
+          {
+            "start": 1339,
+            "end": 1341
+          },
+          {
+            "start": 1391,
+            "end": 1393
+          },
+          {
+            "start": 1434,
+            "end": 1436
+          },
+          {
+            "start": 1568,
+            "end": 1570
+          },
+          {
+            "start": 1626,
+            "end": 1628
+          },
+          {
+            "start": 1692,
+            "end": 1694
+          },
+          {
+            "start": 1735,
+            "end": 1737
+          },
+          {
+            "start": 1966,
+            "end": 1968
+          },
+          {
+            "start": 2089,
+            "end": 2091
+          },
+          {
+            "start": 2218,
+            "end": 2220
+          },
+          {
+            "start": 2238,
+            "end": 2240
+          },
+          {
+            "start": 2316,
+            "end": 2318
+          },
+          {
+            "start": 2362,
+            "end": 2364
+          }
+        ],
+        "mention_quote_hash": "04af9a5f2d9cca67d65d424e41820e11063f4cb679035d66b8ef30ed334d2c48",
+        "approved_evidence": [
+          {
+            "evidence_quote": "唐三幼小的身体",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1009,
+                "end": 1016
+              }
+            ],
+            "quote_hash": "96ad934da895c0fd4647f47d78b32ed050ed729a0bcf398974eae1a566f22b67",
+            "relation_to_mention": "contains_mention"
+          },
+          {
+            "evidence_quote": "他身上的衣服已经被汗水浸透了",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 931,
+                "end": 945
+              }
+            ],
+            "quote_hash": "8ab1409a7c81de6509752149cef66dc0d7652262dc212534ff166dcde24f0c1a",
+            "relation_to_mention": "contextual"
+          },
+          {
+            "evidence_quote": "挥汗如雨的唐三",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1132,
+                "end": 1139
+              }
+            ],
+            "quote_hash": "78a17530ce623408ed79c50b698f571c8fd8b9dcb9878be8d25e04444c7eeed1",
+            "relation_to_mention": "contains_mention"
+          }
+        ],
+        "packet_hash": "efda79a94bbe80490e56cf513c4f3f4f3463f7bda4116f8ba0e13868cbcb8d2c"
+      },
+      {
+        "local_mention_id": "m2",
+        "mention_type": "exact",
+        "mention_quote": "小三",
+        "mention_occurrence_count": 1,
+        "mention_source_spans": [
+          {
+            "start": 423,
+            "end": 425
+          }
+        ],
+        "mention_quote_hash": "38f6a0cc6cfcdf3ba4a0b115ff38fd8f61dfb313b98dd14011398bd5687e98c4",
+        "approved_evidence": [
+          {
+            "evidence_quote": "唐三幼小的身体",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1009,
+                "end": 1016
+              }
+            ],
+            "quote_hash": "96ad934da895c0fd4647f47d78b32ed050ed729a0bcf398974eae1a566f22b67",
+            "relation_to_mention": "contextual"
+          },
+          {
+            "evidence_quote": "他身上的衣服已经被汗水浸透了",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 931,
+                "end": 945
+              }
+            ],
+            "quote_hash": "8ab1409a7c81de6509752149cef66dc0d7652262dc212534ff166dcde24f0c1a",
+            "relation_to_mention": "contextual"
+          },
+          {
+            "evidence_quote": "挥汗如雨的唐三",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1132,
+                "end": 1139
+              }
+            ],
+            "quote_hash": "78a17530ce623408ed79c50b698f571c8fd8b9dcb9878be8d25e04444c7eeed1",
+            "relation_to_mention": "contextual"
+          }
+        ],
+        "packet_hash": "084706c449c2bd857a47bbaa6ac7187a0f02563e73208733ad6786c4480ea7e2"
+      },
+      {
+        "local_mention_id": "m3",
+        "mention_type": "exact",
+        "mention_quote": "唐昊",
+        "mention_occurrence_count": 25,
+        "mention_source_spans": [
+          {
+            "start": 89,
+            "end": 91
+          },
+          {
+            "start": 155,
+            "end": 157
+          },
+          {
+            "start": 337,
+            "end": 339
+          },
+          {
+            "start": 404,
+            "end": 406
+          },
+          {
+            "start": 455,
+            "end": 457
+          },
+          {
+            "start": 484,
+            "end": 486
+          },
+          {
+            "start": 552,
+            "end": 554
+          },
+          {
+            "start": 668,
+            "end": 670
+          },
+          {
+            "start": 811,
+            "end": 813
+          },
+          {
+            "start": 882,
+            "end": 884
+          },
+          {
+            "start": 1047,
+            "end": 1049
+          },
+          {
+            "start": 1140,
+            "end": 1142
+          },
+          {
+            "start": 1156,
+            "end": 1158
+          },
+          {
+            "start": 1209,
+            "end": 1211
+          },
+          {
+            "start": 1297,
+            "end": 1299
+          },
+          {
+            "start": 1380,
+            "end": 1382
+          },
+          {
+            "start": 1531,
+            "end": 1533
+          },
+          {
+            "start": 1606,
+            "end": 1608
+          },
+          {
+            "start": 1649,
+            "end": 1651
+          },
+          {
+            "start": 1701,
+            "end": 1703
+          },
+          {
+            "start": 1718,
+            "end": 1720
+          },
+          {
+            "start": 1953,
+            "end": 1955
+          },
+          {
+            "start": 2112,
+            "end": 2114
+          },
+          {
+            "start": 2209,
+            "end": 2211
+          },
+          {
+            "start": 2308,
+            "end": 2310
+          }
+        ],
+        "mention_quote_hash": "081118b106b6bea10da0e0a6c94ec329ae8ae1f2ec304529a0c642688e4bc39d",
+        "approved_evidence": [
+          {
+            "evidence_quote": "面庞看上去更加苍老了几分",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 491,
+                "end": 503
+              }
+            ],
+            "quote_hash": "528e63c51bb8cf5fb1cba6d5f5df79f1ff4135e5aabe6306807f6076f7119167",
+            "relation_to_mention": "contextual"
+          },
+          {
+            "evidence_quote": "高大的父亲",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1278,
+                "end": 1283
+              }
+            ],
+            "quote_hash": "41d675cc81ba2c621e24270386d1ece96f468f6e9631869c1eb22b54f93ce6fa",
+            "relation_to_mention": "contextual"
+          },
+          {
+            "evidence_quote": "裸露在破烂裤管外的两条小腿",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 2006,
+                "end": 2019
+              }
+            ],
+            "quote_hash": "1862ee5336e9de06210a35c86aa9f6c1d720ae3ce2212fdc96209d895dee70ae",
+            "relation_to_mention": "contextual"
+          }
+        ],
+        "packet_hash": "d21d51118a7855f128f17a2d2e7fde0216e5b02625c8cdc3240e1c3aaa2b224e"
+      },
+      {
+        "local_mention_id": "m4",
+        "mention_type": "describe",
+        "mention_quote": "父亲",
+        "mention_occurrence_count": 6,
+        "mention_source_spans": [
+          {
+            "start": 66,
+            "end": 68
+          },
+          {
+            "start": 223,
+            "end": 225
+          },
+          {
+            "start": 464,
+            "end": 466
+          },
+          {
+            "start": 590,
+            "end": 592
+          },
+          {
+            "start": 861,
+            "end": 863
+          },
+          {
+            "start": 1281,
+            "end": 1283
+          }
+        ],
+        "mention_quote_hash": "069af863e908e627e1e2c28c64cd9710605566fba39cdc27e6026df9b352ecef",
+        "approved_evidence": [
+          {
+            "evidence_quote": "高大的父亲",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1278,
+                "end": 1283
+              }
+            ],
+            "quote_hash": "41d675cc81ba2c621e24270386d1ece96f468f6e9631869c1eb22b54f93ce6fa",
+            "relation_to_mention": "contains_mention"
+          },
+          {
+            "evidence_quote": "面庞看上去更加苍老了几分",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 491,
+                "end": 503
+              }
+            ],
+            "quote_hash": "528e63c51bb8cf5fb1cba6d5f5df79f1ff4135e5aabe6306807f6076f7119167",
+            "relation_to_mention": "contextual"
+          },
+          {
+            "evidence_quote": "裸露在破烂裤管外的两条小腿",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 2006,
+                "end": 2019
+              }
+            ],
+            "quote_hash": "1862ee5336e9de06210a35c86aa9f6c1d720ae3ce2212fdc96209d895dee70ae",
+            "relation_to_mention": "contextual"
+          }
+        ],
+        "packet_hash": "e03725b3746634095bc30d1c011480a2cb98d1b27054dd20bf7fbbeee28da799"
+      }
+    ],
+    "rejected_evidence": []
+  },
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 54484,
+    "http_status": 200,
+    "response_id": "9eaf0837-234d-4c39-8d06-0779a2de3829",
+    "usage": {
+      "input_tokens": 2358,
+      "cached_input_tokens": 768,
+      "output_tokens": 6371,
+      "reasoning_tokens": 6127,
+      "total_tokens": 8729
+    },
+    "error_kind": null
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "task_id": "M2-MINIMAL-FACT-SCHEMA-054",
+  "lifecycle_stage": "5",
+  "lifecycle_revision": 2,
+  "source_revision": "a6c6d16a5731f83aded0345fc1de6aef00604025",
+  "schema_version_before": "3.6.0-draft1",
+  "schema_version_target": "3.7.0-draft1",
+  "runtime_version": "0.1.0.dev6",
+  "m2_envelope_before": "m2-orchestration-envelope-v3",
+  "m2_envelope_target": "m2-orchestration-envelope-v4",
+  "promotion_envelope_before": "m2-remaining-describe-promotion-envelope-v3",
+  "promotion_envelope_target": "m2-remaining-describe-promotion-envelope-v4",
+  "affected_contracts": [
+    "M2ModelBelongsToFact",
+    "M2CandidateAppearanceParsingInput",
+    "M2CandidateAppearanceParsingResult",
+    "M2OrchestrationEnvelope",
+    "M2RemainingDescribePromotionInput",
+    "M2RemainingDescribePromotionResult"
+  ]
+}

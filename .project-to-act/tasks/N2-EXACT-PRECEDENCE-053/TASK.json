@@ -1,0 +1,36 @@
+{
+  "id": "N2-EXACT-PRECEDENCE-053",
+  "title": "实现 N2 exact 优先 evidence 去重",
+  "status": "completed",
+  "owner": "Codex",
+  "objective": "在 Chunk 局部 N2 Grounding 后删除所有 describe 中已由任一 exact 持有的相同原文 evidence，并删除 evidence 被清空的 describe 块。",
+  "risk_level": "L1-contract-breaking-local",
+  "allowed_paths": [
+    "src",
+    "tests",
+    "docs",
+    "README.md",
+    "pyproject.toml",
+    ".project-to-act"
+  ],
+  "invariants": [
+    "M1 model_output 保持 Provider 原始结构化结果，不做原地修改",
+    "只使用已通过 Grounding 的 raw evidence_quote 完全相等比较",
+    "当前 Chunk 全部 exact 合并为优先 evidence 集合",
+    "所有 describe scope 均执行过滤；exact、null 不被过滤",
+    "exact 与 exact、describe 与 describe 之间不互删",
+    "describe evidence 被删空后不进入 grounded_mentions",
+    "过滤后的 packet_hash 必须重算",
+    "删除行为写入独立 N2 trace 产物，不把删除伪装为原文校验失败",
+    "不修改既有 runs 产物，不发起真实 Provider 调用"
+  ],
+  "acceptance": [
+    "萧熏儿 exact 与少女 describe 共享全部 evidence 时只保留 exact grounded block",
+    "describe 仅部分重复时保留不重复 evidence 且顺序不变",
+    "无 exact、不同 quote、exact 无有效 evidence 时不误删",
+    "过滤后的 hash 稳定且 Grounding provenance 不变",
+    "批次输出独立 n2-grounding-traces.json 并汇总删除计数",
+    "Schema、文档、运行时版本和批次兼容边界同步",
+    "自动测试、Schema、Project-to-Act 与 Lifecycle 验证通过"
+  ]
+}

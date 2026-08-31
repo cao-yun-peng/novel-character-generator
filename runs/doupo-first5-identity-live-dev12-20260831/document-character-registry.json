@@ -1,0 +1,856 @@
+{
+  "schema_version": "document-character-registry-v1",
+  "identity_policy_version": "strict-evidence-identity-v1",
+  "candidate_policy_version": "bounded-local-candidate-retrieval-v1",
+  "conflict_policy_version": "preserve-multiple-values-v1",
+  "source_document_version_id": "doupo-first5-7ca3fd295b5d0d45",
+  "document_hash": "7ca3fd295b5d0d454ca0b0bac2f4a49f2271602fc8e55bca2f120bb11d85172a",
+  "characters": [
+    {
+      "character_id": "char-21d7c2c77d56ba98fd99",
+      "identity_status": "singleton",
+      "canonical_label": "男子",
+      "canonical_label_status": "provisional_description",
+      "labels": [
+        {
+          "label_quote": "男子",
+          "label_role": "contextual_description",
+          "globally_unique": false
+        }
+      ],
+      "member_character_refs": [
+        {
+          "ref_type": "promoted",
+          "promoted_character_ref": {
+            "source_document_version_id": "doupo-first5-7ca3fd295b5d0d45",
+            "chunk_id": "chunk-000004-6750-9250-4d57b02a87a6",
+            "source_local_mention_id": "m5",
+            "source_mention_type": "describe",
+            "promotion_index": 1,
+            "character_origin": "remaining_describe",
+            "packet_hash": "b4864e852d8b5e885c007cf7a1d48648cf8bb14baa44f4609b3cdd09716748a9",
+            "promotion_hash": "ac1e0595620b960eed8d57ff880fc2a831aaff8374e9fabc67fc886071a629e2"
+          }
+        }
+      ],
+      "appearance_fact_refs": [
+        {
+          "fact_hash": "d0dde9992236b5e2a2a651b90a5bad87233071651db966e26dc541a8a1b43335",
+          "fact_quote": "年龄在二十左右"
+        },
+        {
+          "fact_hash": "95040685663e6ff2e3c324b137df3fdc39aeab7b47e2d5417132e68ed38eede5",
+          "fact_quote": "英俊的相貌"
+        },
+        {
+          "fact_hash": "ff5e5c09d39a08621586c59914bc8be0fea3df2c55782e9ff36d874c2992a49c",
+          "fact_quote": "挺拔的身材"
+        }
+      ],
+      "possible_conflicts": []
+    },
+    {
+      "character_id": "char-3f11f55cbb3a76c59c02",
+      "identity_status": "linked",
+      "canonical_label": "萧薰儿",
+      "canonical_label_status": "confirmed_name_like",
+      "labels": [
+        {
+          "label_quote": "萧薰儿",
+          "label_role": "name",
+          "globally_unique": true
+        },
+        {
+          "label_quote": "熏儿",
+          "label_role": "name_variant",
+          "globally_unique": true
+        },
+        {
+          "label_quote": "萧熏儿",
+          "label_role": "name_variant",
+          "globally_unique": true
+        }
+      ],
+      "member_character_refs": [
+        {
+          "ref_type": "local",
+          "local_character_ref": {
+            "source_document_version_id": "doupo-first5-7ca3fd295b5d0d45",
+            "chunk_id": "chunk-000001-0-2500-8c90daca7aee",
+            "local_mention_id": "m5",
+            "mention_type": "exact",
+            "packet_hash": "20d339056a803bfbf22244af1221f23623c052e9023ec3d2a3c2cdc4687b2121"
+          }
+        },
+        {
+          "ref_type": "local",
+          "local_character_ref": {
+            "source_document_version_id": "doupo-first5-7ca3fd295b5d0d45",
+            "chunk_id": "chunk-000002-2250-4750-84c9baa8a8da",
+            "local_mention_id": "m1",
+            "mention_type": "exact",
+            "packet_hash": "1bec7c230c4eb6de3849615a3ed20f58c4969c492a11469a5dd86f3614ce8c7b"
+          }
+        },
+        {
+          "ref_type": "local",
+          "local_character_ref": {
+            "source_document_version_id": "doupo-first5-7ca3fd295b5d0d45",
+            "chunk_id": "chunk-000004-6750-9250-4d57b02a87a6",
+            "local_mention_id": "m7",
+            "mention_type": "exact",
+            "packet_hash": "b53050483ba6ac2f423ffe332117be2729eeb3b5bc9bd96648d15bf66a001bf8"
+          }
+        },
+        {
+          "ref_type": "local",
+          "local_character_ref": {
+            "source_document_version_id": "doupo-first5-7ca3fd295b5d0d45",
+            "chunk_id": "chunk-000005-9000-11500-0cb89a2a0c18",
+            "local_mention_id": "m1",
+            "mention_type": "exact",
+            "packet_hash": "eccb6f9d8ab164fa2663749ef141b8deab855cbf19a379578bc4e97ca828ebbc"
+          }
+        },
+        {
+          "ref_type": "local",
+          "local_character_ref": {
+            "source_document_version_id": "doupo-first5-7ca3fd295b5d0d45",
+            "chunk_id": "chunk-000006-11250-13750-03087dc524e6",
+            "local_mention_id": "m2",
+            "mention_type": "exact",
+            "packet_hash": "84a96d61fbadfe11239b77fd0a880c61ddce96ab5689c8cb69d286a7f8ac8296"
+          }
+        }
+      ],
+      "appearance_fact_refs": [
+        {
+          "fact_hash": "8f3ce97429a2155a600ed750a754d22741867258c331ead01ff0fa14087a8def",
+          "fact_quote": "身着紫色衣裙"
+        },
+        {
+          "fact_hash": "d7f4bcb3ed63bf8f326160f3443367361154743cc584351aa8bc5520f6313a69",
+          "fact_quote": "稚嫩俏脸"
+        },
+        {
+          "fact_hash": "f51ea0f285baaf143bff9e878f690a925ee12a345bd9a0dd5691ee3cd11cd640",
+          "fact_quote": "小小年纪"
+        },
+        {
+          "fact_hash": "ac0dcaa5cc0d0a89abdf89ae46877af965ed794ed3fe80d88c2c5ca434ae8dfe",
+          "fact_quote": "镶着黑金丝的紫袖"
+        },
+        {
+          "fact_hash": "fe3952a39e66856e575b2074776ecfd06f32800d78560fc641cd1c4be68b3b53",
+          "fact_quote": "雪白娇嫩的皓腕"
+        },
+        {
+          "fact_hash": "0aa6f47066f116634cd5c7877f8c1fbd1f0ec1567c57eeb72262ef3b4767c52c",
+          "fact_quote": "平淡的小脸"
+        },
+        {
+          "fact_hash": "bfc7520047ef1c8ceb83c2f64753efac63faf9e14d09fbb244e690e449edc407",
+          "fact_quote": "美丽的俏脸"
+        },
+        {
+          "fact_hash": "f60c16f1757c37e222d7b3f0d8745f5e3f65ac18b6b28805600d1b7cfc572e1c",
+          "fact_quote": "美丽的俏脸"
+        },
+        {
+          "fact_hash": "4f6bc293fe6ccf487e27e562953691a65a70e5bde91cd010f1a02dec0ee3542b",
+          "fact_quote": "清雅笑容"
+        },
+        {
+          "fact_hash": "480511c057c3df43db57e9d9d6a1d662473b74b171305f07c6e5b87065ac970a",
+          "fact_quote": "萧薰儿纤细的眉毛"
+        },
+        {
+          "fact_hash": "ed2a1de7d3a2ccd2c6bf961dac023830981ad3b2b1761695d3d623453a2341d1",
+          "fact_quote": "白皙的俏脸"
+        },
+        {
+          "fact_hash": "f00761382a165dc197219711fe2cfd4a30dae537c38edebe97a7727b450d5316",
+          "fact_quote": "微笑的小脸"
+        },
+        {
+          "fact_hash": "2fc9d8715c83a3df206eaa91a5026e7bd1aca2230a7512474ee13f24a0e09148",
+          "fact_quote": "小脸上露出可爱的小酒窝"
+        },
+        {
+          "fact_hash": "6b125ab326bdbd670dda0b5ccbe39f0bda641a78d60204c67110febb3c8d906b",
+          "fact_quote": "小脸上露出可爱的小酒窝"
+        },
+        {
+          "fact_hash": "3f8638f991cbdc5718e01b84da0c95f02a62714605196ed614c9cbba98943405",
+          "fact_quote": "纤细的指尖"
+        },
+        {
+          "fact_hash": "93bd02da4d3fad85b6528f808756c47ef95079b03d532110e403269e2669021c",
+          "fact_quote": "纤细的指尖"
+        },
+        {
+          "fact_hash": "5d16ee18309fcb50d9d720ee94f919c2b041fbedae3dce952162f1c3ed3b979a",
+          "fact_quote": "修长的睫毛"
+        },
+        {
+          "fact_hash": "d48fa1d693ce5165f7e3b2420191097c081a9597cd10af18b2cbf7ca7c6e7813",
+          "fact_quote": "光洁侧脸"
+        },
+        {
+          "fact_hash": "c8969e5047dcec92c5acee680b4cbddebec344a147402e8b7cdbbbf0a2354285",
+          "fact_quote": "小嘴泛起了柔和的笑意"
+        },
+        {
+          "fact_hash": "0b7740aece609fa40f2cc02c01d93c7edeb442e8ef2d80823255152318487774",
+          "fact_quote": "美丽的眼睛微弯"
+        },
+        {
+          "fact_hash": "c0605074712ce272137601940ce4b9531aa04e3473e86c3990c855bb51c00c9d",
+          "fact_quote": "一只娇嫩的小手"
+        }
+      ],
+      "possible_conflicts": [
+        {
+          "conflict_id": "conflict-d1120f3ec04d4fc9bddf",
+          "conflict_type": "multiple_values_same_attribute",
+          "category": "face",
+          "attribute": "酒窝",
+          "fact_hashes": [
+            "2fc9d8715c83a3df206eaa91a5026e7bd1aca2230a7512474ee13f24a0e09148",
+            "6b125ab326bdbd670dda0b5ccbe39f0bda641a78d60204c67110febb3c8d906b"
+          ],
+          "values": [
+            "可爱",
+            "可爱的小酒窝"
+          ],
+          "resolution_status": "unresolved"
+        },
+        {
+          "conflict_id": "conflict-3b8b17d28d6d569f8e01",
+          "conflict_type": "multiple_values_same_attribute",
+          "category": "face",
+          "attribute": "面容",
+          "fact_hashes": [
+            "bfc7520047ef1c8ceb83c2f64753efac63faf9e14d09fbb244e690e449edc407",
+            "d7f4bcb3ed63bf8f326160f3443367361154743cc584351aa8bc5520f6313a69"
+          ],
+          "values": [
+            "稚嫩俏丽",
+            "美丽"
+          ],
+          "resolution_status": "unresolved"
+        }
+      ]
+    },
+    {
+      "character_id": "char-575264c1dc14459db898",
+      "identity_status": "linked",
+      "canonical_label": "萧战",
+      "canonical_label_status": "confirmed_name_like",
+      "labels": [
+        {
+          "label_quote": "萧战",
+          "label_role": "name",
+          "globally_unique": true
+        }
+      ],
+      "member_character_refs": [
+        {
+          "ref_type": "local",
+          "local_character_ref": {
+            "source_document_version_id": "doupo-first5-7ca3fd295b5d0d45",
+            "chunk_id": "chunk-000003-4500-7000-dbdb791747b5",
+            "local_mention_id": "m2",
+            "mention_type": "exact",
+            "packet_hash": "16fbead3b742b715c9f03655c87b49350924146ef7c9d7bef06dc26a7293836f"
+          }
+        },
+        {
+          "ref_type": "local",
+          "local_character_ref": {
+            "source_document_version_id": "doupo-first5-7ca3fd295b5d0d45",
+            "chunk_id": "chunk-000006-11250-13750-03087dc524e6",
+            "local_mention_id": "m3",
+            "mention_type": "exact",
+            "packet_hash": "3a64436368061100f12b2ca4c412e9c08c8e55902fd446c29386f5dffeb55e86"
+          }
+        },
+        {
+          "ref_type": "local",
+          "local_character_ref": {
+            "source_document_version_id": "doupo-first5-7ca3fd295b5d0d45",
+            "chunk_id": "chunk-000007-13500-14160-d83b17f39d7c",
+            "local_mention_id": "m1",
+            "mention_type": "exact",
+            "packet_hash": "1cc32c8d976cf5cbfcf51e9ca928d66269c100deaed2058802198c7d98145ec5"
+          }
+        }
+      ],
+      "appearance_fact_refs": [
+        {
+          "fact_hash": "94d0e51e765d8e2ff44ee9c314003a3663ea0a1722596471f251a452e59f225d",
+          "fact_quote": "中年人"
+        },
+        {
+          "fact_hash": "5ebf7973735573ff3bf046626668fd5c6aca1f567b4f75d8fe28f252f85a9d50",
+          "fact_quote": "华贵的灰色衣衫"
+        },
+        {
+          "fact_hash": "af0c3c4ac5ab6030546fd3f640dc3ebd879344fd9065d7683363a59abdeda9ea",
+          "fact_quote": "一对粗眉"
+        },
+        {
+          "fact_hash": "a5141a45868fd7a67283fb5d5023338e4793346a67ccadf0e24e9ba9f2849dd9",
+          "fact_quote": "硕大的手掌"
+        },
+        {
+          "fact_hash": "28d60b9c500c52719dc017444c3763aba987f253f2b3d7a95e17c8f636255a0d",
+          "fact_quote": "阴沉至极的脸色"
+        },
+        {
+          "fact_hash": "8ab71e26da893d39e1ae96dd3308519b6442e2a595069936c41645361d03f8b9",
+          "fact_quote": "萧战脸色淡漠"
+        }
+      ],
+      "possible_conflicts": []
+    },
+    {
+      "character_id": "char-603bcb9eea1b127a3878",
+      "identity_status": "linked",
+      "canonical_label": "葛叶",
+      "canonical_label_status": "confirmed_name_like",
+      "labels": [
+        {
+          "label_quote": "葛叶",
+          "label_role": "name",
+          "globally_unique": true
+        }
+      ],
+      "member_character_refs": [
+        {
+          "ref_type": "local",
+          "local_character_ref": {
+            "source_document_version_id": "doupo-first5-7ca3fd295b5d0d45",
+            "chunk_id": "chunk-000006-11250-13750-03087dc524e6",
+            "local_mention_id": "m4",
+            "mention_type": "exact",
+            "packet_hash": "34eff393aacfc1bffb46ed2fc7e151eb7bb7090d8af801e314d989f5ca61e0db"
+          }
+        },
+        {
+          "ref_type": "local",
+          "local_character_ref": {
+            "source_document_version_id": "doupo-first5-7ca3fd295b5d0d45",
+            "chunk_id": "chunk-000007-13500-14160-d83b17f39d7c",
+            "local_mention_id": "m3",
+            "mention_type": "exact",
+            "packet_hash": "d744fff8b247cac4f1867e446c25570055a67ed4d9e0193491022f7374ae489d"
+          }
+        }
+      ],
+      "appearance_fact_refs": [
+        {
+          "fact_hash": "13059eeba060f26d6deb0d4b18592029f13fcdaf0aa1174bbc43371dc2b33bf5",
+          "fact_quote": "白袍"
+        },
+        {
+          "fact_hash": "23ab01157fa2999eadab2018ed02593d4a2bccacbdeea25eba89b0482b6357f2",
+          "fact_quote": "脸庞也顿时凝重了起来"
+        },
+        {
+          "fact_hash": "7c6f5ca43143d3efa8ef6ef126961139239b587b7c9a1e2bac57e27ce15789b8",
+          "fact_quote": "鹰爪般的双手"
+        },
+        {
+          "fact_hash": "e027e761134600e778c48d503f66a8879bf294822aa7ddd0296d0f2d9bec163c",
+          "fact_quote": "鹰爪般的双手"
+        }
+      ],
+      "possible_conflicts": []
+    },
+    {
+      "character_id": "char-60dc3be9fa988aec675b",
+      "identity_status": "singleton",
+      "canonical_label": "萧媚",
+      "canonical_label_status": "confirmed_name_like",
+      "labels": [
+        {
+          "label_quote": "萧媚",
+          "label_role": "name",
+          "globally_unique": true
+        }
+      ],
+      "member_character_refs": [
+        {
+          "ref_type": "local",
+          "local_character_ref": {
+            "source_document_version_id": "doupo-first5-7ca3fd295b5d0d45",
+            "chunk_id": "chunk-000001-0-2500-8c90daca7aee",
+            "local_mention_id": "m3",
+            "mention_type": "exact",
+            "packet_hash": "c3ab74e151303133809ccb9453115a45b5334abcbca94b6544ea47f7458dc943"
+          }
+        }
+      ],
+      "appearance_fact_refs": [
+        {
+          "fact_hash": "3d14cab9c36596dafdbcd1ab13abf87cd6e3c9ac90107198f395dc2c8ad6b18f",
+          "fact_quote": "少女年龄不过十四左右"
+        },
+        {
+          "fact_hash": "7313091e02956dbe974233d253f24e31160a38b6e84d5b3fd3f5a50b1573f837",
+          "fact_quote": "稚气未脱的小脸"
+        },
+        {
+          "fact_hash": "bc45d8e1bf3586f88f1c7cd435d4c0d28acbbc3e3906a2206ca797070ff65120",
+          "fact_quote": "淡淡的妩媚"
+        },
+        {
+          "fact_hash": "121a10165112a1ffa48ef5b3683e5aa8a872bb8aa2ae4ee4b5d17ecb41345129",
+          "fact_quote": "得意的笑容"
+        }
+      ],
+      "possible_conflicts": []
+    },
+    {
+      "character_id": "char-6da0512ea70d06f9d708",
+      "identity_status": "linked",
+      "canonical_label": "纳兰嫣然",
+      "canonical_label_status": "confirmed_name_like",
+      "labels": [
+        {
+          "label_quote": "纳兰嫣然",
+          "label_role": "name",
+          "globally_unique": true
+        }
+      ],
+      "member_character_refs": [
+        {
+          "ref_type": "local",
+          "local_character_ref": {
+            "source_document_version_id": "doupo-first5-7ca3fd295b5d0d45",
+            "chunk_id": "chunk-000005-9000-11500-0cb89a2a0c18",
+            "local_mention_id": "m3",
+            "mention_type": "exact",
+            "packet_hash": "3c7b2fd29d4b81f5061be86b8c2b63adb376b05c31c8316146e15bf3ba827d1b"
+          }
+        },
+        {
+          "ref_type": "local",
+          "local_character_ref": {
+            "source_document_version_id": "doupo-first5-7ca3fd295b5d0d45",
+            "chunk_id": "chunk-000007-13500-14160-d83b17f39d7c",
+            "local_mention_id": "m4",
+            "mention_type": "exact",
+            "packet_hash": "6f662e36e15e9fccee37d6c477a38ff8af2feb024da2d5c883bf3f2917d3c13b"
+          }
+        }
+      ],
+      "appearance_fact_refs": [
+        {
+          "fact_hash": "1b516ba510c122bd1b8a034fa9370df9c36de3b29e6c1b7ac3cc35ae74b3ad5c",
+          "fact_quote": "对面的少女虽然美丽"
+        },
+        {
+          "fact_hash": "3f588c191de16bf9da9ae20ffcd28a8cee98f2bad00490962e7a9dbc670e3a32",
+          "fact_quote": "美丽娇俏"
+        }
+      ],
+      "possible_conflicts": [
+        {
+          "conflict_id": "conflict-db7cf06d97069f5d798d",
+          "conflict_type": "multiple_values_same_attribute",
+          "category": "other_visual",
+          "attribute": "外貌",
+          "fact_hashes": [
+            "1b516ba510c122bd1b8a034fa9370df9c36de3b29e6c1b7ac3cc35ae74b3ad5c",
+            "3f588c191de16bf9da9ae20ffcd28a8cee98f2bad00490962e7a9dbc670e3a32"
+          ],
+          "values": [
+            "美丽",
+            "美丽娇俏"
+          ],
+          "resolution_status": "unresolved"
+        }
+      ]
+    },
+    {
+      "character_id": "char-85f8c60543ab00263b87",
+      "identity_status": "singleton",
+      "canonical_label": "少女",
+      "canonical_label_status": "provisional_description",
+      "labels": [
+        {
+          "label_quote": "少女",
+          "label_role": "contextual_description",
+          "globally_unique": false
+        }
+      ],
+      "member_character_refs": [
+        {
+          "ref_type": "promoted",
+          "promoted_character_ref": {
+            "source_document_version_id": "doupo-first5-7ca3fd295b5d0d45",
+            "chunk_id": "chunk-000004-6750-9250-4d57b02a87a6",
+            "source_local_mention_id": "m6",
+            "source_mention_type": "describe",
+            "promotion_index": 1,
+            "character_origin": "remaining_describe",
+            "packet_hash": "dbdfd3c8c484ccf386cc64578ef18019d0e4e1ef27e601b006840405d4b210ec",
+            "promotion_hash": "3d7f2e96a1dd05414e7341eafc4d215e0ca93ae677b198b0b661181801c4dda9"
+          }
+        }
+      ],
+      "appearance_fact_refs": [
+        {
+          "fact_hash": "7de15086c628997b368ddc7e41ac56e28ab48cea0ead11af0b6681c83aac8e4a",
+          "fact_quote": "娇嫩的耳垂上吊有着绿色的玉坠"
+        },
+        {
+          "fact_hash": "63429482c412ea68b1a7f6ff43822854a3ca41079fc64afbcad1f1ec6ebb482c",
+          "fact_quote": "已经开始发育的玲珑小胸脯"
+        },
+        {
+          "fact_hash": "b82e1426978f0e2baed91845047e760ecb5cbd112d5076c7c6462527be96db36",
+          "fact_quote": "冷艳的小脸"
+        }
+      ],
+      "possible_conflicts": []
+    },
+    {
+      "character_id": "char-b7bb82eb8e4b89ffdf3c",
+      "identity_status": "singleton",
+      "canonical_label": "身穿月白衣袍的老者",
+      "canonical_label_status": "provisional_description",
+      "labels": [
+        {
+          "label_quote": "身穿月白衣袍的老者",
+          "label_role": "contextual_description",
+          "globally_unique": false
+        }
+      ],
+      "member_character_refs": [
+        {
+          "ref_type": "promoted",
+          "promoted_character_ref": {
+            "source_document_version_id": "doupo-first5-7ca3fd295b5d0d45",
+            "chunk_id": "chunk-000004-6750-9250-4d57b02a87a6",
+            "source_local_mention_id": "m4",
+            "source_mention_type": "describe",
+            "promotion_index": 1,
+            "character_origin": "remaining_describe",
+            "packet_hash": "b28ebae690c504efd0df0f23c05e4d1f899f8bb433d337a7297d320fefb6c61c",
+            "promotion_hash": "2b4281ae78d612591b23cb70805d3e46d3b49391e8c8c398d4448af060669bd0"
+          }
+        }
+      ],
+      "appearance_fact_refs": [
+        {
+          "fact_hash": "40d52ce92100ad36d814af4ce04f48263197fa1c1bbf3040938f85d4c17e05e1",
+          "fact_quote": "满脸笑容"
+        },
+        {
+          "fact_hash": "bad0afea75c5d14895982c8cbd8ec32c0639079adcf434868ab50d4899741f17",
+          "fact_quote": "神采奕奕"
+        },
+        {
+          "fact_hash": "4e86c525af702d637ecd614ffbcdc745b50d465c4b296d58ec04450a8f8ac811",
+          "fact_quote": "一双有些细小的双眼"
+        },
+        {
+          "fact_hash": "4ed2514278896722c3c36d4012c9e539ecf5c38c5cec57051777deedc4674e8c",
+          "fact_quote": "衣袍胸口处，赫然绘有一弯银色浅月"
+        }
+      ],
+      "possible_conflicts": []
+    },
+    {
+      "character_id": "char-e0e93ab4b7efd7f6b282",
+      "identity_status": "linked",
+      "canonical_label": "萧炎",
+      "canonical_label_status": "confirmed_name_like",
+      "labels": [
+        {
+          "label_quote": "萧炎",
+          "label_role": "name",
+          "globally_unique": true
+        }
+      ],
+      "member_character_refs": [
+        {
+          "ref_type": "local",
+          "local_character_ref": {
+            "source_document_version_id": "doupo-first5-7ca3fd295b5d0d45",
+            "chunk_id": "chunk-000001-0-2500-8c90daca7aee",
+            "local_mention_id": "m1",
+            "mention_type": "exact",
+            "packet_hash": "8e171bdecd28403c4ab8c26d1664e24765518bdc67dae6b33536aad69094a412"
+          }
+        },
+        {
+          "ref_type": "local",
+          "local_character_ref": {
+            "source_document_version_id": "doupo-first5-7ca3fd295b5d0d45",
+            "chunk_id": "chunk-000002-2250-4750-84c9baa8a8da",
+            "local_mention_id": "m3",
+            "mention_type": "exact",
+            "packet_hash": "f6359430e3b38ff88ff31960724351baefe1353524c7e0574b91be685840e7ad"
+          }
+        },
+        {
+          "ref_type": "local",
+          "local_character_ref": {
+            "source_document_version_id": "doupo-first5-7ca3fd295b5d0d45",
+            "chunk_id": "chunk-000003-4500-7000-dbdb791747b5",
+            "local_mention_id": "m1",
+            "mention_type": "exact",
+            "packet_hash": "a9524ad90550049342f6dbddf85058bdd9ee574a06bbae2340030e341ce4e26f"
+          }
+        },
+        {
+          "ref_type": "local",
+          "local_character_ref": {
+            "source_document_version_id": "doupo-first5-7ca3fd295b5d0d45",
+            "chunk_id": "chunk-000004-6750-9250-4d57b02a87a6",
+            "local_mention_id": "m1",
+            "mention_type": "exact",
+            "packet_hash": "8ec15bbca41d0a6794da2f021003cdd6979f755c1095dc9f68593f8b0f218304"
+          }
+        },
+        {
+          "ref_type": "local",
+          "local_character_ref": {
+            "source_document_version_id": "doupo-first5-7ca3fd295b5d0d45",
+            "chunk_id": "chunk-000006-11250-13750-03087dc524e6",
+            "local_mention_id": "m1",
+            "mention_type": "exact",
+            "packet_hash": "08ad3656c135f6b7282d318b355665f37edb8ef74b1f1912fe9afbc32d682977"
+          }
+        }
+      ],
+      "appearance_fact_refs": [
+        {
+          "fact_hash": "78ea2ec30af730aec8fb5765ec6632d71254f5e4df5fe9bf4068c33b3c216b5c",
+          "fact_quote": "面无表情"
+        },
+        {
+          "fact_hash": "5879ef30e23f6f7991fc87e78ce6a64efb3db77d935e936637ca11851019bcf5",
+          "fact_quote": "唇角有着一抹自嘲"
+        },
+        {
+          "fact_hash": "4568a11a630c055a3c0cfa5b01da11e586c3cab5d6eed325b877c8af59d875e9",
+          "fact_quote": "有些清秀的稚嫩脸庞"
+        },
+        {
+          "fact_hash": "763e301f02397e2841435fca033fdf7ddb4c319b62e66db86d2d053448826ac0",
+          "fact_quote": "漆黑的眸子"
+        },
+        {
+          "fact_hash": "4a1fc048363022bf6b96b7301908b49bfdcf9e9a1203d5dd4ab4953897eaeead",
+          "fact_quote": "孤独背影"
+        },
+        {
+          "fact_hash": "21d884bcaa9dee638da1a38c3a954362a610c6914a861c477c196f613c222ee0",
+          "fact_quote": "有些白皙的手掌"
+        },
+        {
+          "fact_hash": "e96f5acbd67c80947e37554c0844e2278770ef94cfbd3d4988d2106e6cbe4a56",
+          "fact_quote": "脸庞狰狞"
+        },
+        {
+          "fact_hash": "4f0e8c9fe9c00e3d3b566f2447e550bace0db37891fb1e0318753c00a0cf2624",
+          "fact_quote": "那依旧有些稚嫩的清秀脸庞"
+        },
+        {
+          "fact_hash": "aff8e4141e423df900a13ec5135b2f34622f13d3ed2fc87cabe08de7b4fbcd5b",
+          "fact_quote": "漆黑的眼中"
+        },
+        {
+          "fact_hash": "9f3031958dc557f7ab45069ffc4db14cec202682f135e8b350bf84dd250c3f07",
+          "fact_quote": "少年稚嫩的脸庞"
+        },
+        {
+          "fact_hash": "c747ee608f079c411c4040523aad25fe1992928cead61f737666056468be6a30",
+          "fact_quote": "幼稚的外貌"
+        },
+        {
+          "fact_hash": "28b61ac06766535a060762521688cf822c337a55578dcdf6bc4426ae2f3fd229",
+          "fact_quote": "年仅十五岁"
+        }
+      ],
+      "possible_conflicts": [
+        {
+          "conflict_id": "conflict-6dfb74323edc0dc79de5",
+          "conflict_type": "multiple_values_same_attribute",
+          "category": "face",
+          "attribute": "脸庞",
+          "fact_hashes": [
+            "4568a11a630c055a3c0cfa5b01da11e586c3cab5d6eed325b877c8af59d875e9",
+            "4f0e8c9fe9c00e3d3b566f2447e550bace0db37891fb1e0318753c00a0cf2624",
+            "9f3031958dc557f7ab45069ffc4db14cec202682f135e8b350bf84dd250c3f07"
+          ],
+          "values": [
+            "清秀稚嫩",
+            "稚嫩"
+          ],
+          "resolution_status": "unresolved"
+        }
+      ]
+    },
+    {
+      "character_id": "char-e33e61bf27c173cd7516",
+      "identity_status": "singleton",
+      "canonical_label": "青衫老者",
+      "canonical_label_status": "provisional_description",
+      "labels": [
+        {
+          "label_quote": "青衫老者",
+          "label_role": "contextual_description",
+          "globally_unique": false
+        }
+      ],
+      "member_character_refs": [
+        {
+          "ref_type": "promoted",
+          "promoted_character_ref": {
+            "source_document_version_id": "doupo-first5-7ca3fd295b5d0d45",
+            "chunk_id": "chunk-000004-6750-9250-4d57b02a87a6",
+            "source_local_mention_id": "m3",
+            "source_mention_type": "describe",
+            "promotion_index": 1,
+            "character_origin": "remaining_describe",
+            "packet_hash": "9636dae02521eb4ea517b1e35553f5b16e7fafaab5467bb9f41d1af425d3a2fe",
+            "promotion_hash": "1b67fe2978c578036a581e360de3a1e831347a07a8d3286d402a07cfe9017fe7"
+          }
+        }
+      ],
+      "appearance_fact_refs": [
+        {
+          "fact_hash": "af0fd070defdab95c14682d36339c1907ecae91a844aca652a61eb2b5bba3bbd",
+          "fact_quote": "浑浊的老眼"
+        }
+      ],
+      "possible_conflicts": []
+    },
+    {
+      "character_id": "char-e739119ac74162a6d724",
+      "identity_status": "singleton",
+      "canonical_label": "黄袍老者",
+      "canonical_label_status": "provisional_description",
+      "labels": [
+        {
+          "label_quote": "黄袍老者",
+          "label_role": "contextual_description",
+          "globally_unique": false
+        }
+      ],
+      "member_character_refs": [
+        {
+          "ref_type": "promoted",
+          "promoted_character_ref": {
+            "source_document_version_id": "doupo-first5-7ca3fd295b5d0d45",
+            "chunk_id": "chunk-000004-6750-9250-4d57b02a87a6",
+            "source_local_mention_id": "m8",
+            "source_mention_type": "describe",
+            "promotion_index": 1,
+            "character_origin": "remaining_describe",
+            "packet_hash": "60f1a203eda1a498ab79db91495699e02bdfc97602868a5fefc1d210a9a5d42d",
+            "promotion_hash": "fa8f2bd1678f399d8ef4d094c347bf4c976189b30799e3517a4056700682bf27"
+          }
+        }
+      ],
+      "appearance_fact_refs": [
+        {
+          "fact_hash": "d9149f07339b07fa0018238f88927c057be234df0fc44f584e1f9538a9cdf73a",
+          "fact_quote": "黄袍"
+        }
+      ],
+      "possible_conflicts": []
+    }
+  ],
+  "unresolved_bindings": [],
+  "review_items": [
+    {
+      "review_item_id": "review-05af4504250131e60991",
+      "review_type": "partial_identity_evidence_grounding",
+      "subject_character_ref": {
+        "ref_type": "local",
+        "local_character_ref": {
+          "source_document_version_id": "doupo-first5-7ca3fd295b5d0d45",
+          "chunk_id": "chunk-000006-11250-13750-03087dc524e6",
+          "local_mention_id": "m2",
+          "mention_type": "exact",
+          "packet_hash": "84a96d61fbadfe11239b77fd0a880c61ddce96ab5689c8cb69d286a7f8ac8296"
+        }
+      },
+      "label_quote": "熏儿",
+      "candidate_character_ids": [
+        "char-3f11f55cbb3a76c59c02"
+      ],
+      "grounded_identity_evidence": [
+        {
+          "evidence_quote": "萧熏儿浅浅一笑，小脸上露出可爱的小酒窝，纤细的指尖再次翻开手中那本古朴的书籍，小小年纪，却有一种知性的美感，眨动着修长的睫毛在书中徘徊了片刻，忽然有些幽幽的道：“萧炎哥哥有三年没和熏儿单独坐一起了吧？”",
+          "document_span": {
+            "start": 9217,
+            "end": 9318
+          },
+          "match_mode": "exact"
+        },
+        {
+          "evidence_quote": "熏儿虽然也姓萧",
+          "document_span": {
+            "start": 11729,
+            "end": 11736
+          },
+          "match_mode": "exact"
+        },
+        {
+          "evidence_quote": "熏儿虽然也姓萧",
+          "document_span": {
+            "start": 11729,
+            "end": 11736
+          },
+          "match_mode": "exact"
+        }
+      ],
+      "issue_codes": [
+        "ambiguous_identity_evidence"
+      ],
+      "status": "pending"
+    },
+    {
+      "review_item_id": "review-a0684fe7f1905759d3c6",
+      "review_type": "insufficient_identity_evidence",
+      "subject_character_ref": {
+        "ref_type": "local",
+        "local_character_ref": {
+          "source_document_version_id": "doupo-first5-7ca3fd295b5d0d45",
+          "chunk_id": "chunk-000004-6750-9250-4d57b02a87a6",
+          "local_mention_id": "m7",
+          "mention_type": "exact",
+          "packet_hash": "b53050483ba6ac2f423ffe332117be2729eeb3b5bc9bd96648d15bf66a001bf8"
+        }
+      },
+      "label_quote": "萧熏儿",
+      "candidate_character_ids": [
+        "char-3f11f55cbb3a76c59c02"
+      ],
+      "grounded_identity_evidence": [],
+      "issue_codes": [],
+      "status": "pending"
+    }
+  ],
+  "cannot_link_constraints": [],
+  "summary": {
+    "local_character_nodes": 23,
+    "bound_local_nodes": 23,
+    "global_characters": 11,
+    "linked_characters": 5,
+    "singleton_characters": 6,
+    "unresolved_bindings": 0,
+    "review_items": 2,
+    "cannot_link_constraints": 0,
+    "appearance_fact_refs": 61,
+    "possible_conflicts": 4
+  }
+}

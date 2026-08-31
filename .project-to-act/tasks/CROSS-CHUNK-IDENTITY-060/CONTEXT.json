@@ -1,0 +1,17 @@
+{
+  "task_id": "CROSS-CHUNK-IDENTITY-060",
+  "lifecycle_stage": "5",
+  "lifecycle_revision": 2,
+  "schema_version_before": "3.11.0-draft1",
+  "runtime_version_before": "0.1.0.dev11",
+  "source_document_artifact": "runs/doupo-first5-n3-promotion-dev11-partial-20260831/document-character-evidence.json",
+  "source_n3_targets": "runs/doupo-first5-n3-promotion-dev11-partial-20260831/n3-target-appearance-packets.json",
+  "source_promotions": "runs/doupo-first5-n3-promotion-dev11-partial-20260831/promotion-grounded-results.json",
+  "known_identity_examples": [
+    "萧薰儿/萧熏儿/熏儿需要形成候选但不能仅凭表面形式自动合并",
+    "少女/男子/青衫老者属于上下文描述，不得作为全文唯一身份键",
+    "相同姓名必须允许映射到多个 character_id"
+  ],
+  "context_freshness": "verified-2026-08-31",
+  "conflicts": []
+}

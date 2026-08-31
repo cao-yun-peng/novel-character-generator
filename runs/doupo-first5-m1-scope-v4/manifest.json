@@ -1,0 +1,82 @@
+{
+  "schema_version": "document-chunk-manifest-v3",
+  "source_document_version_id": "doupo-first5-7ca3fd295b5d0d45",
+  "document_hash": "7ca3fd295b5d0d454ca0b0bac2f4a49f2271602fc8e55bca2f120bb11d85172a",
+  "chunking_policy_version": "fixed-codepoint-window-2500-overlap-250-v1",
+  "total_characters": 14160,
+  "coverage_status": "complete",
+  "truncation_reason": null,
+  "processed_source_end": 14160,
+  "chunks": [
+    {
+      "chunk_id": "chunk-000001-0-2500-8c90daca7aee",
+      "chunk_hash": "8c90daca7aee7b6aa98157beedb8c08c41bbb33ad9672b5ed66f588685fc2803",
+      "chunk_source_span": {
+        "start": 0,
+        "end": 2500
+      },
+      "overlap_left_characters": 0,
+      "overlap_right_characters": 250
+    },
+    {
+      "chunk_id": "chunk-000002-2250-4750-84c9baa8a8da",
+      "chunk_hash": "84c9baa8a8dad9bf58649e022f051682d75945232d9367d79f2f4fc4cd354586",
+      "chunk_source_span": {
+        "start": 2250,
+        "end": 4750
+      },
+      "overlap_left_characters": 250,
+      "overlap_right_characters": 250
+    },
+    {
+      "chunk_id": "chunk-000003-4500-7000-dbdb791747b5",
+      "chunk_hash": "dbdb791747b590330ca521e6bd219b4531aa9c368f7baa750be8133343f09a93",
+      "chunk_source_span": {
+        "start": 4500,
+        "end": 7000
+      },
+      "overlap_left_characters": 250,
+      "overlap_right_characters": 250
+    },
+    {
+      "chunk_id": "chunk-000004-6750-9250-4d57b02a87a6",
+      "chunk_hash": "4d57b02a87a62e315edc81fd983bc471badb355b58de668c25a5b1d2c753c153",
+      "chunk_source_span": {
+        "start": 6750,
+        "end": 9250
+      },
+      "overlap_left_characters": 250,
+      "overlap_right_characters": 250
+    },
+    {
+      "chunk_id": "chunk-000005-9000-11500-0cb89a2a0c18",
+      "chunk_hash": "0cb89a2a0c18510101274d1f3886815b22021b909e097568792b50088060a727",
+      "chunk_source_span": {
+        "start": 9000,
+        "end": 11500
+      },
+      "overlap_left_characters": 250,
+      "overlap_right_characters": 250
+    },
+    {
+      "chunk_id": "chunk-000006-11250-13750-03087dc524e6",
+      "chunk_hash": "03087dc524e600fec09f2d18279ec668f56b8ef967de5b261538e2b1ee8021c4",
+      "chunk_source_span": {
+        "start": 11250,
+        "end": 13750
+      },
+      "overlap_left_characters": 250,
+      "overlap_right_characters": 250
+    },
+    {
+      "chunk_id": "chunk-000007-13500-14160-d83b17f39d7c",
+      "chunk_hash": "d83b17f39d7cb78e289e8b2ec814ad33a629d875f79288d34aa4cafd7611be61",
+      "chunk_source_span": {
+        "start": 13500,
+        "end": 14160
+      },
+      "overlap_left_characters": 250,
+      "overlap_right_characters": 0
+    }
+  ]
+}

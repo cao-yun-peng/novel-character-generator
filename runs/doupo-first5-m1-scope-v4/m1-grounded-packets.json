@@ -1,0 +1,1696 @@
+[
+  {
+    "schema_version": "grounded-character-packet-v4",
+    "source_document_version_id": "doupo-first5-7ca3fd295b5d0d45",
+    "chunking_policy_version": "fixed-codepoint-window-2500-overlap-250-v1",
+    "chunk_id": "chunk-000001-0-2500-8c90daca7aee",
+    "chunk_hash": "8c90daca7aee7b6aa98157beedb8c08c41bbb33ad9672b5ed66f588685fc2803",
+    "chunk_source_span": {
+      "start": 0,
+      "end": 2500
+    },
+    "grounded_mentions": [
+      {
+        "local_mention_id": "m1",
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "萧炎",
+        "mention_quote_hash": "6606fa555d642924e1cf668d0f315a3de95f93749a87047e13fd5c6bdf2401e1",
+        "approved_evidence": [
+          {
+            "evidence_quote": "少年面无表情，唇角有着一抹自嘲，紧握的手掌，因为大力，而导致略微尖锐的指甲深深的刺进了掌心之中，带来一阵阵钻心的疼痛……",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 50,
+                "end": 110
+              }
+            ],
+            "quote_hash": "a162eb1543d3cad0947cf6d46a5e561da9d7b8cebdb4a629415098768b12ef49",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "少年缓缓抬起头来，露出一张有些清秀的稚嫩脸庞，漆黑的眸子木然的在周围那些嘲讽的同龄人身上扫过",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 467,
+                "end": 513
+              }
+            ],
+            "quote_hash": "67ab82f134a181e0f698f5781abd2fc3fe0636b27367a600961500103132cf6a",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "孤单的身影，与周围的世界，有些格格不入",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 620,
+                "end": 639
+              }
+            ],
+            "quote_hash": "82fd52268079904cf875f02bed65cb3cb28e98a8414d7dcab8b2427e38b3c0f4",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "2d96bd1c277cc70f64248da0f99c51a2cf3680f201f7e188f8e979441e99c63b"
+      },
+      {
+        "local_mention_id": "m2",
+        "mention_type": "describe",
+        "mention_scope": "individual",
+        "mention_quote": "少年",
+        "mention_quote_hash": "749ca46754901e09cb4d09c6070da7dc273286e7b117144473fe8525c2965b93",
+        "approved_evidence": [
+          {
+            "evidence_quote": "少年面无表情，唇角有着一抹自嘲，紧握的手掌，因为大力，而导致略微尖锐的指甲深深的刺进了掌心之中，带来一阵阵钻心的疼痛……",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 50,
+                "end": 110
+              }
+            ],
+            "quote_hash": "a162eb1543d3cad0947cf6d46a5e561da9d7b8cebdb4a629415098768b12ef49",
+            "relation_to_mention": "contains_mention",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "少年缓缓抬起头来，露出一张有些清秀的稚嫩脸庞，漆黑的眸子木然的在周围那些嘲讽的同龄人身上扫过",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 467,
+                "end": 513
+              }
+            ],
+            "quote_hash": "67ab82f134a181e0f698f5781abd2fc3fe0636b27367a600961500103132cf6a",
+            "relation_to_mention": "contains_mention",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "孤单的身影，与周围的世界，有些格格不入",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 620,
+                "end": 639
+              }
+            ],
+            "quote_hash": "82fd52268079904cf875f02bed65cb3cb28e98a8414d7dcab8b2427e38b3c0f4",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "56b9cff393c3a97848a2ef9fac4e86a080244bdd62895f23b239e70682fb9134"
+      },
+      {
+        "local_mention_id": "m3",
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "萧媚",
+        "mention_quote_hash": "9b8404e8f8fd5b96e0a52135b408683dc05e84a0654885303db63ae069759ae1",
+        "approved_evidence": [
+          {
+            "evidence_quote": "少女年龄不过十四左右，虽然并算不上绝色，不过那张稚气未脱的小脸，却是蕴含着淡淡的妩媚，清纯与妩媚，矛盾的集合",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 727,
+                "end": 781
+              }
+            ],
+            "quote_hash": "aba2c585ca4d111d2bb8beb867348d22c5a09fb0ad4696bdbde8f6d122f20047",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "少女脸颊扬起了得意的笑容",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 924,
+                "end": 936
+              }
+            ],
+            "quote_hash": "ed2618341dd1b0191f276aba7d3cbab7d69f286b5a13ff1637acef6bb398a4b5",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "8d0e4251fd81e016d99236b7561cbe4af6f0e7e59b7ae7a95f41824bc47b7678"
+      },
+      {
+        "local_mention_id": "m4",
+        "mention_type": "describe",
+        "mention_scope": "individual",
+        "mention_quote": "少女",
+        "mention_quote_hash": "def0173ec2e72ea2c7ec872269b9ea0b2d634c92a2aeea96e3ef3e19a988ca85",
+        "approved_evidence": [
+          {
+            "evidence_quote": "少女年龄不过十四左右，虽然并算不上绝色，不过那张稚气未脱的小脸，却是蕴含着淡淡的妩媚，清纯与妩媚，矛盾的集合",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 727,
+                "end": 781
+              }
+            ],
+            "quote_hash": "aba2c585ca4d111d2bb8beb867348d22c5a09fb0ad4696bdbde8f6d122f20047",
+            "relation_to_mention": "contains_mention",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "少女脸颊扬起了得意的笑容",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 924,
+                "end": 936
+              }
+            ],
+            "quote_hash": "ed2618341dd1b0191f276aba7d3cbab7d69f286b5a13ff1637acef6bb398a4b5",
+            "relation_to_mention": "contains_mention",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "aef98fb32d220e02a124d95388ae9f7d8cb0203e66a8f27808519fdd541b2ba1"
+      },
+      {
+        "local_mention_id": "m5",
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "萧薰儿",
+        "mention_quote_hash": "ecf7cafd6488b575cbc8fd17e2528e73bc07189a92f9ed77e2da234ad51ab641",
+        "approved_evidence": [
+          {
+            "evidence_quote": "一位身着紫色衣裙的少女，正淡雅的站立，平静的稚嫩俏脸，并未因为众人的注目而改变分毫",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1704,
+                "end": 1745
+              }
+            ],
+            "quote_hash": "aab6ba5768e3c66d3c05275299ae49f1cf58b35f3dc7aed19f7186b2177d293e",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "少女清冷淡然的气质，犹如清莲初绽，小小年纪，却已初具脱俗气质",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1750,
+                "end": 1780
+              }
+            ],
+            "quote_hash": "27cad4a648e72be45c87eabd60dcf0432469e97e4835e9c29f4261a6e91caca6",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "镶着黑金丝的紫袖滑落而下，露出一截雪白娇嫩的皓腕",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1888,
+                "end": 1912
+              }
+            ],
+            "quote_hash": "bcca82240b4b3fa12ca04534023bd309ad37612f37d39cbf4e714f200a0dcd85",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "美丽的俏脸上，居然露出了让周围少女为之嫉妒的清雅笑容",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 2426,
+                "end": 2452
+              }
+            ],
+            "quote_hash": "25f80e787a882fddcf55bc1305de47dd5af20949a1ab8166dab394c4ac42146d",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "a7a4303e1d3b108d8de7d2d8cda8dfbd824184a2f08afe3b84b31881f1165812"
+      },
+      {
+        "local_mention_id": "m6",
+        "mention_type": "describe",
+        "mention_scope": "individual",
+        "mention_quote": "紫裙少女",
+        "mention_quote_hash": "1a3c47632ef7f2ad59f447daca40a3666739da6318d9264e246b1a72e4c06102",
+        "approved_evidence": [
+          {
+            "evidence_quote": "一位身着紫色衣裙的少女，正淡雅的站立，平静的稚嫩俏脸，并未因为众人的注目而改变分毫",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1704,
+                "end": 1745
+              }
+            ],
+            "quote_hash": "aab6ba5768e3c66d3c05275299ae49f1cf58b35f3dc7aed19f7186b2177d293e",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "少女清冷淡然的气质，犹如清莲初绽，小小年纪，却已初具脱俗气质",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1750,
+                "end": 1780
+              }
+            ],
+            "quote_hash": "27cad4a648e72be45c87eabd60dcf0432469e97e4835e9c29f4261a6e91caca6",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "镶着黑金丝的紫袖滑落而下，露出一截雪白娇嫩的皓腕",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1888,
+                "end": 1912
+              }
+            ],
+            "quote_hash": "bcca82240b4b3fa12ca04534023bd309ad37612f37d39cbf4e714f200a0dcd85",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "美丽的俏脸上，居然露出了让周围少女为之嫉妒的清雅笑容",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 2426,
+                "end": 2452
+              }
+            ],
+            "quote_hash": "25f80e787a882fddcf55bc1305de47dd5af20949a1ab8166dab394c4ac42146d",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "e4148329278e403cfc0b1c8dfe98f80196eb4314f351e81464b83074cda8365f"
+      },
+      {
+        "local_mention_id": "m7",
+        "mention_type": "describe",
+        "mention_scope": "individual",
+        "mention_quote": "少女",
+        "mention_quote_hash": "def0173ec2e72ea2c7ec872269b9ea0b2d634c92a2aeea96e3ef3e19a988ca85",
+        "approved_evidence": [
+          {
+            "evidence_quote": "一位身着紫色衣裙的少女，正淡雅的站立，平静的稚嫩俏脸，并未因为众人的注目而改变分毫",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1704,
+                "end": 1745
+              }
+            ],
+            "quote_hash": "aab6ba5768e3c66d3c05275299ae49f1cf58b35f3dc7aed19f7186b2177d293e",
+            "relation_to_mention": "contains_mention",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "少女清冷淡然的气质，犹如清莲初绽，小小年纪，却已初具脱俗气质",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1750,
+                "end": 1780
+              }
+            ],
+            "quote_hash": "27cad4a648e72be45c87eabd60dcf0432469e97e4835e9c29f4261a6e91caca6",
+            "relation_to_mention": "contains_mention",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "镶着黑金丝的紫袖滑落而下，露出一截雪白娇嫩的皓腕",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1888,
+                "end": 1912
+              }
+            ],
+            "quote_hash": "bcca82240b4b3fa12ca04534023bd309ad37612f37d39cbf4e714f200a0dcd85",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "美丽的俏脸上，居然露出了让周围少女为之嫉妒的清雅笑容",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 2426,
+                "end": 2452
+              }
+            ],
+            "quote_hash": "25f80e787a882fddcf55bc1305de47dd5af20949a1ab8166dab394c4ac42146d",
+            "relation_to_mention": "contains_mention",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "e1483af11f4f3c3d74358c5e5b5aeb9e4cb78c1cf15f09af331ea295b595f280"
+      }
+    ],
+    "rejected_evidence": []
+  },
+  {
+    "schema_version": "grounded-character-packet-v4",
+    "source_document_version_id": "doupo-first5-7ca3fd295b5d0d45",
+    "chunking_policy_version": "fixed-codepoint-window-2500-overlap-250-v1",
+    "chunk_id": "chunk-000002-2250-4750-84c9baa8a8da",
+    "chunk_hash": "84c9baa8a8dad9bf58649e022f051682d75945232d9367d79f2f4fc4cd354586",
+    "chunk_source_span": {
+      "start": 2250,
+      "end": 4750
+    },
+    "grounded_mentions": [
+      {
+        "local_mention_id": "m1",
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "萧薰儿",
+        "mention_quote_hash": "ecf7cafd6488b575cbc8fd17e2528e73bc07189a92f9ed77e2da234ad51ab641",
+        "approved_evidence": [
+          {
+            "evidence_quote": "萧薰儿纤细的眉毛",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 425,
+                "end": 433
+              }
+            ],
+            "quote_hash": "59d0b41e95885c9cf7d05712b912e27a0f9ee239f7de338bc74b39b607abd615",
+            "relation_to_mention": "contains_mention",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "美丽的俏脸",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 176,
+                "end": 181
+              }
+            ],
+            "quote_hash": "7b3178105101f0ad3722ed7fe2540b5493f4ae95a71a6e5707b788530fed7080",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "白皙的俏脸",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 507,
+                "end": 512
+              }
+            ],
+            "quote_hash": "39454cba355d810a3e6d94c5fe635f1f61d9149fc930c4d9ad96d7d0893cb357",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "平淡的小脸",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 76,
+                "end": 81
+              }
+            ],
+            "quote_hash": "763b730c1964659055141d64fac1f53ab42bdd9a6acf30f859bbed84ffdc0159",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "51ff9c00ceed6a0914a28cb851770aeac51c7e76df887f6434c5634f1a947f49"
+      },
+      {
+        "local_mention_id": "m2",
+        "mention_type": "describe",
+        "mention_scope": "individual",
+        "mention_quote": "少女",
+        "mention_quote_hash": "def0173ec2e72ea2c7ec872269b9ea0b2d634c92a2aeea96e3ef3e19a988ca85",
+        "approved_evidence": [
+          {
+            "evidence_quote": "平淡的小脸",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 76,
+                "end": 81
+              }
+            ],
+            "quote_hash": "763b730c1964659055141d64fac1f53ab42bdd9a6acf30f859bbed84ffdc0159",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "美丽的俏脸",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 176,
+                "end": 181
+              }
+            ],
+            "quote_hash": "7b3178105101f0ad3722ed7fe2540b5493f4ae95a71a6e5707b788530fed7080",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "白皙的俏脸",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 507,
+                "end": 512
+              }
+            ],
+            "quote_hash": "39454cba355d810a3e6d94c5fe635f1f61d9149fc930c4d9ad96d7d0893cb357",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "萧薰儿纤细的眉毛",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 425,
+                "end": 433
+              }
+            ],
+            "quote_hash": "59d0b41e95885c9cf7d05712b912e27a0f9ee239f7de338bc74b39b607abd615",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "b1b3a1a8b80bb9a3c894c4a49fe3911d06fb3a324f5bcdc655ad00f65adb2a4a"
+      },
+      {
+        "local_mention_id": "m3",
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "萧炎",
+        "mention_quote_hash": "6606fa555d642924e1cf668d0f315a3de95f93749a87047e13fd5c6bdf2401e1",
+        "approved_evidence": [
+          {
+            "evidence_quote": "有些白皙的手掌",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 778,
+                "end": 785
+              }
+            ],
+            "quote_hash": "777a40b83dde6638269af9d1533badab547ae25bd7e62fb6c76dba3169c48b1d",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "脸庞狰狞",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 2473,
+                "end": 2477
+              }
+            ],
+            "quote_hash": "dbb1fcce1041355ca8f97fe5a8939f9490b39471de458cb12b5ec9b5bf6a9667",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "孤独背影",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 649,
+                "end": 653
+              }
+            ],
+            "quote_hash": "685e80d22c1cfa36d5312f56aa08b49d21d3a76a977c12bd11b0f42312cbd664",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "6d619b93a6c0670610a83f7a6fb4b5d5b3df8256dc6d75914bb54542c8f2a985"
+      },
+      {
+        "local_mention_id": "m4",
+        "mention_type": "describe",
+        "mention_scope": "individual",
+        "mention_quote": "少年",
+        "mention_quote_hash": "749ca46754901e09cb4d09c6070da7dc273286e7b117144473fe8525c2965b93",
+        "approved_evidence": [
+          {
+            "evidence_quote": "有些白皙的手掌",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 778,
+                "end": 785
+              }
+            ],
+            "quote_hash": "777a40b83dde6638269af9d1533badab547ae25bd7e62fb6c76dba3169c48b1d",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "脸庞狰狞",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 2473,
+                "end": 2477
+              }
+            ],
+            "quote_hash": "dbb1fcce1041355ca8f97fe5a8939f9490b39471de458cb12b5ec9b5bf6a9667",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "孤独背影",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 649,
+                "end": 653
+              }
+            ],
+            "quote_hash": "685e80d22c1cfa36d5312f56aa08b49d21d3a76a977c12bd11b0f42312cbd664",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "b4a06f428e1dbe1eeed26de604e05d7fd51a638e657d69c7b1a7c7e9939b35f1"
+      }
+    ],
+    "rejected_evidence": []
+  },
+  {
+    "schema_version": "grounded-character-packet-v4",
+    "source_document_version_id": "doupo-first5-7ca3fd295b5d0d45",
+    "chunking_policy_version": "fixed-codepoint-window-2500-overlap-250-v1",
+    "chunk_id": "chunk-000003-4500-7000-dbdb791747b5",
+    "chunk_hash": "dbdb791747b590330ca521e6bd219b4531aa9c368f7baa750be8133343f09a93",
+    "chunk_source_span": {
+      "start": 4500,
+      "end": 7000
+    },
+    "grounded_mentions": [
+      {
+        "local_mention_id": "m1",
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "萧炎",
+        "mention_quote_hash": "6606fa555d642924e1cf668d0f315a3de95f93749a87047e13fd5c6bdf2401e1",
+        "approved_evidence": [
+          {
+            "evidence_quote": "那依旧有些稚嫩的清秀脸庞",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1575,
+                "end": 1587
+              }
+            ],
+            "quote_hash": "24d2a3495d04fae74d58b8625cb7a6ec50de20ce8bce4b91181036a3969815f8",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "床榻之上，少年闭目盘腿而坐",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 2328,
+                "end": 2341
+              }
+            ],
+            "quote_hash": "3f5d664c1da7930316285b8956b7d3a0fb0ccd7881b83d95537becf1dfac3e4e",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "2debe2da1f04ee433c76cdb6bc38c0d954dbf06287ab566f2bccecb4b6d6b8f4"
+      },
+      {
+        "local_mention_id": "m2",
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "萧战",
+        "mention_quote_hash": "caa9d8f0a9cd5793919f77582fb2e8c7551037b2c6f3c464b788a06b8c033574",
+        "approved_evidence": [
+          {
+            "evidence_quote": "中年人身着华贵的灰色衣衫，龙行虎步间颇有几分威严，脸上一对粗眉更是为其添了几分豪气",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1307,
+                "end": 1348
+              }
+            ],
+            "quote_hash": "0d68fa672fbcb93a993b7dc29b30061f2cb740535b2addfa8a46f2de369b66b9",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "8b9de86d700d5c2d13aa9a082ed3d193b633188759981ec0010213318b28ffff"
+      },
+      {
+        "local_mention_id": "m3",
+        "mention_type": "describe",
+        "mention_scope": "individual",
+        "mention_quote": "中年人",
+        "mention_quote_hash": "ab3869cec51b6ac4ea22ccdee6dade86708d1a17e60cc71cf4a7621869ba52ba",
+        "approved_evidence": [
+          {
+            "evidence_quote": "中年人身着华贵的灰色衣衫，龙行虎步间颇有几分威严，脸上一对粗眉更是为其添了几分豪气",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1307,
+                "end": 1348
+              }
+            ],
+            "quote_hash": "0d68fa672fbcb93a993b7dc29b30061f2cb740535b2addfa8a46f2de369b66b9",
+            "relation_to_mention": "contains_mention",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "042e148ef7e461c3a400a9183572359f1abd62e93ddb67f8f797db2e3133f17e"
+      },
+      {
+        "local_mention_id": "m4",
+        "mention_type": "describe",
+        "mention_scope": "individual",
+        "mention_quote": "少年",
+        "mention_quote_hash": "749ca46754901e09cb4d09c6070da7dc273286e7b117144473fe8525c2965b93",
+        "approved_evidence": [
+          {
+            "evidence_quote": "床榻之上，少年闭目盘腿而坐",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 2328,
+                "end": 2341
+              }
+            ],
+            "quote_hash": "3f5d664c1da7930316285b8956b7d3a0fb0ccd7881b83d95537becf1dfac3e4e",
+            "relation_to_mention": "contains_mention",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "那依旧有些稚嫩的清秀脸庞",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1575,
+                "end": 1587
+              }
+            ],
+            "quote_hash": "24d2a3495d04fae74d58b8625cb7a6ec50de20ce8bce4b91181036a3969815f8",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "1217e66540a3d0619ab7a003709ed34f585ac171b5e4ed8dd90f4517cc7eaaaa"
+      }
+    ],
+    "rejected_evidence": []
+  },
+  {
+    "schema_version": "grounded-character-packet-v4",
+    "source_document_version_id": "doupo-first5-7ca3fd295b5d0d45",
+    "chunking_policy_version": "fixed-codepoint-window-2500-overlap-250-v1",
+    "chunk_id": "chunk-000004-6750-9250-4d57b02a87a6",
+    "chunk_hash": "4d57b02a87a62e315edc81fd983bc471badb355b58de668c25a5b1d2c753c153",
+    "chunk_source_span": {
+      "start": 6750,
+      "end": 9250
+    },
+    "grounded_mentions": [
+      {
+        "local_mention_id": "m1",
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "萧炎",
+        "mention_quote_hash": "6606fa555d642924e1cf668d0f315a3de95f93749a87047e13fd5c6bdf2401e1",
+        "approved_evidence": [
+          {
+            "evidence_quote": "少年稚嫩的脸庞",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 590,
+                "end": 597
+              }
+            ],
+            "quote_hash": "9b71bc6e4a2a534bd71f3ef4e2967cb2d3921536b020eadbb960490d31b2ca2f",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "幼稚的外貌",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1685,
+                "end": 1690
+              }
+            ],
+            "quote_hash": "86ce9023ee2d5c8a2dd07dbfd2fb5adffa6e66975a144f039868dcc2abec9a4f",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "漆黑的眼中",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 241,
+                "end": 246
+              }
+            ],
+            "quote_hash": "1710108688c27184f20002ce7b6e2505757bdf9cdcf76f4ea70913ed7ff31ee7",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "b89166416ecef015915fd2f872885f481b9027e4013ae2cf42d03e8faf07429b"
+      },
+      {
+        "local_mention_id": "m2",
+        "mention_type": "describe",
+        "mention_scope": "individual",
+        "mention_quote": "少年",
+        "mention_quote_hash": "749ca46754901e09cb4d09c6070da7dc273286e7b117144473fe8525c2965b93",
+        "approved_evidence": [
+          {
+            "evidence_quote": "少年稚嫩的脸庞",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 590,
+                "end": 597
+              }
+            ],
+            "quote_hash": "9b71bc6e4a2a534bd71f3ef4e2967cb2d3921536b020eadbb960490d31b2ca2f",
+            "relation_to_mention": "contains_mention",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "幼稚的外貌",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1685,
+                "end": 1690
+              }
+            ],
+            "quote_hash": "86ce9023ee2d5c8a2dd07dbfd2fb5adffa6e66975a144f039868dcc2abec9a4f",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "968f94fe1478ad1377aa7a8c1c3550814b8791001a5049dc4ce34b8fb36c57f2"
+      },
+      {
+        "local_mention_id": "m3",
+        "mention_type": "describe",
+        "mention_scope": "individual",
+        "mention_quote": "青衫老者",
+        "mention_quote_hash": "745c6bc3c23b352ddb8d1114db8c65c99b7ff627f848d318072d9de4f8b82199",
+        "approved_evidence": [
+          {
+            "evidence_quote": "浑浊的老眼",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 616,
+                "end": 621
+              }
+            ],
+            "quote_hash": "0bc8111539c1547ad367a8b7152ec42d557e3ef23b307bbd4f8c369aca691be4",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "青衫",
+            "occurrence_count": 2,
+            "source_spans": [
+              {
+                "start": 567,
+                "end": 569
+              },
+              {
+                "start": 598,
+                "end": 600
+              }
+            ],
+            "quote_hash": "4c2a5be99850a20e37471355fd1ac10f7eb15058ce36ee1dc9fec904230b6df6",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "669d3e4ef80ff317b68575e98e0ac53a3d943618b4892826a816b0df95325e91"
+      },
+      {
+        "local_mention_id": "m4",
+        "mention_type": "describe",
+        "mention_scope": "individual",
+        "mention_quote": "身穿月白衣袍的老者",
+        "mention_quote_hash": "2a35d1c16cec315588a193c812f5c1bdd0e176fac5dd5c7818b956226d300eeb",
+        "approved_evidence": [
+          {
+            "evidence_quote": "满脸笑容，神采奕奕，一双有些细小的双眼",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 911,
+                "end": 930
+              }
+            ],
+            "quote_hash": "b4fe432c8f7bd27efeedd3f6f6cb48bc0439a040fe79cdf41ade7ff0ef38a24e",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "衣袍胸口处，赫然绘有一弯银色浅月",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 970,
+                "end": 986
+              }
+            ],
+            "quote_hash": "c52cb1f5a9ffd84966954b4912b65170760ff486e79d45dee2b0b0ef509f08ec",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "4fc1293d2ebec0578c64e80285b39f24b7d14c92b5a1d302790a264604db38bd"
+      },
+      {
+        "local_mention_id": "m5",
+        "mention_type": "describe",
+        "mention_scope": "individual",
+        "mention_quote": "男子",
+        "mention_quote_hash": "a5f1b174c65912ac3ad091a455f9789135d562df55783c40dac5c31729ab1548",
+        "approved_evidence": [
+          {
+            "evidence_quote": "年龄在二十左右，英俊的相貌，配上挺拔的身材",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1184,
+                "end": 1205
+              }
+            ],
+            "quote_hash": "18a41821b89d63ba138973581835f3000c46e163014666cfe782229e2e6a4cc2",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "0d728b021fae18a145667c77d79f07fa3179b0f5fd3baf4d17a38aace463fb8f"
+      },
+      {
+        "local_mention_id": "m6",
+        "mention_type": "describe",
+        "mention_scope": "individual",
+        "mention_quote": "少女",
+        "mention_quote_hash": "def0173ec2e72ea2c7ec872269b9ea0b2d634c92a2aeea96e3ef3e19a988ca85",
+        "approved_evidence": [
+          {
+            "evidence_quote": "娇嫩的耳垂上吊有着绿色的玉坠",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1526,
+                "end": 1540
+              }
+            ],
+            "quote_hash": "fb19cd26fa761cf6adcfeeac5405b1d2f31b181a9c3c82e423359d52f7cbd671",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "冷艳的小脸",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1659,
+                "end": 1664
+              }
+            ],
+            "quote_hash": "bb2c141e363cc3ea82118d24a039c0336897bc567567e1e639429338627d1110",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "已经开始发育的玲珑小胸脯",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1577,
+                "end": 1589
+              }
+            ],
+            "quote_hash": "849245d85f99d590f1a47c260e33bddd942945e2616a2994ac10d376182ca1ea",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "6989ccaf9755262e8c22f9f15bc46ffe8da134334677c108587608e9ad127ad5"
+      },
+      {
+        "local_mention_id": "m7",
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "萧熏儿",
+        "mention_quote_hash": "666b8d6ca5c359d27ab9be23823e66ae793de4dd8a3fb074aeb27ee0aea74db5",
+        "approved_evidence": [
+          {
+            "evidence_quote": "微笑的小脸",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 2380,
+                "end": 2385
+              }
+            ],
+            "quote_hash": "b92547e35a0cce10cb8a7498b634c5f5692077a2480f6273497cd6fe3c5c7bf4",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "小脸上露出可爱的小酒窝",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 2475,
+                "end": 2486
+              }
+            ],
+            "quote_hash": "8939b55d13ff4ef26c9cffa9f4936c4249dab3415ee4d44057a04a9ab874adff",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "纤细的指尖",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 2487,
+                "end": 2492
+              }
+            ],
+            "quote_hash": "02e8a3f551773cc1662748c2c5ba63d985b40762dd661071046bdfb6aba586fe",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "9454e15173987d28dfae5d02d876490e732fffb670427ee888ac66222e3bc694"
+      },
+      {
+        "local_mention_id": "m8",
+        "mention_type": "describe",
+        "mention_scope": "individual",
+        "mention_quote": "黄袍老者",
+        "mention_quote_hash": "25accec829280f6b38869333545d0bf3770a1d484a673b1f6b513e8945b0eebd",
+        "approved_evidence": [
+          {
+            "evidence_quote": "黄袍",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 2199,
+                "end": 2201
+              }
+            ],
+            "quote_hash": "bc6839a5b47350c55d5d90602f08ad9618f9e510597a90db5d1cd9314766c144",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "b56513ca0fe07543e2670aad22b9f551f57ed051b2f1604d3488d95e6d4cb61f"
+      }
+    ],
+    "rejected_evidence": []
+  },
+  {
+    "schema_version": "grounded-character-packet-v4",
+    "source_document_version_id": "doupo-first5-7ca3fd295b5d0d45",
+    "chunking_policy_version": "fixed-codepoint-window-2500-overlap-250-v1",
+    "chunk_id": "chunk-000005-9000-11500-0cb89a2a0c18",
+    "chunk_hash": "0cb89a2a0c18510101274d1f3886815b22021b909e097568792b50088060a727",
+    "chunk_source_span": {
+      "start": 9000,
+      "end": 11500
+    },
+    "grounded_mentions": [
+      {
+        "local_mention_id": "m1",
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "萧熏儿",
+        "mention_quote_hash": "666b8d6ca5c359d27ab9be23823e66ae793de4dd8a3fb074aeb27ee0aea74db5",
+        "approved_evidence": [
+          {
+            "evidence_quote": "微笑的小脸",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 130,
+                "end": 135
+              }
+            ],
+            "quote_hash": "b92547e35a0cce10cb8a7498b634c5f5692077a2480f6273497cd6fe3c5c7bf4",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "小脸上露出可爱的小酒窝",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 225,
+                "end": 236
+              }
+            ],
+            "quote_hash": "8939b55d13ff4ef26c9cffa9f4936c4249dab3415ee4d44057a04a9ab874adff",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "纤细的指尖",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 237,
+                "end": 242
+              }
+            ],
+            "quote_hash": "02e8a3f551773cc1662748c2c5ba63d985b40762dd661071046bdfb6aba586fe",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "修长的睫毛",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 274,
+                "end": 279
+              }
+            ],
+            "quote_hash": "8c7e59163e4ffe919be404938d479dbf8928c0346a8a607c583d6dbb674c478a",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "光洁侧脸",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 360,
+                "end": 364
+              }
+            ],
+            "quote_hash": "c3a0016e8c6850df7f83df90ecc40c9bc383ad8aeaabc51e753302151a0916df",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "小嘴泛起了柔和的笑意",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 604,
+                "end": 614
+              }
+            ],
+            "quote_hash": "7ca770550c8414205df5d74870a743d4607be8be5c639a75007a76b90337cdf8",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "美丽的眼睛微弯",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1891,
+                "end": 1898
+              }
+            ],
+            "quote_hash": "95ab5def7ff9cc6e336326053ee74195f2f3fccae34768091182472121babb2f",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "小小年纪",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 256,
+                "end": 260
+              }
+            ],
+            "quote_hash": "e8a5fad9ab1b30d6045354e2e5ff1bfec35b8d45a3047d5206958eb727814ef5",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "6838faa9218838b83136745fecc8eb927242ca0ccb17e8297fdc01bae385337c"
+      },
+      {
+        "local_mention_id": "m2",
+        "mention_type": "describe",
+        "mention_scope": "individual",
+        "mention_quote": "少女",
+        "mention_quote_hash": "def0173ec2e72ea2c7ec872269b9ea0b2d634c92a2aeea96e3ef3e19a988ca85",
+        "approved_evidence": [
+          {
+            "evidence_quote": "微笑的小脸",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 130,
+                "end": 135
+              }
+            ],
+            "quote_hash": "b92547e35a0cce10cb8a7498b634c5f5692077a2480f6273497cd6fe3c5c7bf4",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "小脸上露出可爱的小酒窝",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 225,
+                "end": 236
+              }
+            ],
+            "quote_hash": "8939b55d13ff4ef26c9cffa9f4936c4249dab3415ee4d44057a04a9ab874adff",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "纤细的指尖",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 237,
+                "end": 242
+              }
+            ],
+            "quote_hash": "02e8a3f551773cc1662748c2c5ba63d985b40762dd661071046bdfb6aba586fe",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "修长的睫毛",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 274,
+                "end": 279
+              }
+            ],
+            "quote_hash": "8c7e59163e4ffe919be404938d479dbf8928c0346a8a607c583d6dbb674c478a",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "光洁侧脸",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 360,
+                "end": 364
+              }
+            ],
+            "quote_hash": "c3a0016e8c6850df7f83df90ecc40c9bc383ad8aeaabc51e753302151a0916df",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "小嘴泛起了柔和的笑意",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 604,
+                "end": 614
+              }
+            ],
+            "quote_hash": "7ca770550c8414205df5d74870a743d4607be8be5c639a75007a76b90337cdf8",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "美丽的眼睛微弯",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1891,
+                "end": 1898
+              }
+            ],
+            "quote_hash": "95ab5def7ff9cc6e336326053ee74195f2f3fccae34768091182472121babb2f",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "小小年纪",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 256,
+                "end": 260
+              }
+            ],
+            "quote_hash": "e8a5fad9ab1b30d6045354e2e5ff1bfec35b8d45a3047d5206958eb727814ef5",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "8d65cec72da7f8c55ec85d250240ed3c1ca913c9d5c34331aded5ce48552a620"
+      },
+      {
+        "local_mention_id": "m3",
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "纳兰嫣然",
+        "mention_quote_hash": "57a3e0e1c52ed1d4a1b38b519209c48d73bff8e7b9ab908c0b3ae41b556d65de",
+        "approved_evidence": [
+          {
+            "evidence_quote": "对面的少女虽然美丽",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 2098,
+                "end": 2107
+              }
+            ],
+            "quote_hash": "26ffa4a1fd0c6278528117c3bec2467a173d2e6ac54affbe640fe00d8c81da45",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "美丽娇俏",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 2218,
+                "end": 2222
+              }
+            ],
+            "quote_hash": "9c1c81d696a4b28e8ce49847f88eae034db4d2e01fbeb07e7ab1bf8bf1931522",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "0aae41aaac9aac42882398e9c424adfd138eb4a4dea010b37abcfcd486dd1c48"
+      },
+      {
+        "local_mention_id": "m4",
+        "mention_type": "describe",
+        "mention_scope": "individual",
+        "mention_quote": "娇贵少女",
+        "mention_quote_hash": "0ac5016db109a0bda6feb94c279f94c78ef2ae6e580977514923841deea0fd5a",
+        "approved_evidence": [
+          {
+            "evidence_quote": "对面的少女虽然美丽",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 2098,
+                "end": 2107
+              }
+            ],
+            "quote_hash": "26ffa4a1fd0c6278528117c3bec2467a173d2e6ac54affbe640fe00d8c81da45",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "美丽娇俏",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 2218,
+                "end": 2222
+              }
+            ],
+            "quote_hash": "9c1c81d696a4b28e8ce49847f88eae034db4d2e01fbeb07e7ab1bf8bf1931522",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "27d7e1767c8a0b42beed415fa81222ff26cdc582654c20a34086ab88e3de916e"
+      }
+    ],
+    "rejected_evidence": []
+  },
+  {
+    "schema_version": "grounded-character-packet-v4",
+    "source_document_version_id": "doupo-first5-7ca3fd295b5d0d45",
+    "chunking_policy_version": "fixed-codepoint-window-2500-overlap-250-v1",
+    "chunk_id": "chunk-000006-11250-13750-03087dc524e6",
+    "chunk_hash": "03087dc524e600fec09f2d18279ec668f56b8ef967de5b261538e2b1ee8021c4",
+    "chunk_source_span": {
+      "start": 11250,
+      "end": 13750
+    },
+    "grounded_mentions": [
+      {
+        "local_mention_id": "m1",
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "萧炎",
+        "mention_quote_hash": "6606fa555d642924e1cf668d0f315a3de95f93749a87047e13fd5c6bdf2401e1",
+        "approved_evidence": [
+          {
+            "evidence_quote": "年仅十五岁",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 180,
+                "end": 185
+              }
+            ],
+            "quote_hash": "adddbeaeaa35126276c425639eddf6301cff9a9a2604f2671ecd430ddf71e1fd",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "695f65a5046125d04c46eb283d4f232c6ecfe332b392abc8b00ecead9f8a2d55"
+      },
+      {
+        "local_mention_id": "m2",
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "熏儿",
+        "mention_quote_hash": "ad17f59380d6b6b9e0d04e2e58fe0fa6901daab5767fec642cdfb35f1d6d2f3f",
+        "approved_evidence": [
+          {
+            "evidence_quote": "一只娇嫩的小手",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 245,
+                "end": 252
+              }
+            ],
+            "quote_hash": "1b87732845966d6afa81e10a98441b1a5f971b0eae0c73ffd5cfddd815ed5131",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "9685c03b0783519577cd03b9ee85ef26ea2d1b538d3fba89dbaf0d34afa7c54f"
+      },
+      {
+        "local_mention_id": "m3",
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "萧战",
+        "mention_quote_hash": "caa9d8f0a9cd5793919f77582fb2e8c7551037b2c6f3c464b788a06b8c033574",
+        "approved_evidence": [
+          {
+            "evidence_quote": "硕大的手掌",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1614,
+                "end": 1619
+              }
+            ],
+            "quote_hash": "03586c63c438ef712517da595ee0f21bf3df60122472a683eb53fce217406535",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "阴沉至极的脸色",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 2106,
+                "end": 2113
+              }
+            ],
+            "quote_hash": "b42f49295f9eab724ab9bb2300b72b41d088536899e1356c3a3eac4acf47bf8b",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "0fc135cbb040108b2319d87eff887e3e32e6d21d75d6f6b453352ae233ee6317"
+      },
+      {
+        "local_mention_id": "m4",
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "葛叶",
+        "mention_quote_hash": "1922c4e632d4a72e42fb14df021dbaad444341e5b03a9aff2f5e4273550b6c3f",
+        "approved_evidence": [
+          {
+            "evidence_quote": "白袍",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 774,
+                "end": 776
+              }
+            ],
+            "quote_hash": "3e632fc6301dcbf1ccc4c730cb7f71f882e44b73cdc4d7d3f6a9c1c12e3fab87",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "鹰爪般的双手",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 2315,
+                "end": 2321
+              }
+            ],
+            "quote_hash": "d44937d07e43f7e7ca7b830ca102c02d437b3931b3047178d076f5fd947b7f61",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "脸庞也顿时凝重了起来",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 2293,
+                "end": 2303
+              }
+            ],
+            "quote_hash": "c83f331894ff656e3c653661042479aa9b85848b974c088f34009ee046dc1ce2",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "bf2f2dd712da2024e1cbcb0caef5a155b036fb6ec9420cf871cf1690fd82116c"
+      },
+      {
+        "local_mention_id": "m5",
+        "mention_type": "describe",
+        "mention_scope": "individual",
+        "mention_quote": "白袍老者",
+        "mention_quote_hash": "14c557f1eb5cafe05498bd5b303841a44ac251b1bea3b6806989f082815cfa94",
+        "approved_evidence": [
+          {
+            "evidence_quote": "白袍",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 774,
+                "end": 776
+              }
+            ],
+            "quote_hash": "3e632fc6301dcbf1ccc4c730cb7f71f882e44b73cdc4d7d3f6a9c1c12e3fab87",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "90acf1252e2a1fc4fa55f9e9daf327a1041e465ad95fb8adc795dda5bad7103e"
+      }
+    ],
+    "rejected_evidence": []
+  },
+  {
+    "schema_version": "grounded-character-packet-v4",
+    "source_document_version_id": "doupo-first5-7ca3fd295b5d0d45",
+    "chunking_policy_version": "fixed-codepoint-window-2500-overlap-250-v1",
+    "chunk_id": "chunk-000007-13500-14160-d83b17f39d7c",
+    "chunk_hash": "d83b17f39d7cb78e289e8b2ec814ad33a629d875f79288d34aa4cafd7611be61",
+    "chunk_source_span": {
+      "start": 13500,
+      "end": 14160
+    },
+    "grounded_mentions": [
+      {
+        "local_mention_id": "m1",
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "萧战",
+        "mention_quote_hash": "caa9d8f0a9cd5793919f77582fb2e8c7551037b2c6f3c464b788a06b8c033574",
+        "approved_evidence": [
+          {
+            "evidence_quote": "萧战脸色淡漠",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 282,
+                "end": 288
+              }
+            ],
+            "quote_hash": "62c545a3960b2ec3d0ffa658ce15459bb2b1ae63aeaecf50d79c5f73546928d1",
+            "relation_to_mention": "contains_mention",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "686013e017dac20566454b7c0b5c63b50bb810d7b4eaa051163ead0464355135"
+      },
+      {
+        "local_mention_id": "m2",
+        "mention_type": "describe",
+        "mention_scope": "individual",
+        "mention_quote": "萧族长",
+        "mention_quote_hash": "1ff145ca767bf258c6aaea2cc12d1d9c6564f9eb5feeb1305db702290b27c085",
+        "approved_evidence": [
+          {
+            "evidence_quote": "萧战脸色淡漠",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 282,
+                "end": 288
+              }
+            ],
+            "quote_hash": "62c545a3960b2ec3d0ffa658ce15459bb2b1ae63aeaecf50d79c5f73546928d1",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "2e789be68e5b13bc7ce81f7bbcfecf098f85b29850f85de3ae2e161399ea1293"
+      },
+      {
+        "local_mention_id": "m3",
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "葛叶",
+        "mention_quote_hash": "1922c4e632d4a72e42fb14df021dbaad444341e5b03a9aff2f5e4273550b6c3f",
+        "approved_evidence": [
+          {
+            "evidence_quote": "葛叶脸庞也顿时凝重了起来",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 41,
+                "end": 53
+              }
+            ],
+            "quote_hash": "1bbf9c40155eb068adffcfa6dfbefdb4418221c546b762eae354bfa001364dd9",
+            "relation_to_mention": "contains_mention",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "鹰爪般的双手",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 65,
+                "end": 71
+              }
+            ],
+            "quote_hash": "d44937d07e43f7e7ca7b830ca102c02d437b3931b3047178d076f5fd947b7f61",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "葛叶大喜",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 483,
+                "end": 487
+              }
+            ],
+            "quote_hash": "15427456a88e263d9363c88567a2ced2d90df2d68f9f737120a7791cb0706453",
+            "relation_to_mention": "contains_mention",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "b79893ead11f87d67f98a4b16f53bfe4427b0e3937f010bf6cc629f98267e923"
+      },
+      {
+        "local_mention_id": "m4",
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "纳兰嫣然",
+        "mention_quote_hash": "57a3e0e1c52ed1d4a1b38b519209c48d73bff8e7b9ab908c0b3ae41b556d65de",
+        "approved_evidence": [
+          {
+            "evidence_quote": "娇躯微微一颤",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 345,
+                "end": 351
+              }
+            ],
+            "quote_hash": "db4da1e68b067ed4fb8ac7e115ab3b3b1923912376771c5153e242d9abce4eeb",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "f62881c8c2dc98c9a7adf71e3c17cf3b4cdcdc48d11ea16ecddd7f392083c3e2"
+      },
+      {
+        "local_mention_id": "m5",
+        "mention_type": "describe",
+        "mention_scope": "collective",
+        "mention_quote": "少年们",
+        "mention_quote_hash": "97347c7974cc6f18abe9a3fed7ee135f118042cf3ccced98a222595f05a8e935",
+        "approved_evidence": [
+          {
+            "evidence_quote": "脸色猛的一白",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 154,
+                "end": 160
+              }
+            ],
+            "quote_hash": "dda61929774b7347507e21d19d22c923a416455972f8457ad11b89907cf523bb",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "b4a4f64e1312e8aa72fe59cdcd978b7b99330fc1ac669c43d704cb72202494ed"
+      }
+    ],
+    "rejected_evidence": []
+  }
+]

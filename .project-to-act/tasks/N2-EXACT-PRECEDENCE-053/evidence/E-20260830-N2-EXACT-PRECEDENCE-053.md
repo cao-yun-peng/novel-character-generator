@@ -1,0 +1,28 @@
+# E-20260830-N2-EXACT-PRECEDENCE-053
+
+- 时间：2026-08-30，Asia/Shanghai。
+- 用户决定：N2 比较当前 Chunk 所有 exact 与所有 describe 的单条 evidence quote；相同项从 describe 删除，describe 被删空时删除整个块。
+- 决策：`DEC-20260830-N2-EXACT-PRECEDENCE-053`。
+- 实现顺序：M1 output 校验 → raw Grounding/纯空白恢复 → mention type 归一 → exact evidence 索引 → describe 过滤/空块删除 → packet hash 重算与物化。
+- 比较键：Grounding 回填后的 raw `evidence_quote` 逐字相等。没有语义相似、标点忽略、大小写或非空白规范化；pure-whitespace 恢复到相同 raw quote 后可命中。
+- 范围：当前 Chunk 全部 grounded exact 对全部 describe scope 生效；exact↔exact、describe↔describe、null 和跨 Chunk 不参与。
+- 审计：单条删除写 `describe_evidence_shadowed_by_exact`，空块删除写 `describe_removed_after_exact_dedup`；批处理独立生成 `n2-grounding-traces.json`，summary v2 汇总两个计数。trace 只含 quote hash、局部 ID 和策略版本，不保存密钥或新增原文副本。
+- 版本：Schema `3.6.0-draft1`；运行时 `0.1.0.dev6`；N2 packet `grounded-character-packet-v5`；chunk result `m1-chunk-result-v3`；batch summary `m1-batch-summary-v2`；策略 `exact-evidence-precedence-v1`。
+- 兼容性：旧 v2 chunk/v4 packet 不允许与新批次续跑混合，必须使用新输出目录；既有 `runs/` 未修改。
+- 单测：覆盖萧熏儿 exact/少女 describe 全重复整块删除、部分重复保留顺序、无 exact 不误删、collective describe 过滤、hash 稳定、批次 trace/summary 落盘和旧结果拒绝。
+- 测试命令：`$env:PYTHONPATH='src'; $env:PYTHONDONTWRITEBYTECODE='1'; python -m unittest discover -s tests -v`。
+- 测试结果：退出状态 0；57 项通过，0 失败，0 跳过。
+- Schema 验证：`jsonschema.Draft202012Validator.check_schema` 通过。
+- 斗破离线重放：使用 `runs/doupo-first5-m1-scope-v4/m1-model-outputs.json` 和原始 5 章文件，Provider 调用 0；M1 37 mentions/94 bindings 经 N2 得到 24 mentions/57 bindings，删除 37 条 describe evidence 和 13 个空 describe blocks；7/7 Chunk 均命中规则。重放只在内存执行，未覆盖旧产物。
+- 关键 SHA-256：
+  - `pyproject.toml`：`07e2427151a84b96a02b0e3672d404ced06c7b42f2506f8c4ae3c99dc29f647c`
+  - `README.md`：`e09285aa37828f48979dd25bedfdff33cebdb1caa7adf3a4f022b2ff50e738bf`
+  - `docs/33-simplified-character-evidence-pipeline-v3.md`：`b2a9360f4cd2b7172832cb8258bace51c5c7b2928a3624bbac72b863b1153319`
+  - `docs/contracts/simplified-character-evidence-v3-model-schemas.json`：`f610ad6d124d3b907f449c85711d15985e0417d2bb75a8c7a50ef5e6b29c8f73`
+  - `src/novel_character_generator/grounding.py`：`59e7f2afef8eb2b6d4889d1b32173288343174a0aa3c554a91fd761f3152d7c7`
+  - `src/novel_character_generator/m1_batch.py`：`fec0d7bdccd5558feda640946f5ed32fe782293d068ae4b3954d1cd8bcb2c588`
+  - `tests/test_m1.py`：`2d74f4e068e799c8087e4e823f3ade4db2debb0faf0340565ee01b96d33019e4`
+  - `tests/test_m1_batch.py`：`bd928023f44124806a3b97cd6c47bdb5dc18224a8b5b97e571b4f9160c16e30e`
+- 生命周期：stage 5 `in_progress`、revision 2；本任务完成不等于 N2 整体或模型质量 Gate 通过。
+- 未覆盖：文档绝对 span 换算、跨 Chunk occurrence 去重、M2/N3 消费与人物身份合并。
+- 有效期：exact precedence、Grounding、packet/hash、批次输出或 Schema 再次变化前。

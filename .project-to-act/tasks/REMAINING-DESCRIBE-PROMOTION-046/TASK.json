@@ -1,0 +1,26 @@
+{
+  "id": "REMAINING-DESCRIBE-PROMOTION-046",
+  "title": "剩余 describe 一对多独立建人",
+  "status": "completed",
+  "owner": "Codex",
+  "objective": "N3 后未被 exact 消费的 describe 不再回到 exact 归属循环，而是每个剩余池单独进入 M2，并允许建立一个或多个正式本地人物。",
+  "allowed_paths": ["README.md", "docs", ".project-to-act"],
+  "invariants": [
+    "exact 归属只执行第一轮批量仲裁",
+    "未认领 describe 与 exact 冲突 span 严格区分",
+    "每个剩余 describe 是一个独立 promotion 模型任务",
+    "一个剩余 describe 可以输出多个角色",
+    "多个新角色认领的原文 span 不得重叠",
+    "模型不生成正式人物 ID，代码验证后生成 promoted_character_ref",
+    "不直接创建全局 character_id"
+  ],
+  "acceptance": [
+    "主契约删除剩余 describe 回到全部 exact 的错误规则",
+    "promotion 模型输入只包含 describe、剩余 fragment 和 chunk_text",
+    "promotion 模型输出 characters 数组支持一对多",
+    "Schema 拒绝系统字段混入 promotion 模型 payload",
+    "N3 next_action 使用 promote_remaining_describe",
+    "一对一和一对多正反样例通过",
+    "项目台账和 Git diff 校验通过"
+  ]
+}

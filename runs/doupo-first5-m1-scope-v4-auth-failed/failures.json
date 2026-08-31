@@ -1,0 +1,184 @@
+[
+  {
+    "chunk_index": 1,
+    "chunk_id": "chunk-000001-0-2500-1c37344b20cf",
+    "chunk_hash": "1c37344b20cf9d4c7e1bd65f0c935bac1295d6d066a838359db9504953713a00",
+    "error_type": "ProviderAuthenticationError",
+    "message": "DeepSeek API returned HTTP 401 (invalid_request_error)",
+    "provider_trace": {
+      "provider": "deepseek",
+      "api": "responses-v1",
+      "model": "deepseek-v4-flash",
+      "endpoint_origin": "https://api.deepseek.com",
+      "attempts": 1,
+      "success": false,
+      "duration_ms": 219,
+      "http_status": 401,
+      "response_id": null,
+      "usage": {
+        "input_tokens": null,
+        "cached_input_tokens": null,
+        "output_tokens": null,
+        "reasoning_tokens": null,
+        "total_tokens": null
+      },
+      "error_kind": "ProviderAuthenticationError"
+    }
+  },
+  {
+    "chunk_index": 2,
+    "chunk_id": "chunk-000002-2250-4750-8b0d7e96a637",
+    "chunk_hash": "8b0d7e96a6379895c459892502245feeccae65658f3ae140334725001eb3310e",
+    "error_type": "ProviderAuthenticationError",
+    "message": "DeepSeek API returned HTTP 401 (invalid_request_error)",
+    "provider_trace": {
+      "provider": "deepseek",
+      "api": "responses-v1",
+      "model": "deepseek-v4-flash",
+      "endpoint_origin": "https://api.deepseek.com",
+      "attempts": 1,
+      "success": false,
+      "duration_ms": 140,
+      "http_status": 401,
+      "response_id": null,
+      "usage": {
+        "input_tokens": null,
+        "cached_input_tokens": null,
+        "output_tokens": null,
+        "reasoning_tokens": null,
+        "total_tokens": null
+      },
+      "error_kind": "ProviderAuthenticationError"
+    }
+  },
+  {
+    "chunk_index": 3,
+    "chunk_id": "chunk-000003-4500-7000-17e80959fda4",
+    "chunk_hash": "17e80959fda4fd11c9606f1663d8ac5965f7593dc6ab3b6c0d3396a92689999d",
+    "error_type": "ProviderAuthenticationError",
+    "message": "DeepSeek API returned HTTP 401 (invalid_request_error)",
+    "provider_trace": {
+      "provider": "deepseek",
+      "api": "responses-v1",
+      "model": "deepseek-v4-flash",
+      "endpoint_origin": "https://api.deepseek.com",
+      "attempts": 1,
+      "success": false,
+      "duration_ms": 188,
+      "http_status": 401,
+      "response_id": null,
+      "usage": {
+        "input_tokens": null,
+        "cached_input_tokens": null,
+        "output_tokens": null,
+        "reasoning_tokens": null,
+        "total_tokens": null
+      },
+      "error_kind": "ProviderAuthenticationError"
+    }
+  },
+  {
+    "chunk_index": 4,
+    "chunk_id": "chunk-000004-6750-9250-c42c8c9487cc",
+    "chunk_hash": "c42c8c9487ccac91dd4149c80bf52066abda007e2778393b52311e2346684f4f",
+    "error_type": "ProviderAuthenticationError",
+    "message": "DeepSeek API returned HTTP 401 (invalid_request_error)",
+    "provider_trace": {
+      "provider": "deepseek",
+      "api": "responses-v1",
+      "model": "deepseek-v4-flash",
+      "endpoint_origin": "https://api.deepseek.com",
+      "attempts": 1,
+      "success": false,
+      "duration_ms": 78,
+      "http_status": 401,
+      "response_id": null,
+      "usage": {
+        "input_tokens": null,
+        "cached_input_tokens": null,
+        "output_tokens": null,
+        "reasoning_tokens": null,
+        "total_tokens": null
+      },
+      "error_kind": "ProviderAuthenticationError"
+    }
+  },
+  {
+    "chunk_index": 5,
+    "chunk_id": "chunk-000005-9000-11500-b0d64aeb7262",
+    "chunk_hash": "b0d64aeb726281aa5d855f8a025c2d70ce11fa12fd5e548ea6dc8c221d429d3f",
+    "error_type": "ProviderAuthenticationError",
+    "message": "DeepSeek API returned HTTP 401 (invalid_request_error)",
+    "provider_trace": {
+      "provider": "deepseek",
+      "api": "responses-v1",
+      "model": "deepseek-v4-flash",
+      "endpoint_origin": "https://api.deepseek.com",
+      "attempts": 1,
+      "success": false,
+      "duration_ms": 109,
+      "http_status": 401,
+      "response_id": null,
+      "usage": {
+        "input_tokens": null,
+        "cached_input_tokens": null,
+        "output_tokens": null,
+        "reasoning_tokens": null,
+        "total_tokens": null
+      },
+      "error_kind": "ProviderAuthenticationError"
+    }
+  },
+  {
+    "chunk_index": 6,
+    "chunk_id": "chunk-000006-11250-13750-2a28b469b390",
+    "chunk_hash": "2a28b469b390a1ec1ce9ee1d9c39e52a55ad5e45b6cc89b4869800db1870cb31",
+    "error_type": "ProviderAuthenticationError",
+    "message": "DeepSeek API returned HTTP 401 (invalid_request_error)",
+    "provider_trace": {
+      "provider": "deepseek",
+      "api": "responses-v1",
+      "model": "deepseek-v4-flash",
+      "endpoint_origin": "https://api.deepseek.com",
+      "attempts": 1,
+      "success": false,
+      "duration_ms": 79,
+      "http_status": 401,
+      "response_id": null,
+      "usage": {
+        "input_tokens": null,
+        "cached_input_tokens": null,
+        "output_tokens": null,
+        "reasoning_tokens": null,
+        "total_tokens": null
+      },
+      "error_kind": "ProviderAuthenticationError"
+    }
+  },
+  {
+    "chunk_index": 7,
+    "chunk_id": "chunk-000007-13500-13919-bd3970eee7f9",
+    "chunk_hash": "bd3970eee7f9a2dca116a905b7bab62a79155556b86ba29c62552867c077d568",
+    "error_type": "ProviderAuthenticationError",
+    "message": "DeepSeek API returned HTTP 401 (invalid_request_error)",
+    "provider_trace": {
+      "provider": "deepseek",
+      "api": "responses-v1",
+      "model": "deepseek-v4-flash",
+      "endpoint_origin": "https://api.deepseek.com",
+      "attempts": 1,
+      "success": false,
+      "duration_ms": 109,
+      "http_status": 401,
+      "response_id": null,
+      "usage": {
+        "input_tokens": null,
+        "cached_input_tokens": null,
+        "output_tokens": null,
+        "reasoning_tokens": null,
+        "total_tokens": null
+      },
+      "error_kind": "ProviderAuthenticationError"
+    }
+  }
+]

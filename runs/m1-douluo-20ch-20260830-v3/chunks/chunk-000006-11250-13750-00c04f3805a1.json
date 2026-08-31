@@ -1,0 +1,346 @@
+{
+  "schema_version": "m1-chunk-result-v1",
+  "chunk_index": 6,
+  "chunk_id": "chunk-000006-11250-13750-00c04f3805a1",
+  "chunk_hash": "00c04f3805a1afc52296a42c5f67114d3e09ab9a1b63caf27edf61bfd53323e4",
+  "chunk_source_span": {
+    "start": 11250,
+    "end": 13750
+  },
+  "model_output": {
+    "candidate_mentions": [
+      {
+        "mention_type": "exact",
+        "mention_quote": "素云涛",
+        "evidence_quotes": [
+          "此人看上去二十多岁的样子，剑眉星目，相貌甚是俊朗。一身白色劲装，背后是黑色披风，胸前正中心的位置，有一个拳头大小的魂字。",
+          "左胸上，有一枚雕刻着长剑的徽章，徽章上一共是三柄长剑交错。"
+        ]
+      },
+      {
+        "mention_type": "describe",
+        "mention_quote": "年轻人",
+        "evidence_quotes": [
+          "此人看上去二十多岁的样子，剑眉星目，相貌甚是俊朗。一身白色劲装，背后是黑色披风，胸前正中心的位置，有一个拳头大小的魂字。",
+          "左胸上，有一枚雕刻着长剑的徽章，徽章上一共是三柄长剑交错。"
+        ]
+      },
+      {
+        "mention_type": "describe",
+        "mention_quote": "青年",
+        "evidence_quotes": [
+          "此人看上去二十多岁的样子，剑眉星目，相貌甚是俊朗。一身白色劲装，背后是黑色披风，胸前正中心的位置，有一个拳头大小的魂字。",
+          "左胸上，有一枚雕刻着长剑的徽章，徽章上一共是三柄长剑交错。"
+        ]
+      },
+      {
+        "mention_type": "exact",
+        "mention_quote": "唐三",
+        "evidence_quotes": [
+          "他的身材和同龄的孩子相比，要瘦小一些。"
+        ]
+      }
+    ]
+  },
+  "grounded_packet": {
+    "schema_version": "grounded-character-packet-v3",
+    "source_document_version_id": "source-4dd3d57c99f4b254",
+    "chunking_policy_version": "fixed-codepoint-window-2500-overlap-250-v1",
+    "chunk_id": "chunk-000006-11250-13750-00c04f3805a1",
+    "chunk_hash": "00c04f3805a1afc52296a42c5f67114d3e09ab9a1b63caf27edf61bfd53323e4",
+    "chunk_source_span": {
+      "start": 11250,
+      "end": 13750
+    },
+    "grounded_mentions": [
+      {
+        "local_mention_id": "m1",
+        "mention_type": "exact",
+        "mention_quote": "素云涛",
+        "mention_occurrence_count": 4,
+        "mention_source_spans": [
+          {
+            "start": 2319,
+            "end": 2322
+          },
+          {
+            "start": 2377,
+            "end": 2380
+          },
+          {
+            "start": 2430,
+            "end": 2433
+          },
+          {
+            "start": 2495,
+            "end": 2498
+          }
+        ],
+        "mention_quote_hash": "b00cdcecb01547353edebc3daf08c048076802e1d0d43f5cb0716c9da7c48c3d",
+        "approved_evidence": [
+          {
+            "evidence_quote": "此人看上去二十多岁的样子，剑眉星目，相貌甚是俊朗。一身白色劲装，背后是黑色披风，胸前正中心的位置，有一个拳头大小的魂字。",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1682,
+                "end": 1742
+              }
+            ],
+            "quote_hash": "1beb8d6680ac665072bdedc7cf42a8aebedbdda12b35d5c9c6b9b98f55c32a3c",
+            "relation_to_mention": "contextual"
+          },
+          {
+            "evidence_quote": "左胸上，有一枚雕刻着长剑的徽章，徽章上一共是三柄长剑交错。",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1761,
+                "end": 1790
+              }
+            ],
+            "quote_hash": "e1e82720e28654fb5e185861830354674874505d4242eda3613f682fe38c0820",
+            "relation_to_mention": "contextual"
+          }
+        ],
+        "packet_hash": "1858e4fb70ab0265152367eadb24137bcf4d35ddd0f1bdc932cb129bc287d89a"
+      },
+      {
+        "local_mention_id": "m2",
+        "mention_type": "describe",
+        "mention_quote": "年轻人",
+        "mention_occurrence_count": 6,
+        "mention_source_spans": [
+          {
+            "start": 1884,
+            "end": 1887
+          },
+          {
+            "start": 1894,
+            "end": 1897
+          },
+          {
+            "start": 2029,
+            "end": 2032
+          },
+          {
+            "start": 2178,
+            "end": 2181
+          },
+          {
+            "start": 2270,
+            "end": 2273
+          },
+          {
+            "start": 2309,
+            "end": 2312
+          }
+        ],
+        "mention_quote_hash": "cdbabc164b1c6711267f22be9c26ca1028bd84edf5425a6098360e13211df7f2",
+        "approved_evidence": [
+          {
+            "evidence_quote": "此人看上去二十多岁的样子，剑眉星目，相貌甚是俊朗。一身白色劲装，背后是黑色披风，胸前正中心的位置，有一个拳头大小的魂字。",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1682,
+                "end": 1742
+              }
+            ],
+            "quote_hash": "1beb8d6680ac665072bdedc7cf42a8aebedbdda12b35d5c9c6b9b98f55c32a3c",
+            "relation_to_mention": "contextual"
+          },
+          {
+            "evidence_quote": "左胸上，有一枚雕刻着长剑的徽章，徽章上一共是三柄长剑交错。",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1761,
+                "end": 1790
+              }
+            ],
+            "quote_hash": "e1e82720e28654fb5e185861830354674874505d4242eda3613f682fe38c0820",
+            "relation_to_mention": "contextual"
+          }
+        ],
+        "packet_hash": "81a3f52f5a14e359c79d289e71973be737e7fb6a3d8a5e50198f53543d1f8220"
+      },
+      {
+        "local_mention_id": "m3",
+        "mention_type": "describe",
+        "mention_quote": "青年",
+        "mention_occurrence_count": 1,
+        "mention_source_spans": [
+          {
+            "start": 1679,
+            "end": 1681
+          }
+        ],
+        "mention_quote_hash": "2f2f7e4fb0da22315c77ff858b871257f7b2a0738346fbefab1bf57b605c6e1f",
+        "approved_evidence": [
+          {
+            "evidence_quote": "此人看上去二十多岁的样子，剑眉星目，相貌甚是俊朗。一身白色劲装，背后是黑色披风，胸前正中心的位置，有一个拳头大小的魂字。",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1682,
+                "end": 1742
+              }
+            ],
+            "quote_hash": "1beb8d6680ac665072bdedc7cf42a8aebedbdda12b35d5c9c6b9b98f55c32a3c",
+            "relation_to_mention": "contextual"
+          },
+          {
+            "evidence_quote": "左胸上，有一枚雕刻着长剑的徽章，徽章上一共是三柄长剑交错。",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1761,
+                "end": 1790
+              }
+            ],
+            "quote_hash": "e1e82720e28654fb5e185861830354674874505d4242eda3613f682fe38c0820",
+            "relation_to_mention": "contextual"
+          }
+        ],
+        "packet_hash": "fa2eff4465c3f11079d2ca84b1f300a034f295512b505707a5557f8e6e0b1efc"
+      },
+      {
+        "local_mention_id": "m4",
+        "mention_type": "exact",
+        "mention_quote": "唐三",
+        "mention_occurrence_count": 23,
+        "mention_source_spans": [
+          {
+            "start": 178,
+            "end": 180
+          },
+          {
+            "start": 248,
+            "end": 250
+          },
+          {
+            "start": 284,
+            "end": 286
+          },
+          {
+            "start": 392,
+            "end": 394
+          },
+          {
+            "start": 440,
+            "end": 442
+          },
+          {
+            "start": 451,
+            "end": 453
+          },
+          {
+            "start": 500,
+            "end": 502
+          },
+          {
+            "start": 544,
+            "end": 546
+          },
+          {
+            "start": 631,
+            "end": 633
+          },
+          {
+            "start": 695,
+            "end": 697
+          },
+          {
+            "start": 848,
+            "end": 850
+          },
+          {
+            "start": 865,
+            "end": 867
+          },
+          {
+            "start": 933,
+            "end": 935
+          },
+          {
+            "start": 1025,
+            "end": 1027
+          },
+          {
+            "start": 1103,
+            "end": 1105
+          },
+          {
+            "start": 1250,
+            "end": 1252
+          },
+          {
+            "start": 1257,
+            "end": 1259
+          },
+          {
+            "start": 1346,
+            "end": 1348
+          },
+          {
+            "start": 1375,
+            "end": 1377
+          },
+          {
+            "start": 1514,
+            "end": 1516
+          },
+          {
+            "start": 1548,
+            "end": 1550
+          },
+          {
+            "start": 1581,
+            "end": 1583
+          },
+          {
+            "start": 2278,
+            "end": 2280
+          }
+        ],
+        "mention_quote_hash": "04af9a5f2d9cca67d65d424e41820e11063f4cb679035d66b8ef30ed334d2c48",
+        "approved_evidence": [
+          {
+            "evidence_quote": "他的身材和同龄的孩子相比，要瘦小一些。",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 2286,
+                "end": 2305
+              }
+            ],
+            "quote_hash": "821f990d86eb56931259fc7035a4e2373aabfe4982afb3e8d563dc504cd78bb1",
+            "relation_to_mention": "contextual"
+          }
+        ],
+        "packet_hash": "b960c6c985f23aa3af7d8414524562ef49fe13f49271590c2d4d3364b552592b"
+      }
+    ],
+    "rejected_evidence": []
+  },
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 43031,
+    "http_status": 200,
+    "response_id": "c9df8e6a-810e-4e21-a7ef-c86bd0938924",
+    "usage": {
+      "input_tokens": 2350,
+      "cached_input_tokens": 768,
+      "output_tokens": 4870,
+      "reasoning_tokens": 4515,
+      "total_tokens": 7220
+    },
+    "error_kind": null
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "schema_version": "m2-attribution-task-result-v1",
+  "source_run_dir": "E:\\project\\agent\\novel-cahracter-generator\\runs\\doupo-first5-m1-scope-v4",
+  "chunk_index": 6,
+  "chunk_id": "chunk-000006-11250-13750-03087dc524e6",
+  "target_local_mention_id": "m1",
+  "target_mention_quote": "萧炎",
+  "task_cache_key": "3101f18217f5dc353e535e3fc1dfd6f2a1e4bd51b15b8698b27cd6a3a18c05f6",
+  "model_output": {
+    "belongs_to_target": [
+      {
+        "fact_quote": "年仅十五岁",
+        "category": "age",
+        "attribute": "年龄",
+        "value": "十五岁"
+      }
+    ]
+  },
+  "grounded_result": {
+    "target_character_ref": {
+      "source_document_version_id": "doupo-first5-7ca3fd295b5d0d45",
+      "chunk_id": "chunk-000006-11250-13750-03087dc524e6",
+      "local_mention_id": "m1",
+      "mention_type": "exact",
+      "packet_hash": "08ad3656c135f6b7282d318b355665f37edb8ef74b1f1912fe9afbc32d682977"
+    },
+    "task_cache_key": "3101f18217f5dc353e535e3fc1dfd6f2a1e4bd51b15b8698b27cd6a3a18c05f6",
+    "grounded_belongs_to_target": [
+      {
+        "fact_quote": "年仅十五岁",
+        "category": "age",
+        "attribute": "年龄",
+        "value": "十五岁",
+        "source_mention_id": "m1",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "年仅十五岁",
+        "source_evidence_span": {
+          "start": 180,
+          "end": 185
+        },
+        "fact_chunk_span": {
+          "start": 180,
+          "end": 185
+        },
+        "match_mode": "exact"
+      }
+    ]
+  },
+  "grounding_issues": [],
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 1172,
+    "http_status": 200,
+    "response_id": "7ba808b7-428e-4459-9ee7-124534f3eb61",
+    "usage": {
+      "input_tokens": 2176,
+      "cached_input_tokens": 384,
+      "output_tokens": 109,
+      "reasoning_tokens": 70,
+      "total_tokens": 2285
+    },
+    "error_kind": null
+  }
+}

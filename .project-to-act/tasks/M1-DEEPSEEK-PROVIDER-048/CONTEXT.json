@@ -1,0 +1,10 @@
+{
+  "branch": "v3-simplified-character-evidence",
+  "base_revision": "a6c6d16a5731f83aded0345fc1de6aef00604025",
+  "runtime_version_before": "0.1.0.dev1",
+  "runtime_version_after": "0.1.0.dev2",
+  "schema_version": "3.4.0-draft1",
+  "provider_api": "DeepSeek Responses API",
+  "default_model": "deepseek-v4-flash",
+  "previous_task": "M1-RUNTIME-FOUNDATION-047"
+}

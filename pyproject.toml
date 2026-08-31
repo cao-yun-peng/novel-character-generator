@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "novel-character-generator"
+version = "0.1.0.dev12"
+description = "Grounded character mention discovery for Chinese novels"
+requires-python = ">=3.11"
+dependencies = []
+
+[project.scripts]
+novel-character-generator = "novel_character_generator.__main__:main"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]

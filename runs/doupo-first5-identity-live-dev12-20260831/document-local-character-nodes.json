@@ -1,0 +1,1638 @@
+{
+  "schema_version": "document-local-character-nodes-v1",
+  "context_policy_version": "identity-evidence-window-v1",
+  "source_document_version_id": "doupo-first5-7ca3fd295b5d0d45",
+  "document_hash": "7ca3fd295b5d0d454ca0b0bac2f4a49f2271602fc8e55bca2f120bb11d85172a",
+  "nodes": [
+    {
+      "node_key": "f122511b554a203ea4e4f3eb252b8a88add3ef96073997ded08640f3bc514f49",
+      "ref_type": "local",
+      "source_character_ref": {
+        "source_document_version_id": "doupo-first5-7ca3fd295b5d0d45",
+        "chunk_id": "chunk-000001-0-2500-8c90daca7aee",
+        "local_mention_id": "m1",
+        "mention_type": "exact",
+        "packet_hash": "8e171bdecd28403c4ab8c26d1664e24765518bdc67dae6b33536aad69094a412"
+      },
+      "character_origin": "exact",
+      "label_quote": "萧炎",
+      "label_type": "exact",
+      "chunk_id": "chunk-000001-0-2500-8c90daca7aee",
+      "chunk_source_span": {
+        "start": 0,
+        "end": 2500
+      },
+      "context_bindings": [
+        {
+          "context_quote": "第1章 陨落的天才\r\n　　“斗之力，三段！”\r\n　　望着测验魔石碑上面闪亮得甚至有些刺眼的五个大字，少年面无表情，唇角有着一抹自嘲，紧握的手掌，因为大力，而导致略微尖锐的指甲深深的刺进了掌心之中，带来一阵阵钻心的疼痛……\r\n　　“萧炎，斗之力，三段！级别：低级！”测验魔石碑之旁，一位中年男子，看了一眼碑上所显示出来的信息，语气漠然的将之公布了出来……\r\n　　中年男子话刚刚脱口，便是不出意外的在人头汹涌的广场上带起了一阵嘲讽的骚动。\r\n　　“三段？嘿嘿，果然不出我所料，这个‘天才’这一年又是在原地踏步！”\r\n　　“哎，这废物真是把家族的脸都给丢光了。”\r\n　　“要不是族长是他的父亲，这种废物，早就被驱赶出家族，任其自生自灭了，哪还有机会待在家族中白吃白喝。”\r\n　　“唉，昔年那名闻乌坦城的天才",
+          "document_span": {
+            "start": 0,
+            "end": 350
+          },
+          "source_kind": "node"
+        },
+        {
+          "context_quote": "，果然不出我所料，这个‘天才’这一年又是在原地踏步！”\r\n　　“哎，这废物真是把家族的脸都给丢光了。”\r\n　　“要不是族长是他的父亲，这种废物，早就被驱赶出家族，任其自生自灭了，哪还有机会待在家族中白吃白喝。”\r\n　　“唉，昔年那名闻乌坦城的天才少年，如今怎么落魄成这般模样了啊？”\r\n　　“谁知道呢，或许做了什么亏心事，惹得神灵降怒了吧……”\r\n　　周围传来的不屑嘲笑以及惋惜轻叹，落在那如木桩待在原地的少年耳中，恍如一根根利刺狠狠的扎在心脏一般，让得少年呼吸微微急促。\r\n　　少年缓缓抬起头来，露出一张有些清秀的稚嫩脸庞，漆黑的眸子木然的在周围那些嘲讽的同龄人身上扫过，少年嘴角的自嘲，似乎变得更加苦涩了。\r\n　　“这些人，都如此刻薄势力吗？或许是因为三年前他们曾经在自己面前露出过最谦卑的笑容，所以，如今想要讨还回去吧……”苦涩的一笑，萧炎落寞的转身，安静的回到了队伍的最后一排，孤单的身影，与周围的世界，有些格格不入。\r\n　　“下一个，萧媚！”\r\n　　听着测验人的喊声，一名少女快速的人群中跑出，少女刚刚出场，附近的议论声便是小了许多，一双双略微火热的目光，牢牢的锁定着少女的脸颊……\r\n　　少女年龄不过十四左右，虽然并算不上绝色，不过那张稚气",
+          "document_span": {
+            "start": 227,
+            "end": 753
+          },
+          "source_kind": "node"
+        }
+      ],
+      "appearance_fact_refs": [
+        {
+          "fact_hash": "78ea2ec30af730aec8fb5765ec6632d71254f5e4df5fe9bf4068c33b3c216b5c",
+          "fact_quote": "面无表情",
+          "category": "face",
+          "attribute": "表情",
+          "value": "面无表情",
+          "document_fact_span": {
+            "start": 52,
+            "end": 56
+          }
+        },
+        {
+          "fact_hash": "5879ef30e23f6f7991fc87e78ce6a64efb3db77d935e936637ca11851019bcf5",
+          "fact_quote": "唇角有着一抹自嘲",
+          "category": "face",
+          "attribute": "唇角",
+          "value": "自嘲",
+          "document_fact_span": {
+            "start": 57,
+            "end": 65
+          }
+        },
+        {
+          "fact_hash": "4568a11a630c055a3c0cfa5b01da11e586c3cab5d6eed325b877c8af59d875e9",
+          "fact_quote": "有些清秀的稚嫩脸庞",
+          "category": "face",
+          "attribute": "脸庞",
+          "value": "清秀稚嫩",
+          "document_fact_span": {
+            "start": 480,
+            "end": 489
+          }
+        },
+        {
+          "fact_hash": "763e301f02397e2841435fca033fdf7ddb4c319b62e66db86d2d053448826ac0",
+          "fact_quote": "漆黑的眸子",
+          "category": "face",
+          "attribute": "眸子",
+          "value": "漆黑",
+          "document_fact_span": {
+            "start": 490,
+            "end": 495
+          }
+        }
+      ],
+      "order_position": 0
+    },
+    {
+      "node_key": "b73ffe1ca3b3d46d77de7aea7ae49bab2b8d1a843d232f2d7e1a8193075ba5ad",
+      "ref_type": "local",
+      "source_character_ref": {
+        "source_document_version_id": "doupo-first5-7ca3fd295b5d0d45",
+        "chunk_id": "chunk-000001-0-2500-8c90daca7aee",
+        "local_mention_id": "m3",
+        "mention_type": "exact",
+        "packet_hash": "c3ab74e151303133809ccb9453115a45b5334abcbca94b6544ea47f7458dc943"
+      },
+      "character_origin": "exact",
+      "label_quote": "萧媚",
+      "label_type": "exact",
+      "chunk_id": "chunk-000001-0-2500-8c90daca7aee",
+      "chunk_source_span": {
+        "start": 0,
+        "end": 2500
+      },
+      "context_bindings": [
+        {
+          "context_quote": "脸庞，漆黑的眸子木然的在周围那些嘲讽的同龄人身上扫过，少年嘴角的自嘲，似乎变得更加苦涩了。\r\n　　“这些人，都如此刻薄势力吗？或许是因为三年前他们曾经在自己面前露出过最谦卑的笑容，所以，如今想要讨还回去吧……”苦涩的一笑，萧炎落寞的转身，安静的回到了队伍的最后一排，孤单的身影，与周围的世界，有些格格不入。\r\n　　“下一个，萧媚！”\r\n　　听着测验人的喊声，一名少女快速的人群中跑出，少女刚刚出场，附近的议论声便是小了许多，一双双略微火热的目光，牢牢的锁定着少女的脸颊……\r\n　　少女年龄不过十四左右，虽然并算不上绝色，不过那张稚气未脱的小脸，却是蕴含着淡淡的妩媚，清纯与妩媚，矛盾的集合，让得她成功的成为了全场瞩目的焦点……\r\n　　少女快步上前，小手轻车熟路的触摸着漆黑的魔石碑，然后缓缓闭上眼睛……\r\n　　在少女闭眼片刻之后，漆黑的魔石碑之上再次亮起了光芒……\r\n　　“斗之气：七段！”\r\n　　“萧媚，斗之气：七段！级别：高级！”\r\n　　“耶！”听着测验员所喊出的成绩，少女脸颊扬起了得意的笑容……\r\n　　“啧啧，七段斗之气，真了不起，按这进度，恐怕顶多只需要三年时间，她就能称为一名真正的斗者了吧……”\r\n　　“不愧是家族中种子级别的人物啊……”\r\n　　听着人群",
+          "document_span": {
+            "start": 487,
+            "end": 1021
+          },
+          "source_kind": "node"
+        },
+        {
+          "context_quote": "场，附近的议论声便是小了许多，一双双略微火热的目光，牢牢的锁定着少女的脸颊……\r\n　　少女年龄不过十四左右，虽然并算不上绝色，不过那张稚气未脱的小脸，却是蕴含着淡淡的妩媚，清纯与妩媚，矛盾的集合，让得她成功的成为了全场瞩目的焦点……\r\n　　少女快步上前，小手轻车熟路的触摸着漆黑的魔石碑，然后缓缓闭上眼睛……\r\n　　在少女闭眼片刻之后，漆黑的魔石碑之上再次亮起了光芒……\r\n　　“斗之气：七段！”\r\n　　“萧媚，斗之气：七段！级别：高级！”\r\n　　“耶！”听着测验员所喊出的成绩，少女脸颊扬起了得意的笑容……\r\n　　“啧啧，七段斗之气，真了不起，按这进度，恐怕顶多只需要三年时间，她就能称为一名真正的斗者了吧……”\r\n　　“不愧是家族中种子级别的人物啊……”\r\n　　听着人群中传来的一阵阵羡慕声，少女脸颊上的笑容更是多了几分，虚荣心，这是很多女孩都无法抗拒的诱惑……\r\n　　与平日里的几个姐妹互相笑谈着，萧媚的视线，忽然的透过周围的人群，停在了人群外的那一道孤单身影上……\r\n　　皱眉思虑了瞬间，萧媚还是打消了过去的念头，现在的两人，已经不在同一个阶层之上，以萧炎最近几年的表现，成年",
+          "document_span": {
+            "start": 684,
+            "end": 1176
+          },
+          "source_kind": "node"
+        }
+      ],
+      "appearance_fact_refs": [
+        {
+          "fact_hash": "3d14cab9c36596dafdbcd1ab13abf87cd6e3c9ac90107198f395dc2c8ad6b18f",
+          "fact_quote": "少女年龄不过十四左右",
+          "category": "age",
+          "attribute": "年龄",
+          "value": "十四左右",
+          "document_fact_span": {
+            "start": 727,
+            "end": 737
+          }
+        },
+        {
+          "fact_hash": "7313091e02956dbe974233d253f24e31160a38b6e84d5b3fd3f5a50b1573f837",
+          "fact_quote": "稚气未脱的小脸",
+          "category": "face",
+          "attribute": "脸特征",
+          "value": "稚气未脱",
+          "document_fact_span": {
+            "start": 751,
+            "end": 758
+          }
+        },
+        {
+          "fact_hash": "bc45d8e1bf3586f88f1c7cd435d4c0d28acbbc3e3906a2206ca797070ff65120",
+          "fact_quote": "淡淡的妩媚",
+          "category": "face",
+          "attribute": "神情",
+          "value": "淡淡的妩媚",
+          "document_fact_span": {
+            "start": 764,
+            "end": 769
+          }
+        },
+        {
+          "fact_hash": "121a10165112a1ffa48ef5b3683e5aa8a872bb8aa2ae4ee4b5d17ecb41345129",
+          "fact_quote": "得意的笑容",
+          "category": "face",
+          "attribute": "笑容",
+          "value": "得意的笑容",
+          "document_fact_span": {
+            "start": 931,
+            "end": 936
+          }
+        }
+      ],
+      "order_position": 487
+    },
+    {
+      "node_key": "8118d8e8d782daf6e6d942bdaee3d2b6ed912b140f73e574095dc5978ebad022",
+      "ref_type": "local",
+      "source_character_ref": {
+        "source_document_version_id": "doupo-first5-7ca3fd295b5d0d45",
+        "chunk_id": "chunk-000001-0-2500-8c90daca7aee",
+        "local_mention_id": "m5",
+        "mention_type": "exact",
+        "packet_hash": "20d339056a803bfbf22244af1221f23623c052e9023ec3d2a3c2cdc4687b2121"
+      },
+      "character_origin": "exact",
+      "label_quote": "萧薰儿",
+      "label_type": "exact",
+      "chunk_id": "chunk-000001-0-2500-8c90daca7aee",
+      "chunk_source_span": {
+        "start": 0,
+        "end": 2500
+      },
+      "context_bindings": [
+        {
+          "context_quote": "之气，也是随着时间的流逝，变得诡异的越来越少。\r\n　　斗之气消失的直接结果，便是导致其实力不断的后退。\r\n　　从天才的神坛，一夜跌落到了连普通人都不如的地步，这种打击，让得少年从此失魂落魄，天才之名，也是逐渐的被不屑与嘲讽所替代。\r\n　　站的越高，摔得越狠，这次的跌落，或许就再也没有爬起的机会。\r\n　　“下一个，萧薰儿！”\r\n　　喧闹的人群中，测试员的声音，再次响了起来。\r\n　　随着这有些清雅的名字响起，人群忽然的安静了下来，所有的视线，豁然转移。\r\n　　在众人视线汇聚之处，一位身着紫色衣裙的少女，正淡雅的站立，平静的稚嫩俏脸，并未因为众人的注目而改变分毫。\r\n　　少女清冷淡然的气质，犹如清莲初绽，小小年纪，却已初具脱俗气质，难以想象，日后若是长大，少女将会如何的倾国倾城……\r\n　　这名紫裙少女，论起美貌与气质来，比先前的萧媚，无疑还要更胜上几分，也难怪在场的众人都是这般动作。\r\n　　莲步微移，名为萧薰儿的少女行到魔石碑之前，小手伸出，镶着黑金丝的紫袖滑落而下，露出一截雪白娇嫩的皓腕，然后轻触着石碑……\r\n　　微微沉静，石碑之上，刺眼的光芒再次绽放。\r\n　　“斗之气：九段！级别：高级！”\r\n　　望着石碑之上的字体，场中陷入了一",
+          "document_span": {
+            "start": 1464,
+            "end": 1985
+          },
+          "source_kind": "node"
+        },
+        {
+          "context_quote": "断的后退。\r\n　　从天才的神坛，一夜跌落到了连普通人都不如的地步，这种打击，让得少年从此失魂落魄，天才之名，也是逐渐的被不屑与嘲讽所替代。\r\n　　站的越高，摔得越狠，这次的跌落，或许就再也没有爬起的机会。\r\n　　“下一个，萧薰儿！”\r\n　　喧闹的人群中，测试员的声音，再次响了起来。\r\n　　随着这有些清雅的名字响起，人群忽然的安静了下来，所有的视线，豁然转移。\r\n　　在众人视线汇聚之处，一位身着紫色衣裙的少女，正淡雅的站立，平静的稚嫩俏脸，并未因为众人的注目而改变分毫。\r\n　　少女清冷淡然的气质，犹如清莲初绽，小小年纪，却已初具脱俗气质，难以想象，日后若是长大，少女将会如何的倾国倾城……\r\n　　这名紫裙少女，论起美貌与气质来，比先前的萧媚，无疑还要更胜上几分，也难怪在场的众人都是这般动作。\r\n　　莲步微移，名为萧薰儿的少女行到魔石碑之前，小手伸出，镶着黑金丝的紫袖滑落而下，露出一截雪白娇嫩的皓腕，然后轻触着石碑……\r\n　　微微沉静，石碑之上，刺眼的光芒再次绽放。\r\n　　“斗之气：九段！级别：高级！”\r\n　　望着石碑之上的字体，场中陷入了一阵寂静。\r\n　　“……竟然到九段了，真是恐怖！家族中年轻一辈的第一人，",
+          "document_span": {
+            "start": 1510,
+            "end": 2020
+          },
+          "source_kind": "node"
+        },
+        {
+          "context_quote": "起来。\r\n　　随着这有些清雅的名字响起，人群忽然的安静了下来，所有的视线，豁然转移。\r\n　　在众人视线汇聚之处，一位身着紫色衣裙的少女，正淡雅的站立，平静的稚嫩俏脸，并未因为众人的注目而改变分毫。\r\n　　少女清冷淡然的气质，犹如清莲初绽，小小年纪，却已初具脱俗气质，难以想象，日后若是长大，少女将会如何的倾国倾城……\r\n　　这名紫裙少女，论起美貌与气质来，比先前的萧媚，无疑还要更胜上几分，也难怪在场的众人都是这般动作。\r\n　　莲步微移，名为萧薰儿的少女行到魔石碑之前，小手伸出，镶着黑金丝的紫袖滑落而下，露出一截雪白娇嫩的皓腕，然后轻触着石碑……\r\n　　微微沉静，石碑之上，刺眼的光芒再次绽放。\r\n　　“斗之气：九段！级别：高级！”\r\n　　望着石碑之上的字体，场中陷入了一阵寂静。\r\n　　“……竟然到九段了，真是恐怖！家族中年轻一辈的第一人，恐怕非薰儿小姐莫属了。”寂静过后，周围的少年，都是不由自主的咽了一口唾沫，眼神充满敬畏……\r\n　　斗之气，每位斗者的必经之路，初阶斗之气分一至十段，当体内斗之气到达十段之时，便能凝聚斗之气旋，成为一名受人尊重的斗者！\r\n　　人群中，萧媚皱着浅眉盯着石碑前的紫裙少女",
+          "document_span": {
+            "start": 1648,
+            "end": 2152
+          },
+          "source_kind": "node"
+        },
+        {
+          "context_quote": "然的脸庞上竟然也是罕见的露出了一丝笑意，对着少女略微恭声道：“薰儿小姐，半年之后，你应该便能凝聚斗气之旋，如果你成功的话，那么以十四岁年龄成为一名真正的斗者，你是萧家百年内的第二人！”\r\n　　是的，第二人，那位第一人，便是褪去了天才光环的萧炎。\r\n　　“谢谢。”少女微微点了点头，平淡的小脸并未因为他的夸奖而出现喜悦，安静的回转过身，然后在众人炽热的注目中，缓缓的行到了人群最后面的那颓废少年面前……\r\n　　“萧炎哥哥。”在经过少年身旁时，少女顿下了脚步，对着萧炎恭敬的弯了弯腰，美丽的俏脸上，居然露出了让周围少女为之嫉妒的清雅笑容。\r\n　　“我现在还有资格让你怎么叫么？”望着面前这颗已经成长为家族中最璀璨的明珠，萧炎苦涩的道",
+          "document_span": {
+            "start": 2186,
+            "end": 2500
+          },
+          "source_kind": "node"
+        }
+      ],
+      "appearance_fact_refs": [
+        {
+          "fact_hash": "8f3ce97429a2155a600ed750a754d22741867258c331ead01ff0fa14087a8def",
+          "fact_quote": "身着紫色衣裙",
+          "category": "clothing",
+          "attribute": "衣着",
+          "value": "紫色衣裙",
+          "document_fact_span": {
+            "start": 1706,
+            "end": 1712
+          }
+        },
+        {
+          "fact_hash": "d7f4bcb3ed63bf8f326160f3443367361154743cc584351aa8bc5520f6313a69",
+          "fact_quote": "稚嫩俏脸",
+          "category": "face",
+          "attribute": "面容",
+          "value": "稚嫩俏丽",
+          "document_fact_span": {
+            "start": 1726,
+            "end": 1730
+          }
+        },
+        {
+          "fact_hash": "f51ea0f285baaf143bff9e878f690a925ee12a345bd9a0dd5691ee3cd11cd640",
+          "fact_quote": "小小年纪",
+          "category": "age",
+          "attribute": "年龄",
+          "value": "年幼",
+          "document_fact_span": {
+            "start": 1767,
+            "end": 1771
+          }
+        },
+        {
+          "fact_hash": "ac0dcaa5cc0d0a89abdf89ae46877af965ed794ed3fe80d88c2c5ca434ae8dfe",
+          "fact_quote": "镶着黑金丝的紫袖",
+          "category": "clothing",
+          "attribute": "衣袖",
+          "value": "镶黑金丝的紫袖",
+          "document_fact_span": {
+            "start": 1888,
+            "end": 1896
+          }
+        },
+        {
+          "fact_hash": "fe3952a39e66856e575b2074776ecfd06f32800d78560fc641cd1c4be68b3b53",
+          "fact_quote": "雪白娇嫩的皓腕",
+          "category": "body",
+          "attribute": "手腕",
+          "value": "雪白娇嫩",
+          "document_fact_span": {
+            "start": 1905,
+            "end": 1912
+          }
+        },
+        {
+          "fact_hash": "bfc7520047ef1c8ceb83c2f64753efac63faf9e14d09fbb244e690e449edc407",
+          "fact_quote": "美丽的俏脸",
+          "category": "face",
+          "attribute": "面容",
+          "value": "美丽",
+          "document_fact_span": {
+            "start": 2426,
+            "end": 2431
+          }
+        },
+        {
+          "fact_hash": "4f6bc293fe6ccf487e27e562953691a65a70e5bde91cd010f1a02dec0ee3542b",
+          "fact_quote": "清雅笑容",
+          "category": "face",
+          "attribute": "笑容",
+          "value": "清雅",
+          "document_fact_span": {
+            "start": 2448,
+            "end": 2452
+          }
+        }
+      ],
+      "order_position": 1464
+    },
+    {
+      "node_key": "74667773fa222a60a7db957a90f911f6f0b7d3cd00f449c850a3d0fc007192fb",
+      "ref_type": "local",
+      "source_character_ref": {
+        "source_document_version_id": "doupo-first5-7ca3fd295b5d0d45",
+        "chunk_id": "chunk-000002-2250-4750-84c9baa8a8da",
+        "local_mention_id": "m1",
+        "mention_type": "exact",
+        "packet_hash": "1bec7c230c4eb6de3849615a3ed20f58c4969c492a11469a5dd86f3614ce8c7b"
+      },
+      "character_origin": "exact",
+      "label_quote": "萧薰儿",
+      "label_type": "exact",
+      "chunk_id": "chunk-000002-2250-4750-84c9baa8a8da",
+      "chunk_source_span": {
+        "start": 2250,
+        "end": 4750
+      },
+      "context_bindings": [
+        {
+          "context_quote": "十四岁年龄成为一名真正的斗者，你是萧家百年内的第二人！”\r\n　　是的，第二人，那位第一人，便是褪去了天才光环的萧炎。\r\n　　“谢谢。”少女微微点了点头，平淡的小脸并未因为他的夸奖而出现喜悦，安静的回转过身，然后在众人炽热的注目中，缓缓的行到了人群最后面的那颓废少年面前……\r\n　　“萧炎哥哥。”在经过少年身旁时，少女顿下了脚步，对着萧炎恭敬的弯了弯腰，美丽的俏脸上，居然露出了让周围少女为之嫉妒的清雅笑容。\r\n　　“我现在还有资格让你怎么叫么？”望着面前这颗已经成长为家族中最璀璨的明珠，萧炎苦涩的道，她是在自己落魄后，极为少数还对自己依旧保持着尊敬的人。\r\n　　“萧炎哥哥，以前你曾经与薰儿说过，要能放下，才能拿起，提放自如，是自在人！”萧",
+          "document_span": {
+            "start": 2250,
+            "end": 2571
+          },
+          "source_kind": "node"
+        },
+        {
+          "context_quote": "十四岁年龄成为一名真正的斗者，你是萧家百年内的第二人！”\r\n　　是的，第二人，那位第一人，便是褪去了天才光环的萧炎。\r\n　　“谢谢。”少女微微点了点头，平淡的小脸并未因为他的夸奖而出现喜悦，安静的回转过身，然后在众人炽热的注目中，缓缓的行到了人群最后面的那颓废少年面前……\r\n　　“萧炎哥哥。”在经过少年身旁时，少女顿下了脚步，对着萧炎恭敬的弯了弯腰，美丽的俏脸上，居然露出了让周围少女为之嫉妒的清雅笑容。\r\n　　“我现在还有资格让你怎么叫么？”望着面前这颗已经成长为家族中最璀璨的明珠，萧炎苦涩的道，她是在自己落魄后，极为少数还对自己依旧保持着尊敬的人。\r\n　　“萧炎哥哥，以前你曾经与薰儿说过，要能放下，才能拿起，提放自如，是自在人！”萧薰儿微笑着柔声道，略微稚嫩的嗓音，却是暖人心肺。\r\n　　“呵呵，自在人？我也只会说而已，你看我现在的模样，象自在人吗？而且……这世界，本来就不属于我。”萧炎自嘲的一笑，意兴阑珊的道。\r\n　　面对着萧炎",
+          "document_span": {
+            "start": 2250,
+            "end": 2671
+          },
+          "source_kind": "node"
+        },
+        {
+          "context_quote": "露出了让周围少女为之嫉妒的清雅笑容。\r\n　　“我现在还有资格让你怎么叫么？”望着面前这颗已经成长为家族中最璀璨的明珠，萧炎苦涩的道，她是在自己落魄后，极为少数还对自己依旧保持着尊敬的人。\r\n　　“萧炎哥哥，以前你曾经与薰儿说过，要能放下，才能拿起，提放自如，是自在人！”萧薰儿微笑着柔声道，略微稚嫩的嗓音，却是暖人心肺。\r\n　　“呵呵，自在人？我也只会说而已，你看我现在的模样，象自在人吗？而且……这世界，本来就不属于我。”萧炎自嘲的一笑，意兴阑珊的道。\r\n　　面对着萧炎的颓废，萧薰儿纤细的眉毛微微皱了皱，认真的道：“萧炎哥哥，虽然并不知道你究竟是怎么回事，不过，薰儿相信，你会重新站起来，取回属于你的荣耀与尊严……”话到此处，微顿了顿，少女白皙的俏脸，头一次露出淡淡的绯红：“当年的萧炎哥哥，的确很吸引人……”\r\n　　“呵呵……”面对着少女毫不掩饰的坦率话语，少年尴尬的笑了一声，可却未再说什么，人不风流枉少年，可现在的他，实在没这资格与心情，落寞的回转过身，对着广场之外缓缓行去……\r\n　　站在原地望着少年那恍如与世隔绝的孤独背影，萧薰儿踌躇了一会，然后在身后一干嫉妒的",
+          "document_span": {
+            "start": 2435,
+            "end": 2923
+          },
+          "source_kind": "node"
+        },
+        {
+          "context_quote": "己依旧保持着尊敬的人。\r\n　　“萧炎哥哥，以前你曾经与薰儿说过，要能放下，才能拿起，提放自如，是自在人！”萧薰儿微笑着柔声道，略微稚嫩的嗓音，却是暖人心肺。\r\n　　“呵呵，自在人？我也只会说而已，你看我现在的模样，象自在人吗？而且……这世界，本来就不属于我。”萧炎自嘲的一笑，意兴阑珊的道。\r\n　　面对着萧炎的颓废，萧薰儿纤细的眉毛微微皱了皱，认真的道：“萧炎哥哥，虽然并不知道你究竟是怎么回事，不过，薰儿相信，你会重新站起来，取回属于你的荣耀与尊严……”话到此处，微顿了顿，少女白皙的俏脸，头一次露出淡淡的绯红：“当年的萧炎哥哥，的确很吸引人……”\r\n　　“呵呵……”面对着少女毫不掩饰的坦率话语，少年尴尬的笑了一声，可却未再说什么，人不风流枉少年，可现在的他，实在没这资格与心情，落寞的回转过身，对着广场之外缓缓行去……\r\n　　站在原地望着少年那恍如与世隔绝的孤独背影，萧薰儿踌躇了一会，然后在身后一干嫉妒的狼嚎声中，快步追了上去，与少年并肩而行……\r\n\r\n\r\n第2章 斗气大陆\r\n　　月如银盘，漫天繁星。\r\n　　山崖之颠，萧炎斜躺在草地之上，嘴中叼中一根青草，微微",
+          "document_span": {
+            "start": 2517,
+            "end": 3002
+          },
+          "source_kind": "node"
+        }
+      ],
+      "appearance_fact_refs": [
+        {
+          "fact_hash": "0aa6f47066f116634cd5c7877f8c1fbd1f0ec1567c57eeb72262ef3b4767c52c",
+          "fact_quote": "平淡的小脸",
+          "category": "appearance_state",
+          "attribute": "表情",
+          "value": "平淡",
+          "document_fact_span": {
+            "start": 2326,
+            "end": 2331
+          }
+        },
+        {
+          "fact_hash": "f60c16f1757c37e222d7b3f0d8745f5e3f65ac18b6b28805600d1b7cfc572e1c",
+          "fact_quote": "美丽的俏脸",
+          "category": "face",
+          "attribute": "容貌",
+          "value": "美丽",
+          "document_fact_span": {
+            "start": 2426,
+            "end": 2431
+          }
+        },
+        {
+          "fact_hash": "480511c057c3df43db57e9d9d6a1d662473b74b171305f07c6e5b87065ac970a",
+          "fact_quote": "萧薰儿纤细的眉毛",
+          "category": "face",
+          "attribute": "眉毛",
+          "value": "纤细",
+          "document_fact_span": {
+            "start": 2675,
+            "end": 2683
+          }
+        },
+        {
+          "fact_hash": "ed2a1de7d3a2ccd2c6bf961dac023830981ad3b2b1761695d3d623453a2341d1",
+          "fact_quote": "白皙的俏脸",
+          "category": "face",
+          "attribute": "脸色",
+          "value": "白皙",
+          "document_fact_span": {
+            "start": 2757,
+            "end": 2762
+          }
+        }
+      ],
+      "order_position": 2250
+    },
+    {
+      "node_key": "44faa02eb94cb6424093f987886661e5e99bab93a8132d2ac9e0e5d2b6024688",
+      "ref_type": "local",
+      "source_character_ref": {
+        "source_document_version_id": "doupo-first5-7ca3fd295b5d0d45",
+        "chunk_id": "chunk-000002-2250-4750-84c9baa8a8da",
+        "local_mention_id": "m3",
+        "mention_type": "exact",
+        "packet_hash": "f6359430e3b38ff88ff31960724351baefe1353524c7e0574b91be685840e7ad"
+      },
+      "character_origin": "exact",
+      "label_quote": "萧炎",
+      "label_type": "exact",
+      "chunk_id": "chunk-000002-2250-4750-84c9baa8a8da",
+      "chunk_source_span": {
+        "start": 2250,
+        "end": 4750
+      },
+      "context_bindings": [
+        {
+          "context_quote": "的道。\r\n　　面对着萧炎的颓废，萧薰儿纤细的眉毛微微皱了皱，认真的道：“萧炎哥哥，虽然并不知道你究竟是怎么回事，不过，薰儿相信，你会重新站起来，取回属于你的荣耀与尊严……”话到此处，微顿了顿，少女白皙的俏脸，头一次露出淡淡的绯红：“当年的萧炎哥哥，的确很吸引人……”\r\n　　“呵呵……”面对着少女毫不掩饰的坦率话语，少年尴尬的笑了一声，可却未再说什么，人不风流枉少年，可现在的他，实在没这资格与心情，落寞的回转过身，对着广场之外缓缓行去……\r\n　　站在原地望着少年那恍如与世隔绝的孤独背影，萧薰儿踌躇了一会，然后在身后一干嫉妒的狼嚎声中，快步追了上去，与少年并肩而行……\r\n\r\n\r\n第2章 斗气大陆\r\n　　月如银盘，漫天繁星。\r\n　　山崖之颠，萧炎斜躺在草地之上，嘴中叼中一根青草，微微嚼动，任由那淡淡的苦涩在嘴中弥漫开来……\r\n　　举起有些白皙的手掌，挡在眼前，目光透过手指缝隙，遥望着天空上那轮巨大的银月。\r\n　　“唉……”想起下午的测试，萧炎轻叹了一口气，懒懒的抽回手掌，双手枕着脑袋，眼神有些恍惚……\r\n　　“十五年了呢……”低低的自喃声，忽然毫无边际的从少年",
+          "document_span": {
+            "start": 2659,
+            "end": 3143
+          },
+          "source_kind": "node"
+        },
+        {
+          "context_quote": "人……”\r\n　　“呵呵……”面对着少女毫不掩饰的坦率话语，少年尴尬的笑了一声，可却未再说什么，人不风流枉少年，可现在的他，实在没这资格与心情，落寞的回转过身，对着广场之外缓缓行去……\r\n　　站在原地望着少年那恍如与世隔绝的孤独背影，萧薰儿踌躇了一会，然后在身后一干嫉妒的狼嚎声中，快步追了上去，与少年并肩而行……\r\n\r\n\r\n第2章 斗气大陆\r\n　　月如银盘，漫天繁星。\r\n　　山崖之颠，萧炎斜躺在草地之上，嘴中叼中一根青草，微微嚼动，任由那淡淡的苦涩在嘴中弥漫开来……\r\n　　举起有些白皙的手掌，挡在眼前，目光透过手指缝隙，遥望着天空上那轮巨大的银月。\r\n　　“唉……”想起下午的测试，萧炎轻叹了一口气，懒懒的抽回手掌，双手枕着脑袋，眼神有些恍惚……\r\n　　“十五年了呢……”低低的自喃声，忽然毫无边际的从少年嘴中轻吐了出来。\r\n　　在萧炎的心中，有一个仅有他自己知道的秘密：他并不是这个世界的人，或者说，萧炎的灵魂，并不属于这个世界，他来自一个名叫地球的蔚蓝星球，至于为什么会来到这里，这种离奇经过，他也无法解释，不过在生活了一段时间之后，他还是后知后觉的明白了过来：他穿",
+          "document_span": {
+            "start": 2788,
+            "end": 3275
+          },
+          "source_kind": "node"
+        },
+        {
+          "context_quote": "山洞，不要惊慌，往前走两步，或许，你，将成为强者！\r\n　　此话，并不属假，大陆近千年历史中，并不泛这种依靠奇遇而成为强者的故事。\r\n　　这个故事所造成的后果，便是造就了大批每天等在悬崖边，准备跳崖得绝世功法的怀梦之人，当然了，这些人大多都是以断胳膊断腿归来……\r\n　　总之，这是一片充满奇迹，以及创造奇迹的大陆！\r\n　　当然，想要修炼斗气秘籍，至少需要成为一名真正的斗者之后，方才够资格，而现在的萧炎隔那段距离，似乎还很是遥远……\r\n　　“呸。”吐出嘴中的草根，萧炎忽然跳起身来，脸庞狰狞，对着夜空失态的咆哮道：“我草你奶奶的，把劳资",
+          "document_span": {
+            "start": 4483,
+            "end": 4750
+          },
+          "source_kind": "node"
+        }
+      ],
+      "appearance_fact_refs": [
+        {
+          "fact_hash": "4a1fc048363022bf6b96b7301908b49bfdcf9e9a1203d5dd4ab4953897eaeead",
+          "fact_quote": "孤独背影",
+          "category": "appearance_state",
+          "attribute": "背影状态",
+          "value": "孤独",
+          "document_fact_span": {
+            "start": 2899,
+            "end": 2903
+          }
+        },
+        {
+          "fact_hash": "21d884bcaa9dee638da1a38c3a954362a610c6914a861c477c196f613c222ee0",
+          "fact_quote": "有些白皙的手掌",
+          "category": "body",
+          "attribute": "手掌肤色",
+          "value": "白皙",
+          "document_fact_span": {
+            "start": 3028,
+            "end": 3035
+          }
+        },
+        {
+          "fact_hash": "e96f5acbd67c80947e37554c0844e2278770ef94cfbd3d4988d2106e6cbe4a56",
+          "fact_quote": "脸庞狰狞",
+          "category": "face",
+          "attribute": "面部表情",
+          "value": "狰狞",
+          "document_fact_span": {
+            "start": 4723,
+            "end": 4727
+          }
+        }
+      ],
+      "order_position": 2659
+    },
+    {
+      "node_key": "0064297f50578e6e78bd2dafb75cff6253f8d2346d02a77c48240a363959455a",
+      "ref_type": "local",
+      "source_character_ref": {
+        "source_document_version_id": "doupo-first5-7ca3fd295b5d0d45",
+        "chunk_id": "chunk-000003-4500-7000-dbdb791747b5",
+        "local_mention_id": "m2",
+        "mention_type": "exact",
+        "packet_hash": "16fbead3b742b715c9f03655c87b49350924146ef7c9d7bef06dc26a7293836f"
+      },
+      "character_origin": "exact",
+      "label_quote": "萧战",
+      "label_type": "exact",
+      "chunk_id": "chunk-000003-4500-7000-dbdb791747b5",
+      "chunk_source_span": {
+        "start": 4500,
+        "end": 7000
+      },
+      "context_bindings": [
+        {
+          "context_quote": "轻轻的抚摸着戒指，萧炎苦笑道：“这几年，还真是辜负母亲的期望了……”\r\n　　深深的吐了一口气，萧炎忽然回转过头，对着漆黑的树林温暖的笑道：“父亲，您来了？”\r\n　　虽然斗之气只有三段，不过萧炎的灵魂感知，却是比一名五星斗者都要敏锐许多，在先前说起母亲的时候，他便察觉到了树林中的一丝动静。\r\n　　“呵呵，炎儿，这么晚了，怎么还待在这上面呢？”树林中，在静了片刻后，传出男子的关切笑声。\r\n　　树枝一阵摇摆，一位中年人跃了出来，脸庞上带着笑意，凝视着自己那站在月光下的儿子。\r\n　　中年人身着华贵的灰色衣衫，龙行虎步间颇有几分威严，脸上一对粗眉更是为其添了几分豪气，他便是萧家现任族长，同时也是萧炎的父亲，五星大斗师，萧战！\r\n　　“父亲，您不也还没休息么？”望着中年男子，萧炎脸庞上的笑容更浓了一分，虽然自己有着前世的记忆，不过自出生以来，面前这位父亲便是对自己百般宠爱，在自己落魄之后，宠爱不减反增，如此行径，却是让得萧炎甘心叫他一声父亲。\r\n　　“炎儿，还在想下午测验的事呢？”大步上前，萧战笑道。\r\n　　“呵呵，有什么好想的，意料之中而已。”萧炎少年老成的摇了摇头，笑容却是有些勉强。\r\n　　“唉……”望着萧炎那依旧有些稚嫩的清秀脸庞，",
+          "document_span": {
+            "start": 5567,
+            "end": 6088
+          },
+          "source_kind": "node"
+        }
+      ],
+      "appearance_fact_refs": [
+        {
+          "fact_hash": "94d0e51e765d8e2ff44ee9c314003a3663ea0a1722596471f251a452e59f225d",
+          "fact_quote": "中年人",
+          "category": "age",
+          "attribute": "年龄阶段",
+          "value": "中年",
+          "document_fact_span": {
+            "start": 5807,
+            "end": 5810
+          }
+        },
+        {
+          "fact_hash": "5ebf7973735573ff3bf046626668fd5c6aca1f567b4f75d8fe28f252f85a9d50",
+          "fact_quote": "华贵的灰色衣衫",
+          "category": "clothing",
+          "attribute": "衣着",
+          "value": "华贵的灰色衣衫",
+          "document_fact_span": {
+            "start": 5812,
+            "end": 5819
+          }
+        },
+        {
+          "fact_hash": "af0c3c4ac5ab6030546fd3f640dc3ebd879344fd9065d7683363a59abdeda9ea",
+          "fact_quote": "一对粗眉",
+          "category": "face",
+          "attribute": "眉毛",
+          "value": "一对粗眉",
+          "document_fact_span": {
+            "start": 5834,
+            "end": 5838
+          }
+        }
+      ],
+      "order_position": 5567
+    },
+    {
+      "node_key": "b105e14c9a599acbd6eacb0b5a9a8922c2488a2bff5ce652dee8c6295a2aaa06",
+      "ref_type": "local",
+      "source_character_ref": {
+        "source_document_version_id": "doupo-first5-7ca3fd295b5d0d45",
+        "chunk_id": "chunk-000003-4500-7000-dbdb791747b5",
+        "local_mention_id": "m1",
+        "mention_type": "exact",
+        "packet_hash": "a9524ad90550049342f6dbddf85058bdd9ee574a06bbae2340030e341ce4e26f"
+      },
+      "character_origin": "exact",
+      "label_quote": "萧炎",
+      "label_type": "exact",
+      "chunk_id": "chunk-000003-4500-7000-dbdb791747b5",
+      "chunk_source_span": {
+        "start": 4500,
+        "end": 7000
+      },
+      "context_bindings": [
+        {
+          "context_quote": "对粗眉更是为其添了几分豪气，他便是萧家现任族长，同时也是萧炎的父亲，五星大斗师，萧战！\r\n　　“父亲，您不也还没休息么？”望着中年男子，萧炎脸庞上的笑容更浓了一分，虽然自己有着前世的记忆，不过自出生以来，面前这位父亲便是对自己百般宠爱，在自己落魄之后，宠爱不减反增，如此行径，却是让得萧炎甘心叫他一声父亲。\r\n　　“炎儿，还在想下午测验的事呢？”大步上前，萧战笑道。\r\n　　“呵呵，有什么好想的，意料之中而已。”萧炎少年老成的摇了摇头，笑容却是有些勉强。\r\n　　“唉……”望着萧炎那依旧有些稚嫩的清秀脸庞，萧战叹了一口气，沉默了片刻，忽然道：“炎儿，你十五岁了吧？”\r\n　　“嗯，父亲。”\r\n　　“再有一年，似乎……就该进行成年仪式了……”萧战苦笑道。\r\n　　“是的，父亲，还有一年！”手掌微微一紧，萧炎平静的回道，成年仪式代表什么，他自然非常清楚，只要度过了成年仪式，那么没有修炼潜力的他，便将会被取消进入斗气阁寻找斗气功法的资格，从而被分配到家族的各处产业之中，为家族打理一些普通事物，这是家族的族规，就算他的父亲是族长，那也不可能改变！\r\n　　毕竟，若是在二十五岁之前没有成为一",
+          "document_span": {
+            "start": 5835,
+            "end": 6327
+          },
+          "source_kind": "node"
+        }
+      ],
+      "appearance_fact_refs": [
+        {
+          "fact_hash": "4f0e8c9fe9c00e3d3b566f2447e550bace0db37891fb1e0318753c00a0cf2624",
+          "fact_quote": "那依旧有些稚嫩的清秀脸庞",
+          "category": "face",
+          "attribute": "脸庞",
+          "value": "清秀稚嫩",
+          "document_fact_span": {
+            "start": 6075,
+            "end": 6087
+          }
+        }
+      ],
+      "order_position": 5835
+    },
+    {
+      "node_key": "4564f07d274b4fff14e1b26c6ab387c154910b32148975474a33a750b43bbc45",
+      "ref_type": "local",
+      "source_character_ref": {
+        "source_document_version_id": "doupo-first5-7ca3fd295b5d0d45",
+        "chunk_id": "chunk-000004-6750-9250-4d57b02a87a6",
+        "local_mention_id": "m1",
+        "mention_type": "exact",
+        "packet_hash": "8ec15bbca41d0a6794da2f021003cdd6979f755c1095dc9f68593f8b0f218304"
+      },
+      "character_origin": "exact",
+      "label_quote": "萧炎",
+      "label_type": "exact",
+      "chunk_id": "chunk-000004-6750-9250-4d57b02a87a6",
+      "chunk_source_span": {
+        "start": 6750,
+        "end": 9250
+      },
+      "context_bindings": [
+        {
+          "context_quote": "\r\n　　在萧炎抬头的那一刹，手指中的黑色古戒，却是忽然亮起了一抹极其微弱的诡异毫光，毫光眨眼便逝，没有引起任何人的察觉……\r\n\r\n\r\n第3章 客人\r\n　　床榻之上，少年闭目盘腿而坐，双手在身前摆出奇异的手印，胸膛轻微起伏，一呼一吸间，形成完美的循环，而在气息循环间，有着淡淡的白色气流顺着口鼻，钻入了体内，温养着骨骼与肉体。\r\n　　在少年闭目修炼之时，手指上那古朴的黑色戒指，再次诡异的微微发光，旋即沉寂……\r\n　　“呼……”缓缓的吐出一口浊气，少年双眼乍然睁开，一抹淡淡的白芒在漆黑的眼中闪过，那是刚刚被吸收，而又未被完全炼化的斗之气。\r\n　　“好不容易修炼而来的斗之气，又在消失……我，我草！”沉神感应了一下体内，少年脸庞猛然的愤怒了起来，声音有些尖锐的骂道。\r\n　　拳头死死的捏在了一起，半晌后，少年苦笑着摇了摇头，身心疲惫的爬下了床，舒展了一下有些发麻的脚腕与大腿，仅仅拥有三段斗之气的他，可没有能力无视各种疲累。\r\n　　简单的在房间中活动了下身体，房间外传来苍老的声音：“三少爷，族长请你去大厅！”\r\n　　三少爷，萧炎在家中排行老三，上面还有两位哥哥，不过他们",
+          "document_span": {
+            "start": 6751,
+            "end": 7236
+          },
+          "source_kind": "node"
+        },
+        {
+          "context_quote": "后，少年苦笑着摇了摇头，身心疲惫的爬下了床，舒展了一下有些发麻的脚腕与大腿，仅仅拥有三段斗之气的他，可没有能力无视各种疲累。\r\n　　简单的在房间中活动了下身体，房间外传来苍老的声音：“三少爷，族长请你去大厅！”\r\n　　三少爷，萧炎在家中排行老三，上面还有两位哥哥，不过他们早已经外出历练，只有年终，才会偶尔回家，总的说来，两位哥哥对萧炎这位亲弟弟，也很是不错。\r\n　　“哦。”随口的应了下来，换了一身衣衫，萧炎走出房间，对着房外的一名青衫老者微笑道：“走吧，墨管家。”\r\n　　望着少年稚嫩的脸庞，青衫老者和善的点了点头，转身的霎那，浑浊的老眼，掠过一抹不易察觉的惋惜，唉，以三少爷以前的天赋，恐怕早该成为一名出色的斗者了吧，可惜……\r\n　　跟着老管家从后院穿过，最后在肃穆的迎客大厅外停了下来，恭敬的敲了门，方才轻轻的推门而入。\r\n　　大厅很是宽敞，其中的人数也是不少，坐于最上方的几位，便是萧战与三位脸色淡漠的老者，他们是族中的长老，权利不比族长小。\r\n　　在四人的左手下方，坐着家族中一些有话语权且实力不弱的长辈，在他们的身旁，也有一些在家族中表现杰出的年轻一辈。\r\n　",
+          "document_span": {
+            "start": 7100,
+            "end": 7587
+          },
+          "source_kind": "node"
+        },
+        {
+          "context_quote": "萧炎有些意外的，她的容貌，竟然比萧媚还要美上几分，在这家族之中，恐怕也只有那犹如青莲一般的萧熏儿能够与之相比，难怪这男子对族中的这些胭脂俗粉不屑一顾。\r\n　　少女娇嫩的耳垂上吊有着绿色的玉坠，微微摇动间，发出清脆的玉响，突兀的现出一抹娇贵……\r\n　　另外，在少女那已经开始发育的玲珑小胸脯旁，绘有三颗金星。\r\n　　“三星斗者，这女孩……如果没有靠外物激发的话，那便是一个绝顶天才！”心头轻轻的吸了一口凉气，萧炎的目光却只是在少女冷艳的小脸上停留了瞬间便是移了开去，不管如何说，在他幼稚的外貌下，也是拥有一个成熟的灵魂，虽然少女很美丽，不过他也没闲心露出流口水的猪哥状来讨人嫌。\r\n　　萧炎的这举动似乎有些让得少女略感诧异，虽然她并不是那种以为世界围着自己转的女孩，不过自己的美貌与气质如何，她再清楚不过，萧炎的这番随意动作，倒真让她有点意外，当然，也仅此而已！\r\n　　“父亲，三位长老！”快步上前，对着上位的萧战四人恭敬的行了一礼。\r\n　　“呵呵，炎儿，来了啊，快坐下吧。”望着萧炎的到来，萧战止住了与客人的笑谈，冲着他点了点头，挥手道。\r\n　　微笑点头，萧炎只当做没有",
+          "document_span": {
+            "start": 8195,
+            "end": 8680
+          },
+          "source_kind": "node"
+        }
+      ],
+      "appearance_fact_refs": [
+        {
+          "fact_hash": "aff8e4141e423df900a13ec5135b2f34622f13d3ed2fc87cabe08de7b4fbcd5b",
+          "fact_quote": "漆黑的眼中",
+          "category": "face",
+          "attribute": "眼色",
+          "value": "漆黑",
+          "document_fact_span": {
+            "start": 6991,
+            "end": 6996
+          }
+        },
+        {
+          "fact_hash": "9f3031958dc557f7ab45069ffc4db14cec202682f135e8b350bf84dd250c3f07",
+          "fact_quote": "少年稚嫩的脸庞",
+          "category": "face",
+          "attribute": "脸庞",
+          "value": "稚嫩",
+          "document_fact_span": {
+            "start": 7340,
+            "end": 7347
+          }
+        },
+        {
+          "fact_hash": "c747ee608f079c411c4040523aad25fe1992928cead61f737666056468be6a30",
+          "fact_quote": "幼稚的外貌",
+          "category": "appearance_state",
+          "attribute": "外貌",
+          "value": "幼稚",
+          "document_fact_span": {
+            "start": 8435,
+            "end": 8440
+          }
+        }
+      ],
+      "order_position": 6751
+    },
+    {
+      "node_key": "ccb852433df7bfb56ac5d73a6a0493f9415afcefb143934551f7bfbdbf09170b",
+      "ref_type": "promoted",
+      "source_character_ref": {
+        "source_document_version_id": "doupo-first5-7ca3fd295b5d0d45",
+        "chunk_id": "chunk-000004-6750-9250-4d57b02a87a6",
+        "source_local_mention_id": "m3",
+        "source_mention_type": "describe",
+        "promotion_index": 1,
+        "character_origin": "remaining_describe",
+        "packet_hash": "9636dae02521eb4ea517b1e35553f5b16e7fafaab5467bb9f41d1af425d3a2fe",
+        "promotion_hash": "1b67fe2978c578036a581e360de3a1e831347a07a8d3286d402a07cfe9017fe7"
+      },
+      "character_origin": "remaining_describe",
+      "label_quote": "青衫老者",
+      "label_type": "describe",
+      "chunk_id": "chunk-000004-6750-9250-4d57b02a87a6",
+      "chunk_source_span": {
+        "start": 6750,
+        "end": 9250
+      },
+      "context_bindings": [
+        {
+          "context_quote": "下有些发麻的脚腕与大腿，仅仅拥有三段斗之气的他，可没有能力无视各种疲累。\r\n　　简单的在房间中活动了下身体，房间外传来苍老的声音：“三少爷，族长请你去大厅！”\r\n　　三少爷，萧炎在家中排行老三，上面还有两位哥哥，不过他们早已经外出历练，只有年终，才会偶尔回家，总的说来，两位哥哥对萧炎这位亲弟弟，也很是不错。\r\n　　“哦。”随口的应了下来，换了一身衣衫，萧炎走出房间，对着房外的一名青衫老者微笑道：“走吧，墨管家。”\r\n　　望着少年稚嫩的脸庞，青衫老者和善的点了点头，转身的霎那，浑浊的老眼，掠过一抹不易察觉的惋惜，唉，以三少爷以前的天赋，恐怕早该成为一名出色的斗者了吧，可惜……\r\n　　跟着老管家从后院穿过，最后在肃穆的迎客大厅外停了下来，恭敬的敲了门，方才轻轻的推门而入。\r\n　　大厅很是宽敞，其中的人数也是不少，坐于最上方的几位，便是萧战与三位脸色淡漠的老者，他们是族中的长老，权利不比族长小。\r\n　　在四人的左手下方，坐着家族中一些有话语权且实力不弱的长辈，在他们的身旁，也有一些在家族中表现杰出的年轻一辈。\r\n　　另外一边，坐着三位陌生人，想必他们便是昨夜萧战",
+          "document_span": {
+            "start": 7126,
+            "end": 7611
+          },
+          "source_kind": "node"
+        }
+      ],
+      "appearance_fact_refs": [
+        {
+          "fact_hash": "af0fd070defdab95c14682d36339c1907ecae91a844aca652a61eb2b5bba3bbd",
+          "fact_quote": "浑浊的老眼",
+          "category": "face",
+          "attribute": "眼睛状态",
+          "value": "浑浊",
+          "document_fact_span": {
+            "start": 7366,
+            "end": 7371
+          }
+        }
+      ],
+      "order_position": 7126
+    },
+    {
+      "node_key": "455a66cc05a73f8c0e8c95272e4ea4d67ead04aedc5dfe7092e7baf103a12fca",
+      "ref_type": "promoted",
+      "source_character_ref": {
+        "source_document_version_id": "doupo-first5-7ca3fd295b5d0d45",
+        "chunk_id": "chunk-000004-6750-9250-4d57b02a87a6",
+        "source_local_mention_id": "m4",
+        "source_mention_type": "describe",
+        "promotion_index": 1,
+        "character_origin": "remaining_describe",
+        "packet_hash": "b28ebae690c504efd0df0f23c05e4d1f899f8bb433d337a7297d320fefb6c61c",
+        "promotion_hash": "2b4281ae78d612591b23cb70805d3e46d3b49391e8c8c398d4448af060669bd0"
+      },
+      "character_origin": "remaining_describe",
+      "label_quote": "身穿月白衣袍的老者",
+      "label_type": "describe",
+      "chunk_id": "chunk-000004-6750-9250-4d57b02a87a6",
+      "chunk_source_span": {
+        "start": 6750,
+        "end": 9250
+      },
+      "context_bindings": [
+        {
+          "context_quote": "着老管家从后院穿过，最后在肃穆的迎客大厅外停了下来，恭敬的敲了门，方才轻轻的推门而入。\r\n　　大厅很是宽敞，其中的人数也是不少，坐于最上方的几位，便是萧战与三位脸色淡漠的老者，他们是族中的长老，权利不比族长小。\r\n　　在四人的左手下方，坐着家族中一些有话语权且实力不弱的长辈，在他们的身旁，也有一些在家族中表现杰出的年轻一辈。\r\n　　另外一边，坐着三位陌生人，想必他们便是昨夜萧战口中所说的贵客。\r\n　　有些疑惑的目光在陌生的三人身上扫过，三人之中，有一位身穿月白衣袍的老者，老者满脸笑容，神采奕奕，一双有些细小的双眼，却是精光偶闪，萧炎的视线微微下移，最后停在了老者胸口上，心头猛然一凛，在老者的衣袍胸口处，赫然绘有一弯银色浅月，在浅月周围，还有点缀着七颗金光闪闪的星辰。\r\n　　“七星大斗师！这老人竟然是一位七星大斗师？真是人不可貌相！”萧炎心中大感惊异，这老者的实力，竟然比自己的父亲，还要高出两星。\r\n　　能够成为大斗师的人，至少都是名动一方的强者，那样的实力，将会让得任何势力趋之若鹜，而忽然间看见一位如此等级的强者，也难怪萧炎会感到诧异。\r\n　　老者身旁，坐有一对年轻的男女，他们的身上",
+          "document_span": {
+            "start": 7421,
+            "end": 7920
+          },
+          "source_kind": "node"
+        },
+        {
+          "context_quote": "也是不少，坐于最上方的几位，便是萧战与三位脸色淡漠的老者，他们是族中的长老，权利不比族长小。\r\n　　在四人的左手下方，坐着家族中一些有话语权且实力不弱的长辈，在他们的身旁，也有一些在家族中表现杰出的年轻一辈。\r\n　　另外一边，坐着三位陌生人，想必他们便是昨夜萧战口中所说的贵客。\r\n　　有些疑惑的目光在陌生的三人身上扫过，三人之中，有一位身穿月白衣袍的老者，老者满脸笑容，神采奕奕，一双有些细小的双眼，却是精光偶闪，萧炎的视线微微下移，最后停在了老者胸口上，心头猛然一凛，在老者的衣袍胸口处，赫然绘有一弯银色浅月，在浅月周围，还有点缀着七颗金光闪闪的星辰。\r\n　　“七星大斗师！这老人竟然是一位七星大斗师？真是人不可貌相！”萧炎心中大感惊异，这老者的实力，竟然比自己的父亲，还要高出两星。\r\n　　能够成为大斗师的人，至少都是名动一方的强者，那样的实力，将会让得任何势力趋之若鹜，而忽然间看见一位如此等级的强者，也难怪萧炎会感到诧异。\r\n　　老者身旁，坐有一对年轻的男女，他们的身上同样穿着相同的月白袍服，男子年龄在二十左右，英俊的相貌，配上挺拔的身材，很是具有魅力，当然，最重要的，还是其胸口",
+          "document_span": {
+            "start": 7480,
+            "end": 7976
+          },
+          "source_kind": "node"
+        }
+      ],
+      "appearance_fact_refs": [
+        {
+          "fact_hash": "40d52ce92100ad36d814af4ce04f48263197fa1c1bbf3040938f85d4c17e05e1",
+          "fact_quote": "满脸笑容",
+          "category": "face",
+          "attribute": "笑容",
+          "value": "满脸笑容",
+          "document_fact_span": {
+            "start": 7661,
+            "end": 7665
+          }
+        },
+        {
+          "fact_hash": "bad0afea75c5d14895982c8cbd8ec32c0639079adcf434868ab50d4899741f17",
+          "fact_quote": "神采奕奕",
+          "category": "appearance_state",
+          "attribute": "精神",
+          "value": "神采奕奕",
+          "document_fact_span": {
+            "start": 7666,
+            "end": 7670
+          }
+        },
+        {
+          "fact_hash": "4e86c525af702d637ecd614ffbcdc745b50d465c4b296d58ec04450a8f8ac811",
+          "fact_quote": "一双有些细小的双眼",
+          "category": "face",
+          "attribute": "双眼",
+          "value": "有些细小",
+          "document_fact_span": {
+            "start": 7671,
+            "end": 7680
+          }
+        },
+        {
+          "fact_hash": "4ed2514278896722c3c36d4012c9e539ecf5c38c5cec57051777deedc4674e8c",
+          "fact_quote": "衣袍胸口处，赫然绘有一弯银色浅月",
+          "category": "clothing",
+          "attribute": "衣袍图案",
+          "value": "一弯银色浅月",
+          "document_fact_span": {
+            "start": 7720,
+            "end": 7736
+          }
+        }
+      ],
+      "order_position": 7421
+    },
+    {
+      "node_key": "6b17e18846bbbde119f36656c1843f28db1682c06cee99a7107bfe224e11074d",
+      "ref_type": "promoted",
+      "source_character_ref": {
+        "source_document_version_id": "doupo-first5-7ca3fd295b5d0d45",
+        "chunk_id": "chunk-000004-6750-9250-4d57b02a87a6",
+        "source_local_mention_id": "m5",
+        "source_mention_type": "describe",
+        "promotion_index": 1,
+        "character_origin": "remaining_describe",
+        "packet_hash": "b4864e852d8b5e885c007cf7a1d48648cf8bb14baa44f4609b3cdd09716748a9",
+        "promotion_hash": "ac1e0595620b960eed8d57ff880fc2a831aaff8374e9fabc67fc886071a629e2"
+      },
+      "character_origin": "remaining_describe",
+      "label_quote": "男子",
+      "label_type": "describe",
+      "chunk_id": "chunk-000004-6750-9250-4d57b02a87a6",
+      "chunk_source_span": {
+        "start": 6750,
+        "end": 9250
+      },
+      "context_bindings": [
+        {
+          "context_quote": "微下移，最后停在了老者胸口上，心头猛然一凛，在老者的衣袍胸口处，赫然绘有一弯银色浅月，在浅月周围，还有点缀着七颗金光闪闪的星辰。\r\n　　“七星大斗师！这老人竟然是一位七星大斗师？真是人不可貌相！”萧炎心中大感惊异，这老者的实力，竟然比自己的父亲，还要高出两星。\r\n　　能够成为大斗师的人，至少都是名动一方的强者，那样的实力，将会让得任何势力趋之若鹜，而忽然间看见一位如此等级的强者，也难怪萧炎会感到诧异。\r\n　　老者身旁，坐有一对年轻的男女，他们的身上同样穿着相同的月白袍服，男子年龄在二十左右，英俊的相貌，配上挺拔的身材，很是具有魅力，当然，最重要的，还是其胸口处所绘的五颗金星，这代表着青年的实力：五星斗者！\r\n　　能够以二十岁左右的年龄成为一名五星斗者，这说明青年的修炼天赋，也很是不一般。\r\n　　英俊的相貌，加上不俗的实力，这位青年，不仅将家族中的一些无知少女迷得神魂颠倒，就是连那坐在一旁的萧媚，美眸中在移向这边之时，也是微放着异彩。\r\n　　少女虽然暗送秋波，不过这似乎对青年并没有什么吸引力，此时，这位青年正将所有的注意力，集中在自己身旁的美丽少女身上……\r\n　　这位少女年龄和萧炎相仿，让",
+          "document_span": {
+            "start": 7694,
+            "end": 8195
+          },
+          "source_kind": "node"
+        }
+      ],
+      "appearance_fact_refs": [
+        {
+          "fact_hash": "d0dde9992236b5e2a2a651b90a5bad87233071651db966e26dc541a8a1b43335",
+          "fact_quote": "年龄在二十左右",
+          "category": "age",
+          "attribute": "年龄",
+          "value": "二十左右",
+          "document_fact_span": {
+            "start": 7934,
+            "end": 7941
+          }
+        },
+        {
+          "fact_hash": "95040685663e6ff2e3c324b137df3fdc39aeab7b47e2d5417132e68ed38eede5",
+          "fact_quote": "英俊的相貌",
+          "category": "face",
+          "attribute": "相貌",
+          "value": "英俊",
+          "document_fact_span": {
+            "start": 7942,
+            "end": 7947
+          }
+        },
+        {
+          "fact_hash": "ff5e5c09d39a08621586c59914bc8be0fea3df2c55782e9ff36d874c2992a49c",
+          "fact_quote": "挺拔的身材",
+          "category": "body",
+          "attribute": "身材",
+          "value": "挺拔",
+          "document_fact_span": {
+            "start": 7950,
+            "end": 7955
+          }
+        }
+      ],
+      "order_position": 7694
+    },
+    {
+      "node_key": "015a08c80e5047d500570f460e62d0eac28bfc62860aab4f3f8e5406abf1eae1",
+      "ref_type": "promoted",
+      "source_character_ref": {
+        "source_document_version_id": "doupo-first5-7ca3fd295b5d0d45",
+        "chunk_id": "chunk-000004-6750-9250-4d57b02a87a6",
+        "source_local_mention_id": "m6",
+        "source_mention_type": "describe",
+        "promotion_index": 1,
+        "character_origin": "remaining_describe",
+        "packet_hash": "dbdfd3c8c484ccf386cc64578ef18019d0e4e1ef27e601b006840405d4b210ec",
+        "promotion_hash": "3d7f2e96a1dd05414e7341eafc4d215e0ca93ae677b198b0b661181801c4dda9"
+      },
+      "character_origin": "remaining_describe",
+      "label_quote": "少女",
+      "label_type": "describe",
+      "chunk_id": "chunk-000004-6750-9250-4d57b02a87a6",
+      "chunk_source_span": {
+        "start": 6750,
+        "end": 9250
+      },
+      "context_bindings": [
+        {
+          "context_quote": "很是不一般。\r\n　　英俊的相貌，加上不俗的实力，这位青年，不仅将家族中的一些无知少女迷得神魂颠倒，就是连那坐在一旁的萧媚，美眸中在移向这边之时，也是微放着异彩。\r\n　　少女虽然暗送秋波，不过这似乎对青年并没有什么吸引力，此时，这位青年正将所有的注意力，集中在自己身旁的美丽少女身上……\r\n　　这位少女年龄和萧炎相仿，让萧炎有些意外的，她的容貌，竟然比萧媚还要美上几分，在这家族之中，恐怕也只有那犹如青莲一般的萧熏儿能够与之相比，难怪这男子对族中的这些胭脂俗粉不屑一顾。\r\n　　少女娇嫩的耳垂上吊有着绿色的玉坠，微微摇动间，发出清脆的玉响，突兀的现出一抹娇贵……\r\n　　另外，在少女那已经开始发育的玲珑小胸脯旁，绘有三颗金星。\r\n　　“三星斗者，这女孩……如果没有靠外物激发的话，那便是一个绝顶天才！”心头轻轻的吸了一口凉气，萧炎的目光却只是在少女冷艳的小脸上停留了瞬间便是移了开去，不管如何说，在他幼稚的外貌下，也是拥有一个成熟的灵魂，虽然少女很美丽，不过他也没闲心露出流口水的猪哥状来讨人嫌。\r\n　　萧炎的这举动似乎有些让得少女略感诧异，虽然她并不是那种以为世界围着自己转的女孩，不过自",
+          "document_span": {
+            "start": 8036,
+            "end": 8530
+          },
+          "source_kind": "node"
+        },
+        {
+          "context_quote": "连那坐在一旁的萧媚，美眸中在移向这边之时，也是微放着异彩。\r\n　　少女虽然暗送秋波，不过这似乎对青年并没有什么吸引力，此时，这位青年正将所有的注意力，集中在自己身旁的美丽少女身上……\r\n　　这位少女年龄和萧炎相仿，让萧炎有些意外的，她的容貌，竟然比萧媚还要美上几分，在这家族之中，恐怕也只有那犹如青莲一般的萧熏儿能够与之相比，难怪这男子对族中的这些胭脂俗粉不屑一顾。\r\n　　少女娇嫩的耳垂上吊有着绿色的玉坠，微微摇动间，发出清脆的玉响，突兀的现出一抹娇贵……\r\n　　另外，在少女那已经开始发育的玲珑小胸脯旁，绘有三颗金星。\r\n　　“三星斗者，这女孩……如果没有靠外物激发的话，那便是一个绝顶天才！”心头轻轻的吸了一口凉气，萧炎的目光却只是在少女冷艳的小脸上停留了瞬间便是移了开去，不管如何说，在他幼稚的外貌下，也是拥有一个成熟的灵魂，虽然少女很美丽，不过他也没闲心露出流口水的猪哥状来讨人嫌。\r\n　　萧炎的这举动似乎有些让得少女略感诧异，虽然她并不是那种以为世界围着自己转的女孩，不过自己的美貌与气质如何，她再清楚不过，萧炎的这番随意动作，倒真让她有点意外，当然，也仅此而已！\r\n　　",
+          "document_span": {
+            "start": 8087,
+            "end": 8579
+          },
+          "source_kind": "node"
+        },
+        {
+          "context_quote": "的美丽少女身上……\r\n　　这位少女年龄和萧炎相仿，让萧炎有些意外的，她的容貌，竟然比萧媚还要美上几分，在这家族之中，恐怕也只有那犹如青莲一般的萧熏儿能够与之相比，难怪这男子对族中的这些胭脂俗粉不屑一顾。\r\n　　少女娇嫩的耳垂上吊有着绿色的玉坠，微微摇动间，发出清脆的玉响，突兀的现出一抹娇贵……\r\n　　另外，在少女那已经开始发育的玲珑小胸脯旁，绘有三颗金星。\r\n　　“三星斗者，这女孩……如果没有靠外物激发的话，那便是一个绝顶天才！”心头轻轻的吸了一口凉气，萧炎的目光却只是在少女冷艳的小脸上停留了瞬间便是移了开去，不管如何说，在他幼稚的外貌下，也是拥有一个成熟的灵魂，虽然少女很美丽，不过他也没闲心露出流口水的猪哥状来讨人嫌。\r\n　　萧炎的这举动似乎有些让得少女略感诧异，虽然她并不是那种以为世界围着自己转的女孩，不过自己的美貌与气质如何，她再清楚不过，萧炎的这番随意动作，倒真让她有点意外，当然，也仅此而已！\r\n　　“父亲，三位长老！”快步上前，对着上位的萧战四人恭敬的行了一礼。\r\n　　“呵呵，炎儿，来了啊，快坐下吧。”望着萧炎的到来，萧战止住了与客人的笑谈，冲着",
+          "document_span": {
+            "start": 8169,
+            "end": 8654
+          },
+          "source_kind": "node"
+        }
+      ],
+      "appearance_fact_refs": [
+        {
+          "fact_hash": "7de15086c628997b368ddc7e41ac56e28ab48cea0ead11af0b6681c83aac8e4a",
+          "fact_quote": "娇嫩的耳垂上吊有着绿色的玉坠",
+          "category": "accessory",
+          "attribute": "耳部饰品",
+          "value": "绿色玉坠",
+          "document_fact_span": {
+            "start": 8276,
+            "end": 8290
+          }
+        },
+        {
+          "fact_hash": "63429482c412ea68b1a7f6ff43822854a3ca41079fc64afbcad1f1ec6ebb482c",
+          "fact_quote": "已经开始发育的玲珑小胸脯",
+          "category": "body",
+          "attribute": "胸部发育",
+          "value": "刚开始发育的玲珑小胸脯",
+          "document_fact_span": {
+            "start": 8327,
+            "end": 8339
+          }
+        },
+        {
+          "fact_hash": "b82e1426978f0e2baed91845047e760ecb5cbd112d5076c7c6462527be96db36",
+          "fact_quote": "冷艳的小脸",
+          "category": "face",
+          "attribute": "脸",
+          "value": "冷艳",
+          "document_fact_span": {
+            "start": 8409,
+            "end": 8414
+          }
+        }
+      ],
+      "order_position": 8036
+    },
+    {
+      "node_key": "e8757461603c0d2029745764204ac1c884c97ccfcf944916ed1b8cfc8dba20f0",
+      "ref_type": "promoted",
+      "source_character_ref": {
+        "source_document_version_id": "doupo-first5-7ca3fd295b5d0d45",
+        "chunk_id": "chunk-000004-6750-9250-4d57b02a87a6",
+        "source_local_mention_id": "m8",
+        "source_mention_type": "describe",
+        "promotion_index": 1,
+        "character_origin": "remaining_describe",
+        "packet_hash": "60f1a203eda1a498ab79db91495699e02bdfc97602868a5fefc1d210a9a5d42d",
+        "promotion_hash": "fa8f2bd1678f399d8ef4d094c347bf4c976189b30799e3517a4056700682bf27"
+      },
+      "character_origin": "remaining_describe",
+      "label_quote": "黄袍老者",
+      "label_type": "describe",
+      "chunk_id": "chunk-000004-6750-9250-4d57b02a87a6",
+      "chunk_source_span": {
+        "start": 6750,
+        "end": 9250
+      },
+      "context_bindings": [
+        {
+          "context_quote": "，却是愕然发现，竟然没自己的位置……\r\n　　“唉，自己在这家族中的地位，看来还真是越来越低啊，往日倒好，现在竟然是当着客人的面给我难堪，这三个老不死的啊……”心头自嘲的一笑，萧炎暗自摇头。\r\n　　望着站在原地不动的萧炎，周围的族中年轻人，都是忍不住的发出讥笑之声，显然很是喜欢看他出丑的模样。\r\n　　此时，上面的萧战也是发现了萧炎的尴尬，脸庞上闪过一抹怒气，对着身旁的老者皱眉道：“二长老，你……”\r\n　　“咳，实在抱歉，竟然把三少爷搞忘记了，呵呵，我马上叫人准备！”被萧战瞪住的黄袍老者，淡淡的笑了笑，“自责”的拍了拍额头，只是其眼中的那抹讥讽，却并未有多少遮掩。\r\n　　“萧炎哥哥，坐这里吧！”少女淡淡的笑声，忽然的在大厅中响了起来。\r\n　　三位长老微愣，目光移向角落中安静的萧熏儿，嘴巴蠕了蠕，竟然是都没有敢再说话……\r\n　　在大厅的角落处，萧熏儿微笑着合拢了手中厚厚的书籍，气质淡雅从容，对着萧炎可爱的眨了眨眼睛。\r\n　　望着萧熏儿那微笑的小脸，萧炎迟疑了一下，摸着鼻子点了点头，然后在众多少年那嫉妒的目光中，走了过去，挨着她坐了下去。\r\n　　“你又帮我解",
+          "document_span": {
+            "start": 8709,
+            "end": 9191
+          },
+          "source_kind": "node"
+        }
+      ],
+      "appearance_fact_refs": [
+        {
+          "fact_hash": "d9149f07339b07fa0018238f88927c057be234df0fc44f584e1f9538a9cdf73a",
+          "fact_quote": "黄袍",
+          "category": "clothing",
+          "attribute": "袍色",
+          "value": "黄袍",
+          "document_fact_span": {
+            "start": 8949,
+            "end": 8951
+          }
+        }
+      ],
+      "order_position": 8709
+    },
+    {
+      "node_key": "a269c2799406a98d746ebace56794bb9338effe027105f2c8b3f2840377ae8db",
+      "ref_type": "local",
+      "source_character_ref": {
+        "source_document_version_id": "doupo-first5-7ca3fd295b5d0d45",
+        "chunk_id": "chunk-000004-6750-9250-4d57b02a87a6",
+        "local_mention_id": "m7",
+        "mention_type": "exact",
+        "packet_hash": "b53050483ba6ac2f423ffe332117be2729eeb3b5bc9bd96648d15bf66a001bf8"
+      },
+      "character_origin": "exact",
+      "label_quote": "萧熏儿",
+      "label_type": "exact",
+      "chunk_id": "chunk-000004-6750-9250-4d57b02a87a6",
+      "chunk_source_span": {
+        "start": 6750,
+        "end": 9250
+      },
+      "context_bindings": [
+        {
+          "context_quote": "身旁的老者皱眉道：“二长老，你……”\r\n　　“咳，实在抱歉，竟然把三少爷搞忘记了，呵呵，我马上叫人准备！”被萧战瞪住的黄袍老者，淡淡的笑了笑，“自责”的拍了拍额头，只是其眼中的那抹讥讽，却并未有多少遮掩。\r\n　　“萧炎哥哥，坐这里吧！”少女淡淡的笑声，忽然的在大厅中响了起来。\r\n　　三位长老微愣，目光移向角落中安静的萧熏儿，嘴巴蠕了蠕，竟然是都没有敢再说话……\r\n　　在大厅的角落处，萧熏儿微笑着合拢了手中厚厚的书籍，气质淡雅从容，对着萧炎可爱的眨了眨眼睛。\r\n　　望着萧熏儿那微笑的小脸，萧炎迟疑了一下，摸着鼻子点了点头，然后在众多少年那嫉妒的目光中，走了过去，挨着她坐了下去。\r\n　　“你又帮我解围了。”嗅着身旁少女的淡淡体香，萧炎低笑道。\r\n　　萧熏儿浅浅一笑，小脸上露出可爱的小酒窝，纤细的指尖再次翻开手中那本",
+          "document_span": {
+            "start": 8890,
+            "end": 9250
+          },
+          "source_kind": "node"
+        },
+        {
+          "context_quote": "未有多少遮掩。\r\n　　“萧炎哥哥，坐这里吧！”少女淡淡的笑声，忽然的在大厅中响了起来。\r\n　　三位长老微愣，目光移向角落中安静的萧熏儿，嘴巴蠕了蠕，竟然是都没有敢再说话……\r\n　　在大厅的角落处，萧熏儿微笑着合拢了手中厚厚的书籍，气质淡雅从容，对着萧炎可爱的眨了眨眼睛。\r\n　　望着萧熏儿那微笑的小脸，萧炎迟疑了一下，摸着鼻子点了点头，然后在众多少年那嫉妒的目光中，走了过去，挨着她坐了下去。\r\n　　“你又帮我解围了。”嗅着身旁少女的淡淡体香，萧炎低笑道。\r\n　　萧熏儿浅浅一笑，小脸上露出可爱的小酒窝，纤细的指尖再次翻开手中那本",
+          "document_span": {
+            "start": 8985,
+            "end": 9250
+          },
+          "source_kind": "node"
+        },
+        {
+          "context_quote": "萧炎哥哥，坐这里吧！”少女淡淡的笑声，忽然的在大厅中响了起来。\r\n　　三位长老微愣，目光移向角落中安静的萧熏儿，嘴巴蠕了蠕，竟然是都没有敢再说话……\r\n　　在大厅的角落处，萧熏儿微笑着合拢了手中厚厚的书籍，气质淡雅从容，对着萧炎可爱的眨了眨眼睛。\r\n　　望着萧熏儿那微笑的小脸，萧炎迟疑了一下，摸着鼻子点了点头，然后在众多少年那嫉妒的目光中，走了过去，挨着她坐了下去。\r\n　　“你又帮我解围了。”嗅着身旁少女的淡淡体香，萧炎低笑道。\r\n　　萧熏儿浅浅一笑，小脸上露出可爱的小酒窝，纤细的指尖再次翻开手中那本",
+          "document_span": {
+            "start": 8997,
+            "end": 9250
+          },
+          "source_kind": "node"
+        }
+      ],
+      "appearance_fact_refs": [
+        {
+          "fact_hash": "f00761382a165dc197219711fe2cfd4a30dae537c38edebe97a7727b450d5316",
+          "fact_quote": "微笑的小脸",
+          "category": "face",
+          "attribute": "表情",
+          "value": "微笑",
+          "document_fact_span": {
+            "start": 9130,
+            "end": 9135
+          }
+        },
+        {
+          "fact_hash": "2fc9d8715c83a3df206eaa91a5026e7bd1aca2230a7512474ee13f24a0e09148",
+          "fact_quote": "小脸上露出可爱的小酒窝",
+          "category": "face",
+          "attribute": "酒窝",
+          "value": "可爱的小酒窝",
+          "document_fact_span": {
+            "start": 9225,
+            "end": 9236
+          }
+        },
+        {
+          "fact_hash": "3f8638f991cbdc5718e01b84da0c95f02a62714605196ed614c9cbba98943405",
+          "fact_quote": "纤细的指尖",
+          "category": "body",
+          "attribute": "手指",
+          "value": "纤细",
+          "document_fact_span": {
+            "start": 9237,
+            "end": 9242
+          }
+        }
+      ],
+      "order_position": 8890
+    },
+    {
+      "node_key": "2d66ae986dc37d72b1a1cbe87016985f870c9ef27d0d3435e3273cbe149257ea",
+      "ref_type": "local",
+      "source_character_ref": {
+        "source_document_version_id": "doupo-first5-7ca3fd295b5d0d45",
+        "chunk_id": "chunk-000005-9000-11500-0cb89a2a0c18",
+        "local_mention_id": "m1",
+        "mention_type": "exact",
+        "packet_hash": "eccb6f9d8ab164fa2663749ef141b8deab855cbf19a379578bc4e97ca828ebbc"
+      },
+      "character_origin": "exact",
+      "label_quote": "萧熏儿",
+      "label_type": "exact",
+      "chunk_id": "chunk-000005-9000-11500-0cb89a2a0c18",
+      "chunk_source_span": {
+        "start": 9000,
+        "end": 11500
+      },
+      "context_bindings": [
+        {
+          "context_quote": "哥，坐这里吧！”少女淡淡的笑声，忽然的在大厅中响了起来。\r\n　　三位长老微愣，目光移向角落中安静的萧熏儿，嘴巴蠕了蠕，竟然是都没有敢再说话……\r\n　　在大厅的角落处，萧熏儿微笑着合拢了手中厚厚的书籍，气质淡雅从容，对着萧炎可爱的眨了眨眼睛。\r\n　　望着萧熏儿那微笑的小脸，萧炎迟疑了一下，摸着鼻子点了点头，然后在众多少年那嫉妒的目光中，走了过去，挨着她坐了下去。\r\n　　“你又帮我解围了。”嗅着身旁少女的淡淡体香，萧炎低笑道。\r\n　　萧熏儿浅浅一笑，小脸上露出可爱的小酒窝，纤细的指尖再次翻开手中那本古朴的书籍，小小年纪，却有一种知性的美感，眨动着修长的睫毛在书中徘徊了片刻，忽然有些幽幽的道：“萧炎哥哥有三年没和熏儿单独坐一起了吧？”\r\n　　“呃……现在熏儿可是家族中的天才了，想要朋友还不简单么？”瞧得少女有些幽怨的光洁侧脸，萧炎干笑道。\r\n　　",
+          "document_span": {
+            "start": 9000,
+            "end": 9375
+          },
+          "source_kind": "node"
+        },
+        {
+          "context_quote": "哥，坐这里吧！”少女淡淡的笑声，忽然的在大厅中响了起来。\r\n　　三位长老微愣，目光移向角落中安静的萧熏儿，嘴巴蠕了蠕，竟然是都没有敢再说话……\r\n　　在大厅的角落处，萧熏儿微笑着合拢了手中厚厚的书籍，气质淡雅从容，对着萧炎可爱的眨了眨眼睛。\r\n　　望着萧熏儿那微笑的小脸，萧炎迟疑了一下，摸着鼻子点了点头，然后在众多少年那嫉妒的目光中，走了过去，挨着她坐了下去。\r\n　　“你又帮我解围了。”嗅着身旁少女的淡淡体香，萧炎低笑道。\r\n　　萧熏儿浅浅一笑，小脸上露出可爱的小酒窝，纤细的指尖再次翻开手中那本古朴的书籍，小小年纪，却有一种知性的美感，眨动着修长的睫毛在书中徘徊了片刻，忽然有些幽幽的道：“萧炎哥哥有三年没和熏儿单独坐一起了吧？”\r\n　　“呃……现在熏儿可是家族中的天才了，想要朋友还不简单么？”瞧得少女有些幽怨的光洁侧脸，萧炎干笑道。\r\n　　“在熏儿四岁到六岁的时候，每天晚上都有人溜进我的房间，然后用一种很是笨拙的手法以及并不雄厚的斗之气，温养我的骨骼与经脉，每次都要弄得自己大汗淋漓后，方才疲惫离开，萧炎哥哥，你说，他会是谁？”熏儿沉默了半",
+          "document_span": {
+            "start": 9000,
+            "end": 9476
+          },
+          "source_kind": "node"
+        },
+        {
+          "context_quote": "哥，坐这里吧！”少女淡淡的笑声，忽然的在大厅中响了起来。\r\n　　三位长老微愣，目光移向角落中安静的萧熏儿，嘴巴蠕了蠕，竟然是都没有敢再说话……\r\n　　在大厅的角落处，萧熏儿微笑着合拢了手中厚厚的书籍，气质淡雅从容，对着萧炎可爱的眨了眨眼睛。\r\n　　望着萧熏儿那微笑的小脸，萧炎迟疑了一下，摸着鼻子点了点头，然后在众多少年那嫉妒的目光中，走了过去，挨着她坐了下去。\r\n　　“你又帮我解围了。”嗅着身旁少女的淡淡体香，萧炎低笑道。\r\n　　萧熏儿浅浅一笑，小脸上露出可爱的小酒窝，纤细的指尖再次翻开手中那本古朴的书籍，小小年纪，却有一种知性的美感，眨动着修长的睫毛在书中徘徊了片刻，忽然有些幽幽的道：“萧炎哥哥有三年没和熏儿单独坐一起了吧？”\r\n　　“呃……现在熏儿可是家族中的天才了，想要朋友还不简单么？”瞧得少女有些幽怨的光洁侧脸，萧炎干笑道。\r\n　　“在熏儿四岁到六岁的时候，每天晚上都有人溜进我的房间，然后用一种很是笨拙的手法以及并不雄厚的斗之气，温养我的骨骼与经脉，每次都要弄得自己大汗淋漓后，方才疲惫离开，萧炎哥哥，你说，他会是谁？”熏儿沉默了半晌，忽然的偏",
+          "document_span": {
+            "start": 9000,
+            "end": 9482
+          },
+          "source_kind": "node"
+        },
+        {
+          "context_quote": "长老微愣，目光移向角落中安静的萧熏儿，嘴巴蠕了蠕，竟然是都没有敢再说话……\r\n　　在大厅的角落处，萧熏儿微笑着合拢了手中厚厚的书籍，气质淡雅从容，对着萧炎可爱的眨了眨眼睛。\r\n　　望着萧熏儿那微笑的小脸，萧炎迟疑了一下，摸着鼻子点了点头，然后在众多少年那嫉妒的目光中，走了过去，挨着她坐了下去。\r\n　　“你又帮我解围了。”嗅着身旁少女的淡淡体香，萧炎低笑道。\r\n　　萧熏儿浅浅一笑，小脸上露出可爱的小酒窝，纤细的指尖再次翻开手中那本古朴的书籍，小小年纪，却有一种知性的美感，眨动着修长的睫毛在书中徘徊了片刻，忽然有些幽幽的道：“萧炎哥哥有三年没和熏儿单独坐一起了吧？”\r\n　　“呃……现在熏儿可是家族中的天才了，想要朋友还不简单么？”瞧得少女有些幽怨的光洁侧脸，萧炎干笑道。\r\n　　“在熏儿四岁到六岁的时候，每天晚上都有人溜进我的房间，然后用一种很是笨拙的手法以及并不雄厚的斗之气，温养我的骨骼与经脉，每次都要弄得自己大汗淋漓后，方才疲惫离开，萧炎哥哥，你说，他会是谁？”熏儿沉默了半晌，忽然的偏过头，对着萧炎嫣然一笑，少女独有的风情，让得周围的少年眼睛有些放光。\r\n　",
+          "document_span": {
+            "start": 9034,
+            "end": 9519
+          },
+          "source_kind": "node"
+        }
+      ],
+      "appearance_fact_refs": [
+        {
+          "fact_hash": "f00761382a165dc197219711fe2cfd4a30dae537c38edebe97a7727b450d5316",
+          "fact_quote": "微笑的小脸",
+          "category": "face",
+          "attribute": "表情",
+          "value": "微笑",
+          "document_fact_span": {
+            "start": 9130,
+            "end": 9135
+          }
+        },
+        {
+          "fact_hash": "6b125ab326bdbd670dda0b5ccbe39f0bda641a78d60204c67110febb3c8d906b",
+          "fact_quote": "小脸上露出可爱的小酒窝",
+          "category": "face",
+          "attribute": "酒窝",
+          "value": "可爱",
+          "document_fact_span": {
+            "start": 9225,
+            "end": 9236
+          }
+        },
+        {
+          "fact_hash": "93bd02da4d3fad85b6528f808756c47ef95079b03d532110e403269e2669021c",
+          "fact_quote": "纤细的指尖",
+          "category": "body",
+          "attribute": "指尖",
+          "value": "纤细",
+          "document_fact_span": {
+            "start": 9237,
+            "end": 9242
+          }
+        },
+        {
+          "fact_hash": "5d16ee18309fcb50d9d720ee94f919c2b041fbedae3dce952162f1c3ed3b979a",
+          "fact_quote": "修长的睫毛",
+          "category": "face",
+          "attribute": "睫毛",
+          "value": "修长",
+          "document_fact_span": {
+            "start": 9274,
+            "end": 9279
+          }
+        },
+        {
+          "fact_hash": "d48fa1d693ce5165f7e3b2420191097c081a9597cd10af18b2cbf7ca7c6e7813",
+          "fact_quote": "光洁侧脸",
+          "category": "face",
+          "attribute": "侧脸",
+          "value": "光洁",
+          "document_fact_span": {
+            "start": 9360,
+            "end": 9364
+          }
+        },
+        {
+          "fact_hash": "c8969e5047dcec92c5acee680b4cbddebec344a147402e8b7cdbbbf0a2354285",
+          "fact_quote": "小嘴泛起了柔和的笑意",
+          "category": "face",
+          "attribute": "嘴",
+          "value": "柔和笑意",
+          "document_fact_span": {
+            "start": 9604,
+            "end": 9614
+          }
+        },
+        {
+          "fact_hash": "0b7740aece609fa40f2cc02c01d93c7edeb442e8ef2d80823255152318487774",
+          "fact_quote": "美丽的眼睛微弯",
+          "category": "face",
+          "attribute": "眼睛",
+          "value": "美丽微弯",
+          "document_fact_span": {
+            "start": 10891,
+            "end": 10898
+          }
+        }
+      ],
+      "order_position": 9000
+    },
+    {
+      "node_key": "455bbd42182e7e679045c9980a51e820fc87751805f472b9cbd51f211df73ff7",
+      "ref_type": "local",
+      "source_character_ref": {
+        "source_document_version_id": "doupo-first5-7ca3fd295b5d0d45",
+        "chunk_id": "chunk-000005-9000-11500-0cb89a2a0c18",
+        "local_mention_id": "m3",
+        "mention_type": "exact",
+        "packet_hash": "3c7b2fd29d4b81f5061be86b8c2b63adb376b05c31c8316146e15bf3ba827d1b"
+      },
+      "character_origin": "exact",
+      "label_quote": "纳兰嫣然",
+      "label_type": "exact",
+      "chunk_id": "chunk-000005-9000-11500-0cb89a2a0c18",
+      "chunk_source_span": {
+        "start": 9000,
+        "end": 11500
+      },
+      "context_bindings": [
+        {
+          "context_quote": "疼爱纳兰嫣然这孙女，不过想要他开口解除婚约，却是有些困难……”熏儿美丽的眼睛微弯，戏谑道：“可五年之前，纳兰嫣然被云岚宗宗主云韵亲自收做弟子，五年间，纳兰嫣然表现出了绝佳的修炼天赋，更是让得云韵对其宠爱不已……当一个人拥有了改变自己命运的力量时候，那么她会想尽办法将自己不喜欢的事，解决掉……很不幸的，萧炎哥哥与她的婚事，便是让她最不满意的地方！”\r\n　　“你是说，她此次是来解除婚约的？”\r\n　　脸色一变，萧炎心头猛的涌出一阵怒气，这怒气并不是因为纳兰嫣然对他的歧视，说实在的，对面的少女虽然美丽，可他萧炎也不是一个被下半身支配心智的色狼，就算与她结不成秦晋之好，那萧炎也顶多只是有些男人惯性的遗憾而已，可如果她真的在大庭广众下对自己的父亲提出了解除婚约的请求，那么父亲这族长的脸，可就算是丢尽了！\r\n　　纳兰嫣然不仅美丽娇俏，地位显赫，而且天赋绝佳，任何人在说起此事时，都将会认为他萧炎是癞蛤蟆想吃天鹅肉不成，却反被天鹅踏在了脚下……\r\n　　如此的话，日后不仅萧炎，就算是他的父亲，也将会沦落为他人笑柄，威严大失。\r\n　　轻轻的吸了一口冰凉的空气，萧炎那藏在袖间的手掌，却已",
+          "document_span": {
+            "start": 10858,
+            "end": 11347
+          },
+          "source_kind": "node"
+        },
+        {
+          "context_quote": "量时候，那么她会想尽办法将自己不喜欢的事，解决掉……很不幸的，萧炎哥哥与她的婚事，便是让她最不满意的地方！”\r\n　　“你是说，她此次是来解除婚约的？”\r\n　　脸色一变，萧炎心头猛的涌出一阵怒气，这怒气并不是因为纳兰嫣然对他的歧视，说实在的，对面的少女虽然美丽，可他萧炎也不是一个被下半身支配心智的色狼，就算与她结不成秦晋之好，那萧炎也顶多只是有些男人惯性的遗憾而已，可如果她真的在大庭广众下对自己的父亲提出了解除婚约的请求，那么父亲这族长的脸，可就算是丢尽了！\r\n　　纳兰嫣然不仅美丽娇俏，地位显赫，而且天赋绝佳，任何人在说起此事时，都将会认为他萧炎是癞蛤蟆想吃天鹅肉不成，却反被天鹅踏在了脚下……\r\n　　如此的话，日后不仅萧炎，就算是他的父亲，也将会沦落为他人笑柄，威严大失。\r\n　　轻轻的吸了一口冰凉的空气，萧炎那藏在袖间的手掌，却已是紧紧的握拢了起来：“如果自己现在是一名斗师，谁又敢如此践踏于我？”\r\n　　的确，如果萧炎此时拥有斗师实力，那么，就算纳兰嫣然有着云岚宗撑腰，那也不可能做出如此行径，年仅十五岁的斗师，嘿，在斗气大陆这么多年的历史中，可唯有那寥寥数",
+          "document_span": {
+            "start": 10978,
+            "end": 11462
+          },
+          "source_kind": "node"
+        }
+      ],
+      "appearance_fact_refs": [
+        {
+          "fact_hash": "1b516ba510c122bd1b8a034fa9370df9c36de3b29e6c1b7ac3cc35ae74b3ad5c",
+          "fact_quote": "对面的少女虽然美丽",
+          "category": "other_visual",
+          "attribute": "外貌",
+          "value": "美丽",
+          "document_fact_span": {
+            "start": 11098,
+            "end": 11107
+          }
+        },
+        {
+          "fact_hash": "3f588c191de16bf9da9ae20ffcd28a8cee98f2bad00490962e7a9dbc670e3a32",
+          "fact_quote": "美丽娇俏",
+          "category": "other_visual",
+          "attribute": "外貌",
+          "value": "美丽娇俏",
+          "document_fact_span": {
+            "start": 11218,
+            "end": 11222
+          }
+        }
+      ],
+      "order_position": 10858
+    },
+    {
+      "node_key": "324282becb22040110bbf37d73e7669d1ec8bdc7a8087ea6af84e44529934a8e",
+      "ref_type": "local",
+      "source_character_ref": {
+        "source_document_version_id": "doupo-first5-7ca3fd295b5d0d45",
+        "chunk_id": "chunk-000006-11250-13750-03087dc524e6",
+        "local_mention_id": "m1",
+        "mention_type": "exact",
+        "packet_hash": "08ad3656c135f6b7282d318b355665f37edb8ef74b1f1912fe9afbc32d682977"
+      },
+      "character_origin": "exact",
+      "label_quote": "萧炎",
+      "label_type": "exact",
+      "chunk_id": "chunk-000006-11250-13750-03087dc524e6",
+      "chunk_source_span": {
+        "start": 11250,
+        "end": 13750
+      },
+      "context_bindings": [
+        {
+          "context_quote": "他萧炎是癞蛤蟆想吃天鹅肉不成，却反被天鹅踏在了脚下……\r\n　　如此的话，日后不仅萧炎，就算是他的父亲，也将会沦落为他人笑柄，威严大失。\r\n　　轻轻的吸了一口冰凉的空气，萧炎那藏在袖间的手掌，却已是紧紧的握拢了起来：“如果自己现在是一名斗师，谁又敢如此践踏于我？”\r\n　　的确，如果萧炎此时拥有斗师实力，那么，就算纳兰嫣然有着云岚宗撑腰，那也不可能做出如此行径，年仅十五岁的斗师，嘿，在斗气大陆这么多年的历史中，可唯有那寥寥数人而已，而且这几人，都早已经成为了斗气修炼界中的泰山北斗！\r\n　　一只娇嫩的小手，悄悄的穿过衣袖，轻轻的按着萧炎紧握的手掌，熏儿柔声道：“萧炎哥哥，她若真如此行事，只是她的损失而已，熏儿相信，日后，她会为今日的短浅目光后悔！”\r\n　　“后悔？”嗤笑了一声，萧炎脸庞满是自嘲：“现在的自己，有那资格？”\r\n　　“熏儿，你对他们似乎知道得很清楚？你先前所说的一些东西中，或许就是连我父亲，也不知道吧？你是如何得知的？”轻摆了摆手，",
+          "document_span": {
+            "start": 11250,
+            "end": 11675
+          },
+          "source_kind": "node"
+        }
+      ],
+      "appearance_fact_refs": [
+        {
+          "fact_hash": "28b61ac06766535a060762521688cf822c337a55578dcdf6bc4426ae2f3fd229",
+          "fact_quote": "年仅十五岁",
+          "category": "age",
+          "attribute": "年龄",
+          "value": "十五岁",
+          "document_fact_span": {
+            "start": 11430,
+            "end": 11435
+          }
+        }
+      ],
+      "order_position": 11250
+    },
+    {
+      "node_key": "390efc670c41c35bb343afc0cc2d7d6c7fb05c1c26e9acea6a4fdd9e3a879c0c",
+      "ref_type": "local",
+      "source_character_ref": {
+        "source_document_version_id": "doupo-first5-7ca3fd295b5d0d45",
+        "chunk_id": "chunk-000006-11250-13750-03087dc524e6",
+        "local_mention_id": "m2",
+        "mention_type": "exact",
+        "packet_hash": "84a96d61fbadfe11239b77fd0a880c61ddce96ab5689c8cb69d286a7f8ac8296"
+      },
+      "character_origin": "exact",
+      "label_quote": "熏儿",
+      "label_type": "exact",
+      "chunk_id": "chunk-000006-11250-13750-03087dc524e6",
+      "chunk_source_span": {
+        "start": 11250,
+        "end": 13750
+      },
+      "context_bindings": [
+        {
+          "context_quote": "蛤蟆想吃天鹅肉不成，却反被天鹅踏在了脚下……\r\n　　如此的话，日后不仅萧炎，就算是他的父亲，也将会沦落为他人笑柄，威严大失。\r\n　　轻轻的吸了一口冰凉的空气，萧炎那藏在袖间的手掌，却已是紧紧的握拢了起来：“如果自己现在是一名斗师，谁又敢如此践踏于我？”\r\n　　的确，如果萧炎此时拥有斗师实力，那么，就算纳兰嫣然有着云岚宗撑腰，那也不可能做出如此行径，年仅十五岁的斗师，嘿，在斗气大陆这么多年的历史中，可唯有那寥寥数人而已，而且这几人，都早已经成为了斗气修炼界中的泰山北斗！\r\n　　一只娇嫩的小手，悄悄的穿过衣袖，轻轻的按着萧炎紧握的手掌，熏儿柔声道：“萧炎哥哥，她若真如此行事，只是她的损失而已，熏儿相信，日后，她会为今日的短浅目光后悔！”\r\n　　“后悔？”嗤笑了一声，萧炎脸庞满是自嘲：“现在的自己，有那资格？”\r\n　　“熏儿，你对他们似乎知道得很清楚？你先前所说的一些东西中，或许就是连我父亲，也不知道吧？你是如何得知的？”轻摆了摆手，萧炎话音忽然一转，问道。\r\n　　熏儿一怔，却是含笑不语。\r\n　　望着熏儿的躲避态势，萧炎只得无奈的撇了撇嘴，熏儿虽然也姓萧，不过与他却",
+          "document_span": {
+            "start": 11255,
+            "end": 11742
+          },
+          "source_kind": "node"
+        }
+      ],
+      "appearance_fact_refs": [
+        {
+          "fact_hash": "c0605074712ce272137601940ce4b9531aa04e3473e86c3990c855bb51c00c9d",
+          "fact_quote": "一只娇嫩的小手",
+          "category": "body",
+          "attribute": "手",
+          "value": "娇嫩",
+          "document_fact_span": {
+            "start": 11495,
+            "end": 11502
+          }
+        }
+      ],
+      "order_position": 11255
+    },
+    {
+      "node_key": "d1203cc2f3d9e03105719855f5c660b8f10f951a201546296e1fdc22a5698503",
+      "ref_type": "local",
+      "source_character_ref": {
+        "source_document_version_id": "doupo-first5-7ca3fd295b5d0d45",
+        "chunk_id": "chunk-000006-11250-13750-03087dc524e6",
+        "local_mention_id": "m4",
+        "mention_type": "exact",
+        "packet_hash": "34eff393aacfc1bffb46ed2fc7e151eb7bb7090d8af801e314d989f5ca61e0db"
+      },
+      "character_origin": "exact",
+      "label_quote": "葛叶",
+      "label_type": "exact",
+      "chunk_id": "chunk-000006-11250-13750-03087dc524e6",
+      "chunk_source_span": {
+        "start": 11250,
+        "end": 13750
+      },
+      "context_bindings": [
+        {
+          "context_quote": "父亲便会立刻闭口不语，显然对熏儿的父母很是忌讳，甚至……惧怕！\r\n　　在萧炎心中，熏儿的身份，极为神秘，可不管他如何侧面询问，这小妮子都会机灵的以沉默应对，让得萧炎就算有计也是无处可施。\r\n　　“唉，算了，懒得管你，不说就不说吧……”摇了摇头，萧炎的脸色忽然阴沉了下来，因为对面那在纳兰嫣然不断示意的眼色下，那位老者，终于是站起来了……\r\n　　“呵呵，借助着云岚宗向父亲施威么？这纳兰嫣然，真是好手段呐……”萧炎的心头，响起了愤怒的冷笑。\r\n\r\n\r\n第5章 聚气散\r\n　　“咳。”白袍老者轻咳了一声，站起身来对着萧战拱了拱手，微笑道：“萧族长，此次前来贵家族，主要是有事相求！”\r\n　　“呵呵，葛叶先生，有事请说便是，如果力所能及，萧家应该不会推辞。”对于这位老者，萧战可不敢怠慢，连忙站起来客气的道，不过由于不知道对方到底所求何事，所以也不敢把话说得太满。\r\n　　“呵呵，萧族长，你可认识她么？”葛叶微微一笑，指着身旁的少女含笑问道。\r\n　　“呃……恕萧战眼拙，这位小姐……”闻言，萧战一愣，上下打量了一下少女，略微有些尴尬的摇了摇头。\r\n　　当年纳兰嫣然被云韵",
+          "document_span": {
+            "start": 11784,
+            "end": 12266
+          },
+          "source_kind": "node"
+        },
+        {
+          "context_quote": "母打听了一下之后，他们的脸色，顿时变得精彩了起来，讥诮的嘲讽目光，投向了角落处的萧炎……\r\n　　望着萧战那阴沉至极的脸色，纳兰嫣然也是不敢抬头，将头埋下，手指紧张的绞在了一起。\r\n　　“萧族长，我知道这要求有些强人所难，不过还请看在宗主大人的面上，解除了婚约吧……”无奈的叹了一口气，葛叶淡淡的道。\r\n　　萧战拳头紧握，淡淡的青色斗气，逐渐的覆盖了身躯，最后竟然隐隐约约的在脸庞处汇聚成了一个虚幻的狮头。\r\n　　萧家顶级功法：狂狮怒罡！等级：玄阶中级！\r\n　　望着萧战的反映，葛叶脸庞也顿时凝重了起来，身体挡在纳兰嫣然身前，鹰爪般的双手猛的曲拢，青色斗气在鹰爪中汇聚而起，散发着细小而凌厉的剑气。\r\n　　云岚宗高深功法，青木剑诀！等级：玄阶低级！\r\n　　随着两人气息的喷发，大厅之中，实力较弱的少年们，脸色猛的一白，旋即胸口有些发闷。\r\n　　就在萧战的呼吸越加急促之声，三位长老的厉喝声，却是宛如惊雷般的在大厅中响起：“萧战，还不住手！你可不要忘记，你是萧家的族长！”\r\n　　身子猛的一僵，萧战",
+          "document_span": {
+            "start": 13303,
+            "end": 13750
+          },
+          "source_kind": "node"
+        },
+        {
+          "context_quote": "起来，讥诮的嘲讽目光，投向了角落处的萧炎……\r\n　　望着萧战那阴沉至极的脸色，纳兰嫣然也是不敢抬头，将头埋下，手指紧张的绞在了一起。\r\n　　“萧族长，我知道这要求有些强人所难，不过还请看在宗主大人的面上，解除了婚约吧……”无奈的叹了一口气，葛叶淡淡的道。\r\n　　萧战拳头紧握，淡淡的青色斗气，逐渐的覆盖了身躯，最后竟然隐隐约约的在脸庞处汇聚成了一个虚幻的狮头。\r\n　　萧家顶级功法：狂狮怒罡！等级：玄阶中级！\r\n　　望着萧战的反映，葛叶脸庞也顿时凝重了起来，身体挡在纳兰嫣然身前，鹰爪般的双手猛的曲拢，青色斗气在鹰爪中汇聚而起，散发着细小而凌厉的剑气。\r\n　　云岚宗高深功法，青木剑诀！等级：玄阶低级！\r\n　　随着两人气息的喷发，大厅之中，实力较弱的少年们，脸色猛的一白，旋即胸口有些发闷。\r\n　　就在萧战的呼吸越加急促之声，三位长老的厉喝声，却是宛如惊雷般的在大厅中响起：“萧战，还不住手！你可不要忘记，你是萧家的族长！”\r\n　　身子猛的一僵，萧战",
+          "document_span": {
+            "start": 13325,
+            "end": 13750
+          },
+          "source_kind": "node"
+        }
+      ],
+      "appearance_fact_refs": [
+        {
+          "fact_hash": "13059eeba060f26d6deb0d4b18592029f13fcdaf0aa1174bbc43371dc2b33bf5",
+          "fact_quote": "白袍",
+          "category": "clothing",
+          "attribute": "外衣",
+          "value": "白袍",
+          "document_fact_span": {
+            "start": 12024,
+            "end": 12026
+          }
+        },
+        {
+          "fact_hash": "23ab01157fa2999eadab2018ed02593d4a2bccacbdeea25eba89b0482b6357f2",
+          "fact_quote": "脸庞也顿时凝重了起来",
+          "category": "appearance_state",
+          "attribute": "面部表情",
+          "value": "凝重",
+          "document_fact_span": {
+            "start": 13543,
+            "end": 13553
+          }
+        },
+        {
+          "fact_hash": "e027e761134600e778c48d503f66a8879bf294822aa7ddd0296d0f2d9bec163c",
+          "fact_quote": "鹰爪般的双手",
+          "category": "body",
+          "attribute": "手部形态",
+          "value": "鹰爪般",
+          "document_fact_span": {
+            "start": 13565,
+            "end": 13571
+          }
+        }
+      ],
+      "order_position": 11784
+    },
+    {
+      "node_key": "64cc050d632779491f4f9216798139ec084df016dac8a8bb7c22d6f734d7f282",
+      "ref_type": "local",
+      "source_character_ref": {
+        "source_document_version_id": "doupo-first5-7ca3fd295b5d0d45",
+        "chunk_id": "chunk-000006-11250-13750-03087dc524e6",
+        "local_mention_id": "m3",
+        "mention_type": "exact",
+        "packet_hash": "3a64436368061100f12b2ca4c412e9c08c8e55902fd446c29386f5dffeb55e86"
+      },
+      "character_origin": "exact",
+      "label_quote": "萧战",
+      "label_type": "exact",
+      "chunk_id": "chunk-000006-11250-13750-03087dc524e6",
+      "chunk_source_span": {
+        "start": 11250,
+        "end": 13750
+      },
+      "context_bindings": [
+        {
+          "context_quote": "运罢了……”浅浅一笑，纳兰嫣然有些吃不消萧战的热情，桌下的手掌，轻轻扯了扯身旁的葛叶。\r\n　　“呵呵，萧族长，在下今日所请求之事，便与嫣然有关，而且此事，还是宗主大人亲自开口……”葛叶轻笑了一声，在提到宗主二字时，脸庞上的表情，略微郑重。\r\n　　脸色微微一变，萧战也是收敛了笑容，云岚宗宗主云韵可是加玛帝国的大人物，他这小小的一族之长，可是半点都遭惹不起，可以她的实力与势力，又有何事需要萧家帮忙？葛叶说是与纳兰侄女有关，难道？\r\n　　想到某种可能，萧战的嘴角忍不住的抽搐了几下，硕大的手掌微微颤抖，不过好在有着袖子的遮掩，所以也未曾被发现，强行压下心头的怒火，声音有些发颤的凝声道：“葛叶先生，请说！”\r\n　　“咳……”葛叶脸色忽然出现了一抹尴尬，不过想起宗主对纳兰嫣然的疼爱，又只得咬了咬牙，笑道：“萧族长，您也知道，云岚宗门风严厉，而且宗主大人对嫣然的期望也是很高，现在基本上已经是把她当做云岚宗下一任的宗主在培养……而因为一些特殊的规矩，宗主传人在未成为正式宗主之前，都不可与男子有纠葛……”\r\n　　“宗主大人在询问过嫣然之后，知道她与萧家还有一门亲事，所以……",
+          "document_span": {
+            "start": 12624,
+            "end": 13109
+          },
+          "source_kind": "node"
+        },
+        {
+          "context_quote": "请萧族长，能够……解除了这婚约。”\r\n　　“咔！”萧战手中的玉石杯，轰然间化为了一蓬粉末。\r\n　　大厅之中，气氛有些寂静，上方的三位长老也是被葛叶的话震了震，不过片刻之后，他们望向萧战的目光中，已经多出了一抹讥讽与嘲笑。\r\n　　“嘿嘿，被人上门强行解除婚约，看你这族长，以后还有什么威望管理家族！”\r\n　　一些年轻一辈的少年少女并不知晓萧炎与纳兰嫣然的婚约，不过在向身旁的父母打听了一下之后，他们的脸色，顿时变得精彩了起来，讥诮的嘲讽目光，投向了角落处的萧炎……\r\n　　望着萧战那阴沉至极的脸色，纳兰嫣然也是不敢抬头，将头埋下，手指紧张的绞在了一起。\r\n　　“萧族长，我知道这要求有些强人所难，不过还请看在宗主大人的面上，解除了婚约吧……”无奈的叹了一口气，葛叶淡淡的道。\r\n　　萧战拳头紧握，淡淡的青色斗气，逐渐的覆盖了身躯，最后竟然隐隐约约的在脸庞处汇聚成了一个虚幻的狮头。\r\n　　萧家顶级功法：狂狮怒罡！等级：玄阶中级！\r\n　　望着萧战的反映，葛叶脸庞也顿时凝重了起来，身体挡在纳兰嫣然身前，鹰爪般的双手猛的曲拢，青色斗气在鹰爪中汇聚而起，散发着细小而凌厉的剑气。\r\n",
+          "document_span": {
+            "start": 13116,
+            "end": 13603
+          },
+          "source_kind": "node"
+        }
+      ],
+      "appearance_fact_refs": [
+        {
+          "fact_hash": "a5141a45868fd7a67283fb5d5023338e4793346a67ccadf0e24e9ba9f2849dd9",
+          "fact_quote": "硕大的手掌",
+          "category": "body",
+          "attribute": "手掌",
+          "value": "硕大",
+          "document_fact_span": {
+            "start": 12864,
+            "end": 12869
+          }
+        },
+        {
+          "fact_hash": "28d60b9c500c52719dc017444c3763aba987f253f2b3d7a95e17c8f636255a0d",
+          "fact_quote": "阴沉至极的脸色",
+          "category": "face",
+          "attribute": "脸色",
+          "value": "阴沉至极",
+          "document_fact_span": {
+            "start": 13356,
+            "end": 13363
+          }
+        }
+      ],
+      "order_position": 12624
+    },
+    {
+      "node_key": "54ed92fbf2d777e9e167b1b4a1a04e9f5b6f561be0483fac556d81073ae5fcf2",
+      "ref_type": "local",
+      "source_character_ref": {
+        "source_document_version_id": "doupo-first5-7ca3fd295b5d0d45",
+        "chunk_id": "chunk-000007-13500-14160-d83b17f39d7c",
+        "local_mention_id": "m3",
+        "mention_type": "exact",
+        "packet_hash": "d744fff8b247cac4f1867e446c25570055a67ed4d9e0193491022f7374ae489d"
+      },
+      "character_origin": "exact",
+      "label_quote": "葛叶",
+      "label_type": "exact",
+      "chunk_id": "chunk-000007-13500-14160-d83b17f39d7c",
+      "chunk_source_span": {
+        "start": 13500,
+        "end": 14160
+      },
+      "context_bindings": [
+        {
+          "context_quote": "幻的狮头。\r\n　　萧家顶级功法：狂狮怒罡！等级：玄阶中级！\r\n　　望着萧战的反映，葛叶脸庞也顿时凝重了起来，身体挡在纳兰嫣然身前，鹰爪般的双手猛的曲拢，青色斗气在鹰爪中汇聚而起，散发着细小而凌厉的剑气。\r\n　　云岚宗高深功法，青木剑诀！等级：玄阶低级！\r\n　　随着两人气息的喷发，大厅之中，实力较弱的少年们，脸色猛的一白，旋即胸口有些发闷。\r\n　　就在萧战的呼吸越加急促之声，三位长老的厉喝声，却是宛如惊雷般的在大厅中响起：“萧战，还不住手！你可不要忘记，你是萧家的族长！”\r\n　　身子猛的一僵，萧战身体上的斗气缓缓的收敛，最后完全消失。\r\n　　一屁股坐回椅子上，萧战脸色淡漠的望着低头不言的纳兰嫣然，声音有些嘶哑的道：“",
+          "document_span": {
+            "start": 13500,
+            "end": 13811
+          },
+          "source_kind": "node"
+        }
+      ],
+      "appearance_fact_refs": [
+        {
+          "fact_hash": "7c6f5ca43143d3efa8ef6ef126961139239b587b7c9a1e2bac57e27ce15789b8",
+          "fact_quote": "鹰爪般的双手",
+          "category": "body",
+          "attribute": "双手",
+          "value": "鹰爪般",
+          "document_fact_span": {
+            "start": 13565,
+            "end": 13571
+          }
+        }
+      ],
+      "order_position": 13500
+    },
+    {
+      "node_key": "35318bb8623b35a899d7217c387e436a02ade5009074a299c30e62b8db8e6b81",
+      "ref_type": "local",
+      "source_character_ref": {
+        "source_document_version_id": "doupo-first5-7ca3fd295b5d0d45",
+        "chunk_id": "chunk-000007-13500-14160-d83b17f39d7c",
+        "local_mention_id": "m1",
+        "mention_type": "exact",
+        "packet_hash": "1cc32c8d976cf5cbfcf51e9ca928d66269c100deaed2058802198c7d98145ec5"
+      },
+      "character_origin": "exact",
+      "label_quote": "萧战",
+      "label_type": "exact",
+      "chunk_id": "chunk-000007-13500-14160-d83b17f39d7c",
+      "chunk_source_span": {
+        "start": 13500,
+        "end": 14160
+      },
+      "context_bindings": [
+        {
+          "context_quote": "叶脸庞也顿时凝重了起来，身体挡在纳兰嫣然身前，鹰爪般的双手猛的曲拢，青色斗气在鹰爪中汇聚而起，散发着细小而凌厉的剑气。\r\n　　云岚宗高深功法，青木剑诀！等级：玄阶低级！\r\n　　随着两人气息的喷发，大厅之中，实力较弱的少年们，脸色猛的一白，旋即胸口有些发闷。\r\n　　就在萧战的呼吸越加急促之声，三位长老的厉喝声，却是宛如惊雷般的在大厅中响起：“萧战，还不住手！你可不要忘记，你是萧家的族长！”\r\n　　身子猛的一僵，萧战身体上的斗气缓缓的收敛，最后完全消失。\r\n　　一屁股坐回椅子上，萧战脸色淡漠的望着低头不言的纳兰嫣然，声音有些嘶哑的道：“纳兰侄女呐，好魄力啊，纳兰肃有你这女儿，真是很让人羡慕啊！”\r\n　　娇躯微微一颤，纳兰嫣然呐呐的道：“萧叔叔……”\r\n　　“呵呵，叫我萧族长就好，叔叔这称谓，我担不起，你是未来云岚宗的宗主，日后也是斗气大陆的风云人物，我家炎儿不过是资质平庸之辈，也的确是配不上你……”淡淡的挥了挥手，萧战语气冷漠的道。\r\n　　“多谢萧族长体谅了。”闻言，一旁的葛叶大喜，对着萧战赔笑道：“萧族长，宗主大人知道今天这要求很是有些不礼貌，所以特地让在下带",
+          "document_span": {
+            "start": 13542,
+            "end": 14028
+          },
+          "source_kind": "node"
+        }
+      ],
+      "appearance_fact_refs": [
+        {
+          "fact_hash": "8ab71e26da893d39e1ae96dd3308519b6442e2a595069936c41645361d03f8b9",
+          "fact_quote": "萧战脸色淡漠",
+          "category": "appearance_state",
+          "attribute": "脸色",
+          "value": "淡漠",
+          "document_fact_span": {
+            "start": 13782,
+            "end": 13788
+          }
+        }
+      ],
+      "order_position": 13542
+    },
+    {
+      "node_key": "f89f30bb54c6ef6688255856ed483cae687609953594cac49c74b724bcd7084c",
+      "ref_type": "local",
+      "source_character_ref": {
+        "source_document_version_id": "doupo-first5-7ca3fd295b5d0d45",
+        "chunk_id": "chunk-000007-13500-14160-d83b17f39d7c",
+        "local_mention_id": "m4",
+        "mention_type": "exact",
+        "packet_hash": "6f662e36e15e9fccee37d6c477a38ff8af2feb024da2d5c883bf3f2917d3c13b"
+      },
+      "character_origin": "exact",
+      "label_quote": "纳兰嫣然",
+      "label_type": "exact",
+      "chunk_id": "chunk-000007-13500-14160-d83b17f39d7c",
+      "chunk_source_span": {
+        "start": 13500,
+        "end": 14160
+      },
+      "context_bindings": [
+        {
+          "context_quote": "云岚宗高深功法，青木剑诀！等级：玄阶低级！\r\n　　随着两人气息的喷发，大厅之中，实力较弱的少年们，脸色猛的一白，旋即胸口有些发闷。\r\n　　就在萧战的呼吸越加急促之声，三位长老的厉喝声，却是宛如惊雷般的在大厅中响起：“萧战，还不住手！你可不要忘记，你是萧家的族长！”\r\n　　身子猛的一僵，萧战身体上的斗气缓缓的收敛，最后完全消失。\r\n　　一屁股坐回椅子上，萧战脸色淡漠的望着低头不言的纳兰嫣然，声音有些嘶哑的道：“纳兰侄女呐，好魄力啊，纳兰肃有你这女儿，真是很让人羡慕啊！”\r\n　　娇躯微微一颤，纳兰嫣然呐呐的道：“萧叔叔……”\r\n　　“呵呵，叫我萧族长就好，叔叔这称谓，我担不起，你是未来云岚宗的宗主，日后也是斗气大陆的风云人物，我家炎儿不过是资质平庸之辈，也的确是配不上你……”淡淡的挥了挥手，萧战语气冷漠的道。\r\n　　“多谢萧族长体谅了。”闻言，一旁的葛叶大喜，对着萧战赔笑道：“萧族长，宗主大人知道今天这要求很是有些不礼貌，所以特地让在下带来一物，就当做是赔礼！”\r\n　　说着，葛叶伸手抹了抹手指上的一枚戒指，一只通体泛绿的古玉盒子在手中凭空出现……\r\n　　小心的打",
+          "document_span": {
+            "start": 13605,
+            "end": 14091
+          },
+          "source_kind": "node"
+        }
+      ],
+      "appearance_fact_refs": [],
+      "order_position": 13605
+    }
+  ],
+  "summary": {
+    "local_character_nodes": 23,
+    "exact_nodes": 18,
+    "promoted_nodes": 5,
+    "nodes_without_appearance_facts": 1
+  }
+}

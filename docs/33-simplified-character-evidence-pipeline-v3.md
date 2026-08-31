@@ -1,39 +1,97 @@
 # 简化人物证据流水线 V3 契约
 
-> 状态：新项目目标契约草案；用于 `v3-simplified-character-evidence` 分支。当前分支不包含旧版实现、评测或提示词。人物记忆与 `local_character_ref -> character_id` 的具体策略留待后续独立设计。
+> 状态：运行时增量契约；用于 `v3-simplified-character-evidence` 分支。M1—N3、文档事实层和跨 Chunk 人物身份层均已建立代码边界；真实模型身份质量仍需单独评测。
 
 ## 1. 目标
 
 V3 优先建立一条容易解释和验证的三段流水线：
 
 ```text
-M1：识别人物提及，标记 exact / describe / null，并归拢相关外貌原文
+M1：识别人物提及，标记 type（exact / describe / null）与 scope（individual / collective / null），并归拢相关外貌原文
   ↓
-N2：只用代码验证人物称呼和外貌原文确实存在于 Chunk
+N2：用代码验证人物称呼和外貌原文，并执行 exact evidence 优先去重
   ↓
-M2：以一个 exact 人物为目标；每个 describe 分别与每个 exact 组合解析
+M2：以一个 individual exact 人物为目标，一次携带本轮全部 individual describe 块解析
   ↓
 N3：验证证据、汇总 describe 归属、消费已唯一归属片段并回送剩余 describe
 ```
 
-本契约不要求 N2 判断跨人物证据冲突。同一段 `evidence_quote` 可以同时出现在多个提及块中。只有 `exact` 提及可以作为 M2 的目标人物；`describe` 只是待归属的描述证据池，不得直接当成一个独立人物。
+M1 可以把同一段 `evidence_quote` 提案到多个提及块。N2 Grounding 后 exact 对相同 raw quote 具有优先权，所有 describe 中的同文副本会被删除；exact↔exact 和 describe↔describe 仍可重复。第一轮只有 `exact + individual` 提及可以作为归属目标；过滤后的 `describe + individual` 作为待归属证据池。N3 仲裁后仍未被任何 exact 消费的 individual describe 可再次进入 M2，并被建立为新的 Chunk 内独立正式人物；collective 始终隔离。
 
 ## 2. 稳定来源身份
 
 每个输入 Chunk 至少保留：
 
 - `source_document_version_id`：小说来源版本；
+- `chunking_policy_version`：分块长度、边界和重叠策略版本；
 - `chunk_id`：同一来源版本和分块规则下稳定；
 - `chunk_hash`：Chunk 正文的内容哈希；
+- `chunk_source_span`：Chunk 在来源文档中的绝对半开字符区间；
 - `chunk_text`：本次处理的完整正文。
 
 `chunk_id` 不能单独证明内容未变化。来源版本、分块规则或正文变化时，必须生成新的来源/Chunk 版本关系。
+
+### 2.1 重叠分块
+
+长文本使用版本化重叠分块，降低人物或证据恰好位于 Chunk 边缘时的漏召回。重叠只提高召回，不证明两个 Chunk 中的提及属于同一个人物。
+
+每个 Chunk 在清单中记录：
+
+- `chunk_source_span`；
+- `overlap_left_characters`；
+- `overlap_right_characters`；
+- 原始 `chunk_hash`。
+
+同一原文可能因重叠同时进入相邻 Chunk。N2 保持每个 Chunk 的局部包不可变，不在本层跨 Chunk 合并；后续汇总先按 `absolute = chunk_source_span.start + local` 换算文档位置，再以来源类型、人物标签、原文事实、文档事实 span 和事实结构组成的确定性键去重，不能仅按 quote 字符串去重。每个合并结果必须保留全部来源 Chunk occurrence。
+
+### 2.2 文档覆盖清单与显式截断
+
+每次文档处理先生成 `DocumentChunkManifest`，至少记录 `document_hash`、`total_characters`、全部 Chunk、`processed_source_end` 和：
+
+- `coverage_status=complete`：已覆盖完整来源文档，`truncation_reason=null`；
+- `coverage_status=truncated`：因最大 Chunk 数、最大字符数、Provider 限制、人工停止或读取错误只处理了前段，并给出明确 `truncation_reason`。
+
+不得静默丢弃尾部，也不得把 `truncated` 运行的召回率、人物总数或“未发现人物”结论当作完整文档结果。Manifest 属于确定性服务层，不发送给模型。
+
+Manifest 还必须通过以下代码校验：
+
+- `complete` 时 `processed_source_end == total_characters`；
+- `truncated` 时 `processed_source_end < total_characters`；
+- Chunk 按 `chunk_source_span.start` 升序排列，区间全部位于 `[0, total_characters)`；
+- 首个 Chunk 从 0 开始，最后一个 Chunk 的 `end` 等于 `processed_source_end`，相邻 Chunk 不得留下未声明的空洞；
+- `overlap_left_characters`、`overlap_right_characters` 必须与相邻 Chunk 的真实交集长度一致；
+- 每个 `chunk_hash` 必须由对应文档原文切片逐字计算，且该切片长度必须等于 `chunk_source_span.end - chunk_source_span.start`。
+
+JSON Schema 只能约束字段形状和 `complete/truncated` 与原因的组合，以上跨字段关系由 Manifest 校验器负责。
+
+### 2.3 所有模型调用的统一边界
+
+只要某阶段调用模型，就必须拆成四层：
+
+1. **代码编排信封**：保存来源版本、Chunk ID、原文位置、hash、缓存键、运行轮次等系统信息；
+2. **模型输入**：只包含完成当前语义任务真正需要阅读的正文、人物称呼和候选证据；
+3. **模型输出**：只返回当前语义任务需要的逐字事实，不生成系统 ID、短引用、状态、hash 或来源位置；
+4. **代码回填与验证**：代码把模型结果重新绑定到编排信封，回填原文 span、packet hash、cache key 和 trace，再交给下一确定性阶段。
+
+`source_document_version_id`、`chunk_id`、`chunk_hash`、`packet_hash`、缓存键、版本号、时间戳、run ID 以及 `t1`、`d1`、`d1-f1` 等内部短引用都不进入模型输入输出。
+
+当前 V3 中 M1、M2 是模型阶段，必须遵守此边界；N2、N3 是代码阶段，不调用模型。未来新增模型阶段时沿用同一规则。
+
+### 2.4 模型提示词的统一组成
+
+每个模型阶段的 Provider 请求固定由三部分组成：
+
+1. `system instruction`：只描述该阶段职责、禁止事项、证据边界和输出规则；
+2. `user payload`：只放对应 Schema 定义的最小模型输入 JSON；
+3. `response schema`：强制结构化 JSON 输出，拒绝 Schema 之外字段。
+
+提示词不得拼入代码编排信封，也不得要求模型“记住”或回传系统字段。M1 提示词只负责提及发现和逐字 evidence；M2 提示词只针对当前 individual exact，从允许证据中返回肯定属于该人物的最小 `fact_quote` 和结构化事实。Provider 原始输出必须先过 Schema、原文绑定和唯一性校验，不能直接进入 N2、N3 或人物记忆。
 
 ## 3. M1：局部候选人物与证据归拢
 
 ### 3.1 唯一职责
 
-M1 从一个 Chunk 中识别人物提及表达，并把模型认为与该提及有关的连续原文证据放进同一个结构块，同时输出 `mention_type`。
+M1 从一个 Chunk 中识别人物提及表达，并把模型认为与该提及有关的连续原文证据放进同一个结构块，同时输出 `mention_type` 与 `mention_scope`。
 
 M1 不做字段分类、外貌原子化、跨 Chunk 身份、时间作用域、持续性或人物记忆写入。
 
@@ -41,19 +99,20 @@ M1 不做字段分类、外貌原子化、跨 Chunk 身份、时间作用域、�
 
 ```json
 {
-  "chunk_id": "chunk-001",
   "chunk_text": "青衫老者身形高瘦，留着花白胡须。白衣女子眉目清秀。"
 }
 ```
+
+来源版本、分块规则、`chunk_id`、hash 和 `chunk_source_span` 保存在 `M1OrchestrationEnvelope`，不发送给模型。
 
 ### 3.3 模型输出
 
 ```json
 {
-  "chunk_id": "chunk-001",
   "candidate_mentions": [
     {
       "mention_type": "describe",
+      "mention_scope": "individual",
       "mention_quote": "青衫老者",
       "evidence_quotes": [
         "青衫老者身形高瘦，留着花白胡须"
@@ -61,6 +120,7 @@ M1 不做字段分类、外貌原子化、跨 Chunk 身份、时间作用域、�
     },
     {
       "mention_type": "describe",
+      "mention_scope": "individual",
       "mention_quote": "白衣女子",
       "evidence_quotes": [
         "白衣女子眉目清秀"
@@ -72,13 +132,16 @@ M1 不做字段分类、外貌原子化、跨 Chunk 身份、时间作用域、�
 
 JSON 中同名字段不能重复，因此一个人物的多条证据必须放在 `evidence_quotes` 数组中。
 
-`local_mention_id` 不由模型生成。服务端按验证后的数组顺序物化为 `m1`、`m2` 等 Chunk 局部提及编号。只有 `mention_type=exact` 的块可以进一步形成 `local_character_ref`；`describe` 和 `null` 块都不是独立人物。
+模型不输出 `chunk_id`。代码依据本次调用对应的 `M1OrchestrationEnvelope`，把输出绑定回正确 Chunk；禁止相信模型自行回传的系统身份字段。
+
+`local_mention_id` 不由模型生成。服务端按验证后的数组顺序物化为 `m1`、`m2` 等 Chunk 局部提及编号。第一轮只有 `mention_type=exact` 的块形成 `local_character_ref`；describe 在 N3 后若仍有未消费证据，可通过 M2 独立建人形成 `promoted_character_ref`。`null` 不形成独立人物。
 
 没有任何人物称呼、只能发现人物相关证据时，进入 `null` 块：
 
 ```json
 {
   "mention_type": null,
+  "mention_scope": null,
   "mention_quote": null,
   "evidence_quotes": ["只见一双手苍白瘦削"]
 }
@@ -88,13 +151,28 @@ JSON 中同名字段不能重复，因此一个人物的多条证据必须放在
 
 `mention_type` 只有三种值：
 
-- `exact`：`mention_quote` 是明确人物名称，例如“张三”“林黛玉”“唐三”。只有这类提及可以作为确切目标人物。
+- `exact`：提及表面形式本身就是稳定、封闭的人物指称，而不是用开放属性临时拼出的描述。包括正式姓名，以及已经词汇化、像名字一样使用的稳定昵称或称号，例如“张三”“林黛玉”“唐三”“凤姐”“宝二爷”。只有这类提及可以作为确切目标人物。
 - `describe`：`mention_quote` 只是泛称、身份描述或外貌描述，不能唯一指向一个人物。例如“人”“老者”“老人”“女孩”“少女”“男人”“女子”“女人”“红衣女子”“月袍老人”“青衫老者”“白衣女子”都属于 `describe`。
 - `null`：原文证据里没有可抽取的人物称呼，此时 `mention_quote` 必须为 JSON `null`，不是字符串 `"null"`。
 
-判定优先看提及本身是否含有明确人物名称。单纯由颜色、衣着、年龄、性别、职业、身份或人物类别词组成的短语一律是 `describe`，不能因为描述很具体就升级为 `exact`。
+判定优先看提及本身是否含有明确人物名称。单纯由颜色、衣着、年龄、性别、职业、身份、亲属排行或人物类别词组成的短语一律是 `describe`，不能因为描述很具体就升级为 `exact`。
 
-### 3.5 describe 泛称后缀规则
+V3 对称号采用保守策略：
+
+- 已经词汇化、通常直接当名字使用的昵称/称号，例如“凤姐”“宝二爷”，可以是 `exact`；
+- 仍可由不同人物担任的开放角色或排行称谓，例如“二小姐”“教皇”“太子”“宗主”“大师兄”，默认是 `describe`；
+- 只有当前 Chunk 存在逐字、明确的同位或命名关系，例如“王熙凤，人称凤姐”这类局部绑定证据时，代码才可把称号作为该 exact 的局部 alias；V3 不靠跨 Chunk 记忆猜测；
+- 无法稳定判断时降级为 `describe`，不得冒进标为 `exact`。
+
+### 3.5 mention_scope 与 collective 隔离
+
+- `individual`：称呼指向一个人物；`exact` 必须是此范围，单人泛称也使用此范围。
+- `collective`：称呼指向一组人物，例如“十七道白色的身影”“众人”“一群侍卫”；只能与 `describe` 搭配。
+- `null`：仅与 `mention_type=null` 搭配。
+
+collective 块可以保留 approved evidence 供审计或未来群像处理，但必须进入 quarantine；不得送入单人物 M2 解析，也不得 promotion 成一个人物。代码只通过 `single_character_mentions` 暴露可进入单人物后续流程的块，通过 `quarantined_collective_mentions` 单独保留群体块。
+
+### 3.6 describe 泛称后缀规则
 
 M1 提取 `mention_quote` 后，代码使用版本化的泛称后缀表 `describe-suffix-v1` 复核 `mention_type`。写成 `*女子` 表示“以女子结尾”，实际实现使用 `mention_quote.endswith("女子")`，不是把 `*女子` 直接当正则表达式。
 
@@ -117,36 +195,47 @@ M1 提取 `mention_quote` 后，代码使用版本化的泛称后缀表 `describ
 匹配顺序：
 
 1. `mention_quote=null` 时结果为 `null`；
-2. 提及是已经识别出的最小明确人物名称时结果为 `exact`；
+2. 提及是已识别出的最小正式名称或稳定词汇化别名时结果为 `exact`；
 3. 否则只要命中泛称后缀表，就强制归一为 `describe`；
 4. 其余提及保留 M1 的语义分类，等待评测完善后缀表。
 
 M1 应优先拆成最小提及，避免把名字和泛称粘成一个块。例如“林黛玉这女子”应拆出 exact“林黛玉”和 describe“这女子”；相关 evidence 允许同时进入两个块。若模型将“红衣女子”错误标为 `exact`，N2 代码归一为 `describe` 并记录 `mention_type_normalized_by_suffix` trace，不直接丢弃其 evidence。
 
+### 3.7 mention 与 evidence 的关系
+
+`evidence_quote` 不要求逐条包含 `mention_quote`。以下两类都允许：
+
+- `contains_mention`：evidence 内逐字包含 mention，例如“林黛玉眉目清秀”；
+- `contextual`：evidence 不含 mention，但可通过当前 Chunk 的代词、邻句或局部叙事关系与该 mention 建立候选关联，例如“林黛玉进屋。她眉目清秀”中的“她眉目清秀”；
+- `no_mention`：仅用于 `mention_type=null`。
+
+该关系不由 M1 增加新字段。N2 根据字符串包含关系确定性派生 `relation_to_mention`，用于调试和评测；`contextual` 只说明 M1 建立了候选关联，不代表语义归属已经正确。
+
 ## 4. N2：最小确定性原文验证
 
 ### 4.1 验证范围
 
-N2 只做来源存在性和结构验证：
+N2 只做来源存在性、结构验证和确定性的 exact evidence 优先过滤：
 
-1. `chunk_id` 与执行请求一致；
-2. `mention_type` 只能是 `exact`、`describe` 或 JSON `null`；
-3. `mention_type=null` 时 `mention_quote` 必须为 `null`；另外两类必须为非空字符串；
+1. M1 输出必须由代码绑定到发起调用的 `M1OrchestrationEnvelope`；模型输出中不接受 `chunk_id` 等系统字段；
+2. `mention_type` 只能是 `exact`、`describe` 或 JSON `null`，`mention_scope` 只能是 `individual`、`collective` 或 JSON `null`；
+3. `exact` 必须配 `individual`；`describe` 必须配 `individual` 或 `collective`；null type 必须配 null scope 和 null quote；
 4. 使用 `describe-suffix-v1` 复核并归一 mention type，归一必须写 trace；
-5. 非空 `mention_quote` 必须存在于 `chunk_text`；
-6. 每条 `evidence_quote` 必须存在于 `chunk_text`；
-7. 记录每条引文的出现次数、位置和哈希；
+5. 非空 `mention_quote` 必须逐字存在于 `chunk_text`，只记录原文 hash，不输出其出现次数或位置；
+6. 每条 `evidence_quote` 先做严格匹配；失败后仅允许删除两边全部 Unicode 空白后字符序列完全一致的安全恢复；任何非空白字符增加、删除、替换或调序均拒绝；
+7. 安全恢复后必须保存正文中的真实原文切片，而不是模型版本；记录每条 evidence 的出现次数、span、原文 hash、`match_mode` 和确定性 `relation_to_mention`；
 8. 同一提及块内完全相同的 evidence 去重；
 9. 无效 evidence 单独拒绝，不因一条无效 evidence 丢弃该块内其他有效 evidence。
+10. 汇总当前 Chunk 所有 grounded exact 的 raw `evidence_quote`；从所有 describe 删除逐字相同项，describe 被删空时删除整个 grounded block，并基于过滤结果重算 `packet_hash`。
 
 ### 4.2 有意不做
 
-- 不判断同一 evidence 是否同时属于两个人物；
-- 不阻止同一 `evidence_quote` 出现在多个人物块；
+- 不判断同一 evidence 在语义上属于哪个人物；exact 优先只是一条用户确认的确定性去冗余规则；
+- 不删除 exact↔exact 或 describe↔describe 的重复 `evidence_quote`；
 - 不做跨 Chunk 人物身份合并；
 - 不判断外貌字段或语义是否正确。
 
-跨提及重复证据被视为允许的 M1 提案。N2 不负责判断 `describe` 属于哪个 `exact` 人物。
+跨提及重复证据仍是允许的 M1 提案。N2 只删除“任一 exact 已持有且 raw quote 完全相等”的 describe 副本，不由此推断 describe 属于哪个 exact 人物。
 
 ### 4.3 approved_evidence
 
@@ -159,13 +248,15 @@ N2 只做来源存在性和结构验证：
     {
       "local_mention_id": "m1",
       "mention_type": "describe",
+      "mention_scope": "individual",
       "mention_quote": "青衫老者",
       "approved_evidence": [
         {
           "evidence_quote": "青衫老者身形高瘦，留着花白胡须",
           "occurrence_count": 1,
           "source_spans": [{"start": 0, "end": 19}],
-          "quote_hash": "..."
+          "relation_to_mention": "contains_mention",
+          "match_mode": "exact"
         }
       ],
       "packet_hash": "..."
@@ -175,9 +266,32 @@ N2 只做来源存在性和结构验证：
 }
 ```
 
-只要一个提及块至少保留一条 approved evidence，就可进入后续组包。但 `describe` 不能单独作为 M2 目标；`null` 本轮不参与 exact×describe 组合。
+`match_mode=exact` 表示模型 quote 与正文逐字一致；`whitespace_equivalent` 表示只在空白上有差异，且 `evidence_quote` 与 span 均已回填为正文真实切片。exact 优先过滤完成后，只要一个提及块仍保留至少一条 approved evidence，就可进入 grounded packet；但只有 `mention_scope=individual` 可进入单人物后续组包。collective 留在 quarantine，null 不进入 exact 携带的 describe 集合。
 
-### 4.4 Chunk 元数据索引
+### 4.4 exact evidence 优先过滤
+
+策略版本为 `exact-evidence-precedence-v1`，执行顺序固定在原文 Grounding 与 mention type 归一之后、最终 packet 物化之前：
+
+1. 从全部 grounded `mention_type=exact` 块建立 raw `evidence_quote -> exact local_mention_id[]` 索引；
+2. 按原顺序扫描全部 `mention_type=describe` 块（individual 与 collective 都包括）；
+3. describe evidence 的 raw quote 在 exact 索引中时删除该 evidence，并写 `describe_evidence_shadowed_by_exact` trace；
+4. describe 仍有 evidence 时保持剩余顺序并重算 packet hash；被删空时删除整个块并写 `describe_removed_after_exact_dedup` trace；批处理把这些事件单独保存到 `n2-grounding-traces.json` 并在 summary 汇总计数；
+5. M1 `model_output` 保持原样，只有 N2 `grounded_mentions` 被过滤。
+
+例如，萧熏儿 exact 与“少女” describe 都含有以下相同证据：
+
+```json
+{
+  "exact": {"mention_quote": "萧熏儿", "evidence_quotes": ["微笑的小脸", "纤细的指尖"]},
+  "describe": {"mention_quote": "少女", "evidence_quotes": ["微笑的小脸", "纤细的指尖"]}
+}
+```
+
+N2 输出只保留萧熏儿 grounded block；“少女”的 evidence 被删空，因此不进入 `grounded_mentions`。若“少女”还有 exact 未持有的“少女身材修长”，则只保留这一条和该 describe 块。
+
+比较键是 Grounding 回填后的 raw quote 完全相等，不做语义相似、标点忽略或非空白规范化。模型 quote 即使通过纯空白恢复，只要最终回填为同一 raw quote，也会被识别为重复。
+
+### 4.5 Chunk 元数据索引
 
 N2 验证后，由代码在 Chunk 元数据中生成可重建索引：
 
@@ -190,88 +304,171 @@ N2 验证后，由代码在 Chunk 元数据中生成可重建索引：
 }
 ```
 
-`packet_hash` 是局部提及证据包的指纹，不是正式人物 ID。哈希输入包括来源版本、Chunk 身份、mention type、mention quote 和已批准 evidence 的规范化内容与位置；不包含 `run_id`。
+`packet_hash` 是局部提及证据包的指纹，不是正式人物 ID。hash 始终使用 Grounding 和 exact 优先过滤后的真实原文，具体规则见 4.6。
 
-## 5. M2：exact 目标与 describe 证据池组合解析
+### 4.6 原始文本、span 与 hash 规范
+
+所有 span 都是半开区间 `[start, end)`，下标基于已经解码完成的原始 `chunk_text` Unicode code point 序列。代码必须验证 `0 <= start < end <= len(container_text)`。
+
+- `chunk_hash = SHA-256(chunk_text 的原始 UTF-8 字节)`；
+- grounded packet v6 不再生成逐条 `quote_hash` 或 `mention_quote_hash`；原文逐字性由 raw quote、source span 回放和 `chunk_hash` 共同验证；
+- CRLF/LF、全角空格、Unicode 组合形式、中文标点、首尾空格都不得在 grounding 前悄悄改写；纯空白等价恢复必须先定位并回填真实原文切片；
+- 如果摄入层必须转换编码或换行，应先生成新的 `source_document_version_id` 和 `chunk_hash`，再进入本流水线；
+- 重复 quote 的每个 `source_span` 是不同证据出现位置，进入 M2 前必须展开为独立 occurrence。
+
+`packet_hash` 使用固定键顺序的规范 JSON 序列化，输入严格为：
+
+```text
+grounded_packet_version
+source_document_version_id
+chunking_policy_version
+chunk_id
+chunk_hash
+chunk_source_span
+local_mention_id
+mention_type
+mention_scope
+mention_quote 原始字符串或 null
+evidence_precedence_policy_version
+approved evidence occurrences（按 source span 排序）：
+    raw start
+    raw end
+    relation_to_mention
+    match_mode
+```
+
+`run_id`、模型名、调用时间和 trace 不进入 `packet_hash`。N2 packet 顶层同时输出 `evidence_precedence_policy_version=exact-evidence-precedence-v1`；策略变化必须升级 packet 版本并使 hash/cache 失效。
+
+## 5. M2：每个 exact 携带全部 individual describe 证据池解析
 
 ### 5.1 调用单位
 
-设当前 Chunk 有 E 个 `exact` 块、D 个 `describe` 块。代码生成：
+设当前 Chunk 有 E 个 `exact + individual` 块、D 个 `describe + individual` 块。collective 不计入 E 或 D。代码生成 E 个 M2 模型任务。每个任务都包含：
 
-1. E 个 exact 自身证据解析任务；
-2. E × D 个“一个 exact 目标 + 一个 describe 证据池”归属解析任务。
+1. 一个 `exact` 目标；
+2. 该 exact 自身的 approved evidence；
+3. 本轮全部 D 个 `describe` 块；
+4. 用于理解人物关系的完整 `chunk_text`。
 
-因此每个 `describe` 都会分别与每个确切人物进入 M2，不能提前只选一个人物，避免漏掉真正归属。不同组合可以并行执行。
+因此调用数是 E，不是 `E + E × D`。每个 describe 仍会被全部 exact 分别判断，只是同一 exact 对 D 个 describe 的判断合并到一次调用中。E 个任务之间可以并行。
 
-- `describe` 没有自己的 `local_character_ref`，不能独立产出人物事实。
-- Chunk 没有 `exact` 时，`describe` 暂存为 unresolved，不启动人物归属 M2。
-- `mention_type=null` 本轮不参与 exact×describe 组合，单独保留 trace。
+- 在 exact 归属模式中，`describe` 还没有自己的正式人物引用；只有 N3 剩余池进入独立建人模式后才能形成 `promoted_character_ref`。
+- D=0 时仍可执行 E 个任务，只拆解各 exact 自身证据。
+- Chunk 没有 exact 时，describe 暂存为 unresolved，不启动人物归属 M2。
+- `mention_type=null` 不进入模型输入，单独保留 trace；`mention_scope=collective` 留在 quarantine，不进入归属或独立建人输入。
 
-### 5.2 输入
+### 5.2 代码编排信封
+
+代码使用 `M2OrchestrationEnvelope` 保存以下内容，但不会把它们原样发送给模型：
+
+- `target_character_ref` 及 target packet hash；
+- target evidence 与 describe evidence 的原始 quote、Chunk span、packet hash 和内部映射；
+- `task_cache_key`、`context_version`、`resolver_version` 和 `resolution_round`；
+- 真正发送给 Provider 的 `model_input`。
+
+`describe_ref`、`fragment_ref`、`evidence_ref`、span、hash 和状态都只存在于代码信封或代码回填结果中。实际 Provider 请求只能取 `model_input`；模型不需要读取、记忆或回传这些编排字段。
+
+### 5.3 真正发送给模型的输入
 
 ```json
 {
-  "target_character_ref": {
-    "source_document_version_id": "novel-v1",
-    "chunk_id": "chunk-001",
-    "local_mention_id": "m1",
-    "mention_type": "exact",
-    "packet_hash": "..."
-  },
-  "target_mention_quote": "林黛玉",
-  "target_approved_evidence_quotes": [
-    "林黛玉换上红衣，走进屋中"
-  ],
-  "describe_source": {
-    "local_mention_id": "m2",
-    "mention_type": "describe",
-    "mention_quote": "红衣女子",
-    "packet_hash": "...",
-    "available_evidence_fragments": [
-      {
-        "source_evidence_quote": "红衣女子眉目清秀，身形纤细",
-        "fragment_quote": "红衣女子眉目清秀，身形纤细"
-      }
+  "target": {
+    "mention_quote": "林黛玉",
+    "approved_evidence_quotes": [
+      "林黛玉换上红衣，走进屋中"
     ]
   },
-  "resolution_round": 1,
-  "chunk_text": "林黛玉换上红衣，走进屋中。红衣女子眉目清秀，身形纤细。"
+  "describe_blocks": [
+    {
+      "mention_quote": "红衣女子",
+      "evidence_quotes": [
+        "红衣女子眉目清秀，身形纤细"
+      ]
+    },
+    {
+      "mention_quote": "白发老人",
+      "evidence_quotes": [
+        "白发老人站在她身后"
+      ]
+    }
+  ],
+  "chunk_text": "林黛玉换上红衣，走进屋中。红衣女子眉目清秀，身形纤细。白发老人站在她身后。"
 }
 ```
 
-`describe_source=null` 表示只拆解 exact 自己的 approved evidence。非空时，M2 必须逐条判断 describe 片段是 `belongs_to_target`、`not_target` 还是 `uncertain`。
+`chunk_text` 只用于理解代词、上下句和人物关系。模型输出的 `fact_quote` 必须逐字来自 `target.approved_evidence_quotes` 或 `describe_blocks[].evidence_quotes`；只存在于 Chunk 上下文、但不在允许证据池中的文字不得输出为事实。
 
-`chunk_text` 只辅助理解。模型不能从完整 Chunk 随意补证据；exact 自身事实必须来自 `target_approved_evidence_quotes`，describe 归属事实必须来自当前 `available_evidence_fragments`。
-
-### 5.3 输出
+### 5.4 模型输出
 
 ```json
 {
-  "target_character_ref": {
-    "source_document_version_id": "novel-v1",
-    "chunk_id": "chunk-001",
-    "local_mention_id": "m1",
-    "mention_type": "exact",
-    "packet_hash": "..."
-  },
-  "target_appearance_facts": [],
-  "describe_source_ref": {
-    "local_mention_id": "m2",
-    "packet_hash": "..."
-  },
-  "describe_evidence_assessments": [
+  "belongs_to_target": [
     {
-      "source_evidence_quote": "红衣女子眉目清秀，身形纤细",
-      "fragment_quote": "红衣女子眉目清秀，身形纤细",
-      "attribution_status": "belongs_to_target",
-      "claimed_evidence_quote": "红衣女子眉目清秀，身形纤细",
-      "appearance_facts": [
+      "fact_quote": "眉目清秀",
+      "category": "face",
+      "attribute": "眉目",
+      "value": "清秀"
+    }
+  ]
+}
+```
+
+模型只返回肯定属于当前 exact 的外貌事实；没有属于目标的事实时返回空数组。模型不输出 `not_target`、`uncertain`、任何 ref、span、support 字段或 epistemic 状态。Prompt 必须要求只输出原文明示的当前视觉事实，否定、不确定和纯推断内容直接省略。
+
+`fact_quote` 是唯一保留的原文锚点。代码按以下顺序回填：
+
+1. `fact_quote` 能在 target approved evidence 中安全匹配：归并到 exact，不消费 describe；
+2. 否则，它只能在一个 describe evidence occurrence 中安全匹配：回填内部来源和 span，交给 N3 仲裁；
+3. 匹配多个 describe occurrence：标记 `ambiguous_fact_binding`，不归并、不删除；
+4. 不在允许证据池中：标记 `fact_not_in_allowed_evidence` 并拒绝；
+5. 安全匹配沿用 N2 规则：严格逐字优先，失败后只容忍删除 Unicode 空白后字符完全一致，任何非空白改写拒绝。
+
+### 5.5 task 级缓存与幂等
+
+每个 exact 的完整 M2 请求生成稳定 `task_cache_key`：
+
+```text
+SHA-256(canonical JSON {
+  target_packet_hash,
+  ordered_describe_pool_hash,
+  context_version,
+  resolver_version
+})
+```
+
+模型名、请求时间和 run ID 不进入 key。Prompt、输出 Schema、事实绑定或归属策略变化时必须升级 `resolver_version`；Chunk 上下文构造变化时必须升级 `context_version`。相同有效 key 直接复用完整输出，不执行部分 ref 缓存拼接。
+
+### 5.6 M2 第二种模式：剩余 describe 独立建人
+
+exact 归属和 N3 仲裁结束后，每个仍有未消费 evidence 的 describe 生成一个独立建人任务。若有 R 个剩余 describe 块，就生成 R 个任务。
+
+真正发送给模型的输入：
+
+```json
+{
+  "describe": {
+    "mention_quote": "红衣女子",
+    "remaining_evidence_quotes": [
+      "红衣女子眉目清秀，身形纤细"
+    ]
+  },
+  "chunk_text": "林黛玉走进屋中。红衣女子眉目清秀，身形纤细。"
+}
+```
+
+模型输出可以把一个剩余 describe 池拆成一个或多个人物。模型仍不读取或返回 ref/span：
+
+```json
+{
+  "characters": [
+    {
+      "character_label_quote": "红衣女子",
+      "belongs_to_character": [
         {
+          "fact_quote": "眉目清秀",
           "category": "face",
           "attribute": "眉目",
-          "value": "清秀",
-          "support_quote": "眉目清秀",
-          "epistemic_status": "asserted"
+          "value": "清秀"
         }
       ]
     }
@@ -279,41 +476,77 @@ N2 验证后，由代码在 Chunk 元数据中生成可重建索引：
 }
 ```
 
-`claimed_evidence_quote` 是模型认为属于 exact 目标的最小连续原文片段，必须位于 `fragment_quote` 中；每条 `support_quote` 又必须位于 `claimed_evidence_quote` 中。这样一句 evidence 同时描写两个人时，N3 只消费已分清的片段，不会整句删除。
+代码允许 `character_label_quote` 逐字等于已经验证过的 describe `mention_quote`，此时不生成或保存人物标签位置；其他标签仍须在剩余证据池中安全且唯一匹配。每条 `fact_quote` 独立执行严格/纯空白等价 Grounding：安全唯一匹配的事实正常回填来源和 span；重复、歧义或不存在的事实单独进入 review，不猜测 occurrence，也不连带删除同人物已安全绑定的事实。人物标签有效且至少一条事实安全时即可建立人物；全部事实失败时不建人。多个新人物的标签或已接受事实位置发生重叠时，相关人物仍整体失败关闭。未绑定内容保存在 `unassigned_fragments`，不得静默丢弃。该策略版本为 `promotion-partial-fact-acceptance-v1`。
 
-`not_target` 和 `uncertain` 不得输出 `claimed_evidence_quote` 或 appearance facts。M2 不返回稳定 fact ID，不修改目标引用，不写入人物记忆。
+`promotion_hash` 基于来源版本、Chunk、describe packet hash、按位置排序的剩余原文 hash/span、`context_version` 和 `resolver_version` 计算。代码按每个人最早的已绑定事实位置排序后分配 `promotion_index=1..N`，不使用模型数组顺序生成正式引用。
+
+### 5.7 当前运行时映射
+
+Python `0.1.0.dev12` 按上述契约提供以下边界：
+
+- `build_m2_attribution_envelopes`：从一个 N2 `GroundingResult` 为每个 individual exact 生成一个 `M2OrchestrationEnvelope`，并把全部 individual describe 展开为代码侧 occurrence binding；collective 与 null mention 不进入输入；
+- `M2AttributionOrchestrator`：只把 `model_input`、M2 system instruction 和 `M2_ATTRIBUTION_RESPONSE_SCHEMA` 交给 Provider，解析最小事实输出后执行 target 优先、describe 唯一 occurrence 的安全绑定；失败项只进入代码侧 issues；
+- `M2PromotionEnvelope.from_grounded_describe`：接收一个 individual describe 及 N3 产生的 remaining fragments；未接 N3 时也可使用完整 approved evidence 做确定性测试；
+- `M2PromotionOrchestrator`：逐条验证事实来源，部分接受安全事实、隔离歧义事实，拦截跨人物标签/已接受事实重叠，按最早安全事实位置生成稳定 `promotion_index`，并保留未认领残片；
+- `resolve_n3_chunk`：等待同一 Chunk 全部 exact 结果，直接归并 exact 事实，对 describe fact span 做唯一消费、跨目标重叠冲突隔离和非冲突剩余片段重建；
+- `run_n3_promotion_from_m2_run`：验证 M1/M2 来源 hash，重放当前 N2，写出 N3 三类产物，并对剩余 individual describe 执行带稳定 hash 的断点续跑；
+- `replay_promotion_grounding`：不调用模型；读取已保存的 promotion envelope 与模型原始输出，按当前版本化 Grounding 策略重新生成 grounded/review 结果，使模型输出缓存与确定性策略解耦；
+- `run_document_evidence_aggregation`：不调用模型；把 exact 与 promoted 事实的 Chunk 局部 span 换算为文档绝对 span，逐字回放校验，并安全合并重叠 Chunk 副本，同时保留全部来源 occurrence；
+- `prepare_document_identity`：不调用模型；建立完整 local/promoted 人物节点目录、原文上下文、确定性共享事实边和每节点有上限的候选任务；
+- `run_document_identity`：按任务缓存执行或恢复 M3，重新 Grounding 已保存模型输出，只有全部任务成功后才建立统一人物档案；
+- `DeepSeekProvider`：读取每个阶段请求自带的 schema name 和 response schema，M1/M2 共用同一套 HTTPS、重试、错误分类与脱敏 trace 实现。
+
+### 5.8 文档级事实汇总
+
+统一产物为 `document-character-evidence.json`。每条 `appearance_facts` 记录 `character_origin`、`character_label_quote`、结构化事实、`document_fact_span`、确定性的 `fact_hash` 和一个或多个 `source_occurrences`。每个来源 occurrence 保留 Chunk ID/hash/span、local 或 promoted character ref、原始 evidence quote、Chunk 局部 span 与换算后的文档 evidence span。
+
+重叠去重键固定为：`character_origin + character_label_quote + fact_quote + document_fact_span + category + attribute + value`。因此，同一原文位置且结构完全相同的重叠副本会合并；不同人物、不同文档位置或不同结构解释不会因为 quote 相同而被误删。`fact_hash` 是完整文档事实身份的 hash，不是逐 quote hash。
+
+M2 attribution 只生成已绑定的候选事实，不修改 N2 packet，也不从 describe 工作池删除字符。N3 只修改派生工作池；N2 packet、M1 模型输出和 M2 attribution 产物保持不可变。
 
 ## 6. N3：证据验证、describe 消费与循环
 
-### 6.1 事实证据三态验证
+### 6.1 fact_quote 代码验证
 
-N3 仍对每条 `appearance_fact.support_quote` 执行三态验证：
+N3 只接收已经由代码绑定来源的 `fact_quote`：
 
-- `approved`：exact 自身事实位于目标的 approved evidence；或 describe 事实位于经过验证的 `claimed_evidence_quote`，且 claimed quote 位于该 describe 的 approved evidence 片段。
-- `review_context_only`：证据只存在于完整 Chunk，但不在本次允许的 exact/describe 证据范围内。不能直接批准，写入 trace。
-- `rejected_hallucination`：证据连完整 Chunk 都不存在，拒绝并写入 trace。
+- `approved_target_evidence`：事实位于当前 exact 的 approved evidence，直接归并；
+- `approved_describe_evidence`：事实唯一位于一个 describe evidence occurrence，进入跨 exact 仲裁；
+- `ambiguous_fact_binding`：存在多个可匹配来源，不归并、不消费；
+- `fact_not_in_allowed_evidence`：不在允许证据池中，拒绝。
+
+完整 Chunk 只能帮助模型理解关系，不能把只存在于上下文、但不在允许 evidence 中的文字升级为外貌事实。
 
 ### 6.2 describe 归属汇总
 
-N3 必须等待同一轮中某个 describe 片段与全部 exact 目标的 M2 结果，再按原文 span 汇总：
+N3 等待同一轮 E 个 exact 任务完成，再按代码回填的 describe source occurrence 和 fact span 汇总肯定事实。模型没有输出的内容视为“未认领”，不再要求模型逐项返回 `not_target` 或 `uncertain`。
 
-1. 只有一个 exact 对该片段给出通过证据校验的 `belongs_to_target`：将该片段标记为 `consumed_unique`，事实归入该 exact 人物。
-2. 两个或更多 exact 对同一片段给出 `belongs_to_target`，或不同 claim span 互相重叠：标记 `conflicted`，不得消费，进入 review/下一轮。
-3. 没有 exact 成功认领：片段继续留在 describe 待处理池。
-4. `not_target` 和 `uncertain` 永远不能触发证据消费。
+仲裁和消费的最小单位是字符 span，不是整条 `evidence_quote`：
 
-这里的“删除”是从可变的 describe 待处理池中消费对应原文 span，不是删除 N2 的原始 `approved_evidence`。N2 包必须保持不可变，用于审计、重放和纠错。
+1. 某个 fact span 只有一个 exact 返回并通过绑定：标记 `consumed_unique`，事实归入该 exact；
+2. 不同 exact 的 fact span 相同或重叠：标记 `conflicted`，不得消费；
+3. 同一个 exact 的重复或重叠 fact 先确定性合并；
+4. 同一 describe evidence 内，两个互不重叠的 span 可以分别归给两个 exact 并分别消费。
+5. 没有 exact 成功认领的内容继续留在 describe 待处理池。
+
+N2 先按 `exact-evidence-precedence-v1` 生成过滤后的不可变 packet；N3 这里的“删除”是从该 packet 派生的可变 describe 待处理池中消费对应原文 span，不再回写或修改已经物化的 N2 packet。M1 原始 model output 仍用于重放和纠错。
 
 ### 6.3 剩余 describe 重新进入 M2
 
-N3 将未消费的原文 span 重建为 `remaining_evidence_fragments`，再次与每个 exact 目标进入 M2。必须同时具备循环保护：
+N3 将没有被任何 exact 成功消费的原文 span 重建为 `remaining_evidence_fragments`。这些剩余内容不再重新交给全部 exact，也不再进行 exact 归属循环，而是按 describe 块分别进入 5.6 的“剩余 describe 独立建人”模式。
 
-- 本轮至少消费了一个片段，或者 exact 候选集合/可用上下文发生变化，才允许自动重跑；
-- `pool_hash` 与上一轮相同即视为无进展，停止自动循环并标记 `defer_unresolved`；
-- 设置 `resolution_round` 上限，超过上限进入人工 review；
-- 已消费片段不得再次进入后续 M2。
+例如“红衣女子眉目清秀”中的“眉目清秀”没有被任何 exact 返回，N3 就保留该内容；M2 结合 `chunk_text` 将“红衣女子”解析成新的独立本地人物。
 
-示例消费结果：
+独立建人规则：
+
+- 每个非空剩余 describe 池至少尝试建立一个本地人物；
+- 一个池包含多个未被 exact 消费的人物时，模型可以拆成多个人物；
+- 每条 `fact_quote` 只允许从剩余 evidence 安全绑定，已消费片段不得再次使用；
+- `pool_hash + context_version + resolver_version` 形成稳定 `promotion_hash`，相同输入不得重复建人；
+- exact 冲突区间不属于“未认领”，继续进入 review，不得借独立建人绕过冲突；
+- 模型输出验证失败时进入 `promotion_review_required`，不得静默丢弃剩余人物。
+
+代码侧消费结果仍保留内部来源和 span，例如：
 
 ```json
 {
@@ -323,51 +556,112 @@ N3 将未消费的原文 span 重建为 `remaining_evidence_fragments`，再次�
   },
   "consumed_fragments": [
     {
-      "claimed_evidence_quote": "红衣女子眉目清秀",
-      "assigned_target_mention_id": "m1",
-      "status": "consumed_unique"
+      "fact_quote": "眉目清秀",
+      "assigned_target_local_mention_id": "m1",
+      "fact_quote": "眉目清秀",
+      "fact_chunk_span": {"start": 17, "end": 21},
+      "source_evidence_quote": "红衣女子眉目清秀，旁边老人须发皆白",
+      "source_evidence_span": {"start": 13, "end": 31},
+      "status": "uniquely_assigned"
     }
   ],
   "remaining_evidence_fragments": [
     {
       "source_evidence_quote": "红衣女子眉目清秀，旁边老人须发皆白",
-      "fragment_quote": "旁边老人须发皆白"
+      "source_evidence_span": {"start": 13, "end": 31},
+      "fragment_quote": "旁边老人须发皆白",
+      "fragment_span": {"start": 22, "end": 31}
     }
   ],
-  "next_action": "requeue_m2"
+  "next_action": "promote_remaining_describe"
 }
 ```
 
-## 7. 后续人物识别接口占位
+## 7. 跨 Chunk 人物身份层（M3）
 
-V3 当前只冻结最小引用：
+### 7.1 完整局部人物目录
+
+代码先把所有 N3 exact target 和所有安全 promotion 物化为 `document-local-character-nodes.json`。即使某个 exact 暂时没有外貌事实，也必须保留其局部人物节点，避免身份层只看见“有外貌的人”。每个节点保留原有 `local_character_ref` 或 `promoted_character_ref`、来源 Chunk、已有 `fact_hash` 引用和用于模型阅读的原文上下文。这里的 hash、ref、span 全部属于代码侧，模型不可见。
+
+候选检索只使用弱信号缩小范围：同一 exact 标签、标签包含关系、可能的姓名字形变体、相同事实原文。弱信号绝不直接合并。默认每个当前节点最多保留 2 个候选；只有两个局部节点已共同引用同一个文档事实 `fact_hash` 时，代码才建立无需模型的确定性 same edge。
+
+### 7.2 M3 模型输入
+
+一个模型任务只比较当前局部人物与一个候选人物。输入没有 `node_key`、人物 ref、span、hash、cache key 或 `character_id`：
 
 ```json
 {
-  "local_character_ref": {
-    "source_document_version_id": "novel-v1",
-    "chunk_id": "chunk-001",
-    "local_mention_id": "m1",
-    "mention_type": "exact",
-    "packet_hash": "..."
+  "current_character": {
+    "label_quote": "熏儿",
+    "label_type": "exact",
+    "context_quotes": ["少女走到萧炎身旁，萧炎唤她熏儿。"],
+    "appearance_fact_quotes": ["美丽的眼睛"]
   },
-  "character_id": null,
-  "identity_status": "unresolved"
+  "candidate_character": {
+    "known_labels": ["萧熏儿"],
+    "context_quotes": ["萧熏儿微微一笑。"],
+    "appearance_fact_quotes": ["修长的睫毛"]
+  },
+  "bridge_context_quotes": ["萧熏儿走近，萧炎随后唤她熏儿。"]
 }
 ```
 
-后续人物记忆只通过版本化的 `local_character_ref -> character_id` 绑定接入。绑定策略、人物创建、别名、代词、合并与拆分规则不在本契约中决定。
+`bridge_context_quotes` 只在两个节点附近存在不超过配置上限的连续原文时提供。外貌相似、同名、职位相同或距离接近都不能单独证明同一人物；外貌不同也不能单独证明是不同人物。
+
+### 7.3 M3 模型输出
+
+模型只输出关系与证明关系的原文：
+
+```json
+{
+  "identity_relation": "same_character",
+  "label_relation": "alias",
+  "identity_evidence_quotes": ["萧炎随后唤她熏儿"]
+}
+```
+
+- `same_character`：必须给出 `label_relation` 和至少一条身份原文；
+- `different_characters`：`label_relation` 必须为 `null`，并且必须给出明确区分两人的原文；
+- `uncertain`：`label_relation` 为 `null`，证据数组为空；
+- `label_relation` 只允许 `same_surface`、`name_variant`、`alias`、`title`、`contextual_description`、`unknown`；
+- `identity_evidence_quotes` 必须从模型可见上下文连续逐字复制，不能概括、改写或拼接。
+
+### 7.4 Grounding 与失败关闭
+
+代码把每条身份引用在所有模型可见 context 中匹配。严格匹配失败时，仅允许删除 Unicode 空白后字符完全一致的恢复；任何非空白字符变化都拒绝。重叠 context 指向同一文档绝对位置时只算一次；同一 quote 若对应多个不同文档 occurrence，则标记 `ambiguous_identity_evidence`，不猜位置。
+
+只要至少一条身份引用唯一 Grounding，same/different 可保留，其他歧义引用单独进入 issue；若没有任何引用安全 Grounding，则整条关系降为 `uncertain`。这与 promotion 的“部分接受”原则一致。
+
+### 7.5 全局人物档案
+
+全部任务完成后，代码使用 union/cannot-link 约束生成 `document-character-registry.json`：
+
+- `character_id` 是基于来源版本、身份策略和最早成员节点生成的 opaque ID，不由姓名直接生成；
+- `member_character_refs` 保存并映射原有 local/promoted ref；
+- `labels` 记录 name、name_variant、alias、title、contextual_description 或 unknown；泛称和 title 默认不声明全局唯一；
+- `appearance_fact_refs` 引用 `document-character-evidence.json` 已有的 `fact_hash` 与原文，不再创建逐 quote hash；
+- 同一属性出现多个值时全部保留，并在 `possible_conflicts` 中记录，不静默覆盖；
+- 明确的 `different_characters` 形成 `cannot_link_constraints`，阻止传递合并；
+- 一个当前节点被指向多个尚未同簇的 same 候选，或证据不足时进入 `unresolved_bindings` / `review_items`，不创建猜测绑定。
+
+M3 支持按 `task_cache_key` 断点续跑。保存的模型输出在恢复时重新执行当前 Grounding，完整成功后才写统一人物档案。
 
 ## 8. V3 完成门槛
 
 V3 设计完成不等于运行时完成。进入人物识别阶段前至少需要：
 
 1. M1/N2/M2/N3 DTO 与 JSON Schema 一致；
-2. M1 输出 `exact/describe/null`、人物提及块和原文 evidence，不输出外貌字段；
-3. N2 对 mention type、mention/evidence 做确定性验证并允许跨提及重复 evidence；
-4. 每个 describe 与每个 exact 都生成 M2 组合任务，describe 不被当成独立人物；
-5. M2 输出 describe 归属状态、最小 claimed evidence 和外貌事实；
-6. N3 完成三态证据验证、唯一认领、冲突保留、片段消费、剩余池重组和无进展停止；
-7. `packet_hash` 与 `pool_hash` 不依赖 run ID，重跑稳定；
-8. 建立最小真实 Chunk shadow 数据集并由用户审核；
-9. 不产生 active 人物事实或正式人物记忆写入。
+2. M1 输出 type、scope、人物提及块和原文 evidence，不输出外貌字段；
+3. 人物称谓不输出 occurrence 数量或 span；N2 对 type、scope、mention/evidence 做确定性验证，并以 versioned exact precedence 删除 describe 同文副本和空块；collective 不得进入单人物 promotion；
+4. 第一轮每个 individual exact 生成一个携带全部 individual describe 块的 M2 任务；所有 individual describe 先由所有 exact 分别判断；
+5. 所有模型阶段都分离代码信封、模型输入、模型输出和代码回填，模型不处理来源版本、Chunk ID、hash、cache key 或 trace；
+6. M2 模型输入输出不含 ref、span、归属状态或 epistemic 状态；代码以 `fact_quote` 安全且唯一匹配后回填来源和 span；
+7. N3 以代码回填的 Chunk fact span 为最小单位完成唯一认领、非重叠独立消费、冲突保留和剩余池重组；
+8. 每个剩余 individual describe 池单独进入 M2 独立建人，生成经过证据验证的 `promoted_character_ref` 和外貌事实；collective 池不进入此步骤；
+9. `packet_hash`、`task_cache_key`、`pool_hash` 与 `promotion_hash` 不依赖 run ID，重跑稳定；
+10. 原始 UTF-8、Unicode code-point offset、半开区间和禁止隐式文本归一化规则有确定性测试；
+11. 建立最小真实 Chunk shadow 数据集并由用户审核；
+12. M3 候选数有明确上限；同名、相似名称和相似外貌只能触发候选，不能自动合并；
+13. same/different 必须经过严格或纯空白等价的原文 Grounding，多 occurrence 不猜测；
+14. 全局 ID、ref 回填、冲突保留、cannot-link、unresolved/review 均由确定性代码生成；
+15. 真实模型身份精度需通过人工标注数据集评测，不能由“批处理完成”替代。

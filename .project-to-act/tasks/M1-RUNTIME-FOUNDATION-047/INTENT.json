@@ -1,0 +1,6 @@
+{
+  "user_decision": "根据技术文档开始 M1 阶段实现。",
+  "implementation_decision": "采用 Python 3.11+ 标准库实现零运行时依赖骨架；以 Protocol 隔离具体模型 SDK。",
+  "non_goal": "本任务不选择或接入具体模型 Provider，不实现 M2、N3、数据库、Web API 或人物记忆。"
+}
+

@@ -1,0 +1,37 @@
+{
+  "id": "PROMOTION-PARTIAL-ACCEPTANCE-059",
+  "title": "Promotion 事实级部分接受与离线重放",
+  "status": "completed",
+  "owner": "Codex",
+  "objective": "修复 promotion 因单条重复或歧义事实而拒绝整个安全人物的问题，将失败边界收窄到事实级，并使用已有斗破模型输出离线重放新策略。",
+  "risk_level": "L1-deterministic-grounding-policy-change",
+  "allowed_paths": [
+    "src",
+    "tests",
+    "docs",
+    "README.md",
+    "pyproject.toml",
+    "runs/doupo-first5-n3-promotion-dev11-partial-20260831",
+    ".project-to-act"
+  ],
+  "invariants": [
+    "唯一匹配的 promotion 事实必须保留，不受同人物其他失败事实连带影响",
+    "重复、歧义或不存在的事实必须逐条进入 review，且不得猜测 occurrence",
+    "歧义事实对应的原文片段必须留在 unassigned_fragments",
+    "人物标签无效或没有任何安全事实时不得创建人物",
+    "不同 promoted 人物的标签或已接受事实重叠仍必须失败关闭",
+    "模型输入输出 Schema 保持最小，不新增 ref、span 或状态字段",
+    "模型输出缓存与 grounding policy 分离，旧模型输出可离线重放",
+    "既有 runs 保持只读，本轮不调用 Provider"
+  ],
+  "acceptance": [
+    "同人物一条唯一事实加一条歧义事实时，人物与唯一事实保留，歧义事实进入 issue",
+    "同人物所有事实均歧义或无匹配时不创建人物",
+    "歧义 occurrence 全部保留在 unassigned_fragments",
+    "跨人物重叠保护保持有效",
+    "N3 batch 可从既有 promotion-model-outputs.json 离线重放且 Provider 调用为 0",
+    "斗破青衫老者保留浑浊的老眼，青衫仍进入 review",
+    "统一文档证据重新生成并通过绝对 span/Schema 校验",
+    "全量测试、治理、Lifecycle 和 diff 验证通过"
+  ]
+}

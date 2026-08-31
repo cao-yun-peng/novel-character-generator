@@ -1,0 +1,17 @@
+{
+  "task_id": "M3-DOUPO-LIVE-EVAL-061",
+  "lifecycle_stage": "5",
+  "lifecycle_revision": 2,
+  "runtime_version": "0.1.0.dev12",
+  "schema_version": "3.12.0-draft1",
+  "input_file": "tests/小说/斗破苍穹前5章.txt",
+  "source_n2_packets": "runs/doupo-first5-m2-dev7-20260831/source-n2-grounded-packets.json",
+  "source_n3_run": "runs/doupo-first5-n3-promotion-dev11-partial-20260831",
+  "document_evidence": "runs/doupo-first5-n3-promotion-dev11-partial-20260831/document-character-evidence.json",
+  "offline_preparation": "runs/doupo-first5-identity-dev12-20260831",
+  "output_run": "runs/doupo-first5-identity-live-dev12-20260831",
+  "expected_tasks": 19,
+  "max_candidates_per_node": 2,
+  "context_freshness": "verified-2026-08-31",
+  "conflicts": []
+}

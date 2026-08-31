@@ -1,0 +1,117 @@
+{
+  "schema_version": "m2-attribution-task-result-v1",
+  "source_run_dir": "E:\\project\\agent\\novel-cahracter-generator\\runs\\doupo-first5-m1-scope-v4",
+  "chunk_index": 3,
+  "chunk_id": "chunk-000003-4500-7000-dbdb791747b5",
+  "target_local_mention_id": "m2",
+  "target_mention_quote": "萧战",
+  "task_cache_key": "585c0615dc69bacb194ad4db2b19fc284d0ed89e172638081234f36c9e229d61",
+  "model_output": {
+    "belongs_to_target": [
+      {
+        "fact_quote": "中年人",
+        "category": "age",
+        "attribute": "年龄阶段",
+        "value": "中年"
+      },
+      {
+        "fact_quote": "华贵的灰色衣衫",
+        "category": "clothing",
+        "attribute": "衣着",
+        "value": "华贵的灰色衣衫"
+      },
+      {
+        "fact_quote": "一对粗眉",
+        "category": "face",
+        "attribute": "眉毛",
+        "value": "一对粗眉"
+      }
+    ]
+  },
+  "grounded_result": {
+    "target_character_ref": {
+      "source_document_version_id": "doupo-first5-7ca3fd295b5d0d45",
+      "chunk_id": "chunk-000003-4500-7000-dbdb791747b5",
+      "local_mention_id": "m2",
+      "mention_type": "exact",
+      "packet_hash": "16fbead3b742b715c9f03655c87b49350924146ef7c9d7bef06dc26a7293836f"
+    },
+    "task_cache_key": "585c0615dc69bacb194ad4db2b19fc284d0ed89e172638081234f36c9e229d61",
+    "grounded_belongs_to_target": [
+      {
+        "fact_quote": "中年人",
+        "category": "age",
+        "attribute": "年龄阶段",
+        "value": "中年",
+        "source_mention_id": "m2",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "中年人身着华贵的灰色衣衫，龙行虎步间颇有几分威严，脸上一对粗眉更是为其添了几分豪气",
+        "source_evidence_span": {
+          "start": 1307,
+          "end": 1348
+        },
+        "fact_chunk_span": {
+          "start": 1307,
+          "end": 1310
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "华贵的灰色衣衫",
+        "category": "clothing",
+        "attribute": "衣着",
+        "value": "华贵的灰色衣衫",
+        "source_mention_id": "m2",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "中年人身着华贵的灰色衣衫，龙行虎步间颇有几分威严，脸上一对粗眉更是为其添了几分豪气",
+        "source_evidence_span": {
+          "start": 1307,
+          "end": 1348
+        },
+        "fact_chunk_span": {
+          "start": 1312,
+          "end": 1319
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "一对粗眉",
+        "category": "face",
+        "attribute": "眉毛",
+        "value": "一对粗眉",
+        "source_mention_id": "m2",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "中年人身着华贵的灰色衣衫，龙行虎步间颇有几分威严，脸上一对粗眉更是为其添了几分豪气",
+        "source_evidence_span": {
+          "start": 1307,
+          "end": 1348
+        },
+        "fact_chunk_span": {
+          "start": 1334,
+          "end": 1338
+        },
+        "match_mode": "exact"
+      }
+    ]
+  },
+  "grounding_issues": [],
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 5640,
+    "http_status": 200,
+    "response_id": "5dc248e0-3b49-49dc-b0a2-a560a91af547",
+    "usage": {
+      "input_tokens": 2140,
+      "cached_input_tokens": 384,
+      "output_tokens": 650,
+      "reasoning_tokens": 550,
+      "total_tokens": 2790
+    },
+    "error_kind": null
+  }
+}

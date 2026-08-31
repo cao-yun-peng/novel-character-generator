@@ -1,0 +1,93 @@
+{
+  "schema_version": "m2-attribution-task-result-v1",
+  "source_run_dir": "E:\\project\\agent\\novel-cahracter-generator\\runs\\doupo-first5-m1-scope-v4",
+  "chunk_index": 6,
+  "chunk_id": "chunk-000006-11250-13750-03087dc524e6",
+  "target_local_mention_id": "m3",
+  "target_mention_quote": "萧战",
+  "task_cache_key": "3c138ef164aea299b4a86b7795d4249122f1f3c5c7c9c58d7bf79e986862389c",
+  "model_output": {
+    "belongs_to_target": [
+      {
+        "fact_quote": "硕大的手掌",
+        "category": "body",
+        "attribute": "手掌",
+        "value": "硕大"
+      },
+      {
+        "fact_quote": "阴沉至极的脸色",
+        "category": "face",
+        "attribute": "脸色",
+        "value": "阴沉至极"
+      }
+    ]
+  },
+  "grounded_result": {
+    "target_character_ref": {
+      "source_document_version_id": "doupo-first5-7ca3fd295b5d0d45",
+      "chunk_id": "chunk-000006-11250-13750-03087dc524e6",
+      "local_mention_id": "m3",
+      "mention_type": "exact",
+      "packet_hash": "3a64436368061100f12b2ca4c412e9c08c8e55902fd446c29386f5dffeb55e86"
+    },
+    "task_cache_key": "3c138ef164aea299b4a86b7795d4249122f1f3c5c7c9c58d7bf79e986862389c",
+    "grounded_belongs_to_target": [
+      {
+        "fact_quote": "硕大的手掌",
+        "category": "body",
+        "attribute": "手掌",
+        "value": "硕大",
+        "source_mention_id": "m3",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "硕大的手掌",
+        "source_evidence_span": {
+          "start": 1614,
+          "end": 1619
+        },
+        "fact_chunk_span": {
+          "start": 1614,
+          "end": 1619
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "阴沉至极的脸色",
+        "category": "face",
+        "attribute": "脸色",
+        "value": "阴沉至极",
+        "source_mention_id": "m3",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "阴沉至极的脸色",
+        "source_evidence_span": {
+          "start": 2106,
+          "end": 2113
+        },
+        "fact_chunk_span": {
+          "start": 2106,
+          "end": 2113
+        },
+        "match_mode": "exact"
+      }
+    ]
+  },
+  "grounding_issues": [],
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 1859,
+    "http_status": 200,
+    "response_id": "47750da9-b6e1-49d2-89ac-a59aafeda0ab",
+    "usage": {
+      "input_tokens": 2180,
+      "cached_input_tokens": 384,
+      "output_tokens": 207,
+      "reasoning_tokens": 154,
+      "total_tokens": 2387
+    },
+    "error_kind": null
+  }
+}

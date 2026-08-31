@@ -1,0 +1,373 @@
+{
+  "schema_version": "m1-chunk-result-v1",
+  "chunk_index": 4,
+  "chunk_id": "chunk-000004-6750-9250-9170b4d8a29d",
+  "chunk_hash": "9170b4d8a29daf5f69995fb5f8c57085cb7934d2f78b7c9b24dcb997a8eca2c0",
+  "chunk_source_span": {
+    "start": 6750,
+    "end": 9250
+  },
+  "model_output": {
+    "candidate_mentions": [
+      {
+        "mention_type": "exact",
+        "mention_quote": "唐三",
+        "evidence_quotes": [
+          "普通五、六岁的孩子",
+          "他那双稚嫩的小手看上去却并没有任何变化",
+          "他的身体变得结实了几分",
+          "一个水泡都没有起过"
+        ]
+      },
+      {
+        "mention_type": "exact",
+        "mention_quote": "小三",
+        "evidence_quotes": [
+          "普通五、六岁的孩子",
+          "他那双稚嫩的小手看上去却并没有任何变化",
+          "他的身体变得结实了几分",
+          "一个水泡都没有起过"
+        ]
+      },
+      {
+        "mention_type": "describe",
+        "mention_quote": "儿子",
+        "evidence_quotes": [
+          "普通五、六岁的孩子",
+          "他那双稚嫩的小手看上去却并没有任何变化",
+          "他的身体变得结实了几分",
+          "一个水泡都没有起过"
+        ]
+      }
+    ]
+  },
+  "grounded_packet": {
+    "schema_version": "grounded-character-packet-v3",
+    "source_document_version_id": "source-4dd3d57c99f4b254",
+    "chunking_policy_version": "fixed-codepoint-window-2500-overlap-250-v1",
+    "chunk_id": "chunk-000004-6750-9250-9170b4d8a29d",
+    "chunk_hash": "9170b4d8a29daf5f69995fb5f8c57085cb7934d2f78b7c9b24dcb997a8eca2c0",
+    "chunk_source_span": {
+      "start": 6750,
+      "end": 9250
+    },
+    "grounded_mentions": [
+      {
+        "local_mention_id": "m1",
+        "mention_type": "exact",
+        "mention_quote": "唐三",
+        "mention_occurrence_count": 26,
+        "mention_source_spans": [
+          {
+            "start": 18,
+            "end": 20
+          },
+          {
+            "start": 37,
+            "end": 39
+          },
+          {
+            "start": 46,
+            "end": 48
+          },
+          {
+            "start": 232,
+            "end": 234
+          },
+          {
+            "start": 372,
+            "end": 374
+          },
+          {
+            "start": 409,
+            "end": 411
+          },
+          {
+            "start": 496,
+            "end": 498
+          },
+          {
+            "start": 697,
+            "end": 699
+          },
+          {
+            "start": 810,
+            "end": 812
+          },
+          {
+            "start": 935,
+            "end": 937
+          },
+          {
+            "start": 1046,
+            "end": 1048
+          },
+          {
+            "start": 1118,
+            "end": 1120
+          },
+          {
+            "start": 1228,
+            "end": 1230
+          },
+          {
+            "start": 1264,
+            "end": 1266
+          },
+          {
+            "start": 1294,
+            "end": 1296
+          },
+          {
+            "start": 1351,
+            "end": 1353
+          },
+          {
+            "start": 1549,
+            "end": 1551
+          },
+          {
+            "start": 1659,
+            "end": 1661
+          },
+          {
+            "start": 1871,
+            "end": 1873
+          },
+          {
+            "start": 1912,
+            "end": 1914
+          },
+          {
+            "start": 2002,
+            "end": 2004
+          },
+          {
+            "start": 2070,
+            "end": 2072
+          },
+          {
+            "start": 2089,
+            "end": 2091
+          },
+          {
+            "start": 2098,
+            "end": 2100
+          },
+          {
+            "start": 2320,
+            "end": 2322
+          },
+          {
+            "start": 2373,
+            "end": 2375
+          }
+        ],
+        "mention_quote_hash": "04af9a5f2d9cca67d65d424e41820e11063f4cb679035d66b8ef30ed334d2c48",
+        "approved_evidence": [
+          {
+            "evidence_quote": "普通五、六岁的孩子",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1010,
+                "end": 1019
+              }
+            ],
+            "quote_hash": "122cdf06e9b1c5f7f0ae5db3156dcd5d3939b99a9a332a3b4bd97af41ed1c212",
+            "relation_to_mention": "contextual"
+          },
+          {
+            "evidence_quote": "他那双稚嫩的小手看上去却并没有任何变化",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 2015,
+                "end": 2034
+              }
+            ],
+            "quote_hash": "afbe2ba706d18a64b1b1bd2ecfc3ac8fb266f2f6390b0ba567bc903aa93ec227",
+            "relation_to_mention": "contextual"
+          },
+          {
+            "evidence_quote": "他的身体变得结实了几分",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1707,
+                "end": 1718
+              }
+            ],
+            "quote_hash": "135005e65979e7ffb1e226a526c925b6161da2f1dfd3d2b287df88490fbc04da",
+            "relation_to_mention": "contextual"
+          },
+          {
+            "evidence_quote": "一个水泡都没有起过",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 2038,
+                "end": 2047
+              }
+            ],
+            "quote_hash": "9fbaf0bd626194eff551d61a03e1e841267fe96192c134bd269d81e65fdbf655",
+            "relation_to_mention": "contextual"
+          }
+        ],
+        "packet_hash": "03165e6507c488eed5d1952af3ba2fb1d194f96ccd6573faace343f95e2030e2"
+      },
+      {
+        "local_mention_id": "m2",
+        "mention_type": "exact",
+        "mention_quote": "小三",
+        "mention_occurrence_count": 2,
+        "mention_source_spans": [
+          {
+            "start": 204,
+            "end": 206
+          },
+          {
+            "start": 340,
+            "end": 342
+          }
+        ],
+        "mention_quote_hash": "38f6a0cc6cfcdf3ba4a0b115ff38fd8f61dfb313b98dd14011398bd5687e98c4",
+        "approved_evidence": [
+          {
+            "evidence_quote": "普通五、六岁的孩子",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1010,
+                "end": 1019
+              }
+            ],
+            "quote_hash": "122cdf06e9b1c5f7f0ae5db3156dcd5d3939b99a9a332a3b4bd97af41ed1c212",
+            "relation_to_mention": "contextual"
+          },
+          {
+            "evidence_quote": "他那双稚嫩的小手看上去却并没有任何变化",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 2015,
+                "end": 2034
+              }
+            ],
+            "quote_hash": "afbe2ba706d18a64b1b1bd2ecfc3ac8fb266f2f6390b0ba567bc903aa93ec227",
+            "relation_to_mention": "contextual"
+          },
+          {
+            "evidence_quote": "他的身体变得结实了几分",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1707,
+                "end": 1718
+              }
+            ],
+            "quote_hash": "135005e65979e7ffb1e226a526c925b6161da2f1dfd3d2b287df88490fbc04da",
+            "relation_to_mention": "contextual"
+          },
+          {
+            "evidence_quote": "一个水泡都没有起过",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 2038,
+                "end": 2047
+              }
+            ],
+            "quote_hash": "9fbaf0bd626194eff551d61a03e1e841267fe96192c134bd269d81e65fdbf655",
+            "relation_to_mention": "contextual"
+          }
+        ],
+        "packet_hash": "dfb268f86d0052a89a17a7702254b21d269fcdf38af5879c2cdaf6a5cc119719"
+      },
+      {
+        "local_mention_id": "m3",
+        "mention_type": "describe",
+        "mention_quote": "儿子",
+        "mention_occurrence_count": 1,
+        "mention_source_spans": [
+          {
+            "start": 1935,
+            "end": 1937
+          }
+        ],
+        "mention_quote_hash": "9231b93fd67f48d7cb959b7928c32787492fe2a15a51c744d39f4ea54657352a",
+        "approved_evidence": [
+          {
+            "evidence_quote": "普通五、六岁的孩子",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1010,
+                "end": 1019
+              }
+            ],
+            "quote_hash": "122cdf06e9b1c5f7f0ae5db3156dcd5d3939b99a9a332a3b4bd97af41ed1c212",
+            "relation_to_mention": "contextual"
+          },
+          {
+            "evidence_quote": "他那双稚嫩的小手看上去却并没有任何变化",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 2015,
+                "end": 2034
+              }
+            ],
+            "quote_hash": "afbe2ba706d18a64b1b1bd2ecfc3ac8fb266f2f6390b0ba567bc903aa93ec227",
+            "relation_to_mention": "contextual"
+          },
+          {
+            "evidence_quote": "他的身体变得结实了几分",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1707,
+                "end": 1718
+              }
+            ],
+            "quote_hash": "135005e65979e7ffb1e226a526c925b6161da2f1dfd3d2b287df88490fbc04da",
+            "relation_to_mention": "contextual"
+          },
+          {
+            "evidence_quote": "一个水泡都没有起过",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 2038,
+                "end": 2047
+              }
+            ],
+            "quote_hash": "9fbaf0bd626194eff551d61a03e1e841267fe96192c134bd269d81e65fdbf655",
+            "relation_to_mention": "contextual"
+          }
+        ],
+        "packet_hash": "467963d53b89d361cb78647955e59bba2c7b4398445a511afe135f69be9df825"
+      }
+    ],
+    "rejected_evidence": []
+  },
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 45656,
+    "http_status": 200,
+    "response_id": "588d5144-71be-4748-8380-4581da280fc4",
+    "usage": {
+      "input_tokens": 2390,
+      "cached_input_tokens": 768,
+      "output_tokens": 5018,
+      "reasoning_tokens": 4789,
+      "total_tokens": 7408
+    },
+    "error_kind": null
+  }
+}

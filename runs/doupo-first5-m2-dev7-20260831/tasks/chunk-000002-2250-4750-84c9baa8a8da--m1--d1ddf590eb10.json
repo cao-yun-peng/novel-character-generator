@@ -1,0 +1,141 @@
+{
+  "schema_version": "m2-attribution-task-result-v1",
+  "source_run_dir": "E:\\project\\agent\\novel-cahracter-generator\\runs\\doupo-first5-m1-scope-v4",
+  "chunk_index": 2,
+  "chunk_id": "chunk-000002-2250-4750-84c9baa8a8da",
+  "target_local_mention_id": "m1",
+  "target_mention_quote": "萧薰儿",
+  "task_cache_key": "d1ddf590eb10788495b06e7443c9bad987ca4ff51b6deb63a7085a40968932d4",
+  "model_output": {
+    "belongs_to_target": [
+      {
+        "fact_quote": "平淡的小脸",
+        "category": "appearance_state",
+        "attribute": "表情",
+        "value": "平淡"
+      },
+      {
+        "fact_quote": "美丽的俏脸",
+        "category": "face",
+        "attribute": "容貌",
+        "value": "美丽"
+      },
+      {
+        "fact_quote": "萧薰儿纤细的眉毛",
+        "category": "face",
+        "attribute": "眉毛",
+        "value": "纤细"
+      },
+      {
+        "fact_quote": "白皙的俏脸",
+        "category": "face",
+        "attribute": "脸色",
+        "value": "白皙"
+      }
+    ]
+  },
+  "grounded_result": {
+    "target_character_ref": {
+      "source_document_version_id": "doupo-first5-7ca3fd295b5d0d45",
+      "chunk_id": "chunk-000002-2250-4750-84c9baa8a8da",
+      "local_mention_id": "m1",
+      "mention_type": "exact",
+      "packet_hash": "1bec7c230c4eb6de3849615a3ed20f58c4969c492a11469a5dd86f3614ce8c7b"
+    },
+    "task_cache_key": "d1ddf590eb10788495b06e7443c9bad987ca4ff51b6deb63a7085a40968932d4",
+    "grounded_belongs_to_target": [
+      {
+        "fact_quote": "平淡的小脸",
+        "category": "appearance_state",
+        "attribute": "表情",
+        "value": "平淡",
+        "source_mention_id": "m1",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "平淡的小脸",
+        "source_evidence_span": {
+          "start": 76,
+          "end": 81
+        },
+        "fact_chunk_span": {
+          "start": 76,
+          "end": 81
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "美丽的俏脸",
+        "category": "face",
+        "attribute": "容貌",
+        "value": "美丽",
+        "source_mention_id": "m1",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "美丽的俏脸",
+        "source_evidence_span": {
+          "start": 176,
+          "end": 181
+        },
+        "fact_chunk_span": {
+          "start": 176,
+          "end": 181
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "萧薰儿纤细的眉毛",
+        "category": "face",
+        "attribute": "眉毛",
+        "value": "纤细",
+        "source_mention_id": "m1",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "萧薰儿纤细的眉毛",
+        "source_evidence_span": {
+          "start": 425,
+          "end": 433
+        },
+        "fact_chunk_span": {
+          "start": 425,
+          "end": 433
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "白皙的俏脸",
+        "category": "face",
+        "attribute": "脸色",
+        "value": "白皙",
+        "source_mention_id": "m1",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "白皙的俏脸",
+        "source_evidence_span": {
+          "start": 507,
+          "end": 512
+        },
+        "fact_chunk_span": {
+          "start": 507,
+          "end": 512
+        },
+        "match_mode": "exact"
+      }
+    ]
+  },
+  "grounding_issues": [],
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 13719,
+    "http_status": 200,
+    "response_id": "5a5db1bb-e985-42d0-8b6f-2a4580882d32",
+    "usage": {
+      "input_tokens": 2159,
+      "cached_input_tokens": 384,
+      "output_tokens": 1407,
+      "reasoning_tokens": 1308,
+      "total_tokens": 3566
+    },
+    "error_kind": null
+  }
+}

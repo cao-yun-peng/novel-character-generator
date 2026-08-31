@@ -1,0 +1,34 @@
+{
+  "id": "M1-GROUNDING-SCOPE-051",
+  "title": "实现空白等价 Grounding 与人物 Scope",
+  "status": "completed",
+  "owner": "Codex",
+  "objective": "按用户确认的简化边界，支持 evidence 仅空白差异的安全原文回填，移除 mention occurrence 统计和位置，并增加 collective scope 隔离。",
+  "risk_level": "L1-contract-breaking-local",
+  "allowed_paths": [
+    "src",
+    "tests",
+    "docs",
+    "README.md",
+    "pyproject.toml",
+    ".project-to-act"
+  ],
+  "invariants": [
+    "mention_quote 仍须严格逐字存在于当前 Chunk",
+    "不保存 mention_occurrence_count、mention_source_spans 或 mention anchor spans",
+    "evidence 优先严格逐字匹配；仅非空白字符序列完全相同才允许恢复",
+    "恢复后的 approved evidence 使用真实 raw source quote、span 和 hash",
+    "任何非空白字符增删改继续 rejected",
+    "exact 只能是 individual；describe 可为 individual 或 collective；null scope 为 null",
+    "collective 保留审计证据，但不得进入单人物 promotion",
+    "不修改既有真实运行产物，不发起 Provider 调用"
+  ],
+  "acceptance": [
+    "运行时 DTO、Prompt、Schema 与文档契约一致",
+    "空格、换行、全角空白差异可安全恢复到 raw quote 和 span",
+    "插入或改变任一非空白字符仍被拒绝",
+    "grounded mention 输出不含名称 occurrence 数量和位置",
+    "collective 示例通过并带隔离语义",
+    "所有自动测试、Schema 对齐、Project-to-Act 与 Lifecycle 验证通过"
+  ]
+}

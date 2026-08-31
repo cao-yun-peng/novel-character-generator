@@ -1,0 +1,230 @@
+{
+  "schema_version": "m1-chunk-result-v2",
+  "chunk_index": 7,
+  "chunk_id": "chunk-000007-13500-14160-d83b17f39d7c",
+  "chunk_hash": "d83b17f39d7cb78e289e8b2ec814ad33a629d875f79288d34aa4cafd7611be61",
+  "chunk_source_span": {
+    "start": 13500,
+    "end": 14160
+  },
+  "model_output": {
+    "candidate_mentions": [
+      {
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "萧战",
+        "evidence_quotes": [
+          "萧战脸色淡漠"
+        ]
+      },
+      {
+        "mention_type": "describe",
+        "mention_scope": "individual",
+        "mention_quote": "萧族长",
+        "evidence_quotes": [
+          "萧战脸色淡漠"
+        ]
+      },
+      {
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "葛叶",
+        "evidence_quotes": [
+          "葛叶脸庞也顿时凝重了起来",
+          "鹰爪般的双手",
+          "葛叶大喜"
+        ]
+      },
+      {
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "纳兰嫣然",
+        "evidence_quotes": [
+          "娇躯微微一颤"
+        ]
+      },
+      {
+        "mention_type": "describe",
+        "mention_scope": "collective",
+        "mention_quote": "少年们",
+        "evidence_quotes": [
+          "脸色猛的一白"
+        ]
+      }
+    ]
+  },
+  "grounded_packet": {
+    "schema_version": "grounded-character-packet-v4",
+    "source_document_version_id": "doupo-first5-7ca3fd295b5d0d45",
+    "chunking_policy_version": "fixed-codepoint-window-2500-overlap-250-v1",
+    "chunk_id": "chunk-000007-13500-14160-d83b17f39d7c",
+    "chunk_hash": "d83b17f39d7cb78e289e8b2ec814ad33a629d875f79288d34aa4cafd7611be61",
+    "chunk_source_span": {
+      "start": 13500,
+      "end": 14160
+    },
+    "grounded_mentions": [
+      {
+        "local_mention_id": "m1",
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "萧战",
+        "mention_quote_hash": "caa9d8f0a9cd5793919f77582fb2e8c7551037b2c6f3c464b788a06b8c033574",
+        "approved_evidence": [
+          {
+            "evidence_quote": "萧战脸色淡漠",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 282,
+                "end": 288
+              }
+            ],
+            "quote_hash": "62c545a3960b2ec3d0ffa658ce15459bb2b1ae63aeaecf50d79c5f73546928d1",
+            "relation_to_mention": "contains_mention",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "686013e017dac20566454b7c0b5c63b50bb810d7b4eaa051163ead0464355135"
+      },
+      {
+        "local_mention_id": "m2",
+        "mention_type": "describe",
+        "mention_scope": "individual",
+        "mention_quote": "萧族长",
+        "mention_quote_hash": "1ff145ca767bf258c6aaea2cc12d1d9c6564f9eb5feeb1305db702290b27c085",
+        "approved_evidence": [
+          {
+            "evidence_quote": "萧战脸色淡漠",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 282,
+                "end": 288
+              }
+            ],
+            "quote_hash": "62c545a3960b2ec3d0ffa658ce15459bb2b1ae63aeaecf50d79c5f73546928d1",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "2e789be68e5b13bc7ce81f7bbcfecf098f85b29850f85de3ae2e161399ea1293"
+      },
+      {
+        "local_mention_id": "m3",
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "葛叶",
+        "mention_quote_hash": "1922c4e632d4a72e42fb14df021dbaad444341e5b03a9aff2f5e4273550b6c3f",
+        "approved_evidence": [
+          {
+            "evidence_quote": "葛叶脸庞也顿时凝重了起来",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 41,
+                "end": 53
+              }
+            ],
+            "quote_hash": "1bbf9c40155eb068adffcfa6dfbefdb4418221c546b762eae354bfa001364dd9",
+            "relation_to_mention": "contains_mention",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "鹰爪般的双手",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 65,
+                "end": 71
+              }
+            ],
+            "quote_hash": "d44937d07e43f7e7ca7b830ca102c02d437b3931b3047178d076f5fd947b7f61",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "葛叶大喜",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 483,
+                "end": 487
+              }
+            ],
+            "quote_hash": "15427456a88e263d9363c88567a2ced2d90df2d68f9f737120a7791cb0706453",
+            "relation_to_mention": "contains_mention",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "b79893ead11f87d67f98a4b16f53bfe4427b0e3937f010bf6cc629f98267e923"
+      },
+      {
+        "local_mention_id": "m4",
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "纳兰嫣然",
+        "mention_quote_hash": "57a3e0e1c52ed1d4a1b38b519209c48d73bff8e7b9ab908c0b3ae41b556d65de",
+        "approved_evidence": [
+          {
+            "evidence_quote": "娇躯微微一颤",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 345,
+                "end": 351
+              }
+            ],
+            "quote_hash": "db4da1e68b067ed4fb8ac7e115ab3b3b1923912376771c5153e242d9abce4eeb",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "f62881c8c2dc98c9a7adf71e3c17cf3b4cdcdc48d11ea16ecddd7f392083c3e2"
+      },
+      {
+        "local_mention_id": "m5",
+        "mention_type": "describe",
+        "mention_scope": "collective",
+        "mention_quote": "少年们",
+        "mention_quote_hash": "97347c7974cc6f18abe9a3fed7ee135f118042cf3ccced98a222595f05a8e935",
+        "approved_evidence": [
+          {
+            "evidence_quote": "脸色猛的一白",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 154,
+                "end": 160
+              }
+            ],
+            "quote_hash": "dda61929774b7347507e21d19d22c923a416455972f8457ad11b89907cf523bb",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "b4a4f64e1312e8aa72fe59cdcd978b7b99330fc1ac669c43d704cb72202494ed"
+      }
+    ],
+    "rejected_evidence": []
+  },
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 27000,
+    "http_status": 200,
+    "response_id": "3752a4fc-1415-4f23-96eb-fd65579fc71c",
+    "usage": {
+      "input_tokens": 1448,
+      "cached_input_tokens": 896,
+      "output_tokens": 3274,
+      "reasoning_tokens": 3000,
+      "total_tokens": 4722
+    },
+    "error_kind": null
+  }
+}

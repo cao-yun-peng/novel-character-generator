@@ -1,0 +1,105 @@
+{
+  "schema_version": "n3-promotion-task-result-v1",
+  "chunk_index": 4,
+  "chunk_id": "chunk-000004-6750-9250-4d57b02a87a6",
+  "describe_local_mention_id": "m3",
+  "mention_quote": "青衫老者",
+  "promotion_hash": "1b67fe2978c578036a581e360de3a1e831347a07a8d3286d402a07cfe9017fe7",
+  "model_output": {
+    "characters": [
+      {
+        "character_label_quote": "青衫老者",
+        "belongs_to_character": [
+          {
+            "fact_quote": "青衫",
+            "category": "clothing",
+            "attribute": "衣袍颜色",
+            "value": "青色"
+          },
+          {
+            "fact_quote": "浑浊的老眼",
+            "category": "face",
+            "attribute": "眼睛状态",
+            "value": "浑浊"
+          }
+        ]
+      }
+    ]
+  },
+  "grounded_result": {
+    "schema_version": "grounded-promoted-describe-characters-v5",
+    "describe_source_ref": {
+      "local_mention_id": "m3",
+      "packet_hash": "9636dae02521eb4ea517b1e35553f5b16e7fafaab5467bb9f41d1af425d3a2fe"
+    },
+    "promotion_hash": "1b67fe2978c578036a581e360de3a1e831347a07a8d3286d402a07cfe9017fe7",
+    "promoted_characters": [],
+    "unassigned_fragments": [
+      {
+        "fragment_ref": "d1-f1",
+        "source_evidence_quote": "青衫",
+        "source_evidence_span": {
+          "start": 567,
+          "end": 569
+        },
+        "fragment_quote": "青衫",
+        "fragment_span": {
+          "start": 567,
+          "end": 569
+        }
+      },
+      {
+        "fragment_ref": "d1-f2",
+        "source_evidence_quote": "青衫",
+        "source_evidence_span": {
+          "start": 598,
+          "end": 600
+        },
+        "fragment_quote": "青衫",
+        "fragment_span": {
+          "start": 598,
+          "end": 600
+        }
+      },
+      {
+        "fragment_ref": "d1-f3",
+        "source_evidence_quote": "浑浊的老眼",
+        "source_evidence_span": {
+          "start": 616,
+          "end": 621
+        },
+        "fragment_quote": "浑浊的老眼",
+        "fragment_span": {
+          "start": 616,
+          "end": 621
+        }
+      }
+    ]
+  },
+  "grounding_issues": [
+    {
+      "code": "ambiguous_promotion_fact",
+      "fact_index": 0,
+      "detail": "character fact 0 matched 2 occurrences"
+    }
+  ],
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 4094,
+    "http_status": 200,
+    "response_id": "69636aa8-fc1b-44b1-baa6-64cf956c2411",
+    "usage": {
+      "input_tokens": 2186,
+      "cached_input_tokens": 0,
+      "output_tokens": 455,
+      "reasoning_tokens": 342,
+      "total_tokens": 2641
+    },
+    "error_kind": null
+  }
+}

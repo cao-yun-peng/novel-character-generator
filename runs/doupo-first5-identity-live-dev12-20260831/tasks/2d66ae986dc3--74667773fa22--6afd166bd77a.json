@@ -1,0 +1,62 @@
+{
+  "schema_version": "identity-task-result-v1",
+  "task_index": 9,
+  "current_label_quote": "萧熏儿",
+  "candidate_label_quote": "萧薰儿",
+  "task_cache_key": "6afd166bd77a9d2974a32a1e51b1c089d3d0845109f891314bab45ec1775b999",
+  "model_output": {
+    "identity_relation": "same_character",
+    "label_relation": "name_variant",
+    "identity_evidence_quotes": [
+      "萧炎哥哥有三年没和熏儿单独坐一起了吧？",
+      "萧炎哥哥，以前你曾经与薰儿说过"
+    ]
+  },
+  "grounded_result": {
+    "schema_version": "grounded-identity-decision-v1",
+    "current_node_key": "2d66ae986dc37d72b1a1cbe87016985f870c9ef27d0d3435e3273cbe149257ea",
+    "candidate_node_key": "74667773fa222a60a7db957a90f911f6f0b7d3cd00f449c850a3d0fc007192fb",
+    "task_cache_key": "6afd166bd77a9d2974a32a1e51b1c089d3d0845109f891314bab45ec1775b999",
+    "requested_identity_relation": "same_character",
+    "identity_relation": "same_character",
+    "label_relation": "name_variant",
+    "grounded_identity_evidence": [
+      {
+        "evidence_quote": "萧炎哥哥，以前你曾经与薰儿说过",
+        "document_span": {
+          "start": 2533,
+          "end": 2548
+        },
+        "match_mode": "exact"
+      },
+      {
+        "evidence_quote": "萧炎哥哥有三年没和熏儿单独坐一起了吧？",
+        "document_span": {
+          "start": 9298,
+          "end": 9317
+        },
+        "match_mode": "exact"
+      }
+    ],
+    "issues": []
+  },
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 28531,
+    "http_status": 200,
+    "response_id": "3c2ff132-6163-4bd6-afb4-2425a96907ec",
+    "usage": {
+      "input_tokens": 3125,
+      "cached_input_tokens": 512,
+      "output_tokens": 2892,
+      "reasoning_tokens": 2824,
+      "total_tokens": 6017
+    },
+    "error_kind": null
+  }
+}

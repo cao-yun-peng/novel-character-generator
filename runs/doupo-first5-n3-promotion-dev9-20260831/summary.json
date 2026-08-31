@@ -1,0 +1,38 @@
+{
+  "schema_version": "n3-promotion-batch-summary-v1",
+  "started_at": "2026-08-31T01:32:44.979571Z",
+  "completed_at": "2026-08-31T01:32:44.992416Z",
+  "duration_ms": 16,
+  "document_hash": "7ca3fd295b5d0d454ca0b0bac2f4a49f2271602fc8e55bca2f120bb11d85172a",
+  "chunks": 7,
+  "exact_target_packets": 18,
+  "exact_target_facts": 50,
+  "describe_pools": 5,
+  "consumed_describe_facts": 0,
+  "conflicted_describe_facts": 0,
+  "remaining_evidence_fragments": 10,
+  "collective_promotion_tasks": 0,
+  "planned_promotion_tasks": 5,
+  "succeeded_promotion_tasks": 5,
+  "failed_promotion_tasks": 0,
+  "resumed_promotion_tasks": 5,
+  "new_provider_calls": 0,
+  "recorded_provider_calls": 5,
+  "promoted_characters": 4,
+  "promoted_grounded_facts": 11,
+  "promotion_grounding_issues": 1,
+  "promotion_grounding_issues_by_code": {
+    "ambiguous_promotion_fact": 1
+  },
+  "promotion_review_required_tasks": 1,
+  "review_required": true,
+  "usage": {
+    "input_tokens": 10969,
+    "input_cache_hit_tokens": 0,
+    "output_tokens": 2724,
+    "reasoning_tokens": 2157,
+    "total_tokens": 13693
+  },
+  "complete": true,
+  "quality_note": "Complete means deterministic N3 and grounded promotion execution succeeded; it is not a human quality score."
+}

@@ -1,0 +1,62 @@
+{
+  "schema_version": "identity-task-result-v1",
+  "task_index": 19,
+  "current_label_quote": "纳兰嫣然",
+  "candidate_label_quote": "纳兰嫣然",
+  "task_cache_key": "b3f857d8e8bf47cd6eecb3e024ae2eb33522b821abb25a15f4186a087e31a569",
+  "model_output": {
+    "identity_relation": "same_character",
+    "label_relation": "same_surface",
+    "identity_evidence_quotes": [
+      "萧战脸色淡漠的望着低头不言的纳兰嫣然",
+      "可五年之前，纳兰嫣然被云岚宗宗主云韵亲自收做弟子"
+    ]
+  },
+  "grounded_result": {
+    "schema_version": "grounded-identity-decision-v1",
+    "current_node_key": "f89f30bb54c6ef6688255856ed483cae687609953594cac49c74b724bcd7084c",
+    "candidate_node_key": "455bbd42182e7e679045c9980a51e820fc87751805f472b9cbd51f211df73ff7",
+    "task_cache_key": "b3f857d8e8bf47cd6eecb3e024ae2eb33522b821abb25a15f4186a087e31a569",
+    "requested_identity_relation": "same_character",
+    "identity_relation": "same_character",
+    "label_relation": "same_surface",
+    "grounded_identity_evidence": [
+      {
+        "evidence_quote": "可五年之前，纳兰嫣然被云岚宗宗主云韵亲自收做弟子",
+        "document_span": {
+          "start": 10904,
+          "end": 10928
+        },
+        "match_mode": "exact"
+      },
+      {
+        "evidence_quote": "萧战脸色淡漠的望着低头不言的纳兰嫣然",
+        "document_span": {
+          "start": 13782,
+          "end": 13800
+        },
+        "match_mode": "exact"
+      }
+    ],
+    "issues": []
+  },
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 7375,
+    "http_status": 200,
+    "response_id": "54a6ea14-c45a-4a07-9cd5-1b3f2b20ca67",
+    "usage": {
+      "input_tokens": 1679,
+      "cached_input_tokens": 512,
+      "output_tokens": 871,
+      "reasoning_tokens": 814,
+      "total_tokens": 2550
+    },
+    "error_kind": null
+  }
+}

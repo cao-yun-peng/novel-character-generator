@@ -1,0 +1,15 @@
+{
+  "task_id": "M1-OUTPUT-DIAGNOSIS-050",
+  "lifecycle_stage": "5",
+  "lifecycle_revision": 2,
+  "source_run": "runs/m1-douluo-20ch-20260830-v3",
+  "runtime_version": "0.1.0.dev3",
+  "model": "deepseek-v4-flash",
+  "prompt_symbol": "novel_character_generator.m1.M1_SYSTEM_INSTRUCTION",
+  "grounding_symbol": "novel_character_generator.grounding.ground_m1_result",
+  "expected_changes": [
+    ".project-to-act/tasks/M1-OUTPUT-DIAGNOSIS-050",
+    ".project-to-act/PROJECT_PROGRESS.md",
+    ".project-to-act/PROJECT_ACCEPTANCE.md"
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "id": "DOCUMENT-EVIDENCE-QUOTEHASH-058",
+  "title": "文档绝对 span、重叠 Chunk 事实去重与 quote hash 精简",
+  "status": "completed",
+  "owner": "Codex",
+  "objective": "将 N3/promotion 的 Chunk 局部事实确定性转换为文档绝对 span，安全合并重叠 Chunk 的同人物同事实来源，输出 document-character-evidence.json，并移除 N2 grounded packet 的逐 quote hash 字段与计算。",
+  "risk_level": "L1-deterministic-contract-change",
+  "allowed_paths": [
+    "src",
+    "tests",
+    "docs",
+    "README.md",
+    "pyproject.toml",
+    "runs/doupo-first5-n3-promotion-dev9-20260831/document-character-evidence.json",
+    ".project-to-act"
+  ],
+  "invariants": [
+    "absolute span 必须严格等于 chunk_source_span.start + chunk-local span",
+    "absolute span 回放必须逐字等于 fact_quote/source_evidence_quote",
+    "只安全合并同人物标签、同来源类型、同事实结构、同文档事实 span 的重复记录",
+    "不同人物、不同结构解释或不同文档位置不得因 quote 相同而合并",
+    "合并后保留全部 source chunk 与 local/promoted character ref",
+    "移除 quote_hash 与 mention_quote_hash，但保留 document_hash、chunk_hash、packet_hash、fact_hash 和运行审计 hash",
+    "历史 M1/N2/M2/N3 run 保持只读",
+    "本任务不实现跨 Chunk 语义人物合并或全局 character_id"
+  ],
+  "acceptance": [
+    "N2 grounded packet v6 不再包含 quote_hash 或 mention_quote_hash",
+    "packet_hash 在相同原文与配置下仍确定性稳定，并随来源/策略变化失效",
+    "文档汇总覆盖 exact 与 promoted 两类事实并验证绝对 span 回放",
+    "重叠 Chunk 的安全重复事实合并为一条并保留多个 source occurrences",
+    "相同 quote 的不同人物/位置/结构不被误合并",
+    "斗破既有 N3/promotion 产物生成统一 document-character-evidence.json",
+    "Schema、全量测试、项目治理、Lifecycle 和 diff 验证通过"
+  ]
+}

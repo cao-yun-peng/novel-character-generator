@@ -1,0 +1,24 @@
+{
+  "task_id": "N2-EXACT-PRECEDENCE-053",
+  "lifecycle_stage": "5",
+  "lifecycle_revision": 2,
+  "runtime_version_before": "0.1.0.dev5",
+  "runtime_version_target": "0.1.0.dev6",
+  "schema_version_before": "3.5.0-draft1",
+  "schema_version_target": "3.6.0-draft1",
+  "grounded_packet_before": "grounded-character-packet-v4",
+  "grounded_packet_target": "grounded-character-packet-v5",
+  "chunk_result_before": "m1-chunk-result-v2",
+  "chunk_result_target": "m1-chunk-result-v3",
+  "batch_summary_target": "m1-batch-summary-v2",
+  "affected_symbols": [
+    "ground_m1_result",
+    "GroundingTraceEvent",
+    "GROUNDED_PACKET_VERSION",
+    "M1_CHUNK_RESULT_VERSION",
+    "_build_summary"
+  ],
+  "new_artifacts": [
+    "n2-grounding-traces.json"
+  ]
+}

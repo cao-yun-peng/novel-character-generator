@@ -1,0 +1,311 @@
+{
+  "schema_version": "m1-chunk-result-v2",
+  "chunk_index": 2,
+  "chunk_id": "chunk-000002-2250-4750-84c9baa8a8da",
+  "chunk_hash": "84c9baa8a8dad9bf58649e022f051682d75945232d9367d79f2f4fc4cd354586",
+  "chunk_source_span": {
+    "start": 2250,
+    "end": 4750
+  },
+  "model_output": {
+    "candidate_mentions": [
+      {
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "萧薰儿",
+        "evidence_quotes": [
+          "萧薰儿纤细的眉毛",
+          "美丽的俏脸",
+          "白皙的俏脸",
+          "平淡的小脸"
+        ]
+      },
+      {
+        "mention_type": "describe",
+        "mention_scope": "individual",
+        "mention_quote": "少女",
+        "evidence_quotes": [
+          "平淡的小脸",
+          "美丽的俏脸",
+          "白皙的俏脸",
+          "萧薰儿纤细的眉毛"
+        ]
+      },
+      {
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "萧炎",
+        "evidence_quotes": [
+          "有些白皙的手掌",
+          "脸庞狰狞",
+          "孤独背影"
+        ]
+      },
+      {
+        "mention_type": "describe",
+        "mention_scope": "individual",
+        "mention_quote": "少年",
+        "evidence_quotes": [
+          "有些白皙的手掌",
+          "脸庞狰狞",
+          "孤独背影"
+        ]
+      }
+    ]
+  },
+  "grounded_packet": {
+    "schema_version": "grounded-character-packet-v4",
+    "source_document_version_id": "doupo-first5-7ca3fd295b5d0d45",
+    "chunking_policy_version": "fixed-codepoint-window-2500-overlap-250-v1",
+    "chunk_id": "chunk-000002-2250-4750-84c9baa8a8da",
+    "chunk_hash": "84c9baa8a8dad9bf58649e022f051682d75945232d9367d79f2f4fc4cd354586",
+    "chunk_source_span": {
+      "start": 2250,
+      "end": 4750
+    },
+    "grounded_mentions": [
+      {
+        "local_mention_id": "m1",
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "萧薰儿",
+        "mention_quote_hash": "ecf7cafd6488b575cbc8fd17e2528e73bc07189a92f9ed77e2da234ad51ab641",
+        "approved_evidence": [
+          {
+            "evidence_quote": "萧薰儿纤细的眉毛",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 425,
+                "end": 433
+              }
+            ],
+            "quote_hash": "59d0b41e95885c9cf7d05712b912e27a0f9ee239f7de338bc74b39b607abd615",
+            "relation_to_mention": "contains_mention",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "美丽的俏脸",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 176,
+                "end": 181
+              }
+            ],
+            "quote_hash": "7b3178105101f0ad3722ed7fe2540b5493f4ae95a71a6e5707b788530fed7080",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "白皙的俏脸",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 507,
+                "end": 512
+              }
+            ],
+            "quote_hash": "39454cba355d810a3e6d94c5fe635f1f61d9149fc930c4d9ad96d7d0893cb357",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "平淡的小脸",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 76,
+                "end": 81
+              }
+            ],
+            "quote_hash": "763b730c1964659055141d64fac1f53ab42bdd9a6acf30f859bbed84ffdc0159",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "51ff9c00ceed6a0914a28cb851770aeac51c7e76df887f6434c5634f1a947f49"
+      },
+      {
+        "local_mention_id": "m2",
+        "mention_type": "describe",
+        "mention_scope": "individual",
+        "mention_quote": "少女",
+        "mention_quote_hash": "def0173ec2e72ea2c7ec872269b9ea0b2d634c92a2aeea96e3ef3e19a988ca85",
+        "approved_evidence": [
+          {
+            "evidence_quote": "平淡的小脸",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 76,
+                "end": 81
+              }
+            ],
+            "quote_hash": "763b730c1964659055141d64fac1f53ab42bdd9a6acf30f859bbed84ffdc0159",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "美丽的俏脸",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 176,
+                "end": 181
+              }
+            ],
+            "quote_hash": "7b3178105101f0ad3722ed7fe2540b5493f4ae95a71a6e5707b788530fed7080",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "白皙的俏脸",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 507,
+                "end": 512
+              }
+            ],
+            "quote_hash": "39454cba355d810a3e6d94c5fe635f1f61d9149fc930c4d9ad96d7d0893cb357",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "萧薰儿纤细的眉毛",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 425,
+                "end": 433
+              }
+            ],
+            "quote_hash": "59d0b41e95885c9cf7d05712b912e27a0f9ee239f7de338bc74b39b607abd615",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "b1b3a1a8b80bb9a3c894c4a49fe3911d06fb3a324f5bcdc655ad00f65adb2a4a"
+      },
+      {
+        "local_mention_id": "m3",
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "萧炎",
+        "mention_quote_hash": "6606fa555d642924e1cf668d0f315a3de95f93749a87047e13fd5c6bdf2401e1",
+        "approved_evidence": [
+          {
+            "evidence_quote": "有些白皙的手掌",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 778,
+                "end": 785
+              }
+            ],
+            "quote_hash": "777a40b83dde6638269af9d1533badab547ae25bd7e62fb6c76dba3169c48b1d",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "脸庞狰狞",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 2473,
+                "end": 2477
+              }
+            ],
+            "quote_hash": "dbb1fcce1041355ca8f97fe5a8939f9490b39471de458cb12b5ec9b5bf6a9667",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "孤独背影",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 649,
+                "end": 653
+              }
+            ],
+            "quote_hash": "685e80d22c1cfa36d5312f56aa08b49d21d3a76a977c12bd11b0f42312cbd664",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "6d619b93a6c0670610a83f7a6fb4b5d5b3df8256dc6d75914bb54542c8f2a985"
+      },
+      {
+        "local_mention_id": "m4",
+        "mention_type": "describe",
+        "mention_scope": "individual",
+        "mention_quote": "少年",
+        "mention_quote_hash": "749ca46754901e09cb4d09c6070da7dc273286e7b117144473fe8525c2965b93",
+        "approved_evidence": [
+          {
+            "evidence_quote": "有些白皙的手掌",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 778,
+                "end": 785
+              }
+            ],
+            "quote_hash": "777a40b83dde6638269af9d1533badab547ae25bd7e62fb6c76dba3169c48b1d",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "脸庞狰狞",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 2473,
+                "end": 2477
+              }
+            ],
+            "quote_hash": "dbb1fcce1041355ca8f97fe5a8939f9490b39471de458cb12b5ec9b5bf6a9667",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "孤独背影",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 649,
+                "end": 653
+              }
+            ],
+            "quote_hash": "685e80d22c1cfa36d5312f56aa08b49d21d3a76a977c12bd11b0f42312cbd664",
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "b4a06f428e1dbe1eeed26de604e05d7fd51a638e657d69c7b1a7c7e9939b35f1"
+      }
+    ],
+    "rejected_evidence": []
+  },
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 49813,
+    "http_status": 200,
+    "response_id": "02abbafc-49df-4439-a0cb-4bbb1dcfc8e9",
+    "usage": {
+      "input_tokens": 2643,
+      "cached_input_tokens": 2560,
+      "output_tokens": 5844,
+      "reasoning_tokens": 5575,
+      "total_tokens": 8487
+    },
+    "error_kind": null
+  }
+}

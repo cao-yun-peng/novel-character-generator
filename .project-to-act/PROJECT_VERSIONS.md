@@ -4,8 +4,8 @@
 
 - 分支：`v3-simplified-character-evidence`
 - 契约：简化人物证据流程 V3 草案
-- Schema：`3.1.0-draft1`
-- 运行时版本：不存在
+- Schema：`3.12.0-draft1`
+- 运行时版本：`0.1.0.dev12`
 - 发布状态：未发布
 
 ## 版本原则
@@ -14,5 +14,21 @@
 
 ## 版本历史
 
+- 2026-08-31：Schema 升级到 `3.12.0-draft1`、运行时升级到 `0.1.0.dev12`；新增 `document-local-character-nodes-v1`、`m3-identity-envelope-v1`、最小 M3 输入输出、`grounded-identity-decision-v1` 和 `document-character-registry-v1`。身份任务支持有界候选、严格 quote Grounding、cannot-link、冲突保留、断点续跑与追加式运行历史。
+- 2026-08-31：Schema 升级到 `3.11.0-draft1`、运行时升级到 `0.1.0.dev11`；grounded promotion result 升级 v6 并加入 `promotion-partial-fact-acceptance-v1`。唯一事实部分接受，歧义事实独立 review；N3 task/summary 升级 v2 防止旧 grounded 缓存混用，并新增保存模型输出离线重放 CLI。
+- 2026-08-31：Schema 升级到 `3.10.0-draft1`、运行时升级到 `0.1.0.dev10`；N2 grounded packet 升级到 v6，删除 `quote_hash`/`mention_quote_hash`，M1 chunk/summary 升级到 v4/v3 防止旧包混合续跑。新增 `document-character-evidence-v1`、绝对 span 回放、结构安全的重叠去重、来源 artifact/chunk/fact hash 与全 occurrence 保留。
+- 2026-08-31：Schema 升级到 `3.9.0-draft1`、运行时升级到 `0.1.0.dev9`；实现 N3 chunk/target/pool DTO、跨 exact span 仲裁、剩余池重建、来源 hash guard、promotion 断点续跑和分离产物。promotion 标签可直接复用已验证 mention quote，不保存标签 span；真实斗破 5/5 promotion 完成，1 个歧义任务进入 review。
+- 2026-08-31：运行时升级到 `0.1.0.dev8`；新增既有 M1 run → 当前 N2 重放 → 可恢复 M2 exact attribution 批处理与 CLI、分离产物和追加式运行历史；Provider 将 `http.client.HTTPException`（含 `IncompleteRead`）纳入有界瞬态重试。Schema 保持 `3.8.0-draft1`。
+- 2026-08-30：Schema 升级到 `3.8.0-draft1`、运行时升级到 `0.1.0.dev7`；实现 M2 exact attribution 与 remaining-describe promotion 双模式、阶段专用 DeepSeek json_schema 名称、稳定 task/pool/promotion hash、代码侧事实来源回填、promotion 重叠拦截和未分配残片保留。真实 M2 Provider 质量尚未验收，N3 尚未实现。
+- 2026-08-30：Schema 升级到 `3.7.0-draft1`；M2 模型输入输出改为无 ref/span/状态的肯定事实边界，归属输出仅含 `belongs_to_target`，事实仅含 `fact_quote/category/attribute/value`；M2 与 promotion envelope 升级到 v4。运行时仍为 dev6，M2 尚未实现。
+- 2026-08-30：Schema 升级到 `3.6.0-draft1`、运行时升级到 `0.1.0.dev6`；N2 增加 `exact-evidence-precedence-v1`，grounded packet v5、chunk result v3、batch summary v2，并新增独立 N2 trace 产物。
+- 2026-08-30：运行时升级到 `0.1.0.dev5`，CLI UTF-8 文件读取显式保留 CRLF/LF 原始换行；斗破前5章真实回归使用该版本完成。
+- 2026-08-30：Schema 升级到 `3.5.0-draft1`、运行时升级到 `0.1.0.dev4`；新增 mention scope、collective quarantine、纯空白等价证据恢复，移除 mention occurrence 数量和位置；grounded packet v4、chunk result v2。
+- 2026-08-30：运行时升级到 `0.1.0.dev3`，新增可恢复的 `run-deepseek-m1` 全文批处理、逐块产物、汇总和失败诊断；真实 17 Chunk 样本跑通。
+- 2026-08-30：运行时升级到 `0.1.0.dev2`，新增 DeepSeek Responses API/json_schema Provider、环境配置、脱敏 usage trace、有界重试和 `probe-deepseek-m1` 命令；未执行真实付费调用。
+- 2026-08-30：建立运行时 `0.1.0.dev1`，包含重叠分块 Manifest、M1 DTO/提示词/Provider 协议、严格输出验证与 Chunk 局部 grounding；具体 Provider 尚未接入。
+- 2026-08-30：Schema 升级到 `3.4.0-draft1`，新增 remaining describe 独立建人的一对多模型输入输出、代码信封、promotion hash 和 promoted character ref。
+- 2026-08-30：Schema 升级到 `3.3.0-draft1`，统一模型输入输出边界；新增 M1/M2 orchestration envelope，M2 改为每个 exact 一次携带全部 describe 的批量 payload。
+- 2026-08-30：Schema 升级到 `3.2.0-draft1`，增加文档覆盖 Manifest、N2 provenance、M2 occurrence/四层 span/pair key 和 N3 绝对消费/冲突 span。
 - 2026-08-30：Schema 升级到 `3.1.0-draft1`，加入 exact/describe/null、candidate_mentions、exact×describe M2 输入输出和 N3 describe 池解析结果。
 - 2026-08-30：建立干净的新项目基线，只保留新契约和机器 Schema。

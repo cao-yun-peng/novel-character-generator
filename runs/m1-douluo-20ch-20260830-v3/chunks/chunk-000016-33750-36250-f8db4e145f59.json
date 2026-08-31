@@ -1,0 +1,165 @@
+{
+  "schema_version": "m1-chunk-result-v1",
+  "chunk_index": 16,
+  "chunk_id": "chunk-000016-33750-36250-f8db4e145f59",
+  "chunk_hash": "f8db4e145f59c030a360b444679097e1225737e158ca0c46389cf0cf236418e3",
+  "chunk_source_span": {
+    "start": 33750,
+    "end": 36250
+  },
+  "model_output": {
+    "candidate_mentions": [
+      {
+        "mention_type": "exact",
+        "mention_quote": "老杰克",
+        "evidence_quotes": [
+          "老杰克的穿着在圣魂村已经算是光鲜了，可到了诺丁城，却完全是一副乡下人的样子"
+        ]
+      },
+      {
+        "mention_type": "describe",
+        "mention_quote": "看门的青年",
+        "evidence_quotes": [
+          "看门的青年"
+        ]
+      }
+    ]
+  },
+  "grounded_packet": {
+    "schema_version": "grounded-character-packet-v3",
+    "source_document_version_id": "source-4dd3d57c99f4b254",
+    "chunking_policy_version": "fixed-codepoint-window-2500-overlap-250-v1",
+    "chunk_id": "chunk-000016-33750-36250-f8db4e145f59",
+    "chunk_hash": "f8db4e145f59c030a360b444679097e1225737e158ca0c46389cf0cf236418e3",
+    "chunk_source_span": {
+      "start": 33750,
+      "end": 36250
+    },
+    "grounded_mentions": [
+      {
+        "local_mention_id": "m1",
+        "mention_type": "exact",
+        "mention_quote": "老杰克",
+        "mention_occurrence_count": 13,
+        "mention_source_spans": [
+          {
+            "start": 164,
+            "end": 167
+          },
+          {
+            "start": 335,
+            "end": 338
+          },
+          {
+            "start": 500,
+            "end": 503
+          },
+          {
+            "start": 993,
+            "end": 996
+          },
+          {
+            "start": 1090,
+            "end": 1093
+          },
+          {
+            "start": 1235,
+            "end": 1238
+          },
+          {
+            "start": 1407,
+            "end": 1410
+          },
+          {
+            "start": 1565,
+            "end": 1568
+          },
+          {
+            "start": 1657,
+            "end": 1660
+          },
+          {
+            "start": 1880,
+            "end": 1883
+          },
+          {
+            "start": 1937,
+            "end": 1940
+          },
+          {
+            "start": 2045,
+            "end": 2048
+          },
+          {
+            "start": 2176,
+            "end": 2179
+          }
+        ],
+        "mention_quote_hash": "758ab0f61a61cd7ae6a18146e27fced2b52de333a88c08351446a957dea3f432",
+        "approved_evidence": [
+          {
+            "evidence_quote": "老杰克的穿着在圣魂村已经算是光鲜了，可到了诺丁城，却完全是一副乡下人的样子",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1937,
+                "end": 1974
+              }
+            ],
+            "quote_hash": "04bbf6b6a0dde0334a7a78bcf19d82376fab5306f8a1f644f8b6d6ef35f354dc",
+            "relation_to_mention": "contains_mention"
+          }
+        ],
+        "packet_hash": "5b0496344cda8bcb594dfd27635f30df7346f71e5be5b8d756fcf0c74021de3e"
+      },
+      {
+        "local_mention_id": "m2",
+        "mention_type": "describe",
+        "mention_quote": "看门的青年",
+        "mention_occurrence_count": 1,
+        "mention_source_spans": [
+          {
+            "start": 1899,
+            "end": 1904
+          }
+        ],
+        "mention_quote_hash": "78b6698d9eba92a6b8f0ee263f57a3151f49ed28b86c1e70eb213a03e012f975",
+        "approved_evidence": [
+          {
+            "evidence_quote": "看门的青年",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1899,
+                "end": 1904
+              }
+            ],
+            "quote_hash": "78b6698d9eba92a6b8f0ee263f57a3151f49ed28b86c1e70eb213a03e012f975",
+            "relation_to_mention": "contains_mention"
+          }
+        ],
+        "packet_hash": "00e1554f64f3d2aad41abe63831ea0d9d5dd737d44142508afc5d4680910ba47"
+      }
+    ],
+    "rejected_evidence": []
+  },
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 15281,
+    "http_status": 200,
+    "response_id": "7382b04a-4462-42de-931d-70ec874d1a53",
+    "usage": {
+      "input_tokens": 2363,
+      "cached_input_tokens": 768,
+      "output_tokens": 1511,
+      "reasoning_tokens": 1429,
+      "total_tokens": 3874
+    },
+    "error_kind": null
+  }
+}

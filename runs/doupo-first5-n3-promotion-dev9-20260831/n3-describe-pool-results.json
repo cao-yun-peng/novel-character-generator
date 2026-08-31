@@ -1,0 +1,212 @@
+[
+  {
+    "schema_version": "describe-pool-resolution-v4",
+    "chunk_id": "chunk-000004-6750-9250-4d57b02a87a6",
+    "describe_source_ref": {
+      "local_mention_id": "m3",
+      "packet_hash": "9636dae02521eb4ea517b1e35553f5b16e7fafaab5467bb9f41d1af425d3a2fe"
+    },
+    "resolver_version": "n3-span-arbitration-v1",
+    "consumed_fragments": [],
+    "conflicted_fragments": [],
+    "remaining_evidence_fragments": [
+      {
+        "fragment_ref": "d1-f1",
+        "source_evidence_quote": "青衫",
+        "source_evidence_span": {
+          "start": 567,
+          "end": 569
+        },
+        "fragment_quote": "青衫",
+        "fragment_span": {
+          "start": 567,
+          "end": 569
+        }
+      },
+      {
+        "fragment_ref": "d1-f2",
+        "source_evidence_quote": "青衫",
+        "source_evidence_span": {
+          "start": 598,
+          "end": 600
+        },
+        "fragment_quote": "青衫",
+        "fragment_span": {
+          "start": 598,
+          "end": 600
+        }
+      },
+      {
+        "fragment_ref": "d1-f3",
+        "source_evidence_quote": "浑浊的老眼",
+        "source_evidence_span": {
+          "start": 616,
+          "end": 621
+        },
+        "fragment_quote": "浑浊的老眼",
+        "fragment_span": {
+          "start": 616,
+          "end": 621
+        }
+      }
+    ],
+    "progress_made": false,
+    "next_action": "promote_remaining_describe",
+    "pool_hash": "4f74568afea785354b85a4019ec256d6b348adb7932abc94472c0c42f3b061ae"
+  },
+  {
+    "schema_version": "describe-pool-resolution-v4",
+    "chunk_id": "chunk-000004-6750-9250-4d57b02a87a6",
+    "describe_source_ref": {
+      "local_mention_id": "m4",
+      "packet_hash": "b28ebae690c504efd0df0f23c05e4d1f899f8bb433d337a7297d320fefb6c61c"
+    },
+    "resolver_version": "n3-span-arbitration-v1",
+    "consumed_fragments": [],
+    "conflicted_fragments": [],
+    "remaining_evidence_fragments": [
+      {
+        "fragment_ref": "d2-f1",
+        "source_evidence_quote": "满脸笑容，神采奕奕，一双有些细小的双眼",
+        "source_evidence_span": {
+          "start": 911,
+          "end": 930
+        },
+        "fragment_quote": "满脸笑容，神采奕奕，一双有些细小的双眼",
+        "fragment_span": {
+          "start": 911,
+          "end": 930
+        }
+      },
+      {
+        "fragment_ref": "d2-f2",
+        "source_evidence_quote": "衣袍胸口处，赫然绘有一弯银色浅月",
+        "source_evidence_span": {
+          "start": 970,
+          "end": 986
+        },
+        "fragment_quote": "衣袍胸口处，赫然绘有一弯银色浅月",
+        "fragment_span": {
+          "start": 970,
+          "end": 986
+        }
+      }
+    ],
+    "progress_made": false,
+    "next_action": "promote_remaining_describe",
+    "pool_hash": "a8a8a0057ce1998af3c06e7cc12cf1313282c59463c22c8368058a5bafd311b2"
+  },
+  {
+    "schema_version": "describe-pool-resolution-v4",
+    "chunk_id": "chunk-000004-6750-9250-4d57b02a87a6",
+    "describe_source_ref": {
+      "local_mention_id": "m5",
+      "packet_hash": "b4864e852d8b5e885c007cf7a1d48648cf8bb14baa44f4609b3cdd09716748a9"
+    },
+    "resolver_version": "n3-span-arbitration-v1",
+    "consumed_fragments": [],
+    "conflicted_fragments": [],
+    "remaining_evidence_fragments": [
+      {
+        "fragment_ref": "d3-f1",
+        "source_evidence_quote": "年龄在二十左右，英俊的相貌，配上挺拔的身材",
+        "source_evidence_span": {
+          "start": 1184,
+          "end": 1205
+        },
+        "fragment_quote": "年龄在二十左右，英俊的相貌，配上挺拔的身材",
+        "fragment_span": {
+          "start": 1184,
+          "end": 1205
+        }
+      }
+    ],
+    "progress_made": false,
+    "next_action": "promote_remaining_describe",
+    "pool_hash": "b96ef6480d36318d5dd105f84bdecbe97a5aeead5400b80154fc1c0e87976b1b"
+  },
+  {
+    "schema_version": "describe-pool-resolution-v4",
+    "chunk_id": "chunk-000004-6750-9250-4d57b02a87a6",
+    "describe_source_ref": {
+      "local_mention_id": "m6",
+      "packet_hash": "dbdfd3c8c484ccf386cc64578ef18019d0e4e1ef27e601b006840405d4b210ec"
+    },
+    "resolver_version": "n3-span-arbitration-v1",
+    "consumed_fragments": [],
+    "conflicted_fragments": [],
+    "remaining_evidence_fragments": [
+      {
+        "fragment_ref": "d4-f1",
+        "source_evidence_quote": "娇嫩的耳垂上吊有着绿色的玉坠",
+        "source_evidence_span": {
+          "start": 1526,
+          "end": 1540
+        },
+        "fragment_quote": "娇嫩的耳垂上吊有着绿色的玉坠",
+        "fragment_span": {
+          "start": 1526,
+          "end": 1540
+        }
+      },
+      {
+        "fragment_ref": "d4-f2",
+        "source_evidence_quote": "已经开始发育的玲珑小胸脯",
+        "source_evidence_span": {
+          "start": 1577,
+          "end": 1589
+        },
+        "fragment_quote": "已经开始发育的玲珑小胸脯",
+        "fragment_span": {
+          "start": 1577,
+          "end": 1589
+        }
+      },
+      {
+        "fragment_ref": "d4-f3",
+        "source_evidence_quote": "冷艳的小脸",
+        "source_evidence_span": {
+          "start": 1659,
+          "end": 1664
+        },
+        "fragment_quote": "冷艳的小脸",
+        "fragment_span": {
+          "start": 1659,
+          "end": 1664
+        }
+      }
+    ],
+    "progress_made": false,
+    "next_action": "promote_remaining_describe",
+    "pool_hash": "3d323000b6f3607ab2f41bba8fb8f9c0147156f0ac0dec2ca92e8811f7bf2bc2"
+  },
+  {
+    "schema_version": "describe-pool-resolution-v4",
+    "chunk_id": "chunk-000004-6750-9250-4d57b02a87a6",
+    "describe_source_ref": {
+      "local_mention_id": "m8",
+      "packet_hash": "60f1a203eda1a498ab79db91495699e02bdfc97602868a5fefc1d210a9a5d42d"
+    },
+    "resolver_version": "n3-span-arbitration-v1",
+    "consumed_fragments": [],
+    "conflicted_fragments": [],
+    "remaining_evidence_fragments": [
+      {
+        "fragment_ref": "d5-f1",
+        "source_evidence_quote": "黄袍",
+        "source_evidence_span": {
+          "start": 2199,
+          "end": 2201
+        },
+        "fragment_quote": "黄袍",
+        "fragment_span": {
+          "start": 2199,
+          "end": 2201
+        }
+      }
+    ],
+    "progress_made": false,
+    "next_action": "promote_remaining_describe",
+    "pool_hash": "b7fdaf6849629d13822a93ae3a1efc6532c5fe9d79f0c09034b9421c3306a0d4"
+  }
+]

@@ -1,0 +1,13 @@
+{
+  "task_id": "DOCUMENT-CHARACTER-PROFILES-062",
+  "requested_by": "user",
+  "intent": "开发文档人物档案层，把全局人物身份与完整原文外貌事实连接为直接可用的结构化档案。",
+  "current_behavior": "document-character-registry.json 只持有全局人物和简短 fact refs；document-character-evidence.json 只持有平铺完整事实，调用方需要自行连接。",
+  "expected_behavior": "代码验证两份产物属于同一文档版本，以 fact_hash 连接完整事实，保存人物标签、身份来源、原文事实、绝对 span、来源 Chunk、冲突/review 与未绑定事实。",
+  "non_goals": [
+    "不调用模型或修改 Prompt",
+    "不推断性别、年龄、性格或自然语言人物总结",
+    "不解决尚未真实出现的同名不同人/different/cannot-link 策略",
+    "不修改 M1、N2、M2、N3、promotion 或 M3 的既有输出"
+  ]
+}

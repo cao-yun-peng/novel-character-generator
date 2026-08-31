@@ -1,0 +1,62 @@
+{
+  "schema_version": "identity-task-result-v1",
+  "task_index": 14,
+  "current_label_quote": "熏儿",
+  "candidate_label_quote": "萧熏儿",
+  "task_cache_key": "929fd89773702618e79ec842ccf7d647a7bee02f7bd12f94a2381337cef27090",
+  "model_output": {
+    "identity_relation": "same_character",
+    "label_relation": "name_variant",
+    "identity_evidence_quotes": [
+      "熏儿虽然也姓萧",
+      "萧熏儿"
+    ]
+  },
+  "grounded_result": {
+    "schema_version": "grounded-identity-decision-v1",
+    "current_node_key": "390efc670c41c35bb343afc0cc2d7d6c7fb05c1c26e9acea6a4fdd9e3a879c0c",
+    "candidate_node_key": "a269c2799406a98d746ebace56794bb9338effe027105f2c8b3f2840377ae8db",
+    "task_cache_key": "929fd89773702618e79ec842ccf7d647a7bee02f7bd12f94a2381337cef27090",
+    "requested_identity_relation": "same_character",
+    "identity_relation": "same_character",
+    "label_relation": "name_variant",
+    "grounded_identity_evidence": [
+      {
+        "evidence_quote": "熏儿虽然也姓萧",
+        "document_span": {
+          "start": 11729,
+          "end": 11736
+        },
+        "match_mode": "exact"
+      }
+    ],
+    "issues": [
+      {
+        "code": "ambiguous_identity_evidence",
+        "detail": "identity evidence '萧熏儿' matched 4 document occurrences",
+        "evidence_index": 1,
+        "evidence_quote": "萧熏儿",
+        "candidate_occurrence_count": 4
+      }
+    ]
+  },
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 16578,
+    "http_status": 200,
+    "response_id": "4897b078-da15-49df-b1e6-45f92e10d9bc",
+    "usage": {
+      "input_tokens": 1646,
+      "cached_input_tokens": 512,
+      "output_tokens": 1719,
+      "reasoning_tokens": 1676,
+      "total_tokens": 3365
+    },
+    "error_kind": null
+  }
+}

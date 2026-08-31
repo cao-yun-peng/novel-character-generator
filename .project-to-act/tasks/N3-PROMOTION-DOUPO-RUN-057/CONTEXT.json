@@ -1,0 +1,11 @@
+{
+  "task_id": "N3-PROMOTION-DOUPO-RUN-057",
+  "lifecycle_stage": "5",
+  "lifecycle_revision": 2,
+  "schema_version_before": "3.8.0-draft1",
+  "schema_version_target": "3.9.0-draft1",
+  "runtime_version_before": "0.1.0.dev8",
+  "runtime_version_target": "0.1.0.dev9",
+  "n3_result_target": "n3-chunk-resolution-v1",
+  "promotion_result_target": "grounded-promoted-describe-characters-v5"
+}

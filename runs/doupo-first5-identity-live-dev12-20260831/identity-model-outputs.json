@@ -1,0 +1,265 @@
+[
+  {
+    "task_index": 1,
+    "current_label_quote": "萧薰儿",
+    "candidate_label_quote": "萧薰儿",
+    "task_cache_key": "45e72442381a1713e869fcfc7b737b5921149431066b0063cbf407121b477623",
+    "model_output": {
+      "identity_relation": "same_character",
+      "label_relation": "same_surface",
+      "identity_evidence_quotes": [
+        "萧薰儿微笑着柔声道",
+        "名为萧薰儿的少女行到魔石碑之前"
+      ]
+    }
+  },
+  {
+    "task_index": 2,
+    "current_label_quote": "萧炎",
+    "candidate_label_quote": "萧炎",
+    "task_cache_key": "d824e3514345debd427bfb8dcc50ea224a9fcfaa05a6c986a326b6a69f45f59f",
+    "model_output": {
+      "identity_relation": "same_character",
+      "label_relation": "same_surface",
+      "identity_evidence_quotes": [
+        "山崖之颠，萧炎斜躺在草地之上",
+        "萧炎，斗之力，三段！级别：低级！",
+        "苦涩的一笑，萧炎落寞的转身"
+      ]
+    }
+  },
+  {
+    "task_index": 3,
+    "current_label_quote": "萧炎",
+    "candidate_label_quote": "萧炎",
+    "task_cache_key": "447c147a84d34add30fa08513ec31829e7ff3973db57b4d99eebc5e921619141",
+    "model_output": {
+      "identity_relation": "same_character",
+      "label_relation": "same_surface",
+      "identity_evidence_quotes": [
+        "他便是萧家现任族长，同时也是萧炎的父亲",
+        "想起下午的测试，萧炎轻叹了一口气"
+      ]
+    }
+  },
+  {
+    "task_index": 4,
+    "current_label_quote": "萧炎",
+    "candidate_label_quote": "萧炎",
+    "task_cache_key": "2b23ecd8d6b76bca890d443a3b5a69243986200043cb1d7b85e15adde1eb85a4",
+    "model_output": {
+      "identity_relation": "same_character",
+      "label_relation": "same_surface",
+      "identity_evidence_quotes": [
+        "萧炎少年老成的摇了摇头",
+        "萧炎，斗之力，三段！"
+      ]
+    }
+  },
+  {
+    "task_index": 5,
+    "current_label_quote": "萧炎",
+    "candidate_label_quote": "萧炎",
+    "task_cache_key": "2f911c3b410b678eca9e5f79bcc4b45dab5b3a3dd3c79ba7193ae0a5c193f159",
+    "model_output": {
+      "identity_relation": "same_character",
+      "label_relation": "same_surface",
+      "identity_evidence_quotes": [
+        "萧炎有些意外的，她的容貌，竟然比萧媚还要美上几分",
+        "萧炎少年老成的摇了摇头"
+      ]
+    }
+  },
+  {
+    "task_index": 6,
+    "current_label_quote": "萧炎",
+    "candidate_label_quote": "萧炎",
+    "task_cache_key": "ed6f069d97208299b0c4efb85860ed3f998cc566f0494b3beefbbbac7588e163",
+    "model_output": {
+      "identity_relation": "same_character",
+      "label_relation": "same_surface",
+      "identity_evidence_quotes": [
+        "在萧炎抬头的那一刹，手指中的黑色古戒，却是忽然亮起了一抹极其微弱的诡异毫光",
+        "山崖之颠，萧炎斜躺在草地之上，嘴中叼中一根青草，微微嚼动"
+      ]
+    }
+  },
+  {
+    "task_index": 7,
+    "current_label_quote": "萧熏儿",
+    "candidate_label_quote": "萧薰儿",
+    "task_cache_key": "86ada227dd2a96bb9c279318c3381a29f469fd0769c90c0fcba46362ede703f4",
+    "model_output": {
+      "identity_relation": "uncertain",
+      "label_relation": null,
+      "identity_evidence_quotes": []
+    }
+  },
+  {
+    "task_index": 8,
+    "current_label_quote": "萧熏儿",
+    "candidate_label_quote": "萧薰儿",
+    "task_cache_key": "3871569afd324736d398de1804b1d1ffa43da336d243fbf8a716c2db1330e354",
+    "model_output": {
+      "identity_relation": "uncertain",
+      "label_relation": null,
+      "identity_evidence_quotes": []
+    }
+  },
+  {
+    "task_index": 9,
+    "current_label_quote": "萧熏儿",
+    "candidate_label_quote": "萧薰儿",
+    "task_cache_key": "6afd166bd77a9d2974a32a1e51b1c089d3d0845109f891314bab45ec1775b999",
+    "model_output": {
+      "identity_relation": "same_character",
+      "label_relation": "name_variant",
+      "identity_evidence_quotes": [
+        "萧炎哥哥有三年没和熏儿单独坐一起了吧？",
+        "萧炎哥哥，以前你曾经与薰儿说过"
+      ]
+    }
+  },
+  {
+    "task_index": 10,
+    "current_label_quote": "萧熏儿",
+    "candidate_label_quote": "萧薰儿",
+    "task_cache_key": "a2df77e322ecec9fcb20b42ef05fadc132251fdde8e9629d230ea293d80ad946",
+    "model_output": {
+      "identity_relation": "same_character",
+      "label_relation": "name_variant",
+      "identity_evidence_quotes": [
+        "萧炎哥哥有三年没和熏儿单独坐一起了吧？",
+        "萧炎哥哥。",
+        "恐怕非薰儿小姐莫属了。"
+      ]
+    }
+  },
+  {
+    "task_index": 11,
+    "current_label_quote": "萧炎",
+    "candidate_label_quote": "萧炎",
+    "task_cache_key": "29acb9d4d9f9143909d496b6492e2895b1ec47ffbde9e2bc5a0ba339e2641ac0",
+    "model_output": {
+      "identity_relation": "same_character",
+      "label_relation": "same_surface",
+      "identity_evidence_quotes": [
+        "他萧炎是癞蛤蟆想吃天鹅肉不成",
+        "萧炎有些意外的"
+      ]
+    }
+  },
+  {
+    "task_index": 12,
+    "current_label_quote": "萧炎",
+    "candidate_label_quote": "萧炎",
+    "task_cache_key": "0b61ce108cd5b67ef3df211acec597e4bf64292ea995efb119cdae4d33e43513",
+    "model_output": {
+      "identity_relation": "same_character",
+      "label_relation": "same_surface",
+      "identity_evidence_quotes": [
+        "望着中年男子，萧炎脸庞上的笑容更浓了一分，虽然自己有着前世的记忆，不过自出生以来，面前这位父亲便是对自己百般宠爱，在自己落魄之后，宠爱不减反增，如此行径，却是让得萧炎甘心叫他一声父亲。",
+        "萧炎少年老成的摇了摇头，笑容却是有些勉强。"
+      ]
+    }
+  },
+  {
+    "task_index": 13,
+    "current_label_quote": "熏儿",
+    "candidate_label_quote": "萧熏儿",
+    "task_cache_key": "c2542a2f3b79f4dfdedf74e304d993fc2f961e725348673cd65bb91b3707f0d3",
+    "model_output": {
+      "identity_relation": "same_character",
+      "label_relation": "name_variant",
+      "identity_evidence_quotes": [
+        "熏儿虽然也姓萧",
+        "萧熏儿浅浅一笑，小脸上露出可爱的小酒窝，纤细的指尖再次翻开手中那本古朴的书籍，小小年纪，却有一种知性的美感，眨动着修长的睫毛在书中徘徊了片刻，忽然有些幽幽的道：“萧炎哥哥有三年没和熏儿单独坐一起了吧？”"
+      ]
+    }
+  },
+  {
+    "task_index": 14,
+    "current_label_quote": "熏儿",
+    "candidate_label_quote": "萧熏儿",
+    "task_cache_key": "929fd89773702618e79ec842ccf7d647a7bee02f7bd12f94a2381337cef27090",
+    "model_output": {
+      "identity_relation": "same_character",
+      "label_relation": "name_variant",
+      "identity_evidence_quotes": [
+        "熏儿虽然也姓萧",
+        "萧熏儿"
+      ]
+    }
+  },
+  {
+    "task_index": 15,
+    "current_label_quote": "萧战",
+    "candidate_label_quote": "萧战",
+    "task_cache_key": "6940c01075c01d6feb090848030d3b625204df5c59550820ce839c22b8076957",
+    "model_output": {
+      "identity_relation": "same_character",
+      "label_relation": "same_surface",
+      "identity_evidence_quotes": [
+        "他便是萧家现任族长，同时也是萧炎的父亲，五星大斗师，萧战！"
+      ]
+    }
+  },
+  {
+    "task_index": 16,
+    "current_label_quote": "葛叶",
+    "candidate_label_quote": "葛叶",
+    "task_cache_key": "c9436591623285747b269971962484eee7b545afc46df891008870d9acae3aa3",
+    "model_output": {
+      "identity_relation": "same_character",
+      "label_relation": "same_surface",
+      "identity_evidence_quotes": [
+        "“呵呵，萧族长，你可认识她么？”葛叶微微一笑，指着身旁的少女含笑问道。",
+        "无奈的叹了一口气，葛叶淡淡的道。",
+        "望着萧战的反映，葛叶脸庞也顿时凝重了起来，身体挡在纳兰嫣然身前，鹰爪般的双手猛的曲拢，青色斗气在鹰爪中汇聚而起，散发着细小而凌厉的剑气。"
+      ]
+    }
+  },
+  {
+    "task_index": 17,
+    "current_label_quote": "萧战",
+    "candidate_label_quote": "萧战",
+    "task_cache_key": "dd523bf441ad057bb1715c482ad28e3ed88696a607103b0fcf503467dd98b144",
+    "model_output": {
+      "identity_relation": "same_character",
+      "label_relation": "same_surface",
+      "identity_evidence_quotes": [
+        "萧战手中的玉石杯，轰然间化为了一蓬粉末。",
+        "萧战拳头紧握，淡淡的青色斗气，逐渐的覆盖了身躯",
+        "就在萧战的呼吸越加急促之声，三位长老的厉喝声，却是宛如惊雷般的在大厅中响起：“萧战，还不住手！你可不要忘记，你是萧家的族长！”"
+      ]
+    }
+  },
+  {
+    "task_index": 18,
+    "current_label_quote": "萧战",
+    "candidate_label_quote": "萧战",
+    "task_cache_key": "4b491f14736fc7113c6136044a14861573561d8ec38f277f19c2826c04a42861",
+    "model_output": {
+      "identity_relation": "same_character",
+      "label_relation": "same_surface",
+      "identity_evidence_quotes": [
+        "你可不要忘记，你是萧家的族长！",
+        "他便是萧家现任族长，同时也是萧炎的父亲，五星大斗师，萧战！"
+      ]
+    }
+  },
+  {
+    "task_index": 19,
+    "current_label_quote": "纳兰嫣然",
+    "candidate_label_quote": "纳兰嫣然",
+    "task_cache_key": "b3f857d8e8bf47cd6eecb3e024ae2eb33522b821abb25a15f4186a087e31a569",
+    "model_output": {
+      "identity_relation": "same_character",
+      "label_relation": "same_surface",
+      "identity_evidence_quotes": [
+        "萧战脸色淡漠的望着低头不言的纳兰嫣然",
+        "可五年之前，纳兰嫣然被云岚宗宗主云韵亲自收做弟子"
+      ]
+    }
+  }
+]

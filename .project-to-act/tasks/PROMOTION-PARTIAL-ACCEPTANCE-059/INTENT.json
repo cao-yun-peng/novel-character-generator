@@ -1,0 +1,13 @@
+{
+  "task_id": "PROMOTION-PARTIAL-ACCEPTANCE-059",
+  "requested_by": "user",
+  "intent": "根据明确评测失败，将 promotion 从整人物原子接受改为事实级部分接受，同时保持严格 Grounding 和不猜 occurrence。",
+  "current_behavior": "任一 fact_quote 匹配不唯一或不存在会将 character_valid 置为 false，导致同人物所有已安全 Grounding 的事实一并丢弃。",
+  "expected_behavior": "每条事实独立 Grounding；成功事实组成 promoted character，失败事实仅进入 review/unassigned；没有成功事实时才不创建人物。",
+  "non_goals": [
+    "不放宽 exact/whitespace-equivalent Grounding",
+    "不按上下文猜测重复 quote 的具体 occurrence",
+    "不改变模型可见输入输出 Schema",
+    "不实现全局人物合并"
+  ]
+}

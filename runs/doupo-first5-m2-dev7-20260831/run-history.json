@@ -1,0 +1,24 @@
+[
+  {
+    "attempt_index": 1,
+    "status": "interrupted",
+    "completed_tasks_before_exit": 5,
+    "new_provider_calls_recorded": 5,
+    "error_type": "IncompleteRead",
+    "reason": "HTTP chunked response ended during response.read; completed task records were retained for resume"
+  },
+  {
+    "attempt_index": 2,
+    "status": "completed",
+    "started_at": "2026-08-31T00:36:35.164585Z",
+    "completed_at": "2026-08-31T00:37:32.037194Z",
+    "duration_ms": 56875,
+    "planned_tasks": 18,
+    "succeeded_tasks": 18,
+    "failed_tasks": 0,
+    "resumed_tasks": 5,
+    "new_provider_calls": 13,
+    "recorded_provider_calls": 18,
+    "complete": true
+  }
+]

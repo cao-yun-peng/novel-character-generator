@@ -1,0 +1,16 @@
+{
+  "task_id": "N3-PROMOTION-DOUPO-RUN-057",
+  "user_request": "运行 N3 和 promotion。",
+  "inputs": {
+    "source_document": "tests/小说/斗破苍穹前5章.txt",
+    "source_m1_run": "runs/doupo-first5-m1-scope-v4",
+    "source_m2_run": "runs/doupo-first5-m2-dev7-20260831"
+  },
+  "label_policy": "模型可逐字返回 describe.mention_quote 作为人物标签；代码验证字符串相等但不保存人物名称 occurrence span。其他标签仍须在 remaining evidence 中唯一匹配。",
+  "non_goals": [
+    "跨 Chunk 人物合并或别名解析",
+    "全局 character_id",
+    "人工确认 promotion 人物身份",
+    "发布阶段 Gate"
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "schema_version": "n3-promotion-source-replay-v1",
+  "source_m1_run_dir": "E:\\project\\agent\\novel-cahracter-generator\\runs\\doupo-first5-m1-scope-v4",
+  "source_m2_run_dir": "E:\\project\\agent\\novel-cahracter-generator\\runs\\doupo-first5-m2-dev7-20260831",
+  "document_hash": "7ca3fd295b5d0d454ca0b0bac2f4a49f2271602fc8e55bca2f120bb11d85172a",
+  "source_m1_manifest_hash": "dd71ace2b0df0a5e9e5aed5dadfbdffd9ad3e6d7ecffea1023195365108c0ce2",
+  "source_m2_grounded_results_hash": "a17600f626b7c08e0e3616ce21abd4de21413d34e197f5dce58ec3dd41e84d0d"
+}

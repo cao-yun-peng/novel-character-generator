@@ -1,0 +1,117 @@
+{
+  "schema_version": "m2-attribution-task-result-v1",
+  "source_run_dir": "E:\\project\\agent\\novel-cahracter-generator\\runs\\doupo-first5-m1-scope-v4",
+  "chunk_index": 2,
+  "chunk_id": "chunk-000002-2250-4750-84c9baa8a8da",
+  "target_local_mention_id": "m3",
+  "target_mention_quote": "萧炎",
+  "task_cache_key": "779c88862e2a17422baaa33ae0b1e837636940366d7c96c3c448a19ba21379de",
+  "model_output": {
+    "belongs_to_target": [
+      {
+        "fact_quote": "孤独背影",
+        "category": "appearance_state",
+        "attribute": "背影状态",
+        "value": "孤独"
+      },
+      {
+        "fact_quote": "有些白皙的手掌",
+        "category": "body",
+        "attribute": "手掌肤色",
+        "value": "白皙"
+      },
+      {
+        "fact_quote": "脸庞狰狞",
+        "category": "face",
+        "attribute": "面部表情",
+        "value": "狰狞"
+      }
+    ]
+  },
+  "grounded_result": {
+    "target_character_ref": {
+      "source_document_version_id": "doupo-first5-7ca3fd295b5d0d45",
+      "chunk_id": "chunk-000002-2250-4750-84c9baa8a8da",
+      "local_mention_id": "m3",
+      "mention_type": "exact",
+      "packet_hash": "f6359430e3b38ff88ff31960724351baefe1353524c7e0574b91be685840e7ad"
+    },
+    "task_cache_key": "779c88862e2a17422baaa33ae0b1e837636940366d7c96c3c448a19ba21379de",
+    "grounded_belongs_to_target": [
+      {
+        "fact_quote": "孤独背影",
+        "category": "appearance_state",
+        "attribute": "背影状态",
+        "value": "孤独",
+        "source_mention_id": "m3",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "孤独背影",
+        "source_evidence_span": {
+          "start": 649,
+          "end": 653
+        },
+        "fact_chunk_span": {
+          "start": 649,
+          "end": 653
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "有些白皙的手掌",
+        "category": "body",
+        "attribute": "手掌肤色",
+        "value": "白皙",
+        "source_mention_id": "m3",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "有些白皙的手掌",
+        "source_evidence_span": {
+          "start": 778,
+          "end": 785
+        },
+        "fact_chunk_span": {
+          "start": 778,
+          "end": 785
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "脸庞狰狞",
+        "category": "face",
+        "attribute": "面部表情",
+        "value": "狰狞",
+        "source_mention_id": "m3",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "脸庞狰狞",
+        "source_evidence_span": {
+          "start": 2473,
+          "end": 2477
+        },
+        "fact_chunk_span": {
+          "start": 2473,
+          "end": 2477
+        },
+        "match_mode": "exact"
+      }
+    ]
+  },
+  "grounding_issues": [],
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 7140,
+    "http_status": 200,
+    "response_id": "61bf2f9e-7054-4d1e-bd75-0dc46e19735f",
+    "usage": {
+      "input_tokens": 2149,
+      "cached_input_tokens": 384,
+      "output_tokens": 672,
+      "reasoning_tokens": 596,
+      "total_tokens": 2821
+    },
+    "error_kind": null
+  }
+}

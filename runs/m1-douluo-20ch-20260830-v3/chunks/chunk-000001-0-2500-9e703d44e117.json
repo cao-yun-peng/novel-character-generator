@@ -1,0 +1,519 @@
+{
+  "schema_version": "m1-chunk-result-v1",
+  "chunk_index": 1,
+  "chunk_id": "chunk-000001-0-2500-9e703d44e117",
+  "chunk_hash": "9e703d44e1175fc1da93344f99a1ee77cc6084036900bcb344fa9e7e4d6baf8e",
+  "chunk_source_span": {
+    "start": 0,
+    "end": 2500
+  },
+  "model_output": {
+    "candidate_mentions": [
+      {
+        "mention_type": "describe",
+        "mention_quote": "一名身穿灰衣的青年",
+        "evidence_quotes": [
+          "一名身穿灰衣的青年",
+          "他今年二十九岁",
+          "唐三脸上的表情很丰富，时而笑，时而哭",
+          "全身赤裸的唐三",
+          "高大昂扬的身躯"
+        ]
+      },
+      {
+        "mention_type": "exact",
+        "mention_quote": "唐三",
+        "evidence_quotes": [
+          "一名身穿灰衣的青年",
+          "他今年二十九岁",
+          "唐三脸上的表情很丰富，时而笑，时而哭",
+          "全身赤裸的唐三",
+          "高大昂扬的身躯",
+          "唐三的眼睛湿润了",
+          "唐三粲然一笑",
+          "他的笑容很灿烂",
+          "从他胸口处那斗大的唐字"
+        ]
+      },
+      {
+        "mention_type": "describe",
+        "mention_quote": "三少",
+        "evidence_quotes": [
+          "一名身穿灰衣的青年",
+          "他今年二十九岁"
+        ]
+      },
+      {
+        "mention_type": "exact",
+        "mention_quote": "唐大先生",
+        "evidence_quotes": [
+          "唐大先生的眼睛湿润了"
+        ]
+      },
+      {
+        "mention_type": "describe",
+        "mention_quote": "掌门",
+        "evidence_quotes": [
+          "唐大先生的眼睛湿润了"
+        ]
+      },
+      {
+        "mention_type": "describe",
+        "mention_quote": "白色的身影",
+        "evidence_quotes": [
+          "十七道白色的身影",
+          "他们身穿的白袍",
+          "年纪最小的也超过了五旬"
+        ]
+      }
+    ]
+  },
+  "grounded_packet": {
+    "schema_version": "grounded-character-packet-v3",
+    "source_document_version_id": "source-4dd3d57c99f4b254",
+    "chunking_policy_version": "fixed-codepoint-window-2500-overlap-250-v1",
+    "chunk_id": "chunk-000001-0-2500-9e703d44e117",
+    "chunk_hash": "9e703d44e1175fc1da93344f99a1ee77cc6084036900bcb344fa9e7e4d6baf8e",
+    "chunk_source_span": {
+      "start": 0,
+      "end": 2500
+    },
+    "grounded_mentions": [
+      {
+        "local_mention_id": "m1",
+        "mention_type": "describe",
+        "mention_quote": "一名身穿灰衣的青年",
+        "mention_occurrence_count": 1,
+        "mention_source_spans": [
+          {
+            "start": 199,
+            "end": 208
+          }
+        ],
+        "mention_quote_hash": "0cfbd24c07d0f46bbe199faf74f7258960f2e4fc08111e7c76dffa9df1ee7405",
+        "approved_evidence": [
+          {
+            "evidence_quote": "一名身穿灰衣的青年",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 199,
+                "end": 208
+              }
+            ],
+            "quote_hash": "0cfbd24c07d0f46bbe199faf74f7258960f2e4fc08111e7c76dffa9df1ee7405",
+            "relation_to_mention": "contains_mention"
+          },
+          {
+            "evidence_quote": "他今年二十九岁",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 276,
+                "end": 283
+              }
+            ],
+            "quote_hash": "81f864b4987108d86abee384ae82d27c3885b7c843ac553f6631a09d8c1b3c81",
+            "relation_to_mention": "contextual"
+          },
+          {
+            "evidence_quote": "唐三脸上的表情很丰富，时而笑，时而哭",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 402,
+                "end": 420
+              }
+            ],
+            "quote_hash": "0e8d49f6cd22af93dbea6fa785327595ad268342eeca1a64d5ef384076cfd762",
+            "relation_to_mention": "contextual"
+          },
+          {
+            "evidence_quote": "全身赤裸的唐三",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1674,
+                "end": 1681
+              }
+            ],
+            "quote_hash": "620a5418bc50e7e16f6166efd6304afe1ceb186f22cb088cfd9b3730792d883a",
+            "relation_to_mention": "contextual"
+          },
+          {
+            "evidence_quote": "高大昂扬的身躯",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1868,
+                "end": 1875
+              }
+            ],
+            "quote_hash": "589d55a259e811fe0d7a826c4e189d7133ffde2f123e56a4cf423ad59327878a",
+            "relation_to_mention": "contextual"
+          }
+        ],
+        "packet_hash": "ebb8dc476d550a3f41d6f004cee13c8ae822d0b68150577dac7f367fda2e77a2"
+      },
+      {
+        "local_mention_id": "m2",
+        "mention_type": "exact",
+        "mention_quote": "唐三",
+        "mention_occurrence_count": 27,
+        "mention_source_spans": [
+          {
+            "start": 338,
+            "end": 340
+          },
+          {
+            "start": 402,
+            "end": 404
+          },
+          {
+            "start": 511,
+            "end": 513
+          },
+          {
+            "start": 818,
+            "end": 820
+          },
+          {
+            "start": 882,
+            "end": 884
+          },
+          {
+            "start": 972,
+            "end": 974
+          },
+          {
+            "start": 1065,
+            "end": 1067
+          },
+          {
+            "start": 1106,
+            "end": 1108
+          },
+          {
+            "start": 1164,
+            "end": 1166
+          },
+          {
+            "start": 1187,
+            "end": 1189
+          },
+          {
+            "start": 1245,
+            "end": 1247
+          },
+          {
+            "start": 1424,
+            "end": 1426
+          },
+          {
+            "start": 1432,
+            "end": 1434
+          },
+          {
+            "start": 1473,
+            "end": 1475
+          },
+          {
+            "start": 1542,
+            "end": 1544
+          },
+          {
+            "start": 1679,
+            "end": 1681
+          },
+          {
+            "start": 1686,
+            "end": 1688
+          },
+          {
+            "start": 1716,
+            "end": 1718
+          },
+          {
+            "start": 1768,
+            "end": 1770
+          },
+          {
+            "start": 1798,
+            "end": 1800
+          },
+          {
+            "start": 1968,
+            "end": 1970
+          },
+          {
+            "start": 2011,
+            "end": 2013
+          },
+          {
+            "start": 2014,
+            "end": 2016
+          },
+          {
+            "start": 2179,
+            "end": 2181
+          },
+          {
+            "start": 2383,
+            "end": 2385
+          },
+          {
+            "start": 2406,
+            "end": 2408
+          },
+          {
+            "start": 2469,
+            "end": 2471
+          }
+        ],
+        "mention_quote_hash": "04af9a5f2d9cca67d65d424e41820e11063f4cb679035d66b8ef30ed334d2c48",
+        "approved_evidence": [
+          {
+            "evidence_quote": "一名身穿灰衣的青年",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 199,
+                "end": 208
+              }
+            ],
+            "quote_hash": "0cfbd24c07d0f46bbe199faf74f7258960f2e4fc08111e7c76dffa9df1ee7405",
+            "relation_to_mention": "contextual"
+          },
+          {
+            "evidence_quote": "他今年二十九岁",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 276,
+                "end": 283
+              }
+            ],
+            "quote_hash": "81f864b4987108d86abee384ae82d27c3885b7c843ac553f6631a09d8c1b3c81",
+            "relation_to_mention": "contextual"
+          },
+          {
+            "evidence_quote": "唐三脸上的表情很丰富，时而笑，时而哭",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 402,
+                "end": 420
+              }
+            ],
+            "quote_hash": "0e8d49f6cd22af93dbea6fa785327595ad268342eeca1a64d5ef384076cfd762",
+            "relation_to_mention": "contains_mention"
+          },
+          {
+            "evidence_quote": "全身赤裸的唐三",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1674,
+                "end": 1681
+              }
+            ],
+            "quote_hash": "620a5418bc50e7e16f6166efd6304afe1ceb186f22cb088cfd9b3730792d883a",
+            "relation_to_mention": "contains_mention"
+          },
+          {
+            "evidence_quote": "高大昂扬的身躯",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1868,
+                "end": 1875
+              }
+            ],
+            "quote_hash": "589d55a259e811fe0d7a826c4e189d7133ffde2f123e56a4cf423ad59327878a",
+            "relation_to_mention": "contextual"
+          },
+          {
+            "evidence_quote": "唐三的眼睛湿润了",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1245,
+                "end": 1253
+              }
+            ],
+            "quote_hash": "2e71031acb29866e9aa387d4bdca543a5a2ea51dee6843898f34668cd61a1070",
+            "relation_to_mention": "contains_mention"
+          },
+          {
+            "evidence_quote": "唐三粲然一笑",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1424,
+                "end": 1430
+              }
+            ],
+            "quote_hash": "74261f706f2b242be52083aa37ae6e72b3adb2ecccc3183a8ba4d4139af95e6d",
+            "relation_to_mention": "contains_mention"
+          },
+          {
+            "evidence_quote": "他的笑容很灿烂",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1691,
+                "end": 1698
+              }
+            ],
+            "quote_hash": "4cc152cc1e3373159bdd98f087dd96667bba4b7878a239178b4d1fc59700453b",
+            "relation_to_mention": "contextual"
+          },
+          {
+            "evidence_quote": "从他胸口处那斗大的唐字",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 235,
+                "end": 246
+              }
+            ],
+            "quote_hash": "4c0bacfef302a96eee31a5481313e488081925b3030eceb9fd84f3ff4ddc0b4b",
+            "relation_to_mention": "contextual"
+          }
+        ],
+        "packet_hash": "2d28ca1acfe889ff5c089f12d96ecd6b57b4753bfacd1aab1f59f01b14c853d9"
+      },
+      {
+        "local_mention_id": "m3",
+        "mention_type": "describe",
+        "mention_quote": "三少",
+        "mention_occurrence_count": 3,
+        "mention_source_spans": [
+          {
+            "start": 12,
+            "end": 14
+          },
+          {
+            "start": 29,
+            "end": 31
+          },
+          {
+            "start": 319,
+            "end": 321
+          }
+        ],
+        "mention_quote_hash": "84c77602e25a25b90d7f7fb179d92d8b5977f932e5c31502f8c3ca12a1a8756e",
+        "approved_evidence": [
+          {
+            "evidence_quote": "一名身穿灰衣的青年",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 199,
+                "end": 208
+              }
+            ],
+            "quote_hash": "0cfbd24c07d0f46bbe199faf74f7258960f2e4fc08111e7c76dffa9df1ee7405",
+            "relation_to_mention": "contextual"
+          },
+          {
+            "evidence_quote": "他今年二十九岁",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 276,
+                "end": 283
+              }
+            ],
+            "quote_hash": "81f864b4987108d86abee384ae82d27c3885b7c843ac553f6631a09d8c1b3c81",
+            "relation_to_mention": "contextual"
+          }
+        ],
+        "packet_hash": "fed3e4afb750db68766d1d86194b50d8481899e98002456517b27c531fb5c7d2"
+      },
+      {
+        "local_mention_id": "m6",
+        "mention_type": "describe",
+        "mention_quote": "白色的身影",
+        "mention_occurrence_count": 1,
+        "mention_source_spans": [
+          {
+            "start": 564,
+            "end": 569
+          }
+        ],
+        "mention_quote_hash": "afe9901e0dbb3e38299488f2576457e0303ba83b4904df0cc74bd577b258ce93",
+        "approved_evidence": [
+          {
+            "evidence_quote": "十七道白色的身影",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 561,
+                "end": 569
+              }
+            ],
+            "quote_hash": "39091075ecb4efb073df6a6d41836c8b6ebe558b6edff239fa2028ed4e44ee55",
+            "relation_to_mention": "contains_mention"
+          },
+          {
+            "evidence_quote": "他们身穿的白袍",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 620,
+                "end": 627
+              }
+            ],
+            "quote_hash": "587c7d08f85d21be9e34c97240ba8119667bd492ca24798ce1ab4112c2502960",
+            "relation_to_mention": "contextual"
+          },
+          {
+            "evidence_quote": "年纪最小的也超过了五旬",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 600,
+                "end": 611
+              }
+            ],
+            "quote_hash": "2c4fb218eb2bd2faaffb013e07a7564d1c3224d4a5f8d957304a89c321086374",
+            "relation_to_mention": "contextual"
+          }
+        ],
+        "packet_hash": "ee86a73310170def0e600500ce608776da131d31bfad04c204ec2535ea9de2bd"
+      }
+    ],
+    "rejected_evidence": [
+      {
+        "mention_index": 3,
+        "evidence_quote": "唐大先生的眼睛湿润了",
+        "reason_code": "evidence_not_in_chunk"
+      },
+      {
+        "mention_index": 4,
+        "evidence_quote": "唐大先生的眼睛湿润了",
+        "reason_code": "evidence_not_in_chunk"
+      }
+    ]
+  },
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 47516,
+    "http_status": 200,
+    "response_id": "548ad25e-f375-4631-bee4-75d987c88a85",
+    "usage": {
+      "input_tokens": 2439,
+      "cached_input_tokens": 2432,
+      "output_tokens": 5493,
+      "reasoning_tokens": 5108,
+      "total_tokens": 7932
+    },
+    "error_kind": null
+  }
+}

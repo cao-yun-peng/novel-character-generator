@@ -1,0 +1,21 @@
+# E-20260830-M2-MINIMAL-FACT-SCHEMA-054
+
+- 时间：2026-08-30（Asia/Shanghai）。
+- 用户决定：M2 模型不读取或输出 ref、span、assessments、归属状态、claimed/support 字段或 epistemic 状态；只返回肯定属于当前 exact 的外貌事实，由代码补来源并从 describe 派生工作池消费。
+- 决策：`DEC-20260830-M2-MINIMAL-FACT-SCHEMA-054`。
+- 版本：Schema `3.7.0-draft1`；M2 envelope `m2-orchestration-envelope-v4`；promotion envelope `m2-remaining-describe-promotion-envelope-v4`；运行时保持 `0.1.0.dev6`。
+- 模型归属输出：顶层只有 `belongs_to_target`；事实只有 `fact_quote`、`category`、`attribute`、`value`。
+- 代码绑定策略：target evidence 优先；否则要求 fact_quote 在单一 describe evidence occurrence 中严格或纯空白等价匹配。多来源匹配标记 `ambiguous_fact_binding`，越出允许 evidence 标记 `fact_not_in_allowed_evidence`，均不归并、不删除。
+- 消费策略：同一 fact span 仅由一个 exact 认领且无重叠冲突时，归并到 exact 并从 N2 packet 派生的 describe 工作池消费；N2 packet 与 M1 model output 不变。
+- 自动测试命令：`$env:PYTHONPATH='src'; $env:PYTHONDONTWRITEBYTECODE='1'; python -m unittest discover -s tests -v`。
+- 自动测试结果：退出状态 0；60 passed，0 failed，0 skipped。
+- Schema 验证：Draft 2020-12 meta-schema 通过；新输入/输出样例通过；携带旧 `support_span` 字段的模型输出被 `additionalProperties=false` 拒绝。第一次一次性验证命令因 PowerShell 展开 `$schema/$defs` 导致脚本 `KeyError`，改为 `chr(36)` 构造键后退出状态 0；该失败属于验证脚本转义，不是 Schema 失败。
+- 项目验证：Project-to-Act `--validate` 返回 valid；Lifecycle validate 返回 valid，stage 5 / revision 2。
+- Git 检查：`git diff --check` 退出状态 0，仅有 LF/CRLF 工作区提示，无空白错误。
+- 文件 SHA-256：
+  - Schema：`282ce0153ef35aaddfdfa70046588fd48d3e4cb96d1e1dbce4beff8d1232175f`
+  - 技术契约：`ff6ec6dc9e106bcdb3e5af3d03c237322bb2c83adb21f1cae24dce038460e75b`
+  - 契约测试：`f975fd2cd51e84cec88738ff42dd234d48ea6614b4512de2398d44547803d75a`
+- 真实 Provider 调用：0。
+- 未覆盖：M2 Prompt、DTO、Provider 接线、fact_quote 运行时绑定、N3 消费、真实模型质量和歧义率评测。
+- 有效期：直到 M2 模型字段、绑定策略、Schema 或 resolver policy 发生变化。

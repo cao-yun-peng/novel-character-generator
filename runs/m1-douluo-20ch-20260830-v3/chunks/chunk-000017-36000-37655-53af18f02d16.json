@@ -1,0 +1,739 @@
+{
+  "schema_version": "m1-chunk-result-v1",
+  "chunk_index": 17,
+  "chunk_id": "chunk-000017-36000-37655-53af18f02d16",
+  "chunk_hash": "53af18f02d1617e62a2554e8693d937dda9ea3b1dc165ff631bfbeb8338a3018",
+  "chunk_source_span": {
+    "start": 36000,
+    "end": 37655
+  },
+  "model_output": {
+    "candidate_mentions": [
+      {
+        "mention_type": "describe",
+        "mention_quote": "门房",
+        "evidence_quotes": [
+          "他那满脸的怒气"
+        ]
+      },
+      {
+        "mention_type": "exact",
+        "mention_quote": "杰克",
+        "evidence_quotes": [
+          "不就是个老头儿么",
+          "气势汹汹的老杰克"
+        ]
+      },
+      {
+        "mention_type": "describe",
+        "mention_quote": "老杰克",
+        "evidence_quotes": [
+          "不就是个老头儿么",
+          "气势汹汹的老杰克"
+        ]
+      },
+      {
+        "mention_type": "describe",
+        "mention_quote": "老先生",
+        "evidence_quotes": [
+          "不就是个老头儿么"
+        ]
+      },
+      {
+        "mention_type": "exact",
+        "mention_quote": "唐三",
+        "evidence_quotes": [
+          "瘦小的身影",
+          "细嫩的小手",
+          "施展的人实在矮小了一些",
+          "唐三人虽然不大",
+          "身上衣服全是补丁"
+        ]
+      },
+      {
+        "mention_type": "exact",
+        "mention_quote": "小三",
+        "evidence_quotes": [
+          "瘦小的身影",
+          "细嫩的小手",
+          "施展的人实在矮小了一些",
+          "唐三人虽然不大",
+          "身上衣服全是补丁"
+        ]
+      },
+      {
+        "mention_type": "describe",
+        "mention_quote": "小穷鬼",
+        "evidence_quotes": [
+          "身上衣服全是补丁"
+        ]
+      },
+      {
+        "mention_type": "describe",
+        "mention_quote": "孩子",
+        "evidence_quotes": [
+          "瘦小的身影",
+          "细嫩的小手"
+        ]
+      },
+      {
+        "mention_type": "describe",
+        "mention_quote": "大师",
+        "evidence_quotes": [
+          "中等身材，略微有些偏瘦",
+          "大约四、五十岁的样子，黑色短发三七分开，相貌很普通",
+          "双眼开阖之间带着几分懒散和颓废"
+        ]
+      }
+    ]
+  },
+  "grounded_packet": {
+    "schema_version": "grounded-character-packet-v3",
+    "source_document_version_id": "source-4dd3d57c99f4b254",
+    "chunking_policy_version": "fixed-codepoint-window-2500-overlap-250-v1",
+    "chunk_id": "chunk-000017-36000-37655-53af18f02d16",
+    "chunk_hash": "53af18f02d1617e62a2554e8693d937dda9ea3b1dc165ff631bfbeb8338a3018",
+    "chunk_source_span": {
+      "start": 36000,
+      "end": 37655
+    },
+    "grounded_mentions": [
+      {
+        "local_mention_id": "m1",
+        "mention_type": "describe",
+        "mention_quote": "门房",
+        "mention_occurrence_count": 23,
+        "mention_source_spans": [
+          {
+            "start": 28,
+            "end": 30
+          },
+          {
+            "start": 192,
+            "end": 194
+          },
+          {
+            "start": 281,
+            "end": 283
+          },
+          {
+            "start": 402,
+            "end": 404
+          },
+          {
+            "start": 438,
+            "end": 440
+          },
+          {
+            "start": 466,
+            "end": 468
+          },
+          {
+            "start": 473,
+            "end": 475
+          },
+          {
+            "start": 623,
+            "end": 625
+          },
+          {
+            "start": 696,
+            "end": 698
+          },
+          {
+            "start": 711,
+            "end": 713
+          },
+          {
+            "start": 745,
+            "end": 747
+          },
+          {
+            "start": 768,
+            "end": 770
+          },
+          {
+            "start": 827,
+            "end": 829
+          },
+          {
+            "start": 852,
+            "end": 854
+          },
+          {
+            "start": 868,
+            "end": 870
+          },
+          {
+            "start": 875,
+            "end": 877
+          },
+          {
+            "start": 928,
+            "end": 930
+          },
+          {
+            "start": 1137,
+            "end": 1139
+          },
+          {
+            "start": 1166,
+            "end": 1168
+          },
+          {
+            "start": 1219,
+            "end": 1221
+          },
+          {
+            "start": 1229,
+            "end": 1231
+          },
+          {
+            "start": 1416,
+            "end": 1418
+          },
+          {
+            "start": 1479,
+            "end": 1481
+          }
+        ],
+        "mention_quote_hash": "349343187607895273143994022b9dd5a81b28c64bf6be16503a5e0e6ff7f366",
+        "approved_evidence": [
+          {
+            "evidence_quote": "他那满脸的怒气",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1242,
+                "end": 1249
+              }
+            ],
+            "quote_hash": "99c7116b904aa86efb403419f274c27abf8a9754ab379b8f08e525c362cd006e",
+            "relation_to_mention": "contextual"
+          }
+        ],
+        "packet_hash": "58e0403e60ca11adb5e3065444c156a97b95c69886a62b7697c490eb125ca7ae"
+      },
+      {
+        "local_mention_id": "m2",
+        "mention_type": "exact",
+        "mention_quote": "杰克",
+        "mention_occurrence_count": 10,
+        "mention_source_spans": [
+          {
+            "start": 96,
+            "end": 98
+          },
+          {
+            "start": 156,
+            "end": 158
+          },
+          {
+            "start": 252,
+            "end": 254
+          },
+          {
+            "start": 394,
+            "end": 396
+          },
+          {
+            "start": 482,
+            "end": 484
+          },
+          {
+            "start": 630,
+            "end": 632
+          },
+          {
+            "start": 651,
+            "end": 653
+          },
+          {
+            "start": 949,
+            "end": 951
+          },
+          {
+            "start": 1430,
+            "end": 1432
+          },
+          {
+            "start": 1459,
+            "end": 1461
+          }
+        ],
+        "mention_quote_hash": "18c58ba65f0cd178f68b01d5df76002ab0c757afa0cc0ef8bbf5a05a2e777169",
+        "approved_evidence": [
+          {
+            "evidence_quote": "不就是个老头儿么",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 516,
+                "end": 524
+              }
+            ],
+            "quote_hash": "d55745eb7bfc0b8264467e674ceec559e195e5d7e08b41c0f34431cac310f1be",
+            "relation_to_mention": "contextual"
+          },
+          {
+            "evidence_quote": "气势汹汹的老杰克",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 476,
+                "end": 484
+              }
+            ],
+            "quote_hash": "0c519a55193509fdeca873d2f1576d65f04508f954b0e7f1b93abbd9ee6c410c",
+            "relation_to_mention": "contains_mention"
+          }
+        ],
+        "packet_hash": "aee8a58fce4bfe7a60eb7b238f66bd104eded2892fc2339a17934164963ded54"
+      },
+      {
+        "local_mention_id": "m3",
+        "mention_type": "describe",
+        "mention_quote": "老杰克",
+        "mention_occurrence_count": 6,
+        "mention_source_spans": [
+          {
+            "start": 251,
+            "end": 254
+          },
+          {
+            "start": 393,
+            "end": 396
+          },
+          {
+            "start": 481,
+            "end": 484
+          },
+          {
+            "start": 650,
+            "end": 653
+          },
+          {
+            "start": 1429,
+            "end": 1432
+          },
+          {
+            "start": 1458,
+            "end": 1461
+          }
+        ],
+        "mention_quote_hash": "758ab0f61a61cd7ae6a18146e27fced2b52de333a88c08351446a957dea3f432",
+        "approved_evidence": [
+          {
+            "evidence_quote": "不就是个老头儿么",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 516,
+                "end": 524
+              }
+            ],
+            "quote_hash": "d55745eb7bfc0b8264467e674ceec559e195e5d7e08b41c0f34431cac310f1be",
+            "relation_to_mention": "contextual"
+          },
+          {
+            "evidence_quote": "气势汹汹的老杰克",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 476,
+                "end": 484
+              }
+            ],
+            "quote_hash": "0c519a55193509fdeca873d2f1576d65f04508f954b0e7f1b93abbd9ee6c410c",
+            "relation_to_mention": "contains_mention"
+          }
+        ],
+        "packet_hash": "547a1b9bc1120fde699b23f0998659537ecba48a561412a86006dd751611c3b3"
+      },
+      {
+        "local_mention_id": "m4",
+        "mention_type": "describe",
+        "mention_quote": "老先生",
+        "mention_occurrence_count": 2,
+        "mention_source_spans": [
+          {
+            "start": 1435,
+            "end": 1438
+          },
+          {
+            "start": 1617,
+            "end": 1620
+          }
+        ],
+        "mention_quote_hash": "2b4886878c00191b9d1d95320e0ac14cbfc230933e755ec49da001903fa3a2a1",
+        "approved_evidence": [
+          {
+            "evidence_quote": "不就是个老头儿么",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 516,
+                "end": 524
+              }
+            ],
+            "quote_hash": "d55745eb7bfc0b8264467e674ceec559e195e5d7e08b41c0f34431cac310f1be",
+            "relation_to_mention": "contextual"
+          }
+        ],
+        "packet_hash": "a5c261ca15dd043ebff839c882a539f2d273116c6737c2d3e1d5ba4688edd687"
+      },
+      {
+        "local_mention_id": "m5",
+        "mention_type": "exact",
+        "mention_quote": "唐三",
+        "mention_occurrence_count": 7,
+        "mention_source_spans": [
+          {
+            "start": 160,
+            "end": 162
+          },
+          {
+            "start": 976,
+            "end": 978
+          },
+          {
+            "start": 1091,
+            "end": 1093
+          },
+          {
+            "start": 1183,
+            "end": 1185
+          },
+          {
+            "start": 1294,
+            "end": 1296
+          },
+          {
+            "start": 1553,
+            "end": 1555
+          },
+          {
+            "start": 1587,
+            "end": 1589
+          }
+        ],
+        "mention_quote_hash": "04af9a5f2d9cca67d65d424e41820e11063f4cb679035d66b8ef30ed334d2c48",
+        "approved_evidence": [
+          {
+            "evidence_quote": "瘦小的身影",
+            "occurrence_count": 2,
+            "source_spans": [
+              {
+                "start": 671,
+                "end": 676
+              },
+              {
+                "start": 725,
+                "end": 730
+              }
+            ],
+            "quote_hash": "77f9bdbaba5a821f4ede4d7247241ccbd4524105e6549778f0a8c58ceabfcafc",
+            "relation_to_mention": "contextual"
+          },
+          {
+            "evidence_quote": "细嫩的小手",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 687,
+                "end": 692
+              }
+            ],
+            "quote_hash": "4165c1a3888459e235379ee40c28c8304affd730364d0627b65c5b23c3f1766a",
+            "relation_to_mention": "contextual"
+          },
+          {
+            "evidence_quote": "施展的人实在矮小了一些",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 808,
+                "end": 819
+              }
+            ],
+            "quote_hash": "717dee3d03fd4002f0b32244833033e882f6884c55c5c15a46c2c166cfb250c7",
+            "relation_to_mention": "contextual"
+          },
+          {
+            "evidence_quote": "唐三人虽然不大",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1091,
+                "end": 1098
+              }
+            ],
+            "quote_hash": "88d258fff883de2ffb14f81821b2bb05a4349e13227b56598456b913a3c0eef8",
+            "relation_to_mention": "contains_mention"
+          },
+          {
+            "evidence_quote": "身上衣服全是补丁",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 571,
+                "end": 579
+              }
+            ],
+            "quote_hash": "22e2bfbe44942c9ffa858fb25a0705c38de870b68ade60f0df68869aa2be40f8",
+            "relation_to_mention": "contextual"
+          }
+        ],
+        "packet_hash": "6ee55abc1003cda4a1f8ce1da478e2678df0b8371c19acf8e3ded925d810666f"
+      },
+      {
+        "local_mention_id": "m6",
+        "mention_type": "exact",
+        "mention_quote": "小三",
+        "mention_occurrence_count": 2,
+        "mention_source_spans": [
+          {
+            "start": 145,
+            "end": 147
+          },
+          {
+            "start": 942,
+            "end": 944
+          }
+        ],
+        "mention_quote_hash": "38f6a0cc6cfcdf3ba4a0b115ff38fd8f61dfb313b98dd14011398bd5687e98c4",
+        "approved_evidence": [
+          {
+            "evidence_quote": "瘦小的身影",
+            "occurrence_count": 2,
+            "source_spans": [
+              {
+                "start": 671,
+                "end": 676
+              },
+              {
+                "start": 725,
+                "end": 730
+              }
+            ],
+            "quote_hash": "77f9bdbaba5a821f4ede4d7247241ccbd4524105e6549778f0a8c58ceabfcafc",
+            "relation_to_mention": "contextual"
+          },
+          {
+            "evidence_quote": "细嫩的小手",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 687,
+                "end": 692
+              }
+            ],
+            "quote_hash": "4165c1a3888459e235379ee40c28c8304affd730364d0627b65c5b23c3f1766a",
+            "relation_to_mention": "contextual"
+          },
+          {
+            "evidence_quote": "施展的人实在矮小了一些",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 808,
+                "end": 819
+              }
+            ],
+            "quote_hash": "717dee3d03fd4002f0b32244833033e882f6884c55c5c15a46c2c166cfb250c7",
+            "relation_to_mention": "contextual"
+          },
+          {
+            "evidence_quote": "唐三人虽然不大",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1091,
+                "end": 1098
+              }
+            ],
+            "quote_hash": "88d258fff883de2ffb14f81821b2bb05a4349e13227b56598456b913a3c0eef8",
+            "relation_to_mention": "contextual"
+          },
+          {
+            "evidence_quote": "身上衣服全是补丁",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 571,
+                "end": 579
+              }
+            ],
+            "quote_hash": "22e2bfbe44942c9ffa858fb25a0705c38de870b68ade60f0df68869aa2be40f8",
+            "relation_to_mention": "contextual"
+          }
+        ],
+        "packet_hash": "69f23ddd3d7da5b23cdbe6e99bbfbb6667c096d080f506754d2751ffe0e3428a"
+      },
+      {
+        "local_mention_id": "m7",
+        "mention_type": "describe",
+        "mention_quote": "小穷鬼",
+        "mention_occurrence_count": 1,
+        "mention_source_spans": [
+          {
+            "start": 567,
+            "end": 570
+          }
+        ],
+        "mention_quote_hash": "dfedbc22c8c6e8cec620fc04c61ae604dcec5f76a87638ef6a12f8d726c46958",
+        "approved_evidence": [
+          {
+            "evidence_quote": "身上衣服全是补丁",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 571,
+                "end": 579
+              }
+            ],
+            "quote_hash": "22e2bfbe44942c9ffa858fb25a0705c38de870b68ade60f0df68869aa2be40f8",
+            "relation_to_mention": "contextual"
+          }
+        ],
+        "packet_hash": "f32892910080936118d4ffb0af2f9b66f60477a3435e0cc51f8d619f728de566"
+      },
+      {
+        "local_mention_id": "m8",
+        "mention_type": "describe",
+        "mention_quote": "孩子",
+        "mention_occurrence_count": 2,
+        "mention_source_spans": [
+          {
+            "start": 1157,
+            "end": 1159
+          },
+          {
+            "start": 1637,
+            "end": 1639
+          }
+        ],
+        "mention_quote_hash": "5f887419f463425a6f06d8823b08d2583f65830a488952bb2ee78ec6f70d9959",
+        "approved_evidence": [
+          {
+            "evidence_quote": "瘦小的身影",
+            "occurrence_count": 2,
+            "source_spans": [
+              {
+                "start": 671,
+                "end": 676
+              },
+              {
+                "start": 725,
+                "end": 730
+              }
+            ],
+            "quote_hash": "77f9bdbaba5a821f4ede4d7247241ccbd4524105e6549778f0a8c58ceabfcafc",
+            "relation_to_mention": "contextual"
+          },
+          {
+            "evidence_quote": "细嫩的小手",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 687,
+                "end": 692
+              }
+            ],
+            "quote_hash": "4165c1a3888459e235379ee40c28c8304affd730364d0627b65c5b23c3f1766a",
+            "relation_to_mention": "contextual"
+          }
+        ],
+        "packet_hash": "65be19a3b53d08e49095e6d280f7780f0ffc9f8072ae7c121368e41aeb993e3a"
+      },
+      {
+        "local_mention_id": "m9",
+        "mention_type": "describe",
+        "mention_quote": "大师",
+        "mention_occurrence_count": 5,
+        "mention_source_spans": [
+          {
+            "start": 1281,
+            "end": 1283
+          },
+          {
+            "start": 1409,
+            "end": 1411
+          },
+          {
+            "start": 1512,
+            "end": 1514
+          },
+          {
+            "start": 1539,
+            "end": 1541
+          },
+          {
+            "start": 1576,
+            "end": 1578
+          }
+        ],
+        "mention_quote_hash": "b651da7324dad37ada7abbae89bb6b9c76091bfa912b1e7d9efce9bad70489bc",
+        "approved_evidence": [
+          {
+            "evidence_quote": "中等身材，略微有些偏瘦",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1305,
+                "end": 1316
+              }
+            ],
+            "quote_hash": "3fc1531af0b02045688791109a520e9f4125d092236547b0f861f62f52790fa2",
+            "relation_to_mention": "contextual"
+          },
+          {
+            "evidence_quote": "大约四、五十岁的样子，黑色短发三七分开，相貌很普通",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1343,
+                "end": 1368
+              }
+            ],
+            "quote_hash": "c25cb340accc00f2215212b23d67f85ce8eeadf06f1c1e9e5a3a5788d9a83ad8",
+            "relation_to_mention": "contextual"
+          },
+          {
+            "evidence_quote": "双眼开阖之间带着几分懒散和颓废",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1388,
+                "end": 1403
+              }
+            ],
+            "quote_hash": "ceeb8784d9e75eeb245e84b7b19589775b075c816b599c38b2fb173d1899bb3e",
+            "relation_to_mention": "contextual"
+          }
+        ],
+        "packet_hash": "e494e8fe2be8db33deeed74c5c71f602f54ea584a829048755925356f1aa304b"
+      }
+    ],
+    "rejected_evidence": []
+  },
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 31875,
+    "http_status": 200,
+    "response_id": "14df4899-20f9-4e0f-b4ed-66ca89881938",
+    "usage": {
+      "input_tokens": 1863,
+      "cached_input_tokens": 768,
+      "output_tokens": 3671,
+      "reasoning_tokens": 3187,
+      "total_tokens": 5534
+    },
+    "error_kind": null
+  }
+}

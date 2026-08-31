@@ -1,0 +1,32 @@
+{
+  "id": "M2-DOUPO-LIVE-RUN-056",
+  "title": "使用斗破前5章 N2 产出真实运行 M2",
+  "status": "completed",
+  "owner": "Codex",
+  "objective": "从既有斗破前5章 M1 原始输出确定性重放最新 N2 exact precedence，并以所得 N2 packet 调用 DeepSeek 完成全部 exact attribution M2 任务，分别交付模型输出、代码 grounded 输出、失败记录、摘要和脱敏 trace。",
+  "risk_level": "L1-live-provider-cost",
+  "allowed_paths": [
+    "src",
+    "tests",
+    "README.md",
+    "runs/doupo-first5-m2-dev7-20260831",
+    ".project-to-act"
+  ],
+  "invariants": [
+    "不覆盖 runs/doupo-first5-m1-scope-v4 或历史产物",
+    "输入原文 hash 必须等于既有 manifest document_hash",
+    "M2 只消费重新生成的 grounded-character-packet-v5 / exact-evidence-precedence-v1",
+    "模型输出与 grounded 阶段输出分开保存",
+    "API Key、Prompt、正文和 reasoning 不写入 trace 或治理证据",
+    "失败后可按 task_cache_key/chunk/target 恢复，不重复已完成调用",
+    "本轮只运行 exact attribution；没有 N3 剩余池，因此不运行 promotion",
+    "单次实跑不构成人工模型质量 Gate"
+  ],
+  "acceptance": [
+    "7 个 Chunk 的最新 N2 重放结果可审计且与原文 hash 一致",
+    "为全部 individual exact 生成 M2 任务并完成或明确记录失败",
+    "模型原始输出、M2 grounded 输出、N2 重放 packet、summary、failures 与脱敏 trace 分开保存",
+    "所有 grounded fact_quote 回放原文成功，歧义和越界事实失败关闭",
+    "自动测试、项目治理和 Lifecycle 验证通过"
+  ]
+}

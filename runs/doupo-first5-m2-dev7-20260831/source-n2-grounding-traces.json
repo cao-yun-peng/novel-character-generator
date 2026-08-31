@@ -1,0 +1,294 @@
+[
+  {
+    "chunk_index": 1,
+    "chunk_id": "chunk-000001-0-2500-8c90daca7aee",
+    "trace_events": [
+      {
+        "code": "describe_evidence_shadowed_by_exact",
+        "local_mention_id": "m2",
+        "detail": "quote_hash=a162eb1543d3cad0947cf6d46a5e561da9d7b8cebdb4a629415098768b12ef49; exact_mentions=m1; rule=exact-evidence-precedence-v1"
+      },
+      {
+        "code": "describe_evidence_shadowed_by_exact",
+        "local_mention_id": "m2",
+        "detail": "quote_hash=67ab82f134a181e0f698f5781abd2fc3fe0636b27367a600961500103132cf6a; exact_mentions=m1; rule=exact-evidence-precedence-v1"
+      },
+      {
+        "code": "describe_evidence_shadowed_by_exact",
+        "local_mention_id": "m2",
+        "detail": "quote_hash=82fd52268079904cf875f02bed65cb3cb28e98a8414d7dcab8b2427e38b3c0f4; exact_mentions=m1; rule=exact-evidence-precedence-v1"
+      },
+      {
+        "code": "describe_removed_after_exact_dedup",
+        "local_mention_id": "m2",
+        "detail": "rule=exact-evidence-precedence-v1"
+      },
+      {
+        "code": "describe_evidence_shadowed_by_exact",
+        "local_mention_id": "m4",
+        "detail": "quote_hash=aba2c585ca4d111d2bb8beb867348d22c5a09fb0ad4696bdbde8f6d122f20047; exact_mentions=m3; rule=exact-evidence-precedence-v1"
+      },
+      {
+        "code": "describe_evidence_shadowed_by_exact",
+        "local_mention_id": "m4",
+        "detail": "quote_hash=ed2618341dd1b0191f276aba7d3cbab7d69f286b5a13ff1637acef6bb398a4b5; exact_mentions=m3; rule=exact-evidence-precedence-v1"
+      },
+      {
+        "code": "describe_removed_after_exact_dedup",
+        "local_mention_id": "m4",
+        "detail": "rule=exact-evidence-precedence-v1"
+      },
+      {
+        "code": "describe_evidence_shadowed_by_exact",
+        "local_mention_id": "m6",
+        "detail": "quote_hash=aab6ba5768e3c66d3c05275299ae49f1cf58b35f3dc7aed19f7186b2177d293e; exact_mentions=m5; rule=exact-evidence-precedence-v1"
+      },
+      {
+        "code": "describe_evidence_shadowed_by_exact",
+        "local_mention_id": "m6",
+        "detail": "quote_hash=27cad4a648e72be45c87eabd60dcf0432469e97e4835e9c29f4261a6e91caca6; exact_mentions=m5; rule=exact-evidence-precedence-v1"
+      },
+      {
+        "code": "describe_evidence_shadowed_by_exact",
+        "local_mention_id": "m6",
+        "detail": "quote_hash=bcca82240b4b3fa12ca04534023bd309ad37612f37d39cbf4e714f200a0dcd85; exact_mentions=m5; rule=exact-evidence-precedence-v1"
+      },
+      {
+        "code": "describe_evidence_shadowed_by_exact",
+        "local_mention_id": "m6",
+        "detail": "quote_hash=25f80e787a882fddcf55bc1305de47dd5af20949a1ab8166dab394c4ac42146d; exact_mentions=m5; rule=exact-evidence-precedence-v1"
+      },
+      {
+        "code": "describe_removed_after_exact_dedup",
+        "local_mention_id": "m6",
+        "detail": "rule=exact-evidence-precedence-v1"
+      },
+      {
+        "code": "describe_evidence_shadowed_by_exact",
+        "local_mention_id": "m7",
+        "detail": "quote_hash=aab6ba5768e3c66d3c05275299ae49f1cf58b35f3dc7aed19f7186b2177d293e; exact_mentions=m5; rule=exact-evidence-precedence-v1"
+      },
+      {
+        "code": "describe_evidence_shadowed_by_exact",
+        "local_mention_id": "m7",
+        "detail": "quote_hash=27cad4a648e72be45c87eabd60dcf0432469e97e4835e9c29f4261a6e91caca6; exact_mentions=m5; rule=exact-evidence-precedence-v1"
+      },
+      {
+        "code": "describe_evidence_shadowed_by_exact",
+        "local_mention_id": "m7",
+        "detail": "quote_hash=bcca82240b4b3fa12ca04534023bd309ad37612f37d39cbf4e714f200a0dcd85; exact_mentions=m5; rule=exact-evidence-precedence-v1"
+      },
+      {
+        "code": "describe_evidence_shadowed_by_exact",
+        "local_mention_id": "m7",
+        "detail": "quote_hash=25f80e787a882fddcf55bc1305de47dd5af20949a1ab8166dab394c4ac42146d; exact_mentions=m5; rule=exact-evidence-precedence-v1"
+      },
+      {
+        "code": "describe_removed_after_exact_dedup",
+        "local_mention_id": "m7",
+        "detail": "rule=exact-evidence-precedence-v1"
+      }
+    ]
+  },
+  {
+    "chunk_index": 2,
+    "chunk_id": "chunk-000002-2250-4750-84c9baa8a8da",
+    "trace_events": [
+      {
+        "code": "describe_evidence_shadowed_by_exact",
+        "local_mention_id": "m2",
+        "detail": "quote_hash=763b730c1964659055141d64fac1f53ab42bdd9a6acf30f859bbed84ffdc0159; exact_mentions=m1; rule=exact-evidence-precedence-v1"
+      },
+      {
+        "code": "describe_evidence_shadowed_by_exact",
+        "local_mention_id": "m2",
+        "detail": "quote_hash=7b3178105101f0ad3722ed7fe2540b5493f4ae95a71a6e5707b788530fed7080; exact_mentions=m1; rule=exact-evidence-precedence-v1"
+      },
+      {
+        "code": "describe_evidence_shadowed_by_exact",
+        "local_mention_id": "m2",
+        "detail": "quote_hash=39454cba355d810a3e6d94c5fe635f1f61d9149fc930c4d9ad96d7d0893cb357; exact_mentions=m1; rule=exact-evidence-precedence-v1"
+      },
+      {
+        "code": "describe_evidence_shadowed_by_exact",
+        "local_mention_id": "m2",
+        "detail": "quote_hash=59d0b41e95885c9cf7d05712b912e27a0f9ee239f7de338bc74b39b607abd615; exact_mentions=m1; rule=exact-evidence-precedence-v1"
+      },
+      {
+        "code": "describe_removed_after_exact_dedup",
+        "local_mention_id": "m2",
+        "detail": "rule=exact-evidence-precedence-v1"
+      },
+      {
+        "code": "describe_evidence_shadowed_by_exact",
+        "local_mention_id": "m4",
+        "detail": "quote_hash=777a40b83dde6638269af9d1533badab547ae25bd7e62fb6c76dba3169c48b1d; exact_mentions=m3; rule=exact-evidence-precedence-v1"
+      },
+      {
+        "code": "describe_evidence_shadowed_by_exact",
+        "local_mention_id": "m4",
+        "detail": "quote_hash=dbb1fcce1041355ca8f97fe5a8939f9490b39471de458cb12b5ec9b5bf6a9667; exact_mentions=m3; rule=exact-evidence-precedence-v1"
+      },
+      {
+        "code": "describe_evidence_shadowed_by_exact",
+        "local_mention_id": "m4",
+        "detail": "quote_hash=685e80d22c1cfa36d5312f56aa08b49d21d3a76a977c12bd11b0f42312cbd664; exact_mentions=m3; rule=exact-evidence-precedence-v1"
+      },
+      {
+        "code": "describe_removed_after_exact_dedup",
+        "local_mention_id": "m4",
+        "detail": "rule=exact-evidence-precedence-v1"
+      }
+    ]
+  },
+  {
+    "chunk_index": 3,
+    "chunk_id": "chunk-000003-4500-7000-dbdb791747b5",
+    "trace_events": [
+      {
+        "code": "describe_evidence_shadowed_by_exact",
+        "local_mention_id": "m3",
+        "detail": "quote_hash=0d68fa672fbcb93a993b7dc29b30061f2cb740535b2addfa8a46f2de369b66b9; exact_mentions=m2; rule=exact-evidence-precedence-v1"
+      },
+      {
+        "code": "describe_removed_after_exact_dedup",
+        "local_mention_id": "m3",
+        "detail": "rule=exact-evidence-precedence-v1"
+      },
+      {
+        "code": "describe_evidence_shadowed_by_exact",
+        "local_mention_id": "m4",
+        "detail": "quote_hash=3f5d664c1da7930316285b8956b7d3a0fb0ccd7881b83d95537becf1dfac3e4e; exact_mentions=m1; rule=exact-evidence-precedence-v1"
+      },
+      {
+        "code": "describe_evidence_shadowed_by_exact",
+        "local_mention_id": "m4",
+        "detail": "quote_hash=24d2a3495d04fae74d58b8625cb7a6ec50de20ce8bce4b91181036a3969815f8; exact_mentions=m1; rule=exact-evidence-precedence-v1"
+      },
+      {
+        "code": "describe_removed_after_exact_dedup",
+        "local_mention_id": "m4",
+        "detail": "rule=exact-evidence-precedence-v1"
+      }
+    ]
+  },
+  {
+    "chunk_index": 4,
+    "chunk_id": "chunk-000004-6750-9250-4d57b02a87a6",
+    "trace_events": [
+      {
+        "code": "describe_evidence_shadowed_by_exact",
+        "local_mention_id": "m2",
+        "detail": "quote_hash=9b71bc6e4a2a534bd71f3ef4e2967cb2d3921536b020eadbb960490d31b2ca2f; exact_mentions=m1; rule=exact-evidence-precedence-v1"
+      },
+      {
+        "code": "describe_evidence_shadowed_by_exact",
+        "local_mention_id": "m2",
+        "detail": "quote_hash=86ce9023ee2d5c8a2dd07dbfd2fb5adffa6e66975a144f039868dcc2abec9a4f; exact_mentions=m1; rule=exact-evidence-precedence-v1"
+      },
+      {
+        "code": "describe_removed_after_exact_dedup",
+        "local_mention_id": "m2",
+        "detail": "rule=exact-evidence-precedence-v1"
+      }
+    ]
+  },
+  {
+    "chunk_index": 5,
+    "chunk_id": "chunk-000005-9000-11500-0cb89a2a0c18",
+    "trace_events": [
+      {
+        "code": "describe_evidence_shadowed_by_exact",
+        "local_mention_id": "m2",
+        "detail": "quote_hash=b92547e35a0cce10cb8a7498b634c5f5692077a2480f6273497cd6fe3c5c7bf4; exact_mentions=m1; rule=exact-evidence-precedence-v1"
+      },
+      {
+        "code": "describe_evidence_shadowed_by_exact",
+        "local_mention_id": "m2",
+        "detail": "quote_hash=8939b55d13ff4ef26c9cffa9f4936c4249dab3415ee4d44057a04a9ab874adff; exact_mentions=m1; rule=exact-evidence-precedence-v1"
+      },
+      {
+        "code": "describe_evidence_shadowed_by_exact",
+        "local_mention_id": "m2",
+        "detail": "quote_hash=02e8a3f551773cc1662748c2c5ba63d985b40762dd661071046bdfb6aba586fe; exact_mentions=m1; rule=exact-evidence-precedence-v1"
+      },
+      {
+        "code": "describe_evidence_shadowed_by_exact",
+        "local_mention_id": "m2",
+        "detail": "quote_hash=8c7e59163e4ffe919be404938d479dbf8928c0346a8a607c583d6dbb674c478a; exact_mentions=m1; rule=exact-evidence-precedence-v1"
+      },
+      {
+        "code": "describe_evidence_shadowed_by_exact",
+        "local_mention_id": "m2",
+        "detail": "quote_hash=c3a0016e8c6850df7f83df90ecc40c9bc383ad8aeaabc51e753302151a0916df; exact_mentions=m1; rule=exact-evidence-precedence-v1"
+      },
+      {
+        "code": "describe_evidence_shadowed_by_exact",
+        "local_mention_id": "m2",
+        "detail": "quote_hash=7ca770550c8414205df5d74870a743d4607be8be5c639a75007a76b90337cdf8; exact_mentions=m1; rule=exact-evidence-precedence-v1"
+      },
+      {
+        "code": "describe_evidence_shadowed_by_exact",
+        "local_mention_id": "m2",
+        "detail": "quote_hash=95ab5def7ff9cc6e336326053ee74195f2f3fccae34768091182472121babb2f; exact_mentions=m1; rule=exact-evidence-precedence-v1"
+      },
+      {
+        "code": "describe_evidence_shadowed_by_exact",
+        "local_mention_id": "m2",
+        "detail": "quote_hash=e8a5fad9ab1b30d6045354e2e5ff1bfec35b8d45a3047d5206958eb727814ef5; exact_mentions=m1; rule=exact-evidence-precedence-v1"
+      },
+      {
+        "code": "describe_removed_after_exact_dedup",
+        "local_mention_id": "m2",
+        "detail": "rule=exact-evidence-precedence-v1"
+      },
+      {
+        "code": "describe_evidence_shadowed_by_exact",
+        "local_mention_id": "m4",
+        "detail": "quote_hash=26ffa4a1fd0c6278528117c3bec2467a173d2e6ac54affbe640fe00d8c81da45; exact_mentions=m3; rule=exact-evidence-precedence-v1"
+      },
+      {
+        "code": "describe_evidence_shadowed_by_exact",
+        "local_mention_id": "m4",
+        "detail": "quote_hash=9c1c81d696a4b28e8ce49847f88eae034db4d2e01fbeb07e7ab1bf8bf1931522; exact_mentions=m3; rule=exact-evidence-precedence-v1"
+      },
+      {
+        "code": "describe_removed_after_exact_dedup",
+        "local_mention_id": "m4",
+        "detail": "rule=exact-evidence-precedence-v1"
+      }
+    ]
+  },
+  {
+    "chunk_index": 6,
+    "chunk_id": "chunk-000006-11250-13750-03087dc524e6",
+    "trace_events": [
+      {
+        "code": "describe_evidence_shadowed_by_exact",
+        "local_mention_id": "m5",
+        "detail": "quote_hash=3e632fc6301dcbf1ccc4c730cb7f71f882e44b73cdc4d7d3f6a9c1c12e3fab87; exact_mentions=m4; rule=exact-evidence-precedence-v1"
+      },
+      {
+        "code": "describe_removed_after_exact_dedup",
+        "local_mention_id": "m5",
+        "detail": "rule=exact-evidence-precedence-v1"
+      }
+    ]
+  },
+  {
+    "chunk_index": 7,
+    "chunk_id": "chunk-000007-13500-14160-d83b17f39d7c",
+    "trace_events": [
+      {
+        "code": "describe_evidence_shadowed_by_exact",
+        "local_mention_id": "m2",
+        "detail": "quote_hash=62c545a3960b2ec3d0ffa658ce15459bb2b1ae63aeaecf50d79c5f73546928d1; exact_mentions=m1; rule=exact-evidence-precedence-v1"
+      },
+      {
+        "code": "describe_removed_after_exact_dedup",
+        "local_mention_id": "m2",
+        "detail": "rule=exact-evidence-precedence-v1"
+      }
+    ]
+  }
+]

@@ -1,0 +1,367 @@
+{
+  "schema_version": "m1-chunk-result-v1",
+  "chunk_index": 14,
+  "chunk_id": "chunk-000014-29250-31750-c63050dffeac",
+  "chunk_hash": "c63050dffeac76a84cabc9b4cca347c86813bc0087bb77f0ace769a9c0bfed0f",
+  "chunk_source_span": {
+    "start": 29250,
+    "end": 31750
+  },
+  "model_output": {
+    "candidate_mentions": [
+      {
+        "mention_type": "exact",
+        "mention_quote": "唐三",
+        "evidence_quotes": [
+          "才不过六岁",
+          "眼中紫意莹然",
+          "身体比以前健壮了一些",
+          "那些有着大小补丁的衣服"
+        ]
+      },
+      {
+        "mention_type": "exact",
+        "mention_quote": "唐昊",
+        "evidence_quotes": [
+          "高大苍老的男人"
+        ]
+      },
+      {
+        "mention_type": "describe",
+        "mention_quote": "高大苍老的男人",
+        "evidence_quotes": [
+          "高大苍老的男人"
+        ]
+      }
+    ]
+  },
+  "grounded_packet": {
+    "schema_version": "grounded-character-packet-v3",
+    "source_document_version_id": "source-4dd3d57c99f4b254",
+    "chunking_policy_version": "fixed-codepoint-window-2500-overlap-250-v1",
+    "chunk_id": "chunk-000014-29250-31750-c63050dffeac",
+    "chunk_hash": "c63050dffeac76a84cabc9b4cca347c86813bc0087bb77f0ace769a9c0bfed0f",
+    "chunk_source_span": {
+      "start": 29250,
+      "end": 31750
+    },
+    "grounded_mentions": [
+      {
+        "local_mention_id": "m1",
+        "mention_type": "exact",
+        "mention_quote": "唐三",
+        "mention_occurrence_count": 25,
+        "mention_source_spans": [
+          {
+            "start": 48,
+            "end": 50
+          },
+          {
+            "start": 165,
+            "end": 167
+          },
+          {
+            "start": 262,
+            "end": 264
+          },
+          {
+            "start": 305,
+            "end": 307
+          },
+          {
+            "start": 379,
+            "end": 381
+          },
+          {
+            "start": 431,
+            "end": 433
+          },
+          {
+            "start": 537,
+            "end": 539
+          },
+          {
+            "start": 669,
+            "end": 671
+          },
+          {
+            "start": 766,
+            "end": 768
+          },
+          {
+            "start": 837,
+            "end": 839
+          },
+          {
+            "start": 858,
+            "end": 860
+          },
+          {
+            "start": 979,
+            "end": 981
+          },
+          {
+            "start": 1126,
+            "end": 1128
+          },
+          {
+            "start": 1199,
+            "end": 1201
+          },
+          {
+            "start": 1244,
+            "end": 1246
+          },
+          {
+            "start": 1359,
+            "end": 1361
+          },
+          {
+            "start": 1470,
+            "end": 1472
+          },
+          {
+            "start": 1544,
+            "end": 1546
+          },
+          {
+            "start": 1634,
+            "end": 1636
+          },
+          {
+            "start": 1755,
+            "end": 1757
+          },
+          {
+            "start": 1848,
+            "end": 1850
+          },
+          {
+            "start": 1967,
+            "end": 1969
+          },
+          {
+            "start": 2115,
+            "end": 2117
+          },
+          {
+            "start": 2140,
+            "end": 2142
+          },
+          {
+            "start": 2330,
+            "end": 2332
+          }
+        ],
+        "mention_quote_hash": "04af9a5f2d9cca67d65d424e41820e11063f4cb679035d66b8ef30ed334d2c48",
+        "approved_evidence": [
+          {
+            "evidence_quote": "才不过六岁",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 2355,
+                "end": 2360
+              }
+            ],
+            "quote_hash": "a6d8a545fbd5bc41e195e05f834f431e94847b056ce54f0e6e4de3eae70e9622",
+            "relation_to_mention": "contextual"
+          },
+          {
+            "evidence_quote": "眼中紫意莹然",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 2163,
+                "end": 2169
+              }
+            ],
+            "quote_hash": "04185d925d844e645e8a4ef35904dc81c82e379c6435fdefab5047ed69569116",
+            "relation_to_mention": "contextual"
+          },
+          {
+            "evidence_quote": "身体比以前健壮了一些",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 2180,
+                "end": 2190
+              }
+            ],
+            "quote_hash": "37a1c165f10526bffe87d14738d14fb662250c255c31ec0378c4ece5360bbddd",
+            "relation_to_mention": "contextual"
+          },
+          {
+            "evidence_quote": "那些有着大小补丁的衣服",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1772,
+                "end": 1783
+              }
+            ],
+            "quote_hash": "639580b9907ccc13c5d1bbf5560741aeb0d9856dcd185f4f14370ee8be762bfd",
+            "relation_to_mention": "contextual"
+          }
+        ],
+        "packet_hash": "bda505517194dc1c7f946be6527c1de723176f88063d4f166673e5787b9373ae"
+      },
+      {
+        "local_mention_id": "m2",
+        "mention_type": "exact",
+        "mention_quote": "唐昊",
+        "mention_occurrence_count": 21,
+        "mention_source_spans": [
+          {
+            "start": 182,
+            "end": 184
+          },
+          {
+            "start": 291,
+            "end": 293
+          },
+          {
+            "start": 342,
+            "end": 344
+          },
+          {
+            "start": 384,
+            "end": 386
+          },
+          {
+            "start": 395,
+            "end": 397
+          },
+          {
+            "start": 419,
+            "end": 421
+          },
+          {
+            "start": 485,
+            "end": 487
+          },
+          {
+            "start": 594,
+            "end": 596
+          },
+          {
+            "start": 746,
+            "end": 748
+          },
+          {
+            "start": 873,
+            "end": 875
+          },
+          {
+            "start": 970,
+            "end": 972
+          },
+          {
+            "start": 1001,
+            "end": 1003
+          },
+          {
+            "start": 1019,
+            "end": 1021
+          },
+          {
+            "start": 1087,
+            "end": 1089
+          },
+          {
+            "start": 1140,
+            "end": 1142
+          },
+          {
+            "start": 1239,
+            "end": 1241
+          },
+          {
+            "start": 1380,
+            "end": 1382
+          },
+          {
+            "start": 1501,
+            "end": 1503
+          },
+          {
+            "start": 1733,
+            "end": 1735
+          },
+          {
+            "start": 1808,
+            "end": 1810
+          },
+          {
+            "start": 2084,
+            "end": 2086
+          }
+        ],
+        "mention_quote_hash": "081118b106b6bea10da0e0a6c94ec329ae8ae1f2ec304529a0c642688e4bc39d",
+        "approved_evidence": [
+          {
+            "evidence_quote": "高大苍老的男人",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1030,
+                "end": 1037
+              }
+            ],
+            "quote_hash": "56f883833650473ff2658c6d82c327add774868ef92fea45bfea812bb6ad1a40",
+            "relation_to_mention": "contextual"
+          }
+        ],
+        "packet_hash": "4fd5f9c9ddfbaf552d566db425149c82f5ee5cf9d554c3940116f88bca35b075"
+      },
+      {
+        "local_mention_id": "m3",
+        "mention_type": "describe",
+        "mention_quote": "高大苍老的男人",
+        "mention_occurrence_count": 1,
+        "mention_source_spans": [
+          {
+            "start": 1030,
+            "end": 1037
+          }
+        ],
+        "mention_quote_hash": "56f883833650473ff2658c6d82c327add774868ef92fea45bfea812bb6ad1a40",
+        "approved_evidence": [
+          {
+            "evidence_quote": "高大苍老的男人",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1030,
+                "end": 1037
+              }
+            ],
+            "quote_hash": "56f883833650473ff2658c6d82c327add774868ef92fea45bfea812bb6ad1a40",
+            "relation_to_mention": "contains_mention"
+          }
+        ],
+        "packet_hash": "ad598d7561b519d886fbd7519e8751272f1571766bcd77378dc9f84bb40e0f9d"
+      }
+    ],
+    "rejected_evidence": []
+  },
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 24859,
+    "http_status": 200,
+    "response_id": "c2e6707f-19dc-4734-834d-f351a8fba5f7",
+    "usage": {
+      "input_tokens": 2380,
+      "cached_input_tokens": 768,
+      "output_tokens": 2713,
+      "reasoning_tokens": 2554,
+      "total_tokens": 5093
+    },
+    "error_kind": null
+  }
+}

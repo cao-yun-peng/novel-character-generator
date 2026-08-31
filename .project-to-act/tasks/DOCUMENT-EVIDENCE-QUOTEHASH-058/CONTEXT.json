@@ -1,0 +1,12 @@
+{
+  "task_id": "DOCUMENT-EVIDENCE-QUOTEHASH-058",
+  "lifecycle_stage": "5",
+  "lifecycle_revision": 2,
+  "schema_version_before": "3.9.0-draft1",
+  "schema_version_target": "3.10.0-draft1",
+  "runtime_version_before": "0.1.0.dev9",
+  "runtime_version_target": "0.1.0.dev10",
+  "grounded_packet_before": "grounded-character-packet-v5",
+  "grounded_packet_target": "grounded-character-packet-v6",
+  "document_output_target": "document-character-evidence-v1"
+}

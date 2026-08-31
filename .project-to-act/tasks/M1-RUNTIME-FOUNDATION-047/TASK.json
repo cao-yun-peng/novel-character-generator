@@ -1,0 +1,30 @@
+{
+  "id": "M1-RUNTIME-FOUNDATION-047",
+  "title": "建立 M1 运行时基础",
+  "status": "completed",
+  "owner": "Codex",
+  "objective": "按 Schema 3.4 从空工程建立 M1 DTO、提示词、最小 Provider 边界、原始文本分块与确定性 grounding。",
+  "allowed_paths": [
+    "pyproject.toml",
+    "src",
+    "tests",
+    "README.md",
+    ".project-to-act"
+  ],
+  "invariants": [
+    "M1 Provider 的 user payload 只包含 chunk_text",
+    "模型输出不能包含 Chunk ID、hash、span、版本或 trace",
+    "所有 quote 和 span 基于未规范化的原始 Unicode code-point 文本",
+    "模型结果必须先通过严格结构校验和确定性 grounding",
+    "M1 不做外貌字段分类、跨 Chunk 身份或人物记忆"
+  ],
+  "acceptance": [
+    "DocumentChunkManifest 校验重叠、完整覆盖和显式截断",
+    "M1 envelope、model input、model output 和代码回填边界可运行",
+    "exact/describe/null 正反组合可验证",
+    "N2 Chunk 局部 occurrence、hash、relation、后缀归一和 packet hash 可运行",
+    "自动测试和 Git diff 检查通过",
+    "不冒充具体 Provider 或真实模型质量完成"
+  ]
+}
+

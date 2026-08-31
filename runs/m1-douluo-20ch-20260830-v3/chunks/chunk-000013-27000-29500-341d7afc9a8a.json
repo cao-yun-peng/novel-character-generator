@@ -1,0 +1,195 @@
+{
+  "schema_version": "m1-chunk-result-v1",
+  "chunk_index": 13,
+  "chunk_id": "chunk-000013-27000-29500-341d7afc9a8a",
+  "chunk_hash": "341d7afc9a8a85865520ed0dcc958ec86638732531945d72d4d8f8777c6451fb",
+  "chunk_source_span": {
+    "start": 27000,
+    "end": 29500
+  },
+  "model_output": {
+    "candidate_mentions": [
+      {
+        "mention_type": "exact",
+        "mention_quote": "唐三",
+        "evidence_quotes": [
+          "自己现在年纪还小",
+          "唐三脸上流露出一丝满足的笑容"
+        ]
+      }
+    ]
+  },
+  "grounded_packet": {
+    "schema_version": "grounded-character-packet-v3",
+    "source_document_version_id": "source-4dd3d57c99f4b254",
+    "chunking_policy_version": "fixed-codepoint-window-2500-overlap-250-v1",
+    "chunk_id": "chunk-000013-27000-29500-341d7afc9a8a",
+    "chunk_hash": "341d7afc9a8a85865520ed0dcc958ec86638732531945d72d4d8f8777c6451fb",
+    "chunk_source_span": {
+      "start": 27000,
+      "end": 29500
+    },
+    "grounded_mentions": [
+      {
+        "local_mention_id": "m1",
+        "mention_type": "exact",
+        "mention_quote": "唐三",
+        "mention_occurrence_count": 26,
+        "mention_source_spans": [
+          {
+            "start": 240,
+            "end": 242
+          },
+          {
+            "start": 333,
+            "end": 335
+          },
+          {
+            "start": 610,
+            "end": 612
+          },
+          {
+            "start": 800,
+            "end": 802
+          },
+          {
+            "start": 876,
+            "end": 878
+          },
+          {
+            "start": 972,
+            "end": 974
+          },
+          {
+            "start": 1029,
+            "end": 1031
+          },
+          {
+            "start": 1106,
+            "end": 1108
+          },
+          {
+            "start": 1133,
+            "end": 1135
+          },
+          {
+            "start": 1154,
+            "end": 1156
+          },
+          {
+            "start": 1172,
+            "end": 1174
+          },
+          {
+            "start": 1278,
+            "end": 1280
+          },
+          {
+            "start": 1340,
+            "end": 1342
+          },
+          {
+            "start": 1427,
+            "end": 1429
+          },
+          {
+            "start": 1483,
+            "end": 1485
+          },
+          {
+            "start": 1601,
+            "end": 1603
+          },
+          {
+            "start": 1653,
+            "end": 1655
+          },
+          {
+            "start": 1704,
+            "end": 1706
+          },
+          {
+            "start": 1842,
+            "end": 1844
+          },
+          {
+            "start": 1905,
+            "end": 1907
+          },
+          {
+            "start": 1982,
+            "end": 1984
+          },
+          {
+            "start": 2054,
+            "end": 2056
+          },
+          {
+            "start": 2183,
+            "end": 2185
+          },
+          {
+            "start": 2214,
+            "end": 2216
+          },
+          {
+            "start": 2298,
+            "end": 2300
+          },
+          {
+            "start": 2415,
+            "end": 2417
+          }
+        ],
+        "mention_quote_hash": "04af9a5f2d9cca67d65d424e41820e11063f4cb679035d66b8ef30ed334d2c48",
+        "approved_evidence": [
+          {
+            "evidence_quote": "自己现在年纪还小",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 2219,
+                "end": 2227
+              }
+            ],
+            "quote_hash": "30daab7016f18bd055f4329405441cb3594afad406e3b5292088013a5ee3ea26",
+            "relation_to_mention": "contextual"
+          },
+          {
+            "evidence_quote": "唐三脸上流露出一丝满足的笑容",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1483,
+                "end": 1497
+              }
+            ],
+            "quote_hash": "43641099198417b2c02e7441ae178061664f34516e72fb4dca2f3e25b5c9b8fc",
+            "relation_to_mention": "contains_mention"
+          }
+        ],
+        "packet_hash": "00e1991fb072fa10c55ebd206569681ff5903d2dcf2f1f70b2a42ad64f2f6f25"
+      }
+    ],
+    "rejected_evidence": []
+  },
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 26250,
+    "http_status": 200,
+    "response_id": "e3d1ec23-025b-4069-99dc-0b915229e524",
+    "usage": {
+      "input_tokens": 2349,
+      "cached_input_tokens": 768,
+      "output_tokens": 2649,
+      "reasoning_tokens": 2600,
+      "total_tokens": 4998
+    },
+    "error_kind": null
+  }
+}

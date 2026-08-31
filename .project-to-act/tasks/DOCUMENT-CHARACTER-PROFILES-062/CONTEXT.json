@@ -1,0 +1,19 @@
+{
+  "task_id": "DOCUMENT-CHARACTER-PROFILES-062",
+  "lifecycle_stage": "5",
+  "lifecycle_revision": 2,
+  "runtime_version": "0.1.0.dev12",
+  "schema_version": "3.12.0-draft1",
+  "input_file": "tests/小说/斗破苍穹前5章.txt",
+  "source_registry": "runs/doupo-first5-identity-live-dev12-20260831/document-character-registry.json",
+  "source_evidence": "runs/doupo-first5-n3-promotion-dev11-partial-20260831/document-character-evidence.json",
+  "output_run": "runs/doupo-first5-character-profiles-dev13-20260831",
+  "known_join_state": {
+    "registry_fact_refs": 61,
+    "evidence_facts": 61,
+    "missing_refs": 0,
+    "document_identity_matches": true
+  },
+  "context_freshness": "verified-2026-08-31",
+  "conflicts": []
+}
