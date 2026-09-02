@@ -1,0 +1,250 @@
+{
+  "schema_version": "n3-promotion-task-result-v2",
+  "chunk_index": 5,
+  "chunk_id": "chunk-000005-9000-11500-f4a0068fbfb5",
+  "describe_local_mention_id": "m2",
+  "mention_quote": "一名老人",
+  "promotion_hash": "705ab3138b236fd21cb5beaf24ecbe1da1f6a5a2c2a0c2507ce5f887947223a0",
+  "model_output": {
+    "characters": [
+      {
+        "character_label_quote": "一名老人",
+        "belongs_to_character": [
+          {
+            "fact_quote": "看上去六十多岁的样子",
+            "category": "age",
+            "attribute": "年龄",
+            "value": "六十多岁"
+          },
+          {
+            "fact_quote": "身材瘦长",
+            "category": "body",
+            "attribute": "身材",
+            "value": "瘦长"
+          },
+          {
+            "fact_quote": "精神矍铄",
+            "category": "appearance_state",
+            "attribute": "精神状态",
+            "value": "精神矍铄"
+          },
+          {
+            "fact_quote": "衣服干净整洁",
+            "category": "clothing",
+            "attribute": "衣着",
+            "value": "干净整洁"
+          },
+          {
+            "fact_quote": "头发也梳理的一丝不苟",
+            "category": "hair",
+            "attribute": "头发",
+            "value": "梳理的一丝不苟"
+          }
+        ]
+      }
+    ]
+  },
+  "grounded_result": {
+    "schema_version": "grounded-promoted-describe-characters-v6",
+    "grounding_policy_version": "promotion-partial-fact-acceptance-v1",
+    "describe_source_ref": {
+      "local_mention_id": "m2",
+      "packet_hash": "ced9b5a4e23b0cd5bd87072539ec25d9842157c985712358c5ecc19bab2192c6"
+    },
+    "promotion_hash": "705ab3138b236fd21cb5beaf24ecbe1da1f6a5a2c2a0c2507ce5f887947223a0",
+    "promoted_characters": [
+      {
+        "promoted_character_ref": {
+          "source_document_version_id": "source-8bcb7305a759571b",
+          "chunk_id": "chunk-000005-9000-11500-f4a0068fbfb5",
+          "source_local_mention_id": "m2",
+          "source_mention_type": "describe",
+          "promotion_index": 1,
+          "character_origin": "remaining_describe",
+          "packet_hash": "ced9b5a4e23b0cd5bd87072539ec25d9842157c985712358c5ecc19bab2192c6",
+          "promotion_hash": "705ab3138b236fd21cb5beaf24ecbe1da1f6a5a2c2a0c2507ce5f887947223a0"
+        },
+        "character_label_quote": "一名老人",
+        "grounded_belongs_to_character": [
+          {
+            "fact_quote": "看上去六十多岁的样子",
+            "category": "age",
+            "attribute": "年龄",
+            "value": "六十多岁",
+            "source_mention_id": "m2",
+            "source_mention_type": "describe",
+            "source_evidence_quote": "看上去六十多岁的样子，身材瘦长，但精神矍铄，衣服干净整洁，头发也梳理的一丝不苟，和唐昊相比，简直就是两个极端",
+            "source_evidence_span": {
+              "start": 1126,
+              "end": 1180
+            },
+            "fact_chunk_span": {
+              "start": 1126,
+              "end": 1136
+            },
+            "match_mode": "exact"
+          },
+          {
+            "fact_quote": "身材瘦长",
+            "category": "body",
+            "attribute": "身材",
+            "value": "瘦长",
+            "source_mention_id": "m2",
+            "source_mention_type": "describe",
+            "source_evidence_quote": "看上去六十多岁的样子，身材瘦长，但精神矍铄，衣服干净整洁，头发也梳理的一丝不苟，和唐昊相比，简直就是两个极端",
+            "source_evidence_span": {
+              "start": 1126,
+              "end": 1180
+            },
+            "fact_chunk_span": {
+              "start": 1137,
+              "end": 1141
+            },
+            "match_mode": "exact"
+          },
+          {
+            "fact_quote": "精神矍铄",
+            "category": "appearance_state",
+            "attribute": "精神状态",
+            "value": "精神矍铄",
+            "source_mention_id": "m2",
+            "source_mention_type": "describe",
+            "source_evidence_quote": "看上去六十多岁的样子，身材瘦长，但精神矍铄，衣服干净整洁，头发也梳理的一丝不苟，和唐昊相比，简直就是两个极端",
+            "source_evidence_span": {
+              "start": 1126,
+              "end": 1180
+            },
+            "fact_chunk_span": {
+              "start": 1143,
+              "end": 1147
+            },
+            "match_mode": "exact"
+          },
+          {
+            "fact_quote": "衣服干净整洁",
+            "category": "clothing",
+            "attribute": "衣着",
+            "value": "干净整洁",
+            "source_mention_id": "m2",
+            "source_mention_type": "describe",
+            "source_evidence_quote": "看上去六十多岁的样子，身材瘦长，但精神矍铄，衣服干净整洁，头发也梳理的一丝不苟，和唐昊相比，简直就是两个极端",
+            "source_evidence_span": {
+              "start": 1126,
+              "end": 1180
+            },
+            "fact_chunk_span": {
+              "start": 1148,
+              "end": 1154
+            },
+            "match_mode": "exact"
+          },
+          {
+            "fact_quote": "头发也梳理的一丝不苟",
+            "category": "hair",
+            "attribute": "头发",
+            "value": "梳理的一丝不苟",
+            "source_mention_id": "m2",
+            "source_mention_type": "describe",
+            "source_evidence_quote": "看上去六十多岁的样子，身材瘦长，但精神矍铄，衣服干净整洁，头发也梳理的一丝不苟，和唐昊相比，简直就是两个极端",
+            "source_evidence_span": {
+              "start": 1126,
+              "end": 1180
+            },
+            "fact_chunk_span": {
+              "start": 1155,
+              "end": 1165
+            },
+            "match_mode": "exact"
+          }
+        ]
+      }
+    ],
+    "unassigned_fragments": [
+      {
+        "fragment_ref": "d1-f1",
+        "source_evidence_quote": "看上去六十多岁的样子，身材瘦长，但精神矍铄，衣服干净整洁，头发也梳理的一丝不苟，和唐昊相比，简直就是两个极端",
+        "source_evidence_span": {
+          "start": 1126,
+          "end": 1180
+        },
+        "fragment_quote": "，",
+        "fragment_span": {
+          "start": 1136,
+          "end": 1137
+        }
+      },
+      {
+        "fragment_ref": "d1-f2",
+        "source_evidence_quote": "看上去六十多岁的样子，身材瘦长，但精神矍铄，衣服干净整洁，头发也梳理的一丝不苟，和唐昊相比，简直就是两个极端",
+        "source_evidence_span": {
+          "start": 1126,
+          "end": 1180
+        },
+        "fragment_quote": "，但",
+        "fragment_span": {
+          "start": 1141,
+          "end": 1143
+        }
+      },
+      {
+        "fragment_ref": "d1-f3",
+        "source_evidence_quote": "看上去六十多岁的样子，身材瘦长，但精神矍铄，衣服干净整洁，头发也梳理的一丝不苟，和唐昊相比，简直就是两个极端",
+        "source_evidence_span": {
+          "start": 1126,
+          "end": 1180
+        },
+        "fragment_quote": "，",
+        "fragment_span": {
+          "start": 1147,
+          "end": 1148
+        }
+      },
+      {
+        "fragment_ref": "d1-f4",
+        "source_evidence_quote": "看上去六十多岁的样子，身材瘦长，但精神矍铄，衣服干净整洁，头发也梳理的一丝不苟，和唐昊相比，简直就是两个极端",
+        "source_evidence_span": {
+          "start": 1126,
+          "end": 1180
+        },
+        "fragment_quote": "，",
+        "fragment_span": {
+          "start": 1154,
+          "end": 1155
+        }
+      },
+      {
+        "fragment_ref": "d1-f5",
+        "source_evidence_quote": "看上去六十多岁的样子，身材瘦长，但精神矍铄，衣服干净整洁，头发也梳理的一丝不苟，和唐昊相比，简直就是两个极端",
+        "source_evidence_span": {
+          "start": 1126,
+          "end": 1180
+        },
+        "fragment_quote": "，和唐昊相比，简直就是两个极端",
+        "fragment_span": {
+          "start": 1165,
+          "end": 1180
+        }
+      }
+    ]
+  },
+  "grounding_issues": [],
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 4406,
+    "http_status": 200,
+    "response_id": "28c72782-0957-45e9-803f-dd754933471e",
+    "usage": {
+      "input_tokens": 2118,
+      "cached_input_tokens": 384,
+      "output_tokens": 402,
+      "reasoning_tokens": 255,
+      "total_tokens": 2520
+    },
+    "error_kind": null
+  }
+}

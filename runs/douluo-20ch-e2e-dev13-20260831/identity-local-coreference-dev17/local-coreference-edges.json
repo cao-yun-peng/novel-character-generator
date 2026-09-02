@@ -1,0 +1,20 @@
+[
+  {
+    "left_node_key": "39a05ff324abc7d794d9e8718b732bd4bded573b152aab6c0350b1e22dd99be0",
+    "right_node_key": "4c021ae02fae5d350500d5703361cf9264c7c9d90efaa01864ee99af9b0f46a4",
+    "relation": "same_character",
+    "reason": "explicit_local_coreference",
+    "relation_type": "continuous_local_coreference",
+    "policy_version": "grounded-local-coreference-v1",
+    "identity_evidence": [
+      {
+        "evidence_quote": "高大的身影迈着有些踉跄的步伐走了出来。 \r\n　　那是一名中年男子，看上去大约有接近五十岁的样子，但身材却非常高大魁梧，只是他的打扮却令人不敢恭维。 \r\n　　破损的袍子穿在身上，上面甚至连补丁都没有，露出下面古铜色的皮肤，原本还算端正的五官却蒙着一层蜡黄色，一副睡眼朦胧的样子，头发乱糟糟的像鸟窝一般，一脸的胡子已经不知道有多少日子没有整理过了。目光呆滞而昏黄，尽管已经过去了一晚，但他身上那扑鼻的酒气还是令唐三不禁皱了皱眉头。 \r\n　　这就是唐昊",
+        "document_span": {
+          "start": 5591,
+          "end": 5814
+        },
+        "match_mode": "exact"
+      }
+    ]
+  }
+]

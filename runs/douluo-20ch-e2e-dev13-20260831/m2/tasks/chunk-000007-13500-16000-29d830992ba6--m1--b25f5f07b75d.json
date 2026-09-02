@@ -1,0 +1,69 @@
+{
+  "schema_version": "m2-attribution-task-result-v1",
+  "source_run_dir": "E:\\project\\agent\\novel-cahracter-generator\\runs\\douluo-20ch-e2e-dev13-20260831\\m1",
+  "chunk_index": 7,
+  "chunk_id": "chunk-000007-13500-16000-29d830992ba6",
+  "target_local_mention_id": "m1",
+  "target_mention_quote": "唐三",
+  "task_cache_key": "b25f5f07b75d6898faccb62324f0dc8324d3af30be396dfd87fac1012364860d",
+  "model_output": {
+    "belongs_to_target": [
+      {
+        "fact_quote": "他的身材和同龄的孩子相比，要瘦小一些。",
+        "category": "body",
+        "attribute": "身材",
+        "value": "比同龄孩子瘦小"
+      }
+    ]
+  },
+  "grounded_result": {
+    "target_character_ref": {
+      "source_document_version_id": "source-8bcb7305a759571b",
+      "chunk_id": "chunk-000007-13500-16000-29d830992ba6",
+      "local_mention_id": "m1",
+      "mention_type": "exact",
+      "packet_hash": "42d3ac0513671684848b76c374030d62c174f9e033ae28faaae135e2cf57bf2b"
+    },
+    "task_cache_key": "b25f5f07b75d6898faccb62324f0dc8324d3af30be396dfd87fac1012364860d",
+    "grounded_belongs_to_target": [
+      {
+        "fact_quote": "他的身材和同龄的孩子相比，要瘦小一些。",
+        "category": "body",
+        "attribute": "身材",
+        "value": "比同龄孩子瘦小",
+        "source_mention_id": "m1",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "他的身材和同龄的孩子相比，要瘦小一些。",
+        "source_evidence_span": {
+          "start": 251,
+          "end": 270
+        },
+        "fact_chunk_span": {
+          "start": 251,
+          "end": 270
+        },
+        "match_mode": "exact"
+      }
+    ]
+  },
+  "grounding_issues": [],
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 2375,
+    "http_status": 200,
+    "response_id": "4b2138a1-8654-47dc-8e47-76cce90eef5f",
+    "usage": {
+      "input_tokens": 2091,
+      "cached_input_tokens": 384,
+      "output_tokens": 201,
+      "reasoning_tokens": 158,
+      "total_tokens": 2292
+    },
+    "error_kind": null
+  }
+}

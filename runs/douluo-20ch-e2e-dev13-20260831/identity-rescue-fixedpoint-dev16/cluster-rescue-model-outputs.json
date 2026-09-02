@@ -1,0 +1,18 @@
+[
+  {
+    "task_index": 1,
+    "round_index": 1,
+    "task_cache_key": "26da5c4a9e30b4e0a4c5cfa5fa8add35b24348f365e3b6d2a04baf4e7aa45cce",
+    "subject_labels": [
+      "唐三"
+    ],
+    "model_output": {
+      "identity_relation": "same_character",
+      "candidate_number": 1,
+      "label_relation": "name_variant",
+      "identity_evidence_quotes": [
+        "“小三，来，让爷爷看看。”老杰克向唐三挥了挥手。"
+      ]
+    }
+  }
+]

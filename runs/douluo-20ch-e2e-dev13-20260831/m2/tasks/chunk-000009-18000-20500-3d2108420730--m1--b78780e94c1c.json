@@ -1,0 +1,75 @@
+{
+  "schema_version": "m2-attribution-task-result-v1",
+  "source_run_dir": "E:\\project\\agent\\novel-cahracter-generator\\runs\\douluo-20ch-e2e-dev13-20260831\\m1",
+  "chunk_index": 9,
+  "chunk_id": "chunk-000009-18000-20500-3d2108420730",
+  "target_local_mention_id": "m1",
+  "target_mention_quote": "唐昊",
+  "task_cache_key": "b78780e94c1cd4608070a05cb286c305a222a5d65858d41b6feb5e8fb41dfb3a",
+  "model_output": {
+    "belongs_to_target": [
+      {
+        "fact_quote": "邋遢",
+        "category": "appearance_state",
+        "attribute": "外观整洁度",
+        "value": "邋遢"
+      }
+    ]
+  },
+  "grounded_result": {
+    "target_character_ref": {
+      "source_document_version_id": "source-8bcb7305a759571b",
+      "chunk_id": "chunk-000009-18000-20500-3d2108420730",
+      "local_mention_id": "m1",
+      "mention_type": "exact",
+      "packet_hash": "3cde929af30ea30323824fbb87a4291a91e1ea12891036a8ed57ecda50963773"
+    },
+    "task_cache_key": "b78780e94c1cd4608070a05cb286c305a222a5d65858d41b6feb5e8fb41dfb3a",
+    "grounded_belongs_to_target": [
+      {
+        "fact_quote": "邋遢",
+        "category": "appearance_state",
+        "attribute": "外观整洁度",
+        "value": "邋遢",
+        "source_mention_id": "m1",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "那个邋遢鬼",
+        "source_evidence_span": {
+          "start": 1508,
+          "end": 1513
+        },
+        "fact_chunk_span": {
+          "start": 1510,
+          "end": 1512
+        },
+        "match_mode": "exact"
+      }
+    ]
+  },
+  "grounding_issues": [
+    {
+      "code": "multiple_target_occurrences",
+      "fact_index": 0,
+      "detail": "target evidence priority applied; earliest source occurrence selected"
+    }
+  ],
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 6469,
+    "http_status": 200,
+    "response_id": "0c2797ac-7798-4721-a4c7-19fec8a143b4",
+    "usage": {
+      "input_tokens": 2071,
+      "cached_input_tokens": 384,
+      "output_tokens": 704,
+      "reasoning_tokens": 658,
+      "total_tokens": 2775
+    },
+    "error_kind": null
+  }
+}

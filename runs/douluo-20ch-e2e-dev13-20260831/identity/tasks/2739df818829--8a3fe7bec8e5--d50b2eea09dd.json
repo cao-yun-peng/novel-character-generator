@@ -1,0 +1,62 @@
+{
+  "schema_version": "identity-task-result-v1",
+  "task_index": 59,
+  "current_label_quote": "老杰克",
+  "candidate_label_quote": "老杰克",
+  "task_cache_key": "d50b2eea09dd5d0fa7aae4688ebba8e6797e83c53dcc285f8b3deccf408e4d8d",
+  "model_output": {
+    "identity_relation": "same_character",
+    "label_relation": "same_surface",
+    "identity_evidence_quotes": [
+      "老杰克带着唐三刚刚走到大门前",
+      "老杰克没好气的说道"
+    ]
+  },
+  "grounded_result": {
+    "schema_version": "grounded-identity-decision-v1",
+    "current_node_key": "2739df81882977abf6eefbc39a5b453e391a5863f7e5f1991a0259c58805b6f1",
+    "candidate_node_key": "8a3fe7bec8e5750e9b7fdabbf09f4e3d13e72515ff2685677a23c181c02857ef",
+    "task_cache_key": "d50b2eea09dd5d0fa7aae4688ebba8e6797e83c53dcc285f8b3deccf408e4d8d",
+    "requested_identity_relation": "same_character",
+    "identity_relation": "same_character",
+    "label_relation": "same_surface",
+    "grounded_identity_evidence": [
+      {
+        "evidence_quote": "老杰克没好气的说道",
+        "document_span": {
+          "start": 33887,
+          "end": 33896
+        },
+        "match_mode": "exact"
+      },
+      {
+        "evidence_quote": "老杰克带着唐三刚刚走到大门前",
+        "document_span": {
+          "start": 36194,
+          "end": 36208
+        },
+        "match_mode": "exact"
+      }
+    ],
+    "issues": []
+  },
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 5422,
+    "http_status": 200,
+    "response_id": "73449045-13fc-4051-a1dc-59805dc2bb94",
+    "usage": {
+      "input_tokens": 2507,
+      "cached_input_tokens": 512,
+      "output_tokens": 581,
+      "reasoning_tokens": 525,
+      "total_tokens": 3088
+    },
+    "error_kind": null
+  }
+}

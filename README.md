@@ -10,7 +10,8 @@
 2. N2：验证人物称呼和证据是否确实存在于 Chunk；证据严格匹配失败时只允许忽略 Unicode 空白后完全一致的安全恢复。Grounding 后汇总当前 Chunk 的 exact evidence，并从所有 describe 中删除逐字相同的 evidence；describe 被删空时删除整个 grounded block。
 3. M2 第一模式：每个 `exact` 只调用一次，并在该次输入中携带本轮全部 `describe` 块，先尝试把描述归给已有 exact。
 4. N3：验证证据并汇总归属。唯一归属的 describe 原文片段被已有 exact 消费；未被任何 exact 消费的 describe 单独进入 M2 第二模式，可拆成一个或多个新的 Chunk 内正式人物；冲突片段进入复核。
-5. M3 身份层：将 exact/promoted 局部人物跨 Chunk 建立有界候选；模型只判断一对人物并返回身份原文，代码严格 Grounding 后生成全局人物档案、cannot-link、未决绑定与冲突记录。
+5. M3 身份层：将 exact/promoted 局部人物跨 Chunk 建立有界候选；模型只判断一对人物并返回身份原文，代码严格 Grounding 后生成全局人物注册表、cannot-link、未决绑定与冲突记录。
+6. 档案组装：纯代码验证注册表与事实库属于同一文档，再按 `fact_hash` 把完整原文事实物化到每个全局人物，生成 `document-character-profiles.json`。
 
 “张三”“林黛玉”等明确名称属于 `exact`；“老者”“女孩”“红衣女子”“月袍老人”等单人泛称属于 `describe + individual`；“十七道白色的身影”“众人”等群体称呼属于 `describe + collective`。collective 证据会保留审计，但被隔离在单人物解析与 promotion 之外。同一句证据可暂时出现在 M1 多个提及块中；进入 N2 后 exact 对相同原文 quote 优先，describe 中的副本被删除。
 
@@ -22,7 +23,7 @@
 
 ## 当前产物
 
-- `src/novel_character_generator/`：重叠分块 Manifest、M1/N2、M2 双模式编排、N3 span 仲裁、文档事实聚合、可恢复 M3 身份解析和严格 quote grounding
+- `src/novel_character_generator/`：重叠分块 Manifest、M1/N2、M2 双模式编排、N3 span 仲裁、文档事实聚合、可恢复 M3 身份解析、严格 quote grounding 和确定性人物档案组装
 - `tests/`：分块、模型字段隔离、M2/N3/promotion、文档去重、身份候选上限、same/different/uncertain、cannot-link、冲突保留与断点续跑测试
 - [流程契约](docs/33-simplified-character-evidence-pipeline-v3.md)
 - [机器 Schema](docs/contracts/simplified-character-evidence-v3-model-schemas.json)
@@ -118,6 +119,112 @@ python -m novel_character_generator run-deepseek-document-identity `
 ```
 
 默认每个局部节点最多产生 2 个候选任务。相同姓名或相似外貌不会自动合并；模型必须返回可被代码唯一定位的身份原文。第二条命令会产生真实 API 调用与费用。
+
+已有 M3 运行仍留下 unresolved 时，可以先离线准备 cluster-level 残余裁决（Provider 调用为 0）：
+
+```powershell
+$env:PYTHONPATH='src'
+python -m novel_character_generator prepare-identity-rescue `
+  --input-file 'tests/小说/斗罗大陆前20章.txt' `
+  --source-identity-run-dir 'runs/douluo-20ch-e2e-dev13-20260831/identity' `
+  --output-dir 'runs/douluo-20ch-e2e-dev13-20260831/identity-rescue-dev15'
+```
+
+确认 `cluster-rescue-envelopes.json` 后再进行可恢复的 DeepSeek 调用：
+
+```powershell
+$env:PYTHONPATH='src'
+python -m novel_character_generator run-deepseek-identity-rescue `
+  --input-file 'tests/小说/斗罗大陆前20章.txt' `
+  --source-identity-run-dir 'runs/douluo-20ch-e2e-dev13-20260831/identity' `
+  --seed-rescue-run-dir 'runs/douluo-20ch-e2e-dev13-20260831/identity-rescue-live-dev15' `
+  --output-dir 'runs/douluo-20ch-e2e-dev13-20260831/identity-rescue-fixedpoint-dev16' `
+  --env-file '.env' `
+  --max-rounds 3 `
+  --max-new-provider-calls 10 `
+  --show-progress
+```
+
+普通 `context_quotes` 和外貌事实只用于理解。模型返回的 `identity_evidence_quotes` 必须逐字来自所选候选自己的 `relationship_context_quotes`；代码只在该证据域内执行唯一匹配 Grounding。`--seed-rescue-run-dir` 复用旧 run 中已 Grounding 的裁决，不重复调用模型。候选簇对按无向关系去重；每轮裁决后重建注册表并重新生成剩余任务，最多运行 `--max-rounds` 轮，无决定性变化时提前停止。历史 `uncertain` 若已被最终 `same` 或 `different` 消解，只保留在审计产物中，不再作为当前 unresolved；`same`/`different` 冲突则失败关闭并进入 review。没有可用关系原文的残余项不会创建调用，而是继续保持 unresolved。后一条命令会产生真实 API 调用与费用。
+
+对于同一 Chunk、双方上下文交集内已有显式同位、示指命名或连续共指原文的漏链，可以离线补充确定性 same edge，并重放已保存的 M3/rescue 决策（Provider 调用为 0）：
+
+```powershell
+$env:PYTHONPATH='src'
+python -m novel_character_generator replay-local-identity-closure `
+  --input-file 'tests/小说/斗罗大陆前20章.txt' `
+  --source-identity-run-dir 'runs/douluo-20ch-e2e-dev13-20260831/identity' `
+  --source-rescue-run-dir 'runs/douluo-20ch-e2e-dev13-20260831/identity-rescue-fixedpoint-dev16' `
+  --evidence-file 'runs/douluo-20ch-e2e-dev13-20260831/document-character-evidence.json' `
+  --output-dir 'runs/douluo-20ch-e2e-dev13-20260831/identity-local-coreference-dev17'
+```
+
+新增边必须携带可从文档和双方局部上下文逐字回放的关系证据，并继续服从 cannot-link。当前策略只允许 `describe -> exact` 的局部显式关系；“当前全局唯一姓名”、同名、相似外貌或单纯距离接近均不会创建身份边。
+
+把身份注册表与完整事实库组装成最终结构化人物档案（纯确定性代码，不调用模型）：
+
+```powershell
+$env:PYTHONPATH='src'
+python -m novel_character_generator build-document-character-profiles `
+  --input-file 'tests/小说/斗破苍穹前5章.txt' `
+  --registry-file 'runs/doupo-first5-identity-live-dev12-20260831/document-character-registry.json' `
+  --evidence-file 'runs/doupo-first5-n3-promotion-dev11-partial-20260831/document-character-evidence.json' `
+  --output-file 'runs/doupo-first5-character-profiles-dev13-20260831/document-character-profiles.json'
+```
+
+连接只使用 `fact_hash`，不按姓名猜测。代码会验证文档版本/hash、完整事实 hash、Chunk hash、事实与证据绝对 span；缺失引用、quote 不一致、重复占用或回放失败都会终止。零外貌事实人物、未绑定事实、冲突、review 和 cannot-link 均保留在输出中。
+
+身份归并完成后，可以在不修改 raw profile 的前提下生成结构化 canonical fact groups（纯确定性代码，不调用模型）：
+
+```powershell
+$env:PYTHONPATH='src'
+python -m novel_character_generator build-document-character-fact-groups `
+  --input-file 'tests/小说/斗罗大陆前20章.txt' `
+  --registry-file 'runs/douluo-20ch-e2e-dev13-20260831/identity-local-coreference-dev17/document-character-registry.json' `
+  --profiles-file 'runs/douluo-20ch-e2e-dev13-20260831/identity-local-coreference-dev17/document-character-profiles.json' `
+  --output-file 'runs/douluo-20ch-e2e-dev13-20260831/post-link-fact-groups-dev18/document-character-fact-groups.json'
+```
+
+随后可以生成最小 appearance scope 基线（纯确定性代码，不调用模型）：
+
+```powershell
+python -m novel_character_generator build-document-character-appearance-scopes `
+  --input-file 'tests/小说/斗罗大陆前20章.txt' `
+  --fact-groups-file 'runs/douluo-20ch-e2e-dev13-20260831/post-link-fact-groups-dev18/document-character-fact-groups.json' `
+  --output-file 'runs/douluo-20ch-e2e-dev13-20260831/appearance-scopes-dev19/document-character-appearance-scopes.json'
+```
+
+该层只保存章节、canonical fact 顺序、`life/form/scene` 基线和保守 `persistence`。无法由代码确定的 scope 显式为 `unknown`；不会把 raw fact hash 或完整 occurrence provenance 复制到新产物。
+
+071 直接复用原 M1 Manifest 的 17 个重叠 Chunk，并按每个 `chunk_id` 下已有 local/promoted identity nodes 生成该 Chunk 的人物表；准备阶段不调用模型：
+
+```powershell
+python -m novel_character_generator prepare-document-appearance-transitions `
+  --input-file 'tests/小说/斗罗大陆前20章.txt' `
+  --profiles-file 'runs/douluo-20ch-e2e-dev13-20260831/identity-local-coreference-dev17/document-character-profiles.json' `
+  --local-nodes-file 'runs/douluo-20ch-e2e-dev13-20260831/identity/document-local-character-nodes.json' `
+  --scopes-file 'runs/douluo-20ch-e2e-dev13-20260831/appearance-scopes-dev19/document-character-appearance-scopes.json' `
+  --chunk-manifest-file 'runs/douluo-20ch-e2e-dev13-20260831/m1/manifest.json' `
+  --output-dir 'runs/douluo-20ch-e2e-dev13-20260831/appearance-transitions-dev20'
+```
+
+确认窗口后可执行可恢复的 DeepSeek transition discovery：
+
+```powershell
+python -m novel_character_generator run-deepseek-appearance-transitions `
+  --input-file 'tests/小说/斗罗大陆前20章.txt' `
+  --profiles-file 'runs/douluo-20ch-e2e-dev13-20260831/identity-local-coreference-dev17/document-character-profiles.json' `
+  --local-nodes-file 'runs/douluo-20ch-e2e-dev13-20260831/identity/document-local-character-nodes.json' `
+  --fact-groups-file 'runs/douluo-20ch-e2e-dev13-20260831/post-link-fact-groups-dev18/document-character-fact-groups.json' `
+  --scopes-file 'runs/douluo-20ch-e2e-dev13-20260831/appearance-scopes-dev19/document-character-appearance-scopes.json' `
+  --chunk-manifest-file 'runs/douluo-20ch-e2e-dev13-20260831/m1/manifest.json' `
+  --output-dir 'runs/douluo-20ch-e2e-dev13-20260831/appearance-transitions-dev20' `
+  --show-progress
+```
+
+每次模型输入只有 `characters: [{name, aliases}]` 与 `text`。原 Chunk 的 `chunk_id/chunk_hash/span` 只保留在代码信封中，用于绑定该 Chunk 已识别的人物、恢复和 Grounding，不进入模型。全文是否进入模型不由 appearance fact 或状态词决定；模型返回 `character/evidence/dimension/attribute/before/after`，代码负责绝对 span、character_id 回填、跨 Chunk 去重、`enter/exit/change` 推导和 fact scope 物化。
+
+分组键严格为 `character_id + document_fact_span + category + attribute + value`。不同 span、attribute 或 value 不合并，也不做同义词判断；每个 canonical group 保留全部 `source_fact_hashes`，每个 occurrence 继续带来源 raw fact hash 和原数组索引。斗罗 dev17 的 129 条 raw facts 形成 109 个 groups，129 个 fact bindings 与 130 个 occurrence bindings 全部保留。
 
 ### 配置 DeepSeek
 

@@ -1,0 +1,189 @@
+{
+  "schema_version": "m2-attribution-task-result-v1",
+  "source_run_dir": "E:\\project\\agent\\novel-cahracter-generator\\runs\\douluo-20ch-e2e-dev13-20260831\\m1",
+  "chunk_index": 1,
+  "chunk_id": "chunk-000001-0-2500-f390c57806b0",
+  "target_local_mention_id": "m1",
+  "target_mention_quote": "唐三",
+  "task_cache_key": "bd6492c5bfeb16a2b9a4e9306728f49d02bdcc2bd0334348e8d5b2e0950738e2",
+  "model_output": {
+    "belongs_to_target": [
+      {
+        "fact_quote": "身穿灰衣",
+        "category": "clothing",
+        "attribute": "服装",
+        "value": "灰衣"
+      },
+      {
+        "fact_quote": "从他胸口处那斗大的唐字",
+        "category": "clothing",
+        "attribute": "衣服标志",
+        "value": "胸口有斗大的唐字"
+      },
+      {
+        "fact_quote": "他今年二十九岁",
+        "category": "age",
+        "attribute": "年龄",
+        "value": "二十九岁"
+      },
+      {
+        "fact_quote": "全身赤裸",
+        "category": "appearance_state",
+        "attribute": "身体状态",
+        "value": "全身赤裸"
+      },
+      {
+        "fact_quote": "他的笑容很灿烂",
+        "category": "face",
+        "attribute": "笑容",
+        "value": "灿烂"
+      },
+      {
+        "fact_quote": "高大昂扬的身躯",
+        "category": "body",
+        "attribute": "身材",
+        "value": "高大昂扬"
+      }
+    ]
+  },
+  "grounded_result": {
+    "target_character_ref": {
+      "source_document_version_id": "source-8bcb7305a759571b",
+      "chunk_id": "chunk-000001-0-2500-f390c57806b0",
+      "local_mention_id": "m1",
+      "mention_type": "exact",
+      "packet_hash": "601485b13f34863605afdd84f49efc0eb5b012378a449a30b757f0ba1f81cdc5"
+    },
+    "task_cache_key": "bd6492c5bfeb16a2b9a4e9306728f49d02bdcc2bd0334348e8d5b2e0950738e2",
+    "grounded_belongs_to_target": [
+      {
+        "fact_quote": "身穿灰衣",
+        "category": "clothing",
+        "attribute": "服装",
+        "value": "灰衣",
+        "source_mention_id": "m1",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "一名身穿灰衣的青年正站在鬼见愁顶峰",
+        "source_evidence_span": {
+          "start": 204,
+          "end": 221
+        },
+        "fact_chunk_span": {
+          "start": 206,
+          "end": 210
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "从他胸口处那斗大的唐字",
+        "category": "clothing",
+        "attribute": "衣服标志",
+        "value": "胸口有斗大的唐字",
+        "source_mention_id": "m1",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "从他胸口处那斗大的唐字",
+        "source_evidence_span": {
+          "start": 240,
+          "end": 251
+        },
+        "fact_chunk_span": {
+          "start": 240,
+          "end": 251
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "他今年二十九岁",
+        "category": "age",
+        "attribute": "年龄",
+        "value": "二十九岁",
+        "source_mention_id": "m1",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "他今年二十九岁",
+        "source_evidence_span": {
+          "start": 282,
+          "end": 289
+        },
+        "fact_chunk_span": {
+          "start": 282,
+          "end": 289
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "全身赤裸",
+        "category": "appearance_state",
+        "attribute": "身体状态",
+        "value": "全身赤裸",
+        "source_mention_id": "m1",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "全身赤裸的唐三",
+        "source_evidence_span": {
+          "start": 1696,
+          "end": 1703
+        },
+        "fact_chunk_span": {
+          "start": 1696,
+          "end": 1700
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "他的笑容很灿烂",
+        "category": "face",
+        "attribute": "笑容",
+        "value": "灿烂",
+        "source_mention_id": "m1",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "他的笑容很灿烂",
+        "source_evidence_span": {
+          "start": 1714,
+          "end": 1721
+        },
+        "fact_chunk_span": {
+          "start": 1714,
+          "end": 1721
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "高大昂扬的身躯",
+        "category": "body",
+        "attribute": "身材",
+        "value": "高大昂扬",
+        "source_mention_id": "m1",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "高大昂扬的身躯",
+        "source_evidence_span": {
+          "start": 1892,
+          "end": 1899
+        },
+        "fact_chunk_span": {
+          "start": 1892,
+          "end": 1899
+        },
+        "match_mode": "exact"
+      }
+    ]
+  },
+  "grounding_issues": [],
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 12016,
+    "http_status": 200,
+    "response_id": "4cc29d14-5eaa-440d-969e-dbfda1bb34e5",
+    "usage": {
+      "input_tokens": 2179,
+      "cached_input_tokens": 384,
+      "output_tokens": 1324,
+      "reasoning_tokens": 1124,
+      "total_tokens": 3503
+    },
+    "error_kind": null
+  }
+}

@@ -1,0 +1,115 @@
+{
+  "schema_version": "n3-promotion-task-result-v2",
+  "chunk_index": 7,
+  "chunk_id": "chunk-000007-13500-16000-29d830992ba6",
+  "describe_local_mention_id": "m4",
+  "mention_quote": "男孩儿",
+  "promotion_hash": "45a3d4267863969f5efb8050fd04c6c22dcdc91f0e83f94dc97ef405ad90f691",
+  "model_output": {
+    "characters": [
+      {
+        "character_label_quote": "男孩儿",
+        "belongs_to_character": [
+          {
+            "fact_quote": "稚嫩的小手",
+            "category": "body",
+            "attribute": "手",
+            "value": "稚嫩的小"
+          }
+        ]
+      }
+    ]
+  },
+  "grounded_result": {
+    "schema_version": "grounded-promoted-describe-characters-v6",
+    "grounding_policy_version": "promotion-partial-fact-acceptance-v1",
+    "describe_source_ref": {
+      "local_mention_id": "m4",
+      "packet_hash": "2588c338ed1adc48a3ee28fc746720844dd984f36530a5e4f29908dafba3a91b"
+    },
+    "promotion_hash": "45a3d4267863969f5efb8050fd04c6c22dcdc91f0e83f94dc97ef405ad90f691",
+    "promoted_characters": [
+      {
+        "promoted_character_ref": {
+          "source_document_version_id": "source-8bcb7305a759571b",
+          "chunk_id": "chunk-000007-13500-16000-29d830992ba6",
+          "source_local_mention_id": "m4",
+          "source_mention_type": "describe",
+          "promotion_index": 1,
+          "character_origin": "remaining_describe",
+          "packet_hash": "2588c338ed1adc48a3ee28fc746720844dd984f36530a5e4f29908dafba3a91b",
+          "promotion_hash": "45a3d4267863969f5efb8050fd04c6c22dcdc91f0e83f94dc97ef405ad90f691"
+        },
+        "character_label_quote": "男孩儿",
+        "grounded_belongs_to_character": [
+          {
+            "fact_quote": "稚嫩的小手",
+            "category": "body",
+            "attribute": "手",
+            "value": "稚嫩的小",
+            "source_mention_id": "m4",
+            "source_mention_type": "describe",
+            "source_evidence_quote": "男孩儿稚嫩的小手与素云涛的狼爪分别在水晶球上下位置",
+            "source_evidence_span": {
+              "start": 1744,
+              "end": 1769
+            },
+            "fact_chunk_span": {
+              "start": 1747,
+              "end": 1752
+            },
+            "match_mode": "exact"
+          }
+        ]
+      }
+    ],
+    "unassigned_fragments": [
+      {
+        "fragment_ref": "d1-f1",
+        "source_evidence_quote": "男孩儿稚嫩的小手与素云涛的狼爪分别在水晶球上下位置",
+        "source_evidence_span": {
+          "start": 1744,
+          "end": 1769
+        },
+        "fragment_quote": "男孩儿",
+        "fragment_span": {
+          "start": 1744,
+          "end": 1747
+        }
+      },
+      {
+        "fragment_ref": "d1-f2",
+        "source_evidence_quote": "男孩儿稚嫩的小手与素云涛的狼爪分别在水晶球上下位置",
+        "source_evidence_span": {
+          "start": 1744,
+          "end": 1769
+        },
+        "fragment_quote": "与素云涛的狼爪分别在水晶球上下位置",
+        "fragment_span": {
+          "start": 1752,
+          "end": 1769
+        }
+      }
+    ]
+  },
+  "grounding_issues": [],
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 7515,
+    "http_status": 200,
+    "response_id": "74b35410-fb50-4676-b2b8-b833ce32e68a",
+    "usage": {
+      "input_tokens": 2090,
+      "cached_input_tokens": 2048,
+      "output_tokens": 726,
+      "reasoning_tokens": 650,
+      "total_tokens": 2816
+    },
+    "error_kind": null
+  }
+}

@@ -1,0 +1,390 @@
+[
+  {
+    "schema_version": "describe-pool-resolution-v4",
+    "chunk_id": "chunk-000003-4500-7000-bbfa3a18c9e4",
+    "describe_source_ref": {
+      "local_mention_id": "m4",
+      "packet_hash": "8dd50abb592af8990ac012917e0cdfe148b465db5eaf6eabe7f4755639df1a6e"
+    },
+    "resolver_version": "n3-span-arbitration-v1",
+    "consumed_fragments": [],
+    "conflicted_fragments": [],
+    "remaining_evidence_fragments": [
+      {
+        "fragment_ref": "d1-f1",
+        "source_evidence_quote": "一个高大的身影迈着有些踉跄的步伐走了出来",
+        "source_evidence_span": {
+          "start": 1089,
+          "end": 1109
+        },
+        "fragment_quote": "一个高大的身影迈着有些踉跄的步伐走了出来",
+        "fragment_span": {
+          "start": 1089,
+          "end": 1109
+        }
+      }
+    ],
+    "progress_made": false,
+    "next_action": "promote_remaining_describe",
+    "pool_hash": "afed13eecd4db84c19b1e41d0e1a44225376772d53ae895f974b79c9735091d1"
+  },
+  {
+    "schema_version": "describe-pool-resolution-v4",
+    "chunk_id": "chunk-000005-9000-11500-f4a0068fbfb5",
+    "describe_source_ref": {
+      "local_mention_id": "m2",
+      "packet_hash": "ced9b5a4e23b0cd5bd87072539ec25d9842157c985712358c5ecc19bab2192c6"
+    },
+    "resolver_version": "n3-span-arbitration-v1",
+    "consumed_fragments": [],
+    "conflicted_fragments": [],
+    "remaining_evidence_fragments": [
+      {
+        "fragment_ref": "d1-f1",
+        "source_evidence_quote": "看上去六十多岁的样子，身材瘦长，但精神矍铄，衣服干净整洁，头发也梳理的一丝不苟，和唐昊相比，简直就是两个极端",
+        "source_evidence_span": {
+          "start": 1126,
+          "end": 1180
+        },
+        "fragment_quote": "看上去六十多岁的样子，身材瘦长，但精神矍铄，衣服干净整洁，头发也梳理的一丝不苟，和唐昊相比，简直就是两个极端",
+        "fragment_span": {
+          "start": 1126,
+          "end": 1180
+        }
+      }
+    ],
+    "progress_made": false,
+    "next_action": "promote_remaining_describe",
+    "pool_hash": "8a53b57071256f95502fd38107eb82465de14e7bf324e934111c31cf7345a1a3"
+  },
+  {
+    "schema_version": "describe-pool-resolution-v4",
+    "chunk_id": "chunk-000005-9000-11500-f4a0068fbfb5",
+    "describe_source_ref": {
+      "local_mention_id": "m3",
+      "packet_hash": "889d95ba32c85c760d1f83334632e8178d9892a2ead23b4c450e854caa06181e"
+    },
+    "resolver_version": "n3-span-arbitration-v1",
+    "consumed_fragments": [],
+    "conflicted_fragments": [],
+    "remaining_evidence_fragments": [
+      {
+        "fragment_ref": "d2-f1",
+        "source_evidence_quote": "看上去六十多岁的样子，身材瘦长，但精神矍铄，衣服干净整洁，头发也梳理的一丝不苟，和唐昊相比，简直就是两个极端",
+        "source_evidence_span": {
+          "start": 1126,
+          "end": 1180
+        },
+        "fragment_quote": "看上去六十多岁的样子，身材瘦长，但精神矍铄，衣服干净整洁，头发也梳理的一丝不苟，和唐昊相比，简直就是两个极端",
+        "fragment_span": {
+          "start": 1126,
+          "end": 1180
+        }
+      }
+    ],
+    "progress_made": false,
+    "next_action": "promote_remaining_describe",
+    "pool_hash": "5e038ce69912e7fe5865ffcb098f451e70be3f5f86b323de1bab41bc45a3372d"
+  },
+  {
+    "schema_version": "describe-pool-resolution-v4",
+    "chunk_id": "chunk-000005-9000-11500-f4a0068fbfb5",
+    "describe_source_ref": {
+      "local_mention_id": "m4",
+      "packet_hash": "cd6075fc8f576b7e9ed6d2dcb732a9d847883a56caf42e217f7db1ccd29df8bf"
+    },
+    "resolver_version": "n3-span-arbitration-v1",
+    "consumed_fragments": [],
+    "conflicted_fragments": [],
+    "remaining_evidence_fragments": [
+      {
+        "fragment_ref": "d3-f1",
+        "source_evidence_quote": "看上去六十多岁的样子，身材瘦长，但精神矍铄，衣服干净整洁，头发也梳理的一丝不苟，和唐昊相比，简直就是两个极端",
+        "source_evidence_span": {
+          "start": 1126,
+          "end": 1180
+        },
+        "fragment_quote": "看上去六十多岁的样子，身材瘦长，但精神矍铄，衣服干净整洁，头发也梳理的一丝不苟，和唐昊相比，简直就是两个极端",
+        "fragment_span": {
+          "start": 1126,
+          "end": 1180
+        }
+      }
+    ],
+    "progress_made": false,
+    "next_action": "promote_remaining_describe",
+    "pool_hash": "0bf38554f8cb18537eea214f830915f53aa4ca8179270a68752949ccb3dcf6b8"
+  },
+  {
+    "schema_version": "describe-pool-resolution-v4",
+    "chunk_id": "chunk-000005-9000-11500-f4a0068fbfb5",
+    "describe_source_ref": {
+      "local_mention_id": "m5",
+      "packet_hash": "4d1605c7279113737e028d9f3de6870926b62417e5b36a6784f80e9dea1e644b"
+    },
+    "resolver_version": "n3-span-arbitration-v1",
+    "consumed_fragments": [],
+    "conflicted_fragments": [],
+    "remaining_evidence_fragments": [
+      {
+        "fragment_ref": "d4-f1",
+        "source_evidence_quote": "看上去六十多岁的样子，身材瘦长，但精神矍铄，衣服干净整洁，头发也梳理的一丝不苟，和唐昊相比，简直就是两个极端",
+        "source_evidence_span": {
+          "start": 1126,
+          "end": 1180
+        },
+        "fragment_quote": "看上去六十多岁的样子，身材瘦长，但精神矍铄，衣服干净整洁，头发也梳理的一丝不苟，和唐昊相比，简直就是两个极端",
+        "fragment_span": {
+          "start": 1126,
+          "end": 1180
+        }
+      }
+    ],
+    "progress_made": false,
+    "next_action": "promote_remaining_describe",
+    "pool_hash": "0d0c1ae4d7ea7238d106b9fe58d6b10f4340ed56ab33394b4f72dd3ee5752618"
+  },
+  {
+    "schema_version": "describe-pool-resolution-v4",
+    "chunk_id": "chunk-000006-11250-13750-9b713c3495b7",
+    "describe_source_ref": {
+      "local_mention_id": "m1",
+      "packet_hash": "62346dbfc6b94fc2d595acbece348759a2815879b58538cc772119f3ca5b23f5"
+    },
+    "resolver_version": "n3-span-arbitration-v1",
+    "consumed_fragments": [],
+    "conflicted_fragments": [],
+    "remaining_evidence_fragments": [
+      {
+        "fragment_ref": "d1-f1",
+        "source_evidence_quote": "此人看上去二十多岁的样子，剑眉星目，相貌甚是俊朗。一身白色劲装，背后是黑色披风，胸前正中心的位置，有一个拳头大小的魂字。",
+        "source_evidence_span": {
+          "start": 1889,
+          "end": 1949
+        },
+        "fragment_quote": "此人看上去二十多岁的样子，剑眉星目，相貌甚是俊朗。一身白色劲装，背后是黑色披风，胸前正中心的位置，有一个拳头大小的魂字。",
+        "fragment_span": {
+          "start": 1889,
+          "end": 1949
+        }
+      },
+      {
+        "fragment_ref": "d1-f2",
+        "source_evidence_quote": "左胸上，有一枚雕刻着长剑的徽章，徽章上一共是三柄长剑交错。",
+        "source_evidence_span": {
+          "start": 1969,
+          "end": 1998
+        },
+        "fragment_quote": "左胸上，有一枚雕刻着长剑的徽章，徽章上一共是三柄长剑交错。",
+        "fragment_span": {
+          "start": 1969,
+          "end": 1998
+        }
+      }
+    ],
+    "progress_made": false,
+    "next_action": "promote_remaining_describe",
+    "pool_hash": "47d6de49a5793bb39065c5e8cab9b21dbaf7702b8497eae09b6b50fe0ebc635d"
+  },
+  {
+    "schema_version": "describe-pool-resolution-v4",
+    "chunk_id": "chunk-000006-11250-13750-9b713c3495b7",
+    "describe_source_ref": {
+      "local_mention_id": "m2",
+      "packet_hash": "4c4dd5beffa9278405434602b7b46224338728279cdc350d4e16594333c9b3ff"
+    },
+    "resolver_version": "n3-span-arbitration-v1",
+    "consumed_fragments": [],
+    "conflicted_fragments": [],
+    "remaining_evidence_fragments": [
+      {
+        "fragment_ref": "d2-f1",
+        "source_evidence_quote": "此人看上去二十多岁的样子，剑眉星目，相貌甚是俊朗。一身白色劲装，背后是黑色披风，胸前正中心的位置，有一个拳头大小的魂字。",
+        "source_evidence_span": {
+          "start": 1889,
+          "end": 1949
+        },
+        "fragment_quote": "此人看上去二十多岁的样子，剑眉星目，相貌甚是俊朗。一身白色劲装，背后是黑色披风，胸前正中心的位置，有一个拳头大小的魂字。",
+        "fragment_span": {
+          "start": 1889,
+          "end": 1949
+        }
+      },
+      {
+        "fragment_ref": "d2-f2",
+        "source_evidence_quote": "左胸上，有一枚雕刻着长剑的徽章，徽章上一共是三柄长剑交错。",
+        "source_evidence_span": {
+          "start": 1969,
+          "end": 1998
+        },
+        "fragment_quote": "左胸上，有一枚雕刻着长剑的徽章，徽章上一共是三柄长剑交错。",
+        "fragment_span": {
+          "start": 1969,
+          "end": 1998
+        }
+      }
+    ],
+    "progress_made": false,
+    "next_action": "promote_remaining_describe",
+    "pool_hash": "7d89b927d7e978e7123e989a9a18dfeb79bea2800f317819f2769ab146794c29"
+  },
+  {
+    "schema_version": "describe-pool-resolution-v4",
+    "chunk_id": "chunk-000006-11250-13750-9b713c3495b7",
+    "describe_source_ref": {
+      "local_mention_id": "m3",
+      "packet_hash": "6bb39f8aea9f26d417dbb45861d7d128217831446a93af0e30ebdfb3858bed8d"
+    },
+    "resolver_version": "n3-span-arbitration-v1",
+    "consumed_fragments": [],
+    "conflicted_fragments": [],
+    "remaining_evidence_fragments": [
+      {
+        "fragment_ref": "d3-f1",
+        "source_evidence_quote": "此人看上去二十多岁的样子，剑眉星目，相貌甚是俊朗。一身白色劲装，背后是黑色披风，胸前正中心的位置，有一个拳头大小的魂字。",
+        "source_evidence_span": {
+          "start": 1889,
+          "end": 1949
+        },
+        "fragment_quote": "此人看上去二十多岁的样子，剑眉星目，相貌甚是俊朗。一身白色劲装，背后是黑色披风，胸前正中心的位置，有一个拳头大小的魂字。",
+        "fragment_span": {
+          "start": 1889,
+          "end": 1949
+        }
+      },
+      {
+        "fragment_ref": "d3-f2",
+        "source_evidence_quote": "左胸上，有一枚雕刻着长剑的徽章，徽章上一共是三柄长剑交错。",
+        "source_evidence_span": {
+          "start": 1969,
+          "end": 1998
+        },
+        "fragment_quote": "左胸上，有一枚雕刻着长剑的徽章，徽章上一共是三柄长剑交错。",
+        "fragment_span": {
+          "start": 1969,
+          "end": 1998
+        }
+      }
+    ],
+    "progress_made": false,
+    "next_action": "promote_remaining_describe",
+    "pool_hash": "265474cf49b42cfbbbb6cb24a13cff1abed8778479ae3b96c05f7d4f62cf9284"
+  },
+  {
+    "schema_version": "describe-pool-resolution-v4",
+    "chunk_id": "chunk-000007-13500-16000-29d830992ba6",
+    "describe_source_ref": {
+      "local_mention_id": "m4",
+      "packet_hash": "2588c338ed1adc48a3ee28fc746720844dd984f36530a5e4f29908dafba3a91b"
+    },
+    "resolver_version": "n3-span-arbitration-v1",
+    "consumed_fragments": [],
+    "conflicted_fragments": [],
+    "remaining_evidence_fragments": [
+      {
+        "fragment_ref": "d1-f1",
+        "source_evidence_quote": "男孩儿稚嫩的小手与素云涛的狼爪分别在水晶球上下位置",
+        "source_evidence_span": {
+          "start": 1744,
+          "end": 1769
+        },
+        "fragment_quote": "男孩儿稚嫩的小手与素云涛的狼爪分别在水晶球上下位置",
+        "fragment_span": {
+          "start": 1744,
+          "end": 1769
+        }
+      }
+    ],
+    "progress_made": false,
+    "next_action": "promote_remaining_describe",
+    "pool_hash": "cc32c1087d3bc2218772a89f0316b044dbe87ee04080a8c1a4912bf9a89ce0c9"
+  },
+  {
+    "schema_version": "describe-pool-resolution-v4",
+    "chunk_id": "chunk-000014-29250-31750-3f70e01ec313",
+    "describe_source_ref": {
+      "local_mention_id": "m3",
+      "packet_hash": "f149bb2843018f2f7e2e1d338cc3e4d615c1724687de7d5e18a4c586ecc14699"
+    },
+    "resolver_version": "n3-span-arbitration-v1",
+    "consumed_fragments": [],
+    "conflicted_fragments": [],
+    "remaining_evidence_fragments": [
+      {
+        "fragment_ref": "d1-f1",
+        "source_evidence_quote": "高大苍老的男人",
+        "source_evidence_span": {
+          "start": 1519,
+          "end": 1526
+        },
+        "fragment_quote": "高大苍老的男人",
+        "fragment_span": {
+          "start": 1519,
+          "end": 1526
+        }
+      }
+    ],
+    "progress_made": false,
+    "next_action": "promote_remaining_describe",
+    "pool_hash": "73ef6bfd89233d62504884cfe2b46ff2b67f506bdf60abed583128e826d7d20c"
+  },
+  {
+    "schema_version": "describe-pool-resolution-v4",
+    "chunk_id": "chunk-000016-33750-36250-66f14c14f2ba",
+    "describe_source_ref": {
+      "local_mention_id": "m3",
+      "packet_hash": "572ea37e5b6ac2403fc33061baacddd1abb070dbc62529bd8ab9c1e406f09550"
+    },
+    "resolver_version": "n3-span-arbitration-v1",
+    "consumed_fragments": [],
+    "conflicted_fragments": [],
+    "remaining_evidence_fragments": [
+      {
+        "fragment_ref": "d1-f1",
+        "source_evidence_quote": "看门的青年",
+        "source_evidence_span": {
+          "start": 2463,
+          "end": 2468
+        },
+        "fragment_quote": "看门的青年",
+        "fragment_span": {
+          "start": 2463,
+          "end": 2468
+        }
+      }
+    ],
+    "progress_made": false,
+    "next_action": "promote_remaining_describe",
+    "pool_hash": "ccae6f98855948ca37753c98d1ac23672f9199918be73cce246e3cff5dcec994"
+  },
+  {
+    "schema_version": "describe-pool-resolution-v4",
+    "chunk_id": "chunk-000017-36000-38251-39ec6c2a0304",
+    "describe_source_ref": {
+      "local_mention_id": "m5",
+      "packet_hash": "9db1e43f41b92b30b0e14072b88cfa5e7b3248a5a5e78607a3dab82faa5702d8"
+    },
+    "resolver_version": "n3-span-arbitration-v1",
+    "consumed_fragments": [
+      {
+        "assigned_target_local_mention_id": "m1",
+        "fact_quote": "不就是个老头儿么",
+        "fact_chunk_span": {
+          "start": 1096,
+          "end": 1104
+        },
+        "source_evidence_quote": "不就是个老头儿么",
+        "source_evidence_span": {
+          "start": 1096,
+          "end": 1104
+        },
+        "status": "uniquely_assigned"
+      }
+    ],
+    "conflicted_fragments": [],
+    "remaining_evidence_fragments": [],
+    "progress_made": true,
+    "next_action": "resolved",
+    "pool_hash": "617e0722c53676cff6d2343691a8cad41c791b35e46186a133c85608c8f6688b"
+  }
+]

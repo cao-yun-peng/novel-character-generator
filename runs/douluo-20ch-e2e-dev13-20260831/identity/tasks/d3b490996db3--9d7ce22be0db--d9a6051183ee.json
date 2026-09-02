@@ -1,0 +1,62 @@
+{
+  "schema_version": "identity-task-result-v1",
+  "task_index": 44,
+  "current_label_quote": "唐三",
+  "candidate_label_quote": "唐三",
+  "task_cache_key": "d9a6051183ee379cb9c774e85f7f8908d092a971df9322084953b29b04e6d2a4",
+  "model_output": {
+    "identity_relation": "same_character",
+    "label_relation": "same_surface",
+    "identity_evidence_quotes": [
+      "唐三手腕上带着的这筒袖箭",
+      "唐三幼小的身体和手中的铁锤并不成比例"
+    ]
+  },
+  "grounded_result": {
+    "schema_version": "grounded-identity-decision-v1",
+    "current_node_key": "d3b490996db39e0e952ca294133253f1849cf229cda98efa7fa547cee1f7343f",
+    "candidate_node_key": "9d7ce22be0dbbb18a9c5b6af8a255eec58c3ea18a002eba77f0f4deafd133cc3",
+    "task_cache_key": "d9a6051183ee379cb9c774e85f7f8908d092a971df9322084953b29b04e6d2a4",
+    "requested_identity_relation": "same_character",
+    "identity_relation": "same_character",
+    "label_relation": "same_surface",
+    "grounded_identity_evidence": [
+      {
+        "evidence_quote": "唐三幼小的身体和手中的铁锤并不成比例",
+        "document_span": {
+          "start": 23892,
+          "end": 23910
+        },
+        "match_mode": "exact"
+      },
+      {
+        "evidence_quote": "唐三手腕上带着的这筒袖箭",
+        "document_span": {
+          "start": 29301,
+          "end": 29313
+        },
+        "match_mode": "exact"
+      }
+    ],
+    "issues": []
+  },
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 4953,
+    "http_status": 200,
+    "response_id": "ccbf1c6a-46d7-443f-ab68-499afdbcb053",
+    "usage": {
+      "input_tokens": 1861,
+      "cached_input_tokens": 512,
+      "output_tokens": 520,
+      "reasoning_tokens": 457,
+      "total_tokens": 2381
+    },
+    "error_kind": null
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "schema_version": "identity-task-result-v1",
+  "task_index": 45,
+  "current_label_quote": "唐昊",
+  "candidate_label_quote": "唐昊",
+  "task_cache_key": "ec02b62fedc5d9c7f9d5f163849a803817e3fe3b02054564237158591ddf69e3",
+  "model_output": {
+    "identity_relation": "same_character",
+    "label_relation": "same_surface",
+    "identity_evidence_quotes": [
+      "唐昊冷然道：“我还需要你照顾么？你去就是了。”",
+      "唐昊看着在不断拉动风箱的唐三。"
+    ]
+  },
+  "grounded_result": {
+    "schema_version": "grounded-identity-decision-v1",
+    "current_node_key": "9c49816e291181a552e79f2f96e25fdc24c3b2a567b814dbd9234d336ec6ad96",
+    "candidate_node_key": "69cf5a23b5d866d66444c4c3a26357815d80c865c20ca4bf6ee0608d00afe940",
+    "task_cache_key": "ec02b62fedc5d9c7f9d5f163849a803817e3fe3b02054564237158591ddf69e3",
+    "requested_identity_relation": "same_character",
+    "identity_relation": "same_character",
+    "label_relation": "same_surface",
+    "grounded_identity_evidence": [
+      {
+        "evidence_quote": "唐昊看着在不断拉动风箱的唐三。",
+        "document_span": {
+          "start": 27400,
+          "end": 27415
+        },
+        "match_mode": "exact"
+      }
+    ],
+    "issues": [
+      {
+        "code": "identity_evidence_not_in_model_context",
+        "detail": "identity evidence '唐昊冷然道：“我还需要你照顾么？你去就是了。”' matched 0 document occurrences",
+        "evidence_index": 0,
+        "evidence_quote": "唐昊冷然道：“我还需要你照顾么？你去就是了。”",
+        "candidate_occurrence_count": 0
+      }
+    ]
+  },
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 3093,
+    "http_status": 200,
+    "response_id": "c2f20080-ecdc-4104-bdb3-b2648e44a6d6",
+    "usage": {
+      "input_tokens": 1317,
+      "cached_input_tokens": 512,
+      "output_tokens": 288,
+      "reasoning_tokens": 220,
+      "total_tokens": 1605
+    },
+    "error_kind": null
+  }
+}

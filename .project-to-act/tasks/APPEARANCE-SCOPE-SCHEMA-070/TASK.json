@@ -1,0 +1,31 @@
+{
+  "id": "APPEARANCE-SCOPE-SCHEMA-070",
+  "title": "Appearance scope schema and deterministic assignments",
+  "status": "completed",
+  "owner": "Codex",
+  "objective": "为 post-link canonical facts 建立章节顺序、保守 persistence 与可由 071 更新的 life/form/scene scope 基线。",
+  "risk_level": "L1-deterministic-profile-compiler-intermediate",
+  "allowed_paths": [
+    "src/novel_character_generator",
+    "tests",
+    "docs",
+    "README.md",
+    "pyproject.toml",
+    ".project-to-act",
+    "runs/douluo-20ch-e2e-dev13-20260831/appearance-scopes-dev19"
+  ],
+  "invariants": [
+    "070 不调用模型，也不根据词表猜测 life/form/scene 语义",
+    "109 个 canonical facts 必须各有且仅有一个扁平 assignment",
+    "章节边界来自原文标题，连续重复标题折叠为一个章节边界",
+    "无法确定的 life/form/scene 必须显式为 unknown",
+    "persistence 只使用少量高置信类别规则，其余为 unknown",
+    "不复制 raw fact hash、source occurrences 或无下游消费方字段"
+  ],
+  "acceptance": [
+    "斗罗实际第1至19章被稳定解析，重复相邻标题不产生伪章节",
+    "109/109 canonical facts 唯一绑定章节和原文顺序",
+    "assignment Schema 保持扁平且每个字段有 071/074 消费用途",
+    "单测、Schema、compileall、真实实例、重复运行稳定性与两套治理校验通过"
+  ]
+}

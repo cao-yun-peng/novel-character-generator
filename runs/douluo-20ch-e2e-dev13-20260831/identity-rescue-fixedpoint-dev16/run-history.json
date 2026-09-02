@@ -1,0 +1,26 @@
+[
+  {
+    "started_at": "2026-09-01T07:42:00.461057Z",
+    "completed_at": "2026-09-01T07:42:07.890642Z",
+    "duration_ms": 7421,
+    "planned_tasks": 1,
+    "succeeded_tasks": 1,
+    "failed_tasks": 0,
+    "resumed_tasks": 0,
+    "new_provider_calls": 1,
+    "complete": true,
+    "registry_built": true
+  },
+  {
+    "started_at": "2026-09-01T07:42:44.288580Z",
+    "completed_at": "2026-09-01T07:42:44.334578Z",
+    "duration_ms": 47,
+    "planned_tasks": 1,
+    "succeeded_tasks": 1,
+    "failed_tasks": 0,
+    "resumed_tasks": 1,
+    "new_provider_calls": 0,
+    "complete": true,
+    "registry_built": true
+  }
+]

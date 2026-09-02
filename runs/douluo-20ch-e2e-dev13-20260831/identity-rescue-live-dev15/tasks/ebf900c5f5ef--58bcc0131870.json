@@ -1,0 +1,58 @@
+{
+  "schema_version": "cluster-rescue-task-result-v1",
+  "task_index": 4,
+  "task_cache_key": "58bcc013187097c14ff25f156363dfcdb906681efa84183ad588031b0d173155",
+  "subject_labels": [
+    "素云涛"
+  ],
+  "model_output": {
+    "identity_relation": "same_character",
+    "candidate_number": 1,
+    "label_relation": "name_variant",
+    "identity_evidence_quotes": [
+      "年轻人微笑道：“我叫素云涛，二十六级大魂师，是你们的领路人。现在，我将"
+    ]
+  },
+  "grounded_result": {
+    "schema_version": "grounded-cluster-rescue-decision-v1",
+    "subject_character_id": "char-98672f4dfa3bce0a00b4",
+    "subject_anchor_node_key": "ebf900c5f5ef9b7dbd6780355e0749ceca1bdb15185edb3acc3bbd982cd8a1cd",
+    "selected_candidate_number": 1,
+    "selected_candidate_character_id": "char-269333eade4c2fa520aa",
+    "selected_candidate_anchor_node_key": "3f90ca68ba802e43cc015ea6793f2aab441c9a7f099d4d92f717b5ea0ff0ae7f",
+    "task_cache_key": "58bcc013187097c14ff25f156363dfcdb906681efa84183ad588031b0d173155",
+    "requested_identity_relation": "same_character",
+    "identity_relation": "same_character",
+    "label_relation": "name_variant",
+    "grounded_identity_evidence": [
+      {
+        "evidence_quote": "年轻人微笑道：“我叫素云涛，二十六级大魂师，是你们的领路人。现在，我将",
+        "document_span": {
+          "start": 13775,
+          "end": 13810
+        },
+        "match_mode": "exact"
+      }
+    ],
+    "issues": []
+  },
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 1625,
+    "http_status": 200,
+    "response_id": "85b7facf-cea6-4699-9463-aefe1c3fa4b4",
+    "usage": {
+      "input_tokens": 3074,
+      "cached_input_tokens": 640,
+      "output_tokens": 173,
+      "reasoning_tokens": 116,
+      "total_tokens": 3247
+    },
+    "error_kind": null
+  }
+}

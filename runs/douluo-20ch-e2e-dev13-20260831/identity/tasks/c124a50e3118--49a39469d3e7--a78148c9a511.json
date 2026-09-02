@@ -1,0 +1,62 @@
+{
+  "schema_version": "identity-task-result-v1",
+  "task_index": 61,
+  "current_label_quote": "唐三",
+  "candidate_label_quote": "唐三",
+  "task_cache_key": "a78148c9a51180c3f5965f36dd71063b36337b999b14d7cd237ce20b6be8d23e",
+  "model_output": {
+    "identity_relation": "same_character",
+    "label_relation": "same_surface",
+    "identity_evidence_quotes": [
+      "出手的正是唐三",
+      "唐三人虽然不大"
+    ]
+  },
+  "grounded_result": {
+    "schema_version": "grounded-identity-decision-v1",
+    "current_node_key": "c124a50e3118633488088cda1e46afdb175f4e5b858d447d7fd9b6620d0f15be",
+    "candidate_node_key": "49a39469d3e7ed28d07bddb54930ad1b57aaabe2922b2f3d4da4016a3204231b",
+    "task_cache_key": "a78148c9a51180c3f5965f36dd71063b36337b999b14d7cd237ce20b6be8d23e",
+    "requested_identity_relation": "same_character",
+    "identity_relation": "same_character",
+    "label_relation": "same_surface",
+    "grounded_identity_evidence": [
+      {
+        "evidence_quote": "出手的正是唐三",
+        "document_span": {
+          "start": 37557,
+          "end": 37564
+        },
+        "match_mode": "exact"
+      }
+    ],
+    "issues": [
+      {
+        "code": "identity_evidence_not_in_model_context",
+        "detail": "identity evidence '唐三人虽然不大' matched 0 document occurrences",
+        "evidence_index": 1,
+        "evidence_quote": "唐三人虽然不大",
+        "candidate_occurrence_count": 0
+      }
+    ]
+  },
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 1969,
+    "http_status": 200,
+    "response_id": "648e4cc4-4800-42fe-9f4b-83dbfe5a9229",
+    "usage": {
+      "input_tokens": 2286,
+      "cached_input_tokens": 512,
+      "output_tokens": 139,
+      "reasoning_tokens": 88,
+      "total_tokens": 2425
+    },
+    "error_kind": null
+  }
+}

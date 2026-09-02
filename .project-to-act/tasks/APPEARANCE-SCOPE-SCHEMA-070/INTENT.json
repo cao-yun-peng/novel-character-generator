@@ -1,0 +1,13 @@
+{
+  "task_id": "APPEARANCE-SCOPE-SCHEMA-070",
+  "requested_by": "user",
+  "intent": "开始实现 070，并为已确认的 071 全文 transition discovery 提供最小确定性基础。",
+  "current_behavior": "069 已生成 109 个 canonical fact groups，但 scope_assignment_status 仍为 unassigned，没有章节顺序、persistence 或 life/form/scene 基线。",
+  "expected_behavior": "独立输出章节表和每个 canonical fact 的扁平 assignment；代码确定章节/顺序和少量高置信 persistence，life/form/scene 初始保持 unknown。",
+  "non_goals": [
+    "不识别 transition",
+    "不执行语义同义归一或冲突分类",
+    "不修改 069/raw evidence",
+    "不把 hash 或完整 provenance 复制到新产物"
+  ]
+}

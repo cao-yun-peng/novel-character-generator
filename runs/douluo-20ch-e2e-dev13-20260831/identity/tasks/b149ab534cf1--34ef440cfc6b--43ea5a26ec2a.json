@@ -1,0 +1,80 @@
+{
+  "schema_version": "identity-task-result-v1",
+  "task_index": 34,
+  "current_label_quote": "唐昊",
+  "candidate_label_quote": "唐昊",
+  "task_cache_key": "43ea5a26ec2a8a473a034f0e16f8dc7c168ed5d24846e1c474f7fdb58e1da860",
+  "model_output": {
+    "identity_relation": "same_character",
+    "label_relation": "same_surface",
+    "identity_evidence_quotes": [
+      "唐昊张开有力的双臂，将唐三紧紧的拥入自己怀抱之中。",
+      "爸爸。”唐三有些愣住了",
+      "爸爸，你年纪大了",
+      "唐昊略微有些失神"
+    ]
+  },
+  "grounded_result": {
+    "schema_version": "grounded-identity-decision-v1",
+    "current_node_key": "b149ab534cf11f7656106950d5785626cb1f8d45d5a674f91b5cb3f61e79233c",
+    "candidate_node_key": "34ef440cfc6ba1a683c8391c25baf436787e3f0ddea2a4d0ac21760cf136e0ea",
+    "task_cache_key": "43ea5a26ec2a8a473a034f0e16f8dc7c168ed5d24846e1c474f7fdb58e1da860",
+    "requested_identity_relation": "same_character",
+    "identity_relation": "same_character",
+    "label_relation": "same_surface",
+    "grounded_identity_evidence": [
+      {
+        "evidence_quote": "爸爸，你年纪大了",
+        "document_span": {
+          "start": 6929,
+          "end": 6937
+        },
+        "match_mode": "exact"
+      },
+      {
+        "evidence_quote": "唐昊略微有些失神",
+        "document_span": {
+          "start": 7004,
+          "end": 7012
+        },
+        "match_mode": "exact"
+      },
+      {
+        "evidence_quote": "唐昊张开有力的双臂，将唐三紧紧的拥入自己怀抱之中。",
+        "document_span": {
+          "start": 22528,
+          "end": 22553
+        },
+        "match_mode": "exact"
+      },
+      {
+        "evidence_quote": "爸爸。”唐三有些愣住了",
+        "document_span": {
+          "start": 22651,
+          "end": 22662
+        },
+        "match_mode": "exact"
+      }
+    ],
+    "issues": []
+  },
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 5157,
+    "http_status": 200,
+    "response_id": "7a86996a-51d7-43f5-8b85-48315647ad0a",
+    "usage": {
+      "input_tokens": 2019,
+      "cached_input_tokens": 512,
+      "output_tokens": 458,
+      "reasoning_tokens": 378,
+      "total_tokens": 2477
+    },
+    "error_kind": null
+  }
+}

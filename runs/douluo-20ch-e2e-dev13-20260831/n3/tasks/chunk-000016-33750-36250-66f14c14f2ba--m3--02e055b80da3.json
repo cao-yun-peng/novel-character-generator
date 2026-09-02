@@ -1,0 +1,88 @@
+{
+  "schema_version": "n3-promotion-task-result-v2",
+  "chunk_index": 16,
+  "chunk_id": "chunk-000016-33750-36250-66f14c14f2ba",
+  "describe_local_mention_id": "m3",
+  "mention_quote": "看门的青年",
+  "promotion_hash": "02e055b80da318f5aa3488d1293b1af5f472087c1917c210e631f882b2e64377",
+  "model_output": {
+    "characters": [
+      {
+        "character_label_quote": "看门的青年",
+        "belongs_to_character": [
+          {
+            "fact_quote": "看门的青年",
+            "category": "age",
+            "attribute": "年龄阶段",
+            "value": "青年"
+          }
+        ]
+      }
+    ]
+  },
+  "grounded_result": {
+    "schema_version": "grounded-promoted-describe-characters-v6",
+    "grounding_policy_version": "promotion-partial-fact-acceptance-v1",
+    "describe_source_ref": {
+      "local_mention_id": "m3",
+      "packet_hash": "572ea37e5b6ac2403fc33061baacddd1abb070dbc62529bd8ab9c1e406f09550"
+    },
+    "promotion_hash": "02e055b80da318f5aa3488d1293b1af5f472087c1917c210e631f882b2e64377",
+    "promoted_characters": [
+      {
+        "promoted_character_ref": {
+          "source_document_version_id": "source-8bcb7305a759571b",
+          "chunk_id": "chunk-000016-33750-36250-66f14c14f2ba",
+          "source_local_mention_id": "m3",
+          "source_mention_type": "describe",
+          "promotion_index": 1,
+          "character_origin": "remaining_describe",
+          "packet_hash": "572ea37e5b6ac2403fc33061baacddd1abb070dbc62529bd8ab9c1e406f09550",
+          "promotion_hash": "02e055b80da318f5aa3488d1293b1af5f472087c1917c210e631f882b2e64377"
+        },
+        "character_label_quote": "看门的青年",
+        "grounded_belongs_to_character": [
+          {
+            "fact_quote": "看门的青年",
+            "category": "age",
+            "attribute": "年龄阶段",
+            "value": "青年",
+            "source_mention_id": "m3",
+            "source_mention_type": "describe",
+            "source_evidence_quote": "看门的青年",
+            "source_evidence_span": {
+              "start": 2463,
+              "end": 2468
+            },
+            "fact_chunk_span": {
+              "start": 2463,
+              "end": 2468
+            },
+            "match_mode": "exact"
+          }
+        ]
+      }
+    ],
+    "unassigned_fragments": []
+  },
+  "grounding_issues": [],
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 3500,
+    "http_status": 200,
+    "response_id": "e319477f-5ddc-41a3-b206-0e91266b7b07",
+    "usage": {
+      "input_tokens": 2053,
+      "cached_input_tokens": 384,
+      "output_tokens": 265,
+      "reasoning_tokens": 190,
+      "total_tokens": 2318
+    },
+    "error_kind": null
+  }
+}

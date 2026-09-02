@@ -11,13 +11,25 @@ from .errors import ContractValidationError
 from .text import SourceSpan, find_occurrences, find_safe_quote_matches, sha256_text
 
 IDENTITY_LOCAL_NODES_VERSION = "document-local-character-nodes-v1"
-IDENTITY_CONTEXT_POLICY_VERSION = "identity-evidence-window-v1"
+IDENTITY_CONTEXT_POLICY_VERSION = "identity-evidence-window-v2"
 IDENTITY_ENVELOPE_VERSION = "m3-identity-envelope-v1"
 IDENTITY_GROUNDED_DECISION_VERSION = "grounded-identity-decision-v1"
 IDENTITY_REGISTRY_VERSION = "document-character-registry-v1"
-IDENTITY_POLICY_VERSION = "strict-evidence-identity-v1"
-IDENTITY_CANDIDATE_POLICY_VERSION = "bounded-local-candidate-retrieval-v1"
+IDENTITY_POLICY_VERSION = "global-constrained-identity-v3"
+IDENTITY_CANDIDATE_POLICY_VERSION = "bounded-local-candidate-retrieval-v3"
+IDENTITY_COMPATIBLE_CANDIDATE_POLICY_VERSIONS = (
+    "bounded-local-candidate-retrieval-v1",
+    "bounded-local-candidate-retrieval-v2",
+    IDENTITY_CANDIDATE_POLICY_VERSION,
+)
 IDENTITY_CONFLICT_POLICY_VERSION = "preserve-multiple-values-v1"
+IDENTITY_LOCAL_COREFERENCE_POLICY_VERSION = "grounded-local-coreference-v1"
+
+LOCAL_COREFERENCE_RELATION_TYPES = (
+    "explicit_apposition",
+    "demonstrative_naming",
+    "continuous_local_coreference",
+)
 
 IDENTITY_RELATIONS = ("same_character", "different_characters", "uncertain")
 LABEL_RELATIONS = (
@@ -340,6 +352,7 @@ class IdentityEnvelope:
     task_cache_key: str
     model_input: IdentityModelInput
     schema_version: str = IDENTITY_ENVELOPE_VERSION
+    context_policy_version: str = IDENTITY_CONTEXT_POLICY_VERSION
 
     def __post_init__(self) -> None:
         if self.current_node_key == self.candidate_node_key:
@@ -352,7 +365,7 @@ class IdentityEnvelope:
                 "current_node_key": self.current_node_key,
                 "candidate_node_key": self.candidate_node_key,
                 "candidate_reasons": list(self.candidate_reasons),
-                "context_policy_version": IDENTITY_CONTEXT_POLICY_VERSION,
+                "context_policy_version": self.context_policy_version,
                 "model_input": self.model_input.to_dict(),
             }
         )
@@ -648,7 +661,307 @@ def _normalized_label(value: str) -> str:
     return "".join(character.lower() for character in value if not character.isspace())
 
 
-def _candidate_signals(current: LocalCharacterNode, candidate: LocalCharacterNode) -> tuple[int, tuple[str, ...]]:
+def _context_intersections(
+    left: LocalCharacterNode,
+    right: LocalCharacterNode,
+) -> tuple[SourceSpan, ...]:
+    spans = {
+        SourceSpan(
+            max(left_binding.document_span.start, right_binding.document_span.start),
+            min(left_binding.document_span.end, right_binding.document_span.end),
+        )
+        for left_binding in left.context_bindings
+        for right_binding in right.context_bindings
+        if max(left_binding.document_span.start, right_binding.document_span.start)
+        < min(left_binding.document_span.end, right_binding.document_span.end)
+    }
+    return tuple(sorted(spans))
+
+
+def _spans_in_container(
+    *,
+    document_text: str,
+    container: SourceSpan,
+    quote: str,
+) -> tuple[SourceSpan, ...]:
+    return tuple(
+        SourceSpan(container.start + span.start, container.start + span.end)
+        for span in find_occurrences(container.quote(document_text), quote)
+    )
+
+
+def _compact_whitespace(value: str) -> str:
+    return "".join(character for character in value if not character.isspace())
+
+
+def _local_coreference_relation_type(
+    *,
+    document_text: str,
+    describe_span: SourceSpan,
+    exact_span: SourceSpan,
+) -> str | None:
+    if describe_span.end > exact_span.start:
+        return None
+    between = document_text[describe_span.end : exact_span.start]
+    compact = _compact_whitespace(between)
+    if len(compact) > 600 or not compact:
+        return None
+    next_non_whitespace = exact_span.end
+    while next_non_whitespace < len(document_text) and document_text[next_non_whitespace].isspace():
+        next_non_whitespace += 1
+    if next_non_whitespace < len(document_text) and document_text[next_non_whitespace] in {"?", "？"}:
+        return None
+    if any(marker in compact[-48:] for marker in ("不是", "是不是", "是否", "难道")):
+        return None
+
+    apposition_markers = ("名叫", "叫做", "称为", "称作")
+    demonstrative_markers = (
+        "这就是",
+        "那就是",
+        "此人就是",
+        "这个人就是",
+        "这正是",
+        "那正是",
+        "此人正是",
+        "这个人正是",
+        "就是",
+        "正是",
+    )
+    tail = compact[-32:]
+    if len(compact) <= 96 and any(tail.endswith(marker) for marker in apposition_markers):
+        return "explicit_apposition"
+
+    continuity_markers = (
+        "那是一名",
+        "那是一个",
+        "那是个",
+        "这是一名",
+        "这是一个",
+        "这是个",
+        "此人",
+        "这个人",
+        "那个人",
+    )
+    if (
+        any(marker in compact for marker in continuity_markers)
+        and any(tail.endswith(marker) for marker in demonstrative_markers)
+    ):
+        return "continuous_local_coreference"
+    if len(compact) <= 96 and any(tail.endswith(marker) for marker in demonstrative_markers):
+        return "demonstrative_naming"
+    return None
+
+
+def _context_replays_evidence(
+    node: LocalCharacterNode,
+    evidence_quote: str,
+    evidence_span: SourceSpan,
+) -> bool:
+    for binding in node.context_bindings:
+        if not (
+            binding.document_span.start <= evidence_span.start
+            and evidence_span.end <= binding.document_span.end
+        ):
+            continue
+        relative = SourceSpan(
+            evidence_span.start - binding.document_span.start,
+            evidence_span.end - binding.document_span.start,
+        )
+        if relative.quote(binding.context_quote) == evidence_quote:
+            return True
+    return False
+
+
+def build_local_coreference_edges(
+    *,
+    local_nodes: DocumentLocalCharacterNodes,
+    document_text: str,
+    max_characters: int = 600,
+) -> tuple[Mapping[str, object], ...]:
+    """Build deterministic same edges only from a shared, replayable local context."""
+    if max_characters < 1:
+        raise ContractValidationError("max local coreference characters must be positive")
+    if sha256_text(document_text) != local_nodes.document_hash:
+        raise ContractValidationError("local coreference document hash mismatch")
+    nodes = local_nodes.nodes
+    exact_nodes = tuple(node for node in nodes if node.label_type == "exact")
+    results: list[Mapping[str, object]] = []
+    for describe in nodes:
+        if describe.label_type != "describe":
+            continue
+        for exact in exact_nodes:
+            if describe.chunk_id != exact.chunk_id:
+                continue
+            candidates: dict[tuple[int, int, str], tuple[int, SourceSpan, str]] = {}
+            for overlap in _context_intersections(describe, exact):
+                describe_occurrences = _spans_in_container(
+                    document_text=document_text,
+                    container=overlap,
+                    quote=describe.label_quote,
+                )
+                exact_occurrences = _spans_in_container(
+                    document_text=document_text,
+                    container=overlap,
+                    quote=exact.label_quote,
+                )
+                if not describe_occurrences or not exact_occurrences:
+                    continue
+                for describe_span in describe_occurrences:
+                    for exact_span in exact_occurrences:
+                        if describe_span.end > exact_span.start:
+                            continue
+                        evidence_span = SourceSpan(describe_span.start, exact_span.end)
+                        if evidence_span.end - evidence_span.start > max_characters:
+                            continue
+                        relation_type = _local_coreference_relation_type(
+                            document_text=document_text,
+                            describe_span=describe_span,
+                            exact_span=exact_span,
+                        )
+                        if relation_type is None:
+                            continue
+                        evidence_quote = evidence_span.quote(document_text)
+                        competing_labels: set[str] = set()
+                        for node in exact_nodes:
+                            if node.node_key == exact.node_key or node.chunk_id != exact.chunk_id:
+                                continue
+                            for relative_span in find_occurrences(evidence_quote, node.label_quote):
+                                competing_span = SourceSpan(
+                                    evidence_span.start + relative_span.start,
+                                    evidence_span.start + relative_span.end,
+                                )
+                                if _local_coreference_relation_type(
+                                    document_text=document_text,
+                                    describe_span=describe_span,
+                                    exact_span=competing_span,
+                                ) is not None:
+                                    competing_labels.add(node.label_quote)
+                        if competing_labels:
+                            continue
+                        if not _context_replays_evidence(describe, evidence_quote, evidence_span):
+                            continue
+                        if not _context_replays_evidence(exact, evidence_quote, evidence_span):
+                            continue
+                        candidates[(evidence_span.start, evidence_span.end, relation_type)] = (
+                            evidence_span.end - evidence_span.start,
+                            evidence_span,
+                            relation_type,
+                        )
+            if len(candidates) != 1:
+                continue
+            _, evidence_span, relation_type = next(iter(candidates.values()))
+            results.append(
+                {
+                    "left_node_key": describe.node_key,
+                    "right_node_key": exact.node_key,
+                    "relation": "same_character",
+                    "reason": "explicit_local_coreference",
+                    "relation_type": relation_type,
+                    "policy_version": IDENTITY_LOCAL_COREFERENCE_POLICY_VERSION,
+                    "identity_evidence": [
+                        {
+                            "evidence_quote": evidence_span.quote(document_text),
+                            "document_span": evidence_span.to_dict(),
+                            "match_mode": "exact",
+                        }
+                    ],
+                }
+            )
+    results.sort(
+        key=lambda item: (
+            str(item["left_node_key"]),
+            str(item["right_node_key"]),
+            str(item["relation_type"]),
+        )
+    )
+    return tuple(results)
+
+
+def apply_local_coreference_to_preparation(
+    *,
+    preparation: IdentityPreparation,
+    document_text: str,
+    max_characters: int = 600,
+) -> IdentityPreparation:
+    """Add current local deterministic edges while preserving saved model envelopes."""
+    additions = build_local_coreference_edges(
+        local_nodes=preparation.local_nodes,
+        document_text=document_text,
+        max_characters=max_characters,
+    )
+    pairs = {
+        frozenset(
+            {
+                _string(edge.get("left_node_key"), "deterministic left_node_key"),
+                _string(edge.get("right_node_key"), "deterministic right_node_key"),
+            }
+        )
+        for edge in preparation.deterministic_edges
+    }
+    edges = list(preparation.deterministic_edges)
+    for edge in additions:
+        pair = frozenset({str(edge["left_node_key"]), str(edge["right_node_key"])})
+        if pair in pairs:
+            continue
+        pairs.add(pair)
+        edges.append(edge)
+    return IdentityPreparation(
+        preparation.local_nodes,
+        tuple(edges),
+        preparation.envelopes,
+        IDENTITY_CANDIDATE_POLICY_VERSION,
+    )
+
+
+def _contains_explicit_identity_bridge(
+    current: LocalCharacterNode,
+    candidate: LocalCharacterNode,
+    document_text: str,
+    *,
+    max_characters: int,
+) -> bool:
+    start = min(current.order_position, candidate.order_position)
+    end = max(current.order_position, candidate.order_position)
+    if end - start > max_characters:
+        return False
+    window = document_text[max(0, start - 80) : min(len(document_text), end + 240)]
+    labels = (current.label_quote, candidate.label_quote)
+    marker_limits = {
+        "我叫": 16,
+        "名叫": 16,
+        "叫做": 16,
+        "称为": 24,
+        "称作": 24,
+        "这位是": 80,
+        "就是": 40,
+        "正是": 40,
+    }
+    for introduced_label in labels:
+        other_label = labels[1] if introduced_label == labels[0] else labels[0]
+        for marker, follow_limit in marker_limits.items():
+            marker_start = window.find(marker)
+            while marker_start >= 0:
+                introduced_start = window.find(
+                    introduced_label,
+                    marker_start + len(marker),
+                    marker_start + len(marker) + follow_limit,
+                )
+                if introduced_start >= 0:
+                    relation_start = max(0, marker_start - 32)
+                    relation_end = min(len(window), introduced_start + len(introduced_label) + 80)
+                    if other_label in window[relation_start:relation_end]:
+                        return True
+                marker_start = window.find(marker, marker_start + 1)
+    return False
+
+
+def _candidate_signals(
+    current: LocalCharacterNode,
+    candidate: LocalCharacterNode,
+    *,
+    document_text: str,
+    max_explicit_bridge_characters: int,
+) -> tuple[int, tuple[str, ...]]:
     left = _normalized_label(current.label_quote)
     right = _normalized_label(candidate.label_quote)
     reasons: list[str] = []
@@ -675,6 +988,14 @@ def _candidate_signals(current: LocalCharacterNode, candidate: LocalCharacterNod
     if current_quotes & candidate_quotes:
         score = max(score, 65)
         reasons.append("shared_fact_quote")
+    if _contains_explicit_identity_bridge(
+        current,
+        candidate,
+        document_text,
+        max_characters=max_explicit_bridge_characters,
+    ):
+        score = max(score, 85)
+        reasons.append("nearby_explicit_identity_bridge")
     return score, tuple(reasons)
 
 
@@ -703,9 +1024,42 @@ def _bridge_context(
         min(left.document_span.start, right.document_span.start),
         max(left.document_span.end, right.document_span.end),
     )
-    if span.end - span.start > max_bridge_characters:
+    if span.end - span.start <= max_bridge_characters:
+        return (IdentityContextBinding(span.quote(document_text), span, "bridge"),)
+
+    earlier, later = sorted((left, right), key=lambda item: (item.document_span.start, item.document_span.end))
+    gap_start = earlier.document_span.end
+    gap_end = later.document_span.start
+    if gap_end < gap_start or gap_end - gap_start > max_bridge_characters:
         return ()
-    return (IdentityContextBinding(span.quote(document_text), span, "bridge"),)
+
+    gap_size = gap_end - gap_start
+    available_after = len(document_text) - later.document_span.end
+    gap_budget = min(gap_size, max_bridge_characters * 11 // 20)
+    after_budget = min(max_bridge_characters - gap_budget, available_after)
+    unused = max_bridge_characters - gap_budget - after_budget
+    if unused:
+        extra_gap = min(unused, gap_size - gap_budget)
+        gap_budget += extra_gap
+        unused -= extra_gap
+    before_budget = min(unused, earlier.document_span.start)
+    unused -= before_budget
+    if unused:
+        extra_after = min(unused, available_after - after_budget)
+        after_budget += extra_after
+        unused -= extra_after
+
+    bindings: list[IdentityContextBinding] = []
+    if before_budget:
+        before_span = SourceSpan(earlier.document_span.start - before_budget, earlier.document_span.start)
+        bindings.append(IdentityContextBinding(before_span.quote(document_text), before_span, "bridge"))
+    if gap_budget:
+        gap_span = SourceSpan(gap_end - gap_budget, gap_end)
+        bindings.append(IdentityContextBinding(gap_span.quote(document_text), gap_span, "bridge"))
+    if after_budget:
+        after_span = SourceSpan(later.document_span.end, later.document_span.end + after_budget)
+        bindings.append(IdentityContextBinding(after_span.quote(document_text), after_span, "bridge"))
+    return tuple(bindings)
 
 
 @dataclass(frozen=True)
@@ -733,11 +1087,14 @@ def build_identity_preparation(
     document_text: str,
     max_candidates_per_node: int = 2,
     max_bridge_characters: int = 1200,
+    max_local_coreference_characters: int = 600,
 ) -> IdentityPreparation:
     if max_candidates_per_node < 1:
         raise ContractValidationError("max_candidates_per_node must be at least one")
     if max_bridge_characters < 1:
         raise ContractValidationError("max_bridge_characters must be at least one")
+    if max_local_coreference_characters < 1:
+        raise ContractValidationError("max_local_coreference_characters must be at least one")
     if sha256_text(document_text) != local_nodes.document_hash:
         raise ContractValidationError("identity preparation document hash mismatch")
     nodes = local_nodes.nodes
@@ -761,13 +1118,29 @@ def build_identity_preparation(
                 }
             )
 
+    for edge in build_local_coreference_edges(
+        local_nodes=local_nodes,
+        document_text=document_text,
+        max_characters=max_local_coreference_characters,
+    ):
+        pair = frozenset({str(edge["left_node_key"]), str(edge["right_node_key"])})
+        if pair in deterministic_pairs:
+            continue
+        deterministic_pairs.add(pair)
+        deterministic_edges.append(edge)
+
     envelopes: list[IdentityEnvelope] = []
     for current_index, current in enumerate(nodes):
         scored: list[tuple[int, int, LocalCharacterNode, tuple[str, ...]]] = []
         for candidate in nodes[:current_index]:
             if frozenset({current.node_key, candidate.node_key}) in deterministic_pairs:
                 continue
-            score, reasons = _candidate_signals(current, candidate)
+            score, reasons = _candidate_signals(
+                current,
+                candidate,
+                document_text=document_text,
+                max_explicit_bridge_characters=max_bridge_characters,
+            )
             if score == 0:
                 continue
             distance = abs(current.order_position - candidate.order_position)
@@ -813,6 +1186,13 @@ def build_identity_preparation(
                     model_input=model_input,
                 )
             )
+    deterministic_edges.sort(
+        key=lambda item: (
+            str(item["left_node_key"]),
+            str(item["right_node_key"]),
+            str(item["reason"]),
+        )
+    )
     return IdentityPreparation(local_nodes, tuple(deterministic_edges), tuple(envelopes))
 
 
@@ -1131,10 +1511,77 @@ def _review_id(node_key: str, review_type: str, candidate_keys: Iterable[str]) -
     )[:20]
 
 
+def _validate_deterministic_identity_edge(
+    raw_edge: Mapping[str, object],
+    *,
+    node_by_key: Mapping[str, LocalCharacterNode],
+) -> tuple[str, str]:
+    left = _string(raw_edge.get("left_node_key"), "deterministic left_node_key")
+    right = _string(raw_edge.get("right_node_key"), "deterministic right_node_key")
+    if left == right or left not in node_by_key or right not in node_by_key:
+        raise ContractValidationError("deterministic identity edge references invalid nodes")
+    if raw_edge.get("relation") != "same_character":
+        raise ContractValidationError("deterministic identity edge relation must be same_character")
+    reason = _string(raw_edge.get("reason"), "deterministic edge reason")
+    if reason == "shared_document_fact":
+        if set(raw_edge) != {
+            "left_node_key",
+            "right_node_key",
+            "relation",
+            "reason",
+            "fact_hashes",
+        }:
+            raise ContractValidationError("shared fact deterministic edge fields are invalid")
+        fact_hashes = {
+            _string(item, "deterministic shared fact_hash")
+            for item in _sequence(raw_edge.get("fact_hashes"), "deterministic fact_hashes")
+        }
+        if not fact_hashes:
+            raise ContractValidationError("shared fact deterministic edge requires fact_hashes")
+        left_facts = {item.fact_hash for item in node_by_key[left].appearance_fact_refs}
+        right_facts = {item.fact_hash for item in node_by_key[right].appearance_fact_refs}
+        if not fact_hashes <= left_facts & right_facts:
+            raise ContractValidationError("shared fact deterministic edge is not supported by both nodes")
+        return left, right
+    if reason != "explicit_local_coreference":
+        raise ContractValidationError("deterministic identity edge reason is unsupported")
+    if set(raw_edge) != {
+        "left_node_key",
+        "right_node_key",
+        "relation",
+        "reason",
+        "relation_type",
+        "policy_version",
+        "identity_evidence",
+    }:
+        raise ContractValidationError("local coreference deterministic edge fields are invalid")
+    if raw_edge.get("policy_version") != IDENTITY_LOCAL_COREFERENCE_POLICY_VERSION:
+        raise ContractValidationError("local coreference policy_version is unsupported")
+    if raw_edge.get("relation_type") not in LOCAL_COREFERENCE_RELATION_TYPES:
+        raise ContractValidationError("local coreference relation_type is invalid")
+    evidence_items = _sequence(raw_edge.get("identity_evidence"), "local coreference identity_evidence")
+    if not evidence_items:
+        raise ContractValidationError("local coreference edge requires identity evidence")
+    for index, raw_evidence in enumerate(evidence_items):
+        evidence = _mapping(raw_evidence, f"local coreference identity_evidence[{index}]")
+        if set(evidence) != {"evidence_quote", "document_span", "match_mode"}:
+            raise ContractValidationError("local coreference evidence fields are invalid")
+        quote = _string(evidence.get("evidence_quote"), "local coreference evidence_quote")
+        span = _span(evidence.get("document_span"), "local coreference document_span")
+        if evidence.get("match_mode") != "exact":
+            raise ContractValidationError("local coreference evidence must use exact matching")
+        if not _context_replays_evidence(node_by_key[left], quote, span):
+            raise ContractValidationError("local coreference evidence does not replay in left node context")
+        if not _context_replays_evidence(node_by_key[right], quote, span):
+            raise ContractValidationError("local coreference evidence does not replay in right node context")
+    return left, right
+
+
 def build_document_character_registry(
     *,
     preparation: IdentityPreparation,
     grounded_decisions: Sequence[GroundedIdentityDecision],
+    supplemental_grounded_decisions: Sequence[GroundedIdentityDecision] = (),
 ) -> dict[str, object]:
     """Apply fail-closed identity decisions and aggregate already-grounded facts."""
     nodes = preparation.local_nodes.nodes
@@ -1160,15 +1607,15 @@ def build_document_character_registry(
     if set(decision_by_task) != set(envelope_by_task):
         raise ContractValidationError("identity registry requires exactly one decision per model task")
 
-    union_find = _UnionFind(node_by_key)
-    for raw_edge in preparation.deterministic_edges:
-        left = _string(raw_edge.get("left_node_key"), "deterministic left_node_key")
-        right = _string(raw_edge.get("right_node_key"), "deterministic right_node_key")
-        if left not in node_by_key or right not in node_by_key:
-            raise ContractValidationError("deterministic identity edge references unknown node")
-        union_find.union(left, right)
+    supplemental_task_keys: set[str] = set()
+    for decision in supplemental_grounded_decisions:
+        if decision.current_node_key not in node_by_key or decision.candidate_node_key not in node_by_key:
+            raise ContractValidationError("supplemental identity decision references an unknown node")
+        if decision.task_cache_key in decision_by_task or decision.task_cache_key in supplemental_task_keys:
+            raise ContractValidationError("duplicate supplemental identity task cache key")
+        supplemental_task_keys.add(decision.task_cache_key)
 
-    decisions = list(grounded_decisions)
+    decisions = list(grounded_decisions) + list(supplemental_grounded_decisions)
     decisions.sort(
         key=lambda item: (
             node_by_key[item.current_node_key].order_position,
@@ -1181,54 +1628,85 @@ def build_document_character_registry(
         for item in decisions
         if item.identity_relation == "different_characters"
     }
+    union_find = _UnionFind(node_by_key)
+    for raw_edge in preparation.deterministic_edges:
+        left, right = _validate_deterministic_identity_edge(
+            raw_edge,
+            node_by_key=node_by_key,
+        )
+        if _clusters_have_cannot_link(union_find, left, right, cannot_links):
+            raise ContractValidationError("deterministic same edge conflicts with grounded cannot-link")
+        union_find.union(left, right)
+
     decisions_by_current: dict[str, list[GroundedIdentityDecision]] = {}
     for decision in decisions:
         decisions_by_current.setdefault(decision.current_node_key, []).append(decision)
 
     accepted_roles: dict[str, str] = {}
+    accepted_same_tasks: set[str] = set()
+    blocked_same_by_current: dict[str, list[GroundedIdentityDecision]] = {}
+    same_decisions = [item for item in decisions if item.identity_relation == "same_character"]
+    for decision in same_decisions:
+        if _clusters_have_cannot_link(
+            union_find,
+            decision.current_node_key,
+            decision.candidate_node_key,
+            cannot_links,
+        ):
+            blocked_same_by_current.setdefault(decision.current_node_key, []).append(decision)
+            continue
+        union_find.union(decision.current_node_key, decision.candidate_node_key)
+        accepted_same_tasks.add(decision.task_cache_key)
+        if decision.label_relation is not None:
+            accepted_roles.setdefault(decision.current_node_key, decision.label_relation)
+
     unresolved_reasons: dict[str, tuple[str, tuple[GroundedIdentityDecision, ...]]] = {}
     extra_review: list[tuple[str, str, tuple[GroundedIdentityDecision, ...]]] = []
     for current in nodes:
         current_decisions = decisions_by_current.get(current.node_key, [])
         same = [item for item in current_decisions if item.identity_relation == "same_character"]
         uncertain = [item for item in current_decisions if item.identity_relation == "uncertain"]
-        target_roots: dict[str, list[GroundedIdentityDecision]] = {}
-        for decision in same:
-            target_roots.setdefault(union_find.find(decision.candidate_node_key), []).append(decision)
-        if len(target_roots) > 1:
-            value = ("multiple_same_character_candidates", tuple(same))
+        accepted_same = [item for item in same if item.task_cache_key in accepted_same_tasks]
+        blocked_same = blocked_same_by_current.get(current.node_key, [])
+        if accepted_same:
+            if any(item.issues for item in accepted_same):
+                extra_review.append(
+                    (current.node_key, "partial_identity_evidence_grounding", tuple(accepted_same))
+                )
+            if blocked_same:
+                extra_review.append((current.node_key, "cannot_link_constraint", tuple(blocked_same)))
+            continue
+        if blocked_same:
+            contradictory = any(
+                frozenset({item.current_node_key, item.candidate_node_key}) in cannot_links
+                for item in blocked_same
+            )
+            value = (
+                "contradictory_identity_decisions" if contradictory else "cannot_link_constraint",
+                tuple(blocked_same),
+            )
             unresolved_reasons[current.node_key] = value
             extra_review.append((current.node_key, value[0], value[1]))
             continue
-        if len(target_roots) == 1:
-            selected = min(
-                next(iter(target_roots.values())),
-                key=lambda item: (item.candidate_node_key, item.task_cache_key),
-            )
-            if _clusters_have_cannot_link(
+        pending_uncertain = [
+            item
+            for item in uncertain
+            if union_find.find(item.current_node_key) != union_find.find(item.candidate_node_key)
+            and not _clusters_have_cannot_link(
                 union_find,
-                current.node_key,
-                selected.candidate_node_key,
+                item.current_node_key,
+                item.candidate_node_key,
                 cannot_links,
-            ):
-                value = ("cannot_link_constraint", (selected,))
-                unresolved_reasons[current.node_key] = value
-                extra_review.append((current.node_key, value[0], value[1]))
-                continue
-            union_find.union(current.node_key, selected.candidate_node_key)
-            if selected.label_relation is not None:
-                accepted_roles[current.node_key] = selected.label_relation
-            if any(item.issues for item in same):
-                extra_review.append((current.node_key, "partial_identity_evidence_grounding", tuple(same)))
-            continue
-        if uncertain:
+            )
+        ]
+        if pending_uncertain:
             review_type = (
                 "identity_evidence_not_grounded"
-                if any(item.requested_identity_relation != "uncertain" for item in uncertain)
+                if any(item.requested_identity_relation != "uncertain" for item in pending_uncertain)
                 else "insufficient_identity_evidence"
             )
-            unresolved_reasons[current.node_key] = (review_type, tuple(uncertain))
-            extra_review.append((current.node_key, review_type, tuple(uncertain)))
+            unresolved_reasons[current.node_key] = (review_type, tuple(pending_uncertain))
+            extra_review.append((current.node_key, review_type, tuple(pending_uncertain)))
 
     components: dict[str, list[LocalCharacterNode]] = {}
     for node in nodes:
@@ -1242,8 +1720,6 @@ def build_document_character_registry(
     characters: list[dict[str, object]] = []
     node_to_character: dict[str, str] = {}
     for members in components.values():
-        if len(members) == 1 and members[0].node_key in unresolved_nodes:
-            continue
         members.sort(key=lambda item: (item.order_position, item.node_key))
         character_id = _character_id(preparation.local_nodes.source_document_version_id, members)
         canonical = _canonical_node(members)

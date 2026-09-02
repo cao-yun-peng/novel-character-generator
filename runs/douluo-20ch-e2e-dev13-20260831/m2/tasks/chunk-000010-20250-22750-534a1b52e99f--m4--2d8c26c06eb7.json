@@ -1,0 +1,69 @@
+{
+  "schema_version": "m2-attribution-task-result-v1",
+  "source_run_dir": "E:\\project\\agent\\novel-cahracter-generator\\runs\\douluo-20ch-e2e-dev13-20260831\\m1",
+  "chunk_index": 10,
+  "chunk_id": "chunk-000010-20250-22750-534a1b52e99f",
+  "target_local_mention_id": "m4",
+  "target_mention_quote": "小三",
+  "task_cache_key": "2d8c26c06eb7e7928344f008ebb6ef626d3d9577a40f632505c2ef0b3972c7b0",
+  "model_output": {
+    "belongs_to_target": [
+      {
+        "fact_quote": "他的脸色已经变得有些苍白了",
+        "category": "appearance_state",
+        "attribute": "脸色",
+        "value": "苍白"
+      }
+    ]
+  },
+  "grounded_result": {
+    "target_character_ref": {
+      "source_document_version_id": "source-8bcb7305a759571b",
+      "chunk_id": "chunk-000010-20250-22750-534a1b52e99f",
+      "local_mention_id": "m4",
+      "mention_type": "exact",
+      "packet_hash": "c2d44a13f41a170a97cbd046b5333b70720ad60809358022e40c5902db67426f"
+    },
+    "task_cache_key": "2d8c26c06eb7e7928344f008ebb6ef626d3d9577a40f632505c2ef0b3972c7b0",
+    "grounded_belongs_to_target": [
+      {
+        "fact_quote": "他的脸色已经变得有些苍白了",
+        "category": "appearance_state",
+        "attribute": "脸色",
+        "value": "苍白",
+        "source_mention_id": "m4",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "他的脸色已经变得有些苍白了",
+        "source_evidence_span": {
+          "start": 1966,
+          "end": 1979
+        },
+        "fact_chunk_span": {
+          "start": 1966,
+          "end": 1979
+        },
+        "match_mode": "exact"
+      }
+    ]
+  },
+  "grounding_issues": [],
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 2828,
+    "http_status": 200,
+    "response_id": "2d303d12-9ece-4bc6-978f-3cffe033a711",
+    "usage": {
+      "input_tokens": 2074,
+      "cached_input_tokens": 384,
+      "output_tokens": 199,
+      "reasoning_tokens": 163,
+      "total_tokens": 2273
+    },
+    "error_kind": null
+  }
+}

@@ -1,0 +1,454 @@
+[
+  {
+    "chunk_index": 3,
+    "chunk_id": "chunk-000003-4500-7000-bbfa3a18c9e4",
+    "describe_local_mention_id": "m4",
+    "mention_quote": "高大的身影",
+    "promotion_hash": "4c2144009a1e6a7a24a658c301cfbaad62783b9e1fef9ecd63ac12e6c4b64d78",
+    "model_output": {
+      "characters": [
+        {
+          "character_label_quote": "高大的身影",
+          "belongs_to_character": [
+            {
+              "fact_quote": "高大的身影",
+              "category": "body",
+              "attribute": "身材",
+              "value": "高大"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "chunk_index": 5,
+    "chunk_id": "chunk-000005-9000-11500-f4a0068fbfb5",
+    "describe_local_mention_id": "m2",
+    "mention_quote": "一名老人",
+    "promotion_hash": "705ab3138b236fd21cb5beaf24ecbe1da1f6a5a2c2a0c2507ce5f887947223a0",
+    "model_output": {
+      "characters": [
+        {
+          "character_label_quote": "一名老人",
+          "belongs_to_character": [
+            {
+              "fact_quote": "看上去六十多岁的样子",
+              "category": "age",
+              "attribute": "年龄",
+              "value": "六十多岁"
+            },
+            {
+              "fact_quote": "身材瘦长",
+              "category": "body",
+              "attribute": "身材",
+              "value": "瘦长"
+            },
+            {
+              "fact_quote": "精神矍铄",
+              "category": "appearance_state",
+              "attribute": "精神状态",
+              "value": "精神矍铄"
+            },
+            {
+              "fact_quote": "衣服干净整洁",
+              "category": "clothing",
+              "attribute": "衣着",
+              "value": "干净整洁"
+            },
+            {
+              "fact_quote": "头发也梳理的一丝不苟",
+              "category": "hair",
+              "attribute": "头发",
+              "value": "梳理的一丝不苟"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "chunk_index": 5,
+    "chunk_id": "chunk-000005-9000-11500-f4a0068fbfb5",
+    "describe_local_mention_id": "m3",
+    "mention_quote": "老杰克",
+    "promotion_hash": "b02517ebced642424ac9ef110842fad8398d62be22bc7e5af87ec77658bbc8aa",
+    "model_output": {
+      "characters": [
+        {
+          "character_label_quote": "老杰克",
+          "belongs_to_character": [
+            {
+              "fact_quote": "看上去六十多岁的样子",
+              "category": "age",
+              "attribute": "年龄",
+              "value": "六十多岁"
+            },
+            {
+              "fact_quote": "身材瘦长",
+              "category": "body",
+              "attribute": "身材",
+              "value": "瘦长"
+            },
+            {
+              "fact_quote": "精神矍铄",
+              "category": "appearance_state",
+              "attribute": "精神状态",
+              "value": "矍铄"
+            },
+            {
+              "fact_quote": "衣服干净整洁",
+              "category": "clothing",
+              "attribute": "衣服",
+              "value": "干净整洁"
+            },
+            {
+              "fact_quote": "头发也梳理的一丝不苟",
+              "category": "hair",
+              "attribute": "头发",
+              "value": "梳理的一丝不苟"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "chunk_index": 5,
+    "chunk_id": "chunk-000005-9000-11500-f4a0068fbfb5",
+    "describe_local_mention_id": "m4",
+    "mention_quote": "这位村长",
+    "promotion_hash": "2c769b2944b1c694ec162eb0bf931a9a0c4e0d3abe30a016570a21f7bdcff5a8",
+    "model_output": {
+      "characters": [
+        {
+          "character_label_quote": "这位村长",
+          "belongs_to_character": [
+            {
+              "fact_quote": "看上去六十多岁的样子",
+              "category": "age",
+              "attribute": "年龄",
+              "value": "六十多岁"
+            },
+            {
+              "fact_quote": "身材瘦长",
+              "category": "body",
+              "attribute": "身材",
+              "value": "瘦长"
+            },
+            {
+              "fact_quote": "衣服干净整洁",
+              "category": "clothing",
+              "attribute": "衣服",
+              "value": "干净整洁"
+            },
+            {
+              "fact_quote": "头发也梳理的一丝不苟",
+              "category": "hair",
+              "attribute": "头发",
+              "value": "梳理的一丝不苟"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "chunk_index": 5,
+    "chunk_id": "chunk-000005-9000-11500-f4a0068fbfb5",
+    "describe_local_mention_id": "m5",
+    "mention_quote": "杰克爷爷",
+    "promotion_hash": "8bbb3843669027b40bf02a8ac309cdd772058aa502e975f80ec7856fb54fa9c4",
+    "model_output": {
+      "characters": [
+        {
+          "character_label_quote": "杰克爷爷",
+          "belongs_to_character": [
+            {
+              "fact_quote": "看上去六十多岁的样子",
+              "category": "age",
+              "attribute": "年龄",
+              "value": "六十多岁"
+            },
+            {
+              "fact_quote": "身材瘦长",
+              "category": "body",
+              "attribute": "身材",
+              "value": "瘦长"
+            },
+            {
+              "fact_quote": "精神矍铄",
+              "category": "appearance_state",
+              "attribute": "精神状态",
+              "value": "精神矍铄"
+            },
+            {
+              "fact_quote": "衣服干净整洁",
+              "category": "clothing",
+              "attribute": "衣服",
+              "value": "干净整洁"
+            },
+            {
+              "fact_quote": "头发也梳理的一丝不苟",
+              "category": "hair",
+              "attribute": "头发",
+              "value": "梳理的一丝不苟"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "chunk_index": 6,
+    "chunk_id": "chunk-000006-11250-13750-9b713c3495b7",
+    "describe_local_mention_id": "m1",
+    "mention_quote": "年轻人",
+    "promotion_hash": "b1969762eed702f1cd47b4decc247bb1b944cd8d10f4d6f804b8235fcc51c61b",
+    "model_output": {
+      "characters": [
+        {
+          "character_label_quote": "年轻人",
+          "belongs_to_character": [
+            {
+              "fact_quote": "看上去二十多岁的样子",
+              "category": "age",
+              "attribute": "年龄",
+              "value": "二十多岁"
+            },
+            {
+              "fact_quote": "剑眉星目",
+              "category": "face",
+              "attribute": "眉毛和眼睛",
+              "value": "剑眉星目"
+            },
+            {
+              "fact_quote": "相貌甚是俊朗",
+              "category": "face",
+              "attribute": "相貌",
+              "value": "俊朗"
+            },
+            {
+              "fact_quote": "一身白色劲装",
+              "category": "clothing",
+              "attribute": "服装",
+              "value": "白色劲装"
+            },
+            {
+              "fact_quote": "背后是黑色披风",
+              "category": "clothing",
+              "attribute": "披风",
+              "value": "黑色披风"
+            },
+            {
+              "fact_quote": "有一个拳头大小的魂字",
+              "category": "clothing",
+              "attribute": "胸前字",
+              "value": "拳头大小的魂字"
+            },
+            {
+              "fact_quote": "左胸上，有一枚雕刻着长剑的徽章",
+              "category": "accessory",
+              "attribute": "徽章",
+              "value": "雕刻着长剑的徽章"
+            },
+            {
+              "fact_quote": "徽章上一共是三柄长剑交错",
+              "category": "accessory",
+              "attribute": "徽章图案",
+              "value": "三柄长剑交错"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "chunk_index": 6,
+    "chunk_id": "chunk-000006-11250-13750-9b713c3495b7",
+    "describe_local_mention_id": "m2",
+    "mention_quote": "青年",
+    "promotion_hash": "312048c6534df0ee9800c675781c4b08356893836cd5dfe14a26e08f7daacfb2",
+    "model_output": {
+      "characters": [
+        {
+          "character_label_quote": "青年",
+          "belongs_to_character": [
+            {
+              "fact_quote": "看上去二十多岁的样子",
+              "category": "age",
+              "attribute": "年龄",
+              "value": "二十多岁"
+            },
+            {
+              "fact_quote": "剑眉星目",
+              "category": "face",
+              "attribute": "眉眼",
+              "value": "剑眉星目"
+            },
+            {
+              "fact_quote": "相貌甚是俊朗",
+              "category": "face",
+              "attribute": "相貌",
+              "value": "俊朗"
+            },
+            {
+              "fact_quote": "一身白色劲装",
+              "category": "clothing",
+              "attribute": "服装",
+              "value": "白色劲装"
+            },
+            {
+              "fact_quote": "背后是黑色披风",
+              "category": "clothing",
+              "attribute": "披风",
+              "value": "黑色披风"
+            },
+            {
+              "fact_quote": "胸前正中心的位置，有一个拳头大小的魂字",
+              "category": "distinctive_mark",
+              "attribute": "胸前标记",
+              "value": "拳头大小的魂字"
+            },
+            {
+              "fact_quote": "左胸上，有一枚雕刻着长剑的徽章，徽章上一共是三柄长剑交错",
+              "category": "accessory",
+              "attribute": "左胸徽章",
+              "value": "雕刻三柄长剑交错的徽章"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "chunk_index": 6,
+    "chunk_id": "chunk-000006-11250-13750-9b713c3495b7",
+    "describe_local_mention_id": "m3",
+    "mention_quote": "战魂大师",
+    "promotion_hash": "51def963316e4206373c79d4fabe6e1b299007e9666747b3ee62e2d301e06702",
+    "model_output": {
+      "characters": [
+        {
+          "character_label_quote": "战魂大师",
+          "belongs_to_character": [
+            {
+              "fact_quote": "二十多岁",
+              "category": "age",
+              "attribute": "年龄",
+              "value": "二十多岁"
+            },
+            {
+              "fact_quote": "剑眉星目",
+              "category": "face",
+              "attribute": "眉眼",
+              "value": "剑眉星目"
+            },
+            {
+              "fact_quote": "相貌甚是俊朗",
+              "category": "face",
+              "attribute": "相貌",
+              "value": "俊朗"
+            },
+            {
+              "fact_quote": "一身白色劲装",
+              "category": "clothing",
+              "attribute": "服装",
+              "value": "白色劲装"
+            },
+            {
+              "fact_quote": "背后是黑色披风",
+              "category": "clothing",
+              "attribute": "披风",
+              "value": "黑色披风"
+            },
+            {
+              "fact_quote": "胸前正中心的位置，有一个拳头大小的魂字",
+              "category": "distinctive_mark",
+              "attribute": "胸前魂字",
+              "value": "拳头大小的魂字"
+            },
+            {
+              "fact_quote": "左胸上，有一枚雕刻着长剑的徽章，徽章上一共是三柄长剑交错",
+              "category": "accessory",
+              "attribute": "徽章",
+              "value": "雕刻着长剑的三柄长剑交错徽章"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "chunk_index": 7,
+    "chunk_id": "chunk-000007-13500-16000-29d830992ba6",
+    "describe_local_mention_id": "m4",
+    "mention_quote": "男孩儿",
+    "promotion_hash": "45a3d4267863969f5efb8050fd04c6c22dcdc91f0e83f94dc97ef405ad90f691",
+    "model_output": {
+      "characters": [
+        {
+          "character_label_quote": "男孩儿",
+          "belongs_to_character": [
+            {
+              "fact_quote": "稚嫩的小手",
+              "category": "body",
+              "attribute": "手",
+              "value": "稚嫩的小"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "chunk_index": 14,
+    "chunk_id": "chunk-000014-29250-31750-3f70e01ec313",
+    "describe_local_mention_id": "m3",
+    "mention_quote": "高大苍老的男人",
+    "promotion_hash": "2b1b0d7327d10a40a44ac7e67651604f02621f8630cfb7f2cd6e391a0e890d5a",
+    "model_output": {
+      "characters": [
+        {
+          "character_label_quote": "高大苍老的男人",
+          "belongs_to_character": [
+            {
+              "fact_quote": "高大",
+              "category": "body",
+              "attribute": "身材",
+              "value": "高大"
+            },
+            {
+              "fact_quote": "苍老",
+              "category": "age",
+              "attribute": "年龄",
+              "value": "苍老"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "chunk_index": 16,
+    "chunk_id": "chunk-000016-33750-36250-66f14c14f2ba",
+    "describe_local_mention_id": "m3",
+    "mention_quote": "看门的青年",
+    "promotion_hash": "02e055b80da318f5aa3488d1293b1af5f472087c1917c210e631f882b2e64377",
+    "model_output": {
+      "characters": [
+        {
+          "character_label_quote": "看门的青年",
+          "belongs_to_character": [
+            {
+              "fact_quote": "看门的青年",
+              "category": "age",
+              "attribute": "年龄阶段",
+              "value": "青年"
+            }
+          ]
+        }
+      ]
+    }
+  }
+]

@@ -1,0 +1,145 @@
+{
+  "schema_version": "m1-chunk-result-v4",
+  "chunk_index": 13,
+  "chunk_id": "chunk-000013-27000-29500-cac937b0db28",
+  "chunk_hash": "cac937b0db2803b7a5906fcd31cdefc5d92a06abd3f62daed95e81aaef57bcc3",
+  "chunk_source_span": {
+    "start": 27000,
+    "end": 29500
+  },
+  "model_output": {
+    "candidate_mentions": [
+      {
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "唐昊",
+        "evidence_quotes": [
+          "面不红，气不喘",
+          "父亲偶尔流露出满意的目光"
+        ]
+      },
+      {
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "唐三",
+        "evidence_quotes": [
+          "唐三脸上流露出一丝满足的笑容"
+        ]
+      },
+      {
+        "mention_type": "describe",
+        "mention_scope": "individual",
+        "mention_quote": "父亲",
+        "evidence_quotes": [
+          "面不红，气不喘",
+          "父亲偶尔流露出满意的目光"
+        ]
+      }
+    ]
+  },
+  "grounded_packet": {
+    "schema_version": "grounded-character-packet-v6",
+    "evidence_precedence_policy_version": "exact-evidence-precedence-v1",
+    "source_document_version_id": "source-8bcb7305a759571b",
+    "chunking_policy_version": "fixed-codepoint-window-2500-overlap-250-v1",
+    "chunk_id": "chunk-000013-27000-29500-cac937b0db28",
+    "chunk_hash": "cac937b0db2803b7a5906fcd31cdefc5d92a06abd3f62daed95e81aaef57bcc3",
+    "chunk_source_span": {
+      "start": 27000,
+      "end": 29500
+    },
+    "grounded_mentions": [
+      {
+        "local_mention_id": "m1",
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "唐昊",
+        "approved_evidence": [
+          {
+            "evidence_quote": "面不红，气不喘",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 297,
+                "end": 304
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "父亲偶尔流露出满意的目光",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1866,
+                "end": 1878
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "2ea6010509d469902dc5a873c24425a80d11c21c9756fc2f4af2ebf0c9ac4c31"
+      },
+      {
+        "local_mention_id": "m2",
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "唐三",
+        "approved_evidence": [
+          {
+            "evidence_quote": "唐三脸上流露出一丝满足的笑容",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1938,
+                "end": 1952
+              }
+            ],
+            "relation_to_mention": "contains_mention",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "c61bd4b9cf7aa9856bd2939b3e2104cd5a1578c2465779e7eb5ecd180d22b842"
+      }
+    ],
+    "rejected_evidence": []
+  },
+  "grounding_trace_events": [
+    {
+      "code": "describe_evidence_shadowed_by_exact",
+      "local_mention_id": "m3",
+      "detail": "occurrences=1; exact_mentions=m1; rule=exact-evidence-precedence-v1"
+    },
+    {
+      "code": "describe_evidence_shadowed_by_exact",
+      "local_mention_id": "m3",
+      "detail": "occurrences=1; exact_mentions=m1; rule=exact-evidence-precedence-v1"
+    },
+    {
+      "code": "describe_removed_after_exact_dedup",
+      "local_mention_id": "m3",
+      "detail": "rule=exact-evidence-precedence-v1"
+    }
+  ],
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 19562,
+    "http_status": 200,
+    "response_id": "435265a2-5f79-4e1a-86f2-f259e887009a",
+    "usage": {
+      "input_tokens": 2539,
+      "cached_input_tokens": 896,
+      "output_tokens": 2041,
+      "reasoning_tokens": 1858,
+      "total_tokens": 4580
+    },
+    "error_kind": null
+  }
+}

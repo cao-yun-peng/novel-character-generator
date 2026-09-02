@@ -1,0 +1,280 @@
+{
+  "schema_version": "m1-chunk-result-v4",
+  "chunk_index": 17,
+  "chunk_id": "chunk-000017-36000-38251-39ec6c2a0304",
+  "chunk_hash": "39ec6c2a030455982da7f38be240d2a63881a369f54713b3c867b3eddac29613",
+  "chunk_source_span": {
+    "start": 36000,
+    "end": 38251
+  },
+  "model_output": {
+    "candidate_mentions": [
+      {
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "老杰克",
+        "evidence_quotes": [
+          "老杰克的穿着在圣魂村已经算是光鲜了，可到了诺丁城，却完全是一副乡下人的样子"
+        ]
+      },
+      {
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "唐三",
+        "evidence_quotes": [
+          "身上衣服全是补丁",
+          "一道瘦小的身影",
+          "他那细嫩的小手",
+          "施展的人实在矮小了一些",
+          "唐三人虽然不大"
+        ]
+      },
+      {
+        "mention_type": "describe",
+        "mention_scope": "individual",
+        "mention_quote": "小穷鬼",
+        "evidence_quotes": [
+          "身上衣服全是补丁"
+        ]
+      },
+      {
+        "mention_type": "describe",
+        "mention_scope": "individual",
+        "mention_quote": "瘦小的身影",
+        "evidence_quotes": [
+          "一道瘦小的身影"
+        ]
+      },
+      {
+        "mention_type": "describe",
+        "mention_scope": "individual",
+        "mention_quote": "老头儿",
+        "evidence_quotes": [
+          "不就是个老头儿么"
+        ]
+      },
+      {
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "大师",
+        "evidence_quotes": [
+          "中等身材，略微有些偏瘦的男子",
+          "这个人大约四、五十岁的样子，黑色短发三七分开，相貌很普通",
+          "双眼开阖之间带着几分懒散和颓废"
+        ]
+      }
+    ]
+  },
+  "grounded_packet": {
+    "schema_version": "grounded-character-packet-v6",
+    "evidence_precedence_policy_version": "exact-evidence-precedence-v1",
+    "source_document_version_id": "source-8bcb7305a759571b",
+    "chunking_policy_version": "fixed-codepoint-window-2500-overlap-250-v1",
+    "chunk_id": "chunk-000017-36000-38251-39ec6c2a0304",
+    "chunk_hash": "39ec6c2a030455982da7f38be240d2a63881a369f54713b3c867b3eddac29613",
+    "chunk_source_span": {
+      "start": 36000,
+      "end": 38251
+    },
+    "grounded_mentions": [
+      {
+        "local_mention_id": "m1",
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "老杰克",
+        "approved_evidence": [
+          {
+            "evidence_quote": "老杰克的穿着在圣魂村已经算是光鲜了，可到了诺丁城，却完全是一副乡下人的样子",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 252,
+                "end": 289
+              }
+            ],
+            "relation_to_mention": "contains_mention",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "0d71a0b3c55e5882a3b2f7d4eb69a57119a6c821d3184cd926160c5528f8db42"
+      },
+      {
+        "local_mention_id": "m2",
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "唐三",
+        "approved_evidence": [
+          {
+            "evidence_quote": "身上衣服全是补丁",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1152,
+                "end": 1160
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "一道瘦小的身影",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1252,
+                "end": 1259
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "他那细嫩的小手",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1268,
+                "end": 1275
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "施展的人实在矮小了一些",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1392,
+                "end": 1403
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "唐三人虽然不大",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1678,
+                "end": 1685
+              }
+            ],
+            "relation_to_mention": "contains_mention",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "143b71c874725f2f0bfe68ebca4d866ce3e0d349539ecf9c403871e0265288df"
+      },
+      {
+        "local_mention_id": "m5",
+        "mention_type": "describe",
+        "mention_scope": "individual",
+        "mention_quote": "老头儿",
+        "approved_evidence": [
+          {
+            "evidence_quote": "不就是个老头儿么",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1096,
+                "end": 1104
+              }
+            ],
+            "relation_to_mention": "contains_mention",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "9db1e43f41b92b30b0e14072b88cfa5e7b3248a5a5e78607a3dab82faa5702d8"
+      },
+      {
+        "local_mention_id": "m6",
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "大师",
+        "approved_evidence": [
+          {
+            "evidence_quote": "中等身材，略微有些偏瘦的男子",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1896,
+                "end": 1910
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "这个人大约四、五十岁的样子，黑色短发三七分开，相貌很普通",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1931,
+                "end": 1959
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "双眼开阖之间带着几分懒散和颓废",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1979,
+                "end": 1994
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "c9d1bfc435bb0ffd48402e6988af581116e7d0a66902f63b1ac1f4000b313864"
+      }
+    ],
+    "rejected_evidence": []
+  },
+  "grounding_trace_events": [
+    {
+      "code": "describe_evidence_shadowed_by_exact",
+      "local_mention_id": "m3",
+      "detail": "occurrences=1; exact_mentions=m2; rule=exact-evidence-precedence-v1"
+    },
+    {
+      "code": "describe_removed_after_exact_dedup",
+      "local_mention_id": "m3",
+      "detail": "rule=exact-evidence-precedence-v1"
+    },
+    {
+      "code": "describe_evidence_shadowed_by_exact",
+      "local_mention_id": "m4",
+      "detail": "occurrences=1; exact_mentions=m2; rule=exact-evidence-precedence-v1"
+    },
+    {
+      "code": "describe_removed_after_exact_dedup",
+      "local_mention_id": "m4",
+      "detail": "rule=exact-evidence-precedence-v1"
+    }
+  ],
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 49953,
+    "http_status": 200,
+    "response_id": "660efd4a-5a91-4643-a042-72a2ce407722",
+    "usage": {
+      "input_tokens": 2469,
+      "cached_input_tokens": 2432,
+      "output_tokens": 5854,
+      "reasoning_tokens": 5454,
+      "total_tokens": 8323
+    },
+    "error_kind": null
+  }
+}

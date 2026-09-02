@@ -1,0 +1,33 @@
+{
+  "id": "POST-LINK-FACT-GROUPS-069",
+  "title": "Post-link canonical fact groups",
+  "status": "completed",
+  "owner": "Codex",
+  "objective": "把最终人物档案中的 raw appearance facts 确定性分组为可回放 canonical facts，并保持逐 raw fact/occurrence provenance。",
+  "risk_level": "L1-deterministic-profile-compiler-intermediate",
+  "allowed_paths": [
+    "src/novel_character_generator",
+    "tests",
+    "docs",
+    "README.md",
+    "pyproject.toml",
+    ".project-to-act",
+    "runs/douluo-20ch-e2e-dev13-20260831/post-link-fact-groups-dev18"
+  ],
+  "invariants": [
+    "group key 必须包含 character_id、document span、category、attribute、value",
+    "fact_hash 仍表示 raw evidence fact，canonical_fact_id 使用独立命名空间",
+    "全部 source_fact_hashes 和 source occurrences 可反向映射且零丢失",
+    "同 span 不同 attribute 或 value 不得误合并",
+    "registry/profile 必须属于同一文档且事实归属完全一致",
+    "Provider calls 保持 0"
+  ],
+  "acceptance": [
+    "斗罗 129 raw facts 生成 109 structural groups，20 条重复被解释为 group membership",
+    "老杰克和素云涛的重复 raw facts/occurrences 全部进入对应 groups",
+    "129 个 source_fact_hash bindings 与 130 个 source occurrence bindings 全部保留",
+    "所有 fact_quote、fact span、occurrence span 和 source artifact hash 可验证",
+    "raw registry/profile 输入哈希在执行前后不变",
+    "单测、Schema、compileall、重复运行稳定性、diff check 与两套治理校验通过"
+  ]
+}

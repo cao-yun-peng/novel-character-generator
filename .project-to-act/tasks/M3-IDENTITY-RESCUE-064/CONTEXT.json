@@ -1,0 +1,39 @@
+{
+  "task_id": "M3-IDENTITY-RESCUE-064",
+  "lifecycle_stage": "5",
+  "lifecycle_revision": 2,
+  "runtime_version": "0.1.0.dev15",
+  "schema_version": "3.15.0-draft1",
+  "source_run": "runs/douluo-20ch-e2e-dev13-20260831",
+  "observed": {
+    "local_nodes": 43,
+    "m3_tasks": 63,
+    "same": 47,
+    "uncertain": 15,
+    "different": 1,
+    "unresolved": 10,
+    "unassigned_facts": 23,
+    "review_items": 17
+  },
+  "diagnosis": [
+    "5 个 multiple_same_character_candidates 均为唐三，现有 same 图内无 cannot-link 冲突",
+    "唐三转生关键原文未进入 bridge_context_quotes，因为旧算法用两个完整 context 的并集长度拒绝窗口",
+    "素云涛与战魂大师的显式自我介绍在同一场景，但候选召回仅有标签/事实相似信号",
+    "看门的青年与青年属于泛称弱信号，应该保持未决或判为独立，不能靠词面合并",
+    "singleton unresolved 被注册表省略，导致其已 Grounding 外貌事实成为 unassigned"
+  ],
+  "implemented": {
+    "cluster_rescue_policy": "residual-cluster-adjudication-v1",
+    "relationship_context_policy": "candidate-specific-relationship-context-v1",
+    "model_boundary": "current cluster + bounded candidate clusters; no ref/id/span/hash/cache",
+    "evidence_boundary": "identity_evidence_quotes only from selected candidate relationship_context_quotes",
+    "douluo_offline_preparation": {
+      "planned_tasks": 5,
+      "candidate_options": 5,
+      "relationship_context_quotes": 10,
+      "provider_calls": 0
+    },
+    "automated_tests": 128
+  },
+  "context_freshness": "verified-2026-09-01"
+}

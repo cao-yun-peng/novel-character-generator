@@ -1,0 +1,62 @@
+{
+  "schema_version": "identity-task-result-v1",
+  "task_index": 50,
+  "current_label_quote": "杰克",
+  "candidate_label_quote": "杰克",
+  "task_cache_key": "b7a63e1e31412d2b85fb76e2fcbecb82f452cac27289ccfce26f869b8c6bc58b",
+  "model_output": {
+    "identity_relation": "same_character",
+    "label_relation": "same_surface",
+    "identity_evidence_quotes": [
+      "老杰克已经来了，或许是因为要去诺丁城的原因，今天的老杰克特意穿了一身新衣服，看上去更添几分矍铄。",
+      "门开，老杰克一脸紧张的迎上了素云涛，“大师，怎么样。今年我们村子里的孩子有没有能够成为魂师的可能？” \r\n　　素云涛看了看他，叹息一声，道：“有到是有一个，只是可惜了。” \r\n　　杰克眼中流露出惊疑不定的神色"
+    ]
+  },
+  "grounded_result": {
+    "schema_version": "grounded-identity-decision-v1",
+    "current_node_key": "2e8db6b95d7b100705d4f962aa585ea5814657f8b21b6609d93f87d14b183154",
+    "candidate_node_key": "6f70712b56aa85b85cad7f9b83c4a11d5a82bc84fcfab03a0b2b458c5d7913e1",
+    "task_cache_key": "b7a63e1e31412d2b85fb76e2fcbecb82f452cac27289ccfce26f869b8c6bc58b",
+    "requested_identity_relation": "same_character",
+    "identity_relation": "same_character",
+    "label_relation": "same_surface",
+    "grounded_identity_evidence": [
+      {
+        "evidence_quote": "门开，老杰克一脸紧张的迎上了素云涛，“大师，怎么样。今年我们村子里的孩子有没有能够成为魂师的可能？” \r\n　　素云涛看了看他，叹息一声，道：“有到是有一个，只是可惜了。” \r\n　　杰克眼中流露出惊疑不定的神色",
+        "document_span": {
+          "start": 18420,
+          "end": 18524
+        },
+        "match_mode": "exact"
+      },
+      {
+        "evidence_quote": "老杰克已经来了，或许是因为要去诺丁城的原因，今天的老杰克特意穿了一身新衣服，看上去更添几分矍铄。",
+        "document_span": {
+          "start": 32734,
+          "end": 32782
+        },
+        "match_mode": "exact"
+      }
+    ],
+    "issues": []
+  },
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 15438,
+    "http_status": 200,
+    "response_id": "db3394f0-c608-46b8-b106-9ea301247867",
+    "usage": {
+      "input_tokens": 1976,
+      "cached_input_tokens": 512,
+      "output_tokens": 1753,
+      "reasoning_tokens": 1627,
+      "total_tokens": 3729
+    },
+    "error_kind": null
+  }
+}

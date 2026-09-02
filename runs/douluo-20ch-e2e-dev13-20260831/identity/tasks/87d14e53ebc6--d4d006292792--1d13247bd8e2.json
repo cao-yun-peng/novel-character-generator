@@ -1,0 +1,62 @@
+{
+  "schema_version": "identity-task-result-v1",
+  "task_index": 27,
+  "current_label_quote": "唐昊",
+  "candidate_label_quote": "唐昊",
+  "task_cache_key": "1d13247bd8e24b1caafe59ca79605764b9324e7566c72583eb9cc0cf9e7dc5ff",
+  "model_output": {
+    "identity_relation": "same_character",
+    "label_relation": "same_surface",
+    "identity_evidence_quotes": [
+      "唐昊冷冷的看了杰克一眼",
+      "唐昊，唐昊。"
+    ]
+  },
+  "grounded_result": {
+    "schema_version": "grounded-identity-decision-v1",
+    "current_node_key": "87d14e53ebc69716eb264f578d0e82c83409ec5f6b4cbf9867ffb0b2104354db",
+    "candidate_node_key": "d4d00629279204051f144a8a9d0acfa065516a8e37f4eb24374b40175ccbc532",
+    "task_cache_key": "1d13247bd8e24b1caafe59ca79605764b9324e7566c72583eb9cc0cf9e7dc5ff",
+    "requested_identity_relation": "same_character",
+    "identity_relation": "same_character",
+    "label_relation": "same_surface",
+    "grounded_identity_evidence": [
+      {
+        "evidence_quote": "唐昊，唐昊。",
+        "document_span": {
+          "start": 19627,
+          "end": 19633
+        },
+        "match_mode": "exact"
+      },
+      {
+        "evidence_quote": "唐昊冷冷的看了杰克一眼",
+        "document_span": {
+          "start": 20361,
+          "end": 20372
+        },
+        "match_mode": "exact"
+      }
+    ],
+    "issues": []
+  },
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 5469,
+    "http_status": 200,
+    "response_id": "a407826c-800b-44f5-adec-6e984d4faff6",
+    "usage": {
+      "input_tokens": 2244,
+      "cached_input_tokens": 512,
+      "output_tokens": 504,
+      "reasoning_tokens": 463,
+      "total_tokens": 2748
+    },
+    "error_kind": null
+  }
+}

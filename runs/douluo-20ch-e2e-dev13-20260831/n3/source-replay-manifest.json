@@ -1,0 +1,8 @@
+{
+  "schema_version": "n3-promotion-source-replay-v1",
+  "source_m1_run_dir": "E:\\project\\agent\\novel-cahracter-generator\\runs\\douluo-20ch-e2e-dev13-20260831\\m1",
+  "source_m2_run_dir": "E:\\project\\agent\\novel-cahracter-generator\\runs\\douluo-20ch-e2e-dev13-20260831\\m2",
+  "document_hash": "8bcb7305a759571b1fec70813b0631f2c884eba79697c3259170a7635d639741",
+  "source_m1_manifest_hash": "1b18a0519554de0a56aee1a2fa96abd678ef2dad829083a393cb607266a536c5",
+  "source_m2_grounded_results_hash": "d762f319a55cda0bdef8ccb3d40bf566dd4d00ff02557df0fb025b7328578049"
+}

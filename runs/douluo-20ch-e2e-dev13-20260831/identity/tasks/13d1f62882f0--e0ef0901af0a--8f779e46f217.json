@@ -1,0 +1,62 @@
+{
+  "schema_version": "identity-task-result-v1",
+  "task_index": 21,
+  "current_label_quote": "唐三",
+  "candidate_label_quote": "唐三",
+  "task_cache_key": "8f779e46f21707017b93f63098d7782ae8f8b03d6edae5720d5a33a464903266",
+  "model_output": {
+    "identity_relation": "same_character",
+    "label_relation": "same_surface",
+    "identity_evidence_quotes": [
+      "唐三看着素云涛已经要收起那颗蓝水晶球",
+      "唐三站在最左侧"
+    ]
+  },
+  "grounded_result": {
+    "schema_version": "grounded-identity-decision-v1",
+    "current_node_key": "13d1f62882f0a8bf50b1b86d9de144566f155663f6bc6aa359d5096b343005db",
+    "candidate_node_key": "e0ef0901af0a55188bd280fa551f8da8afe7b390476f20152ba751a650f54388",
+    "task_cache_key": "8f779e46f21707017b93f63098d7782ae8f8b03d6edae5720d5a33a464903266",
+    "requested_identity_relation": "same_character",
+    "identity_relation": "same_character",
+    "label_relation": "same_surface",
+    "grounded_identity_evidence": [
+      {
+        "evidence_quote": "唐三站在最左侧",
+        "document_span": {
+          "start": 13743,
+          "end": 13750
+        },
+        "match_mode": "exact"
+      },
+      {
+        "evidence_quote": "唐三看着素云涛已经要收起那颗蓝水晶球",
+        "document_span": {
+          "start": 16390,
+          "end": 16408
+        },
+        "match_mode": "exact"
+      }
+    ],
+    "issues": []
+  },
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 10406,
+    "http_status": 200,
+    "response_id": "0269b8a6-22f1-4a5d-aa21-e27ae86b4088",
+    "usage": {
+      "input_tokens": 1327,
+      "cached_input_tokens": 512,
+      "output_tokens": 1019,
+      "reasoning_tokens": 960,
+      "total_tokens": 2346
+    },
+    "error_kind": null
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "schema_version": "identity-batch-summary-v1",
+  "candidate_policy_version": "bounded-local-candidate-retrieval-v1",
+  "local_character_nodes": 43,
+  "deterministic_same_edges": 1,
+  "pending_model_tasks": 63,
+  "provider_calls": 0,
+  "complete": true,
+  "candidate_reasons": {
+    "label_contains": 6,
+    "same_exact_label": 46,
+    "shared_fact_quote": 12
+  },
+  "max_tasks_for_one_node": 2,
+  "model_outputs": 63,
+  "grounded_identity_decisions": 63,
+  "registry_built": true,
+  "review_required": true,
+  "started_at": "2026-09-01T02:16:21.175393Z",
+  "completed_at": "2026-09-01T02:26:34.177620Z",
+  "duration_ms": 613000,
+  "planned_tasks": 63,
+  "succeeded_tasks": 63,
+  "failed_tasks": 0,
+  "resumed_tasks": 0,
+  "new_provider_calls": 63,
+  "recorded_provider_calls": 63,
+  "identity_relations": {
+    "same_character": 47,
+    "different_characters": 1,
+    "uncertain": 15
+  },
+  "grounding_issues": 9,
+  "grounding_issues_by_code": {
+    "ambiguous_identity_evidence": 3,
+    "identity_evidence_not_in_model_context": 6
+  },
+  "registry_summary": {
+    "local_character_nodes": 43,
+    "bound_local_nodes": 33,
+    "global_characters": 8,
+    "linked_characters": 6,
+    "singleton_characters": 2,
+    "unresolved_bindings": 10,
+    "review_items": 17,
+    "cannot_link_constraints": 1,
+    "appearance_fact_refs": 106,
+    "possible_conflicts": 9
+  },
+  "quality_note": "Completion proves bounded structured execution and strict quote grounding; identity precision still requires human review or a labeled evaluation set."
+}

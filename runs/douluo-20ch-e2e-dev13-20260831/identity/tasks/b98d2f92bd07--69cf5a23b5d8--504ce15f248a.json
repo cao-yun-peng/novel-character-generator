@@ -1,0 +1,62 @@
+{
+  "schema_version": "identity-task-result-v1",
+  "task_index": 53,
+  "current_label_quote": "唐昊",
+  "candidate_label_quote": "唐昊",
+  "task_cache_key": "504ce15f248a0bed4cd0155766f321110128010ec1e42fa3e97bc856b521ef06",
+  "model_output": {
+    "identity_relation": "same_character",
+    "label_relation": "same_surface",
+    "identity_evidence_quotes": [
+      "唐昊站着没动，一直到唐三和村长杰克的背影已经完全消失了，他依旧站在那里呆立半晌。",
+      "唐昊看着在不断拉动风箱的唐三。"
+    ]
+  },
+  "grounded_result": {
+    "schema_version": "grounded-identity-decision-v1",
+    "current_node_key": "b98d2f92bd075799408c70d03caef83405168e91c5f1a782c4aae361138ecce3",
+    "candidate_node_key": "69cf5a23b5d866d66444c4c3a26357815d80c865c20ca4bf6ee0608d00afe940",
+    "task_cache_key": "504ce15f248a0bed4cd0155766f321110128010ec1e42fa3e97bc856b521ef06",
+    "requested_identity_relation": "same_character",
+    "identity_relation": "same_character",
+    "label_relation": "same_surface",
+    "grounded_identity_evidence": [
+      {
+        "evidence_quote": "唐昊看着在不断拉动风箱的唐三。",
+        "document_span": {
+          "start": 27400,
+          "end": 27415
+        },
+        "match_mode": "exact"
+      },
+      {
+        "evidence_quote": "唐昊站着没动，一直到唐三和村长杰克的背影已经完全消失了，他依旧站在那里呆立半晌。",
+        "document_span": {
+          "start": 33055,
+          "end": 33095
+        },
+        "match_mode": "exact"
+      }
+    ],
+    "issues": []
+  },
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 7594,
+    "http_status": 200,
+    "response_id": "328d7ed0-795e-4891-a0e6-9c92d7ade634",
+    "usage": {
+      "input_tokens": 1644,
+      "cached_input_tokens": 512,
+      "output_tokens": 770,
+      "reasoning_tokens": 694,
+      "total_tokens": 2414
+    },
+    "error_kind": null
+  }
+}

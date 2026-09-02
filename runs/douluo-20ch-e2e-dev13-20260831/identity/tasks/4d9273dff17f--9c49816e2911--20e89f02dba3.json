@@ -1,0 +1,62 @@
+{
+  "schema_version": "identity-task-result-v1",
+  "task_index": 47,
+  "current_label_quote": "高大苍老的男人",
+  "candidate_label_quote": "唐昊",
+  "task_cache_key": "20e89f02dba329ab10609a1578c833a47931fd23279ced6dac9e9e2014ffc83c",
+  "model_output": {
+    "identity_relation": "same_character",
+    "label_relation": "contextual_description",
+    "identity_evidence_quotes": [
+      "眼前这个高大苍老的男人，已经越来越给他那种父亲的感觉",
+      "唐昊教他铸造"
+    ]
+  },
+  "grounded_result": {
+    "schema_version": "grounded-identity-decision-v1",
+    "current_node_key": "4d9273dff17f92b6a73546dd54df5d3cdf237af9e2943e6e4beae15ae927e683",
+    "candidate_node_key": "9c49816e291181a552e79f2f96e25fdc24c3b2a567b814dbd9234d336ec6ad96",
+    "task_cache_key": "20e89f02dba329ab10609a1578c833a47931fd23279ced6dac9e9e2014ffc83c",
+    "requested_identity_relation": "same_character",
+    "identity_relation": "same_character",
+    "label_relation": "contextual_description",
+    "grounded_identity_evidence": [
+      {
+        "evidence_quote": "唐昊教他铸造",
+        "document_span": {
+          "start": 30758,
+          "end": 30764
+        },
+        "match_mode": "exact"
+      },
+      {
+        "evidence_quote": "眼前这个高大苍老的男人，已经越来越给他那种父亲的感觉",
+        "document_span": {
+          "start": 30765,
+          "end": 30791
+        },
+        "match_mode": "exact"
+      }
+    ],
+    "issues": []
+  },
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 2141,
+    "http_status": 200,
+    "response_id": "5ae365ce-a167-4397-8264-994edcb87799",
+    "usage": {
+      "input_tokens": 1622,
+      "cached_input_tokens": 512,
+      "output_tokens": 165,
+      "reasoning_tokens": 118,
+      "total_tokens": 1787
+    },
+    "error_kind": null
+  }
+}

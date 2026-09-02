@@ -1,0 +1,64 @@
+{
+  "schema_version": "appearance-transition-chunk-result-v1",
+  "identity": {
+    "chunk_id": "chunk-000002-2250-4750-b54821906b9b",
+    "chunk_hash": "b54821906b9b4979c5f17e533521a44849c2d4475f3a78a7033a79eca23d72dd",
+    "document_span": {
+      "start": 2250,
+      "end": 4750
+    },
+    "characters": [
+      {
+        "name": "唐三",
+        "aliases": []
+      }
+    ]
+  },
+  "model_output": {
+    "events": [
+      {
+        "character": "唐三",
+        "evidence": "唐三走了，他永远的离开了这个世界，但他的另一次命运却刚刚开始。",
+        "dimension": "life",
+        "attribute": "life_stage",
+        "before": "永远的离开了这个世界",
+        "after": "转世成为五、六岁的男孩"
+      }
+    ]
+  },
+  "grounded_transitions": [
+    {
+      "character_id": "char-f47075b7019563fd8315",
+      "evidence": "唐三走了，他永远的离开了这个世界，但他的另一次命运却刚刚开始。",
+      "document_span": {
+        "start": 2623,
+        "end": 2654
+      },
+      "dimension": "life",
+      "attribute": "life_stage",
+      "before": "永远的离开了这个世界",
+      "after": "转世成为五、六岁的男孩",
+      "change": "change"
+    }
+  ],
+  "review": [],
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 7250,
+    "http_status": 200,
+    "response_id": "d20643e5-f48c-478d-b319-df45f0a957d1",
+    "usage": {
+      "input_tokens": 2056,
+      "cached_input_tokens": 2048,
+      "output_tokens": 667,
+      "reasoning_tokens": 584,
+      "total_tokens": 2723
+    },
+    "error_kind": null
+  }
+}

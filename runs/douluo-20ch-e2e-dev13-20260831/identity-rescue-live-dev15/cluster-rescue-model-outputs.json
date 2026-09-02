@@ -1,0 +1,80 @@
+[
+  {
+    "task_index": 1,
+    "task_cache_key": "8422ae69b7e9bc268178581a9100b7aec5c8a653038f36dec54bda5edc4419ff",
+    "subject_labels": [
+      "唐三"
+    ],
+    "model_output": {
+      "identity_relation": "same_character",
+      "candidate_number": 1,
+      "label_relation": "same_surface",
+      "identity_evidence_quotes": [
+        "经五年多的时间了，眼前的这个孩子，正是当初在唐门跳崖明志的唐三。当他从昏迷中清醒过来的时候，发现除了温暖的感觉什么也做不了。但意料中的死亡并没有来临，很快，他就通过一个挤压的过程来到了这个世界。",
+        "不知道是冥冥中自有天意，还是因缘巧合，为了纪念死去的妻子，唐昊给他取的名字竟然神奇还是叫唐三。"
+      ]
+    }
+  },
+  {
+    "task_index": 2,
+    "task_cache_key": "b9c9fd5764aa3c573337cd82c7cbebfc8cc9a9f947911d428e25044b1680099c",
+    "subject_labels": [
+      "唐三"
+    ],
+    "model_output": {
+      "identity_relation": "same_character",
+      "candidate_number": 1,
+      "label_relation": "same_surface",
+      "identity_evidence_quotes": [
+        "来到这个世界已经五年多的时间了，眼前的这个孩子，正是当初在唐门跳崖明志的唐三。",
+        "为了纪念死去的妻子，唐昊给他取的名字竟然神奇还是叫唐三。"
+      ]
+    }
+  },
+  {
+    "task_index": 3,
+    "task_cache_key": "8610c3d4721c5d93deaf481ee18045e4b6d9f6f46a629d1c62bb0c72e22271b6",
+    "subject_labels": [
+      "小三"
+    ],
+    "model_output": {
+      "identity_relation": "same_character",
+      "candidate_number": 1,
+      "label_relation": "name_variant",
+      "identity_evidence_quotes": [
+        "却被唐昊叫住了。 \r\n　　“等会儿再收拾吧。小三，我问你，你想不想成为一名魂师？” \r\n　　唐三愣了一下，看向唐昊"
+      ]
+    }
+  },
+  {
+    "task_index": 4,
+    "task_cache_key": "58bcc013187097c14ff25f156363dfcdb906681efa84183ad588031b0d173155",
+    "subject_labels": [
+      "素云涛"
+    ],
+    "model_output": {
+      "identity_relation": "same_character",
+      "candidate_number": 1,
+      "label_relation": "name_variant",
+      "identity_evidence_quotes": [
+        "年轻人微笑道：“我叫素云涛，二十六级大魂师，是你们的领路人。现在，我将"
+      ]
+    }
+  },
+  {
+    "task_index": 5,
+    "task_cache_key": "016e35ebb48270b889d50bc57be847644de37d72d780807c47dca93517976ecd",
+    "subject_labels": [
+      "男孩儿"
+    ],
+    "model_output": {
+      "identity_relation": "different_characters",
+      "candidate_number": 1,
+      "label_relation": null,
+      "identity_evidence_quotes": [
+        "大多数人在武魂觉醒的时候是没有魂力的，就像之前这几个孩子。",
+        "天啊，竟然是先天满魂力。"
+      ]
+    }
+  }
+]

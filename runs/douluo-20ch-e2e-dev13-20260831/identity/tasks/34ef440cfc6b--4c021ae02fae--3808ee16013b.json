@@ -1,0 +1,53 @@
+{
+  "schema_version": "identity-task-result-v1",
+  "task_index": 4,
+  "current_label_quote": "唐昊",
+  "candidate_label_quote": "唐昊",
+  "task_cache_key": "3808ee16013bac0dd3b571a0a2326daad437a735aeec87534bac3791a44f79fa",
+  "model_output": {
+    "identity_relation": "same_character",
+    "label_relation": "same_surface",
+    "identity_evidence_quotes": [
+      "这就是唐昊，唐三在这个世界的父亲。"
+    ]
+  },
+  "grounded_result": {
+    "schema_version": "grounded-identity-decision-v1",
+    "current_node_key": "34ef440cfc6ba1a683c8391c25baf436787e3f0ddea2a4d0ac21760cf136e0ea",
+    "candidate_node_key": "4c021ae02fae5d350500d5703361cf9264c7c9d90efaa01864ee99af9b0f46a4",
+    "task_cache_key": "3808ee16013bac0dd3b571a0a2326daad437a735aeec87534bac3791a44f79fa",
+    "requested_identity_relation": "same_character",
+    "identity_relation": "same_character",
+    "label_relation": "same_surface",
+    "grounded_identity_evidence": [
+      {
+        "evidence_quote": "这就是唐昊，唐三在这个世界的父亲。",
+        "document_span": {
+          "start": 5809,
+          "end": 5826
+        },
+        "match_mode": "exact"
+      }
+    ],
+    "issues": []
+  },
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 4656,
+    "http_status": 200,
+    "response_id": "7eb14dc8-1c81-47b5-a6ca-9c72f4b4d8da",
+    "usage": {
+      "input_tokens": 2043,
+      "cached_input_tokens": 512,
+      "output_tokens": 428,
+      "reasoning_tokens": 391,
+      "total_tokens": 2471
+    },
+    "error_kind": null
+  }
+}

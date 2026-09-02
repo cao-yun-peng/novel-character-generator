@@ -13,13 +13,49 @@ from .identity import (
     IdentityModelOutput,
     IdentityOrchestrator,
     IdentityPreparation,
+    apply_local_coreference_to_preparation,
     build_document_character_registry,
     build_document_local_character_nodes,
     build_identity_preparation,
+    build_local_coreference_edges,
     ground_identity_model_output,
 )
 from .identity_batch import prepare_document_identity, run_document_identity
+from .identity_local_closure import run_local_identity_closure_replay
+from .identity_rescue import (
+    ClusterIdentityRescueOrchestrator,
+    ClusterRescueEnvelope,
+    ClusterRescueModelOutput,
+    build_cluster_rescue_preparation,
+    ground_cluster_rescue_output,
+)
+from .identity_rescue_batch import prepare_identity_rescue, run_identity_rescue
 from .document_evidence import build_document_character_evidence, run_document_evidence_aggregation
+from .document_profiles import build_document_character_profiles, run_document_profile_assembly
+from .fact_groups import (
+    build_document_character_fact_groups,
+    run_document_fact_group_assembly,
+)
+from .appearance_scope import (
+    build_document_character_appearance_scopes,
+    parse_document_chapters,
+    run_document_appearance_scope_assembly,
+)
+from .appearance_transition import (
+    AppearanceTransitionProviderRequest,
+    AppearanceTransitionChunk,
+    WindowCharacter,
+    build_appearance_transition_chunks,
+    build_transition_request,
+    deduplicate_grounded_transitions,
+    ground_transition_events,
+    materialize_appearance_states,
+    parse_transition_model_output,
+)
+from .appearance_transition_batch import (
+    prepare_document_appearance_transitions,
+    run_document_appearance_transitions,
+)
 from .m1 import (
     M1OrchestrationEnvelope,
     M1Orchestrator,
@@ -57,6 +93,9 @@ __all__ = [
     "IdentityModelOutput",
     "IdentityOrchestrator",
     "IdentityPreparation",
+    "ClusterIdentityRescueOrchestrator",
+    "ClusterRescueEnvelope",
+    "ClusterRescueModelOutput",
     "M1OrchestrationEnvelope",
     "M1Orchestrator",
     "M1Provider",
@@ -71,21 +110,46 @@ __all__ = [
     "N3DescribePoolResult",
     "N3TargetAppearancePacket",
     "SourceSpan",
+    "AppearanceTransitionProviderRequest",
+    "AppearanceTransitionChunk",
+    "WindowCharacter",
+    "apply_local_coreference_to_preparation",
     "build_document_chunk_manifest",
     "build_document_character_evidence",
+    "build_document_character_profiles",
+    "build_document_character_fact_groups",
+    "build_document_character_appearance_scopes",
+    "build_appearance_transition_chunks",
+    "build_transition_request",
+    "deduplicate_grounded_transitions",
     "build_document_character_registry",
     "build_document_local_character_nodes",
     "build_identity_preparation",
+    "build_local_coreference_edges",
+    "build_cluster_rescue_preparation",
     "build_m2_attribution_envelopes",
     "ground_m1_result",
     "ground_identity_model_output",
+    "ground_cluster_rescue_output",
+    "ground_transition_events",
+    "materialize_appearance_states",
+    "parse_transition_model_output",
+    "prepare_document_appearance_transitions",
     "prepare_document_identity",
+    "prepare_identity_rescue",
     "run_m1_document",
     "run_m2_from_m1_run",
     "run_document_evidence_aggregation",
+    "run_document_profile_assembly",
+    "run_document_fact_group_assembly",
+    "run_document_appearance_scope_assembly",
+    "run_document_appearance_transitions",
     "run_document_identity",
+    "run_local_identity_closure_replay",
+    "run_identity_rescue",
     "resolve_n3_chunk",
     "run_n3_promotion_from_m2_run",
     "replay_promotion_grounding",
     "sha256_text",
+    "parse_document_chapters",
 ]

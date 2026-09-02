@@ -4,8 +4,8 @@
 
 - 分支：`v3-simplified-character-evidence`
 - 契约：简化人物证据流程 V3 草案
-- Schema：`3.12.0-draft1`
-- 运行时版本：`0.1.0.dev12`
+- Schema：`3.20.0-draft1`
+- 运行时版本：`0.1.0.dev20`
 - 发布状态：未发布
 
 ## 版本原则
@@ -14,6 +14,14 @@
 
 ## 版本历史
 
+- 2026-09-02：Schema 升级到 `3.20.0-draft1`、运行时升级到 `0.1.0.dev20`；071 运行时复用原 M1 Manifest 的 17 个重叠 Chunk，以 node.chunk_id 注入已绑定人物，模型边界仅保留 name/aliases/text，系统元数据、Grounding、去重和状态物化均在代码侧。真实模型运行尚未验收。
+- 2026-09-02：Schema 升级到 `3.19.0-draft1`、运行时升级到 `0.1.0.dev19`；新增 `document-character-appearance-scopes-v1`、确定性章节解析、canonical fact 顺序分配和保守 persistence 基线，life/form/scene 不确定项显式为 unknown。
+- 2026-09-01：Schema 升级到 `3.18.0-draft1`、运行时升级到 `0.1.0.dev18`；新增 `document-character-fact-groups-v1`、`same-character-span-structure-v1`、稳定 canonical fact ID、逐 raw fact/occurrence 双向 provenance、失败关闭构建器和 CLI。
+- 2026-09-01：Schema 升级到 `3.17.0-draft1`、运行时升级到 `0.1.0.dev17`；候选策略升级为 `bounded-local-candidate-retrieval-v3`，新增 `grounded-local-coreference-v1` deterministic edge、严格局部关系回放和保存 M3/rescue 决策的零 Provider registry/profile 重建 CLI。
+- 2026-09-01：Schema 升级到 `3.16.0-draft1`、运行时升级到 `0.1.0.dev16`；身份聚合升级为 `global-constrained-identity-v3`，最终 same/different 会关闭历史 uncertain，冲突失败关闭；cluster rescue 升级 v2，以无向簇对去重并执行最多三轮的固定点裁决，支持复用既有 grounded run。
+- 2026-09-01：Schema 升级到 `3.15.0-draft1`、运行时升级到 `0.1.0.dev15`；新增残余 cluster-level 身份裁决、候选专属 `relationship_context_quotes` 证据域、严格 Grounding、断点续跑和 supplemental registry 重建。
+- 2026-09-01：Schema 升级到 `3.14.0-draft1`、运行时升级到 `0.1.0.dev14`；身份聚合升级为 `global-constrained-identity-v2`，全局 same 图受 cannot-link 约束，未决 singleton 保留事实；候选/上下文策略升级 v2，新增显式介绍召回和有界 bridge 过渡窗口。
+- 2026-08-31：Schema 升级到 `3.13.0-draft1`、运行时升级到 `0.1.0.dev13`；新增 `document-character-profiles-v1`、`strict-fact-hash-profile-join-v1`、确定性档案构建函数和 CLI。输出物化完整事实与来源，保留零事实人物、未绑定事实、冲突/review/cannot-link，并对文档、hash、引用和 span 失败关闭。
 - 2026-08-31：Schema 升级到 `3.12.0-draft1`、运行时升级到 `0.1.0.dev12`；新增 `document-local-character-nodes-v1`、`m3-identity-envelope-v1`、最小 M3 输入输出、`grounded-identity-decision-v1` 和 `document-character-registry-v1`。身份任务支持有界候选、严格 quote Grounding、cannot-link、冲突保留、断点续跑与追加式运行历史。
 - 2026-08-31：Schema 升级到 `3.11.0-draft1`、运行时升级到 `0.1.0.dev11`；grounded promotion result 升级 v6 并加入 `promotion-partial-fact-acceptance-v1`。唯一事实部分接受，歧义事实独立 review；N3 task/summary 升级 v2 防止旧 grounded 缓存混用，并新增保存模型输出离线重放 CLI。
 - 2026-08-31：Schema 升级到 `3.10.0-draft1`、运行时升级到 `0.1.0.dev10`；N2 grounded packet 升级到 v6，删除 `quote_hash`/`mention_quote_hash`，M1 chunk/summary 升级到 v4/v3 防止旧包混合续跑。新增 `document-character-evidence-v1`、绝对 span 回放、结构安全的重叠去重、来源 artifact/chunk/fact hash 与全 occurrence 保留。

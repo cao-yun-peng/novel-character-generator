@@ -1,0 +1,126 @@
+{
+  "schema_version": "n3-promotion-task-result-v2",
+  "chunk_index": 14,
+  "chunk_id": "chunk-000014-29250-31750-3f70e01ec313",
+  "describe_local_mention_id": "m3",
+  "mention_quote": "高大苍老的男人",
+  "promotion_hash": "2b1b0d7327d10a40a44ac7e67651604f02621f8630cfb7f2cd6e391a0e890d5a",
+  "model_output": {
+    "characters": [
+      {
+        "character_label_quote": "高大苍老的男人",
+        "belongs_to_character": [
+          {
+            "fact_quote": "高大",
+            "category": "body",
+            "attribute": "身材",
+            "value": "高大"
+          },
+          {
+            "fact_quote": "苍老",
+            "category": "age",
+            "attribute": "年龄",
+            "value": "苍老"
+          }
+        ]
+      }
+    ]
+  },
+  "grounded_result": {
+    "schema_version": "grounded-promoted-describe-characters-v6",
+    "grounding_policy_version": "promotion-partial-fact-acceptance-v1",
+    "describe_source_ref": {
+      "local_mention_id": "m3",
+      "packet_hash": "f149bb2843018f2f7e2e1d338cc3e4d615c1724687de7d5e18a4c586ecc14699"
+    },
+    "promotion_hash": "2b1b0d7327d10a40a44ac7e67651604f02621f8630cfb7f2cd6e391a0e890d5a",
+    "promoted_characters": [
+      {
+        "promoted_character_ref": {
+          "source_document_version_id": "source-8bcb7305a759571b",
+          "chunk_id": "chunk-000014-29250-31750-3f70e01ec313",
+          "source_local_mention_id": "m3",
+          "source_mention_type": "describe",
+          "promotion_index": 1,
+          "character_origin": "remaining_describe",
+          "packet_hash": "f149bb2843018f2f7e2e1d338cc3e4d615c1724687de7d5e18a4c586ecc14699",
+          "promotion_hash": "2b1b0d7327d10a40a44ac7e67651604f02621f8630cfb7f2cd6e391a0e890d5a"
+        },
+        "character_label_quote": "高大苍老的男人",
+        "grounded_belongs_to_character": [
+          {
+            "fact_quote": "高大",
+            "category": "body",
+            "attribute": "身材",
+            "value": "高大",
+            "source_mention_id": "m3",
+            "source_mention_type": "describe",
+            "source_evidence_quote": "高大苍老的男人",
+            "source_evidence_span": {
+              "start": 1519,
+              "end": 1526
+            },
+            "fact_chunk_span": {
+              "start": 1519,
+              "end": 1521
+            },
+            "match_mode": "exact"
+          },
+          {
+            "fact_quote": "苍老",
+            "category": "age",
+            "attribute": "年龄",
+            "value": "苍老",
+            "source_mention_id": "m3",
+            "source_mention_type": "describe",
+            "source_evidence_quote": "高大苍老的男人",
+            "source_evidence_span": {
+              "start": 1519,
+              "end": 1526
+            },
+            "fact_chunk_span": {
+              "start": 1521,
+              "end": 1523
+            },
+            "match_mode": "exact"
+          }
+        ]
+      }
+    ],
+    "unassigned_fragments": [
+      {
+        "fragment_ref": "d1-f1",
+        "source_evidence_quote": "高大苍老的男人",
+        "source_evidence_span": {
+          "start": 1519,
+          "end": 1526
+        },
+        "fragment_quote": "的男人",
+        "fragment_span": {
+          "start": 1523,
+          "end": 1526
+        }
+      }
+    ]
+  },
+  "grounding_issues": [],
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 7016,
+    "http_status": 200,
+    "response_id": "67720d31-c77b-41a4-96b7-4ebd1d36a46a",
+    "usage": {
+      "input_tokens": 2127,
+      "cached_input_tokens": 384,
+      "output_tokens": 652,
+      "reasoning_tokens": 587,
+      "total_tokens": 2779
+    },
+    "error_kind": null
+  }
+}

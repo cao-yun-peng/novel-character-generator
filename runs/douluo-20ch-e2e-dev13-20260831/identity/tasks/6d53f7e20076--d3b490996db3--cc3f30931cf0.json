@@ -1,0 +1,62 @@
+{
+  "schema_version": "identity-task-result-v1",
+  "task_index": 48,
+  "current_label_quote": "唐三",
+  "candidate_label_quote": "唐三",
+  "task_cache_key": "cc3f30931cf0b4d530ae68eccf77bcf910b4b13de5b8aeedd188cdc11e29d08a",
+  "model_output": {
+    "identity_relation": "same_character",
+    "label_relation": "same_surface",
+    "identity_evidence_quotes": [
+      "唐三根本没有什么好准备的",
+      "唐三手腕上带着的这筒袖箭"
+    ]
+  },
+  "grounded_result": {
+    "schema_version": "grounded-identity-decision-v1",
+    "current_node_key": "6d53f7e20076f8fadceff02fda655dd49fe40ffb40879258414cd08b825c32f7",
+    "candidate_node_key": "d3b490996db39e0e952ca294133253f1849cf229cda98efa7fa547cee1f7343f",
+    "task_cache_key": "cc3f30931cf0b4d530ae68eccf77bcf910b4b13de5b8aeedd188cdc11e29d08a",
+    "requested_identity_relation": "same_character",
+    "identity_relation": "same_character",
+    "label_relation": "same_surface",
+    "grounded_identity_evidence": [
+      {
+        "evidence_quote": "唐三手腕上带着的这筒袖箭",
+        "document_span": {
+          "start": 29301,
+          "end": 29313
+        },
+        "match_mode": "exact"
+      },
+      {
+        "evidence_quote": "唐三根本没有什么好准备的",
+        "document_span": {
+          "start": 31507,
+          "end": 31519
+        },
+        "match_mode": "exact"
+      }
+    ],
+    "issues": []
+  },
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 4594,
+    "http_status": 200,
+    "response_id": "fa1dcef2-2692-4307-a0dd-bdc35d0fc8bd",
+    "usage": {
+      "input_tokens": 2003,
+      "cached_input_tokens": 512,
+      "output_tokens": 464,
+      "reasoning_tokens": 416,
+      "total_tokens": 2467
+    },
+    "error_kind": null
+  }
+}

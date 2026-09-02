@@ -27,7 +27,20 @@
 | PROMOTION-PARTIAL-ACCEPTANCE-059 | completed | Promotion 事实级部分接受与离线重放完成；青衫老者安全事实恢复，歧义青衫仍 review；98 项测试通过 |
 | CROSS-CHUNK-IDENTITY-060 | completed | 完整 local/promoted 节点、有界候选、M3 最小关系判断、严格 Grounding、cannot-link/N4 注册表、可恢复批处理与离线斗破准备完成；109 项测试通过，真实 Provider/身份质量 Gate 未运行 |
 | M3-DOUPO-LIVE-EVAL-061 | completed | DeepSeek M3 19/19 完成；17 same/2 uncertain，11 个全局人物、5 linked、2 review；36 条身份引用全部回放，发现同名证据语义充分性和失败历史覆盖缺口 |
-| DOCUMENT-CHARACTER-PROFILES-062 | in_progress | 确定性 registry/evidence join、统一人物档案、Schema/CLI/测试和斗破离线实跑进行中；Provider calls 必须为 0 |
+| DOCUMENT-CHARACTER-PROFILES-062 | completed | Schema/CLI/严格 join 与失败路径完成；斗破 11 profiles、61 assigned/0 unassigned facts、62 occurrences、4 conflicts、2 review；118 项测试，Provider 0 |
+| DOULUO-END-TO-END-063 | completed | 全链路贯通：M1 17/17、M2 32/32、N3 11/11、M3 63/63；最终 8 profiles、106 assigned/23 unassigned facts、17 review、10 unresolved、1 cannot-link |
+| M3-IDENTITY-RESCUE-064 | completed | 全局聚合/bridge/singleton 修复及残余 cluster-level 裁决已接线；斗罗离线得到 5 个有关系原文的任务，Provider 0 |
+| M3-IDENTITY-RESCUE-LIVE-065 | completed | DeepSeek 残余裁决 5/5：4 same/1 different、8/8 关系证据回放；发现两项确定性聚合收尾缺口 |
+| M3-IDENTITY-FIXPOINT-066 | completed | 无向簇对去重、有效关系覆盖和三轮上限固定点完成；复用旧 5 条裁决只新增 1 调用，斗罗唐三唯一化、男孩儿旧 unresolved 关闭，最终 8 profiles/129 facts |
+| APPEARANCE-PROFILE-PLAN-067 | completed | 冻结 Evidence Layer 后的三层产物、068～075 开发顺序、失败关闭规则与 Stage 6 人工质量 Gate |
+| LOCAL-COREFERENCE-CLOSURE-068 | completed | `grounded-local-coreference-v1` 完成；斗罗新增 1 条可回放边，8→7 profiles，129 facts/130 occurrences 保持，Provider 0 |
+| POST-LINK-FACT-GROUPS-069 | completed | dev18 独立 Schema/CLI 与失败关闭完成；斗罗 129 raw facts→109 groups，129 fact/130 occurrence bindings 零丢失，Provider 0 |
+| APPEARANCE-SCOPE-SCHEMA-070 | completed | dev19 最小扁平 Schema/CLI 完成；实际 19 章、109/109 facts 唯一排序分配，life/form/scene 保守 unknown，Provider 0 |
+| APPEARANCE-STATE-TRANSITIONS-071 | in_progress | 已改为复用原 M1 17 Chunks，并按 chunk_id 注入该 Chunk 已绑定人物；最小模型接口及代码侧 Grounding/状态回填已接通 |
+| APPEARANCE-SEMANTIC-RELATIONS-072 | planned | 代码生成 scope 内候选 pair；规则处理确定项，最小模型输出只返回关系枚举，代码绑定并分类冲突 |
+| LABEL-REVIEW-PROJECTION-073 | planned | 修正 title 语义并拆分 audit 与 actionable review 视图 |
+| RENDER-PROFILE-COMPILER-074 | planned | 按时期/形态/场景编译可生图的结构化人物卡，保留双层 provenance |
+| UPSTREAM-HUMAN-EVAL-GATE-075 | planned | 建立 M1/M2/promotion 及新增状态层的正式人工标注评测和 Stage 6 Gate |
 
 ## 阻塞项
 
@@ -36,13 +49,30 @@
 
 ## 下一步
 
-1. 设计并实现 `document-character-profiles.json`：以 `document-character-registry.json` 的全局人物为主表，回填 `document-character-evidence.json` 的完整人物事实。
-2. 对每个人物保留标签、成员局部人物、事实原文、绝对 span、来源 Chunk、多来源 occurrence、冲突和 review；所有拼装与校验均由确定性代码完成。
-3. 加入事实引用完整性、span 原文回放、孤儿 fact、重复 fact 和零外貌事实人物测试，并用斗破既有产物离线实跑，不调用 DeepSeek。
-4. 档案结构稳定后，再决定是否实现时间/场景外貌状态，以及可选的自然语言人物总结或图像提示词。
+1. 完成 `APPEARANCE-STATE-TRANSITIONS-071`：验证并复用原 M1 Manifest 的 17 个重叠 Chunk；每次输入仅含该 chunk_id 下已绑定人物的 `name + aliases` 及 Chunk 原文，模型必须从 canonical name 中选择事件主体。
+2. 071 的 chunk/document/internal ID、span、排序、绑定、Grounding、跨 Chunk 去重和状态物化均留在代码层；模型只返回 transition 语义与逐字 evidence。072 仅对规则未决 pair 使用最小关系模型。
+3. 依次实现 073～074：Label/Review 投影和 render-ready 编译；选择器不足时不得混合生命阶段或形态。
+4. 075 的标注规范和 evaluator 现在可以并行准备；Stage 6 前完成 M1/M2/promotion 正式人工质量 Gate，不以专家评分或确定性档案成功替代。
+5. 自然语言人物总结、图像提示词和视觉验收继续留在结构化 Profile Compiler 稳定之后。
 
 ## 进度历史
 
+- 2026-09-02：用户要求 071 不重新切 19 个窗口，而复用上游原 17 个 Chunk 及其身份元数据。实现已调整为读取并验证 M1 Manifest，要求 Chunk id/hash/span 与原文完整回放；以 local node 的 `chunk_id` 连接最终人物簇，17/17 Chunk 均生成已绑定人物表。模型 payload 仍只有 characters/name/aliases/text，Chunk 元数据只在代码信封。
+- 2026-09-02：`APPEARANCE-SCOPE-SCHEMA-070` 完成。新增 `document-character-appearance-scopes-v1`、确定性章节解析/assignment 构建器和 CLI；斗罗实际 19 章、109/109 canonical facts 唯一分配，life/form/scene 不做词表猜测而全为 unknown，persistence 仅投影 stable 2、persistent_until_changed 13、scene 18、momentary 12、unknown 64。150 tests、Schema/实例、compileall、diff 与治理校验通过，Provider 0。
+- 2026-09-02：用户确认 071 不应让模型重复识别人名。规划新增窗口人物表：代码以既有 identity/context/evidence 与窗口交集选择相关人物，只发送 canonical name 和必要 aliases；模型从给定人物中选择 transition 主体，内部 character_id 与唯一绑定仍由信封回填。无法安全列入或同名歧义时进入 review。
+- 2026-09-01：用户指出基于人物标签和已知状态词召回 071 窗口会漏掉大量未知表达。071 规划改为源文档有重叠完整扫描：代码只做无语义过滤的切窗与位置保留，模型负责发现窗口内所有人物状态事件；事实锚点/词表降为补充检查，不再是模型入口。输出仍执行逐字 Grounding、身份绑定和失败关闭。
+- 2026-09-01：用户收紧 070～072 契约：模型上下文和输出只保留语义判断必需字段，chunk/document/internal ID、span、hash、排序、绑定和 provenance 均由代码信封处理；新 Schema 默认扁平、少层级，字段必须有明确消费方或验证用途。071/072 可使用受约束单次模型节点，但不引入 Agent 循环，也不让模型承担 Grounding 或状态物化。
+- 2026-09-01：`POST-LINK-FACT-GROUPS-069` 完成。新增 `document-character-fact-groups-v1` 与 `same-character-span-structure-v1`，严格按 `character_id + span + category + attribute + value` 生成稳定 canonical ID；每个 occurrence 绑定 raw fact hash 与原数组索引。斗罗 129 raw facts→109 groups，10 个 multi-member groups 折叠 20 个成员；老杰克 26→14、素云涛 29→21，其余人物零折叠。129 fact/130 occurrence bindings 全量反向回放，输入 hash 不变、重复输出 hash 稳定，Provider 0。146 tests、Draft 2020-12 Schema/实例、compileall、diff 和两套治理校验通过；Stage 5 保持 in_progress。
+- 2026-09-01：`LOCAL-COREFERENCE-CLOSURE-068` 完成。新增 `grounded-local-coreference-v1`：仅在同 Chunk、双方上下文交集和逐字显式关系同时成立时建立 `describe -> exact` deterministic same edge，问句、否定和纯姓名共现拒绝，全局唯一姓名不自动 join，cannot-link 继续失败关闭。复用 dev16 的 63 条 M3 与 6 条 rescue grounded 决策离线重放，`高大的身影 -> 中年男子 -> 这就是唐昊` 在 `[5591,5814)` 建边；斗罗 global characters/profiles 8→7，129 facts、130 occurrences、1 unresolved（看门青年）、2 cannot-link、9 review 保持，Provider calls=0。140 tests、Draft 2020-12 Schema/实例、compileall、diff 和治理校验通过。
+- 2026-09-01：`APPEARANCE-PROFILE-PLAN-067` 完成。根据 dev16 复核把后续路线冻结为 068～075：局部确定性身份闭合、post-link fact groups、life/form/scene 状态层、transition、scope 内语义关系、Label/Review 投影、render-ready compiler 和 Stage 6 人工质量 Gate。明确 raw evidence 不删除、全局唯一姓名不自动 join、去重包含 attribute 与 scope、历史 review 只做 actionable 投影。规划任务未修改运行时代码、Provider 调用 0。
+- 2026-09-01：`M3-IDENTITY-FIXPOINT-066` 完成。`global-constrained-identity-v3` 让最终 same/different 关闭历史 uncertain，same/different 冲突保守 review；`residual-cluster-adjudication-v2` 对无向簇对去重并最多三轮重建到固定点。斗罗复用 dev15 的 5 条 grounded 裁决，只新增 1 次 DeepSeek 调用（same/name_variant，原文 `[10205,10229)` exact 回放），global characters 9→8，唐三/小三唯一化为 16 members/39 facts，男孩儿旧 unresolved 关闭。最终仅看门青年因无关系原文保持 unresolved；8 profiles、129 assigned facts、0 unassigned。135 tests、Schema 实例、compileall 和治理验证通过，缓存复跑新调用 0。
+- 2026-09-01：`M3-IDENTITY-RESCUE-LIVE-065` 完成真实 DeepSeek 执行。5/5 HTTP 200，4 same/1 different、0 Grounding issue，8/8 身份引用同时通过文档 span 回放和所选候选 `relationship_context_quotes` 证据域检查；总计 23,469 tokens，第二次运行 5/5 缓存恢复且新增调用 0。registry 12→9 人物、3→2 unresolved、1→2 cannot-link、129 facts 保持。真实运行暴露两项代码收尾：反向重复唐三任务导致单轮后仍有两个唐三簇；男孩儿 different 已形成 cannot-link 但旧 uncertain 仍残留 unresolved。
+- 2026-09-01：`M3-IDENTITY-RESCUE-064` 完成。新增 cluster-level 残余裁决输入/动态输出 Schema、候选专属关系上下文、严格证据域 Grounding、可恢复 DeepSeek 批处理和 supplemental registry 重建。普通 context/fact 只能辅助理解；身份证据只能从所选候选的 `relationship_context_quotes` 逐字取得。斗罗旧 M3 产物离线生成 5 tasks/5 candidates/10 relationship contexts，Provider 0；看门青年因无支撑原文不调用。128 tests 与 compileall 通过；真实补救调用留作独立评测。
+- 2026-09-01：`M3-IDENTITY-RESCUE-064` 第一轮完成代码加固。斗罗 5 个 multiple 被确认是顺序 union 假失败；新 N4 全局 same 图在 cannot-link 下离线重放旧决策，bound nodes 33→43、unresolved 10→3、appearance refs 106→129，23 条事实不再丢失，cannot-link 仍为 1。新 bridge 覆盖唐三转生过渡，显式介绍召回新增 `素云涛`→`年轻人`，新准备 64 tasks；122 tests 通过，Provider 0。残余 cluster-level 裁决尚待接线。
+- 2026-09-01：`DOULUO-END-TO-END-063` 全链路完成。M1 17/17、M2 32/32、N3 11/11、M3 63/63；130 个 Chunk facts 安全汇总为 129 个文档 facts，最终 8 profiles、106 assigned/23 unassigned facts、130 occurrences、9 conflicts、17 review、10 unresolved、1 cannot-link。首次真实 `different` 为 `大师`↔`战魂大师`，代码保留 20多岁/俊朗与40至50岁两组互斥证据并禁止合并。最终成功任务记录 123 次/426,561 tokens；118 tests、67 个 Schema 实例和事实/来源/身份证据全量回放通过。Stage 5 保持 in_progress，不替代人工质量 Gate。
+- 2026-09-01：用户确认 DeepSeek 已充值，`DOULUO-END-TO-END-063` 解除 HTTP 402 阻塞；继续从 N3 8/11 缓存恢复，只重试剩余 3 项。
+- 2026-09-01：斗罗全链路 M1 完成 17/17（64 candidate、46 grounded mentions、97 approved evidence、0 rejected）；M2 完成 32/32（84 model facts、84 grounded facts、1 review、0 failure）。N3 完成并缓存 8/11（8 promoted characters、42 grounded facts），两项网络重试耗尽后第三项返回 DeepSeek HTTP 402/余额不足，任务按可恢复语义暂停，未生成部分 document evidence，也未启动 M3。
+- 2026-08-31：完成 `document-character-profiles-v1` 和 CLI。构建器验证 registry/evidence 同文档、完整事实 hash、Chunk hash、事实/evidence 绝对 span、引用一致性和单一人物占用；零事实人物与未绑定事实保留。斗破离线生成 11 profiles、61/61 assigned facts、62 occurrences、0 unassigned、4 conflicts、2 review；118 tests、Schema 与全量回放通过，Provider calls=0。
 - 2026-08-31：用户确认斗破当前身份结果可接受；同名不同人、`different`/`cannot-link` 不再作为当前阻塞，未来以真实失败案例触发重开和回归。F-NEW-IDENTITY-006 按当前范围完成，下一阶段转向确定性人物档案组装。
 - 2026-08-31：斗破前 5 章真实 M3 运行完成。沙箱内预尝试因网络限制 19 项失败且未获得 HTTP 成功；允许联网后首轮 18/19 成功，1 项因 4096 max output 截断；提高到 8192 后恢复 18 项、仅重试 1 项并完成。最终 17 same/2 uncertain/0 different，11 global characters、5 linked、6 singleton、2 review、0 unresolved/cannot-link。36 条身份证据绝对 span 全部回放；成功 trace 汇总 60,610 tokens。人工检查未见明显错组，但确认 same 引用常只是两个上下文分别出现同名，不能替代同名不同人评测。
 - 2026-08-31：完成跨 Chunk 身份纵向切片。新增完整 local/promoted 节点目录、有界候选、最小 M3 三态模型边界、严格/纯空白等价身份证据 Grounding、cannot-link、冲突保留、全局注册表和可恢复批处理。斗破现有 N2/N3/文档事实零 Provider 准备得到 23 nodes（含 1 个零事实 exact）、1 deterministic edge、19 tasks，每节点最多 2 个；模型输入系统字段扫描为 0，109 项测试与 Draft 2020-12 实例验证通过。Stage 5 保持 in_progress，真实身份模型质量未评测。

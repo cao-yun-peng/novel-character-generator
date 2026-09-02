@@ -1,0 +1,69 @@
+{
+  "schema_version": "m2-attribution-task-result-v1",
+  "source_run_dir": "E:\\project\\agent\\novel-cahracter-generator\\runs\\douluo-20ch-e2e-dev13-20260831\\m1",
+  "chunk_index": 5,
+  "chunk_id": "chunk-000005-9000-11500-f4a0068fbfb5",
+  "target_local_mention_id": "m1",
+  "target_mention_quote": "唐三",
+  "task_cache_key": "8917b89a195524def4258821b65a007e973adca4f52406c8fa1fd12727839378",
+  "model_output": {
+    "belongs_to_target": [
+      {
+        "fact_quote": "再过几天，唐三就要六岁了",
+        "category": "age",
+        "attribute": "年龄",
+        "value": "六岁（即将）"
+      }
+    ]
+  },
+  "grounded_result": {
+    "target_character_ref": {
+      "source_document_version_id": "source-8bcb7305a759571b",
+      "chunk_id": "chunk-000005-9000-11500-f4a0068fbfb5",
+      "local_mention_id": "m1",
+      "mention_type": "exact",
+      "packet_hash": "e9fa3888236c2a7893bbaa63116ef53cfdb0d0d57cf695652a744938f12a61bc"
+    },
+    "task_cache_key": "8917b89a195524def4258821b65a007e973adca4f52406c8fa1fd12727839378",
+    "grounded_belongs_to_target": [
+      {
+        "fact_quote": "再过几天，唐三就要六岁了",
+        "category": "age",
+        "attribute": "年龄",
+        "value": "六岁（即将）",
+        "source_mention_id": "m1",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "再过几天，唐三就要六岁了",
+        "source_evidence_span": {
+          "start": 905,
+          "end": 917
+        },
+        "fact_chunk_span": {
+          "start": 905,
+          "end": 917
+        },
+        "match_mode": "exact"
+      }
+    ]
+  },
+  "grounding_issues": [],
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 1422,
+    "http_status": 200,
+    "response_id": "854ab163-1650-4262-9e98-02641b5702b1",
+    "usage": {
+      "input_tokens": 2264,
+      "cached_input_tokens": 384,
+      "output_tokens": 95,
+      "reasoning_tokens": 57,
+      "total_tokens": 2359
+    },
+    "error_kind": null
+  }
+}

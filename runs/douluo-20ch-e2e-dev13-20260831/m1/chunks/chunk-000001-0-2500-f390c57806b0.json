@@ -1,0 +1,284 @@
+{
+  "schema_version": "m1-chunk-result-v4",
+  "chunk_index": 1,
+  "chunk_id": "chunk-000001-0-2500-f390c57806b0",
+  "chunk_hash": "f390c57806b025eed04c99152a68840f8c987027e43d679ebf830b70678c59ba",
+  "chunk_source_span": {
+    "start": 0,
+    "end": 2500
+  },
+  "model_output": {
+    "candidate_mentions": [
+      {
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "唐三",
+        "evidence_quotes": [
+          "一名身穿灰衣的青年正站在鬼见愁顶峰",
+          "他今年二十九岁",
+          "从他胸口处那斗大的唐字",
+          "全身赤裸的唐三",
+          "高大昂扬的身躯",
+          "他的笑容很灿烂"
+        ]
+      },
+      {
+        "mention_type": "describe",
+        "mention_scope": "individual",
+        "mention_quote": "身穿灰衣的青年",
+        "evidence_quotes": [
+          "一名身穿灰衣的青年正站在鬼见愁顶峰",
+          "他今年二十九岁",
+          "从他胸口处那斗大的唐字"
+        ]
+      },
+      {
+        "mention_type": "describe",
+        "mention_scope": "collective",
+        "mention_quote": "十七道白色的身影",
+        "evidence_quotes": [
+          "十七道白色的身影",
+          "他们身穿的白袍代表的是内门",
+          "年纪最小的也超过了五旬",
+          "年纪最大的已经超过了两个甲子",
+          "这些脸色凝重的长老"
+        ]
+      },
+      {
+        "mention_type": "describe",
+        "mention_scope": "collective",
+        "mention_quote": "长老们",
+        "evidence_quotes": [
+          "这些脸色凝重的长老"
+        ]
+      }
+    ]
+  },
+  "grounded_packet": {
+    "schema_version": "grounded-character-packet-v6",
+    "evidence_precedence_policy_version": "exact-evidence-precedence-v1",
+    "source_document_version_id": "source-8bcb7305a759571b",
+    "chunking_policy_version": "fixed-codepoint-window-2500-overlap-250-v1",
+    "chunk_id": "chunk-000001-0-2500-f390c57806b0",
+    "chunk_hash": "f390c57806b025eed04c99152a68840f8c987027e43d679ebf830b70678c59ba",
+    "chunk_source_span": {
+      "start": 0,
+      "end": 2500
+    },
+    "grounded_mentions": [
+      {
+        "local_mention_id": "m1",
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "唐三",
+        "approved_evidence": [
+          {
+            "evidence_quote": "一名身穿灰衣的青年正站在鬼见愁顶峰",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 204,
+                "end": 221
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "他今年二十九岁",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 282,
+                "end": 289
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "从他胸口处那斗大的唐字",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 240,
+                "end": 251
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "全身赤裸的唐三",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1696,
+                "end": 1703
+              }
+            ],
+            "relation_to_mention": "contains_mention",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "高大昂扬的身躯",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1892,
+                "end": 1899
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "他的笑容很灿烂",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1714,
+                "end": 1721
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "601485b13f34863605afdd84f49efc0eb5b012378a449a30b757f0ba1f81cdc5"
+      },
+      {
+        "local_mention_id": "m3",
+        "mention_type": "describe",
+        "mention_scope": "collective",
+        "mention_quote": "十七道白色的身影",
+        "approved_evidence": [
+          {
+            "evidence_quote": "十七道白色的身影",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 572,
+                "end": 580
+              }
+            ],
+            "relation_to_mention": "contains_mention",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "他们身穿的白袍代表的是内门",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 631,
+                "end": 644
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "年纪最小的也超过了五旬",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 611,
+                "end": 622
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "年纪最大的已经超过了两个甲子",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 745,
+                "end": 759
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "这些脸色凝重的长老",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 847,
+                "end": 856
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "434a3b780eb665819b85bde238ac47ac152d259174ede0672b531ff687e6cb5f"
+      },
+      {
+        "local_mention_id": "m4",
+        "mention_type": "describe",
+        "mention_scope": "collective",
+        "mention_quote": "长老们",
+        "approved_evidence": [
+          {
+            "evidence_quote": "这些脸色凝重的长老",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 847,
+                "end": 856
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "b1b21ba41d1074e5d4377853782d79f4b96c65caced773182250db5869b4ffa8"
+      }
+    ],
+    "rejected_evidence": []
+  },
+  "grounding_trace_events": [
+    {
+      "code": "describe_evidence_shadowed_by_exact",
+      "local_mention_id": "m2",
+      "detail": "occurrences=1; exact_mentions=m1; rule=exact-evidence-precedence-v1"
+    },
+    {
+      "code": "describe_evidence_shadowed_by_exact",
+      "local_mention_id": "m2",
+      "detail": "occurrences=1; exact_mentions=m1; rule=exact-evidence-precedence-v1"
+    },
+    {
+      "code": "describe_evidence_shadowed_by_exact",
+      "local_mention_id": "m2",
+      "detail": "occurrences=1; exact_mentions=m1; rule=exact-evidence-precedence-v1"
+    },
+    {
+      "code": "describe_removed_after_exact_dedup",
+      "local_mention_id": "m2",
+      "detail": "rule=exact-evidence-precedence-v1"
+    }
+  ],
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 35235,
+    "http_status": 200,
+    "response_id": "849257fd-9c50-4640-b4a2-7a8fa615308c",
+    "usage": {
+      "input_tokens": 2644,
+      "cached_input_tokens": 896,
+      "output_tokens": 3926,
+      "reasoning_tokens": 3604,
+      "total_tokens": 6570
+    },
+    "error_kind": null
+  }
+}

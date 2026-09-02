@@ -2,8 +2,8 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://novel-character-generator.local/contracts/simplified-character-evidence-v3-model-schemas.json",
   "title": "Simplified Character Evidence Pipeline V3 Schemas",
-  "description": "Target machine contracts for model-visible payloads, code-only orchestration envelopes, grounded appearance evidence, and bounded cross-Chunk character identity resolution.",
-  "version": "3.12.0-draft1",
+  "description": "Target machine contracts for model-visible payloads, code-only orchestration envelopes, grounded appearance evidence, bounded cross-Chunk character identity resolution, deterministic profiles, appearance scopes, and grounded state transitions.",
+  "version": "3.20.0-draft1",
   "$defs": {
     "SourceSpan": {
       "type": "object",
@@ -901,6 +901,83 @@
         }
       ]
     },
+    "M3ClusterRescueCharacter": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["labels", "context_quotes", "appearance_fact_quotes"],
+      "properties": {
+        "labels": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
+        "context_quotes": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
+        "appearance_fact_quotes": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true}
+      }
+    },
+    "M3ClusterRescueCandidate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["candidate_number", "known_labels", "context_quotes", "appearance_fact_quotes", "relationship_context_quotes"],
+      "properties": {
+        "candidate_number": {"type": "integer", "minimum": 1},
+        "known_labels": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
+        "context_quotes": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
+        "appearance_fact_quotes": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
+        "relationship_context_quotes": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}, "uniqueItems": true}
+      }
+    },
+    "M3ClusterRescueInput": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["current_character", "candidate_characters"],
+      "properties": {
+        "current_character": {"$ref": "#/$defs/M3ClusterRescueCharacter"},
+        "candidate_characters": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/M3ClusterRescueCandidate"}}
+      }
+    },
+    "M3ClusterRescueResult": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["identity_relation", "candidate_number", "label_relation", "identity_evidence_quotes"],
+      "properties": {
+        "identity_relation": {"enum": ["same_character", "different_characters", "uncertain"]},
+        "candidate_number": {"type": ["integer", "null"], "minimum": 1},
+        "label_relation": {
+          "type": ["string", "null"],
+          "enum": ["same_surface", "name_variant", "alias", "title", "contextual_description", "unknown", null]
+        },
+        "identity_evidence_quotes": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true}
+      },
+      "allOf": [
+        {
+          "if": {"properties": {"identity_relation": {"const": "same_character"}}, "required": ["identity_relation"]},
+          "then": {
+            "properties": {
+              "candidate_number": {"type": "integer", "minimum": 1},
+              "label_relation": {"type": "string", "enum": ["same_surface", "name_variant", "alias", "title", "contextual_description", "unknown"]},
+              "identity_evidence_quotes": {"minItems": 1}
+            }
+          }
+        },
+        {
+          "if": {"properties": {"identity_relation": {"const": "different_characters"}}, "required": ["identity_relation"]},
+          "then": {
+            "properties": {
+              "candidate_number": {"type": "integer", "minimum": 1},
+              "label_relation": {"type": "null"},
+              "identity_evidence_quotes": {"minItems": 1}
+            }
+          }
+        },
+        {
+          "if": {"properties": {"identity_relation": {"const": "uncertain"}}, "required": ["identity_relation"]},
+          "then": {
+            "properties": {
+              "candidate_number": {"type": "null"},
+              "label_relation": {"type": "null"},
+              "identity_evidence_quotes": {"maxItems": 0}
+            }
+          }
+        }
+      ]
+    },
     "IdentityContextBinding": {
       "type": "object",
       "additionalProperties": false,
@@ -948,7 +1025,7 @@
       "required": ["schema_version", "context_policy_version", "source_document_version_id", "document_hash", "nodes", "summary"],
       "properties": {
         "schema_version": {"const": "document-local-character-nodes-v1"},
-        "context_policy_version": {"const": "identity-evidence-window-v1"},
+        "context_policy_version": {"const": "identity-evidence-window-v2"},
         "source_document_version_id": {"type": "string", "minLength": 1},
         "document_hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
         "nodes": {"type": "array", "items": {"$ref": "#/$defs/DocumentLocalCharacterNode"}},
@@ -963,7 +1040,7 @@
         "schema_version": {"const": "m3-identity-envelope-v1"},
         "current_node_key": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
         "candidate_node_key": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
-        "candidate_reasons": {"type": "array", "minItems": 1, "items": {"enum": ["same_exact_label", "label_contains", "possible_name_variant", "shared_fact_quote"]}, "uniqueItems": true},
+        "candidate_reasons": {"type": "array", "minItems": 1, "items": {"enum": ["same_exact_label", "label_contains", "possible_name_variant", "shared_fact_quote", "nearby_explicit_identity_bridge"]}, "uniqueItems": true},
         "context_bindings": {"type": "array", "items": {"$ref": "#/$defs/IdentityContextBinding"}},
         "task_cache_key": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
         "model_input": {"$ref": "#/$defs/M3CharacterIdentityInput"}
@@ -978,6 +1055,52 @@
         "document_span": {"$ref": "#/$defs/SourceSpan"},
         "match_mode": {"enum": ["exact", "whitespace_equivalent"]}
       }
+    },
+    "SharedDocumentFactIdentityEdge": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["left_node_key", "right_node_key", "relation", "reason", "fact_hashes"],
+      "properties": {
+        "left_node_key": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "right_node_key": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "relation": {"const": "same_character"},
+        "reason": {"const": "shared_document_fact"},
+        "fact_hashes": {"type": "array", "minItems": 1, "items": {"type": "string", "pattern": "^[0-9a-f]{64}$"}, "uniqueItems": true}
+      }
+    },
+    "LocalCoreferenceIdentityEvidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["evidence_quote", "document_span", "match_mode"],
+      "properties": {
+        "evidence_quote": {"type": "string", "minLength": 1},
+        "document_span": {"$ref": "#/$defs/SourceSpan"},
+        "match_mode": {"const": "exact"}
+      }
+    },
+    "LocalCoreferenceIdentityEdge": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["left_node_key", "right_node_key", "relation", "reason", "relation_type", "policy_version", "identity_evidence"],
+      "properties": {
+        "left_node_key": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "right_node_key": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "relation": {"const": "same_character"},
+        "reason": {"const": "explicit_local_coreference"},
+        "relation_type": {"enum": ["explicit_apposition", "demonstrative_naming", "continuous_local_coreference"]},
+        "policy_version": {"const": "grounded-local-coreference-v1"},
+        "identity_evidence": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/LocalCoreferenceIdentityEvidence"}}
+      }
+    },
+    "DeterministicIdentityEdge": {
+      "oneOf": [
+        {"$ref": "#/$defs/SharedDocumentFactIdentityEdge"},
+        {"$ref": "#/$defs/LocalCoreferenceIdentityEdge"}
+      ]
+    },
+    "IdentityDeterministicEdges": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/DeterministicIdentityEdge"}
     },
     "GroundedIdentityDecision": {
       "type": "object",
@@ -1056,8 +1179,8 @@
       "required": ["schema_version", "identity_policy_version", "candidate_policy_version", "conflict_policy_version", "source_document_version_id", "document_hash", "characters", "unresolved_bindings", "review_items", "cannot_link_constraints", "summary"],
       "properties": {
         "schema_version": {"const": "document-character-registry-v1"},
-        "identity_policy_version": {"const": "strict-evidence-identity-v1"},
-        "candidate_policy_version": {"const": "bounded-local-candidate-retrieval-v1"},
+        "identity_policy_version": {"const": "global-constrained-identity-v3"},
+        "candidate_policy_version": {"enum": ["bounded-local-candidate-retrieval-v1", "bounded-local-candidate-retrieval-v2", "bounded-local-candidate-retrieval-v3"]},
         "conflict_policy_version": {"const": "preserve-multiple-values-v1"},
         "source_document_version_id": {"type": "string", "minLength": 1},
         "document_hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
@@ -1066,6 +1189,350 @@
         "review_items": {"type": "array", "items": {"type": "object"}},
         "cannot_link_constraints": {"type": "array", "items": {"type": "object"}},
         "summary": {"type": "object"}
+      }
+    },
+    "MaterializedDocumentCharacterProfile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["character_id", "identity_status", "canonical_label", "canonical_label_status", "labels", "member_character_refs", "appearance_facts", "possible_conflicts", "review_item_ids"],
+      "properties": {
+        "character_id": {"type": "string", "pattern": "^char-[0-9a-f]{20}$"},
+        "identity_status": {"enum": ["linked", "singleton"]},
+        "canonical_label": {"type": "string", "minLength": 1},
+        "canonical_label_status": {"enum": ["confirmed_name_like", "provisional_description"]},
+        "labels": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["label_quote", "label_role", "globally_unique"],
+            "properties": {
+              "label_quote": {"type": "string", "minLength": 1},
+              "label_role": {"enum": ["name", "name_variant", "alias", "title", "contextual_description", "unknown"]},
+              "globally_unique": {"type": "boolean"}
+            }
+          }
+        },
+        "member_character_refs": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/WrappedLocalCharacterRef"}},
+        "appearance_facts": {"type": "array", "items": {"$ref": "#/$defs/DocumentAppearanceFact"}},
+        "possible_conflicts": {"type": "array", "items": {"type": "object"}},
+        "review_item_ids": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true}
+      }
+    },
+    "DocumentCharacterProfiles": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schema_version", "join_policy_version", "identity_policy_version", "candidate_policy_version", "conflict_policy_version", "dedup_policy_version", "source_document_version_id", "document_hash", "coverage_status", "processed_source_end", "source_artifacts", "characters", "unassigned_appearance_facts", "unresolved_bindings", "review_items", "cannot_link_constraints", "summary"],
+      "properties": {
+        "schema_version": {"const": "document-character-profiles-v1"},
+        "join_policy_version": {"const": "strict-fact-hash-profile-join-v1"},
+        "identity_policy_version": {"const": "global-constrained-identity-v3"},
+        "candidate_policy_version": {"enum": ["bounded-local-candidate-retrieval-v1", "bounded-local-candidate-retrieval-v2", "bounded-local-candidate-retrieval-v3"]},
+        "conflict_policy_version": {"const": "preserve-multiple-values-v1"},
+        "dedup_policy_version": {"const": "document-overlap-safe-fact-dedup-v1"},
+        "source_document_version_id": {"type": "string", "minLength": 1},
+        "document_hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "coverage_status": {"enum": ["complete", "truncated"]},
+        "processed_source_end": {"type": "integer", "minimum": 0},
+        "source_artifacts": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["character_registry", "character_evidence"],
+          "properties": {
+            "character_registry": {"$ref": "#/$defs/DocumentEvidenceSourceArtifact"},
+            "character_evidence": {"$ref": "#/$defs/DocumentEvidenceSourceArtifact"}
+          }
+        },
+        "characters": {"type": "array", "items": {"$ref": "#/$defs/MaterializedDocumentCharacterProfile"}},
+        "unassigned_appearance_facts": {"type": "array", "items": {"$ref": "#/$defs/DocumentAppearanceFact"}},
+        "unresolved_bindings": {"type": "array", "items": {"type": "object"}},
+        "review_items": {"type": "array", "items": {"type": "object"}},
+        "cannot_link_constraints": {"type": "array", "items": {"type": "object"}},
+        "summary": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["global_characters", "linked_characters", "singleton_characters", "characters_with_appearance", "characters_without_appearance", "assigned_appearance_facts", "unassigned_appearance_facts", "document_appearance_facts", "source_occurrences", "possible_conflicts", "review_items", "unresolved_bindings", "cannot_link_constraints"],
+          "properties": {
+            "global_characters": {"type": "integer", "minimum": 0},
+            "linked_characters": {"type": "integer", "minimum": 0},
+            "singleton_characters": {"type": "integer", "minimum": 0},
+            "characters_with_appearance": {"type": "integer", "minimum": 0},
+            "characters_without_appearance": {"type": "integer", "minimum": 0},
+            "assigned_appearance_facts": {"type": "integer", "minimum": 0},
+            "unassigned_appearance_facts": {"type": "integer", "minimum": 0},
+            "document_appearance_facts": {"type": "integer", "minimum": 0},
+            "source_occurrences": {"type": "integer", "minimum": 0},
+            "possible_conflicts": {"type": "integer", "minimum": 0},
+            "review_items": {"type": "integer", "minimum": 0},
+            "unresolved_bindings": {"type": "integer", "minimum": 0},
+            "cannot_link_constraints": {"type": "integer", "minimum": 0}
+          }
+        }
+      }
+    },
+    "CanonicalFactSourceOccurrenceBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source_fact_hash", "source_occurrence_index", "source_occurrence"],
+      "properties": {
+        "source_fact_hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "source_occurrence_index": {"type": "integer", "minimum": 0},
+        "source_occurrence": {"$ref": "#/$defs/DocumentFactSourceOccurrence"}
+      }
+    },
+    "DocumentCharacterFactGroup": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["canonical_fact_id", "character_id", "fact_quote", "category", "attribute", "value", "document_fact_span", "source_fact_hashes", "source_occurrences", "grouping_reason", "scope_assignment_status"],
+      "properties": {
+        "canonical_fact_id": {"type": "string", "pattern": "^cfact-[0-9a-f]{20}$"},
+        "character_id": {"type": "string", "pattern": "^char-[0-9a-f]{20}$"},
+        "fact_quote": {"type": "string", "minLength": 1},
+        "category": {"enum": ["age", "body", "face", "hair", "clothing", "accessory", "distinctive_mark", "appearance_state", "other_visual"]},
+        "attribute": {"type": "string", "minLength": 1},
+        "value": {"type": "string", "minLength": 1},
+        "document_fact_span": {"$ref": "#/$defs/SourceSpan"},
+        "source_fact_hashes": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "pattern": "^[0-9a-f]{64}$"}},
+        "source_occurrences": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/CanonicalFactSourceOccurrenceBinding"}},
+        "grouping_reason": {"const": "same_character_span_category_attribute_value"},
+        "scope_assignment_status": {"const": "unassigned"}
+      }
+    },
+    "FactGroupCharacter": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["character_id", "identity_status", "canonical_label", "canonical_fact_ids"],
+      "properties": {
+        "character_id": {"type": "string", "pattern": "^char-[0-9a-f]{20}$"},
+        "identity_status": {"enum": ["linked", "singleton"]},
+        "canonical_label": {"type": "string", "minLength": 1},
+        "canonical_fact_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string", "pattern": "^cfact-[0-9a-f]{20}$"}}
+      }
+    },
+    "DocumentCharacterFactGroups": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schema_version", "grouping_policy_version", "source_document_version_id", "document_hash", "coverage_status", "processed_source_end", "source_artifacts", "characters", "fact_groups", "unassigned_source_fact_hashes", "unassigned_source_occurrences", "summary"],
+      "properties": {
+        "schema_version": {"const": "document-character-fact-groups-v1"},
+        "grouping_policy_version": {"const": "same-character-span-structure-v1"},
+        "source_document_version_id": {"type": "string", "minLength": 1},
+        "document_hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "coverage_status": {"enum": ["complete", "truncated"]},
+        "processed_source_end": {"type": "integer", "minimum": 0},
+        "source_artifacts": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["character_registry", "character_profiles"],
+          "properties": {
+            "character_registry": {"$ref": "#/$defs/DocumentEvidenceSourceArtifact"},
+            "character_profiles": {"$ref": "#/$defs/DocumentEvidenceSourceArtifact"}
+          }
+        },
+        "characters": {"type": "array", "items": {"$ref": "#/$defs/FactGroupCharacter"}},
+        "fact_groups": {"type": "array", "items": {"$ref": "#/$defs/DocumentCharacterFactGroup"}},
+        "unassigned_source_fact_hashes": {"type": "array", "uniqueItems": true, "items": {"type": "string", "pattern": "^[0-9a-f]{64}$"}},
+        "unassigned_source_occurrences": {"type": "array", "items": {"$ref": "#/$defs/CanonicalFactSourceOccurrenceBinding"}},
+        "summary": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["characters", "characters_with_fact_groups", "raw_appearance_facts", "assigned_raw_appearance_facts", "unassigned_raw_appearance_facts", "canonical_fact_groups", "multi_member_fact_groups", "collapsed_raw_fact_members", "source_occurrences", "provider_calls", "complete"],
+          "properties": {
+            "characters": {"type": "integer", "minimum": 0},
+            "characters_with_fact_groups": {"type": "integer", "minimum": 0},
+            "raw_appearance_facts": {"type": "integer", "minimum": 0},
+            "assigned_raw_appearance_facts": {"type": "integer", "minimum": 0},
+            "unassigned_raw_appearance_facts": {"type": "integer", "minimum": 0},
+            "canonical_fact_groups": {"type": "integer", "minimum": 0},
+            "multi_member_fact_groups": {"type": "integer", "minimum": 0},
+            "collapsed_raw_fact_members": {"type": "integer", "minimum": 0},
+            "source_occurrences": {"type": "integer", "minimum": 0},
+            "provider_calls": {"const": 0},
+            "complete": {"const": true}
+          }
+        }
+      }
+    },
+    "AppearanceChapter": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["chapter_number", "title", "document_span"],
+      "properties": {
+        "chapter_number": {"type": "integer", "minimum": 0},
+        "title": {"type": "string"},
+        "document_span": {"$ref": "#/$defs/SourceSpan"}
+      }
+    },
+    "AppearanceFactAssignment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["canonical_fact_id", "character_id", "chapter_number", "order", "life", "form", "scene", "persistence"],
+      "properties": {
+        "canonical_fact_id": {"type": "string", "pattern": "^cfact-[0-9a-f]{20}$"},
+        "character_id": {"type": "string", "pattern": "^char-[0-9a-f]{20}$"},
+        "chapter_number": {"type": "integer", "minimum": 0},
+        "order": {"type": "integer", "minimum": 0},
+        "life": {"type": "string", "minLength": 1},
+        "form": {"type": "string", "minLength": 1},
+        "scene": {"type": "string", "minLength": 1},
+        "persistence": {"enum": ["stable", "persistent_until_changed", "scene", "momentary", "unknown"]}
+      }
+    },
+    "DocumentCharacterAppearanceScopes": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schema_version", "scope_policy_version", "source_document_version_id", "coverage_status", "processed_source_end", "chapters", "fact_assignments", "summary"],
+      "properties": {
+        "schema_version": {"const": "document-character-appearance-scopes-v1"},
+        "scope_policy_version": {"const": "chapter-order-conservative-persistence-v1"},
+        "source_document_version_id": {"type": "string", "minLength": 1},
+        "coverage_status": {"enum": ["complete", "truncated"]},
+        "processed_source_end": {"type": "integer", "minimum": 1},
+        "chapters": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/AppearanceChapter"}},
+        "fact_assignments": {"type": "array", "items": {"$ref": "#/$defs/AppearanceFactAssignment"}},
+        "summary": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["chapters", "canonical_facts", "unknown_life", "unknown_form", "unknown_scene", "stable", "persistent_until_changed", "scene", "momentary", "unknown_persistence", "provider_calls", "complete"],
+          "properties": {
+            "chapters": {"type": "integer", "minimum": 1},
+            "canonical_facts": {"type": "integer", "minimum": 0},
+            "unknown_life": {"type": "integer", "minimum": 0},
+            "unknown_form": {"type": "integer", "minimum": 0},
+            "unknown_scene": {"type": "integer", "minimum": 0},
+            "stable": {"type": "integer", "minimum": 0},
+            "persistent_until_changed": {"type": "integer", "minimum": 0},
+            "scene": {"type": "integer", "minimum": 0},
+            "momentary": {"type": "integer", "minimum": 0},
+            "unknown_persistence": {"type": "integer", "minimum": 0},
+            "provider_calls": {"const": 0},
+            "complete": {"const": true}
+          }
+        }
+      }
+    },
+    "AppearanceTransitionModelEvent": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["character", "evidence", "dimension", "attribute", "before", "after"],
+      "properties": {
+        "character": {"type": "string", "minLength": 1},
+        "evidence": {"type": "string", "minLength": 1},
+        "dimension": {"enum": ["life", "form", "scene", "appearance"]},
+        "attribute": {"type": "string", "minLength": 1},
+        "before": {"type": "string"},
+        "after": {"type": "string"}
+      }
+    },
+    "AppearanceTransitionModelOutput": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["events"],
+      "properties": {
+        "events": {"type": "array", "maxItems": 16, "items": {"$ref": "#/$defs/AppearanceTransitionModelEvent"}}
+      }
+    },
+    "TransitionRosterCharacter": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "aliases"],
+      "properties": {
+        "name": {"type": "string", "minLength": 1},
+        "aliases": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true}
+      }
+    },
+    "AppearanceTransitionChunk": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["chunk_id", "chunk_hash", "document_span", "characters", "text"],
+      "properties": {
+        "chunk_id": {"type": "string", "minLength": 1},
+        "chunk_hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "document_span": {"$ref": "#/$defs/SourceSpan"},
+        "characters": {"type": "array", "items": {"$ref": "#/$defs/TransitionRosterCharacter"}},
+        "text": {"type": "string", "minLength": 1}
+      }
+    },
+    "AppearanceTransitionChunks": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schema_version", "transition_policy_version", "source_document_version_id", "total_characters", "source_chunking_policy_version", "chunks", "summary"],
+      "properties": {
+        "schema_version": {"const": "appearance-transition-chunks-v1"},
+        "transition_policy_version": {"const": "full-coverage-roster-grounding-v1"},
+        "source_document_version_id": {"type": "string", "minLength": 1},
+        "total_characters": {"type": "integer", "minimum": 1},
+        "source_chunking_policy_version": {"type": "string", "minLength": 1},
+        "chunks": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/AppearanceTransitionChunk"}},
+        "summary": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["planned_chunks", "chunks_with_characters", "model_calls", "complete"],
+          "properties": {
+            "planned_chunks": {"type": "integer", "minimum": 1},
+            "chunks_with_characters": {"type": "integer", "minimum": 0},
+            "model_calls": {"const": 0},
+            "complete": {"const": true}
+          }
+        }
+      }
+    },
+    "GroundedAppearanceTransition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["character_id", "evidence", "document_span", "dimension", "attribute", "before", "after", "change"],
+      "properties": {
+        "character_id": {"type": "string", "pattern": "^char-[0-9a-f]{20}$"},
+        "evidence": {"type": "string", "minLength": 1},
+        "document_span": {"$ref": "#/$defs/SourceSpan"},
+        "dimension": {"enum": ["life", "form", "scene", "appearance"]},
+        "attribute": {"type": "string", "minLength": 1},
+        "before": {"type": "string"},
+        "after": {"type": "string"},
+        "change": {"enum": ["enter", "exit", "change"]}
+      }
+    },
+    "AppearanceTransitionReviewItem": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["chunk_id", "event", "reason", "character", "evidence"],
+      "properties": {
+        "chunk_id": {"type": "string", "minLength": 1},
+        "event": {"type": "integer", "minimum": 1},
+        "reason": {"enum": ["evidence_not_found", "evidence_not_unique"]},
+        "character": {"type": "string", "minLength": 1},
+        "evidence": {"type": "string", "minLength": 1}
+      }
+    },
+    "DocumentCharacterAppearanceStates": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schema_version", "transition_policy_version", "source_document_version_id", "coverage_status", "processed_source_end", "transitions", "fact_assignments", "review", "summary"],
+      "properties": {
+        "schema_version": {"const": "document-character-appearance-states-v1"},
+        "transition_policy_version": {"const": "full-coverage-roster-grounding-v1"},
+        "source_document_version_id": {"type": "string", "minLength": 1},
+        "coverage_status": {"const": "complete"},
+        "processed_source_end": {"type": "integer", "minimum": 1},
+        "transitions": {"type": "array", "items": {"$ref": "#/$defs/GroundedAppearanceTransition"}},
+        "fact_assignments": {"type": "array", "items": {"$ref": "#/$defs/AppearanceFactAssignment"}},
+        "review": {"type": "array", "items": {"$ref": "#/$defs/AppearanceTransitionReviewItem"}},
+        "summary": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["planned_chunks", "model_calls", "grounded_transitions", "review_items", "facts_with_life", "facts_with_form", "facts_with_scene", "complete"],
+          "properties": {
+            "planned_chunks": {"type": "integer", "minimum": 1},
+            "model_calls": {"type": "integer", "minimum": 0},
+            "grounded_transitions": {"type": "integer", "minimum": 0},
+            "review_items": {"type": "integer", "minimum": 0},
+            "facts_with_life": {"type": "integer", "minimum": 0},
+            "facts_with_form": {"type": "integer", "minimum": 0},
+            "facts_with_scene": {"type": "integer", "minimum": 0},
+            "complete": {"const": true}
+          }
+        }
       }
     }
   }

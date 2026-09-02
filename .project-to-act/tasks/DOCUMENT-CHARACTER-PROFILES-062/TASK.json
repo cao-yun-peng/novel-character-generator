@@ -1,7 +1,7 @@
 {
   "id": "DOCUMENT-CHARACTER-PROFILES-062",
   "title": "文档人物档案确定性组装",
-  "status": "in_progress",
+  "status": "completed",
   "owner": "Codex",
   "objective": "将文档人物注册表与文档事实库按 fact_hash 安全连接，生成可追溯、可校验且不调用模型的 document-character-profiles.json。",
   "risk_level": "L1-deterministic-data-join",

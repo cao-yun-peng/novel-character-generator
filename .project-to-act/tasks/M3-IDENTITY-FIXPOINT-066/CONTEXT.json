@@ -1,0 +1,34 @@
+{
+  "task_id": "M3-IDENTITY-FIXPOINT-066",
+  "lifecycle_stage": "5",
+  "lifecycle_revision": 2,
+  "runtime_version_before": "0.1.0.dev15",
+  "schema_version_before": "3.15.0-draft1",
+  "runtime_version_after": "0.1.0.dev16",
+  "schema_version_after": "3.16.0-draft1",
+  "input_file": "tests/小说/斗罗大陆前20章.txt",
+  "source_identity_run": "runs/douluo-20ch-e2e-dev13-20260831/identity",
+  "seed_rescue_run": "runs/douluo-20ch-e2e-dev13-20260831/identity-rescue-live-dev15",
+  "target_run": "runs/douluo-20ch-e2e-dev13-20260831/identity-rescue-fixedpoint-dev16",
+  "known_failures": [
+    "唐三候选出现一对反向重复任务，第一轮形成两个尚未连接的唐三连通分量",
+    "男孩儿与唐三已有 grounded different/cannot-link，但基础 uncertain 仍残留 unresolved"
+  ],
+  "expected_new_provider_calls": 1,
+  "result": {
+    "seeded_grounded_decisions": 5,
+    "new_provider_calls": 1,
+    "new_relation": "same_character",
+    "grounding_issues": 0,
+    "fixed_point_reached": true,
+    "global_characters_before_new_call": 9,
+    "global_characters_after": 8,
+    "tang_san_clusters_after": 1,
+    "unresolved_after": 1,
+    "remaining_unresolved_label": "看门的青年",
+    "cannot_link_after": 2,
+    "appearance_fact_refs_after": 129,
+    "tests": 135
+  },
+  "context_freshness": "verified-2026-09-01"
+}

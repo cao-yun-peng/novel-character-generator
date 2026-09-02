@@ -1,0 +1,69 @@
+{
+  "schema_version": "m2-attribution-task-result-v1",
+  "source_run_dir": "E:\\project\\agent\\novel-cahracter-generator\\runs\\douluo-20ch-e2e-dev13-20260831\\m1",
+  "chunk_index": 14,
+  "chunk_id": "chunk-000014-29250-31750-3f70e01ec313",
+  "target_local_mention_id": "m1",
+  "target_mention_quote": "唐三",
+  "task_cache_key": "1d616c951727ed7ba217c7a6810da305affda841a2f64cd8b2d41dc0684b4180",
+  "model_output": {
+    "belongs_to_target": [
+      {
+        "fact_quote": "唐三手腕上带着的这筒袖箭",
+        "category": "accessory",
+        "attribute": "手腕",
+        "value": "带着袖箭"
+      }
+    ]
+  },
+  "grounded_result": {
+    "target_character_ref": {
+      "source_document_version_id": "source-8bcb7305a759571b",
+      "chunk_id": "chunk-000014-29250-31750-3f70e01ec313",
+      "local_mention_id": "m1",
+      "mention_type": "exact",
+      "packet_hash": "60c7c15db5a2aa1166f664e45e3d8faff9babb7e969bb9074a63ef4d8d3ac565"
+    },
+    "task_cache_key": "1d616c951727ed7ba217c7a6810da305affda841a2f64cd8b2d41dc0684b4180",
+    "grounded_belongs_to_target": [
+      {
+        "fact_quote": "唐三手腕上带着的这筒袖箭",
+        "category": "accessory",
+        "attribute": "手腕",
+        "value": "带着袖箭",
+        "source_mention_id": "m1",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "唐三手腕上带着的这筒袖箭",
+        "source_evidence_span": {
+          "start": 51,
+          "end": 63
+        },
+        "fact_chunk_span": {
+          "start": 51,
+          "end": 63
+        },
+        "match_mode": "exact"
+      }
+    ]
+  },
+  "grounding_issues": [],
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 5844,
+    "http_status": 200,
+    "response_id": "4a412b02-b09a-4e4d-be20-b1d4052b9738",
+    "usage": {
+      "input_tokens": 2131,
+      "cached_input_tokens": 384,
+      "output_tokens": 510,
+      "reasoning_tokens": 463,
+      "total_tokens": 2641
+    },
+    "error_kind": null
+  }
+}

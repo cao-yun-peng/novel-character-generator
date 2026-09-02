@@ -1,0 +1,89 @@
+{
+  "schema_version": "appearance-transition-chunk-result-v1",
+  "identity": {
+    "chunk_id": "chunk-000008-15750-18250-3249bedb72a1",
+    "chunk_hash": "3249bedb72a19a643804e214c834499cfe7d838b4cca74e5579fdf43e69fb02c",
+    "document_span": {
+      "start": 15750,
+      "end": 18250
+    },
+    "characters": [
+      {
+        "name": "素云涛",
+        "aliases": []
+      },
+      {
+        "name": "唐三",
+        "aliases": []
+      }
+    ]
+  },
+  "model_output": {
+    "events": [
+      {
+        "character": "唐三",
+        "evidence": "唐三控制着把自己的蓝银草收回体内",
+        "dimension": "form",
+        "attribute": "form_state",
+        "before": "蓝银草外露",
+        "after": "蓝银草收回体内"
+      },
+      {
+        "character": "素云涛",
+        "evidence": "素云涛全身青光收敛，收回了自己的武魂附体",
+        "dimension": "form",
+        "attribute": "form_state",
+        "before": "武魂附体",
+        "after": "武魂附体收回"
+      }
+    ]
+  },
+  "grounded_transitions": [
+    {
+      "character_id": "char-f47075b7019563fd8315",
+      "evidence": "唐三控制着把自己的蓝银草收回体内",
+      "document_span": {
+        "start": 16728,
+        "end": 16744
+      },
+      "dimension": "form",
+      "attribute": "form_state",
+      "before": "蓝银草外露",
+      "after": "蓝银草收回体内",
+      "change": "change"
+    },
+    {
+      "character_id": "char-431fd9f3afcbe1cece75",
+      "evidence": "素云涛全身青光收敛，收回了自己的武魂附体",
+      "document_span": {
+        "start": 17846,
+        "end": 17866
+      },
+      "dimension": "form",
+      "attribute": "form_state",
+      "before": "武魂附体",
+      "after": "武魂附体收回",
+      "change": "change"
+    }
+  ],
+  "review": [],
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 23172,
+    "http_status": 200,
+    "response_id": "965c719d-e547-4503-92f7-ca4cffa1c1bc",
+    "usage": {
+      "input_tokens": 2023,
+      "cached_input_tokens": 1920,
+      "output_tokens": 2545,
+      "reasoning_tokens": 2427,
+      "total_tokens": 4568
+    },
+    "error_kind": null
+  }
+}

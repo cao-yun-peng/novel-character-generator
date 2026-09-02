@@ -1,0 +1,28 @@
+{
+  "id": "M3-IDENTITY-RESCUE-LIVE-065",
+  "title": "斗罗 M3 残余 cluster-level DeepSeek 实跑",
+  "status": "completed",
+  "owner": "Codex",
+  "objective": "执行已接线的 5 个残余身份裁决任务，验证候选专属 relationship_context_quotes 证据域、Grounding 和注册表重建。",
+  "risk_level": "L1-model-quality-and-paid-api",
+  "allowed_paths": [
+    "runs/douluo-20ch-e2e-dev13-20260831/identity-rescue-live-dev15",
+    ".project-to-act/tasks/M3-IDENTITY-RESCUE-LIVE-065",
+    ".project-to-act/PROJECT_PROGRESS.md",
+    ".project-to-act/PROJECT_FEATURES.md",
+    ".project-to-act/PROJECT_ACCEPTANCE.md"
+  ],
+  "invariants": [
+    "只运行残余任务，不重跑基础 63 个 M3 任务",
+    "identity_evidence_quotes 只能来自所选候选的 relationship_context_quotes",
+    "任何无法安全 Grounding 的关系降级为 uncertain",
+    "cannot-link 是硬约束",
+    "API key 不进入产物、日志或治理证据"
+  ],
+  "acceptance": [
+    "5 个任务全部成功或明确记录可恢复失败",
+    "模型输出、grounded decisions、provider traces 和 registry 分离保存",
+    "所有已接受身份证据可逐字回放",
+    "记录调用数、关系分布、Grounding issue 和注册表变化"
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "schema_version": "identity-task-result-v1",
+  "task_index": 5,
+  "current_label_quote": "唐三",
+  "candidate_label_quote": "唐三",
+  "task_cache_key": "13898895407c421d6771a69852dcfa64335bc3ce814f74a105fde37dffb881a3",
+  "model_output": {
+    "identity_relation": "same_character",
+    "label_relation": "same_surface",
+    "identity_evidence_quotes": [
+      "唐三的坚持令唐昊很惊讶",
+      "唐三的父亲唐昊，就是一个铁匠"
+    ]
+  },
+  "grounded_result": {
+    "schema_version": "grounded-identity-decision-v1",
+    "current_node_key": "d010e7949745d76331e3c2701c376207e92bd7dd2c63a8ecd29b0ebf5bd9c39d",
+    "candidate_node_key": "d3adfa5940d8d0a5869aee823fa049a803a7827dda3f448717ef18fc60cb0d31",
+    "task_cache_key": "13898895407c421d6771a69852dcfa64335bc3ce814f74a105fde37dffb881a3",
+    "requested_identity_relation": "same_character",
+    "identity_relation": "same_character",
+    "label_relation": "same_surface",
+    "grounded_identity_evidence": [
+      {
+        "evidence_quote": "唐三的父亲唐昊，就是一个铁匠",
+        "document_span": {
+          "start": 5083,
+          "end": 5097
+        },
+        "match_mode": "exact"
+      },
+      {
+        "evidence_quote": "唐三的坚持令唐昊很惊讶",
+        "document_span": {
+          "start": 8794,
+          "end": 8805
+        },
+        "match_mode": "exact"
+      }
+    ],
+    "issues": []
+  },
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 16469,
+    "http_status": 200,
+    "response_id": "ca06ce13-1135-4ff0-b6c1-f971fea04bc2",
+    "usage": {
+      "input_tokens": 2198,
+      "cached_input_tokens": 512,
+      "output_tokens": 1749,
+      "reasoning_tokens": 1690,
+      "total_tokens": 3947
+    },
+    "error_kind": null
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "schema_version": "identity-task-result-v1",
+  "task_index": 15,
+  "current_label_quote": "战魂大师",
+  "candidate_label_quote": "年轻人",
+  "task_cache_key": "2f36b67f42d52d92f62e273e11c14871fd2ab2d38377d0acf730b455d7f2ed7e",
+  "model_output": {
+    "identity_relation": "same_character",
+    "label_relation": "title",
+    "identity_evidence_quotes": [
+      "“您好，尊敬的战魂大师，这次要麻烦您了。”老杰克恭敬的向年轻人行礼。",
+      "老杰克道：“好的。孩子们，这位是来自诺丁城的战魂大师。"
+    ]
+  },
+  "grounded_result": {
+    "schema_version": "grounded-identity-decision-v1",
+    "current_node_key": "b2db325da35bb35c0a41ab3ad22180bc036a335bf040ba5e237a5abf620a8d98",
+    "candidate_node_key": "3f90ca68ba802e43cc015ea6793f2aab441c9a7f099d4d92f717b5ea0ff0ae7f",
+    "task_cache_key": "2f36b67f42d52d92f62e273e11c14871fd2ab2d38377d0acf730b455d7f2ed7e",
+    "requested_identity_relation": "same_character",
+    "identity_relation": "same_character",
+    "label_relation": "title",
+    "grounded_identity_evidence": [
+      {
+        "evidence_quote": "“您好，尊敬的战魂大师，这次要麻烦您了。”老杰克恭敬的向年轻人行礼。",
+        "document_span": {
+          "start": 13315,
+          "end": 13349
+        },
+        "match_mode": "exact"
+      },
+      {
+        "evidence_quote": "老杰克道：“好的。孩子们，这位是来自诺丁城的战魂大师。",
+        "document_span": {
+          "start": 13405,
+          "end": 13432
+        },
+        "match_mode": "exact"
+      }
+    ],
+    "issues": []
+  },
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 7344,
+    "http_status": 200,
+    "response_id": "ffd335ef-537f-4fab-8971-4ac0859f4811",
+    "usage": {
+      "input_tokens": 2452,
+      "cached_input_tokens": 512,
+      "output_tokens": 865,
+      "reasoning_tokens": 793,
+      "total_tokens": 3317
+    },
+    "error_kind": null
+  }
+}

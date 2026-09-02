@@ -1,0 +1,42 @@
+{
+  "schema_version": "identity-task-result-v1",
+  "task_index": 58,
+  "current_label_quote": "看门的青年",
+  "candidate_label_quote": "青年",
+  "task_cache_key": "aa17e0e32e90f09d074715a2982b22e7cc48c63aa9702cfd0fca47bfef63e0c0",
+  "model_output": {
+    "identity_relation": "uncertain",
+    "label_relation": null,
+    "identity_evidence_quotes": []
+  },
+  "grounded_result": {
+    "schema_version": "grounded-identity-decision-v1",
+    "current_node_key": "ff7bbac2ba6e1528accd3d89b2d85cba8321a5db4cbbc1d2d02b815dc7eaaa91",
+    "candidate_node_key": "45d49bbf0658ba33126ad8bcc7f3ad6cf258b1850c991ea1c01ce8d6dc7f718f",
+    "task_cache_key": "aa17e0e32e90f09d074715a2982b22e7cc48c63aa9702cfd0fca47bfef63e0c0",
+    "requested_identity_relation": "uncertain",
+    "identity_relation": "uncertain",
+    "label_relation": null,
+    "grounded_identity_evidence": [],
+    "issues": []
+  },
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 7719,
+    "http_status": 200,
+    "response_id": "639b72cb-5a2f-425a-bdb5-da88b5ae7088",
+    "usage": {
+      "input_tokens": 1584,
+      "cached_input_tokens": 512,
+      "output_tokens": 688,
+      "reasoning_tokens": 661,
+      "total_tokens": 2272
+    },
+    "error_kind": null
+  }
+}

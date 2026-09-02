@@ -1,0 +1,33 @@
+{
+  "id": "APPEARANCE-STATE-TRANSITIONS-071",
+  "title": "Full-coverage appearance state transition discovery",
+  "status": "in_progress",
+  "owner": "Codex",
+  "objective": "复用原 M1 的 17 个重叠 Chunk，以各 Chunk 已绑定人物约束模型主体，Grounding transition evidence 并回填 canonical fact scope。",
+  "risk_level": "L1-bounded-model-semantic-node",
+  "allowed_paths": [
+    "src/novel_character_generator",
+    "tests",
+    "docs",
+    "README.md",
+    "pyproject.toml",
+    ".project-to-act",
+    "runs/douluo-20ch-e2e-dev13-20260831/appearance-transitions-dev20"
+  ],
+  "invariants": [
+    "必须验证并原样复用原 M1 Manifest 的 Chunk id/hash/span/重叠，不重新切窗",
+    "每个 Chunk 的人物表只来自该 chunk_id 下已绑定到最终人物簇的 local/promoted nodes",
+    "模型输入只含原 Chunk 正文及 canonical name + 必要 aliases",
+    "模型不读取或输出 character_id、chunk/document ID、span、hash 或 provenance",
+    "模型 character 必须从窗口人物表 canonical names 中选择",
+    "代码负责 evidence Grounding、绝对 span、身份绑定、跨 Chunk 去重和 scope 回填",
+    "Schema 保持扁平，不保存解释、置信度或无下游消费方字段"
+  ],
+  "acceptance": [
+    "17 个原 Chunk 的 id/hash/span 与 M1 Manifest 完全一致并覆盖全文",
+    "每个 Chunk 下已有身份节点对应的最终人物必须进入人物表，不做二次身份发现",
+    "非逐字或歧义 evidence 失败关闭，不能进入 transition/state",
+    "相同 transition 在重叠 Chunk 中只物化一次",
+    "单测、Schema、compileall、真实准备产物和两套治理校验通过"
+  ]
+}

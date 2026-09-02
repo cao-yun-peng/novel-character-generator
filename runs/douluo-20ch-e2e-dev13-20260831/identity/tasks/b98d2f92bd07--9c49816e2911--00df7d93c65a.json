@@ -1,0 +1,62 @@
+{
+  "schema_version": "identity-task-result-v1",
+  "task_index": 52,
+  "current_label_quote": "唐昊",
+  "candidate_label_quote": "唐昊",
+  "task_cache_key": "00df7d93c65a76c917d7e62a3141f6530586aa625b992f5a04f530955ab59242",
+  "model_output": {
+    "identity_relation": "same_character",
+    "label_relation": "same_surface",
+    "identity_evidence_quotes": [
+      "唐昊站着没动，一直到唐三和村长杰克的背影已经完全消失了",
+      "唐昊冷然道：“我还需要你照顾么？”"
+    ]
+  },
+  "grounded_result": {
+    "schema_version": "grounded-identity-decision-v1",
+    "current_node_key": "b98d2f92bd075799408c70d03caef83405168e91c5f1a782c4aae361138ecce3",
+    "candidate_node_key": "9c49816e291181a552e79f2f96e25fdc24c3b2a567b814dbd9234d336ec6ad96",
+    "task_cache_key": "00df7d93c65a76c917d7e62a3141f6530586aa625b992f5a04f530955ab59242",
+    "requested_identity_relation": "same_character",
+    "identity_relation": "same_character",
+    "label_relation": "same_surface",
+    "grounded_identity_evidence": [
+      {
+        "evidence_quote": "唐昊站着没动，一直到唐三和村长杰克的背影已经完全消失了",
+        "document_span": {
+          "start": 33055,
+          "end": 33082
+        },
+        "match_mode": "exact"
+      }
+    ],
+    "issues": [
+      {
+        "code": "identity_evidence_not_in_model_context",
+        "detail": "identity evidence '唐昊冷然道：“我还需要你照顾么？”' matched 0 document occurrences",
+        "evidence_index": 1,
+        "evidence_quote": "唐昊冷然道：“我还需要你照顾么？”",
+        "candidate_occurrence_count": 0
+      }
+    ]
+  },
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 4281,
+    "http_status": 200,
+    "response_id": "a028bb2f-7a7c-4973-8947-158deb8ff4ec",
+    "usage": {
+      "input_tokens": 1637,
+      "cached_input_tokens": 512,
+      "output_tokens": 404,
+      "reasoning_tokens": 334,
+      "total_tokens": 2041
+    },
+    "error_kind": null
+  }
+}

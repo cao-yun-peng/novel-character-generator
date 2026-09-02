@@ -1,0 +1,13 @@
+{
+  "task_id": "M3-IDENTITY-FIXPOINT-066",
+  "requested_by": "user",
+  "intent": "实现已确认的两个身份后处理修复，并重新运行必要的 DeepSeek 残余任务。",
+  "current_behavior": "反向候选会重复调用；单轮补救只能连接局部连通分量；supplemental different 虽建立 cannot-link，但旧 uncertain 仍作为 unresolved 暴露。",
+  "expected_behavior": "候选按无向簇对规范化，补救迭代到有界固定点；注册表按最终有效关系派生 unresolved，已被 same/different 消解的历史 uncertain 仅保留在审计历史。",
+  "non_goals": [
+    "不按同名自动合并人物",
+    "不猜测缺少逐字关系证据的身份关系",
+    "不重跑基础 63 个 M3 任务或既有 5 个残余模型任务",
+    "不解决尚未出现的复杂跨文档身份问题"
+  ]
+}

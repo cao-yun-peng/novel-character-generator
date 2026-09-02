@@ -1,0 +1,3162 @@
+{
+  "schema_version": "document-local-character-nodes-v1",
+  "context_policy_version": "identity-evidence-window-v1",
+  "source_document_version_id": "source-8bcb7305a759571b",
+  "document_hash": "8bcb7305a759571b1fec70813b0631f2c884eba79697c3259170a7635d639741",
+  "nodes": [
+    {
+      "node_key": "cabd21076961428efd4a471870a0c712456885cc1dd2e49188717ce4ee674c36",
+      "ref_type": "local",
+      "source_character_ref": {
+        "source_document_version_id": "source-8bcb7305a759571b",
+        "chunk_id": "chunk-000001-0-2500-f390c57806b0",
+        "local_mention_id": "m1",
+        "mention_type": "exact",
+        "packet_hash": "601485b13f34863605afdd84f49efc0eb5b012378a449a30b757f0ba1f81cdc5"
+      },
+      "character_origin": "exact",
+      "label_quote": "唐三",
+      "label_type": "exact",
+      "chunk_id": "chunk-000001-0-2500-f390c57806b0",
+      "chunk_source_span": {
+        "start": 0,
+        "end": 2500
+      },
+      "context_bindings": [
+        {
+          "context_quote": "第1章 引子 穿越的唐家三少\r\n　　第1章 引子 穿越的唐家三少 \r\n　　巴蜀，历来有天府之国的美誉，其中，最有名的门派莫过于唐门。 \r\n　　唐门所在是一个神秘的地方，许多人只知道，那是一个半山腰，而唐门所在这座山的山顶有一个令人胆颤心惊的名字，——鬼见愁。 \r\n　　从鬼见愁悬崖上扔出一块石头，要足足数上十九下才会听到石落山底的回声，可见其高，也正是因为这十九秒，尚超过十八层地狱一筹，故而得名。 \r\n　　一名身穿灰衣的青年正站在鬼见愁顶峰，凛冽的山风不能令他的身体有丝毫移动，从他胸口处那斗大的唐字就可以认出，他来自唐门，灰衣代表的，是唐门外门弟子。 \r\n　　他今年二十九岁，因出生不久就进入唐门，在外门弟子的辈分中排名第三，因此外门弟子称他一声三少。当然，到了内门弟子口中，就变成了唐三。 \r\n　　唐门从建立时开始就分为内外两门，外门都是外姓或被授予唐姓的弟子，而内门，则是唐门直系所属，家族传承。 \r\n　　此时，唐三脸上的表情很丰富，时而笑，时而哭，但无论如何，都无法掩盖他的那发自内心的兴奋。 \r\n　　二十九年了",
+          "document_span": {
+            "start": 0,
+            "end": 461
+          },
+          "source_kind": "node"
+        },
+        {
+          "context_quote": "第1章 引子 穿越的唐家三少\r\n　　第1章 引子 穿越的唐家三少 \r\n　　巴蜀，历来有天府之国的美誉，其中，最有名的门派莫过于唐门。 \r\n　　唐门所在是一个神秘的地方，许多人只知道，那是一个半山腰，而唐门所在这座山的山顶有一个令人胆颤心惊的名字，——鬼见愁。 \r\n　　从鬼见愁悬崖上扔出一块石头，要足足数上十九下才会听到石落山底的回声，可见其高，也正是因为这十九秒，尚超过十八层地狱一筹，故而得名。 \r\n　　一名身穿灰衣的青年正站在鬼见愁顶峰，凛冽的山风不能令他的身体有丝毫移动，从他胸口处那斗大的唐字就可以认出，他来自唐门，灰衣代表的，是唐门外门弟子。 \r\n　　他今年二十九岁，因出生不久就进入唐门，在外门弟子的辈分中排名第三，因此外门弟子称他一声三少。当然，到了内门弟子口中，就变成了唐三。 \r\n　　唐门从建立时开始就分为内外两门，外门都是外姓或被授予唐姓的弟子，而内门，则是唐门直系所属，家族传承。 \r\n　　此时，唐三脸上的表情很丰富，时而笑，时而哭，但无论如何，都无法掩盖他的那发自内心的兴奋。 \r\n　　二十九年了，自从二十九年前他被外门长老唐蓝太爷在襁褓时就捡回唐门时开始",
+          "document_span": {
+            "start": 0,
+            "end": 491
+          },
+          "source_kind": "node"
+        },
+        {
+          "context_quote": "有天府之国的美誉，其中，最有名的门派莫过于唐门。 \r\n　　唐门所在是一个神秘的地方，许多人只知道，那是一个半山腰，而唐门所在这座山的山顶有一个令人胆颤心惊的名字，——鬼见愁。 \r\n　　从鬼见愁悬崖上扔出一块石头，要足足数上十九下才会听到石落山底的回声，可见其高，也正是因为这十九秒，尚超过十八层地狱一筹，故而得名。 \r\n　　一名身穿灰衣的青年正站在鬼见愁顶峰，凛冽的山风不能令他的身体有丝毫移动，从他胸口处那斗大的唐字就可以认出，他来自唐门，灰衣代表的，是唐门外门弟子。 \r\n　　他今年二十九岁，因出生不久就进入唐门，在外门弟子的辈分中排名第三，因此外门弟子称他一声三少。当然，到了内门弟子口中，就变成了唐三。 \r\n　　唐门从建立时开始就分为内外两门，外门都是外姓或被授予唐姓的弟子，而内门，则是唐门直系所属，家族传承。 \r\n　　此时，唐三脸上的表情很丰富，时而笑，时而哭，但无论如何，都无法掩盖他的那发自内心的兴奋。 \r\n　　二十九年了，自从二十九年前他被外门长老唐蓝太爷在襁褓时就捡回唐门时开始，唐门就是他的家，而唐门的暗器就是他的一切。 \r\n　　突然，唐三脸色骤然一变",
+          "document_span": {
+            "start": 42,
+            "end": 529
+          },
+          "source_kind": "node"
+        },
+        {
+          "context_quote": "切都是唐门给的，不论是生命还是所拥有的能力，都是唐门所赋予，不论什么时候，唐三生是唐门的人，死是唐门的鬼，我知道，长老们是不会允许我一个触犯门规的外门弟子尸体留在唐门的，既然如此，就让我骨化于这巴蜀自然之中吧。”唐三那平静甚至有些兴奋的声音终于将长老们惊醒，当长老们抬起头看向他的时候，只见一层乳白色的气流瞬间从他身上蔓延开来。 \r\n　　“玄天宝录，你竟然连玄天宝录中本门最高内功也学了？”唐大先生失声说道。 \r\n　　轰的一声炸鸣，当众位长老同时后退以防不测的时候，他们看到的却是全身赤裸的唐三。 \r\n　　唐三笑了，他的笑容很灿烂，“赤裸而来，赤裸而去，佛怒唐莲算是唐三最后留给本门的礼物。现在，除了我这个人以外，我再没有带走唐门任何东西，秘籍都在我房间门内第一块砖下。唐三现在就将一切都还给唐门。” \r\n　　“哈哈哈哈哈哈哈……”唐三仰天狂笑，猛地向后迈开脚步，此时此刻，众位唐门长老突然发现，竟然没有一个人来得及阻止他，他那在白光笼罩中的身体，闪电般扑向前方的鬼见愁，高大昂扬的身躯腾空而起，朝那山间的云雾迈去。 \r\n　　“等一下。”唐大先生终于反应了过来，但是，此时他",
+          "document_span": {
+            "start": 1456,
+            "end": 1943
+          },
+          "source_kind": "node"
+        }
+      ],
+      "appearance_fact_refs": [
+        {
+          "fact_hash": "6ded621244de0a511fb7a5d4beae55df0d60308cef2272c547c635348eb26b0a",
+          "fact_quote": "身穿灰衣",
+          "category": "clothing",
+          "attribute": "服装",
+          "value": "灰衣",
+          "document_fact_span": {
+            "start": 206,
+            "end": 210
+          }
+        },
+        {
+          "fact_hash": "ea27f4da67ba45c915939248c2921015e146c39e03c50d49d46b07a785455d42",
+          "fact_quote": "从他胸口处那斗大的唐字",
+          "category": "clothing",
+          "attribute": "衣服标志",
+          "value": "胸口有斗大的唐字",
+          "document_fact_span": {
+            "start": 240,
+            "end": 251
+          }
+        },
+        {
+          "fact_hash": "36cda8202b3ad0c0d3dea87c0e0f4e7bc5c50ec2d9255dcf8fe3cf06445c87a3",
+          "fact_quote": "他今年二十九岁",
+          "category": "age",
+          "attribute": "年龄",
+          "value": "二十九岁",
+          "document_fact_span": {
+            "start": 282,
+            "end": 289
+          }
+        },
+        {
+          "fact_hash": "c6e1805e5a10638a4888ca6abf4889ac01e28a4dd764cfd708436d49746a0d39",
+          "fact_quote": "全身赤裸",
+          "category": "appearance_state",
+          "attribute": "身体状态",
+          "value": "全身赤裸",
+          "document_fact_span": {
+            "start": 1696,
+            "end": 1700
+          }
+        },
+        {
+          "fact_hash": "b3f194e5be932fbf61c4cbed8abb4d96f926ee45548146e0616371568ee73f17",
+          "fact_quote": "他的笑容很灿烂",
+          "category": "face",
+          "attribute": "笑容",
+          "value": "灿烂",
+          "document_fact_span": {
+            "start": 1714,
+            "end": 1721
+          }
+        },
+        {
+          "fact_hash": "c9db83c48ac3f6e66bc6fdbbca0ff46980def7b2740a4c874c265001a8f9e556",
+          "fact_quote": "高大昂扬的身躯",
+          "category": "body",
+          "attribute": "身材",
+          "value": "高大昂扬",
+          "document_fact_span": {
+            "start": 1892,
+            "end": 1899
+          }
+        }
+      ],
+      "order_position": 0
+    },
+    {
+      "node_key": "d20ede518cd3ec6b9a0770c0ce951c66b501fa652fc65283639ef9b1a8a19ca8",
+      "ref_type": "local",
+      "source_character_ref": {
+        "source_document_version_id": "source-8bcb7305a759571b",
+        "chunk_id": "chunk-000002-2250-4750-b54821906b9b",
+        "local_mention_id": "m1",
+        "mention_type": "exact",
+        "packet_hash": "915483d4aeb6e5a403c86757a25862f97fc0bf413146c36ece88686948982f30"
+      },
+      "character_origin": "exact",
+      "label_quote": "唐三",
+      "label_type": "exact",
+      "chunk_id": "chunk-000002-2250-4750-b54821906b9b",
+      "chunk_source_span": {
+        "start": 2250,
+        "end": 4750
+      },
+      "context_bindings": [
+        {
+          "context_quote": "中，在百年前这里曾经走出过一位魂圣级别的魂师，从而得名。这也是圣魂村永远的骄傲。 \r\n　　圣魂村外，尽是大片的农耕之地，这里出产的粮食和蔬菜，都要供给到诺丁城，诺丁城在法斯诺行省中虽然算不得大城市，但这里毕竟距离与另一帝国接壤处很近，也自然是两大帝国商人交易的起始地之一，诺丁城因此而繁荣，附带的，令城市周围这些村庄中的平民生活也比其他地方要好的多。 \r\n　　天刚蒙蒙亮，远处东方升起一抹淡淡的鱼肚白色，毗邻圣魂村的一座只有百余米高的小山包上，却已经多了一道瘦小的身影。 \r\n　　那是个只有五、六岁的孩子，显然，他经常承受太阳的温暖，皮肤呈现出健康的小麦色，黑色短发看上去很利落，一身衣服虽然朴素，到也干净。 \r\n　　对于他这么大的孩子来说，攀爬这百米高的山丘可并不是什么容易的事，但奇怪的是，当他来到山顶的制高点时却面不红、气不喘，一副怡然自得的样子。 \r\n　　男孩儿在山顶上坐了下来，他的双眼死死的盯视着东方那抹渐渐明亮的鱼肚白色，鼻间缓缓吸气，再从口中徐徐吐出，吸气绵绵、呼气微微，竟是形成了一个美妙的循环。 \r\n　　正在这时，他的眼睛突然瞪大了，远处天边那抹渐渐明亮的鱼肚白色中，仿佛闪过一丝淡淡的紫气，如果不是有着惊人的目力和足够专注的话，是绝对无法发现它存在的。 \r\n　　紫气",
+          "document_span": {
+            "start": 2862,
+            "end": 3406
+          },
+          "source_kind": "node"
+        },
+        {
+          "context_quote": "的紫气，如果不是有着惊人的目力和足够专注的话，是绝对无法发现它存在的。 \r\n　　紫气的出现，令男孩儿的精神完全集中起来，他甚至不再呼气，只是轻微而徐缓的吸气，同时双眼紧紧的盯视着那抹倏隐倏现的紫色。 \r\n　　紫气出现的时间并不长，当东方那一抹鱼肚白逐渐被升起的朝阳之色覆盖时，紫气已经完全消失了。 \r\n　　男孩儿这才缓缓闭上双眼，同时长长的呼出一口体内的浊气。一道白色气流如同匹练般从他口中吐出，然后再徐徐散去。 \r\n　　静坐半晌，男孩儿才再次睁眼，不知是否因为那天边紫气的沾染，他眼眸中竟然闪烁着一层淡淡的紫意，尽管这紫色并没有持续太长时间就悄然收敛，但当它存在的时候，却是那么清晰。颓然一叹，男孩儿做出一个绝不应该出现在他这个年龄的无奈表情，摇了摇头，自言自语的道：“还是不行，我的玄天功依旧无法冲破第一重的瓶颈。这已经整整三个月了，究竟是为什么？哪怕是需要依靠紫气东来只能清晨修炼的紫极魔瞳一直都在进步。玄天功不能突破瓶颈，我的玄玉手也无法再做提升。当初我修炼的时候，在第一重到第二重之间，似乎并没有遇到这样的情况。玄天功一共九重，怎么这第一重就如此麻烦？难道，是因为这个世界与我那原本的世界不同么？” \r\n　　来到这个世界已",
+          "document_span": {
+            "start": 3364,
+            "end": 3880
+          },
+          "source_kind": "node"
+        }
+      ],
+      "appearance_fact_refs": [
+        {
+          "fact_hash": "109a0bed45bf8e7f5360ab989556ad3f3cb11a2ddfebdf00f7ae3f2096f438da",
+          "fact_quote": "那是个只有五、六岁的孩子",
+          "category": "age",
+          "attribute": "年龄",
+          "value": "五、六岁",
+          "document_fact_span": {
+            "start": 3102,
+            "end": 3114
+          }
+        },
+        {
+          "fact_hash": "1354e74ce84c487526386e94b436e95c3970144e4649c2bd84ede893ced0ade9",
+          "fact_quote": "皮肤呈现出健康的小麦色",
+          "category": "body",
+          "attribute": "肤色",
+          "value": "小麦色",
+          "document_fact_span": {
+            "start": 3129,
+            "end": 3140
+          }
+        },
+        {
+          "fact_hash": "df7bdd046990ab8376bc83ccdb357cf53be0f404ef039357c499d3e8fe78f54d",
+          "fact_quote": "黑色短发看上去很利落",
+          "category": "hair",
+          "attribute": "发色和发型",
+          "value": "黑色短发",
+          "document_fact_span": {
+            "start": 3141,
+            "end": 3151
+          }
+        },
+        {
+          "fact_hash": "c57f475b73538b0e565f408db935f463df8a7528c86b58899703f44adf691e93",
+          "fact_quote": "一身衣服虽然朴素，到也干净",
+          "category": "clothing",
+          "attribute": "穿着",
+          "value": "朴素干净",
+          "document_fact_span": {
+            "start": 3152,
+            "end": 3165
+          }
+        },
+        {
+          "fact_hash": "8759037b6d2ab507d3ca154fd108352edd1faf826d176333736a034c70e54a9e",
+          "fact_quote": "他眼眸中竟然闪烁着一层淡淡的紫意",
+          "category": "face",
+          "attribute": "眼眸",
+          "value": "闪烁淡淡紫意",
+          "document_fact_span": {
+            "start": 3604,
+            "end": 3620
+          }
+        }
+      ],
+      "order_position": 2862
+    },
+    {
+      "node_key": "d3adfa5940d8d0a5869aee823fa049a803a7827dda3f448717ef18fc60cb0d31",
+      "ref_type": "local",
+      "source_character_ref": {
+        "source_document_version_id": "source-8bcb7305a759571b",
+        "chunk_id": "chunk-000003-4500-7000-bbfa3a18c9e4",
+        "local_mention_id": "m1",
+        "mention_type": "exact",
+        "packet_hash": "b8844d274717a15edcf953a4fbd1e7ef9e8089fda197ab5573bc086502f5033f"
+      },
+      "character_origin": "exact",
+      "label_quote": "唐三",
+      "label_type": "exact",
+      "chunk_id": "chunk-000003-4500-7000-bbfa3a18c9e4",
+      "chunk_source_span": {
+        "start": 4500,
+        "end": 7000
+      },
+      "context_bindings": [
+        {
+          "context_quote": "，在学习的过程中，内门最高的玄天宝录也同样被他记熟于心。唐三希望，能够在这个世界再现唐门的辉煌。 \r\n　　“该回去了。”唐三看看天色，瘦小的身体腾身而起，朝着山下跑去。如果这时候有人看到他，一定会惊讶的瞪大了眼睛，他每一步跨出，竟然都能有接近一丈，山间坑洼不平的地面对他来说根本没有任何影响，轻松的避让开，急速行进之间，比成人还要快上许多。 \r\n　　唐门的精髓是什么？暗器、毒药和轻功。唐门内门与外门最大的区别，就是暗器的使用方法。外门以机括类为主，而内门，则是真正的手法。毒药一般是外门才用，内门嫡传弟子的暗器是很少用毒的，因为他们根本就不需要。 \r\n　　(本章完)\r\n\r\n第3章 斗罗大陆，异界唐三（二）\r\n　　第3章 ",
+          "document_span": {
+            "start": 4500,
+            "end": 4812
+          },
+          "source_kind": "node"
+        },
+        {
+          "context_quote": "一米左右的木牌，上面画着一个简陋的锤子。锤子在这个世界最广泛的代表意义指的是铁匠。 \r\n　　没错，唐三的父亲唐昊，就是一个铁匠，村子里唯一的铁匠。 \r\n　　在这个世界之中，铁匠可以说是最低贱的职业之一，因为某种特殊的原因，这个世界的顶级武器都不是由铁匠锻造出来的。 \r\n　　但是，作为这个村子里唯一的铁匠，原本唐三家是不应该这样贫穷的，但是，那点微薄的收入却大都…… \r\n　　一进家门，唐三就已经闻到了扑鼻的饭香，那并不是唐昊为他做的早点，而是他为唐昊做的。 \r\n　　从四岁开始，唐三的身高还够不到灶台的时候，做饭的任务就已经是他每天必须的工作。哪怕是要踩着凳子才能够到灶台上面。 \r\n　　并不是唐昊要求他这么做的，而是因为不这样，唐三几乎就没有能吃饱的时候。 \r\n　　来到灶台前，熟练的踩上木凳，掀开大铁锅的锅盖，扑鼻的米香传来，锅里的粥早已煮的烂熟。 \r\n　　每天上山之前，唐三都会将米下锅，弄好柴火，等他回来时，粥也煮好了。 \r\n　　拿起灶台旁已经破损了十个以上缺口的两个碗，唐三小心翼翼的盛了两碗粥，放在身后的桌子上。粥里的米粒几乎一眼就能数出来，对于正是长身体中的唐三，这",
+          "document_span": {
+            "start": 5034,
+            "end": 5525
+          },
+          "source_kind": "node"
+        },
+        {
+          "context_quote": "必须的工作。哪怕是要踩着凳子才能够到灶台上面。 \r\n　　并不是唐昊要求他这么做的，而是因为不这样，唐三几乎就没有能吃饱的时候。 \r\n　　来到灶台前，熟练的踩上木凳，掀开大铁锅的锅盖，扑鼻的米香传来，锅里的粥早已煮的烂熟。 \r\n　　每天上山之前，唐三都会将米下锅，弄好柴火，等他回来时，粥也煮好了。 \r\n　　拿起灶台旁已经破损了十个以上缺口的两个碗，唐三小心翼翼的盛了两碗粥，放在身后的桌子上。粥里的米粒几乎一眼就能数出来，对于正是长身体中的唐三，这点营养显然是不够的，这也是为什么他的身体如此纤瘦的原因。 \r\n　　“爸爸，吃饭了。”唐三叫道。 \r\n　　半晌后，里间的门帘掀起，一个高大的身影迈着有些踉跄的步伐走了出来。 \r\n　　那是一名中年男子，看上去大约有接近五十岁的样子，但身材却非常高大魁梧，只是他的打扮却令人不敢恭维。 \r\n　　破损的袍子穿在身上，上面甚至连补丁都没有，露出下面古铜色的皮肤，原本还算端正的五官却蒙着一层蜡黄色，一副睡眼朦胧的样子，头发乱糟糟的像鸟窝一般，一脸的胡子已经不知道有多少日子没有整理过了。目光呆滞而昏黄，尽管已经过去了一晚，但他身上那扑鼻的",
+          "document_span": {
+            "start": 5301,
+            "end": 5789
+          },
+          "source_kind": "node"
+        }
+      ],
+      "appearance_fact_refs": [
+        {
+          "fact_hash": "8e31332a841662fdee6c4f377a1498761586fdd5ae612da464961ab98ecd1c21",
+          "fact_quote": "瘦小的身体",
+          "category": "body",
+          "attribute": "体型",
+          "value": "瘦小",
+          "document_fact_span": {
+            "start": 4567,
+            "end": 4572
+          }
+        },
+        {
+          "fact_hash": "4b93646147ba837347e1ff28d0f0b6012734ab263af2f014bbbefc23aed366c5",
+          "fact_quote": "唐三的身高还够不到灶台",
+          "category": "body",
+          "attribute": "身高",
+          "value": "够不到灶台",
+          "document_fact_span": {
+            "start": 5274,
+            "end": 5285
+          }
+        },
+        {
+          "fact_hash": "60d148ac65b6be84a5515a3df75c2f63a6087c85724f143e5ed338dd0a52ccb6",
+          "fact_quote": "他的身体如此纤瘦",
+          "category": "body",
+          "attribute": "身体",
+          "value": "纤瘦",
+          "document_fact_span": {
+            "start": 5541,
+            "end": 5549
+          }
+        }
+      ],
+      "order_position": 4500
+    },
+    {
+      "node_key": "39a05ff324abc7d794d9e8718b732bd4bded573b152aab6c0350b1e22dd99be0",
+      "ref_type": "promoted",
+      "source_character_ref": {
+        "source_document_version_id": "source-8bcb7305a759571b",
+        "chunk_id": "chunk-000003-4500-7000-bbfa3a18c9e4",
+        "source_local_mention_id": "m4",
+        "source_mention_type": "describe",
+        "promotion_index": 1,
+        "character_origin": "remaining_describe",
+        "packet_hash": "8dd50abb592af8990ac012917e0cdfe148b465db5eaf6eabe7f4755639df1a6e",
+        "promotion_hash": "4c2144009a1e6a7a24a658c301cfbaad62783b9e1fef9ecd63ac12e6c4b64d78"
+      },
+      "character_origin": "remaining_describe",
+      "label_quote": "高大的身影",
+      "label_type": "describe",
+      "chunk_id": "chunk-000003-4500-7000-bbfa3a18c9e4",
+      "chunk_source_span": {
+        "start": 4500,
+        "end": 7000
+      },
+      "context_bindings": [
+        {
+          "context_quote": "，唐三几乎就没有能吃饱的时候。 \r\n　　来到灶台前，熟练的踩上木凳，掀开大铁锅的锅盖，扑鼻的米香传来，锅里的粥早已煮的烂熟。 \r\n　　每天上山之前，唐三都会将米下锅，弄好柴火，等他回来时，粥也煮好了。 \r\n　　拿起灶台旁已经破损了十个以上缺口的两个碗，唐三小心翼翼的盛了两碗粥，放在身后的桌子上。粥里的米粒几乎一眼就能数出来，对于正是长身体中的唐三，这点营养显然是不够的，这也是为什么他的身体如此纤瘦的原因。 \r\n　　“爸爸，吃饭了。”唐三叫道。 \r\n　　半晌后，里间的门帘掀起，一个高大的身影迈着有些踉跄的步伐走了出来。 \r\n　　那是一名中年男子，看上去大约有接近五十岁的样子，但身材却非常高大魁梧，只是他的打扮却令人不敢恭维。 \r\n　　破损的袍子穿在身上，上面甚至连补丁都没有，露出下面古铜色的皮肤，原本还算端正的五官却蒙着一层蜡黄色，一副睡眼朦胧的样子，头发乱糟糟的像鸟窝一般，一脸的胡子已经不知道有多少日子没有整理过了。目光呆滞而昏黄，尽管已经过去了一晚，但他身上那扑鼻的酒气还是令唐三不禁皱了皱眉头。 \r\n　　这就是唐昊，唐三在这个世界的父亲。 \r\n　　从小到大，唐三就不知道什么叫父爱，唐",
+          "document_span": {
+            "start": 5349,
+            "end": 5849
+          },
+          "source_kind": "node"
+        }
+      ],
+      "appearance_fact_refs": [
+        {
+          "fact_hash": "c0eea720c57b25264c796a256374104757233c4c041a95c1d9f221f05a4f7ebd",
+          "fact_quote": "高大的身影",
+          "category": "body",
+          "attribute": "身材",
+          "value": "高大",
+          "document_fact_span": {
+            "start": 5591,
+            "end": 5596
+          }
+        }
+      ],
+      "order_position": 5349
+    },
+    {
+      "node_key": "4c021ae02fae5d350500d5703361cf9264c7c9d90efaa01864ee99af9b0f46a4",
+      "ref_type": "local",
+      "source_character_ref": {
+        "source_document_version_id": "source-8bcb7305a759571b",
+        "chunk_id": "chunk-000003-4500-7000-bbfa3a18c9e4",
+        "local_mention_id": "m2",
+        "mention_type": "exact",
+        "packet_hash": "5e7fe6b4a8ac038fd3df626e6249fe921d8afc561f83b78c37d8168450b2760a"
+      },
+      "character_origin": "exact",
+      "label_quote": "唐昊",
+      "label_type": "exact",
+      "chunk_id": "chunk-000003-4500-7000-bbfa3a18c9e4",
+      "chunk_source_span": {
+        "start": 4500,
+        "end": 7000
+      },
+      "context_bindings": [
+        {
+          "context_quote": "熟练的踩上木凳，掀开大铁锅的锅盖，扑鼻的米香传来，锅里的粥早已煮的烂熟。 \r\n　　每天上山之前，唐三都会将米下锅，弄好柴火，等他回来时，粥也煮好了。 \r\n　　拿起灶台旁已经破损了十个以上缺口的两个碗，唐三小心翼翼的盛了两碗粥，放在身后的桌子上。粥里的米粒几乎一眼就能数出来，对于正是长身体中的唐三，这点营养显然是不够的，这也是为什么他的身体如此纤瘦的原因。 \r\n　　“爸爸，吃饭了。”唐三叫道。 \r\n　　半晌后，里间的门帘掀起，一个高大的身影迈着有些踉跄的步伐走了出来。 \r\n　　那是一名中年男子，看上去大约有接近五十岁的样子，但身材却非常高大魁梧，只是他的打扮却令人不敢恭维。 \r\n　　破损的袍子穿在身上，上面甚至连补丁都没有，露出下面古铜色的皮肤，原本还算端正的五官却蒙着一层蜡黄色，一副睡眼朦胧的样子，头发乱糟糟的像鸟窝一般，一脸的胡子已经不知道有多少日子没有整理过了。目光呆滞而昏黄，尽管已经过去了一晚，但他身上那扑鼻的酒气还是令唐三不禁皱了皱眉头。 \r\n　　这就是唐昊，唐三在这个世界的父亲。 \r\n　　从小到大，唐三就不知道什么叫父爱，唐昊对他，从来都是不管不顾的，刚开始的时候，还会做点饭给他吃，但随着时间的推移，当",
+          "document_span": {
+            "start": 5375,
+            "end": 5889
+          },
+          "source_kind": "node"
+        },
+        {
+          "context_quote": "下锅，弄好柴火，等他回来时，粥也煮好了。 \r\n　　拿起灶台旁已经破损了十个以上缺口的两个碗，唐三小心翼翼的盛了两碗粥，放在身后的桌子上。粥里的米粒几乎一眼就能数出来，对于正是长身体中的唐三，这点营养显然是不够的，这也是为什么他的身体如此纤瘦的原因。 \r\n　　“爸爸，吃饭了。”唐三叫道。 \r\n　　半晌后，里间的门帘掀起，一个高大的身影迈着有些踉跄的步伐走了出来。 \r\n　　那是一名中年男子，看上去大约有接近五十岁的样子，但身材却非常高大魁梧，只是他的打扮却令人不敢恭维。 \r\n　　破损的袍子穿在身上，上面甚至连补丁都没有，露出下面古铜色的皮肤，原本还算端正的五官却蒙着一层蜡黄色，一副睡眼朦胧的样子，头发乱糟糟的像鸟窝一般，一脸的胡子已经不知道有多少日子没有整理过了。目光呆滞而昏黄，尽管已经过去了一晚，但他身上那扑鼻的酒气还是令唐三不禁皱了皱眉头。 \r\n　　这就是唐昊，唐三在这个世界的父亲。 \r\n　　从小到大，唐三就不知道什么叫父爱，唐昊对他，从来都是不管不顾的，刚开始的时候，还会做点饭给他吃，但随着时间的推移，当唐三开始主动做饭之后，唐昊就更是什么都不管了。家里如此贫穷，甚至连像样的桌椅都没有，吃饭也成问题，最主要的原因就是唐昊将那份微薄的铁匠收入都换了酒喝。和唐三一边大的孩子，父亲一般也就是三十岁左右，结婚早的甚至还不到三十岁，可唐昊看起来却要比他",
+          "document_span": {
+            "start": 5429,
+            "end": 6010
+          },
+          "source_kind": "node"
+        },
+        {
+          "context_quote": "不管了。家里如此贫穷，甚至连像样的桌椅都没有，吃饭也成问题，最主要的原因就是唐昊将那份微薄的铁匠收入都换了酒喝。和唐三一边大的孩子，父亲一般也就是三十岁左右，结婚早的甚至还不到三十岁，可唐昊看起来却要比他们苍老的多，反倒像是唐三的爷爷一般。 \r\n　　对于唐昊的态度，唐三并没有怨恨过，前一世，他是孤儿，这一世，尽管唐昊对他不好，但至少有个亲人。对于唐三来说，这已经让他十分满足了。至少，在这里有个让他叫爸爸的人。 \r\n　　唐昊抓起桌子上的碗，也不怕烫，大口大口的把粥灌入自己腹中，暗黄的脸色这才看上去多了几分光泽。 \r\n　　“爸爸，你慢点喝，还有。”唐三接过父亲手中的碗，再给他盛了一碗粥。自己也拿起粥碗喝了起来。 \r\n　　在唐门的时候，他就从来没有离开过那里，对于外面的事更是很少接触。本来就如同白纸一般，到了这个世界，重新做回小孩子，并没有什么不能接受的。 \r\n　　很快，一锅粥有七、八成都进入了唐昊的肚子，长出口气，将碗放在桌子上。耷拉的眼皮睁开了几分，看向唐三。 \r\n　　“有工作你就先接下，下午我再做。我去再睡一会儿。” \r\n　　唐昊的作息习惯很有规律，上午都是睡觉，下午打造一些农",
+          "document_span": {
+            "start": 5908,
+            "end": 6404
+          },
+          "source_kind": "node"
+        }
+      ],
+      "appearance_fact_refs": [
+        {
+          "fact_hash": "6ac63e16aff4cb9ad3f7c141ea49ce3c38741d9ea0f75f3fae8ea50aedb8040b",
+          "fact_quote": "大约有接近五十岁的样子",
+          "category": "age",
+          "attribute": "年龄",
+          "value": "接近五十岁",
+          "document_fact_span": {
+            "start": 5627,
+            "end": 5638
+          }
+        },
+        {
+          "fact_hash": "3709a4a0686e58708986b3895fbde3508cb5c11829542ac015fec8561b911f6c",
+          "fact_quote": "身材却非常高大魁梧",
+          "category": "body",
+          "attribute": "身材",
+          "value": "高大魁梧",
+          "document_fact_span": {
+            "start": 5640,
+            "end": 5649
+          }
+        },
+        {
+          "fact_hash": "ae79c61ff560b006a0b7796ddd3e05f588b0af8ab4a545f365c8766db5672a9b",
+          "fact_quote": "破损的袍子穿在身上",
+          "category": "clothing",
+          "attribute": "服装",
+          "value": "破损的袍子",
+          "document_fact_span": {
+            "start": 5669,
+            "end": 5678
+          }
+        },
+        {
+          "fact_hash": "2bf6fabfde01c126f74131787ead37f4fa253a35fadcd19143015169bc33aa66",
+          "fact_quote": "古铜色的皮肤",
+          "category": "body",
+          "attribute": "皮肤",
+          "value": "古铜色",
+          "document_fact_span": {
+            "start": 5694,
+            "end": 5700
+          }
+        },
+        {
+          "fact_hash": "8b0c5dc60947300982410a751e0d6c663ffc7297e14a066ac3cdd21ce023a0b0",
+          "fact_quote": "五官却蒙着一层蜡黄色",
+          "category": "face",
+          "attribute": "五官",
+          "value": "蒙蜡黄色",
+          "document_fact_span": {
+            "start": 5708,
+            "end": 5718
+          }
+        },
+        {
+          "fact_hash": "c0bf6850e752b0cebcda3453cee9a732ab3e17b94eee22ba16609be6eb2eb611",
+          "fact_quote": "一副睡眼朦胧的样子",
+          "category": "appearance_state",
+          "attribute": "状态",
+          "value": "睡眼朦胧",
+          "document_fact_span": {
+            "start": 5719,
+            "end": 5728
+          }
+        },
+        {
+          "fact_hash": "08960ecdb99715cb2185e9baf19ca421e03c63ac31ce0c4b84ff7ea3ddc13792",
+          "fact_quote": "头发乱糟糟的像鸟窝一般",
+          "category": "hair",
+          "attribute": "头发",
+          "value": "乱糟糟像鸟窝",
+          "document_fact_span": {
+            "start": 5729,
+            "end": 5740
+          }
+        },
+        {
+          "fact_hash": "5e286e341822aba8d947c4ddeaba83685fb16d744e5218a01f09c070e4e70127",
+          "fact_quote": "一脸的胡子已经不知道有多少日子没有整理过了",
+          "category": "hair",
+          "attribute": "胡子",
+          "value": "未整理",
+          "document_fact_span": {
+            "start": 5741,
+            "end": 5762
+          }
+        },
+        {
+          "fact_hash": "c098c05b6769223c63bb736b6a7ad2fc8567bdc7ea0ce0611335ca12c6ec6b61",
+          "fact_quote": "目光呆滞而昏黄",
+          "category": "face",
+          "attribute": "目光",
+          "value": "呆滞昏黄",
+          "document_fact_span": {
+            "start": 5763,
+            "end": 5770
+          }
+        },
+        {
+          "fact_hash": "79a26a89e6eb20d978f71a7d9f15dffe9c0f50c37a827446765560a3a34dae1c",
+          "fact_quote": "暗黄的脸色",
+          "category": "face",
+          "attribute": "脸色",
+          "value": "暗黄",
+          "document_fact_span": {
+            "start": 6148,
+            "end": 6153
+          }
+        }
+      ],
+      "order_position": 5375
+    },
+    {
+      "node_key": "34ef440cfc6ba1a683c8391c25baf436787e3f0ddea2a4d0ac21760cf136e0ea",
+      "ref_type": "local",
+      "source_character_ref": {
+        "source_document_version_id": "source-8bcb7305a759571b",
+        "chunk_id": "chunk-000004-6750-9250-d8d7539ee8f4",
+        "local_mention_id": "m1",
+        "mention_type": "exact",
+        "packet_hash": "488a2fb144e94ab84d1769ca3d4d60a0ba554c95806ca3d43e6c453ee8efa25a"
+      },
+      "character_origin": "exact",
+      "label_quote": "唐昊",
+      "label_type": "exact",
+      "chunk_id": "chunk-000004-6750-9250-d8d7539ee8f4",
+      "chunk_source_span": {
+        "start": 6750,
+        "end": 9250
+      },
+      "context_bindings": [
+        {
+          "context_quote": "来，令唐三惊讶的是，这块铁矿里竟然包含着一定的铁母，用来打造暗器再合适不过。 \r\n　　唐昊的目光转移到生铁上，“咦。这里面有铁精？”走过去低下头看了看，再扭头看向唐三，“你以后想做个铁匠么？” \r\n　　(本章完)\r\n\r\n第4章 斗罗大陆，异界唐三（三）\r\n　　第4章 斗罗大陆，异界唐三（三） \r\n　　唐三点了点头，铁匠这个职业无疑是最适合他来打造暗器的，“爸爸，你年纪大了，再过几年，等我大一点，您就教我打造厨具，让我接替你的工作吧。”以前他做的都是最精密暗器制造的工作，最简单的锻造他反而不会。 \r\n　　唐昊略微有些失神，喃喃的道：“铁匠，似乎也不错。”拉过一把破旧的椅子，他直接在那块生铁面前坐了下来，懒散的道：“小三，你告诉我，什么样的铁匠，才是最好的铁匠。” \r\n　　唐三想了想，道：“能够打造出神器的铁匠，应该就是最好的铁匠吧。”他曾经听村子里的人说过，在这个世界是有神器存在的，尽管他不知道神器究竟是什么。但挂上一个神字，想来应该不错。 \r",
+          "document_span": {
+            "start": 6750,
+            "end": 7177
+          },
+          "source_kind": "node"
+        }
+      ],
+      "appearance_fact_refs": [],
+      "order_position": 6750
+    },
+    {
+      "node_key": "9c018bfe05d1e43c2e3f56b9f308e4f9efe80e6bae0712dd4d91fd6816341377",
+      "ref_type": "local",
+      "source_character_ref": {
+        "source_document_version_id": "source-8bcb7305a759571b",
+        "chunk_id": "chunk-000004-6750-9250-d8d7539ee8f4",
+        "local_mention_id": "m3",
+        "mention_type": "exact",
+        "packet_hash": "5556b58728c2b4bdf55b053658af0fccc2a3dfa2acd5ec9f37153eadf7eeb478"
+      },
+      "character_origin": "exact",
+      "label_quote": "小三",
+      "label_type": "exact",
+      "chunk_id": "chunk-000004-6750-9250-d8d7539ee8f4",
+      "chunk_source_span": {
+        "start": 6750,
+        "end": 9250
+      },
+      "context_bindings": [
+        {
+          "context_quote": "起来，直接放在了风箱旁的火炉上，只要燃起炭火，就可以对它进行锻造。 \r\n　　做完这些，唐昊回里间睡觉去了。 \r\n　　唐三是一个心志坚定的人，否则，他也不能凭借着一张残破不堪的图纸就制造出佛怒唐莲，那唐门最顶级的机括类暗器。那足足耗费了他十年的时间。 \r\n　　点燃炭火，拉动风箱，他开始了自己的工作。 \r\n　　呼呼呼呼的风箱声响起，火苗从炭炉中冒出，灼烧着那块大铁坨，尽管唐三并不会锻造，但他经常看唐昊打造农具，过程还是知道的。当铁坨渐渐被烧红后，他拖过唐昊平日用的铁锤，放在地上，这种长柄铁锤甚至要比他的身高还高上几分，普通五、六岁的孩子根本不可能拿的动，更不用说是挥舞它来锻造了。 \r\n　　但唐三还是将它拿了起来，玄天功力运全身，尽管尚未突破第一重，但他也拥有了成年人级别的力气。 \r\n　　当——，铁锤与铁坨碰撞，发出一声清脆的声音，这是唐三的第一次锤击，也拉开了锻造的序幕。 \r\n　　里间，躺在床上的唐昊翻了个身，尽管他闭着眼睛，但脸上神色却依旧有着几分惊讶，喃喃的呓语着，“居然拿得起锤子，天生神力么？” \r\n　　当当当当当的敲打声开始在铁匠铺里响起，唐昊与唐三父子开始继续重复着他们平淡的生",
+          "document_span": {
+            "start": 7620,
+            "end": 8119
+          },
+          "source_kind": "node"
+        },
+        {
+          "context_quote": "恢复回来就立刻继续敲打。 \r\n　　这不只是对身体的锻炼，反复消耗、恢复，对他的玄天功和意志也是一种很好的磨练。可惜的是，玄天功第一重的瓶颈却像是坚不可摧的壁垒，唐三的修炼不可谓不刻苦，他的天份也足够，可就是无法突破而进入第二重。 \r\n　　但他的锻炼却并没有白费，尽管玄天功没能突破，但这股内力却随着他对铁坨的锻造而变得更加坚韧了，恢复速度似乎也比以前要快了一点。 \r\n　　十一天过去，唐三已经挥出了八千余锤，铁坨不断的变小，已经不到最初时三分之一的体积了。身体的锻炼和食物的增多，他的身体变得结实了几分，仿佛有一股发自体内的力气逐渐注入到他体内，令他在不断的锻造过程中，对内力的消耗正在逐渐减小。而在附加全部内力的时候，力量也增大了许多。 \r\n　　当他砸下一千锤的时候，那铁坨就已经出现了一定的变化，整整小了一圈，尽管在炭火中烧的通红，但也隐约能够看到，里面的杂质似乎减少了许多。 \r\n　　百炼成钢，这个词出现在唐三脑海中，这也更加坚定了他完成这一万锤的决心。而距离这个目标已经很近了。 \r\n　　唐三的坚持令唐昊很惊讶，在他看来，哪怕自己这个儿子是天生神力，也不可能坚持超过三天。铁",
+          "document_span": {
+            "start": 8346,
+            "end": 8837
+          },
+          "source_kind": "node"
+        },
+        {
+          "context_quote": "量也增大了许多。 \r\n　　当他砸下一千锤的时候，那铁坨就已经出现了一定的变化，整整小了一圈，尽管在炭火中烧的通红，但也隐约能够看到，里面的杂质似乎减少了许多。 \r\n　　百炼成钢，这个词出现在唐三脑海中，这也更加坚定了他完成这一万锤的决心。而距离这个目标已经很近了。 \r\n　　唐三的坚持令唐昊很惊讶，在他看来，哪怕自己这个儿子是天生神力，也不可能坚持超过三天。铁锤的锤柄为了防滑是那样的粗糙，不断挥动，与手掌的摩擦，必然会给手掌带来极大的伤害。可他却发现，唐三虽然在实打实的锻造，可他那双稚嫩的小手看上去却并没有任何变化。甚至连一个水泡都没有起过。 \r\n　　(本章完)\r\n\r\n第5章 斗罗大陆，异界唐三（四）\r\n　　第5章 斗罗大陆，异界唐三（四） \r\n　　唐三不想失去这个父亲，也更不希望自己过往的一切被人知道，所以，他自然不会告诉唐昊，这是因为他修炼着唐门的玄玉手。 \r\n　　想用好暗器，最基础的需要是眼力、手力、心力的融合。正所谓心到眼到，眼到手到。所以，在唐门内门的修炼方法中，对于眼力、手力的要求极高。 \r\n　　紫极魔瞳，借助旭日东升时紫气东来的短暂时刻进行修炼，对眼力有着极大的提高作用。 \r\n　　玄玉手，可以令手掌",
+          "document_span": {
+            "start": 8657,
+            "end": 9170
+          },
+          "source_kind": "node"
+        }
+      ],
+      "appearance_fact_refs": [
+        {
+          "fact_hash": "1caa2a7e8fc0857dfdf7e1aa9b3c1aff1af2e29bcd6777ca9455147a5c6f61e6",
+          "fact_quote": "这种长柄铁锤甚至要比他的身高还高上几分",
+          "category": "body",
+          "attribute": "身高",
+          "value": "矮于长柄铁锤",
+          "document_fact_span": {
+            "start": 7860,
+            "end": 7879
+          }
+        },
+        {
+          "fact_hash": "c057a88b8a9f97049c02c4211abb7762f171140501b354731a1040c72a0d5e5d",
+          "fact_quote": "他的身体变得结实了几分",
+          "category": "body",
+          "attribute": "身体",
+          "value": "结实几分",
+          "document_fact_span": {
+            "start": 8586,
+            "end": 8597
+          }
+        },
+        {
+          "fact_hash": "8361cad03345fadd6963f1ed50324a4cd781980085ffb25ac856bf6b06cac092",
+          "fact_quote": "他那双稚嫩的小手看上去却并没有任何变化",
+          "category": "body",
+          "attribute": "双手",
+          "value": "稚嫩且无变化",
+          "document_fact_span": {
+            "start": 8897,
+            "end": 8916
+          }
+        }
+      ],
+      "order_position": 7620
+    },
+    {
+      "node_key": "d010e7949745d76331e3c2701c376207e92bd7dd2c63a8ecd29b0ebf5bd9c39d",
+      "ref_type": "local",
+      "source_character_ref": {
+        "source_document_version_id": "source-8bcb7305a759571b",
+        "chunk_id": "chunk-000004-6750-9250-d8d7539ee8f4",
+        "local_mention_id": "m2",
+        "mention_type": "exact",
+        "packet_hash": "269babc3e9a8ae5efb5f442d0eaab405a5b6dca1e79ded70b5648940c7a140bc"
+      },
+      "character_origin": "exact",
+      "label_quote": "唐三",
+      "label_type": "exact",
+      "chunk_id": "chunk-000004-6750-9250-d8d7539ee8f4",
+      "chunk_source_span": {
+        "start": 6750,
+        "end": 9250
+      },
+      "context_bindings": [
+        {
+          "context_quote": "恢复回来就立刻继续敲打。 \r\n　　这不只是对身体的锻炼，反复消耗、恢复，对他的玄天功和意志也是一种很好的磨练。可惜的是，玄天功第一重的瓶颈却像是坚不可摧的壁垒，唐三的修炼不可谓不刻苦，他的天份也足够，可就是无法突破而进入第二重。 \r\n　　但他的锻炼却并没有白费，尽管玄天功没能突破，但这股内力却随着他对铁坨的锻造而变得更加坚韧了，恢复速度似乎也比以前要快了一点。 \r\n　　十一天过去，唐三已经挥出了八千余锤，铁坨不断的变小，已经不到最初时三分之一的体积了。身体的锻炼和食物的增多，他的身体变得结实了几分，仿佛有一股发自体内的力气逐渐注入到他体内，令他在不断的锻造过程中，对内力的消耗正在逐渐减小。而在附加全部内力的时候，力量也增大了许多。 \r\n　　当他砸下一千锤的时候，那铁坨就已经出现了一定的变化，整整小了一圈，尽管在炭火中烧的通红，但也隐约能够看到，里面的杂质似乎减少了许多。 \r\n　　百炼成钢，这个词出现在唐三脑海中，这也更加坚定了他完成这一万锤的决心。而距离这个目标已经很近了。 \r\n　　唐三的坚持令唐昊很惊讶，在他看来，哪怕自己这个儿子是天生神力，也不可能坚持超过三天。铁",
+          "document_span": {
+            "start": 8346,
+            "end": 8837
+          },
+          "source_kind": "node"
+        },
+        {
+          "context_quote": "量也增大了许多。 \r\n　　当他砸下一千锤的时候，那铁坨就已经出现了一定的变化，整整小了一圈，尽管在炭火中烧的通红，但也隐约能够看到，里面的杂质似乎减少了许多。 \r\n　　百炼成钢，这个词出现在唐三脑海中，这也更加坚定了他完成这一万锤的决心。而距离这个目标已经很近了。 \r\n　　唐三的坚持令唐昊很惊讶，在他看来，哪怕自己这个儿子是天生神力，也不可能坚持超过三天。铁锤的锤柄为了防滑是那样的粗糙，不断挥动，与手掌的摩擦，必然会给手掌带来极大的伤害。可他却发现，唐三虽然在实打实的锻造，可他那双稚嫩的小手看上去却并没有任何变化。甚至连一个水泡都没有起过。 \r\n　　(本章完)\r\n\r\n第5章 斗罗大陆，异界唐三（四）\r\n　　第5章 斗罗大陆，异界唐三（四） \r\n　　唐三不想失去这个父亲，也更不希望自己过往的一切被人知道，所以，他自然不会告诉唐昊，这是因为他修炼着唐门的玄玉手。 \r\n　　想用好暗器，最基础的需要是眼力、手力、心力的融合。正所谓心到眼到，眼到手到。所以，在唐门内门的修炼方法中，对于眼力、手力的要求极高。 \r\n　　紫极魔瞳，借助旭日东升时紫气东来的短暂时刻进行修炼，对眼力有着极大的提高作用。 \r\n　　玄玉手，可以令手掌",
+          "document_span": {
+            "start": 8657,
+            "end": 9170
+          },
+          "source_kind": "node"
+        }
+      ],
+      "appearance_fact_refs": [
+        {
+          "fact_hash": "f08b39ebbb7cc81b8b8c9c0b0e0657e71935abe14acae5f28c3808742b8bc6e7",
+          "fact_quote": "他的身体变得结实了几分",
+          "category": "body",
+          "attribute": "体格",
+          "value": "结实",
+          "document_fact_span": {
+            "start": 8586,
+            "end": 8597
+          }
+        },
+        {
+          "fact_hash": "81bd9a09880dcb4647e9941a9b4e06579a22d8a43dc561d488ce0a8e4b63e808",
+          "fact_quote": "稚嫩的小手",
+          "category": "body",
+          "attribute": "双手",
+          "value": "稚嫩",
+          "document_fact_span": {
+            "start": 8900,
+            "end": 8905
+          }
+        }
+      ],
+      "order_position": 8346
+    },
+    {
+      "node_key": "a062a1c1820928e300ba3421a3a33b052aa00b87875c0f5f71ba3655508be51d",
+      "ref_type": "local",
+      "source_character_ref": {
+        "source_document_version_id": "source-8bcb7305a759571b",
+        "chunk_id": "chunk-000005-9000-11500-f4a0068fbfb5",
+        "local_mention_id": "m1",
+        "mention_type": "exact",
+        "packet_hash": "e9fa3888236c2a7893bbaa63116ef53cfdb0d0d57cf695652a744938f12a61bc"
+      },
+      "character_origin": "exact",
+      "label_quote": "唐三",
+      "label_type": "exact",
+      "chunk_id": "chunk-000005-9000-11500-f4a0068fbfb5",
+      "chunk_source_span": {
+        "start": 9000,
+        "end": 11500
+      },
+      "context_bindings": [
+        {
+          "context_quote": "名思义，以器具为武魂者，就是器武魂，以动物为武魂者，就是兽武魂。相对来说，器武魂包含范围更大，大多数人也都是器武魂，而器武魂中无法修炼的武魂也要比兽武魂的比例更大。 \r\n　　唐三曾经见过村子里一个人的武魂是锄头，显然是一种无法修炼的武魂，但尽管如此，他在耕地的时候，依旧要比普通村民的速度快一些。 \r\n　　这也是唐三了解的全部了，因为每个人都会有自己的武魂，唐三也想知道，自己的武魂是什么。究竟是器武魂还是兽武魂，又是否能够修炼呢？ \r\n　　斗罗大陆上的人，武魂觉醒在六岁的时候，再过几天，唐三就要六岁了，不知道为什么，他隐约感觉到，自己的玄天功之所以无法突破，似乎就与这武魂有些关系。 \r\n　　对于成为魂师，唐三到不怎么感兴趣，但他却立志要成为一名唐门内门级别的暗器高手，又怎么少的了内力呢？ \r\n　　“唐昊，忙着呢？”正在唐三朝着自己那一万次锻造努力的时候，听到外面传来一个苍老的声音。 \r\n　　这会儿是下午，唐昊正在工作，打造着农具，闻言只是嗯了一声。 \r\n　　唐三有些好奇的从自己的房间走出来，只见来的是一名老人，看上去六十多岁的样子，身材瘦长，但精神矍铄，衣服干净整洁，头发",
+          "document_span": {
+            "start": 9665,
+            "end": 10157
+          },
+          "source_kind": "node"
+        }
+      ],
+      "appearance_fact_refs": [
+        {
+          "fact_hash": "9cf89070dc170f994825078940bcbe7345c193bd00a8742bb757fd3380fdc54e",
+          "fact_quote": "再过几天，唐三就要六岁了",
+          "category": "age",
+          "attribute": "年龄",
+          "value": "六岁（即将）",
+          "document_fact_span": {
+            "start": 9905,
+            "end": 9917
+          }
+        }
+      ],
+      "order_position": 9665
+    },
+    {
+      "node_key": "1cefa103c748aea5ae25b0da4d43914577f208d3270e4834aba2ae63cd9e3e6e",
+      "ref_type": "promoted",
+      "source_character_ref": {
+        "source_document_version_id": "source-8bcb7305a759571b",
+        "chunk_id": "chunk-000005-9000-11500-f4a0068fbfb5",
+        "source_local_mention_id": "m4",
+        "source_mention_type": "describe",
+        "promotion_index": 1,
+        "character_origin": "remaining_describe",
+        "packet_hash": "cd6075fc8f576b7e9ed6d2dcb732a9d847883a56caf42e217f7db1ccd29df8bf",
+        "promotion_hash": "2c769b2944b1c694ec162eb0bf931a9a0c4e0d3abe30a016570a21f7bdcff5a8"
+      },
+      "character_origin": "remaining_describe",
+      "label_quote": "这位村长",
+      "label_type": "describe",
+      "chunk_id": "chunk-000005-9000-11500-f4a0068fbfb5",
+      "chunk_source_span": {
+        "start": 9000,
+        "end": 11500
+      },
+      "context_bindings": [
+        {
+          "context_quote": "斗罗大陆上的人，武魂觉醒在六岁的时候，再过几天，唐三就要六岁了，不知道为什么，他隐约感觉到，自己的玄天功之所以无法突破，似乎就与这武魂有些关系。 \r\n　　对于成为魂师，唐三到不怎么感兴趣，但他却立志要成为一名唐门内门级别的暗器高手，又怎么少的了内力呢？ \r\n　　“唐昊，忙着呢？”正在唐三朝着自己那一万次锻造努力的时候，听到外面传来一个苍老的声音。 \r\n　　这会儿是下午，唐昊正在工作，打造着农具，闻言只是嗯了一声。 \r\n　　唐三有些好奇的从自己的房间走出来，只见来的是一名老人，看上去六十多岁的样子，身材瘦长，但精神矍铄，衣服干净整洁，头发也梳理的一丝不苟，和唐昊相比，简直就是两个极端。这个人唐三认识，是圣魂村的村长老杰克。 \r\n　　“小三，来，让爷爷看看。”老杰克向唐三挥了挥手。 \r\n　　这位村长是个老好人，村里的人都很尊敬他，早几年，唐三家最困难的时候，他没少送吃的过来。 \r\n　　“杰克爷爷，您好。”唐三走到老杰克面前，恭敬的向他行礼。对于对自己好的人，唐三都会铭记于心。 \r\n　　唐昊冷淡的道：“有事么，村长。”老杰克其实比他大了还不到十岁，却硬是要比他高一辈，令唐昊一直有些不爽。 \r\n　　老杰克似乎已经习惯了唐昊这样的态度，“唐昊啊，小三也快六岁了吧",
+          "document_span": {
+            "start": 9886,
+            "end": 10420
+          },
+          "source_kind": "node"
+        }
+      ],
+      "appearance_fact_refs": [
+        {
+          "fact_hash": "8c814f95cd87208cea41da4a8e8bde2e3eedf8ca6341ea8721a08d7fda552fc6",
+          "fact_quote": "看上去六十多岁的样子",
+          "category": "age",
+          "attribute": "年龄",
+          "value": "六十多岁",
+          "document_fact_span": {
+            "start": 10126,
+            "end": 10136
+          }
+        },
+        {
+          "fact_hash": "dac3f494234509c627214d17288d9fa23ad239c82fb08f7c1235a2c7183fef77",
+          "fact_quote": "身材瘦长",
+          "category": "body",
+          "attribute": "身材",
+          "value": "瘦长",
+          "document_fact_span": {
+            "start": 10137,
+            "end": 10141
+          }
+        },
+        {
+          "fact_hash": "14a8cc8f54b2d5e7cb577115cccefb37476ffb23fb7d27fcb272b6ec12856561",
+          "fact_quote": "衣服干净整洁",
+          "category": "clothing",
+          "attribute": "衣服",
+          "value": "干净整洁",
+          "document_fact_span": {
+            "start": 10148,
+            "end": 10154
+          }
+        },
+        {
+          "fact_hash": "595ea4286d766c5225e767c37ebd6e1a6b35f2e2e582b53aa45292574ccd7340",
+          "fact_quote": "头发也梳理的一丝不苟",
+          "category": "hair",
+          "attribute": "头发",
+          "value": "梳理的一丝不苟",
+          "document_fact_span": {
+            "start": 10155,
+            "end": 10165
+          }
+        }
+      ],
+      "order_position": 9886
+    },
+    {
+      "node_key": "2a4740f407e69b243675c2d05060d5d808f0a3400f4ba9a7f56eaa71dbe84ea5",
+      "ref_type": "promoted",
+      "source_character_ref": {
+        "source_document_version_id": "source-8bcb7305a759571b",
+        "chunk_id": "chunk-000005-9000-11500-f4a0068fbfb5",
+        "source_local_mention_id": "m5",
+        "source_mention_type": "describe",
+        "promotion_index": 1,
+        "character_origin": "remaining_describe",
+        "packet_hash": "4d1605c7279113737e028d9f3de6870926b62417e5b36a6784f80e9dea1e644b",
+        "promotion_hash": "8bbb3843669027b40bf02a8ac309cdd772058aa502e975f80ec7856fb54fa9c4"
+      },
+      "character_origin": "remaining_describe",
+      "label_quote": "杰克爷爷",
+      "label_type": "describe",
+      "chunk_id": "chunk-000005-9000-11500-f4a0068fbfb5",
+      "chunk_source_span": {
+        "start": 9000,
+        "end": 11500
+      },
+      "context_bindings": [
+        {
+          "context_quote": "斗罗大陆上的人，武魂觉醒在六岁的时候，再过几天，唐三就要六岁了，不知道为什么，他隐约感觉到，自己的玄天功之所以无法突破，似乎就与这武魂有些关系。 \r\n　　对于成为魂师，唐三到不怎么感兴趣，但他却立志要成为一名唐门内门级别的暗器高手，又怎么少的了内力呢？ \r\n　　“唐昊，忙着呢？”正在唐三朝着自己那一万次锻造努力的时候，听到外面传来一个苍老的声音。 \r\n　　这会儿是下午，唐昊正在工作，打造着农具，闻言只是嗯了一声。 \r\n　　唐三有些好奇的从自己的房间走出来，只见来的是一名老人，看上去六十多岁的样子，身材瘦长，但精神矍铄，衣服干净整洁，头发也梳理的一丝不苟，和唐昊相比，简直就是两个极端。这个人唐三认识，是圣魂村的村长老杰克。 \r\n　　“小三，来，让爷爷看看。”老杰克向唐三挥了挥手。 \r\n　　这位村长是个老好人，村里的人都很尊敬他，早几年，唐三家最困难的时候，他没少送吃的过来。 \r\n　　“杰克爷爷，您好。”唐三走到老杰克面前，恭敬的向他行礼。对于对自己好的人，唐三都会铭记于心。 \r\n　　唐昊冷淡的道：“有事么，村长。”老杰克其实比他大了还不到十岁，却硬是要比他高一辈，令唐昊一直有些不爽。 \r\n　　老杰克似乎已经习惯了唐昊这样的态度，“唐昊啊，小三也快六岁了吧",
+          "document_span": {
+            "start": 9886,
+            "end": 10420
+          },
+          "source_kind": "node"
+        }
+      ],
+      "appearance_fact_refs": [
+        {
+          "fact_hash": "e9527e1fa7f9b2aca784fba6162a06c4dbceada0d93c8d8118ddd31063a71f1f",
+          "fact_quote": "看上去六十多岁的样子",
+          "category": "age",
+          "attribute": "年龄",
+          "value": "六十多岁",
+          "document_fact_span": {
+            "start": 10126,
+            "end": 10136
+          }
+        },
+        {
+          "fact_hash": "b0ec03fa2d804c03fbbebb9f2e5cfa794975b11ca1b69f48eb6399a12cbcaa23",
+          "fact_quote": "身材瘦长",
+          "category": "body",
+          "attribute": "身材",
+          "value": "瘦长",
+          "document_fact_span": {
+            "start": 10137,
+            "end": 10141
+          }
+        },
+        {
+          "fact_hash": "4550b0f8f63e03a0a52aa85a355d0940568b5a1608c200c68f4d323825edea6d",
+          "fact_quote": "精神矍铄",
+          "category": "appearance_state",
+          "attribute": "精神状态",
+          "value": "精神矍铄",
+          "document_fact_span": {
+            "start": 10143,
+            "end": 10147
+          }
+        },
+        {
+          "fact_hash": "9568403cdb927a27864d423df5244f55f7c01d0c65863a18846557c071551569",
+          "fact_quote": "衣服干净整洁",
+          "category": "clothing",
+          "attribute": "衣服",
+          "value": "干净整洁",
+          "document_fact_span": {
+            "start": 10148,
+            "end": 10154
+          }
+        },
+        {
+          "fact_hash": "8c2a213fc4017d7e1789432e0ef6402950fa0f8923e7fb17913a6389e6a90e53",
+          "fact_quote": "头发也梳理的一丝不苟",
+          "category": "hair",
+          "attribute": "头发",
+          "value": "梳理的一丝不苟",
+          "document_fact_span": {
+            "start": 10155,
+            "end": 10165
+          }
+        }
+      ],
+      "order_position": 9886
+    },
+    {
+      "node_key": "a13d697ffd0919d67d3cc2c467ab0b5d9cb4e9501ee65e7d42098d677f89c34b",
+      "ref_type": "promoted",
+      "source_character_ref": {
+        "source_document_version_id": "source-8bcb7305a759571b",
+        "chunk_id": "chunk-000005-9000-11500-f4a0068fbfb5",
+        "source_local_mention_id": "m2",
+        "source_mention_type": "describe",
+        "promotion_index": 1,
+        "character_origin": "remaining_describe",
+        "packet_hash": "ced9b5a4e23b0cd5bd87072539ec25d9842157c985712358c5ecc19bab2192c6",
+        "promotion_hash": "705ab3138b236fd21cb5beaf24ecbe1da1f6a5a2c2a0c2507ce5f887947223a0"
+      },
+      "character_origin": "remaining_describe",
+      "label_quote": "一名老人",
+      "label_type": "describe",
+      "chunk_id": "chunk-000005-9000-11500-f4a0068fbfb5",
+      "chunk_source_span": {
+        "start": 9000,
+        "end": 11500
+      },
+      "context_bindings": [
+        {
+          "context_quote": "斗罗大陆上的人，武魂觉醒在六岁的时候，再过几天，唐三就要六岁了，不知道为什么，他隐约感觉到，自己的玄天功之所以无法突破，似乎就与这武魂有些关系。 \r\n　　对于成为魂师，唐三到不怎么感兴趣，但他却立志要成为一名唐门内门级别的暗器高手，又怎么少的了内力呢？ \r\n　　“唐昊，忙着呢？”正在唐三朝着自己那一万次锻造努力的时候，听到外面传来一个苍老的声音。 \r\n　　这会儿是下午，唐昊正在工作，打造着农具，闻言只是嗯了一声。 \r\n　　唐三有些好奇的从自己的房间走出来，只见来的是一名老人，看上去六十多岁的样子，身材瘦长，但精神矍铄，衣服干净整洁，头发也梳理的一丝不苟，和唐昊相比，简直就是两个极端。这个人唐三认识，是圣魂村的村长老杰克。 \r\n　　“小三，来，让爷爷看看。”老杰克向唐三挥了挥手。 \r\n　　这位村长是个老好人，村里的人都很尊敬他，早几年，唐三家最困难的时候，他没少送吃的过来。 \r\n　　“杰克爷爷，您好。”唐三走到老杰克面前，恭敬的向他行礼。对于对自己好的人，唐三都会铭记于心。 \r\n　　唐昊冷淡的道：“有事么，村长。”老杰克其实比他大了还不到十岁，却硬是要比他高一辈，令唐昊一直有些不爽。 \r\n　　老杰克似乎已经习惯了唐昊这样的态度，“唐昊啊，小三也快六岁了吧",
+          "document_span": {
+            "start": 9886,
+            "end": 10420
+          },
+          "source_kind": "node"
+        }
+      ],
+      "appearance_fact_refs": [
+        {
+          "fact_hash": "2a65f3fc478458c2ea6aaeabbf02716cf78c40f3daf68f77d87f4c4eb73948df",
+          "fact_quote": "看上去六十多岁的样子",
+          "category": "age",
+          "attribute": "年龄",
+          "value": "六十多岁",
+          "document_fact_span": {
+            "start": 10126,
+            "end": 10136
+          }
+        },
+        {
+          "fact_hash": "b8601a03efecfa788acee1e750e34dbf084158053aab38db9b560ed738e9593e",
+          "fact_quote": "身材瘦长",
+          "category": "body",
+          "attribute": "身材",
+          "value": "瘦长",
+          "document_fact_span": {
+            "start": 10137,
+            "end": 10141
+          }
+        },
+        {
+          "fact_hash": "53087fc98c39b5af62783a7e4fcc6db9ee23f323775e3bd52196515fa5f9605b",
+          "fact_quote": "精神矍铄",
+          "category": "appearance_state",
+          "attribute": "精神状态",
+          "value": "精神矍铄",
+          "document_fact_span": {
+            "start": 10143,
+            "end": 10147
+          }
+        },
+        {
+          "fact_hash": "0243ebc3a88b79207aaba13558e4da910c75548b6c3bda44649e1f83c1962a42",
+          "fact_quote": "衣服干净整洁",
+          "category": "clothing",
+          "attribute": "衣着",
+          "value": "干净整洁",
+          "document_fact_span": {
+            "start": 10148,
+            "end": 10154
+          }
+        },
+        {
+          "fact_hash": "f0f22cb8a19375af58611a9dda302262f4327d83571b12b3da9c4423c96a35e6",
+          "fact_quote": "头发也梳理的一丝不苟",
+          "category": "hair",
+          "attribute": "头发",
+          "value": "梳理的一丝不苟",
+          "document_fact_span": {
+            "start": 10155,
+            "end": 10165
+          }
+        }
+      ],
+      "order_position": 9886
+    },
+    {
+      "node_key": "b11ca5bc38949f7537ef9733b5977fb4e36b4b8f395b9a5475563994a5ea9130",
+      "ref_type": "promoted",
+      "source_character_ref": {
+        "source_document_version_id": "source-8bcb7305a759571b",
+        "chunk_id": "chunk-000005-9000-11500-f4a0068fbfb5",
+        "source_local_mention_id": "m3",
+        "source_mention_type": "describe",
+        "promotion_index": 1,
+        "character_origin": "remaining_describe",
+        "packet_hash": "889d95ba32c85c760d1f83334632e8178d9892a2ead23b4c450e854caa06181e",
+        "promotion_hash": "b02517ebced642424ac9ef110842fad8398d62be22bc7e5af87ec77658bbc8aa"
+      },
+      "character_origin": "remaining_describe",
+      "label_quote": "老杰克",
+      "label_type": "describe",
+      "chunk_id": "chunk-000005-9000-11500-f4a0068fbfb5",
+      "chunk_source_span": {
+        "start": 9000,
+        "end": 11500
+      },
+      "context_bindings": [
+        {
+          "context_quote": "斗罗大陆上的人，武魂觉醒在六岁的时候，再过几天，唐三就要六岁了，不知道为什么，他隐约感觉到，自己的玄天功之所以无法突破，似乎就与这武魂有些关系。 \r\n　　对于成为魂师，唐三到不怎么感兴趣，但他却立志要成为一名唐门内门级别的暗器高手，又怎么少的了内力呢？ \r\n　　“唐昊，忙着呢？”正在唐三朝着自己那一万次锻造努力的时候，听到外面传来一个苍老的声音。 \r\n　　这会儿是下午，唐昊正在工作，打造着农具，闻言只是嗯了一声。 \r\n　　唐三有些好奇的从自己的房间走出来，只见来的是一名老人，看上去六十多岁的样子，身材瘦长，但精神矍铄，衣服干净整洁，头发也梳理的一丝不苟，和唐昊相比，简直就是两个极端。这个人唐三认识，是圣魂村的村长老杰克。 \r\n　　“小三，来，让爷爷看看。”老杰克向唐三挥了挥手。 \r\n　　这位村长是个老好人，村里的人都很尊敬他，早几年，唐三家最困难的时候，他没少送吃的过来。 \r\n　　“杰克爷爷，您好。”唐三走到老杰克面前，恭敬的向他行礼。对于对自己好的人，唐三都会铭记于心。 \r\n　　唐昊冷淡的道：“有事么，村长。”老杰克其实比他大了还不到十岁，却硬是要比他高一辈，令唐昊一直有些不爽。 \r\n　　老杰克似乎已经习惯了唐昊这样的态度，“唐昊啊，小三也快六岁了吧",
+          "document_span": {
+            "start": 9886,
+            "end": 10420
+          },
+          "source_kind": "node"
+        }
+      ],
+      "appearance_fact_refs": [
+        {
+          "fact_hash": "0c1bbd280788b4151b7cf7ee3f289b68a5eed6a0315eef1c17e2060709169574",
+          "fact_quote": "看上去六十多岁的样子",
+          "category": "age",
+          "attribute": "年龄",
+          "value": "六十多岁",
+          "document_fact_span": {
+            "start": 10126,
+            "end": 10136
+          }
+        },
+        {
+          "fact_hash": "46db3222893f564d50ae5c2ca56d59350788d022afa1ae060e5e06043c45ace0",
+          "fact_quote": "身材瘦长",
+          "category": "body",
+          "attribute": "身材",
+          "value": "瘦长",
+          "document_fact_span": {
+            "start": 10137,
+            "end": 10141
+          }
+        },
+        {
+          "fact_hash": "dafcd6033ea8c586c4f081c2aa67759c7fb1e875a376e3bf0678bc966ed5a461",
+          "fact_quote": "精神矍铄",
+          "category": "appearance_state",
+          "attribute": "精神状态",
+          "value": "矍铄",
+          "document_fact_span": {
+            "start": 10143,
+            "end": 10147
+          }
+        },
+        {
+          "fact_hash": "daf58f4f05613811011b02071bd44f83e6031af9db17e9f20f70d4a209c1cf1e",
+          "fact_quote": "衣服干净整洁",
+          "category": "clothing",
+          "attribute": "衣服",
+          "value": "干净整洁",
+          "document_fact_span": {
+            "start": 10148,
+            "end": 10154
+          }
+        },
+        {
+          "fact_hash": "4eb23bd434384512e485a663ae4e34e1cd7d2304a8ba7c1734bc6aca15def3c7",
+          "fact_quote": "头发也梳理的一丝不苟",
+          "category": "hair",
+          "attribute": "头发",
+          "value": "梳理的一丝不苟",
+          "document_fact_span": {
+            "start": 10155,
+            "end": 10165
+          }
+        }
+      ],
+      "order_position": 9886
+    },
+    {
+      "node_key": "3f90ca68ba802e43cc015ea6793f2aab441c9a7f099d4d92f717b5ea0ff0ae7f",
+      "ref_type": "promoted",
+      "source_character_ref": {
+        "source_document_version_id": "source-8bcb7305a759571b",
+        "chunk_id": "chunk-000006-11250-13750-9b713c3495b7",
+        "source_local_mention_id": "m1",
+        "source_mention_type": "describe",
+        "promotion_index": 1,
+        "character_origin": "remaining_describe",
+        "packet_hash": "62346dbfc6b94fc2d595acbece348759a2815879b58538cc772119f3ca5b23f5",
+        "promotion_hash": "b1969762eed702f1cd47b4decc247bb1b944cd8d10f4d6f804b8235fcc51c61b"
+      },
+      "character_origin": "remaining_describe",
+      "label_quote": "年轻人",
+      "label_type": "describe",
+      "chunk_id": "chunk-000006-11250-13750-9b713c3495b7",
+      "chunk_source_span": {
+        "start": 11250,
+        "end": 13750
+      },
+      "context_bindings": [
+        {
+          "context_quote": "所以，在斗罗大陆的任何一个地方，都能看到武魂殿的身影。当然，这些都只是分殿而已。层级不同。 \r\n　　今年圣魂村进行武魂觉醒的孩子一共有八个，唐三在老杰克的带领下是最后一个来的。 \r\n　　村子里的孩子都不大看得起唐三，嫌贫爱富不只是在贵族中才有，平民之间这种情况反而更加明显。而唐三本身是两世为人，实际年龄早已超过了三十，自然也不愿意与这些孩子打交道。对他来说，有多余的时间还不如用来修炼。因此，他并没有童年的玩伴。 \r\n　　除了村长杰克和到齐的八个孩子以外，武魂殿中还有一个青年，此人看上去二十多岁的样子，剑眉星目，相貌甚是俊朗。一身白色劲装，背后是黑色披风，胸前正中心的位置，有一个拳头大小的魂字。这是武魂殿直属人员标准的装扮。 \r\n　　左胸上，有一枚雕刻着长剑的徽章，徽章上一共是三柄长剑交错。像杰克这种对魂师很熟悉的人知道，三柄的数量代表的就是魂师的第三等称号大魂师，而长剑则代表着这位来自武魂殿的执事是一名战魂师。 \r\n　　“您好，尊敬的战魂大师，这次要麻烦您了。”老杰克恭敬的向年轻人行礼。 \r\n　　年轻人眉宇中流露着淡淡的骄傲，不咸不淡的略微躬身，算是还礼了，“我时间不多，现在就开始吧。” \r\n　　老杰克道：“好的。孩子们，这位是来自诺丁城的战魂大师。接下来，他将引",
+          "document_span": {
+            "start": 12899,
+            "end": 13439
+          },
+          "source_kind": "node"
+        },
+        {
+          "context_quote": "是最后一个来的。 \r\n　　村子里的孩子都不大看得起唐三，嫌贫爱富不只是在贵族中才有，平民之间这种情况反而更加明显。而唐三本身是两世为人，实际年龄早已超过了三十，自然也不愿意与这些孩子打交道。对他来说，有多余的时间还不如用来修炼。因此，他并没有童年的玩伴。 \r\n　　除了村长杰克和到齐的八个孩子以外，武魂殿中还有一个青年，此人看上去二十多岁的样子，剑眉星目，相貌甚是俊朗。一身白色劲装，背后是黑色披风，胸前正中心的位置，有一个拳头大小的魂字。这是武魂殿直属人员标准的装扮。 \r\n　　左胸上，有一枚雕刻着长剑的徽章，徽章上一共是三柄长剑交错。像杰克这种对魂师很熟悉的人知道，三柄的数量代表的就是魂师的第三等称号大魂师，而长剑则代表着这位来自武魂殿的执事是一名战魂师。 \r\n　　“您好，尊敬的战魂大师，这次要麻烦您了。”老杰克恭敬的向年轻人行礼。 \r\n　　年轻人眉宇中流露着淡淡的骄傲，不咸不淡的略微躬身，算是还礼了，“我时间不多，现在就开始吧。” \r\n　　老杰克道：“好的。孩子们，这位是来自诺丁城的战魂大师。接下来，他将引领你们开启自己的武魂。你们一定要配合好大师进行武魂觉醒，爷爷期待着你们中有能够成为魂师的人。” \r",
+          "document_span": {
+            "start": 12979,
+            "end": 13488
+          },
+          "source_kind": "node"
+        }
+      ],
+      "appearance_fact_refs": [
+        {
+          "fact_hash": "bad6a4637e25dfcff129d961f0056d88e8dc50501c94b5a1597cba0f7ca79ab6",
+          "fact_quote": "看上去二十多岁的样子",
+          "category": "age",
+          "attribute": "年龄",
+          "value": "二十多岁",
+          "document_fact_span": {
+            "start": 13141,
+            "end": 13151
+          }
+        },
+        {
+          "fact_hash": "633ded9895d0dd45baaf7289cef7e3fb41d52ea12af8f7460cdc8428fb0d51d9",
+          "fact_quote": "剑眉星目",
+          "category": "face",
+          "attribute": "眉毛和眼睛",
+          "value": "剑眉星目",
+          "document_fact_span": {
+            "start": 13152,
+            "end": 13156
+          }
+        },
+        {
+          "fact_hash": "5c8eb9752408bb0bf1b333fcd5fc1bd786feccf31f31b6e9efc325411a429ef8",
+          "fact_quote": "相貌甚是俊朗",
+          "category": "face",
+          "attribute": "相貌",
+          "value": "俊朗",
+          "document_fact_span": {
+            "start": 13157,
+            "end": 13163
+          }
+        },
+        {
+          "fact_hash": "0ac303afb2449efb592552e702152604de7cba0e8daadaa4d867f2b965c96ac4",
+          "fact_quote": "一身白色劲装",
+          "category": "clothing",
+          "attribute": "服装",
+          "value": "白色劲装",
+          "document_fact_span": {
+            "start": 13164,
+            "end": 13170
+          }
+        },
+        {
+          "fact_hash": "1b32492cfbe86bcf77c9529efc89a9ec26c90c95fd9e98e314c18cc7409966a0",
+          "fact_quote": "背后是黑色披风",
+          "category": "clothing",
+          "attribute": "披风",
+          "value": "黑色披风",
+          "document_fact_span": {
+            "start": 13171,
+            "end": 13178
+          }
+        },
+        {
+          "fact_hash": "baf9134e4f5f1fb5e1fa4d96d2623e5b2bd0f8132dd5f47ccfb2adb0d42ebb3c",
+          "fact_quote": "有一个拳头大小的魂字",
+          "category": "clothing",
+          "attribute": "胸前字",
+          "value": "拳头大小的魂字",
+          "document_fact_span": {
+            "start": 13188,
+            "end": 13198
+          }
+        },
+        {
+          "fact_hash": "fa9c03195424e6a26cc525f2e84e1f415190bbfd568db8e741b660d4401ca45f",
+          "fact_quote": "左胸上，有一枚雕刻着长剑的徽章",
+          "category": "accessory",
+          "attribute": "徽章",
+          "value": "雕刻着长剑的徽章",
+          "document_fact_span": {
+            "start": 13219,
+            "end": 13234
+          }
+        },
+        {
+          "fact_hash": "9448ce1e4731647a93dc37d925e99d1713a8fd2a063dede6695fd5629b19f7da",
+          "fact_quote": "徽章上一共是三柄长剑交错",
+          "category": "accessory",
+          "attribute": "徽章图案",
+          "value": "三柄长剑交错",
+          "document_fact_span": {
+            "start": 13235,
+            "end": 13247
+          }
+        }
+      ],
+      "order_position": 12899
+    },
+    {
+      "node_key": "45d49bbf0658ba33126ad8bcc7f3ad6cf258b1850c991ea1c01ce8d6dc7f718f",
+      "ref_type": "promoted",
+      "source_character_ref": {
+        "source_document_version_id": "source-8bcb7305a759571b",
+        "chunk_id": "chunk-000006-11250-13750-9b713c3495b7",
+        "source_local_mention_id": "m2",
+        "source_mention_type": "describe",
+        "promotion_index": 1,
+        "character_origin": "remaining_describe",
+        "packet_hash": "4c4dd5beffa9278405434602b7b46224338728279cdc350d4e16594333c9b3ff",
+        "promotion_hash": "312048c6534df0ee9800c675781c4b08356893836cd5dfe14a26e08f7daacfb2"
+      },
+      "character_origin": "remaining_describe",
+      "label_quote": "青年",
+      "label_type": "describe",
+      "chunk_id": "chunk-000006-11250-13750-9b713c3495b7",
+      "chunk_source_span": {
+        "start": 11250,
+        "end": 13750
+      },
+      "context_bindings": [
+        {
+          "context_quote": "所以，在斗罗大陆的任何一个地方，都能看到武魂殿的身影。当然，这些都只是分殿而已。层级不同。 \r\n　　今年圣魂村进行武魂觉醒的孩子一共有八个，唐三在老杰克的带领下是最后一个来的。 \r\n　　村子里的孩子都不大看得起唐三，嫌贫爱富不只是在贵族中才有，平民之间这种情况反而更加明显。而唐三本身是两世为人，实际年龄早已超过了三十，自然也不愿意与这些孩子打交道。对他来说，有多余的时间还不如用来修炼。因此，他并没有童年的玩伴。 \r\n　　除了村长杰克和到齐的八个孩子以外，武魂殿中还有一个青年，此人看上去二十多岁的样子，剑眉星目，相貌甚是俊朗。一身白色劲装，背后是黑色披风，胸前正中心的位置，有一个拳头大小的魂字。这是武魂殿直属人员标准的装扮。 \r\n　　左胸上，有一枚雕刻着长剑的徽章，徽章上一共是三柄长剑交错。像杰克这种对魂师很熟悉的人知道，三柄的数量代表的就是魂师的第三等称号大魂师，而长剑则代表着这位来自武魂殿的执事是一名战魂师。 \r\n　　“您好，尊敬的战魂大师，这次要麻烦您了。”老杰克恭敬的向年轻人行礼。 \r\n　　年轻人眉宇中流露着淡淡的骄傲，不咸不淡的略微躬身，算是还礼了，“我时间不多，现在就开始吧。” \r\n　　老杰克道：“好的。孩子们，这位是来自诺丁城的战魂大师。接下来，他将引",
+          "document_span": {
+            "start": 12899,
+            "end": 13439
+          },
+          "source_kind": "node"
+        },
+        {
+          "context_quote": "是最后一个来的。 \r\n　　村子里的孩子都不大看得起唐三，嫌贫爱富不只是在贵族中才有，平民之间这种情况反而更加明显。而唐三本身是两世为人，实际年龄早已超过了三十，自然也不愿意与这些孩子打交道。对他来说，有多余的时间还不如用来修炼。因此，他并没有童年的玩伴。 \r\n　　除了村长杰克和到齐的八个孩子以外，武魂殿中还有一个青年，此人看上去二十多岁的样子，剑眉星目，相貌甚是俊朗。一身白色劲装，背后是黑色披风，胸前正中心的位置，有一个拳头大小的魂字。这是武魂殿直属人员标准的装扮。 \r\n　　左胸上，有一枚雕刻着长剑的徽章，徽章上一共是三柄长剑交错。像杰克这种对魂师很熟悉的人知道，三柄的数量代表的就是魂师的第三等称号大魂师，而长剑则代表着这位来自武魂殿的执事是一名战魂师。 \r\n　　“您好，尊敬的战魂大师，这次要麻烦您了。”老杰克恭敬的向年轻人行礼。 \r\n　　年轻人眉宇中流露着淡淡的骄傲，不咸不淡的略微躬身，算是还礼了，“我时间不多，现在就开始吧。” \r\n　　老杰克道：“好的。孩子们，这位是来自诺丁城的战魂大师。接下来，他将引领你们开启自己的武魂。你们一定要配合好大师进行武魂觉醒，爷爷期待着你们中有能够成为魂师的人。” \r",
+          "document_span": {
+            "start": 12979,
+            "end": 13488
+          },
+          "source_kind": "node"
+        }
+      ],
+      "appearance_fact_refs": [
+        {
+          "fact_hash": "16564631343018b6bf5298b7466a5ac6455e72c15ed3fdaaf67e4f82715e0953",
+          "fact_quote": "看上去二十多岁的样子",
+          "category": "age",
+          "attribute": "年龄",
+          "value": "二十多岁",
+          "document_fact_span": {
+            "start": 13141,
+            "end": 13151
+          }
+        },
+        {
+          "fact_hash": "089ea5e32bcb9934c4051624f6455041039cbe2327765f119d85ca937bf7023a",
+          "fact_quote": "剑眉星目",
+          "category": "face",
+          "attribute": "眉眼",
+          "value": "剑眉星目",
+          "document_fact_span": {
+            "start": 13152,
+            "end": 13156
+          }
+        },
+        {
+          "fact_hash": "f7a7e83c0a5694a7a1171054c4ff411b7189cad3afa70a11df41403a30df532a",
+          "fact_quote": "相貌甚是俊朗",
+          "category": "face",
+          "attribute": "相貌",
+          "value": "俊朗",
+          "document_fact_span": {
+            "start": 13157,
+            "end": 13163
+          }
+        },
+        {
+          "fact_hash": "119f46995c4e4c4c2b1ff1e52d08cc69787363704ec1cf0a6d8d1b343ea4bdc6",
+          "fact_quote": "一身白色劲装",
+          "category": "clothing",
+          "attribute": "服装",
+          "value": "白色劲装",
+          "document_fact_span": {
+            "start": 13164,
+            "end": 13170
+          }
+        },
+        {
+          "fact_hash": "7bb693697a4b6db5291b0ae8393a5a85764384aba878773aa59c0cb35da33ef5",
+          "fact_quote": "背后是黑色披风",
+          "category": "clothing",
+          "attribute": "披风",
+          "value": "黑色披风",
+          "document_fact_span": {
+            "start": 13171,
+            "end": 13178
+          }
+        },
+        {
+          "fact_hash": "3085e306b1f8828b1913157f27304aed6b802f6ad69deef787184cd04f6d3d56",
+          "fact_quote": "胸前正中心的位置，有一个拳头大小的魂字",
+          "category": "distinctive_mark",
+          "attribute": "胸前标记",
+          "value": "拳头大小的魂字",
+          "document_fact_span": {
+            "start": 13179,
+            "end": 13198
+          }
+        },
+        {
+          "fact_hash": "14abba0b802436a820bac6f360ab623d1c61504f19a2a181127240649f0209d0",
+          "fact_quote": "左胸上，有一枚雕刻着长剑的徽章，徽章上一共是三柄长剑交错",
+          "category": "accessory",
+          "attribute": "左胸徽章",
+          "value": "雕刻三柄长剑交错的徽章",
+          "document_fact_span": {
+            "start": 13219,
+            "end": 13247
+          }
+        }
+      ],
+      "order_position": 12899
+    },
+    {
+      "node_key": "b2db325da35bb35c0a41ab3ad22180bc036a335bf040ba5e237a5abf620a8d98",
+      "ref_type": "promoted",
+      "source_character_ref": {
+        "source_document_version_id": "source-8bcb7305a759571b",
+        "chunk_id": "chunk-000006-11250-13750-9b713c3495b7",
+        "source_local_mention_id": "m3",
+        "source_mention_type": "describe",
+        "promotion_index": 1,
+        "character_origin": "remaining_describe",
+        "packet_hash": "6bb39f8aea9f26d417dbb45861d7d128217831446a93af0e30ebdfb3858bed8d",
+        "promotion_hash": "51def963316e4206373c79d4fabe6e1b299007e9666747b3ee62e2d301e06702"
+      },
+      "character_origin": "remaining_describe",
+      "label_quote": "战魂大师",
+      "label_type": "describe",
+      "chunk_id": "chunk-000006-11250-13750-9b713c3495b7",
+      "chunk_source_span": {
+        "start": 11250,
+        "end": 13750
+      },
+      "context_bindings": [
+        {
+          "context_quote": "所以，在斗罗大陆的任何一个地方，都能看到武魂殿的身影。当然，这些都只是分殿而已。层级不同。 \r\n　　今年圣魂村进行武魂觉醒的孩子一共有八个，唐三在老杰克的带领下是最后一个来的。 \r\n　　村子里的孩子都不大看得起唐三，嫌贫爱富不只是在贵族中才有，平民之间这种情况反而更加明显。而唐三本身是两世为人，实际年龄早已超过了三十，自然也不愿意与这些孩子打交道。对他来说，有多余的时间还不如用来修炼。因此，他并没有童年的玩伴。 \r\n　　除了村长杰克和到齐的八个孩子以外，武魂殿中还有一个青年，此人看上去二十多岁的样子，剑眉星目，相貌甚是俊朗。一身白色劲装，背后是黑色披风，胸前正中心的位置，有一个拳头大小的魂字。这是武魂殿直属人员标准的装扮。 \r\n　　左胸上，有一枚雕刻着长剑的徽章，徽章上一共是三柄长剑交错。像杰克这种对魂师很熟悉的人知道，三柄的数量代表的就是魂师的第三等称号大魂师，而长剑则代表着这位来自武魂殿的执事是一名战魂师。 \r\n　　“您好，尊敬的战魂大师，这次要麻烦您了。”老杰克恭敬的向年轻人行礼。 \r\n　　年轻人眉宇中流露着淡淡的骄傲，不咸不淡的略微躬身，算是还礼了，“我时间不多，现在就开始吧。” \r\n　　老杰克道：“好的。孩子们，这位是来自诺丁城的战魂大师。接下来，他将引",
+          "document_span": {
+            "start": 12899,
+            "end": 13439
+          },
+          "source_kind": "node"
+        },
+        {
+          "context_quote": "是最后一个来的。 \r\n　　村子里的孩子都不大看得起唐三，嫌贫爱富不只是在贵族中才有，平民之间这种情况反而更加明显。而唐三本身是两世为人，实际年龄早已超过了三十，自然也不愿意与这些孩子打交道。对他来说，有多余的时间还不如用来修炼。因此，他并没有童年的玩伴。 \r\n　　除了村长杰克和到齐的八个孩子以外，武魂殿中还有一个青年，此人看上去二十多岁的样子，剑眉星目，相貌甚是俊朗。一身白色劲装，背后是黑色披风，胸前正中心的位置，有一个拳头大小的魂字。这是武魂殿直属人员标准的装扮。 \r\n　　左胸上，有一枚雕刻着长剑的徽章，徽章上一共是三柄长剑交错。像杰克这种对魂师很熟悉的人知道，三柄的数量代表的就是魂师的第三等称号大魂师，而长剑则代表着这位来自武魂殿的执事是一名战魂师。 \r\n　　“您好，尊敬的战魂大师，这次要麻烦您了。”老杰克恭敬的向年轻人行礼。 \r\n　　年轻人眉宇中流露着淡淡的骄傲，不咸不淡的略微躬身，算是还礼了，“我时间不多，现在就开始吧。” \r\n　　老杰克道：“好的。孩子们，这位是来自诺丁城的战魂大师。接下来，他将引领你们开启自己的武魂。你们一定要配合好大师进行武魂觉醒，爷爷期待着你们中有能够成为魂师的人。” \r",
+          "document_span": {
+            "start": 12979,
+            "end": 13488
+          },
+          "source_kind": "node"
+        }
+      ],
+      "appearance_fact_refs": [
+        {
+          "fact_hash": "7db315a4e0c9c056f553382dd65f1445ae0b2615a9f4223bd201377825e91adf",
+          "fact_quote": "二十多岁",
+          "category": "age",
+          "attribute": "年龄",
+          "value": "二十多岁",
+          "document_fact_span": {
+            "start": 13144,
+            "end": 13148
+          }
+        },
+        {
+          "fact_hash": "01607a1ae110714b8f94159fafd8d1c4bd347bb9cbf63dd76fe85217cc85bdcf",
+          "fact_quote": "剑眉星目",
+          "category": "face",
+          "attribute": "眉眼",
+          "value": "剑眉星目",
+          "document_fact_span": {
+            "start": 13152,
+            "end": 13156
+          }
+        },
+        {
+          "fact_hash": "70072bff82c6c5eb345b656bf543d82656edceb38cafa339ab2eb757b3ed1492",
+          "fact_quote": "相貌甚是俊朗",
+          "category": "face",
+          "attribute": "相貌",
+          "value": "俊朗",
+          "document_fact_span": {
+            "start": 13157,
+            "end": 13163
+          }
+        },
+        {
+          "fact_hash": "c8d69985ef6f64b434b4b01f6ac2f38ecec2fe329d55e9c1aed3a166cad7acd0",
+          "fact_quote": "一身白色劲装",
+          "category": "clothing",
+          "attribute": "服装",
+          "value": "白色劲装",
+          "document_fact_span": {
+            "start": 13164,
+            "end": 13170
+          }
+        },
+        {
+          "fact_hash": "c5b8d0de331548c47e8078402b410d52a3fc12739a9cdf108869d53f9f3bf435",
+          "fact_quote": "背后是黑色披风",
+          "category": "clothing",
+          "attribute": "披风",
+          "value": "黑色披风",
+          "document_fact_span": {
+            "start": 13171,
+            "end": 13178
+          }
+        },
+        {
+          "fact_hash": "5dacb640444a192a6a732aa76a44760bd16fcefd4f4f3d7cbe7cf3619c42f5b5",
+          "fact_quote": "胸前正中心的位置，有一个拳头大小的魂字",
+          "category": "distinctive_mark",
+          "attribute": "胸前魂字",
+          "value": "拳头大小的魂字",
+          "document_fact_span": {
+            "start": 13179,
+            "end": 13198
+          }
+        },
+        {
+          "fact_hash": "dc9f6ed4be7905ba29fdf522c3893bc309536a5d898a4d4d604f804d07dc52ff",
+          "fact_quote": "左胸上，有一枚雕刻着长剑的徽章，徽章上一共是三柄长剑交错",
+          "category": "accessory",
+          "attribute": "徽章",
+          "value": "雕刻着长剑的三柄长剑交错徽章",
+          "document_fact_span": {
+            "start": 13219,
+            "end": 13247
+          }
+        }
+      ],
+      "order_position": 12899
+    },
+    {
+      "node_key": "e0ef0901af0a55188bd280fa551f8da8afe7b390476f20152ba751a650f54388",
+      "ref_type": "local",
+      "source_character_ref": {
+        "source_document_version_id": "source-8bcb7305a759571b",
+        "chunk_id": "chunk-000007-13500-16000-29d830992ba6",
+        "local_mention_id": "m1",
+        "mention_type": "exact",
+        "packet_hash": "42d3ac0513671684848b76c374030d62c174f9e033ae28faaae135e2cf57bf2b"
+      },
+      "character_origin": "exact",
+      "label_quote": "唐三",
+      "label_type": "exact",
+      "chunk_id": "chunk-000007-13500-16000-29d830992ba6",
+      "chunk_source_span": {
+        "start": 13500,
+        "end": 16000
+      },
+      "context_bindings": [
+        {
+          "context_quote": "这几句。成为魂师真的那么容易么？我已经走过了六个村庄，一个拥有魂力的人都没有。也没有适合的武魂。” \r\n　　老杰克眼中流露出一丝黯然，叹息一声，道：“是啊！只有各大宗门的传承者才最容易成为魂师。我们这些普通人，实在太难了。”一边摇着头，他走出了武魂殿。 \r\n　　年轻人的目光落在面前的八个孩子身上，作为武魂殿巡查执事，帮助普通人进行武魂觉醒是他必须的工作，早已经习以为常了，“孩子们，站成一排。”对这些孩子，他的态度要温和的多。 \r\n　　八个孩子在年轻人面前站定，唐三站在最左侧。他的身材和同龄的孩子相比，要瘦小一些。 \r\n　　年轻人微笑道：“我叫素云涛，二十六级大魂师，是你们的领路人。现在，我将逐一对你们进行武魂觉醒。记住，不论发生什么都不要害怕。”一边说着，素云涛在一旁的桌子上打开自己的包裹，从里面取出两件东西，六颗乌黑的圆形石头和一个闪亮的蓝色水晶球。 \r\n　　素云涛将六颗黑色的石头在地面上摆出一个六角形，然后示意右侧的第一个孩子站在其中。 \r\n　　“不用害怕，闭上眼睛仔细感受。”一边说着，素云涛的眼睛突然亮了起来，在孩子们惊骇的目光中，他低喝一声，“独狼，附体。” \r\n　　一缕淡淡",
+          "document_span": {
+            "start": 13511,
+            "end": 14010
+          },
+          "source_kind": "node"
+        }
+      ],
+      "appearance_fact_refs": [
+        {
+          "fact_hash": "e2fa6319f863bb08efa76a1f15faf01b15da5c5661db6660a6a31bba735ca136",
+          "fact_quote": "他的身材和同龄的孩子相比，要瘦小一些。",
+          "category": "body",
+          "attribute": "身材",
+          "value": "比同龄孩子瘦小",
+          "document_fact_span": {
+            "start": 13751,
+            "end": 13770
+          }
+        }
+      ],
+      "order_position": 13511
+    },
+    {
+      "node_key": "ebf900c5f5ef9b7dbd6780355e0749ceca1bdb15185edb3acc3bbd982cd8a1cd",
+      "ref_type": "local",
+      "source_character_ref": {
+        "source_document_version_id": "source-8bcb7305a759571b",
+        "chunk_id": "chunk-000007-13500-16000-29d830992ba6",
+        "local_mention_id": "m2",
+        "mention_type": "exact",
+        "packet_hash": "37c0adbd2fd3c545f154dd72d7f80178508c0fa7304c3d639cdbafd8cb53f97e"
+      },
+      "character_origin": "exact",
+      "label_quote": "素云涛",
+      "label_type": "exact",
+      "chunk_id": "chunk-000007-13500-16000-29d830992ba6",
+      "chunk_source_span": {
+        "start": 13500,
+        "end": 16000
+      },
+      "context_bindings": [
+        {
+          "context_quote": "逐一对你们进行武魂觉醒。记住，不论发生什么都不要害怕。”一边说着，素云涛在一旁的桌子上打开自己的包裹，从里面取出两件东西，六颗乌黑的圆形石头和一个闪亮的蓝色水晶球。 \r\n　　素云涛将六颗黑色的石头在地面上摆出一个六角形，然后示意右侧的第一个孩子站在其中。 \r\n　　“不用害怕，闭上眼睛仔细感受。”一边说着，素云涛的眼睛突然亮了起来，在孩子们惊骇的目光中，他低喝一声，“独狼，附体。” \r\n　　一缕淡淡的青光首先从他的眉心中央释放而出，顺着眉心的位置一直向上，进入发髻内。 \r\n　　素云涛的头发原本是黑色的，但当那青光注入之后，瞬间就变成了灰色，并且快速的变长，同色毛发出现在他裸露在外的双手之上，同时，他的身体也似乎比之前膨胀了许多。全身充满了肌肉感。 \r\n　　武魂殿的特定服装弹性很好，并没有因为他的体型变大而撑爆。素云涛的眼睛已经变成了幽幽的绿色，双手十指上探出的利爪闪烁着淡淡的寒光。两圈光环从他脚下亮起，不断从脚下到头顶处徘徊着。其中一个是白色，另一个则是黄色。分外诡异。 \r\n　　那个被他叫道黑色石头中的是一个男孩儿，眼看着素云涛身体的变化，顿时惊叫一声，“啊——”吓的就要跑。 \r\n　　素云涛眼中绿油油的光芒确实吓人，一把抓住那个孩子，“别动。说了不用怕，这是我的武魂，独狼。如果以后你们有谁能够成为一名魂师的话，也会使",
+          "document_span": {
+            "start": 13810,
+            "end": 14376
+          },
+          "source_kind": "node"
+        },
+        {
+          "context_quote": "个孩子站在其中。 \r\n　　“不用害怕，闭上眼睛仔细感受。”一边说着，素云涛的眼睛突然亮了起来，在孩子们惊骇的目光中，他低喝一声，“独狼，附体。” \r\n　　一缕淡淡的青光首先从他的眉心中央释放而出，顺着眉心的位置一直向上，进入发髻内。 \r\n　　素云涛的头发原本是黑色的，但当那青光注入之后，瞬间就变成了灰色，并且快速的变长，同色毛发出现在他裸露在外的双手之上，同时，他的身体也似乎比之前膨胀了许多。全身充满了肌肉感。 \r\n　　武魂殿的特定服装弹性很好，并没有因为他的体型变大而撑爆。素云涛的眼睛已经变成了幽幽的绿色，双手十指上探出的利爪闪烁着淡淡的寒光。两圈光环从他脚下亮起，不断从脚下到头顶处徘徊着。其中一个是白色，另一个则是黄色。分外诡异。 \r\n　　那个被他叫道黑色石头中的是一个男孩儿，眼看着素云涛身体的变化，顿时惊叫一声，“啊——”吓的就要跑。 \r\n　　素云涛眼中绿油油的光芒确实吓人，一把抓住那个孩子，“别动。说了不用怕，这是我的武魂，独狼。如果以后你们有谁能够成为一名魂师的话，也会使用同样的能力。” \r\n　　唯一算不上太害怕的就只有唐三了，不过也在素云涛身上出现变化的时候立刻功运全身。 \r\n　　和惊讶相比，唐三心中更多",
+          "document_span": {
+            "start": 13929,
+            "end": 14445
+          },
+          "source_kind": "node"
+        }
+      ],
+      "appearance_fact_refs": [
+        {
+          "fact_hash": "5b5936f454e953c57bbb0d1be9350dfb1322a556db9eb50a2d3cee42ee87186f",
+          "fact_quote": "瞬间就变成了灰色，并且快速的变长",
+          "category": "hair",
+          "attribute": "头发",
+          "value": "灰色且变长",
+          "document_fact_span": {
+            "start": 14073,
+            "end": 14089
+          }
+        },
+        {
+          "fact_hash": "689064f1af990ffc3db7190f313558cfbb2d36d5a4d4e56849051552ee1449d4",
+          "fact_quote": "同色毛发出现在他裸露在外的双手之上",
+          "category": "body",
+          "attribute": "双手毛发",
+          "value": "出现同色毛发",
+          "document_fact_span": {
+            "start": 14090,
+            "end": 14107
+          }
+        },
+        {
+          "fact_hash": "420d5832ba982ec3f4c0e4a02f5903b2b7f00b2b07e68d398d43268784cd5aed",
+          "fact_quote": "全身充满了肌肉感",
+          "category": "body",
+          "attribute": "肌肉",
+          "value": "全身充满肌肉感",
+          "document_fact_span": {
+            "start": 14127,
+            "end": 14135
+          }
+        },
+        {
+          "fact_hash": "588ca0578b0ba500ee4379abe4390305a4137e29f2cd31be761dd5f45dd53865",
+          "fact_quote": "素云涛的眼睛已经变成了幽幽的绿色",
+          "category": "face",
+          "attribute": "眼睛颜色",
+          "value": "绿色",
+          "document_fact_span": {
+            "start": 14169,
+            "end": 14185
+          }
+        },
+        {
+          "fact_hash": "950801a5250eb3f2a1d9d862d3d9ba34877addc33cb3cdf67c3fb0442149450e",
+          "fact_quote": "双手十指上探出的利爪闪烁着淡淡的寒光",
+          "category": "body",
+          "attribute": "利爪",
+          "value": "十指有利爪，闪烁寒光",
+          "document_fact_span": {
+            "start": 14186,
+            "end": 14204
+          }
+        }
+      ],
+      "order_position": 13810
+    },
+    {
+      "node_key": "501f9168baa593fe8ee6c001ccc3659123db7436fb964bd5d1003a52f4db8b02",
+      "ref_type": "promoted",
+      "source_character_ref": {
+        "source_document_version_id": "source-8bcb7305a759571b",
+        "chunk_id": "chunk-000007-13500-16000-29d830992ba6",
+        "source_local_mention_id": "m4",
+        "source_mention_type": "describe",
+        "promotion_index": 1,
+        "character_origin": "remaining_describe",
+        "packet_hash": "2588c338ed1adc48a3ee28fc746720844dd984f36530a5e4f29908dafba3a91b",
+        "promotion_hash": "45a3d4267863969f5efb8050fd04c6c22dcdc91f0e83f94dc97ef405ad90f691"
+      },
+      "character_origin": "remaining_describe",
+      "label_quote": "男孩儿",
+      "label_type": "describe",
+      "chunk_id": "chunk-000007-13500-16000-29d830992ba6",
+      "chunk_source_span": {
+        "start": 13500,
+        "end": 16000
+      },
+      "context_bindings": [
+        {
+          "context_quote": "渐收敛，男孩儿有些吃惊的看着手中那不大的小镰刀，有些不知所措。 \r\n　　素云涛道：“你的武魂是镰刀，器武魂。来，让我试试你有没有魂力。如果拥有魂力的话，哪怕是器武魂也可以进行战魂师修炼。毕竟，镰刀也有一定攻击力。” \r\n　　“大，大师，我该怎么做？”男孩儿怯生生的问道。 \r\n　　素云涛淡然道：“用意念收回你的武魂。今后再想使用它的时候也是用意念将它呼唤出来。” \r\n　　男孩儿足足试了半天，才将手中的镰刀收回，素云涛将手中的蓝色水晶球递到他面前，示意他将右手放在上面。 \r\n　　男孩儿稚嫩的小手与素云涛的狼爪分别在水晶球上下位置，看上去对比度极为明显。 \r\n　　片刻之后，素云涛有些失望的道：“没有魂力。你不能成为魂师。先到一边去吧。” \r\n　　同样的一幕持续上演，先后又有五个孩子的武魂觉醒，他们的武魂都是一些锄头、镰刀之类的农具，连一个兽武魂都没有出现，至于魂力，也都被素云涛判定为‘无’。 \r\n　　轮到了第七个孩子，也就是唐三前面的最后一个。 \r\n　　持续使用婚礼，素云涛似乎已经有些疲惫了，但他还是准备帮这八个孩子都完成觉醒的过程。 \r\n　　金色光点聚拢，这一次，终于不再是农具，出现了变化。一株淡蓝",
+          "document_span": {
+            "start": 15004,
+            "end": 15509
+          },
+          "source_kind": "node"
+        }
+      ],
+      "appearance_fact_refs": [
+        {
+          "fact_hash": "f940bc36595756b40453c9419010764f8d5bef964c007249a5b7a9f82f132b11",
+          "fact_quote": "稚嫩的小手",
+          "category": "body",
+          "attribute": "手",
+          "value": "稚嫩的小",
+          "document_fact_span": {
+            "start": 15247,
+            "end": 15252
+          }
+        }
+      ],
+      "order_position": 15004
+    },
+    {
+      "node_key": "2bda9d47e4c7c9015bd6c1bddcad8a200876fb1d64768299566c51803ccbd01d",
+      "ref_type": "local",
+      "source_character_ref": {
+        "source_document_version_id": "source-8bcb7305a759571b",
+        "chunk_id": "chunk-000008-15750-18250-3249bedb72a1",
+        "local_mention_id": "m3",
+        "mention_type": "exact",
+        "packet_hash": "df6282e925fbea636622dfb4d9fee46fca50d3ae03ce256d53d580d6dbd0d446"
+      },
+      "character_origin": "exact",
+      "label_quote": "素云涛",
+      "label_type": "exact",
+      "chunk_id": "chunk-000008-15750-18250-3249bedb72a1",
+      "chunk_source_span": {
+        "start": 15750,
+        "end": 18250
+      },
+      "context_bindings": [
+        {
+          "context_quote": "有魂力出现。 \r\n　　终于轮到唐三了，不用素云涛说，他已经上前站入六颗黑石中央。 \r\n　　随着素云涛六道魂力注入，淡金色的光芒再次亮了起来。 \r\n　　温暖，这是唐三首先的感觉，整个人仿佛都被包裹在一个暖融融的世界之中，说不出的舒服。难怪之前那些孩子一被这金色光芒包裹在内情绪就会稳定下来。 \r\n　　温暖的气息向体内渗透，唐三清晰的感觉到，自己的玄天功内力似乎轻微的波动起来，紧接着，在那温暖能量的牵引下，体内似乎有什么东西破碎了一般，所有温暖的气息一瞬间涌向自己的手掌。 \r\n　　素云涛的眼睛突然亮了起来，因为在那金色光罩之中，这一次出现的金色光点甚至比之前所有孩子相加还要多。他隐约感觉到，似乎是一个相当强大的武魂就要出现了。兴奋之情溢于言表。 \r\n　　对于他们这些负责普通人武魂觉醒的武魂殿执事来说，如果能够觉醒一名潜力非凡的孩子，再将其拉入武魂殿之中，可以获得不少评价上的好处，对升职将大大有利。 \r\n　　但是，很快素云涛就失望了。 \r\n　　唐三下意识的抬起右手，他看到的是蓝色。这样的蓝色，今天在这村里的武魂殿中已经是第二次出现。 \r\n　　蓝银草，和之前那个女孩儿一模一样的蓝",
+          "document_span": {
+            "start": 15757,
+            "end": 16249
+          },
+          "source_kind": "node"
+        },
+        {
+          "context_quote": "璀璨的宝石一般闪闪发光。淡淡的蓝色光晕外露，说不出的动人。 \r\n　　按照传统的测试，只要水晶球出现一点感应，哪怕是一丝光芒，就证明被测试者是有魂力存在的，而眼前蓝水晶球中闪耀着如此夺目的光芒，就只有一个解释。 \r\n　　“天啊，竟然是先天满魂力。”青光再次从素云涛身上释放，水晶球将唐三的手掌弹开，此时，他再看眼前这个男孩儿的目光已经变得截然不同。仿佛像是在看一个怪物似的。 \r\n　　唐三自然也发现了自己和其他孩子们测试的情况不同，疑惑的问道：“叔叔，什么是先天满魂力？” \r\n　　素云涛呆滞的看着他，下意识的解释道：“每个人在武魂觉醒的时候，除了武魂的形态决定它是否强大以外，魂力的多少也是至关重要的。大多数人在武魂觉醒的时候是没有魂力的，就像之前这几个孩子。他们注定一生无法成为魂师。而只要有魂力出现，哪怕是只有一丝，都可以通过冥想进行修炼，而在武魂觉醒的时候，魂力的多少至关重要，决定了魂师修炼起步的高低，魂力先天越高，后天修炼的速度也就越快，同时，因为起步高，也自然要领先于他人。所谓先天满魂力，就是在武魂觉醒的时候，先天所能达到的最高魂力。” \r\n　　“最高魂力？”唐三",
+          "document_span": {
+            "start": 17029,
+            "end": 17518
+          },
+          "source_kind": "node"
+        }
+      ],
+      "appearance_fact_refs": [
+        {
+          "fact_hash": "dc7aecca6864c89f8b55232052cd625f96b354701f7ac1cfae289b4fb63eb13d",
+          "fact_quote": "素云涛的眼睛突然亮了起来",
+          "category": "face",
+          "attribute": "眼睛",
+          "value": "突然亮了起来",
+          "document_fact_span": {
+            "start": 15997,
+            "end": 16009
+          }
+        },
+        {
+          "fact_hash": "91795c752fea80beacf0f7edf92003109130b8ed4532e1c110efa72c22be5e74",
+          "fact_quote": "素云涛呆滞的看着他",
+          "category": "face",
+          "attribute": "眼神",
+          "value": "呆滞",
+          "document_fact_span": {
+            "start": 17269,
+            "end": 17278
+          }
+        }
+      ],
+      "order_position": 15757
+    },
+    {
+      "node_key": "13d1f62882f0a8bf50b1b86d9de144566f155663f6bc6aa359d5096b343005db",
+      "ref_type": "local",
+      "source_character_ref": {
+        "source_document_version_id": "source-8bcb7305a759571b",
+        "chunk_id": "chunk-000008-15750-18250-3249bedb72a1",
+        "local_mention_id": "m1",
+        "mention_type": "exact",
+        "packet_hash": "0cc8cccd34781f97cf8704df675df1558dbd2ab456df9a4d2eae98c907bf82cd"
+      },
+      "character_origin": "exact",
+      "label_quote": "唐三",
+      "label_type": "exact",
+      "chunk_id": "chunk-000008-15750-18250-3249bedb72a1",
+      "chunk_source_span": {
+        "start": 15750,
+        "end": 18250
+      },
+      "context_bindings": [
+        {
+          "context_quote": "竟然只是蓝银草，落差的感觉令素云涛有些不爽。 \r\n　　“叔叔，您还没对我进行魂力测试呢。”唐三看着素云涛已经要收起那颗蓝水晶球，赶忙提醒他。 \r\n　　素云涛头也不回的道：“不用试了。蓝银草这种废武魂我还没见过谁出现过魂力。” \r\n　　“让我试试吧，叔叔。”唐三坚持道。金光带来的温暖在他体内运转时带来很奇异的感觉，那扇开启的大门令他感觉到自己的玄天功似乎发生了细微的变化。同时，他也很想知道，自己的内力和这个世界的武魂究竟有什么不同。 \r\n　　素云涛愣了一下，这才转过身来，对上了唐三那平静而有些坚定的目光。心中暗想，这孩子似乎有些与众不同。 \r\n　　(本章完)\r\n\r\n第9章 废武魂与先天满魂力（四）\r\n　　第9章 废武魂与先天满魂力（四） \r\n　　“好吧。”试一下魂力也不会浪费太多时间。一边说着，他将蓝水晶球递到了唐三面前。 \r\n　　按照之前素云涛教过的方法，唐三控制着把自己的蓝银草收回体内，他发现，这并不难，只要自己按照对玄天功控制的那样，将功力收回，就可以做到了。同时，他还发现，蓝银草出现的时候，似乎也是自己的玄天功涌出，仿佛那蓝色的小草就是由玄天功凝聚而成似的。 \r\n　",
+          "document_span": {
+            "start": 16345,
+            "end": 16838
+          },
+          "source_kind": "node"
+        }
+      ],
+      "appearance_fact_refs": [
+        {
+          "fact_hash": "87a9b5c354c6cfeffa248232c654232ddf94b7b9596fe94356ce8567198d1c6b",
+          "fact_quote": "唐三那平静而有些坚定的目光",
+          "category": "face",
+          "attribute": "目光",
+          "value": "平静而有些坚定",
+          "document_fact_span": {
+            "start": 16585,
+            "end": 16598
+          }
+        }
+      ],
+      "order_position": 16345
+    },
+    {
+      "node_key": "6f70712b56aa85b85cad7f9b83c4a11d5a82bc84fcfab03a0b2b458c5d7913e1",
+      "ref_type": "local",
+      "source_character_ref": {
+        "source_document_version_id": "source-8bcb7305a759571b",
+        "chunk_id": "chunk-000009-18000-20500-3d2108420730",
+        "local_mention_id": "m4",
+        "mention_type": "exact",
+        "packet_hash": "07f7bd6e49e6c2fcca7f8aad1fe14414daa88b0c563250709d886a3d177acf7d"
+      },
+      "character_origin": "exact",
+      "label_quote": "杰克",
+      "label_type": "exact",
+      "chunk_id": "chunk-000009-18000-20500-3d2108420730",
+      "chunk_source_span": {
+        "start": 18000,
+        "end": 20500
+      },
+      "context_bindings": [
+        {
+          "context_quote": "，但唐三也隐约明白了他的意思，只是他此时心中蒙着的一层面纱却仿佛被揭开了一般。 \r\n　　唐三一直就是一个善于思考的人，前一世如此，这一世依旧如此。按照素云涛所说，如果魂力真的与自己的内力是相通的。那么，来到这个世界后，修炼出来的内力就成为了魂力，而自己的玄天功之所以无法进入第二重境界，就是因为那所谓的魂环。也就是说，自己想要再有提高，必须要像魂师那样得到魂环才行了。可魂环是什么呢？唐三正想继续问下去，素云涛却已经拿起自己的包裹向外面走去。 \r\n　　“老杰克。” \r\n　　门开，老杰克一脸紧张的迎上了素云涛，“大师，怎么样。今年我们村子里的孩子有没有能够成为魂师的可能？” \r\n　　素云涛看了看他，叹息一声，道：“有到是有一个，只是可惜了。” \r\n　　杰克眼中流露出惊疑不定的神色，试探着问道：“大师，那究竟是……” \r\n　　素云涛道：“今年这八个孩子里，只有一个拥有魂力的，而且还是先天满魂力，可惜的是，他的武魂是蓝银草。你明白了？” \r\n　　“蓝银草？先天满魂力？天啊。”杰克脸上失望的表情甚至比素云涛还要严重的多。他也做了这么多年村长，自然明白先天满魂力代表着什么样",
+          "document_span": {
+            "start": 18183,
+            "end": 18670
+          },
+          "source_kind": "node"
+        },
+        {
+          "context_quote": "下去，素云涛却已经拿起自己的包裹向外面走去。 \r\n　　“老杰克。” \r\n　　门开，老杰克一脸紧张的迎上了素云涛，“大师，怎么样。今年我们村子里的孩子有没有能够成为魂师的可能？” \r\n　　素云涛看了看他，叹息一声，道：“有到是有一个，只是可惜了。” \r\n　　杰克眼中流露出惊疑不定的神色，试探着问道：“大师，那究竟是……” \r\n　　素云涛道：“今年这八个孩子里，只有一个拥有魂力的，而且还是先天满魂力，可惜的是，他的武魂是蓝银草。你明白了？” \r\n　　“蓝银草？先天满魂力？天啊。”杰克脸上失望的表情甚至比素云涛还要严重的多。他也做了这么多年村长，自然明白先天满魂力代表着什么样的意义。可这先天满魂力出现在蓝银草武魂上，却实在是…… \r\n　　“大师，蓝银草就真的没有办法修炼了么？”杰克皱眉问道。 \r\n　　素云涛能感受到老杰克的心情，反而没有开始时那样骄傲了，在老杰克肩膀上拍了拍，道：“也不是完全不能修炼。只是，你认为蓝银草随着武魂的提升，会进化成什么样子呢？废武魂终究是废武魂。哪怕成为了魂师，恐怕也是个废魂师。这先天满魂力实在是可惜了。好了，我先走了，还要到下一个村子去。”",
+          "document_span": {
+            "start": 18382,
+            "end": 18871
+          },
+          "source_kind": "node"
+        },
+        {
+          "context_quote": "鬼，但为了村子里能够再出一名魂师，他也顾不得这许多了。 \r\n　　“走吧，小三，爷爷送你回家。”老杰克先潜回了其他孩子，让他们的父母领走，这才带着唐三回到了铁匠铺。 \r\n　　上午，是唐昊例行的睡觉时间，铁匠铺里静悄悄的。 \r\n　　“唐昊，唐昊。”老杰克可不管唐昊是否在睡觉，对于这个邋遢铁匠，他实在是憎恶的很。如果不是他锻造的农具价格低廉的很，他早就想把唐昊踢出村子了。 \r\n　　一边叫着唐昊，老杰克目光四处掠过，本想找把椅子坐下，但看着那些破破烂烂的东西，他实在没勇气拉过来一把。他年纪已经不小了，可不想在这里摔个筋折骨断。 \r\n　　“谁在大呼小叫的。”唐昊略微带着怒气的声音响起，里间门帘撩开，缓步走了出来。 \r\n　　他首先看到了自己的儿子，这才将目光转移到杰克身上，“老杰克，干什么？” \r\n　　杰克没好气的道：“今天是你儿子武魂觉醒的日子，你不知道有多么重要？别人家都是父母一起陪同着，可你到好，还是老样子。” \r\n　　唐昊仿佛没听到杰克的讽刺一般，目光再次看向儿子，“小三，你的武魂觉醒了？是什么？” \r\n　　唐三道：“爸爸，是蓝银草。”“蓝银草？”不知道为什么，一向",
+          "document_span": {
+            "start": 19512,
+            "end": 20000
+          },
+          "source_kind": "node"
+        }
+      ],
+      "appearance_fact_refs": [
+        {
+          "fact_hash": "77379a00b55d42da52f03323790fe1ff5df6585c31f99905b54c4783f53072d8",
+          "fact_quote": "老杰克一脸紧张",
+          "category": "face",
+          "attribute": "表情",
+          "value": "紧张",
+          "document_fact_span": {
+            "start": 18423,
+            "end": 18430
+          }
+        },
+        {
+          "fact_hash": "a2858bb2d82c54a5a0448fa90312377a8ac62920d65d909264090e2bd3f6f00e",
+          "fact_quote": "杰克脸上失望的表情",
+          "category": "face",
+          "attribute": "表情",
+          "value": "失望",
+          "document_fact_span": {
+            "start": 18622,
+            "end": 18631
+          }
+        },
+        {
+          "fact_hash": "7ee554c01748909b1e67324a246a23b49739dd22d5f96a1459c9ad2e0336508a",
+          "fact_quote": "他年纪已经不小了",
+          "category": "age",
+          "attribute": "年龄",
+          "value": "年纪不小",
+          "document_fact_span": {
+            "start": 19752,
+            "end": 19760
+          }
+        }
+      ],
+      "order_position": 18183
+    },
+    {
+      "node_key": "d4d00629279204051f144a8a9d0acfa065516a8e37f4eb24374b40175ccbc532",
+      "ref_type": "local",
+      "source_character_ref": {
+        "source_document_version_id": "source-8bcb7305a759571b",
+        "chunk_id": "chunk-000009-18000-20500-3d2108420730",
+        "local_mention_id": "m1",
+        "mention_type": "exact",
+        "packet_hash": "3cde929af30ea30323824fbb87a4291a91e1ea12891036a8ed57ecda50963773"
+      },
+      "character_origin": "exact",
+      "label_quote": "唐昊",
+      "label_type": "exact",
+      "chunk_id": "chunk-000009-18000-20500-3d2108420730",
+      "chunk_source_span": {
+        "start": 18000,
+        "end": 20500
+      },
+      "context_bindings": [
+        {
+          "context_quote": "可惜，你却有那样一个爸爸，没有好的武魂传承给你。否则的话，说不定你真的能成为咱们村子里第二个魂圣呢。你告诉爷爷，你愿不愿意去专门的学校学习魂师的修炼方法。只有那里才有关于武魂最准确的各种知识。” \r\n　　唐三此时已经对武魂产生了浓厚的兴趣，尤其是这武魂与他自身的玄天功有关，但他依旧没有直接肯定的答复，“杰克爷爷，这要问我爸爸才行。” \r\n　　杰克恍然醒悟过来，是啊，孩子再懂事也终究是个孩子，怎么说也要征询唐昊的意见才行。 \r\n　　眼中流露出几分坚定的光芒，尽管他实在不愿意去见那个邋遢鬼，但为了村子里能够再出一名魂师，他也顾不得这许多了。 \r\n　　“走吧，小三，爷爷送你回家。”老杰克先潜回了其他孩子，让他们的父母领走，这才带着唐三回到了铁匠铺。 \r\n　　上午，是唐昊例行的睡觉时间，铁匠铺里静悄悄的。 \r\n　　“唐昊，唐昊。”老杰克可不管唐昊是否在睡觉，对于这个邋遢铁匠，他实在是憎恶的很。如果不是他锻造的农具价格低廉的很，他早就想把唐昊踢出村子了。 \r\n　　一边叫着唐昊，老杰克目光四处掠过，本想找把椅子坐下，但看着那些破破烂烂的东西，他实在没勇气拉过来一把。他",
+          "document_span": {
+            "start": 19268,
+            "end": 19753
+          },
+          "source_kind": "node"
+        }
+      ],
+      "appearance_fact_refs": [
+        {
+          "fact_hash": "02511eb7a0c6aea33beffb73f9ece180a1cae2c4e984ec22a830eeaad35c42ec",
+          "fact_quote": "邋遢",
+          "category": "appearance_state",
+          "attribute": "外观整洁度",
+          "value": "邋遢",
+          "document_fact_span": {
+            "start": 19510,
+            "end": 19512
+          }
+        }
+      ],
+      "order_position": 19268
+    },
+    {
+      "node_key": "87d14e53ebc69716eb264f578d0e82c83409ec5f6b4cbf9867ffb0b2104354db",
+      "ref_type": "local",
+      "source_character_ref": {
+        "source_document_version_id": "source-8bcb7305a759571b",
+        "chunk_id": "chunk-000010-20250-22750-534a1b52e99f",
+        "local_mention_id": "m1",
+        "mention_type": "exact",
+        "packet_hash": "32c2fb957cbe0532ca5c75cee47f962de9cf494af3a4f1578568dc06f2f903b5"
+      },
+      "character_origin": "exact",
+      "label_quote": "唐昊",
+      "label_type": "exact",
+      "chunk_id": "chunk-000010-20250-22750-534a1b52e99f",
+      "chunk_source_span": {
+        "start": 20250,
+        "end": 22750
+      },
+      "context_bindings": [
+        {
+          "context_quote": "人上人。” \r\n　　唐昊冷冷的看了杰克一眼，“人上人有什么用？我只知道，他要是走了，就没人给我做饭吃了。蓝银草，你认为蓝银草武魂能够修炼成什么？那只是个废武魂。” \r\n　　老杰克怒声道：“可他是先天满魂力，只要能得到一个魂环，哪怕是品质最差的魂环，也立刻能够成为一名魂师。魂师，你知道么？我们村子里已经很多年没有出过一个魂师了。” \r\n　　唐昊淡然道：“这才是你真正的目的吧。说了不行，就是不行。你可以走了。” \r\n　　“唐——昊——。”老杰克胸中怒火已经燃烧到了极限。 \r\n　　唐昊依旧是一副懒洋洋的样子，“不用那么大声，我还不聋。我说了，你可以走了。” \r\n　　“杰克爷爷，您别生气。我还是不去学习魂师的能力了。爸爸说得对，蓝银草只是废武魂，谢谢您的好意。” \r\n　　杰克虽然极度憎恶唐昊，但却非常喜欢懂事的唐三，满腔的怒火渐渐平复下来，长叹一声，“好孩子，爷爷不生气。好了，爷爷要走了。”说着，转身朝外面走去。 \r\n　　唐三赶忙相送。爸爸可以不理会，但杰克是村长，对他又很好，礼数上他绝不会少。 \r\n　　杰克走到铁匠铺门口停下脚步，转身看向唐昊，语重心长的道：“唐昊，你的一生也就",
+          "document_span": {
+            "start": 20351,
+            "end": 20844
+          },
+          "source_kind": "node"
+        },
+        {
+          "context_quote": "突破问题。但他并没有表现出来，他相信，机会还是有的。 \r\n　　缓缓走回铁匠铺，唐昊出奇的没有回房间继续睡觉，而是坐在椅子上闭目养神。 \r\n　　“爸爸，您回房间再睡会儿吧，我去准备中午饭。” \r\n　　唐昊依旧闭着眼睛，淡淡的道：“你是不是也感到很失望。也想去成为魂师么？” \r\n　　唐三愣了一下，“没事的，爸爸，成为一个铁匠也很好啊，一样可以养活我们。你不是答应过我，要教我打造农具的么？” \r\n　　唐昊缓缓睁开眼睛，从他眼中，唐三看到了激动的情绪，不知不觉间，唐昊的右拳已经攥紧，已经现出苍老的面庞上流露出一丝极其冰冷的气息，“魂师？魂师又有什么用？别说只是一个废武魂，哪怕是最厉害的武魂，最强大的魂师又能有什么用？不过还是废物罢了。” \r\n　　唐昊的情绪很激动，他的身体都在颤抖，隐约之间，唐三在父亲眼中看到了一点晶莹的东西。 \r\n　　跑过去，唐三握住唐昊的拳头，“爸爸，您别生气，我不去做魂师就是了。我一直陪着你，给你做饭。” \r\n　　深吸口气，唐昊的激动来得快，去的也快，淡淡的道：“把你的武魂释放出来给我看看。” \r\n　　“好。”唐三点了点头，抬起右手，体内玄天功悄然催动，意识中感受着那股特殊的",
+          "document_span": {
+            "start": 21029,
+            "end": 21531
+          },
+          "source_kind": "node"
+        },
+        {
+          "context_quote": "。” \r\n　　唐昊不耐烦的挥了挥手，“不要吵我。”说着，就已经掀开门帘进了里间。 \r\n　　“可是，我还有一个武魂。”唐三还是说出了今日武魂觉醒后自己的与众不同。这是他没有向素云涛和杰克问出的问题，毕竟，那些都只是外人而已。 \r\n　　…… \r\n　　【唐门玄天宝录总纲，第一条：永远不要让无法完全信任的人知道你真正的实力有多少。】 \r\n　　…… \r\n　　玄天宝录唐三早已烂熟于心，对于总纲更是绝对坚持贯彻。门帘猛的撩开，唐昊再次出现在外间，此时，他脸上却已经尽是震惊的神情，可以看到，他的双眼通红，刚才似乎是流泪了。 \r\n　　唐三没有开口，而是像之前抬起右手那样，缓缓抬起了自己的左手，这一次，不再是蓝光，淡淡的黑色光芒从他掌心之中喷涌而出，光华瞬间凝聚，一个奇异的东西出现在他掌心之中。 \r\n　　那是一柄通体乌黑的锤子，锤柄大约有半尺长，锤头是圆柱体，看上去很像是缩小版的铸造锤，但是，在那锤子乌黑的表面上，却有着一股特殊的光芒，圆柱形锤头上，盘绕着一圈淡淡的纹。 \r\n　　不知道为什么，当这柄锤子出现在唐三手中时，整个房间内的空气都显得有些压抑，而唐三似乎无法承受那柄小锤",
+          "document_span": {
+            "start": 21711,
+            "end": 22197
+          },
+          "source_kind": "node"
+        },
+        {
+          "context_quote": "要远远超过铸造锤。 \r\n　　“这，这是……”唐昊几乎是一个箭步就来到了唐三面前，一把抓住他握着锤子的手，带到自己面前，唐昊的手很有力，至少现在唐三不再感觉到那锤子对自己手臂有那么大的负荷了。 \r\n　　当唐昊的手握住他的手时，一种温暖的血脉相连感觉令唐三心中份外舒服，“爸爸，有什么不对么？” \r\n　　看着那黑色的小锤子，之前消失的激动光芒再次出现在唐昊眼中，“双生武魂。竟然是双生武魂。儿子，我的儿子。” \r\n　　猛地，唐昊张开有力的双臂，将唐三紧紧的拥入自己怀抱之中。 \r\n　　唐昊的胸膛很宽阔，或许是因为长期做铁匠的原因，尽管表面上他看上去很懒散，可他身上的肌肉却并没有因为岁月而减少，他的怀抱很温暖。那种父爱带来的安全感是其他任何东西都无法替代的。 \r\n　　“爸爸。”唐三有些愣住了，在他的记忆中，这似乎是唐昊第一次这样的拥抱他。 \r\n　　手上的小铁锤仿佛在变得越来越沉，尽管唐三很喜欢这种父爱带来的温暖，但他更不希望铁锤脱手砸到自己的父亲。 \r\n　　“爸爸",
+          "document_span": {
+            "start": 22318,
+            "end": 22750
+          },
+          "source_kind": "node"
+        }
+      ],
+      "appearance_fact_refs": [
+        {
+          "fact_hash": "98c999086cbd59983a1d9629efd94a384a0295d6512eeec8bc3daf6a271cc2c9",
+          "fact_quote": "一副懒洋洋的样子",
+          "category": "appearance_state",
+          "attribute": "神态",
+          "value": "懒洋洋",
+          "document_fact_span": {
+            "start": 20596,
+            "end": 20604
+          }
+        },
+        {
+          "fact_hash": "dc359fb93c7f4c9ea662fa19b6963d2c3ce8af8a0d0d3b76e1846988c56306a8",
+          "fact_quote": "苍老的面庞",
+          "category": "face",
+          "attribute": "面部",
+          "value": "苍老",
+          "document_fact_span": {
+            "start": 21273,
+            "end": 21278
+          }
+        },
+        {
+          "fact_hash": "7d5aac145fcadf27ac6a5a6d267072d7534d0ed75e05b7e5253ce5d94e91ce2a",
+          "fact_quote": "他的双眼通红",
+          "category": "face",
+          "attribute": "眼睛",
+          "value": "通红",
+          "document_fact_span": {
+            "start": 21951,
+            "end": 21957
+          }
+        },
+        {
+          "fact_hash": "41c149529b199cb9986b4b5d905a6c6fb6ce287c0905dd20ab36f04eeef537cc",
+          "fact_quote": "唐昊的胸膛很宽阔",
+          "category": "body",
+          "attribute": "胸膛",
+          "value": "宽阔",
+          "document_fact_span": {
+            "start": 22558,
+            "end": 22566
+          }
+        },
+        {
+          "fact_hash": "4d93c6480d10d3bb3c7f77b9916429a44d292faf8fc28338f41011ea34a8a045",
+          "fact_quote": "他身上的肌肉却并没有因为岁月而减少",
+          "category": "body",
+          "attribute": "肌肉",
+          "value": "没有因岁月减少",
+          "document_fact_span": {
+            "start": 22595,
+            "end": 22612
+          }
+        }
+      ],
+      "order_position": 20351
+    },
+    {
+      "node_key": "51ba9a3db50d368f9f3e9b7a8d354b488caed4d88c197cc5a7e169d410046d4e",
+      "ref_type": "local",
+      "source_character_ref": {
+        "source_document_version_id": "source-8bcb7305a759571b",
+        "chunk_id": "chunk-000010-20250-22750-534a1b52e99f",
+        "local_mention_id": "m3",
+        "mention_type": "exact",
+        "packet_hash": "1e76d1346cc7ed1911d0ed9d6c76c3090b3cbd5643c85dd92b254f4c4cf75ceb"
+      },
+      "character_origin": "exact",
+      "label_quote": "唐三",
+      "label_type": "exact",
+      "chunk_id": "chunk-000010-20250-22750-534a1b52e99f",
+      "chunk_source_span": {
+        "start": 20250,
+        "end": 22750
+      },
+      "context_bindings": [
+        {
+          "context_quote": "开口，而是像之前抬起右手那样，缓缓抬起了自己的左手，这一次，不再是蓝光，淡淡的黑色光芒从他掌心之中喷涌而出，光华瞬间凝聚，一个奇异的东西出现在他掌心之中。 \r\n　　那是一柄通体乌黑的锤子，锤柄大约有半尺长，锤头是圆柱体，看上去很像是缩小版的铸造锤，但是，在那锤子乌黑的表面上，却有着一股特殊的光芒，圆柱形锤头上，盘绕着一圈淡淡的纹。 \r\n　　不知道为什么，当这柄锤子出现在唐三手中时，整个房间内的空气都显得有些压抑，而唐三似乎无法承受那柄小锤的重量一般，只能握住他，手臂缓缓下垂。他的脸色已经变得有些苍白了。 \r\n　　和几乎不需要消耗玄天功的蓝银草不同，这柄黑色的小锤子一出现，就几乎吸收了唐三所有的内力。他也只能勉强控制着自己握紧锤柄。虽然看上去，这柄锤子很小，可实际上，它的重量却要远远超过铸造锤。 \r\n　　“这，这是……”唐昊几乎是一个箭步就来到了唐三面前，一把抓住他握着锤子的手，带到自己面前，唐昊的手很有力，至少现在唐三不再感觉到那锤子对自己手臂有那么大的负荷了。 \r\n　　当唐昊的手握住他的手时，一种温暖的血脉相连感觉令唐三心中份外舒服，“爸爸，有什么不对么？” \r\n　　看",
+          "document_span": {
+            "start": 21976,
+            "end": 22469
+          },
+          "source_kind": "node"
+        }
+      ],
+      "appearance_fact_refs": [
+        {
+          "fact_hash": "ee9a8baa814afdf24921f8adc9442025abed464e59621b917ae78d3c95b5d757",
+          "fact_quote": "他的脸色已经变得有些苍白了",
+          "category": "face",
+          "attribute": "脸色",
+          "value": "苍白",
+          "document_fact_span": {
+            "start": 22216,
+            "end": 22229
+          }
+        }
+      ],
+      "order_position": 21976
+    },
+    {
+      "node_key": "9371960423d21bdd0dbf26f499e5bcb4c56d3d1a10974ad61a8c4d1ab0673982",
+      "ref_type": "local",
+      "source_character_ref": {
+        "source_document_version_id": "source-8bcb7305a759571b",
+        "chunk_id": "chunk-000010-20250-22750-534a1b52e99f",
+        "local_mention_id": "m4",
+        "mention_type": "exact",
+        "packet_hash": "c2d44a13f41a170a97cbd046b5333b70720ad60809358022e40c5902db67426f"
+      },
+      "character_origin": "exact",
+      "label_quote": "小三",
+      "label_type": "exact",
+      "chunk_id": "chunk-000010-20250-22750-534a1b52e99f",
+      "chunk_source_span": {
+        "start": 20250,
+        "end": 22750
+      },
+      "context_bindings": [
+        {
+          "context_quote": "开口，而是像之前抬起右手那样，缓缓抬起了自己的左手，这一次，不再是蓝光，淡淡的黑色光芒从他掌心之中喷涌而出，光华瞬间凝聚，一个奇异的东西出现在他掌心之中。 \r\n　　那是一柄通体乌黑的锤子，锤柄大约有半尺长，锤头是圆柱体，看上去很像是缩小版的铸造锤，但是，在那锤子乌黑的表面上，却有着一股特殊的光芒，圆柱形锤头上，盘绕着一圈淡淡的纹。 \r\n　　不知道为什么，当这柄锤子出现在唐三手中时，整个房间内的空气都显得有些压抑，而唐三似乎无法承受那柄小锤的重量一般，只能握住他，手臂缓缓下垂。他的脸色已经变得有些苍白了。 \r\n　　和几乎不需要消耗玄天功的蓝银草不同，这柄黑色的小锤子一出现，就几乎吸收了唐三所有的内力。他也只能勉强控制着自己握紧锤柄。虽然看上去，这柄锤子很小，可实际上，它的重量却要远远超过铸造锤。 \r\n　　“这，这是……”唐昊几乎是一个箭步就来到了唐三面前，一把抓住他握着锤子的手，带到自己面前，唐昊的手很有力，至少现在唐三不再感觉到那锤子对自己手臂有那么大的负荷了。 \r\n　　当唐昊的手握住他的手时，一种温暖的血脉相连感觉令唐三心中份外舒服，“爸爸，有什么不对么？” \r\n　　看",
+          "document_span": {
+            "start": 21976,
+            "end": 22469
+          },
+          "source_kind": "node"
+        }
+      ],
+      "appearance_fact_refs": [
+        {
+          "fact_hash": "4bb754c9282d07f2c17b952a9ef78c528a907482fcbb357f81b5b131667c710b",
+          "fact_quote": "他的脸色已经变得有些苍白了",
+          "category": "appearance_state",
+          "attribute": "脸色",
+          "value": "苍白",
+          "document_fact_span": {
+            "start": 22216,
+            "end": 22229
+          }
+        }
+      ],
+      "order_position": 21976
+    },
+    {
+      "node_key": "b149ab534cf11f7656106950d5785626cb1f8d45d5a674f91b5cb3f61e79233c",
+      "ref_type": "local",
+      "source_character_ref": {
+        "source_document_version_id": "source-8bcb7305a759571b",
+        "chunk_id": "chunk-000011-22500-25000-8e969940f32a",
+        "local_mention_id": "m1",
+        "mention_type": "exact",
+        "packet_hash": "9cd39d848a2c5a3bd47d58719e5ff78c82d00f7a95d617dc0fffcd78099dffda"
+      },
+      "character_origin": "exact",
+      "label_quote": "唐昊",
+      "label_type": "exact",
+      "chunk_id": "chunk-000011-22500-25000-8e969940f32a",
+      "chunk_source_span": {
+        "start": 22500,
+        "end": 25000
+      },
+      "context_bindings": [
+        {
+          "context_quote": "武魂。竟然是双生武魂。儿子，我的儿子。” \r\n　　猛地，唐昊张开有力的双臂，将唐三紧紧的拥入自己怀抱之中。 \r\n　　唐昊的胸膛很宽阔，或许是因为长期做铁匠的原因，尽管表面上他看上去很懒散，可他身上的肌肉却并没有因为岁月而减少，他的怀抱很温暖。那种父爱带来的安全感是其他任何东西都无法替代的。 \r\n　　“爸爸。”唐三有些愣住了，在他的记忆中，这似乎是唐昊第一次这样的拥抱他。 \r\n　　手上的小铁锤仿佛在变得越来越沉，尽管唐三很喜欢这种父爱带来的温暖，但他更不希望铁锤脱手砸到自己的父亲。 \r\n　　“爸爸，我要坚持不住了。”唐三忍不住说道。 \r\n　　唐昊松开双臂，“收回去。” \r\n　　乌光散去，重量消失了，唐三心中很奇怪，那明明是自己的玄天功混合体内一股特殊力量形成的锤子，可为什么自己却拿不动呢？更令他惊",
+          "document_span": {
+            "start": 22500,
+            "end": 22852
+          },
+          "source_kind": "node"
+        },
+        {
+          "context_quote": "\n　　对于他来说，更重要的却是武魂与玄天功之间的关系，如果那个魂环就是自己玄天功无法突破的关键，那么，不论怎样，都要想办法来得到一个魂环试验一下。 \r\n　　午饭时，唐昊显得很沉默，就连饭量也似乎比往日少了许多，目光不时落在唐三身上，仿佛在犹豫着什么。 \r\n　　吃完午饭，唐三习惯性的准备收拾碗筷，却被唐昊叫住了。 \r\n　　“等会儿再收拾吧。小三，我问你，你想不想成为一名魂师？” \r\n　　唐三愣了一下，看向唐昊，他不愿意欺骗父亲，犹豫片刻后，还是点了点头。 \r\n　　唐昊叹息一声，面庞看上去更加苍老了几分，“你终究还是要选择走向这条道路。”他只是再说了这一句话，就又回自己的房间去了。 \r\n　　唐三发现，唐昊在感叹的时候，情绪中有失望但更多的却是一种欣慰的表情。他明白，在自己这位父亲心中，似乎隐藏着很多事。 \r\n　　收拾完碗筷，唐三回到自己的房间继续他的工作，铸造锤与铁块碰撞的叮当声有节奏的响起。虽然不知道什么时候能够将这块生铁打造到唐昊要求的拳头大小，但这种铸造的方式对于提升他对玄天功的使用却有着不小的好处，对身体锻炼的效果也不错。唐三已经开始尝试着用尽可能少的玄天功内力来挥",
+          "document_span": {
+            "start": 23127,
+            "end": 23619
+          },
+          "source_kind": "node"
+        },
+        {
+          "context_quote": " \r\n　　唐昊心中暗道，天生神力加上先天满魂力，难怪他这么小就能挥动铁锤。老杰克的话或许是对的，不应该因为自己的颓废而影响到这个孩子的发展，今后的路，就让他自己去走吧。 \r\n　　看着挥汗如雨的唐三，唐昊终于下定了决心。“停一下。”唐昊开口道。 \r\n　　唐三放下手中的铁锤，微微有些喘息，悄然催动体内的玄天功调息，以恢复自己的体力。 \r\n　　唐昊走到唐三面前，拿过他手中的铁锤，再看看火炉上烧的通红的铁块，“像你这样敲打，就算是一年也无法让它变成拳头大小。” \r\n　　唐三仰起头看着高大的父亲，“那我该怎么做？” \r\n　　唐昊冷淡的道：“告诉我，当你挥动铸造锤敲击它的时候，身体什么地方最先发力？” \r\n　　唐三想了想，道：“应该是腰吧。从腰部带动背部，然后再带动手臂抡起铸造锤？” \r\n　　唐昊并没有肯定或者否认唐三的说法，继续问道，“人身体除了大脑以外，最重要的是什么地方？” \r\n　　“是心脏。”唐三毫不犹豫的回答。心脏和大脑同样是瞬间致命的地方，而大脑还有头骨保护，心脏却只有皮肤与肌肉而已。作为唐门弟子，对于人体结构他清楚的很，用暗器刺穿敌人心脏，是最有效也是最",
+          "document_span": {
+            "start": 23926,
+            "end": 24411
+          },
+          "source_kind": "node"
+        },
+        {
+          "context_quote": "人，如果想要将自己的全部力量发挥出来，那么，必定是三颗心脏同时运转的结果。所以，发力时，并不是以腰为起始。三颗心脏才是起点。” \r\n　　“当你胸口内的心脏急速跳动之时，从两条小腿开始法力，力量上传，到大腿，经过腰、背、手臂，最后释放出去。这才是全力一击。心脏发力，腰为轴。看着。” \r\n　　(本章完)\r\n\r\n第13章 双生武魂(四)\r\n　　第13章 双生武魂(四) \r\n　　唐昊手中铸造锤微微一顶，令唐三后退几步，同时，手中锤子已经调转回来，低喝一声，身体半转，双脚紧扣在地面上，裸露在破烂裤管外的两条小腿瞬间绷紧，整个人就像是蓄势待发的猛虎一般，腿发力，腰转回，铸造锤在无形之中已经带了回来，当啷一声巨响。重重的落在那块烧红的生铁之上。 \r\n　　唐三完全可",
+          "document_span": {
+            "start": 24671,
+            "end": 25000
+          },
+          "source_kind": "node"
+        }
+      ],
+      "appearance_fact_refs": [
+        {
+          "fact_hash": "41c149529b199cb9986b4b5d905a6c6fb6ce287c0905dd20ab36f04eeef537cc",
+          "fact_quote": "唐昊的胸膛很宽阔",
+          "category": "body",
+          "attribute": "胸膛",
+          "value": "宽阔",
+          "document_fact_span": {
+            "start": 22558,
+            "end": 22566
+          }
+        },
+        {
+          "fact_hash": "7140d904e2f851c142d35535f4527e73e22cbf746bd5098a9d9410baf2e59951",
+          "fact_quote": "面庞看上去更加苍老了几分",
+          "category": "face",
+          "attribute": "面庞苍老程度",
+          "value": "苍老",
+          "document_fact_span": {
+            "start": 23367,
+            "end": 23379
+          }
+        },
+        {
+          "fact_hash": "2a9c24c919d5d7bcac1507d2288828d8f432cdd48e5902e99f68fd2d7f0b8a7f",
+          "fact_quote": "高大的父亲",
+          "category": "body",
+          "attribute": "身高",
+          "value": "高大",
+          "document_fact_span": {
+            "start": 24166,
+            "end": 24171
+          }
+        },
+        {
+          "fact_hash": "6088f287590ae512b69740445e9b945a8c41049a44a781e3d85dcd95fa71c2d7",
+          "fact_quote": "裸露在破烂裤管外的两条小腿",
+          "category": "body",
+          "attribute": "小腿",
+          "value": "裸露在破烂裤管外",
+          "document_fact_span": {
+            "start": 24911,
+            "end": 24924
+          }
+        }
+      ],
+      "order_position": 22500
+    },
+    {
+      "node_key": "9d7ce22be0dbbb18a9c5b6af8a255eec58c3ea18a002eba77f0f4deafd133cc3",
+      "ref_type": "local",
+      "source_character_ref": {
+        "source_document_version_id": "source-8bcb7305a759571b",
+        "chunk_id": "chunk-000011-22500-25000-8e969940f32a",
+        "local_mention_id": "m2",
+        "mention_type": "exact",
+        "packet_hash": "95f08707a465f36ebc55b36e5221d7ab0628aaa63e703bcd9c76581c00e9a8b2"
+      },
+      "character_origin": "exact",
+      "label_quote": "唐三",
+      "label_type": "exact",
+      "chunk_id": "chunk-000011-22500-25000-8e969940f32a",
+      "chunk_source_span": {
+        "start": 22500,
+        "end": 25000
+      },
+      "context_bindings": [
+        {
+          "context_quote": "的使用却有着不小的好处，对身体锻炼的效果也不错。唐三已经开始尝试着用尽可能少的玄天功内力来挥动铁锤，这样，他在每一次连续挥击的时候就能维持更长的时间。 \r\n　　当下午的敲打进行到三百多下，感觉上又令那块生铁祛除了一些杂质时，门帘掀起，唐昊走了进来。他今天下午似乎并没有打造农具，至少唐三没有听到熟悉的敲打声。 \r\n　　“爸爸。”唐三看向父亲，手中的铁锤不自觉的停了下来。 \r\n　　唐昊做了一个让他继续的手势，就走到一旁站定，也不开口，只是看着他。 \r\n　　唐三这才继续挥锤，此时，他身上的衣服已经被汗水浸透了。以他现在的内力，还不足以达到去适应温度的程度，更何况，这绝对是一项重体力劳动。 \r\n　　当，当，当，当，当……，敲击声不断响起，唐三幼小的身体和手中的铁锤并不成比例，但铁锤每一次抡起却是虎虎生风。 \r\n　　唐昊心中暗道，天生神力加上先天满魂力，难怪他这么小就能挥动铁锤。老杰克的话或许是对的，不应该因为自己的颓废而影响到这个孩子的发展，今后的路，就让他自己去走吧。 \r\n　　看着挥汗如雨的唐三，唐昊终于下定了决心。“停一下。”唐昊开口道。 \r\n　　唐三放下手中的铁锤，微微有些喘",
+          "document_span": {
+            "start": 23573,
+            "end": 24067
+          },
+          "source_kind": "node"
+        },
+        {
+          "context_quote": "　当下午的敲打进行到三百多下，感觉上又令那块生铁祛除了一些杂质时，门帘掀起，唐昊走了进来。他今天下午似乎并没有打造农具，至少唐三没有听到熟悉的敲打声。 \r\n　　“爸爸。”唐三看向父亲，手中的铁锤不自觉的停了下来。 \r\n　　唐昊做了一个让他继续的手势，就走到一旁站定，也不开口，只是看着他。 \r\n　　唐三这才继续挥锤，此时，他身上的衣服已经被汗水浸透了。以他现在的内力，还不足以达到去适应温度的程度，更何况，这绝对是一项重体力劳动。 \r\n　　当，当，当，当，当……，敲击声不断响起，唐三幼小的身体和手中的铁锤并不成比例，但铁锤每一次抡起却是虎虎生风。 \r\n　　唐昊心中暗道，天生神力加上先天满魂力，难怪他这么小就能挥动铁锤。老杰克的话或许是对的，不应该因为自己的颓废而影响到这个孩子的发展，今后的路，就让他自己去走吧。 \r\n　　看着挥汗如雨的唐三，唐昊终于下定了决心。“停一下。”唐昊开口道。 \r\n　　唐三放下手中的铁锤，微微有些喘息，悄然催动体内的玄天功调息，以恢复自己的体力。 \r\n　　唐昊走到唐三面前，拿过他手中的铁锤，再看看火炉上烧的通红的铁块，“像你这样敲打，就算是一年也无法让它变成拳头",
+          "document_span": {
+            "start": 23652,
+            "end": 24150
+          },
+          "source_kind": "node"
+        },
+        {
+          "context_quote": "就走到一旁站定，也不开口，只是看着他。 \r\n　　唐三这才继续挥锤，此时，他身上的衣服已经被汗水浸透了。以他现在的内力，还不足以达到去适应温度的程度，更何况，这绝对是一项重体力劳动。 \r\n　　当，当，当，当，当……，敲击声不断响起，唐三幼小的身体和手中的铁锤并不成比例，但铁锤每一次抡起却是虎虎生风。 \r\n　　唐昊心中暗道，天生神力加上先天满魂力，难怪他这么小就能挥动铁锤。老杰克的话或许是对的，不应该因为自己的颓废而影响到这个孩子的发展，今后的路，就让他自己去走吧。 \r\n　　看着挥汗如雨的唐三，唐昊终于下定了决心。“停一下。”唐昊开口道。 \r\n　　唐三放下手中的铁锤，微微有些喘息，悄然催动体内的玄天功调息，以恢复自己的体力。 \r\n　　唐昊走到唐三面前，拿过他手中的铁锤，再看看火炉上烧的通红的铁块，“像你这样敲打，就算是一年也无法让它变成拳头大小。” \r\n　　唐三仰起头看着高大的父亲，“那我该怎么做？” \r\n　　唐昊冷淡的道：“告诉我，当你挥动铸造锤敲击它的时候，身体什么地方最先发力？” \r\n　　唐三想了想，道：“应该是腰吧。从腰部带动背部，然后再带动手臂抡起铸造锤",
+          "document_span": {
+            "start": 23777,
+            "end": 24264
+          },
+          "source_kind": "node"
+        }
+      ],
+      "appearance_fact_refs": [
+        {
+          "fact_hash": "fdab82274d0c8fd214136cf73604888feffa6290ac88f24b62683c5c54b773ed",
+          "fact_quote": "他身上的衣服已经被汗水浸透了",
+          "category": "appearance_state",
+          "attribute": "衣服",
+          "value": "被汗水浸透",
+          "document_fact_span": {
+            "start": 23813,
+            "end": 23827
+          }
+        },
+        {
+          "fact_hash": "c93630f9602774e39f7734abd195c81b6e9cc5753c230b1cb9e4fc58e02031cd",
+          "fact_quote": "幼小的身体",
+          "category": "body",
+          "attribute": "身体",
+          "value": "幼小",
+          "document_fact_span": {
+            "start": 23894,
+            "end": 23899
+          }
+        },
+        {
+          "fact_hash": "e9943486318b4aa3f09691d0f7dd550819d6dc79530792a32a08a19032a12d97",
+          "fact_quote": "挥汗如雨",
+          "category": "appearance_state",
+          "attribute": "出汗状态",
+          "value": "挥汗如雨",
+          "document_fact_span": {
+            "start": 24017,
+            "end": 24021
+          }
+        }
+      ],
+      "order_position": 23573
+    },
+    {
+      "node_key": "7a21fe600fdffdd21e8a29460106b527933b9454c45b02632776bdcee4a5dca2",
+      "ref_type": "local",
+      "source_character_ref": {
+        "source_document_version_id": "source-8bcb7305a759571b",
+        "chunk_id": "chunk-000012-24750-27250-0e60e5181e73",
+        "local_mention_id": "m1",
+        "mention_type": "exact",
+        "packet_hash": "800c88eeacd2deb9c6a4b7a41905781503944b9c3e6eed84b45a327d2877e5fa"
+      },
+      "character_origin": "exact",
+      "label_quote": "唐昊",
+      "label_type": "exact",
+      "chunk_id": "chunk-000012-24750-27250-0e60e5181e73",
+      "chunk_source_span": {
+        "start": 24750,
+        "end": 27250
+      },
+      "context_bindings": [
+        {
+          "context_quote": "跳动之时，从两条小腿开始法力，力量上传，到大腿，经过腰、背、手臂，最后释放出去。这才是全力一击。心脏发力，腰为轴。看着。” \r\n　　(本章完)\r\n\r\n第13章 双生武魂(四)\r\n　　第13章 双生武魂(四) \r\n　　唐昊手中铸造锤微微一顶，令唐三后退几步，同时，手中锤子已经调转回来，低喝一声，身体半转，双脚紧扣在地面上，裸露在破烂裤管外的两条小腿瞬间绷紧，整个人就像是蓄势待发的猛虎一般，腿发力，腰转回，铸造锤在无形之中已经带了回来，当啷一声巨响。重重的落在那块烧红的生铁之上。 \r\n　　唐三完全可以感受到，这只是一个人体发力的过程，唐昊没有内力，更没有什么武魂力的释放，这完全是肉体的力量，而那块之前还通红的铁块，却被砸的完全塌陷了接近三分之一，变形极其明显。 \r\n　　“以小腿发力，把自己身体的力量连接成一个整体，是为全力。”唐昊手中的铁锤还到唐三手中，“你来一次。” \r\n　　“好。”唐三从没有想过，锻造还有这样的敲门。这种发力",
+          "document_span": {
+            "start": 24750,
+            "end": 25168
+          },
+          "source_kind": "node"
+        }
+      ],
+      "appearance_fact_refs": [
+        {
+          "fact_hash": "a053cc2ed53118dfe60f195e5624735f674db15b76ff2da094cbf035b4a3320e",
+          "fact_quote": "裸露在破烂裤管外的两条小腿",
+          "category": "body",
+          "attribute": "小腿暴露",
+          "value": "裸露在破烂裤管外",
+          "document_fact_span": {
+            "start": 24911,
+            "end": 24924
+          }
+        }
+      ],
+      "order_position": 24750
+    },
+    {
+      "node_key": "69cf5a23b5d866d66444c4c3a26357815d80c865c20ca4bf6ee0608d00afe940",
+      "ref_type": "local",
+      "source_character_ref": {
+        "source_document_version_id": "source-8bcb7305a759571b",
+        "chunk_id": "chunk-000013-27000-29500-cac937b0db28",
+        "local_mention_id": "m1",
+        "mention_type": "exact",
+        "packet_hash": "2ea6010509d469902dc5a873c24425a80d11c21c9756fc2f4af2ebf0c9ac4c31"
+      },
+      "character_origin": "exact",
+      "label_quote": "唐昊",
+      "label_type": "exact",
+      "chunk_id": "chunk-000013-27000-29500-cac937b0db28",
+      "chunk_source_span": {
+        "start": 27000,
+        "end": 29500
+      },
+      "context_bindings": [
+        {
+          "context_quote": "第二击开始，每一击的力量都超过了唐昊的全力，可却依旧在他的控制之中。 \r\n　　唐昊的动作越来越快，铸造锤如同一般击打在铁块上，铁块不断在铸造锤的敲击下变形，令人吃惊的是，唐昊敲打的位置极为准确，每当铁块被敲打到原本二分之一厚度，开始变得扁平的时候，他手中的铸造锤都会有一下敲击在铁块的边缘，令它产生翻转，这样一来，铁块是在均匀的承受着他的锤击，而不是单纯的被砸成一个铁饼。 \r\n　　转瞬之间，三十六锤已经挥出，唐昊双手带动着铸造锤在空中接连旋转三周，才化去了锤上的力量，收锤而立。面不红，气不喘，仿佛之前那般的打击并不是他做的。 \r\n　　整个铁块就在这三十六锤之间整整小了一圈，用肉眼竟然已经很难看到其中的杂质了。 \r\n　　这才是真正的铁匠技能啊，好漂亮的锤法。 \r\n　　“明白了么？”唐昊看着在不断拉动风箱的唐三。 \r\n　　唐三想了想，道：“借力用力，道理上我明白了。不过，这似乎并不简单。” \r\n　　唐昊淡然道：“想做到我这样的程度，只有一个办法，熟能生巧。同时，你要记住，如果是对一块普通金属进行敲打，那么，在它杂质最多的时候，也是最容易碎裂的时候，那时候，你在敲击时",
+          "document_span": {
+            "start": 27057,
+            "end": 27544
+          },
+          "source_kind": "node"
+        }
+      ],
+      "appearance_fact_refs": [
+        {
+          "fact_hash": "e145f5a9bcd69e3eabc0e484cd012531cefb894888c00e8701e9da8adfa4e5fb",
+          "fact_quote": "面不红，气不喘",
+          "category": "appearance_state",
+          "attribute": "面色呼吸",
+          "value": "不红不喘",
+          "document_fact_span": {
+            "start": 27297,
+            "end": 27304
+          }
+        }
+      ],
+      "order_position": 27057
+    },
+    {
+      "node_key": "08e2540727d803f31260462ac63db89853229e38eea0b02cca220c9eddb303b7",
+      "ref_type": "local",
+      "source_character_ref": {
+        "source_document_version_id": "source-8bcb7305a759571b",
+        "chunk_id": "chunk-000013-27000-29500-cac937b0db28",
+        "local_mention_id": "m2",
+        "mention_type": "exact",
+        "packet_hash": "c61bd4b9cf7aa9856bd2939b3e2104cd5a1578c2465779e7eb5ecd180d22b842"
+      },
+      "character_origin": "exact",
+      "label_quote": "唐三",
+      "label_type": "exact",
+      "chunk_id": "chunk-000013-27000-29500-cac937b0db28",
+      "chunk_source_span": {
+        "start": 27000,
+        "end": 29500
+      },
+      "context_bindings": [
+        {
+          "context_quote": "在十米内看清楚蚊虫拍打翅膀的细微动作。如果不是玄天功没能突破瓶颈，唐三相信，自己在其他各方面的进步会更大。 \r\n　　将一块五十公分见方的生铁锻造成拳头大小，那原本似乎是不可能的事，早在半个月前唐三就已经完成了。唐昊教他那种借力用力的锻造锤法，他也能够连续挥出二十四锤，每一锤都准确无误，包括力量的控制。虽然唐昊从来没有夸奖过他什么，但从父亲偶尔流露出满意的目光来看，唐三知道，自己这锤法也算是有所小成了，再想进步，还是要靠不断的练习才行。 \r\n　　马上要进家门了，轻轻摸了摸手腕，唐三脸上流露出一丝满足的笑容，他的手腕上，正带着来到这个世界后的第一件作品，而且是所有步骤都是由他自己完成的作品。 \r\n　　那是一个袖箭，在当初的唐门来说，袖箭是最普通的机括类暗器了，袖箭的制作关键在于机璜的力量以及本身设计的精巧程度。像唐三制造的袖箭，本身甚至是带保险装置的，绝无误伤的可能。 \r\n　　一套袖箭，一般都是三根箭和一个袖筒组成，唐三现在手上带的这个也不例外。而这个袖箭的材料，却正是他耗费了近百天时间锤击出来的那块生铁。 \r\n　　当唐三完成唐昊交给的任务，把那块生铁锻造成只有拳头大小的时候，",
+          "document_span": {
+            "start": 28698,
+            "end": 29192
+          },
+          "source_kind": "node"
+        }
+      ],
+      "appearance_fact_refs": [
+        {
+          "fact_hash": "4c3ae0d136f516c146619141620d73f294700094009d0c905d469138b86b8a2c",
+          "fact_quote": "唐三脸上流露出一丝满足的笑容",
+          "category": "face",
+          "attribute": "表情",
+          "value": "满足的笑容",
+          "document_fact_span": {
+            "start": 28938,
+            "end": 28952
+          }
+        }
+      ],
+      "order_position": 28698
+    },
+    {
+      "node_key": "d3b490996db39e0e952ca294133253f1849cf229cda98efa7fa547cee1f7343f",
+      "ref_type": "local",
+      "source_character_ref": {
+        "source_document_version_id": "source-8bcb7305a759571b",
+        "chunk_id": "chunk-000014-29250-31750-3f70e01ec313",
+        "local_mention_id": "m1",
+        "mention_type": "exact",
+        "packet_hash": "60c7c15db5a2aa1166f664e45e3d8faff9babb7e969bb9074a63ef4d8d3ac565"
+      },
+      "character_origin": "exact",
+      "label_quote": "唐三",
+      "label_type": "exact",
+      "chunk_id": "chunk-000014-29250-31750-3f70e01ec313",
+      "chunk_source_span": {
+        "start": 29250,
+        "end": 31750
+      },
+      "context_bindings": [
+        {
+          "context_quote": "，也绝不会这种将普通生铁锻造成铁母的方法。但在这个世界，却成为了现实。这本身就是一件极不可思议的事。而唐三手腕上带着的这筒袖箭，正是由那块铁母制造而成的，完成袖箭的制造，包括三根四寸小箭在内，正好用掉了所有铁母。 \r\n　　论铸造，唐三不行，远不如唐昊。可论制造机巧暗器，别说是唐昊，恐怕在整个斗罗大陆上也没有谁能比得上他这个唐门外门的天才。 \r\n　　普通的袖箭，射程一般在十五米左右，而唐三制造出的袖箭却可以保持有效攻击距离三十米开外。 \r\n　　所谓有效攻击距离，就是在袖箭射出后的直线距离，也就是能够保持充分杀伤力的距离。 \r\n　　唐三这筒袖箭尽管只有三枚，但制作的却极为精巧，每一根袖箭上都有三个血槽，",
+          "document_span": {
+            "start": 29250,
+            "end": 29553
+          },
+          "source_kind": "node"
+        }
+      ],
+      "appearance_fact_refs": [
+        {
+          "fact_hash": "7201fa52be431d1735d15698f2d5856fffae90d6722f327f8fc82ee36da410b9",
+          "fact_quote": "唐三手腕上带着的这筒袖箭",
+          "category": "accessory",
+          "attribute": "手腕",
+          "value": "带着袖箭",
+          "document_fact_span": {
+            "start": 29301,
+            "end": 29313
+          }
+        }
+      ],
+      "order_position": 29250
+    },
+    {
+      "node_key": "9c49816e291181a552e79f2f96e25fdc24c3b2a567b814dbd9234d336ec6ad96",
+      "ref_type": "local",
+      "source_character_ref": {
+        "source_document_version_id": "source-8bcb7305a759571b",
+        "chunk_id": "chunk-000014-29250-31750-3f70e01ec313",
+        "local_mention_id": "m2",
+        "mention_type": "exact",
+        "packet_hash": "dd04775e589c963e1a90e15cf24be2e048abf8e2586ed34ffec7ba9f849195e5"
+      },
+      "character_origin": "exact",
+      "label_quote": "唐昊",
+      "label_type": "exact",
+      "chunk_id": "chunk-000014-29250-31750-3f70e01ec313",
+      "chunk_source_span": {
+        "start": 29250,
+        "end": 31750
+      },
+      "context_bindings": [
+        {
+          "context_quote": "明白，父亲之所以今天起的这么早，竟然是去找村长杰克了。 \r\n　　(本章完)\r\n\r\n第16章 异界唐三的第一件暗器（二）\r\n　　第16章 异界唐三的第一件暗器（二） \r\n　　唐昊冷然道：“我还需要你照顾么？你去就是了。这是你自己选的路。圣魂村每年都有一个名额，不用也是浪费。我交给你的铸造方法，可以让你在城里随便找个铁匠铺当个学徒工，学费和饭费应该够用。” \r\n　　尽管唐昊说的很冷淡，但唐三的眼圈却依旧阵阵发热，这几个月以来，尽管唐昊对他的态度并没有什么改变，可随着唐昊教他铸造，眼前这个高大苍老的男人，已经越来越给他那种父亲的感觉。他固然想去学习关于魂师的知识，可此时也有些舍不得自己的父亲。 \r\n　　唐昊道：“我让你去诺丁是有条件的。答应我的条件你才能去。” \r\n　　“我答应。”唐三毫不犹豫的说道。 \r\n　　唐昊眉头微皱，“你连我的要求是什么都不问就轻易答应么？作为一个男人，答应的事就必须做到，不要做一个轻诺之人。” \r\n　　唐三很自然的说道：“不论爸爸让我做什么，我都答应。爸爸肯定是为了我好。” \r\n　　唐昊微怔，唐三说的很随意，但正是那种自然的信任才令他的情绪出现了些",
+          "document_span": {
+            "start": 30525,
+            "end": 31016
+          },
+          "source_kind": "node"
+        }
+      ],
+      "appearance_fact_refs": [
+        {
+          "fact_hash": "55d39448877ad4797916815bbf0d3d602c623b8caacfe980e7375ff4bc0fb208",
+          "fact_quote": "高大",
+          "category": "body",
+          "attribute": "身高",
+          "value": "高大",
+          "document_fact_span": {
+            "start": 30769,
+            "end": 30771
+          }
+        },
+        {
+          "fact_hash": "fa4edcae07d1c7a8a164fa68ba7c56d2aab19c98f452e9b4b678ad0c91e9fb1a",
+          "fact_quote": "苍老",
+          "category": "face",
+          "attribute": "面容",
+          "value": "苍老",
+          "document_fact_span": {
+            "start": 30771,
+            "end": 30773
+          }
+        }
+      ],
+      "order_position": 30525
+    },
+    {
+      "node_key": "4d9273dff17f92b6a73546dd54df5d3cdf237af9e2943e6e4beae15ae927e683",
+      "ref_type": "promoted",
+      "source_character_ref": {
+        "source_document_version_id": "source-8bcb7305a759571b",
+        "chunk_id": "chunk-000014-29250-31750-3f70e01ec313",
+        "source_local_mention_id": "m3",
+        "source_mention_type": "describe",
+        "promotion_index": 1,
+        "character_origin": "remaining_describe",
+        "packet_hash": "f149bb2843018f2f7e2e1d338cc3e4d615c1724687de7d5e18a4c586ecc14699",
+        "promotion_hash": "2b1b0d7327d10a40a44ac7e67651604f02621f8630cfb7f2cd6e391a0e890d5a"
+      },
+      "character_origin": "remaining_describe",
+      "label_quote": "高大苍老的男人",
+      "label_type": "describe",
+      "chunk_id": "chunk-000014-29250-31750-3f70e01ec313",
+      "chunk_source_span": {
+        "start": 29250,
+        "end": 31750
+      },
+      "context_bindings": [
+        {
+          "context_quote": "亲之所以今天起的这么早，竟然是去找村长杰克了。 \r\n　　(本章完)\r\n\r\n第16章 异界唐三的第一件暗器（二）\r\n　　第16章 异界唐三的第一件暗器（二） \r\n　　唐昊冷然道：“我还需要你照顾么？你去就是了。这是你自己选的路。圣魂村每年都有一个名额，不用也是浪费。我交给你的铸造方法，可以让你在城里随便找个铁匠铺当个学徒工，学费和饭费应该够用。” \r\n　　尽管唐昊说的很冷淡，但唐三的眼圈却依旧阵阵发热，这几个月以来，尽管唐昊对他的态度并没有什么改变，可随着唐昊教他铸造，眼前这个高大苍老的男人，已经越来越给他那种父亲的感觉。他固然想去学习关于魂师的知识，可此时也有些舍不得自己的父亲。 \r\n　　唐昊道：“我让你去诺丁是有条件的。答应我的条件你才能去。” \r\n　　“我答应。”唐三毫不犹豫的说道。 \r\n　　唐昊眉头微皱，“你连我的要求是什么都不问就轻易答应么？作为一个男人，答应的事就必须做到，不要做一个轻诺之人。” \r\n　　唐三很自然的说道：“不论爸爸让我做什么，我都答应。爸爸肯定是为了我好。” \r\n　　唐昊微怔，唐三说的很随意，但正是那种自然的信任才令他的情绪出现了些",
+          "document_span": {
+            "start": 30529,
+            "end": 31016
+          },
+          "source_kind": "node"
+        }
+      ],
+      "appearance_fact_refs": [
+        {
+          "fact_hash": "b0483c08ebe7cd66ee453bc305081db40e5770b416d4ba9f2ef1a1bb73007836",
+          "fact_quote": "高大",
+          "category": "body",
+          "attribute": "身材",
+          "value": "高大",
+          "document_fact_span": {
+            "start": 30769,
+            "end": 30771
+          }
+        },
+        {
+          "fact_hash": "bcda215887955907704a322173317d7ef986c1ba3c72421a355679df927882aa",
+          "fact_quote": "苍老",
+          "category": "age",
+          "attribute": "年龄",
+          "value": "苍老",
+          "document_fact_span": {
+            "start": 30771,
+            "end": 30773
+          }
+        }
+      ],
+      "order_position": 30529
+    },
+    {
+      "node_key": "6d53f7e20076f8fadceff02fda655dd49fe40ffb40879258414cd08b825c32f7",
+      "ref_type": "local",
+      "source_character_ref": {
+        "source_document_version_id": "source-8bcb7305a759571b",
+        "chunk_id": "chunk-000015-31500-34000-fb2b21bc7e87",
+        "local_mention_id": "m1",
+        "mention_type": "exact",
+        "packet_hash": "cc2e3cad6cea9c19ee220d6b9f7a34f84995ca80edce888ee1d489f3835923d7"
+      },
+      "character_origin": "exact",
+      "label_quote": "唐三",
+      "label_type": "exact",
+      "chunk_id": "chunk-000015-31500-34000-fb2b21bc7e87",
+      "chunk_source_span": {
+        "start": 31500,
+        "end": 34000
+      },
+      "context_bindings": [
+        {
+          "context_quote": "洗也差不太多，唐三根本没有什么好准备的，只是把他那些有着大小补丁的衣服收拾一下也就算完成了。 \r\n　　不过，这天他并没有听唐昊的只是收拾东西，锻造的声音依旧在他房间中回荡着。为了今后能够制造出各种暗器，唐三明白，一切都只能依靠自己，父亲所传授的铸造术绝对有必要勤加练习。在暗器绝技没有修炼到巅峰时，暗器本身的质量就有着决定性的作用。尤其是像佛怒唐莲那种级别的超级暗器，更是精密到一分一毫都不能出现差错的程度。 \r\n　　这一天过的格外漫长，也是唐三来到这个世界后，第一次心神不宁，对于外面的世界，他有期盼，也多少有些恐惧。不论是在唐门，还是在圣魂村，他",
+          "document_span": {
+            "start": 31500,
+            "end": 31775
+          },
+          "source_kind": "node"
+        },
+        {
+          "context_quote": "超级暗器，更是精密到一分一毫都不能出现差错的程度。 \r\n　　这一天过的格外漫长，也是唐三来到这个世界后，第一次心神不宁，对于外面的世界，他有期盼，也多少有些恐惧。不论是在唐门，还是在圣魂村，他都没有在外历练的经历，这一点上，他真的和个孩子没什么区别。他一直在想，外面的世界究竟能给自己带来怎样的精彩呢？ \r\n　　晚饭后，唐昊扔下一句话就出门喝酒去了，似乎和往常并没有什么不同。他告诉唐三，明天早上走的时候不要吵他睡觉。 \r\n　　清晨，唐三坐在山顶的一块大石头上，手中拈着一片树叶，眼中紫意莹然，不知道是不是因为最近身体比以前健壮了一些的原因，紫极魔瞳的进步速度很快，手中树叶上，哪怕是最微小的一片纹路，他也可以清晰的观察到。他知道，自己的紫极魔瞳已经开始进入入微的境界了。 \r\n　　和分为九重的玄天功不同，紫极魔瞳只有四个层次，纵观、入微、芥子、浩瀚。唐门内门弟子的要求，就是进入入微，对于使用暗器就已经足够了。由于唐三修炼的很早，借助出生后并未完全散去的先天之气，才不过六岁，就已经拥有了一丝入微的感觉。但他也知道，唐门内门弟子几乎人人的紫极魔瞳都能够达到入微境界，可包",
+          "document_span": {
+            "start": 31679,
+            "end": 32165
+          },
+          "source_kind": "node"
+        },
+        {
+          "context_quote": "出现差错的程度。 \r\n　　这一天过的格外漫长，也是唐三来到这个世界后，第一次心神不宁，对于外面的世界，他有期盼，也多少有些恐惧。不论是在唐门，还是在圣魂村，他都没有在外历练的经历，这一点上，他真的和个孩子没什么区别。他一直在想，外面的世界究竟能给自己带来怎样的精彩呢？ \r\n　　晚饭后，唐昊扔下一句话就出门喝酒去了，似乎和往常并没有什么不同。他告诉唐三，明天早上走的时候不要吵他睡觉。 \r\n　　清晨，唐三坐在山顶的一块大石头上，手中拈着一片树叶，眼中紫意莹然，不知道是不是因为最近身体比以前健壮了一些的原因，紫极魔瞳的进步速度很快，手中树叶上，哪怕是最微小的一片纹路，他也可以清晰的观察到。他知道，自己的紫极魔瞳已经开始进入入微的境界了。 \r\n　　和分为九重的玄天功不同，紫极魔瞳只有四个层次，纵观、入微、芥子、浩瀚。唐门内门弟子的要求，就是进入入微，对于使用暗器就已经足够了。由于唐三修炼的很早，借助出生后并未完全散去的先天之气，才不过六岁，就已经拥有了一丝入微的感觉。但他也知道，唐门内门弟子几乎人人的紫极魔瞳都能够达到入微境界，可包括门主唐大先生在内，却没有一个能够进入紫极",
+          "document_span": {
+            "start": 31696,
+            "end": 32186
+          },
+          "source_kind": "node"
+        },
+        {
+          "context_quote": "会起来了。”杰克招呼唐三。 \r\n　　唐三向杰克比出一个噤声的手势，“爷爷，您小点声，爸爸最不喜欢别人吵他睡觉。”一边说着，他从火炉中抽出一块燃尽的木炭，在地面上写了几行字，再回头恋恋不舍的看了一眼父亲的房门，这才背起包袱和杰克悄然离去。 \r\n　　对这个世界的文字，唐三认识的不多，都是村子里私塾教孩子们学字的时候，他偶尔看去的。毕竟有着前一世的功底，他也掌握了一些基础文字。 \r\n　　门帘掀起，高大的身影从里间走了出来，唐昊眼中并没有一丝睡意，当他走到门口时，依稀还能看到老杰克和唐三瘦弱的身体。 \r\n　　唐昊站着没动，一直到唐三和村长杰克的背影已经完全消失了，他依旧站在那里呆立半晌。 \r\n　　仿佛想起了什么，唐昊突然转身走回铁匠铺，看向地面上唐三留给他的字。 \r\n　　很简单的两句话，“爸爸，我和杰克爷爷走了。你自己要多保重身体，少喝酒。粥在锅里，别忘了喝。” \r\n　　目光从地面的字转向一旁的铁锅，唐昊猛的冲过去，一把扫开铁锅上的盖子，双手直接将铁锅端了起来。 \r\n　　由于唐三刚刚加了水，铁锅里的粥还没有重新沸腾，但唐昊却不管不顾的就那么拿着铁锅向嘴里灌着，大口大口",
+          "document_span": {
+            "start": 32802,
+            "end": 33289
+          },
+          "source_kind": "node"
+        }
+      ],
+      "appearance_fact_refs": [
+        {
+          "fact_hash": "9591968088b811a6cf709115bc73975ad1826ddf5c90624ce4302eee954d0916",
+          "fact_quote": "他那些有着大小补丁的衣服",
+          "category": "clothing",
+          "attribute": "衣服",
+          "value": "有大小补丁",
+          "document_fact_span": {
+            "start": 31523,
+            "end": 31535
+          }
+        },
+        {
+          "fact_hash": "7a4ffd6f7a0a33287b10f76e57047be1cd3f31cf5ac05721665063a25a5ecc07",
+          "fact_quote": "眼中紫意莹然",
+          "category": "face",
+          "attribute": "眼睛",
+          "value": "紫色",
+          "document_fact_span": {
+            "start": 31919,
+            "end": 31925
+          }
+        },
+        {
+          "fact_hash": "b488456658a52ed276b43335ac481551e83e38db115b249dddc253b5a357cdab",
+          "fact_quote": "身体比以前健壮了一些",
+          "category": "body",
+          "attribute": "身体",
+          "value": "健壮",
+          "document_fact_span": {
+            "start": 31936,
+            "end": 31946
+          }
+        },
+        {
+          "fact_hash": "4a74a9af22b524da87940f3af66a06213913528580b39f9ae9d48096165795b9",
+          "fact_quote": "唐三瘦弱的身体",
+          "category": "body",
+          "attribute": "身体",
+          "value": "瘦弱",
+          "document_fact_span": {
+            "start": 33042,
+            "end": 33049
+          }
+        },
+        {
+          "fact_hash": "6ecff6c6174b7592c707119099cc9793d3c67c487565563740ae404e98718cab",
+          "fact_quote": "还没有铸造锤高吧",
+          "category": "body",
+          "attribute": "身高",
+          "value": "矮小",
+          "document_fact_span": {
+            "start": 33903,
+            "end": 33911
+          }
+        }
+      ],
+      "order_position": 31500
+    },
+    {
+      "node_key": "2e8db6b95d7b100705d4f962aa585ea5814657f8b21b6609d93f87d14b183154",
+      "ref_type": "local",
+      "source_character_ref": {
+        "source_document_version_id": "source-8bcb7305a759571b",
+        "chunk_id": "chunk-000015-31500-34000-fb2b21bc7e87",
+        "local_mention_id": "m4",
+        "mention_type": "exact",
+        "packet_hash": "5080ab649cc3f1076e93a776ce4174cd9391f58b66df956e2972efc1a24f10b6"
+      },
+      "character_origin": "exact",
+      "label_quote": "杰克",
+      "label_type": "exact",
+      "chunk_id": "chunk-000015-31500-34000-fb2b21bc7e87",
+      "chunk_source_span": {
+        "start": 31500,
+        "end": 34000
+      },
+      "context_bindings": [
+        {
+          "context_quote": "它已不坚硬，离开唐三的手指，玄天功的内力效果也自然消失了。 \r\n　　“功力还是太弱了。”无奈的摇摇头。唐三站起身，该是回去的时候了，今天，自己就要离开村子，下次再来这山顶，也不知道要什么时候才行了。 \r\n　　脚尖点地，小腿发力，唐三施展起鬼影迷踪，朝着山下而去。 \r\n　　熟悉的粥香扑鼻，这是离开前最后一次再给父亲做饭，唐三当然不会偷懒。看了看炉子下的柴火，给粥里面再加些水，这样一来，父亲睡醒后，也能喝到热粥了。 \r\n　　老杰克已经来了，或许是因为要去诺丁城的原因，今天的老杰克特意穿了一身新衣服，看上去更添几分矍铄。 \r\n　　“小三，走吧。你那懒鬼爸爸是不会起来了。”杰克招呼唐三。 \r\n　　唐三向杰克比出一个噤声的手势，“爷爷，您小点声，爸爸最不喜欢别人吵他睡觉。”一边说着，他从火炉中抽出一块燃尽的木炭，在地面上写了几行字，再回头恋恋不舍的看了一眼父亲的房门，这才背起包袱和杰克悄然离去。 \r\n　　对这个世界的文字，唐三认识的不多，都是村子里私塾教孩子们学字的时候，他偶尔看去的。毕竟有着前一世的功底，他也掌握了一些基础文字。 \r\n　　门帘掀起，高大的身影从里间走了出来，唐昊眼中并没有一丝",
+          "document_span": {
+            "start": 32522,
+            "end": 33021
+          },
+          "source_kind": "node"
+        }
+      ],
+      "appearance_fact_refs": [
+        {
+          "fact_hash": "da43591c3811091841cdd85b162e6bfdc35d8053df05fe758aeb81ac40cc8134",
+          "fact_quote": "特意穿了一身新衣服",
+          "category": "clothing",
+          "attribute": "穿着",
+          "value": "新衣服",
+          "document_fact_span": {
+            "start": 32762,
+            "end": 32771
+          }
+        },
+        {
+          "fact_hash": "e1eeeadd947f9bf0a1f11e5435934e86b769581bc6d4a24f906625c5b5185597",
+          "fact_quote": "看上去更添几分矍铄",
+          "category": "appearance_state",
+          "attribute": "精神面貌",
+          "value": "矍铄",
+          "document_fact_span": {
+            "start": 32772,
+            "end": 32781
+          }
+        }
+      ],
+      "order_position": 32522
+    },
+    {
+      "node_key": "b98d2f92bd075799408c70d03caef83405168e91c5f1a782c4aae361138ecce3",
+      "ref_type": "local",
+      "source_character_ref": {
+        "source_document_version_id": "source-8bcb7305a759571b",
+        "chunk_id": "chunk-000015-31500-34000-fb2b21bc7e87",
+        "local_mention_id": "m2",
+        "mention_type": "exact",
+        "packet_hash": "944ab6b185f40d04f2ca941c6b56f34ee48a60f790d82074317e8121a45d492f"
+      },
+      "character_origin": "exact",
+      "label_quote": "唐昊",
+      "label_type": "exact",
+      "chunk_id": "chunk-000015-31500-34000-fb2b21bc7e87",
+      "chunk_source_span": {
+        "start": 31500,
+        "end": 34000
+      },
+      "context_bindings": [
+        {
+          "context_quote": "老杰克特意穿了一身新衣服，看上去更添几分矍铄。 \r\n　　“小三，走吧。你那懒鬼爸爸是不会起来了。”杰克招呼唐三。 \r\n　　唐三向杰克比出一个噤声的手势，“爷爷，您小点声，爸爸最不喜欢别人吵他睡觉。”一边说着，他从火炉中抽出一块燃尽的木炭，在地面上写了几行字，再回头恋恋不舍的看了一眼父亲的房门，这才背起包袱和杰克悄然离去。 \r\n　　对这个世界的文字，唐三认识的不多，都是村子里私塾教孩子们学字的时候，他偶尔看去的。毕竟有着前一世的功底，他也掌握了一些基础文字。 \r\n　　门帘掀起，高大的身影从里间走了出来，唐昊眼中并没有一丝睡意，当他走到门口时，依稀还能看到老杰克和唐三瘦弱的身体。 \r\n　　唐昊站着没动，一直到唐三和村长杰克的背影已经完全消失了，他依旧站在那里呆立半晌。 \r\n　　仿佛想起了什么，唐昊突然转身走回铁匠铺，看向地面上唐三留给他的字。 \r\n　　很简单的两句话，“爸爸，我和杰克爷爷走了。你自己要多保重身体，少喝酒。粥在锅里，别忘了喝。” \r\n　　目光从地面的字转向一旁的铁锅，唐昊猛的冲过去，一把扫开铁锅上的盖子，双手直接将铁锅端了起来。 \r\n　　由于唐三",
+          "document_span": {
+            "start": 32759,
+            "end": 33244
+          },
+          "source_kind": "node"
+        },
+        {
+          "context_quote": "　　唐昊站着没动，一直到唐三和村长杰克的背影已经完全消失了，他依旧站在那里呆立半晌。 \r\n　　仿佛想起了什么，唐昊突然转身走回铁匠铺，看向地面上唐三留给他的字。 \r\n　　很简单的两句话，“爸爸，我和杰克爷爷走了。你自己要多保重身体，少喝酒。粥在锅里，别忘了喝。” \r\n　　目光从地面的字转向一旁的铁锅，唐昊猛的冲过去，一把扫开铁锅上的盖子，双手直接将铁锅端了起来。 \r\n　　由于唐三刚刚加了水，铁锅里的粥还没有重新沸腾，但唐昊却不管不顾的就那么拿着铁锅向嘴里灌着，大口大口的吞咽，在他那的眼睛中，不知什么时候已经多了一层朦胧的水意。 \r\n　　走在路上，唐三默默的跟在老杰克身边，不时回头朝村子的方向看去。“小三，舍不得村子还是舍不得你那酒鬼老爸？”杰克摸摸唐三的头，微笑着问道。 \r\n　　“都有一点吧。”唐三低声回答道。 \r\n　　杰克微微一笑，道：“和我那几个不成器的孙子相比，你这孩子要懂事太多了。你要是我的孙子该有多好。唐昊那酒鬼真是幸运。别想的太多了，外面的天地很广阔，到学院里，你会认识很多朋友。会学到很多知识。等你有了魂师的头衔后，国家会每个月发给你补助金，到时候，你家的生活也能好一些了。” \r\n　",
+          "document_span": {
+            "start": 33053,
+            "end": 33558
+          },
+          "source_kind": "node"
+        }
+      ],
+      "appearance_fact_refs": [
+        {
+          "fact_hash": "e2f9b79f21de911e5941231d5528d9bf8c5398e97b3ea06700942bde1f330523",
+          "fact_quote": "高大的身影",
+          "category": "body",
+          "attribute": "身材",
+          "value": "高大",
+          "document_fact_span": {
+            "start": 32999,
+            "end": 33004
+          }
+        },
+        {
+          "fact_hash": "e282acf8b84670956b559e94eb943599c15f9f0565b15ca372488ac896a8d88b",
+          "fact_quote": "在他那的眼睛中，不知什么时候已经多了一层朦胧的水意",
+          "category": "face",
+          "attribute": "眼睛",
+          "value": "多了一层朦胧的水意",
+          "document_fact_span": {
+            "start": 33293,
+            "end": 33318
+          }
+        }
+      ],
+      "order_position": 32759
+    },
+    {
+      "node_key": "49a39469d3e7ed28d07bddb54930ad1b57aaabe2922b2f3d4da4016a3204231b",
+      "ref_type": "local",
+      "source_character_ref": {
+        "source_document_version_id": "source-8bcb7305a759571b",
+        "chunk_id": "chunk-000016-33750-36250-66f14c14f2ba",
+        "local_mention_id": "m1",
+        "mention_type": "exact",
+        "packet_hash": "38963b524533fd2d8dee43d5a964994531f951ce6a1461f8f8d4c7c1668348ca"
+      },
+      "character_origin": "exact",
+      "label_quote": "唐三",
+      "label_type": "exact",
+      "chunk_id": "chunk-000016-33750-36250-66f14c14f2ba",
+      "chunk_source_span": {
+        "start": 33750,
+        "end": 36250
+      },
+      "context_bindings": [
+        {
+          "context_quote": "一些简单的工作来换取食物。比如打扫教室之类。总体来说，工读生在学院的学习也和免费相差不多。如果是交钱去学习的话，可不是我们这些穷人能够负担的。” \r\n　　唐三道：“爸爸说，让我到了学院以后，找一个铁匠铺打工。” \r\n　　“你？到铁匠铺打工？开什么玩笑？我看唐昊真的是疯了。”老杰克没好气的说道，“你才多大，还没有铸造锤高吧。有哪个铁匠铺会收你这样的学徒工，更何况，铁匠本就是不受重视的职业，打工也不会有多少收入的。你只要在学院里好好学习就足够了。” \r\n　　“不过，说起来，如果你要是能在学院有所成就的话，到应该让你那酒鬼父亲给你攒点钱。以后的中级魂师学院可是没有工读生名额的，那可是需要不少钱才能去学习。仅仅是魂师的补助金远远不够。” \r\n　　由于唐三是先天满魂力，老杰克已经将他当成魂师看待了。 \r\n　　唐三疑惑的看着杰克，道：“还有中级魂师学院么？和初级魂师学院有什么区别？都是学院，教导的也应该",
+          "document_span": {
+            "start": 33750,
+            "end": 34151
+          },
+          "source_kind": "node"
+        }
+      ],
+      "appearance_fact_refs": [],
+      "order_position": 33750
+    },
+    {
+      "node_key": "8a3fe7bec8e5750e9b7fdabbf09f4e3d13e72515ff2685677a23c181c02857ef",
+      "ref_type": "local",
+      "source_character_ref": {
+        "source_document_version_id": "source-8bcb7305a759571b",
+        "chunk_id": "chunk-000016-33750-36250-66f14c14f2ba",
+        "local_mention_id": "m2",
+        "mention_type": "exact",
+        "packet_hash": "50bb635ce1a94136bb9f08f18d53329d62dbfde65c3f61308dad9ed9212247c7"
+      },
+      "character_origin": "exact",
+      "label_quote": "老杰克",
+      "label_type": "exact",
+      "chunk_id": "chunk-000016-33750-36250-66f14c14f2ba",
+      "chunk_source_span": {
+        "start": 33750,
+        "end": 36250
+      },
+      "context_bindings": [
+        {
+          "context_quote": "一些简单的工作来换取食物。比如打扫教室之类。总体来说，工读生在学院的学习也和免费相差不多。如果是交钱去学习的话，可不是我们这些穷人能够负担的。” \r\n　　唐三道：“爸爸说，让我到了学院以后，找一个铁匠铺打工。” \r\n　　“你？到铁匠铺打工？开什么玩笑？我看唐昊真的是疯了。”老杰克没好气的说道，“你才多大，还没有铸造锤高吧。有哪个铁匠铺会收你这样的学徒工，更何况，铁匠本就是不受重视的职业，打工也不会有多少收入的。你只要在学院里好好学习就足够了。” \r\n　　“不过，说起来，如果你要是能在学院有所成就的话，到应该让你那酒鬼父亲给你攒点钱。以后的中级魂师学院可是没有工读生名额的，那可是需要不少钱才能去学习。仅仅是魂师的补助金远远不够。” \r\n　　由于唐三是先天满魂力，老杰克已经将他当成魂师看待了。 \r\n　　唐三疑惑的看着杰克，道：“还有中级魂师学院么？和初级",
+          "document_span": {
+            "start": 33750,
+            "end": 34130
+          },
+          "source_kind": "node"
+        },
+        {
+          "context_quote": "，找一个铁匠铺打工。” \r\n　　“你？到铁匠铺打工？开什么玩笑？我看唐昊真的是疯了。”老杰克没好气的说道，“你才多大，还没有铸造锤高吧。有哪个铁匠铺会收你这样的学徒工，更何况，铁匠本就是不受重视的职业，打工也不会有多少收入的。你只要在学院里好好学习就足够了。” \r\n　　“不过，说起来，如果你要是能在学院有所成就的话，到应该让你那酒鬼父亲给你攒点钱。以后的中级魂师学院可是没有工读生名额的，那可是需要不少钱才能去学习。仅仅是魂师的补助金远远不够。” \r\n　　由于唐三是先天满魂力，老杰克已经将他当成魂师看待了。 \r\n　　唐三疑惑的看着杰克，道：“还有中级魂师学院么？和初级魂师学院有什么区别？都是学院，教导的也应该都是魂师的知识吧。” \r\n　　老杰克很有耐心的解释道：“当然不一样。初级魂师学院教的都是一些基础的东西，还有一些文化课程要学习。只接受武魂刚刚觉醒的孩子作为学员，学制是六年，等到了十二岁，如果没有什么前途的话，也就是做一个普通的魂师。但如果潜力不错，大部分人都会选择去中级魂师学院进修。一直学习到十八岁。中级魂师学院教的东西就要高深一些，但学习的难度也",
+          "document_span": {
+            "start": 33844,
+            "end": 34327
+          },
+          "source_kind": "node"
+        },
+        {
+          "context_quote": "工，更何况，铁匠本就是不受重视的职业，打工也不会有多少收入的。你只要在学院里好好学习就足够了。” \r\n　　“不过，说起来，如果你要是能在学院有所成就的话，到应该让你那酒鬼父亲给你攒点钱。以后的中级魂师学院可是没有工读生名额的，那可是需要不少钱才能去学习。仅仅是魂师的补助金远远不够。” \r\n　　由于唐三是先天满魂力，老杰克已经将他当成魂师看待了。 \r\n　　唐三疑惑的看着杰克，道：“还有中级魂师学院么？和初级魂师学院有什么区别？都是学院，教导的也应该都是魂师的知识吧。” \r\n　　老杰克很有耐心的解释道：“当然不一样。初级魂师学院教的都是一些基础的东西，还有一些文化课程要学习。只接受武魂刚刚觉醒的孩子作为学员，学制是六年，等到了十二岁，如果没有什么前途的话，也就是做一个普通的魂师。但如果潜力不错，大部分人都会选择去中级魂师学院进修。一直学习到十八岁。中级魂师学院教的东西就要高深一些，但学习的难度也会大大增加。如果不能达到学院的要求，就无法顺利毕业。这一点和初级魂师学院是不一样的。” \r\n　　(本章完)\r\n\r\n第18章 异界唐三的第一件暗器(四)\r\n　　第18",
+          "document_span": {
+            "start": 33926,
+            "end": 34409
+          },
+          "source_kind": "node"
+        },
+        {
+          "context_quote": "武魂刚刚觉醒的孩子作为学员，学制是六年，等到了十二岁，如果没有什么前途的话，也就是做一个普通的魂师。但如果潜力不错，大部分人都会选择去中级魂师学院进修。一直学习到十八岁。中级魂师学院教的东西就要高深一些，但学习的难度也会大大增加。如果不能达到学院的要求，就无法顺利毕业。这一点和初级魂师学院是不一样的。” \r\n　　(本章完)\r\n\r\n第18章 异界唐三的第一件暗器(四)\r\n　　第18章 异界唐三的第一件暗器(四) \r\n　　唐三道：“有初级和中级，那么也就一定有高级了？” \r\n　　老杰克点了点头，眼中流露出几分羡慕的光芒，“高级魂师学院你就不用想了，那可不是随便谁都能进去的。在我们天斗帝国，一共也只有两所高级魂师学院，每年招收的学生数量加起来也不到一百人。那可是前程的摇篮。凡是从高级魂师学院毕业的学员，不论是国家还是武魂殿，都会抢着要，直接会被授予贵族的称号。” \r\n　　“贵族？有这么好的条件。”唐三惊讶的道。 \r\n　　老杰克道：“那是当然。魂师可是最高贵的职业，高级魂师更是如此。那可都是人才，所以，我们平民想要一步登天，成为高级魂师显然是最好的捷径，只不过",
+          "document_span": {
+            "start": 34218,
+            "end": 34701
+          },
+          "source_kind": "node"
+        }
+      ],
+      "appearance_fact_refs": [],
+      "order_position": 33750
+    },
+    {
+      "node_key": "ff7bbac2ba6e1528accd3d89b2d85cba8321a5db4cbbc1d2d02b815dc7eaaa91",
+      "ref_type": "promoted",
+      "source_character_ref": {
+        "source_document_version_id": "source-8bcb7305a759571b",
+        "chunk_id": "chunk-000016-33750-36250-66f14c14f2ba",
+        "source_local_mention_id": "m3",
+        "source_mention_type": "describe",
+        "promotion_index": 1,
+        "character_origin": "remaining_describe",
+        "packet_hash": "572ea37e5b6ac2403fc33061baacddd1abb070dbc62529bd8ab9c1e406f09550",
+        "promotion_hash": "02e055b80da318f5aa3488d1293b1af5f472087c1917c210e631f882b2e64377"
+      },
+      "character_origin": "remaining_describe",
+      "label_quote": "看门的青年",
+      "label_type": "describe",
+      "chunk_id": "chunk-000016-33750-36250-66f14c14f2ba",
+      "chunk_source_span": {
+        "start": 33750,
+        "end": 36250
+      },
+      "context_bindings": [
+        {
+          "context_quote": "听了几次，终于带着唐三来到了这里。 \r\n　　远远的，他们已经看到一座高大的拱门，拱门宽达二十米，高也有十米开外，都是由坚硬的岩石修葺而成，下面有两扇铁栅门，黑黝黝的，唐三一眼就看出，那是由上好的精铁打造而成。 \r\n　　透过铁栅，能够看到里面曲径通幽，一条大路直通内部，两旁尽是高大的树木。 \r\n　　拱门正中，有四个大字，“诺丁学院。” \r\n　　仅仅从学院的大门就能看出魂师这个职业在斗罗大陆有多么重要，这还只是一个初级魂师学院而已。 \r\n　　老杰克带着唐三刚刚走到大门前，立刻就被看门的青年拦了下来，“干什么的？这是你们这些乡下人能够来的地方么？” \r\n",
+          "document_span": {
+            "start": 35973,
+            "end": 36250
+          },
+          "source_kind": "node"
+        }
+      ],
+      "appearance_fact_refs": [
+        {
+          "fact_hash": "61dbb00470491f86136c0d6921b5de5564eb0bad6813695318d7f4d43acbe57b",
+          "fact_quote": "看门的青年",
+          "category": "age",
+          "attribute": "年龄阶段",
+          "value": "青年",
+          "document_fact_span": {
+            "start": 36213,
+            "end": 36218
+          }
+        }
+      ],
+      "order_position": 35973
+    },
+    {
+      "node_key": "2739df81882977abf6eefbc39a5b453e391a5863f7e5f1991a0259c58805b6f1",
+      "ref_type": "local",
+      "source_character_ref": {
+        "source_document_version_id": "source-8bcb7305a759571b",
+        "chunk_id": "chunk-000017-36000-38251-39ec6c2a0304",
+        "local_mention_id": "m1",
+        "mention_type": "exact",
+        "packet_hash": "0d71a0b3c55e5882a3b2f7d4eb69a57119a6c821d3184cd926160c5528f8db42"
+      },
+      "character_origin": "exact",
+      "label_quote": "老杰克",
+      "label_type": "exact",
+      "chunk_id": "chunk-000017-36000-38251-39ec6c2a0304",
+      "chunk_source_span": {
+        "start": 36000,
+        "end": 38251
+      },
+      "context_bindings": [
+        {
+          "context_quote": "，拱门宽达二十米，高也有十米开外，都是由坚硬的岩石修葺而成，下面有两扇铁栅门，黑黝黝的，唐三一眼就看出，那是由上好的精铁打造而成。 \r\n　　透过铁栅，能够看到里面曲径通幽，一条大路直通内部，两旁尽是高大的树木。 \r\n　　拱门正中，有四个大字，“诺丁学院。” \r\n　　仅仅从学院的大门就能看出魂师这个职业在斗罗大陆有多么重要，这还只是一个初级魂师学院而已。 \r\n　　老杰克带着唐三刚刚走到大门前，立刻就被看门的青年拦了下来，“干什么的？这是你们这些乡下人能够来的地方么？” \r\n　　老杰克的穿着在圣魂村已经算是光鲜了，可到了诺丁城，却完全是一副乡下人的样子，门房看他的眼神多少带了几分不屑。 \r\n　　(本章完)\r\n\r\n第19章 异界唐三的第一件暗器(五)\r\n　　第19章 异界唐三的第一件暗器(五) \r\n　　老杰克赶忙赔笑道：“这位小兄弟，我们从圣魂村来，这个孩子是我们村子今年送来的工读生。您看，我们需要办理什么手续？” \r\n　　门房皱了皱眉，有些阴阳怪气的道：“草窝还能出金凤凰么？一个小村子也有人拥有魂力？学院可是好多年没有过工读生了。你们不会是冒牌货吧。” \r\n　　老杰克眼中闪过一丝怒气，但还是忍气吞声的把上次武魂殿那位执事素",
+          "document_span": {
+            "start": 36012,
+            "end": 36529
+          },
+          "source_kind": "node"
+        },
+        {
+          "context_quote": "　　门房心中多少有些不安，要是武魂殿的人真的来了，可不是他能担待的起的，当然，他也相信武魂殿的人绝不会为了这么两个乡巴佬来学院质询。 \r\n　　心中郁闷，嘴里的话自然好听不了，“还圣魂村，我看乞丐村还差不多。” \r\n　　“你说什么？”老杰克猛的转过身，门房的话可以说是触到了他心中最大的骄傲，当初他能因此和唐昊翻脸，此时这个门房更是村子外的人，更令他无法忍受。几步就走了回来，怒视门房。 \r\n　　门房被气势汹汹的老杰克吓了一跳，忍不住后退了一步，不过他很快就反应过来，心中暗骂自己，不就是个老头儿么，有什么可怕的。 \r\n　　“怎么？不服气啊，我说你们是从乞丐村来的，难道有错么？你看看这小穷鬼，身上衣服全是补丁。我看，你们还是找地方乞讨去吧。我们诺丁学院可不是善堂。快滚，快滚。” \r\n　　一边说着，门房抬起左手向杰克胸前推去，就要赶两人走。 \r\n　　就在老杰克气怒攻心之时，突然，两人之间多了一道瘦小的身影，同样是抬起左臂，他那细嫩的小手勉强够到门房的手，左手向右用力，顿时把门房的左手推的荡开，同时，那瘦小的身影右脚快速踏前一步，脚掌正好踏在门房左脚的后面，同时右手抬起，和",
+          "document_span": {
+            "start": 36856,
+            "end": 37344
+          },
+          "source_kind": "node"
+        }
+      ],
+      "appearance_fact_refs": [
+        {
+          "fact_hash": "c9d27c307ad48a70837cc85129b2a58132a6c627f80141965c2f1aadc2a0dd2e",
+          "fact_quote": "老杰克的穿着在圣魂村已经算是光鲜了，可到了诺丁城，却完全是一副乡下人的样子",
+          "category": "clothing",
+          "attribute": "穿着状态",
+          "value": "光鲜但像乡下人",
+          "document_fact_span": {
+            "start": 36252,
+            "end": 36289
+          }
+        },
+        {
+          "fact_hash": "7ed1ceea03481debd1d0978bf7938bff18136fdb687546294dc7a1cae4bcdb41",
+          "fact_quote": "不就是个老头儿么",
+          "category": "age",
+          "attribute": "年龄",
+          "value": "老头儿",
+          "document_fact_span": {
+            "start": 37096,
+            "end": 37104
+          }
+        }
+      ],
+      "order_position": 36012
+    },
+    {
+      "node_key": "c124a50e3118633488088cda1e46afdb175f4e5b858d447d7fd9b6620d0f15be",
+      "ref_type": "local",
+      "source_character_ref": {
+        "source_document_version_id": "source-8bcb7305a759571b",
+        "chunk_id": "chunk-000017-36000-38251-39ec6c2a0304",
+        "local_mention_id": "m2",
+        "mention_type": "exact",
+        "packet_hash": "143b71c874725f2f0bfe68ebca4d866ce3e0d349539ecf9c403871e0265288df"
+      },
+      "character_origin": "exact",
+      "label_quote": "唐三",
+      "label_type": "exact",
+      "chunk_id": "chunk-000017-36000-38251-39ec6c2a0304",
+      "chunk_source_span": {
+        "start": 36000,
+        "end": 38251
+      },
+      "context_bindings": [
+        {
+          "context_quote": "个乡巴佬来学院质询。 \r\n　　心中郁闷，嘴里的话自然好听不了，“还圣魂村，我看乞丐村还差不多。” \r\n　　“你说什么？”老杰克猛的转过身，门房的话可以说是触到了他心中最大的骄傲，当初他能因此和唐昊翻脸，此时这个门房更是村子外的人，更令他无法忍受。几步就走了回来，怒视门房。 \r\n　　门房被气势汹汹的老杰克吓了一跳，忍不住后退了一步，不过他很快就反应过来，心中暗骂自己，不就是个老头儿么，有什么可怕的。 \r\n　　“怎么？不服气啊，我说你们是从乞丐村来的，难道有错么？你看看这小穷鬼，身上衣服全是补丁。我看，你们还是找地方乞讨去吧。我们诺丁学院可不是善堂。快滚，快滚。” \r\n　　一边说着，门房抬起左手向杰克胸前推去，就要赶两人走。 \r\n　　就在老杰克气怒攻心之时，突然，两人之间多了一道瘦小的身影，同样是抬起左臂，他那细嫩的小手勉强够到门房的手，左手向右用力，顿时把门房的左手推的荡开，同时，那瘦小的身影右脚快速踏前一步，脚掌正好踏在门房左脚的后面，同时右手抬起，和左手一同夹住那门房的手向下一带。 \r\n　　本来这一掌是应该切在对方左臂臂弯处，令其无法发力的，但施展的人实在矮小",
+          "document_span": {
+            "start": 36912,
+            "end": 37400
+          },
+          "source_kind": "node"
+        },
+        {
+          "context_quote": "，此时这个门房更是村子外的人，更令他无法忍受。几步就走了回来，怒视门房。 \r\n　　门房被气势汹汹的老杰克吓了一跳，忍不住后退了一步，不过他很快就反应过来，心中暗骂自己，不就是个老头儿么，有什么可怕的。 \r\n　　“怎么？不服气啊，我说你们是从乞丐村来的，难道有错么？你看看这小穷鬼，身上衣服全是补丁。我看，你们还是找地方乞讨去吧。我们诺丁学院可不是善堂。快滚，快滚。” \r\n　　一边说着，门房抬起左手向杰克胸前推去，就要赶两人走。 \r\n　　就在老杰克气怒攻心之时，突然，两人之间多了一道瘦小的身影，同样是抬起左臂，他那细嫩的小手勉强够到门房的手，左手向右用力，顿时把门房的左手推的荡开，同时，那瘦小的身影右脚快速踏前一步，脚掌正好踏在门房左脚的后面，同时右手抬起，和左手一同夹住那门房的手向下一带。 \r\n　　本来这一掌是应该切在对方左臂臂弯处，令其无法发力的，但施展的人实在矮小了一些，所以也只能扣住门房的手腕，他的动作极快，身体同时前探，双手在甩开门房左手的同时向前推去。正好推在门房的小腹处。门房左脚后面多了一只脚，尽管那只脚并不大，但已经足够完成他应有的效果了，小腹受力",
+          "document_span": {
+            "start": 37012,
+            "end": 37499
+          },
+          "source_kind": "node"
+        },
+        {
+          "context_quote": "令他无法忍受。几步就走了回来，怒视门房。 \r\n　　门房被气势汹汹的老杰克吓了一跳，忍不住后退了一步，不过他很快就反应过来，心中暗骂自己，不就是个老头儿么，有什么可怕的。 \r\n　　“怎么？不服气啊，我说你们是从乞丐村来的，难道有错么？你看看这小穷鬼，身上衣服全是补丁。我看，你们还是找地方乞讨去吧。我们诺丁学院可不是善堂。快滚，快滚。” \r\n　　一边说着，门房抬起左手向杰克胸前推去，就要赶两人走。 \r\n　　就在老杰克气怒攻心之时，突然，两人之间多了一道瘦小的身影，同样是抬起左臂，他那细嫩的小手勉强够到门房的手，左手向右用力，顿时把门房的左手推的荡开，同时，那瘦小的身影右脚快速踏前一步，脚掌正好踏在门房左脚的后面，同时右手抬起，和左手一同夹住那门房的手向下一带。 \r\n　　本来这一掌是应该切在对方左臂臂弯处，令其无法发力的，但施展的人实在矮小了一些，所以也只能扣住门房的手腕，他的动作极快，身体同时前探，双手在甩开门房左手的同时向前推去。正好推在门房的小腹处。门房左脚后面多了一只脚，尽管那只脚并不大，但已经足够完成他应有的效果了，小腹受力，脚下有拌，只听普通一声，门房已",
+          "document_span": {
+            "start": 37028,
+            "end": 37515
+          },
+          "source_kind": "node"
+        },
+        {
+          "context_quote": "身上衣服全是补丁。我看，你们还是找地方乞讨去吧。我们诺丁学院可不是善堂。快滚，快滚。” \r\n　　一边说着，门房抬起左手向杰克胸前推去，就要赶两人走。 \r\n　　就在老杰克气怒攻心之时，突然，两人之间多了一道瘦小的身影，同样是抬起左臂，他那细嫩的小手勉强够到门房的手，左手向右用力，顿时把门房的左手推的荡开，同时，那瘦小的身影右脚快速踏前一步，脚掌正好踏在门房左脚的后面，同时右手抬起，和左手一同夹住那门房的手向下一带。 \r\n　　本来这一掌是应该切在对方左臂臂弯处，令其无法发力的，但施展的人实在矮小了一些，所以也只能扣住门房的手腕，他的动作极快，身体同时前探，双手在甩开门房左手的同时向前推去。正好推在门房的小腹处。门房左脚后面多了一只脚，尽管那只脚并不大，但已经足够完成他应有的效果了，小腹受力，脚下有拌，只听普通一声，门房已经坐倒在地。 \r\n　　“小三，你……”杰克目瞪口呆的看着挡在自己身前的人。 \r\n　　出手的正是唐三，他所用的这一式，甚至不是唐门绝学，只不过是他原本那个世界中，武功里最简单的一式推窗望月，当然，从他的身材施展起来，自然是要变形的。不但无法切住对手的臂弯，原",
+          "document_span": {
+            "start": 37152,
+            "end": 37643
+          },
+          "source_kind": "node"
+        }
+      ],
+      "appearance_fact_refs": [
+        {
+          "fact_hash": "97a8350ab45b0ffb8757b97ffb9f2b0b311700ce064e2f4c5f672f68bf662975",
+          "fact_quote": "身上衣服全是补丁",
+          "category": "clothing",
+          "attribute": "衣服",
+          "value": "全是补丁",
+          "document_fact_span": {
+            "start": 37152,
+            "end": 37160
+          }
+        },
+        {
+          "fact_hash": "eee455c5fe3f2fca037445ad8d42ba0112bc61ba8c935513545dcaf187c8ef7b",
+          "fact_quote": "一道瘦小的身影",
+          "category": "body",
+          "attribute": "身形",
+          "value": "瘦小",
+          "document_fact_span": {
+            "start": 37252,
+            "end": 37259
+          }
+        },
+        {
+          "fact_hash": "9605e0b074b012043dcc3bbf62837fa79c7cc9aaf135e45d1fb1feafe9964523",
+          "fact_quote": "他那细嫩的小手",
+          "category": "body",
+          "attribute": "手",
+          "value": "细嫩",
+          "document_fact_span": {
+            "start": 37268,
+            "end": 37275
+          }
+        },
+        {
+          "fact_hash": "96d5c891e2e62ca6350e5aad267ae1d87a40460ccb556a8e13296d1eb0c73d8d",
+          "fact_quote": "施展的人实在矮小了一些",
+          "category": "body",
+          "attribute": "身高",
+          "value": "矮小",
+          "document_fact_span": {
+            "start": 37392,
+            "end": 37403
+          }
+        },
+        {
+          "fact_hash": "c7ac3277bb15c214960fa10baf0afd72fa42e9e0d3fb26ed0808057dc125f3d7",
+          "fact_quote": "唐三人虽然不大",
+          "category": "age",
+          "attribute": "年龄",
+          "value": "不大",
+          "document_fact_span": {
+            "start": 37678,
+            "end": 37685
+          }
+        }
+      ],
+      "order_position": 36912
+    },
+    {
+      "node_key": "de6cfcb000917853a5425f953db82dd7c25fcbf124b019ffbb1bf2f696407913",
+      "ref_type": "local",
+      "source_character_ref": {
+        "source_document_version_id": "source-8bcb7305a759571b",
+        "chunk_id": "chunk-000017-36000-38251-39ec6c2a0304",
+        "local_mention_id": "m6",
+        "mention_type": "exact",
+        "packet_hash": "c9d1bfc435bb0ffd48402e6988af581116e7d0a66902f63b1ac1f4000b313864"
+      },
+      "character_origin": "exact",
+      "label_quote": "大师",
+      "label_type": "exact",
+      "chunk_id": "chunk-000017-36000-38251-39ec6c2a0304",
+      "chunk_source_span": {
+        "start": 36000,
+        "end": 38251
+      },
+      "context_bindings": [
+        {
+          "context_quote": "推在了小腹上，当然，结果是一样的。 \r\n　　唐三人虽然不大，可力量绝对不小。这几个月的锤子不是白抡的，哪怕没有使用玄天功，依旧一下放倒了门房。 \r\n　　“臭小子，你找死。”被一个孩子推倒何等丢人，门房急怒之下，从地上爬起来就要冲向唐三。 \r\n　　“好了，住手吧。”正在这时，一个有些沙哑的声音响起，阻止了门房的动作。 \r\n　　门房先是愣了一下，紧接着，他那满脸的怒气顿时化为了谄媚，变化之快，令人难以想象，对着来人点头哈腰的道：“大师，您回来了。” \r\n　　唐三扭头看去，之间一个中等身材，略微有些偏瘦的男子不知道什么时候已经来到了他们身边。看上去，这个人大约四、五十岁的样子，黑色短发三七分开，相貌很普通，双手背在身后，身上却有一种特殊的气质，双眼开阖之间带着几分懒散和颓废。 \r\n　　‘大师’只是斜了门房一眼，并没有理会他，向老杰克道：“老先生，能否把武魂殿的证明给我看看？” \r\n　　老杰克毕竟是村长出身，察言观色还是会的，从门房的表情就能看出眼前这个中年人在学院里的地位绝对不低，更何况还有大师那个称号在那里。赶忙将手中的证明递了过去。 \r\n　　大师看了看证明，目光再转移到唐三身",
+          "document_span": {
+            "start": 37656,
+            "end": 38150
+          },
+          "source_kind": "node"
+        },
+        {
+          "context_quote": "不小。这几个月的锤子不是白抡的，哪怕没有使用玄天功，依旧一下放倒了门房。 \r\n　　“臭小子，你找死。”被一个孩子推倒何等丢人，门房急怒之下，从地上爬起来就要冲向唐三。 \r\n　　“好了，住手吧。”正在这时，一个有些沙哑的声音响起，阻止了门房的动作。 \r\n　　门房先是愣了一下，紧接着，他那满脸的怒气顿时化为了谄媚，变化之快，令人难以想象，对着来人点头哈腰的道：“大师，您回来了。” \r\n　　唐三扭头看去，之间一个中等身材，略微有些偏瘦的男子不知道什么时候已经来到了他们身边。看上去，这个人大约四、五十岁的样子，黑色短发三七分开，相貌很普通，双手背在身后，身上却有一种特殊的气质，双眼开阖之间带着几分懒散和颓废。 \r\n　　‘大师’只是斜了门房一眼，并没有理会他，向老杰克道：“老先生，能否把武魂殿的证明给我看看？” \r\n　　老杰克毕竟是村长出身，察言观色还是会的，从门房的表情就能看出眼前这个中年人在学院里的地位绝对不低，更何况还有大师那个称号在那里。赶忙将手中的证明递了过去。 \r\n　　大师看了看证明，目光再转移到唐三身上，上下打量了他几眼，不知道为什么，虽然大师的目光并不锐利，可唐三却有一种被看的通通透透的感觉。 ",
+          "document_span": {
+            "start": 37691,
+            "end": 38199
+          },
+          "source_kind": "node"
+        },
+        {
+          "context_quote": "死。”被一个孩子推倒何等丢人，门房急怒之下，从地上爬起来就要冲向唐三。 \r\n　　“好了，住手吧。”正在这时，一个有些沙哑的声音响起，阻止了门房的动作。 \r\n　　门房先是愣了一下，紧接着，他那满脸的怒气顿时化为了谄媚，变化之快，令人难以想象，对着来人点头哈腰的道：“大师，您回来了。” \r\n　　唐三扭头看去，之间一个中等身材，略微有些偏瘦的男子不知道什么时候已经来到了他们身边。看上去，这个人大约四、五十岁的样子，黑色短发三七分开，相貌很普通，双手背在身后，身上却有一种特殊的气质，双眼开阖之间带着几分懒散和颓废。 \r\n　　‘大师’只是斜了门房一眼，并没有理会他，向老杰克道：“老先生，能否把武魂殿的证明给我看看？” \r\n　　老杰克毕竟是村长出身，察言观色还是会的，从门房的表情就能看出眼前这个中年人在学院里的地位绝对不低，更何况还有大师那个称号在那里。赶忙将手中的证明递了过去。 \r\n　　大师看了看证明，目光再转移到唐三身上，上下打量了他几眼，不知道为什么，虽然大师的目光并不锐利，可唐三却有一种被看的通通透透的感觉。 \r\n　　“证明是真的没错，老先生，刚才的事我代表学院向您道歉。这个孩子",
+          "document_span": {
+            "start": 37739,
+            "end": 38234
+          },
+          "source_kind": "node"
+        }
+      ],
+      "appearance_fact_refs": [
+        {
+          "fact_hash": "5196feaf2d3fad70bced04d10ca3b608e69125b845bc3fdcbdea5872a91191f8",
+          "fact_quote": "中等身材，略微有些偏瘦的男子",
+          "category": "body",
+          "attribute": "身材",
+          "value": "中等偏瘦",
+          "document_fact_span": {
+            "start": 37896,
+            "end": 37910
+          }
+        },
+        {
+          "fact_hash": "dc3d0b77a4b2b6c4ff34401f6f7ab4a5256335ef25ef8ccf2013a86f00d29f74",
+          "fact_quote": "大约四、五十岁的样子",
+          "category": "age",
+          "attribute": "年龄",
+          "value": "四五十岁",
+          "document_fact_span": {
+            "start": 37934,
+            "end": 37944
+          }
+        },
+        {
+          "fact_hash": "e3051b2fdc401985ea8a63238279f1a684b75e1b5a329aa41caf0e5607cf94b7",
+          "fact_quote": "黑色短发三七分开",
+          "category": "hair",
+          "attribute": "发型",
+          "value": "黑色短发三七分开",
+          "document_fact_span": {
+            "start": 37945,
+            "end": 37953
+          }
+        },
+        {
+          "fact_hash": "a4833d38e882a3cedfaec4ff288817fc1354dc388e65b26383a3d39cbc84a743",
+          "fact_quote": "相貌很普通",
+          "category": "face",
+          "attribute": "相貌",
+          "value": "普通",
+          "document_fact_span": {
+            "start": 37954,
+            "end": 37959
+          }
+        },
+        {
+          "fact_hash": "cd01e7b4945bde2a7432e52f0c77f5685aa503bc1959b849054aeed9911efd4d",
+          "fact_quote": "双眼开阖之间带着几分懒散和颓废",
+          "category": "appearance_state",
+          "attribute": "神态",
+          "value": "懒散颓废",
+          "document_fact_span": {
+            "start": 37979,
+            "end": 37994
+          }
+        }
+      ],
+      "order_position": 37656
+    }
+  ],
+  "summary": {
+    "local_character_nodes": 43,
+    "exact_nodes": 32,
+    "promoted_nodes": 11,
+    "nodes_without_appearance_facts": 3
+  }
+}

@@ -1,0 +1,237 @@
+{
+  "schema_version": "m1-chunk-result-v4",
+  "chunk_index": 4,
+  "chunk_id": "chunk-000004-6750-9250-d8d7539ee8f4",
+  "chunk_hash": "d8d7539ee8f409a6f324a0c5c5bb104eb83c28ec8c7d122cd39f7346f422c101",
+  "chunk_source_span": {
+    "start": 6750,
+    "end": 9250
+  },
+  "model_output": {
+    "candidate_mentions": [
+      {
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "唐昊",
+        "evidence_quotes": [
+          "你年纪大了"
+        ]
+      },
+      {
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "唐三",
+        "evidence_quotes": [
+          "他那双稚嫩的小手看上去却并没有任何变化。甚至连一个水泡都没有起过。",
+          "他的身体变得结实了几分",
+          "这种长柄铁锤甚至要比他的身高还高上几分"
+        ]
+      },
+      {
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "小三",
+        "evidence_quotes": [
+          "他那双稚嫩的小手看上去却并没有任何变化。甚至连一个水泡都没有起过。",
+          "他的身体变得结实了几分",
+          "这种长柄铁锤甚至要比他的身高还高上几分"
+        ]
+      },
+      {
+        "mention_type": "describe",
+        "mention_scope": "individual",
+        "mention_quote": "爸爸",
+        "evidence_quotes": [
+          "你年纪大了"
+        ]
+      },
+      {
+        "mention_type": "describe",
+        "mention_scope": "individual",
+        "mention_quote": "儿子",
+        "evidence_quotes": [
+          "他那双稚嫩的小手看上去却并没有任何变化。甚至连一个水泡都没有起过。",
+          "他的身体变得结实了几分",
+          "这种长柄铁锤甚至要比他的身高还高上几分"
+        ]
+      }
+    ]
+  },
+  "grounded_packet": {
+    "schema_version": "grounded-character-packet-v6",
+    "evidence_precedence_policy_version": "exact-evidence-precedence-v1",
+    "source_document_version_id": "source-8bcb7305a759571b",
+    "chunking_policy_version": "fixed-codepoint-window-2500-overlap-250-v1",
+    "chunk_id": "chunk-000004-6750-9250-d8d7539ee8f4",
+    "chunk_hash": "d8d7539ee8f409a6f324a0c5c5bb104eb83c28ec8c7d122cd39f7346f422c101",
+    "chunk_source_span": {
+      "start": 6750,
+      "end": 9250
+    },
+    "grounded_mentions": [
+      {
+        "local_mention_id": "m1",
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "唐昊",
+        "approved_evidence": [
+          {
+            "evidence_quote": "你年纪大了",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 182,
+                "end": 187
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "488a2fb144e94ab84d1769ca3d4d60a0ba554c95806ca3d43e6c453ee8efa25a"
+      },
+      {
+        "local_mention_id": "m2",
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "唐三",
+        "approved_evidence": [
+          {
+            "evidence_quote": "他那双稚嫩的小手看上去却并没有任何变化。甚至连一个水泡都没有起过。",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 2147,
+                "end": 2180
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "他的身体变得结实了几分",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1836,
+                "end": 1847
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "这种长柄铁锤甚至要比他的身高还高上几分",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1110,
+                "end": 1129
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "269babc3e9a8ae5efb5f442d0eaab405a5b6dca1e79ded70b5648940c7a140bc"
+      },
+      {
+        "local_mention_id": "m3",
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "小三",
+        "approved_evidence": [
+          {
+            "evidence_quote": "他那双稚嫩的小手看上去却并没有任何变化。甚至连一个水泡都没有起过。",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 2147,
+                "end": 2180
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "他的身体变得结实了几分",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1836,
+                "end": 1847
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "这种长柄铁锤甚至要比他的身高还高上几分",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1110,
+                "end": 1129
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "5556b58728c2b4bdf55b053658af0fccc2a3dfa2acd5ec9f37153eadf7eeb478"
+      }
+    ],
+    "rejected_evidence": []
+  },
+  "grounding_trace_events": [
+    {
+      "code": "describe_evidence_shadowed_by_exact",
+      "local_mention_id": "m4",
+      "detail": "occurrences=1; exact_mentions=m1; rule=exact-evidence-precedence-v1"
+    },
+    {
+      "code": "describe_removed_after_exact_dedup",
+      "local_mention_id": "m4",
+      "detail": "rule=exact-evidence-precedence-v1"
+    },
+    {
+      "code": "describe_evidence_shadowed_by_exact",
+      "local_mention_id": "m5",
+      "detail": "occurrences=1; exact_mentions=m2,m3; rule=exact-evidence-precedence-v1"
+    },
+    {
+      "code": "describe_evidence_shadowed_by_exact",
+      "local_mention_id": "m5",
+      "detail": "occurrences=1; exact_mentions=m2,m3; rule=exact-evidence-precedence-v1"
+    },
+    {
+      "code": "describe_evidence_shadowed_by_exact",
+      "local_mention_id": "m5",
+      "detail": "occurrences=1; exact_mentions=m2,m3; rule=exact-evidence-precedence-v1"
+    },
+    {
+      "code": "describe_removed_after_exact_dedup",
+      "local_mention_id": "m5",
+      "detail": "rule=exact-evidence-precedence-v1"
+    }
+  ],
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 42969,
+    "http_status": 200,
+    "response_id": "8febc04e-c138-460b-bbf2-01003e49cf56",
+    "usage": {
+      "input_tokens": 2608,
+      "cached_input_tokens": 896,
+      "output_tokens": 4885,
+      "reasoning_tokens": 4514,
+      "total_tokens": 7493
+    },
+    "error_kind": null
+  }
+}

@@ -1,0 +1,117 @@
+{
+  "schema_version": "m2-attribution-task-result-v1",
+  "source_run_dir": "E:\\project\\agent\\novel-cahracter-generator\\runs\\douluo-20ch-e2e-dev13-20260831\\m1",
+  "chunk_index": 11,
+  "chunk_id": "chunk-000011-22500-25000-8e969940f32a",
+  "target_local_mention_id": "m2",
+  "target_mention_quote": "唐三",
+  "task_cache_key": "e1feb5e346c21363a20074ce71775107f2384af8fe58c4fbad77b7e1f3c2591f",
+  "model_output": {
+    "belongs_to_target": [
+      {
+        "fact_quote": "他身上的衣服已经被汗水浸透了",
+        "category": "appearance_state",
+        "attribute": "衣服",
+        "value": "被汗水浸透"
+      },
+      {
+        "fact_quote": "幼小的身体",
+        "category": "body",
+        "attribute": "身体",
+        "value": "幼小"
+      },
+      {
+        "fact_quote": "挥汗如雨",
+        "category": "appearance_state",
+        "attribute": "出汗状态",
+        "value": "挥汗如雨"
+      }
+    ]
+  },
+  "grounded_result": {
+    "target_character_ref": {
+      "source_document_version_id": "source-8bcb7305a759571b",
+      "chunk_id": "chunk-000011-22500-25000-8e969940f32a",
+      "local_mention_id": "m2",
+      "mention_type": "exact",
+      "packet_hash": "95f08707a465f36ebc55b36e5221d7ab0628aaa63e703bcd9c76581c00e9a8b2"
+    },
+    "task_cache_key": "e1feb5e346c21363a20074ce71775107f2384af8fe58c4fbad77b7e1f3c2591f",
+    "grounded_belongs_to_target": [
+      {
+        "fact_quote": "他身上的衣服已经被汗水浸透了",
+        "category": "appearance_state",
+        "attribute": "衣服",
+        "value": "被汗水浸透",
+        "source_mention_id": "m2",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "他身上的衣服已经被汗水浸透了",
+        "source_evidence_span": {
+          "start": 1313,
+          "end": 1327
+        },
+        "fact_chunk_span": {
+          "start": 1313,
+          "end": 1327
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "幼小的身体",
+        "category": "body",
+        "attribute": "身体",
+        "value": "幼小",
+        "source_mention_id": "m2",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "唐三幼小的身体和手中的铁锤并不成比例",
+        "source_evidence_span": {
+          "start": 1392,
+          "end": 1410
+        },
+        "fact_chunk_span": {
+          "start": 1394,
+          "end": 1399
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "挥汗如雨",
+        "category": "appearance_state",
+        "attribute": "出汗状态",
+        "value": "挥汗如雨",
+        "source_mention_id": "m2",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "挥汗如雨的唐三",
+        "source_evidence_span": {
+          "start": 1517,
+          "end": 1524
+        },
+        "fact_chunk_span": {
+          "start": 1517,
+          "end": 1521
+        },
+        "match_mode": "exact"
+      }
+    ]
+  },
+  "grounding_issues": [],
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 8766,
+    "http_status": 200,
+    "response_id": "24aab3fc-52ae-4e10-9454-f0172c111561",
+    "usage": {
+      "input_tokens": 2085,
+      "cached_input_tokens": 384,
+      "output_tokens": 990,
+      "reasoning_tokens": 852,
+      "total_tokens": 3075
+    },
+    "error_kind": null
+  }
+}

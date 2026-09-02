@@ -7,10 +7,19 @@ import sys
 from pathlib import Path
 
 from .chunking import build_document_chunk_manifest
+from .appearance_scope import run_document_appearance_scope_assembly
+from .appearance_transition_batch import (
+    prepare_document_appearance_transitions,
+    run_document_appearance_transitions,
+)
 from .document_evidence import run_document_evidence_aggregation
+from .document_profiles import run_document_profile_assembly
+from .fact_groups import run_document_fact_group_assembly
 from .errors import ContractValidationError, ProviderError
 from .grounding import ground_m1_result
 from .identity_batch import prepare_document_identity, run_document_identity
+from .identity_local_closure import run_local_identity_closure_replay
+from .identity_rescue_batch import prepare_identity_rescue, run_identity_rescue
 from .m1 import M1OrchestrationEnvelope, M1Orchestrator
 from .m1_batch import run_m1_document
 from .m2_batch import run_m2_from_m1_run
@@ -80,6 +89,52 @@ def _parser() -> argparse.ArgumentParser:
     document.add_argument("--source-m2-run-dir", type=Path, required=True)
     document.add_argument("--source-n3-run-dir", type=Path, required=True)
     document.add_argument("--output-file", type=Path, required=True)
+    profiles = subparsers.add_parser(
+        "build-document-character-profiles",
+        help="Join a document character registry with complete grounded appearance facts.",
+    )
+    profiles.add_argument("--input-file", type=Path, required=True)
+    profiles.add_argument("--registry-file", type=Path, required=True)
+    profiles.add_argument("--evidence-file", type=Path, required=True)
+    profiles.add_argument("--output-file", type=Path, required=True)
+    fact_groups = subparsers.add_parser(
+        "build-document-character-fact-groups",
+        help="Group post-link raw facts by character, span, category, attribute, and value.",
+    )
+    fact_groups.add_argument("--input-file", type=Path, required=True)
+    fact_groups.add_argument("--registry-file", type=Path, required=True)
+    fact_groups.add_argument("--profiles-file", type=Path, required=True)
+    fact_groups.add_argument("--output-file", type=Path, required=True)
+    appearance_scopes = subparsers.add_parser(
+        "build-document-character-appearance-scopes",
+        help="Assign canonical facts to chapters and conservative appearance scopes.",
+    )
+    appearance_scopes.add_argument("--input-file", type=Path, required=True)
+    appearance_scopes.add_argument("--fact-groups-file", type=Path, required=True)
+    appearance_scopes.add_argument("--output-file", type=Path, required=True)
+    transition_prepare = subparsers.add_parser(
+        "prepare-document-appearance-transitions",
+        help="Build full-coverage transition windows and character rosters without a Provider.",
+    )
+    transition_prepare.add_argument("--input-file", type=Path, required=True)
+    transition_prepare.add_argument("--profiles-file", type=Path, required=True)
+    transition_prepare.add_argument("--local-nodes-file", type=Path, required=True)
+    transition_prepare.add_argument("--scopes-file", type=Path, required=True)
+    transition_prepare.add_argument("--chunk-manifest-file", type=Path, required=True)
+    transition_prepare.add_argument("--output-dir", type=Path, required=True)
+    transition_run = subparsers.add_parser(
+        "run-deepseek-appearance-transitions",
+        help="Discover, ground, deduplicate, and materialize appearance state transitions.",
+    )
+    transition_run.add_argument("--input-file", type=Path, required=True)
+    transition_run.add_argument("--profiles-file", type=Path, required=True)
+    transition_run.add_argument("--local-nodes-file", type=Path, required=True)
+    transition_run.add_argument("--fact-groups-file", type=Path, required=True)
+    transition_run.add_argument("--scopes-file", type=Path, required=True)
+    transition_run.add_argument("--chunk-manifest-file", type=Path, required=True)
+    transition_run.add_argument("--output-dir", type=Path, required=True)
+    transition_run.add_argument("--env-file", type=Path, default=Path(".env"))
+    transition_run.add_argument("--show-progress", action="store_true")
     replay = subparsers.add_parser(
         "replay-promotion-grounding",
         help="Re-ground saved promotion model outputs under the current deterministic policy.",
@@ -99,6 +154,7 @@ def _parser() -> argparse.ArgumentParser:
     identity.add_argument("--context-radius", type=int, default=240)
     identity.add_argument("--max-contexts-per-node", type=int, default=4)
     identity.add_argument("--max-bridge-characters", type=int, default=1200)
+    identity.add_argument("--max-local-coreference-characters", type=int, default=600)
     identity_run = subparsers.add_parser(
         "run-deepseek-document-identity",
         help="Execute resumable M3 identity decisions and build the document character registry.",
@@ -113,7 +169,49 @@ def _parser() -> argparse.ArgumentParser:
     identity_run.add_argument("--context-radius", type=int, default=240)
     identity_run.add_argument("--max-contexts-per-node", type=int, default=4)
     identity_run.add_argument("--max-bridge-characters", type=int, default=1200)
+    identity_run.add_argument("--max-local-coreference-characters", type=int, default=600)
     identity_run.add_argument("--show-progress", action="store_true")
+    local_closure = subparsers.add_parser(
+        "replay-local-identity-closure",
+        help="Replay saved grounded identity decisions with deterministic local coreference edges.",
+    )
+    local_closure.add_argument("--input-file", type=Path, required=True)
+    local_closure.add_argument("--source-identity-run-dir", type=Path, required=True)
+    local_closure.add_argument("--source-rescue-run-dir", type=Path, required=True)
+    local_closure.add_argument("--evidence-file", type=Path, required=True)
+    local_closure.add_argument("--output-dir", type=Path, required=True)
+    local_closure.add_argument("--max-local-coreference-characters", type=int, default=600)
+    rescue = subparsers.add_parser(
+        "prepare-identity-rescue",
+        help="Build residual cluster-level identity tasks from a completed identity run without a Provider.",
+    )
+    rescue.add_argument("--input-file", type=Path, required=True)
+    rescue.add_argument("--source-identity-run-dir", type=Path, required=True)
+    rescue.add_argument("--output-dir", type=Path, required=True)
+    rescue.add_argument("--max-candidates-per-task", type=int, default=3)
+    rescue.add_argument("--max-contexts-per-character", type=int, default=4)
+    rescue.add_argument("--max-relationship-contexts-per-candidate", type=int, default=3)
+    rescue.add_argument("--max-relationship-context-characters", type=int, default=1200)
+    rescue_run = subparsers.add_parser(
+        "run-deepseek-identity-rescue",
+        help="Execute resumable residual cluster identity adjudication and rebuild the registry.",
+    )
+    rescue_run.add_argument("--input-file", type=Path, required=True)
+    rescue_run.add_argument("--source-identity-run-dir", type=Path, required=True)
+    rescue_run.add_argument(
+        "--seed-rescue-run-dir",
+        type=Path,
+        help="Reuse previously grounded cluster-rescue decisions without repeating their model calls.",
+    )
+    rescue_run.add_argument("--output-dir", type=Path, required=True)
+    rescue_run.add_argument("--env-file", type=Path, default=Path(".env"))
+    rescue_run.add_argument("--max-candidates-per-task", type=int, default=3)
+    rescue_run.add_argument("--max-contexts-per-character", type=int, default=4)
+    rescue_run.add_argument("--max-relationship-contexts-per-candidate", type=int, default=3)
+    rescue_run.add_argument("--max-relationship-context-characters", type=int, default=1200)
+    rescue_run.add_argument("--max-rounds", type=int, default=3)
+    rescue_run.add_argument("--max-new-provider-calls", type=int, default=10)
+    rescue_run.add_argument("--show-progress", action="store_true")
     return parser
 
 
@@ -237,6 +335,71 @@ def _build_document_character_evidence(args: argparse.Namespace) -> int:
     return 0
 
 
+def _build_document_character_profiles(args: argparse.Namespace) -> int:
+    summary = run_document_profile_assembly(
+        document_text=_read_utf8_text(args.input_file),
+        registry_file=args.registry_file,
+        evidence_file=args.evidence_file,
+        output_file=args.output_file,
+    )
+    print(json.dumps(summary, ensure_ascii=False, indent=2))
+    return 0
+
+
+def _build_document_character_fact_groups(args: argparse.Namespace) -> int:
+    summary = run_document_fact_group_assembly(
+        document_text=_read_utf8_text(args.input_file),
+        registry_file=args.registry_file,
+        profiles_file=args.profiles_file,
+        output_file=args.output_file,
+    )
+    print(json.dumps(summary, ensure_ascii=False, indent=2))
+    return 0
+
+
+def _build_document_character_appearance_scopes(args: argparse.Namespace) -> int:
+    summary = run_document_appearance_scope_assembly(
+        document_text=_read_utf8_text(args.input_file),
+        fact_groups_file=args.fact_groups_file,
+        output_file=args.output_file,
+    )
+    print(json.dumps(summary, ensure_ascii=False, indent=2))
+    return 0
+
+
+def _prepare_document_appearance_transitions(args: argparse.Namespace) -> int:
+    summary = prepare_document_appearance_transitions(
+        document_text=_read_utf8_text(args.input_file),
+        profiles_file=args.profiles_file,
+        local_nodes_file=args.local_nodes_file,
+        scopes_file=args.scopes_file,
+        chunk_manifest_file=args.chunk_manifest_file,
+        output_dir=args.output_dir,
+    )
+    print(json.dumps(summary, ensure_ascii=False, indent=2))
+    return 0
+
+
+def _run_deepseek_appearance_transitions(args: argparse.Namespace) -> int:
+    _load_deepseek_env_file(args.env_file)
+    traces: list[DeepSeekCallTrace] = []
+    provider = DeepSeekProvider.from_env(trace_sink=traces.append)
+    summary = run_document_appearance_transitions(
+        document_text=_read_utf8_text(args.input_file),
+        profiles_file=args.profiles_file,
+        local_nodes_file=args.local_nodes_file,
+        fact_groups_file=args.fact_groups_file,
+        scopes_file=args.scopes_file,
+        chunk_manifest_file=args.chunk_manifest_file,
+        output_dir=args.output_dir,
+        provider=provider,
+        traces=traces,
+        progress=(lambda message: print(message, file=sys.stderr)) if args.show_progress else None,
+    )
+    print(json.dumps(summary, ensure_ascii=False, indent=2))
+    return 0 if summary["complete"] else 1
+
+
 def _replay_promotion_grounding(args: argparse.Namespace) -> int:
     summary = replay_promotion_grounding(
         source_run_dir=args.source_run_dir,
@@ -257,6 +420,7 @@ def _prepare_document_identity(args: argparse.Namespace) -> int:
         context_radius=args.context_radius,
         max_contexts_per_node=args.max_contexts_per_node,
         max_bridge_characters=args.max_bridge_characters,
+        max_local_coreference_characters=args.max_local_coreference_characters,
     )
     print(json.dumps(summary, ensure_ascii=False, indent=2))
     return 0
@@ -277,6 +441,57 @@ def _run_deepseek_document_identity(args: argparse.Namespace) -> int:
         context_radius=args.context_radius,
         max_contexts_per_node=args.max_contexts_per_node,
         max_bridge_characters=args.max_bridge_characters,
+        max_local_coreference_characters=args.max_local_coreference_characters,
+        traces=traces,
+        progress=(lambda message: print(message, file=sys.stderr)) if args.show_progress else None,
+    )
+    print(json.dumps(summary, ensure_ascii=False, indent=2))
+    return 0 if summary["complete"] else 1
+
+
+def _replay_local_identity_closure(args: argparse.Namespace) -> int:
+    summary = run_local_identity_closure_replay(
+        document_text=_read_utf8_text(args.input_file),
+        source_identity_run_dir=args.source_identity_run_dir,
+        source_rescue_run_dir=args.source_rescue_run_dir,
+        evidence_file=args.evidence_file,
+        output_dir=args.output_dir,
+        max_local_coreference_characters=args.max_local_coreference_characters,
+    )
+    print(json.dumps(summary, ensure_ascii=False, indent=2))
+    return 0 if summary["complete"] else 1
+
+
+def _prepare_identity_rescue(args: argparse.Namespace) -> int:
+    summary = prepare_identity_rescue(
+        document_text=_read_utf8_text(args.input_file),
+        source_identity_run_dir=args.source_identity_run_dir,
+        output_dir=args.output_dir,
+        max_candidates_per_task=args.max_candidates_per_task,
+        max_contexts_per_character=args.max_contexts_per_character,
+        max_relationship_contexts_per_candidate=args.max_relationship_contexts_per_candidate,
+        max_relationship_context_characters=args.max_relationship_context_characters,
+    )
+    print(json.dumps(summary, ensure_ascii=False, indent=2))
+    return 0
+
+
+def _run_deepseek_identity_rescue(args: argparse.Namespace) -> int:
+    _load_deepseek_env_file(args.env_file)
+    traces: list[DeepSeekCallTrace] = []
+    provider = DeepSeekProvider.from_env(trace_sink=traces.append)
+    summary = run_identity_rescue(
+        document_text=_read_utf8_text(args.input_file),
+        source_identity_run_dir=args.source_identity_run_dir,
+        provider=provider,
+        output_dir=args.output_dir,
+        max_candidates_per_task=args.max_candidates_per_task,
+        max_contexts_per_character=args.max_contexts_per_character,
+        max_relationship_contexts_per_candidate=args.max_relationship_contexts_per_candidate,
+        max_relationship_context_characters=args.max_relationship_context_characters,
+        seed_rescue_run_dir=args.seed_rescue_run_dir,
+        max_rounds=args.max_rounds,
+        max_new_provider_calls=args.max_new_provider_calls,
         traces=traces,
         progress=(lambda message: print(message, file=sys.stderr)) if args.show_progress else None,
     )
@@ -297,12 +512,28 @@ def main(argv: list[str] | None = None) -> int:
             return _run_deepseek_n3_promotion_from_m2_run(args)
         if args.command == "build-document-character-evidence":
             return _build_document_character_evidence(args)
+        if args.command == "build-document-character-profiles":
+            return _build_document_character_profiles(args)
+        if args.command == "build-document-character-fact-groups":
+            return _build_document_character_fact_groups(args)
+        if args.command == "build-document-character-appearance-scopes":
+            return _build_document_character_appearance_scopes(args)
+        if args.command == "prepare-document-appearance-transitions":
+            return _prepare_document_appearance_transitions(args)
+        if args.command == "run-deepseek-appearance-transitions":
+            return _run_deepseek_appearance_transitions(args)
         if args.command == "replay-promotion-grounding":
             return _replay_promotion_grounding(args)
         if args.command == "prepare-document-identity":
             return _prepare_document_identity(args)
         if args.command == "run-deepseek-document-identity":
             return _run_deepseek_document_identity(args)
+        if args.command == "replay-local-identity-closure":
+            return _replay_local_identity_closure(args)
+        if args.command == "prepare-identity-rescue":
+            return _prepare_identity_rescue(args)
+        if args.command == "run-deepseek-identity-rescue":
+            return _run_deepseek_identity_rescue(args)
     except (OSError, ContractValidationError, ProviderError) as exc:
         print(f"{type(exc).__name__}: {exc}", file=sys.stderr)
         return 2

@@ -1,0 +1,165 @@
+{
+  "schema_version": "m2-attribution-task-result-v1",
+  "source_run_dir": "E:\\project\\agent\\novel-cahracter-generator\\runs\\douluo-20ch-e2e-dev13-20260831\\m1",
+  "chunk_index": 17,
+  "chunk_id": "chunk-000017-36000-38251-39ec6c2a0304",
+  "target_local_mention_id": "m2",
+  "target_mention_quote": "唐三",
+  "task_cache_key": "fa3a540e152594375bed1a69bb11407d089d0cbe03607c2faef8a5b45c5f9a7d",
+  "model_output": {
+    "belongs_to_target": [
+      {
+        "fact_quote": "身上衣服全是补丁",
+        "category": "clothing",
+        "attribute": "衣服",
+        "value": "全是补丁"
+      },
+      {
+        "fact_quote": "一道瘦小的身影",
+        "category": "body",
+        "attribute": "身形",
+        "value": "瘦小"
+      },
+      {
+        "fact_quote": "他那细嫩的小手",
+        "category": "body",
+        "attribute": "手",
+        "value": "细嫩"
+      },
+      {
+        "fact_quote": "施展的人实在矮小了一些",
+        "category": "body",
+        "attribute": "身高",
+        "value": "矮小"
+      },
+      {
+        "fact_quote": "唐三人虽然不大",
+        "category": "age",
+        "attribute": "年龄",
+        "value": "不大"
+      }
+    ]
+  },
+  "grounded_result": {
+    "target_character_ref": {
+      "source_document_version_id": "source-8bcb7305a759571b",
+      "chunk_id": "chunk-000017-36000-38251-39ec6c2a0304",
+      "local_mention_id": "m2",
+      "mention_type": "exact",
+      "packet_hash": "143b71c874725f2f0bfe68ebca4d866ce3e0d349539ecf9c403871e0265288df"
+    },
+    "task_cache_key": "fa3a540e152594375bed1a69bb11407d089d0cbe03607c2faef8a5b45c5f9a7d",
+    "grounded_belongs_to_target": [
+      {
+        "fact_quote": "身上衣服全是补丁",
+        "category": "clothing",
+        "attribute": "衣服",
+        "value": "全是补丁",
+        "source_mention_id": "m2",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "身上衣服全是补丁",
+        "source_evidence_span": {
+          "start": 1152,
+          "end": 1160
+        },
+        "fact_chunk_span": {
+          "start": 1152,
+          "end": 1160
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "一道瘦小的身影",
+        "category": "body",
+        "attribute": "身形",
+        "value": "瘦小",
+        "source_mention_id": "m2",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "一道瘦小的身影",
+        "source_evidence_span": {
+          "start": 1252,
+          "end": 1259
+        },
+        "fact_chunk_span": {
+          "start": 1252,
+          "end": 1259
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "他那细嫩的小手",
+        "category": "body",
+        "attribute": "手",
+        "value": "细嫩",
+        "source_mention_id": "m2",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "他那细嫩的小手",
+        "source_evidence_span": {
+          "start": 1268,
+          "end": 1275
+        },
+        "fact_chunk_span": {
+          "start": 1268,
+          "end": 1275
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "施展的人实在矮小了一些",
+        "category": "body",
+        "attribute": "身高",
+        "value": "矮小",
+        "source_mention_id": "m2",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "施展的人实在矮小了一些",
+        "source_evidence_span": {
+          "start": 1392,
+          "end": 1403
+        },
+        "fact_chunk_span": {
+          "start": 1392,
+          "end": 1403
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "唐三人虽然不大",
+        "category": "age",
+        "attribute": "年龄",
+        "value": "不大",
+        "source_mention_id": "m2",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "唐三人虽然不大",
+        "source_evidence_span": {
+          "start": 1678,
+          "end": 1685
+        },
+        "fact_chunk_span": {
+          "start": 1678,
+          "end": 1685
+        },
+        "match_mode": "exact"
+      }
+    ]
+  },
+  "grounding_issues": [],
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 7187,
+    "http_status": 200,
+    "response_id": "c92720e5-152b-4c00-86f2-bf4d0759e023",
+    "usage": {
+      "input_tokens": 2012,
+      "cached_input_tokens": 384,
+      "output_tokens": 657,
+      "reasoning_tokens": 492,
+      "total_tokens": 2669
+    },
+    "error_kind": null
+  }
+}

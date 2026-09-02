@@ -1,0 +1,62 @@
+{
+  "schema_version": "identity-task-result-v1",
+  "task_index": 20,
+  "current_label_quote": "素云涛",
+  "candidate_label_quote": "素云涛",
+  "task_cache_key": "a254210e706e62541edc1a6d3a3007130bbf8d2fe42b91faab7b611b24786c17",
+  "model_output": {
+    "identity_relation": "same_character",
+    "label_relation": "same_surface",
+    "identity_evidence_quotes": [
+      "素云涛的眼睛突然亮了起来",
+      "素云涛将六颗黑色的石头在地面上摆出一个六角形"
+    ]
+  },
+  "grounded_result": {
+    "schema_version": "grounded-identity-decision-v1",
+    "current_node_key": "2bda9d47e4c7c9015bd6c1bddcad8a200876fb1d64768299566c51803ccbd01d",
+    "candidate_node_key": "ebf900c5f5ef9b7dbd6780355e0749ceca1bdb15185edb3acc3bbd982cd8a1cd",
+    "task_cache_key": "a254210e706e62541edc1a6d3a3007130bbf8d2fe42b91faab7b611b24786c17",
+    "requested_identity_relation": "same_character",
+    "identity_relation": "same_character",
+    "label_relation": "same_surface",
+    "grounded_identity_evidence": [
+      {
+        "evidence_quote": "素云涛将六颗黑色的石头在地面上摆出一个六角形",
+        "document_span": {
+          "start": 13897,
+          "end": 13919
+        },
+        "match_mode": "exact"
+      }
+    ],
+    "issues": [
+      {
+        "code": "ambiguous_identity_evidence",
+        "detail": "identity evidence '素云涛的眼睛突然亮了起来' matched 2 document occurrences",
+        "evidence_index": 0,
+        "evidence_quote": "素云涛的眼睛突然亮了起来",
+        "candidate_occurrence_count": 2
+      }
+    ]
+  },
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 8984,
+    "http_status": 200,
+    "response_id": "251f1758-9984-478c-9308-40b02cbebb2b",
+    "usage": {
+      "input_tokens": 2007,
+      "cached_input_tokens": 512,
+      "output_tokens": 832,
+      "reasoning_tokens": 776,
+      "total_tokens": 2839
+    },
+    "error_kind": null
+  }
+}

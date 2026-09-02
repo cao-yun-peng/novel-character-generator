@@ -1,0 +1,93 @@
+{
+  "schema_version": "m2-attribution-task-result-v1",
+  "source_run_dir": "E:\\project\\agent\\novel-cahracter-generator\\runs\\douluo-20ch-e2e-dev13-20260831\\m1",
+  "chunk_index": 15,
+  "chunk_id": "chunk-000015-31500-34000-fb2b21bc7e87",
+  "target_local_mention_id": "m4",
+  "target_mention_quote": "杰克",
+  "task_cache_key": "96e533e3588cb09a3e5619f081202577ee71ece4ae61c84e3cccb2905b8daa45",
+  "model_output": {
+    "belongs_to_target": [
+      {
+        "fact_quote": "特意穿了一身新衣服",
+        "category": "clothing",
+        "attribute": "穿着",
+        "value": "新衣服"
+      },
+      {
+        "fact_quote": "看上去更添几分矍铄",
+        "category": "appearance_state",
+        "attribute": "精神面貌",
+        "value": "矍铄"
+      }
+    ]
+  },
+  "grounded_result": {
+    "target_character_ref": {
+      "source_document_version_id": "source-8bcb7305a759571b",
+      "chunk_id": "chunk-000015-31500-34000-fb2b21bc7e87",
+      "local_mention_id": "m4",
+      "mention_type": "exact",
+      "packet_hash": "5080ab649cc3f1076e93a776ce4174cd9391f58b66df956e2972efc1a24f10b6"
+    },
+    "task_cache_key": "96e533e3588cb09a3e5619f081202577ee71ece4ae61c84e3cccb2905b8daa45",
+    "grounded_belongs_to_target": [
+      {
+        "fact_quote": "特意穿了一身新衣服",
+        "category": "clothing",
+        "attribute": "穿着",
+        "value": "新衣服",
+        "source_mention_id": "m4",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "特意穿了一身新衣服，看上去更添几分矍铄",
+        "source_evidence_span": {
+          "start": 1262,
+          "end": 1281
+        },
+        "fact_chunk_span": {
+          "start": 1262,
+          "end": 1271
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "看上去更添几分矍铄",
+        "category": "appearance_state",
+        "attribute": "精神面貌",
+        "value": "矍铄",
+        "source_mention_id": "m4",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "特意穿了一身新衣服，看上去更添几分矍铄",
+        "source_evidence_span": {
+          "start": 1262,
+          "end": 1281
+        },
+        "fact_chunk_span": {
+          "start": 1272,
+          "end": 1281
+        },
+        "match_mode": "exact"
+      }
+    ]
+  },
+  "grounding_issues": [],
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 7750,
+    "http_status": 200,
+    "response_id": "4fdddaac-1ed1-4e34-b14d-0cbe20c37433",
+    "usage": {
+      "input_tokens": 2062,
+      "cached_input_tokens": 384,
+      "output_tokens": 843,
+      "reasoning_tokens": 776,
+      "total_tokens": 2905
+    },
+    "error_kind": null
+  }
+}

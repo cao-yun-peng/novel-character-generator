@@ -1,0 +1,42 @@
+{
+  "schema_version": "identity-task-result-v1",
+  "task_index": 36,
+  "current_label_quote": "唐三",
+  "candidate_label_quote": "唐三",
+  "task_cache_key": "49ec4c20132f810845d665d9c0b73ab104cfcd784565c09155a36cd36f2052eb",
+  "model_output": {
+    "identity_relation": "uncertain",
+    "label_relation": null,
+    "identity_evidence_quotes": []
+  },
+  "grounded_result": {
+    "schema_version": "grounded-identity-decision-v1",
+    "current_node_key": "9d7ce22be0dbbb18a9c5b6af8a255eec58c3ea18a002eba77f0f4deafd133cc3",
+    "candidate_node_key": "13d1f62882f0a8bf50b1b86d9de144566f155663f6bc6aa359d5096b343005db",
+    "task_cache_key": "49ec4c20132f810845d665d9c0b73ab104cfcd784565c09155a36cd36f2052eb",
+    "requested_identity_relation": "uncertain",
+    "identity_relation": "uncertain",
+    "label_relation": null,
+    "grounded_identity_evidence": [],
+    "issues": []
+  },
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 3843,
+    "http_status": 200,
+    "response_id": "c05f90a7-52e1-40b3-89f9-29aeffb949ee",
+    "usage": {
+      "input_tokens": 1985,
+      "cached_input_tokens": 512,
+      "output_tokens": 242,
+      "reasoning_tokens": 218,
+      "total_tokens": 2227
+    },
+    "error_kind": null
+  }
+}

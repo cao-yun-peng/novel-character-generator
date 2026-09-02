@@ -1,0 +1,71 @@
+{
+  "schema_version": "identity-task-result-v1",
+  "task_index": 9,
+  "current_label_quote": "杰克爷爷",
+  "candidate_label_quote": "这位村长",
+  "task_cache_key": "4c96fe2bc89d141af959774163d57491aaa6478c9f292e950847784a2a74e28d",
+  "model_output": {
+    "identity_relation": "same_character",
+    "label_relation": "alias",
+    "identity_evidence_quotes": [
+      "这个人唐三认识，是圣魂村的村长老杰克。",
+      "杰克爷爷，您好。",
+      "这位村长是个老好人"
+    ]
+  },
+  "grounded_result": {
+    "schema_version": "grounded-identity-decision-v1",
+    "current_node_key": "2a4740f407e69b243675c2d05060d5d808f0a3400f4ba9a7f56eaa71dbe84ea5",
+    "candidate_node_key": "1cefa103c748aea5ae25b0da4d43914577f208d3270e4834aba2ae63cd9e3e6e",
+    "task_cache_key": "4c96fe2bc89d141af959774163d57491aaa6478c9f292e950847784a2a74e28d",
+    "requested_identity_relation": "same_character",
+    "identity_relation": "same_character",
+    "label_relation": "alias",
+    "grounded_identity_evidence": [
+      {
+        "evidence_quote": "这个人唐三认识，是圣魂村的村长老杰克。",
+        "document_span": {
+          "start": 10181,
+          "end": 10200
+        },
+        "match_mode": "exact"
+      },
+      {
+        "evidence_quote": "这位村长是个老好人",
+        "document_span": {
+          "start": 10234,
+          "end": 10243
+        },
+        "match_mode": "exact"
+      },
+      {
+        "evidence_quote": "杰克爷爷，您好。",
+        "document_span": {
+          "start": 10283,
+          "end": 10291
+        },
+        "match_mode": "exact"
+      }
+    ],
+    "issues": []
+  },
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 8750,
+    "http_status": 200,
+    "response_id": "457288f0-c055-468d-b063-02db802742c3",
+    "usage": {
+      "input_tokens": 1754,
+      "cached_input_tokens": 512,
+      "output_tokens": 877,
+      "reasoning_tokens": 811,
+      "total_tokens": 2631
+    },
+    "error_kind": null
+  }
+}

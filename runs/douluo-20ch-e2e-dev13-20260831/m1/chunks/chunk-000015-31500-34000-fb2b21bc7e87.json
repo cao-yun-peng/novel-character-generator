@@ -1,0 +1,233 @@
+{
+  "schema_version": "m1-chunk-result-v4",
+  "chunk_index": 15,
+  "chunk_id": "chunk-000015-31500-34000-fb2b21bc7e87",
+  "chunk_hash": "fb2b21bc7e8785a29f224fb7d64a2323a8157e1fbf264abfb4237940867a2432",
+  "chunk_source_span": {
+    "start": 31500,
+    "end": 34000
+  },
+  "model_output": {
+    "candidate_mentions": [
+      {
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "唐三",
+        "evidence_quotes": [
+          "他那些有着大小补丁的衣服",
+          "眼中紫意莹然",
+          "身体比以前健壮了一些",
+          "才不过六岁",
+          "唐三瘦弱的身体",
+          "还没有铸造锤高吧"
+        ]
+      },
+      {
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "唐昊",
+        "evidence_quotes": [
+          "高大的身影",
+          "在他那的眼睛中，不知什么时候已经多了一层朦胧的水意"
+        ]
+      },
+      {
+        "mention_type": "describe",
+        "mention_scope": "individual",
+        "mention_quote": "老杰克",
+        "evidence_quotes": [
+          "特意穿了一身新衣服，看上去更添几分矍铄"
+        ]
+      },
+      {
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "杰克",
+        "evidence_quotes": [
+          "特意穿了一身新衣服，看上去更添几分矍铄"
+        ]
+      }
+    ]
+  },
+  "grounded_packet": {
+    "schema_version": "grounded-character-packet-v6",
+    "evidence_precedence_policy_version": "exact-evidence-precedence-v1",
+    "source_document_version_id": "source-8bcb7305a759571b",
+    "chunking_policy_version": "fixed-codepoint-window-2500-overlap-250-v1",
+    "chunk_id": "chunk-000015-31500-34000-fb2b21bc7e87",
+    "chunk_hash": "fb2b21bc7e8785a29f224fb7d64a2323a8157e1fbf264abfb4237940867a2432",
+    "chunk_source_span": {
+      "start": 31500,
+      "end": 34000
+    },
+    "grounded_mentions": [
+      {
+        "local_mention_id": "m1",
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "唐三",
+        "approved_evidence": [
+          {
+            "evidence_quote": "他那些有着大小补丁的衣服",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 23,
+                "end": 35
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "眼中紫意莹然",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 419,
+                "end": 425
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "身体比以前健壮了一些",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 436,
+                "end": 446
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "才不过六岁",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 612,
+                "end": 617
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "唐三瘦弱的身体",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1542,
+                "end": 1549
+              }
+            ],
+            "relation_to_mention": "contains_mention",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "还没有铸造锤高吧",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 2403,
+                "end": 2411
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "cc2e3cad6cea9c19ee220d6b9f7a34f84995ca80edce888ee1d489f3835923d7"
+      },
+      {
+        "local_mention_id": "m2",
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "唐昊",
+        "approved_evidence": [
+          {
+            "evidence_quote": "高大的身影",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1499,
+                "end": 1504
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "在他那的眼睛中，不知什么时候已经多了一层朦胧的水意",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1793,
+                "end": 1818
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "944ab6b185f40d04f2ca941c6b56f34ee48a60f790d82074317e8121a45d492f"
+      },
+      {
+        "local_mention_id": "m4",
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "杰克",
+        "approved_evidence": [
+          {
+            "evidence_quote": "特意穿了一身新衣服，看上去更添几分矍铄",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1262,
+                "end": 1281
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "5080ab649cc3f1076e93a776ce4174cd9391f58b66df956e2972efc1a24f10b6"
+      }
+    ],
+    "rejected_evidence": []
+  },
+  "grounding_trace_events": [
+    {
+      "code": "describe_evidence_shadowed_by_exact",
+      "local_mention_id": "m3",
+      "detail": "occurrences=1; exact_mentions=m4; rule=exact-evidence-precedence-v1"
+    },
+    {
+      "code": "describe_removed_after_exact_dedup",
+      "local_mention_id": "m3",
+      "detail": "rule=exact-evidence-precedence-v1"
+    }
+  ],
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 55781,
+    "http_status": 200,
+    "response_id": "0155e0c9-bc34-45d6-a356-fd07a2440778",
+    "usage": {
+      "input_tokens": 2552,
+      "cached_input_tokens": 896,
+      "output_tokens": 6554,
+      "reasoning_tokens": 6270,
+      "total_tokens": 9106
+    },
+    "error_kind": null
+  }
+}

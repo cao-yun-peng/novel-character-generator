@@ -1,0 +1,38 @@
+[
+  {
+    "started_at": "2026-09-01T06:54:14.586552Z",
+    "completed_at": "2026-09-01T06:54:22.747747Z",
+    "duration_ms": 8156,
+    "planned_tasks": 5,
+    "succeeded_tasks": 0,
+    "failed_tasks": 5,
+    "resumed_tasks": 0,
+    "new_provider_calls": 5,
+    "complete": false,
+    "registry_built": false
+  },
+  {
+    "started_at": "2026-09-01T06:54:47.531046Z",
+    "completed_at": "2026-09-01T06:55:40.783591Z",
+    "duration_ms": 53266,
+    "planned_tasks": 5,
+    "succeeded_tasks": 5,
+    "failed_tasks": 0,
+    "resumed_tasks": 0,
+    "new_provider_calls": 5,
+    "complete": true,
+    "registry_built": true
+  },
+  {
+    "started_at": "2026-09-01T06:58:48.920704Z",
+    "completed_at": "2026-09-01T06:58:49.015541Z",
+    "duration_ms": 93,
+    "planned_tasks": 5,
+    "succeeded_tasks": 5,
+    "failed_tasks": 0,
+    "resumed_tasks": 5,
+    "new_provider_calls": 0,
+    "complete": true,
+    "registry_built": true
+  }
+]

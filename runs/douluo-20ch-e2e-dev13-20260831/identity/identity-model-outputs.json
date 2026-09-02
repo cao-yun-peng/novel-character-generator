@@ -1,0 +1,857 @@
+[
+  {
+    "task_index": 1,
+    "current_label_quote": "唐三",
+    "candidate_label_quote": "唐三",
+    "task_cache_key": "8ced98b42f816f09995177ea80ae6df5ac4246ab613653b5ac4554b16434fc68",
+    "model_output": {
+      "identity_relation": "uncertain",
+      "label_relation": null,
+      "identity_evidence_quotes": []
+    }
+  },
+  {
+    "task_index": 2,
+    "current_label_quote": "唐三",
+    "candidate_label_quote": "唐三",
+    "task_cache_key": "bda14cd581e98913808c8a8f229a9b3122ef6f9b73bcf7e088007df97e90a3fb",
+    "model_output": {
+      "identity_relation": "uncertain",
+      "label_relation": null,
+      "identity_evidence_quotes": []
+    }
+  },
+  {
+    "task_index": 3,
+    "current_label_quote": "唐三",
+    "candidate_label_quote": "唐三",
+    "task_cache_key": "1ed8495d8548468ccfe465257b8e90a1920c78e347595f59669bf8ec09401ac3",
+    "model_output": {
+      "identity_relation": "same_character",
+      "label_relation": "same_surface",
+      "identity_evidence_quotes": [
+        "第3章 斗罗大陆，异界唐三（二）",
+        "唐三希望，能够在这个世界再现唐门的辉煌",
+        "内门最高的玄天宝录也同样被他记熟于心",
+        "因出生不久就进入唐门，在外门弟子的辈分中排名第三，因此外门弟子称他一声三少。当然，到了内门弟子口中，就变成了唐三。"
+      ]
+    }
+  },
+  {
+    "task_index": 4,
+    "current_label_quote": "唐昊",
+    "candidate_label_quote": "唐昊",
+    "task_cache_key": "3808ee16013bac0dd3b571a0a2326daad437a735aeec87534bac3791a44f79fa",
+    "model_output": {
+      "identity_relation": "same_character",
+      "label_relation": "same_surface",
+      "identity_evidence_quotes": [
+        "这就是唐昊，唐三在这个世界的父亲。"
+      ]
+    }
+  },
+  {
+    "task_index": 5,
+    "current_label_quote": "唐三",
+    "candidate_label_quote": "唐三",
+    "task_cache_key": "13898895407c421d6771a69852dcfa64335bc3ce814f74a105fde37dffb881a3",
+    "model_output": {
+      "identity_relation": "same_character",
+      "label_relation": "same_surface",
+      "identity_evidence_quotes": [
+        "唐三的坚持令唐昊很惊讶",
+        "唐三的父亲唐昊，就是一个铁匠"
+      ]
+    }
+  },
+  {
+    "task_index": 6,
+    "current_label_quote": "唐三",
+    "candidate_label_quote": "唐三",
+    "task_cache_key": "88911ba57e58722119d9d10e56b84f5104eed57d60f416c3733b46f7493bb238",
+    "model_output": {
+      "identity_relation": "uncertain",
+      "label_relation": null,
+      "identity_evidence_quotes": []
+    }
+  },
+  {
+    "task_index": 7,
+    "current_label_quote": "唐三",
+    "candidate_label_quote": "唐三",
+    "task_cache_key": "e0efb58432f333a3742fbb3ee3dd50ae9d7c7323828df97567d03ed6c839c68c",
+    "model_output": {
+      "identity_relation": "same_character",
+      "label_relation": "same_surface",
+      "identity_evidence_quotes": [
+        "唐三曾经见过村子里一个人的武魂是锄头",
+        "十一天过去，唐三已经挥出了八千余锤",
+        "唐三的坚持令唐昊很惊讶"
+      ]
+    }
+  },
+  {
+    "task_index": 8,
+    "current_label_quote": "唐三",
+    "candidate_label_quote": "唐三",
+    "task_cache_key": "243b3fa3b053b49f11490e9171e2639bc7ebd2ca2f14cd3e67478aa1a2fd3a8d",
+    "model_output": {
+      "identity_relation": "uncertain",
+      "label_relation": null,
+      "identity_evidence_quotes": []
+    }
+  },
+  {
+    "task_index": 9,
+    "current_label_quote": "杰克爷爷",
+    "candidate_label_quote": "这位村长",
+    "task_cache_key": "4c96fe2bc89d141af959774163d57491aaa6478c9f292e950847784a2a74e28d",
+    "model_output": {
+      "identity_relation": "same_character",
+      "label_relation": "alias",
+      "identity_evidence_quotes": [
+        "这个人唐三认识，是圣魂村的村长老杰克。",
+        "杰克爷爷，您好。",
+        "这位村长是个老好人"
+      ]
+    }
+  },
+  {
+    "task_index": 10,
+    "current_label_quote": "一名老人",
+    "candidate_label_quote": "这位村长",
+    "task_cache_key": "6c54102ec62436bba90ef3d38a8e0b6f700b2a0843bd3706a4f1ef24c79cea4d",
+    "model_output": {
+      "identity_relation": "same_character",
+      "label_relation": "contextual_description",
+      "identity_evidence_quotes": [
+        "只见来的是一名老人，看上去六十多岁的样子，身材瘦长，但精神矍铄，衣服干净整洁，头发也梳理的一丝不苟，和唐昊相比，简直就是两个极端。这个人唐三认识，是圣魂村的村长老杰克。",
+        "这位村长是个老好人"
+      ]
+    }
+  },
+  {
+    "task_index": 11,
+    "current_label_quote": "一名老人",
+    "candidate_label_quote": "杰克爷爷",
+    "task_cache_key": "b6d10dfacb3bcc99f9351404c93d55363b91d39394b77eb152935b7554c96921",
+    "model_output": {
+      "identity_relation": "same_character",
+      "label_relation": "contextual_description",
+      "identity_evidence_quotes": [
+        "这个人唐三认识，是圣魂村的村长老杰克。"
+      ]
+    }
+  },
+  {
+    "task_index": 12,
+    "current_label_quote": "老杰克",
+    "candidate_label_quote": "这位村长",
+    "task_cache_key": "a39ee4e62656f713ad122830ee2f6f02c6a914f03f55bfaca139fb81b926c376",
+    "model_output": {
+      "identity_relation": "same_character",
+      "label_relation": "contextual_description",
+      "identity_evidence_quotes": [
+        "这个人唐三认识，是圣魂村的村长老杰克。",
+        "这位村长是个老好人。"
+      ]
+    }
+  },
+  {
+    "task_index": 13,
+    "current_label_quote": "老杰克",
+    "candidate_label_quote": "杰克爷爷",
+    "task_cache_key": "520845a6d2a60be195212dd7c79049aa78efbd142a19a7c1e9eae491bdca7f93",
+    "model_output": {
+      "identity_relation": "same_character",
+      "label_relation": "alias",
+      "identity_evidence_quotes": [
+        "这个人唐三认识，是圣魂村的村长老杰克。",
+        "杰克爷爷，您好。"
+      ]
+    }
+  },
+  {
+    "task_index": 14,
+    "current_label_quote": "青年",
+    "candidate_label_quote": "年轻人",
+    "task_cache_key": "dd6f7bfc027b4f435637310b51c8f6f740ac2055c7a5e0fb1a0d66f1dc41c22a",
+    "model_output": {
+      "identity_relation": "same_character",
+      "label_relation": "contextual_description",
+      "identity_evidence_quotes": [
+        "武魂殿中还有一个青年",
+        "老杰克恭敬的向年轻人行礼"
+      ]
+    }
+  },
+  {
+    "task_index": 15,
+    "current_label_quote": "战魂大师",
+    "candidate_label_quote": "年轻人",
+    "task_cache_key": "2f36b67f42d52d92f62e273e11c14871fd2ab2d38377d0acf730b455d7f2ed7e",
+    "model_output": {
+      "identity_relation": "same_character",
+      "label_relation": "title",
+      "identity_evidence_quotes": [
+        "“您好，尊敬的战魂大师，这次要麻烦您了。”老杰克恭敬的向年轻人行礼。",
+        "老杰克道：“好的。孩子们，这位是来自诺丁城的战魂大师。"
+      ]
+    }
+  },
+  {
+    "task_index": 16,
+    "current_label_quote": "战魂大师",
+    "candidate_label_quote": "青年",
+    "task_cache_key": "da21669eb786fa6bd359d08b9cd2e1c8f44d2f6a3f652c025228a7e2570d51e2",
+    "model_output": {
+      "identity_relation": "same_character",
+      "label_relation": "title",
+      "identity_evidence_quotes": [
+        "除了村长杰克和到齐的八个孩子以外，武魂殿中还有一个青年",
+        "老杰克恭敬的向年轻人行礼。",
+        "老杰克道：“好的。孩子们，这位是来自诺丁城的战魂大师。”"
+      ]
+    }
+  },
+  {
+    "task_index": 17,
+    "current_label_quote": "唐三",
+    "candidate_label_quote": "唐三",
+    "task_cache_key": "16be358866df07cb94ad197b77fa69700c085266c2cf81efc36cf0261529b698",
+    "model_output": {
+      "identity_relation": "same_character",
+      "label_relation": "same_surface",
+      "identity_evidence_quotes": [
+        "唐三站在最左侧。",
+        "再过几天，唐三就要六岁了。"
+      ]
+    }
+  },
+  {
+    "task_index": 18,
+    "current_label_quote": "唐三",
+    "candidate_label_quote": "唐三",
+    "task_cache_key": "f836f79f9dd914bb2e4fcc383053bf2cedf911a54d8b2cac2be16dad769c1301",
+    "model_output": {
+      "identity_relation": "uncertain",
+      "label_relation": null,
+      "identity_evidence_quotes": []
+    }
+  },
+  {
+    "task_index": 19,
+    "current_label_quote": "男孩儿",
+    "candidate_label_quote": "唐三",
+    "task_cache_key": "9fa6e1bb3346ebedd82b9ab6f63fe0ead56a9e6276734070f59288dcc6d50eac",
+    "model_output": {
+      "identity_relation": "uncertain",
+      "label_relation": null,
+      "identity_evidence_quotes": []
+    }
+  },
+  {
+    "task_index": 20,
+    "current_label_quote": "素云涛",
+    "candidate_label_quote": "素云涛",
+    "task_cache_key": "a254210e706e62541edc1a6d3a3007130bbf8d2fe42b91faab7b611b24786c17",
+    "model_output": {
+      "identity_relation": "same_character",
+      "label_relation": "same_surface",
+      "identity_evidence_quotes": [
+        "素云涛的眼睛突然亮了起来",
+        "素云涛将六颗黑色的石头在地面上摆出一个六角形"
+      ]
+    }
+  },
+  {
+    "task_index": 21,
+    "current_label_quote": "唐三",
+    "candidate_label_quote": "唐三",
+    "task_cache_key": "8f779e46f21707017b93f63098d7782ae8f8b03d6edae5720d5a33a464903266",
+    "model_output": {
+      "identity_relation": "same_character",
+      "label_relation": "same_surface",
+      "identity_evidence_quotes": [
+        "唐三看着素云涛已经要收起那颗蓝水晶球",
+        "唐三站在最左侧"
+      ]
+    }
+  },
+  {
+    "task_index": 22,
+    "current_label_quote": "唐三",
+    "candidate_label_quote": "唐三",
+    "task_cache_key": "aa9bcdc91a31125bae140fe2c132eceb283bb03b49947cab9b6d9d49f3113876",
+    "model_output": {
+      "identity_relation": "uncertain",
+      "label_relation": null,
+      "identity_evidence_quotes": []
+    }
+  },
+  {
+    "task_index": 23,
+    "current_label_quote": "杰克",
+    "candidate_label_quote": "杰克爷爷",
+    "task_cache_key": "c54f785a46f614791e945ea7b49e7f38e8053450f4b2b43aa66b70cdf3e38f9d",
+    "model_output": {
+      "identity_relation": "same_character",
+      "label_relation": "name_variant",
+      "identity_evidence_quotes": [
+        "老杰克一脸紧张的迎上了素云涛",
+        "杰克眼中流露出惊疑不定的神色",
+        "是圣魂村的村长老杰克",
+        "杰克爷爷，您好。"
+      ]
+    }
+  },
+  {
+    "task_index": 24,
+    "current_label_quote": "杰克",
+    "candidate_label_quote": "老杰克",
+    "task_cache_key": "58e1dbc02c56bc30d0a0fbc240c1a3870bf8880b426407af5fb361c804470f7b",
+    "model_output": {
+      "identity_relation": "same_character",
+      "label_relation": "name_variant",
+      "identity_evidence_quotes": [
+        "老杰克一脸紧张的迎上了素云涛",
+        "杰克眼中流露出惊疑不定的神色",
+        "这个人唐三认识，是圣魂村的村长老杰克"
+      ]
+    }
+  },
+  {
+    "task_index": 25,
+    "current_label_quote": "唐昊",
+    "candidate_label_quote": "唐昊",
+    "task_cache_key": "7d9492ca0a2d1a7aac13f47cef3f4fe7c69d0341df4df755756af526d04d06f4",
+    "model_output": {
+      "identity_relation": "same_character",
+      "label_relation": "same_surface",
+      "identity_evidence_quotes": [
+        "唐昊，唐昊。",
+        "这个邋遢铁匠",
+        "唐昊",
+        "铁匠"
+      ]
+    }
+  },
+  {
+    "task_index": 26,
+    "current_label_quote": "唐昊",
+    "candidate_label_quote": "唐昊",
+    "task_cache_key": "bcb28ea9c2bdfaa467ce965d74d0062211625ea0195be3fd8ea99d40831b69dd",
+    "model_output": {
+      "identity_relation": "same_character",
+      "label_relation": "same_surface",
+      "identity_evidence_quotes": [
+        "唐昊，唐昊。",
+        "这就是唐昊，唐三在这个世界的父亲。"
+      ]
+    }
+  },
+  {
+    "task_index": 27,
+    "current_label_quote": "唐昊",
+    "candidate_label_quote": "唐昊",
+    "task_cache_key": "1d13247bd8e24b1caafe59ca79605764b9324e7566c72583eb9cc0cf9e7dc5ff",
+    "model_output": {
+      "identity_relation": "same_character",
+      "label_relation": "same_surface",
+      "identity_evidence_quotes": [
+        "唐昊冷冷的看了杰克一眼",
+        "唐昊，唐昊。"
+      ]
+    }
+  },
+  {
+    "task_index": 28,
+    "current_label_quote": "唐昊",
+    "candidate_label_quote": "唐昊",
+    "task_cache_key": "0cae68c7782dc70e5bf33689f673278151aef8e5fe0eee1665c9908a9a35b4cb",
+    "model_output": {
+      "identity_relation": "uncertain",
+      "label_relation": null,
+      "identity_evidence_quotes": []
+    }
+  },
+  {
+    "task_index": 29,
+    "current_label_quote": "唐三",
+    "candidate_label_quote": "唐三",
+    "task_cache_key": "16996a49478f03cf4df802a69ef5264c288db0024ef73bddfa2d735571755849",
+    "model_output": {
+      "identity_relation": "uncertain",
+      "label_relation": null,
+      "identity_evidence_quotes": []
+    }
+  },
+  {
+    "task_index": 30,
+    "current_label_quote": "唐三",
+    "candidate_label_quote": "唐三",
+    "task_cache_key": "bab5f5de550bcc2bf53b6bc7cfc51295103391d32bdce37dec7f3626cf29a08e",
+    "model_output": {
+      "identity_relation": "uncertain",
+      "label_relation": null,
+      "identity_evidence_quotes": []
+    }
+  },
+  {
+    "task_index": 31,
+    "current_label_quote": "小三",
+    "candidate_label_quote": "小三",
+    "task_cache_key": "3528e999993bd83387f258f84c98a8012f31886f26b5f7427d5c78e2ce29ca3c",
+    "model_output": {
+      "identity_relation": "same_character",
+      "label_relation": "same_surface",
+      "identity_evidence_quotes": [
+        "唐昊几乎是一个箭步就来到了唐三面前",
+        "唐昊与唐三父子"
+      ]
+    }
+  },
+  {
+    "task_index": 32,
+    "current_label_quote": "小三",
+    "candidate_label_quote": "唐三",
+    "task_cache_key": "a9c42f5a0eee8dc2ff457b1f12a2a45722c836fafa237b3987522b30ff018383",
+    "model_output": {
+      "identity_relation": "uncertain",
+      "label_relation": null,
+      "identity_evidence_quotes": []
+    }
+  },
+  {
+    "task_index": 33,
+    "current_label_quote": "唐昊",
+    "candidate_label_quote": "唐昊",
+    "task_cache_key": "5299d803ccec0f23ad46d46b5e61af9ac66e16fb6a54585c7bf404e1d6684aad",
+    "model_output": {
+      "identity_relation": "same_character",
+      "label_relation": "same_surface",
+      "identity_evidence_quotes": [
+        "这要问我爸爸才行。” \r\n　　杰克恍然醒悟过来，是啊，孩子再懂事也终究是个孩子，怎么说也要征询唐昊的意见才行。",
+        "唐昊张开有力的双臂，将唐三紧紧的拥入自己怀抱之中。"
+      ]
+    }
+  },
+  {
+    "task_index": 34,
+    "current_label_quote": "唐昊",
+    "candidate_label_quote": "唐昊",
+    "task_cache_key": "43ea5a26ec2a8a473a034f0e16f8dc7c168ed5d24846e1c474f7fdb58e1da860",
+    "model_output": {
+      "identity_relation": "same_character",
+      "label_relation": "same_surface",
+      "identity_evidence_quotes": [
+        "唐昊张开有力的双臂，将唐三紧紧的拥入自己怀抱之中。",
+        "爸爸。”唐三有些愣住了",
+        "爸爸，你年纪大了",
+        "唐昊略微有些失神"
+      ]
+    }
+  },
+  {
+    "task_index": 35,
+    "current_label_quote": "唐三",
+    "candidate_label_quote": "唐三",
+    "task_cache_key": "2f221ff3a3866e0691c01a00738c054ca2a9f7e1754644b54b805861efc8c8f3",
+    "model_output": {
+      "identity_relation": "uncertain",
+      "label_relation": null,
+      "identity_evidence_quotes": []
+    }
+  },
+  {
+    "task_index": 36,
+    "current_label_quote": "唐三",
+    "candidate_label_quote": "唐三",
+    "task_cache_key": "49ec4c20132f810845d665d9c0b73ab104cfcd784565c09155a36cd36f2052eb",
+    "model_output": {
+      "identity_relation": "uncertain",
+      "label_relation": null,
+      "identity_evidence_quotes": []
+    }
+  },
+  {
+    "task_index": 37,
+    "current_label_quote": "唐昊",
+    "candidate_label_quote": "唐昊",
+    "task_cache_key": "b029ba745f4faab0933cda79a550f01c2745ce1c0dd00b21cc5690e615023997",
+    "model_output": {
+      "identity_relation": "same_character",
+      "label_relation": "same_surface",
+      "identity_evidence_quotes": [
+        "唐昊手中铸造锤微微一顶",
+        "唐昊的胸膛很宽阔",
+        "裸露在破烂裤管外的两条小腿"
+      ]
+    }
+  },
+  {
+    "task_index": 38,
+    "current_label_quote": "唐昊",
+    "candidate_label_quote": "唐昊",
+    "task_cache_key": "0ea5517439521b14e77bfc5b8e485012a9aa48940c29d1dbed62589dd3abadf9",
+    "model_output": {
+      "identity_relation": "same_character",
+      "label_relation": "same_surface",
+      "identity_evidence_quotes": [
+        "唐昊手中铸造锤微微一顶，令唐三后退几步",
+        "唐昊出奇的没有回房间继续睡觉，而是坐在椅子上闭目养神。",
+        "爸爸说得对，蓝银草只是废武魂，谢谢您的好意。"
+      ]
+    }
+  },
+  {
+    "task_index": 39,
+    "current_label_quote": "唐昊",
+    "candidate_label_quote": "唐昊",
+    "task_cache_key": "601ad415d5acb0dbe4490e3a4b9aa0b23a3589c97a7a730b4ee9e41043eb175b",
+    "model_output": {
+      "identity_relation": "same_character",
+      "label_relation": "same_surface",
+      "identity_evidence_quotes": [
+        "唐昊的动作越来越快",
+        "唐昊手中铸造锤微微一顶"
+      ]
+    }
+  },
+  {
+    "task_index": 40,
+    "current_label_quote": "唐昊",
+    "candidate_label_quote": "唐昊",
+    "task_cache_key": "9ad24169341ad1f55db997e300ec666bd924a5ad128be7403d1e5e32a550201c",
+    "model_output": {
+      "identity_relation": "same_character",
+      "label_relation": "same_surface",
+      "identity_evidence_quotes": [
+        "唐昊看着在不断拉动风箱的唐三。",
+        "唐昊走到唐三面前，拿过他手中的铁锤"
+      ]
+    }
+  },
+  {
+    "task_index": 41,
+    "current_label_quote": "唐三",
+    "candidate_label_quote": "唐三",
+    "task_cache_key": "31dfa183e60323dc74d53b6ce4c0fa354263b239f9ed556249f76a0749fd41f2",
+    "model_output": {
+      "identity_relation": "same_character",
+      "label_relation": "same_surface",
+      "identity_evidence_quotes": [
+        "唐三相信，自己在其他各方面的进步会更大",
+        "唐三这才继续挥锤"
+      ]
+    }
+  },
+  {
+    "task_index": 42,
+    "current_label_quote": "唐三",
+    "candidate_label_quote": "唐三",
+    "task_cache_key": "e4301bfcdf2f1b1d3b1a89f1cea6522739c381a6a1abd6a29039fcf5faa37225",
+    "model_output": {
+      "identity_relation": "same_character",
+      "label_relation": "same_surface",
+      "identity_evidence_quotes": [
+        "如果不是玄天功没能突破瓶颈，唐三相信，自己在其他各方面的进步会更大。",
+        "当这柄锤子出现在唐三手中时，整个房间内的空气都显得有些压抑"
+      ]
+    }
+  },
+  {
+    "task_index": 43,
+    "current_label_quote": "唐三",
+    "candidate_label_quote": "唐三",
+    "task_cache_key": "2bfc1dd83c12c4bac24b86c5b9c6c9e5834d13b0a93e7eac48ca565170ec5f1f",
+    "model_output": {
+      "identity_relation": "same_character",
+      "label_relation": "same_surface",
+      "identity_evidence_quotes": [
+        "唐三手腕上带着的这筒袖箭",
+        "唐三现在手上带的这个也不例外",
+        "唐三脸上流露出一丝满足的笑容"
+      ]
+    }
+  },
+  {
+    "task_index": 44,
+    "current_label_quote": "唐三",
+    "candidate_label_quote": "唐三",
+    "task_cache_key": "d9a6051183ee379cb9c774e85f7f8908d092a971df9322084953b29b04e6d2a4",
+    "model_output": {
+      "identity_relation": "same_character",
+      "label_relation": "same_surface",
+      "identity_evidence_quotes": [
+        "唐三手腕上带着的这筒袖箭",
+        "唐三幼小的身体和手中的铁锤并不成比例"
+      ]
+    }
+  },
+  {
+    "task_index": 45,
+    "current_label_quote": "唐昊",
+    "candidate_label_quote": "唐昊",
+    "task_cache_key": "ec02b62fedc5d9c7f9d5f163849a803817e3fe3b02054564237158591ddf69e3",
+    "model_output": {
+      "identity_relation": "same_character",
+      "label_relation": "same_surface",
+      "identity_evidence_quotes": [
+        "唐昊冷然道：“我还需要你照顾么？你去就是了。”",
+        "唐昊看着在不断拉动风箱的唐三。"
+      ]
+    }
+  },
+  {
+    "task_index": 46,
+    "current_label_quote": "唐昊",
+    "candidate_label_quote": "唐昊",
+    "task_cache_key": "76c6ce64809364c50e57914a89b4bf3202a0e862c1cf2f9792a6929139eab47f",
+    "model_output": {
+      "identity_relation": "uncertain",
+      "label_relation": null,
+      "identity_evidence_quotes": []
+    }
+  },
+  {
+    "task_index": 47,
+    "current_label_quote": "高大苍老的男人",
+    "candidate_label_quote": "唐昊",
+    "task_cache_key": "20e89f02dba329ab10609a1578c833a47931fd23279ced6dac9e9e2014ffc83c",
+    "model_output": {
+      "identity_relation": "same_character",
+      "label_relation": "contextual_description",
+      "identity_evidence_quotes": [
+        "眼前这个高大苍老的男人，已经越来越给他那种父亲的感觉",
+        "唐昊教他铸造"
+      ]
+    }
+  },
+  {
+    "task_index": 48,
+    "current_label_quote": "唐三",
+    "candidate_label_quote": "唐三",
+    "task_cache_key": "cc3f30931cf0b4d530ae68eccf77bcf910b4b13de5b8aeedd188cdc11e29d08a",
+    "model_output": {
+      "identity_relation": "same_character",
+      "label_relation": "same_surface",
+      "identity_evidence_quotes": [
+        "唐三根本没有什么好准备的",
+        "唐三手腕上带着的这筒袖箭"
+      ]
+    }
+  },
+  {
+    "task_index": 49,
+    "current_label_quote": "唐三",
+    "candidate_label_quote": "唐三",
+    "task_cache_key": "785cc470414c41fb1dc45d10a185d57a1cc831c2333fb7ab4f7c800f58fdc770",
+    "model_output": {
+      "identity_relation": "same_character",
+      "label_relation": "same_surface",
+      "identity_evidence_quotes": [
+        "他告诉唐三，明天早上走的时候不要吵他睡觉。",
+        "清晨，唐三坐在山顶的一块大石头上",
+        "唐三相信，自己在其他各方面的进步会更大。",
+        "唐三现在手上带的这个也不例外"
+      ]
+    }
+  },
+  {
+    "task_index": 50,
+    "current_label_quote": "杰克",
+    "candidate_label_quote": "杰克",
+    "task_cache_key": "b7a63e1e31412d2b85fb76e2fcbecb82f452cac27289ccfce26f869b8c6bc58b",
+    "model_output": {
+      "identity_relation": "same_character",
+      "label_relation": "same_surface",
+      "identity_evidence_quotes": [
+        "老杰克已经来了，或许是因为要去诺丁城的原因，今天的老杰克特意穿了一身新衣服，看上去更添几分矍铄。",
+        "门开，老杰克一脸紧张的迎上了素云涛，“大师，怎么样。今年我们村子里的孩子有没有能够成为魂师的可能？” \r\n　　素云涛看了看他，叹息一声，道：“有到是有一个，只是可惜了。” \r\n　　杰克眼中流露出惊疑不定的神色"
+      ]
+    }
+  },
+  {
+    "task_index": 51,
+    "current_label_quote": "杰克",
+    "candidate_label_quote": "杰克爷爷",
+    "task_cache_key": "ac272e13c43c8c045678144f7a1314000a91b05f82a2aeaf232ce40a6f69878c",
+    "model_output": {
+      "identity_relation": "same_character",
+      "label_relation": "alias",
+      "identity_evidence_quotes": [
+        "老杰克已经来了",
+        "这个人唐三认识，是圣魂村的村长老杰克",
+        "杰克爷爷，您好"
+      ]
+    }
+  },
+  {
+    "task_index": 52,
+    "current_label_quote": "唐昊",
+    "candidate_label_quote": "唐昊",
+    "task_cache_key": "00df7d93c65a76c917d7e62a3141f6530586aa625b992f5a04f530955ab59242",
+    "model_output": {
+      "identity_relation": "same_character",
+      "label_relation": "same_surface",
+      "identity_evidence_quotes": [
+        "唐昊站着没动，一直到唐三和村长杰克的背影已经完全消失了",
+        "唐昊冷然道：“我还需要你照顾么？”"
+      ]
+    }
+  },
+  {
+    "task_index": 53,
+    "current_label_quote": "唐昊",
+    "candidate_label_quote": "唐昊",
+    "task_cache_key": "504ce15f248a0bed4cd0155766f321110128010ec1e42fa3e97bc856b521ef06",
+    "model_output": {
+      "identity_relation": "same_character",
+      "label_relation": "same_surface",
+      "identity_evidence_quotes": [
+        "唐昊站着没动，一直到唐三和村长杰克的背影已经完全消失了，他依旧站在那里呆立半晌。",
+        "唐昊看着在不断拉动风箱的唐三。"
+      ]
+    }
+  },
+  {
+    "task_index": 54,
+    "current_label_quote": "唐三",
+    "candidate_label_quote": "唐三",
+    "task_cache_key": "d9e2f0e51689c8d3a69efa70bd5f79e284562bf066c15ae85edb2b77049ce7c5",
+    "model_output": {
+      "identity_relation": "same_character",
+      "label_relation": "same_surface",
+      "identity_evidence_quotes": [
+        "唐三道：“爸爸说，让我到了学院以后，找一个铁匠铺打工。”",
+        "唐三向杰克比出一个噤声的手势"
+      ]
+    }
+  },
+  {
+    "task_index": 55,
+    "current_label_quote": "唐三",
+    "candidate_label_quote": "唐三",
+    "task_cache_key": "e8ff628cef0740f61aeea196c78c2ecca38084bcf82f7741fdfe4d75c0710807",
+    "model_output": {
+      "identity_relation": "same_character",
+      "label_relation": "same_surface",
+      "identity_evidence_quotes": [
+        "唐三道：",
+        "唐三这筒袖箭尽管只有三枚"
+      ]
+    }
+  },
+  {
+    "task_index": 56,
+    "current_label_quote": "老杰克",
+    "candidate_label_quote": "老杰克",
+    "task_cache_key": "6b6ada9170da0df339c932dd3da8c5fe9623a82045be9db3730754de693906d5",
+    "model_output": {
+      "identity_relation": "same_character",
+      "label_relation": "same_surface",
+      "identity_evidence_quotes": [
+        "老杰克没好气的说道",
+        "是圣魂村的村长老杰克。",
+        "由于唐三是先天满魂力，老杰克已经将他当成魂师看待了。"
+      ]
+    }
+  },
+  {
+    "task_index": 57,
+    "current_label_quote": "老杰克",
+    "candidate_label_quote": "杰克",
+    "task_cache_key": "2af53f4ba98e300e481101b881a6ad00ea3cbc9dcce5703b1de37f8e15f4a6f8",
+    "model_output": {
+      "identity_relation": "same_character",
+      "label_relation": "name_variant",
+      "identity_evidence_quotes": [
+        "老杰克已经来了，或许是因为要去诺丁城的原因，今天的老杰克特意穿了一身新衣服，看上去更添几分矍铄。 \r\n　　“小三，走吧。你那懒鬼爸爸是不会起来了。”杰克招呼唐三。"
+      ]
+    }
+  },
+  {
+    "task_index": 58,
+    "current_label_quote": "看门的青年",
+    "candidate_label_quote": "青年",
+    "task_cache_key": "aa17e0e32e90f09d074715a2982b22e7cc48c63aa9702cfd0fca47bfef63e0c0",
+    "model_output": {
+      "identity_relation": "uncertain",
+      "label_relation": null,
+      "identity_evidence_quotes": []
+    }
+  },
+  {
+    "task_index": 59,
+    "current_label_quote": "老杰克",
+    "candidate_label_quote": "老杰克",
+    "task_cache_key": "d50b2eea09dd5d0fa7aae4688ebba8e6797e83c53dcc285f8b3deccf408e4d8d",
+    "model_output": {
+      "identity_relation": "same_character",
+      "label_relation": "same_surface",
+      "identity_evidence_quotes": [
+        "老杰克带着唐三刚刚走到大门前",
+        "老杰克没好气的说道"
+      ]
+    }
+  },
+  {
+    "task_index": 60,
+    "current_label_quote": "老杰克",
+    "candidate_label_quote": "老杰克",
+    "task_cache_key": "9874cb784c001d2582e5df8e8ec7104500691a8e74bd37216e62d9faf00713db",
+    "model_output": {
+      "identity_relation": "same_character",
+      "label_relation": "same_surface",
+      "identity_evidence_quotes": [
+        "老杰克带着唐三刚刚走到大门前",
+        "这个人唐三认识，是圣魂村的村长老杰克"
+      ]
+    }
+  },
+  {
+    "task_index": 61,
+    "current_label_quote": "唐三",
+    "candidate_label_quote": "唐三",
+    "task_cache_key": "a78148c9a51180c3f5965f36dd71063b36337b999b14d7cd237ce20b6be8d23e",
+    "model_output": {
+      "identity_relation": "same_character",
+      "label_relation": "same_surface",
+      "identity_evidence_quotes": [
+        "出手的正是唐三",
+        "唐三人虽然不大"
+      ]
+    }
+  },
+  {
+    "task_index": 62,
+    "current_label_quote": "唐三",
+    "candidate_label_quote": "唐三",
+    "task_cache_key": "d239485dae00e6336f34ae1aa4ba78203750b8477dce08e8e705c9ed332f9f22",
+    "model_output": {
+      "identity_relation": "same_character",
+      "label_relation": "same_surface",
+      "identity_evidence_quotes": [
+        "出手的正是唐三",
+        "唐三根本没有什么好准备的"
+      ]
+    }
+  },
+  {
+    "task_index": 63,
+    "current_label_quote": "大师",
+    "candidate_label_quote": "战魂大师",
+    "task_cache_key": "aa7d24d8595a11d370c4bed2898d382a9d40d8db7435163d32ca706b6471be95",
+    "model_output": {
+      "identity_relation": "different_characters",
+      "label_relation": null,
+      "identity_evidence_quotes": [
+        "中等身材，略微有些偏瘦的男子",
+        "大约四、五十岁的样子",
+        "此人看上去二十多岁的样子",
+        "剑眉星目，相貌甚是俊朗"
+      ]
+    }
+  }
+]

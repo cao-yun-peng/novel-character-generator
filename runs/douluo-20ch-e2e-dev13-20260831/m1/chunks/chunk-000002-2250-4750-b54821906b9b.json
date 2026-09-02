@@ -1,0 +1,214 @@
+{
+  "schema_version": "m1-chunk-result-v4",
+  "chunk_index": 2,
+  "chunk_id": "chunk-000002-2250-4750-b54821906b9b",
+  "chunk_hash": "b54821906b9b4979c5f17e533521a44849c2d4475f3a78a7033a79eca23d72dd",
+  "chunk_source_span": {
+    "start": 2250,
+    "end": 4750
+  },
+  "model_output": {
+    "candidate_mentions": [
+      {
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "唐三",
+        "evidence_quotes": [
+          "那是个只有五、六岁的孩子，显然，他经常承受太阳的温暖，皮肤呈现出健康的小麦色，黑色短发看上去很利落，一身衣服虽然朴素，到也干净。",
+          "男孩儿在山顶上坐了下来，他的双眼死死的盯视着东方那抹渐渐明亮的鱼肚白色",
+          "他眼眸中竟然闪烁着一层淡淡的紫意，尽管这紫色并没有持续太长时间就悄然收敛",
+          "瘦小的身体腾身而起"
+        ]
+      },
+      {
+        "mention_type": "describe",
+        "mention_scope": "individual",
+        "mention_quote": "孩子",
+        "evidence_quotes": [
+          "那是个只有五、六岁的孩子，显然，他经常承受太阳的温暖，皮肤呈现出健康的小麦色，黑色短发看上去很利落，一身衣服虽然朴素，到也干净。",
+          "男孩儿在山顶上坐了下来，他的双眼死死的盯视着东方那抹渐渐明亮的鱼肚白色",
+          "他眼眸中竟然闪烁着一层淡淡的紫意，尽管这紫色并没有持续太长时间就悄然收敛",
+          "瘦小的身体腾身而起"
+        ]
+      },
+      {
+        "mention_type": "describe",
+        "mention_scope": "individual",
+        "mention_quote": "男孩儿",
+        "evidence_quotes": [
+          "那是个只有五、六岁的孩子，显然，他经常承受太阳的温暖，皮肤呈现出健康的小麦色，黑色短发看上去很利落，一身衣服虽然朴素，到也干净。",
+          "男孩儿在山顶上坐了下来，他的双眼死死的盯视着东方那抹渐渐明亮的鱼肚白色",
+          "他眼眸中竟然闪烁着一层淡淡的紫意，尽管这紫色并没有持续太长时间就悄然收敛",
+          "瘦小的身体腾身而起"
+        ]
+      },
+      {
+        "mention_type": "describe",
+        "mention_scope": "individual",
+        "mention_quote": "瘦小的身影",
+        "evidence_quotes": [
+          "那是个只有五、六岁的孩子，显然，他经常承受太阳的温暖，皮肤呈现出健康的小麦色，黑色短发看上去很利落，一身衣服虽然朴素，到也干净。",
+          "瘦小的身体腾身而起"
+        ]
+      }
+    ]
+  },
+  "grounded_packet": {
+    "schema_version": "grounded-character-packet-v6",
+    "evidence_precedence_policy_version": "exact-evidence-precedence-v1",
+    "source_document_version_id": "source-8bcb7305a759571b",
+    "chunking_policy_version": "fixed-codepoint-window-2500-overlap-250-v1",
+    "chunk_id": "chunk-000002-2250-4750-b54821906b9b",
+    "chunk_hash": "b54821906b9b4979c5f17e533521a44849c2d4475f3a78a7033a79eca23d72dd",
+    "chunk_source_span": {
+      "start": 2250,
+      "end": 4750
+    },
+    "grounded_mentions": [
+      {
+        "local_mention_id": "m1",
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "唐三",
+        "approved_evidence": [
+          {
+            "evidence_quote": "那是个只有五、六岁的孩子，显然，他经常承受太阳的温暖，皮肤呈现出健康的小麦色，黑色短发看上去很利落，一身衣服虽然朴素，到也干净。",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 852,
+                "end": 916
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "男孩儿在山顶上坐了下来，他的双眼死死的盯视着东方那抹渐渐明亮的鱼肚白色",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 994,
+                "end": 1029
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "他眼眸中竟然闪烁着一层淡淡的紫意，尽管这紫色并没有持续太长时间就悄然收敛",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1354,
+                "end": 1390
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "瘦小的身体腾身而起",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 2317,
+                "end": 2326
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "915483d4aeb6e5a403c86757a25862f97fc0bf413146c36ece88686948982f30"
+      }
+    ],
+    "rejected_evidence": []
+  },
+  "grounding_trace_events": [
+    {
+      "code": "describe_evidence_shadowed_by_exact",
+      "local_mention_id": "m2",
+      "detail": "occurrences=1; exact_mentions=m1; rule=exact-evidence-precedence-v1"
+    },
+    {
+      "code": "describe_evidence_shadowed_by_exact",
+      "local_mention_id": "m2",
+      "detail": "occurrences=1; exact_mentions=m1; rule=exact-evidence-precedence-v1"
+    },
+    {
+      "code": "describe_evidence_shadowed_by_exact",
+      "local_mention_id": "m2",
+      "detail": "occurrences=1; exact_mentions=m1; rule=exact-evidence-precedence-v1"
+    },
+    {
+      "code": "describe_evidence_shadowed_by_exact",
+      "local_mention_id": "m2",
+      "detail": "occurrences=1; exact_mentions=m1; rule=exact-evidence-precedence-v1"
+    },
+    {
+      "code": "describe_removed_after_exact_dedup",
+      "local_mention_id": "m2",
+      "detail": "rule=exact-evidence-precedence-v1"
+    },
+    {
+      "code": "describe_evidence_shadowed_by_exact",
+      "local_mention_id": "m3",
+      "detail": "occurrences=1; exact_mentions=m1; rule=exact-evidence-precedence-v1"
+    },
+    {
+      "code": "describe_evidence_shadowed_by_exact",
+      "local_mention_id": "m3",
+      "detail": "occurrences=1; exact_mentions=m1; rule=exact-evidence-precedence-v1"
+    },
+    {
+      "code": "describe_evidence_shadowed_by_exact",
+      "local_mention_id": "m3",
+      "detail": "occurrences=1; exact_mentions=m1; rule=exact-evidence-precedence-v1"
+    },
+    {
+      "code": "describe_evidence_shadowed_by_exact",
+      "local_mention_id": "m3",
+      "detail": "occurrences=1; exact_mentions=m1; rule=exact-evidence-precedence-v1"
+    },
+    {
+      "code": "describe_removed_after_exact_dedup",
+      "local_mention_id": "m3",
+      "detail": "rule=exact-evidence-precedence-v1"
+    },
+    {
+      "code": "describe_evidence_shadowed_by_exact",
+      "local_mention_id": "m4",
+      "detail": "occurrences=1; exact_mentions=m1; rule=exact-evidence-precedence-v1"
+    },
+    {
+      "code": "describe_evidence_shadowed_by_exact",
+      "local_mention_id": "m4",
+      "detail": "occurrences=1; exact_mentions=m1; rule=exact-evidence-precedence-v1"
+    },
+    {
+      "code": "describe_removed_after_exact_dedup",
+      "local_mention_id": "m4",
+      "detail": "rule=exact-evidence-precedence-v1"
+    }
+  ],
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 33640,
+    "http_status": 200,
+    "response_id": "e5203734-b588-4903-b792-2138780327c0",
+    "usage": {
+      "input_tokens": 2556,
+      "cached_input_tokens": 896,
+      "output_tokens": 4094,
+      "reasoning_tokens": 3560,
+      "total_tokens": 6650
+    },
+    "error_kind": null
+  }
+}

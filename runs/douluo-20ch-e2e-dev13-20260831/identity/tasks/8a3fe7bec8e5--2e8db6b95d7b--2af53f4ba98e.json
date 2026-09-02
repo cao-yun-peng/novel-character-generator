@@ -1,0 +1,53 @@
+{
+  "schema_version": "identity-task-result-v1",
+  "task_index": 57,
+  "current_label_quote": "老杰克",
+  "candidate_label_quote": "杰克",
+  "task_cache_key": "2af53f4ba98e300e481101b881a6ad00ea3cbc9dcce5703b1de37f8e15f4a6f8",
+  "model_output": {
+    "identity_relation": "same_character",
+    "label_relation": "name_variant",
+    "identity_evidence_quotes": [
+      "老杰克已经来了，或许是因为要去诺丁城的原因，今天的老杰克特意穿了一身新衣服，看上去更添几分矍铄。 \r\n　　“小三，走吧。你那懒鬼爸爸是不会起来了。”杰克招呼唐三。"
+    ]
+  },
+  "grounded_result": {
+    "schema_version": "grounded-identity-decision-v1",
+    "current_node_key": "8a3fe7bec8e5750e9b7fdabbf09f4e3d13e72515ff2685677a23c181c02857ef",
+    "candidate_node_key": "2e8db6b95d7b100705d4f962aa585ea5814657f8b21b6609d93f87d14b183154",
+    "task_cache_key": "2af53f4ba98e300e481101b881a6ad00ea3cbc9dcce5703b1de37f8e15f4a6f8",
+    "requested_identity_relation": "same_character",
+    "identity_relation": "same_character",
+    "label_relation": "name_variant",
+    "grounded_identity_evidence": [
+      {
+        "evidence_quote": "老杰克已经来了，或许是因为要去诺丁城的原因，今天的老杰克特意穿了一身新衣服，看上去更添几分矍铄。 \r\n　　“小三，走吧。你那懒鬼爸爸是不会起来了。”杰克招呼唐三。",
+        "document_span": {
+          "start": 32734,
+          "end": 32815
+        },
+        "match_mode": "exact"
+      }
+    ],
+    "issues": []
+  },
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 8719,
+    "http_status": 200,
+    "response_id": "f5ee8f03-fbaa-4672-a904-afaf8f321db5",
+    "usage": {
+      "input_tokens": 2138,
+      "cached_input_tokens": 512,
+      "output_tokens": 924,
+      "reasoning_tokens": 831,
+      "total_tokens": 3062
+    },
+    "error_kind": null
+  }
+}

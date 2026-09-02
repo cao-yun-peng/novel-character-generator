@@ -1,0 +1,71 @@
+{
+  "schema_version": "identity-task-result-v1",
+  "task_index": 56,
+  "current_label_quote": "老杰克",
+  "candidate_label_quote": "老杰克",
+  "task_cache_key": "6b6ada9170da0df339c932dd3da8c5fe9623a82045be9db3730754de693906d5",
+  "model_output": {
+    "identity_relation": "same_character",
+    "label_relation": "same_surface",
+    "identity_evidence_quotes": [
+      "老杰克没好气的说道",
+      "是圣魂村的村长老杰克。",
+      "由于唐三是先天满魂力，老杰克已经将他当成魂师看待了。"
+    ]
+  },
+  "grounded_result": {
+    "schema_version": "grounded-identity-decision-v1",
+    "current_node_key": "8a3fe7bec8e5750e9b7fdabbf09f4e3d13e72515ff2685677a23c181c02857ef",
+    "candidate_node_key": "b11ca5bc38949f7537ef9733b5977fb4e36b4b8f395b9a5475563994a5ea9130",
+    "task_cache_key": "6b6ada9170da0df339c932dd3da8c5fe9623a82045be9db3730754de693906d5",
+    "requested_identity_relation": "same_character",
+    "identity_relation": "same_character",
+    "label_relation": "same_surface",
+    "grounded_identity_evidence": [
+      {
+        "evidence_quote": "是圣魂村的村长老杰克。",
+        "document_span": {
+          "start": 10189,
+          "end": 10200
+        },
+        "match_mode": "exact"
+      },
+      {
+        "evidence_quote": "老杰克没好气的说道",
+        "document_span": {
+          "start": 33887,
+          "end": 33896
+        },
+        "match_mode": "exact"
+      },
+      {
+        "evidence_quote": "由于唐三是先天满魂力，老杰克已经将他当成魂师看待了。",
+        "document_span": {
+          "start": 34073,
+          "end": 34099
+        },
+        "match_mode": "exact"
+      }
+    ],
+    "issues": []
+  },
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 6453,
+    "http_status": 200,
+    "response_id": "91eeaede-43f8-4c42-9bd8-eba1fcdb0abb",
+    "usage": {
+      "input_tokens": 2168,
+      "cached_input_tokens": 512,
+      "output_tokens": 621,
+      "reasoning_tokens": 544,
+      "total_tokens": 2789
+    },
+    "error_kind": null
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "schema_version": "identity-task-result-v1",
+  "task_index": 63,
+  "current_label_quote": "大师",
+  "candidate_label_quote": "战魂大师",
+  "task_cache_key": "aa7d24d8595a11d370c4bed2898d382a9d40d8db7435163d32ca706b6471be95",
+  "model_output": {
+    "identity_relation": "different_characters",
+    "label_relation": null,
+    "identity_evidence_quotes": [
+      "中等身材，略微有些偏瘦的男子",
+      "大约四、五十岁的样子",
+      "此人看上去二十多岁的样子",
+      "剑眉星目，相貌甚是俊朗"
+    ]
+  },
+  "grounded_result": {
+    "schema_version": "grounded-identity-decision-v1",
+    "current_node_key": "de6cfcb000917853a5425f953db82dd7c25fcbf124b019ffbb1bf2f696407913",
+    "candidate_node_key": "b2db325da35bb35c0a41ab3ad22180bc036a335bf040ba5e237a5abf620a8d98",
+    "task_cache_key": "aa7d24d8595a11d370c4bed2898d382a9d40d8db7435163d32ca706b6471be95",
+    "requested_identity_relation": "different_characters",
+    "identity_relation": "different_characters",
+    "label_relation": null,
+    "grounded_identity_evidence": [
+      {
+        "evidence_quote": "此人看上去二十多岁的样子",
+        "document_span": {
+          "start": 13139,
+          "end": 13151
+        },
+        "match_mode": "exact"
+      },
+      {
+        "evidence_quote": "剑眉星目，相貌甚是俊朗",
+        "document_span": {
+          "start": 13152,
+          "end": 13163
+        },
+        "match_mode": "exact"
+      },
+      {
+        "evidence_quote": "中等身材，略微有些偏瘦的男子",
+        "document_span": {
+          "start": 37896,
+          "end": 37910
+        },
+        "match_mode": "exact"
+      },
+      {
+        "evidence_quote": "大约四、五十岁的样子",
+        "document_span": {
+          "start": 37934,
+          "end": 37944
+        },
+        "match_mode": "exact"
+      }
+    ],
+    "issues": []
+  },
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 6703,
+    "http_status": 200,
+    "response_id": "59b7c200-37e7-4abf-9502-46d4c762ea70",
+    "usage": {
+      "input_tokens": 2380,
+      "cached_input_tokens": 512,
+      "output_tokens": 734,
+      "reasoning_tokens": 671,
+      "total_tokens": 3114
+    },
+    "error_kind": null
+  }
+}

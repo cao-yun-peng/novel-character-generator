@@ -1,0 +1,58 @@
+{
+  "schema_version": "cluster-rescue-task-result-v1",
+  "task_index": 3,
+  "task_cache_key": "8610c3d4721c5d93deaf481ee18045e4b6d9f6f46a629d1c62bb0c72e22271b6",
+  "subject_labels": [
+    "小三"
+  ],
+  "model_output": {
+    "identity_relation": "same_character",
+    "candidate_number": 1,
+    "label_relation": "name_variant",
+    "identity_evidence_quotes": [
+      "却被唐昊叫住了。 \r\n　　“等会儿再收拾吧。小三，我问你，你想不想成为一名魂师？” \r\n　　唐三愣了一下，看向唐昊"
+    ]
+  },
+  "grounded_result": {
+    "schema_version": "grounded-cluster-rescue-decision-v1",
+    "subject_character_id": "char-3d52714f466e4a2d2deb",
+    "subject_anchor_node_key": "9c018bfe05d1e43c2e3f56b9f308e4f9efe80e6bae0712dd4d91fd6816341377",
+    "selected_candidate_number": 1,
+    "selected_candidate_character_id": "char-7d7110b19a5971bd01b9",
+    "selected_candidate_anchor_node_key": "51ba9a3db50d368f9f3e9b7a8d354b488caed4d88c197cc5a7e169d410046d4e",
+    "task_cache_key": "8610c3d4721c5d93deaf481ee18045e4b6d9f6f46a629d1c62bb0c72e22271b6",
+    "requested_identity_relation": "same_character",
+    "identity_relation": "same_character",
+    "label_relation": "name_variant",
+    "grounded_identity_evidence": [
+      {
+        "evidence_quote": "却被唐昊叫住了。 \r\n　　“等会儿再收拾吧。小三，我问你，你想不想成为一名魂师？” \r\n　　唐三愣了一下，看向唐昊",
+        "document_span": {
+          "start": 23275,
+          "end": 23332
+        },
+        "match_mode": "exact"
+      }
+    ],
+    "issues": []
+  },
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 7812,
+    "http_status": 200,
+    "response_id": "11b1ef38-e6ec-480a-a8c5-7dabe0d2d8b2",
+    "usage": {
+      "input_tokens": 3798,
+      "cached_input_tokens": 640,
+      "output_tokens": 976,
+      "reasoning_tokens": 903,
+      "total_tokens": 4774
+    },
+    "error_kind": null
+  }
+}

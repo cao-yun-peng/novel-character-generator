@@ -1,0 +1,62 @@
+{
+  "schema_version": "identity-task-result-v1",
+  "task_index": 54,
+  "current_label_quote": "唐三",
+  "candidate_label_quote": "唐三",
+  "task_cache_key": "d9e2f0e51689c8d3a69efa70bd5f79e284562bf066c15ae85edb2b77049ce7c5",
+  "model_output": {
+    "identity_relation": "same_character",
+    "label_relation": "same_surface",
+    "identity_evidence_quotes": [
+      "唐三道：“爸爸说，让我到了学院以后，找一个铁匠铺打工。”",
+      "唐三向杰克比出一个噤声的手势"
+    ]
+  },
+  "grounded_result": {
+    "schema_version": "grounded-identity-decision-v1",
+    "current_node_key": "49a39469d3e7ed28d07bddb54930ad1b57aaabe2922b2f3d4da4016a3204231b",
+    "candidate_node_key": "6d53f7e20076f8fadceff02fda655dd49fe40ffb40879258414cd08b825c32f7",
+    "task_cache_key": "d9e2f0e51689c8d3a69efa70bd5f79e284562bf066c15ae85edb2b77049ce7c5",
+    "requested_identity_relation": "same_character",
+    "identity_relation": "same_character",
+    "label_relation": "same_surface",
+    "grounded_identity_evidence": [
+      {
+        "evidence_quote": "唐三向杰克比出一个噤声的手势",
+        "document_span": {
+          "start": 32820,
+          "end": 32834
+        },
+        "match_mode": "exact"
+      },
+      {
+        "evidence_quote": "唐三道：“爸爸说，让我到了学院以后，找一个铁匠铺打工。”",
+        "document_span": {
+          "start": 33827,
+          "end": 33855
+        },
+        "match_mode": "exact"
+      }
+    ],
+    "issues": []
+  },
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 13718,
+    "http_status": 200,
+    "response_id": "04f6d554-6a09-4f94-b62f-abf13086c873",
+    "usage": {
+      "input_tokens": 2040,
+      "cached_input_tokens": 512,
+      "output_tokens": 1370,
+      "reasoning_tokens": 1309,
+      "total_tokens": 3410
+    },
+    "error_kind": null
+  }
+}

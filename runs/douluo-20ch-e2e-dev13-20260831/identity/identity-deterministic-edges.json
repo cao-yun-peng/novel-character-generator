@@ -1,0 +1,11 @@
+[
+  {
+    "left_node_key": "87d14e53ebc69716eb264f578d0e82c83409ec5f6b4cbf9867ffb0b2104354db",
+    "right_node_key": "b149ab534cf11f7656106950d5785626cb1f8d45d5a674f91b5cb3f61e79233c",
+    "relation": "same_character",
+    "reason": "shared_document_fact",
+    "fact_hashes": [
+      "41c149529b199cb9986b4b5d905a6c6fb6ce287c0905dd20ab36f04eeef537cc"
+    ]
+  }
+]

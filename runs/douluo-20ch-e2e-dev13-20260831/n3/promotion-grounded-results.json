@@ -1,0 +1,1851 @@
+[
+  {
+    "chunk_index": 3,
+    "chunk_id": "chunk-000003-4500-7000-bbfa3a18c9e4",
+    "describe_local_mention_id": "m4",
+    "mention_quote": "高大的身影",
+    "grounded_result": {
+      "schema_version": "grounded-promoted-describe-characters-v6",
+      "grounding_policy_version": "promotion-partial-fact-acceptance-v1",
+      "describe_source_ref": {
+        "local_mention_id": "m4",
+        "packet_hash": "8dd50abb592af8990ac012917e0cdfe148b465db5eaf6eabe7f4755639df1a6e"
+      },
+      "promotion_hash": "4c2144009a1e6a7a24a658c301cfbaad62783b9e1fef9ecd63ac12e6c4b64d78",
+      "promoted_characters": [
+        {
+          "promoted_character_ref": {
+            "source_document_version_id": "source-8bcb7305a759571b",
+            "chunk_id": "chunk-000003-4500-7000-bbfa3a18c9e4",
+            "source_local_mention_id": "m4",
+            "source_mention_type": "describe",
+            "promotion_index": 1,
+            "character_origin": "remaining_describe",
+            "packet_hash": "8dd50abb592af8990ac012917e0cdfe148b465db5eaf6eabe7f4755639df1a6e",
+            "promotion_hash": "4c2144009a1e6a7a24a658c301cfbaad62783b9e1fef9ecd63ac12e6c4b64d78"
+          },
+          "character_label_quote": "高大的身影",
+          "grounded_belongs_to_character": [
+            {
+              "fact_quote": "高大的身影",
+              "category": "body",
+              "attribute": "身材",
+              "value": "高大",
+              "source_mention_id": "m4",
+              "source_mention_type": "describe",
+              "source_evidence_quote": "一个高大的身影迈着有些踉跄的步伐走了出来",
+              "source_evidence_span": {
+                "start": 1089,
+                "end": 1109
+              },
+              "fact_chunk_span": {
+                "start": 1091,
+                "end": 1096
+              },
+              "match_mode": "exact"
+            }
+          ]
+        }
+      ],
+      "unassigned_fragments": [
+        {
+          "fragment_ref": "d1-f1",
+          "source_evidence_quote": "一个高大的身影迈着有些踉跄的步伐走了出来",
+          "source_evidence_span": {
+            "start": 1089,
+            "end": 1109
+          },
+          "fragment_quote": "一个",
+          "fragment_span": {
+            "start": 1089,
+            "end": 1091
+          }
+        },
+        {
+          "fragment_ref": "d1-f2",
+          "source_evidence_quote": "一个高大的身影迈着有些踉跄的步伐走了出来",
+          "source_evidence_span": {
+            "start": 1089,
+            "end": 1109
+          },
+          "fragment_quote": "迈着有些踉跄的步伐走了出来",
+          "fragment_span": {
+            "start": 1096,
+            "end": 1109
+          }
+        }
+      ]
+    },
+    "grounding_issues": []
+  },
+  {
+    "chunk_index": 5,
+    "chunk_id": "chunk-000005-9000-11500-f4a0068fbfb5",
+    "describe_local_mention_id": "m2",
+    "mention_quote": "一名老人",
+    "grounded_result": {
+      "schema_version": "grounded-promoted-describe-characters-v6",
+      "grounding_policy_version": "promotion-partial-fact-acceptance-v1",
+      "describe_source_ref": {
+        "local_mention_id": "m2",
+        "packet_hash": "ced9b5a4e23b0cd5bd87072539ec25d9842157c985712358c5ecc19bab2192c6"
+      },
+      "promotion_hash": "705ab3138b236fd21cb5beaf24ecbe1da1f6a5a2c2a0c2507ce5f887947223a0",
+      "promoted_characters": [
+        {
+          "promoted_character_ref": {
+            "source_document_version_id": "source-8bcb7305a759571b",
+            "chunk_id": "chunk-000005-9000-11500-f4a0068fbfb5",
+            "source_local_mention_id": "m2",
+            "source_mention_type": "describe",
+            "promotion_index": 1,
+            "character_origin": "remaining_describe",
+            "packet_hash": "ced9b5a4e23b0cd5bd87072539ec25d9842157c985712358c5ecc19bab2192c6",
+            "promotion_hash": "705ab3138b236fd21cb5beaf24ecbe1da1f6a5a2c2a0c2507ce5f887947223a0"
+          },
+          "character_label_quote": "一名老人",
+          "grounded_belongs_to_character": [
+            {
+              "fact_quote": "看上去六十多岁的样子",
+              "category": "age",
+              "attribute": "年龄",
+              "value": "六十多岁",
+              "source_mention_id": "m2",
+              "source_mention_type": "describe",
+              "source_evidence_quote": "看上去六十多岁的样子，身材瘦长，但精神矍铄，衣服干净整洁，头发也梳理的一丝不苟，和唐昊相比，简直就是两个极端",
+              "source_evidence_span": {
+                "start": 1126,
+                "end": 1180
+              },
+              "fact_chunk_span": {
+                "start": 1126,
+                "end": 1136
+              },
+              "match_mode": "exact"
+            },
+            {
+              "fact_quote": "身材瘦长",
+              "category": "body",
+              "attribute": "身材",
+              "value": "瘦长",
+              "source_mention_id": "m2",
+              "source_mention_type": "describe",
+              "source_evidence_quote": "看上去六十多岁的样子，身材瘦长，但精神矍铄，衣服干净整洁，头发也梳理的一丝不苟，和唐昊相比，简直就是两个极端",
+              "source_evidence_span": {
+                "start": 1126,
+                "end": 1180
+              },
+              "fact_chunk_span": {
+                "start": 1137,
+                "end": 1141
+              },
+              "match_mode": "exact"
+            },
+            {
+              "fact_quote": "精神矍铄",
+              "category": "appearance_state",
+              "attribute": "精神状态",
+              "value": "精神矍铄",
+              "source_mention_id": "m2",
+              "source_mention_type": "describe",
+              "source_evidence_quote": "看上去六十多岁的样子，身材瘦长，但精神矍铄，衣服干净整洁，头发也梳理的一丝不苟，和唐昊相比，简直就是两个极端",
+              "source_evidence_span": {
+                "start": 1126,
+                "end": 1180
+              },
+              "fact_chunk_span": {
+                "start": 1143,
+                "end": 1147
+              },
+              "match_mode": "exact"
+            },
+            {
+              "fact_quote": "衣服干净整洁",
+              "category": "clothing",
+              "attribute": "衣着",
+              "value": "干净整洁",
+              "source_mention_id": "m2",
+              "source_mention_type": "describe",
+              "source_evidence_quote": "看上去六十多岁的样子，身材瘦长，但精神矍铄，衣服干净整洁，头发也梳理的一丝不苟，和唐昊相比，简直就是两个极端",
+              "source_evidence_span": {
+                "start": 1126,
+                "end": 1180
+              },
+              "fact_chunk_span": {
+                "start": 1148,
+                "end": 1154
+              },
+              "match_mode": "exact"
+            },
+            {
+              "fact_quote": "头发也梳理的一丝不苟",
+              "category": "hair",
+              "attribute": "头发",
+              "value": "梳理的一丝不苟",
+              "source_mention_id": "m2",
+              "source_mention_type": "describe",
+              "source_evidence_quote": "看上去六十多岁的样子，身材瘦长，但精神矍铄，衣服干净整洁，头发也梳理的一丝不苟，和唐昊相比，简直就是两个极端",
+              "source_evidence_span": {
+                "start": 1126,
+                "end": 1180
+              },
+              "fact_chunk_span": {
+                "start": 1155,
+                "end": 1165
+              },
+              "match_mode": "exact"
+            }
+          ]
+        }
+      ],
+      "unassigned_fragments": [
+        {
+          "fragment_ref": "d1-f1",
+          "source_evidence_quote": "看上去六十多岁的样子，身材瘦长，但精神矍铄，衣服干净整洁，头发也梳理的一丝不苟，和唐昊相比，简直就是两个极端",
+          "source_evidence_span": {
+            "start": 1126,
+            "end": 1180
+          },
+          "fragment_quote": "，",
+          "fragment_span": {
+            "start": 1136,
+            "end": 1137
+          }
+        },
+        {
+          "fragment_ref": "d1-f2",
+          "source_evidence_quote": "看上去六十多岁的样子，身材瘦长，但精神矍铄，衣服干净整洁，头发也梳理的一丝不苟，和唐昊相比，简直就是两个极端",
+          "source_evidence_span": {
+            "start": 1126,
+            "end": 1180
+          },
+          "fragment_quote": "，但",
+          "fragment_span": {
+            "start": 1141,
+            "end": 1143
+          }
+        },
+        {
+          "fragment_ref": "d1-f3",
+          "source_evidence_quote": "看上去六十多岁的样子，身材瘦长，但精神矍铄，衣服干净整洁，头发也梳理的一丝不苟，和唐昊相比，简直就是两个极端",
+          "source_evidence_span": {
+            "start": 1126,
+            "end": 1180
+          },
+          "fragment_quote": "，",
+          "fragment_span": {
+            "start": 1147,
+            "end": 1148
+          }
+        },
+        {
+          "fragment_ref": "d1-f4",
+          "source_evidence_quote": "看上去六十多岁的样子，身材瘦长，但精神矍铄，衣服干净整洁，头发也梳理的一丝不苟，和唐昊相比，简直就是两个极端",
+          "source_evidence_span": {
+            "start": 1126,
+            "end": 1180
+          },
+          "fragment_quote": "，",
+          "fragment_span": {
+            "start": 1154,
+            "end": 1155
+          }
+        },
+        {
+          "fragment_ref": "d1-f5",
+          "source_evidence_quote": "看上去六十多岁的样子，身材瘦长，但精神矍铄，衣服干净整洁，头发也梳理的一丝不苟，和唐昊相比，简直就是两个极端",
+          "source_evidence_span": {
+            "start": 1126,
+            "end": 1180
+          },
+          "fragment_quote": "，和唐昊相比，简直就是两个极端",
+          "fragment_span": {
+            "start": 1165,
+            "end": 1180
+          }
+        }
+      ]
+    },
+    "grounding_issues": []
+  },
+  {
+    "chunk_index": 5,
+    "chunk_id": "chunk-000005-9000-11500-f4a0068fbfb5",
+    "describe_local_mention_id": "m3",
+    "mention_quote": "老杰克",
+    "grounded_result": {
+      "schema_version": "grounded-promoted-describe-characters-v6",
+      "grounding_policy_version": "promotion-partial-fact-acceptance-v1",
+      "describe_source_ref": {
+        "local_mention_id": "m3",
+        "packet_hash": "889d95ba32c85c760d1f83334632e8178d9892a2ead23b4c450e854caa06181e"
+      },
+      "promotion_hash": "b02517ebced642424ac9ef110842fad8398d62be22bc7e5af87ec77658bbc8aa",
+      "promoted_characters": [
+        {
+          "promoted_character_ref": {
+            "source_document_version_id": "source-8bcb7305a759571b",
+            "chunk_id": "chunk-000005-9000-11500-f4a0068fbfb5",
+            "source_local_mention_id": "m3",
+            "source_mention_type": "describe",
+            "promotion_index": 1,
+            "character_origin": "remaining_describe",
+            "packet_hash": "889d95ba32c85c760d1f83334632e8178d9892a2ead23b4c450e854caa06181e",
+            "promotion_hash": "b02517ebced642424ac9ef110842fad8398d62be22bc7e5af87ec77658bbc8aa"
+          },
+          "character_label_quote": "老杰克",
+          "grounded_belongs_to_character": [
+            {
+              "fact_quote": "看上去六十多岁的样子",
+              "category": "age",
+              "attribute": "年龄",
+              "value": "六十多岁",
+              "source_mention_id": "m3",
+              "source_mention_type": "describe",
+              "source_evidence_quote": "看上去六十多岁的样子，身材瘦长，但精神矍铄，衣服干净整洁，头发也梳理的一丝不苟，和唐昊相比，简直就是两个极端",
+              "source_evidence_span": {
+                "start": 1126,
+                "end": 1180
+              },
+              "fact_chunk_span": {
+                "start": 1126,
+                "end": 1136
+              },
+              "match_mode": "exact"
+            },
+            {
+              "fact_quote": "身材瘦长",
+              "category": "body",
+              "attribute": "身材",
+              "value": "瘦长",
+              "source_mention_id": "m3",
+              "source_mention_type": "describe",
+              "source_evidence_quote": "看上去六十多岁的样子，身材瘦长，但精神矍铄，衣服干净整洁，头发也梳理的一丝不苟，和唐昊相比，简直就是两个极端",
+              "source_evidence_span": {
+                "start": 1126,
+                "end": 1180
+              },
+              "fact_chunk_span": {
+                "start": 1137,
+                "end": 1141
+              },
+              "match_mode": "exact"
+            },
+            {
+              "fact_quote": "精神矍铄",
+              "category": "appearance_state",
+              "attribute": "精神状态",
+              "value": "矍铄",
+              "source_mention_id": "m3",
+              "source_mention_type": "describe",
+              "source_evidence_quote": "看上去六十多岁的样子，身材瘦长，但精神矍铄，衣服干净整洁，头发也梳理的一丝不苟，和唐昊相比，简直就是两个极端",
+              "source_evidence_span": {
+                "start": 1126,
+                "end": 1180
+              },
+              "fact_chunk_span": {
+                "start": 1143,
+                "end": 1147
+              },
+              "match_mode": "exact"
+            },
+            {
+              "fact_quote": "衣服干净整洁",
+              "category": "clothing",
+              "attribute": "衣服",
+              "value": "干净整洁",
+              "source_mention_id": "m3",
+              "source_mention_type": "describe",
+              "source_evidence_quote": "看上去六十多岁的样子，身材瘦长，但精神矍铄，衣服干净整洁，头发也梳理的一丝不苟，和唐昊相比，简直就是两个极端",
+              "source_evidence_span": {
+                "start": 1126,
+                "end": 1180
+              },
+              "fact_chunk_span": {
+                "start": 1148,
+                "end": 1154
+              },
+              "match_mode": "exact"
+            },
+            {
+              "fact_quote": "头发也梳理的一丝不苟",
+              "category": "hair",
+              "attribute": "头发",
+              "value": "梳理的一丝不苟",
+              "source_mention_id": "m3",
+              "source_mention_type": "describe",
+              "source_evidence_quote": "看上去六十多岁的样子，身材瘦长，但精神矍铄，衣服干净整洁，头发也梳理的一丝不苟，和唐昊相比，简直就是两个极端",
+              "source_evidence_span": {
+                "start": 1126,
+                "end": 1180
+              },
+              "fact_chunk_span": {
+                "start": 1155,
+                "end": 1165
+              },
+              "match_mode": "exact"
+            }
+          ]
+        }
+      ],
+      "unassigned_fragments": [
+        {
+          "fragment_ref": "d1-f1",
+          "source_evidence_quote": "看上去六十多岁的样子，身材瘦长，但精神矍铄，衣服干净整洁，头发也梳理的一丝不苟，和唐昊相比，简直就是两个极端",
+          "source_evidence_span": {
+            "start": 1126,
+            "end": 1180
+          },
+          "fragment_quote": "，",
+          "fragment_span": {
+            "start": 1136,
+            "end": 1137
+          }
+        },
+        {
+          "fragment_ref": "d1-f2",
+          "source_evidence_quote": "看上去六十多岁的样子，身材瘦长，但精神矍铄，衣服干净整洁，头发也梳理的一丝不苟，和唐昊相比，简直就是两个极端",
+          "source_evidence_span": {
+            "start": 1126,
+            "end": 1180
+          },
+          "fragment_quote": "，但",
+          "fragment_span": {
+            "start": 1141,
+            "end": 1143
+          }
+        },
+        {
+          "fragment_ref": "d1-f3",
+          "source_evidence_quote": "看上去六十多岁的样子，身材瘦长，但精神矍铄，衣服干净整洁，头发也梳理的一丝不苟，和唐昊相比，简直就是两个极端",
+          "source_evidence_span": {
+            "start": 1126,
+            "end": 1180
+          },
+          "fragment_quote": "，",
+          "fragment_span": {
+            "start": 1147,
+            "end": 1148
+          }
+        },
+        {
+          "fragment_ref": "d1-f4",
+          "source_evidence_quote": "看上去六十多岁的样子，身材瘦长，但精神矍铄，衣服干净整洁，头发也梳理的一丝不苟，和唐昊相比，简直就是两个极端",
+          "source_evidence_span": {
+            "start": 1126,
+            "end": 1180
+          },
+          "fragment_quote": "，",
+          "fragment_span": {
+            "start": 1154,
+            "end": 1155
+          }
+        },
+        {
+          "fragment_ref": "d1-f5",
+          "source_evidence_quote": "看上去六十多岁的样子，身材瘦长，但精神矍铄，衣服干净整洁，头发也梳理的一丝不苟，和唐昊相比，简直就是两个极端",
+          "source_evidence_span": {
+            "start": 1126,
+            "end": 1180
+          },
+          "fragment_quote": "，和唐昊相比，简直就是两个极端",
+          "fragment_span": {
+            "start": 1165,
+            "end": 1180
+          }
+        }
+      ]
+    },
+    "grounding_issues": []
+  },
+  {
+    "chunk_index": 5,
+    "chunk_id": "chunk-000005-9000-11500-f4a0068fbfb5",
+    "describe_local_mention_id": "m4",
+    "mention_quote": "这位村长",
+    "grounded_result": {
+      "schema_version": "grounded-promoted-describe-characters-v6",
+      "grounding_policy_version": "promotion-partial-fact-acceptance-v1",
+      "describe_source_ref": {
+        "local_mention_id": "m4",
+        "packet_hash": "cd6075fc8f576b7e9ed6d2dcb732a9d847883a56caf42e217f7db1ccd29df8bf"
+      },
+      "promotion_hash": "2c769b2944b1c694ec162eb0bf931a9a0c4e0d3abe30a016570a21f7bdcff5a8",
+      "promoted_characters": [
+        {
+          "promoted_character_ref": {
+            "source_document_version_id": "source-8bcb7305a759571b",
+            "chunk_id": "chunk-000005-9000-11500-f4a0068fbfb5",
+            "source_local_mention_id": "m4",
+            "source_mention_type": "describe",
+            "promotion_index": 1,
+            "character_origin": "remaining_describe",
+            "packet_hash": "cd6075fc8f576b7e9ed6d2dcb732a9d847883a56caf42e217f7db1ccd29df8bf",
+            "promotion_hash": "2c769b2944b1c694ec162eb0bf931a9a0c4e0d3abe30a016570a21f7bdcff5a8"
+          },
+          "character_label_quote": "这位村长",
+          "grounded_belongs_to_character": [
+            {
+              "fact_quote": "看上去六十多岁的样子",
+              "category": "age",
+              "attribute": "年龄",
+              "value": "六十多岁",
+              "source_mention_id": "m4",
+              "source_mention_type": "describe",
+              "source_evidence_quote": "看上去六十多岁的样子，身材瘦长，但精神矍铄，衣服干净整洁，头发也梳理的一丝不苟，和唐昊相比，简直就是两个极端",
+              "source_evidence_span": {
+                "start": 1126,
+                "end": 1180
+              },
+              "fact_chunk_span": {
+                "start": 1126,
+                "end": 1136
+              },
+              "match_mode": "exact"
+            },
+            {
+              "fact_quote": "身材瘦长",
+              "category": "body",
+              "attribute": "身材",
+              "value": "瘦长",
+              "source_mention_id": "m4",
+              "source_mention_type": "describe",
+              "source_evidence_quote": "看上去六十多岁的样子，身材瘦长，但精神矍铄，衣服干净整洁，头发也梳理的一丝不苟，和唐昊相比，简直就是两个极端",
+              "source_evidence_span": {
+                "start": 1126,
+                "end": 1180
+              },
+              "fact_chunk_span": {
+                "start": 1137,
+                "end": 1141
+              },
+              "match_mode": "exact"
+            },
+            {
+              "fact_quote": "衣服干净整洁",
+              "category": "clothing",
+              "attribute": "衣服",
+              "value": "干净整洁",
+              "source_mention_id": "m4",
+              "source_mention_type": "describe",
+              "source_evidence_quote": "看上去六十多岁的样子，身材瘦长，但精神矍铄，衣服干净整洁，头发也梳理的一丝不苟，和唐昊相比，简直就是两个极端",
+              "source_evidence_span": {
+                "start": 1126,
+                "end": 1180
+              },
+              "fact_chunk_span": {
+                "start": 1148,
+                "end": 1154
+              },
+              "match_mode": "exact"
+            },
+            {
+              "fact_quote": "头发也梳理的一丝不苟",
+              "category": "hair",
+              "attribute": "头发",
+              "value": "梳理的一丝不苟",
+              "source_mention_id": "m4",
+              "source_mention_type": "describe",
+              "source_evidence_quote": "看上去六十多岁的样子，身材瘦长，但精神矍铄，衣服干净整洁，头发也梳理的一丝不苟，和唐昊相比，简直就是两个极端",
+              "source_evidence_span": {
+                "start": 1126,
+                "end": 1180
+              },
+              "fact_chunk_span": {
+                "start": 1155,
+                "end": 1165
+              },
+              "match_mode": "exact"
+            }
+          ]
+        }
+      ],
+      "unassigned_fragments": [
+        {
+          "fragment_ref": "d1-f1",
+          "source_evidence_quote": "看上去六十多岁的样子，身材瘦长，但精神矍铄，衣服干净整洁，头发也梳理的一丝不苟，和唐昊相比，简直就是两个极端",
+          "source_evidence_span": {
+            "start": 1126,
+            "end": 1180
+          },
+          "fragment_quote": "，",
+          "fragment_span": {
+            "start": 1136,
+            "end": 1137
+          }
+        },
+        {
+          "fragment_ref": "d1-f2",
+          "source_evidence_quote": "看上去六十多岁的样子，身材瘦长，但精神矍铄，衣服干净整洁，头发也梳理的一丝不苟，和唐昊相比，简直就是两个极端",
+          "source_evidence_span": {
+            "start": 1126,
+            "end": 1180
+          },
+          "fragment_quote": "，但精神矍铄，",
+          "fragment_span": {
+            "start": 1141,
+            "end": 1148
+          }
+        },
+        {
+          "fragment_ref": "d1-f3",
+          "source_evidence_quote": "看上去六十多岁的样子，身材瘦长，但精神矍铄，衣服干净整洁，头发也梳理的一丝不苟，和唐昊相比，简直就是两个极端",
+          "source_evidence_span": {
+            "start": 1126,
+            "end": 1180
+          },
+          "fragment_quote": "，",
+          "fragment_span": {
+            "start": 1154,
+            "end": 1155
+          }
+        },
+        {
+          "fragment_ref": "d1-f4",
+          "source_evidence_quote": "看上去六十多岁的样子，身材瘦长，但精神矍铄，衣服干净整洁，头发也梳理的一丝不苟，和唐昊相比，简直就是两个极端",
+          "source_evidence_span": {
+            "start": 1126,
+            "end": 1180
+          },
+          "fragment_quote": "，和唐昊相比，简直就是两个极端",
+          "fragment_span": {
+            "start": 1165,
+            "end": 1180
+          }
+        }
+      ]
+    },
+    "grounding_issues": []
+  },
+  {
+    "chunk_index": 5,
+    "chunk_id": "chunk-000005-9000-11500-f4a0068fbfb5",
+    "describe_local_mention_id": "m5",
+    "mention_quote": "杰克爷爷",
+    "grounded_result": {
+      "schema_version": "grounded-promoted-describe-characters-v6",
+      "grounding_policy_version": "promotion-partial-fact-acceptance-v1",
+      "describe_source_ref": {
+        "local_mention_id": "m5",
+        "packet_hash": "4d1605c7279113737e028d9f3de6870926b62417e5b36a6784f80e9dea1e644b"
+      },
+      "promotion_hash": "8bbb3843669027b40bf02a8ac309cdd772058aa502e975f80ec7856fb54fa9c4",
+      "promoted_characters": [
+        {
+          "promoted_character_ref": {
+            "source_document_version_id": "source-8bcb7305a759571b",
+            "chunk_id": "chunk-000005-9000-11500-f4a0068fbfb5",
+            "source_local_mention_id": "m5",
+            "source_mention_type": "describe",
+            "promotion_index": 1,
+            "character_origin": "remaining_describe",
+            "packet_hash": "4d1605c7279113737e028d9f3de6870926b62417e5b36a6784f80e9dea1e644b",
+            "promotion_hash": "8bbb3843669027b40bf02a8ac309cdd772058aa502e975f80ec7856fb54fa9c4"
+          },
+          "character_label_quote": "杰克爷爷",
+          "grounded_belongs_to_character": [
+            {
+              "fact_quote": "看上去六十多岁的样子",
+              "category": "age",
+              "attribute": "年龄",
+              "value": "六十多岁",
+              "source_mention_id": "m5",
+              "source_mention_type": "describe",
+              "source_evidence_quote": "看上去六十多岁的样子，身材瘦长，但精神矍铄，衣服干净整洁，头发也梳理的一丝不苟，和唐昊相比，简直就是两个极端",
+              "source_evidence_span": {
+                "start": 1126,
+                "end": 1180
+              },
+              "fact_chunk_span": {
+                "start": 1126,
+                "end": 1136
+              },
+              "match_mode": "exact"
+            },
+            {
+              "fact_quote": "身材瘦长",
+              "category": "body",
+              "attribute": "身材",
+              "value": "瘦长",
+              "source_mention_id": "m5",
+              "source_mention_type": "describe",
+              "source_evidence_quote": "看上去六十多岁的样子，身材瘦长，但精神矍铄，衣服干净整洁，头发也梳理的一丝不苟，和唐昊相比，简直就是两个极端",
+              "source_evidence_span": {
+                "start": 1126,
+                "end": 1180
+              },
+              "fact_chunk_span": {
+                "start": 1137,
+                "end": 1141
+              },
+              "match_mode": "exact"
+            },
+            {
+              "fact_quote": "精神矍铄",
+              "category": "appearance_state",
+              "attribute": "精神状态",
+              "value": "精神矍铄",
+              "source_mention_id": "m5",
+              "source_mention_type": "describe",
+              "source_evidence_quote": "看上去六十多岁的样子，身材瘦长，但精神矍铄，衣服干净整洁，头发也梳理的一丝不苟，和唐昊相比，简直就是两个极端",
+              "source_evidence_span": {
+                "start": 1126,
+                "end": 1180
+              },
+              "fact_chunk_span": {
+                "start": 1143,
+                "end": 1147
+              },
+              "match_mode": "exact"
+            },
+            {
+              "fact_quote": "衣服干净整洁",
+              "category": "clothing",
+              "attribute": "衣服",
+              "value": "干净整洁",
+              "source_mention_id": "m5",
+              "source_mention_type": "describe",
+              "source_evidence_quote": "看上去六十多岁的样子，身材瘦长，但精神矍铄，衣服干净整洁，头发也梳理的一丝不苟，和唐昊相比，简直就是两个极端",
+              "source_evidence_span": {
+                "start": 1126,
+                "end": 1180
+              },
+              "fact_chunk_span": {
+                "start": 1148,
+                "end": 1154
+              },
+              "match_mode": "exact"
+            },
+            {
+              "fact_quote": "头发也梳理的一丝不苟",
+              "category": "hair",
+              "attribute": "头发",
+              "value": "梳理的一丝不苟",
+              "source_mention_id": "m5",
+              "source_mention_type": "describe",
+              "source_evidence_quote": "看上去六十多岁的样子，身材瘦长，但精神矍铄，衣服干净整洁，头发也梳理的一丝不苟，和唐昊相比，简直就是两个极端",
+              "source_evidence_span": {
+                "start": 1126,
+                "end": 1180
+              },
+              "fact_chunk_span": {
+                "start": 1155,
+                "end": 1165
+              },
+              "match_mode": "exact"
+            }
+          ]
+        }
+      ],
+      "unassigned_fragments": [
+        {
+          "fragment_ref": "d1-f1",
+          "source_evidence_quote": "看上去六十多岁的样子，身材瘦长，但精神矍铄，衣服干净整洁，头发也梳理的一丝不苟，和唐昊相比，简直就是两个极端",
+          "source_evidence_span": {
+            "start": 1126,
+            "end": 1180
+          },
+          "fragment_quote": "，",
+          "fragment_span": {
+            "start": 1136,
+            "end": 1137
+          }
+        },
+        {
+          "fragment_ref": "d1-f2",
+          "source_evidence_quote": "看上去六十多岁的样子，身材瘦长，但精神矍铄，衣服干净整洁，头发也梳理的一丝不苟，和唐昊相比，简直就是两个极端",
+          "source_evidence_span": {
+            "start": 1126,
+            "end": 1180
+          },
+          "fragment_quote": "，但",
+          "fragment_span": {
+            "start": 1141,
+            "end": 1143
+          }
+        },
+        {
+          "fragment_ref": "d1-f3",
+          "source_evidence_quote": "看上去六十多岁的样子，身材瘦长，但精神矍铄，衣服干净整洁，头发也梳理的一丝不苟，和唐昊相比，简直就是两个极端",
+          "source_evidence_span": {
+            "start": 1126,
+            "end": 1180
+          },
+          "fragment_quote": "，",
+          "fragment_span": {
+            "start": 1147,
+            "end": 1148
+          }
+        },
+        {
+          "fragment_ref": "d1-f4",
+          "source_evidence_quote": "看上去六十多岁的样子，身材瘦长，但精神矍铄，衣服干净整洁，头发也梳理的一丝不苟，和唐昊相比，简直就是两个极端",
+          "source_evidence_span": {
+            "start": 1126,
+            "end": 1180
+          },
+          "fragment_quote": "，",
+          "fragment_span": {
+            "start": 1154,
+            "end": 1155
+          }
+        },
+        {
+          "fragment_ref": "d1-f5",
+          "source_evidence_quote": "看上去六十多岁的样子，身材瘦长，但精神矍铄，衣服干净整洁，头发也梳理的一丝不苟，和唐昊相比，简直就是两个极端",
+          "source_evidence_span": {
+            "start": 1126,
+            "end": 1180
+          },
+          "fragment_quote": "，和唐昊相比，简直就是两个极端",
+          "fragment_span": {
+            "start": 1165,
+            "end": 1180
+          }
+        }
+      ]
+    },
+    "grounding_issues": []
+  },
+  {
+    "chunk_index": 6,
+    "chunk_id": "chunk-000006-11250-13750-9b713c3495b7",
+    "describe_local_mention_id": "m1",
+    "mention_quote": "年轻人",
+    "grounded_result": {
+      "schema_version": "grounded-promoted-describe-characters-v6",
+      "grounding_policy_version": "promotion-partial-fact-acceptance-v1",
+      "describe_source_ref": {
+        "local_mention_id": "m1",
+        "packet_hash": "62346dbfc6b94fc2d595acbece348759a2815879b58538cc772119f3ca5b23f5"
+      },
+      "promotion_hash": "b1969762eed702f1cd47b4decc247bb1b944cd8d10f4d6f804b8235fcc51c61b",
+      "promoted_characters": [
+        {
+          "promoted_character_ref": {
+            "source_document_version_id": "source-8bcb7305a759571b",
+            "chunk_id": "chunk-000006-11250-13750-9b713c3495b7",
+            "source_local_mention_id": "m1",
+            "source_mention_type": "describe",
+            "promotion_index": 1,
+            "character_origin": "remaining_describe",
+            "packet_hash": "62346dbfc6b94fc2d595acbece348759a2815879b58538cc772119f3ca5b23f5",
+            "promotion_hash": "b1969762eed702f1cd47b4decc247bb1b944cd8d10f4d6f804b8235fcc51c61b"
+          },
+          "character_label_quote": "年轻人",
+          "grounded_belongs_to_character": [
+            {
+              "fact_quote": "看上去二十多岁的样子",
+              "category": "age",
+              "attribute": "年龄",
+              "value": "二十多岁",
+              "source_mention_id": "m1",
+              "source_mention_type": "describe",
+              "source_evidence_quote": "此人看上去二十多岁的样子，剑眉星目，相貌甚是俊朗。一身白色劲装，背后是黑色披风，胸前正中心的位置，有一个拳头大小的魂字。",
+              "source_evidence_span": {
+                "start": 1889,
+                "end": 1949
+              },
+              "fact_chunk_span": {
+                "start": 1891,
+                "end": 1901
+              },
+              "match_mode": "exact"
+            },
+            {
+              "fact_quote": "剑眉星目",
+              "category": "face",
+              "attribute": "眉毛和眼睛",
+              "value": "剑眉星目",
+              "source_mention_id": "m1",
+              "source_mention_type": "describe",
+              "source_evidence_quote": "此人看上去二十多岁的样子，剑眉星目，相貌甚是俊朗。一身白色劲装，背后是黑色披风，胸前正中心的位置，有一个拳头大小的魂字。",
+              "source_evidence_span": {
+                "start": 1889,
+                "end": 1949
+              },
+              "fact_chunk_span": {
+                "start": 1902,
+                "end": 1906
+              },
+              "match_mode": "exact"
+            },
+            {
+              "fact_quote": "相貌甚是俊朗",
+              "category": "face",
+              "attribute": "相貌",
+              "value": "俊朗",
+              "source_mention_id": "m1",
+              "source_mention_type": "describe",
+              "source_evidence_quote": "此人看上去二十多岁的样子，剑眉星目，相貌甚是俊朗。一身白色劲装，背后是黑色披风，胸前正中心的位置，有一个拳头大小的魂字。",
+              "source_evidence_span": {
+                "start": 1889,
+                "end": 1949
+              },
+              "fact_chunk_span": {
+                "start": 1907,
+                "end": 1913
+              },
+              "match_mode": "exact"
+            },
+            {
+              "fact_quote": "一身白色劲装",
+              "category": "clothing",
+              "attribute": "服装",
+              "value": "白色劲装",
+              "source_mention_id": "m1",
+              "source_mention_type": "describe",
+              "source_evidence_quote": "此人看上去二十多岁的样子，剑眉星目，相貌甚是俊朗。一身白色劲装，背后是黑色披风，胸前正中心的位置，有一个拳头大小的魂字。",
+              "source_evidence_span": {
+                "start": 1889,
+                "end": 1949
+              },
+              "fact_chunk_span": {
+                "start": 1914,
+                "end": 1920
+              },
+              "match_mode": "exact"
+            },
+            {
+              "fact_quote": "背后是黑色披风",
+              "category": "clothing",
+              "attribute": "披风",
+              "value": "黑色披风",
+              "source_mention_id": "m1",
+              "source_mention_type": "describe",
+              "source_evidence_quote": "此人看上去二十多岁的样子，剑眉星目，相貌甚是俊朗。一身白色劲装，背后是黑色披风，胸前正中心的位置，有一个拳头大小的魂字。",
+              "source_evidence_span": {
+                "start": 1889,
+                "end": 1949
+              },
+              "fact_chunk_span": {
+                "start": 1921,
+                "end": 1928
+              },
+              "match_mode": "exact"
+            },
+            {
+              "fact_quote": "有一个拳头大小的魂字",
+              "category": "clothing",
+              "attribute": "胸前字",
+              "value": "拳头大小的魂字",
+              "source_mention_id": "m1",
+              "source_mention_type": "describe",
+              "source_evidence_quote": "此人看上去二十多岁的样子，剑眉星目，相貌甚是俊朗。一身白色劲装，背后是黑色披风，胸前正中心的位置，有一个拳头大小的魂字。",
+              "source_evidence_span": {
+                "start": 1889,
+                "end": 1949
+              },
+              "fact_chunk_span": {
+                "start": 1938,
+                "end": 1948
+              },
+              "match_mode": "exact"
+            },
+            {
+              "fact_quote": "左胸上，有一枚雕刻着长剑的徽章",
+              "category": "accessory",
+              "attribute": "徽章",
+              "value": "雕刻着长剑的徽章",
+              "source_mention_id": "m1",
+              "source_mention_type": "describe",
+              "source_evidence_quote": "左胸上，有一枚雕刻着长剑的徽章，徽章上一共是三柄长剑交错。",
+              "source_evidence_span": {
+                "start": 1969,
+                "end": 1998
+              },
+              "fact_chunk_span": {
+                "start": 1969,
+                "end": 1984
+              },
+              "match_mode": "exact"
+            },
+            {
+              "fact_quote": "徽章上一共是三柄长剑交错",
+              "category": "accessory",
+              "attribute": "徽章图案",
+              "value": "三柄长剑交错",
+              "source_mention_id": "m1",
+              "source_mention_type": "describe",
+              "source_evidence_quote": "左胸上，有一枚雕刻着长剑的徽章，徽章上一共是三柄长剑交错。",
+              "source_evidence_span": {
+                "start": 1969,
+                "end": 1998
+              },
+              "fact_chunk_span": {
+                "start": 1985,
+                "end": 1997
+              },
+              "match_mode": "exact"
+            }
+          ]
+        }
+      ],
+      "unassigned_fragments": [
+        {
+          "fragment_ref": "d1-f1",
+          "source_evidence_quote": "此人看上去二十多岁的样子，剑眉星目，相貌甚是俊朗。一身白色劲装，背后是黑色披风，胸前正中心的位置，有一个拳头大小的魂字。",
+          "source_evidence_span": {
+            "start": 1889,
+            "end": 1949
+          },
+          "fragment_quote": "此人",
+          "fragment_span": {
+            "start": 1889,
+            "end": 1891
+          }
+        },
+        {
+          "fragment_ref": "d1-f2",
+          "source_evidence_quote": "此人看上去二十多岁的样子，剑眉星目，相貌甚是俊朗。一身白色劲装，背后是黑色披风，胸前正中心的位置，有一个拳头大小的魂字。",
+          "source_evidence_span": {
+            "start": 1889,
+            "end": 1949
+          },
+          "fragment_quote": "，",
+          "fragment_span": {
+            "start": 1901,
+            "end": 1902
+          }
+        },
+        {
+          "fragment_ref": "d1-f3",
+          "source_evidence_quote": "此人看上去二十多岁的样子，剑眉星目，相貌甚是俊朗。一身白色劲装，背后是黑色披风，胸前正中心的位置，有一个拳头大小的魂字。",
+          "source_evidence_span": {
+            "start": 1889,
+            "end": 1949
+          },
+          "fragment_quote": "，",
+          "fragment_span": {
+            "start": 1906,
+            "end": 1907
+          }
+        },
+        {
+          "fragment_ref": "d1-f4",
+          "source_evidence_quote": "此人看上去二十多岁的样子，剑眉星目，相貌甚是俊朗。一身白色劲装，背后是黑色披风，胸前正中心的位置，有一个拳头大小的魂字。",
+          "source_evidence_span": {
+            "start": 1889,
+            "end": 1949
+          },
+          "fragment_quote": "。",
+          "fragment_span": {
+            "start": 1913,
+            "end": 1914
+          }
+        },
+        {
+          "fragment_ref": "d1-f5",
+          "source_evidence_quote": "此人看上去二十多岁的样子，剑眉星目，相貌甚是俊朗。一身白色劲装，背后是黑色披风，胸前正中心的位置，有一个拳头大小的魂字。",
+          "source_evidence_span": {
+            "start": 1889,
+            "end": 1949
+          },
+          "fragment_quote": "，",
+          "fragment_span": {
+            "start": 1920,
+            "end": 1921
+          }
+        },
+        {
+          "fragment_ref": "d1-f6",
+          "source_evidence_quote": "此人看上去二十多岁的样子，剑眉星目，相貌甚是俊朗。一身白色劲装，背后是黑色披风，胸前正中心的位置，有一个拳头大小的魂字。",
+          "source_evidence_span": {
+            "start": 1889,
+            "end": 1949
+          },
+          "fragment_quote": "，胸前正中心的位置，",
+          "fragment_span": {
+            "start": 1928,
+            "end": 1938
+          }
+        },
+        {
+          "fragment_ref": "d1-f7",
+          "source_evidence_quote": "此人看上去二十多岁的样子，剑眉星目，相貌甚是俊朗。一身白色劲装，背后是黑色披风，胸前正中心的位置，有一个拳头大小的魂字。",
+          "source_evidence_span": {
+            "start": 1889,
+            "end": 1949
+          },
+          "fragment_quote": "。",
+          "fragment_span": {
+            "start": 1948,
+            "end": 1949
+          }
+        },
+        {
+          "fragment_ref": "d1-f8",
+          "source_evidence_quote": "左胸上，有一枚雕刻着长剑的徽章，徽章上一共是三柄长剑交错。",
+          "source_evidence_span": {
+            "start": 1969,
+            "end": 1998
+          },
+          "fragment_quote": "，",
+          "fragment_span": {
+            "start": 1984,
+            "end": 1985
+          }
+        },
+        {
+          "fragment_ref": "d1-f9",
+          "source_evidence_quote": "左胸上，有一枚雕刻着长剑的徽章，徽章上一共是三柄长剑交错。",
+          "source_evidence_span": {
+            "start": 1969,
+            "end": 1998
+          },
+          "fragment_quote": "。",
+          "fragment_span": {
+            "start": 1997,
+            "end": 1998
+          }
+        }
+      ]
+    },
+    "grounding_issues": []
+  },
+  {
+    "chunk_index": 6,
+    "chunk_id": "chunk-000006-11250-13750-9b713c3495b7",
+    "describe_local_mention_id": "m2",
+    "mention_quote": "青年",
+    "grounded_result": {
+      "schema_version": "grounded-promoted-describe-characters-v6",
+      "grounding_policy_version": "promotion-partial-fact-acceptance-v1",
+      "describe_source_ref": {
+        "local_mention_id": "m2",
+        "packet_hash": "4c4dd5beffa9278405434602b7b46224338728279cdc350d4e16594333c9b3ff"
+      },
+      "promotion_hash": "312048c6534df0ee9800c675781c4b08356893836cd5dfe14a26e08f7daacfb2",
+      "promoted_characters": [
+        {
+          "promoted_character_ref": {
+            "source_document_version_id": "source-8bcb7305a759571b",
+            "chunk_id": "chunk-000006-11250-13750-9b713c3495b7",
+            "source_local_mention_id": "m2",
+            "source_mention_type": "describe",
+            "promotion_index": 1,
+            "character_origin": "remaining_describe",
+            "packet_hash": "4c4dd5beffa9278405434602b7b46224338728279cdc350d4e16594333c9b3ff",
+            "promotion_hash": "312048c6534df0ee9800c675781c4b08356893836cd5dfe14a26e08f7daacfb2"
+          },
+          "character_label_quote": "青年",
+          "grounded_belongs_to_character": [
+            {
+              "fact_quote": "看上去二十多岁的样子",
+              "category": "age",
+              "attribute": "年龄",
+              "value": "二十多岁",
+              "source_mention_id": "m2",
+              "source_mention_type": "describe",
+              "source_evidence_quote": "此人看上去二十多岁的样子，剑眉星目，相貌甚是俊朗。一身白色劲装，背后是黑色披风，胸前正中心的位置，有一个拳头大小的魂字。",
+              "source_evidence_span": {
+                "start": 1889,
+                "end": 1949
+              },
+              "fact_chunk_span": {
+                "start": 1891,
+                "end": 1901
+              },
+              "match_mode": "exact"
+            },
+            {
+              "fact_quote": "剑眉星目",
+              "category": "face",
+              "attribute": "眉眼",
+              "value": "剑眉星目",
+              "source_mention_id": "m2",
+              "source_mention_type": "describe",
+              "source_evidence_quote": "此人看上去二十多岁的样子，剑眉星目，相貌甚是俊朗。一身白色劲装，背后是黑色披风，胸前正中心的位置，有一个拳头大小的魂字。",
+              "source_evidence_span": {
+                "start": 1889,
+                "end": 1949
+              },
+              "fact_chunk_span": {
+                "start": 1902,
+                "end": 1906
+              },
+              "match_mode": "exact"
+            },
+            {
+              "fact_quote": "相貌甚是俊朗",
+              "category": "face",
+              "attribute": "相貌",
+              "value": "俊朗",
+              "source_mention_id": "m2",
+              "source_mention_type": "describe",
+              "source_evidence_quote": "此人看上去二十多岁的样子，剑眉星目，相貌甚是俊朗。一身白色劲装，背后是黑色披风，胸前正中心的位置，有一个拳头大小的魂字。",
+              "source_evidence_span": {
+                "start": 1889,
+                "end": 1949
+              },
+              "fact_chunk_span": {
+                "start": 1907,
+                "end": 1913
+              },
+              "match_mode": "exact"
+            },
+            {
+              "fact_quote": "一身白色劲装",
+              "category": "clothing",
+              "attribute": "服装",
+              "value": "白色劲装",
+              "source_mention_id": "m2",
+              "source_mention_type": "describe",
+              "source_evidence_quote": "此人看上去二十多岁的样子，剑眉星目，相貌甚是俊朗。一身白色劲装，背后是黑色披风，胸前正中心的位置，有一个拳头大小的魂字。",
+              "source_evidence_span": {
+                "start": 1889,
+                "end": 1949
+              },
+              "fact_chunk_span": {
+                "start": 1914,
+                "end": 1920
+              },
+              "match_mode": "exact"
+            },
+            {
+              "fact_quote": "背后是黑色披风",
+              "category": "clothing",
+              "attribute": "披风",
+              "value": "黑色披风",
+              "source_mention_id": "m2",
+              "source_mention_type": "describe",
+              "source_evidence_quote": "此人看上去二十多岁的样子，剑眉星目，相貌甚是俊朗。一身白色劲装，背后是黑色披风，胸前正中心的位置，有一个拳头大小的魂字。",
+              "source_evidence_span": {
+                "start": 1889,
+                "end": 1949
+              },
+              "fact_chunk_span": {
+                "start": 1921,
+                "end": 1928
+              },
+              "match_mode": "exact"
+            },
+            {
+              "fact_quote": "胸前正中心的位置，有一个拳头大小的魂字",
+              "category": "distinctive_mark",
+              "attribute": "胸前标记",
+              "value": "拳头大小的魂字",
+              "source_mention_id": "m2",
+              "source_mention_type": "describe",
+              "source_evidence_quote": "此人看上去二十多岁的样子，剑眉星目，相貌甚是俊朗。一身白色劲装，背后是黑色披风，胸前正中心的位置，有一个拳头大小的魂字。",
+              "source_evidence_span": {
+                "start": 1889,
+                "end": 1949
+              },
+              "fact_chunk_span": {
+                "start": 1929,
+                "end": 1948
+              },
+              "match_mode": "exact"
+            },
+            {
+              "fact_quote": "左胸上，有一枚雕刻着长剑的徽章，徽章上一共是三柄长剑交错",
+              "category": "accessory",
+              "attribute": "左胸徽章",
+              "value": "雕刻三柄长剑交错的徽章",
+              "source_mention_id": "m2",
+              "source_mention_type": "describe",
+              "source_evidence_quote": "左胸上，有一枚雕刻着长剑的徽章，徽章上一共是三柄长剑交错。",
+              "source_evidence_span": {
+                "start": 1969,
+                "end": 1998
+              },
+              "fact_chunk_span": {
+                "start": 1969,
+                "end": 1997
+              },
+              "match_mode": "exact"
+            }
+          ]
+        }
+      ],
+      "unassigned_fragments": [
+        {
+          "fragment_ref": "d1-f1",
+          "source_evidence_quote": "此人看上去二十多岁的样子，剑眉星目，相貌甚是俊朗。一身白色劲装，背后是黑色披风，胸前正中心的位置，有一个拳头大小的魂字。",
+          "source_evidence_span": {
+            "start": 1889,
+            "end": 1949
+          },
+          "fragment_quote": "此人",
+          "fragment_span": {
+            "start": 1889,
+            "end": 1891
+          }
+        },
+        {
+          "fragment_ref": "d1-f2",
+          "source_evidence_quote": "此人看上去二十多岁的样子，剑眉星目，相貌甚是俊朗。一身白色劲装，背后是黑色披风，胸前正中心的位置，有一个拳头大小的魂字。",
+          "source_evidence_span": {
+            "start": 1889,
+            "end": 1949
+          },
+          "fragment_quote": "，",
+          "fragment_span": {
+            "start": 1901,
+            "end": 1902
+          }
+        },
+        {
+          "fragment_ref": "d1-f3",
+          "source_evidence_quote": "此人看上去二十多岁的样子，剑眉星目，相貌甚是俊朗。一身白色劲装，背后是黑色披风，胸前正中心的位置，有一个拳头大小的魂字。",
+          "source_evidence_span": {
+            "start": 1889,
+            "end": 1949
+          },
+          "fragment_quote": "，",
+          "fragment_span": {
+            "start": 1906,
+            "end": 1907
+          }
+        },
+        {
+          "fragment_ref": "d1-f4",
+          "source_evidence_quote": "此人看上去二十多岁的样子，剑眉星目，相貌甚是俊朗。一身白色劲装，背后是黑色披风，胸前正中心的位置，有一个拳头大小的魂字。",
+          "source_evidence_span": {
+            "start": 1889,
+            "end": 1949
+          },
+          "fragment_quote": "。",
+          "fragment_span": {
+            "start": 1913,
+            "end": 1914
+          }
+        },
+        {
+          "fragment_ref": "d1-f5",
+          "source_evidence_quote": "此人看上去二十多岁的样子，剑眉星目，相貌甚是俊朗。一身白色劲装，背后是黑色披风，胸前正中心的位置，有一个拳头大小的魂字。",
+          "source_evidence_span": {
+            "start": 1889,
+            "end": 1949
+          },
+          "fragment_quote": "，",
+          "fragment_span": {
+            "start": 1920,
+            "end": 1921
+          }
+        },
+        {
+          "fragment_ref": "d1-f6",
+          "source_evidence_quote": "此人看上去二十多岁的样子，剑眉星目，相貌甚是俊朗。一身白色劲装，背后是黑色披风，胸前正中心的位置，有一个拳头大小的魂字。",
+          "source_evidence_span": {
+            "start": 1889,
+            "end": 1949
+          },
+          "fragment_quote": "，",
+          "fragment_span": {
+            "start": 1928,
+            "end": 1929
+          }
+        },
+        {
+          "fragment_ref": "d1-f7",
+          "source_evidence_quote": "此人看上去二十多岁的样子，剑眉星目，相貌甚是俊朗。一身白色劲装，背后是黑色披风，胸前正中心的位置，有一个拳头大小的魂字。",
+          "source_evidence_span": {
+            "start": 1889,
+            "end": 1949
+          },
+          "fragment_quote": "。",
+          "fragment_span": {
+            "start": 1948,
+            "end": 1949
+          }
+        },
+        {
+          "fragment_ref": "d1-f8",
+          "source_evidence_quote": "左胸上，有一枚雕刻着长剑的徽章，徽章上一共是三柄长剑交错。",
+          "source_evidence_span": {
+            "start": 1969,
+            "end": 1998
+          },
+          "fragment_quote": "。",
+          "fragment_span": {
+            "start": 1997,
+            "end": 1998
+          }
+        }
+      ]
+    },
+    "grounding_issues": []
+  },
+  {
+    "chunk_index": 6,
+    "chunk_id": "chunk-000006-11250-13750-9b713c3495b7",
+    "describe_local_mention_id": "m3",
+    "mention_quote": "战魂大师",
+    "grounded_result": {
+      "schema_version": "grounded-promoted-describe-characters-v6",
+      "grounding_policy_version": "promotion-partial-fact-acceptance-v1",
+      "describe_source_ref": {
+        "local_mention_id": "m3",
+        "packet_hash": "6bb39f8aea9f26d417dbb45861d7d128217831446a93af0e30ebdfb3858bed8d"
+      },
+      "promotion_hash": "51def963316e4206373c79d4fabe6e1b299007e9666747b3ee62e2d301e06702",
+      "promoted_characters": [
+        {
+          "promoted_character_ref": {
+            "source_document_version_id": "source-8bcb7305a759571b",
+            "chunk_id": "chunk-000006-11250-13750-9b713c3495b7",
+            "source_local_mention_id": "m3",
+            "source_mention_type": "describe",
+            "promotion_index": 1,
+            "character_origin": "remaining_describe",
+            "packet_hash": "6bb39f8aea9f26d417dbb45861d7d128217831446a93af0e30ebdfb3858bed8d",
+            "promotion_hash": "51def963316e4206373c79d4fabe6e1b299007e9666747b3ee62e2d301e06702"
+          },
+          "character_label_quote": "战魂大师",
+          "grounded_belongs_to_character": [
+            {
+              "fact_quote": "二十多岁",
+              "category": "age",
+              "attribute": "年龄",
+              "value": "二十多岁",
+              "source_mention_id": "m3",
+              "source_mention_type": "describe",
+              "source_evidence_quote": "此人看上去二十多岁的样子，剑眉星目，相貌甚是俊朗。一身白色劲装，背后是黑色披风，胸前正中心的位置，有一个拳头大小的魂字。",
+              "source_evidence_span": {
+                "start": 1889,
+                "end": 1949
+              },
+              "fact_chunk_span": {
+                "start": 1894,
+                "end": 1898
+              },
+              "match_mode": "exact"
+            },
+            {
+              "fact_quote": "剑眉星目",
+              "category": "face",
+              "attribute": "眉眼",
+              "value": "剑眉星目",
+              "source_mention_id": "m3",
+              "source_mention_type": "describe",
+              "source_evidence_quote": "此人看上去二十多岁的样子，剑眉星目，相貌甚是俊朗。一身白色劲装，背后是黑色披风，胸前正中心的位置，有一个拳头大小的魂字。",
+              "source_evidence_span": {
+                "start": 1889,
+                "end": 1949
+              },
+              "fact_chunk_span": {
+                "start": 1902,
+                "end": 1906
+              },
+              "match_mode": "exact"
+            },
+            {
+              "fact_quote": "相貌甚是俊朗",
+              "category": "face",
+              "attribute": "相貌",
+              "value": "俊朗",
+              "source_mention_id": "m3",
+              "source_mention_type": "describe",
+              "source_evidence_quote": "此人看上去二十多岁的样子，剑眉星目，相貌甚是俊朗。一身白色劲装，背后是黑色披风，胸前正中心的位置，有一个拳头大小的魂字。",
+              "source_evidence_span": {
+                "start": 1889,
+                "end": 1949
+              },
+              "fact_chunk_span": {
+                "start": 1907,
+                "end": 1913
+              },
+              "match_mode": "exact"
+            },
+            {
+              "fact_quote": "一身白色劲装",
+              "category": "clothing",
+              "attribute": "服装",
+              "value": "白色劲装",
+              "source_mention_id": "m3",
+              "source_mention_type": "describe",
+              "source_evidence_quote": "此人看上去二十多岁的样子，剑眉星目，相貌甚是俊朗。一身白色劲装，背后是黑色披风，胸前正中心的位置，有一个拳头大小的魂字。",
+              "source_evidence_span": {
+                "start": 1889,
+                "end": 1949
+              },
+              "fact_chunk_span": {
+                "start": 1914,
+                "end": 1920
+              },
+              "match_mode": "exact"
+            },
+            {
+              "fact_quote": "背后是黑色披风",
+              "category": "clothing",
+              "attribute": "披风",
+              "value": "黑色披风",
+              "source_mention_id": "m3",
+              "source_mention_type": "describe",
+              "source_evidence_quote": "此人看上去二十多岁的样子，剑眉星目，相貌甚是俊朗。一身白色劲装，背后是黑色披风，胸前正中心的位置，有一个拳头大小的魂字。",
+              "source_evidence_span": {
+                "start": 1889,
+                "end": 1949
+              },
+              "fact_chunk_span": {
+                "start": 1921,
+                "end": 1928
+              },
+              "match_mode": "exact"
+            },
+            {
+              "fact_quote": "胸前正中心的位置，有一个拳头大小的魂字",
+              "category": "distinctive_mark",
+              "attribute": "胸前魂字",
+              "value": "拳头大小的魂字",
+              "source_mention_id": "m3",
+              "source_mention_type": "describe",
+              "source_evidence_quote": "此人看上去二十多岁的样子，剑眉星目，相貌甚是俊朗。一身白色劲装，背后是黑色披风，胸前正中心的位置，有一个拳头大小的魂字。",
+              "source_evidence_span": {
+                "start": 1889,
+                "end": 1949
+              },
+              "fact_chunk_span": {
+                "start": 1929,
+                "end": 1948
+              },
+              "match_mode": "exact"
+            },
+            {
+              "fact_quote": "左胸上，有一枚雕刻着长剑的徽章，徽章上一共是三柄长剑交错",
+              "category": "accessory",
+              "attribute": "徽章",
+              "value": "雕刻着长剑的三柄长剑交错徽章",
+              "source_mention_id": "m3",
+              "source_mention_type": "describe",
+              "source_evidence_quote": "左胸上，有一枚雕刻着长剑的徽章，徽章上一共是三柄长剑交错。",
+              "source_evidence_span": {
+                "start": 1969,
+                "end": 1998
+              },
+              "fact_chunk_span": {
+                "start": 1969,
+                "end": 1997
+              },
+              "match_mode": "exact"
+            }
+          ]
+        }
+      ],
+      "unassigned_fragments": [
+        {
+          "fragment_ref": "d1-f1",
+          "source_evidence_quote": "此人看上去二十多岁的样子，剑眉星目，相貌甚是俊朗。一身白色劲装，背后是黑色披风，胸前正中心的位置，有一个拳头大小的魂字。",
+          "source_evidence_span": {
+            "start": 1889,
+            "end": 1949
+          },
+          "fragment_quote": "此人看上去",
+          "fragment_span": {
+            "start": 1889,
+            "end": 1894
+          }
+        },
+        {
+          "fragment_ref": "d1-f2",
+          "source_evidence_quote": "此人看上去二十多岁的样子，剑眉星目，相貌甚是俊朗。一身白色劲装，背后是黑色披风，胸前正中心的位置，有一个拳头大小的魂字。",
+          "source_evidence_span": {
+            "start": 1889,
+            "end": 1949
+          },
+          "fragment_quote": "的样子，",
+          "fragment_span": {
+            "start": 1898,
+            "end": 1902
+          }
+        },
+        {
+          "fragment_ref": "d1-f3",
+          "source_evidence_quote": "此人看上去二十多岁的样子，剑眉星目，相貌甚是俊朗。一身白色劲装，背后是黑色披风，胸前正中心的位置，有一个拳头大小的魂字。",
+          "source_evidence_span": {
+            "start": 1889,
+            "end": 1949
+          },
+          "fragment_quote": "，",
+          "fragment_span": {
+            "start": 1906,
+            "end": 1907
+          }
+        },
+        {
+          "fragment_ref": "d1-f4",
+          "source_evidence_quote": "此人看上去二十多岁的样子，剑眉星目，相貌甚是俊朗。一身白色劲装，背后是黑色披风，胸前正中心的位置，有一个拳头大小的魂字。",
+          "source_evidence_span": {
+            "start": 1889,
+            "end": 1949
+          },
+          "fragment_quote": "。",
+          "fragment_span": {
+            "start": 1913,
+            "end": 1914
+          }
+        },
+        {
+          "fragment_ref": "d1-f5",
+          "source_evidence_quote": "此人看上去二十多岁的样子，剑眉星目，相貌甚是俊朗。一身白色劲装，背后是黑色披风，胸前正中心的位置，有一个拳头大小的魂字。",
+          "source_evidence_span": {
+            "start": 1889,
+            "end": 1949
+          },
+          "fragment_quote": "，",
+          "fragment_span": {
+            "start": 1920,
+            "end": 1921
+          }
+        },
+        {
+          "fragment_ref": "d1-f6",
+          "source_evidence_quote": "此人看上去二十多岁的样子，剑眉星目，相貌甚是俊朗。一身白色劲装，背后是黑色披风，胸前正中心的位置，有一个拳头大小的魂字。",
+          "source_evidence_span": {
+            "start": 1889,
+            "end": 1949
+          },
+          "fragment_quote": "，",
+          "fragment_span": {
+            "start": 1928,
+            "end": 1929
+          }
+        },
+        {
+          "fragment_ref": "d1-f7",
+          "source_evidence_quote": "此人看上去二十多岁的样子，剑眉星目，相貌甚是俊朗。一身白色劲装，背后是黑色披风，胸前正中心的位置，有一个拳头大小的魂字。",
+          "source_evidence_span": {
+            "start": 1889,
+            "end": 1949
+          },
+          "fragment_quote": "。",
+          "fragment_span": {
+            "start": 1948,
+            "end": 1949
+          }
+        },
+        {
+          "fragment_ref": "d1-f8",
+          "source_evidence_quote": "左胸上，有一枚雕刻着长剑的徽章，徽章上一共是三柄长剑交错。",
+          "source_evidence_span": {
+            "start": 1969,
+            "end": 1998
+          },
+          "fragment_quote": "。",
+          "fragment_span": {
+            "start": 1997,
+            "end": 1998
+          }
+        }
+      ]
+    },
+    "grounding_issues": []
+  },
+  {
+    "chunk_index": 7,
+    "chunk_id": "chunk-000007-13500-16000-29d830992ba6",
+    "describe_local_mention_id": "m4",
+    "mention_quote": "男孩儿",
+    "grounded_result": {
+      "schema_version": "grounded-promoted-describe-characters-v6",
+      "grounding_policy_version": "promotion-partial-fact-acceptance-v1",
+      "describe_source_ref": {
+        "local_mention_id": "m4",
+        "packet_hash": "2588c338ed1adc48a3ee28fc746720844dd984f36530a5e4f29908dafba3a91b"
+      },
+      "promotion_hash": "45a3d4267863969f5efb8050fd04c6c22dcdc91f0e83f94dc97ef405ad90f691",
+      "promoted_characters": [
+        {
+          "promoted_character_ref": {
+            "source_document_version_id": "source-8bcb7305a759571b",
+            "chunk_id": "chunk-000007-13500-16000-29d830992ba6",
+            "source_local_mention_id": "m4",
+            "source_mention_type": "describe",
+            "promotion_index": 1,
+            "character_origin": "remaining_describe",
+            "packet_hash": "2588c338ed1adc48a3ee28fc746720844dd984f36530a5e4f29908dafba3a91b",
+            "promotion_hash": "45a3d4267863969f5efb8050fd04c6c22dcdc91f0e83f94dc97ef405ad90f691"
+          },
+          "character_label_quote": "男孩儿",
+          "grounded_belongs_to_character": [
+            {
+              "fact_quote": "稚嫩的小手",
+              "category": "body",
+              "attribute": "手",
+              "value": "稚嫩的小",
+              "source_mention_id": "m4",
+              "source_mention_type": "describe",
+              "source_evidence_quote": "男孩儿稚嫩的小手与素云涛的狼爪分别在水晶球上下位置",
+              "source_evidence_span": {
+                "start": 1744,
+                "end": 1769
+              },
+              "fact_chunk_span": {
+                "start": 1747,
+                "end": 1752
+              },
+              "match_mode": "exact"
+            }
+          ]
+        }
+      ],
+      "unassigned_fragments": [
+        {
+          "fragment_ref": "d1-f1",
+          "source_evidence_quote": "男孩儿稚嫩的小手与素云涛的狼爪分别在水晶球上下位置",
+          "source_evidence_span": {
+            "start": 1744,
+            "end": 1769
+          },
+          "fragment_quote": "男孩儿",
+          "fragment_span": {
+            "start": 1744,
+            "end": 1747
+          }
+        },
+        {
+          "fragment_ref": "d1-f2",
+          "source_evidence_quote": "男孩儿稚嫩的小手与素云涛的狼爪分别在水晶球上下位置",
+          "source_evidence_span": {
+            "start": 1744,
+            "end": 1769
+          },
+          "fragment_quote": "与素云涛的狼爪分别在水晶球上下位置",
+          "fragment_span": {
+            "start": 1752,
+            "end": 1769
+          }
+        }
+      ]
+    },
+    "grounding_issues": []
+  },
+  {
+    "chunk_index": 14,
+    "chunk_id": "chunk-000014-29250-31750-3f70e01ec313",
+    "describe_local_mention_id": "m3",
+    "mention_quote": "高大苍老的男人",
+    "grounded_result": {
+      "schema_version": "grounded-promoted-describe-characters-v6",
+      "grounding_policy_version": "promotion-partial-fact-acceptance-v1",
+      "describe_source_ref": {
+        "local_mention_id": "m3",
+        "packet_hash": "f149bb2843018f2f7e2e1d338cc3e4d615c1724687de7d5e18a4c586ecc14699"
+      },
+      "promotion_hash": "2b1b0d7327d10a40a44ac7e67651604f02621f8630cfb7f2cd6e391a0e890d5a",
+      "promoted_characters": [
+        {
+          "promoted_character_ref": {
+            "source_document_version_id": "source-8bcb7305a759571b",
+            "chunk_id": "chunk-000014-29250-31750-3f70e01ec313",
+            "source_local_mention_id": "m3",
+            "source_mention_type": "describe",
+            "promotion_index": 1,
+            "character_origin": "remaining_describe",
+            "packet_hash": "f149bb2843018f2f7e2e1d338cc3e4d615c1724687de7d5e18a4c586ecc14699",
+            "promotion_hash": "2b1b0d7327d10a40a44ac7e67651604f02621f8630cfb7f2cd6e391a0e890d5a"
+          },
+          "character_label_quote": "高大苍老的男人",
+          "grounded_belongs_to_character": [
+            {
+              "fact_quote": "高大",
+              "category": "body",
+              "attribute": "身材",
+              "value": "高大",
+              "source_mention_id": "m3",
+              "source_mention_type": "describe",
+              "source_evidence_quote": "高大苍老的男人",
+              "source_evidence_span": {
+                "start": 1519,
+                "end": 1526
+              },
+              "fact_chunk_span": {
+                "start": 1519,
+                "end": 1521
+              },
+              "match_mode": "exact"
+            },
+            {
+              "fact_quote": "苍老",
+              "category": "age",
+              "attribute": "年龄",
+              "value": "苍老",
+              "source_mention_id": "m3",
+              "source_mention_type": "describe",
+              "source_evidence_quote": "高大苍老的男人",
+              "source_evidence_span": {
+                "start": 1519,
+                "end": 1526
+              },
+              "fact_chunk_span": {
+                "start": 1521,
+                "end": 1523
+              },
+              "match_mode": "exact"
+            }
+          ]
+        }
+      ],
+      "unassigned_fragments": [
+        {
+          "fragment_ref": "d1-f1",
+          "source_evidence_quote": "高大苍老的男人",
+          "source_evidence_span": {
+            "start": 1519,
+            "end": 1526
+          },
+          "fragment_quote": "的男人",
+          "fragment_span": {
+            "start": 1523,
+            "end": 1526
+          }
+        }
+      ]
+    },
+    "grounding_issues": []
+  },
+  {
+    "chunk_index": 16,
+    "chunk_id": "chunk-000016-33750-36250-66f14c14f2ba",
+    "describe_local_mention_id": "m3",
+    "mention_quote": "看门的青年",
+    "grounded_result": {
+      "schema_version": "grounded-promoted-describe-characters-v6",
+      "grounding_policy_version": "promotion-partial-fact-acceptance-v1",
+      "describe_source_ref": {
+        "local_mention_id": "m3",
+        "packet_hash": "572ea37e5b6ac2403fc33061baacddd1abb070dbc62529bd8ab9c1e406f09550"
+      },
+      "promotion_hash": "02e055b80da318f5aa3488d1293b1af5f472087c1917c210e631f882b2e64377",
+      "promoted_characters": [
+        {
+          "promoted_character_ref": {
+            "source_document_version_id": "source-8bcb7305a759571b",
+            "chunk_id": "chunk-000016-33750-36250-66f14c14f2ba",
+            "source_local_mention_id": "m3",
+            "source_mention_type": "describe",
+            "promotion_index": 1,
+            "character_origin": "remaining_describe",
+            "packet_hash": "572ea37e5b6ac2403fc33061baacddd1abb070dbc62529bd8ab9c1e406f09550",
+            "promotion_hash": "02e055b80da318f5aa3488d1293b1af5f472087c1917c210e631f882b2e64377"
+          },
+          "character_label_quote": "看门的青年",
+          "grounded_belongs_to_character": [
+            {
+              "fact_quote": "看门的青年",
+              "category": "age",
+              "attribute": "年龄阶段",
+              "value": "青年",
+              "source_mention_id": "m3",
+              "source_mention_type": "describe",
+              "source_evidence_quote": "看门的青年",
+              "source_evidence_span": {
+                "start": 2463,
+                "end": 2468
+              },
+              "fact_chunk_span": {
+                "start": 2463,
+                "end": 2468
+              },
+              "match_mode": "exact"
+            }
+          ]
+        }
+      ],
+      "unassigned_fragments": []
+    },
+    "grounding_issues": []
+  }
+]

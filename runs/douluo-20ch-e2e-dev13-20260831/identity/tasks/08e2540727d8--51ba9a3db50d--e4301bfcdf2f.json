@@ -1,0 +1,62 @@
+{
+  "schema_version": "identity-task-result-v1",
+  "task_index": 42,
+  "current_label_quote": "唐三",
+  "candidate_label_quote": "唐三",
+  "task_cache_key": "e4301bfcdf2f1b1d3b1a89f1cea6522739c381a6a1abd6a29039fcf5faa37225",
+  "model_output": {
+    "identity_relation": "same_character",
+    "label_relation": "same_surface",
+    "identity_evidence_quotes": [
+      "如果不是玄天功没能突破瓶颈，唐三相信，自己在其他各方面的进步会更大。",
+      "当这柄锤子出现在唐三手中时，整个房间内的空气都显得有些压抑"
+    ]
+  },
+  "grounded_result": {
+    "schema_version": "grounded-identity-decision-v1",
+    "current_node_key": "08e2540727d803f31260462ac63db89853229e38eea0b02cca220c9eddb303b7",
+    "candidate_node_key": "51ba9a3db50d368f9f3e9b7a8d354b488caed4d88c197cc5a7e169d410046d4e",
+    "task_cache_key": "e4301bfcdf2f1b1d3b1a89f1cea6522739c381a6a1abd6a29039fcf5faa37225",
+    "requested_identity_relation": "same_character",
+    "identity_relation": "same_character",
+    "label_relation": "same_surface",
+    "grounded_identity_evidence": [
+      {
+        "evidence_quote": "当这柄锤子出现在唐三手中时，整个房间内的空气都显得有些压抑",
+        "document_span": {
+          "start": 22154,
+          "end": 22183
+        },
+        "match_mode": "exact"
+      },
+      {
+        "evidence_quote": "如果不是玄天功没能突破瓶颈，唐三相信，自己在其他各方面的进步会更大。",
+        "document_span": {
+          "start": 28717,
+          "end": 28751
+        },
+        "match_mode": "exact"
+      }
+    ],
+    "issues": []
+  },
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 9360,
+    "http_status": 200,
+    "response_id": "0a3ac4e6-3b61-4092-9d15-162bcad3efd5",
+    "usage": {
+      "input_tokens": 1300,
+      "cached_input_tokens": 512,
+      "output_tokens": 959,
+      "reasoning_tokens": 881,
+      "total_tokens": 2259
+    },
+    "error_kind": null
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "task_id": "M3-IDENTITY-RESCUE-064",
+  "requested_by": "user",
+  "intent": "根据斗罗 M3 的 unresolved、unassigned facts 和疑似漏合并案例找出失败原因并修改身份策略。",
+  "current_behavior": "N4 顺序处理 same 决策，两个尚未提前合并的候选根会触发 multiple；bridge 用整段上下文并集计算长度，可能丢掉近距离关键过渡；singleton unresolved 被排除出人物档案。",
+  "expected_behavior": "先以全局 same 图和 cannot-link 硬约束完成确定性聚合，再对残余证据不足节点进行有界 cluster-level 模型裁决，未决节点仍保存其事实。",
+  "non_goals": [
+    "不靠同名或作品常识直接合并",
+    "不让模型读取内部 node ref、character_id、span、hash",
+    "本任务不直接重跑全部 63 个 DeepSeek M3 调用"
+  ]
+}

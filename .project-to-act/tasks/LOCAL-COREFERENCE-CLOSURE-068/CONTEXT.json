@@ -1,0 +1,38 @@
+{
+  "task_id": "LOCAL-COREFERENCE-CLOSURE-068",
+  "lifecycle_stage": "5",
+  "lifecycle_revision": 2,
+  "runtime_version_before": "0.1.0.dev16",
+  "schema_version_before": "3.16.0-draft1",
+  "runtime_version_target": "0.1.0.dev17",
+  "schema_version_target": "3.17.0-draft1",
+  "input_file": "tests/小说/斗罗大陆前20章.txt",
+  "source_identity_run": "runs/douluo-20ch-e2e-dev13-20260831/identity",
+  "source_rescue_run": "runs/douluo-20ch-e2e-dev13-20260831/identity-rescue-fixedpoint-dev16",
+  "target_run": "runs/douluo-20ch-e2e-dev13-20260831/identity-local-coreference-dev17",
+  "known_case": {
+    "describe_label": "高大的身影",
+    "bridge_description": "中年男子",
+    "exact_label": "唐昊"
+  },
+  "result": {
+    "local_coreference_edges": 1,
+    "edge_document_span": {"start": 5591, "end": 5814},
+    "global_characters_before": 8,
+    "global_characters_after": 7,
+    "assigned_appearance_facts": 129,
+    "source_occurrences": 130,
+    "unresolved_bindings": 1,
+    "cannot_link_constraints": 2,
+    "review_items": 9,
+    "provider_calls": 0
+  },
+  "validation": {
+    "unit_tests": 140,
+    "schema_version": "3.17.0-draft1",
+    "runtime_version": "0.1.0.dev17",
+    "repeat_replay_changed_files": 0,
+    "project_to_act_valid": true
+  },
+  "context_freshness": "verified-2026-09-01"
+}

@@ -1,0 +1,13 @@
+{
+  "task_id": "POST-LINK-FACT-GROUPS-069",
+  "requested_by": "user",
+  "intent": "在最终人物归属之后生成结构化 canonical fact groups，保留全部 raw fact 与 occurrence provenance。",
+  "current_behavior": "document-character-profiles-v1 按最终人物物化 129 条 raw facts，但同一人物、同一 span、同一结构和值仍可能由多个 local/promoted mention 重复出现。",
+  "expected_behavior": "独立输出稳定 canonical_fact_id；只按 character_id、document_fact_span、category、attribute、value 分组，反向引用全部 source_fact_hashes 与 source occurrences。",
+  "non_goals": [
+    "不做同义词、包含关系或冲突分类",
+    "不推断 life_stage、form_state、scene_state 或 persistence",
+    "不修改 document-character-profiles-v1 或 raw evidence",
+    "不调用模型或依赖 global unique name"
+  ]
+}

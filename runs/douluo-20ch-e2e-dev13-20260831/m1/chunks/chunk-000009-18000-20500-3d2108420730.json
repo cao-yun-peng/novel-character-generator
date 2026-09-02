@@ -1,0 +1,217 @@
+{
+  "schema_version": "m1-chunk-result-v4",
+  "chunk_index": 9,
+  "chunk_id": "chunk-000009-18000-20500-3d2108420730",
+  "chunk_hash": "3d2108420730aaad815c492f13f9e3e2c43212d954fec2b94335399f6b7e229b",
+  "chunk_source_span": {
+    "start": 18000,
+    "end": 20500
+  },
+  "model_output": {
+    "candidate_mentions": [
+      {
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "唐昊",
+        "evidence_quotes": [
+          "那个邋遢鬼",
+          "邋遢铁匠"
+        ]
+      },
+      {
+        "mention_type": "describe",
+        "mention_scope": "individual",
+        "mention_quote": "邋遢鬼",
+        "evidence_quotes": [
+          "那个邋遢鬼"
+        ]
+      },
+      {
+        "mention_type": "describe",
+        "mention_scope": "individual",
+        "mention_quote": "邋遢铁匠",
+        "evidence_quotes": [
+          "邋遢铁匠"
+        ]
+      },
+      {
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "杰克",
+        "evidence_quotes": [
+          "他年纪已经不小了",
+          "老杰克一脸紧张",
+          "杰克脸上失望的表情"
+        ]
+      },
+      {
+        "mention_type": "describe",
+        "mention_scope": "individual",
+        "mention_quote": "老杰克",
+        "evidence_quotes": [
+          "他年纪已经不小了",
+          "老杰克一脸紧张",
+          "杰克脸上失望的表情"
+        ]
+      }
+    ]
+  },
+  "grounded_packet": {
+    "schema_version": "grounded-character-packet-v6",
+    "evidence_precedence_policy_version": "exact-evidence-precedence-v1",
+    "source_document_version_id": "source-8bcb7305a759571b",
+    "chunking_policy_version": "fixed-codepoint-window-2500-overlap-250-v1",
+    "chunk_id": "chunk-000009-18000-20500-3d2108420730",
+    "chunk_hash": "3d2108420730aaad815c492f13f9e3e2c43212d954fec2b94335399f6b7e229b",
+    "chunk_source_span": {
+      "start": 18000,
+      "end": 20500
+    },
+    "grounded_mentions": [
+      {
+        "local_mention_id": "m1",
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "唐昊",
+        "approved_evidence": [
+          {
+            "evidence_quote": "那个邋遢鬼",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1508,
+                "end": 1513
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "邋遢铁匠",
+            "occurrence_count": 2,
+            "source_spans": [
+              {
+                "start": 1652,
+                "end": 1656
+              },
+              {
+                "start": 2079,
+                "end": 2083
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "3cde929af30ea30323824fbb87a4291a91e1ea12891036a8ed57ecda50963773"
+      },
+      {
+        "local_mention_id": "m4",
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "杰克",
+        "approved_evidence": [
+          {
+            "evidence_quote": "他年纪已经不小了",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1752,
+                "end": 1760
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "老杰克一脸紧张",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 423,
+                "end": 430
+              }
+            ],
+            "relation_to_mention": "contains_mention",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "杰克脸上失望的表情",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 622,
+                "end": 631
+              }
+            ],
+            "relation_to_mention": "contains_mention",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "07f7bd6e49e6c2fcca7f8aad1fe14414daa88b0c563250709d886a3d177acf7d"
+      }
+    ],
+    "rejected_evidence": []
+  },
+  "grounding_trace_events": [
+    {
+      "code": "describe_evidence_shadowed_by_exact",
+      "local_mention_id": "m2",
+      "detail": "occurrences=1; exact_mentions=m1; rule=exact-evidence-precedence-v1"
+    },
+    {
+      "code": "describe_removed_after_exact_dedup",
+      "local_mention_id": "m2",
+      "detail": "rule=exact-evidence-precedence-v1"
+    },
+    {
+      "code": "describe_evidence_shadowed_by_exact",
+      "local_mention_id": "m3",
+      "detail": "occurrences=2; exact_mentions=m1; rule=exact-evidence-precedence-v1"
+    },
+    {
+      "code": "describe_removed_after_exact_dedup",
+      "local_mention_id": "m3",
+      "detail": "rule=exact-evidence-precedence-v1"
+    },
+    {
+      "code": "describe_evidence_shadowed_by_exact",
+      "local_mention_id": "m5",
+      "detail": "occurrences=1; exact_mentions=m4; rule=exact-evidence-precedence-v1"
+    },
+    {
+      "code": "describe_evidence_shadowed_by_exact",
+      "local_mention_id": "m5",
+      "detail": "occurrences=1; exact_mentions=m4; rule=exact-evidence-precedence-v1"
+    },
+    {
+      "code": "describe_evidence_shadowed_by_exact",
+      "local_mention_id": "m5",
+      "detail": "occurrences=1; exact_mentions=m4; rule=exact-evidence-precedence-v1"
+    },
+    {
+      "code": "describe_removed_after_exact_dedup",
+      "local_mention_id": "m5",
+      "detail": "rule=exact-evidence-precedence-v1"
+    }
+  ],
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 32828,
+    "http_status": 200,
+    "response_id": "7b659596-80dd-43dd-8ddc-9c4757a602c5",
+    "usage": {
+      "input_tokens": 2562,
+      "cached_input_tokens": 896,
+      "output_tokens": 3828,
+      "reasoning_tokens": 3521,
+      "total_tokens": 6390
+    },
+    "error_kind": null
+  }
+}

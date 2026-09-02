@@ -1,0 +1,12 @@
+{
+  "task_id": "M3-IDENTITY-RESCUE-LIVE-065",
+  "requested_by": "user",
+  "intent": "运行 DeepSeek 完成斗罗残余 cluster-level 人物身份裁决。",
+  "current_behavior": "5 个任务已离线准备，尚未产生模型输出或最终补救注册表。",
+  "expected_behavior": "可恢复地执行 5 个任务，严格 Grounding 后生成补救注册表和质量摘要。",
+  "non_goals": [
+    "不修改基础 M1/M2/N3/M3 模型输出",
+    "不对没有关系上下文的看门青年强制判断",
+    "单次样本实跑不代表一般化身份质量 Gate 通过"
+  ]
+}

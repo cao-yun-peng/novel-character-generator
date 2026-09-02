@@ -1,0 +1,53 @@
+{
+  "schema_version": "identity-task-result-v1",
+  "task_index": 11,
+  "current_label_quote": "一名老人",
+  "candidate_label_quote": "杰克爷爷",
+  "task_cache_key": "b6d10dfacb3bcc99f9351404c93d55363b91d39394b77eb152935b7554c96921",
+  "model_output": {
+    "identity_relation": "same_character",
+    "label_relation": "contextual_description",
+    "identity_evidence_quotes": [
+      "这个人唐三认识，是圣魂村的村长老杰克。"
+    ]
+  },
+  "grounded_result": {
+    "schema_version": "grounded-identity-decision-v1",
+    "current_node_key": "a13d697ffd0919d67d3cc2c467ab0b5d9cb4e9501ee65e7d42098d677f89c34b",
+    "candidate_node_key": "2a4740f407e69b243675c2d05060d5d808f0a3400f4ba9a7f56eaa71dbe84ea5",
+    "task_cache_key": "b6d10dfacb3bcc99f9351404c93d55363b91d39394b77eb152935b7554c96921",
+    "requested_identity_relation": "same_character",
+    "identity_relation": "same_character",
+    "label_relation": "contextual_description",
+    "grounded_identity_evidence": [
+      {
+        "evidence_quote": "这个人唐三认识，是圣魂村的村长老杰克。",
+        "document_span": {
+          "start": 10181,
+          "end": 10200
+        },
+        "match_mode": "exact"
+      }
+    ],
+    "issues": []
+  },
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 5954,
+    "http_status": 200,
+    "response_id": "5dc31508-d516-4cc9-b132-33bfa59c09e8",
+    "usage": {
+      "input_tokens": 1760,
+      "cached_input_tokens": 512,
+      "output_tokens": 563,
+      "reasoning_tokens": 519,
+      "total_tokens": 2323
+    },
+    "error_kind": null
+  }
+}

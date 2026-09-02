@@ -1,0 +1,62 @@
+{
+  "schema_version": "identity-task-result-v1",
+  "task_index": 55,
+  "current_label_quote": "唐三",
+  "candidate_label_quote": "唐三",
+  "task_cache_key": "e8ff628cef0740f61aeea196c78c2ecca38084bcf82f7741fdfe4d75c0710807",
+  "model_output": {
+    "identity_relation": "same_character",
+    "label_relation": "same_surface",
+    "identity_evidence_quotes": [
+      "唐三道：",
+      "唐三这筒袖箭尽管只有三枚"
+    ]
+  },
+  "grounded_result": {
+    "schema_version": "grounded-identity-decision-v1",
+    "current_node_key": "49a39469d3e7ed28d07bddb54930ad1b57aaabe2922b2f3d4da4016a3204231b",
+    "candidate_node_key": "d3b490996db39e0e952ca294133253f1849cf229cda98efa7fa547cee1f7343f",
+    "task_cache_key": "e8ff628cef0740f61aeea196c78c2ecca38084bcf82f7741fdfe4d75c0710807",
+    "requested_identity_relation": "same_character",
+    "identity_relation": "same_character",
+    "label_relation": "same_surface",
+    "grounded_identity_evidence": [
+      {
+        "evidence_quote": "唐三这筒袖箭尽管只有三枚",
+        "document_span": {
+          "start": 29517,
+          "end": 29529
+        },
+        "match_mode": "exact"
+      },
+      {
+        "evidence_quote": "唐三道：",
+        "document_span": {
+          "start": 33827,
+          "end": 33831
+        },
+        "match_mode": "exact"
+      }
+    ],
+    "issues": []
+  },
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 12266,
+    "http_status": 200,
+    "response_id": "64387c27-107d-4582-b1b8-cb879c89214c",
+    "usage": {
+      "input_tokens": 1135,
+      "cached_input_tokens": 512,
+      "output_tokens": 1111,
+      "reasoning_tokens": 1065,
+      "total_tokens": 2246
+    },
+    "error_kind": null
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "schema_version": "cluster-rescue-manifest-v1",
+  "source_document_version_id": "source-8bcb7305a759571b",
+  "document_hash": "8bcb7305a759571b1fec70813b0631f2c884eba79697c3259170a7635d639741",
+  "source_artifacts": {
+    "identity_preparation_manifest": {
+      "path": "E:\\project\\agent\\novel-cahracter-generator\\runs\\douluo-20ch-e2e-dev13-20260831\\identity\\identity-preparation-manifest.json",
+      "hash": "7b9d1fb9d8b1d9fb4e2e931153656a696b5edbe12c179ad87db3682b9527c27c"
+    },
+    "document_local_character_nodes": {
+      "path": "E:\\project\\agent\\novel-cahracter-generator\\runs\\douluo-20ch-e2e-dev13-20260831\\identity\\document-local-character-nodes.json",
+      "hash": "a001916310f657fe4f47277d03a476466305ab85997fc3935c0e4033f575a85d"
+    },
+    "identity_envelopes": {
+      "path": "E:\\project\\agent\\novel-cahracter-generator\\runs\\douluo-20ch-e2e-dev13-20260831\\identity\\identity-envelopes.json",
+      "hash": "4c3c836c4abbf02c44288d52d295e07ae48e254a853c2f0c6a0c0bc90e041b4e"
+    },
+    "identity_deterministic_edges": {
+      "path": "E:\\project\\agent\\novel-cahracter-generator\\runs\\douluo-20ch-e2e-dev13-20260831\\identity\\identity-deterministic-edges.json",
+      "hash": "b0405c5fb61e5e373f8d55e60362b4d0dc7b62939fb6f0f4046553e869aea86d"
+    },
+    "grounded_identity_decisions": {
+      "path": "E:\\project\\agent\\novel-cahracter-generator\\runs\\douluo-20ch-e2e-dev13-20260831\\identity\\grounded-identity-decisions.json",
+      "hash": "d496ebfd4a0ba6bfbaf31b95b224d4e408356d5aa2750c0e5c28d431d4faf1bd"
+    },
+    "seed_grounded_cluster_rescue_decisions": {
+      "path": "E:\\project\\agent\\novel-cahracter-generator\\runs\\douluo-20ch-e2e-dev13-20260831\\identity-rescue-live-dev15\\grounded-cluster-rescue-decisions.json",
+      "hash": "14f8516c8c4cfd44db60af0b252e6dec4c0878bd1337e26fa8bbde7861bc6599",
+      "decision_count": 5
+    }
+  },
+  "configuration": {
+    "max_candidates_per_task": 3,
+    "max_contexts_per_character": 4,
+    "max_relationship_contexts_per_candidate": 3,
+    "max_relationship_context_characters": 1200,
+    "max_rounds": 3,
+    "max_new_provider_calls": 1
+  },
+  "contracts": {
+    "policy_version": "residual-cluster-adjudication-v2",
+    "context_version": "candidate-specific-relationship-context-v1",
+    "system_instruction_hash": "d01e29dd7ca79ab9d36b961cea4f3c8cf3d5e0400c8d348fe2d79145e1da5245"
+  }
+}

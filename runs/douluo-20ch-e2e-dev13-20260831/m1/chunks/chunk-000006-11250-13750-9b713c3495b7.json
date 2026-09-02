@@ -1,0 +1,175 @@
+{
+  "schema_version": "m1-chunk-result-v4",
+  "chunk_index": 6,
+  "chunk_id": "chunk-000006-11250-13750-9b713c3495b7",
+  "chunk_hash": "9b713c3495b71793615560f974b68a50a0c0dd5f05a8fe1459948e70ab21b2ef",
+  "chunk_source_span": {
+    "start": 11250,
+    "end": 13750
+  },
+  "model_output": {
+    "candidate_mentions": [
+      {
+        "mention_type": "describe",
+        "mention_scope": "individual",
+        "mention_quote": "年轻人",
+        "evidence_quotes": [
+          "此人看上去二十多岁的样子，剑眉星目，相貌甚是俊朗。一身白色劲装，背后是黑色披风，胸前正中心的位置，有一个拳头大小的魂字。",
+          "左胸上，有一枚雕刻着长剑的徽章，徽章上一共是三柄长剑交错。"
+        ]
+      },
+      {
+        "mention_type": "describe",
+        "mention_scope": "individual",
+        "mention_quote": "青年",
+        "evidence_quotes": [
+          "此人看上去二十多岁的样子，剑眉星目，相貌甚是俊朗。一身白色劲装，背后是黑色披风，胸前正中心的位置，有一个拳头大小的魂字。",
+          "左胸上，有一枚雕刻着长剑的徽章，徽章上一共是三柄长剑交错。"
+        ]
+      },
+      {
+        "mention_type": "describe",
+        "mention_scope": "individual",
+        "mention_quote": "战魂大师",
+        "evidence_quotes": [
+          "此人看上去二十多岁的样子，剑眉星目，相貌甚是俊朗。一身白色劲装，背后是黑色披风，胸前正中心的位置，有一个拳头大小的魂字。",
+          "左胸上，有一枚雕刻着长剑的徽章，徽章上一共是三柄长剑交错。"
+        ]
+      }
+    ]
+  },
+  "grounded_packet": {
+    "schema_version": "grounded-character-packet-v6",
+    "evidence_precedence_policy_version": "exact-evidence-precedence-v1",
+    "source_document_version_id": "source-8bcb7305a759571b",
+    "chunking_policy_version": "fixed-codepoint-window-2500-overlap-250-v1",
+    "chunk_id": "chunk-000006-11250-13750-9b713c3495b7",
+    "chunk_hash": "9b713c3495b71793615560f974b68a50a0c0dd5f05a8fe1459948e70ab21b2ef",
+    "chunk_source_span": {
+      "start": 11250,
+      "end": 13750
+    },
+    "grounded_mentions": [
+      {
+        "local_mention_id": "m1",
+        "mention_type": "describe",
+        "mention_scope": "individual",
+        "mention_quote": "年轻人",
+        "approved_evidence": [
+          {
+            "evidence_quote": "此人看上去二十多岁的样子，剑眉星目，相貌甚是俊朗。一身白色劲装，背后是黑色披风，胸前正中心的位置，有一个拳头大小的魂字。",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1889,
+                "end": 1949
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "左胸上，有一枚雕刻着长剑的徽章，徽章上一共是三柄长剑交错。",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1969,
+                "end": 1998
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "62346dbfc6b94fc2d595acbece348759a2815879b58538cc772119f3ca5b23f5"
+      },
+      {
+        "local_mention_id": "m2",
+        "mention_type": "describe",
+        "mention_scope": "individual",
+        "mention_quote": "青年",
+        "approved_evidence": [
+          {
+            "evidence_quote": "此人看上去二十多岁的样子，剑眉星目，相貌甚是俊朗。一身白色劲装，背后是黑色披风，胸前正中心的位置，有一个拳头大小的魂字。",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1889,
+                "end": 1949
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "左胸上，有一枚雕刻着长剑的徽章，徽章上一共是三柄长剑交错。",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1969,
+                "end": 1998
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "4c4dd5beffa9278405434602b7b46224338728279cdc350d4e16594333c9b3ff"
+      },
+      {
+        "local_mention_id": "m3",
+        "mention_type": "describe",
+        "mention_scope": "individual",
+        "mention_quote": "战魂大师",
+        "approved_evidence": [
+          {
+            "evidence_quote": "此人看上去二十多岁的样子，剑眉星目，相貌甚是俊朗。一身白色劲装，背后是黑色披风，胸前正中心的位置，有一个拳头大小的魂字。",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1889,
+                "end": 1949
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "左胸上，有一枚雕刻着长剑的徽章，徽章上一共是三柄长剑交错。",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1969,
+                "end": 1998
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "6bb39f8aea9f26d417dbb45861d7d128217831446a93af0e30ebdfb3858bed8d"
+      }
+    ],
+    "rejected_evidence": []
+  },
+  "grounding_trace_events": [],
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 25359,
+    "http_status": 200,
+    "response_id": "842b85d4-ae59-4278-b8d5-21ed8f149dbf",
+    "usage": {
+      "input_tokens": 2568,
+      "cached_input_tokens": 896,
+      "output_tokens": 3116,
+      "reasoning_tokens": 2782,
+      "total_tokens": 5684
+    },
+    "error_kind": null
+  }
+}

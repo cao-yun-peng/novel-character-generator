@@ -1,0 +1,62 @@
+{
+  "schema_version": "identity-task-result-v1",
+  "task_index": 14,
+  "current_label_quote": "青年",
+  "candidate_label_quote": "年轻人",
+  "task_cache_key": "dd6f7bfc027b4f435637310b51c8f6f740ac2055c7a5e0fb1a0d66f1dc41c22a",
+  "model_output": {
+    "identity_relation": "same_character",
+    "label_relation": "contextual_description",
+    "identity_evidence_quotes": [
+      "武魂殿中还有一个青年",
+      "老杰克恭敬的向年轻人行礼"
+    ]
+  },
+  "grounded_result": {
+    "schema_version": "grounded-identity-decision-v1",
+    "current_node_key": "45d49bbf0658ba33126ad8bcc7f3ad6cf258b1850c991ea1c01ce8d6dc7f718f",
+    "candidate_node_key": "3f90ca68ba802e43cc015ea6793f2aab441c9a7f099d4d92f717b5ea0ff0ae7f",
+    "task_cache_key": "dd6f7bfc027b4f435637310b51c8f6f740ac2055c7a5e0fb1a0d66f1dc41c22a",
+    "requested_identity_relation": "same_character",
+    "identity_relation": "same_character",
+    "label_relation": "contextual_description",
+    "grounded_identity_evidence": [
+      {
+        "evidence_quote": "武魂殿中还有一个青年",
+        "document_span": {
+          "start": 13128,
+          "end": 13138
+        },
+        "match_mode": "exact"
+      },
+      {
+        "evidence_quote": "老杰克恭敬的向年轻人行礼",
+        "document_span": {
+          "start": 13336,
+          "end": 13348
+        },
+        "match_mode": "exact"
+      }
+    ],
+    "issues": []
+  },
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 8938,
+    "http_status": 200,
+    "response_id": "b9dbcd03-cebe-4a28-a8f9-f5d236498cad",
+    "usage": {
+      "input_tokens": 2452,
+      "cached_input_tokens": 512,
+      "output_tokens": 794,
+      "reasoning_tokens": 739,
+      "total_tokens": 3246
+    },
+    "error_kind": null
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "schema_version": "identity-task-result-v1",
+  "task_index": 37,
+  "current_label_quote": "唐昊",
+  "candidate_label_quote": "唐昊",
+  "task_cache_key": "b029ba745f4faab0933cda79a550f01c2745ce1c0dd00b21cc5690e615023997",
+  "model_output": {
+    "identity_relation": "same_character",
+    "label_relation": "same_surface",
+    "identity_evidence_quotes": [
+      "唐昊手中铸造锤微微一顶",
+      "唐昊的胸膛很宽阔",
+      "裸露在破烂裤管外的两条小腿"
+    ]
+  },
+  "grounded_result": {
+    "schema_version": "grounded-identity-decision-v1",
+    "current_node_key": "7a21fe600fdffdd21e8a29460106b527933b9454c45b02632776bdcee4a5dca2",
+    "candidate_node_key": "b149ab534cf11f7656106950d5785626cb1f8d45d5a674f91b5cb3f61e79233c",
+    "task_cache_key": "b029ba745f4faab0933cda79a550f01c2745ce1c0dd00b21cc5690e615023997",
+    "requested_identity_relation": "same_character",
+    "identity_relation": "same_character",
+    "label_relation": "same_surface",
+    "grounded_identity_evidence": [
+      {
+        "evidence_quote": "唐昊的胸膛很宽阔",
+        "document_span": {
+          "start": 22558,
+          "end": 22566
+        },
+        "match_mode": "exact"
+      },
+      {
+        "evidence_quote": "唐昊手中铸造锤微微一顶",
+        "document_span": {
+          "start": 24858,
+          "end": 24869
+        },
+        "match_mode": "exact"
+      },
+      {
+        "evidence_quote": "裸露在破烂裤管外的两条小腿",
+        "document_span": {
+          "start": 24911,
+          "end": 24924
+        },
+        "match_mode": "exact"
+      }
+    ],
+    "issues": []
+  },
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 6125,
+    "http_status": 200,
+    "response_id": "7a876a0d-b101-4675-9cf8-d308a0655b98",
+    "usage": {
+      "input_tokens": 2353,
+      "cached_input_tokens": 512,
+      "output_tokens": 604,
+      "reasoning_tokens": 553,
+      "total_tokens": 2957
+    },
+    "error_kind": null
+  }
+}

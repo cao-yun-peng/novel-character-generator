@@ -1,0 +1,62 @@
+{
+  "schema_version": "identity-task-result-v1",
+  "task_index": 17,
+  "current_label_quote": "唐三",
+  "candidate_label_quote": "唐三",
+  "task_cache_key": "16be358866df07cb94ad197b77fa69700c085266c2cf81efc36cf0261529b698",
+  "model_output": {
+    "identity_relation": "same_character",
+    "label_relation": "same_surface",
+    "identity_evidence_quotes": [
+      "唐三站在最左侧。",
+      "再过几天，唐三就要六岁了。"
+    ]
+  },
+  "grounded_result": {
+    "schema_version": "grounded-identity-decision-v1",
+    "current_node_key": "e0ef0901af0a55188bd280fa551f8da8afe7b390476f20152ba751a650f54388",
+    "candidate_node_key": "a062a1c1820928e300ba3421a3a33b052aa00b87875c0f5f71ba3655508be51d",
+    "task_cache_key": "16be358866df07cb94ad197b77fa69700c085266c2cf81efc36cf0261529b698",
+    "requested_identity_relation": "same_character",
+    "identity_relation": "same_character",
+    "label_relation": "same_surface",
+    "grounded_identity_evidence": [
+      {
+        "evidence_quote": "唐三站在最左侧。",
+        "document_span": {
+          "start": 13743,
+          "end": 13751
+        },
+        "match_mode": "exact"
+      }
+    ],
+    "issues": [
+      {
+        "code": "identity_evidence_not_in_model_context",
+        "detail": "identity evidence '再过几天，唐三就要六岁了。' matched 0 document occurrences",
+        "evidence_index": 1,
+        "evidence_quote": "再过几天，唐三就要六岁了。",
+        "candidate_occurrence_count": 0
+      }
+    ]
+  },
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 12125,
+    "http_status": 200,
+    "response_id": "6874fc1f-3884-4b01-8a82-6d9daf5be511",
+    "usage": {
+      "input_tokens": 1297,
+      "cached_input_tokens": 512,
+      "output_tokens": 1144,
+      "reasoning_tokens": 1088,
+      "total_tokens": 2441
+    },
+    "error_kind": null
+  }
+}

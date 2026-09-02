@@ -1,0 +1,71 @@
+{
+  "schema_version": "identity-task-result-v1",
+  "task_index": 24,
+  "current_label_quote": "杰克",
+  "candidate_label_quote": "老杰克",
+  "task_cache_key": "58e1dbc02c56bc30d0a0fbc240c1a3870bf8880b426407af5fb361c804470f7b",
+  "model_output": {
+    "identity_relation": "same_character",
+    "label_relation": "name_variant",
+    "identity_evidence_quotes": [
+      "老杰克一脸紧张的迎上了素云涛",
+      "杰克眼中流露出惊疑不定的神色",
+      "这个人唐三认识，是圣魂村的村长老杰克"
+    ]
+  },
+  "grounded_result": {
+    "schema_version": "grounded-identity-decision-v1",
+    "current_node_key": "6f70712b56aa85b85cad7f9b83c4a11d5a82bc84fcfab03a0b2b458c5d7913e1",
+    "candidate_node_key": "b11ca5bc38949f7537ef9733b5977fb4e36b4b8f395b9a5475563994a5ea9130",
+    "task_cache_key": "58e1dbc02c56bc30d0a0fbc240c1a3870bf8880b426407af5fb361c804470f7b",
+    "requested_identity_relation": "same_character",
+    "identity_relation": "same_character",
+    "label_relation": "name_variant",
+    "grounded_identity_evidence": [
+      {
+        "evidence_quote": "这个人唐三认识，是圣魂村的村长老杰克",
+        "document_span": {
+          "start": 10181,
+          "end": 10199
+        },
+        "match_mode": "exact"
+      },
+      {
+        "evidence_quote": "老杰克一脸紧张的迎上了素云涛",
+        "document_span": {
+          "start": 18423,
+          "end": 18437
+        },
+        "match_mode": "exact"
+      },
+      {
+        "evidence_quote": "杰克眼中流露出惊疑不定的神色",
+        "document_span": {
+          "start": 18510,
+          "end": 18524
+        },
+        "match_mode": "exact"
+      }
+    ],
+    "issues": []
+  },
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 13875,
+    "http_status": 200,
+    "response_id": "3621c325-ca97-4bfd-b54a-533c2e157606",
+    "usage": {
+      "input_tokens": 2006,
+      "cached_input_tokens": 512,
+      "output_tokens": 1435,
+      "reasoning_tokens": 1371,
+      "total_tokens": 3441
+    },
+    "error_kind": null
+  }
+}

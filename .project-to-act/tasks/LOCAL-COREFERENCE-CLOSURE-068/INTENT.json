@@ -1,0 +1,13 @@
+{
+  "task_id": "LOCAL-COREFERENCE-CLOSURE-068",
+  "requested_by": "user",
+  "intent": "单独实现有逐字原文支持的局部确定性身份闭合，并离线重放斗罗 dev16。",
+  "current_behavior": "高大的身影与唐昊共享完整局部关系上下文，但 preparation 只把共享 fact_hash 视为确定性 same edge，因此高大的身影仍为 singleton。",
+  "expected_behavior": "同一局部上下文中的显式同位、示指命名或连续共指链生成可回放 deterministic same edge；旧 grounded 决策可零 Provider 重放。",
+  "non_goals": [
+    "不按 proper name 全局唯一性自动合并",
+    "不实现一般代词消解或跨文档共指",
+    "不修改 M1/M2 raw evidence facts",
+    "不清理 Label/Review 投影或实现 Profile Compiler 后续状态层"
+  ]
+}

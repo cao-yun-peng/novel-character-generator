@@ -1,0 +1,13 @@
+{
+  "task_id": "APPEARANCE-PROFILE-PLAN-067",
+  "requested_by": "user",
+  "intent": "根据 dev16 复核结论规划局部身份闭合、post-link 去重、外貌状态层、review 清理和 render-ready Profile Compiler 的后续开发。",
+  "current_behavior": "现有档案可靠保存按人物归档的 raw appearance facts，但会混合生命阶段、形态和场景状态，也会暴露已被最终人物簇消解的历史 review。",
+  "expected_behavior": "形成保持 Evidence Layer 不可变、具有明确中间 Schema、开发切片、验收样例和 Stage 6 人工质量 Gate 的可执行路线。",
+  "non_goals": [
+    "本任务不修改运行时代码",
+    "本任务不重新运行 M1/M2/M3 或调用 Provider",
+    "本任务不生成自然语言人物总结或图像提示词",
+    "本任务不把专家主观评分登记为正式 Gate"
+  ]
+}

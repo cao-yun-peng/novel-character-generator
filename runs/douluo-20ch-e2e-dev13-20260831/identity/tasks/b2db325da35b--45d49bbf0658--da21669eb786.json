@@ -1,0 +1,71 @@
+{
+  "schema_version": "identity-task-result-v1",
+  "task_index": 16,
+  "current_label_quote": "战魂大师",
+  "candidate_label_quote": "青年",
+  "task_cache_key": "da21669eb786fa6bd359d08b9cd2e1c8f44d2f6a3f652c025228a7e2570d51e2",
+  "model_output": {
+    "identity_relation": "same_character",
+    "label_relation": "title",
+    "identity_evidence_quotes": [
+      "除了村长杰克和到齐的八个孩子以外，武魂殿中还有一个青年",
+      "老杰克恭敬的向年轻人行礼。",
+      "老杰克道：“好的。孩子们，这位是来自诺丁城的战魂大师。”"
+    ]
+  },
+  "grounded_result": {
+    "schema_version": "grounded-identity-decision-v1",
+    "current_node_key": "b2db325da35bb35c0a41ab3ad22180bc036a335bf040ba5e237a5abf620a8d98",
+    "candidate_node_key": "45d49bbf0658ba33126ad8bcc7f3ad6cf258b1850c991ea1c01ce8d6dc7f718f",
+    "task_cache_key": "da21669eb786fa6bd359d08b9cd2e1c8f44d2f6a3f652c025228a7e2570d51e2",
+    "requested_identity_relation": "same_character",
+    "identity_relation": "same_character",
+    "label_relation": "title",
+    "grounded_identity_evidence": [
+      {
+        "evidence_quote": "除了村长杰克和到齐的八个孩子以外，武魂殿中还有一个青年",
+        "document_span": {
+          "start": 13111,
+          "end": 13138
+        },
+        "match_mode": "exact"
+      },
+      {
+        "evidence_quote": "老杰克恭敬的向年轻人行礼。",
+        "document_span": {
+          "start": 13336,
+          "end": 13349
+        },
+        "match_mode": "exact"
+      }
+    ],
+    "issues": [
+      {
+        "code": "identity_evidence_not_in_model_context",
+        "detail": "identity evidence '老杰克道：“好的。孩子们，这位是来自诺丁城的战魂大师。”' matched 0 document occurrences",
+        "evidence_index": 2,
+        "evidence_quote": "老杰克道：“好的。孩子们，这位是来自诺丁城的战魂大师。”",
+        "candidate_occurrence_count": 0
+      }
+    ]
+  },
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 3984,
+    "http_status": 200,
+    "response_id": "7b54d1f5-52e6-41ba-a92e-655862bd5ed2",
+    "usage": {
+      "input_tokens": 2457,
+      "cached_input_tokens": 512,
+      "output_tokens": 369,
+      "reasoning_tokens": 283,
+      "total_tokens": 2826
+    },
+    "error_kind": null
+  }
+}

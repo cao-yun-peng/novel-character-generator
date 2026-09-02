@@ -1,0 +1,71 @@
+{
+  "schema_version": "identity-task-result-v1",
+  "task_index": 51,
+  "current_label_quote": "杰克",
+  "candidate_label_quote": "杰克爷爷",
+  "task_cache_key": "ac272e13c43c8c045678144f7a1314000a91b05f82a2aeaf232ce40a6f69878c",
+  "model_output": {
+    "identity_relation": "same_character",
+    "label_relation": "alias",
+    "identity_evidence_quotes": [
+      "老杰克已经来了",
+      "这个人唐三认识，是圣魂村的村长老杰克",
+      "杰克爷爷，您好"
+    ]
+  },
+  "grounded_result": {
+    "schema_version": "grounded-identity-decision-v1",
+    "current_node_key": "2e8db6b95d7b100705d4f962aa585ea5814657f8b21b6609d93f87d14b183154",
+    "candidate_node_key": "2a4740f407e69b243675c2d05060d5d808f0a3400f4ba9a7f56eaa71dbe84ea5",
+    "task_cache_key": "ac272e13c43c8c045678144f7a1314000a91b05f82a2aeaf232ce40a6f69878c",
+    "requested_identity_relation": "same_character",
+    "identity_relation": "same_character",
+    "label_relation": "alias",
+    "grounded_identity_evidence": [
+      {
+        "evidence_quote": "这个人唐三认识，是圣魂村的村长老杰克",
+        "document_span": {
+          "start": 10181,
+          "end": 10199
+        },
+        "match_mode": "exact"
+      },
+      {
+        "evidence_quote": "杰克爷爷，您好",
+        "document_span": {
+          "start": 10283,
+          "end": 10290
+        },
+        "match_mode": "exact"
+      },
+      {
+        "evidence_quote": "老杰克已经来了",
+        "document_span": {
+          "start": 32734,
+          "end": 32741
+        },
+        "match_mode": "exact"
+      }
+    ],
+    "issues": []
+  },
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 13937,
+    "http_status": 200,
+    "response_id": "fbc6a004-4b3e-49eb-83a1-9d69ce87e183",
+    "usage": {
+      "input_tokens": 1386,
+      "cached_input_tokens": 512,
+      "output_tokens": 1400,
+      "reasoning_tokens": 1337,
+      "total_tokens": 2786
+    },
+    "error_kind": null
+  }
+}

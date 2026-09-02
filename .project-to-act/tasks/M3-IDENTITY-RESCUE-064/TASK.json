@@ -1,0 +1,34 @@
+{
+  "id": "M3-IDENTITY-RESCUE-064",
+  "title": "M3 身份失败归因与分层补救策略",
+  "status": "completed",
+  "owner": "Codex",
+  "objective": "修复斗罗真实样本中的顺序聚合假失败、身份桥接上下文缺失和未决人物事实丢失，并为残余疑难定义低调用量二次裁决边界。",
+  "risk_level": "L1-identity-quality",
+  "allowed_paths": [
+    "src/novel_character_generator",
+    "tests",
+    "docs",
+    "pyproject.toml",
+    ".project-to-act",
+    "runs/douluo-20ch-e2e-dev13-20260831"
+  ],
+  "invariants": [
+    "cannot-link 是硬约束，任何自动或模型合并都不得跨越",
+    "同名、相似外貌和场景邻近只用于召回，不能单独证明同一人物",
+    "模型身份证据继续严格逐字 Grounding，只容忍纯空白差异",
+    "未决身份不得导致已经 Grounding 的人物事实丢失",
+    "优先复用现有 M3 结果，只对残余疑难增加有界模型调用"
+  ],
+  "acceptance": [
+    "多条 same 构成无 cannot-link 的全局连通分量时可确定性合并",
+    "多个 same 候选不再因处理顺序产生 multiple_same_character_candidates",
+    "bridge 窗口能保留相邻上下文之间的关键过渡文本且受最大长度限制",
+    "真正 uncertain 的局部人物仍形成 provisional singleton 并保留事实和 review",
+    "新增回归测试覆盖全局 same、cannot-link、bridge 截断和 provisional facts",
+    "形成残余疑难二次裁决的最小输入输出方案与触发条件",
+    "残余 cluster-level 节点具备 Provider 0 准备、可恢复 DeepSeek 执行和 supplemental registry 重建",
+    "identity_evidence_quotes 只能在所选候选的 relationship_context_quotes 内唯一 Grounding，普通 context_quotes 不得作为证据",
+    "斗罗旧 M3 产物可离线复用并生成有关系原文支撑的有界残余任务"
+  ]
+}

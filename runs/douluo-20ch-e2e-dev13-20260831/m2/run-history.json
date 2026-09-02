@@ -1,0 +1,14 @@
+[
+  {
+    "started_at": "2026-09-01T01:56:01.307795Z",
+    "completed_at": "2026-09-01T02:02:07.644472Z",
+    "duration_ms": 366344,
+    "planned_tasks": 32,
+    "succeeded_tasks": 32,
+    "failed_tasks": 0,
+    "resumed_tasks": 0,
+    "new_provider_calls": 32,
+    "recorded_provider_calls": 32,
+    "complete": true
+  }
+]

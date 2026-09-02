@@ -4,7 +4,7 @@
 
 - 项目：Novel Character Generator
 - 分支：`v3-simplified-character-evidence`
-- 状态：M1/N2/M2/N3/promotion、文档事实汇总和跨 Chunk 身份运行时均已建立；斗破真实 M3 19/19 完成并生成 11 个全局人物，当前真实样本范围已接受，同名不同人/different/cannot-link 延后到真实案例触发时再加固
+- 状态：M1/N2/M2/N3/promotion、文档事实汇总、跨 Chunk 身份、局部确定性身份闭合、人物档案组装和 post-link canonical fact groups 均已建立；斗罗 dev18 将 129 raw facts 解释为 109 个结构 groups
 - 工作区：`E:\project\agent\novel-character-generator`
 - Agent 生命周期：阶段 5（具体功能与纵向切片开发）`in_progress`，revision 2，风险 L1
 
@@ -32,10 +32,19 @@
 
 ## 当前焦点
 
-身份层按当前真实样本范围收口。下一阶段建议实现纯代码的人物档案组装：把全局 `character_id`、人物标签和 `document-character-evidence.json` 中的完整事实、安全来源、绝对 span、原文与冲突/review 汇总成统一 `document-character-profiles.json`。这一阶段先提供结构化、可追溯档案，不调用模型生成自然语言画像；待用户确认后进入实现。
+指定斗罗大陆文件的 dev13 全链路真实回归已贯通到最终 profiles；文件实际只有第1至19章，完整覆盖结论只针对该文件的 38,251 字符。身份层已针对真实失败完成有效关系覆盖、无向候选去重、有界固定点和局部确定性闭合。post-link 结构层已在不修改 raw profile 的前提下把 129 facts 归为 109 groups，129 fact/130 occurrence provenance 全保留。当前焦点转向章节位置、life/form/scene scope、persistence 和状态选择器，然后继续 transition、render-ready Profile Compiler 及上游人工质量评测。
 
 ## 最新路线决定
 
+- `DEC-20260902-REUSE-SOURCE-CHUNKS-071`：用户要求 071 直接复用原 M1 Manifest 的 17 个重叠 Chunk，不重新生成独立窗口。代码验证原 Chunk id/hash/span/覆盖，并以 local/promoted node 的 `chunk_id` 将该 Chunk 已识别且已绑定到最终人物簇的人物加入人物表。Chunk 元数据只存在代码信封，不进入模型；模型输入仍为 `characters: [{name, aliases}] + text`。跨 Chunk 重复 transition 在 Grounding 后由代码合并。
+- `DEC-20260902-WINDOW-CHARACTER-ROSTER-071`：用户确认 071 模型输入应显式提供上游身份层已经识别的人物，避免模型在 transition discovery 中重复做人名识别。最终实现以原 M1 `chunk_id` 连接该 Chunk 下的 local/promoted nodes，再投影到最终人物簇；只发送 canonical label 及该 Chunk 必要 aliases，不发送 character_id、ref、span、hash 或全局人物档案。模型事件的 `character` 必须从人物表 canonical label 中选择，代码信封据此回填唯一 character_id。
+- `DEC-20260901-FULL-COVERAGE-TRANSITION-SCAN-071`：用户指出“appearance fact 锚点 + 人物标签/状态词”会把 071 限制为已知表达式规则，无法覆盖隐式、跨句、代词承接和未知措辞的状态变化。071 因此复用原 M1 Manifest 的 17 个重叠 Chunk 执行完整语义扫描；appearance facts 和触发词不决定哪些文本进入模型。模型只读取 Chunk 原文及已绑定人物表并输出最小事件语义与逐字证据；代码负责 Chunk 元数据验证、绝对 span、身份绑定、跨 Chunk 去重、状态物化和失败关闭。
+- `DEC-20260901-MINIMAL-MODEL-SCHEMA-070-072`：用户确认 070～072 必须继续采用“代码信封、最小模型输入、最小模型输出、代码回填”边界。模型只接收完成当前语义判断所必需的人物标签、原文窗口和少量候选事实文本，不读取或输出 chunk/document/internal ID、span、hash、来源 occurrence、排序或状态机字段；这些全部由代码保存、绑定、换算和验证。模型输出 Schema 优先使用扁平短结构，不返回解释、置信度或重复的输入元数据。新派生产物中的每个字段都必须有明确下游消费方或验证用途；无消费方的 hash、包装层和多层嵌套不加入契约。071/072 允许受约束的单次模型语义节点，但 Grounding、身份绑定、状态物化、provenance 和失败关闭仍由代码负责。
+- `DEC-20260901-POST-LINK-FACT-GROUPS-069`：`fact_hash` 继续标识不可变 raw fact；`canonical_fact_id` 使用独立命名空间，只按 `character_id + document_fact_span + category + attribute + value` 生成。每个 group 必须保存全部 source fact hashes，并把每个 occurrence 绑定回 raw fact hash 与原数组索引。不同 attribute/span/value 不合并；语义归一和状态判断推迟到有 scope 的 072。
+- `DEC-20260901-LOCAL-COREFERENCE-CLOSURE-068`：局部确定性 same edge 只允许 `describe -> exact`，并要求同 Chunk、双方上下文交集、显式同位/示指命名/连续共指关系以及可从文档和双方上下文逐字回放的证据。问句、否定、纯姓名共现和全局唯一姓名不建立边；cannot-link 仍为硬约束。保存的 M3/rescue grounded 决策可在零 Provider 调用下重放并重建 registry/profile。
+- `DEC-20260901-APPEARANCE-PROFILE-PLAN-067`：Evidence Layer 的 raw facts、span、来源 occurrence、冲突和历史 review 保持不可变；不使用 `proper name + global unique` 自动建立身份关系。后续依次实现局部确定性身份闭合、post-link 结构 fact groups、`life_stage/form_state/scene_state/persistence/transition` 状态层、状态内语义关系、Label/Review 投影和按状态选择器编译的 render-ready profile。去重分为结构分组与 scope 内语义归一两步，canonical facts 必须反向引用全部 raw facts。M1/M2/promotion 人工标注评测是 Stage 6 前的正式 Gate，专家主观评分不登记为 Gate。
+- `DEC-20260901-M3-IDENTITY-FIXPOINT-066`：残余裁决按无向人物簇对生成，避免 A→B/B→A 重复；每轮 grounded 后重建 registry 并重新产生剩余任务，默认最多三轮，无决定性变化提前停止。当前 unresolved 由最终 union/cannot-link 图派生，历史 uncertain 被 supplemental same/different 消解后只留审计记录；same/different 冲突禁止合并并进入 review。可复用旧 rescue grounded 决策，避免重复模型费用。旧来源候选策略版本保持真实记录，档案连接器只对已知 v1/v2 做显式兼容。
+- `DEC-20260901-M3-LAYERED-RESCUE-064`：斗罗真实结果证明 M3 失败不能统一归因于模型。N4 改为先全局处理 grounded same 图，在 cannot-link 硬约束下合并无冲突分量；旧 bridge 的完整上下文并集长度判断改为有界过渡窗口；未决局部人物保留为 provisional singleton，事实不再丢失。仅对上述确定性步骤之后仍 unresolved 的 cluster 使用一次多候选二次模型裁决，模型只看标签、事实和关联原文，不读写内部 ref/ID/span/hash；输出仍需严格 Grounding。
 - `DEC-20260831-IDENTITY-CURRENT-SCOPE-ACCEPTED-062`：用户确认斗破当前身份结果可接受，不为尚未出现的“同名不同人”与 `different`/`cannot-link` 案例提前增加复杂策略。F-NEW-IDENTITY-006 按当前范围完成；未来真实数据出现错合并、明确 different/cannot-link 或无法安全聚类时，以该真实案例重开身份功能并增加对应回归。后续优先转向确定性人物档案组装。
 - `DEC-20260831-CROSS-CHUNK-IDENTITY-060`：用户授权开始跨 Chunk 人物身份层。身份层采用“代码候选与注册表 + 最小 M3 关系判断 + N4 严格 Grounding/聚类”；模型不读取或输出 ref、ID、span、hash，只返回 same/different/uncertain、标签关系和逐字身份证据。同名、外貌相似、称号或泛称只用于候选召回，不能直接合并；different 形成 cannot-link，多 same 或证据歧义进入 review。全局 ID、事实引用、冲突保留和 unresolved 状态由代码管理。本轮先交付零 Provider 的可测纵向切片，不宣称身份模型质量 Gate 通过。
 - `DEC-20260831-PROMOTION-PARTIAL-ACCEPTANCE-059`：用户根据斗破评测确认 promotion 改为事实级部分接受。人物标签有效且至少一条事实能安全唯一 Grounding 时建立人物；唯一事实正常归入，重复/歧义/不存在的事实逐条进入 review 并留在未分配池，不再连带删除安全事实。任何歧义仍不得猜测 occurrence；标签歧义、人物间标签或已接受事实重叠仍失败关闭。模型输出缓存与 grounding 策略版本分离，允许不调用模型地重放旧输出。

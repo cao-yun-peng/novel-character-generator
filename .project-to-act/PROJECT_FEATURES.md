@@ -15,11 +15,31 @@
 | F-NEW-N2-003 | 原文存在性验证与确定性去冗余 | completed | occurrence span、严格/空白等价匹配、raw provenance、exact→describe 优先、绝对 span 换算、重叠 Chunk 安全去重与多来源保留已实现；逐 quote hash 已删除 |
 | F-NEW-M2-004 | 双模式外貌拆解 | in_progress | exact attribution 与 remaining-describe promotion 已接线；promotion 支持事实级部分接受和离线重放，斗破得到 50 exact Chunk facts 与 12 promoted facts；待人工质量验收 |
 | F-NEW-N3-005 | 证据三态与 span 仲裁 | completed | Chunk 内 direct exact 归并、describe 唯一消费、跨 exact 重叠冲突、剩余池重建、collective 隔离及可恢复 promotion 已实现并实跑 |
-| F-NEW-IDENTITY-006 | 人物引用与记忆绑定 | completed | 运行时与斗破真实 M3 已完成：19/19 tasks、17 same/2 uncertain、11 global characters、5 linked、2 review；原文 Grounding 全通过，用户接受当前真实样本范围；同名不同人/different/cannot-link 在真实案例触发时重开 |
-| F-NEW-PROFILE-007 | 文档人物档案组装 | in_progress | DOCUMENT-CHARACTER-PROFILES-062 已启动；纯代码按同文档 guard + fact_hash join 汇总全局人物、完整事实、绝对 span、原文、多来源、冲突和 review，不新增模型调用 |
+| F-NEW-IDENTITY-006 | 人物引用与记忆绑定 | completed | 有效关系覆盖、cannot-link 冲突失败关闭、无向簇对去重和最多三轮固定点已完成；斗罗复用 5 条裁决并新增 1 次调用后唐三唯一化，男孩儿旧 unresolved 关闭，仅无关系证据的看门青年保守未决 |
+| F-NEW-PROFILE-007 | 文档人物档案组装 | completed | `document-character-profiles-v1` 已实现并离线实跑；同文档 guard + 完整 fact_hash/Chunk/span 回放后物化 11 人物、61 facts、62 occurrences，0 未绑定，4 conflicts/2 review 保留，Provider 0 调用 |
+| F-NEW-LOCAL-COREF-008 | 局部确定性身份闭合 | completed | `grounded-local-coreference-v1` 只以同 Chunk、共享局部上下文中可回放的显式同位、示指命名或连续共指链建立 same edge；斗罗高大身影并入唐昊，禁止 global unique name 自动 join |
+| F-NEW-CANONICAL-FACTS-009 | Post-link canonical facts | completed | 第一阶段结构分组完成：稳定 canonical ID、人物/span/category/attribute/value 完整键及逐 raw fact/occurrence 双向 provenance；scope 内语义归一仍留给 072 |
+| F-NEW-APPEARANCE-STATE-010 | 外貌状态与 Variant | in_progress | 070 基线完成；071 复用原 M1 17 Chunks，并以 chunk_id 将该 Chunk 已绑定人物的 name/aliases 注入模型上下文 |
+| F-NEW-LABEL-REVIEW-011 | Label 与 Review 投影 | planned | exact/describe 与 label 语义解耦；title/stability 修正；audit 与 actionable queue 分离 |
+| F-NEW-RENDER-PROFILE-012 | Render-ready Profile Compiler | planned | 按人物及状态选择器生成结构化人物卡，并保留 canonical/raw 双层 provenance |
+| F-NEW-QUALITY-EVAL-013 | 人工质量评测 | planned | M1/M2/promotion 与新增状态层的冻结标注集、evaluator、正式阈值和 Stage 6 Gate |
 
 ## 功能变更历史
 
+- 2026-09-02：071 放弃重新生成 19 个窗口，改为严格复用原 M1 Manifest 的 17 个重叠 Chunk。代码以 node.chunk_id 连接最终人物簇，Chunk id/hash/span 用于验证、恢复和 Grounding，但模型仍只读取 name/aliases/text。
+- 2026-09-02：F-NEW-APPEARANCE-STATE-010 完成 070 确定性基线：19 章、109 facts 唯一分配，life/form/scene 保守 unknown，persistence 使用少量类别规则；功能继续由 071 transition discovery 推进。
+- 2026-09-02：071 模型输入增加窗口相关人物表，仅含 canonical name 与必要 aliases。该表由既有 identity/context/evidence 的窗口交集生成；模型事件主体必须从表中选择，character_id 和身份绑定不暴露给模型。人物未覆盖或同名无法区分时失败关闭。
+- 2026-09-01：071 transition discovery 改为有重叠全文窗口模型扫描，避免人物标签、appearance fact 或已知状态词成为召回瓶颈。代码切窗不做语义过滤，模型发现事件，代码再 Grounding、身份绑定、去重和物化；上下文仍由固定窗口上限控制。
+- 2026-09-01：用户确认后续状态层继续贯彻最小模型边界：chunk/document/internal ID、span、hash、排序、绑定、Grounding 和 provenance 留在代码层；模型只接收必要原文并返回最小 transition/关系语义。新 Schema 每个字段必须存在明确消费方或验证用途，默认不增加 hash、解释字段和多层包装。
+- 2026-09-01：Post-link canonical facts 第一阶段完成。新层不改写 raw profile，不合并不同 attribute/span/value；registry/profile 文档身份、事实归属、raw hash、span、source artifact 和 summary 不一致均失败关闭。斗罗 129→109 groups，所有 fact/occurrence provenance 保留，Provider 0。
+- 2026-09-01：局部确定性身份闭合完成。新增版本化 local-coreference edge Schema、构建器、保存决策离线重放 CLI 与 registry/profile 重建；显式连续链成功建边，跨 Chunk、无关系陈述、问句、篡改证据和纯姓名共现均有拒绝测试。斗罗 8→7 profiles，129 raw facts 与 130 occurrences 零丢失，看门青年仍未决，Provider 0。
+
+- 2026-09-01：冻结 Profile Compiler 后续路线。`document-character-profiles-v1` 继续作为 raw evidence view；新增 post-link fact groups、appearance states 和 render-ready profiles 三层产物。局部身份关系只接受显式原文链；去重包含 attribute 和 scope；Label/Review 改为派生语义与可操作视图；人工标注集是 Stage 6 Gate。
+- 2026-09-01：身份策略升级 v3，supplemental same/different 按最终图关闭历史 uncertain，冲突失败关闭；残余策略升级 v2，无向候选去重并有界迭代到固定点。斗罗复用 5 条裁决，只新增 1 次 DeepSeek 调用，唐三/小三 16 members/39 facts 归一为一个人物，男孩儿旧 unresolved 消失，129 facts 全保留。
+- 2026-09-01：残余节点真实执行 5/5，得到 4 same/1 different，所有 8 条引用均来自所选候选关系上下文并逐字回放。模型结果可解释，但确定性聚合尚需候选图规范化或固定点迭代，并让 decisive supplemental relation 关闭相同关系上的旧 uncertain/unresolved。
+- 2026-09-01：残余 cluster-level 裁决已实现。候选专属 `relationship_context_quotes` 是唯一身份证据域，普通 context/fact 仅辅助理解；选择候选后代码执行唯一严格/纯空白等价 Grounding，再以 supplemental decision 重建 registry。斗罗离线准备 5 tasks/10 relation contexts，Provider 0，无关系原文的残余项不调用模型。
+- 2026-09-01：斗罗 5 个 `multiple_same_character_candidates` 被归因为顺序 union 假歧义。身份策略升级为先全局处理 grounded same 图并以 cannot-link 为硬约束；bridge 在完整 context 并集过长时保留间隔和后续过渡；显式介绍进入候选召回；真正 uncertain 的 singleton 仍进入注册表并保留事实。残余疑难计划使用一次多候选 cluster-level 裁决，不重跑全部 M3。
+- 2026-08-31：完成确定性人物档案组装。registry/evidence 只能在文档身份一致时按完整 `fact_hash` 连接；缺失、重复、quote 不一致、跨人物重复占用、Chunk/hash/span 回放失败均失败关闭。斗破输出 11 人物、61/61 已分配事实、62 occurrence、0 未绑定，零事实路径有单测覆盖。
 - 2026-08-31：用户授权开发文档人物档案层。任务冻结为确定性连接：先验证 registry/evidence 文档身份，再按 `fact_hash` 物化完整事实；缺失、冲突或 quote 不一致失败关闭，零事实人物和未绑定事实保留，不调用模型。
 - 2026-08-31：用户接受斗破当前身份结果，不提前为尚未出现的同名不同人和 `different`/`cannot-link` 扩展策略；身份功能按当前范围完成，真实失败案例作为重开触发器。下一阶段候选为确定性人物档案组装。
 - 2026-08-31：斗破真实 M3 19/19 完成并生成注册表。最终聚合萧炎、萧薰儿/萧熏儿/熏儿、萧战、葛叶、纳兰嫣然五组，六个单例保持独立；36 条身份证据全部原文回放。发现 Grounding 真实性与身份证明充分性必须分开评测，当前同名不同人和 cannot-link 尚无真实覆盖。

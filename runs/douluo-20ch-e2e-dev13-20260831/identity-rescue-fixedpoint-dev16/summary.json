@@ -1,0 +1,81 @@
+{
+  "schema_version": "cluster-rescue-batch-summary-v1",
+  "policy_version": "residual-cluster-adjudication-v2",
+  "planned_tasks": 1,
+  "candidate_options": 1,
+  "relationship_context_quotes": 3,
+  "provider_calls": 0,
+  "started_at": "2026-09-01T07:42:44.288580Z",
+  "completed_at": "2026-09-01T07:42:44.334578Z",
+  "duration_ms": 47,
+  "succeeded_tasks": 1,
+  "failed_tasks": 0,
+  "resumed_tasks": 1,
+  "new_provider_calls": 0,
+  "recorded_provider_calls": 0,
+  "seeded_decisions": 5,
+  "identity_relations": {
+    "same_character": 5,
+    "different_characters": 1,
+    "uncertain": 0
+  },
+  "new_identity_relations": {
+    "same_character": 1,
+    "different_characters": 0,
+    "uncertain": 0
+  },
+  "grounding_issues": 0,
+  "grounding_issues_by_code": {},
+  "complete": true,
+  "fixed_point_reached": true,
+  "termination_reason": "no_pending_tasks",
+  "rounds_completed": 1,
+  "rounds": [
+    {
+      "round_index": 1,
+      "planned_tasks": 1,
+      "succeeded_tasks": 1,
+      "failed_tasks": 0,
+      "new_provider_calls": 0,
+      "registry_changed": true,
+      "registry_summary": {
+        "local_character_nodes": 43,
+        "bound_local_nodes": 43,
+        "global_characters": 8,
+        "linked_characters": 4,
+        "singleton_characters": 4,
+        "unresolved_bindings": 1,
+        "review_items": 9,
+        "cannot_link_constraints": 2,
+        "appearance_fact_refs": 129,
+        "possible_conflicts": 13
+      }
+    }
+  ],
+  "registry_built": true,
+  "baseline_registry_summary": {
+    "local_character_nodes": 43,
+    "bound_local_nodes": 43,
+    "global_characters": 9,
+    "linked_characters": 5,
+    "singleton_characters": 4,
+    "unresolved_bindings": 1,
+    "review_items": 11,
+    "cannot_link_constraints": 2,
+    "appearance_fact_refs": 129,
+    "possible_conflicts": 12
+  },
+  "registry_summary": {
+    "local_character_nodes": 43,
+    "bound_local_nodes": 43,
+    "global_characters": 8,
+    "linked_characters": 4,
+    "singleton_characters": 4,
+    "unresolved_bindings": 1,
+    "review_items": 9,
+    "cannot_link_constraints": 2,
+    "appearance_fact_refs": 129,
+    "possible_conflicts": 13
+  },
+  "quality_note": "Only candidate-specific relationship_context_quotes may support rescue identity evidence; completion does not replace human identity quality evaluation."
+}

@@ -1,0 +1,1887 @@
+[
+  {
+    "schema_version": "grounded-character-packet-v6",
+    "evidence_precedence_policy_version": "exact-evidence-precedence-v1",
+    "source_document_version_id": "source-8bcb7305a759571b",
+    "chunking_policy_version": "fixed-codepoint-window-2500-overlap-250-v1",
+    "chunk_id": "chunk-000001-0-2500-f390c57806b0",
+    "chunk_hash": "f390c57806b025eed04c99152a68840f8c987027e43d679ebf830b70678c59ba",
+    "chunk_source_span": {
+      "start": 0,
+      "end": 2500
+    },
+    "grounded_mentions": [
+      {
+        "local_mention_id": "m1",
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "唐三",
+        "approved_evidence": [
+          {
+            "evidence_quote": "一名身穿灰衣的青年正站在鬼见愁顶峰",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 204,
+                "end": 221
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "他今年二十九岁",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 282,
+                "end": 289
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "从他胸口处那斗大的唐字",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 240,
+                "end": 251
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "全身赤裸的唐三",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1696,
+                "end": 1703
+              }
+            ],
+            "relation_to_mention": "contains_mention",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "高大昂扬的身躯",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1892,
+                "end": 1899
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "他的笑容很灿烂",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1714,
+                "end": 1721
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "601485b13f34863605afdd84f49efc0eb5b012378a449a30b757f0ba1f81cdc5"
+      },
+      {
+        "local_mention_id": "m3",
+        "mention_type": "describe",
+        "mention_scope": "collective",
+        "mention_quote": "十七道白色的身影",
+        "approved_evidence": [
+          {
+            "evidence_quote": "十七道白色的身影",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 572,
+                "end": 580
+              }
+            ],
+            "relation_to_mention": "contains_mention",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "他们身穿的白袍代表的是内门",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 631,
+                "end": 644
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "年纪最小的也超过了五旬",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 611,
+                "end": 622
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "年纪最大的已经超过了两个甲子",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 745,
+                "end": 759
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "这些脸色凝重的长老",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 847,
+                "end": 856
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "434a3b780eb665819b85bde238ac47ac152d259174ede0672b531ff687e6cb5f"
+      },
+      {
+        "local_mention_id": "m4",
+        "mention_type": "describe",
+        "mention_scope": "collective",
+        "mention_quote": "长老们",
+        "approved_evidence": [
+          {
+            "evidence_quote": "这些脸色凝重的长老",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 847,
+                "end": 856
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "b1b21ba41d1074e5d4377853782d79f4b96c65caced773182250db5869b4ffa8"
+      }
+    ],
+    "rejected_evidence": []
+  },
+  {
+    "schema_version": "grounded-character-packet-v6",
+    "evidence_precedence_policy_version": "exact-evidence-precedence-v1",
+    "source_document_version_id": "source-8bcb7305a759571b",
+    "chunking_policy_version": "fixed-codepoint-window-2500-overlap-250-v1",
+    "chunk_id": "chunk-000002-2250-4750-b54821906b9b",
+    "chunk_hash": "b54821906b9b4979c5f17e533521a44849c2d4475f3a78a7033a79eca23d72dd",
+    "chunk_source_span": {
+      "start": 2250,
+      "end": 4750
+    },
+    "grounded_mentions": [
+      {
+        "local_mention_id": "m1",
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "唐三",
+        "approved_evidence": [
+          {
+            "evidence_quote": "那是个只有五、六岁的孩子，显然，他经常承受太阳的温暖，皮肤呈现出健康的小麦色，黑色短发看上去很利落，一身衣服虽然朴素，到也干净。",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 852,
+                "end": 916
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "男孩儿在山顶上坐了下来，他的双眼死死的盯视着东方那抹渐渐明亮的鱼肚白色",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 994,
+                "end": 1029
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "他眼眸中竟然闪烁着一层淡淡的紫意，尽管这紫色并没有持续太长时间就悄然收敛",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1354,
+                "end": 1390
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "瘦小的身体腾身而起",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 2317,
+                "end": 2326
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "915483d4aeb6e5a403c86757a25862f97fc0bf413146c36ece88686948982f30"
+      }
+    ],
+    "rejected_evidence": []
+  },
+  {
+    "schema_version": "grounded-character-packet-v6",
+    "evidence_precedence_policy_version": "exact-evidence-precedence-v1",
+    "source_document_version_id": "source-8bcb7305a759571b",
+    "chunking_policy_version": "fixed-codepoint-window-2500-overlap-250-v1",
+    "chunk_id": "chunk-000003-4500-7000-bbfa3a18c9e4",
+    "chunk_hash": "bbfa3a18c9e476de46397a73b1eb79a2490a6719ed36683d6bd731cc02b5dd7c",
+    "chunk_source_span": {
+      "start": 4500,
+      "end": 7000
+    },
+    "grounded_mentions": [
+      {
+        "local_mention_id": "m1",
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "唐三",
+        "approved_evidence": [
+          {
+            "evidence_quote": "瘦小的身体",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 67,
+                "end": 72
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "他的身体如此纤瘦",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1041,
+                "end": 1049
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "唐三的身高还够不到灶台",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 774,
+                "end": 785
+              }
+            ],
+            "relation_to_mention": "contains_mention",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "b8844d274717a15edcf953a4fbd1e7ef9e8089fda197ab5573bc086502f5033f"
+      },
+      {
+        "local_mention_id": "m2",
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "唐昊",
+        "approved_evidence": [
+          {
+            "evidence_quote": "那是一名中年男子，看上去大约有接近五十岁的样子，但身材却非常高大魁梧",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1115,
+                "end": 1149
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "破损的袍子穿在身上，上面甚至连补丁都没有，露出下面古铜色的皮肤，原本还算端正的五官却蒙着一层蜡黄色，一副睡眼朦胧的样子，头发乱糟糟的像鸟窝一般，一脸的胡子已经不知道有多少日子没有整理过了。目光呆滞而昏黄",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1169,
+                "end": 1270
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "暗黄的脸色这才看上去多了几分光泽",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1648,
+                "end": 1664
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "5e7fe6b4a8ac038fd3df626e6249fe921d8afc561f83b78c37d8168450b2760a"
+      },
+      {
+        "local_mention_id": "m4",
+        "mention_type": "describe",
+        "mention_scope": "individual",
+        "mention_quote": "高大的身影",
+        "approved_evidence": [
+          {
+            "evidence_quote": "一个高大的身影迈着有些踉跄的步伐走了出来",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1089,
+                "end": 1109
+              }
+            ],
+            "relation_to_mention": "contains_mention",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "8dd50abb592af8990ac012917e0cdfe148b465db5eaf6eabe7f4755639df1a6e"
+      }
+    ],
+    "rejected_evidence": []
+  },
+  {
+    "schema_version": "grounded-character-packet-v6",
+    "evidence_precedence_policy_version": "exact-evidence-precedence-v1",
+    "source_document_version_id": "source-8bcb7305a759571b",
+    "chunking_policy_version": "fixed-codepoint-window-2500-overlap-250-v1",
+    "chunk_id": "chunk-000004-6750-9250-d8d7539ee8f4",
+    "chunk_hash": "d8d7539ee8f409a6f324a0c5c5bb104eb83c28ec8c7d122cd39f7346f422c101",
+    "chunk_source_span": {
+      "start": 6750,
+      "end": 9250
+    },
+    "grounded_mentions": [
+      {
+        "local_mention_id": "m1",
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "唐昊",
+        "approved_evidence": [
+          {
+            "evidence_quote": "你年纪大了",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 182,
+                "end": 187
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "488a2fb144e94ab84d1769ca3d4d60a0ba554c95806ca3d43e6c453ee8efa25a"
+      },
+      {
+        "local_mention_id": "m2",
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "唐三",
+        "approved_evidence": [
+          {
+            "evidence_quote": "他那双稚嫩的小手看上去却并没有任何变化。甚至连一个水泡都没有起过。",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 2147,
+                "end": 2180
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "他的身体变得结实了几分",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1836,
+                "end": 1847
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "这种长柄铁锤甚至要比他的身高还高上几分",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1110,
+                "end": 1129
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "269babc3e9a8ae5efb5f442d0eaab405a5b6dca1e79ded70b5648940c7a140bc"
+      },
+      {
+        "local_mention_id": "m3",
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "小三",
+        "approved_evidence": [
+          {
+            "evidence_quote": "他那双稚嫩的小手看上去却并没有任何变化。甚至连一个水泡都没有起过。",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 2147,
+                "end": 2180
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "他的身体变得结实了几分",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1836,
+                "end": 1847
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "这种长柄铁锤甚至要比他的身高还高上几分",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1110,
+                "end": 1129
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "5556b58728c2b4bdf55b053658af0fccc2a3dfa2acd5ec9f37153eadf7eeb478"
+      }
+    ],
+    "rejected_evidence": []
+  },
+  {
+    "schema_version": "grounded-character-packet-v6",
+    "evidence_precedence_policy_version": "exact-evidence-precedence-v1",
+    "source_document_version_id": "source-8bcb7305a759571b",
+    "chunking_policy_version": "fixed-codepoint-window-2500-overlap-250-v1",
+    "chunk_id": "chunk-000005-9000-11500-f4a0068fbfb5",
+    "chunk_hash": "f4a0068fbfb5aee49eabefba42c200ac2cb65f2f5ca0eced35883545aa0a1748",
+    "chunk_source_span": {
+      "start": 9000,
+      "end": 11500
+    },
+    "grounded_mentions": [
+      {
+        "local_mention_id": "m1",
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "唐三",
+        "approved_evidence": [
+          {
+            "evidence_quote": "再过几天，唐三就要六岁了",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 905,
+                "end": 917
+              }
+            ],
+            "relation_to_mention": "contains_mention",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "e9fa3888236c2a7893bbaa63116ef53cfdb0d0d57cf695652a744938f12a61bc"
+      },
+      {
+        "local_mention_id": "m2",
+        "mention_type": "describe",
+        "mention_scope": "individual",
+        "mention_quote": "一名老人",
+        "approved_evidence": [
+          {
+            "evidence_quote": "看上去六十多岁的样子，身材瘦长，但精神矍铄，衣服干净整洁，头发也梳理的一丝不苟，和唐昊相比，简直就是两个极端",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1126,
+                "end": 1180
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "ced9b5a4e23b0cd5bd87072539ec25d9842157c985712358c5ecc19bab2192c6"
+      },
+      {
+        "local_mention_id": "m3",
+        "mention_type": "describe",
+        "mention_scope": "individual",
+        "mention_quote": "老杰克",
+        "approved_evidence": [
+          {
+            "evidence_quote": "看上去六十多岁的样子，身材瘦长，但精神矍铄，衣服干净整洁，头发也梳理的一丝不苟，和唐昊相比，简直就是两个极端",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1126,
+                "end": 1180
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "889d95ba32c85c760d1f83334632e8178d9892a2ead23b4c450e854caa06181e"
+      },
+      {
+        "local_mention_id": "m4",
+        "mention_type": "describe",
+        "mention_scope": "individual",
+        "mention_quote": "这位村长",
+        "approved_evidence": [
+          {
+            "evidence_quote": "看上去六十多岁的样子，身材瘦长，但精神矍铄，衣服干净整洁，头发也梳理的一丝不苟，和唐昊相比，简直就是两个极端",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1126,
+                "end": 1180
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "cd6075fc8f576b7e9ed6d2dcb732a9d847883a56caf42e217f7db1ccd29df8bf"
+      },
+      {
+        "local_mention_id": "m5",
+        "mention_type": "describe",
+        "mention_scope": "individual",
+        "mention_quote": "杰克爷爷",
+        "approved_evidence": [
+          {
+            "evidence_quote": "看上去六十多岁的样子，身材瘦长，但精神矍铄，衣服干净整洁，头发也梳理的一丝不苟，和唐昊相比，简直就是两个极端",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1126,
+                "end": 1180
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "4d1605c7279113737e028d9f3de6870926b62417e5b36a6784f80e9dea1e644b"
+      }
+    ],
+    "rejected_evidence": []
+  },
+  {
+    "schema_version": "grounded-character-packet-v6",
+    "evidence_precedence_policy_version": "exact-evidence-precedence-v1",
+    "source_document_version_id": "source-8bcb7305a759571b",
+    "chunking_policy_version": "fixed-codepoint-window-2500-overlap-250-v1",
+    "chunk_id": "chunk-000006-11250-13750-9b713c3495b7",
+    "chunk_hash": "9b713c3495b71793615560f974b68a50a0c0dd5f05a8fe1459948e70ab21b2ef",
+    "chunk_source_span": {
+      "start": 11250,
+      "end": 13750
+    },
+    "grounded_mentions": [
+      {
+        "local_mention_id": "m1",
+        "mention_type": "describe",
+        "mention_scope": "individual",
+        "mention_quote": "年轻人",
+        "approved_evidence": [
+          {
+            "evidence_quote": "此人看上去二十多岁的样子，剑眉星目，相貌甚是俊朗。一身白色劲装，背后是黑色披风，胸前正中心的位置，有一个拳头大小的魂字。",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1889,
+                "end": 1949
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "左胸上，有一枚雕刻着长剑的徽章，徽章上一共是三柄长剑交错。",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1969,
+                "end": 1998
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "62346dbfc6b94fc2d595acbece348759a2815879b58538cc772119f3ca5b23f5"
+      },
+      {
+        "local_mention_id": "m2",
+        "mention_type": "describe",
+        "mention_scope": "individual",
+        "mention_quote": "青年",
+        "approved_evidence": [
+          {
+            "evidence_quote": "此人看上去二十多岁的样子，剑眉星目，相貌甚是俊朗。一身白色劲装，背后是黑色披风，胸前正中心的位置，有一个拳头大小的魂字。",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1889,
+                "end": 1949
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "左胸上，有一枚雕刻着长剑的徽章，徽章上一共是三柄长剑交错。",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1969,
+                "end": 1998
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "4c4dd5beffa9278405434602b7b46224338728279cdc350d4e16594333c9b3ff"
+      },
+      {
+        "local_mention_id": "m3",
+        "mention_type": "describe",
+        "mention_scope": "individual",
+        "mention_quote": "战魂大师",
+        "approved_evidence": [
+          {
+            "evidence_quote": "此人看上去二十多岁的样子，剑眉星目，相貌甚是俊朗。一身白色劲装，背后是黑色披风，胸前正中心的位置，有一个拳头大小的魂字。",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1889,
+                "end": 1949
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "左胸上，有一枚雕刻着长剑的徽章，徽章上一共是三柄长剑交错。",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1969,
+                "end": 1998
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "6bb39f8aea9f26d417dbb45861d7d128217831446a93af0e30ebdfb3858bed8d"
+      }
+    ],
+    "rejected_evidence": []
+  },
+  {
+    "schema_version": "grounded-character-packet-v6",
+    "evidence_precedence_policy_version": "exact-evidence-precedence-v1",
+    "source_document_version_id": "source-8bcb7305a759571b",
+    "chunking_policy_version": "fixed-codepoint-window-2500-overlap-250-v1",
+    "chunk_id": "chunk-000007-13500-16000-29d830992ba6",
+    "chunk_hash": "29d830992ba691fba8be279e7fecafddccd88aae801f1b4b15e7585da0f4418c",
+    "chunk_source_span": {
+      "start": 13500,
+      "end": 16000
+    },
+    "grounded_mentions": [
+      {
+        "local_mention_id": "m1",
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "唐三",
+        "approved_evidence": [
+          {
+            "evidence_quote": "他的身材和同龄的孩子相比，要瘦小一些。",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 251,
+                "end": 270
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "42d3ac0513671684848b76c374030d62c174f9e033ae28faaae135e2cf57bf2b"
+      },
+      {
+        "local_mention_id": "m2",
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "素云涛",
+        "approved_evidence": [
+          {
+            "evidence_quote": "素云涛的头发原本是黑色的，但当那青光注入之后，瞬间就变成了灰色，并且快速的变长，同色毛发出现在他裸露在外的双手之上，同时，他的身体也似乎比之前膨胀了许多。全身充满了肌肉感。",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 550,
+                "end": 636
+              }
+            ],
+            "relation_to_mention": "contains_mention",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "素云涛的眼睛已经变成了幽幽的绿色，双手十指上探出的利爪闪烁着淡淡的寒光。",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 669,
+                "end": 705
+              }
+            ],
+            "relation_to_mention": "contains_mention",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "37c0adbd2fd3c545f154dd72d7f80178508c0fa7304c3d639cdbafd8cb53f97e"
+      },
+      {
+        "local_mention_id": "m4",
+        "mention_type": "describe",
+        "mention_scope": "individual",
+        "mention_quote": "男孩儿",
+        "approved_evidence": [
+          {
+            "evidence_quote": "男孩儿稚嫩的小手与素云涛的狼爪分别在水晶球上下位置",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1744,
+                "end": 1769
+              }
+            ],
+            "relation_to_mention": "contains_mention",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "2588c338ed1adc48a3ee28fc746720844dd984f36530a5e4f29908dafba3a91b"
+      }
+    ],
+    "rejected_evidence": []
+  },
+  {
+    "schema_version": "grounded-character-packet-v6",
+    "evidence_precedence_policy_version": "exact-evidence-precedence-v1",
+    "source_document_version_id": "source-8bcb7305a759571b",
+    "chunking_policy_version": "fixed-codepoint-window-2500-overlap-250-v1",
+    "chunk_id": "chunk-000008-15750-18250-3249bedb72a1",
+    "chunk_hash": "3249bedb72a19a643804e214c834499cfe7d838b4cca74e5579fdf43e69fb02c",
+    "chunk_source_span": {
+      "start": 15750,
+      "end": 18250
+    },
+    "grounded_mentions": [
+      {
+        "local_mention_id": "m1",
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "唐三",
+        "approved_evidence": [
+          {
+            "evidence_quote": "唐三那平静而有些坚定的目光",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 835,
+                "end": 848
+              }
+            ],
+            "relation_to_mention": "contains_mention",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "0cc8cccd34781f97cf8704df675df1558dbd2ab456df9a4d2eae98c907bf82cd"
+      },
+      {
+        "local_mention_id": "m3",
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "素云涛",
+        "approved_evidence": [
+          {
+            "evidence_quote": "素云涛的眼睛突然亮了起来",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 247,
+                "end": 259
+              }
+            ],
+            "relation_to_mention": "contains_mention",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "素云涛呆滞的看着他",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1519,
+                "end": 1528
+              }
+            ],
+            "relation_to_mention": "contains_mention",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "df6282e925fbea636622dfb4d9fee46fca50d3ae03ce256d53d580d6dbd0d446"
+      }
+    ],
+    "rejected_evidence": []
+  },
+  {
+    "schema_version": "grounded-character-packet-v6",
+    "evidence_precedence_policy_version": "exact-evidence-precedence-v1",
+    "source_document_version_id": "source-8bcb7305a759571b",
+    "chunking_policy_version": "fixed-codepoint-window-2500-overlap-250-v1",
+    "chunk_id": "chunk-000009-18000-20500-3d2108420730",
+    "chunk_hash": "3d2108420730aaad815c492f13f9e3e2c43212d954fec2b94335399f6b7e229b",
+    "chunk_source_span": {
+      "start": 18000,
+      "end": 20500
+    },
+    "grounded_mentions": [
+      {
+        "local_mention_id": "m1",
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "唐昊",
+        "approved_evidence": [
+          {
+            "evidence_quote": "那个邋遢鬼",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1508,
+                "end": 1513
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "邋遢铁匠",
+            "occurrence_count": 2,
+            "source_spans": [
+              {
+                "start": 1652,
+                "end": 1656
+              },
+              {
+                "start": 2079,
+                "end": 2083
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "3cde929af30ea30323824fbb87a4291a91e1ea12891036a8ed57ecda50963773"
+      },
+      {
+        "local_mention_id": "m4",
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "杰克",
+        "approved_evidence": [
+          {
+            "evidence_quote": "他年纪已经不小了",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1752,
+                "end": 1760
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "老杰克一脸紧张",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 423,
+                "end": 430
+              }
+            ],
+            "relation_to_mention": "contains_mention",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "杰克脸上失望的表情",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 622,
+                "end": 631
+              }
+            ],
+            "relation_to_mention": "contains_mention",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "07f7bd6e49e6c2fcca7f8aad1fe14414daa88b0c563250709d886a3d177acf7d"
+      }
+    ],
+    "rejected_evidence": []
+  },
+  {
+    "schema_version": "grounded-character-packet-v6",
+    "evidence_precedence_policy_version": "exact-evidence-precedence-v1",
+    "source_document_version_id": "source-8bcb7305a759571b",
+    "chunking_policy_version": "fixed-codepoint-window-2500-overlap-250-v1",
+    "chunk_id": "chunk-000010-20250-22750-534a1b52e99f",
+    "chunk_hash": "534a1b52e99fd1ac19398b29940ad3f5e234e6efb287e3cdbd5bd6e4335a3fc1",
+    "chunk_source_span": {
+      "start": 20250,
+      "end": 22750
+    },
+    "grounded_mentions": [
+      {
+        "local_mention_id": "m1",
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "唐昊",
+        "approved_evidence": [
+          {
+            "evidence_quote": "已经现出苍老的面庞上流露出一丝极其冰冷的气息",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1019,
+                "end": 1041
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "他的双眼通红",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1701,
+                "end": 1707
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "唐昊的胸膛很宽阔，或许是因为长期做铁匠的原因，尽管表面上他看上去很懒散，可他身上的肌肉却并没有因为岁月而减少",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 2308,
+                "end": 2362
+              }
+            ],
+            "relation_to_mention": "contains_mention",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "唐昊依旧是一副懒洋洋的样子",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 341,
+                "end": 354
+              }
+            ],
+            "relation_to_mention": "contains_mention",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "32c2fb957cbe0532ca5c75cee47f962de9cf494af3a4f1578568dc06f2f903b5"
+      },
+      {
+        "local_mention_id": "m3",
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "唐三",
+        "approved_evidence": [
+          {
+            "evidence_quote": "他的脸色已经变得有些苍白了",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1966,
+                "end": 1979
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "1e76d1346cc7ed1911d0ed9d6c76c3090b3cbd5643c85dd92b254f4c4cf75ceb"
+      },
+      {
+        "local_mention_id": "m4",
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "小三",
+        "approved_evidence": [
+          {
+            "evidence_quote": "他的脸色已经变得有些苍白了",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1966,
+                "end": 1979
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "c2d44a13f41a170a97cbd046b5333b70720ad60809358022e40c5902db67426f"
+      }
+    ],
+    "rejected_evidence": []
+  },
+  {
+    "schema_version": "grounded-character-packet-v6",
+    "evidence_precedence_policy_version": "exact-evidence-precedence-v1",
+    "source_document_version_id": "source-8bcb7305a759571b",
+    "chunking_policy_version": "fixed-codepoint-window-2500-overlap-250-v1",
+    "chunk_id": "chunk-000011-22500-25000-8e969940f32a",
+    "chunk_hash": "8e969940f32a4fcf5c88787971d639f9e94844708d524fc46468427bde287574",
+    "chunk_source_span": {
+      "start": 22500,
+      "end": 25000
+    },
+    "grounded_mentions": [
+      {
+        "local_mention_id": "m1",
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "唐昊",
+        "approved_evidence": [
+          {
+            "evidence_quote": "唐昊的胸膛很宽阔，或许是因为长期做铁匠的原因，尽管表面上他看上去很懒散，可他身上的肌肉却并没有因为岁月而减少",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 58,
+                "end": 112
+              }
+            ],
+            "relation_to_mention": "contains_mention",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "面庞看上去更加苍老了几分",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 867,
+                "end": 879
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "高大的父亲",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1666,
+                "end": 1671
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "裸露在破烂裤管外的两条小腿",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 2411,
+                "end": 2424
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "9cd39d848a2c5a3bd47d58719e5ff78c82d00f7a95d617dc0fffcd78099dffda"
+      },
+      {
+        "local_mention_id": "m2",
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "唐三",
+        "approved_evidence": [
+          {
+            "evidence_quote": "唐三幼小的身体和手中的铁锤并不成比例",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1392,
+                "end": 1410
+              }
+            ],
+            "relation_to_mention": "contains_mention",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "他身上的衣服已经被汗水浸透了",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1313,
+                "end": 1327
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "挥汗如雨的唐三",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1517,
+                "end": 1524
+              }
+            ],
+            "relation_to_mention": "contains_mention",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "95f08707a465f36ebc55b36e5221d7ab0628aaa63e703bcd9c76581c00e9a8b2"
+      }
+    ],
+    "rejected_evidence": []
+  },
+  {
+    "schema_version": "grounded-character-packet-v6",
+    "evidence_precedence_policy_version": "exact-evidence-precedence-v1",
+    "source_document_version_id": "source-8bcb7305a759571b",
+    "chunking_policy_version": "fixed-codepoint-window-2500-overlap-250-v1",
+    "chunk_id": "chunk-000012-24750-27250-0e60e5181e73",
+    "chunk_hash": "0e60e5181e738b2a068c2406545c2547561208e9623bd078a073e71f10725563",
+    "chunk_source_span": {
+      "start": 24750,
+      "end": 27250
+    },
+    "grounded_mentions": [
+      {
+        "local_mention_id": "m1",
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "唐昊",
+        "approved_evidence": [
+          {
+            "evidence_quote": "裸露在破烂裤管外的两条小腿瞬间绷紧",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 161,
+                "end": 178
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "唐昊的双眼变得专注起来",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1867,
+                "end": 1878
+              }
+            ],
+            "relation_to_mention": "contains_mention",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "800c88eeacd2deb9c6a4b7a41905781503944b9c3e6eed84b45a327d2877e5fa"
+      }
+    ],
+    "rejected_evidence": []
+  },
+  {
+    "schema_version": "grounded-character-packet-v6",
+    "evidence_precedence_policy_version": "exact-evidence-precedence-v1",
+    "source_document_version_id": "source-8bcb7305a759571b",
+    "chunking_policy_version": "fixed-codepoint-window-2500-overlap-250-v1",
+    "chunk_id": "chunk-000013-27000-29500-cac937b0db28",
+    "chunk_hash": "cac937b0db2803b7a5906fcd31cdefc5d92a06abd3f62daed95e81aaef57bcc3",
+    "chunk_source_span": {
+      "start": 27000,
+      "end": 29500
+    },
+    "grounded_mentions": [
+      {
+        "local_mention_id": "m1",
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "唐昊",
+        "approved_evidence": [
+          {
+            "evidence_quote": "面不红，气不喘",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 297,
+                "end": 304
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "父亲偶尔流露出满意的目光",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1866,
+                "end": 1878
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "2ea6010509d469902dc5a873c24425a80d11c21c9756fc2f4af2ebf0c9ac4c31"
+      },
+      {
+        "local_mention_id": "m2",
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "唐三",
+        "approved_evidence": [
+          {
+            "evidence_quote": "唐三脸上流露出一丝满足的笑容",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1938,
+                "end": 1952
+              }
+            ],
+            "relation_to_mention": "contains_mention",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "c61bd4b9cf7aa9856bd2939b3e2104cd5a1578c2465779e7eb5ecd180d22b842"
+      }
+    ],
+    "rejected_evidence": []
+  },
+  {
+    "schema_version": "grounded-character-packet-v6",
+    "evidence_precedence_policy_version": "exact-evidence-precedence-v1",
+    "source_document_version_id": "source-8bcb7305a759571b",
+    "chunking_policy_version": "fixed-codepoint-window-2500-overlap-250-v1",
+    "chunk_id": "chunk-000014-29250-31750-3f70e01ec313",
+    "chunk_hash": "3f70e01ec313f78323afeffc2e5fe9c2264be8966f0d3d7fd89eda500e9d1990",
+    "chunk_source_span": {
+      "start": 29250,
+      "end": 31750
+    },
+    "grounded_mentions": [
+      {
+        "local_mention_id": "m1",
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "唐三",
+        "approved_evidence": [
+          {
+            "evidence_quote": "自己现在年纪还小",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 434,
+                "end": 442
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "唐三手腕上带着的这筒袖箭",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 51,
+                "end": 63
+              }
+            ],
+            "relation_to_mention": "contains_mention",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "60c7c15db5a2aa1166f664e45e3d8faff9babb7e969bb9074a63ef4d8d3ac565"
+      },
+      {
+        "local_mention_id": "m2",
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "唐昊",
+        "approved_evidence": [
+          {
+            "evidence_quote": "眼前这个高大苍老的男人",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1515,
+                "end": 1526
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "dd04775e589c963e1a90e15cf24be2e048abf8e2586ed34ffec7ba9f849195e5"
+      },
+      {
+        "local_mention_id": "m3",
+        "mention_type": "describe",
+        "mention_scope": "individual",
+        "mention_quote": "高大苍老的男人",
+        "approved_evidence": [
+          {
+            "evidence_quote": "高大苍老的男人",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1519,
+                "end": 1526
+              }
+            ],
+            "relation_to_mention": "contains_mention",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "f149bb2843018f2f7e2e1d338cc3e4d615c1724687de7d5e18a4c586ecc14699"
+      }
+    ],
+    "rejected_evidence": []
+  },
+  {
+    "schema_version": "grounded-character-packet-v6",
+    "evidence_precedence_policy_version": "exact-evidence-precedence-v1",
+    "source_document_version_id": "source-8bcb7305a759571b",
+    "chunking_policy_version": "fixed-codepoint-window-2500-overlap-250-v1",
+    "chunk_id": "chunk-000015-31500-34000-fb2b21bc7e87",
+    "chunk_hash": "fb2b21bc7e8785a29f224fb7d64a2323a8157e1fbf264abfb4237940867a2432",
+    "chunk_source_span": {
+      "start": 31500,
+      "end": 34000
+    },
+    "grounded_mentions": [
+      {
+        "local_mention_id": "m1",
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "唐三",
+        "approved_evidence": [
+          {
+            "evidence_quote": "他那些有着大小补丁的衣服",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 23,
+                "end": 35
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "眼中紫意莹然",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 419,
+                "end": 425
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "身体比以前健壮了一些",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 436,
+                "end": 446
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "才不过六岁",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 612,
+                "end": 617
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "唐三瘦弱的身体",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1542,
+                "end": 1549
+              }
+            ],
+            "relation_to_mention": "contains_mention",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "还没有铸造锤高吧",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 2403,
+                "end": 2411
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "cc2e3cad6cea9c19ee220d6b9f7a34f84995ca80edce888ee1d489f3835923d7"
+      },
+      {
+        "local_mention_id": "m2",
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "唐昊",
+        "approved_evidence": [
+          {
+            "evidence_quote": "高大的身影",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1499,
+                "end": 1504
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "在他那的眼睛中，不知什么时候已经多了一层朦胧的水意",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1793,
+                "end": 1818
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "944ab6b185f40d04f2ca941c6b56f34ee48a60f790d82074317e8121a45d492f"
+      },
+      {
+        "local_mention_id": "m4",
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "杰克",
+        "approved_evidence": [
+          {
+            "evidence_quote": "特意穿了一身新衣服，看上去更添几分矍铄",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1262,
+                "end": 1281
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "5080ab649cc3f1076e93a776ce4174cd9391f58b66df956e2972efc1a24f10b6"
+      }
+    ],
+    "rejected_evidence": []
+  },
+  {
+    "schema_version": "grounded-character-packet-v6",
+    "evidence_precedence_policy_version": "exact-evidence-precedence-v1",
+    "source_document_version_id": "source-8bcb7305a759571b",
+    "chunking_policy_version": "fixed-codepoint-window-2500-overlap-250-v1",
+    "chunk_id": "chunk-000016-33750-36250-66f14c14f2ba",
+    "chunk_hash": "66f14c14f2bae4bf3d0ebda7c2a8d0b35bf53d397718394ecc195b6cb3c79258",
+    "chunk_source_span": {
+      "start": 33750,
+      "end": 36250
+    },
+    "grounded_mentions": [
+      {
+        "local_mention_id": "m1",
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "唐三",
+        "approved_evidence": [
+          {
+            "evidence_quote": "你才多大，还没有铸造锤高吧",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 148,
+                "end": 161
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "38963b524533fd2d8dee43d5a964994531f951ce6a1461f8f8d4c7c1668348ca"
+      },
+      {
+        "local_mention_id": "m2",
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "老杰克",
+        "approved_evidence": [
+          {
+            "evidence_quote": "老杰克",
+            "occurrence_count": 13,
+            "source_spans": [
+              {
+                "start": 137,
+                "end": 140
+              },
+              {
+                "start": 334,
+                "end": 337
+              },
+              {
+                "start": 416,
+                "end": 419
+              },
+              {
+                "start": 708,
+                "end": 711
+              },
+              {
+                "start": 881,
+                "end": 884
+              },
+              {
+                "start": 1048,
+                "end": 1051
+              },
+              {
+                "start": 1544,
+                "end": 1547
+              },
+              {
+                "start": 1643,
+                "end": 1646
+              },
+              {
+                "start": 1789,
+                "end": 1792
+              },
+              {
+                "start": 1963,
+                "end": 1966
+              },
+              {
+                "start": 2123,
+                "end": 2126
+              },
+              {
+                "start": 2216,
+                "end": 2219
+              },
+              {
+                "start": 2444,
+                "end": 2447
+              }
+            ],
+            "relation_to_mention": "contains_mention",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "50bb635ce1a94136bb9f08f18d53329d62dbfde65c3f61308dad9ed9212247c7"
+      },
+      {
+        "local_mention_id": "m3",
+        "mention_type": "describe",
+        "mention_scope": "individual",
+        "mention_quote": "看门的青年",
+        "approved_evidence": [
+          {
+            "evidence_quote": "看门的青年",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 2463,
+                "end": 2468
+              }
+            ],
+            "relation_to_mention": "contains_mention",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "572ea37e5b6ac2403fc33061baacddd1abb070dbc62529bd8ab9c1e406f09550"
+      }
+    ],
+    "rejected_evidence": []
+  },
+  {
+    "schema_version": "grounded-character-packet-v6",
+    "evidence_precedence_policy_version": "exact-evidence-precedence-v1",
+    "source_document_version_id": "source-8bcb7305a759571b",
+    "chunking_policy_version": "fixed-codepoint-window-2500-overlap-250-v1",
+    "chunk_id": "chunk-000017-36000-38251-39ec6c2a0304",
+    "chunk_hash": "39ec6c2a030455982da7f38be240d2a63881a369f54713b3c867b3eddac29613",
+    "chunk_source_span": {
+      "start": 36000,
+      "end": 38251
+    },
+    "grounded_mentions": [
+      {
+        "local_mention_id": "m1",
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "老杰克",
+        "approved_evidence": [
+          {
+            "evidence_quote": "老杰克的穿着在圣魂村已经算是光鲜了，可到了诺丁城，却完全是一副乡下人的样子",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 252,
+                "end": 289
+              }
+            ],
+            "relation_to_mention": "contains_mention",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "0d71a0b3c55e5882a3b2f7d4eb69a57119a6c821d3184cd926160c5528f8db42"
+      },
+      {
+        "local_mention_id": "m2",
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "唐三",
+        "approved_evidence": [
+          {
+            "evidence_quote": "身上衣服全是补丁",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1152,
+                "end": 1160
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "一道瘦小的身影",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1252,
+                "end": 1259
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "他那细嫩的小手",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1268,
+                "end": 1275
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "施展的人实在矮小了一些",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1392,
+                "end": 1403
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "唐三人虽然不大",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1678,
+                "end": 1685
+              }
+            ],
+            "relation_to_mention": "contains_mention",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "143b71c874725f2f0bfe68ebca4d866ce3e0d349539ecf9c403871e0265288df"
+      },
+      {
+        "local_mention_id": "m5",
+        "mention_type": "describe",
+        "mention_scope": "individual",
+        "mention_quote": "老头儿",
+        "approved_evidence": [
+          {
+            "evidence_quote": "不就是个老头儿么",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1096,
+                "end": 1104
+              }
+            ],
+            "relation_to_mention": "contains_mention",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "9db1e43f41b92b30b0e14072b88cfa5e7b3248a5a5e78607a3dab82faa5702d8"
+      },
+      {
+        "local_mention_id": "m6",
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "大师",
+        "approved_evidence": [
+          {
+            "evidence_quote": "中等身材，略微有些偏瘦的男子",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1896,
+                "end": 1910
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "这个人大约四、五十岁的样子，黑色短发三七分开，相貌很普通",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1931,
+                "end": 1959
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "双眼开阖之间带着几分懒散和颓废",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1979,
+                "end": 1994
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "c9d1bfc435bb0ffd48402e6988af581116e7d0a66902f63b1ac1f4000b313864"
+      }
+    ],
+    "rejected_evidence": []
+  }
+]

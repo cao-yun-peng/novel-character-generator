@@ -1,0 +1,212 @@
+{
+  "schema_version": "m1-chunk-result-v4",
+  "chunk_index": 10,
+  "chunk_id": "chunk-000010-20250-22750-534a1b52e99f",
+  "chunk_hash": "534a1b52e99fd1ac19398b29940ad3f5e234e6efb287e3cdbd5bd6e4335a3fc1",
+  "chunk_source_span": {
+    "start": 20250,
+    "end": 22750
+  },
+  "model_output": {
+    "candidate_mentions": [
+      {
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "唐昊",
+        "evidence_quotes": [
+          "已经现出苍老的面庞上流露出一丝极其冰冷的气息",
+          "他的双眼通红",
+          "唐昊的胸膛很宽阔，或许是因为长期做铁匠的原因，尽管表面上他看上去很懒散，可他身上的肌肉却并没有因为岁月而减少",
+          "唐昊依旧是一副懒洋洋的样子"
+        ]
+      },
+      {
+        "mention_type": "describe",
+        "mention_scope": "individual",
+        "mention_quote": "爸爸",
+        "evidence_quotes": [
+          "已经现出苍老的面庞上流露出一丝极其冰冷的气息",
+          "他的双眼通红",
+          "唐昊的胸膛很宽阔，或许是因为长期做铁匠的原因，尽管表面上他看上去很懒散，可他身上的肌肉却并没有因为岁月而减少",
+          "唐昊依旧是一副懒洋洋的样子"
+        ]
+      },
+      {
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "唐三",
+        "evidence_quotes": [
+          "他的脸色已经变得有些苍白了"
+        ]
+      },
+      {
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "小三",
+        "evidence_quotes": [
+          "他的脸色已经变得有些苍白了"
+        ]
+      }
+    ]
+  },
+  "grounded_packet": {
+    "schema_version": "grounded-character-packet-v6",
+    "evidence_precedence_policy_version": "exact-evidence-precedence-v1",
+    "source_document_version_id": "source-8bcb7305a759571b",
+    "chunking_policy_version": "fixed-codepoint-window-2500-overlap-250-v1",
+    "chunk_id": "chunk-000010-20250-22750-534a1b52e99f",
+    "chunk_hash": "534a1b52e99fd1ac19398b29940ad3f5e234e6efb287e3cdbd5bd6e4335a3fc1",
+    "chunk_source_span": {
+      "start": 20250,
+      "end": 22750
+    },
+    "grounded_mentions": [
+      {
+        "local_mention_id": "m1",
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "唐昊",
+        "approved_evidence": [
+          {
+            "evidence_quote": "已经现出苍老的面庞上流露出一丝极其冰冷的气息",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1019,
+                "end": 1041
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "他的双眼通红",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1701,
+                "end": 1707
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "唐昊的胸膛很宽阔，或许是因为长期做铁匠的原因，尽管表面上他看上去很懒散，可他身上的肌肉却并没有因为岁月而减少",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 2308,
+                "end": 2362
+              }
+            ],
+            "relation_to_mention": "contains_mention",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "唐昊依旧是一副懒洋洋的样子",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 341,
+                "end": 354
+              }
+            ],
+            "relation_to_mention": "contains_mention",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "32c2fb957cbe0532ca5c75cee47f962de9cf494af3a4f1578568dc06f2f903b5"
+      },
+      {
+        "local_mention_id": "m3",
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "唐三",
+        "approved_evidence": [
+          {
+            "evidence_quote": "他的脸色已经变得有些苍白了",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1966,
+                "end": 1979
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "1e76d1346cc7ed1911d0ed9d6c76c3090b3cbd5643c85dd92b254f4c4cf75ceb"
+      },
+      {
+        "local_mention_id": "m4",
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "小三",
+        "approved_evidence": [
+          {
+            "evidence_quote": "他的脸色已经变得有些苍白了",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1966,
+                "end": 1979
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "c2d44a13f41a170a97cbd046b5333b70720ad60809358022e40c5902db67426f"
+      }
+    ],
+    "rejected_evidence": []
+  },
+  "grounding_trace_events": [
+    {
+      "code": "describe_evidence_shadowed_by_exact",
+      "local_mention_id": "m2",
+      "detail": "occurrences=1; exact_mentions=m1; rule=exact-evidence-precedence-v1"
+    },
+    {
+      "code": "describe_evidence_shadowed_by_exact",
+      "local_mention_id": "m2",
+      "detail": "occurrences=1; exact_mentions=m1; rule=exact-evidence-precedence-v1"
+    },
+    {
+      "code": "describe_evidence_shadowed_by_exact",
+      "local_mention_id": "m2",
+      "detail": "occurrences=1; exact_mentions=m1; rule=exact-evidence-precedence-v1"
+    },
+    {
+      "code": "describe_evidence_shadowed_by_exact",
+      "local_mention_id": "m2",
+      "detail": "occurrences=1; exact_mentions=m1; rule=exact-evidence-precedence-v1"
+    },
+    {
+      "code": "describe_removed_after_exact_dedup",
+      "local_mention_id": "m2",
+      "detail": "rule=exact-evidence-precedence-v1"
+    }
+  ],
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 47813,
+    "http_status": 200,
+    "response_id": "c9c3c21b-12b9-40c2-af54-eebef29edc6b",
+    "usage": {
+      "input_tokens": 2572,
+      "cached_input_tokens": 896,
+      "output_tokens": 5503,
+      "reasoning_tokens": 5167,
+      "total_tokens": 8075
+    },
+    "error_kind": null
+  }
+}

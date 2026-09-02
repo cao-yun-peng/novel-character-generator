@@ -1,0 +1,70 @@
+{
+  "schema_version": "appearance-transition-chunk-result-v1",
+  "identity": {
+    "chunk_id": "chunk-000004-6750-9250-d8d7539ee8f4",
+    "chunk_hash": "d8d7539ee8f409a6f324a0c5c5bb104eb83c28ec8c7d122cd39f7346f422c101",
+    "document_span": {
+      "start": 6750,
+      "end": 9250
+    },
+    "characters": [
+      {
+        "name": "唐昊",
+        "aliases": []
+      },
+      {
+        "name": "唐三",
+        "aliases": [
+          "小三"
+        ]
+      }
+    ]
+  },
+  "model_output": {
+    "events": [
+      {
+        "character": "唐三",
+        "evidence": "他的身体变得结实了几分",
+        "dimension": "appearance",
+        "attribute": "体格",
+        "before": "",
+        "after": "结实了几分"
+      }
+    ]
+  },
+  "grounded_transitions": [
+    {
+      "character_id": "char-f47075b7019563fd8315",
+      "evidence": "他的身体变得结实了几分",
+      "document_span": {
+        "start": 8586,
+        "end": 8597
+      },
+      "dimension": "appearance",
+      "attribute": "体格",
+      "before": "",
+      "after": "结实了几分",
+      "change": "enter"
+    }
+  ],
+  "review": [],
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 7094,
+    "http_status": 200,
+    "response_id": "edfdcfbf-b867-4b26-bd31-d03616868a1e",
+    "usage": {
+      "input_tokens": 2124,
+      "cached_input_tokens": 256,
+      "output_tokens": 662,
+      "reasoning_tokens": 625,
+      "total_tokens": 2786
+    },
+    "error_kind": null
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "schema_version": "cluster-rescue-task-result-v1",
+  "task_index": 5,
+  "task_cache_key": "016e35ebb48270b889d50bc57be847644de37d72d780807c47dca93517976ecd",
+  "subject_labels": [
+    "男孩儿"
+  ],
+  "model_output": {
+    "identity_relation": "different_characters",
+    "candidate_number": 1,
+    "label_relation": null,
+    "identity_evidence_quotes": [
+      "大多数人在武魂觉醒的时候是没有魂力的，就像之前这几个孩子。",
+      "天啊，竟然是先天满魂力。"
+    ]
+  },
+  "grounded_result": {
+    "schema_version": "grounded-cluster-rescue-decision-v1",
+    "subject_character_id": "char-3b56bc304973763c0172",
+    "subject_anchor_node_key": "501f9168baa593fe8ee6c001ccc3659123db7436fb964bd5d1003a52f4db8b02",
+    "selected_candidate_number": 1,
+    "selected_candidate_character_id": "char-9718e4b32c5b1c9bb420",
+    "selected_candidate_anchor_node_key": "cabd21076961428efd4a471870a0c712456885cc1dd2e49188717ce4ee674c36",
+    "task_cache_key": "016e35ebb48270b889d50bc57be847644de37d72d780807c47dca93517976ecd",
+    "requested_identity_relation": "different_characters",
+    "identity_relation": "different_characters",
+    "label_relation": null,
+    "grounded_identity_evidence": [
+      {
+        "evidence_quote": "天啊，竟然是先天满魂力。",
+        "document_span": {
+          "start": 17139,
+          "end": 17151
+        },
+        "match_mode": "exact"
+      },
+      {
+        "evidence_quote": "大多数人在武魂觉醒的时候是没有魂力的，就像之前这几个孩子。",
+        "document_span": {
+          "start": 17330,
+          "end": 17359
+        },
+        "match_mode": "exact"
+      }
+    ],
+    "issues": []
+  },
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 24109,
+    "http_status": 200,
+    "response_id": "2229490a-d428-4f6d-a7ab-d7f1fb03328d",
+    "usage": {
+      "input_tokens": 3120,
+      "cached_input_tokens": 640,
+      "output_tokens": 2665,
+      "reasoning_tokens": 2603,
+      "total_tokens": 5785
+    },
+    "error_kind": null
+  }
+}

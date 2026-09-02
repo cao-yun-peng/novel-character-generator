@@ -1,0 +1,165 @@
+{
+  "schema_version": "m2-attribution-task-result-v1",
+  "source_run_dir": "E:\\project\\agent\\novel-cahracter-generator\\runs\\douluo-20ch-e2e-dev13-20260831\\m1",
+  "chunk_index": 15,
+  "chunk_id": "chunk-000015-31500-34000-fb2b21bc7e87",
+  "target_local_mention_id": "m1",
+  "target_mention_quote": "唐三",
+  "task_cache_key": "0b8b51d1870b5bb3386f907a875c49c90ecc19db312fd215fbc2ff72b50d1b00",
+  "model_output": {
+    "belongs_to_target": [
+      {
+        "fact_quote": "他那些有着大小补丁的衣服",
+        "category": "clothing",
+        "attribute": "衣服",
+        "value": "有大小补丁"
+      },
+      {
+        "fact_quote": "眼中紫意莹然",
+        "category": "face",
+        "attribute": "眼睛",
+        "value": "紫色"
+      },
+      {
+        "fact_quote": "身体比以前健壮了一些",
+        "category": "body",
+        "attribute": "身体",
+        "value": "健壮"
+      },
+      {
+        "fact_quote": "唐三瘦弱的身体",
+        "category": "body",
+        "attribute": "身体",
+        "value": "瘦弱"
+      },
+      {
+        "fact_quote": "还没有铸造锤高吧",
+        "category": "body",
+        "attribute": "身高",
+        "value": "矮小"
+      }
+    ]
+  },
+  "grounded_result": {
+    "target_character_ref": {
+      "source_document_version_id": "source-8bcb7305a759571b",
+      "chunk_id": "chunk-000015-31500-34000-fb2b21bc7e87",
+      "local_mention_id": "m1",
+      "mention_type": "exact",
+      "packet_hash": "cc2e3cad6cea9c19ee220d6b9f7a34f84995ca80edce888ee1d489f3835923d7"
+    },
+    "task_cache_key": "0b8b51d1870b5bb3386f907a875c49c90ecc19db312fd215fbc2ff72b50d1b00",
+    "grounded_belongs_to_target": [
+      {
+        "fact_quote": "他那些有着大小补丁的衣服",
+        "category": "clothing",
+        "attribute": "衣服",
+        "value": "有大小补丁",
+        "source_mention_id": "m1",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "他那些有着大小补丁的衣服",
+        "source_evidence_span": {
+          "start": 23,
+          "end": 35
+        },
+        "fact_chunk_span": {
+          "start": 23,
+          "end": 35
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "眼中紫意莹然",
+        "category": "face",
+        "attribute": "眼睛",
+        "value": "紫色",
+        "source_mention_id": "m1",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "眼中紫意莹然",
+        "source_evidence_span": {
+          "start": 419,
+          "end": 425
+        },
+        "fact_chunk_span": {
+          "start": 419,
+          "end": 425
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "身体比以前健壮了一些",
+        "category": "body",
+        "attribute": "身体",
+        "value": "健壮",
+        "source_mention_id": "m1",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "身体比以前健壮了一些",
+        "source_evidence_span": {
+          "start": 436,
+          "end": 446
+        },
+        "fact_chunk_span": {
+          "start": 436,
+          "end": 446
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "唐三瘦弱的身体",
+        "category": "body",
+        "attribute": "身体",
+        "value": "瘦弱",
+        "source_mention_id": "m1",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "唐三瘦弱的身体",
+        "source_evidence_span": {
+          "start": 1542,
+          "end": 1549
+        },
+        "fact_chunk_span": {
+          "start": 1542,
+          "end": 1549
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "还没有铸造锤高吧",
+        "category": "body",
+        "attribute": "身高",
+        "value": "矮小",
+        "source_mention_id": "m1",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "还没有铸造锤高吧",
+        "source_evidence_span": {
+          "start": 2403,
+          "end": 2411
+        },
+        "fact_chunk_span": {
+          "start": 2403,
+          "end": 2411
+        },
+        "match_mode": "exact"
+      }
+    ]
+  },
+  "grounding_issues": [],
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 13204,
+    "http_status": 200,
+    "response_id": "bcafcb43-7b55-46d7-ba59-847f100e2070",
+    "usage": {
+      "input_tokens": 2082,
+      "cached_input_tokens": 384,
+      "output_tokens": 1261,
+      "reasoning_tokens": 1093,
+      "total_tokens": 3343
+    },
+    "error_kind": null
+  }
+}

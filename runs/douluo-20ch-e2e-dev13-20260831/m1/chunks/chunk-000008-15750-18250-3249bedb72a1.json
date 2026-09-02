@@ -1,0 +1,139 @@
+{
+  "schema_version": "m1-chunk-result-v4",
+  "chunk_index": 8,
+  "chunk_id": "chunk-000008-15750-18250-3249bedb72a1",
+  "chunk_hash": "3249bedb72a19a643804e214c834499cfe7d838b4cca74e5579fdf43e69fb02c",
+  "chunk_source_span": {
+    "start": 15750,
+    "end": 18250
+  },
+  "model_output": {
+    "candidate_mentions": [
+      {
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "唐三",
+        "evidence_quotes": [
+          "唐三那平静而有些坚定的目光"
+        ]
+      },
+      {
+        "mention_type": "describe",
+        "mention_scope": "individual",
+        "mention_quote": "这个男孩儿",
+        "evidence_quotes": [
+          "唐三那平静而有些坚定的目光"
+        ]
+      },
+      {
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "素云涛",
+        "evidence_quotes": [
+          "素云涛的眼睛突然亮了起来",
+          "素云涛呆滞的看着他"
+        ]
+      }
+    ]
+  },
+  "grounded_packet": {
+    "schema_version": "grounded-character-packet-v6",
+    "evidence_precedence_policy_version": "exact-evidence-precedence-v1",
+    "source_document_version_id": "source-8bcb7305a759571b",
+    "chunking_policy_version": "fixed-codepoint-window-2500-overlap-250-v1",
+    "chunk_id": "chunk-000008-15750-18250-3249bedb72a1",
+    "chunk_hash": "3249bedb72a19a643804e214c834499cfe7d838b4cca74e5579fdf43e69fb02c",
+    "chunk_source_span": {
+      "start": 15750,
+      "end": 18250
+    },
+    "grounded_mentions": [
+      {
+        "local_mention_id": "m1",
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "唐三",
+        "approved_evidence": [
+          {
+            "evidence_quote": "唐三那平静而有些坚定的目光",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 835,
+                "end": 848
+              }
+            ],
+            "relation_to_mention": "contains_mention",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "0cc8cccd34781f97cf8704df675df1558dbd2ab456df9a4d2eae98c907bf82cd"
+      },
+      {
+        "local_mention_id": "m3",
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "素云涛",
+        "approved_evidence": [
+          {
+            "evidence_quote": "素云涛的眼睛突然亮了起来",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 247,
+                "end": 259
+              }
+            ],
+            "relation_to_mention": "contains_mention",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "素云涛呆滞的看着他",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1519,
+                "end": 1528
+              }
+            ],
+            "relation_to_mention": "contains_mention",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "df6282e925fbea636622dfb4d9fee46fca50d3ae03ce256d53d580d6dbd0d446"
+      }
+    ],
+    "rejected_evidence": []
+  },
+  "grounding_trace_events": [
+    {
+      "code": "describe_evidence_shadowed_by_exact",
+      "local_mention_id": "m2",
+      "detail": "occurrences=1; exact_mentions=m1; rule=exact-evidence-precedence-v1"
+    },
+    {
+      "code": "describe_removed_after_exact_dedup",
+      "local_mention_id": "m2",
+      "detail": "rule=exact-evidence-precedence-v1"
+    }
+  ],
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 14500,
+    "http_status": 200,
+    "response_id": "a0e37048-183a-41de-85ea-601a86240c9b",
+    "usage": {
+      "input_tokens": 2507,
+      "cached_input_tokens": 896,
+      "output_tokens": 1671,
+      "reasoning_tokens": 1491,
+      "total_tokens": 4178
+    },
+    "error_kind": null
+  }
+}

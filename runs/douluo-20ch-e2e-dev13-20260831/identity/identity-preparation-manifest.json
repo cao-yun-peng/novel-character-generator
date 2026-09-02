@@ -1,0 +1,36 @@
+{
+  "schema_version": "identity-preparation-manifest-v1",
+  "source_document_version_id": "source-8bcb7305a759571b",
+  "document_hash": "8bcb7305a759571b1fec70813b0631f2c884eba79697c3259170a7635d639741",
+  "source_artifacts": {
+    "source_n2_grounded_packets": {
+      "path": "E:\\project\\agent\\novel-cahracter-generator\\runs\\douluo-20ch-e2e-dev13-20260831\\m2\\source-n2-grounded-packets.json",
+      "hash": "238e0e3ba2cbc7144581707f1f4fef7459623949178e926ffd30b15e882004c6"
+    },
+    "n3_target_appearance_packets": {
+      "path": "E:\\project\\agent\\novel-cahracter-generator\\runs\\douluo-20ch-e2e-dev13-20260831\\n3\\n3-target-appearance-packets.json",
+      "hash": "41d6d08b43ca3eab7ee2ee9dad0f3620e8600092e586fd5e60cf399d83632b85"
+    },
+    "promotion_grounded_results": {
+      "path": "E:\\project\\agent\\novel-cahracter-generator\\runs\\douluo-20ch-e2e-dev13-20260831\\n3\\promotion-grounded-results.json",
+      "hash": "0f3caf92cc5e5cce08a3e92eecd2e2a799050bc8eeb27270fe48be5390bc869d"
+    },
+    "document_character_evidence": {
+      "path": "E:\\project\\agent\\novel-cahracter-generator\\runs\\douluo-20ch-e2e-dev13-20260831\\document-character-evidence.json",
+      "hash": "926e6221ca69ad5ae0843d90870129617df7597e47ed586d9d20035c22a3a439"
+    }
+  },
+  "configuration": {
+    "max_candidates_per_node": 2,
+    "context_radius": 240,
+    "max_contexts_per_node": 4,
+    "max_bridge_characters": 1200
+  },
+  "contracts": {
+    "identity_policy_version": "strict-evidence-identity-v1",
+    "candidate_policy_version": "bounded-local-candidate-retrieval-v1",
+    "context_policy_version": "identity-evidence-window-v1",
+    "system_instruction_hash": "4b20032aa2ff6bb075dc77b74bcea2706ad97eed3ef7b2a0711b09f1313e8ff8",
+    "response_schema_hash": "c6551d90db22745e76ec988000b27a30aadbfefb8384d4b4437058f5f13ce743"
+  }
+}

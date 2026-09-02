@@ -1,0 +1,31 @@
+{
+  "task_id": "M3-IDENTITY-RESCUE-LIVE-065",
+  "lifecycle_stage": "5",
+  "lifecycle_revision": 2,
+  "runtime_version": "0.1.0.dev15",
+  "schema_version": "3.15.0-draft1",
+  "input_file": "tests/小说/斗罗大陆前20章.txt",
+  "source_identity_run": "runs/douluo-20ch-e2e-dev13-20260831/identity",
+  "output_run": "runs/douluo-20ch-e2e-dev13-20260831/identity-rescue-live-dev15",
+  "planned_tasks": 5,
+  "result": {
+    "succeeded_tasks": 5,
+    "failed_tasks": 0,
+    "same_character": 4,
+    "different_characters": 1,
+    "grounding_issues": 0,
+    "grounded_evidence_quotes": 8,
+    "total_tokens": 23469,
+    "registry_characters_before": 12,
+    "registry_characters_after": 9,
+    "unresolved_before": 3,
+    "unresolved_after": 2,
+    "cannot_link_before": 1,
+    "cannot_link_after": 2
+  },
+  "observed_followups": [
+    "唐三残余簇形成两个互为反向的重复任务，单轮补救后仍剩两个唐三全局簇，需要候选图去重或迭代到固定点",
+    "男孩儿与唐三已获得 grounded different，但基础 uncertain 仍被保留为 unresolved，需要让 supplemental different 关闭对应旧未决项"
+  ],
+  "context_freshness": "verified-2026-09-01"
+}

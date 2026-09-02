@@ -1,0 +1,68 @@
+{
+  "schema_version": "appearance-transition-chunk-result-v1",
+  "identity": {
+    "chunk_id": "chunk-000007-13500-16000-29d830992ba6",
+    "chunk_hash": "29d830992ba691fba8be279e7fecafddccd88aae801f1b4b15e7585da0f4418c",
+    "document_span": {
+      "start": 13500,
+      "end": 16000
+    },
+    "characters": [
+      {
+        "name": "唐三",
+        "aliases": []
+      },
+      {
+        "name": "素云涛",
+        "aliases": [
+          "年轻人"
+        ]
+      },
+      {
+        "name": "男孩儿",
+        "aliases": []
+      }
+    ]
+  },
+  "model_output": {
+    "events": [
+      {
+        "character": "素云涛",
+        "evidence": "素云涛的头发原本是黑色的，但当那青光注入之后，瞬间就变成了灰色，并且快速的变长，同色毛发出现在他裸露在外的双手之上，同时，他的身体也似乎比之前膨胀了许多。全身充满了肌肉感。素云涛的眼睛已经变成了幽幽的绿色，双手十指上探出的利爪闪烁着淡淡的寒光。",
+        "dimension": "form",
+        "attribute": "form_state",
+        "before": "",
+        "after": "独狼附体"
+      }
+    ]
+  },
+  "grounded_transitions": [],
+  "review": [
+    {
+      "chunk_id": "chunk-000007-13500-16000-29d830992ba6",
+      "event": 1,
+      "reason": "evidence_not_found",
+      "character": "素云涛",
+      "evidence": "素云涛的头发原本是黑色的，但当那青光注入之后，瞬间就变成了灰色，并且快速的变长，同色毛发出现在他裸露在外的双手之上，同时，他的身体也似乎比之前膨胀了许多。全身充满了肌肉感。素云涛的眼睛已经变成了幽幽的绿色，双手十指上探出的利爪闪烁着淡淡的寒光。"
+    }
+  ],
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 14172,
+    "http_status": 200,
+    "response_id": "669c0e78-4b25-4b5f-b7df-6747b8491e45",
+    "usage": {
+      "input_tokens": 2082,
+      "cached_input_tokens": 256,
+      "output_tokens": 1647,
+      "reasoning_tokens": 1535,
+      "total_tokens": 3729
+    },
+    "error_kind": null
+  }
+}

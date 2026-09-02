@@ -1,0 +1,32 @@
+{
+  "id": "LOCAL-COREFERENCE-CLOSURE-068",
+  "title": "局部确定性身份闭合",
+  "status": "completed",
+  "owner": "Codex",
+  "objective": "以可回放的显式局部关系原文建立 deterministic same edge，并在 cannot-link 约束下离线重建 registry/profile。",
+  "risk_level": "L1-deterministic-identity-policy",
+  "allowed_paths": [
+    "src/novel_character_generator",
+    "tests",
+    "docs",
+    "README.md",
+    "pyproject.toml",
+    ".project-to-act",
+    "runs/douluo-20ch-e2e-dev13-20260831/identity-local-coreference-dev17"
+  ],
+  "invariants": [
+    "deterministic local same edge 必须有连续逐字原文和绝对 span",
+    "only local context overlap; no global unique name auto join",
+    "cannot-link 继续作为硬约束",
+    "旧 grounded M3/rescue 决策只重放不重调 Provider",
+    "129 条 raw appearance facts 与全部 source occurrences 不丢失"
+  ],
+  "acceptance": [
+    "高大的身影通过中年男子和这就是唐昊的局部链并入唐昊",
+    "新增 edge 关系原文可从文档及双方上下文回放",
+    "同名不同人和无显式局部链反例不产生 deterministic edge",
+    "看门的青年继续未决且 cannot-link 保持",
+    "斗罗最终 profiles 由 8 减至 7，129 facts 保持，Provider calls 为 0",
+    "单测、Schema、compileall、diff check 与治理校验通过"
+  ]
+}

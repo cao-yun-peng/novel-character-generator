@@ -1,0 +1,31 @@
+{
+  "id": "DOULUO-END-TO-END-063",
+  "title": "斗罗大陆输入全链路真实运行",
+  "status": "completed",
+  "owner": "Codex",
+  "objective": "使用指定斗罗大陆文本从 M1 开始真实运行到 document-character-profiles.json，验证 dev13 完整链路可恢复贯通。",
+  "risk_level": "L1-real-model-cost-and-quality",
+  "allowed_paths": [
+    "runs/douluo-20ch-e2e-dev13-20260831",
+    ".project-to-act"
+  ],
+  "invariants": [
+    "输入 tests/小说/斗罗大陆前20章.txt 只读，实际包含第1至19章，按文件全部 38251 字符运行",
+    "API Key 只从 .env/进程环境加载，不得打印、保存或提交",
+    "阶段严格依次为 M1、N2/M2、N3/promotion、document evidence、M3 identity、profiles",
+    "每阶段产物分目录保存并通过来源 document/hash guard，禁止跨 run 混用",
+    "所有模型任务使用稳定 cache key 和可恢复批处理；中断只重试未完成项",
+    "M1/M2/M3 模型不得读取代码侧 ref、span、hash 或 cache 字段",
+    "最终事实、证据和身份证据必须通过原文 span 回放",
+    "链路执行成功不等于人物/外貌模型质量人工 Gate 通过"
+  ],
+  "acceptance": [
+    "M1 完整覆盖输入且所有 Chunk 成功",
+    "M2 exact attribution 和 N3/promotion 所有计划任务成功或失败明确可恢复",
+    "生成并校验 document-character-evidence.json",
+    "M3 身份任务全部完成并生成 document-character-registry.json",
+    "生成 document-character-profiles.json，所有 registry fact refs 可连接",
+    "汇总模型调用、token、人物、事实、review/conflict/unassigned 和失败",
+    "118 项及新增运行相关验证、Schema、原文回放、Project-to-Act 与 Lifecycle 校验通过"
+  ]
+}

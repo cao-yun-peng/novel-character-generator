@@ -1,0 +1,9 @@
+{
+  "schema_version": "m2-source-replay-manifest-v1",
+  "source_run_dir": "E:\\project\\agent\\novel-cahracter-generator\\runs\\douluo-20ch-e2e-dev13-20260831\\m1",
+  "source_manifest_hash": "1b18a0519554de0a56aee1a2fa96abd678ef2dad829083a393cb607266a536c5",
+  "source_model_outputs_hash": "0770d7dac39b14726a32aaae1ec00104daefe6d174f7a9d004d87d355d8dd064",
+  "source_document_version_id": "source-8bcb7305a759571b",
+  "document_hash": "8bcb7305a759571b1fec70813b0631f2c884eba79697c3259170a7635d639741",
+  "chunking_policy_version": "fixed-codepoint-window-2500-overlap-250-v1"
+}

@@ -1,0 +1,33 @@
+{
+  "id": "M3-IDENTITY-FIXPOINT-066",
+  "title": "M3 身份残余裁决固定点与有效关系修复",
+  "status": "completed",
+  "owner": "Codex",
+  "objective": "消除反向重复 cluster 候选，以有界固定点补齐合并链，并让 decisive supplemental relation 关闭同一关系上的旧 uncertain。",
+  "risk_level": "L1-model-quality-and-paid-api",
+  "allowed_paths": [
+    "src/novel_character_generator",
+    "tests",
+    "docs",
+    "README.md",
+    "pyproject.toml",
+    ".project-to-act",
+    "runs/douluo-20ch-e2e-dev13-20260831/identity-rescue-fixedpoint-dev16"
+  ],
+  "invariants": [
+    "same/different 必须来自已 Grounding 的逐字关系证据",
+    "cannot-link 是硬约束，same 与 different 冲突时失败关闭",
+    "同一无向人物簇对每轮最多生成一个模型候选",
+    "固定点最多三轮且无决定性进展时立即停止",
+    "复用既有 5 条 grounded 裁决，只为新出现且未裁决的关系调用 Provider",
+    "API key 不进入产物、日志或治理证据"
+  ],
+  "acceptance": [
+    "base uncertain + supplemental different 不再出现在 unresolved",
+    "base uncertain + supplemental same 合并后不再出现在 unresolved",
+    "same/different 冲突不合并并进入 review",
+    "A→B 与 B→A 只生成一个 cluster rescue 候选",
+    "斗罗固定点结果只剩证据确实不足的 unresolved，唐三残余两簇完成裁决",
+    "相关测试、Schema 实例和原文证据回放通过"
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "schema_version": "cluster-rescue-batch-summary-v1",
+  "policy_version": "residual-cluster-adjudication-v1",
+  "planned_tasks": 5,
+  "candidate_options": 5,
+  "relationship_context_quotes": 10,
+  "provider_calls": 0,
+  "started_at": "2026-09-01T06:58:48.920704Z",
+  "completed_at": "2026-09-01T06:58:49.015541Z",
+  "duration_ms": 93,
+  "succeeded_tasks": 5,
+  "failed_tasks": 0,
+  "resumed_tasks": 5,
+  "new_provider_calls": 0,
+  "recorded_provider_calls": 0,
+  "identity_relations": {
+    "same_character": 4,
+    "different_characters": 1,
+    "uncertain": 0
+  },
+  "grounding_issues": 0,
+  "grounding_issues_by_code": {},
+  "complete": true,
+  "registry_built": true,
+  "baseline_registry_summary": {
+    "local_character_nodes": 43,
+    "bound_local_nodes": 43,
+    "global_characters": 12,
+    "linked_characters": 7,
+    "singleton_characters": 5,
+    "unresolved_bindings": 3,
+    "review_items": 13,
+    "cannot_link_constraints": 1,
+    "appearance_fact_refs": 129,
+    "possible_conflicts": 11
+  },
+  "registry_summary": {
+    "local_character_nodes": 43,
+    "bound_local_nodes": 43,
+    "global_characters": 9,
+    "linked_characters": 5,
+    "singleton_characters": 4,
+    "unresolved_bindings": 2,
+    "review_items": 12,
+    "cannot_link_constraints": 2,
+    "appearance_fact_refs": 129,
+    "possible_conflicts": 12
+  },
+  "quality_note": "Only candidate-specific relationship_context_quotes may support rescue identity evidence; completion does not replace human identity quality evaluation."
+}

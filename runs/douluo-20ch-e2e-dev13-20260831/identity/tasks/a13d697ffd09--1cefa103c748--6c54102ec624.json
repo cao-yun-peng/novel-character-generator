@@ -1,0 +1,62 @@
+{
+  "schema_version": "identity-task-result-v1",
+  "task_index": 10,
+  "current_label_quote": "一名老人",
+  "candidate_label_quote": "这位村长",
+  "task_cache_key": "6c54102ec62436bba90ef3d38a8e0b6f700b2a0843bd3706a4f1ef24c79cea4d",
+  "model_output": {
+    "identity_relation": "same_character",
+    "label_relation": "contextual_description",
+    "identity_evidence_quotes": [
+      "只见来的是一名老人，看上去六十多岁的样子，身材瘦长，但精神矍铄，衣服干净整洁，头发也梳理的一丝不苟，和唐昊相比，简直就是两个极端。这个人唐三认识，是圣魂村的村长老杰克。",
+      "这位村长是个老好人"
+    ]
+  },
+  "grounded_result": {
+    "schema_version": "grounded-identity-decision-v1",
+    "current_node_key": "a13d697ffd0919d67d3cc2c467ab0b5d9cb4e9501ee65e7d42098d677f89c34b",
+    "candidate_node_key": "1cefa103c748aea5ae25b0da4d43914577f208d3270e4834aba2ae63cd9e3e6e",
+    "task_cache_key": "6c54102ec62436bba90ef3d38a8e0b6f700b2a0843bd3706a4f1ef24c79cea4d",
+    "requested_identity_relation": "same_character",
+    "identity_relation": "same_character",
+    "label_relation": "contextual_description",
+    "grounded_identity_evidence": [
+      {
+        "evidence_quote": "只见来的是一名老人，看上去六十多岁的样子，身材瘦长，但精神矍铄，衣服干净整洁，头发也梳理的一丝不苟，和唐昊相比，简直就是两个极端。这个人唐三认识，是圣魂村的村长老杰克。",
+        "document_span": {
+          "start": 10116,
+          "end": 10200
+        },
+        "match_mode": "exact"
+      },
+      {
+        "evidence_quote": "这位村长是个老好人",
+        "document_span": {
+          "start": 10234,
+          "end": 10243
+        },
+        "match_mode": "exact"
+      }
+    ],
+    "issues": []
+  },
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 2515,
+    "http_status": 200,
+    "response_id": "e32c190a-579b-4224-8c14-ef75a8197dd5",
+    "usage": {
+      "input_tokens": 1754,
+      "cached_input_tokens": 512,
+      "output_tokens": 220,
+      "reasoning_tokens": 119,
+      "total_tokens": 1974
+    },
+    "error_kind": null
+  }
+}

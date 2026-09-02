@@ -1,0 +1,44 @@
+{
+  "task_id": "POST-LINK-FACT-GROUPS-069",
+  "lifecycle_stage": "5",
+  "lifecycle_revision": 2,
+  "runtime_version_before": "0.1.0.dev17",
+  "schema_version_before": "3.17.0-draft1",
+  "runtime_version_target": "0.1.0.dev18",
+  "schema_version_target": "3.18.0-draft1",
+  "input_file": "tests/小说/斗罗大陆前20章.txt",
+  "source_registry": "runs/douluo-20ch-e2e-dev13-20260831/identity-local-coreference-dev17/document-character-registry.json",
+  "source_profiles": "runs/douluo-20ch-e2e-dev13-20260831/identity-local-coreference-dev17/document-character-profiles.json",
+  "target_output": "runs/douluo-20ch-e2e-dev13-20260831/post-link-fact-groups-dev18/document-character-fact-groups.json",
+  "baseline": {
+    "characters": 7,
+    "raw_facts": 129,
+    "structural_groups": 109,
+    "grouped_duplicate_members": 20,
+    "source_occurrences": 130
+  },
+  "result": {
+    "characters": 7,
+    "raw_appearance_facts": 129,
+    "canonical_fact_groups": 109,
+    "multi_member_fact_groups": 10,
+    "collapsed_raw_fact_members": 20,
+    "source_fact_bindings": 129,
+    "source_occurrence_bindings": 130,
+    "unassigned_raw_facts": 0,
+    "old_jack_raw_to_groups": "26->14",
+    "su_yuntao_raw_to_groups": "29->21",
+    "provider_calls": 0
+  },
+  "validation": {
+    "unit_tests": 146,
+    "schema_version": "3.18.0-draft1",
+    "runtime_version": "0.1.0.dev18",
+    "draft_2020_12_instance_valid": true,
+    "repeat_output_hash_stable": true,
+    "input_artifact_hashes_unchanged": true,
+    "project_to_act_valid": true,
+    "lifecycle_valid": true
+  },
+  "context_freshness": "verified-2026-09-01"
+}

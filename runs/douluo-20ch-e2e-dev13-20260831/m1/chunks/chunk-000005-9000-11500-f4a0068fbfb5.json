@@ -1,0 +1,194 @@
+{
+  "schema_version": "m1-chunk-result-v4",
+  "chunk_index": 5,
+  "chunk_id": "chunk-000005-9000-11500-f4a0068fbfb5",
+  "chunk_hash": "f4a0068fbfb5aee49eabefba42c200ac2cb65f2f5ca0eced35883545aa0a1748",
+  "chunk_source_span": {
+    "start": 9000,
+    "end": 11500
+  },
+  "model_output": {
+    "candidate_mentions": [
+      {
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "唐三",
+        "evidence_quotes": [
+          "再过几天，唐三就要六岁了"
+        ]
+      },
+      {
+        "mention_type": "describe",
+        "mention_scope": "individual",
+        "mention_quote": "一名老人",
+        "evidence_quotes": [
+          "看上去六十多岁的样子，身材瘦长，但精神矍铄，衣服干净整洁，头发也梳理的一丝不苟，和唐昊相比，简直就是两个极端"
+        ]
+      },
+      {
+        "mention_type": "describe",
+        "mention_scope": "individual",
+        "mention_quote": "老杰克",
+        "evidence_quotes": [
+          "看上去六十多岁的样子，身材瘦长，但精神矍铄，衣服干净整洁，头发也梳理的一丝不苟，和唐昊相比，简直就是两个极端"
+        ]
+      },
+      {
+        "mention_type": "describe",
+        "mention_scope": "individual",
+        "mention_quote": "这位村长",
+        "evidence_quotes": [
+          "看上去六十多岁的样子，身材瘦长，但精神矍铄，衣服干净整洁，头发也梳理的一丝不苟，和唐昊相比，简直就是两个极端"
+        ]
+      },
+      {
+        "mention_type": "describe",
+        "mention_scope": "individual",
+        "mention_quote": "杰克爷爷",
+        "evidence_quotes": [
+          "看上去六十多岁的样子，身材瘦长，但精神矍铄，衣服干净整洁，头发也梳理的一丝不苟，和唐昊相比，简直就是两个极端"
+        ]
+      }
+    ]
+  },
+  "grounded_packet": {
+    "schema_version": "grounded-character-packet-v6",
+    "evidence_precedence_policy_version": "exact-evidence-precedence-v1",
+    "source_document_version_id": "source-8bcb7305a759571b",
+    "chunking_policy_version": "fixed-codepoint-window-2500-overlap-250-v1",
+    "chunk_id": "chunk-000005-9000-11500-f4a0068fbfb5",
+    "chunk_hash": "f4a0068fbfb5aee49eabefba42c200ac2cb65f2f5ca0eced35883545aa0a1748",
+    "chunk_source_span": {
+      "start": 9000,
+      "end": 11500
+    },
+    "grounded_mentions": [
+      {
+        "local_mention_id": "m1",
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "唐三",
+        "approved_evidence": [
+          {
+            "evidence_quote": "再过几天，唐三就要六岁了",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 905,
+                "end": 917
+              }
+            ],
+            "relation_to_mention": "contains_mention",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "e9fa3888236c2a7893bbaa63116ef53cfdb0d0d57cf695652a744938f12a61bc"
+      },
+      {
+        "local_mention_id": "m2",
+        "mention_type": "describe",
+        "mention_scope": "individual",
+        "mention_quote": "一名老人",
+        "approved_evidence": [
+          {
+            "evidence_quote": "看上去六十多岁的样子，身材瘦长，但精神矍铄，衣服干净整洁，头发也梳理的一丝不苟，和唐昊相比，简直就是两个极端",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1126,
+                "end": 1180
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "ced9b5a4e23b0cd5bd87072539ec25d9842157c985712358c5ecc19bab2192c6"
+      },
+      {
+        "local_mention_id": "m3",
+        "mention_type": "describe",
+        "mention_scope": "individual",
+        "mention_quote": "老杰克",
+        "approved_evidence": [
+          {
+            "evidence_quote": "看上去六十多岁的样子，身材瘦长，但精神矍铄，衣服干净整洁，头发也梳理的一丝不苟，和唐昊相比，简直就是两个极端",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1126,
+                "end": 1180
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "889d95ba32c85c760d1f83334632e8178d9892a2ead23b4c450e854caa06181e"
+      },
+      {
+        "local_mention_id": "m4",
+        "mention_type": "describe",
+        "mention_scope": "individual",
+        "mention_quote": "这位村长",
+        "approved_evidence": [
+          {
+            "evidence_quote": "看上去六十多岁的样子，身材瘦长，但精神矍铄，衣服干净整洁，头发也梳理的一丝不苟，和唐昊相比，简直就是两个极端",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1126,
+                "end": 1180
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "cd6075fc8f576b7e9ed6d2dcb732a9d847883a56caf42e217f7db1ccd29df8bf"
+      },
+      {
+        "local_mention_id": "m5",
+        "mention_type": "describe",
+        "mention_scope": "individual",
+        "mention_quote": "杰克爷爷",
+        "approved_evidence": [
+          {
+            "evidence_quote": "看上去六十多岁的样子，身材瘦长，但精神矍铄，衣服干净整洁，头发也梳理的一丝不苟，和唐昊相比，简直就是两个极端",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1126,
+                "end": 1180
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "4d1605c7279113737e028d9f3de6870926b62417e5b36a6784f80e9dea1e644b"
+      }
+    ],
+    "rejected_evidence": []
+  },
+  "grounding_trace_events": [],
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 30438,
+    "http_status": 200,
+    "response_id": "5f09a772-4f28-4fcf-957d-37a5185c6374",
+    "usage": {
+      "input_tokens": 2562,
+      "cached_input_tokens": 896,
+      "output_tokens": 3519,
+      "reasoning_tokens": 3138,
+      "total_tokens": 6081
+    },
+    "error_kind": null
+  }
+}

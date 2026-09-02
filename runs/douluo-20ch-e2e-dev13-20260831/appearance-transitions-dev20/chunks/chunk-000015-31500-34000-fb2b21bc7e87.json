@@ -1,0 +1,100 @@
+{
+  "schema_version": "appearance-transition-chunk-result-v1",
+  "identity": {
+    "chunk_id": "chunk-000015-31500-34000-fb2b21bc7e87",
+    "chunk_hash": "fb2b21bc7e8785a29f224fb7d64a2323a8157e1fbf264abfb4237940867a2432",
+    "document_span": {
+      "start": 31500,
+      "end": 34000
+    },
+    "characters": [
+      {
+        "name": "唐三",
+        "aliases": [
+          "小三"
+        ]
+      },
+      {
+        "name": "老杰克",
+        "aliases": [
+          "杰克",
+          "杰克爷爷"
+        ]
+      },
+      {
+        "name": "唐昊",
+        "aliases": [
+          "高大的身影"
+        ]
+      }
+    ]
+  },
+  "model_output": {
+    "events": [
+      {
+        "character": "老杰克",
+        "evidence": "今天的老杰克特意穿了一身新衣服，看上去更添几分矍铄。",
+        "dimension": "scene",
+        "attribute": "scene_state",
+        "before": "",
+        "after": "穿了一身新衣服"
+      },
+      {
+        "character": "唐昊",
+        "evidence": "在他那的眼睛中，不知什么时候已经多了一层朦胧的水意。",
+        "dimension": "appearance",
+        "attribute": "眼睛状态",
+        "before": "",
+        "after": "眼中多了一层朦胧的水意"
+      }
+    ]
+  },
+  "grounded_transitions": [
+    {
+      "character_id": "char-c29b95295e06aa917f96",
+      "evidence": "今天的老杰克特意穿了一身新衣服，看上去更添几分矍铄。",
+      "document_span": {
+        "start": 32756,
+        "end": 32782
+      },
+      "dimension": "scene",
+      "attribute": "scene_state",
+      "before": "",
+      "after": "穿了一身新衣服",
+      "change": "enter"
+    },
+    {
+      "character_id": "char-a6302c7128aa46abea7c",
+      "evidence": "在他那的眼睛中，不知什么时候已经多了一层朦胧的水意。",
+      "document_span": {
+        "start": 33293,
+        "end": 33319
+      },
+      "dimension": "appearance",
+      "attribute": "眼睛状态",
+      "before": "",
+      "after": "眼中多了一层朦胧的水意",
+      "change": "enter"
+    }
+  ],
+  "review": [],
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 8094,
+    "http_status": 200,
+    "response_id": "45d0a8f0-28cc-46fe-b1b1-b1460f904047",
+    "usage": {
+      "input_tokens": 2090,
+      "cached_input_tokens": 256,
+      "output_tokens": 882,
+      "reasoning_tokens": 781,
+      "total_tokens": 2972
+    },
+    "error_kind": null
+  }
+}

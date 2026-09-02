@@ -1,0 +1,91 @@
+{
+  "schema_version": "m1-chunk-result-v4",
+  "chunk_index": 12,
+  "chunk_id": "chunk-000012-24750-27250-0e60e5181e73",
+  "chunk_hash": "0e60e5181e738b2a068c2406545c2547561208e9623bd078a073e71f10725563",
+  "chunk_source_span": {
+    "start": 24750,
+    "end": 27250
+  },
+  "model_output": {
+    "candidate_mentions": [
+      {
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "唐昊",
+        "evidence_quotes": [
+          "裸露在破烂裤管外的两条小腿瞬间绷紧",
+          "唐昊的双眼变得专注起来"
+        ]
+      }
+    ]
+  },
+  "grounded_packet": {
+    "schema_version": "grounded-character-packet-v6",
+    "evidence_precedence_policy_version": "exact-evidence-precedence-v1",
+    "source_document_version_id": "source-8bcb7305a759571b",
+    "chunking_policy_version": "fixed-codepoint-window-2500-overlap-250-v1",
+    "chunk_id": "chunk-000012-24750-27250-0e60e5181e73",
+    "chunk_hash": "0e60e5181e738b2a068c2406545c2547561208e9623bd078a073e71f10725563",
+    "chunk_source_span": {
+      "start": 24750,
+      "end": 27250
+    },
+    "grounded_mentions": [
+      {
+        "local_mention_id": "m1",
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "唐昊",
+        "approved_evidence": [
+          {
+            "evidence_quote": "裸露在破烂裤管外的两条小腿瞬间绷紧",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 161,
+                "end": 178
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "唐昊的双眼变得专注起来",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1867,
+                "end": 1878
+              }
+            ],
+            "relation_to_mention": "contains_mention",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "800c88eeacd2deb9c6a4b7a41905781503944b9c3e6eed84b45a327d2877e5fa"
+      }
+    ],
+    "rejected_evidence": []
+  },
+  "grounding_trace_events": [],
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 41422,
+    "http_status": 200,
+    "response_id": "04bbaf71-1451-4bdc-a49e-ea93d7778400",
+    "usage": {
+      "input_tokens": 2589,
+      "cached_input_tokens": 2560,
+      "output_tokens": 4696,
+      "reasoning_tokens": 4616,
+      "total_tokens": 7285
+    },
+    "error_kind": null
+  }
+}

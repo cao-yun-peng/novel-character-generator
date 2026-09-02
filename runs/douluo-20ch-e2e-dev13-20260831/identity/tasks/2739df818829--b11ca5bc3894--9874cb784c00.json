@@ -1,0 +1,62 @@
+{
+  "schema_version": "identity-task-result-v1",
+  "task_index": 60,
+  "current_label_quote": "老杰克",
+  "candidate_label_quote": "老杰克",
+  "task_cache_key": "9874cb784c001d2582e5df8e8ec7104500691a8e74bd37216e62d9faf00713db",
+  "model_output": {
+    "identity_relation": "same_character",
+    "label_relation": "same_surface",
+    "identity_evidence_quotes": [
+      "老杰克带着唐三刚刚走到大门前",
+      "这个人唐三认识，是圣魂村的村长老杰克"
+    ]
+  },
+  "grounded_result": {
+    "schema_version": "grounded-identity-decision-v1",
+    "current_node_key": "2739df81882977abf6eefbc39a5b453e391a5863f7e5f1991a0259c58805b6f1",
+    "candidate_node_key": "b11ca5bc38949f7537ef9733b5977fb4e36b4b8f395b9a5475563994a5ea9130",
+    "task_cache_key": "9874cb784c001d2582e5df8e8ec7104500691a8e74bd37216e62d9faf00713db",
+    "requested_identity_relation": "same_character",
+    "identity_relation": "same_character",
+    "label_relation": "same_surface",
+    "grounded_identity_evidence": [
+      {
+        "evidence_quote": "这个人唐三认识，是圣魂村的村长老杰克",
+        "document_span": {
+          "start": 10181,
+          "end": 10199
+        },
+        "match_mode": "exact"
+      },
+      {
+        "evidence_quote": "老杰克带着唐三刚刚走到大门前",
+        "document_span": {
+          "start": 36194,
+          "end": 36208
+        },
+        "match_mode": "exact"
+      }
+    ],
+    "issues": []
+  },
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 8953,
+    "http_status": 200,
+    "response_id": "021fb82e-9e80-47f1-a8e6-4fe4623d7683",
+    "usage": {
+      "input_tokens": 1755,
+      "cached_input_tokens": 512,
+      "output_tokens": 873,
+      "reasoning_tokens": 825,
+      "total_tokens": 2628
+    },
+    "error_kind": null
+  }
+}

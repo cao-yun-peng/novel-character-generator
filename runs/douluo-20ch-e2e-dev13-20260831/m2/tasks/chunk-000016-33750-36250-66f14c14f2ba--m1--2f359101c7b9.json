@@ -1,0 +1,43 @@
+{
+  "schema_version": "m2-attribution-task-result-v1",
+  "source_run_dir": "E:\\project\\agent\\novel-cahracter-generator\\runs\\douluo-20ch-e2e-dev13-20260831\\m1",
+  "chunk_index": 16,
+  "chunk_id": "chunk-000016-33750-36250-66f14c14f2ba",
+  "target_local_mention_id": "m1",
+  "target_mention_quote": "唐三",
+  "task_cache_key": "2f359101c7b9a4edb99d137162f662c38182a4ab6fbbb1a96d7ae2a30d5e340f",
+  "model_output": {
+    "belongs_to_target": []
+  },
+  "grounded_result": {
+    "target_character_ref": {
+      "source_document_version_id": "source-8bcb7305a759571b",
+      "chunk_id": "chunk-000016-33750-36250-66f14c14f2ba",
+      "local_mention_id": "m1",
+      "mention_type": "exact",
+      "packet_hash": "38963b524533fd2d8dee43d5a964994531f951ce6a1461f8f8d4c7c1668348ca"
+    },
+    "task_cache_key": "2f359101c7b9a4edb99d137162f662c38182a4ab6fbbb1a96d7ae2a30d5e340f",
+    "grounded_belongs_to_target": []
+  },
+  "grounding_issues": [],
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 26047,
+    "http_status": 200,
+    "response_id": "5ac26be9-7c85-4d32-8115-094f37477f40",
+    "usage": {
+      "input_tokens": 2051,
+      "cached_input_tokens": 384,
+      "output_tokens": 579,
+      "reasoning_tokens": 570,
+      "total_tokens": 2630
+    },
+    "error_kind": null
+  }
+}

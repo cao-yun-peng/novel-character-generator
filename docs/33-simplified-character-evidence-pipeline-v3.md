@@ -1,6 +1,6 @@
 # 简化人物证据流水线 V3 契约
 
-> 状态：运行时增量契约；用于 `v3-simplified-character-evidence` 分支。M1—N3、文档事实层和跨 Chunk 人物身份层均已建立代码边界；真实模型身份质量仍需单独评测。
+> 状态：运行时增量契约；用于 `v3-simplified-character-evidence` 分支。M1—N3、文档事实层、跨 Chunk 人物身份层和确定性人物档案组装均已建立代码边界；真实模型质量仍需单独评测。
 
 ## 1. 目标
 
@@ -482,7 +482,7 @@ exact 归属和 N3 仲裁结束后，每个仍有未消费 evidence 的 describe
 
 ### 5.7 当前运行时映射
 
-Python `0.1.0.dev12` 按上述契约提供以下边界：
+Python `0.1.0.dev20` 按上述契约提供以下边界：
 
 - `build_m2_attribution_envelopes`：从一个 N2 `GroundingResult` 为每个 individual exact 生成一个 `M2OrchestrationEnvelope`，并把全部 individual describe 展开为代码侧 occurrence binding；collective 与 null mention 不进入输入；
 - `M2AttributionOrchestrator`：只把 `model_input`、M2 system instruction 和 `M2_ATTRIBUTION_RESPONSE_SCHEMA` 交给 Provider，解析最小事实输出后执行 target 优先、describe 唯一 occurrence 的安全绑定；失败项只进入代码侧 issues；
@@ -492,8 +492,16 @@ Python `0.1.0.dev12` 按上述契约提供以下边界：
 - `run_n3_promotion_from_m2_run`：验证 M1/M2 来源 hash，重放当前 N2，写出 N3 三类产物，并对剩余 individual describe 执行带稳定 hash 的断点续跑；
 - `replay_promotion_grounding`：不调用模型；读取已保存的 promotion envelope 与模型原始输出，按当前版本化 Grounding 策略重新生成 grounded/review 结果，使模型输出缓存与确定性策略解耦；
 - `run_document_evidence_aggregation`：不调用模型；把 exact 与 promoted 事实的 Chunk 局部 span 换算为文档绝对 span，逐字回放校验，并安全合并重叠 Chunk 副本，同时保留全部来源 occurrence；
-- `prepare_document_identity`：不调用模型；建立完整 local/promoted 人物节点目录、原文上下文、确定性共享事实边和每节点有上限的候选任务；
-- `run_document_identity`：按任务缓存执行或恢复 M3，重新 Grounding 已保存模型输出，只有全部任务成功后才建立统一人物档案；
+- `prepare_document_identity`：不调用模型；建立完整 local/promoted 人物节点目录、原文上下文、确定性共享事实/局部共指边和每节点有上限的候选任务；
+- `build_local_coreference_edges`：只在同一 Chunk 和双方上下文交集内，从可逐字回放的显式同位、示指命名或连续共指原文建立 `describe -> exact` 的确定性 same edge；
+- `run_document_identity`：按任务缓存执行或恢复 M3，重新 Grounding 已保存模型输出，只有全部任务成功后才建立统一人物注册表；
+- `run_identity_rescue`：按无向人物簇对消除反向候选，复用已有 grounded 裁决，并在每轮重建注册表后重新生成残余任务；默认最多三轮，无决定性注册表变化时提前停止。注册表的当前 unresolved 由最终合并图和 cannot-link 派生，已被 supplemental same/different 消解的历史 uncertain 不再残留；same/different 冲突失败关闭并进入 review；
+- `run_local_identity_closure_replay`：不调用模型；复用已保存的 M3 与 rescue grounded 决策，加入通过当前局部共指策略验证的边后重建 registry/profile，并输出前后摘要和独立审计产物；
+- `run_document_profile_assembly`：不调用模型；验证 registry/evidence 文档身份、完整事实 hash、Chunk hash 和所有事实/evidence span，再按 `fact_hash` 把完整事实物化到全局人物，并保留零事实人物、未绑定事实、冲突、review 与 cannot-link；
+- `run_document_fact_group_assembly`：不调用模型；验证 registry/profile 的文档身份、人物归属、完整 raw fact hash、来源 artifact hash 和所有 span，再按最终人物与完整结构键生成稳定 canonical fact groups；
+- `run_document_appearance_scope_assembly`：不调用模型；解析并折叠相邻重复章节标题，将每个 canonical fact 唯一绑定到章节和文档顺序，赋予保守 persistence，life/form/scene 暂时保持 unknown；
+- `prepare_document_appearance_transitions`：不调用模型；直接验证并复用原 M1 Manifest 的重叠 Chunk，以 `chunk_id` 连接该 Chunk 下已绑定到最终人物簇的 local/promoted nodes，生成 Chunk 人物表；
+- `run_document_appearance_transitions`：模型每个原 Chunk 只读取 `name + aliases + text`，返回最小 transition 语义与逐字 evidence；`chunk_id/hash/span` 留在代码信封，代码执行唯一 Grounding、绝对 span/character_id 回填、重叠 Chunk 去重、change 推导和 canonical fact scope 物化；
 - `DeepSeekProvider`：读取每个阶段请求自带的 schema name 和 response schema，M1/M2 共用同一套 HTTPS、重试、错误分类与脱敏 trace 实现。
 
 ### 5.8 文档级事实汇总
@@ -583,7 +591,20 @@ N3 将没有被任何 exact 成功消费的原文 span 重建为 `remaining_evid
 
 代码先把所有 N3 exact target 和所有安全 promotion 物化为 `document-local-character-nodes.json`。即使某个 exact 暂时没有外貌事实，也必须保留其局部人物节点，避免身份层只看见“有外貌的人”。每个节点保留原有 `local_character_ref` 或 `promoted_character_ref`、来源 Chunk、已有 `fact_hash` 引用和用于模型阅读的原文上下文。这里的 hash、ref、span 全部属于代码侧，模型不可见。
 
-候选检索只使用弱信号缩小范围：同一 exact 标签、标签包含关系、可能的姓名字形变体、相同事实原文。弱信号绝不直接合并。默认每个当前节点最多保留 2 个候选；只有两个局部节点已共同引用同一个文档事实 `fact_hash` 时，代码才建立无需模型的确定性 same edge。
+候选检索只使用弱信号缩小范围：同一 exact 标签、标签包含关系、可能的姓名字形变体、相同事实原文，以及近距离原文中的显式介绍措辞（例如“我叫”“这位是”“正是”）。弱信号绝不直接合并。默认每个当前节点最多保留 2 个候选。确定性 same edge 仅有两种来源：两个局部节点共同引用同一个文档事实 `fact_hash`；或满足 7.1.1 全部约束的局部共指闭合。当前全局唯一姓名、同名、字形相似、外貌相似和单纯距离接近都不能建立确定性身份边。
+
+### 7.1.1 局部确定性身份闭合
+
+`grounded-local-coreference-v1` 只处理已有局部原文已经完整陈述身份关系、但 M3 候选边未覆盖的闭合漏项。新边必须同时满足：
+
+1. 左节点是 `describe`，右节点是 `exact`，且两者来自同一 Chunk；
+2. 身份证据完整位于双方 `context_quotes` 的文档绝对 span 交集内，并可从原文和双方上下文逐字回放；
+3. 原文明确构成同位、示指命名或连续局部共指关系；问句、否定句或只有姓名共现均拒绝；
+4. 证据 span、原文 quote、关系类型和策略版本进入独立 deterministic-edge 审计产物；
+5. 新边进入现有全局 identity 图后仍服从 cannot-link，冲突时失败关闭；
+6. 不以 `proper name + global unique`、最终簇唯一或全局搜索结果创建边。
+
+例如，连续原文 `高大的身影 -> 中年男子 -> 这就是唐昊` 可以建立 `高大的身影 -> 唐昊`；若只有两个远距离的“唐昊”标签或一段询问“这是唐昊吗”，则不能建立边。
 
 ### 7.2 M3 模型输入
 
@@ -606,7 +627,7 @@ N3 将没有被任何 exact 成功消费的原文 span 重建为 `remaining_evid
 }
 ```
 
-`bridge_context_quotes` 只在两个节点附近存在不超过配置上限的连续原文时提供。外貌相似、同名、职位相同或距离接近都不能单独证明同一人物；外貌不同也不能单独证明是不同人物。
+`bridge_context_quotes` 优先提供两个上下文的完整并集。并集过长但两个上下文之间的原文间隔仍在上限内时，改为在总预算内优先保留间隔末段和后一上下文之后的过渡，并在仍有预算时补充前侧窗口；这可覆盖章节切换、转生说明或紧随其后的自我介绍，而不会把整个大段 Chunk 塞给模型。外貌相似、同名、职位相同或距离接近都不能单独证明同一人物；外貌不同也不能单独证明是不同人物。
 
 ### 7.3 M3 模型输出
 
@@ -642,9 +663,85 @@ N3 将没有被任何 exact 成功消费的原文 span 重建为 `remaining_evid
 - `appearance_fact_refs` 引用 `document-character-evidence.json` 已有的 `fact_hash` 与原文，不再创建逐 quote hash；
 - 同一属性出现多个值时全部保留，并在 `possible_conflicts` 中记录，不静默覆盖；
 - 明确的 `different_characters` 形成 `cannot_link_constraints`，阻止传递合并；
-- 一个当前节点被指向多个尚未同簇的 same 候选，或证据不足时进入 `unresolved_bindings` / `review_items`，不创建猜测绑定。
+- 所有已经 Grounding 的 same edge 先进入全局图；代码以 cannot-link 为硬约束，稳定地合并所有不会产生冲突的连通分量，不再因逐节点处理顺序把同一连通图的多个入口误报为 `multiple_same_character_candidates`；
+- 证据不足或 same edge 被 cannot-link 阻断时进入 `unresolved_bindings` / `review_items`。未决局部节点仍作为 singleton 出现在注册表中并保留其事实，但不得与候选人物猜测合并。
 
-M3 支持按 `task_cache_key` 断点续跑。保存的模型输出在恢复时重新执行当前 Grounding，完整成功后才写统一人物档案。
+M3 支持按 `task_cache_key` 断点续跑。保存的模型输出在恢复时重新执行当前 Grounding，完整成功后才写统一人物注册表。
+
+### 7.6 残余 cluster-level 裁决
+
+真实运行仍可能留下 pair 任务无法解决的别名或时间跨度问题。补救节点只接收确定性全局聚合后的残余 unresolved，一次展示当前人物和少量候选人物簇；它复用已保存的 M3 结果，不默认重跑全部 M3。
+
+模型输入中的 `current_character.context_quotes`、候选的 `context_quotes` 和双方的 `appearance_fact_quotes` 只帮助理解人物。每个候选另有独立的 `relationship_context_quotes`，其中必须包含来自原文、可能支撑双方身份关系的连续上下文。模型选择候选时只输出本任务内的 `candidate_number`；该序号不是人物 ID，代码负责回填真实 cluster 和 anchor node。
+
+```json
+{
+  "current_character": {
+    "labels": ["小三"],
+    "context_quotes": ["小三，你过来。"],
+    "appearance_fact_quotes": []
+  },
+  "candidate_characters": [
+    {
+      "candidate_number": 1,
+      "known_labels": ["唐三"],
+      "context_quotes": ["唐三点了点头。"],
+      "appearance_fact_quotes": [],
+      "relationship_context_quotes": ["杰克对唐三道：小三，你过来。"]
+    }
+  ]
+}
+```
+
+输出仍只有关系、候选序号、标签关系和身份证据：
+
+```json
+{
+  "identity_relation": "same_character",
+  "candidate_number": 1,
+  "label_relation": "alias",
+  "identity_evidence_quotes": ["杰克对唐三道：小三，你过来。"]
+}
+```
+
+Grounding 有意采用更窄的证据域：`identity_evidence_quotes` 只能从所选候选的 `relationship_context_quotes` 中连续逐字复制，不能从普通 `context_quotes` 或外貌事实中取证，也不能引用另一个候选的关系上下文。代码仅在该候选的关系绑定内查找，并要求唯一严格匹配；严格匹配失败时只允许纯空白等价恢复。引用仅是人物标签、少于 6 个非空白字符、出现于多个不同绝对位置、改写或拼接时，关系降为 `uncertain`。任何结果都必须继续服从 cannot-link 硬约束。
+
+若代码找不到任何候选专属关系上下文，则不创建模型任务，继续保留 unresolved，避免让模型用作品常识或相似外貌猜测。该节点支持按 `task_cache_key` 断点续跑，模型输出在恢复时重新 Grounding，全部任务成功后把安全关系作为 supplemental decisions 重建注册表。
+
+### 7.7 文档人物档案组装
+
+`document-character-profiles.json` 是纯代码生成的最终结构化档案。构建器先要求 `document-character-registry.json` 与 `document-character-evidence.json` 的 `source_document_version_id` 和 `document_hash` 完全一致，再建立 `fact_hash -> DocumentAppearanceFact` 索引。人物只能通过 registry 的 `appearance_fact_refs[].fact_hash` 取得完整事实，禁止按姓名、别名或 quote 猜测连接。
+
+每个全局人物保留 `character_id`、身份状态、主标签、全部标签、成员 local/promoted ref、按绝对位置排序的完整 `appearance_facts`、冲突和相关 `review_item_ids`。每条完整事实继续保存事实原文、结构化属性、文档绝对 span 与全部来源 Chunk occurrence。顶层保存未绑定事实、未决绑定、完整 review 和 cannot-link，避免在档案物化时丢失失败或待复核信息。
+
+构建时执行以下失败关闭检查：
+
+- 两个来源文件或输入正文不属于同一文档版本/hash；
+- evidence 出现重复 `fact_hash`，或完整事实字段无法重算出该 hash；
+- registry 引用不存在的 hash，或同一 hash 被多个全局人物占用；
+- registry 的 `fact_quote` 与 evidence 不一致；
+- 事实、证据、Chunk 的绝对/局部 span 或 Chunk hash 无法逐字回放；
+- 人物冲突引用了该人物之外的事实。
+
+没有外貌事实的人物仍输出 `appearance_facts: []`。没有被任何全局人物引用的事实进入 `unassigned_appearance_facts`，不得静默删除。本阶段不调用模型，不生成自然语言画像，也不推断性别、年龄或性格。
+
+### 7.8 Post-link canonical fact groups
+
+`document-character-fact-groups.json` 是 `document-character-profiles-v1` 之后的独立结构层。`fact_hash` 继续表示不可变 raw evidence fact；新层使用独立的 `canonical_fact_id`，分组键固定为：
+
+```text
+character_id
++ document_fact_span
++ category
++ attribute
++ value
+```
+
+因此，同一人物在身份归并后由多个 local/promoted mention 重复物化的同结构事实会进入一个 group；同 span 不同 `attribute`、不同 `value`、不同人物或不同 span 均保持独立。本层不判断同义、包含、状态变化或真假冲突，`scope_assignment_status` 固定为 `unassigned`，后续状态层再处理 scope。
+
+每个 group 保存原文 `fact_quote`、稳定 span、全部 `source_fact_hashes` 和全部 occurrence bindings。每个 occurrence binding 同时记录 `source_fact_hash`、该 raw fact 内的 `source_occurrence_index` 和完整 occurrence，从 canonical fact 可以无损回到 raw fact、Chunk、证据原文和绝对位置。零事实人物继续出现在 `characters` 索引中；未分配 raw facts/occurrences 另存引用，不因无法建立 character group 而丢失。
+
+构建器验证 registry/profile 同文档、人物集合与逐人物 fact ownership 完全一致，重算 raw `fact_hash`，回放 fact/evidence/Chunk span 与 Chunk hash，并核对 profile summary 和 source artifact hash。任一不一致都失败关闭。输入 registry/profile 只读，Provider 调用为 0。
 
 ## 8. V3 完成门槛
 
@@ -664,4 +761,7 @@ V3 设计完成不等于运行时完成。进入人物识别阶段前至少需�
 12. M3 候选数有明确上限；同名、相似名称和相似外貌只能触发候选，不能自动合并；
 13. same/different 必须经过严格或纯空白等价的原文 Grounding，多 occurrence 不猜测；
 14. 全局 ID、ref 回填、冲突保留、cannot-link、unresolved/review 均由确定性代码生成；
-15. 真实模型身份精度需通过人工标注数据集评测，不能由“批处理完成”替代。
+15. 人物档案只按同文档 `fact_hash` 连接；缺失、冲突、重复占用和 span 回放失败均失败关闭，零事实人物与未绑定事实保留；
+16. 局部确定性身份边只能来自双方共享局部上下文中的可回放显式关系，不能以全局唯一姓名自动 join，并必须继续受 cannot-link 约束；
+17. Post-link canonical fact groups 必须使用包含 `attribute` 的完整结构键，保留全部 raw fact hash 与 occurrence binding，并且不得改写 raw profiles；
+18. 真实模型身份精度需通过人工标注数据集评测，不能由“批处理完成”替代。

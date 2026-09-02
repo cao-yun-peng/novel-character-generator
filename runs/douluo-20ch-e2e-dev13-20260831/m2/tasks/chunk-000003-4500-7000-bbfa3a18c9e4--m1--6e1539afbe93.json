@@ -1,0 +1,117 @@
+{
+  "schema_version": "m2-attribution-task-result-v1",
+  "source_run_dir": "E:\\project\\agent\\novel-cahracter-generator\\runs\\douluo-20ch-e2e-dev13-20260831\\m1",
+  "chunk_index": 3,
+  "chunk_id": "chunk-000003-4500-7000-bbfa3a18c9e4",
+  "target_local_mention_id": "m1",
+  "target_mention_quote": "唐三",
+  "task_cache_key": "6e1539afbe933696ab463a165c9d94636dfb5c166fc5d13b773532da0ce01fbc",
+  "model_output": {
+    "belongs_to_target": [
+      {
+        "fact_quote": "瘦小的身体",
+        "category": "body",
+        "attribute": "体型",
+        "value": "瘦小"
+      },
+      {
+        "fact_quote": "唐三的身高还够不到灶台",
+        "category": "body",
+        "attribute": "身高",
+        "value": "够不到灶台"
+      },
+      {
+        "fact_quote": "他的身体如此纤瘦",
+        "category": "body",
+        "attribute": "身体",
+        "value": "纤瘦"
+      }
+    ]
+  },
+  "grounded_result": {
+    "target_character_ref": {
+      "source_document_version_id": "source-8bcb7305a759571b",
+      "chunk_id": "chunk-000003-4500-7000-bbfa3a18c9e4",
+      "local_mention_id": "m1",
+      "mention_type": "exact",
+      "packet_hash": "b8844d274717a15edcf953a4fbd1e7ef9e8089fda197ab5573bc086502f5033f"
+    },
+    "task_cache_key": "6e1539afbe933696ab463a165c9d94636dfb5c166fc5d13b773532da0ce01fbc",
+    "grounded_belongs_to_target": [
+      {
+        "fact_quote": "瘦小的身体",
+        "category": "body",
+        "attribute": "体型",
+        "value": "瘦小",
+        "source_mention_id": "m1",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "瘦小的身体",
+        "source_evidence_span": {
+          "start": 67,
+          "end": 72
+        },
+        "fact_chunk_span": {
+          "start": 67,
+          "end": 72
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "唐三的身高还够不到灶台",
+        "category": "body",
+        "attribute": "身高",
+        "value": "够不到灶台",
+        "source_mention_id": "m1",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "唐三的身高还够不到灶台",
+        "source_evidence_span": {
+          "start": 774,
+          "end": 785
+        },
+        "fact_chunk_span": {
+          "start": 774,
+          "end": 785
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "他的身体如此纤瘦",
+        "category": "body",
+        "attribute": "身体",
+        "value": "纤瘦",
+        "source_mention_id": "m1",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "他的身体如此纤瘦",
+        "source_evidence_span": {
+          "start": 1041,
+          "end": 1049
+        },
+        "fact_chunk_span": {
+          "start": 1041,
+          "end": 1049
+        },
+        "match_mode": "exact"
+      }
+    ]
+  },
+  "grounding_issues": [],
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 4562,
+    "http_status": 200,
+    "response_id": "4996b744-8fbe-40ac-85f1-2dcede50f552",
+    "usage": {
+      "input_tokens": 2161,
+      "cached_input_tokens": 384,
+      "output_tokens": 495,
+      "reasoning_tokens": 389,
+      "total_tokens": 2656
+    },
+    "error_kind": null
+  }
+}

@@ -1,0 +1,184 @@
+{
+  "schema_version": "m1-chunk-result-v4",
+  "chunk_index": 16,
+  "chunk_id": "chunk-000016-33750-36250-66f14c14f2ba",
+  "chunk_hash": "66f14c14f2bae4bf3d0ebda7c2a8d0b35bf53d397718394ecc195b6cb3c79258",
+  "chunk_source_span": {
+    "start": 33750,
+    "end": 36250
+  },
+  "model_output": {
+    "candidate_mentions": [
+      {
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "唐三",
+        "evidence_quotes": [
+          "你才多大，还没有铸造锤高吧"
+        ]
+      },
+      {
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "老杰克",
+        "evidence_quotes": [
+          "老杰克"
+        ]
+      },
+      {
+        "mention_type": "describe",
+        "mention_scope": "individual",
+        "mention_quote": "看门的青年",
+        "evidence_quotes": [
+          "看门的青年"
+        ]
+      }
+    ]
+  },
+  "grounded_packet": {
+    "schema_version": "grounded-character-packet-v6",
+    "evidence_precedence_policy_version": "exact-evidence-precedence-v1",
+    "source_document_version_id": "source-8bcb7305a759571b",
+    "chunking_policy_version": "fixed-codepoint-window-2500-overlap-250-v1",
+    "chunk_id": "chunk-000016-33750-36250-66f14c14f2ba",
+    "chunk_hash": "66f14c14f2bae4bf3d0ebda7c2a8d0b35bf53d397718394ecc195b6cb3c79258",
+    "chunk_source_span": {
+      "start": 33750,
+      "end": 36250
+    },
+    "grounded_mentions": [
+      {
+        "local_mention_id": "m1",
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "唐三",
+        "approved_evidence": [
+          {
+            "evidence_quote": "你才多大，还没有铸造锤高吧",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 148,
+                "end": 161
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "38963b524533fd2d8dee43d5a964994531f951ce6a1461f8f8d4c7c1668348ca"
+      },
+      {
+        "local_mention_id": "m2",
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "老杰克",
+        "approved_evidence": [
+          {
+            "evidence_quote": "老杰克",
+            "occurrence_count": 13,
+            "source_spans": [
+              {
+                "start": 137,
+                "end": 140
+              },
+              {
+                "start": 334,
+                "end": 337
+              },
+              {
+                "start": 416,
+                "end": 419
+              },
+              {
+                "start": 708,
+                "end": 711
+              },
+              {
+                "start": 881,
+                "end": 884
+              },
+              {
+                "start": 1048,
+                "end": 1051
+              },
+              {
+                "start": 1544,
+                "end": 1547
+              },
+              {
+                "start": 1643,
+                "end": 1646
+              },
+              {
+                "start": 1789,
+                "end": 1792
+              },
+              {
+                "start": 1963,
+                "end": 1966
+              },
+              {
+                "start": 2123,
+                "end": 2126
+              },
+              {
+                "start": 2216,
+                "end": 2219
+              },
+              {
+                "start": 2444,
+                "end": 2447
+              }
+            ],
+            "relation_to_mention": "contains_mention",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "50bb635ce1a94136bb9f08f18d53329d62dbfde65c3f61308dad9ed9212247c7"
+      },
+      {
+        "local_mention_id": "m3",
+        "mention_type": "describe",
+        "mention_scope": "individual",
+        "mention_quote": "看门的青年",
+        "approved_evidence": [
+          {
+            "evidence_quote": "看门的青年",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 2463,
+                "end": 2468
+              }
+            ],
+            "relation_to_mention": "contains_mention",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "572ea37e5b6ac2403fc33061baacddd1abb070dbc62529bd8ab9c1e406f09550"
+      }
+    ],
+    "rejected_evidence": []
+  },
+  "grounding_trace_events": [],
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 21062,
+    "http_status": 200,
+    "response_id": "f3f946ea-df34-4454-9360-60a83d5467f6",
+    "usage": {
+      "input_tokens": 2528,
+      "cached_input_tokens": 896,
+      "output_tokens": 2200,
+      "reasoning_tokens": 2038,
+      "total_tokens": 4728
+    },
+    "error_kind": null
+  }
+}

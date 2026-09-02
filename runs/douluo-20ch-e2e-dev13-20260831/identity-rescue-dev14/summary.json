@@ -1,0 +1,10 @@
+{
+  "schema_version": "cluster-rescue-preparation-summary-v1",
+  "policy_version": "residual-cluster-adjudication-v1",
+  "planned_tasks": 5,
+  "candidate_options": 5,
+  "relationship_context_quotes": 10,
+  "provider_calls": 0,
+  "complete": true,
+  "registry_built": false
+}

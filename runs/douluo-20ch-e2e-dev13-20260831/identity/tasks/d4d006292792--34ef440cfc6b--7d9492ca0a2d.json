@@ -1,0 +1,79 @@
+{
+  "schema_version": "identity-task-result-v1",
+  "task_index": 25,
+  "current_label_quote": "唐昊",
+  "candidate_label_quote": "唐昊",
+  "task_cache_key": "7d9492ca0a2d1a7aac13f47cef3f4fe7c69d0341df4df755756af526d04d06f4",
+  "model_output": {
+    "identity_relation": "same_character",
+    "label_relation": "same_surface",
+    "identity_evidence_quotes": [
+      "唐昊，唐昊。",
+      "这个邋遢铁匠",
+      "唐昊",
+      "铁匠"
+    ]
+  },
+  "grounded_result": {
+    "schema_version": "grounded-identity-decision-v1",
+    "current_node_key": "d4d00629279204051f144a8a9d0acfa065516a8e37f4eb24374b40175ccbc532",
+    "candidate_node_key": "34ef440cfc6ba1a683c8391c25baf436787e3f0ddea2a4d0ac21760cf136e0ea",
+    "task_cache_key": "7d9492ca0a2d1a7aac13f47cef3f4fe7c69d0341df4df755756af526d04d06f4",
+    "requested_identity_relation": "same_character",
+    "identity_relation": "same_character",
+    "label_relation": "same_surface",
+    "grounded_identity_evidence": [
+      {
+        "evidence_quote": "唐昊，唐昊。",
+        "document_span": {
+          "start": 19627,
+          "end": 19633
+        },
+        "match_mode": "exact"
+      },
+      {
+        "evidence_quote": "这个邋遢铁匠",
+        "document_span": {
+          "start": 19650,
+          "end": 19656
+        },
+        "match_mode": "exact"
+      }
+    ],
+    "issues": [
+      {
+        "code": "ambiguous_identity_evidence",
+        "detail": "identity evidence '唐昊' matched 9 document occurrences",
+        "evidence_index": 2,
+        "evidence_quote": "唐昊",
+        "candidate_occurrence_count": 9
+      },
+      {
+        "code": "ambiguous_identity_evidence",
+        "detail": "identity evidence '铁匠' matched 10 document occurrences",
+        "evidence_index": 3,
+        "evidence_quote": "铁匠",
+        "candidate_occurrence_count": 10
+      }
+    ]
+  },
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 4359,
+    "http_status": 200,
+    "response_id": "e9ca3446-d2a9-4afe-b17d-57bfecbdf5dc",
+    "usage": {
+      "input_tokens": 1271,
+      "cached_input_tokens": 512,
+      "output_tokens": 446,
+      "reasoning_tokens": 380,
+      "total_tokens": 1717
+    },
+    "error_kind": null
+  }
+}

@@ -1,0 +1,174 @@
+{
+  "schema_version": "m1-chunk-result-v4",
+  "chunk_index": 7,
+  "chunk_id": "chunk-000007-13500-16000-29d830992ba6",
+  "chunk_hash": "29d830992ba691fba8be279e7fecafddccd88aae801f1b4b15e7585da0f4418c",
+  "chunk_source_span": {
+    "start": 13500,
+    "end": 16000
+  },
+  "model_output": {
+    "candidate_mentions": [
+      {
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "唐三",
+        "evidence_quotes": [
+          "他的身材和同龄的孩子相比，要瘦小一些。"
+        ]
+      },
+      {
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "素云涛",
+        "evidence_quotes": [
+          "素云涛的头发原本是黑色的，但当那青光注入之后，瞬间就变成了灰色，并且快速的变长，同色毛发出现在他裸露在外的双手之上，同时，他的身体也似乎比之前膨胀了许多。全身充满了肌肉感。",
+          "素云涛的眼睛已经变成了幽幽的绿色，双手十指上探出的利爪闪烁着淡淡的寒光。"
+        ]
+      },
+      {
+        "mention_type": "describe",
+        "mention_scope": "individual",
+        "mention_quote": "年轻人",
+        "evidence_quotes": [
+          "素云涛的头发原本是黑色的，但当那青光注入之后，瞬间就变成了灰色，并且快速的变长，同色毛发出现在他裸露在外的双手之上，同时，他的身体也似乎比之前膨胀了许多。全身充满了肌肉感。",
+          "素云涛的眼睛已经变成了幽幽的绿色，双手十指上探出的利爪闪烁着淡淡的寒光。"
+        ]
+      },
+      {
+        "mention_type": "describe",
+        "mention_scope": "individual",
+        "mention_quote": "男孩儿",
+        "evidence_quotes": [
+          "男孩儿稚嫩的小手与素云涛的狼爪分别在水晶球上下位置"
+        ]
+      }
+    ]
+  },
+  "grounded_packet": {
+    "schema_version": "grounded-character-packet-v6",
+    "evidence_precedence_policy_version": "exact-evidence-precedence-v1",
+    "source_document_version_id": "source-8bcb7305a759571b",
+    "chunking_policy_version": "fixed-codepoint-window-2500-overlap-250-v1",
+    "chunk_id": "chunk-000007-13500-16000-29d830992ba6",
+    "chunk_hash": "29d830992ba691fba8be279e7fecafddccd88aae801f1b4b15e7585da0f4418c",
+    "chunk_source_span": {
+      "start": 13500,
+      "end": 16000
+    },
+    "grounded_mentions": [
+      {
+        "local_mention_id": "m1",
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "唐三",
+        "approved_evidence": [
+          {
+            "evidence_quote": "他的身材和同龄的孩子相比，要瘦小一些。",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 251,
+                "end": 270
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "42d3ac0513671684848b76c374030d62c174f9e033ae28faaae135e2cf57bf2b"
+      },
+      {
+        "local_mention_id": "m2",
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "素云涛",
+        "approved_evidence": [
+          {
+            "evidence_quote": "素云涛的头发原本是黑色的，但当那青光注入之后，瞬间就变成了灰色，并且快速的变长，同色毛发出现在他裸露在外的双手之上，同时，他的身体也似乎比之前膨胀了许多。全身充满了肌肉感。",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 550,
+                "end": 636
+              }
+            ],
+            "relation_to_mention": "contains_mention",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "素云涛的眼睛已经变成了幽幽的绿色，双手十指上探出的利爪闪烁着淡淡的寒光。",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 669,
+                "end": 705
+              }
+            ],
+            "relation_to_mention": "contains_mention",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "37c0adbd2fd3c545f154dd72d7f80178508c0fa7304c3d639cdbafd8cb53f97e"
+      },
+      {
+        "local_mention_id": "m4",
+        "mention_type": "describe",
+        "mention_scope": "individual",
+        "mention_quote": "男孩儿",
+        "approved_evidence": [
+          {
+            "evidence_quote": "男孩儿稚嫩的小手与素云涛的狼爪分别在水晶球上下位置",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1744,
+                "end": 1769
+              }
+            ],
+            "relation_to_mention": "contains_mention",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "2588c338ed1adc48a3ee28fc746720844dd984f36530a5e4f29908dafba3a91b"
+      }
+    ],
+    "rejected_evidence": []
+  },
+  "grounding_trace_events": [
+    {
+      "code": "describe_evidence_shadowed_by_exact",
+      "local_mention_id": "m3",
+      "detail": "occurrences=1; exact_mentions=m2; rule=exact-evidence-precedence-v1"
+    },
+    {
+      "code": "describe_evidence_shadowed_by_exact",
+      "local_mention_id": "m3",
+      "detail": "occurrences=1; exact_mentions=m2; rule=exact-evidence-precedence-v1"
+    },
+    {
+      "code": "describe_removed_after_exact_dedup",
+      "local_mention_id": "m3",
+      "detail": "rule=exact-evidence-precedence-v1"
+    }
+  ],
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 33156,
+    "http_status": 200,
+    "response_id": "c7a7786f-95ec-4999-b46c-ca041eb21e10",
+    "usage": {
+      "input_tokens": 2550,
+      "cached_input_tokens": 896,
+      "output_tokens": 3929,
+      "reasoning_tokens": 3549,
+      "total_tokens": 6479
+    },
+    "error_kind": null
+  }
+}

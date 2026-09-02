@@ -1,0 +1,219 @@
+{
+  "schema_version": "m1-chunk-result-v4",
+  "chunk_index": 3,
+  "chunk_id": "chunk-000003-4500-7000-bbfa3a18c9e4",
+  "chunk_hash": "bbfa3a18c9e476de46397a73b1eb79a2490a6719ed36683d6bd731cc02b5dd7c",
+  "chunk_source_span": {
+    "start": 4500,
+    "end": 7000
+  },
+  "model_output": {
+    "candidate_mentions": [
+      {
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "唐三",
+        "evidence_quotes": [
+          "瘦小的身体",
+          "他的身体如此纤瘦",
+          "唐三的身高还够不到灶台"
+        ]
+      },
+      {
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "唐昊",
+        "evidence_quotes": [
+          "那是一名中年男子，看上去大约有接近五十岁的样子，但身材却非常高大魁梧",
+          "破损的袍子穿在身上，上面甚至连补丁都没有，露出下面古铜色的皮肤，原本还算端正的五官却蒙着一层蜡黄色，一副睡眼朦胧的样子，头发乱糟糟的像鸟窝一般，一脸的胡子已经不知道有多少日子没有整理过了。目光呆滞而昏黄",
+          "暗黄的脸色这才看上去多了几分光泽"
+        ]
+      },
+      {
+        "mention_type": "describe",
+        "mention_scope": "individual",
+        "mention_quote": "中年男子",
+        "evidence_quotes": [
+          "那是一名中年男子，看上去大约有接近五十岁的样子，但身材却非常高大魁梧",
+          "破损的袍子穿在身上，上面甚至连补丁都没有，露出下面古铜色的皮肤，原本还算端正的五官却蒙着一层蜡黄色，一副睡眼朦胧的样子，头发乱糟糟的像鸟窝一般，一脸的胡子已经不知道有多少日子没有整理过了。目光呆滞而昏黄"
+        ]
+      },
+      {
+        "mention_type": "describe",
+        "mention_scope": "individual",
+        "mention_quote": "高大的身影",
+        "evidence_quotes": [
+          "一个高大的身影迈着有些踉跄的步伐走了出来",
+          "那是一名中年男子，看上去大约有接近五十岁的样子，但身材却非常高大魁梧"
+        ]
+      }
+    ]
+  },
+  "grounded_packet": {
+    "schema_version": "grounded-character-packet-v6",
+    "evidence_precedence_policy_version": "exact-evidence-precedence-v1",
+    "source_document_version_id": "source-8bcb7305a759571b",
+    "chunking_policy_version": "fixed-codepoint-window-2500-overlap-250-v1",
+    "chunk_id": "chunk-000003-4500-7000-bbfa3a18c9e4",
+    "chunk_hash": "bbfa3a18c9e476de46397a73b1eb79a2490a6719ed36683d6bd731cc02b5dd7c",
+    "chunk_source_span": {
+      "start": 4500,
+      "end": 7000
+    },
+    "grounded_mentions": [
+      {
+        "local_mention_id": "m1",
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "唐三",
+        "approved_evidence": [
+          {
+            "evidence_quote": "瘦小的身体",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 67,
+                "end": 72
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "他的身体如此纤瘦",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1041,
+                "end": 1049
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "唐三的身高还够不到灶台",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 774,
+                "end": 785
+              }
+            ],
+            "relation_to_mention": "contains_mention",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "b8844d274717a15edcf953a4fbd1e7ef9e8089fda197ab5573bc086502f5033f"
+      },
+      {
+        "local_mention_id": "m2",
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "唐昊",
+        "approved_evidence": [
+          {
+            "evidence_quote": "那是一名中年男子，看上去大约有接近五十岁的样子，但身材却非常高大魁梧",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1115,
+                "end": 1149
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "破损的袍子穿在身上，上面甚至连补丁都没有，露出下面古铜色的皮肤，原本还算端正的五官却蒙着一层蜡黄色，一副睡眼朦胧的样子，头发乱糟糟的像鸟窝一般，一脸的胡子已经不知道有多少日子没有整理过了。目光呆滞而昏黄",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1169,
+                "end": 1270
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "暗黄的脸色这才看上去多了几分光泽",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1648,
+                "end": 1664
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "5e7fe6b4a8ac038fd3df626e6249fe921d8afc561f83b78c37d8168450b2760a"
+      },
+      {
+        "local_mention_id": "m4",
+        "mention_type": "describe",
+        "mention_scope": "individual",
+        "mention_quote": "高大的身影",
+        "approved_evidence": [
+          {
+            "evidence_quote": "一个高大的身影迈着有些踉跄的步伐走了出来",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1089,
+                "end": 1109
+              }
+            ],
+            "relation_to_mention": "contains_mention",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "8dd50abb592af8990ac012917e0cdfe148b465db5eaf6eabe7f4755639df1a6e"
+      }
+    ],
+    "rejected_evidence": []
+  },
+  "grounding_trace_events": [
+    {
+      "code": "describe_evidence_shadowed_by_exact",
+      "local_mention_id": "m3",
+      "detail": "occurrences=1; exact_mentions=m2; rule=exact-evidence-precedence-v1"
+    },
+    {
+      "code": "describe_evidence_shadowed_by_exact",
+      "local_mention_id": "m3",
+      "detail": "occurrences=1; exact_mentions=m2; rule=exact-evidence-precedence-v1"
+    },
+    {
+      "code": "describe_removed_after_exact_dedup",
+      "local_mention_id": "m3",
+      "detail": "rule=exact-evidence-precedence-v1"
+    },
+    {
+      "code": "describe_evidence_shadowed_by_exact",
+      "local_mention_id": "m4",
+      "detail": "occurrences=1; exact_mentions=m2; rule=exact-evidence-precedence-v1"
+    }
+  ],
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 19234,
+    "http_status": 200,
+    "response_id": "dc4fcaa6-5356-456e-8365-44cf24676bf2",
+    "usage": {
+      "input_tokens": 2623,
+      "cached_input_tokens": 896,
+      "output_tokens": 2364,
+      "reasoning_tokens": 1933,
+      "total_tokens": 4987
+    },
+    "error_kind": null
+  }
+}

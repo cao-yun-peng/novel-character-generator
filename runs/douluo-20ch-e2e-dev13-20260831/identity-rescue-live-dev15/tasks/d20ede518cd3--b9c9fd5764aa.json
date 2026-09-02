@@ -1,0 +1,67 @@
+{
+  "schema_version": "cluster-rescue-task-result-v1",
+  "task_index": 2,
+  "task_cache_key": "b9c9fd5764aa3c573337cd82c7cbebfc8cc9a9f947911d428e25044b1680099c",
+  "subject_labels": [
+    "唐三"
+  ],
+  "model_output": {
+    "identity_relation": "same_character",
+    "candidate_number": 1,
+    "label_relation": "same_surface",
+    "identity_evidence_quotes": [
+      "来到这个世界已经五年多的时间了，眼前的这个孩子，正是当初在唐门跳崖明志的唐三。",
+      "为了纪念死去的妻子，唐昊给他取的名字竟然神奇还是叫唐三。"
+    ]
+  },
+  "grounded_result": {
+    "schema_version": "grounded-cluster-rescue-decision-v1",
+    "subject_character_id": "char-6d486179d494c3c0c498",
+    "subject_anchor_node_key": "d20ede518cd3ec6b9a0770c0ce951c66b501fa652fc65283639ef9b1a8a19ca8",
+    "selected_candidate_number": 1,
+    "selected_candidate_character_id": "char-9718e4b32c5b1c9bb420",
+    "selected_candidate_anchor_node_key": "cabd21076961428efd4a471870a0c712456885cc1dd2e49188717ce4ee674c36",
+    "task_cache_key": "b9c9fd5764aa3c573337cd82c7cbebfc8cc9a9f947911d428e25044b1680099c",
+    "requested_identity_relation": "same_character",
+    "identity_relation": "same_character",
+    "label_relation": "same_surface",
+    "grounded_identity_evidence": [
+      {
+        "evidence_quote": "来到这个世界已经五年多的时间了，眼前的这个孩子，正是当初在唐门跳崖明志的唐三。",
+        "document_span": {
+          "start": 3873,
+          "end": 3912
+        },
+        "match_mode": "exact"
+      },
+      {
+        "evidence_quote": "为了纪念死去的妻子，唐昊给他取的名字竟然神奇还是叫唐三。",
+        "document_span": {
+          "start": 4215,
+          "end": 4243
+        },
+        "match_mode": "exact"
+      }
+    ],
+    "issues": []
+  },
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 11313,
+    "http_status": 200,
+    "response_id": "edf09c64-bb45-46f2-9087-f62e63c0e4a5",
+    "usage": {
+      "input_tokens": 3832,
+      "cached_input_tokens": 0,
+      "output_tokens": 1163,
+      "reasoning_tokens": 1080,
+      "total_tokens": 4995
+    },
+    "error_kind": null
+  }
+}

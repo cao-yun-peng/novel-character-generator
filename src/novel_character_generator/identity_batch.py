@@ -12,6 +12,7 @@ from .errors import ContractValidationError, ProviderError
 from .identity import (
     IDENTITY_CANDIDATE_POLICY_VERSION,
     IDENTITY_CONTEXT_POLICY_VERSION,
+    IDENTITY_LOCAL_COREFERENCE_POLICY_VERSION,
     IDENTITY_POLICY_VERSION,
     M3_IDENTITY_RESPONSE_SCHEMA,
     M3_IDENTITY_SYSTEM_INSTRUCTION,
@@ -86,6 +87,7 @@ def _load_preparation(
     context_radius: int,
     max_contexts_per_node: int,
     max_bridge_characters: int,
+    max_local_coreference_characters: int,
 ) -> tuple[IdentityPreparation, dict[str, object]]:
     target_path = source_n3_run_dir / "n3-target-appearance-packets.json"
     promotion_path = source_n3_run_dir / "promotion-grounded-results.json"
@@ -107,6 +109,7 @@ def _load_preparation(
         document_text=document_text,
         max_candidates_per_node=max_candidates_per_node,
         max_bridge_characters=max_bridge_characters,
+        max_local_coreference_characters=max_local_coreference_characters,
     )
     source_artifacts = {
         "source_n2_grounded_packets": {
@@ -136,11 +139,13 @@ def _load_preparation(
             "context_radius": context_radius,
             "max_contexts_per_node": max_contexts_per_node,
             "max_bridge_characters": max_bridge_characters,
+            "max_local_coreference_characters": max_local_coreference_characters,
         },
         "contracts": {
             "identity_policy_version": IDENTITY_POLICY_VERSION,
             "candidate_policy_version": IDENTITY_CANDIDATE_POLICY_VERSION,
             "context_policy_version": IDENTITY_CONTEXT_POLICY_VERSION,
+            "local_coreference_policy_version": IDENTITY_LOCAL_COREFERENCE_POLICY_VERSION,
             "system_instruction_hash": _canonical_hash(M3_IDENTITY_SYSTEM_INSTRUCTION),
             "response_schema_hash": _canonical_hash(M3_IDENTITY_RESPONSE_SCHEMA),
         },
@@ -162,16 +167,21 @@ def _write_preparation_artifacts(
     _write_json(output_dir / "identity-deterministic-edges.json", list(preparation.deterministic_edges))
     _write_json(output_dir / "identity-envelopes.json", [item.to_dict() for item in preparation.envelopes])
     reason_counts: dict[str, int] = {}
+    deterministic_reason_counts: dict[str, int] = {}
     tasks_per_node: dict[str, int] = {}
     for envelope in preparation.envelopes:
         tasks_per_node[envelope.current_node_key] = tasks_per_node.get(envelope.current_node_key, 0) + 1
         for reason in envelope.candidate_reasons:
             reason_counts[reason] = reason_counts.get(reason, 0) + 1
+    for edge in preparation.deterministic_edges:
+        reason = str(edge.get("reason"))
+        deterministic_reason_counts[reason] = deterministic_reason_counts.get(reason, 0) + 1
     summary = preparation.summary()
     summary.update(
         {
             "schema_version": IDENTITY_PREPARATION_SUMMARY_VERSION,
             "candidate_reasons": dict(sorted(reason_counts.items())),
+            "deterministic_edge_reasons": dict(sorted(deterministic_reason_counts.items())),
             "max_tasks_for_one_node": max(tasks_per_node.values(), default=0),
             "model_outputs": 0,
             "grounded_identity_decisions": 0,
@@ -193,6 +203,7 @@ def prepare_document_identity(
     context_radius: int = 240,
     max_contexts_per_node: int = 4,
     max_bridge_characters: int = 1200,
+    max_local_coreference_characters: int = 600,
 ) -> dict[str, object]:
     """Build identity nodes and bounded M3 tasks without calling a Provider."""
     preparation, manifest = _load_preparation(
@@ -204,6 +215,7 @@ def prepare_document_identity(
         context_radius=context_radius,
         max_contexts_per_node=max_contexts_per_node,
         max_bridge_characters=max_bridge_characters,
+        max_local_coreference_characters=max_local_coreference_characters,
     )
     summary = _write_preparation_artifacts(output_dir, preparation, manifest)
     _write_json(output_dir / "identity-model-outputs.json", [])
@@ -262,6 +274,7 @@ def run_document_identity(
     context_radius: int = 240,
     max_contexts_per_node: int = 4,
     max_bridge_characters: int = 1200,
+    max_local_coreference_characters: int = 600,
     traces: Sequence[object] | None = None,
     progress: ProgressSink | None = None,
 ) -> dict[str, object]:
@@ -275,6 +288,7 @@ def run_document_identity(
         context_radius=context_radius,
         max_contexts_per_node=max_contexts_per_node,
         max_bridge_characters=max_bridge_characters,
+        max_local_coreference_characters=max_local_coreference_characters,
     )
     preparation_summary = _write_preparation_artifacts(output_dir, preparation, manifest)
     node_by_key = {node.node_key: node for node in preparation.local_nodes.nodes}

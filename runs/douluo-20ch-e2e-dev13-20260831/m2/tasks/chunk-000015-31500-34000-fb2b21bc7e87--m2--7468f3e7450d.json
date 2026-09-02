@@ -1,0 +1,93 @@
+{
+  "schema_version": "m2-attribution-task-result-v1",
+  "source_run_dir": "E:\\project\\agent\\novel-cahracter-generator\\runs\\douluo-20ch-e2e-dev13-20260831\\m1",
+  "chunk_index": 15,
+  "chunk_id": "chunk-000015-31500-34000-fb2b21bc7e87",
+  "target_local_mention_id": "m2",
+  "target_mention_quote": "唐昊",
+  "task_cache_key": "7468f3e7450ddec35b3d2f654514d54e795ec6898c149e0f7b12d91f20d240d4",
+  "model_output": {
+    "belongs_to_target": [
+      {
+        "fact_quote": "高大的身影",
+        "category": "body",
+        "attribute": "身材",
+        "value": "高大"
+      },
+      {
+        "fact_quote": "在他那的眼睛中，不知什么时候已经多了一层朦胧的水意",
+        "category": "face",
+        "attribute": "眼睛",
+        "value": "多了一层朦胧的水意"
+      }
+    ]
+  },
+  "grounded_result": {
+    "target_character_ref": {
+      "source_document_version_id": "source-8bcb7305a759571b",
+      "chunk_id": "chunk-000015-31500-34000-fb2b21bc7e87",
+      "local_mention_id": "m2",
+      "mention_type": "exact",
+      "packet_hash": "944ab6b185f40d04f2ca941c6b56f34ee48a60f790d82074317e8121a45d492f"
+    },
+    "task_cache_key": "7468f3e7450ddec35b3d2f654514d54e795ec6898c149e0f7b12d91f20d240d4",
+    "grounded_belongs_to_target": [
+      {
+        "fact_quote": "高大的身影",
+        "category": "body",
+        "attribute": "身材",
+        "value": "高大",
+        "source_mention_id": "m2",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "高大的身影",
+        "source_evidence_span": {
+          "start": 1499,
+          "end": 1504
+        },
+        "fact_chunk_span": {
+          "start": 1499,
+          "end": 1504
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "在他那的眼睛中，不知什么时候已经多了一层朦胧的水意",
+        "category": "face",
+        "attribute": "眼睛",
+        "value": "多了一层朦胧的水意",
+        "source_mention_id": "m2",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "在他那的眼睛中，不知什么时候已经多了一层朦胧的水意",
+        "source_evidence_span": {
+          "start": 1793,
+          "end": 1818
+        },
+        "fact_chunk_span": {
+          "start": 1793,
+          "end": 1818
+        },
+        "match_mode": "exact"
+      }
+    ]
+  },
+  "grounding_issues": [],
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 4781,
+    "http_status": 200,
+    "response_id": "225b6992-b73e-4cfc-8724-b33e2c440b6e",
+    "usage": {
+      "input_tokens": 2064,
+      "cached_input_tokens": 384,
+      "output_tokens": 412,
+      "reasoning_tokens": 348,
+      "total_tokens": 2476
+    },
+    "error_kind": null
+  }
+}

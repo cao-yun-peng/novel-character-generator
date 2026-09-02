@@ -1,0 +1,62 @@
+{
+  "schema_version": "identity-task-result-v1",
+  "task_index": 31,
+  "current_label_quote": "小三",
+  "candidate_label_quote": "小三",
+  "task_cache_key": "3528e999993bd83387f258f84c98a8012f31886f26b5f7427d5c78e2ce29ca3c",
+  "model_output": {
+    "identity_relation": "same_character",
+    "label_relation": "same_surface",
+    "identity_evidence_quotes": [
+      "唐昊几乎是一个箭步就来到了唐三面前",
+      "唐昊与唐三父子"
+    ]
+  },
+  "grounded_result": {
+    "schema_version": "grounded-identity-decision-v1",
+    "current_node_key": "9371960423d21bdd0dbf26f499e5bcb4c56d3d1a10974ad61a8c4d1ab0673982",
+    "candidate_node_key": "9c018bfe05d1e43c2e3f56b9f308e4f9efe80e6bae0712dd4d91fd6816341377",
+    "task_cache_key": "3528e999993bd83387f258f84c98a8012f31886f26b5f7427d5c78e2ce29ca3c",
+    "requested_identity_relation": "same_character",
+    "identity_relation": "same_character",
+    "label_relation": "same_surface",
+    "grounded_identity_evidence": [
+      {
+        "evidence_quote": "唐昊与唐三父子",
+        "document_span": {
+          "start": 8099,
+          "end": 8106
+        },
+        "match_mode": "exact"
+      },
+      {
+        "evidence_quote": "唐昊几乎是一个箭步就来到了唐三面前",
+        "document_span": {
+          "start": 22340,
+          "end": 22357
+        },
+        "match_mode": "exact"
+      }
+    ],
+    "issues": []
+  },
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 24094,
+    "http_status": 200,
+    "response_id": "7f55a031-6183-4977-bcb8-849c933a4e8a",
+    "usage": {
+      "input_tokens": 2010,
+      "cached_input_tokens": 512,
+      "output_tokens": 2460,
+      "reasoning_tokens": 2411,
+      "total_tokens": 4470
+    },
+    "error_kind": null
+  }
+}

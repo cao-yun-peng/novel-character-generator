@@ -14,6 +14,14 @@ from novel_character_generator.document_evidence import (
     DOCUMENT_CHARACTER_EVIDENCE_VERSION,
     DOCUMENT_FACT_DEDUP_POLICY_VERSION,
 )
+from novel_character_generator.document_profiles import (
+    DOCUMENT_CHARACTER_PROFILES_VERSION,
+    DOCUMENT_PROFILE_JOIN_POLICY_VERSION,
+)
+from novel_character_generator.fact_groups import (
+    DOCUMENT_CHARACTER_FACT_GROUPS_VERSION,
+    POST_LINK_FACT_GROUPING_POLICY_VERSION,
+)
 from novel_character_generator.m2 import (
     M2_ATTRIBUTION_RESPONSE_SCHEMA,
     M2_CATEGORIES,
@@ -35,11 +43,13 @@ from novel_character_generator.identity import (
     IDENTITY_CONFLICT_POLICY_VERSION,
     IDENTITY_ENVELOPE_VERSION,
     IDENTITY_GROUNDED_DECISION_VERSION,
+    IDENTITY_LOCAL_COREFERENCE_POLICY_VERSION,
     IDENTITY_LOCAL_NODES_VERSION,
     IDENTITY_POLICY_VERSION,
     IDENTITY_REGISTRY_VERSION,
     M3_IDENTITY_RESPONSE_SCHEMA,
 )
+from novel_character_generator.identity_rescue import cluster_rescue_response_schema
 
 
 class ContractAlignmentTests(unittest.TestCase):
@@ -109,8 +119,41 @@ class ContractAlignmentTests(unittest.TestCase):
             DOCUMENT_FACT_DEDUP_POLICY_VERSION,
         )
 
+    def test_document_profiles_contract_versions_match_runtime(self) -> None:
+        packet = self.schema["$defs"]["DocumentCharacterProfiles"]
+        self.assertEqual(
+            packet["properties"]["schema_version"]["const"],
+            DOCUMENT_CHARACTER_PROFILES_VERSION,
+        )
+        self.assertEqual(
+            packet["properties"]["join_policy_version"]["const"],
+            DOCUMENT_PROFILE_JOIN_POLICY_VERSION,
+        )
+        profile = self.schema["$defs"]["MaterializedDocumentCharacterProfile"]
+        self.assertIn("appearance_facts", profile["properties"])
+        self.assertNotIn("appearance_fact_refs", profile["properties"])
+
+    def test_fact_groups_contract_versions_and_provenance_match_runtime(self) -> None:
+        packet = self.schema["$defs"]["DocumentCharacterFactGroups"]
+        self.assertEqual(
+            packet["properties"]["schema_version"]["const"],
+            DOCUMENT_CHARACTER_FACT_GROUPS_VERSION,
+        )
+        self.assertEqual(
+            packet["properties"]["grouping_policy_version"]["const"],
+            POST_LINK_FACT_GROUPING_POLICY_VERSION,
+        )
+        group = self.schema["$defs"]["DocumentCharacterFactGroup"]
+        self.assertIn("attribute", group["required"])
+        self.assertIn("source_fact_hashes", group["required"])
+        binding = self.schema["$defs"]["CanonicalFactSourceOccurrenceBinding"]
+        self.assertEqual(
+            set(binding["required"]),
+            {"source_fact_hash", "source_occurrence_index", "source_occurrence"},
+        )
+
     def test_m2_model_contract_is_fact_only_and_contains_no_orchestration_fields(self) -> None:
-        self.assertEqual(self.schema["version"], "3.12.0-draft1")
+        self.assertEqual(self.schema["version"], "3.20.0-draft1")
         defs = self.schema["$defs"]
         model_input = defs["M2CandidateAppearanceParsingInput"]
         model_output = defs["M2CandidateAppearanceParsingResult"]
@@ -310,13 +353,50 @@ class ContractAlignmentTests(unittest.TestCase):
         registry = defs["DocumentCharacterRegistry"]["properties"]
         self.assertEqual(registry["schema_version"]["const"], IDENTITY_REGISTRY_VERSION)
         self.assertEqual(registry["identity_policy_version"]["const"], IDENTITY_POLICY_VERSION)
-        self.assertEqual(
-            registry["candidate_policy_version"]["const"],
+        self.assertIn(
             IDENTITY_CANDIDATE_POLICY_VERSION,
+            registry["candidate_policy_version"]["enum"],
         )
         self.assertEqual(
             registry["conflict_policy_version"]["const"],
             IDENTITY_CONFLICT_POLICY_VERSION,
+        )
+
+    def test_m3_cluster_rescue_model_boundary_is_minimal_and_grounded(self) -> None:
+        defs = self.schema["$defs"]
+        model_input = defs["M3ClusterRescueInput"]
+        candidate = defs["M3ClusterRescueCandidate"]
+        model_output = defs["M3ClusterRescueResult"]
+        runtime_output = cluster_rescue_response_schema(3)
+
+        self.assertFalse(model_input["additionalProperties"])
+        self.assertEqual(
+            set(model_input["properties"]),
+            {"current_character", "candidate_characters"},
+        )
+        self.assertIn("relationship_context_quotes", candidate["required"])
+        self.assertEqual(
+            set(model_output["properties"]),
+            set(runtime_output["properties"]),
+        )
+        serialized = json.dumps(model_input, ensure_ascii=False)
+        for forbidden in ("node_key", "character_id", "document_span", "task_cache_key"):
+            self.assertNotIn(f'"{forbidden}"', serialized)
+
+    def test_local_coreference_edge_contract_requires_exact_grounded_evidence(self) -> None:
+        edge = self.schema["$defs"]["LocalCoreferenceIdentityEdge"]
+        evidence = self.schema["$defs"]["LocalCoreferenceIdentityEvidence"]
+        self.assertFalse(edge["additionalProperties"])
+        self.assertEqual(
+            edge["properties"]["policy_version"]["const"],
+            IDENTITY_LOCAL_COREFERENCE_POLICY_VERSION,
+        )
+        self.assertEqual(evidence["properties"]["match_mode"]["const"], "exact")
+        self.assertIn(
+            IDENTITY_CANDIDATE_POLICY_VERSION,
+            self.schema["$defs"]["DocumentCharacterRegistry"]["properties"][
+                "candidate_policy_version"
+            ]["enum"],
         )
 
 

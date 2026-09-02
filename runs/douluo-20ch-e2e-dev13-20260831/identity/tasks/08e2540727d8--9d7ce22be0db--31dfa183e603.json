@@ -1,0 +1,62 @@
+{
+  "schema_version": "identity-task-result-v1",
+  "task_index": 41,
+  "current_label_quote": "唐三",
+  "candidate_label_quote": "唐三",
+  "task_cache_key": "31dfa183e60323dc74d53b6ce4c0fa354263b239f9ed556249f76a0749fd41f2",
+  "model_output": {
+    "identity_relation": "same_character",
+    "label_relation": "same_surface",
+    "identity_evidence_quotes": [
+      "唐三相信，自己在其他各方面的进步会更大",
+      "唐三这才继续挥锤"
+    ]
+  },
+  "grounded_result": {
+    "schema_version": "grounded-identity-decision-v1",
+    "current_node_key": "08e2540727d803f31260462ac63db89853229e38eea0b02cca220c9eddb303b7",
+    "candidate_node_key": "9d7ce22be0dbbb18a9c5b6af8a255eec58c3ea18a002eba77f0f4deafd133cc3",
+    "task_cache_key": "31dfa183e60323dc74d53b6ce4c0fa354263b239f9ed556249f76a0749fd41f2",
+    "requested_identity_relation": "same_character",
+    "identity_relation": "same_character",
+    "label_relation": "same_surface",
+    "grounded_identity_evidence": [
+      {
+        "evidence_quote": "唐三这才继续挥锤",
+        "document_span": {
+          "start": 23801,
+          "end": 23809
+        },
+        "match_mode": "exact"
+      },
+      {
+        "evidence_quote": "唐三相信，自己在其他各方面的进步会更大",
+        "document_span": {
+          "start": 28731,
+          "end": 28750
+        },
+        "match_mode": "exact"
+      }
+    ],
+    "issues": []
+  },
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 15281,
+    "http_status": 200,
+    "response_id": "20802120-bf05-4838-b93d-c2b46515c38a",
+    "usage": {
+      "input_tokens": 1956,
+      "cached_input_tokens": 512,
+      "output_tokens": 1610,
+      "reasoning_tokens": 1562,
+      "total_tokens": 3566
+    },
+    "error_kind": null
+  }
+}

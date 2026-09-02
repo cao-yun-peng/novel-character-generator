@@ -1,0 +1,7 @@
+{
+  "task_id": "APPEARANCE-STATE-TRANSITIONS-071",
+  "requested_by": "user",
+  "intent": "按照已确认的最小模型边界实现 071；显式告知模型已识别人物，以全文扫描覆盖非关键词和缺失 appearance fact 的状态转变。",
+  "current_behavior": "070 只有章节/顺序/persistence 与 unknown life/form/scene，无法恢复退出附体等没有 appearance fact 的 transition。",
+  "desired_behavior": "代码完整切窗并生成窗口人物表，模型只选择给定人物并返回最小 transition 语义和逐字 evidence，代码完成系统字段回填与状态物化。"
+}

@@ -1,0 +1,141 @@
+[
+  {
+    "schema_version": "grounded-cluster-rescue-decision-v1",
+    "subject_character_id": "char-9718e4b32c5b1c9bb420",
+    "subject_anchor_node_key": "cabd21076961428efd4a471870a0c712456885cc1dd2e49188717ce4ee674c36",
+    "selected_candidate_number": 1,
+    "selected_candidate_character_id": "char-6d486179d494c3c0c498",
+    "selected_candidate_anchor_node_key": "d20ede518cd3ec6b9a0770c0ce951c66b501fa652fc65283639ef9b1a8a19ca8",
+    "task_cache_key": "8422ae69b7e9bc268178581a9100b7aec5c8a653038f36dec54bda5edc4419ff",
+    "requested_identity_relation": "same_character",
+    "identity_relation": "same_character",
+    "label_relation": "same_surface",
+    "grounded_identity_evidence": [
+      {
+        "evidence_quote": "经五年多的时间了，眼前的这个孩子，正是当初在唐门跳崖明志的唐三。当他从昏迷中清醒过来的时候，发现除了温暖的感觉什么也做不了。但意料中的死亡并没有来临，很快，他就通过一个挤压的过程来到了这个世界。",
+        "document_span": {
+          "start": 3880,
+          "end": 3977
+        },
+        "match_mode": "exact"
+      },
+      {
+        "evidence_quote": "不知道是冥冥中自有天意，还是因缘巧合，为了纪念死去的妻子，唐昊给他取的名字竟然神奇还是叫唐三。",
+        "document_span": {
+          "start": 4196,
+          "end": 4243
+        },
+        "match_mode": "exact"
+      }
+    ],
+    "issues": []
+  },
+  {
+    "schema_version": "grounded-cluster-rescue-decision-v1",
+    "subject_character_id": "char-6d486179d494c3c0c498",
+    "subject_anchor_node_key": "d20ede518cd3ec6b9a0770c0ce951c66b501fa652fc65283639ef9b1a8a19ca8",
+    "selected_candidate_number": 1,
+    "selected_candidate_character_id": "char-9718e4b32c5b1c9bb420",
+    "selected_candidate_anchor_node_key": "cabd21076961428efd4a471870a0c712456885cc1dd2e49188717ce4ee674c36",
+    "task_cache_key": "b9c9fd5764aa3c573337cd82c7cbebfc8cc9a9f947911d428e25044b1680099c",
+    "requested_identity_relation": "same_character",
+    "identity_relation": "same_character",
+    "label_relation": "same_surface",
+    "grounded_identity_evidence": [
+      {
+        "evidence_quote": "来到这个世界已经五年多的时间了，眼前的这个孩子，正是当初在唐门跳崖明志的唐三。",
+        "document_span": {
+          "start": 3873,
+          "end": 3912
+        },
+        "match_mode": "exact"
+      },
+      {
+        "evidence_quote": "为了纪念死去的妻子，唐昊给他取的名字竟然神奇还是叫唐三。",
+        "document_span": {
+          "start": 4215,
+          "end": 4243
+        },
+        "match_mode": "exact"
+      }
+    ],
+    "issues": []
+  },
+  {
+    "schema_version": "grounded-cluster-rescue-decision-v1",
+    "subject_character_id": "char-3d52714f466e4a2d2deb",
+    "subject_anchor_node_key": "9c018bfe05d1e43c2e3f56b9f308e4f9efe80e6bae0712dd4d91fd6816341377",
+    "selected_candidate_number": 1,
+    "selected_candidate_character_id": "char-7d7110b19a5971bd01b9",
+    "selected_candidate_anchor_node_key": "51ba9a3db50d368f9f3e9b7a8d354b488caed4d88c197cc5a7e169d410046d4e",
+    "task_cache_key": "8610c3d4721c5d93deaf481ee18045e4b6d9f6f46a629d1c62bb0c72e22271b6",
+    "requested_identity_relation": "same_character",
+    "identity_relation": "same_character",
+    "label_relation": "name_variant",
+    "grounded_identity_evidence": [
+      {
+        "evidence_quote": "却被唐昊叫住了。 \r\n　　“等会儿再收拾吧。小三，我问你，你想不想成为一名魂师？” \r\n　　唐三愣了一下，看向唐昊",
+        "document_span": {
+          "start": 23275,
+          "end": 23332
+        },
+        "match_mode": "exact"
+      }
+    ],
+    "issues": []
+  },
+  {
+    "schema_version": "grounded-cluster-rescue-decision-v1",
+    "subject_character_id": "char-98672f4dfa3bce0a00b4",
+    "subject_anchor_node_key": "ebf900c5f5ef9b7dbd6780355e0749ceca1bdb15185edb3acc3bbd982cd8a1cd",
+    "selected_candidate_number": 1,
+    "selected_candidate_character_id": "char-269333eade4c2fa520aa",
+    "selected_candidate_anchor_node_key": "3f90ca68ba802e43cc015ea6793f2aab441c9a7f099d4d92f717b5ea0ff0ae7f",
+    "task_cache_key": "58bcc013187097c14ff25f156363dfcdb906681efa84183ad588031b0d173155",
+    "requested_identity_relation": "same_character",
+    "identity_relation": "same_character",
+    "label_relation": "name_variant",
+    "grounded_identity_evidence": [
+      {
+        "evidence_quote": "年轻人微笑道：“我叫素云涛，二十六级大魂师，是你们的领路人。现在，我将",
+        "document_span": {
+          "start": 13775,
+          "end": 13810
+        },
+        "match_mode": "exact"
+      }
+    ],
+    "issues": []
+  },
+  {
+    "schema_version": "grounded-cluster-rescue-decision-v1",
+    "subject_character_id": "char-3b56bc304973763c0172",
+    "subject_anchor_node_key": "501f9168baa593fe8ee6c001ccc3659123db7436fb964bd5d1003a52f4db8b02",
+    "selected_candidate_number": 1,
+    "selected_candidate_character_id": "char-9718e4b32c5b1c9bb420",
+    "selected_candidate_anchor_node_key": "cabd21076961428efd4a471870a0c712456885cc1dd2e49188717ce4ee674c36",
+    "task_cache_key": "016e35ebb48270b889d50bc57be847644de37d72d780807c47dca93517976ecd",
+    "requested_identity_relation": "different_characters",
+    "identity_relation": "different_characters",
+    "label_relation": null,
+    "grounded_identity_evidence": [
+      {
+        "evidence_quote": "天啊，竟然是先天满魂力。",
+        "document_span": {
+          "start": 17139,
+          "end": 17151
+        },
+        "match_mode": "exact"
+      },
+      {
+        "evidence_quote": "大多数人在武魂觉醒的时候是没有魂力的，就像之前这几个孩子。",
+        "document_span": {
+          "start": 17330,
+          "end": 17359
+        },
+        "match_mode": "exact"
+      }
+    ],
+    "issues": []
+  }
+]

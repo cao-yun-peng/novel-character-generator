@@ -1,0 +1,149 @@
+{
+  "schema_version": "m1-chunk-result-v4",
+  "chunk_index": 14,
+  "chunk_id": "chunk-000014-29250-31750-3f70e01ec313",
+  "chunk_hash": "3f70e01ec313f78323afeffc2e5fe9c2264be8966f0d3d7fd89eda500e9d1990",
+  "chunk_source_span": {
+    "start": 29250,
+    "end": 31750
+  },
+  "model_output": {
+    "candidate_mentions": [
+      {
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "唐三",
+        "evidence_quotes": [
+          "自己现在年纪还小",
+          "唐三手腕上带着的这筒袖箭"
+        ]
+      },
+      {
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "唐昊",
+        "evidence_quotes": [
+          "眼前这个高大苍老的男人"
+        ]
+      },
+      {
+        "mention_type": "describe",
+        "mention_scope": "individual",
+        "mention_quote": "高大苍老的男人",
+        "evidence_quotes": [
+          "高大苍老的男人"
+        ]
+      }
+    ]
+  },
+  "grounded_packet": {
+    "schema_version": "grounded-character-packet-v6",
+    "evidence_precedence_policy_version": "exact-evidence-precedence-v1",
+    "source_document_version_id": "source-8bcb7305a759571b",
+    "chunking_policy_version": "fixed-codepoint-window-2500-overlap-250-v1",
+    "chunk_id": "chunk-000014-29250-31750-3f70e01ec313",
+    "chunk_hash": "3f70e01ec313f78323afeffc2e5fe9c2264be8966f0d3d7fd89eda500e9d1990",
+    "chunk_source_span": {
+      "start": 29250,
+      "end": 31750
+    },
+    "grounded_mentions": [
+      {
+        "local_mention_id": "m1",
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "唐三",
+        "approved_evidence": [
+          {
+            "evidence_quote": "自己现在年纪还小",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 434,
+                "end": 442
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          },
+          {
+            "evidence_quote": "唐三手腕上带着的这筒袖箭",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 51,
+                "end": 63
+              }
+            ],
+            "relation_to_mention": "contains_mention",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "60c7c15db5a2aa1166f664e45e3d8faff9babb7e969bb9074a63ef4d8d3ac565"
+      },
+      {
+        "local_mention_id": "m2",
+        "mention_type": "exact",
+        "mention_scope": "individual",
+        "mention_quote": "唐昊",
+        "approved_evidence": [
+          {
+            "evidence_quote": "眼前这个高大苍老的男人",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1515,
+                "end": 1526
+              }
+            ],
+            "relation_to_mention": "contextual",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "dd04775e589c963e1a90e15cf24be2e048abf8e2586ed34ffec7ba9f849195e5"
+      },
+      {
+        "local_mention_id": "m3",
+        "mention_type": "describe",
+        "mention_scope": "individual",
+        "mention_quote": "高大苍老的男人",
+        "approved_evidence": [
+          {
+            "evidence_quote": "高大苍老的男人",
+            "occurrence_count": 1,
+            "source_spans": [
+              {
+                "start": 1519,
+                "end": 1526
+              }
+            ],
+            "relation_to_mention": "contains_mention",
+            "match_mode": "exact"
+          }
+        ],
+        "packet_hash": "f149bb2843018f2f7e2e1d338cc3e4d615c1724687de7d5e18a4c586ecc14699"
+      }
+    ],
+    "rejected_evidence": []
+  },
+  "grounding_trace_events": [],
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 19718,
+    "http_status": 200,
+    "response_id": "a7de9f91-e528-4e15-9708-f8119d47998c",
+    "usage": {
+      "input_tokens": 2600,
+      "cached_input_tokens": 2560,
+      "output_tokens": 2081,
+      "reasoning_tokens": 1905,
+      "total_tokens": 4681
+    },
+    "error_kind": null
+  }
+}

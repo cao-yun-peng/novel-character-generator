@@ -1,0 +1,80 @@
+{
+  "schema_version": "identity-task-result-v1",
+  "task_index": 49,
+  "current_label_quote": "唐三",
+  "candidate_label_quote": "唐三",
+  "task_cache_key": "785cc470414c41fb1dc45d10a185d57a1cc831c2333fb7ab4f7c800f58fdc770",
+  "model_output": {
+    "identity_relation": "same_character",
+    "label_relation": "same_surface",
+    "identity_evidence_quotes": [
+      "他告诉唐三，明天早上走的时候不要吵他睡觉。",
+      "清晨，唐三坐在山顶的一块大石头上",
+      "唐三相信，自己在其他各方面的进步会更大。",
+      "唐三现在手上带的这个也不例外"
+    ]
+  },
+  "grounded_result": {
+    "schema_version": "grounded-identity-decision-v1",
+    "current_node_key": "6d53f7e20076f8fadceff02fda655dd49fe40ffb40879258414cd08b825c32f7",
+    "candidate_node_key": "08e2540727d803f31260462ac63db89853229e38eea0b02cca220c9eddb303b7",
+    "task_cache_key": "785cc470414c41fb1dc45d10a185d57a1cc831c2333fb7ab4f7c800f58fdc770",
+    "requested_identity_relation": "same_character",
+    "identity_relation": "same_character",
+    "label_relation": "same_surface",
+    "grounded_identity_evidence": [
+      {
+        "evidence_quote": "唐三相信，自己在其他各方面的进步会更大。",
+        "document_span": {
+          "start": 28731,
+          "end": 28751
+        },
+        "match_mode": "exact"
+      },
+      {
+        "evidence_quote": "唐三现在手上带的这个也不例外",
+        "document_span": {
+          "start": 29110,
+          "end": 29124
+        },
+        "match_mode": "exact"
+      },
+      {
+        "evidence_quote": "他告诉唐三，明天早上走的时候不要吵他睡觉。",
+        "document_span": {
+          "start": 31867,
+          "end": 31888
+        },
+        "match_mode": "exact"
+      },
+      {
+        "evidence_quote": "清晨，唐三坐在山顶的一块大石头上",
+        "document_span": {
+          "start": 31893,
+          "end": 31909
+        },
+        "match_mode": "exact"
+      }
+    ],
+    "issues": []
+  },
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 5484,
+    "http_status": 200,
+    "response_id": "41ffc94f-25e4-42b2-a4b5-695bc4dc32ff",
+    "usage": {
+      "input_tokens": 2098,
+      "cached_input_tokens": 512,
+      "output_tokens": 494,
+      "reasoning_tokens": 407,
+      "total_tokens": 2592
+    },
+    "error_kind": null
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "schema_version": "identity-task-result-v1",
+  "task_index": 40,
+  "current_label_quote": "唐昊",
+  "candidate_label_quote": "唐昊",
+  "task_cache_key": "9ad24169341ad1f55db997e300ec666bd924a5ad128be7403d1e5e32a550201c",
+  "model_output": {
+    "identity_relation": "same_character",
+    "label_relation": "same_surface",
+    "identity_evidence_quotes": [
+      "唐昊看着在不断拉动风箱的唐三。",
+      "唐昊走到唐三面前，拿过他手中的铁锤"
+    ]
+  },
+  "grounded_result": {
+    "schema_version": "grounded-identity-decision-v1",
+    "current_node_key": "69cf5a23b5d866d66444c4c3a26357815d80c865c20ca4bf6ee0608d00afe940",
+    "candidate_node_key": "b149ab534cf11f7656106950d5785626cb1f8d45d5a674f91b5cb3f61e79233c",
+    "task_cache_key": "9ad24169341ad1f55db997e300ec666bd924a5ad128be7403d1e5e32a550201c",
+    "requested_identity_relation": "same_character",
+    "identity_relation": "same_character",
+    "label_relation": "same_surface",
+    "grounded_identity_evidence": [
+      {
+        "evidence_quote": "唐昊走到唐三面前，拿过他手中的铁锤",
+        "document_span": {
+          "start": 24096,
+          "end": 24113
+        },
+        "match_mode": "exact"
+      },
+      {
+        "evidence_quote": "唐昊看着在不断拉动风箱的唐三。",
+        "document_span": {
+          "start": 27400,
+          "end": 27415
+        },
+        "match_mode": "exact"
+      }
+    ],
+    "issues": []
+  },
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 10219,
+    "http_status": 200,
+    "response_id": "b4a0ca85-b4f2-46d9-9078-8cf0b2c0cd7f",
+    "usage": {
+      "input_tokens": 2066,
+      "cached_input_tokens": 512,
+      "output_tokens": 1041,
+      "reasoning_tokens": 991,
+      "total_tokens": 3107
+    },
+    "error_kind": null
+  }
+}

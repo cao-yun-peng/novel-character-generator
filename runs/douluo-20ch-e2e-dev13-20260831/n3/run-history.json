@@ -1,0 +1,24 @@
+[
+  {
+    "started_at": "2026-09-01T02:02:43.543942Z",
+    "completed_at": "2026-09-01T02:10:13.833850Z",
+    "duration_ms": 450297,
+    "planned_promotion_tasks": 11,
+    "succeeded_promotion_tasks": 8,
+    "failed_promotion_tasks": 3,
+    "resumed_promotion_tasks": 0,
+    "new_provider_calls": 11,
+    "complete": false
+  },
+  {
+    "started_at": "2026-09-01T02:15:28.270373Z",
+    "completed_at": "2026-09-01T02:15:46.426104Z",
+    "duration_ms": 18156,
+    "planned_promotion_tasks": 11,
+    "succeeded_promotion_tasks": 11,
+    "failed_promotion_tasks": 0,
+    "resumed_promotion_tasks": 8,
+    "new_provider_calls": 3,
+    "complete": true
+  }
+]

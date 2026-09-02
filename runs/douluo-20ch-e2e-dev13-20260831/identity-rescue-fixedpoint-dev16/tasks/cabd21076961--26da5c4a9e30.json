@@ -1,0 +1,59 @@
+{
+  "schema_version": "cluster-rescue-task-result-v1",
+  "round_index": 1,
+  "task_index": 1,
+  "task_cache_key": "26da5c4a9e30b4e0a4c5cfa5fa8add35b24348f365e3b6d2a04baf4e7aa45cce",
+  "subject_labels": [
+    "唐三"
+  ],
+  "model_output": {
+    "identity_relation": "same_character",
+    "candidate_number": 1,
+    "label_relation": "name_variant",
+    "identity_evidence_quotes": [
+      "“小三，来，让爷爷看看。”老杰克向唐三挥了挥手。"
+    ]
+  },
+  "grounded_result": {
+    "schema_version": "grounded-cluster-rescue-decision-v1",
+    "subject_character_id": "char-f47075b7019563fd8315",
+    "subject_anchor_node_key": "cabd21076961428efd4a471870a0c712456885cc1dd2e49188717ce4ee674c36",
+    "selected_candidate_number": 1,
+    "selected_candidate_character_id": "char-1c04556e1e32a4819241",
+    "selected_candidate_anchor_node_key": "9c018bfe05d1e43c2e3f56b9f308e4f9efe80e6bae0712dd4d91fd6816341377",
+    "task_cache_key": "26da5c4a9e30b4e0a4c5cfa5fa8add35b24348f365e3b6d2a04baf4e7aa45cce",
+    "requested_identity_relation": "same_character",
+    "identity_relation": "same_character",
+    "label_relation": "name_variant",
+    "grounded_identity_evidence": [
+      {
+        "evidence_quote": "“小三，来，让爷爷看看。”老杰克向唐三挥了挥手。",
+        "document_span": {
+          "start": 10205,
+          "end": 10229
+        },
+        "match_mode": "exact"
+      }
+    ],
+    "issues": []
+  },
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 7390,
+    "http_status": 200,
+    "response_id": "c61e02dc-91dc-4164-9f70-6c9b33bcbd0e",
+    "usage": {
+      "input_tokens": 4701,
+      "cached_input_tokens": 640,
+      "output_tokens": 626,
+      "reasoning_tokens": 575,
+      "total_tokens": 5327
+    },
+    "error_kind": null
+  }
+}

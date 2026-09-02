@@ -1,0 +1,80 @@
+{
+  "schema_version": "identity-task-result-v1",
+  "task_index": 23,
+  "current_label_quote": "杰克",
+  "candidate_label_quote": "杰克爷爷",
+  "task_cache_key": "c54f785a46f614791e945ea7b49e7f38e8053450f4b2b43aa66b70cdf3e38f9d",
+  "model_output": {
+    "identity_relation": "same_character",
+    "label_relation": "name_variant",
+    "identity_evidence_quotes": [
+      "老杰克一脸紧张的迎上了素云涛",
+      "杰克眼中流露出惊疑不定的神色",
+      "是圣魂村的村长老杰克",
+      "杰克爷爷，您好。"
+    ]
+  },
+  "grounded_result": {
+    "schema_version": "grounded-identity-decision-v1",
+    "current_node_key": "6f70712b56aa85b85cad7f9b83c4a11d5a82bc84fcfab03a0b2b458c5d7913e1",
+    "candidate_node_key": "2a4740f407e69b243675c2d05060d5d808f0a3400f4ba9a7f56eaa71dbe84ea5",
+    "task_cache_key": "c54f785a46f614791e945ea7b49e7f38e8053450f4b2b43aa66b70cdf3e38f9d",
+    "requested_identity_relation": "same_character",
+    "identity_relation": "same_character",
+    "label_relation": "name_variant",
+    "grounded_identity_evidence": [
+      {
+        "evidence_quote": "是圣魂村的村长老杰克",
+        "document_span": {
+          "start": 10189,
+          "end": 10199
+        },
+        "match_mode": "exact"
+      },
+      {
+        "evidence_quote": "杰克爷爷，您好。",
+        "document_span": {
+          "start": 10283,
+          "end": 10291
+        },
+        "match_mode": "exact"
+      },
+      {
+        "evidence_quote": "老杰克一脸紧张的迎上了素云涛",
+        "document_span": {
+          "start": 18423,
+          "end": 18437
+        },
+        "match_mode": "exact"
+      },
+      {
+        "evidence_quote": "杰克眼中流露出惊疑不定的神色",
+        "document_span": {
+          "start": 18510,
+          "end": 18524
+        },
+        "match_mode": "exact"
+      }
+    ],
+    "issues": []
+  },
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 27234,
+    "http_status": 200,
+    "response_id": "34eeae7c-6beb-46a4-afbc-7037a3895cad",
+    "usage": {
+      "input_tokens": 2006,
+      "cached_input_tokens": 512,
+      "output_tokens": 2927,
+      "reasoning_tokens": 2849,
+      "total_tokens": 4933
+    },
+    "error_kind": null
+  }
+}

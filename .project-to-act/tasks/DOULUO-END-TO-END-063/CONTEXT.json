@@ -1,0 +1,26 @@
+{
+  "task_id": "DOULUO-END-TO-END-063",
+  "lifecycle_stage": "5",
+  "lifecycle_revision": 2,
+  "runtime_version": "0.1.0.dev13",
+  "schema_version": "3.13.0-draft1",
+  "input_file": "tests/小说/斗罗大陆前20章.txt",
+  "input_characters": 38251,
+  "input_sha256": "8bcb7305a759571b1fec70813b0631f2c884eba79697c3259170a7635d639741",
+  "detected_chapters": 19,
+  "output_run": "runs/douluo-20ch-e2e-dev13-20260831",
+  "chunk_size": 2500,
+  "overlap_characters": 250,
+  "max_output_tokens_override": 16384,
+  "max_candidates_per_node": 2,
+  "context_freshness": "verified-2026-09-01-balance-restored",
+  "conflicts": [
+    {
+      "at": "2026-09-01",
+      "stage": "N3/promotion",
+      "status": "resolved-by-user",
+      "reason": "DeepSeek ProviderInsufficientBalanceError (HTTP 402) after 8/11 promotion tasks; two preceding tasks also exhausted transient network retries.",
+      "recovery": "User reported balance restored on 2026-09-01; retry the same command and output directory, reusing 8 successful task caches."
+    }
+  ]
+}

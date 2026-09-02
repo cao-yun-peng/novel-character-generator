@@ -1,0 +1,26 @@
+{
+  "id": "APPEARANCE-PROFILE-PLAN-067",
+  "title": "外貌状态层与 Profile Compiler 后续开发规划",
+  "status": "completed",
+  "owner": "Codex",
+  "objective": "冻结 Evidence Layer 之后的可回溯 Profile Compiler 数据流、Schema 边界、开发顺序和验收 Gate。",
+  "risk_level": "L1-planning-only",
+  "allowed_paths": [
+    "docs",
+    ".project-to-act"
+  ],
+  "invariants": [
+    "raw evidence facts 永久保留",
+    "不按全局唯一 proper name 自动建立身份关系",
+    "canonical facts 保留全部 raw fact 和 occurrence 引用",
+    "状态作用域建立前不宣称冲突已解决",
+    "Stage 6 前建立正式人工质量评测 Gate"
+  ],
+  "acceptance": [
+    "规划覆盖 local coreference closure 和 post-link fact dedup",
+    "规划定义 life_stage/form_state/scene_state/persistence/transition",
+    "规划区分 audit review 与 actionable review",
+    "规划定义 render-ready 编译器输入输出和失败关闭规则",
+    "项目台账与独立技术计划一致并通过治理校验"
+  ]
+}

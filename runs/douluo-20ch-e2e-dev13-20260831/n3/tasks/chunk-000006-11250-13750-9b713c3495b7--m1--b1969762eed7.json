@@ -1,0 +1,374 @@
+{
+  "schema_version": "n3-promotion-task-result-v2",
+  "chunk_index": 6,
+  "chunk_id": "chunk-000006-11250-13750-9b713c3495b7",
+  "describe_local_mention_id": "m1",
+  "mention_quote": "年轻人",
+  "promotion_hash": "b1969762eed702f1cd47b4decc247bb1b944cd8d10f4d6f804b8235fcc51c61b",
+  "model_output": {
+    "characters": [
+      {
+        "character_label_quote": "年轻人",
+        "belongs_to_character": [
+          {
+            "fact_quote": "看上去二十多岁的样子",
+            "category": "age",
+            "attribute": "年龄",
+            "value": "二十多岁"
+          },
+          {
+            "fact_quote": "剑眉星目",
+            "category": "face",
+            "attribute": "眉毛和眼睛",
+            "value": "剑眉星目"
+          },
+          {
+            "fact_quote": "相貌甚是俊朗",
+            "category": "face",
+            "attribute": "相貌",
+            "value": "俊朗"
+          },
+          {
+            "fact_quote": "一身白色劲装",
+            "category": "clothing",
+            "attribute": "服装",
+            "value": "白色劲装"
+          },
+          {
+            "fact_quote": "背后是黑色披风",
+            "category": "clothing",
+            "attribute": "披风",
+            "value": "黑色披风"
+          },
+          {
+            "fact_quote": "有一个拳头大小的魂字",
+            "category": "clothing",
+            "attribute": "胸前字",
+            "value": "拳头大小的魂字"
+          },
+          {
+            "fact_quote": "左胸上，有一枚雕刻着长剑的徽章",
+            "category": "accessory",
+            "attribute": "徽章",
+            "value": "雕刻着长剑的徽章"
+          },
+          {
+            "fact_quote": "徽章上一共是三柄长剑交错",
+            "category": "accessory",
+            "attribute": "徽章图案",
+            "value": "三柄长剑交错"
+          }
+        ]
+      }
+    ]
+  },
+  "grounded_result": {
+    "schema_version": "grounded-promoted-describe-characters-v6",
+    "grounding_policy_version": "promotion-partial-fact-acceptance-v1",
+    "describe_source_ref": {
+      "local_mention_id": "m1",
+      "packet_hash": "62346dbfc6b94fc2d595acbece348759a2815879b58538cc772119f3ca5b23f5"
+    },
+    "promotion_hash": "b1969762eed702f1cd47b4decc247bb1b944cd8d10f4d6f804b8235fcc51c61b",
+    "promoted_characters": [
+      {
+        "promoted_character_ref": {
+          "source_document_version_id": "source-8bcb7305a759571b",
+          "chunk_id": "chunk-000006-11250-13750-9b713c3495b7",
+          "source_local_mention_id": "m1",
+          "source_mention_type": "describe",
+          "promotion_index": 1,
+          "character_origin": "remaining_describe",
+          "packet_hash": "62346dbfc6b94fc2d595acbece348759a2815879b58538cc772119f3ca5b23f5",
+          "promotion_hash": "b1969762eed702f1cd47b4decc247bb1b944cd8d10f4d6f804b8235fcc51c61b"
+        },
+        "character_label_quote": "年轻人",
+        "grounded_belongs_to_character": [
+          {
+            "fact_quote": "看上去二十多岁的样子",
+            "category": "age",
+            "attribute": "年龄",
+            "value": "二十多岁",
+            "source_mention_id": "m1",
+            "source_mention_type": "describe",
+            "source_evidence_quote": "此人看上去二十多岁的样子，剑眉星目，相貌甚是俊朗。一身白色劲装，背后是黑色披风，胸前正中心的位置，有一个拳头大小的魂字。",
+            "source_evidence_span": {
+              "start": 1889,
+              "end": 1949
+            },
+            "fact_chunk_span": {
+              "start": 1891,
+              "end": 1901
+            },
+            "match_mode": "exact"
+          },
+          {
+            "fact_quote": "剑眉星目",
+            "category": "face",
+            "attribute": "眉毛和眼睛",
+            "value": "剑眉星目",
+            "source_mention_id": "m1",
+            "source_mention_type": "describe",
+            "source_evidence_quote": "此人看上去二十多岁的样子，剑眉星目，相貌甚是俊朗。一身白色劲装，背后是黑色披风，胸前正中心的位置，有一个拳头大小的魂字。",
+            "source_evidence_span": {
+              "start": 1889,
+              "end": 1949
+            },
+            "fact_chunk_span": {
+              "start": 1902,
+              "end": 1906
+            },
+            "match_mode": "exact"
+          },
+          {
+            "fact_quote": "相貌甚是俊朗",
+            "category": "face",
+            "attribute": "相貌",
+            "value": "俊朗",
+            "source_mention_id": "m1",
+            "source_mention_type": "describe",
+            "source_evidence_quote": "此人看上去二十多岁的样子，剑眉星目，相貌甚是俊朗。一身白色劲装，背后是黑色披风，胸前正中心的位置，有一个拳头大小的魂字。",
+            "source_evidence_span": {
+              "start": 1889,
+              "end": 1949
+            },
+            "fact_chunk_span": {
+              "start": 1907,
+              "end": 1913
+            },
+            "match_mode": "exact"
+          },
+          {
+            "fact_quote": "一身白色劲装",
+            "category": "clothing",
+            "attribute": "服装",
+            "value": "白色劲装",
+            "source_mention_id": "m1",
+            "source_mention_type": "describe",
+            "source_evidence_quote": "此人看上去二十多岁的样子，剑眉星目，相貌甚是俊朗。一身白色劲装，背后是黑色披风，胸前正中心的位置，有一个拳头大小的魂字。",
+            "source_evidence_span": {
+              "start": 1889,
+              "end": 1949
+            },
+            "fact_chunk_span": {
+              "start": 1914,
+              "end": 1920
+            },
+            "match_mode": "exact"
+          },
+          {
+            "fact_quote": "背后是黑色披风",
+            "category": "clothing",
+            "attribute": "披风",
+            "value": "黑色披风",
+            "source_mention_id": "m1",
+            "source_mention_type": "describe",
+            "source_evidence_quote": "此人看上去二十多岁的样子，剑眉星目，相貌甚是俊朗。一身白色劲装，背后是黑色披风，胸前正中心的位置，有一个拳头大小的魂字。",
+            "source_evidence_span": {
+              "start": 1889,
+              "end": 1949
+            },
+            "fact_chunk_span": {
+              "start": 1921,
+              "end": 1928
+            },
+            "match_mode": "exact"
+          },
+          {
+            "fact_quote": "有一个拳头大小的魂字",
+            "category": "clothing",
+            "attribute": "胸前字",
+            "value": "拳头大小的魂字",
+            "source_mention_id": "m1",
+            "source_mention_type": "describe",
+            "source_evidence_quote": "此人看上去二十多岁的样子，剑眉星目，相貌甚是俊朗。一身白色劲装，背后是黑色披风，胸前正中心的位置，有一个拳头大小的魂字。",
+            "source_evidence_span": {
+              "start": 1889,
+              "end": 1949
+            },
+            "fact_chunk_span": {
+              "start": 1938,
+              "end": 1948
+            },
+            "match_mode": "exact"
+          },
+          {
+            "fact_quote": "左胸上，有一枚雕刻着长剑的徽章",
+            "category": "accessory",
+            "attribute": "徽章",
+            "value": "雕刻着长剑的徽章",
+            "source_mention_id": "m1",
+            "source_mention_type": "describe",
+            "source_evidence_quote": "左胸上，有一枚雕刻着长剑的徽章，徽章上一共是三柄长剑交错。",
+            "source_evidence_span": {
+              "start": 1969,
+              "end": 1998
+            },
+            "fact_chunk_span": {
+              "start": 1969,
+              "end": 1984
+            },
+            "match_mode": "exact"
+          },
+          {
+            "fact_quote": "徽章上一共是三柄长剑交错",
+            "category": "accessory",
+            "attribute": "徽章图案",
+            "value": "三柄长剑交错",
+            "source_mention_id": "m1",
+            "source_mention_type": "describe",
+            "source_evidence_quote": "左胸上，有一枚雕刻着长剑的徽章，徽章上一共是三柄长剑交错。",
+            "source_evidence_span": {
+              "start": 1969,
+              "end": 1998
+            },
+            "fact_chunk_span": {
+              "start": 1985,
+              "end": 1997
+            },
+            "match_mode": "exact"
+          }
+        ]
+      }
+    ],
+    "unassigned_fragments": [
+      {
+        "fragment_ref": "d1-f1",
+        "source_evidence_quote": "此人看上去二十多岁的样子，剑眉星目，相貌甚是俊朗。一身白色劲装，背后是黑色披风，胸前正中心的位置，有一个拳头大小的魂字。",
+        "source_evidence_span": {
+          "start": 1889,
+          "end": 1949
+        },
+        "fragment_quote": "此人",
+        "fragment_span": {
+          "start": 1889,
+          "end": 1891
+        }
+      },
+      {
+        "fragment_ref": "d1-f2",
+        "source_evidence_quote": "此人看上去二十多岁的样子，剑眉星目，相貌甚是俊朗。一身白色劲装，背后是黑色披风，胸前正中心的位置，有一个拳头大小的魂字。",
+        "source_evidence_span": {
+          "start": 1889,
+          "end": 1949
+        },
+        "fragment_quote": "，",
+        "fragment_span": {
+          "start": 1901,
+          "end": 1902
+        }
+      },
+      {
+        "fragment_ref": "d1-f3",
+        "source_evidence_quote": "此人看上去二十多岁的样子，剑眉星目，相貌甚是俊朗。一身白色劲装，背后是黑色披风，胸前正中心的位置，有一个拳头大小的魂字。",
+        "source_evidence_span": {
+          "start": 1889,
+          "end": 1949
+        },
+        "fragment_quote": "，",
+        "fragment_span": {
+          "start": 1906,
+          "end": 1907
+        }
+      },
+      {
+        "fragment_ref": "d1-f4",
+        "source_evidence_quote": "此人看上去二十多岁的样子，剑眉星目，相貌甚是俊朗。一身白色劲装，背后是黑色披风，胸前正中心的位置，有一个拳头大小的魂字。",
+        "source_evidence_span": {
+          "start": 1889,
+          "end": 1949
+        },
+        "fragment_quote": "。",
+        "fragment_span": {
+          "start": 1913,
+          "end": 1914
+        }
+      },
+      {
+        "fragment_ref": "d1-f5",
+        "source_evidence_quote": "此人看上去二十多岁的样子，剑眉星目，相貌甚是俊朗。一身白色劲装，背后是黑色披风，胸前正中心的位置，有一个拳头大小的魂字。",
+        "source_evidence_span": {
+          "start": 1889,
+          "end": 1949
+        },
+        "fragment_quote": "，",
+        "fragment_span": {
+          "start": 1920,
+          "end": 1921
+        }
+      },
+      {
+        "fragment_ref": "d1-f6",
+        "source_evidence_quote": "此人看上去二十多岁的样子，剑眉星目，相貌甚是俊朗。一身白色劲装，背后是黑色披风，胸前正中心的位置，有一个拳头大小的魂字。",
+        "source_evidence_span": {
+          "start": 1889,
+          "end": 1949
+        },
+        "fragment_quote": "，胸前正中心的位置，",
+        "fragment_span": {
+          "start": 1928,
+          "end": 1938
+        }
+      },
+      {
+        "fragment_ref": "d1-f7",
+        "source_evidence_quote": "此人看上去二十多岁的样子，剑眉星目，相貌甚是俊朗。一身白色劲装，背后是黑色披风，胸前正中心的位置，有一个拳头大小的魂字。",
+        "source_evidence_span": {
+          "start": 1889,
+          "end": 1949
+        },
+        "fragment_quote": "。",
+        "fragment_span": {
+          "start": 1948,
+          "end": 1949
+        }
+      },
+      {
+        "fragment_ref": "d1-f8",
+        "source_evidence_quote": "左胸上，有一枚雕刻着长剑的徽章，徽章上一共是三柄长剑交错。",
+        "source_evidence_span": {
+          "start": 1969,
+          "end": 1998
+        },
+        "fragment_quote": "，",
+        "fragment_span": {
+          "start": 1984,
+          "end": 1985
+        }
+      },
+      {
+        "fragment_ref": "d1-f9",
+        "source_evidence_quote": "左胸上，有一枚雕刻着长剑的徽章，徽章上一共是三柄长剑交错。",
+        "source_evidence_span": {
+          "start": 1969,
+          "end": 1998
+        },
+        "fragment_quote": "。",
+        "fragment_span": {
+          "start": 1997,
+          "end": 1998
+        }
+      }
+    ]
+  },
+  "grounding_issues": [],
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 24250,
+    "http_status": 200,
+    "response_id": "9e107804-406e-4405-bf3a-dd6d8e54b63b",
+    "usage": {
+      "input_tokens": 2149,
+      "cached_input_tokens": 384,
+      "output_tokens": 2808,
+      "reasoning_tokens": 2430,
+      "total_tokens": 4957
+    },
+    "error_kind": null
+  }
+}

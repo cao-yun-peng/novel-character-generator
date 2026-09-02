@@ -1,0 +1,41 @@
+{
+  "schema_version": "m1-batch-summary-v3",
+  "started_at": "2026-09-01T01:54:30.529871Z",
+  "completed_at": "2026-09-01T01:55:20.528251Z",
+  "duration_ms": 50000,
+  "source_document_version_id": "source-8bcb7305a759571b",
+  "document_hash": "8bcb7305a759571b1fec70813b0631f2c884eba79697c3259170a7635d639741",
+  "total_characters": 38251,
+  "chunking_policy_version": "fixed-codepoint-window-2500-overlap-250-v1",
+  "planned_chunks": 17,
+  "succeeded_chunks": 17,
+  "failed_chunks": 0,
+  "resumed_chunks": 16,
+  "new_provider_calls": 1,
+  "models": [
+    "deepseek-v4-flash"
+  ],
+  "candidate_mentions": 64,
+  "candidate_mentions_by_type": {
+    "exact": 32,
+    "describe": 32,
+    "null": 0
+  },
+  "grounded_mentions": 46,
+  "approved_evidence_quotes": 97,
+  "rejected_evidence_quotes": 0,
+  "grounding_trace_events": 59,
+  "exact_evidence_precedence": {
+    "shadowed_describe_evidence": 41,
+    "removed_empty_describe_blocks": 18
+  },
+  "usage": {
+    "input_tokens": 43594,
+    "cached_input_tokens": 20096,
+    "output_tokens": 65935,
+    "reasoning_tokens": 60783,
+    "total_tokens": 109529
+  },
+  "complete": true,
+  "quality_note": "Counts describe schema-valid model output and deterministic quote grounding; they are not a human-verified character-quality score. Overlap may duplicate mentions."
+}

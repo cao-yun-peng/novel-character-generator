@@ -1,0 +1,40 @@
+{
+  "task_id": "APPEARANCE-SCOPE-SCHEMA-070",
+  "lifecycle_stage": "5",
+  "lifecycle_revision": 2,
+  "runtime_version_before": "0.1.0.dev18",
+  "schema_version_before": "3.18.0-draft1",
+  "runtime_version_target": "0.1.0.dev19",
+  "schema_version_target": "3.19.0-draft1",
+  "input_file": "tests/小说/斗罗大陆前20章.txt",
+  "source_fact_groups": "runs/douluo-20ch-e2e-dev13-20260831/post-link-fact-groups-dev18/document-character-fact-groups.json",
+  "target_output": "runs/douluo-20ch-e2e-dev13-20260831/appearance-scopes-dev19/document-character-appearance-scopes.json",
+  "baseline": {
+    "characters": 7,
+    "canonical_fact_groups": 109,
+    "actual_chapters": 19,
+    "provider_calls": 0
+  },
+  "result": {
+    "chapters": 19,
+    "canonical_fact_assignments": 109,
+    "unknown_life": 109,
+    "unknown_form": 109,
+    "unknown_scene": 109,
+    "stable": 2,
+    "persistent_until_changed": 13,
+    "scene": 18,
+    "momentary": 12,
+    "unknown_persistence": 64,
+    "provider_calls": 0
+  },
+  "validation": {
+    "unit_tests": 150,
+    "compileall": true,
+    "draft_2020_12_instance_valid": true,
+    "git_diff_check": true,
+    "project_to_act_valid": true,
+    "lifecycle_valid": true
+  },
+  "context_freshness": "verified-2026-09-02"
+}

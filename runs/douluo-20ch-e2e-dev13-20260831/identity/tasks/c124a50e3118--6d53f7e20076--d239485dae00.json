@@ -1,0 +1,62 @@
+{
+  "schema_version": "identity-task-result-v1",
+  "task_index": 62,
+  "current_label_quote": "唐三",
+  "candidate_label_quote": "唐三",
+  "task_cache_key": "d239485dae00e6336f34ae1aa4ba78203750b8477dce08e8e705c9ed332f9f22",
+  "model_output": {
+    "identity_relation": "same_character",
+    "label_relation": "same_surface",
+    "identity_evidence_quotes": [
+      "出手的正是唐三",
+      "唐三根本没有什么好准备的"
+    ]
+  },
+  "grounded_result": {
+    "schema_version": "grounded-identity-decision-v1",
+    "current_node_key": "c124a50e3118633488088cda1e46afdb175f4e5b858d447d7fd9b6620d0f15be",
+    "candidate_node_key": "6d53f7e20076f8fadceff02fda655dd49fe40ffb40879258414cd08b825c32f7",
+    "task_cache_key": "d239485dae00e6336f34ae1aa4ba78203750b8477dce08e8e705c9ed332f9f22",
+    "requested_identity_relation": "same_character",
+    "identity_relation": "same_character",
+    "label_relation": "same_surface",
+    "grounded_identity_evidence": [
+      {
+        "evidence_quote": "唐三根本没有什么好准备的",
+        "document_span": {
+          "start": 31507,
+          "end": 31519
+        },
+        "match_mode": "exact"
+      },
+      {
+        "evidence_quote": "出手的正是唐三",
+        "document_span": {
+          "start": 37557,
+          "end": 37564
+        },
+        "match_mode": "exact"
+      }
+    ],
+    "issues": []
+  },
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 4781,
+    "http_status": 200,
+    "response_id": "5539e108-a476-456a-9faa-e87aa141cce7",
+    "usage": {
+      "input_tokens": 3154,
+      "cached_input_tokens": 512,
+      "output_tokens": 453,
+      "reasoning_tokens": 401,
+      "total_tokens": 3607
+    },
+    "error_kind": null
+  }
+}

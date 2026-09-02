@@ -1,0 +1,71 @@
+{
+  "schema_version": "identity-task-result-v1",
+  "task_index": 7,
+  "current_label_quote": "唐三",
+  "candidate_label_quote": "唐三",
+  "task_cache_key": "e0efb58432f333a3742fbb3ee3dd50ae9d7c7323828df97567d03ed6c839c68c",
+  "model_output": {
+    "identity_relation": "same_character",
+    "label_relation": "same_surface",
+    "identity_evidence_quotes": [
+      "唐三曾经见过村子里一个人的武魂是锄头",
+      "十一天过去，唐三已经挥出了八千余锤",
+      "唐三的坚持令唐昊很惊讶"
+    ]
+  },
+  "grounded_result": {
+    "schema_version": "grounded-identity-decision-v1",
+    "current_node_key": "a062a1c1820928e300ba3421a3a33b052aa00b87875c0f5f71ba3655508be51d",
+    "candidate_node_key": "d010e7949745d76331e3c2701c376207e92bd7dd2c63a8ecd29b0ebf5bd9c39d",
+    "task_cache_key": "e0efb58432f333a3742fbb3ee3dd50ae9d7c7323828df97567d03ed6c839c68c",
+    "requested_identity_relation": "same_character",
+    "identity_relation": "same_character",
+    "label_relation": "same_surface",
+    "grounded_identity_evidence": [
+      {
+        "evidence_quote": "十一天过去，唐三已经挥出了八千余锤",
+        "document_span": {
+          "start": 8532,
+          "end": 8549
+        },
+        "match_mode": "exact"
+      },
+      {
+        "evidence_quote": "唐三的坚持令唐昊很惊讶",
+        "document_span": {
+          "start": 8794,
+          "end": 8805
+        },
+        "match_mode": "exact"
+      },
+      {
+        "evidence_quote": "唐三曾经见过村子里一个人的武魂是锄头",
+        "document_span": {
+          "start": 9752,
+          "end": 9770
+        },
+        "match_mode": "exact"
+      }
+    ],
+    "issues": []
+  },
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 12875,
+    "http_status": 200,
+    "response_id": "6bf9ab45-cfba-4a8b-b287-1f01fca62803",
+    "usage": {
+      "input_tokens": 1632,
+      "cached_input_tokens": 512,
+      "output_tokens": 1339,
+      "reasoning_tokens": 1265,
+      "total_tokens": 2971
+    },
+    "error_kind": null
+  }
+}

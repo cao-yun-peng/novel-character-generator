@@ -1,0 +1,21 @@
+[
+  {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 7390,
+    "http_status": 200,
+    "response_id": "c61e02dc-91dc-4164-9f70-6c9b33bcbd0e",
+    "usage": {
+      "input_tokens": 4701,
+      "cached_input_tokens": 640,
+      "output_tokens": 626,
+      "reasoning_tokens": 575,
+      "total_tokens": 5327
+    },
+    "error_kind": null
+  }
+]

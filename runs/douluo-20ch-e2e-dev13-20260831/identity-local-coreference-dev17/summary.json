@@ -1,0 +1,52 @@
+{
+  "schema_version": "local-identity-closure-summary-v1",
+  "identity_policy_version": "global-constrained-identity-v3",
+  "candidate_policy_version": "bounded-local-candidate-retrieval-v3",
+  "local_coreference_policy_version": "grounded-local-coreference-v1",
+  "base_grounded_identity_decisions": 63,
+  "supplemental_grounded_identity_decisions": 6,
+  "deterministic_edges_before": 1,
+  "deterministic_edges_after": 2,
+  "new_local_coreference_edges": 1,
+  "baseline_registry_summary": {
+    "local_character_nodes": 43,
+    "bound_local_nodes": 43,
+    "global_characters": 8,
+    "linked_characters": 4,
+    "singleton_characters": 4,
+    "unresolved_bindings": 1,
+    "review_items": 9,
+    "cannot_link_constraints": 2,
+    "appearance_fact_refs": 129,
+    "possible_conflicts": 13
+  },
+  "registry_summary": {
+    "local_character_nodes": 43,
+    "bound_local_nodes": 43,
+    "global_characters": 7,
+    "linked_characters": 4,
+    "singleton_characters": 3,
+    "unresolved_bindings": 1,
+    "review_items": 9,
+    "cannot_link_constraints": 2,
+    "appearance_fact_refs": 129,
+    "possible_conflicts": 13
+  },
+  "profile_summary": {
+    "global_characters": 7,
+    "linked_characters": 4,
+    "singleton_characters": 3,
+    "characters_with_appearance": 7,
+    "characters_without_appearance": 0,
+    "assigned_appearance_facts": 129,
+    "unassigned_appearance_facts": 0,
+    "document_appearance_facts": 129,
+    "source_occurrences": 130,
+    "possible_conflicts": 13,
+    "review_items": 9,
+    "unresolved_bindings": 1,
+    "cannot_link_constraints": 2
+  },
+  "provider_calls": 0,
+  "complete": true
+}

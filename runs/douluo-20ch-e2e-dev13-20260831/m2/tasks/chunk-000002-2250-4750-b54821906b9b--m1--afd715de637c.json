@@ -1,0 +1,165 @@
+{
+  "schema_version": "m2-attribution-task-result-v1",
+  "source_run_dir": "E:\\project\\agent\\novel-cahracter-generator\\runs\\douluo-20ch-e2e-dev13-20260831\\m1",
+  "chunk_index": 2,
+  "chunk_id": "chunk-000002-2250-4750-b54821906b9b",
+  "target_local_mention_id": "m1",
+  "target_mention_quote": "唐三",
+  "task_cache_key": "afd715de637c83e2e4041053db5a494741de2cd881f0012f1a5b509215b8a2d4",
+  "model_output": {
+    "belongs_to_target": [
+      {
+        "fact_quote": "那是个只有五、六岁的孩子",
+        "category": "age",
+        "attribute": "年龄",
+        "value": "五、六岁"
+      },
+      {
+        "fact_quote": "皮肤呈现出健康的小麦色",
+        "category": "body",
+        "attribute": "肤色",
+        "value": "小麦色"
+      },
+      {
+        "fact_quote": "黑色短发看上去很利落",
+        "category": "hair",
+        "attribute": "发色和发型",
+        "value": "黑色短发"
+      },
+      {
+        "fact_quote": "一身衣服虽然朴素，到也干净",
+        "category": "clothing",
+        "attribute": "穿着",
+        "value": "朴素干净"
+      },
+      {
+        "fact_quote": "他眼眸中竟然闪烁着一层淡淡的紫意",
+        "category": "face",
+        "attribute": "眼眸",
+        "value": "闪烁淡淡紫意"
+      }
+    ]
+  },
+  "grounded_result": {
+    "target_character_ref": {
+      "source_document_version_id": "source-8bcb7305a759571b",
+      "chunk_id": "chunk-000002-2250-4750-b54821906b9b",
+      "local_mention_id": "m1",
+      "mention_type": "exact",
+      "packet_hash": "915483d4aeb6e5a403c86757a25862f97fc0bf413146c36ece88686948982f30"
+    },
+    "task_cache_key": "afd715de637c83e2e4041053db5a494741de2cd881f0012f1a5b509215b8a2d4",
+    "grounded_belongs_to_target": [
+      {
+        "fact_quote": "那是个只有五、六岁的孩子",
+        "category": "age",
+        "attribute": "年龄",
+        "value": "五、六岁",
+        "source_mention_id": "m1",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "那是个只有五、六岁的孩子，显然，他经常承受太阳的温暖，皮肤呈现出健康的小麦色，黑色短发看上去很利落，一身衣服虽然朴素，到也干净。",
+        "source_evidence_span": {
+          "start": 852,
+          "end": 916
+        },
+        "fact_chunk_span": {
+          "start": 852,
+          "end": 864
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "皮肤呈现出健康的小麦色",
+        "category": "body",
+        "attribute": "肤色",
+        "value": "小麦色",
+        "source_mention_id": "m1",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "那是个只有五、六岁的孩子，显然，他经常承受太阳的温暖，皮肤呈现出健康的小麦色，黑色短发看上去很利落，一身衣服虽然朴素，到也干净。",
+        "source_evidence_span": {
+          "start": 852,
+          "end": 916
+        },
+        "fact_chunk_span": {
+          "start": 879,
+          "end": 890
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "黑色短发看上去很利落",
+        "category": "hair",
+        "attribute": "发色和发型",
+        "value": "黑色短发",
+        "source_mention_id": "m1",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "那是个只有五、六岁的孩子，显然，他经常承受太阳的温暖，皮肤呈现出健康的小麦色，黑色短发看上去很利落，一身衣服虽然朴素，到也干净。",
+        "source_evidence_span": {
+          "start": 852,
+          "end": 916
+        },
+        "fact_chunk_span": {
+          "start": 891,
+          "end": 901
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "一身衣服虽然朴素，到也干净",
+        "category": "clothing",
+        "attribute": "穿着",
+        "value": "朴素干净",
+        "source_mention_id": "m1",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "那是个只有五、六岁的孩子，显然，他经常承受太阳的温暖，皮肤呈现出健康的小麦色，黑色短发看上去很利落，一身衣服虽然朴素，到也干净。",
+        "source_evidence_span": {
+          "start": 852,
+          "end": 916
+        },
+        "fact_chunk_span": {
+          "start": 902,
+          "end": 915
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "他眼眸中竟然闪烁着一层淡淡的紫意",
+        "category": "face",
+        "attribute": "眼眸",
+        "value": "闪烁淡淡紫意",
+        "source_mention_id": "m1",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "他眼眸中竟然闪烁着一层淡淡的紫意，尽管这紫色并没有持续太长时间就悄然收敛",
+        "source_evidence_span": {
+          "start": 1354,
+          "end": 1390
+        },
+        "fact_chunk_span": {
+          "start": 1354,
+          "end": 1370
+        },
+        "match_mode": "exact"
+      }
+    ]
+  },
+  "grounding_issues": [],
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 10953,
+    "http_status": 200,
+    "response_id": "af5e9aee-4f13-4afd-8ec3-5fd3efaaa6c9",
+    "usage": {
+      "input_tokens": 2143,
+      "cached_input_tokens": 384,
+      "output_tokens": 1296,
+      "reasoning_tokens": 1067,
+      "total_tokens": 3439
+    },
+    "error_kind": null
+  }
+}

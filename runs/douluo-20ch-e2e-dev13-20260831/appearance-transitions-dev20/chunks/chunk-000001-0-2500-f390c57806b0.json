@@ -1,0 +1,64 @@
+{
+  "schema_version": "appearance-transition-chunk-result-v1",
+  "identity": {
+    "chunk_id": "chunk-000001-0-2500-f390c57806b0",
+    "chunk_hash": "f390c57806b025eed04c99152a68840f8c987027e43d679ebf830b70678c59ba",
+    "document_span": {
+      "start": 0,
+      "end": 2500
+    },
+    "characters": [
+      {
+        "name": "唐三",
+        "aliases": []
+      }
+    ]
+  },
+  "model_output": {
+    "events": [
+      {
+        "character": "唐三",
+        "evidence": "轰的一声炸鸣，当众位长老同时后退以防不测的时候，他们看到的却是全身赤裸的唐三。",
+        "dimension": "scene",
+        "attribute": "scene_state",
+        "before": "身着灰衣",
+        "after": "全身赤裸"
+      }
+    ]
+  },
+  "grounded_transitions": [
+    {
+      "character_id": "char-f47075b7019563fd8315",
+      "evidence": "轰的一声炸鸣，当众位长老同时后退以防不测的时候，他们看到的却是全身赤裸的唐三。",
+      "document_span": {
+        "start": 1665,
+        "end": 1704
+      },
+      "dimension": "scene",
+      "attribute": "scene_state",
+      "before": "身着灰衣",
+      "after": "全身赤裸",
+      "change": "change"
+    }
+  ],
+  "review": [],
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 2,
+    "success": true,
+    "duration_ms": 35657,
+    "http_status": 200,
+    "response_id": "33875cf8-d7b2-49d0-b51a-0fcec4c4e66b",
+    "usage": {
+      "input_tokens": 2144,
+      "cached_input_tokens": 0,
+      "output_tokens": 1955,
+      "reasoning_tokens": 1896,
+      "total_tokens": 4099
+    },
+    "error_kind": null
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "task_id": "APPEARANCE-STATE-TRANSITIONS-071",
+  "lifecycle_stage": "5",
+  "lifecycle_revision": 2,
+  "runtime_version_before": "0.1.0.dev19",
+  "schema_version_before": "3.19.0-draft1",
+  "runtime_version_target": "0.1.0.dev20",
+  "schema_version_target": "3.20.0-draft1",
+  "input_file": "tests/小说/斗罗大陆前20章.txt",
+  "source_profiles": "runs/douluo-20ch-e2e-dev13-20260831/identity-local-coreference-dev17/document-character-profiles.json",
+  "source_nodes": "runs/douluo-20ch-e2e-dev13-20260831/identity/document-local-character-nodes.json",
+  "source_chunk_manifest": "runs/douluo-20ch-e2e-dev13-20260831/m1/manifest.json",
+  "source_fact_groups": "runs/douluo-20ch-e2e-dev13-20260831/post-link-fact-groups-dev18/document-character-fact-groups.json",
+  "source_scopes": "runs/douluo-20ch-e2e-dev13-20260831/appearance-scopes-dev19/document-character-appearance-scopes.json",
+  "target_output_dir": "runs/douluo-20ch-e2e-dev13-20260831/appearance-transitions-dev20",
+  "preparation_result": {
+    "source_chunks": 17,
+    "chunks_with_bound_characters": 17,
+    "chunk_ids_hashes_spans_match_manifest": true,
+    "model_payload_keys": ["characters", "name", "aliases", "text"],
+    "provider_calls": 0,
+    "complete": true
+  },
+  "validation": {
+    "unit_tests": 156,
+    "compileall": true,
+    "draft_2020_12_preparation_instance_valid": true,
+    "git_diff_check": true,
+    "project_to_act_valid": true,
+    "lifecycle_valid": true
+  },
+  "live_model_status": "completed-but-quality-gate-failed",
+  "live_model_result": {
+    "authorized_external_provider": "DeepSeek",
+    "model": "deepseek-v4-flash",
+    "planned_chunks": 17,
+    "final_succeeded_chunks": 17,
+    "provider_attempted_calls": 19,
+    "resumed_chunks_on_retry": 15,
+    "model_events": 8,
+    "grounded_transitions": 7,
+    "grounding_review": 1,
+    "successful_trace_tokens": 46181,
+    "grounded_evidence_replay_failures": 0,
+    "state_schema_valid": true,
+    "quality_gate": "failed",
+    "quality_failures": [
+      "独狼附体进入事件把不连续段落拼成 evidence，Grounding 正确拒绝",
+      "scene 状态未在生命阶段或章节边界重置，全身赤裸错误传播到后续事实",
+      "蓝银草收回体内被错误当作人物 form 并长期传播",
+      "唐三转世事件的 after 语义没有被当前 evidence 单独充分支持"
+    ]
+  },
+  "context_freshness": "verified-2026-09-02"
+}
