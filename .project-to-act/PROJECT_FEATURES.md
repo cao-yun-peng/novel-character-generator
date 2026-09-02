@@ -19,13 +19,15 @@
 | F-NEW-PROFILE-007 | 文档人物档案组装 | completed | `document-character-profiles-v1` 已实现并离线实跑；同文档 guard + 完整 fact_hash/Chunk/span 回放后物化 11 人物、61 facts、62 occurrences，0 未绑定，4 conflicts/2 review 保留，Provider 0 调用 |
 | F-NEW-LOCAL-COREF-008 | 局部确定性身份闭合 | completed | `grounded-local-coreference-v1` 只以同 Chunk、共享局部上下文中可回放的显式同位、示指命名或连续共指链建立 same edge；斗罗高大身影并入唐昊，禁止 global unique name 自动 join |
 | F-NEW-CANONICAL-FACTS-009 | Post-link canonical facts | completed | 第一阶段结构分组完成：稳定 canonical ID、人物/span/category/attribute/value 完整键及逐 raw fact/occurrence 双向 provenance；scope 内语义归一仍留给 072 |
-| F-NEW-APPEARANCE-STATE-010 | 外貌状态与 Variant | in_progress | 070 基线完成；071 复用原 M1 17 Chunks，并以 chunk_id 将该 Chunk 已绑定人物的 name/aliases 注入模型上下文 |
+| F-NEW-APPEARANCE-STATE-010 | 外貌状态与 Variant | in_progress | 070 基线与 071 transition 已完成；life/form/scene 作用域可物化，待 072 语义关系与冲突分类 |
 | F-NEW-LABEL-REVIEW-011 | Label 与 Review 投影 | planned | exact/describe 与 label 语义解耦；title/stability 修正；audit 与 actionable queue 分离 |
 | F-NEW-RENDER-PROFILE-012 | Render-ready Profile Compiler | planned | 按人物及状态选择器生成结构化人物卡，并保留 canonical/raw 双层 provenance |
 | F-NEW-QUALITY-EVAL-013 | 人工质量评测 | planned | M1/M2/promotion 与新增状态层的冻结标注集、evaluator、正式阈值和 Stage 6 Gate |
 
 ## 功能变更历史
 
+- 2026-09-02：071 dev22 通过当前范围质量 Gate。模型仍只读取原 Chunk 的 name/aliases/text；代码要求单段连续 evidence、同 evidence 内有序状态短语，过滤不改变身体的武魂/外物，life 重置 form/scene，scene 在段落行或章节关闭。斗罗得到 life 28/form 7/scene 1，独狼附体进入/退出均闭合，保存输出可零调用重新 Grounding。
+- 2026-09-02：071 DeepSeek 实跑 17/17，模型 8 events、代码 7 grounded/1 review。退出附体成功找回，进入附体的非连续拼接 evidence 被失败关闭；状态传播将全身赤裸和蓝银草收回错误延续，证明 batch 完成不等于状态质量 Gate。
 - 2026-09-02：071 放弃重新生成 19 个窗口，改为严格复用原 M1 Manifest 的 17 个重叠 Chunk。代码以 node.chunk_id 连接最终人物簇，Chunk id/hash/span 用于验证、恢复和 Grounding，但模型仍只读取 name/aliases/text。
 - 2026-09-02：F-NEW-APPEARANCE-STATE-010 完成 070 确定性基线：19 章、109 facts 唯一分配，life/form/scene 保守 unknown，persistence 使用少量类别规则；功能继续由 071 transition discovery 推进。
 - 2026-09-02：071 模型输入增加窗口相关人物表，仅含 canonical name 与必要 aliases。该表由既有 identity/context/evidence 的窗口交集生成；模型事件主体必须从表中选择，character_id 和身份绑定不暴露给模型。人物未覆盖或同名无法区分时失败关闭。

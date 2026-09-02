@@ -4,7 +4,7 @@
 
 - 项目：Novel Character Generator
 - 分支：`v3-simplified-character-evidence`
-- 状态：M1/N2/M2/N3/promotion、文档事实汇总、跨 Chunk 身份、局部确定性身份闭合、人物档案组装和 post-link canonical fact groups 均已建立；斗罗 dev18 将 129 raw facts 解释为 109 个结构 groups
+- 状态：M1/N2/M2/N3/promotion、文档事实汇总、身份、人物档案、post-link fact groups、appearance scope 基线和 transition 均已建立；斗罗 dev22 已物化 life/form/scene 状态
 - 工作区：`E:\project\agent\novel-character-generator`
 - Agent 生命周期：阶段 5（具体功能与纵向切片开发）`in_progress`，revision 2，风险 L1
 
@@ -32,10 +32,11 @@
 
 ## 当前焦点
 
-指定斗罗大陆文件的 dev13 全链路真实回归已贯通到最终 profiles；文件实际只有第1至19章，完整覆盖结论只针对该文件的 38,251 字符。身份层已针对真实失败完成有效关系覆盖、无向候选去重、有界固定点和局部确定性闭合。post-link 结构层已在不修改 raw profile 的前提下把 129 facts 归为 109 groups，129 fact/130 occurrence provenance 全保留。当前焦点转向章节位置、life/form/scene scope、persistence 和状态选择器，然后继续 transition、render-ready Profile Compiler 及上游人工质量评测。
+指定斗罗大陆文件的 dev13 全链路真实回归已贯通到最终 profiles；文件实际只有第1至19章，完整覆盖结论只针对该文件的 38,251 字符。身份层已完成局部确定性闭合，post-link 层把 129 facts 归为 109 groups 并保留 130 occurrences。070/071 已建立章节/persistence 基线和 life/form/scene transition：dev22 为 28 facts 赋 life、7 facts 赋 form、1 fact 赋 scene，并关闭已知的跨状态传播与外物误收问题。当前焦点转向 072 的作用域内语义关系与冲突分类，然后进入 Label/Review 投影、render-ready Profile Compiler 和上游人工质量评测。
 
 ## 最新路线决定
 
+- `DEC-20260902-STATE-CLOSING-GROUNDING-071`：life transition 更新时必须清空旧 form/scene；scene 只持续到当前可确定的段落行或章节边界；没有人物身体变化的武魂、植物、武器或其他外物状态不得进入 form。transition evidence 必须是单段连续原文，before/after 必须在同一 evidence 内唯一且顺序成立；仅省略标点时由代码回填对应连续原文，而不让模型输出 span。保存的模型输出在恢复时重新 Grounding，避免为确定性策略变化重复调用模型。
 - `DEC-20260902-REUSE-SOURCE-CHUNKS-071`：用户要求 071 直接复用原 M1 Manifest 的 17 个重叠 Chunk，不重新生成独立窗口。代码验证原 Chunk id/hash/span/覆盖，并以 local/promoted node 的 `chunk_id` 将该 Chunk 已识别且已绑定到最终人物簇的人物加入人物表。Chunk 元数据只存在代码信封，不进入模型；模型输入仍为 `characters: [{name, aliases}] + text`。跨 Chunk 重复 transition 在 Grounding 后由代码合并。
 - `DEC-20260902-WINDOW-CHARACTER-ROSTER-071`：用户确认 071 模型输入应显式提供上游身份层已经识别的人物，避免模型在 transition discovery 中重复做人名识别。最终实现以原 M1 `chunk_id` 连接该 Chunk 下的 local/promoted nodes，再投影到最终人物簇；只发送 canonical label 及该 Chunk 必要 aliases，不发送 character_id、ref、span、hash 或全局人物档案。模型事件的 `character` 必须从人物表 canonical label 中选择，代码信封据此回填唯一 character_id。
 - `DEC-20260901-FULL-COVERAGE-TRANSITION-SCAN-071`：用户指出“appearance fact 锚点 + 人物标签/状态词”会把 071 限制为已知表达式规则，无法覆盖隐式、跨句、代词承接和未知措辞的状态变化。071 因此复用原 M1 Manifest 的 17 个重叠 Chunk 执行完整语义扫描；appearance facts 和触发词不决定哪些文本进入模型。模型只读取 Chunk 原文及已绑定人物表并输出最小事件语义与逐字证据；代码负责 Chunk 元数据验证、绝对 span、身份绑定、跨 Chunk 去重、状态物化和失败关闭。

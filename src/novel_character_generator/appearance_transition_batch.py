@@ -152,6 +152,11 @@ def run_document_appearance_transitions(
     started_at = _utc_now()
     started_clock = time.monotonic()
     initial_trace_count = len(traces) if traces is not None else 0
+    trace_path = output_dir / "provider-traces.json"
+    saved_traces = _read_json(trace_path) if trace_path.exists() else []
+    if not isinstance(saved_traces, list) or any(not isinstance(item, Mapping) for item in saved_traces):
+        raise ContractValidationError("transition provider-traces.json must be an array of objects")
+    current_call_traces: list[dict[str, object]] = []
     results: list[dict[str, object]] = []
     failures: list[dict[str, object]] = []
     resumed = 0
@@ -172,7 +177,17 @@ def run_document_appearance_transitions(
                 raise ContractValidationError("saved transition window result version mismatch")
             if existing.get("identity") != expected_identity:
                 raise ContractValidationError("saved transition window result identity mismatch")
-            results.append(dict(existing))
+            model_output = _mapping(existing.get("model_output"), "saved transition model output")
+            events = parse_transition_model_output(
+                model_output,
+                allowed_characters=expected_names,
+            )
+            grounded, review = ground_transition_events(window, events)
+            refreshed = dict(existing)
+            refreshed["grounded_transitions"] = [dict(item) for item in grounded]
+            refreshed["review"] = [dict(item) for item in review]
+            _write_json(result_path, refreshed)
+            results.append(refreshed)
             resumed += 1
             if progress is not None:
                 progress(f"[{window.number}/{len(windows)}] resumed")
@@ -200,25 +215,31 @@ def run_document_appearance_transitions(
             raw_output = provider.generate(request)
             events = parse_transition_model_output(raw_output, allowed_characters=expected_names)
             grounded, review = ground_transition_events(window, events)
+            provider_trace = _latest_trace(traces, previous_trace_count)
+            if provider_trace is not None:
+                current_call_traces.append(provider_trace)
             record = {
                 "schema_version": TRANSITION_CHUNK_RESULT_VERSION,
                 "identity": expected_identity,
                 "model_output": {"events": [dict(event) for event in events]},
                 "grounded_transitions": [dict(item) for item in grounded],
                 "review": [dict(item) for item in review],
-                "provider_trace": _latest_trace(traces, previous_trace_count),
+                "provider_trace": provider_trace,
             }
             _write_json(result_path, record)
             results.append(record)
             if progress is not None:
                 progress(f"[{window.number}/{len(windows)}] completed")
         except (ProviderError, ContractValidationError) as exc:
+            provider_trace = _latest_trace(traces, previous_trace_count)
+            if provider_trace is not None:
+                current_call_traces.append(provider_trace)
             failures.append(
                 {
                     "chunk_id": window.chunk_id,
                     "error_type": type(exc).__name__,
                     "message": str(exc),
-                    "provider_trace": _latest_trace(traces, previous_trace_count),
+                    "provider_trace": provider_trace,
                 }
             )
             if progress is not None:
@@ -251,11 +272,7 @@ def run_document_appearance_transitions(
         )
         _write_json(output_dir / "document-character-appearance-states.json", states)
 
-    trace_items = [
-        dict(trace)
-        for result in results
-        if isinstance((trace := result.get("provider_trace")), Mapping)
-    ]
+    trace_items = [dict(item) for item in saved_traces] + current_call_traces
     summary = {
         "schema_version": TRANSITION_BATCH_SUMMARY_VERSION,
         "started_at": started_at,
@@ -272,7 +289,7 @@ def run_document_appearance_transitions(
     }
     _write_json(output_dir / "failures.json", failures)
     _write_json(output_dir / "review.json", review)
-    _write_json(output_dir / "provider-traces.json", trace_items)
+    _write_json(trace_path, trace_items)
     _write_json(output_dir / "summary.json", summary)
     history_path = output_dir / "run-history.json"
     history = _read_json(history_path) if history_path.exists() else []

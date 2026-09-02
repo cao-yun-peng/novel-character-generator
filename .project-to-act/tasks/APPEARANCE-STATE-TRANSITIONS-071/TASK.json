@@ -1,7 +1,7 @@
 {
   "id": "APPEARANCE-STATE-TRANSITIONS-071",
   "title": "Full-coverage appearance state transition discovery",
-  "status": "in_progress",
+  "status": "completed",
   "owner": "Codex",
   "objective": "复用原 M1 的 17 个重叠 Chunk，以各 Chunk 已绑定人物约束模型主体，Grounding transition evidence 并回填 canonical fact scope。",
   "risk_level": "L1-bounded-model-semantic-node",
@@ -12,7 +12,8 @@
     "README.md",
     "pyproject.toml",
     ".project-to-act",
-    "runs/douluo-20ch-e2e-dev13-20260831/appearance-transitions-dev20"
+    "runs/douluo-20ch-e2e-dev13-20260831/appearance-transitions-dev20",
+    "runs/douluo-20ch-e2e-dev13-20260831/appearance-transitions-dev22"
   ],
   "invariants": [
     "必须验证并原样复用原 M1 Manifest 的 Chunk id/hash/span/重叠，不重新切窗",

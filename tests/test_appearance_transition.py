@@ -206,17 +206,17 @@ def test_parser_rejects_unknown_character_and_redundant_state() -> None:
                 "dimension": "form",
                 "attribute": "form_state",
                 "before": "",
-                "after": "独狼附体",
+                "after": "化为独狼",
             }
         ]
     }
-    assert parse_transition_model_output(valid, allowed_characters=["素云涛"])[0]["after"] == "独狼附体"
+    assert parse_transition_model_output(valid, allowed_characters=["素云涛"])[0]["after"] == "化为独狼"
     invalid_character = json.loads(json.dumps(valid, ensure_ascii=False))
     invalid_character["events"][0]["character"] = "陌生人"
     with pytest.raises(ContractValidationError, match="window roster"):
         parse_transition_model_output(invalid_character, allowed_characters=["素云涛"])
     invalid_state = json.loads(json.dumps(valid, ensure_ascii=False))
-    invalid_state["events"][0]["before"] = "独狼附体"
+    invalid_state["events"][0]["before"] = "化为独狼"
     with pytest.raises(ContractValidationError, match="cannot be equal"):
         parse_transition_model_output(invalid_state, allowed_characters=["素云涛"])
 
@@ -238,7 +238,7 @@ def test_grounding_requires_one_verbatim_occurrence_and_deduplicates_overlap() -
             "dimension": "form",
             "attribute": "form_state",
             "before": "",
-            "after": "独狼附体",
+            "after": "化为独狼",
         },
     )
     grounded, issues = ground_transition_events(window, ambiguous)
@@ -251,6 +251,111 @@ def test_grounding_requires_one_verbatim_occurrence_and_deduplicates_overlap() -
     assert not issues
     assert grounded[0]["document_span"]["start"] == 108
     assert len(deduplicate_grounded_transitions([grounded[0], grounded[0]])) == 1
+
+
+def test_grounding_rejects_external_form_and_unsupported_or_cross_paragraph_state() -> None:
+    text = (
+        "唐三控制着把自己的蓝银草收回体内。"
+        "唐三永远离开了这个世界。\n"
+        "眼前的是五、六岁的孩子。"
+    )
+    window = AppearanceTransitionChunk(
+        number=1,
+        chunk_id="chunk-test",
+        chunk_hash=sha256_text(text),
+        document_span=SourceSpan(0, len(text)),
+        text=text,
+        characters=(WindowCharacter("char-1", "唐三", ()),),
+    )
+    events = (
+        {
+            "character": "唐三",
+            "evidence": "唐三控制着把自己的蓝银草收回体内",
+            "dimension": "form",
+            "attribute": "form_state",
+            "before": "蓝银草",
+            "after": "收回体内",
+        },
+        {
+            "character": "唐三",
+            "evidence": "唐三永远离开了这个世界",
+            "dimension": "life",
+            "attribute": "life_stage",
+            "before": "离开了这个世界",
+            "after": "五、六岁的孩子",
+        },
+        {
+            "character": "唐三",
+            "evidence": "唐三永远离开了这个世界。\n眼前的是五、六岁的孩子",
+            "dimension": "life",
+            "attribute": "life_stage",
+            "before": "离开了这个世界",
+            "after": "五、六岁的孩子",
+        },
+    )
+    grounded, issues = ground_transition_events(window, events)
+    assert grounded == ()
+    assert [item["reason"] for item in issues] == [
+        "form_without_body_change_evidence",
+        "state_not_supported_by_evidence",
+        "evidence_crosses_scene_boundary",
+    ]
+
+
+def test_grounding_normalizes_explicit_form_exit_without_inventing_restored_state() -> None:
+    text = "素云涛全身青光收敛，收回了自己的武魂附体"
+    window = AppearanceTransitionChunk(
+        number=1,
+        chunk_id="chunk-test",
+        chunk_hash=sha256_text(text),
+        document_span=SourceSpan(100, 100 + len(text)),
+        text=text,
+        characters=(WindowCharacter("char-1", "素云涛", ()),),
+    )
+    grounded, issues = ground_transition_events(
+        window,
+        (
+            {
+                "character": "素云涛",
+                "evidence": text,
+                "dimension": "form",
+                "attribute": "form_state",
+                "before": "武魂附体",
+                "after": "武魂附体收回",
+            },
+        ),
+    )
+    assert not issues
+    assert grounded[0]["before"] == "武魂附体"
+    assert grounded[0]["after"] == ""
+    assert grounded[0]["change"] == "exit"
+
+
+def test_grounding_restores_omitted_punctuation_to_one_continuous_state_span() -> None:
+    text = "素云涛低喝一声，独狼，附体。"
+    window = AppearanceTransitionChunk(
+        number=1,
+        chunk_id="chunk-test",
+        chunk_hash=sha256_text(text),
+        document_span=SourceSpan(0, len(text)),
+        text=text,
+        characters=(WindowCharacter("char-1", "素云涛", ()),),
+    )
+    grounded, issues = ground_transition_events(
+        window,
+        (
+            {
+                "character": "素云涛",
+                "evidence": text,
+                "dimension": "form",
+                "attribute": "form_state",
+                "before": "",
+                "after": "独狼附体",
+            },
+        ),
+    )
+    assert not issues
+    assert grounded[0]["after"] == "独狼，附体"
 
 
 def test_materialization_applies_only_grounded_prior_state() -> None:
@@ -266,7 +371,7 @@ def test_materialization_applies_only_grounded_prior_state() -> None:
             "dimension": "form",
             "attribute": "form_state",
             "before": "",
-            "after": "独狼附体",
+            "after": "化为独狼",
             "change": "enter",
         }
     ]
@@ -280,8 +385,107 @@ def test_materialization_applies_only_grounded_prior_state() -> None:
         planned_chunks=1,
         model_calls=1,
     )
-    assert result["fact_assignments"][0]["form"] == "独狼附体"
+    assert result["fact_assignments"][0]["form"] == "化为独狼"
     assert result["fact_assignments"][0]["life"] == "unknown"
+
+
+def test_materialization_expires_scene_at_paragraph_and_resets_form_on_life_change() -> None:
+    text = (
+        "第一章 测试\n"
+        "素云涛换上战袍并化为独狼，灰色毛发。\n"
+        "稍后仍有绿眼。\n"
+        "后来素云涛转生为幼儿，黑发。"
+    )
+    fact_quotes = ("灰色毛发", "绿眼", "黑发")
+    groups = []
+    assignments = []
+    for order, quote in enumerate(fact_quotes, start=1):
+        start = text.index(quote)
+        canonical_id = f"cfact-{order}"
+        groups.append(
+            {
+                "canonical_fact_id": canonical_id,
+                "character_id": "char-suyuntao",
+                "document_fact_span": {"start": start, "end": start + len(quote)},
+            }
+        )
+        assignments.append(
+            {
+                "canonical_fact_id": canonical_id,
+                "character_id": "char-suyuntao",
+                "chapter_number": 1,
+                "order": order,
+                "life": "unknown",
+                "form": "unknown",
+                "scene": "unknown",
+                "persistence": "unknown",
+            }
+        )
+    scopes = {
+        "chapters": [
+            {"chapter_number": 1, "title": "测试", "document_span": {"start": 0, "end": len(text)}}
+        ],
+        "fact_assignments": assignments,
+    }
+    fact_groups = {
+        "source_document_version_id": "source-test",
+        "document_hash": sha256_text(text),
+        "fact_groups": groups,
+    }
+    first_evidence = "素云涛换上战袍并化为独狼"
+    first_start = text.index(first_evidence)
+    life_evidence = "素云涛转生为幼儿"
+    life_start = text.index(life_evidence)
+    transitions = [
+        {
+            "character_id": "char-suyuntao",
+            "evidence": first_evidence,
+            "document_span": {"start": first_start, "end": first_start + len(first_evidence)},
+            "dimension": "scene",
+            "attribute": "scene_state",
+            "before": "",
+            "after": "战袍",
+            "change": "enter",
+        },
+        {
+            "character_id": "char-suyuntao",
+            "evidence": first_evidence,
+            "document_span": {"start": first_start, "end": first_start + len(first_evidence)},
+            "dimension": "form",
+            "attribute": "form_state",
+            "before": "",
+            "after": "化为独狼",
+            "change": "enter",
+        },
+        {
+            "character_id": "char-suyuntao",
+            "evidence": life_evidence,
+            "document_span": {"start": life_start, "end": life_start + len(life_evidence)},
+            "dimension": "life",
+            "attribute": "life_stage",
+            "before": "",
+            "after": "幼儿",
+            "change": "enter",
+        },
+    ]
+    result = materialize_appearance_states(
+        document_text=text,
+        source_document_version_id="source-test",
+        scopes=scopes,
+        fact_groups=fact_groups,
+        transitions=transitions,
+        review=[],
+        planned_chunks=1,
+        model_calls=1,
+    )
+    first, second, third = result["fact_assignments"]
+    assert (first["form"], first["scene"]) == ("化为独狼", "战袍")
+    assert (second["form"], second["scene"]) == ("化为独狼", "unknown")
+    assert (third["life"], third["form"], third["scene"]) == (
+        "幼儿",
+        "unknown",
+        "unknown",
+    )
 
 
 class _FakeProvider:
@@ -302,7 +506,7 @@ class _FakeProvider:
                     "dimension": "form",
                     "attribute": "form_state",
                     "before": "",
-                    "after": "独狼附体",
+                    "after": "化为独狼",
                 }
             ]
         }

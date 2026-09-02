@@ -1,0 +1,14 @@
+{
+  "schema_version": "appearance-transition-batch-summary-v1",
+  "started_at": "2026-09-02T09:33:14.452990Z",
+  "completed_at": "2026-09-02T09:33:14.523775Z",
+  "duration_ms": 78,
+  "planned_chunks": 17,
+  "succeeded_chunks": 17,
+  "failed_chunks": 0,
+  "resumed_chunks": 17,
+  "new_provider_calls": 0,
+  "grounded_transitions": 6,
+  "review_items": 4,
+  "complete": true
+}

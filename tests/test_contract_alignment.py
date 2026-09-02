@@ -153,7 +153,7 @@ class ContractAlignmentTests(unittest.TestCase):
         )
 
     def test_m2_model_contract_is_fact_only_and_contains_no_orchestration_fields(self) -> None:
-        self.assertEqual(self.schema["version"], "3.20.0-draft1")
+        self.assertEqual(self.schema["version"], "3.22.0-draft1")
         defs = self.schema["$defs"]
         model_input = defs["M2CandidateAppearanceParsingInput"]
         model_output = defs["M2CandidateAppearanceParsingResult"]

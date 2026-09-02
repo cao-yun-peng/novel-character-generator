@@ -1,0 +1,1219 @@
+{
+  "schema_version": "document-character-appearance-states-v3",
+  "transition_policy_version": "full-coverage-roster-grounding-v3",
+  "source_document_version_id": "source-8bcb7305a759571b",
+  "coverage_status": "complete",
+  "processed_source_end": 38251,
+  "transitions": [
+    {
+      "character_id": "char-f47075b7019563fd8315",
+      "evidence": "眼前的这个孩子，正是当初在唐门跳崖明志的唐三",
+      "document_span": {
+        "start": 3889,
+        "end": 3911
+      },
+      "dimension": "life",
+      "attribute": "life_stage",
+      "before": "",
+      "after": "眼前的这个孩子",
+      "change": "enter"
+    },
+    {
+      "character_id": "char-431fd9f3afcbe1cece75",
+      "evidence": "素云涛的眼睛突然亮了起来，在孩子们惊骇的目光中，他低喝一声，“独狼，附体。”",
+      "document_span": {
+        "start": 13963,
+        "end": 14001
+      },
+      "dimension": "form",
+      "attribute": "form_state",
+      "before": "",
+      "after": "独狼，附体",
+      "change": "enter"
+    },
+    {
+      "character_id": "char-431fd9f3afcbe1cece75",
+      "evidence": "素云涛的头发原本是黑色的，但当那青光注入之后，瞬间就变成了灰色",
+      "document_span": {
+        "start": 14050,
+        "end": 14081
+      },
+      "dimension": "appearance",
+      "attribute": "头发颜色",
+      "before": "头发原本是黑色的",
+      "after": "瞬间就变成了灰色",
+      "change": "change"
+    },
+    {
+      "character_id": "char-431fd9f3afcbe1cece75",
+      "evidence": "他的身体也似乎比之前膨胀了许多",
+      "document_span": {
+        "start": 14111,
+        "end": 14126
+      },
+      "dimension": "appearance",
+      "attribute": "体型",
+      "before": "他的身体也似乎比之前",
+      "after": "膨胀了许多",
+      "change": "change"
+    },
+    {
+      "character_id": "char-431fd9f3afcbe1cece75",
+      "evidence": "素云涛全身青光收敛，收回了自己的武魂附体",
+      "document_span": {
+        "start": 17846,
+        "end": 17866
+      },
+      "dimension": "form",
+      "attribute": "form_state",
+      "before": "武魂附体",
+      "after": "",
+      "change": "exit"
+    },
+    {
+      "character_id": "char-c29b95295e06aa917f96",
+      "evidence": "特意穿了一身新衣服",
+      "document_span": {
+        "start": 32762,
+        "end": 32771
+      },
+      "dimension": "scene",
+      "attribute": "scene_state",
+      "before": "",
+      "after": "一身新衣服",
+      "change": "enter"
+    }
+  ],
+  "fact_assignments": [
+    {
+      "canonical_fact_id": "cfact-1ccfdeb87c747f769956",
+      "character_id": "char-f47075b7019563fd8315",
+      "chapter_number": 1,
+      "order": 0,
+      "life": "unknown",
+      "form": "unknown",
+      "scene": "unknown",
+      "persistence": "scene"
+    },
+    {
+      "canonical_fact_id": "cfact-6a73837eee0ad8071e4a",
+      "character_id": "char-f47075b7019563fd8315",
+      "chapter_number": 1,
+      "order": 1,
+      "life": "unknown",
+      "form": "unknown",
+      "scene": "unknown",
+      "persistence": "scene"
+    },
+    {
+      "canonical_fact_id": "cfact-992b38817934c5b4ac4a",
+      "character_id": "char-f47075b7019563fd8315",
+      "chapter_number": 1,
+      "order": 2,
+      "life": "unknown",
+      "form": "unknown",
+      "scene": "unknown",
+      "persistence": "persistent_until_changed"
+    },
+    {
+      "canonical_fact_id": "cfact-ce5c04d7f8c2969d7042",
+      "character_id": "char-f47075b7019563fd8315",
+      "chapter_number": 1,
+      "order": 3,
+      "life": "unknown",
+      "form": "unknown",
+      "scene": "unknown",
+      "persistence": "momentary"
+    },
+    {
+      "canonical_fact_id": "cfact-eeaf64c463b1427c8bd4",
+      "character_id": "char-f47075b7019563fd8315",
+      "chapter_number": 1,
+      "order": 4,
+      "life": "unknown",
+      "form": "unknown",
+      "scene": "unknown",
+      "persistence": "unknown"
+    },
+    {
+      "canonical_fact_id": "cfact-3dfcbdb9d1cea52462a2",
+      "character_id": "char-f47075b7019563fd8315",
+      "chapter_number": 1,
+      "order": 5,
+      "life": "unknown",
+      "form": "unknown",
+      "scene": "unknown",
+      "persistence": "unknown"
+    },
+    {
+      "canonical_fact_id": "cfact-bb76f0aa22dba5c097f5",
+      "character_id": "char-f47075b7019563fd8315",
+      "chapter_number": 2,
+      "order": 6,
+      "life": "unknown",
+      "form": "unknown",
+      "scene": "unknown",
+      "persistence": "persistent_until_changed"
+    },
+    {
+      "canonical_fact_id": "cfact-cd540dfa90a8decc500c",
+      "character_id": "char-f47075b7019563fd8315",
+      "chapter_number": 2,
+      "order": 7,
+      "life": "unknown",
+      "form": "unknown",
+      "scene": "unknown",
+      "persistence": "unknown"
+    },
+    {
+      "canonical_fact_id": "cfact-d9946b3e6cc79dc23d88",
+      "character_id": "char-f47075b7019563fd8315",
+      "chapter_number": 2,
+      "order": 8,
+      "life": "unknown",
+      "form": "unknown",
+      "scene": "unknown",
+      "persistence": "unknown"
+    },
+    {
+      "canonical_fact_id": "cfact-f905e397b5432a6f117f",
+      "character_id": "char-f47075b7019563fd8315",
+      "chapter_number": 2,
+      "order": 9,
+      "life": "unknown",
+      "form": "unknown",
+      "scene": "unknown",
+      "persistence": "scene"
+    },
+    {
+      "canonical_fact_id": "cfact-37164cd073b1018949c2",
+      "character_id": "char-f47075b7019563fd8315",
+      "chapter_number": 2,
+      "order": 10,
+      "life": "unknown",
+      "form": "unknown",
+      "scene": "unknown",
+      "persistence": "unknown"
+    },
+    {
+      "canonical_fact_id": "cfact-d87f2366052b92cf4292",
+      "character_id": "char-f47075b7019563fd8315",
+      "chapter_number": 2,
+      "order": 11,
+      "life": "眼前的这个孩子",
+      "form": "unknown",
+      "scene": "unknown",
+      "persistence": "unknown"
+    },
+    {
+      "canonical_fact_id": "cfact-140d532034b902eae795",
+      "character_id": "char-f47075b7019563fd8315",
+      "chapter_number": 3,
+      "order": 12,
+      "life": "眼前的这个孩子",
+      "form": "unknown",
+      "scene": "unknown",
+      "persistence": "unknown"
+    },
+    {
+      "canonical_fact_id": "cfact-07d73b04f5aac7263bd4",
+      "character_id": "char-f47075b7019563fd8315",
+      "chapter_number": 3,
+      "order": 13,
+      "life": "眼前的这个孩子",
+      "form": "unknown",
+      "scene": "unknown",
+      "persistence": "unknown"
+    },
+    {
+      "canonical_fact_id": "cfact-2f4940f4d5cc5d05164c",
+      "character_id": "char-a6302c7128aa46abea7c",
+      "chapter_number": 3,
+      "order": 14,
+      "life": "unknown",
+      "form": "unknown",
+      "scene": "unknown",
+      "persistence": "unknown"
+    },
+    {
+      "canonical_fact_id": "cfact-fe76fadd47638bd3c988",
+      "character_id": "char-a6302c7128aa46abea7c",
+      "chapter_number": 3,
+      "order": 15,
+      "life": "unknown",
+      "form": "unknown",
+      "scene": "unknown",
+      "persistence": "persistent_until_changed"
+    },
+    {
+      "canonical_fact_id": "cfact-6629a1f7f244cfeadd3b",
+      "character_id": "char-a6302c7128aa46abea7c",
+      "chapter_number": 3,
+      "order": 16,
+      "life": "unknown",
+      "form": "unknown",
+      "scene": "unknown",
+      "persistence": "unknown"
+    },
+    {
+      "canonical_fact_id": "cfact-7f9c25a389e71ccee3b5",
+      "character_id": "char-a6302c7128aa46abea7c",
+      "chapter_number": 3,
+      "order": 17,
+      "life": "unknown",
+      "form": "unknown",
+      "scene": "unknown",
+      "persistence": "scene"
+    },
+    {
+      "canonical_fact_id": "cfact-29879b018cb7a375a678",
+      "character_id": "char-a6302c7128aa46abea7c",
+      "chapter_number": 3,
+      "order": 18,
+      "life": "unknown",
+      "form": "unknown",
+      "scene": "unknown",
+      "persistence": "unknown"
+    },
+    {
+      "canonical_fact_id": "cfact-e6d6fb8830f9a33afc7e",
+      "character_id": "char-a6302c7128aa46abea7c",
+      "chapter_number": 3,
+      "order": 19,
+      "life": "unknown",
+      "form": "unknown",
+      "scene": "unknown",
+      "persistence": "unknown"
+    },
+    {
+      "canonical_fact_id": "cfact-c6e774790e27d3135b98",
+      "character_id": "char-a6302c7128aa46abea7c",
+      "chapter_number": 3,
+      "order": 20,
+      "life": "unknown",
+      "form": "unknown",
+      "scene": "unknown",
+      "persistence": "momentary"
+    },
+    {
+      "canonical_fact_id": "cfact-494323e4875229fb01bd",
+      "character_id": "char-a6302c7128aa46abea7c",
+      "chapter_number": 3,
+      "order": 21,
+      "life": "unknown",
+      "form": "unknown",
+      "scene": "unknown",
+      "persistence": "unknown"
+    },
+    {
+      "canonical_fact_id": "cfact-c7dadcd3a7d17b76ac95",
+      "character_id": "char-a6302c7128aa46abea7c",
+      "chapter_number": 3,
+      "order": 22,
+      "life": "unknown",
+      "form": "unknown",
+      "scene": "unknown",
+      "persistence": "unknown"
+    },
+    {
+      "canonical_fact_id": "cfact-bbbdc15851335fcf9441",
+      "character_id": "char-a6302c7128aa46abea7c",
+      "chapter_number": 3,
+      "order": 23,
+      "life": "unknown",
+      "form": "unknown",
+      "scene": "unknown",
+      "persistence": "unknown"
+    },
+    {
+      "canonical_fact_id": "cfact-88339cabd04f1197be8a",
+      "character_id": "char-a6302c7128aa46abea7c",
+      "chapter_number": 3,
+      "order": 24,
+      "life": "unknown",
+      "form": "unknown",
+      "scene": "unknown",
+      "persistence": "unknown"
+    },
+    {
+      "canonical_fact_id": "cfact-4d7fab8b018f41600e8f",
+      "character_id": "char-f47075b7019563fd8315",
+      "chapter_number": 4,
+      "order": 25,
+      "life": "眼前的这个孩子",
+      "form": "unknown",
+      "scene": "unknown",
+      "persistence": "unknown"
+    },
+    {
+      "canonical_fact_id": "cfact-2cfb0ec960ae637bb905",
+      "character_id": "char-f47075b7019563fd8315",
+      "chapter_number": 4,
+      "order": 26,
+      "life": "眼前的这个孩子",
+      "form": "unknown",
+      "scene": "unknown",
+      "persistence": "unknown"
+    },
+    {
+      "canonical_fact_id": "cfact-6ec5251a25bebf636543",
+      "character_id": "char-f47075b7019563fd8315",
+      "chapter_number": 4,
+      "order": 27,
+      "life": "眼前的这个孩子",
+      "form": "unknown",
+      "scene": "unknown",
+      "persistence": "unknown"
+    },
+    {
+      "canonical_fact_id": "cfact-81bd286f72f416cb6161",
+      "character_id": "char-f47075b7019563fd8315",
+      "chapter_number": 4,
+      "order": 28,
+      "life": "眼前的这个孩子",
+      "form": "unknown",
+      "scene": "unknown",
+      "persistence": "unknown"
+    },
+    {
+      "canonical_fact_id": "cfact-494d2106357697a4f961",
+      "character_id": "char-f47075b7019563fd8315",
+      "chapter_number": 4,
+      "order": 29,
+      "life": "眼前的这个孩子",
+      "form": "unknown",
+      "scene": "unknown",
+      "persistence": "unknown"
+    },
+    {
+      "canonical_fact_id": "cfact-f8c76f745f309080531f",
+      "character_id": "char-f47075b7019563fd8315",
+      "chapter_number": 5,
+      "order": 30,
+      "life": "眼前的这个孩子",
+      "form": "unknown",
+      "scene": "unknown",
+      "persistence": "persistent_until_changed"
+    },
+    {
+      "canonical_fact_id": "cfact-4b3013f7799acae8c637",
+      "character_id": "char-c29b95295e06aa917f96",
+      "chapter_number": 5,
+      "order": 31,
+      "life": "unknown",
+      "form": "unknown",
+      "scene": "unknown",
+      "persistence": "persistent_until_changed"
+    },
+    {
+      "canonical_fact_id": "cfact-99aa0cfbc6605f95e155",
+      "character_id": "char-c29b95295e06aa917f96",
+      "chapter_number": 5,
+      "order": 32,
+      "life": "unknown",
+      "form": "unknown",
+      "scene": "unknown",
+      "persistence": "unknown"
+    },
+    {
+      "canonical_fact_id": "cfact-eda04350353afdba5e34",
+      "character_id": "char-c29b95295e06aa917f96",
+      "chapter_number": 5,
+      "order": 33,
+      "life": "unknown",
+      "form": "unknown",
+      "scene": "unknown",
+      "persistence": "momentary"
+    },
+    {
+      "canonical_fact_id": "cfact-f68ff232c604c2b5b55e",
+      "character_id": "char-c29b95295e06aa917f96",
+      "chapter_number": 5,
+      "order": 34,
+      "life": "unknown",
+      "form": "unknown",
+      "scene": "unknown",
+      "persistence": "momentary"
+    },
+    {
+      "canonical_fact_id": "cfact-2a49d8c2bb329d763ea3",
+      "character_id": "char-c29b95295e06aa917f96",
+      "chapter_number": 5,
+      "order": 35,
+      "life": "unknown",
+      "form": "unknown",
+      "scene": "unknown",
+      "persistence": "scene"
+    },
+    {
+      "canonical_fact_id": "cfact-9e6dbf8847f3defd039c",
+      "character_id": "char-c29b95295e06aa917f96",
+      "chapter_number": 5,
+      "order": 36,
+      "life": "unknown",
+      "form": "unknown",
+      "scene": "unknown",
+      "persistence": "scene"
+    },
+    {
+      "canonical_fact_id": "cfact-06b5d5d6c3ea11493371",
+      "character_id": "char-c29b95295e06aa917f96",
+      "chapter_number": 5,
+      "order": 37,
+      "life": "unknown",
+      "form": "unknown",
+      "scene": "unknown",
+      "persistence": "unknown"
+    },
+    {
+      "canonical_fact_id": "cfact-ea536acd1efc1bcb79e4",
+      "character_id": "char-431fd9f3afcbe1cece75",
+      "chapter_number": 7,
+      "order": 38,
+      "life": "unknown",
+      "form": "unknown",
+      "scene": "unknown",
+      "persistence": "persistent_until_changed"
+    },
+    {
+      "canonical_fact_id": "cfact-b3016e746e96448fe0a6",
+      "character_id": "char-431fd9f3afcbe1cece75",
+      "chapter_number": 7,
+      "order": 39,
+      "life": "unknown",
+      "form": "unknown",
+      "scene": "unknown",
+      "persistence": "persistent_until_changed"
+    },
+    {
+      "canonical_fact_id": "cfact-18e3bf700f2369c56f9e",
+      "character_id": "char-431fd9f3afcbe1cece75",
+      "chapter_number": 7,
+      "order": 40,
+      "life": "unknown",
+      "form": "unknown",
+      "scene": "unknown",
+      "persistence": "unknown"
+    },
+    {
+      "canonical_fact_id": "cfact-82ed897cc669f47c6514",
+      "character_id": "char-431fd9f3afcbe1cece75",
+      "chapter_number": 7,
+      "order": 41,
+      "life": "unknown",
+      "form": "unknown",
+      "scene": "unknown",
+      "persistence": "unknown"
+    },
+    {
+      "canonical_fact_id": "cfact-c3a45fe9fa1fc2afbaf7",
+      "character_id": "char-431fd9f3afcbe1cece75",
+      "chapter_number": 7,
+      "order": 42,
+      "life": "unknown",
+      "form": "unknown",
+      "scene": "unknown",
+      "persistence": "unknown"
+    },
+    {
+      "canonical_fact_id": "cfact-89f76fb61cf2bcf4b718",
+      "character_id": "char-431fd9f3afcbe1cece75",
+      "chapter_number": 7,
+      "order": 43,
+      "life": "unknown",
+      "form": "unknown",
+      "scene": "unknown",
+      "persistence": "scene"
+    },
+    {
+      "canonical_fact_id": "cfact-b980f14d37bb506b7c5b",
+      "character_id": "char-431fd9f3afcbe1cece75",
+      "chapter_number": 7,
+      "order": 44,
+      "life": "unknown",
+      "form": "unknown",
+      "scene": "unknown",
+      "persistence": "scene"
+    },
+    {
+      "canonical_fact_id": "cfact-8cecd02d3c8839076102",
+      "character_id": "char-431fd9f3afcbe1cece75",
+      "chapter_number": 7,
+      "order": 45,
+      "life": "unknown",
+      "form": "unknown",
+      "scene": "unknown",
+      "persistence": "stable"
+    },
+    {
+      "canonical_fact_id": "cfact-f365ba5b2f7f18576c87",
+      "character_id": "char-431fd9f3afcbe1cece75",
+      "chapter_number": 7,
+      "order": 46,
+      "life": "unknown",
+      "form": "unknown",
+      "scene": "unknown",
+      "persistence": "stable"
+    },
+    {
+      "canonical_fact_id": "cfact-b6eaa06e7193bb9eb80a",
+      "character_id": "char-431fd9f3afcbe1cece75",
+      "chapter_number": 7,
+      "order": 47,
+      "life": "unknown",
+      "form": "unknown",
+      "scene": "unknown",
+      "persistence": "scene"
+    },
+    {
+      "canonical_fact_id": "cfact-02b3469bab7514a281b1",
+      "character_id": "char-431fd9f3afcbe1cece75",
+      "chapter_number": 7,
+      "order": 48,
+      "life": "unknown",
+      "form": "unknown",
+      "scene": "unknown",
+      "persistence": "scene"
+    },
+    {
+      "canonical_fact_id": "cfact-26ab57887c8b77253957",
+      "character_id": "char-431fd9f3afcbe1cece75",
+      "chapter_number": 7,
+      "order": 49,
+      "life": "unknown",
+      "form": "unknown",
+      "scene": "unknown",
+      "persistence": "scene"
+    },
+    {
+      "canonical_fact_id": "cfact-417c2d16200faeb0a7bd",
+      "character_id": "char-431fd9f3afcbe1cece75",
+      "chapter_number": 7,
+      "order": 50,
+      "life": "unknown",
+      "form": "unknown",
+      "scene": "unknown",
+      "persistence": "scene"
+    },
+    {
+      "canonical_fact_id": "cfact-1de0d72d5533a3a2ef91",
+      "character_id": "char-431fd9f3afcbe1cece75",
+      "chapter_number": 7,
+      "order": 51,
+      "life": "unknown",
+      "form": "unknown",
+      "scene": "unknown",
+      "persistence": "scene"
+    },
+    {
+      "canonical_fact_id": "cfact-81c8d372a54d9af5557f",
+      "character_id": "char-f47075b7019563fd8315",
+      "chapter_number": 7,
+      "order": 52,
+      "life": "眼前的这个孩子",
+      "form": "unknown",
+      "scene": "unknown",
+      "persistence": "unknown"
+    },
+    {
+      "canonical_fact_id": "cfact-1233394bd6ba3b65e117",
+      "character_id": "char-431fd9f3afcbe1cece75",
+      "chapter_number": 7,
+      "order": 53,
+      "life": "unknown",
+      "form": "独狼，附体",
+      "scene": "unknown",
+      "persistence": "unknown"
+    },
+    {
+      "canonical_fact_id": "cfact-3e04e84c5ed45b897ef1",
+      "character_id": "char-431fd9f3afcbe1cece75",
+      "chapter_number": 7,
+      "order": 54,
+      "life": "unknown",
+      "form": "独狼，附体",
+      "scene": "unknown",
+      "persistence": "unknown"
+    },
+    {
+      "canonical_fact_id": "cfact-85b7465755a3b64ab9c3",
+      "character_id": "char-431fd9f3afcbe1cece75",
+      "chapter_number": 7,
+      "order": 55,
+      "life": "unknown",
+      "form": "独狼，附体",
+      "scene": "unknown",
+      "persistence": "unknown"
+    },
+    {
+      "canonical_fact_id": "cfact-e95522119198db7a55f6",
+      "character_id": "char-431fd9f3afcbe1cece75",
+      "chapter_number": 7,
+      "order": 56,
+      "life": "unknown",
+      "form": "独狼，附体",
+      "scene": "unknown",
+      "persistence": "unknown"
+    },
+    {
+      "canonical_fact_id": "cfact-86c6d375ccf00494630f",
+      "character_id": "char-431fd9f3afcbe1cece75",
+      "chapter_number": 7,
+      "order": 57,
+      "life": "unknown",
+      "form": "独狼，附体",
+      "scene": "unknown",
+      "persistence": "unknown"
+    },
+    {
+      "canonical_fact_id": "cfact-79a83bab7f1d6cad91f8",
+      "character_id": "char-63ade04ce7e6ee22dd35",
+      "chapter_number": 8,
+      "order": 58,
+      "life": "unknown",
+      "form": "unknown",
+      "scene": "unknown",
+      "persistence": "unknown"
+    },
+    {
+      "canonical_fact_id": "cfact-1e4bc832ed52b8f672ef",
+      "character_id": "char-431fd9f3afcbe1cece75",
+      "chapter_number": 8,
+      "order": 59,
+      "life": "unknown",
+      "form": "独狼，附体",
+      "scene": "unknown",
+      "persistence": "unknown"
+    },
+    {
+      "canonical_fact_id": "cfact-7d134f4d4e5611eb1a3b",
+      "character_id": "char-f47075b7019563fd8315",
+      "chapter_number": 8,
+      "order": 60,
+      "life": "眼前的这个孩子",
+      "form": "unknown",
+      "scene": "unknown",
+      "persistence": "unknown"
+    },
+    {
+      "canonical_fact_id": "cfact-d242eca4f2fccaf87635",
+      "character_id": "char-431fd9f3afcbe1cece75",
+      "chapter_number": 9,
+      "order": 61,
+      "life": "unknown",
+      "form": "独狼，附体",
+      "scene": "unknown",
+      "persistence": "unknown"
+    },
+    {
+      "canonical_fact_id": "cfact-a5120baf72d4b640a0ea",
+      "character_id": "char-c29b95295e06aa917f96",
+      "chapter_number": 9,
+      "order": 62,
+      "life": "unknown",
+      "form": "unknown",
+      "scene": "unknown",
+      "persistence": "unknown"
+    },
+    {
+      "canonical_fact_id": "cfact-00786046760196febf87",
+      "character_id": "char-c29b95295e06aa917f96",
+      "chapter_number": 9,
+      "order": 63,
+      "life": "unknown",
+      "form": "unknown",
+      "scene": "unknown",
+      "persistence": "unknown"
+    },
+    {
+      "canonical_fact_id": "cfact-2577236b8811a655655d",
+      "character_id": "char-a6302c7128aa46abea7c",
+      "chapter_number": 10,
+      "order": 64,
+      "life": "unknown",
+      "form": "unknown",
+      "scene": "unknown",
+      "persistence": "momentary"
+    },
+    {
+      "canonical_fact_id": "cfact-6c9369886529319af06d",
+      "character_id": "char-c29b95295e06aa917f96",
+      "chapter_number": 10,
+      "order": 65,
+      "life": "unknown",
+      "form": "unknown",
+      "scene": "unknown",
+      "persistence": "persistent_until_changed"
+    },
+    {
+      "canonical_fact_id": "cfact-2e0a13c59d6eaba3b177",
+      "character_id": "char-a6302c7128aa46abea7c",
+      "chapter_number": 10,
+      "order": 66,
+      "life": "unknown",
+      "form": "unknown",
+      "scene": "unknown",
+      "persistence": "momentary"
+    },
+    {
+      "canonical_fact_id": "cfact-2902a14eb08665277f50",
+      "character_id": "char-a6302c7128aa46abea7c",
+      "chapter_number": 11,
+      "order": 67,
+      "life": "unknown",
+      "form": "unknown",
+      "scene": "unknown",
+      "persistence": "unknown"
+    },
+    {
+      "canonical_fact_id": "cfact-23e68c5987a39e0cc6dc",
+      "character_id": "char-a6302c7128aa46abea7c",
+      "chapter_number": 11,
+      "order": 68,
+      "life": "unknown",
+      "form": "unknown",
+      "scene": "unknown",
+      "persistence": "unknown"
+    },
+    {
+      "canonical_fact_id": "cfact-3af66781e7baf5b366fa",
+      "character_id": "char-f47075b7019563fd8315",
+      "chapter_number": 11,
+      "order": 69,
+      "life": "眼前的这个孩子",
+      "form": "unknown",
+      "scene": "unknown",
+      "persistence": "unknown"
+    },
+    {
+      "canonical_fact_id": "cfact-4b08309560211f192cbc",
+      "character_id": "char-f47075b7019563fd8315",
+      "chapter_number": 11,
+      "order": 70,
+      "life": "眼前的这个孩子",
+      "form": "unknown",
+      "scene": "unknown",
+      "persistence": "momentary"
+    },
+    {
+      "canonical_fact_id": "cfact-a06ec12538160ff56aae",
+      "character_id": "char-a6302c7128aa46abea7c",
+      "chapter_number": 11,
+      "order": 71,
+      "life": "unknown",
+      "form": "unknown",
+      "scene": "unknown",
+      "persistence": "unknown"
+    },
+    {
+      "canonical_fact_id": "cfact-2681ed4f48157affcccd",
+      "character_id": "char-a6302c7128aa46abea7c",
+      "chapter_number": 11,
+      "order": 72,
+      "life": "unknown",
+      "form": "unknown",
+      "scene": "unknown",
+      "persistence": "unknown"
+    },
+    {
+      "canonical_fact_id": "cfact-cc2c6d066d83c970d502",
+      "character_id": "char-a6302c7128aa46abea7c",
+      "chapter_number": 12,
+      "order": 73,
+      "life": "unknown",
+      "form": "unknown",
+      "scene": "unknown",
+      "persistence": "unknown"
+    },
+    {
+      "canonical_fact_id": "cfact-383a99c599b49517f8ad",
+      "character_id": "char-f47075b7019563fd8315",
+      "chapter_number": 12,
+      "order": 74,
+      "life": "眼前的这个孩子",
+      "form": "unknown",
+      "scene": "unknown",
+      "persistence": "momentary"
+    },
+    {
+      "canonical_fact_id": "cfact-eef8c3b496503f82e695",
+      "character_id": "char-f47075b7019563fd8315",
+      "chapter_number": 12,
+      "order": 75,
+      "life": "眼前的这个孩子",
+      "form": "unknown",
+      "scene": "unknown",
+      "persistence": "unknown"
+    },
+    {
+      "canonical_fact_id": "cfact-465e59411662bb99e871",
+      "character_id": "char-f47075b7019563fd8315",
+      "chapter_number": 12,
+      "order": 76,
+      "life": "眼前的这个孩子",
+      "form": "unknown",
+      "scene": "unknown",
+      "persistence": "momentary"
+    },
+    {
+      "canonical_fact_id": "cfact-6c2dc7be1449b9353763",
+      "character_id": "char-a6302c7128aa46abea7c",
+      "chapter_number": 12,
+      "order": 77,
+      "life": "unknown",
+      "form": "unknown",
+      "scene": "unknown",
+      "persistence": "unknown"
+    },
+    {
+      "canonical_fact_id": "cfact-6946b5da8a439d98fa12",
+      "character_id": "char-a6302c7128aa46abea7c",
+      "chapter_number": 13,
+      "order": 78,
+      "life": "unknown",
+      "form": "unknown",
+      "scene": "unknown",
+      "persistence": "unknown"
+    },
+    {
+      "canonical_fact_id": "cfact-a2330d1533686201eb6b",
+      "character_id": "char-a6302c7128aa46abea7c",
+      "chapter_number": 13,
+      "order": 79,
+      "life": "unknown",
+      "form": "unknown",
+      "scene": "unknown",
+      "persistence": "unknown"
+    },
+    {
+      "canonical_fact_id": "cfact-9cc6b58db86d8b3bd001",
+      "character_id": "char-a6302c7128aa46abea7c",
+      "chapter_number": 14,
+      "order": 80,
+      "life": "unknown",
+      "form": "unknown",
+      "scene": "unknown",
+      "persistence": "momentary"
+    },
+    {
+      "canonical_fact_id": "cfact-2827ba67cc4c4ecadc58",
+      "character_id": "char-f47075b7019563fd8315",
+      "chapter_number": 15,
+      "order": 81,
+      "life": "眼前的这个孩子",
+      "form": "unknown",
+      "scene": "unknown",
+      "persistence": "unknown"
+    },
+    {
+      "canonical_fact_id": "cfact-2277d88a7f0f6943c353",
+      "character_id": "char-f47075b7019563fd8315",
+      "chapter_number": 15,
+      "order": 82,
+      "life": "眼前的这个孩子",
+      "form": "unknown",
+      "scene": "unknown",
+      "persistence": "scene"
+    },
+    {
+      "canonical_fact_id": "cfact-07d0e61696349467c22d",
+      "character_id": "char-a6302c7128aa46abea7c",
+      "chapter_number": 16,
+      "order": 83,
+      "life": "unknown",
+      "form": "unknown",
+      "scene": "unknown",
+      "persistence": "unknown"
+    },
+    {
+      "canonical_fact_id": "cfact-c458b31c66a606af8468",
+      "character_id": "char-a6302c7128aa46abea7c",
+      "chapter_number": 16,
+      "order": 84,
+      "life": "unknown",
+      "form": "unknown",
+      "scene": "unknown",
+      "persistence": "unknown"
+    },
+    {
+      "canonical_fact_id": "cfact-89c38cfb1dc9dc44edd1",
+      "character_id": "char-a6302c7128aa46abea7c",
+      "chapter_number": 16,
+      "order": 85,
+      "life": "unknown",
+      "form": "unknown",
+      "scene": "unknown",
+      "persistence": "unknown"
+    },
+    {
+      "canonical_fact_id": "cfact-ef74d813c4f82edf65c5",
+      "character_id": "char-a6302c7128aa46abea7c",
+      "chapter_number": 16,
+      "order": 86,
+      "life": "unknown",
+      "form": "unknown",
+      "scene": "unknown",
+      "persistence": "persistent_until_changed"
+    },
+    {
+      "canonical_fact_id": "cfact-0cf96662775fc8ee319f",
+      "character_id": "char-f47075b7019563fd8315",
+      "chapter_number": 16,
+      "order": 87,
+      "life": "眼前的这个孩子",
+      "form": "unknown",
+      "scene": "unknown",
+      "persistence": "scene"
+    },
+    {
+      "canonical_fact_id": "cfact-6d3f5d16eececc70af56",
+      "character_id": "char-f47075b7019563fd8315",
+      "chapter_number": 16,
+      "order": 88,
+      "life": "眼前的这个孩子",
+      "form": "unknown",
+      "scene": "unknown",
+      "persistence": "unknown"
+    },
+    {
+      "canonical_fact_id": "cfact-1a705ae75891a5834fd3",
+      "character_id": "char-f47075b7019563fd8315",
+      "chapter_number": 16,
+      "order": 89,
+      "life": "眼前的这个孩子",
+      "form": "unknown",
+      "scene": "unknown",
+      "persistence": "unknown"
+    },
+    {
+      "canonical_fact_id": "cfact-31cf12875d5627d398be",
+      "character_id": "char-c29b95295e06aa917f96",
+      "chapter_number": 17,
+      "order": 90,
+      "life": "unknown",
+      "form": "unknown",
+      "scene": "unknown",
+      "persistence": "scene"
+    },
+    {
+      "canonical_fact_id": "cfact-bd8124604156a31e5e93",
+      "character_id": "char-c29b95295e06aa917f96",
+      "chapter_number": 17,
+      "order": 91,
+      "life": "unknown",
+      "form": "unknown",
+      "scene": "一身新衣服",
+      "persistence": "momentary"
+    },
+    {
+      "canonical_fact_id": "cfact-5800297bd0364b02f2e1",
+      "character_id": "char-a6302c7128aa46abea7c",
+      "chapter_number": 17,
+      "order": 92,
+      "life": "unknown",
+      "form": "unknown",
+      "scene": "unknown",
+      "persistence": "unknown"
+    },
+    {
+      "canonical_fact_id": "cfact-3a19888f4f40235c90a8",
+      "character_id": "char-f47075b7019563fd8315",
+      "chapter_number": 17,
+      "order": 93,
+      "life": "眼前的这个孩子",
+      "form": "unknown",
+      "scene": "unknown",
+      "persistence": "unknown"
+    },
+    {
+      "canonical_fact_id": "cfact-c9aa6ee3e67519ca1bfb",
+      "character_id": "char-a6302c7128aa46abea7c",
+      "chapter_number": 17,
+      "order": 94,
+      "life": "unknown",
+      "form": "unknown",
+      "scene": "unknown",
+      "persistence": "unknown"
+    },
+    {
+      "canonical_fact_id": "cfact-08eddb767a64acd125f7",
+      "character_id": "char-f47075b7019563fd8315",
+      "chapter_number": 17,
+      "order": 95,
+      "life": "眼前的这个孩子",
+      "form": "unknown",
+      "scene": "unknown",
+      "persistence": "unknown"
+    },
+    {
+      "canonical_fact_id": "cfact-2e534dd1debdb437280a",
+      "character_id": "char-29c8430a024fab728208",
+      "chapter_number": 18,
+      "order": 96,
+      "life": "unknown",
+      "form": "unknown",
+      "scene": "unknown",
+      "persistence": "persistent_until_changed"
+    },
+    {
+      "canonical_fact_id": "cfact-149129b0b6f36386d91c",
+      "character_id": "char-c29b95295e06aa917f96",
+      "chapter_number": 18,
+      "order": 97,
+      "life": "unknown",
+      "form": "unknown",
+      "scene": "unknown",
+      "persistence": "scene"
+    },
+    {
+      "canonical_fact_id": "cfact-2cbdc4c7ffb177a46aaf",
+      "character_id": "char-c29b95295e06aa917f96",
+      "chapter_number": 19,
+      "order": 98,
+      "life": "unknown",
+      "form": "unknown",
+      "scene": "unknown",
+      "persistence": "persistent_until_changed"
+    },
+    {
+      "canonical_fact_id": "cfact-ddd426aa6e784afce96a",
+      "character_id": "char-f47075b7019563fd8315",
+      "chapter_number": 19,
+      "order": 99,
+      "life": "眼前的这个孩子",
+      "form": "unknown",
+      "scene": "unknown",
+      "persistence": "scene"
+    },
+    {
+      "canonical_fact_id": "cfact-ddda2702940967904ddb",
+      "character_id": "char-f47075b7019563fd8315",
+      "chapter_number": 19,
+      "order": 100,
+      "life": "眼前的这个孩子",
+      "form": "unknown",
+      "scene": "unknown",
+      "persistence": "unknown"
+    },
+    {
+      "canonical_fact_id": "cfact-88c0ac416084961c25c6",
+      "character_id": "char-f47075b7019563fd8315",
+      "chapter_number": 19,
+      "order": 101,
+      "life": "眼前的这个孩子",
+      "form": "unknown",
+      "scene": "unknown",
+      "persistence": "unknown"
+    },
+    {
+      "canonical_fact_id": "cfact-192a9a2f3b9206f91869",
+      "character_id": "char-f47075b7019563fd8315",
+      "chapter_number": 19,
+      "order": 102,
+      "life": "眼前的这个孩子",
+      "form": "unknown",
+      "scene": "unknown",
+      "persistence": "unknown"
+    },
+    {
+      "canonical_fact_id": "cfact-4b1bb7aada695c41a433",
+      "character_id": "char-f47075b7019563fd8315",
+      "chapter_number": 19,
+      "order": 103,
+      "life": "眼前的这个孩子",
+      "form": "unknown",
+      "scene": "unknown",
+      "persistence": "persistent_until_changed"
+    },
+    {
+      "canonical_fact_id": "cfact-eeb10ad783ea0fcef407",
+      "character_id": "char-b4f3861662461ef7a5b6",
+      "chapter_number": 19,
+      "order": 104,
+      "life": "unknown",
+      "form": "unknown",
+      "scene": "unknown",
+      "persistence": "unknown"
+    },
+    {
+      "canonical_fact_id": "cfact-45fc24e3ad735e0fd901",
+      "character_id": "char-b4f3861662461ef7a5b6",
+      "chapter_number": 19,
+      "order": 105,
+      "life": "unknown",
+      "form": "unknown",
+      "scene": "unknown",
+      "persistence": "persistent_until_changed"
+    },
+    {
+      "canonical_fact_id": "cfact-09d086d57a26414c2abe",
+      "character_id": "char-b4f3861662461ef7a5b6",
+      "chapter_number": 19,
+      "order": 106,
+      "life": "unknown",
+      "form": "unknown",
+      "scene": "unknown",
+      "persistence": "unknown"
+    },
+    {
+      "canonical_fact_id": "cfact-280272715d8e951c3ba4",
+      "character_id": "char-b4f3861662461ef7a5b6",
+      "chapter_number": 19,
+      "order": 107,
+      "life": "unknown",
+      "form": "unknown",
+      "scene": "unknown",
+      "persistence": "unknown"
+    },
+    {
+      "canonical_fact_id": "cfact-b3fd38644ca639d2116c",
+      "character_id": "char-b4f3861662461ef7a5b6",
+      "chapter_number": 19,
+      "order": 108,
+      "life": "unknown",
+      "form": "unknown",
+      "scene": "unknown",
+      "persistence": "momentary"
+    }
+  ],
+  "review": [
+    {
+      "chunk_id": "chunk-000007-13500-16000-29d830992ba6",
+      "event": 3,
+      "reason": "state_not_supported_by_evidence",
+      "character": "素云涛",
+      "evidence": "同色毛发出现在他裸露在外的双手之上，同时，他的身体也似乎比之前膨胀了许多"
+    },
+    {
+      "chunk_id": "chunk-000007-13500-16000-29d830992ba6",
+      "event": 4,
+      "reason": "state_not_supported_by_evidence",
+      "character": "素云涛",
+      "evidence": "同色毛发出现在他裸露在外的双手之上"
+    },
+    {
+      "chunk_id": "chunk-000007-13500-16000-29d830992ba6",
+      "event": 5,
+      "reason": "state_not_supported_by_evidence",
+      "character": "素云涛",
+      "evidence": "素云涛的眼睛已经变成了幽幽的绿色"
+    },
+    {
+      "chunk_id": "chunk-000007-13500-16000-29d830992ba6",
+      "event": 7,
+      "reason": "state_not_supported_by_evidence",
+      "character": "素云涛",
+      "evidence": "身体也似乎比之前膨胀了许多。全身充满了肌肉感。"
+    }
+  ],
+  "summary": {
+    "planned_chunks": 17,
+    "model_calls": 17,
+    "grounded_transitions": 6,
+    "review_items": 4,
+    "facts_with_life": 28,
+    "facts_with_form": 7,
+    "facts_with_scene": 1,
+    "complete": true
+  }
+}

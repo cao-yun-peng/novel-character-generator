@@ -1,0 +1,70 @@
+{
+  "schema_version": "appearance-transition-chunk-result-v1",
+  "identity": {
+    "chunk_id": "chunk-000003-4500-7000-bbfa3a18c9e4",
+    "chunk_hash": "bbfa3a18c9e476de46397a73b1eb79a2490a6719ed36683d6bd731cc02b5dd7c",
+    "document_span": {
+      "start": 4500,
+      "end": 7000
+    },
+    "characters": [
+      {
+        "name": "唐三",
+        "aliases": []
+      },
+      {
+        "name": "唐昊",
+        "aliases": [
+          "高大的身影"
+        ]
+      }
+    ]
+  },
+  "model_output": {
+    "events": [
+      {
+        "character": "唐昊",
+        "evidence": "暗黄的脸色这才看上去多了几分光泽",
+        "dimension": "appearance",
+        "attribute": "脸色",
+        "before": "暗黄",
+        "after": "多了几分光泽"
+      }
+    ]
+  },
+  "grounded_transitions": [
+    {
+      "character_id": "char-a6302c7128aa46abea7c",
+      "evidence": "暗黄的脸色这才看上去多了几分光泽",
+      "document_span": {
+        "start": 6148,
+        "end": 6164
+      },
+      "dimension": "appearance",
+      "attribute": "脸色",
+      "before": "暗黄",
+      "after": "多了几分光泽",
+      "change": "change"
+    }
+  ],
+  "review": [],
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 24203,
+    "http_status": 200,
+    "response_id": "bba5e908-0e85-44af-9ad0-6dd6de8b1d05",
+    "usage": {
+      "input_tokens": 2241,
+      "cached_input_tokens": 0,
+      "output_tokens": 2682,
+      "reasoning_tokens": 2638,
+      "total_tokens": 4923
+    },
+    "error_kind": null
+  }
+}

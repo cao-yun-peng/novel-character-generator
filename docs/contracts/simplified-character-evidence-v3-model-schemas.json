@@ -3,7 +3,7 @@
   "$id": "https://novel-character-generator.local/contracts/simplified-character-evidence-v3-model-schemas.json",
   "title": "Simplified Character Evidence Pipeline V3 Schemas",
   "description": "Target machine contracts for model-visible payloads, code-only orchestration envelopes, grounded appearance evidence, bounded cross-Chunk character identity resolution, deterministic profiles, appearance scopes, and grounded state transitions.",
-  "version": "3.20.0-draft1",
+  "version": "3.22.0-draft1",
   "$defs": {
     "SourceSpan": {
       "type": "object",
@@ -1460,7 +1460,7 @@
       "required": ["schema_version", "transition_policy_version", "source_document_version_id", "total_characters", "source_chunking_policy_version", "chunks", "summary"],
       "properties": {
         "schema_version": {"const": "appearance-transition-chunks-v1"},
-        "transition_policy_version": {"const": "full-coverage-roster-grounding-v1"},
+        "transition_policy_version": {"const": "full-coverage-roster-grounding-v3"},
         "source_document_version_id": {"type": "string", "minLength": 1},
         "total_characters": {"type": "integer", "minimum": 1},
         "source_chunking_policy_version": {"type": "string", "minLength": 1},
@@ -1500,7 +1500,7 @@
       "properties": {
         "chunk_id": {"type": "string", "minLength": 1},
         "event": {"type": "integer", "minimum": 1},
-        "reason": {"enum": ["evidence_not_found", "evidence_not_unique"]},
+        "reason": {"enum": ["evidence_not_found", "evidence_not_unique", "evidence_crosses_scene_boundary", "form_without_body_change_evidence", "state_not_supported_by_evidence"]},
         "character": {"type": "string", "minLength": 1},
         "evidence": {"type": "string", "minLength": 1}
       }
@@ -1510,8 +1510,8 @@
       "additionalProperties": false,
       "required": ["schema_version", "transition_policy_version", "source_document_version_id", "coverage_status", "processed_source_end", "transitions", "fact_assignments", "review", "summary"],
       "properties": {
-        "schema_version": {"const": "document-character-appearance-states-v1"},
-        "transition_policy_version": {"const": "full-coverage-roster-grounding-v1"},
+        "schema_version": {"const": "document-character-appearance-states-v3"},
+        "transition_policy_version": {"const": "full-coverage-roster-grounding-v3"},
         "source_document_version_id": {"type": "string", "minLength": 1},
         "coverage_status": {"const": "complete"},
         "processed_source_end": {"type": "integer", "minimum": 1},

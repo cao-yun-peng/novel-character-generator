@@ -1,0 +1,45 @@
+{
+  "schema_version": "appearance-transition-chunk-result-v1",
+  "identity": {
+    "chunk_id": "chunk-000006-11250-13750-9b713c3495b7",
+    "chunk_hash": "9b713c3495b71793615560f974b68a50a0c0dd5f05a8fe1459948e70ab21b2ef",
+    "document_span": {
+      "start": 11250,
+      "end": 13750
+    },
+    "characters": [
+      {
+        "name": "素云涛",
+        "aliases": [
+          "年轻人",
+          "战魂大师",
+          "青年"
+        ]
+      }
+    ]
+  },
+  "model_output": {
+    "events": []
+  },
+  "grounded_transitions": [],
+  "review": [],
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 2313,
+    "http_status": 200,
+    "response_id": "f39de61f-1b99-4600-a75b-be4451885007",
+    "usage": {
+      "input_tokens": 2181,
+      "cached_input_tokens": 384,
+      "output_tokens": 119,
+      "reasoning_tokens": 113,
+      "total_tokens": 2300
+    },
+    "error_kind": null
+  }
+}

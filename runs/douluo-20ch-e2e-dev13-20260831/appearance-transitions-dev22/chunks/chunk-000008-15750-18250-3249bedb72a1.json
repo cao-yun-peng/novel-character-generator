@@ -1,0 +1,68 @@
+{
+  "schema_version": "appearance-transition-chunk-result-v1",
+  "identity": {
+    "chunk_id": "chunk-000008-15750-18250-3249bedb72a1",
+    "chunk_hash": "3249bedb72a19a643804e214c834499cfe7d838b4cca74e5579fdf43e69fb02c",
+    "document_span": {
+      "start": 15750,
+      "end": 18250
+    },
+    "characters": [
+      {
+        "name": "素云涛",
+        "aliases": []
+      },
+      {
+        "name": "唐三",
+        "aliases": []
+      }
+    ]
+  },
+  "model_output": {
+    "events": [
+      {
+        "character": "素云涛",
+        "evidence": "素云涛全身青光收敛，收回了自己的武魂附体",
+        "dimension": "form",
+        "attribute": "form_state",
+        "before": "武魂附体",
+        "after": ""
+      }
+    ]
+  },
+  "grounded_transitions": [
+    {
+      "character_id": "char-431fd9f3afcbe1cece75",
+      "evidence": "素云涛全身青光收敛，收回了自己的武魂附体",
+      "document_span": {
+        "start": 17846,
+        "end": 17866
+      },
+      "dimension": "form",
+      "attribute": "form_state",
+      "before": "武魂附体",
+      "after": "",
+      "change": "exit"
+    }
+  ],
+  "review": [],
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 13172,
+    "http_status": 200,
+    "response_id": "6f52546c-202f-4db8-bed8-9213b0dbbd01",
+    "usage": {
+      "input_tokens": 2246,
+      "cached_input_tokens": 512,
+      "output_tokens": 1533,
+      "reasoning_tokens": 1485,
+      "total_tokens": 3779
+    },
+    "error_kind": null
+  }
+}

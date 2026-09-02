@@ -205,7 +205,7 @@ python -m novel_character_generator prepare-document-appearance-transitions `
   --local-nodes-file 'runs/douluo-20ch-e2e-dev13-20260831/identity/document-local-character-nodes.json' `
   --scopes-file 'runs/douluo-20ch-e2e-dev13-20260831/appearance-scopes-dev19/document-character-appearance-scopes.json' `
   --chunk-manifest-file 'runs/douluo-20ch-e2e-dev13-20260831/m1/manifest.json' `
-  --output-dir 'runs/douluo-20ch-e2e-dev13-20260831/appearance-transitions-dev20'
+  --output-dir 'runs/douluo-20ch-e2e-dev13-20260831/appearance-transitions-dev22'
 ```
 
 确认窗口后可执行可恢复的 DeepSeek transition discovery：
@@ -218,11 +218,11 @@ python -m novel_character_generator run-deepseek-appearance-transitions `
   --fact-groups-file 'runs/douluo-20ch-e2e-dev13-20260831/post-link-fact-groups-dev18/document-character-fact-groups.json' `
   --scopes-file 'runs/douluo-20ch-e2e-dev13-20260831/appearance-scopes-dev19/document-character-appearance-scopes.json' `
   --chunk-manifest-file 'runs/douluo-20ch-e2e-dev13-20260831/m1/manifest.json' `
-  --output-dir 'runs/douluo-20ch-e2e-dev13-20260831/appearance-transitions-dev20' `
+  --output-dir 'runs/douluo-20ch-e2e-dev13-20260831/appearance-transitions-dev22' `
   --show-progress
 ```
 
-每次模型输入只有 `characters: [{name, aliases}]` 与 `text`。原 Chunk 的 `chunk_id/chunk_hash/span` 只保留在代码信封中，用于绑定该 Chunk 已识别的人物、恢复和 Grounding，不进入模型。全文是否进入模型不由 appearance fact 或状态词决定；模型返回 `character/evidence/dimension/attribute/before/after`，代码负责绝对 span、character_id 回填、跨 Chunk 去重、`enter/exit/change` 推导和 fact scope 物化。
+每次模型输入只有 `characters: [{name, aliases}]` 与 `text`。原 Chunk 的 `chunk_id/chunk_hash/span` 只保留在代码信封中，用于绑定该 Chunk 已识别的人物、恢复和 Grounding，不进入模型。全文是否进入模型不由 appearance fact 或状态词决定；模型返回 `character/evidence/dimension/attribute/before/after`，代码负责绝对 span、character_id 回填、跨 Chunk 去重、`enter/exit/change` 推导和 fact scope 物化。v2 Grounding 还要求 evidence 不跨段落、before/after 在同一 evidence 内逐字出现且顺序成立；不改变身体的武魂或外物状态会被隔离。生命阶段变化会清空旧 form/scene，scene 在当前可确定的段落行或章节边界关闭。
 
 分组键严格为 `character_id + document_fact_span + category + attribute + value`。不同 span、attribute 或 value 不合并，也不做同义词判断；每个 canonical group 保留全部 `source_fact_hashes`，每个 occurrence 继续带来源 raw fact hash 和原数组索引。斗罗 dev17 的 129 条 raw facts 形成 109 个 groups，129 个 fact bindings 与 130 个 occurrence bindings 全部保留。
 

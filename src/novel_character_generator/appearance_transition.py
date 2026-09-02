@@ -9,14 +9,37 @@ from .errors import ContractValidationError
 from .text import SourceSpan, find_safe_quote_matches, sha256_text
 
 APPEARANCE_TRANSITION_CHUNKS_VERSION = "appearance-transition-chunks-v1"
-DOCUMENT_APPEARANCE_STATES_VERSION = "document-character-appearance-states-v1"
-APPEARANCE_TRANSITION_POLICY_VERSION = "full-coverage-roster-grounding-v1"
+DOCUMENT_APPEARANCE_STATES_VERSION = "document-character-appearance-states-v3"
+APPEARANCE_TRANSITION_POLICY_VERSION = "full-coverage-roster-grounding-v3"
 TRANSITION_DIMENSIONS = ("life", "form", "scene", "appearance")
 STATE_ATTRIBUTES = {
     "life": "life_stage",
     "form": "form_state",
     "scene": "scene_state",
 }
+FORM_ANATOMY_EVIDENCE_MARKERS = (
+    "附体",
+    "变身",
+    "身体",
+    "全身",
+    "头发",
+    "眼睛",
+    "皮肤",
+    "毛发",
+    "四肢",
+    "手臂",
+    "双手",
+    "体型",
+    "肌肉",
+    "骨骼",
+    "面容",
+    "身高",
+    "膨胀",
+)
+DIRECT_FORM_CHANGE_MARKERS = ("化为", "变成", "变作")
+DIRECT_FORM_SUBJECTS = ("他", "她", "其", "整个人")
+FORM_EXIT_MARKERS = ("收回", "解除", "退出", "结束", "消失", "褪去")
+STATE_MATCH_IGNORABLE = frozenset(" \t，。、“”‘’；：！？…—")
 
 APPEARANCE_TRANSITION_SYSTEM_INSTRUCTION = """
 你只发现输入原文窗口中已经发生或明确正在发生的人物外貌状态转变。
@@ -25,10 +48,18 @@ APPEARANCE_TRANSITION_SYSTEM_INSTRUCTION = """
 1. characters 是上游身份层已确认的人物。事件主体 character 必须逐字选择其中的 name；不要重新识别人名、创建人物或输出 alias。
 2. 扫描完整 text，不依赖关键词。识别 life（生命阶段）、form（形态/附体/变身）、scene（场景状态或装束状态）以及 appearance（具体外貌属性）转变。
 3. 只输出原文明确支持的转变；静态外貌、情绪变化、动作和身份关系不是转变。
-4. evidence 必须从 text 中连续逐字复制，且足以支持人物主体和变化，不改写、不概括、不拼接。
-5. life/form/scene 的 attribute 必须分别为 life_stage/form_state/scene_state；appearance 使用简短的具体属性名。
-6. before/after 只填写原文支持的状态；未明说的一侧用空字符串。两侧不能同时为空，也不能相同。
-7. 不输出解释、置信度、ID、ref、span、hash、窗口信息或 schema 之外字段。没有事件时返回空 events。
+4. evidence 必须是 text 中一个连续、最小且完整的逐字片段；绝对不能把两个句子或段落删节后拼成一条 evidence。变化依据分散且无法用一个连续片段覆盖时不要输出。
+5. before/after 是变化前后的“状态”，必须直接复制 evidence 中的连续短语，不得归纳或改写。解除、退出、收回某形态但原文没有明确说恢复成什么时，after 必须为空字符串。
+6. form 只表示人物身体本身发生形态变化。武器、植物、衣物、光环或武魂的单纯出现、收回、持有和使用不是人物 form；武魂附体明确改变身体时才是 form。
+7. life/form/scene 的 attribute 必须分别为 life_stage/form_state/scene_state；appearance 使用简短的具体属性名。
+8. 未明说的一侧用空字符串。before/after 不能同时为空，也不能相同。
+9. 不输出解释、置信度、ID、ref、span、hash、窗口信息或 schema 之外字段。没有事件时返回空 events。
+
+必须覆盖的明确转变边界：
+- “眼前的这个孩子，正是当初的某人”属于 life；可令 before 为空，after 复制“眼前的这个孩子”。
+- “独狼，附体”属于 form 进入；即使后文另行描述毛发、眼睛，也要同时输出这个总形态事件。
+- “收回了自己的武魂附体”属于 form 退出；before 复制“武魂附体”，after 为空。
+- “换上/穿了一身新衣服”属于 scene 进入；仅仅“身穿灰衣”这类无更换动作的静态描写不属于转变。
 """
 
 
@@ -434,6 +465,68 @@ def parse_transition_model_output(
     return tuple(events)
 
 
+def _has_form_body_evidence(evidence: str, character: str, before: str, after: str) -> bool:
+    state_text = before + after
+    if any(marker in state_text for marker in FORM_ANATOMY_EVIDENCE_MARKERS):
+        return True
+    subjects = (character, *DIRECT_FORM_SUBJECTS)
+    return any(
+        f"{subject}{marker}" in evidence
+        for subject in subjects
+        for marker in DIRECT_FORM_CHANGE_MARKERS
+    )
+
+
+def _normalize_form_exit(
+    *,
+    evidence: str,
+    before: str,
+    after: str,
+) -> tuple[str, str]:
+    if before and after and any(marker in evidence and marker in after for marker in FORM_EXIT_MARKERS):
+        return before, ""
+    return before, after
+
+
+def _state_phrase_matches(evidence: str, state: str) -> tuple[SourceSpan, ...]:
+    if not state:
+        return ()
+    exact = tuple(match.span for match in find_safe_quote_matches(evidence, state))
+    if exact:
+        return exact
+    compact_state = "".join(character for character in state if character not in STATE_MATCH_IGNORABLE)
+    compact_evidence = [
+        (character, index)
+        for index, character in enumerate(evidence)
+        if character not in STATE_MATCH_IGNORABLE
+    ]
+    if not compact_state or len(compact_state) > len(compact_evidence):
+        return ()
+    compact_text = "".join(character for character, _ in compact_evidence)
+    spans: list[SourceSpan] = []
+    offset = compact_text.find(compact_state)
+    while offset >= 0:
+        end_offset = offset + len(compact_state) - 1
+        spans.append(SourceSpan(compact_evidence[offset][1], compact_evidence[end_offset][1] + 1))
+        offset = compact_text.find(compact_state, offset + 1)
+    return tuple(spans)
+
+
+def _ground_states(evidence: str, before: str, after: str) -> tuple[str, str] | None:
+    before_matches = _state_phrase_matches(evidence, before)
+    after_matches = _state_phrase_matches(evidence, after)
+    if before and len(before_matches) != 1:
+        return None
+    if after and len(after_matches) != 1:
+        return None
+    if before and after:
+        if before_matches[0].end > after_matches[0].start:
+            return None
+    grounded_before = before_matches[0].quote(evidence) if before else ""
+    grounded_after = after_matches[0].quote(evidence) if after else ""
+    return grounded_before, grounded_after
+
+
 def ground_transition_events(
     window: AppearanceTransitionChunk,
     events: Sequence[Mapping[str, str]],
@@ -457,19 +550,66 @@ def ground_transition_events(
             )
             continue
         match = matches[0]
+        if "\n" in match.raw_quote or "\r" in match.raw_quote:
+            issues.append(
+                {
+                    "chunk_id": window.chunk_id,
+                    "event": event_index + 1,
+                    "reason": "evidence_crosses_scene_boundary",
+                    "character": character,
+                    "evidence": match.raw_quote,
+                }
+            )
+            continue
+        dimension = event["dimension"]
+        if dimension == "form" and not _has_form_body_evidence(
+            match.raw_quote,
+            character,
+            event["before"],
+            event["after"],
+        ):
+            issues.append(
+                {
+                    "chunk_id": window.chunk_id,
+                    "event": event_index + 1,
+                    "reason": "form_without_body_change_evidence",
+                    "character": character,
+                    "evidence": match.raw_quote,
+                }
+            )
+            continue
         document_span = SourceSpan(
             window.document_span.start + match.span.start,
             window.document_span.start + match.span.end,
         )
         before = event["before"]
         after = event["after"]
+        if dimension == "form":
+            before, after = _normalize_form_exit(
+                evidence=match.raw_quote,
+                before=before,
+                after=after,
+            )
+        grounded_states = _ground_states(match.raw_quote, before, after)
+        if grounded_states is None:
+            issues.append(
+                {
+                    "chunk_id": window.chunk_id,
+                    "event": event_index + 1,
+                    "reason": "state_not_supported_by_evidence",
+                    "character": character,
+                    "evidence": match.raw_quote,
+                }
+            )
+            continue
+        before, after = grounded_states
         change = "change" if before and after else ("enter" if after else "exit")
         grounded.append(
             {
                 "character_id": name_to_id[character],
                 "evidence": match.raw_quote,
                 "document_span": document_span.to_dict(),
-                "dimension": event["dimension"],
+                "dimension": dimension,
                 "attribute": event["attribute"],
                 "before": before,
                 "after": after,
@@ -533,6 +673,34 @@ def deduplicate_grounded_transitions(
     )
 
 
+def _transition_effective_position(transition: Mapping[str, object]) -> int:
+    span = _span(transition.get("document_span"), "transition.document_span")
+    after = _string(transition.get("after"), "transition.after", allow_empty=True)
+    if not after:
+        return span.end
+    evidence = _string(transition.get("evidence"), "transition.evidence")
+    matches = find_safe_quote_matches(evidence, after)
+    if not matches:
+        raise ContractValidationError("transition after state is not grounded in evidence")
+    return span.start + max(match.span.start for match in matches)
+
+
+def _scene_expiry(
+    *,
+    document_text: str,
+    transition: Mapping[str, object],
+    chapter_spans: Sequence[SourceSpan],
+) -> int:
+    span = _span(transition.get("document_span"), "transition.document_span")
+    newline = document_text.find("\n", span.end)
+    line_end = len(document_text) if newline < 0 else newline
+    chapter_end = next(
+        (chapter.end for chapter in chapter_spans if chapter.start <= span.start < chapter.end),
+        len(document_text),
+    )
+    return min(line_end, chapter_end)
+
+
 def materialize_appearance_states(
     *,
     document_text: str,
@@ -565,11 +733,25 @@ def materialize_appearance_states(
             raise ContractValidationError("transition evidence does not replay from source text")
         transition_items.append(item)
 
+    chapter_spans = tuple(
+        _span(_mapping(chapter, "scope chapter").get("document_span"), "chapter.document_span")
+        for chapter in _sequence(scopes.get("chapters"), "scopes.chapters")
+    )
+    if not chapter_spans:
+        raise ContractValidationError("appearance scopes must contain chapter spans")
+
     by_character: dict[str, list[Mapping[str, object]]] = {}
     for transition in transition_items:
         by_character.setdefault(str(transition["character_id"]), []).append(transition)
     for items in by_character.values():
-        items.sort(key=lambda item: (_span(item["document_span"], "transition.document_span").end, str(item["dimension"])))
+        items.sort(
+            key=lambda item: (
+                _transition_effective_position(item),
+                {"life": 0, "form": 1, "scene": 2, "appearance": 3}.get(
+                    str(item["dimension"]), 4
+                ),
+            )
+        )
 
     assignments: list[dict[str, object]] = []
     assigned_ids: set[str] = set()
@@ -586,13 +768,32 @@ def materialize_appearance_states(
             raise ContractValidationError("scope assignment character does not match canonical fact")
         fact_span = _span(group.get("document_fact_span"), "canonical_fact.document_fact_span")
         state = {"life": "unknown", "form": "unknown", "scene": "unknown"}
+        scene_expires_at: int | None = None
         for transition in by_character.get(str(assignment["character_id"]), []):
-            transition_span = _span(transition["document_span"], "transition.document_span")
-            if transition_span.end > fact_span.start:
+            if _transition_effective_position(transition) > fact_span.start:
                 break
             dimension = str(transition["dimension"])
-            if dimension in state:
-                state[dimension] = str(transition["after"]) or "unknown"
+            after = str(transition["after"]) or "unknown"
+            if dimension == "life":
+                state["life"] = after
+                state["form"] = "unknown"
+                state["scene"] = "unknown"
+                scene_expires_at = None
+            elif dimension == "form":
+                state["form"] = after
+            elif dimension == "scene":
+                state["scene"] = after
+                scene_expires_at = (
+                    _scene_expiry(
+                        document_text=document_text,
+                        transition=transition,
+                        chapter_spans=chapter_spans,
+                    )
+                    if after != "unknown"
+                    else None
+                )
+        if scene_expires_at is not None and fact_span.start >= scene_expires_at:
+            state["scene"] = "unknown"
         assignment.update(state)
         assignments.append(assignment)
 

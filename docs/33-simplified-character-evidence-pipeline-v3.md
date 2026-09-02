@@ -482,7 +482,7 @@ exact 归属和 N3 仲裁结束后，每个仍有未消费 evidence 的 describe
 
 ### 5.7 当前运行时映射
 
-Python `0.1.0.dev20` 按上述契约提供以下边界：
+Python `0.1.0.dev22` 按上述契约提供以下边界：
 
 - `build_m2_attribution_envelopes`：从一个 N2 `GroundingResult` 为每个 individual exact 生成一个 `M2OrchestrationEnvelope`，并把全部 individual describe 展开为代码侧 occurrence binding；collective 与 null mention 不进入输入；
 - `M2AttributionOrchestrator`：只把 `model_input`、M2 system instruction 和 `M2_ATTRIBUTION_RESPONSE_SCHEMA` 交给 Provider，解析最小事实输出后执行 target 优先、describe 唯一 occurrence 的安全绑定；失败项只进入代码侧 issues；
@@ -501,7 +501,7 @@ Python `0.1.0.dev20` 按上述契约提供以下边界：
 - `run_document_fact_group_assembly`：不调用模型；验证 registry/profile 的文档身份、人物归属、完整 raw fact hash、来源 artifact hash 和所有 span，再按最终人物与完整结构键生成稳定 canonical fact groups；
 - `run_document_appearance_scope_assembly`：不调用模型；解析并折叠相邻重复章节标题，将每个 canonical fact 唯一绑定到章节和文档顺序，赋予保守 persistence，life/form/scene 暂时保持 unknown；
 - `prepare_document_appearance_transitions`：不调用模型；直接验证并复用原 M1 Manifest 的重叠 Chunk，以 `chunk_id` 连接该 Chunk 下已绑定到最终人物簇的 local/promoted nodes，生成 Chunk 人物表；
-- `run_document_appearance_transitions`：模型每个原 Chunk 只读取 `name + aliases + text`，返回最小 transition 语义与逐字 evidence；`chunk_id/hash/span` 留在代码信封，代码执行唯一 Grounding、绝对 span/character_id 回填、重叠 Chunk 去重、change 推导和 canonical fact scope 物化；
+- `run_document_appearance_transitions`：模型每个原 Chunk 只读取 `name + aliases + text`，返回最小 transition 语义与逐字 evidence；`chunk_id/hash/span` 留在代码信封。v2 代码门槛要求单段连续 evidence、同一 evidence 内逐字且有序的 before/after，排除没有身体变化的武魂/外物状态；生命阶段变化重置 form/scene，scene 在段落行或章节边界关闭，再执行绝对 span/character_id 回填、重叠 Chunk 去重、change 推导和 canonical fact scope 物化；
 - `DeepSeekProvider`：读取每个阶段请求自带的 schema name 和 response schema，M1/M2 共用同一套 HTTPS、重试、错误分类与脱敏 trace 实现。
 
 ### 5.8 文档级事实汇总

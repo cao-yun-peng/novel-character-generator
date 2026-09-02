@@ -1,0 +1,116 @@
+{
+  "schema_version": "appearance-transition-chunk-result-v1",
+  "identity": {
+    "chunk_id": "chunk-000007-13500-16000-29d830992ba6",
+    "chunk_hash": "29d830992ba691fba8be279e7fecafddccd88aae801f1b4b15e7585da0f4418c",
+    "document_span": {
+      "start": 13500,
+      "end": 16000
+    },
+    "characters": [
+      {
+        "name": "唐三",
+        "aliases": []
+      },
+      {
+        "name": "素云涛",
+        "aliases": [
+          "年轻人"
+        ]
+      },
+      {
+        "name": "男孩儿",
+        "aliases": []
+      }
+    ]
+  },
+  "model_output": {
+    "events": [
+      {
+        "character": "素云涛",
+        "evidence": "素云涛的头发原本是黑色的，但当那青光注入之后，瞬间就变成了灰色",
+        "dimension": "appearance",
+        "attribute": "hair_color",
+        "before": "黑色的",
+        "after": "灰色"
+      },
+      {
+        "character": "素云涛",
+        "evidence": "他的身体也似乎比之前膨胀了许多",
+        "dimension": "appearance",
+        "attribute": "body_size",
+        "before": "",
+        "after": "膨胀了许多"
+      },
+      {
+        "character": "素云涛",
+        "evidence": "素云涛的眼睛已经变成了幽幽的绿色",
+        "dimension": "appearance",
+        "attribute": "eye_color",
+        "before": "",
+        "after": "幽幽的绿色"
+      }
+    ]
+  },
+  "grounded_transitions": [
+    {
+      "character_id": "char-431fd9f3afcbe1cece75",
+      "evidence": "素云涛的头发原本是黑色的，但当那青光注入之后，瞬间就变成了灰色",
+      "document_span": {
+        "start": 14050,
+        "end": 14081
+      },
+      "dimension": "appearance",
+      "attribute": "hair_color",
+      "before": "黑色的",
+      "after": "灰色",
+      "change": "change"
+    },
+    {
+      "character_id": "char-431fd9f3afcbe1cece75",
+      "evidence": "他的身体也似乎比之前膨胀了许多",
+      "document_span": {
+        "start": 14111,
+        "end": 14126
+      },
+      "dimension": "appearance",
+      "attribute": "body_size",
+      "before": "",
+      "after": "膨胀了许多",
+      "change": "enter"
+    },
+    {
+      "character_id": "char-431fd9f3afcbe1cece75",
+      "evidence": "素云涛的眼睛已经变成了幽幽的绿色",
+      "document_span": {
+        "start": 14169,
+        "end": 14185
+      },
+      "dimension": "appearance",
+      "attribute": "eye_color",
+      "before": "",
+      "after": "幽幽的绿色",
+      "change": "enter"
+    }
+  ],
+  "review": [],
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 51218,
+    "http_status": 200,
+    "response_id": "32f2b945-fccc-4644-88dd-90e75c69c2b6",
+    "usage": {
+      "input_tokens": 2183,
+      "cached_input_tokens": 384,
+      "output_tokens": 6182,
+      "reasoning_tokens": 6020,
+      "total_tokens": 8365
+    },
+    "error_kind": null
+  }
+}
