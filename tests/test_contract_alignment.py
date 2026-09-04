@@ -22,6 +22,15 @@ from novel_character_generator.fact_groups import (
     DOCUMENT_CHARACTER_FACT_GROUPS_VERSION,
     POST_LINK_FACT_GROUPING_POLICY_VERSION,
 )
+from novel_character_generator.appearance_state_segments import STATE_SEGMENT_POLICY_VERSION
+from novel_character_generator.appearance_semantic_relations import (
+    APPEARANCE_PROPOSITION_POLICY_VERSION,
+    APPEARANCE_RELATION_POLICY_VERSION,
+)
+from novel_character_generator.appearance_transition import (
+    APPEARANCE_TRANSITION_POLICY_VERSION,
+    DOCUMENT_APPEARANCE_STATES_VERSION,
+)
 from novel_character_generator.m2 import (
     M2_ATTRIBUTION_RESPONSE_SCHEMA,
     M2_CATEGORIES,
@@ -152,8 +161,49 @@ class ContractAlignmentTests(unittest.TestCase):
             {"source_fact_hash", "source_occurrence_index", "source_occurrence"},
         )
 
+    def test_state_segment_contract_versions_and_observation_boundary_match_runtime(self) -> None:
+        packet = self.schema["$defs"]["DocumentCharacterAppearanceStates"]
+        self.assertEqual(
+            packet["properties"]["schema_version"]["const"],
+            DOCUMENT_APPEARANCE_STATES_VERSION,
+        )
+        self.assertEqual(
+            packet["properties"]["transition_policy_version"]["const"],
+            APPEARANCE_TRANSITION_POLICY_VERSION,
+        )
+        self.assertEqual(
+            packet["properties"]["state_segment_policy_version"]["const"],
+            STATE_SEGMENT_POLICY_VERSION,
+        )
+        self.assertEqual(
+            packet["properties"]["relation_policy_version"]["const"],
+            APPEARANCE_RELATION_POLICY_VERSION,
+        )
+        self.assertEqual(
+            packet["properties"]["normalization_policy_version"]["const"],
+            APPEARANCE_PROPOSITION_POLICY_VERSION,
+        )
+        segment = self.schema["$defs"]["CharacterStateSegment"]
+        self.assertIn("observed_fact_ids", segment["required"])
+        self.assertNotIn("active_fact_ids", segment["properties"])
+        relation = self.schema["$defs"]["AppearanceFactRelation"]
+        self.assertEqual(
+            set(relation["properties"]),
+            {
+                "relation_id",
+                "character_id",
+                "state_segment_id",
+                "attribute",
+                "left_fact_id",
+                "right_fact_id",
+                "relation",
+                "direction",
+                "rule",
+            },
+        )
+
     def test_m2_model_contract_is_fact_only_and_contains_no_orchestration_fields(self) -> None:
-        self.assertEqual(self.schema["version"], "3.22.0-draft1")
+        self.assertEqual(self.schema["version"], "3.24.0-draft1")
         defs = self.schema["$defs"]
         model_input = defs["M2CandidateAppearanceParsingInput"]
         model_output = defs["M2CandidateAppearanceParsingResult"]

@@ -41,6 +41,18 @@ from .appearance_scope import (
     parse_document_chapters,
     run_document_appearance_scope_assembly,
 )
+from .appearance_semantic_relations import (
+    APPEARANCE_PROPOSITION_POLICY_VERSION,
+    APPEARANCE_RELATION_POLICY_VERSION,
+    build_appearance_semantic_projection,
+)
+from .appearance_state_segments import (
+    STATE_SEGMENT_POLICY_VERSION,
+    attach_transition_ids,
+    build_character_state_segments,
+    scene_expiry_position,
+    transition_effective_position,
+)
 from .appearance_transition import (
     AppearanceTransitionProviderRequest,
     AppearanceTransitionChunk,
@@ -110,6 +122,9 @@ __all__ = [
     "N3DescribePoolResult",
     "N3TargetAppearancePacket",
     "SourceSpan",
+    "APPEARANCE_PROPOSITION_POLICY_VERSION",
+    "APPEARANCE_RELATION_POLICY_VERSION",
+    "STATE_SEGMENT_POLICY_VERSION",
     "AppearanceTransitionProviderRequest",
     "AppearanceTransitionChunk",
     "WindowCharacter",
@@ -119,8 +134,11 @@ __all__ = [
     "build_document_character_profiles",
     "build_document_character_fact_groups",
     "build_document_character_appearance_scopes",
+    "build_appearance_semantic_projection",
+    "build_character_state_segments",
     "build_appearance_transition_chunks",
     "build_transition_request",
+    "attach_transition_ids",
     "deduplicate_grounded_transitions",
     "build_document_character_registry",
     "build_document_local_character_nodes",
@@ -151,5 +169,7 @@ __all__ = [
     "run_n3_promotion_from_m2_run",
     "replay_promotion_grounding",
     "sha256_text",
+    "scene_expiry_position",
+    "transition_effective_position",
     "parse_document_chapters",
 ]

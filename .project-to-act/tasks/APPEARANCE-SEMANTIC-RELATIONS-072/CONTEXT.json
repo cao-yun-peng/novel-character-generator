@@ -1,0 +1,37 @@
+{
+  "task_id": "APPEARANCE-SEMANTIC-RELATIONS-072",
+  "lifecycle_stage": "5",
+  "lifecycle_revision": 2,
+  "runtime_version_before": "0.1.0.dev23",
+  "schema_version_before": "3.23.0-draft1",
+  "runtime_version_target": "0.1.0.dev24",
+  "schema_version_target": "3.24.0-draft1",
+  "input_file": "tests/小说/斗罗大陆前20章.txt",
+  "source_fact_groups": "runs/douluo-20ch-e2e-dev13-20260831/post-link-fact-groups-dev18/document-character-fact-groups.json",
+  "source_states": "runs/douluo-20ch-e2e-dev13-20260831/appearance-transitions-dev23/document-character-appearance-states.json",
+  "source_states_sha256": "91AF34306343800EC250D8CC6E9DED6E1E1E289E646E2F3CD5D8D8ADB5C6ADA0",
+  "target_output_dir": "runs/douluo-20ch-e2e-dev13-20260831/appearance-transitions-dev24",
+  "preexisting_user_change": "tests/test_appearance_transition.py contains user-authored trace/re-grounding coverage and must be preserved",
+  "candidate_audit": {
+    "canonical_facts": 109,
+    "same_character_segment_exact_attribute_groups": 16,
+    "candidate_pairs": 37,
+    "model_calls": 0
+  },
+  "completion_result": {
+    "artifact_schema_version": "document-character-appearance-states-v5",
+    "relations": 37,
+    "equivalent_relations": 7,
+    "compatible_relations": 5,
+    "unclassified_relations": 25,
+    "temporal_change_relations": 0,
+    "state_change_relations": 0,
+    "true_conflict_relations": 0,
+    "normalized_propositions": 103,
+    "semantic_model_calls": 0,
+    "artifact_sha256": "83D1A87EDFE83A8591122AEC5754861AFEE26D5531D0506C2639B74577071CDB",
+    "tests": "171 passed, 13 subtests passed",
+    "schema_validation": "Draft 2020-12 real artifact passed"
+  },
+  "context_freshness": "verified-2026-09-04"
+}

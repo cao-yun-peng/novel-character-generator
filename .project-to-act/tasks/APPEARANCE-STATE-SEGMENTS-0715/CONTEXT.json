@@ -1,0 +1,44 @@
+{
+  "task_id": "APPEARANCE-STATE-SEGMENTS-0715",
+  "lifecycle_stage": "5",
+  "lifecycle_revision": 2,
+  "runtime_version_before": "0.1.0.dev22",
+  "schema_version_before": "3.22.0-draft1",
+  "runtime_version_target": "0.1.0.dev23",
+  "schema_version_target": "3.23.0-draft1",
+  "input_file": "tests/小说/斗罗大陆前20章.txt",
+  "source_fact_groups": "runs/douluo-20ch-e2e-dev13-20260831/post-link-fact-groups-dev18/document-character-fact-groups.json",
+  "source_scopes": "runs/douluo-20ch-e2e-dev13-20260831/appearance-scopes-dev19/document-character-appearance-scopes.json",
+  "source_states": "runs/douluo-20ch-e2e-dev13-20260831/appearance-transitions-dev22/document-character-appearance-states.json",
+  "target_output_dir": "runs/douluo-20ch-e2e-dev13-20260831/appearance-transitions-dev23",
+  "preexisting_worktree_change": "tests/test_appearance_transition.py",
+  "implementation_boundary": {
+    "new_model_nodes": 0,
+    "provider_calls_expected": 0,
+    "observed_fact_binding": "in_scope",
+    "active_fact_applicability": "deferred-to-072-and-074",
+    "semantic_relation_graph": "deferred-to-072"
+  },
+  "validation": {
+    "unit_tests": 165,
+    "unittest_subtests": 13,
+    "compileall": true,
+    "draft_2020_12_state_instance_valid": true,
+    "git_diff_check": true,
+    "project_to_act_valid": true,
+    "lifecycle_valid": true
+  },
+  "replay_result": {
+    "planned_chunks": 17,
+    "resumed_chunks": 17,
+    "new_provider_calls": 0,
+    "grounded_transitions": 6,
+    "unique_transition_ids": 6,
+    "characters_with_segments": 7,
+    "state_segments": 14,
+    "canonical_facts": 109,
+    "unique_observed_fact_bindings": 109,
+    "artifact_sha256": "91AF34306343800EC250D8CC6E9DED6E1E1E289E646E2F3CD5D8D8ADB5C6ADA0"
+  },
+  "context_freshness": "verified-2026-09-04"
+}

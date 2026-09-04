@@ -5,11 +5,17 @@ import json
 from dataclasses import dataclass
 from typing import Any, Mapping, Protocol, Sequence, runtime_checkable
 
+from .appearance_semantic_relations import build_appearance_semantic_projection
+from .appearance_state_segments import (
+    STATE_SEGMENT_POLICY_VERSION,
+    attach_transition_ids,
+    build_character_state_segments,
+)
 from .errors import ContractValidationError
 from .text import SourceSpan, find_safe_quote_matches, sha256_text
 
 APPEARANCE_TRANSITION_CHUNKS_VERSION = "appearance-transition-chunks-v1"
-DOCUMENT_APPEARANCE_STATES_VERSION = "document-character-appearance-states-v3"
+DOCUMENT_APPEARANCE_STATES_VERSION = "document-character-appearance-states-v5"
 APPEARANCE_TRANSITION_POLICY_VERSION = "full-coverage-roster-grounding-v3"
 TRANSITION_DIMENSIONS = ("life", "form", "scene", "appearance")
 STATE_ATTRIBUTES = {
@@ -673,34 +679,6 @@ def deduplicate_grounded_transitions(
     )
 
 
-def _transition_effective_position(transition: Mapping[str, object]) -> int:
-    span = _span(transition.get("document_span"), "transition.document_span")
-    after = _string(transition.get("after"), "transition.after", allow_empty=True)
-    if not after:
-        return span.end
-    evidence = _string(transition.get("evidence"), "transition.evidence")
-    matches = find_safe_quote_matches(evidence, after)
-    if not matches:
-        raise ContractValidationError("transition after state is not grounded in evidence")
-    return span.start + max(match.span.start for match in matches)
-
-
-def _scene_expiry(
-    *,
-    document_text: str,
-    transition: Mapping[str, object],
-    chapter_spans: Sequence[SourceSpan],
-) -> int:
-    span = _span(transition.get("document_span"), "transition.document_span")
-    newline = document_text.find("\n", span.end)
-    line_end = len(document_text) if newline < 0 else newline
-    chapter_end = next(
-        (chapter.end for chapter in chapter_spans if chapter.start <= span.start < chapter.end),
-        len(document_text),
-    )
-    return min(line_end, chapter_end)
-
-
 def materialize_appearance_states(
     *,
     document_text: str,
@@ -716,108 +694,85 @@ def materialize_appearance_states(
         raise ContractValidationError("fact groups document_hash does not match source text")
     if fact_groups.get("source_document_version_id") != source_document_version_id:
         raise ContractValidationError("fact groups refer to a different source document")
-    groups: dict[str, Mapping[str, object]] = {}
-    for group in _sequence(fact_groups.get("fact_groups"), "fact_groups.fact_groups"):
-        item = _mapping(group, "canonical_fact")
-        canonical_id = _string(item.get("canonical_fact_id"), "canonical_fact.canonical_fact_id")
-        if canonical_id in groups:
-            raise ContractValidationError("duplicate canonical fact id")
-        groups[canonical_id] = item
-
-    transition_items: list[Mapping[str, object]] = []
-    for transition in transitions:
-        item = _mapping(transition, "transition")
-        span = _span(item.get("document_span"), "transition.document_span")
-        evidence = _string(item.get("evidence"), "transition.evidence")
-        if span.quote(document_text) != evidence:
-            raise ContractValidationError("transition evidence does not replay from source text")
-        transition_items.append(item)
-
-    chapter_spans = tuple(
-        _span(_mapping(chapter, "scope chapter").get("document_span"), "chapter.document_span")
+    transition_items = attach_transition_ids(
+        document_text=document_text,
+        source_document_version_id=source_document_version_id,
+        transition_policy_version=APPEARANCE_TRANSITION_POLICY_VERSION,
+        transitions=transitions,
+    )
+    chapters = tuple(
+        _mapping(chapter, "scope chapter")
         for chapter in _sequence(scopes.get("chapters"), "scopes.chapters")
     )
-    if not chapter_spans:
-        raise ContractValidationError("appearance scopes must contain chapter spans")
-
-    by_character: dict[str, list[Mapping[str, object]]] = {}
-    for transition in transition_items:
-        by_character.setdefault(str(transition["character_id"]), []).append(transition)
-    for items in by_character.values():
-        items.sort(
-            key=lambda item: (
-                _transition_effective_position(item),
-                {"life": 0, "form": 1, "scene": 2, "appearance": 3}.get(
-                    str(item["dimension"]), 4
-                ),
-            )
-        )
+    raw_assignments = tuple(
+        _mapping(assignment, "scope assignment")
+        for assignment in _sequence(scopes.get("fact_assignments"), "scopes.fact_assignments")
+    )
+    state_segments = build_character_state_segments(
+        document_text=document_text,
+        source_document_version_id=source_document_version_id,
+        chapters=chapters,
+        fact_groups=fact_groups,
+        fact_assignments=raw_assignments,
+        transitions=transition_items,
+    )
+    state_by_fact: dict[str, dict[str, str]] = {}
+    for segment in state_segments:
+        state = {
+            "life": str(segment["life"]),
+            "form": str(segment["form"]),
+            "scene": str(segment["scene"]),
+        }
+        for canonical_id in segment["observed_fact_ids"]:
+            state_by_fact[str(canonical_id)] = state
 
     assignments: list[dict[str, object]] = []
-    assigned_ids: set[str] = set()
-    for raw_assignment in _sequence(scopes.get("fact_assignments"), "scopes.fact_assignments"):
-        assignment = dict(_mapping(raw_assignment, "scope assignment"))
+    for raw_assignment in raw_assignments:
+        assignment = dict(raw_assignment)
         canonical_id = _string(assignment.get("canonical_fact_id"), "assignment.canonical_fact_id")
-        group = groups.get(canonical_id)
-        if group is None:
-            raise ContractValidationError("scope assignment references unknown canonical fact")
-        if canonical_id in assigned_ids:
-            raise ContractValidationError("duplicate scope assignment canonical fact id")
-        assigned_ids.add(canonical_id)
-        if group.get("character_id") != assignment.get("character_id"):
-            raise ContractValidationError("scope assignment character does not match canonical fact")
-        fact_span = _span(group.get("document_fact_span"), "canonical_fact.document_fact_span")
-        state = {"life": "unknown", "form": "unknown", "scene": "unknown"}
-        scene_expires_at: int | None = None
-        for transition in by_character.get(str(assignment["character_id"]), []):
-            if _transition_effective_position(transition) > fact_span.start:
-                break
-            dimension = str(transition["dimension"])
-            after = str(transition["after"]) or "unknown"
-            if dimension == "life":
-                state["life"] = after
-                state["form"] = "unknown"
-                state["scene"] = "unknown"
-                scene_expires_at = None
-            elif dimension == "form":
-                state["form"] = after
-            elif dimension == "scene":
-                state["scene"] = after
-                scene_expires_at = (
-                    _scene_expiry(
-                        document_text=document_text,
-                        transition=transition,
-                        chapter_spans=chapter_spans,
-                    )
-                    if after != "unknown"
-                    else None
-                )
-        if scene_expires_at is not None and fact_span.start >= scene_expires_at:
-            state["scene"] = "unknown"
-        assignment.update(state)
+        assignment.update(state_by_fact[canonical_id])
         assignments.append(assignment)
 
-    if assigned_ids != set(groups):
-        raise ContractValidationError("scope assignments and canonical fact groups differ")
+    semantic_projection = build_appearance_semantic_projection(
+        source_document_version_id=source_document_version_id,
+        document_length=len(document_text),
+        fact_groups=fact_groups,
+        fact_assignments=assignments,
+        state_segments=state_segments,
+    )
 
     counts = {dimension: sum(item[dimension] != "unknown" for item in assignments) for dimension in ("life", "form", "scene")}
     result = {
         "schema_version": DOCUMENT_APPEARANCE_STATES_VERSION,
         "transition_policy_version": APPEARANCE_TRANSITION_POLICY_VERSION,
+        "state_segment_policy_version": STATE_SEGMENT_POLICY_VERSION,
+        "relation_policy_version": semantic_projection["relation_policy_version"],
+        "normalization_policy_version": semantic_projection["normalization_policy_version"],
         "source_document_version_id": source_document_version_id,
         "coverage_status": "complete",
         "processed_source_end": len(document_text),
-        "transitions": [dict(item) for item in transitions],
+        "transitions": [dict(item) for item in transition_items],
+        "state_segments": [dict(item) for item in state_segments],
+        "relations": semantic_projection["relations"],
+        "normalized_propositions": semantic_projection["normalized_propositions"],
         "fact_assignments": assignments,
         "review": [dict(item) for item in review],
         "summary": {
             "planned_chunks": planned_chunks,
             "model_calls": model_calls,
-            "grounded_transitions": len(transitions),
+            "grounded_transitions": len(transition_items),
+            "characters_with_segments": len(
+                {str(segment["character_id"]) for segment in state_segments}
+            ),
+            "state_segments": len(state_segments),
+            "observed_fact_bindings": sum(
+                len(segment["observed_fact_ids"]) for segment in state_segments
+            ),
             "review_items": len(review),
             "facts_with_life": counts["life"],
             "facts_with_form": counts["form"],
             "facts_with_scene": counts["scene"],
+            **semantic_projection["summary"],
             "complete": True,
         },
     }

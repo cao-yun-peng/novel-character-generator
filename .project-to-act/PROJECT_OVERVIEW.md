@@ -4,7 +4,7 @@
 
 - 项目：Novel Character Generator
 - 分支：`v3-simplified-character-evidence`
-- 状态：M1/N2/M2/N3/promotion、文档事实汇总、身份、人物档案、post-link fact groups、appearance scope 基线和 transition 均已建立；斗罗 dev22 已物化 life/form/scene 状态
+- 状态：M1/N2/M2/N3/promotion、文档事实汇总、身份、人物档案、post-link fact groups、appearance transition、StateSegment 与确定性 relation/proposition baseline 均已建立；斗罗 dev24 已物化状态和关系视图
 - 工作区：`E:\project\agent\novel-character-generator`
 - Agent 生命周期：阶段 5（具体功能与纵向切片开发）`in_progress`，revision 2，风险 L1
 
@@ -32,10 +32,12 @@
 
 ## 当前焦点
 
-指定斗罗大陆文件的 dev13 全链路真实回归已贯通到最终 profiles；文件实际只有第1至19章，完整覆盖结论只针对该文件的 38,251 字符。身份层已完成局部确定性闭合，post-link 层把 129 facts 归为 109 groups 并保留 130 occurrences。070/071 已建立章节/persistence 基线和 life/form/scene transition：dev22 为 28 facts 赋 life、7 facts 赋 form、1 fact 赋 scene，并关闭已知的跨状态传播与外物误收问题。当前焦点转向 072 的作用域内语义关系与冲突分类，然后进入 Label/Review 投影、render-ready Profile Compiler 和上游人工质量评测。
+指定斗罗大陆文件的 dev13 全链路真实回归已贯通到最终 profiles；文件实际只有第1至19章，完整覆盖结论只针对该文件的 38,251 字符。身份层已完成局部确定性闭合，post-link 层把 129 facts 归为 109 groups 并保留 130 occurrences。070/071 已建立章节/persistence 基线和 life/form/scene transition；071.5 把 6 个 grounded transitions 物化为 7 个人物的 14 个连续 StateSegments，并让 109/109 facts 唯一绑定 observation。072 又生成 37 条 segment-aware relations（7 equivalent、5 compatible、25 unclassified）和 103 个 normalized propositions，新增语义 Provider 调用为 0。当前焦点转向 073 Label/Review 投影；active applicability 与完整 true-conflict Gate 保留到 render compiler 前的后续切片，之后再进入 074 和上游人工质量评测。
 
 ## 最新路线决定
 
+- `DEC-20260904-DETERMINISTIC-SEMANTIC-BASELINE-072`：072 首版只比较同人物、同 StateSegment、同 exact attribute 的 observed facts。完全相同值为 equivalent，长度至少 2 的安全子串为有方向的 compatible，其余保守 unclassified；只有 equivalent 连通分量可以派生合并 proposition。没有 active applicability 时不得自动标 true conflict，25 条未分类项保持可见。只有冻结人工集证明确定性规则不足后才考虑最小模型分类节点。
+- `DEC-20260904-STATE-SEGMENT-MATERIALIZATION-0715`：冻结 M1/N2/M2/N3 的职责和接口，但不把当前模型质量误记为冻结。`StateSegment` 不是新的可变真相源，也不新增模型节点；它由 grounded transitions、canonical fact observation、persistence 和文档边界在现有 appearance-state artifact 内确定性重建。每个 fact 只进入一个 `observed_fact_ids`，未来跨段有效性另建 active applicability，不复用 observation 绑定。072 先构建 segment-aware relation graph，再从等价分量派生 normalized proposition，避免“先归一再判断关系”的循环。Registry 继续是身份唯一事实源并保留 `appearance_fact_refs` 归属边；ProfileView/render profile 均为可丢弃重建的派生视图。`label_kind` 与 `label_stability` 保持正交；外部视觉资产接入前必须先解决稳定 subject identity。
 - `DEC-20260902-STATE-CLOSING-GROUNDING-071`：life transition 更新时必须清空旧 form/scene；scene 只持续到当前可确定的段落行或章节边界；没有人物身体变化的武魂、植物、武器或其他外物状态不得进入 form。transition evidence 必须是单段连续原文，before/after 必须在同一 evidence 内唯一且顺序成立；仅省略标点时由代码回填对应连续原文，而不让模型输出 span。保存的模型输出在恢复时重新 Grounding，避免为确定性策略变化重复调用模型。
 - `DEC-20260902-REUSE-SOURCE-CHUNKS-071`：用户要求 071 直接复用原 M1 Manifest 的 17 个重叠 Chunk，不重新生成独立窗口。代码验证原 Chunk id/hash/span/覆盖，并以 local/promoted node 的 `chunk_id` 将该 Chunk 已识别且已绑定到最终人物簇的人物加入人物表。Chunk 元数据只存在代码信封，不进入模型；模型输入仍为 `characters: [{name, aliases}] + text`。跨 Chunk 重复 transition 在 Grounding 后由代码合并。
 - `DEC-20260902-WINDOW-CHARACTER-ROSTER-071`：用户确认 071 模型输入应显式提供上游身份层已经识别的人物，避免模型在 transition discovery 中重复做人名识别。最终实现以原 M1 `chunk_id` 连接该 Chunk 下的 local/promoted nodes，再投影到最终人物簇；只发送 canonical label 及该 Chunk 必要 aliases，不发送 character_id、ref、span、hash 或全局人物档案。模型事件的 `character` 必须从人物表 canonical label 中选择，代码信封据此回填唯一 character_id。

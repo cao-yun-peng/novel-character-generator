@@ -1,0 +1,48 @@
+{
+  "schema_version": "appearance-transition-chunk-result-v1",
+  "identity": {
+    "chunk_id": "chunk-000009-18000-20500-3d2108420730",
+    "chunk_hash": "3d2108420730aaad815c492f13f9e3e2c43212d954fec2b94335399f6b7e229b",
+    "document_span": {
+      "start": 18000,
+      "end": 20500
+    },
+    "characters": [
+      {
+        "name": "老杰克",
+        "aliases": [
+          "杰克",
+          "杰克爷爷"
+        ]
+      },
+      {
+        "name": "唐昊",
+        "aliases": []
+      }
+    ]
+  },
+  "model_output": {
+    "events": []
+  },
+  "grounded_transitions": [],
+  "review": [],
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 593,
+    "http_status": 200,
+    "response_id": "717a85a9-a06c-41af-b7c1-8e10c4922c7a",
+    "usage": {
+      "input_tokens": 2306,
+      "cached_input_tokens": 512,
+      "output_tokens": 11,
+      "reasoning_tokens": 5,
+      "total_tokens": 2317
+    },
+    "error_kind": null
+  }
+}

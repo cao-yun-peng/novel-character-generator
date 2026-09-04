@@ -1,0 +1,79 @@
+{
+  "schema_version": "appearance-transition-chunk-result-v1",
+  "identity": {
+    "chunk_id": "chunk-000015-31500-34000-fb2b21bc7e87",
+    "chunk_hash": "fb2b21bc7e8785a29f224fb7d64a2323a8157e1fbf264abfb4237940867a2432",
+    "document_span": {
+      "start": 31500,
+      "end": 34000
+    },
+    "characters": [
+      {
+        "name": "唐三",
+        "aliases": [
+          "小三"
+        ]
+      },
+      {
+        "name": "老杰克",
+        "aliases": [
+          "杰克",
+          "杰克爷爷"
+        ]
+      },
+      {
+        "name": "唐昊",
+        "aliases": [
+          "高大的身影"
+        ]
+      }
+    ]
+  },
+  "model_output": {
+    "events": [
+      {
+        "character": "老杰克",
+        "evidence": "特意穿了一身新衣服",
+        "dimension": "scene",
+        "attribute": "scene_state",
+        "before": "",
+        "after": "一身新衣服"
+      }
+    ]
+  },
+  "grounded_transitions": [
+    {
+      "character_id": "char-c29b95295e06aa917f96",
+      "evidence": "特意穿了一身新衣服",
+      "document_span": {
+        "start": 32762,
+        "end": 32771
+      },
+      "dimension": "scene",
+      "attribute": "scene_state",
+      "before": "",
+      "after": "一身新衣服",
+      "change": "enter"
+    }
+  ],
+  "review": [],
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 8094,
+    "http_status": 200,
+    "response_id": "96c5333d-de8f-46cd-a5ec-fd8bed19afaf",
+    "usage": {
+      "input_tokens": 2313,
+      "cached_input_tokens": 512,
+      "output_tokens": 954,
+      "reasoning_tokens": 890,
+      "total_tokens": 3267
+    },
+    "error_kind": null
+  }
+}

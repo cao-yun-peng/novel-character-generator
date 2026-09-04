@@ -1,0 +1,7 @@
+{
+  "task_id": "APPEARANCE-SEMANTIC-RELATIONS-072",
+  "requested_by": "user",
+  "intent": "继续按照已确认的关系图优先方案逐步开发 072，不让语义归一覆盖证据或反过来决定关系。",
+  "current_behavior": "071.5 已提供连续 StateSegment 和唯一 observed fact binding，但同 segment 同 attribute 的多条事实仍没有显式关系，也没有可重建的 proposition 投影。",
+  "desired_behavior": "纯代码生成 segment-aware pair relation graph；仅对 equivalent 分量生成合并 proposition，其余事实保持独立并保留 unclassified。"
+}

@@ -1,0 +1,34 @@
+{
+  "id": "APPEARANCE-SEMANTIC-RELATIONS-072",
+  "title": "Segment-aware appearance relation graph and normalized propositions",
+  "status": "completed",
+  "owner": "Codex",
+  "objective": "在 StateSegment 内先建立保留原值和方向的事实关系图，再仅从 equivalent 连通分量派生 normalized propositions。",
+  "risk_level": "L1-deterministic-semantic-baseline",
+  "allowed_paths": [
+    "src/novel_character_generator",
+    "tests",
+    "docs",
+    "README.md",
+    "pyproject.toml",
+    ".project-to-act",
+    "runs/douluo-20ch-e2e-dev13-20260831/appearance-transitions-dev24"
+  ],
+  "invariants": [
+    "候选 pair 第一版只来自同 character_id、同 state_segment_id、同 exact attribute 的 observed facts",
+    "relation graph 必须先于 normalized proposition 生成，不能用规范值反推关系",
+    "raw category、attribute、value、fact group 和 provenance 不得被覆盖或删除",
+    "只有比较文本完全相等可自动 equivalent；安全子串只标 compatible；其余保守 unclassified",
+    "没有 active applicability 或明确重叠证据时不得自动标 true_conflict",
+    "normalized proposition 只能合并 equivalent 连通分量，每个 observed fact 恰好属于一个 proposition",
+    "本切片不增加模型节点或 Provider 调用"
+  ],
+  "acceptance": [
+    "关系 ID、方向、规则来源和 proposition ID 对相同输入稳定",
+    "完全相等、子串包含、无安全规则三条路径分别输出 equivalent、compatible、unclassified",
+    "不同人物、不同 segment 或不同 attribute 不生成 pair",
+    "所有 observed facts 恰好进入一个 normalized proposition，compatible/unclassified 不触发合并",
+    "篡改 segment/fact/assignment 引用、状态或 observation 位置时失败关闭",
+    "单测、Schema、compileall、斗罗保存输出零调用重放与两套治理校验通过"
+  ]
+}

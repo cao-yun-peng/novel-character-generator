@@ -2,8 +2,8 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://novel-character-generator.local/contracts/simplified-character-evidence-v3-model-schemas.json",
   "title": "Simplified Character Evidence Pipeline V3 Schemas",
-  "description": "Target machine contracts for model-visible payloads, code-only orchestration envelopes, grounded appearance evidence, bounded cross-Chunk character identity resolution, deterministic profiles, appearance scopes, and grounded state transitions.",
-  "version": "3.22.0-draft1",
+  "description": "Target machine contracts for model-visible payloads, code-only orchestration envelopes, grounded appearance evidence, bounded cross-Chunk character identity resolution, deterministic profiles, appearance scopes, grounded state transitions, derived character state segments, and segment-aware appearance relations.",
+  "version": "3.24.0-draft1",
   "$defs": {
     "SourceSpan": {
       "type": "object",
@@ -1481,8 +1481,9 @@
     "GroundedAppearanceTransition": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["character_id", "evidence", "document_span", "dimension", "attribute", "before", "after", "change"],
+      "required": ["transition_id", "character_id", "evidence", "document_span", "dimension", "attribute", "before", "after", "change"],
       "properties": {
+        "transition_id": {"type": "string", "pattern": "^transition-[0-9a-f]{20}$"},
         "character_id": {"type": "string", "pattern": "^char-[0-9a-f]{20}$"},
         "evidence": {"type": "string", "minLength": 1},
         "document_span": {"$ref": "#/$defs/SourceSpan"},
@@ -1505,31 +1506,137 @@
         "evidence": {"type": "string", "minLength": 1}
       }
     },
+    "StateSegmentBoundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["position", "reasons", "transition_ids"],
+      "properties": {
+        "position": {"type": "integer", "minimum": 0},
+        "reasons": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"enum": ["document_start", "transition", "scene_expiry", "document_end"]}
+        },
+        "transition_ids": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {"type": "string", "pattern": "^transition-[0-9a-f]{20}$"}
+        }
+      }
+    },
+    "CharacterStateSegment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["state_segment_id", "character_id", "sequence_index", "document_span", "life", "form", "scene", "start_boundary", "end_boundary", "observed_fact_ids"],
+      "properties": {
+        "state_segment_id": {"type": "string", "pattern": "^state-[0-9a-f]{20}$"},
+        "character_id": {"type": "string", "pattern": "^char-[0-9a-f]{20}$"},
+        "sequence_index": {"type": "integer", "minimum": 0},
+        "document_span": {"$ref": "#/$defs/SourceSpan"},
+        "life": {"type": "string", "minLength": 1},
+        "form": {"type": "string", "minLength": 1},
+        "scene": {"type": "string", "minLength": 1},
+        "start_boundary": {"$ref": "#/$defs/StateSegmentBoundary"},
+        "end_boundary": {"$ref": "#/$defs/StateSegmentBoundary"},
+        "observed_fact_ids": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {"type": "string", "pattern": "^cfact-[0-9a-f]{20}$"}
+        }
+      }
+    },
+    "AppearanceFactRelation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["relation_id", "character_id", "state_segment_id", "attribute", "left_fact_id", "right_fact_id", "relation", "direction", "rule"],
+      "properties": {
+        "relation_id": {"type": "string", "pattern": "^relation-[0-9a-f]{20}$"},
+        "character_id": {"type": "string", "pattern": "^char-[0-9a-f]{20}$"},
+        "state_segment_id": {"type": "string", "pattern": "^state-[0-9a-f]{20}$"},
+        "attribute": {"type": "string", "minLength": 1},
+        "left_fact_id": {"type": "string", "pattern": "^cfact-[0-9a-f]{20}$"},
+        "right_fact_id": {"type": "string", "pattern": "^cfact-[0-9a-f]{20}$"},
+        "relation": {"enum": ["equivalent", "compatible", "temporal_change", "state_change", "true_conflict", "unclassified"]},
+        "direction": {"enum": ["symmetric", "left_contains_right", "right_contains_left", "earlier_to_later", "unknown"]},
+        "rule": {"enum": ["exact_value", "value_containment", "no_safe_deterministic_rule"]}
+      }
+    },
+    "NormalizedAppearanceProposition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["proposition_id", "character_id", "state_segment_id", "attribute", "normalized_value", "categories", "representative_fact_id", "member_fact_ids", "source_values", "normalization_basis"],
+      "properties": {
+        "proposition_id": {"type": "string", "pattern": "^proposition-[0-9a-f]{20}$"},
+        "character_id": {"type": "string", "pattern": "^char-[0-9a-f]{20}$"},
+        "state_segment_id": {"type": "string", "pattern": "^state-[0-9a-f]{20}$"},
+        "attribute": {"type": "string", "minLength": 1},
+        "normalized_value": {"type": "string", "minLength": 1},
+        "categories": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"enum": ["age", "body", "face", "hair", "clothing", "accessory", "distinctive_mark", "appearance_state", "other_visual"]}
+        },
+        "representative_fact_id": {"type": "string", "pattern": "^cfact-[0-9a-f]{20}$"},
+        "member_fact_ids": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"type": "string", "pattern": "^cfact-[0-9a-f]{20}$"}
+        },
+        "source_values": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"type": "string", "minLength": 1}
+        },
+        "normalization_basis": {"enum": ["equivalent_component", "singleton"]}
+      }
+    },
     "DocumentCharacterAppearanceStates": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["schema_version", "transition_policy_version", "source_document_version_id", "coverage_status", "processed_source_end", "transitions", "fact_assignments", "review", "summary"],
+      "required": ["schema_version", "transition_policy_version", "state_segment_policy_version", "relation_policy_version", "normalization_policy_version", "source_document_version_id", "coverage_status", "processed_source_end", "transitions", "state_segments", "relations", "normalized_propositions", "fact_assignments", "review", "summary"],
       "properties": {
-        "schema_version": {"const": "document-character-appearance-states-v3"},
+        "schema_version": {"const": "document-character-appearance-states-v5"},
         "transition_policy_version": {"const": "full-coverage-roster-grounding-v3"},
+        "state_segment_policy_version": {"const": "transition-boundary-observation-v1"},
+        "relation_policy_version": {"const": "same-segment-exact-attribute-relations-v1"},
+        "normalization_policy_version": {"const": "equivalent-components-representative-v1"},
         "source_document_version_id": {"type": "string", "minLength": 1},
         "coverage_status": {"const": "complete"},
         "processed_source_end": {"type": "integer", "minimum": 1},
         "transitions": {"type": "array", "items": {"$ref": "#/$defs/GroundedAppearanceTransition"}},
+        "state_segments": {"type": "array", "items": {"$ref": "#/$defs/CharacterStateSegment"}},
+        "relations": {"type": "array", "items": {"$ref": "#/$defs/AppearanceFactRelation"}},
+        "normalized_propositions": {"type": "array", "items": {"$ref": "#/$defs/NormalizedAppearanceProposition"}},
         "fact_assignments": {"type": "array", "items": {"$ref": "#/$defs/AppearanceFactAssignment"}},
         "review": {"type": "array", "items": {"$ref": "#/$defs/AppearanceTransitionReviewItem"}},
         "summary": {
           "type": "object",
           "additionalProperties": false,
-          "required": ["planned_chunks", "model_calls", "grounded_transitions", "review_items", "facts_with_life", "facts_with_form", "facts_with_scene", "complete"],
+          "required": ["planned_chunks", "model_calls", "grounded_transitions", "characters_with_segments", "state_segments", "observed_fact_bindings", "review_items", "facts_with_life", "facts_with_form", "facts_with_scene", "relation_candidates", "equivalent_relations", "compatible_relations", "temporal_change_relations", "state_change_relations", "true_conflict_relations", "unclassified_relations", "normalized_propositions", "semantic_model_calls", "complete"],
           "properties": {
             "planned_chunks": {"type": "integer", "minimum": 1},
             "model_calls": {"type": "integer", "minimum": 0},
             "grounded_transitions": {"type": "integer", "minimum": 0},
+            "characters_with_segments": {"type": "integer", "minimum": 0},
+            "state_segments": {"type": "integer", "minimum": 0},
+            "observed_fact_bindings": {"type": "integer", "minimum": 0},
             "review_items": {"type": "integer", "minimum": 0},
             "facts_with_life": {"type": "integer", "minimum": 0},
             "facts_with_form": {"type": "integer", "minimum": 0},
             "facts_with_scene": {"type": "integer", "minimum": 0},
+            "relation_candidates": {"type": "integer", "minimum": 0},
+            "equivalent_relations": {"type": "integer", "minimum": 0},
+            "compatible_relations": {"type": "integer", "minimum": 0},
+            "temporal_change_relations": {"type": "integer", "minimum": 0},
+            "state_change_relations": {"type": "integer", "minimum": 0},
+            "true_conflict_relations": {"type": "integer", "minimum": 0},
+            "unclassified_relations": {"type": "integer", "minimum": 0},
+            "normalized_propositions": {"type": "integer", "minimum": 0},
+            "semantic_model_calls": {"const": 0},
             "complete": {"const": true}
           }
         }

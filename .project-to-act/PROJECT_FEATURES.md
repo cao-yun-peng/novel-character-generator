@@ -19,13 +19,15 @@
 | F-NEW-PROFILE-007 | 文档人物档案组装 | completed | `document-character-profiles-v1` 已实现并离线实跑；同文档 guard + 完整 fact_hash/Chunk/span 回放后物化 11 人物、61 facts、62 occurrences，0 未绑定，4 conflicts/2 review 保留，Provider 0 调用 |
 | F-NEW-LOCAL-COREF-008 | 局部确定性身份闭合 | completed | `grounded-local-coreference-v1` 只以同 Chunk、共享局部上下文中可回放的显式同位、示指命名或连续共指链建立 same edge；斗罗高大身影并入唐昊，禁止 global unique name 自动 join |
 | F-NEW-CANONICAL-FACTS-009 | Post-link canonical facts | completed | 第一阶段结构分组完成：稳定 canonical ID、人物/span/category/attribute/value 完整键及逐 raw fact/occurrence 双向 provenance；scope 内语义归一仍留给 072 |
-| F-NEW-APPEARANCE-STATE-010 | 外貌状态与 Variant | in_progress | 070 基线与 071 transition 已完成；life/form/scene 作用域可物化，待 072 语义关系与冲突分类 |
+| F-NEW-APPEARANCE-STATE-010 | 外貌状态与 Variant | in_progress | 070/071/071.5 与 072 确定性 baseline 已完成；连续 StateSegment、relation graph 和 equivalent propositions 可重建，待 active applicability 与完整 true-conflict Gate |
 | F-NEW-LABEL-REVIEW-011 | Label 与 Review 投影 | planned | exact/describe 与 label 语义解耦；title/stability 修正；audit 与 actionable queue 分离 |
 | F-NEW-RENDER-PROFILE-012 | Render-ready Profile Compiler | planned | 按人物及状态选择器生成结构化人物卡，并保留 canonical/raw 双层 provenance |
 | F-NEW-QUALITY-EVAL-013 | 人工质量评测 | planned | M1/M2/promotion 与新增状态层的冻结标注集、evaluator、正式阈值和 Stage 6 Gate |
 
 ## 功能变更历史
 
+- 2026-09-04：072 完成 `document-character-appearance-states-v5` 确定性 relation/proposition baseline。候选严格限制在同人物、同 StateSegment、同 exact attribute；斗罗生成 37 relations（7 equivalent、5 compatible、25 unclassified）和 103 propositions，只合并 equivalent，新增语义 Provider 0。active applicability 与完整 true-conflict Gate 仍待后续。
+- 2026-09-04：071.5 完成 `document-character-appearance-states-v4`。StateSegment 留在现有状态 artifact 内，由稳定 transition ID、文档边界、scene expiry 与 fact observation 确定性重建；`observed_fact_ids` 不冒充 active applicability。斗罗得到 7 人物/14 segments、109/109 唯一 observation binding，保存输出重放新增 Provider 0。
 - 2026-09-02：071 dev22 通过当前范围质量 Gate。模型仍只读取原 Chunk 的 name/aliases/text；代码要求单段连续 evidence、同 evidence 内有序状态短语，过滤不改变身体的武魂/外物，life 重置 form/scene，scene 在段落行或章节关闭。斗罗得到 life 28/form 7/scene 1，独狼附体进入/退出均闭合，保存输出可零调用重新 Grounding。
 - 2026-09-02：071 DeepSeek 实跑 17/17，模型 8 events、代码 7 grounded/1 review。退出附体成功找回，进入附体的非连续拼接 evidence 被失败关闭；状态传播将全身赤裸和蓝银草收回错误延续，证明 batch 完成不等于状态质量 Gate。
 - 2026-09-02：071 放弃重新生成 19 个窗口，改为严格复用原 M1 Manifest 的 17 个重叠 Chunk。代码以 node.chunk_id 连接最终人物簇，Chunk id/hash/span 用于验证、恢复和 Grounding，但模型仍只读取 name/aliases/text。

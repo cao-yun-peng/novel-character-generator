@@ -37,7 +37,8 @@
 | POST-LINK-FACT-GROUPS-069 | completed | dev18 独立 Schema/CLI 与失败关闭完成；斗罗 129 raw facts→109 groups，129 fact/130 occurrence bindings 零丢失，Provider 0 |
 | APPEARANCE-SCOPE-SCHEMA-070 | completed | dev19 最小扁平 Schema/CLI 完成；实际 19 章、109/109 facts 唯一排序分配，life/form/scene 保守 unknown，Provider 0 |
 | APPEARANCE-STATE-TRANSITIONS-071 | completed | dev22 DeepSeek 17/17；10 model events→6 grounded/4 隔离，life 28/form 7/scene 1，已关闭已知传播与证据问题 |
-| APPEARANCE-SEMANTIC-RELATIONS-072 | planned | 代码生成 scope 内候选 pair；规则处理确定项，最小模型输出只返回关系枚举，代码绑定并分类冲突 |
+| APPEARANCE-STATE-SEGMENTS-0715 | completed | dev23 在同一 appearance-state artifact 内物化 7 人物/14 StateSegments；109/109 facts 唯一 observed binding，Provider 0 |
+| APPEARANCE-SEMANTIC-RELATIONS-072 | completed | dev24 生成 37 relations（7 equivalent/5 compatible/25 unclassified）与 103 propositions；只合并 equivalent，新增语义 Provider 0 |
 | LABEL-REVIEW-PROJECTION-073 | planned | 修正 title 语义并拆分 audit 与 actionable review 视图 |
 | RENDER-PROFILE-COMPILER-074 | planned | 按时期/形态/场景编译可生图的结构化人物卡，保留双层 provenance |
 | UPSTREAM-HUMAN-EVAL-GATE-075 | planned | 建立 M1/M2/promotion 及新增状态层的正式人工标注评测和 Stage 6 Gate |
@@ -49,14 +50,16 @@
 
 ## 下一步
 
-1. 实现 `APPEARANCE-SEMANTIC-RELATIONS-072`：只在同人物、同 life/form/scene 有效作用域内生成候选 pair；规则处理确定项，模型只判断未决关系枚举。
-2. 072 的 pair ID、span、排序、绑定和冲突物化留在代码层；模型只读取两条最小事实文本及必要连续原文，不返回解释、置信度、hash 或 provenance。
-3. 依次实现 073～074：Label/Review 投影和 render-ready 编译；选择器不足时不得混合生命阶段或形态。
-4. 075 的标注规范和 evaluator 现在可以并行准备；Stage 6 前完成 M1/M2/promotion 正式人工质量 Gate，不以专家评分或确定性档案成功替代。
+1. 实现 `LABEL-REVIEW-PROJECTION-073`：将 mention 的 exact/describe 与 `label_kind`、`label_stability` 解耦，并把历史 audit 与当前 actionable review 分开。
+2. 为 074 准备 active applicability：根据 persistence、transition 和选择器派生事实跨 segment 的有效范围，不复用 `observed_fact_ids`。
+3. 只有 applicability 证明同 scope、同属性的事实有效期重叠后，才允许把 072 的 unclassified 候选升级为 true conflict；模型不得读取或输出内部 ID、hash、span、解释或置信度。
+4. 075 的标注规范和 evaluator 继续准备；Stage 6 前完成 M1/M2/promotion 正式人工质量 Gate，不以专家评分或确定性档案成功替代。
 5. 自然语言人物总结、图像提示词和视觉验收继续留在结构化 Profile Compiler 稳定之后。
 
 ## 进度历史
 
+- 2026-09-04：`APPEARANCE-SEMANTIC-RELATIONS-072` 确定性 baseline 完成。dev24/v5 只在同人物、同 StateSegment、同 exact attribute 内生成关系；相等值为 equivalent，安全子串为有方向的 compatible，其余保留 unclassified，再只从 equivalent 连通分量生成 proposition。斗罗 109 observations 得到 37 relations（7/5/25）和 103 propositions；17/17 保存输出离线恢复，新增 Provider 0，重复 artifact SHA-256 一致。171 tests、13 subtests、compileall、Draft 2020-12 真实实例、diff 与治理校验通过。active applicability、完整 true-conflict 判定和 075 人工 Gate 不在本次验收内。
+- 2026-09-04：`APPEARANCE-STATE-SEGMENTS-0715` 完成。dev23/v4 为 grounded transitions 生成稳定 ID，并在现有 appearance-state artifact 中物化 7 个人物的 14 个连续 StateSegments；109/109 canonical facts 各自唯一进入一个 `observed_fact_ids`，active applicability 明确推迟到 072/074。斗罗 17/17 保存模型输出离线恢复，新增 Provider 0，重复 state artifact hash 一致。165 tests、13 subtests、compileall、Draft 2020-12 真实实例、diff 与治理校验通过。
 - 2026-09-02：`APPEARANCE-STATE-TRANSITIONS-071` 完成。dev22 复用原 M1 17 Chunk，模型 payload 仍只有 characters/name/aliases/text；17/17 得到 10 events，代码接受 6 个连续 Grounded transitions、隔离 4 个改写状态。状态物化为 life 28/form 7/scene 1；life 重置 form/scene，scene 在段落行或章节关闭，蓝银草等外物不进入 form。保存模型输出可零调用重新 Grounding，最终重放新增 Provider 0。160 tests、13 subtests、Schema/实例、compileall、diff 与治理校验通过；不替代 075 人工 Gate。
 - 2026-09-02：071 完成首次真实 DeepSeek 执行。用户明确授权发送 17 个原 Chunk；首次 15 成功、2 个 max_output_tokens，8192 预算仅重试 2 个后 17/17 完成。得到 8 model events、7 grounded transitions、1 review，7/7 span 回放。准确找回素云涛退出武魂附体；进入附体因模型拼接不连续段落被拒绝。实跑同时暴露 scene/form 未正确关闭、蓝银草外物状态误入人物 form、转世 after 证据不足，因此任务和质量 Gate 保持 in_progress。
 - 2026-09-02：用户要求 071 不重新切 19 个窗口，而复用上游原 17 个 Chunk 及其身份元数据。实现已调整为读取并验证 M1 Manifest，要求 Chunk id/hash/span 与原文完整回放；以 local node 的 `chunk_id` 连接最终人物簇，17/17 Chunk 均生成已绑定人物表。模型 payload 仍只有 characters/name/aliases/text，Chunk 元数据只在代码信封。

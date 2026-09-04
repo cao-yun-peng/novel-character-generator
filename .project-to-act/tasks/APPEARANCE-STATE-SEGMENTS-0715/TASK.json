@@ -1,0 +1,33 @@
+{
+  "id": "APPEARANCE-STATE-SEGMENTS-0715",
+  "title": "Deterministic character appearance state segments",
+  "status": "completed",
+  "owner": "Codex",
+  "objective": "将 071 的 grounded transitions 与 070 fact assignments 物化为可重建的 StateSegment，并为 072 提供无循环依赖的状态边界。",
+  "risk_level": "L1-deterministic-derived-artifact",
+  "allowed_paths": [
+    "src/novel_character_generator",
+    "tests",
+    "docs",
+    "README.md",
+    "pyproject.toml",
+    ".project-to-act",
+    "runs/douluo-20ch-e2e-dev13-20260831/appearance-transitions-dev23"
+  ],
+  "invariants": [
+    "StateSegment 必须只由 grounded transitions、fact assignments、persistence 和文档边界确定性重建",
+    "不得新增模型节点、Provider 调用或独立可变状态真相源",
+    "M1、N2、M2、N3 的职责和接口保持不变，质量 Gate 状态不因本任务改变",
+    "每个 canonical fact 只按 observation 位置绑定一个 segment，observed_fact_ids 与未来 active applicability 分离",
+    "life transition 清空旧 form/scene，scene expiry 只关闭仍由同一 transition 建立的 scene",
+    "零事实人物也必须得到覆盖全文的 unknown segment",
+    "现有 appearance_fact_refs 继续作为 registry 到事实的归属边"
+  ],
+  "acceptance": [
+    "相同输入重复构建得到稳定 transition_id、state_segment_id 和字节级等价结构",
+    "所有 canonical facts 恰好出现在一个 observed_fact_ids 中，且原事实/provenance 不被复制或改写",
+    "同位置 transition 合并为单一边界，life/form/scene/appearance 边界顺序可回放",
+    "scene expiry、life reset、零事实人物和篡改引用均有自动化测试",
+    "Schema、单测、compileall、真实 071 保存输出离线重放与两套治理校验通过"
+  ]
+}

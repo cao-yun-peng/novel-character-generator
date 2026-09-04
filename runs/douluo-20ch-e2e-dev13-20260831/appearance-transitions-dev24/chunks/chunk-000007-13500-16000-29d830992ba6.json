@@ -1,0 +1,177 @@
+{
+  "schema_version": "appearance-transition-chunk-result-v1",
+  "identity": {
+    "chunk_id": "chunk-000007-13500-16000-29d830992ba6",
+    "chunk_hash": "29d830992ba691fba8be279e7fecafddccd88aae801f1b4b15e7585da0f4418c",
+    "document_span": {
+      "start": 13500,
+      "end": 16000
+    },
+    "characters": [
+      {
+        "name": "唐三",
+        "aliases": []
+      },
+      {
+        "name": "素云涛",
+        "aliases": [
+          "年轻人"
+        ]
+      },
+      {
+        "name": "男孩儿",
+        "aliases": []
+      }
+    ]
+  },
+  "model_output": {
+    "events": [
+      {
+        "character": "素云涛",
+        "evidence": "素云涛的头发原本是黑色的，但当那青光注入之后，瞬间就变成了灰色",
+        "dimension": "appearance",
+        "attribute": "头发颜色",
+        "before": "头发原本是黑色的",
+        "after": "瞬间就变成了灰色"
+      },
+      {
+        "character": "素云涛",
+        "evidence": "他的身体也似乎比之前膨胀了许多",
+        "dimension": "appearance",
+        "attribute": "体型",
+        "before": "他的身体也似乎比之前",
+        "after": "膨胀了许多"
+      },
+      {
+        "character": "素云涛",
+        "evidence": "同色毛发出现在他裸露在外的双手之上，同时，他的身体也似乎比之前膨胀了许多",
+        "dimension": "appearance",
+        "attribute": "肤色",
+        "before": "双手裸露在外",
+        "after": "毛发覆盖双手"
+      },
+      {
+        "character": "素云涛",
+        "evidence": "同色毛发出现在他裸露在外的双手之上",
+        "dimension": "appearance",
+        "attribute": "毛发",
+        "before": "双手裸露在外",
+        "after": "双手出现毛发"
+      },
+      {
+        "character": "素云涛",
+        "evidence": "素云涛的眼睛已经变成了幽幽的绿色",
+        "dimension": "appearance",
+        "attribute": "眼睛颜色",
+        "before": "",
+        "after": "眼睛变成幽幽绿色"
+      },
+      {
+        "character": "素云涛",
+        "evidence": "素云涛的眼睛突然亮了起来，在孩子们惊骇的目光中，他低喝一声，“独狼，附体。”",
+        "dimension": "form",
+        "attribute": "form_state",
+        "before": "",
+        "after": "独狼附体"
+      },
+      {
+        "character": "素云涛",
+        "evidence": "身体也似乎比之前膨胀了许多。全身充满了肌肉感。",
+        "dimension": "appearance",
+        "attribute": "体型",
+        "before": "之前",
+        "after": "比之前膨胀了许多，全身充满肌肉感"
+      }
+    ]
+  },
+  "grounded_transitions": [
+    {
+      "character_id": "char-431fd9f3afcbe1cece75",
+      "evidence": "素云涛的头发原本是黑色的，但当那青光注入之后，瞬间就变成了灰色",
+      "document_span": {
+        "start": 14050,
+        "end": 14081
+      },
+      "dimension": "appearance",
+      "attribute": "头发颜色",
+      "before": "头发原本是黑色的",
+      "after": "瞬间就变成了灰色",
+      "change": "change"
+    },
+    {
+      "character_id": "char-431fd9f3afcbe1cece75",
+      "evidence": "他的身体也似乎比之前膨胀了许多",
+      "document_span": {
+        "start": 14111,
+        "end": 14126
+      },
+      "dimension": "appearance",
+      "attribute": "体型",
+      "before": "他的身体也似乎比之前",
+      "after": "膨胀了许多",
+      "change": "change"
+    },
+    {
+      "character_id": "char-431fd9f3afcbe1cece75",
+      "evidence": "素云涛的眼睛突然亮了起来，在孩子们惊骇的目光中，他低喝一声，“独狼，附体。”",
+      "document_span": {
+        "start": 13963,
+        "end": 14001
+      },
+      "dimension": "form",
+      "attribute": "form_state",
+      "before": "",
+      "after": "独狼，附体",
+      "change": "enter"
+    }
+  ],
+  "review": [
+    {
+      "chunk_id": "chunk-000007-13500-16000-29d830992ba6",
+      "event": 3,
+      "reason": "state_not_supported_by_evidence",
+      "character": "素云涛",
+      "evidence": "同色毛发出现在他裸露在外的双手之上，同时，他的身体也似乎比之前膨胀了许多"
+    },
+    {
+      "chunk_id": "chunk-000007-13500-16000-29d830992ba6",
+      "event": 4,
+      "reason": "state_not_supported_by_evidence",
+      "character": "素云涛",
+      "evidence": "同色毛发出现在他裸露在外的双手之上"
+    },
+    {
+      "chunk_id": "chunk-000007-13500-16000-29d830992ba6",
+      "event": 5,
+      "reason": "state_not_supported_by_evidence",
+      "character": "素云涛",
+      "evidence": "素云涛的眼睛已经变成了幽幽的绿色"
+    },
+    {
+      "chunk_id": "chunk-000007-13500-16000-29d830992ba6",
+      "event": 7,
+      "reason": "state_not_supported_by_evidence",
+      "character": "素云涛",
+      "evidence": "身体也似乎比之前膨胀了许多。全身充满了肌肉感。"
+    }
+  ],
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 3953,
+    "http_status": 200,
+    "response_id": "48cff531-a4eb-4591-b084-25b68a6f2316",
+    "usage": {
+      "input_tokens": 2305,
+      "cached_input_tokens": 512,
+      "output_tokens": 680,
+      "reasoning_tokens": 336,
+      "total_tokens": 2985
+    },
+    "error_kind": null
+  }
+}

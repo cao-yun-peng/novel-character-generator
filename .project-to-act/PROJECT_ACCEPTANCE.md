@@ -50,8 +50,8 @@
 | 人物记忆 | 文档内身份与结构化人物档案已实现；时间/场景状态、跨文档长期记忆和真实模型一般化质量待后续 |
 | 局部确定性身份闭合 | 通过（同 Chunk、上下文交集、显式同位/命名/连续共指、逐字 span 回放；斗罗新增 1 edge，8→7 profiles，129 facts 保持；跨 Chunk、问句、无显式关系与 global unique name 不建边） |
 | Post-link canonical fact groups | 通过（`document-character-fact-groups-v1`；斗罗 129 raw facts→109 groups、10 multi-member groups、20 collapsed members；129 fact/130 occurrence bindings 全保留，同 span 不同 attribute 不合并） |
-| Appearance Scope / Variant | 部分通过（070 章节/persistence 基线与 071 life/form/scene transition 已完成；斗罗 dev22 为 life 28/form 7/scene 1，全部 transition evidence 可回放；完整 render variant 留给 072/074） |
-| 状态内语义关系与 true conflict | 待实现（只在同 scope、同规范属性、有效期重叠时判 true conflict；无法安全分类时保留 unclassified） |
+| Appearance Scope / Variant | 部分通过（070/071/071.5/072 确定性 baseline 已完成；斗罗 dev24 为 7 人物生成 14 个连续 StateSegments、37 relations 与 103 propositions，109/109 facts 唯一 observed binding；active applicability 与完整 render variant 留给 074） |
+| 状态内语义关系与 true conflict | 部分通过（relation graph/proposition baseline 已通过：7 equivalent、5 compatible、25 unclassified；只合并 equivalent。active applicability 与有效期重叠建立前不生成 true conflict） |
 | Label/Review 投影 | 待实现（大师为 title/stable；历史 resolved review 保留 audit，只有真未决进入 actionable queue） |
 | Render-ready Profile Compiler | 待实现（按明确状态选择器编译；不得混合唐三生命阶段或素云涛形态；输出双层 provenance） |
 | Stage 6 人工质量 Gate | 未通过（尚无冻结人工标注集、正式阈值和可复现 evaluator；专家主观评分不构成 Gate） |
@@ -90,6 +90,8 @@
 - `.project-to-act/tasks/POST-LINK-FACT-GROUPS-069/evidence/`
 - `.project-to-act/tasks/APPEARANCE-SCOPE-SCHEMA-070/evidence/`
 - `.project-to-act/tasks/APPEARANCE-STATE-TRANSITIONS-071/evidence/`
+- `.project-to-act/tasks/APPEARANCE-STATE-SEGMENTS-0715/evidence/`
+- `.project-to-act/tasks/APPEARANCE-SEMANTIC-RELATIONS-072/evidence/`
 
 ## 说明
 
@@ -97,6 +99,8 @@
 
 ## 验收记录
 
+- 2026-09-04：`APPEARANCE-SEMANTIC-RELATIONS-072` 确定性 baseline 验收通过。新增 dev24/Schema 3.24 的 `document-character-appearance-states-v5`、`same-segment-exact-attribute-relations-v1` 与 equivalent proposition 投影；关系先于归一生成，compatible/unclassified 不合并，raw facts 不改写。斗罗 109 observations 得到 37 relations（7 equivalent、5 compatible、25 unclassified）和 103 propositions；17/17 保存输出恢复、新 Provider 0，重复产物 SHA-256 为 `83D1A87EDFE83A8591122AEC5754861AFEE26D5531D0506C2639B74577071CDB`。171 tests、13 subtests、compileall、Draft 2020-12 真实实例、diff 与两套治理校验通过。本 Gate 不包含 active applicability、完整 true-conflict 判定、074 编译或 075 人工模型质量。
+- 2026-09-04：`APPEARANCE-STATE-SEGMENTS-0715` 验收通过。新增 dev23/Schema 3.23 的 `document-character-appearance-states-v4`、稳定 transition ID 与纯代码 StateSegment 构建器；区间按 document/transition/scene-expiry boundary 连续覆盖人物，life 重置 form/scene，fact 只保存唯一 observation ref。斗罗 17/17 保存输出恢复、新 Provider 0，7 人物/14 segments、6/6 transition IDs、109/109 observed facts，重复产物 SHA-256 一致。165 tests、13 subtests、compileall、Draft 2020-12 真实实例、diff 与两套治理校验通过。本 Gate 不包含 active applicability、072 语义关系、074 编译或 075 人工模型质量。
 - 2026-09-02：`APPEARANCE-STATE-TRANSITIONS-071` 当前范围验收通过。dev22 直接复用原 M1 17 Chunk，模型 payload 仅 characters/name/aliases/text；17/17 得到 10 events，代码接受 6 个单段连续 Grounded transitions、隔离 4 个改写状态。唐三 life、素云涛独狼附体进入/退出和老杰克换衣 scene 均闭合；状态物化 life 28/form 7/scene 1。life 重置 form/scene，scene 在段落行或章节边界关闭，蓝银草等非身体状态不进入 form。缓存恢复重新 Grounding 17/17、新 Provider 调用 0；160 tests、13 subtests、compileall、Draft 2020-12 Schema/两实例、diff 与治理校验通过。本 Gate 不替代 075 人工质量评测。
 - 2026-09-02：`APPEARANCE-SCOPE-SCHEMA-070` 验收通过。新增 dev19/Schema 3.19 的 `document-character-appearance-scopes-v1`、构建器和 CLI；斗罗实际 19 章，相邻重复标题正确折叠，109/109 canonical facts 按原文顺序唯一分配。life/form/scene 全部保守为 unknown；persistence 分布为 stable 2、persistent_until_changed 13、scene 18、momentary 12、unknown 64。150 tests、compileall、Draft 2020-12 Schema/实例、diff check 和两套治理 validate 通过，Provider 0。本 Gate 不包含 transition 识别或模型质量验收。
 - 2026-09-01：`POST-LINK-FACT-GROUPS-069` 验收通过。新增 dev18/Schema 3.18 的独立构建器、CLI 和 `same-character-span-structure-v1`；斗罗 129 raw facts 生成 109 groups，老杰克 26→14、素云涛 29→21，其余人物零折叠。129 source fact hashes、130 occurrences、109 fact quote/span 和 canonical IDs 全量验证；registry/profile 输入 hash 不变，重复输出 hash 稳定，Provider 0。146 tests、compileall、Draft 2020-12 Schema/实例、diff check 和两套治理 validate 通过。本 Gate 只证明结构分组，不包含 scope/语义归一，也不替代人工模型质量 Gate。

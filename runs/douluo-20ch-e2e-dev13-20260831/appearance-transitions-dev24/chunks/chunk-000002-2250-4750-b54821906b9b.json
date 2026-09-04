@@ -1,0 +1,64 @@
+{
+  "schema_version": "appearance-transition-chunk-result-v1",
+  "identity": {
+    "chunk_id": "chunk-000002-2250-4750-b54821906b9b",
+    "chunk_hash": "b54821906b9b4979c5f17e533521a44849c2d4475f3a78a7033a79eca23d72dd",
+    "document_span": {
+      "start": 2250,
+      "end": 4750
+    },
+    "characters": [
+      {
+        "name": "唐三",
+        "aliases": []
+      }
+    ]
+  },
+  "model_output": {
+    "events": [
+      {
+        "character": "唐三",
+        "evidence": "眼前的这个孩子，正是当初在唐门跳崖明志的唐三",
+        "dimension": "life",
+        "attribute": "life_stage",
+        "before": "",
+        "after": "眼前的这个孩子"
+      }
+    ]
+  },
+  "grounded_transitions": [
+    {
+      "character_id": "char-f47075b7019563fd8315",
+      "evidence": "眼前的这个孩子，正是当初在唐门跳崖明志的唐三",
+      "document_span": {
+        "start": 3889,
+        "end": 3911
+      },
+      "dimension": "life",
+      "attribute": "life_stage",
+      "before": "",
+      "after": "眼前的这个孩子",
+      "change": "enter"
+    }
+  ],
+  "review": [],
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 2203,
+    "http_status": 200,
+    "response_id": "377489e4-0e77-4430-aba1-f3c9ea8e2e4c",
+    "usage": {
+      "input_tokens": 2279,
+      "cached_input_tokens": 256,
+      "output_tokens": 176,
+      "reasoning_tokens": 127,
+      "total_tokens": 2455
+    },
+    "error_kind": null
+  }
+}

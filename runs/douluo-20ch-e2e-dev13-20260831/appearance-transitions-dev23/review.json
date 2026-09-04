@@ -1,0 +1,30 @@
+[
+  {
+    "chunk_id": "chunk-000007-13500-16000-29d830992ba6",
+    "event": 3,
+    "reason": "state_not_supported_by_evidence",
+    "character": "素云涛",
+    "evidence": "同色毛发出现在他裸露在外的双手之上，同时，他的身体也似乎比之前膨胀了许多"
+  },
+  {
+    "chunk_id": "chunk-000007-13500-16000-29d830992ba6",
+    "event": 4,
+    "reason": "state_not_supported_by_evidence",
+    "character": "素云涛",
+    "evidence": "同色毛发出现在他裸露在外的双手之上"
+  },
+  {
+    "chunk_id": "chunk-000007-13500-16000-29d830992ba6",
+    "event": 5,
+    "reason": "state_not_supported_by_evidence",
+    "character": "素云涛",
+    "evidence": "素云涛的眼睛已经变成了幽幽的绿色"
+  },
+  {
+    "chunk_id": "chunk-000007-13500-16000-29d830992ba6",
+    "event": 7,
+    "reason": "state_not_supported_by_evidence",
+    "character": "素云涛",
+    "evidence": "身体也似乎比之前膨胀了许多。全身充满了肌肉感。"
+  }
+]

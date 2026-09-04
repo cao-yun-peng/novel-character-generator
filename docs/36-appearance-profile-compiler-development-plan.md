@@ -4,7 +4,9 @@
 
 当前 `document-character-evidence.json`、`document-character-registry.json` 和 `document-character-profiles.json` 继续作为 Evidence Layer。它们负责保存可回放事实、人物身份结果和失败历史，不承担最终人物卡编译职责。
 
-下一阶段在它们之后新增可重放的 Profile Compiler 链路：先关闭有逐字原文支持的局部身份链，再按最终人物归属建立 canonical facts，随后建立时间/形态/场景作用域，最后按明确选择器编译 render-ready profile。任何中间层都不得覆盖或删除 raw evidence。
+下一阶段在它们之后新增可重放的 Profile Compiler 链路：先关闭有逐字原文支持的局部身份链，再按最终人物归属建立 canonical facts，随后由 Grounded Transition 确定性物化时间/形态/场景区间，最后按明确选择器编译 render-ready profile。任何中间层都不得覆盖或删除 raw evidence。
+
+M1、N2、M2、N3 的职责和接口在这条主线上保持稳定，但这只表示架构边界冻结，不表示模型质量已经通过最终人工 Gate。071 之后的核心不是继续给前半段加字段，而是让全局身份、状态区间、语义关系和派生视图各自只有一个清晰的事实源。
 
 ## 2. 不可破坏的约束
 
@@ -16,6 +18,10 @@
 6. render-ready 编译必须显式选择 `life_stage`、`form_state` 和需要时的 `scene_state`。选择器不足时输出多个候选 variant 或失败关闭，不静默混合。
 7. 新模型阶段若确有必要，仍拆分代码信封、最小模型输入、最小模型输出和代码验证；模型不得读写内部 ID、hash、span、cache key 或 trace。
 8. 历史 review 不删除。最终人物簇已消解的问题进入 `audit_only/resolved` 视图；只有仍需用户决策的项目进入 actionable queue。
+9. Registry 是人物身份唯一事实源；`appearance_fact_refs` 继续作为人物到事实的归属边，不把归属复制成第二套可编辑状态。
+10. `StateSegment` 是可丢弃重建的派生结果，只能由 Grounded Transition、事实 observation、persistence 和文档边界生成；不得被业务代码独立修改。
+11. 每个 canonical fact 的 observation 位置只绑定一个 segment，字段名为 `observed_fact_ids`。跨 segment 的持续有效性是后续 `active_fact_ids`/applicability 投影，二者不能混用。
+12. ProfileView 与 render-ready profile 都是缓存友好的派生视图，不是新的事实源。外部图像资产接入前，必须先解决与身份解析策略解耦的稳定 subject identity。
 
 ## 3. 目标数据流
 
@@ -36,10 +42,11 @@ document-character-fact-groups-v1
   - source_fact_hashes / source_occurrences 全保留
               |
               v
-document-character-appearance-states-v1
+document-character-appearance-states-v5
   - life_stage / form_state / scene_state
-  - persistence / transitions
-  - scope 内语义关系与冲突分类
+  - grounded transitions / derived StateSegment
+  - observed facts（唯一位置绑定）
+  - segment-aware 语义关系与冲突分类
   - corrected labels / actionable review projection
               |
               v
@@ -82,54 +89,62 @@ character_id
 
 这一层不合并 `眉眼` 与 `眉毛和眼睛`，也不合并不同 span 的同义事实。它解决身份归并后由多个 local/promoted mention 重复物化同一事实的问题。
 
-### 4.2 `document-character-appearance-states-v1`
+### 4.2 `document-character-appearance-states-v5`
 
-状态层是 Profile Compiler 的核心输入。每个人物至少包含：
+状态层是 Profile Compiler 的核心输入。071.5 不增加新的模型节点，而是在现有 artifact 中加入可重建区间；072 又在同一 artifact 内增加确定性 relation graph 与 normalized proposition 投影。每个人物至少有一个 `StateSegment`；零事实、零 transition 的人物也得到覆盖全文的 `unknown` 区间：
 
 ```json
 {
-  "scope_id": "scope-...",
+  "state_segment_id": "state-...",
   "character_id": "char-...",
   "sequence_index": 0,
-  "chapter_ref": {"chapter_id": "chapter-1", "source_span": {"start": 0, "end": 0}},
-  "life_stage": {"key": "reincarnated-child", "status": "grounded"},
-  "form_state": {"key": "base", "status": "default"},
-  "scene_state": {"key": "scene-...", "status": "grounded"},
-  "fact_bindings": [
-    {
-      "canonical_fact_id": "cfact-...",
-      "persistence": "persistent_until_changed"
-    }
-  ]
+  "document_span": {"start": 0, "end": 13145},
+  "life": "reincarnated-child",
+  "form": "unknown",
+  "scene": "unknown",
+  "start_boundary": {
+    "position": 0,
+    "reasons": ["document_start"],
+    "transition_ids": []
+  },
+  "end_boundary": {
+    "position": 13145,
+    "reasons": ["transition"],
+    "transition_ids": ["transition-..."]
+  },
+  "observed_fact_ids": ["cfact-..."]
 }
 ```
 
-`persistence` 最小枚举：
+区间为半开区间 `[start, end)`。同一位置的多个 transition 合并成一个 boundary；应用顺序固定为 life → form → scene → appearance，其中 life 会清空旧 form/scene。scene expiry 是显式派生 boundary，并且只能关闭仍由同一 transition 建立的 scene，不能误清除更晚的新 scene。
 
-- `stable_trait`
+`observed_fact_ids` 只表示“事实原文出现在这个区间”。事实的 `persistence` 仍保留在 `fact_assignments`，最小枚举为：
+
+- `stable`
 - `persistent_until_changed`
-- `scene_bound`
+- `scene`
 - `momentary`
 - `unknown`
 
-关系记录独立于事实值：
+071.5/072 不生成 `active_fact_ids`。074 在有了关系图和编译选择器后，才根据 persistence、transition 与覆盖规则派生事实在哪些 segment 仍然有效。这样 observation 唯一性与 applicability 多值性不会互相污染。
+
+072 的关系记录独立于事实值，并显式引用 segment：
 
 ```json
 {
-  "transition_id": "transition-...",
+  "relation_id": "relation-...",
   "character_id": "char-...",
-  "dimension": "attribute",
-  "transition_type": "changes_from_to",
-  "from_value": "黑色",
-  "to_value": "灰色",
-  "from_scope_id": "scope-...",
-  "to_scope_id": "scope-...",
-  "source_fact_hashes": ["..."],
-  "source_evidence_spans": [{"start": 0, "end": 0}]
+  "state_segment_id": "state-...",
+  "left_fact_id": "cfact-...",
+  "right_fact_id": "cfact-...",
+  "attribute": "身材",
+  "relation": "equivalent",
+  "direction": "symmetric",
+  "rule": "exact_value"
 }
 ```
 
-状态内第二遍语义归一必须包含 `scope_id`。关系枚举为：
+状态内第二遍语义关系必须包含 `state_segment_id`。先构建 pair relation graph，再对 `equivalent` 连通分量派生 normalized proposition；不能先覆盖原值再反推关系。首版候选键固定为 `character_id + state_segment_id + exact attribute`，不跨人物、区间或原始属性猜测关系。关系枚举为：
 
 - `equivalent`
 - `compatible`
@@ -139,6 +154,8 @@ character_id
 - `unclassified`
 
 第一版允许保守输出 `unclassified`，不得为了降低 review 数量强制归类。
+
+normalized proposition 只合并 `equivalent` 连通分量，并选择最早 observation 作为可重建代表；`compatible` 与 `unclassified` 事实各自保持 singleton。原始 `category/attribute/value`、canonical fact 与 raw provenance 均不被覆盖。当前确定性规则不会在缺少 active applicability 时生成 `true_conflict`。
 
 ### 4.3 `render-ready-character-profiles-v1`
 
@@ -219,15 +236,29 @@ character_id
 - 没有显式变化原文时不生成 transition；
 - 重叠 Chunk occurrence 不生成重复 transition。
 
-### 072：状态内语义归一与冲突分类
+### 071.5：确定性 StateSegment 物化
 
-先实现确定性规则：完全相同、明确包含、显式时间变化和显式形态变化。剩余项保守标 `unclassified`。只有在人工集证明规则不足后才增加最小模型分类节点。
+在现有 appearance-state artifact 内为 transition 增加稳定 ID，并按 document start/end、transition effective position 与 scene expiry 构造人物状态区间。不新增 Provider、CLI 主节点或第二份状态存储。
 
 验收样例：
 
-- `高大/高大魁梧`、`矍铄/精神矍铄` 不成为 true conflict；
-- `紧张/失望` 作为兼容或时间变化处理；
-- 同 scope 同属性且不可兼容的值仍为 true conflict。
+- life transition 清空旧 form/scene，同位置 form transition 可在清空后建立新形态；
+- 每个 canonical fact 按 `document_fact_span.start` 恰好进入一个 `observed_fact_ids`；
+- 零事实人物仍得到一个全文 `unknown` segment；
+- 相同输入重复构建得到相同 transition/segment ID；
+- 保存的 071 模型输出离线重放为 v4 artifact，Provider 新调用为 0。
+
+### 072：状态内语义归一与冲突分类
+
+已完成首个确定性纵向切片：以 `character_id + state_segment_id + exact attribute` 生成候选 pair，并建立有方向、保留原值的 relation graph；再只从 `equivalent` 分量派生 normalized proposition。完全相同值为 `equivalent`，长度至少 2 的明确包含为 `compatible`，其余为 `unclassified`。首版不增加模型节点，也不在缺少 active applicability 时猜测 `true_conflict`；时间/形态变化继续由 Grounded Transition 表达。只有冻结人工集证明确定性边界不足后，才考虑最小模型分类节点。
+
+验收样例：
+
+- `高大/高大魁梧`、`矍铄/精神矍铄` 成为有方向的 compatible，而不是 true conflict；
+- 完全相同值形成 equivalent edge，并只在 equivalent 连通分量内合并 proposition；
+- 无安全规则的 `紧张/失望` 等组合保持 `unclassified`，不强制解释为兼容或冲突；
+- 斗罗 dev24 对 109 个 observations 生成 37 条关系（7 equivalent、5 compatible、25 unclassified）与 103 个 propositions，semantic Provider 调用为 0；
+- 同 scope 同属性且不可兼容的值，只有在 active applicability 证明有效期重叠后才允许升级为 true conflict。
 
 ### 073：Label 与 Review 投影
 
@@ -273,6 +304,7 @@ review 同时输出两个视图：
   -> 069 structural fact groups
   -> 070 scope schema
   -> 071 state/transition materialization
+  -> 071.5 deterministic StateSegment materialization
   -> 072 semantic relations/conflicts
   -> 073 label/review projection
   -> 074 render-ready compiler
@@ -282,8 +314,9 @@ review 同时输出两个视图：
 
 ## 7. 风险与决策点
 
-1. 当前 `character_id` 受身份策略版本和 anchor 影响。068 合并更早出现的“高大的身影”后可能改变唐昊 ID。进入外部视觉资产关联前，需要决定是接受版本化 ID 迁移，还是新增与解析策略解耦的稳定 subject ID。
+1. 当前 `character_id` 受身份策略版本和 anchor 影响。068 合并更早出现的“高大的身影”后可能改变唐昊 ID。进入外部视觉资产关联前，必须先引入与解析策略解耦的稳定 subject ID 或完成显式版本迁移协议；当前 ID 不可直接作为永久外部资产键。
 2. 章节标题可确定性定位，场景边界未必可靠。070 应允许 `scene_state=unknown`，不得用不稳定切场阻塞 life/form state。
 3. 语义归一最容易把“包含”误当“等价”。072 必须保留原值、关系方向和置信来源，不能只保存一个覆盖后的字符串。
 4. 旧 review 是审计证据。073 只能改变面向用户的可操作状态，不能删除历史 issue。
 5. 首版 render-ready profile 是结构化编译结果，不等于图像 Prompt，也不等于视觉一致性已验收。
+6. 当前身份候选的二次扫描可先保持 O(n²) 简单实现，但进入更大语料前必须记录基准；只有基准证明需要时再引入索引，避免提前增加一致性维护成本。

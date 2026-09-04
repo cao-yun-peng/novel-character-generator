@@ -1,0 +1,47 @@
+{
+  "schema_version": "appearance-transition-chunk-result-v1",
+  "identity": {
+    "chunk_id": "chunk-000003-4500-7000-bbfa3a18c9e4",
+    "chunk_hash": "bbfa3a18c9e476de46397a73b1eb79a2490a6719ed36683d6bd731cc02b5dd7c",
+    "document_span": {
+      "start": 4500,
+      "end": 7000
+    },
+    "characters": [
+      {
+        "name": "唐三",
+        "aliases": []
+      },
+      {
+        "name": "唐昊",
+        "aliases": [
+          "高大的身影"
+        ]
+      }
+    ]
+  },
+  "model_output": {
+    "events": []
+  },
+  "grounded_transitions": [],
+  "review": [],
+  "provider_trace": {
+    "provider": "deepseek",
+    "api": "responses-v1",
+    "model": "deepseek-v4-flash",
+    "endpoint_origin": "https://api.deepseek.com",
+    "attempts": 1,
+    "success": true,
+    "duration_ms": 1453,
+    "http_status": 200,
+    "response_id": "fdb71761-5092-40c0-a2bd-dd6198bb2791",
+    "usage": {
+      "input_tokens": 2363,
+      "cached_input_tokens": 256,
+      "output_tokens": 75,
+      "reasoning_tokens": 69,
+      "total_tokens": 2438
+    },
+    "error_kind": null
+  }
+}

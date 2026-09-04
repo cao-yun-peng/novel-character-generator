@@ -135,6 +135,10 @@ def _sources(
             {
                 "canonical_fact_id": "cfact-1",
                 "character_id": "char-suyuntao",
+                "fact_quote": "黑发",
+                "category": "hair",
+                "attribute": "头发颜色",
+                "value": "黑色",
                 "document_fact_span": {"start": fact_start, "end": fact_end},
             }
         ],
@@ -403,11 +407,14 @@ def test_materialization_expires_scene_at_paragraph_and_resets_form_on_life_chan
         start = text.index(quote)
         canonical_id = f"cfact-{order}"
         groups.append(
-            {
-                "canonical_fact_id": canonical_id,
-                "character_id": "char-suyuntao",
-                "document_fact_span": {"start": start, "end": start + len(quote)},
-            }
+                {
+                    "canonical_fact_id": canonical_id,
+                    "character_id": "char-suyuntao",
+                    "category": "other_visual",
+                    "attribute": quote,
+                    "value": quote,
+                    "document_fact_span": {"start": start, "end": start + len(quote)},
+                }
         )
         assignments.append(
             {
@@ -488,12 +495,20 @@ def test_materialization_expires_scene_at_paragraph_and_resets_form_on_life_chan
     )
 
 
+class _FakeTrace:
+    def to_dict(self) -> dict[str, object]:
+        return {"provider": "fake", "success": True}
+
+
 class _FakeProvider:
-    def __init__(self) -> None:
+    def __init__(self, traces: list[object] | None = None) -> None:
         self.requests: list[object] = []
+        self.traces = traces
 
     def generate(self, request: object) -> dict[str, object]:
         self.requests.append(request)
+        if self.traces is not None:
+            self.traces.append(_FakeTrace())
         payload = request.user_payload
         evidence = "素云涛化为独狼"
         if evidence not in payload["text"]:
@@ -543,7 +558,8 @@ def test_prepare_and_resumable_batch(tmp_path: Path) -> None:
     assert prepared["planned_chunks"] > 1
     assert prepared["model_calls"] == 0
 
-    provider = _FakeProvider()
+    traces: list[object] = []
+    provider = _FakeProvider(traces)
     first = run_document_appearance_transitions(
         document_text=text,
         profiles_file=profiles_path,
@@ -553,6 +569,7 @@ def test_prepare_and_resumable_batch(tmp_path: Path) -> None:
         chunk_manifest_file=manifest_path,
         output_dir=output_dir,
         provider=provider,
+        traces=traces,
     )
     assert first["complete"] is True
     assert first["grounded_transitions"] == 1
@@ -562,6 +579,16 @@ def test_prepare_and_resumable_batch(tmp_path: Path) -> None:
         (output_dir / "document-character-appearance-states.json").read_text(encoding="utf-8")
     )
     assert states["transitions"][0]["character_id"] == "char-suyuntao"
+    assert len(json.loads((output_dir / "provider-traces.json").read_text(encoding="utf-8"))) == calls
+
+    event_result_path = next(
+        path
+        for path in (output_dir / "chunks").glob("*.json")
+        if json.loads(path.read_text(encoding="utf-8"))["model_output"]["events"]
+    )
+    stale = json.loads(event_result_path.read_text(encoding="utf-8"))
+    stale["grounded_transitions"] = []
+    _write_json(event_result_path, stale)
 
     second = run_document_appearance_transitions(
         document_text=text,
@@ -572,7 +599,11 @@ def test_prepare_and_resumable_batch(tmp_path: Path) -> None:
         chunk_manifest_file=manifest_path,
         output_dir=output_dir,
         provider=provider,
+        traces=traces,
     )
     assert second["new_provider_calls"] == 0
     assert second["resumed_chunks"] == prepared["planned_chunks"]
     assert len(provider.requests) == calls
+    refreshed = json.loads(event_result_path.read_text(encoding="utf-8"))
+    assert refreshed["grounded_transitions"]
+    assert len(json.loads((output_dir / "provider-traces.json").read_text(encoding="utf-8"))) == calls

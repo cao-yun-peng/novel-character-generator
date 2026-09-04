@@ -1,0 +1,7 @@
+{
+  "task_id": "APPEARANCE-STATE-SEGMENTS-0715",
+  "requested_by": "user",
+  "intent": "按照已讨论的架构收敛结论先更新文档，再逐步实现 transition-derived StateSegment，避免在 072 之前形成多套状态真相。",
+  "current_behavior": "071 只把状态投影回逐事实 assignment；消费方无法直接枚举人物在全文中的稳定状态区间，且 observed fact 与未来 active fact 尚未显式分层。",
+  "desired_behavior": "现有 appearance-state 产物内新增确定性 state_segments；segment 保存状态、边界原因、transition refs 和 observation refs，active applicability 留给后续语义/编译阶段。"
+}

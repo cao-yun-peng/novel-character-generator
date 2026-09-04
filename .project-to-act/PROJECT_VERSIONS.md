@@ -4,8 +4,8 @@
 
 - 分支：`v3-simplified-character-evidence`
 - 契约：简化人物证据流程 V3 草案
-- Schema：`3.22.0-draft1`
-- 运行时版本：`0.1.0.dev22`
+- Schema：`3.24.0-draft1`
+- 运行时版本：`0.1.0.dev24`
 - 发布状态：未发布
 
 ## 版本原则
@@ -14,6 +14,8 @@
 
 ## 版本历史
 
+- 2026-09-04：Schema 升级到 `3.24.0-draft1`、运行时升级到 `0.1.0.dev24`；appearance state artifact 升级 v5，在同人物/StateSegment/exact-attribute 内新增确定性关系图，并只从 equivalent 连通分量派生 normalized propositions。compatible/unclassified 保持独立，active applicability 与完整 true-conflict Gate 延后。
+- 2026-09-04：Schema 升级到 `3.23.0-draft1`、运行时升级到 `0.1.0.dev23`；appearance state artifact 升级 v4，为 Grounded Transition 增加稳定 ID，并在同一产物内新增确定性 StateSegment、boundary provenance 与唯一 observed fact binding。active applicability 和语义关系保留给 072/074。
 - 2026-09-02：Schema 升级到 `3.22.0-draft1`、运行时升级到 `0.1.0.dev22`；071 Grounding/状态物化升级 v3，新增 life 重置 form/scene、scene 段落行/章节关闭、非身体 form 过滤、单段连续且状态有序回填，以及保存模型输出的零调用重新 Grounding。
 - 2026-09-02：Schema 升级到 `3.20.0-draft1`、运行时升级到 `0.1.0.dev20`；071 运行时复用原 M1 Manifest 的 17 个重叠 Chunk，以 node.chunk_id 注入已绑定人物，模型边界仅保留 name/aliases/text，系统元数据、Grounding、去重和状态物化均在代码侧。真实模型运行尚未验收。
 - 2026-09-02：Schema 升级到 `3.19.0-draft1`、运行时升级到 `0.1.0.dev19`；新增 `document-character-appearance-scopes-v1`、确定性章节解析、canonical fact 顺序分配和保守 persistence 基线，life/form/scene 不确定项显式为 unknown。

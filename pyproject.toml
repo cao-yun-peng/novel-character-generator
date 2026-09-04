@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "novel-character-generator"
-version = "0.1.0.dev22"
+version = "0.1.0.dev24"
 description = "Grounded character mention discovery for Chinese novels"
 requires-python = ">=3.11"
 dependencies = []

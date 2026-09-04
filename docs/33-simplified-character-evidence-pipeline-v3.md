@@ -482,7 +482,7 @@ exact 归属和 N3 仲裁结束后，每个仍有未消费 evidence 的 describe
 
 ### 5.7 当前运行时映射
 
-Python `0.1.0.dev22` 按上述契约提供以下边界：
+Python `0.1.0.dev24` 按上述契约提供以下边界：
 
 - `build_m2_attribution_envelopes`：从一个 N2 `GroundingResult` 为每个 individual exact 生成一个 `M2OrchestrationEnvelope`，并把全部 individual describe 展开为代码侧 occurrence binding；collective 与 null mention 不进入输入；
 - `M2AttributionOrchestrator`：只把 `model_input`、M2 system instruction 和 `M2_ATTRIBUTION_RESPONSE_SCHEMA` 交给 Provider，解析最小事实输出后执行 target 优先、describe 唯一 occurrence 的安全绑定；失败项只进入代码侧 issues；
@@ -501,7 +501,8 @@ Python `0.1.0.dev22` 按上述契约提供以下边界：
 - `run_document_fact_group_assembly`：不调用模型；验证 registry/profile 的文档身份、人物归属、完整 raw fact hash、来源 artifact hash 和所有 span，再按最终人物与完整结构键生成稳定 canonical fact groups；
 - `run_document_appearance_scope_assembly`：不调用模型；解析并折叠相邻重复章节标题，将每个 canonical fact 唯一绑定到章节和文档顺序，赋予保守 persistence，life/form/scene 暂时保持 unknown；
 - `prepare_document_appearance_transitions`：不调用模型；直接验证并复用原 M1 Manifest 的重叠 Chunk，以 `chunk_id` 连接该 Chunk 下已绑定到最终人物簇的 local/promoted nodes，生成 Chunk 人物表；
-- `run_document_appearance_transitions`：模型每个原 Chunk 只读取 `name + aliases + text`，返回最小 transition 语义与逐字 evidence；`chunk_id/hash/span` 留在代码信封。v2 代码门槛要求单段连续 evidence、同一 evidence 内逐字且有序的 before/after，排除没有身体变化的武魂/外物状态；生命阶段变化重置 form/scene，scene 在段落行或章节边界关闭，再执行绝对 span/character_id 回填、重叠 Chunk 去重、change 推导和 canonical fact scope 物化；
+- `run_document_appearance_transitions`：模型每个原 Chunk 只读取 `name + aliases + text`，返回最小 transition 语义与逐字 evidence；`chunk_id/hash/span` 留在代码信封。v3 代码门槛要求单段连续 evidence、同一 evidence 内逐字且有序的 before/after，排除没有身体变化的武魂/外物状态；生命阶段变化重置 form/scene，scene 在段落行或章节边界关闭，再执行绝对 span/character_id 回填、重叠 Chunk 去重、change 推导、稳定 transition ID、canonical fact state 投影和 StateSegment 物化；
+- `build_appearance_semantic_projection`：不调用模型；只在同人物、同 StateSegment、同 exact attribute 内生成稳定 pair relation，以完全相等和安全子串规则分类，并只从 equivalent 连通分量派生 normalized propositions；
 - `DeepSeekProvider`：读取每个阶段请求自带的 schema name 和 response schema，M1/M2 共用同一套 HTTPS、重试、错误分类与脱敏 trace 实现。
 
 ### 5.8 文档级事实汇总
@@ -743,6 +744,16 @@ character_id
 
 构建器验证 registry/profile 同文档、人物集合与逐人物 fact ownership 完全一致，重算 raw `fact_hash`，回放 fact/evidence/Chunk span 与 Chunk hash，并核对 profile summary 和 source artifact hash。任一不一致都失败关闭。输入 registry/profile 只读，Provider 调用为 0。
 
+### 7.9 Grounded transition 与派生 StateSegment
+
+M1/N2/M2/N3 的职责和模型边界在当前主线冻结；“冻结”不等于它们的模型质量已完成 075 人工 Gate。071 之后不再向前半段追加全局状态字段，而由 identity registry、canonical fact groups 和 `document-character-appearance-states-v5` 分层承载身份、事实与状态。
+
+最终 Grounded Transition 由代码根据来源版本、transition 策略及完整 grounded 内容生成稳定 `transition_id`。`StateSegment` 不调用模型，也不是独立可编辑真相源；它按每个人物的 document start/end、transition effective position 与 scene expiry 把全文分成连续半开区间。每个区间保存 `life/form/scene`、起止 boundary 原因、相关 transition 引用和 `observed_fact_ids`。同位置事件合并为一个 boundary，并固定按 life → form → scene → appearance 应用；life 清空旧 form/scene，旧 scene expiry 不能清除更晚建立的 scene。
+
+每个 canonical fact 只按 `document_fact_span.start` 进入一个 `observed_fact_ids`，事实内容、persistence 与 raw provenance 仍留在既有 fact group/assignment 层。`observed` 不等于“当前仍有效”；跨区间持续的 `active_fact_ids` 或 applicability 只能由 074 根据 persistence、关系图和选择器另行派生。零事实人物仍有一个覆盖全文的 `unknown` segment。
+
+072 已先在 `character_id + state_segment_id + exact attribute` 内建立保留原值和方向的 relation graph，再由 `equivalent` 连通分量派生 normalized proposition；不得先覆盖原值再反推关系。确定性规则只把完全相同值判为 `equivalent`、长度至少 2 的安全子串判为有方向的 `compatible`，其他 pair 保守为 `unclassified`。斗罗 dev24 的 109 个 observations 形成 37 条关系（7 equivalent、5 compatible、25 unclassified）与 103 个 propositions，新增语义模型调用为 0。没有 active applicability 时不会生成 `true_conflict`。Registry 的 `appearance_fact_refs` 继续是身份到事实的归属边，ProfileView/render profile 只作为可重建视图。`label_kind` 与 `label_stability` 在 073 保持正交；当前 `character_id` 不可在缺少稳定 subject identity 或迁移协议时直接作为永久外部视觉资产键。
+
 ## 8. V3 完成门槛
 
 V3 设计完成不等于运行时完成。进入人物识别阶段前至少需要：
@@ -764,4 +775,6 @@ V3 设计完成不等于运行时完成。进入人物识别阶段前至少需�
 15. 人物档案只按同文档 `fact_hash` 连接；缺失、冲突、重复占用和 span 回放失败均失败关闭，零事实人物与未绑定事实保留；
 16. 局部确定性身份边只能来自双方共享局部上下文中的可回放显式关系，不能以全局唯一姓名自动 join，并必须继续受 cannot-link 约束；
 17. Post-link canonical fact groups 必须使用包含 `attribute` 的完整结构键，保留全部 raw fact hash 与 occurrence binding，并且不得改写 raw profiles；
-18. 真实模型身份精度需通过人工标注数据集评测，不能由“批处理完成”替代。
+18. Grounded Transition 必须有稳定 ID；StateSegment 必须连续覆盖每个注册人物、由确定性输入重建，并让每个 canonical fact 恰好出现于一个 `observed_fact_ids`；
+19. 072 必须先形成 segment-aware relation graph，再只从 equivalent 连通分量派生 normalized proposition；compatible/unclassified 不得触发合并，observation binding 与 active applicability 必须分层；
+20. 真实模型身份精度需通过人工标注数据集评测，不能由“批处理完成”替代。
