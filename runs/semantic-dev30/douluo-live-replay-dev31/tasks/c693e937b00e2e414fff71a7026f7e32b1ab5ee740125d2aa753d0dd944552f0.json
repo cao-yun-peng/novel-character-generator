@@ -1,0 +1,6 @@
+{
+  "task_id": "c693e937b00e2e414fff71a7026f7e32b1ab5ee740125d2aa753d0dd944552f0",
+  "payload_hash": "039765cb9db913070228dca02007f89de7f89eb9d55f083b93e26b53a394df31",
+  "request_fingerprint": "719dae7e27e3cf3f5ca110104bf28271d6099b83aa654fe1f5f17529ea3b20e5",
+  "model_output": "{\"events\":[{\"character\":\"唐三\",\"kind\":\"scene_boundary\",\"facts\":[],\"evidence\":\"第2章 斗罗大陆，异界唐三（一）\\r\\n　　第2章 斗罗大陆，异界唐三（一） \\r\\n　　斗罗大陆，天斗帝国西南，法斯诺行省。\"}]}"
+}

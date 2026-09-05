@@ -31,7 +31,19 @@ from novel_character_generator.appearance_transition import (
     APPEARANCE_TRANSITION_POLICY_VERSION,
     DOCUMENT_APPEARANCE_STATES_VERSION,
 )
+from novel_character_generator.label_review_projection import (
+    DOCUMENT_LABEL_REVIEW_PROJECTION_VERSION,
+    LABEL_PROJECTION_POLICY_VERSION,
+    REVIEW_PROJECTION_POLICY_VERSION,
+)
+from novel_character_generator.render_profile_compiler import (
+    FACT_APPLICABILITY_POLICY_VERSION,
+    RENDER_PROFILE_COMPILER_POLICY_VERSION,
+    RENDER_PROFILE_REQUESTS_VERSION,
+    RENDER_READY_CHARACTER_PROFILES_VERSION,
+)
 from novel_character_generator.m2 import (
+    M2_ATTRIBUTION_GROUNDING_POLICY_VERSION,
     M2_ATTRIBUTION_RESPONSE_SCHEMA,
     M2_CATEGORIES,
     M2_ENVELOPE_VERSION,
@@ -202,8 +214,64 @@ class ContractAlignmentTests(unittest.TestCase):
             },
         )
 
+    def test_label_review_projection_contract_matches_runtime(self) -> None:
+        packet = self.schema["$defs"]["DocumentCharacterLabelReviewProjection"]
+        self.assertEqual(
+            packet["properties"]["schema_version"]["const"],
+            DOCUMENT_LABEL_REVIEW_PROJECTION_VERSION,
+        )
+        self.assertEqual(
+            packet["properties"]["label_projection_policy_version"]["const"],
+            LABEL_PROJECTION_POLICY_VERSION,
+        )
+        self.assertEqual(
+            packet["properties"]["review_projection_policy_version"]["const"],
+            REVIEW_PROJECTION_POLICY_VERSION,
+        )
+        label = self.schema["$defs"]["ProjectedCharacterLabel"]
+        self.assertIn("source_label_role", label["required"])
+        self.assertIn("source_globally_unique", label["required"])
+        self.assertIn("label_kind", label["required"])
+        self.assertIn("label_stability", label["required"])
+        self.assertIn("audit_items", packet["required"])
+        self.assertIn("actionable_review_items", packet["required"])
+
+    def test_render_profile_contract_matches_runtime(self) -> None:
+        requests = self.schema["$defs"]["RenderProfileCompileRequests"]
+        self.assertEqual(
+            requests["properties"]["schema_version"]["const"],
+            RENDER_PROFILE_REQUESTS_VERSION,
+        )
+        profiles = self.schema["$defs"]["RenderReadyCharacterProfiles"]
+        self.assertEqual(
+            profiles["properties"]["schema_version"]["const"],
+            RENDER_READY_CHARACTER_PROFILES_VERSION,
+        )
+        self.assertEqual(
+            profiles["properties"]["compiler_policy_version"]["const"],
+            RENDER_PROFILE_COMPILER_POLICY_VERSION,
+        )
+        self.assertEqual(
+            profiles["properties"]["applicability_policy_version"]["const"],
+            FACT_APPLICABILITY_POLICY_VERSION,
+        )
+        profile = self.schema["$defs"]["RenderReadyCharacterProfile"]
+        for field in (
+            "identity_labels",
+            "active_fact_ids",
+            "provisional_fact_ids",
+            "stable_traits",
+            "variant_traits",
+            "scene_overrides",
+            "transitions",
+            "unresolved_conflicts",
+            "provenance",
+            "compile_warnings",
+        ):
+            self.assertIn(field, profile["required"])
+
     def test_m2_model_contract_is_fact_only_and_contains_no_orchestration_fields(self) -> None:
-        self.assertEqual(self.schema["version"], "3.24.0-draft1")
+        self.assertEqual(self.schema["version"], "3.30.0-draft1")
         defs = self.schema["$defs"]
         model_input = defs["M2CandidateAppearanceParsingInput"]
         model_output = defs["M2CandidateAppearanceParsingResult"]
@@ -262,9 +330,11 @@ class ContractAlignmentTests(unittest.TestCase):
             "#/$defs/M2CandidateAppearanceParsingInput",
         )
         grounded = self.schema["$defs"]["M2GroundedCandidateAppearanceParsingResult"]
+        self.assertEqual(grounded["properties"]["grounding_policy_version"]["const"],
+                         M2_ATTRIBUTION_GROUNDING_POLICY_VERSION)
         self.assertEqual(
             set(grounded["properties"]),
-            {"target_character_ref", "task_cache_key", "grounded_belongs_to_target"},
+            {"grounding_policy_version", "target_character_ref", "task_cache_key", "grounded_belongs_to_target"},
         )
         grounded_fact = self.schema["$defs"]["M2GroundedBelongsToFact"]
         self.assertIn("source_evidence_span", grounded_fact["properties"])

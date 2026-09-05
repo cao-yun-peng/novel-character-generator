@@ -1,5 +1,7 @@
 # 项目功能
 
+081/dev31：斗罗 52 个语义任务已实跑完成（53 次调用，1 次输出截断后重试成功）；接受 7 个事件、35 条关系，1 项事件复核。修复重复关系引文导致 Snapshot 重新定位不一致，52 份响应零调用重放、4 个 Snapshot 校验通过。人工质量 Gate 仍未通过。 详见 [实测报告](../docs/42-semantics-live-validation.md)。
+
 ## 状态定义
 
 - `completed`：契约或工程已完成并通过对应验证
@@ -19,13 +21,29 @@
 | F-NEW-PROFILE-007 | 文档人物档案组装 | completed | `document-character-profiles-v1` 已实现并离线实跑；同文档 guard + 完整 fact_hash/Chunk/span 回放后物化 11 人物、61 facts、62 occurrences，0 未绑定，4 conflicts/2 review 保留，Provider 0 调用 |
 | F-NEW-LOCAL-COREF-008 | 局部确定性身份闭合 | completed | `grounded-local-coreference-v1` 只以同 Chunk、共享局部上下文中可回放的显式同位、示指命名或连续共指链建立 same edge；斗罗高大身影并入唐昊，禁止 global unique name 自动 join |
 | F-NEW-CANONICAL-FACTS-009 | Post-link canonical facts | completed | 第一阶段结构分组完成：稳定 canonical ID、人物/span/category/attribute/value 完整键及逐 raw fact/occurrence 双向 provenance；scope 内语义归一仍留给 072 |
-| F-NEW-APPEARANCE-STATE-010 | 外貌状态与 Variant | in_progress | 070/071/071.5 与 072 确定性 baseline 已完成；连续 StateSegment、relation graph 和 equivalent propositions 可重建，待 active applicability 与完整 true-conflict Gate |
-| F-NEW-LABEL-REVIEW-011 | Label 与 Review 投影 | planned | exact/describe 与 label 语义解耦；title/stability 修正；audit 与 actionable queue 分离 |
-| F-NEW-RENDER-PROFILE-012 | Render-ready Profile Compiler | planned | 按人物及状态选择器生成结构化人物卡，并保留 canonical/raw 双层 provenance |
-| F-NEW-QUALITY-EVAL-013 | 人工质量评测 | planned | M1/M2/promotion 与新增状态层的冻结标注集、evaluator、正式阈值和 Stage 6 Gate |
+| F-NEW-APPEARANCE-STATE-010 | 外貌状态与 Variant | completed | 070～074 已闭合 StateSegment、relation/proposition、active/provisional applicability 与 true-conflict active-overlap gate；unclassified 保持 warning |
+| F-NEW-LABEL-REVIEW-011 | Label 与 Review 投影 | completed | `document-character-label-review-projection-v1` 已将来源 mention 角色与正交 kind/stability 解耦；历史 review 全量 audit，最终未闭合项单独进入 actionable queue |
+| F-NEW-RENDER-PROFILE-012 | Render-ready Profile Compiler | completed | dev26 已按唯一人物/状态/位置选择生成结构化 traits、transitions、conflicts、warnings 与 canonical/raw provenance；歧义和无匹配不拼卡 |
+| F-NEW-QUALITY-EVAL-013 | 人工质量评测 | in_progress | docs/38 已提供标注协议候选、分层指标与错误样例要求；人工 gold、evaluator、正式阈值及 Stage 6 Gate 未完成 |
+| F-REPAIR-CORRECTNESS-014 | Grounding、语义与缓存修复 | in_progress | dev27 已修 R01/否定包含，M1/M2 请求指纹、缓存重新 Grounding 与 M2 离线重放已实现；dev28 另补 promotion/M3/rescue/transition 指纹预检及 promotion 重做 Grounding；dev30 已接 incompatible→active overlap 真冲突生成/消费；真实关系质量、统一缓存迁移及尝试历史待后续 |
+| F-NEW-SNAPSHOT-015 | CharacterSnapshot 与场景/换装有效期 | in_progress | dev29 已交付共享有效期、Snapshot API/CLI/Schema、排除解释、事件消费及旧卡适配；dev30 自动场景/换装语义任务、Grounding 与 Snapshot 已接通；真实模型评测、R08/R09 运行映射及发布 manifest 待后续 |
+| F-NEW-RETRIEVAL-016 | 高召回身份候选与稳定入口 | planned | R07/R08：retrieval_k 与裁决预算分离、召回评测、subject_id 与合并/拆分迁移 |
+| F-NEW-WEB-SERVICE-017 | Web 应用服务与异步接口 | planned | R09/R10/R11：Job、不可变结果集、Snapshot/证据查询、浏览器坐标、版本化人工决策 |
+| F-NEW-DEBUG-VIEWER-018 | Evidence Debug Viewer | planned | R13：原文高亮、逐层轨迹、快照时间线、结果对比与复核；基础 Trace API 在 R11 先交付 |
+| F-REPAIR-DEVEX-SCALE-019 | 测试文档与长篇基准 | in_progress | R12 已声明 pytest/jsonschema dev extra 并统一完整测试入口；现有环境回归通过，独立净环境/CI 与 R14 长篇基准待验收 |
+
+当前审查注记：上述已完成项表示 dev26 历史范围内的工程能力。R01/R02 是本轮新增缺陷，R03/R04/R07 等是用户要求的能力演进；不能用历史 completed 推断这些新范围已通过。前一轮测试虽全部通过，仍复现多 occurrence 最早位置选择及否定子串误判。
 
 ## 功能变更历史
 
+- 2026-09-05：F-NEW-WEB-SERVICE-017 追加 084 交付（R11 决策闭环）。ReviewDecisionStore 追加式决策日志（乐观锁 revision、幂等键重放/冲突、决策指纹）、决策服务校验与 reviews 视图融合 pending/decided/open 状态、决策提交/历史端点及 subject 指定 run 解析端点、前端复核页决策表单与历史时间线；原始 artifacts 不可变。311 tests/19 subtests 与 `scripts/c_milestone_smoke.py` 联调通过，Provider 0。修正表格状态 planned→in_progress（082 时漏改）。
+
+- 2026-09-05：F-NEW-WEB-SERVICE-017 planned→in_progress。082 交付 FastAPI 只读服务、React 三栏页面与 unicode_codepoint↔UTF-16 坐标契约；083 交付 DocumentStore/JobStore/SubjectIndex、12 阶段流水线执行器、线程任务服务（幂等键/取消/恢复/事件游标/重启恢复）、文档与任务端点及导入/任务页，curated 与 managed 双注册表运行时合并。275 tests/19 subtests 与 smoke 联调通过，Provider 0。
+
+- 2026-09-05：用户要求综合已有问题与四项补充需求建立修复清单，并为未来 Web 使用规划接口。新增 F-REPAIR-CORRECTNESS-014～F-REPAIR-DEVEX-SCALE-019 均为 planned；既有 compiler 作为 Snapshot 演进基线，未创建第二套状态事实源，未修改运行时。
+
+- 2026-09-04：F-NEW-APPEARANCE-STATE-010 与 F-NEW-RENDER-PROFILE-012 当前开发范围完成。dev26 以显式 selector 唯一选择 StateSegment，拒绝未来 observation 和跨 life/form 混合；unknown/scene 延续显式 provisional。斗罗四张卡得到 7 active、40 provisional bindings 和 45 traits；true-conflict 仅在双 active overlap 时进入冲突，当前 0 conflicts、17 warnings，Provider 0。
+- 2026-09-04：F-NEW-LABEL-REVIEW-011 完成。dev25 保留 Registry 的 source label/review，不回写身份事实；17 个标签得到正交 kind/stability，“大师”为 `title + stable` 且来源角色仍为 name。9 条历史 review 一对一进入 audit，8 条由最终人物簇关闭，只有“看门的青年”进入 actionable；Provider 0。
 - 2026-09-04：072 完成 `document-character-appearance-states-v5` 确定性 relation/proposition baseline。候选严格限制在同人物、同 StateSegment、同 exact attribute；斗罗生成 37 relations（7 equivalent、5 compatible、25 unclassified）和 103 propositions，只合并 equivalent，新增语义 Provider 0。active applicability 与完整 true-conflict Gate 仍待后续。
 - 2026-09-04：071.5 完成 `document-character-appearance-states-v4`。StateSegment 留在现有状态 artifact 内，由稳定 transition ID、文档边界、scene expiry 与 fact observation 确定性重建；`observed_fact_ids` 不冒充 active applicability。斗罗得到 7 人物/14 segments、109/109 唯一 observation binding，保存输出重放新增 Provider 0。
 - 2026-09-02：071 dev22 通过当前范围质量 Gate。模型仍只读取原 Chunk 的 name/aliases/text；代码要求单段连续 evidence、同 evidence 内有序状态短语，过滤不改变身体的武魂/外物，life 重置 form/scene，scene 在段落行或章节关闭。斗罗得到 life 28/form 7/scene 1，独狼附体进入/退出均闭合，保存输出可零调用重新 Grounding。

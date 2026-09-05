@@ -1,0 +1,6 @@
+{
+  "task_id": "5c643269e579c18730440f29408d54bb26d72c53303a321e95545c7d9b2f6bf4",
+  "payload_hash": "59712182cc45e2ed04801e096a4d26e38719d5506bd7a047ccd274cdacc35740",
+  "request_fingerprint": "4a44f6dd923430085ebb81ac00044424829a5d36d25c346f6b6308269f961024",
+  "model_output": "{\"relation\":\"equivalent\",\"evidence_quotes\":[\"左胸上，有一枚雕刻着长剑的徽章\",\"左胸上，有一枚雕刻着长剑的徽章，徽章上一共是三柄长剑交错\"]}"
+}

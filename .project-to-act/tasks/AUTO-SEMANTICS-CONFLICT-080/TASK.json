@@ -1,0 +1,33 @@
+{
+  "id": "AUTO-SEMANTICS-CONFLICT-080",
+  "status": "completed",
+  "revision": 2,
+  "owner": "Codex",
+  "allowed_paths": [
+    "src",
+    "tests",
+    "docs",
+    ".project-to-act",
+    "pyproject.toml",
+    "runs/semantic-dev30"
+  ],
+  "acceptance": [
+    "automatic source-grounded scene/clothing events",
+    "semantic incompatibility to active snapshot conflict",
+    "resume/replay separation and offline regressions"
+  ],
+  "session": {
+    "actor": "Codex",
+    "status": "stopped"
+  },
+  "runtime": "0.1.0.dev30",
+  "schema": "3.30.0-draft1",
+  "evidence_ids": [
+    "E-20260905-AUTO-SEMANTICS-CONFLICT-080"
+  ],
+  "review": {
+    "engineering": "passed",
+    "real_model_quality": "not_evaluated",
+    "lifecycle_gate": "not_passed"
+  }
+}

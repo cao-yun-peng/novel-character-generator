@@ -11,6 +11,7 @@ from novel_character_generator.n3_batch import run_n3_promotion_from_m2_run
 
 
 class QueueProvider:
+    cache_identity = {"provider": "test-test_n3_batch.py"}
     def __init__(self, *outputs):
         self.outputs = deque(outputs)
         self.requests = []
@@ -21,6 +22,7 @@ class QueueProvider:
 
 
 class FailIfCalledProvider:
+    cache_identity = {"provider": "test-test_n3_batch.py"}
     def generate(self, request):
         raise AssertionError("resumed promotion task must not call Provider")
 
@@ -133,6 +135,11 @@ class N3PromotionBatchTests(unittest.TestCase):
             self.assertNotIn("character_label_span", character)
             self.assertEqual(len(provider.requests), 1)
 
+            cached_path = next((output / "tasks").glob("*.json"))
+            cached = json.loads(cached_path.read_text("utf-8"))
+            cached["grounded_result"] = {"corrupt": True}
+            cached["grounding_issues"] = [{"stale": True}]
+            cached_path.write_text(json.dumps(cached), encoding="utf-8")
             resumed = run_n3_promotion_from_m2_run(
                 document_text=text,
                 source_m1_run_dir=source_m1,
@@ -142,6 +149,16 @@ class N3PromotionBatchTests(unittest.TestCase):
             )
             self.assertTrue(resumed["complete"])
             self.assertEqual(resumed["resumed_promotion_tasks"], 1)
+            refreshed = json.loads(cached_path.read_text("utf-8"))
+            self.assertNotIn("corrupt", refreshed["grounded_result"])
+            self.assertEqual(refreshed["grounding_issues"], [])
+            for invalid in (None, "changed-request"):
+                with self.subTest(fingerprint=invalid):
+                    refreshed["request_fingerprint"] = invalid
+                    cached_path.write_text(json.dumps(refreshed), encoding="utf-8")
+                    with self.assertRaisesRegex(ContractValidationError, "fingerprint"):
+                        run_n3_promotion_from_m2_run(document_text=text, source_m1_run_dir=source_m1,
+                            source_m2_run_dir=source_m2, provider=FailIfCalledProvider(), output_dir=output)
 
     def test_rejects_incomplete_source_m2_run(self):
         text = "萧炎黑发。少女红衣。"

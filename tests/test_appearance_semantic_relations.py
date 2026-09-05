@@ -8,6 +8,7 @@ from novel_character_generator.appearance_semantic_relations import (
     APPEARANCE_PROPOSITION_POLICY_VERSION,
     APPEARANCE_RELATION_POLICY_VERSION,
     build_appearance_semantic_projection,
+    _classify_pair,
 )
 from novel_character_generator.errors import ContractValidationError
 
@@ -15,6 +16,28 @@ from novel_character_generator.errors import ContractValidationError
 SOURCE_VERSION = "source-semantic-test"
 CHARACTER_A = "char-aaaaaaaaaaaaaaaaaaaa"
 CHARACTER_B = "char-bbbbbbbbbbbbbbbbbbbb"
+
+
+@pytest.mark.parametrize("left,right", [
+    ("高大", "不高大"), ("黑色", "不是黑色"), ("红润", "毫无红润"),
+    ("苍白", "并非苍白"), ("苍老", "尚未苍老"), ("胡须", "没有胡须"),
+    ("black", "not black"),
+])
+def test_negated_containment_is_not_compatible_in_either_direction(left, right):
+    for a, b in ((left, right), (right, left)):
+        assert _classify_pair(a, b)[0] == "unclassified"
+
+
+def test_negated_fact_is_not_merged_or_promoted_to_conflict():
+    groups, assignments, segments = _fixture()
+    groups["fact_groups"][2]["value"] = "不高大"
+    before = copy.deepcopy(groups)
+    result = _build(groups, assignments, segments)
+    related = [r for r in result["relations"]
+               if "cfact-00000000000000000003" in (r["left_fact_id"], r["right_fact_id"])]
+    assert all(r["relation"] == "unclassified" for r in related)
+    assert groups == before
+    assert result["summary"]["true_conflict_relations"] == 0
 SEGMENT_A1 = "state-11111111111111111111"
 SEGMENT_A2 = "state-22222222222222222222"
 SEGMENT_B1 = "state-33333333333333333333"

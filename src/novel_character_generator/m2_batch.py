@@ -21,6 +21,7 @@ from .m2 import (
     ground_m2_attribution_output,
 )
 from .providers import DeepSeekCallTrace
+from .request_cache import request_fingerprint, validate_cached_request
 from .text import SourceSpan, sha256_text
 
 M2_BATCH_SUMMARY_VERSION = "m2-batch-summary-v1"
@@ -411,19 +412,49 @@ def run_m2_from_m1_run(
     resumed_tasks = 0
     tasks_dir = output_dir / "tasks"
 
+    # A changed provider must fail before earlier missing tasks incur new calls.
+    for _, grounding, envelope in planned:
+        cached_path = tasks_dir / (
+            f"{grounding.chunk_id}--{envelope.target_character_ref.local_mention_id}--"
+            f"{envelope.task_cache_key[:12]}.json"
+        )
+        if cached_path.exists():
+            cached = _expect_mapping(_read_json(cached_path), label="saved M2 task result")
+            preflight_request = M2ProviderRequest(
+                system_instruction=M2_ATTRIBUTION_SYSTEM_INSTRUCTION,
+                user_payload=copy.deepcopy(envelope.model_payload()),
+                response_schema=copy.deepcopy(M2_ATTRIBUTION_RESPONSE_SCHEMA),
+                response_schema_name="m2_target_appearance_facts",
+            )
+            validate_cached_request(cached, request_fingerprint(provider, preflight_request))
+
     for task_index, (chunk_index, grounding, envelope_value) in enumerate(planned, start=1):
         envelope = envelope_value
         target_id = envelope.target_character_ref.local_mention_id
         result_path = tasks_dir / (
             f"{grounding.chunk_id}--{target_id}--{envelope.task_cache_key[:12]}.json"
         )
+        request = M2ProviderRequest(
+            system_instruction=M2_ATTRIBUTION_SYSTEM_INSTRUCTION,
+            user_payload=copy.deepcopy(envelope.model_payload()),
+            response_schema=copy.deepcopy(M2_ATTRIBUTION_RESPONSE_SCHEMA),
+            response_schema_name="m2_target_appearance_facts",
+        )
+        fingerprint = request_fingerprint(provider, request)
         if result_path.exists():
             existing = _expect_mapping(_read_json(result_path), label="saved M2 task result")
             if existing.get("schema_version") != M2_TASK_RESULT_VERSION:
                 raise ContractValidationError("saved M2 task result schema mismatch")
             if existing.get("task_cache_key") != envelope.task_cache_key:
                 raise ContractValidationError("saved M2 task cache key mismatch")
-            records.append(dict(existing))
+            validate_cached_request(existing, fingerprint)
+            model_output = M2AttributionModelOutput.parse(existing.get("model_output"))
+            refreshed = dict(existing)
+            grounded_output = ground_m2_attribution_output(envelope, model_output)
+            refreshed["grounded_result"] = grounded_output.to_packet_dict()
+            refreshed["grounding_issues"] = [issue.to_dict() for issue in grounded_output.issues]
+            _write_json(result_path, refreshed)
+            records.append(refreshed)
             resumed_tasks += 1
             if progress is not None:
                 progress(f"[{task_index}/{len(planned)}] resumed {grounding.chunk_id}/{target_id}")
@@ -431,12 +462,6 @@ def run_m2_from_m1_run(
 
         trace_count = len(traces) if traces is not None else 0
         try:
-            request = M2ProviderRequest(
-                system_instruction=M2_ATTRIBUTION_SYSTEM_INSTRUCTION,
-                user_payload=copy.deepcopy(envelope.model_payload()),
-                response_schema=copy.deepcopy(M2_ATTRIBUTION_RESPONSE_SCHEMA),
-                response_schema_name="m2_target_appearance_facts",
-            )
             model_output = M2AttributionModelOutput.parse(provider.generate(request))
             grounded_output = ground_m2_attribution_output(envelope, model_output)
             record: dict[str, object] = {
@@ -447,6 +472,7 @@ def run_m2_from_m1_run(
                 "target_local_mention_id": target_id,
                 "target_mention_quote": envelope.model_input.target.mention_quote,
                 "task_cache_key": envelope.task_cache_key,
+                "request_fingerprint": fingerprint,
                 "model_output": model_output.to_dict(),
                 "grounded_result": grounded_output.to_packet_dict(),
                 "grounding_issues": [issue.to_dict() for issue in grounded_output.issues],

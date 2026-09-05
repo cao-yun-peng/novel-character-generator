@@ -1,0 +1,34 @@
+{
+  "id": "LABEL-REVIEW-PROJECTION-073",
+  "title": "Orthogonal character label semantics and actionable review projection",
+  "status": "completed",
+  "owner": "Codex",
+  "objective": "从最终 identity registry 确定性派生标签语义与 review 双视图，不改写身份事实源或删除历史审计。",
+  "risk_level": "L1-deterministic-view-projection",
+  "allowed_paths": [
+    "src/novel_character_generator",
+    "tests",
+    "docs",
+    "README.md",
+    "pyproject.toml",
+    ".project-to-act",
+    "runs/douluo-20ch-e2e-dev13-20260831/label-review-projection-dev25"
+  ],
+  "invariants": [
+    "document-character-registry 继续是 identity 与 source labels 的唯一事实源",
+    "label_kind 与 label_stability 必须正交，不能继续由 exact/describe 直接充当最终标签语义",
+    "source label_role、label_quote、global uniqueness 和 canonical label 不得被覆盖或删除",
+    "audit_items 必须一对一保留所有 registry review_items 及其证据和原始 pending 状态",
+    "actionable_review_items 只能引用最终图仍未关闭或无法由 final graph 证明关闭的问题",
+    "已并入候选人物簇的历史 partial grounding review 必须为 resolved/audit_only",
+    "本切片不增加模型节点或 Provider 调用"
+  ],
+  "acceptance": [
+    "大师投影为 title + stable，唐三投影为 proper_name + stable，描述性标签不冒充姓名",
+    "同一输入在数组重排后得到稳定 label/review 投影 ID 与排序",
+    "斗罗 9 条历史 review 全部保留，8 条 resolved/audit_only，只有看门的青年 1 条 actionable",
+    "review 缺失、重复、引用未知人物或 unresolved/review 不一致时失败关闭",
+    "新增独立 Schema、CLI、单测与真实零调用构建产物",
+    "全量测试、Schema、compileall、diff check 和两套治理校验通过"
+  ]
+}

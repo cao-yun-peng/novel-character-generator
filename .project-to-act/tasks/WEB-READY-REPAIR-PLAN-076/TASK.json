@@ -1,0 +1,49 @@
+{
+  "id": "WEB-READY-REPAIR-PLAN-076",
+  "title": "源码问题修复清单与后续 Web 接口规划",
+  "status": "completed",
+  "revision": 3,
+  "owner": "Codex",
+  "objective": "以源码证据制定含优先级、依赖、接口、验收和迁移策略的修复清单。",
+  "risk_level": "L1-documentation-planning",
+  "allowed_paths": [
+    "docs/37-web-ready-repair-checklist.md",
+    "docs/README.md",
+    ".project-to-act"
+  ],
+  "invariants": [
+    "不改运行时、模型提示词、机器 Schema 或历史运行产物",
+    "不把规划标记为功能完成",
+    "保留既有未提交内容",
+    "原始证据及 Registry 继续为各自唯一事实源"
+  ],
+  "acceptance": [
+    "覆盖上轮源码发现与本轮四项需求",
+    "区分现有能力、已复现问题和待验证风险",
+    "明确 Snapshot 与现有 compiler 的复用边界",
+    "定义场景/换装持续规则及失败语义",
+    "给出 Web 服务、异步任务、坐标与证据调试接口草案",
+    "保存依赖、验收、版本迁移及 075 质量 Gate 条件"
+  ],
+  "required_checks": [
+    "文档内容与本地链接检查",
+    "修改范围检查",
+    "Project-to-Act validate",
+    "Agent lifecycle validate"
+  ],
+  "session": {
+    "actor": "Codex",
+    "status": "stopped",
+    "date": "2026-09-05"
+  },
+  "review_result": {
+    "checklist_items": 14,
+    "local_links": 10,
+    "diff_check_exit": 0,
+    "runtime_changed": false,
+    "all_acceptance_reviewed": true
+  },
+  "evidence_ids": [
+    "E-20260905-WEB-READY-REPAIR-PLAN-076"
+  ]
+}

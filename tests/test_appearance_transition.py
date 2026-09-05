@@ -501,6 +501,7 @@ class _FakeTrace:
 
 
 class _FakeProvider:
+    cache_identity = {"provider": "test-test_appearance_transition.py"}
     def __init__(self, traces: list[object] | None = None) -> None:
         self.requests: list[object] = []
         self.traces = traces
@@ -606,4 +607,17 @@ def test_prepare_and_resumable_batch(tmp_path: Path) -> None:
     assert len(provider.requests) == calls
     refreshed = json.loads(event_result_path.read_text(encoding="utf-8"))
     assert refreshed["grounded_transitions"]
+    # A changed provider must be rejected before any missing chunk is regenerated.
+    earlier = [p for p in (output_dir / "chunks").glob("*.json") if p != event_result_path]
+    if earlier:
+        earlier[0].unlink()
+    provider.cache_identity = {"provider": "changed-model"}
+    with pytest.raises(ContractValidationError, match="fingerprint"):
+        run_document_appearance_transitions(
+            document_text=text, profiles_file=profiles_path, local_nodes_file=nodes_path,
+            fact_groups_file=groups_path, scopes_file=scopes_path, chunk_manifest_file=manifest_path,
+            output_dir=output_dir, provider=provider, traces=traces,
+        )
+    assert len(provider.requests) == calls
+
     assert len(json.loads((output_dir / "provider-traces.json").read_text(encoding="utf-8"))) == calls

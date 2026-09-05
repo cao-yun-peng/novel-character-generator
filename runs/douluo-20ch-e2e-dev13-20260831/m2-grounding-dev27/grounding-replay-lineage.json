@@ -1,0 +1,21 @@
+{
+  "schema_version": "m2-grounding-replay-lineage-v1",
+  "source_files": [
+    {
+      "path": "E:\\project\\agent\\novel-cahracter-generator\\runs\\douluo-20ch-e2e-dev13-20260831\\m1\\manifest.json",
+      "sha256": "b46add1303e965a0724ae2636fd55f3658a1e84ec5bb262331f82ab225352530"
+    },
+    {
+      "path": "E:\\project\\agent\\novel-cahracter-generator\\runs\\douluo-20ch-e2e-dev13-20260831\\m1\\m1-model-outputs.json",
+      "sha256": "90b37a497ed9f397e46d1ce9063f1ca09bc2c8d14f764ad520cfa81d6fdc170e"
+    },
+    {
+      "path": "E:\\project\\agent\\novel-cahracter-generator\\runs\\douluo-20ch-e2e-dev13-20260831\\m2\\m2-envelopes.json",
+      "sha256": "8bfd4809f7c56e97ea49d025340217dda45475c0d36dee909ff79fa692981492"
+    },
+    {
+      "path": "E:\\project\\agent\\novel-cahracter-generator\\runs\\douluo-20ch-e2e-dev13-20260831\\m2\\m2-model-outputs.json",
+      "sha256": "e7f080b26cb62a10260570f89ba6baac3ecb41dbb74e6346b3b5c416d9ada2f6"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "id": "WEB-PIPELINE-JOBS-083",
+  "status": "completed",
+  "revision": 1,
+  "user_authorization": "User approved Milestone B scope: async parsing jobs, progress/cancel/resume, stable subject mapping, document import flow",
+  "provider_calls": 0,
+  "successful_calls": 0,
+  "failed_attempts": 0,
+  "runtime_version": "0.1.0.dev32",
+  "quality_gate": "engineering_gate_passed_no_model_calls"
+}

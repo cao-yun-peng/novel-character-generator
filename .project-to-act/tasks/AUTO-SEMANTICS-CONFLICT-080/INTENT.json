@@ -1,0 +1,10 @@
+{
+  "user_request": "R03 自动场景/换装识别及 R02 完整冲突生成",
+  "invariants": [
+    "no model internal IDs/spans",
+    "no first-match ambiguity resolution",
+    "no scene boundary clothing removal",
+    "true conflict requires both active",
+    "preserve historical runs"
+  ]
+}

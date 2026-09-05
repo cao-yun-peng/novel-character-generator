@@ -1,0 +1,101 @@
+{
+  "schema_version": "m2-attribution-task-result-v1",
+  "source_run_dir": "E:\\project\\agent\\novel-cahracter-generator\\runs\\douluo-20ch-e2e-dev13-20260831\\m1",
+  "chunk_index": 9,
+  "chunk_id": "chunk-000009-18000-20500-3d2108420730",
+  "target_local_mention_id": "m4",
+  "target_mention_quote": "杰克",
+  "task_cache_key": "345de012f8627d86de8caf59f383c71ad9152e97dcb460e105a23082a41c717a",
+  "request_fingerprint": "e153ef4f1e8ce8d7c42d5bbe9a3c5de4fdf58b8b433cdd5d739a39f00dccb290",
+  "model_output": {
+    "belongs_to_target": [
+      {
+        "fact_quote": "老杰克一脸紧张",
+        "category": "face",
+        "attribute": "表情",
+        "value": "紧张"
+      },
+      {
+        "fact_quote": "杰克脸上失望的表情",
+        "category": "face",
+        "attribute": "表情",
+        "value": "失望"
+      },
+      {
+        "fact_quote": "他年纪已经不小了",
+        "category": "age",
+        "attribute": "年龄",
+        "value": "年纪不小"
+      }
+    ]
+  },
+  "grounded_result": {
+    "grounding_policy_version": "unique-fact-occurrence-attribution-v2",
+    "target_character_ref": {
+      "source_document_version_id": "source-8bcb7305a759571b",
+      "chunk_id": "chunk-000009-18000-20500-3d2108420730",
+      "local_mention_id": "m4",
+      "mention_type": "exact",
+      "packet_hash": "07f7bd6e49e6c2fcca7f8aad1fe14414daa88b0c563250709d886a3d177acf7d"
+    },
+    "task_cache_key": "345de012f8627d86de8caf59f383c71ad9152e97dcb460e105a23082a41c717a",
+    "grounded_belongs_to_target": [
+      {
+        "fact_quote": "老杰克一脸紧张",
+        "category": "face",
+        "attribute": "表情",
+        "value": "紧张",
+        "source_mention_id": "m4",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "老杰克一脸紧张",
+        "source_evidence_span": {
+          "start": 423,
+          "end": 430
+        },
+        "fact_chunk_span": {
+          "start": 423,
+          "end": 430
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "杰克脸上失望的表情",
+        "category": "face",
+        "attribute": "表情",
+        "value": "失望",
+        "source_mention_id": "m4",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "杰克脸上失望的表情",
+        "source_evidence_span": {
+          "start": 622,
+          "end": 631
+        },
+        "fact_chunk_span": {
+          "start": 622,
+          "end": 631
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "他年纪已经不小了",
+        "category": "age",
+        "attribute": "年龄",
+        "value": "年纪不小",
+        "source_mention_id": "m4",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "他年纪已经不小了",
+        "source_evidence_span": {
+          "start": 1752,
+          "end": 1760
+        },
+        "fact_chunk_span": {
+          "start": 1752,
+          "end": 1760
+        },
+        "match_mode": "exact"
+      }
+    ]
+  },
+  "grounding_issues": [],
+  "provider_trace": null
+}

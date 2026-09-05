@@ -1,0 +1,6 @@
+{
+  "task_id": "0e34de97fb348082b637c1134ffb13de98be5ece6bbbf8798777faee1b922589",
+  "payload_hash": "3ed7175ccce451d9d0ebc9a9f547b7f07326f9931f7ccca63e8041d192f7da34",
+  "request_fingerprint": "cca746c9fda2bf9570b80033c4baa04afda0b08cedeb5059a5451d2a48c2084e",
+  "model_output": "{\"relation\":\"compatible\",\"evidence_quotes\":[\"身体比以前健壮了一些\",\"他的身体变得结实了几分\"]}"
+}

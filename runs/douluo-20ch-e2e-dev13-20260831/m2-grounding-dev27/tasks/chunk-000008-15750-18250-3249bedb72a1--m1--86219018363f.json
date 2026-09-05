@@ -1,0 +1,53 @@
+{
+  "schema_version": "m2-attribution-task-result-v1",
+  "source_run_dir": "E:\\project\\agent\\novel-cahracter-generator\\runs\\douluo-20ch-e2e-dev13-20260831\\m1",
+  "chunk_index": 8,
+  "chunk_id": "chunk-000008-15750-18250-3249bedb72a1",
+  "target_local_mention_id": "m1",
+  "target_mention_quote": "唐三",
+  "task_cache_key": "86219018363f635ef45967e4ecd579fa94e895fef3440ee829ec1d7488b1412e",
+  "request_fingerprint": "2cc3d82f405cb034a24c1efc2cd279cb477f388971a3c3b898e4570cca6df69c",
+  "model_output": {
+    "belongs_to_target": [
+      {
+        "fact_quote": "唐三那平静而有些坚定的目光",
+        "category": "face",
+        "attribute": "目光",
+        "value": "平静而有些坚定"
+      }
+    ]
+  },
+  "grounded_result": {
+    "grounding_policy_version": "unique-fact-occurrence-attribution-v2",
+    "target_character_ref": {
+      "source_document_version_id": "source-8bcb7305a759571b",
+      "chunk_id": "chunk-000008-15750-18250-3249bedb72a1",
+      "local_mention_id": "m1",
+      "mention_type": "exact",
+      "packet_hash": "0cc8cccd34781f97cf8704df675df1558dbd2ab456df9a4d2eae98c907bf82cd"
+    },
+    "task_cache_key": "86219018363f635ef45967e4ecd579fa94e895fef3440ee829ec1d7488b1412e",
+    "grounded_belongs_to_target": [
+      {
+        "fact_quote": "唐三那平静而有些坚定的目光",
+        "category": "face",
+        "attribute": "目光",
+        "value": "平静而有些坚定",
+        "source_mention_id": "m1",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "唐三那平静而有些坚定的目光",
+        "source_evidence_span": {
+          "start": 835,
+          "end": 848
+        },
+        "fact_chunk_span": {
+          "start": 835,
+          "end": 848
+        },
+        "match_mode": "exact"
+      }
+    ]
+  },
+  "grounding_issues": [],
+  "provider_trace": null
+}

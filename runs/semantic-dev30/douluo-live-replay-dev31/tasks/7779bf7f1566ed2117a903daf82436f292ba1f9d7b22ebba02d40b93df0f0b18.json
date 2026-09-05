@@ -1,0 +1,6 @@
+{
+  "task_id": "7779bf7f1566ed2117a903daf82436f292ba1f9d7b22ebba02d40b93df0f0b18",
+  "payload_hash": "1c7c0159d6cd6fcbfbbf78126195f6fc766d8347ecc60f32ec5542cf8271a443",
+  "request_fingerprint": "57ea37ea8809894d2d409d267c32d46d436b942715f65ac0338ac7040a007b4d",
+  "model_output": "{\"relation\": \"compatible\", \"evidence_quotes\": [\"身体比以前健壮了一些\", \"幼小的身体\"]}"
+}

@@ -10,6 +10,7 @@ from novel_character_generator.m2_batch import run_m2_from_m1_run
 
 
 class QueueProvider:
+    cache_identity = {"provider": "test-m2-fixture-v1"}
     def __init__(self, *outputs):
         self.outputs = deque(outputs)
         self.requests = []
@@ -20,6 +21,7 @@ class QueueProvider:
 
 
 class FailIfCalledProvider:
+    cache_identity = {"provider": "test-m2-fixture-v1"}
     def generate(self, request):
         raise AssertionError("resumed M2 task must not call Provider")
 

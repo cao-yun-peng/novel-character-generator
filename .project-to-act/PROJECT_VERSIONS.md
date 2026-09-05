@@ -4,8 +4,8 @@
 
 - 分支：`v3-simplified-character-evidence`
 - 契约：简化人物证据流程 V3 草案
-- Schema：`3.24.0-draft1`
-- 运行时版本：`0.1.0.dev24`
+- Schema：`3.30.0-draft1`
+- 运行时版本：`0.1.0.dev33`
 - 发布状态：未发布
 
 ## 版本原则
@@ -14,6 +14,24 @@
 
 ## 版本历史
 
+- 2026-09-05：dev33 完成 Web 里程碑 C（084）：R11 人工决策提交闭环——追加式决策日志、幂等键、乐观锁 revision、reopen 补偿与决策历史审计，及 R08 subject 指定 run 解析端点。311 tests/19 subtests 与 `scripts/c_milestone_smoke.py` 联调通过；Provider 0，未发布。
+
+- 2026-09-05：dev32 完成 Web 里程碑 A+B（082/083）：FastAPI 只读基座、React 三栏页面、坐标契约、异步任务与 12 阶段流水线执行器（补记，漏登版本历史）。275 tests/19 subtests 与 `scripts/b_milestone_smoke.py` 联调通过；Provider 0，未发布。
+
+- 2026-09-05：dev31 修复模型重复 evidence_quotes 的规范化，保证持久关系可重新 Grounding；模型请求及 Schema 3.30 不变。52 个真实响应离线重放通过，4 个 Snapshot 通过；未发布。
+
+- 2026-09-05：dev30/Schema 3.30 新增 AutomaticEventModelOutput、AutomaticRelationModelOutput 和 automatic-appearance-semantics-v1。Snapshot policy 升为 automatic-semantic-snapshot-v2，新增 narrative_scene 与语义证据/复核，自动产物参与 ID。原 M1/M2/M3、raw facts 和旧关系策略不改；不用自动产物时仍支持确定性基线。未发布。
+
+- 2026-09-05：dev29/Schema 3.29 引入 character-snapshot-v1、fact-applicability-events-v1 与 evidence-interval-applicability-v2；原人物卡由 snapshot-render-adapter-v2 输出。模型 payload、raw facts 和 StateSegment observation 不变；保存状态的 relation v1 需重建到当前策略后查询。保留 LegacyRenderReadyCharacterProfilesV1 的历史 Schema 验证，未发布。
+
+- 2026-09-05：dev28 为 promotion/identity/rescue/transition 代码侧任务记录添加 request_fingerprint 与缓存预检，promotion 恢复时重建 Grounding。模型 payload、领域输出和机器 Schema 未改，Schema 保持 3.27.0-draft1；旧无指纹记录可保留查看但不能普通续跑。未发布。
+
+- 2026-09-05：dev27/Schema 3.27 引入 M2 code-only grounding_policy_version=unique-fact-occurrence-attribution-v2、可追踪歧义 occurrence、关系 v2 否定保护、M1/M2 请求指纹与缓存重验、replay-m2-grounding CLI 和 dev 测试依赖。模型 payload 与原始事实不改；旧 M2 包需离线重放，旧关系 v1 状态需重建后才供新 compiler 使用。R05 跨所有阶段的统一迁移尚未完成，未发布。
+
+- 2026-09-05：新增 docs/37 修复与 Web 接口计划。运行时仍为 0.1.0.dev26，机器 Schema 仍为 3.26.0-draft1，未发布新版本。后续 Snapshot、scene、缓存、subject 映射与 API 均须独立冻结版本及旧产物兼容策略；历史原始事实和旧 run 保留。
+
+- 2026-09-04：Schema 升级到 `3.26.0-draft1`、运行时升级到 `0.1.0.dev26`；新增 render compile requests、`render-ready-character-profiles-v1`、唯一 StateSegment 选择、active/provisional applicability、scope conflict gate、结构化 traits/warnings 与 canonical/raw provenance。纯代码构建，Provider 0。
+- 2026-09-04：Schema 升级到 `3.25.0-draft1`、运行时升级到 `0.1.0.dev25`；新增 `document-character-label-review-projection-v1`、正交 label kind/stability、完整 review audit 与由最终 identity graph 派生的精简 actionable 队列。Registry 来源语义保持不可变，Provider 调用为 0。
 - 2026-09-04：Schema 升级到 `3.24.0-draft1`、运行时升级到 `0.1.0.dev24`；appearance state artifact 升级 v5，在同人物/StateSegment/exact-attribute 内新增确定性关系图，并只从 equivalent 连通分量派生 normalized propositions。compatible/unclassified 保持独立，active applicability 与完整 true-conflict Gate 延后。
 - 2026-09-04：Schema 升级到 `3.23.0-draft1`、运行时升级到 `0.1.0.dev23`；appearance state artifact 升级 v4，为 Grounded Transition 增加稳定 ID，并在同一产物内新增确定性 StateSegment、boundary provenance 与唯一 observed fact binding。active applicability 和语义关系保留给 072/074。
 - 2026-09-02：Schema 升级到 `3.22.0-draft1`、运行时升级到 `0.1.0.dev22`；071 Grounding/状态物化升级 v3，新增 life 重置 form/scene、scene 段落行/章节关闭、非身体 form 过滤、单段连续且状态有序回填，以及保存模型输出的零调用重新 Grounding。

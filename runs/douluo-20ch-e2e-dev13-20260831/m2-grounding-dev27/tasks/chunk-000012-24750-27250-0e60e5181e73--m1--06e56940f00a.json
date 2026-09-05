@@ -1,0 +1,53 @@
+{
+  "schema_version": "m2-attribution-task-result-v1",
+  "source_run_dir": "E:\\project\\agent\\novel-cahracter-generator\\runs\\douluo-20ch-e2e-dev13-20260831\\m1",
+  "chunk_index": 12,
+  "chunk_id": "chunk-000012-24750-27250-0e60e5181e73",
+  "target_local_mention_id": "m1",
+  "target_mention_quote": "唐昊",
+  "task_cache_key": "06e56940f00a39957ce77acf78071812f0668c26034d65e8aa610fab2846cf87",
+  "request_fingerprint": "1a38698922d53488f1a796cf46985ce857d59ab66c60cca8eb9dabb987de3225",
+  "model_output": {
+    "belongs_to_target": [
+      {
+        "fact_quote": "裸露在破烂裤管外的两条小腿",
+        "category": "body",
+        "attribute": "小腿暴露",
+        "value": "裸露在破烂裤管外"
+      }
+    ]
+  },
+  "grounded_result": {
+    "grounding_policy_version": "unique-fact-occurrence-attribution-v2",
+    "target_character_ref": {
+      "source_document_version_id": "source-8bcb7305a759571b",
+      "chunk_id": "chunk-000012-24750-27250-0e60e5181e73",
+      "local_mention_id": "m1",
+      "mention_type": "exact",
+      "packet_hash": "800c88eeacd2deb9c6a4b7a41905781503944b9c3e6eed84b45a327d2877e5fa"
+    },
+    "task_cache_key": "06e56940f00a39957ce77acf78071812f0668c26034d65e8aa610fab2846cf87",
+    "grounded_belongs_to_target": [
+      {
+        "fact_quote": "裸露在破烂裤管外的两条小腿",
+        "category": "body",
+        "attribute": "小腿暴露",
+        "value": "裸露在破烂裤管外",
+        "source_mention_id": "m1",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "裸露在破烂裤管外的两条小腿瞬间绷紧",
+        "source_evidence_span": {
+          "start": 161,
+          "end": 178
+        },
+        "fact_chunk_span": {
+          "start": 161,
+          "end": 174
+        },
+        "match_mode": "exact"
+      }
+    ]
+  },
+  "grounding_issues": [],
+  "provider_trace": null
+}

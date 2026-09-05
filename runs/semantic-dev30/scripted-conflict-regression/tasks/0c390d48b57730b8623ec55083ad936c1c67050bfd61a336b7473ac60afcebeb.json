@@ -1,0 +1,12 @@
+{
+  "task_id": "0c390d48b57730b8623ec55083ad936c1c67050bfd61a336b7473ac60afcebeb",
+  "payload_hash": "aded809d0e71e91bd14d588d60e042d6e49ccc49d4f321a1683b7a5f520c27e6",
+  "request_fingerprint": "cdfdabc12a096b88d1180e3ba872b901fd0dc22931a09e6243a5469aa26cfec0",
+  "model_output": {
+    "relation": "incompatible",
+    "evidence_quotes": [
+      "红衣",
+      "蓝衣"
+    ]
+  }
+}

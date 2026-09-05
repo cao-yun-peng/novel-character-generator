@@ -1,0 +1,78 @@
+[
+  {
+    "task_id": "7bc30ae684922f4b16844f84bcf8d8dbb83be6819014162e06f603c2085aba60",
+    "character": "唐三",
+    "kind": "remove",
+    "facts": [
+      {
+        "fact_quote": "身穿灰衣",
+        "category": "clothing",
+        "attribute": "服装",
+        "value": "灰衣"
+      },
+      {
+        "fact_quote": "从他胸口处那斗大的唐字",
+        "category": "clothing",
+        "attribute": "衣服标志",
+        "value": "胸口有斗大的唐字"
+      }
+    ],
+    "evidence": "轰的一声炸鸣，当众位长老同时后退以防不测的时候，他们看到的却是全身赤裸的唐三。"
+  },
+  {
+    "task_id": "c693e937b00e2e414fff71a7026f7e32b1ab5ee740125d2aa753d0dd944552f0",
+    "character": "唐三",
+    "kind": "scene_boundary",
+    "facts": [],
+    "evidence": "第2章 斗罗大陆，异界唐三（一）\r\n　　第2章 斗罗大陆，异界唐三（一） \r\n　　斗罗大陆，天斗帝国西南，法斯诺行省。"
+  },
+  {
+    "task_id": "4601746d7993a951cf02e3ce625398a12ce126ca843a2081ddbe7cbe25302327",
+    "character": "唐三",
+    "kind": "scene_boundary",
+    "facts": [],
+    "evidence": "一进家门，唐三就已经闻到了扑鼻的饭香"
+  },
+  {
+    "task_id": "afeaf5006a64deba74fefc8e4e045870356b243c2f40fb4043d7b5d8bc82c7a5",
+    "character": "唐三",
+    "kind": "scene_boundary",
+    "facts": [],
+    "evidence": "在老杰克的带领下，唐三跟随着他来到了村子中央的武魂殿。"
+  },
+  {
+    "task_id": "ad38d081f6d0ab2b6483e9bd1d6292507f3e0a30c73ffe2ce73ab74f79360316",
+    "character": "唐三",
+    "kind": "scene_boundary",
+    "facts": [],
+    "evidence": "唐三站起身，该是回去的时候了，今天，自己就要离开村子，下次再来这山顶，也不知道要什么时候才行了。"
+  },
+  {
+    "task_id": "ad38d081f6d0ab2b6483e9bd1d6292507f3e0a30c73ffe2ce73ab74f79360316",
+    "character": "老杰克",
+    "kind": "wear",
+    "facts": [
+      {
+        "fact_quote": "今天的老杰克特意穿了一身新衣服",
+        "category": "clothing",
+        "attribute": "穿着",
+        "value": "新衣服"
+      }
+    ],
+    "evidence": "今天的老杰克特意穿了一身新衣服，看上去更添几分矍铄。"
+  },
+  {
+    "task_id": "438a831fcc239d0bb38e6a0569ee1aa956c9d3c7311ae67c7bf13536f0c3ad34",
+    "character": "唐三",
+    "kind": "scene_boundary",
+    "facts": [],
+    "evidence": "从圣魂村到诺丁城并不远，两人走了半天的时间，中途简单吃了点干粮，下午的时候，已经可以看到远处的城墙了。"
+  },
+  {
+    "task_id": "438a831fcc239d0bb38e6a0569ee1aa956c9d3c7311ae67c7bf13536f0c3ad34",
+    "character": "唐三",
+    "kind": "scene_boundary",
+    "facts": [],
+    "evidence": "诺丁初级魂师学院坐落在诺丁城西，老杰克向路人打听了几次，终于带着唐三来到了这里。"
+  }
+]

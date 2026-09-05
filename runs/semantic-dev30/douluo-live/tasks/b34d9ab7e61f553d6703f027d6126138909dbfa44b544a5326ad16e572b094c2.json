@@ -1,0 +1,6 @@
+{
+  "task_id": "b34d9ab7e61f553d6703f027d6126138909dbfa44b544a5326ad16e572b094c2",
+  "payload_hash": "9c3185d9b118f01faa833e5895130b7ca866960c1cb51455b5bc00f769cbbd97",
+  "request_fingerprint": "1f9b21859a7138fe55eb56fc17fe5c42580716e5963ec8a326d5c9ac041fc198",
+  "model_output": "{\"relation\": \"compatible\", \"evidence_quotes\": [\"那是个只有五、六岁的孩子\", \"再过几天，唐三就要六岁了\"]}"
+}

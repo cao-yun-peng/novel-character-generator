@@ -1,0 +1,11 @@
+{
+  "id": "WEB-REVIEW-DECISIONS-084",
+  "status": "completed",
+  "revision": 1,
+  "user_authorization": "User approved Milestone C scope: R11 manual decision submission loop (append-only decision log, idempotency, optimistic locking, history audit) and R08 stable subject entry resolution for a given run",
+  "provider_calls": 0,
+  "successful_calls": 0,
+  "failed_attempts": 0,
+  "runtime_version": "0.1.0.dev33",
+  "quality_gate": "engineering_gate_passed_no_model_calls"
+}

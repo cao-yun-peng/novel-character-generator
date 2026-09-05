@@ -1,0 +1,6 @@
+{
+  "task_id": "8d82cfa11954987a0e3085696e7b62a332ede1ee28ee37e475b5875b0aa4da84",
+  "payload_hash": "edebc7e0b274632157579f0fe6e24b8de6939b543afaa3cc40980415eb364c78",
+  "request_fingerprint": "834a430f9705235514b0399fd545b24fb67ebf347604c5466321a3ca96caaa10",
+  "model_output": "{\"relation\": \"equivalent\", \"evidence_quotes\": [\"高大的身影\", \"身材却非常高大魁梧\"]}"
+}

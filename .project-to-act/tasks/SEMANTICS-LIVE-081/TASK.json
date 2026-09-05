@@ -1,0 +1,11 @@
+{
+  "id": "SEMANTICS-LIVE-081",
+  "status": "completed",
+  "revision": 3,
+  "user_authorization": "Explicit confirmation: send novel excerpts and derived facts to configured DeepSeek API for 52 tasks with fees",
+  "provider_calls": 53,
+  "successful_calls": 52,
+  "failed_attempts": 1,
+  "runtime_version": "0.1.0.dev31",
+  "quality_gate": "not_passed"
+}

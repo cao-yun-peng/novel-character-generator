@@ -1,0 +1,394 @@
+[
+  {
+    "chunk_index": 1,
+    "chunk_id": "chunk-000001-0-2500-f390c57806b0",
+    "trace_events": [
+      {
+        "code": "describe_evidence_shadowed_by_exact",
+        "local_mention_id": "m2",
+        "detail": "occurrences=1; exact_mentions=m1; rule=exact-evidence-precedence-v1"
+      },
+      {
+        "code": "describe_evidence_shadowed_by_exact",
+        "local_mention_id": "m2",
+        "detail": "occurrences=1; exact_mentions=m1; rule=exact-evidence-precedence-v1"
+      },
+      {
+        "code": "describe_evidence_shadowed_by_exact",
+        "local_mention_id": "m2",
+        "detail": "occurrences=1; exact_mentions=m1; rule=exact-evidence-precedence-v1"
+      },
+      {
+        "code": "describe_removed_after_exact_dedup",
+        "local_mention_id": "m2",
+        "detail": "rule=exact-evidence-precedence-v1"
+      }
+    ]
+  },
+  {
+    "chunk_index": 2,
+    "chunk_id": "chunk-000002-2250-4750-b54821906b9b",
+    "trace_events": [
+      {
+        "code": "describe_evidence_shadowed_by_exact",
+        "local_mention_id": "m2",
+        "detail": "occurrences=1; exact_mentions=m1; rule=exact-evidence-precedence-v1"
+      },
+      {
+        "code": "describe_evidence_shadowed_by_exact",
+        "local_mention_id": "m2",
+        "detail": "occurrences=1; exact_mentions=m1; rule=exact-evidence-precedence-v1"
+      },
+      {
+        "code": "describe_evidence_shadowed_by_exact",
+        "local_mention_id": "m2",
+        "detail": "occurrences=1; exact_mentions=m1; rule=exact-evidence-precedence-v1"
+      },
+      {
+        "code": "describe_evidence_shadowed_by_exact",
+        "local_mention_id": "m2",
+        "detail": "occurrences=1; exact_mentions=m1; rule=exact-evidence-precedence-v1"
+      },
+      {
+        "code": "describe_removed_after_exact_dedup",
+        "local_mention_id": "m2",
+        "detail": "rule=exact-evidence-precedence-v1"
+      },
+      {
+        "code": "describe_evidence_shadowed_by_exact",
+        "local_mention_id": "m3",
+        "detail": "occurrences=1; exact_mentions=m1; rule=exact-evidence-precedence-v1"
+      },
+      {
+        "code": "describe_evidence_shadowed_by_exact",
+        "local_mention_id": "m3",
+        "detail": "occurrences=1; exact_mentions=m1; rule=exact-evidence-precedence-v1"
+      },
+      {
+        "code": "describe_evidence_shadowed_by_exact",
+        "local_mention_id": "m3",
+        "detail": "occurrences=1; exact_mentions=m1; rule=exact-evidence-precedence-v1"
+      },
+      {
+        "code": "describe_evidence_shadowed_by_exact",
+        "local_mention_id": "m3",
+        "detail": "occurrences=1; exact_mentions=m1; rule=exact-evidence-precedence-v1"
+      },
+      {
+        "code": "describe_removed_after_exact_dedup",
+        "local_mention_id": "m3",
+        "detail": "rule=exact-evidence-precedence-v1"
+      },
+      {
+        "code": "describe_evidence_shadowed_by_exact",
+        "local_mention_id": "m4",
+        "detail": "occurrences=1; exact_mentions=m1; rule=exact-evidence-precedence-v1"
+      },
+      {
+        "code": "describe_evidence_shadowed_by_exact",
+        "local_mention_id": "m4",
+        "detail": "occurrences=1; exact_mentions=m1; rule=exact-evidence-precedence-v1"
+      },
+      {
+        "code": "describe_removed_after_exact_dedup",
+        "local_mention_id": "m4",
+        "detail": "rule=exact-evidence-precedence-v1"
+      }
+    ]
+  },
+  {
+    "chunk_index": 3,
+    "chunk_id": "chunk-000003-4500-7000-bbfa3a18c9e4",
+    "trace_events": [
+      {
+        "code": "describe_evidence_shadowed_by_exact",
+        "local_mention_id": "m3",
+        "detail": "occurrences=1; exact_mentions=m2; rule=exact-evidence-precedence-v1"
+      },
+      {
+        "code": "describe_evidence_shadowed_by_exact",
+        "local_mention_id": "m3",
+        "detail": "occurrences=1; exact_mentions=m2; rule=exact-evidence-precedence-v1"
+      },
+      {
+        "code": "describe_removed_after_exact_dedup",
+        "local_mention_id": "m3",
+        "detail": "rule=exact-evidence-precedence-v1"
+      },
+      {
+        "code": "describe_evidence_shadowed_by_exact",
+        "local_mention_id": "m4",
+        "detail": "occurrences=1; exact_mentions=m2; rule=exact-evidence-precedence-v1"
+      }
+    ]
+  },
+  {
+    "chunk_index": 4,
+    "chunk_id": "chunk-000004-6750-9250-d8d7539ee8f4",
+    "trace_events": [
+      {
+        "code": "describe_evidence_shadowed_by_exact",
+        "local_mention_id": "m4",
+        "detail": "occurrences=1; exact_mentions=m1; rule=exact-evidence-precedence-v1"
+      },
+      {
+        "code": "describe_removed_after_exact_dedup",
+        "local_mention_id": "m4",
+        "detail": "rule=exact-evidence-precedence-v1"
+      },
+      {
+        "code": "describe_evidence_shadowed_by_exact",
+        "local_mention_id": "m5",
+        "detail": "occurrences=1; exact_mentions=m2,m3; rule=exact-evidence-precedence-v1"
+      },
+      {
+        "code": "describe_evidence_shadowed_by_exact",
+        "local_mention_id": "m5",
+        "detail": "occurrences=1; exact_mentions=m2,m3; rule=exact-evidence-precedence-v1"
+      },
+      {
+        "code": "describe_evidence_shadowed_by_exact",
+        "local_mention_id": "m5",
+        "detail": "occurrences=1; exact_mentions=m2,m3; rule=exact-evidence-precedence-v1"
+      },
+      {
+        "code": "describe_removed_after_exact_dedup",
+        "local_mention_id": "m5",
+        "detail": "rule=exact-evidence-precedence-v1"
+      }
+    ]
+  },
+  {
+    "chunk_index": 5,
+    "chunk_id": "chunk-000005-9000-11500-f4a0068fbfb5",
+    "trace_events": []
+  },
+  {
+    "chunk_index": 6,
+    "chunk_id": "chunk-000006-11250-13750-9b713c3495b7",
+    "trace_events": []
+  },
+  {
+    "chunk_index": 7,
+    "chunk_id": "chunk-000007-13500-16000-29d830992ba6",
+    "trace_events": [
+      {
+        "code": "describe_evidence_shadowed_by_exact",
+        "local_mention_id": "m3",
+        "detail": "occurrences=1; exact_mentions=m2; rule=exact-evidence-precedence-v1"
+      },
+      {
+        "code": "describe_evidence_shadowed_by_exact",
+        "local_mention_id": "m3",
+        "detail": "occurrences=1; exact_mentions=m2; rule=exact-evidence-precedence-v1"
+      },
+      {
+        "code": "describe_removed_after_exact_dedup",
+        "local_mention_id": "m3",
+        "detail": "rule=exact-evidence-precedence-v1"
+      }
+    ]
+  },
+  {
+    "chunk_index": 8,
+    "chunk_id": "chunk-000008-15750-18250-3249bedb72a1",
+    "trace_events": [
+      {
+        "code": "describe_evidence_shadowed_by_exact",
+        "local_mention_id": "m2",
+        "detail": "occurrences=1; exact_mentions=m1; rule=exact-evidence-precedence-v1"
+      },
+      {
+        "code": "describe_removed_after_exact_dedup",
+        "local_mention_id": "m2",
+        "detail": "rule=exact-evidence-precedence-v1"
+      }
+    ]
+  },
+  {
+    "chunk_index": 9,
+    "chunk_id": "chunk-000009-18000-20500-3d2108420730",
+    "trace_events": [
+      {
+        "code": "describe_evidence_shadowed_by_exact",
+        "local_mention_id": "m2",
+        "detail": "occurrences=1; exact_mentions=m1; rule=exact-evidence-precedence-v1"
+      },
+      {
+        "code": "describe_removed_after_exact_dedup",
+        "local_mention_id": "m2",
+        "detail": "rule=exact-evidence-precedence-v1"
+      },
+      {
+        "code": "describe_evidence_shadowed_by_exact",
+        "local_mention_id": "m3",
+        "detail": "occurrences=2; exact_mentions=m1; rule=exact-evidence-precedence-v1"
+      },
+      {
+        "code": "describe_removed_after_exact_dedup",
+        "local_mention_id": "m3",
+        "detail": "rule=exact-evidence-precedence-v1"
+      },
+      {
+        "code": "describe_evidence_shadowed_by_exact",
+        "local_mention_id": "m5",
+        "detail": "occurrences=1; exact_mentions=m4; rule=exact-evidence-precedence-v1"
+      },
+      {
+        "code": "describe_evidence_shadowed_by_exact",
+        "local_mention_id": "m5",
+        "detail": "occurrences=1; exact_mentions=m4; rule=exact-evidence-precedence-v1"
+      },
+      {
+        "code": "describe_evidence_shadowed_by_exact",
+        "local_mention_id": "m5",
+        "detail": "occurrences=1; exact_mentions=m4; rule=exact-evidence-precedence-v1"
+      },
+      {
+        "code": "describe_removed_after_exact_dedup",
+        "local_mention_id": "m5",
+        "detail": "rule=exact-evidence-precedence-v1"
+      }
+    ]
+  },
+  {
+    "chunk_index": 10,
+    "chunk_id": "chunk-000010-20250-22750-534a1b52e99f",
+    "trace_events": [
+      {
+        "code": "describe_evidence_shadowed_by_exact",
+        "local_mention_id": "m2",
+        "detail": "occurrences=1; exact_mentions=m1; rule=exact-evidence-precedence-v1"
+      },
+      {
+        "code": "describe_evidence_shadowed_by_exact",
+        "local_mention_id": "m2",
+        "detail": "occurrences=1; exact_mentions=m1; rule=exact-evidence-precedence-v1"
+      },
+      {
+        "code": "describe_evidence_shadowed_by_exact",
+        "local_mention_id": "m2",
+        "detail": "occurrences=1; exact_mentions=m1; rule=exact-evidence-precedence-v1"
+      },
+      {
+        "code": "describe_evidence_shadowed_by_exact",
+        "local_mention_id": "m2",
+        "detail": "occurrences=1; exact_mentions=m1; rule=exact-evidence-precedence-v1"
+      },
+      {
+        "code": "describe_removed_after_exact_dedup",
+        "local_mention_id": "m2",
+        "detail": "rule=exact-evidence-precedence-v1"
+      }
+    ]
+  },
+  {
+    "chunk_index": 11,
+    "chunk_id": "chunk-000011-22500-25000-8e969940f32a",
+    "trace_events": [
+      {
+        "code": "describe_evidence_shadowed_by_exact",
+        "local_mention_id": "m3",
+        "detail": "occurrences=1; exact_mentions=m1; rule=exact-evidence-precedence-v1"
+      },
+      {
+        "code": "describe_evidence_shadowed_by_exact",
+        "local_mention_id": "m3",
+        "detail": "occurrences=1; exact_mentions=m1; rule=exact-evidence-precedence-v1"
+      },
+      {
+        "code": "describe_evidence_shadowed_by_exact",
+        "local_mention_id": "m3",
+        "detail": "occurrences=1; exact_mentions=m1; rule=exact-evidence-precedence-v1"
+      },
+      {
+        "code": "describe_evidence_shadowed_by_exact",
+        "local_mention_id": "m3",
+        "detail": "occurrences=1; exact_mentions=m1; rule=exact-evidence-precedence-v1"
+      },
+      {
+        "code": "describe_removed_after_exact_dedup",
+        "local_mention_id": "m3",
+        "detail": "rule=exact-evidence-precedence-v1"
+      }
+    ]
+  },
+  {
+    "chunk_index": 12,
+    "chunk_id": "chunk-000012-24750-27250-0e60e5181e73",
+    "trace_events": []
+  },
+  {
+    "chunk_index": 13,
+    "chunk_id": "chunk-000013-27000-29500-cac937b0db28",
+    "trace_events": [
+      {
+        "code": "describe_evidence_shadowed_by_exact",
+        "local_mention_id": "m3",
+        "detail": "occurrences=1; exact_mentions=m1; rule=exact-evidence-precedence-v1"
+      },
+      {
+        "code": "describe_evidence_shadowed_by_exact",
+        "local_mention_id": "m3",
+        "detail": "occurrences=1; exact_mentions=m1; rule=exact-evidence-precedence-v1"
+      },
+      {
+        "code": "describe_removed_after_exact_dedup",
+        "local_mention_id": "m3",
+        "detail": "rule=exact-evidence-precedence-v1"
+      }
+    ]
+  },
+  {
+    "chunk_index": 14,
+    "chunk_id": "chunk-000014-29250-31750-3f70e01ec313",
+    "trace_events": []
+  },
+  {
+    "chunk_index": 15,
+    "chunk_id": "chunk-000015-31500-34000-fb2b21bc7e87",
+    "trace_events": [
+      {
+        "code": "describe_evidence_shadowed_by_exact",
+        "local_mention_id": "m3",
+        "detail": "occurrences=1; exact_mentions=m4; rule=exact-evidence-precedence-v1"
+      },
+      {
+        "code": "describe_removed_after_exact_dedup",
+        "local_mention_id": "m3",
+        "detail": "rule=exact-evidence-precedence-v1"
+      }
+    ]
+  },
+  {
+    "chunk_index": 16,
+    "chunk_id": "chunk-000016-33750-36250-66f14c14f2ba",
+    "trace_events": []
+  },
+  {
+    "chunk_index": 17,
+    "chunk_id": "chunk-000017-36000-38251-39ec6c2a0304",
+    "trace_events": [
+      {
+        "code": "describe_evidence_shadowed_by_exact",
+        "local_mention_id": "m3",
+        "detail": "occurrences=1; exact_mentions=m2; rule=exact-evidence-precedence-v1"
+      },
+      {
+        "code": "describe_removed_after_exact_dedup",
+        "local_mention_id": "m3",
+        "detail": "rule=exact-evidence-precedence-v1"
+      },
+      {
+        "code": "describe_evidence_shadowed_by_exact",
+        "local_mention_id": "m4",
+        "detail": "occurrences=1; exact_mentions=m2; rule=exact-evidence-precedence-v1"
+      },
+      {
+        "code": "describe_removed_after_exact_dedup",
+        "local_mention_id": "m4",
+        "detail": "rule=exact-evidence-precedence-v1"
+      }
+    ]
+  }
+]

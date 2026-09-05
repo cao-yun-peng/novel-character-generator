@@ -2,6 +2,7 @@ import copy
 import json
 import tempfile
 import unittest
+from novel_character_generator.errors import ContractValidationError
 from hashlib import sha256
 from pathlib import Path
 from unittest import mock
@@ -110,6 +111,7 @@ def _rescue_envelope(text: str) -> ClusterRescueEnvelope:
 
 
 class _Provider:
+    cache_identity = {"provider": "test-test_identity_rescue.py"}
     def __init__(self, output):
         self.output = output
         self.requests = []
@@ -120,6 +122,7 @@ class _Provider:
 
 
 class _FailProvider:
+    cache_identity = {"provider": "test-test_identity_rescue.py"}
     def generate(self, request):
         raise AssertionError("resumed cluster rescue task must not call Provider")
 
@@ -316,12 +319,30 @@ class ClusterRescuePreparationTests(unittest.TestCase):
                     provider=_Provider(output_value),
                     output_dir=output,
                 )
+                cached_path = next((output / "tasks").glob("*.json"))
+                cached = json.loads(cached_path.read_text("utf-8"))
+                cached["grounded_result"] = {"corrupt": True}
+                cached_path.write_text(json.dumps(cached), encoding="utf-8")
                 second = run_identity_rescue(
                     document_text=text,
                     source_identity_run_dir=Path("identity"),
                     provider=_FailProvider(),
                     output_dir=output,
                 )
+                refreshed = json.loads(cached_path.read_text("utf-8"))
+                self.assertNotIn("corrupt", refreshed["grounded_result"])
+                for invalid in (None, "changed-request"):
+                    with self.subTest(fingerprint=invalid):
+                        refreshed["request_fingerprint"] = invalid
+                        cached_path.write_text(json.dumps(refreshed), encoding="utf-8")
+                        with self.assertRaisesRegex(ContractValidationError, "fingerprint"):
+                            run_identity_rescue(
+                                document_text=text,
+                                source_identity_run_dir=Path("identity"),
+                                provider=_FailProvider(),
+                                output_dir=output,
+                            )
+
         self.assertTrue(first["complete"])
         self.assertEqual(first["new_provider_calls"], 1)
         self.assertEqual(second["new_provider_calls"], 0)

@@ -1,0 +1,8 @@
+{
+  "task_id": "WEB-READY-REPAIR-PLAN-076",
+  "requested_by": "user",
+  "intent": "综合已发现 bug 与 Snapshot、场景/换装持续、高召回候选和 Debug Viewer，制定面向后续 Web 使用的修复清单。",
+  "current_behavior": "dev26 已有按人物/状态/原文位置的 render compiler；场景按行/章过期，候选默认 2 且可配置，缺 Web 服务与可交互证据调试入口。",
+  "desired_behavior": "交付一份可执行修复计划，明确正确性修复、查询模型、服务接口、任务管理、人工复核、评测和迁移；所有运行时变更保持 planned。",
+  "route_decision": "DEC-20260905-WEB-READY-REPAIR-PLAN-076"
+}

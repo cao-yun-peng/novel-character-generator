@@ -1,0 +1,7 @@
+{
+  "task_id": "RENDER-PROFILE-COMPILER-074",
+  "requested_by": "user",
+  "intent": "依据技术文档继续开发 074，把已完成的 fact groups、appearance states、semantic relations 与 Label/Review projection 编译为可缓存、可审计的结构化人物卡。",
+  "current_behavior": "现有层能说明事实观察位置、StateSegment、等价 proposition 和标签语义，但尚未回答某个 character/state/document_position 下哪些事实确定有效、哪些只可 provisional 使用，也没有 render-ready 聚合产物。",
+  "desired_behavior": "唯一选择 StateSegment 后，根据 persistence、状态边界、appearance transition 和观察位置派生 applicability，输出分层 traits、相关 transitions、scope 内冲突、warnings 与 canonical/raw 双层 provenance。"
+}

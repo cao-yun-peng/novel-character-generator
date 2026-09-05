@@ -9,6 +9,7 @@ from novel_character_generator.m1_batch import run_m1_document
 
 
 class EchoEvidenceProvider:
+    cache_identity = {"provider": "test-m1-echo-v1"}
     def __init__(self, fail_on_call: int | None = None) -> None:
         self.calls = 0
         self.fail_on_call = fail_on_call

@@ -1,0 +1,172 @@
+{
+  "policy_version": "grounded-scene-clothing-conflicts-v1",
+  "source_document_version_id": "render-compiler-test-source",
+  "document_hash": "ca0a4fa117989ce96ab640139bfc9d7b8514ea13ede16db2cfaeec334d751091",
+  "fact_groups_hash": "2e530155fec84db49d1700573074af1618190598cc3413481e926b574adedf0c",
+  "source_bundle_hash": "d705553681b5203dbdbbe4ddb1dc76cbcdf3b51a990aaa0cc41e073f6ce4134c",
+  "tasks": [
+    {
+      "kind": "events",
+      "chunk_id": "chunk-000001-0-104-ca0a4fa11798",
+      "span": {
+        "start": 0,
+        "end": 104
+      },
+      "bindings": {
+        "唐三": [
+          "char-aaaaaaaaaaaaaaaaaaaa"
+        ],
+        "素云涛": [
+          "char-bbbbbbbbbbbbbbbbbbbb"
+        ]
+      },
+      "payload": {
+        "characters": [
+          {
+            "name": "唐三",
+            "facts": [
+              {
+                "fact_quote": "红衣",
+                "category": "clothing",
+                "attribute": "衣着",
+                "value": "红衣"
+              },
+              {
+                "fact_quote": "白衫",
+                "category": "clothing",
+                "attribute": "衣着",
+                "value": "白衫"
+              },
+              {
+                "fact_quote": "玉佩",
+                "category": "accessory",
+                "attribute": "accessory",
+                "value": "玉佩"
+              },
+              {
+                "fact_quote": "微笑",
+                "category": "appearance_state",
+                "attribute": "appearance_state",
+                "value": "微笑"
+              },
+              {
+                "fact_quote": "蓝衣",
+                "category": "clothing",
+                "attribute": "衣着",
+                "value": "蓝衣"
+              }
+            ]
+          },
+          {
+            "name": "素云涛",
+            "facts": []
+          }
+        ],
+        "text": "第一章\n甲穿红衣，内衬白衫，佩玉佩，微笑。\n仍穿原衣走到门外。\n第二章\n他继续走向城门，衣着如前。\n他脱下红衣。\n换上蓝衣。\n他离场片刻又回来。\n十年之后。\n他的笑容消失了。\n红衣与蓝衣在此段同时保持原样。\n"
+      },
+      "task_id": "2f553d7b4489c056a522fa02aa017fa59ff50be7727f4b872e74f8eccdf1366e"
+    },
+    {
+      "kind": "relation",
+      "character_id": "char-aaaaaaaaaaaaaaaaaaaa",
+      "fact_ids": [
+        "cfact-11111111111111111111",
+        "cfact-22222222222222222222"
+      ],
+      "payload": {
+        "character": "唐三",
+        "left": {
+          "fact": {
+            "fact_quote": "红衣",
+            "category": "clothing",
+            "attribute": "衣着",
+            "value": "红衣"
+          },
+          "context": [
+            "红衣"
+          ]
+        },
+        "right": {
+          "fact": {
+            "fact_quote": "白衫",
+            "category": "clothing",
+            "attribute": "衣着",
+            "value": "白衫"
+          },
+          "context": [
+            "白衫"
+          ]
+        }
+      },
+      "task_id": "9b8b23e582465efe1d9c06b3c1e7bddc4c4cc882b10f7bfbd556955f74748ce2"
+    },
+    {
+      "kind": "relation",
+      "character_id": "char-aaaaaaaaaaaaaaaaaaaa",
+      "fact_ids": [
+        "cfact-11111111111111111111",
+        "cfact-55555555555555555555"
+      ],
+      "payload": {
+        "character": "唐三",
+        "left": {
+          "fact": {
+            "fact_quote": "红衣",
+            "category": "clothing",
+            "attribute": "衣着",
+            "value": "红衣"
+          },
+          "context": [
+            "红衣"
+          ]
+        },
+        "right": {
+          "fact": {
+            "fact_quote": "蓝衣",
+            "category": "clothing",
+            "attribute": "衣着",
+            "value": "蓝衣"
+          },
+          "context": [
+            "蓝衣"
+          ]
+        }
+      },
+      "task_id": "0c390d48b57730b8623ec55083ad936c1c67050bfd61a336b7473ac60afcebeb"
+    },
+    {
+      "kind": "relation",
+      "character_id": "char-aaaaaaaaaaaaaaaaaaaa",
+      "fact_ids": [
+        "cfact-22222222222222222222",
+        "cfact-55555555555555555555"
+      ],
+      "payload": {
+        "character": "唐三",
+        "left": {
+          "fact": {
+            "fact_quote": "白衫",
+            "category": "clothing",
+            "attribute": "衣着",
+            "value": "白衫"
+          },
+          "context": [
+            "白衫"
+          ]
+        },
+        "right": {
+          "fact": {
+            "fact_quote": "蓝衣",
+            "category": "clothing",
+            "attribute": "衣着",
+            "value": "蓝衣"
+          },
+          "context": [
+            "蓝衣"
+          ]
+        }
+      },
+      "task_id": "d340bb6b34272239e5fb9e1d6ab283f8c3e0778deac21d151c12a8151bfc9ffb"
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "schema_version": "render-profile-compile-requests-v1",
+  "requests": [
+    {
+      "character_id": "char-f47075b7019563fd8315",
+      "selector": {
+        "life_stage": "unknown",
+        "form_state": "unknown",
+        "scene_state": "unknown",
+        "document_position": 300
+      }
+    },
+    {
+      "character_id": "char-f47075b7019563fd8315",
+      "selector": {
+        "life_stage": "眼前的这个孩子",
+        "form_state": "unknown",
+        "scene_state": "unknown",
+        "document_position": 37690
+      }
+    },
+    {
+      "character_id": "char-431fd9f3afcbe1cece75",
+      "selector": {
+        "life_stage": "unknown",
+        "form_state": "unknown",
+        "scene_state": "unknown",
+        "document_position": 13990
+      }
+    },
+    {
+      "character_id": "char-431fd9f3afcbe1cece75",
+      "selector": {
+        "life_stage": "unknown",
+        "form_state": "独狼，附体",
+        "scene_state": "unknown",
+        "document_position": 17845
+      }
+    }
+  ]
+}

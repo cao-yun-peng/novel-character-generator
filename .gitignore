@@ -1,9 +1,37 @@
+# --- 密钥与本地环境 ---
 .env
+.env.local
+.env.*.local
+
+# --- Python 运行时与构建产物 ---
 .venv/
 __pycache__/
 *.py[cod]
+*.egg-info/
+build/
+dist/
+.coverage
+htmlcov/
+
+# --- 测试与静态检查缓存 ---
 .pytest_cache/
+.pytest-tmp-*/
 .mypy_cache/
 .ruff_cache/
 .uv-cache/
+
+# --- 前端（web/）---
+node_modules/
+*.tsbuildinfo
+web/dist/
+coverage/
+
+# --- Web 本地运行时 workspace（上传文档/任务/决策日志/managed registry）---
+runs/web-jobs/
+
+# --- 编辑器与本机文件 ---
+.vscode/
+.idea/
+.codex/
 .DS_Store
+Thumbs.db

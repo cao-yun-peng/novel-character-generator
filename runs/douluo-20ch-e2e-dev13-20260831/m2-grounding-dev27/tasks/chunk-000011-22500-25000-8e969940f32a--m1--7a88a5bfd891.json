@@ -1,0 +1,125 @@
+{
+  "schema_version": "m2-attribution-task-result-v1",
+  "source_run_dir": "E:\\project\\agent\\novel-cahracter-generator\\runs\\douluo-20ch-e2e-dev13-20260831\\m1",
+  "chunk_index": 11,
+  "chunk_id": "chunk-000011-22500-25000-8e969940f32a",
+  "target_local_mention_id": "m1",
+  "target_mention_quote": "唐昊",
+  "task_cache_key": "7a88a5bfd891bfaa87a5771346a1c482f7b54b729ffa358002ff6b8ac174a0c8",
+  "request_fingerprint": "e5ec5b32509f83ef0a59e93f6a1617e648d1e1bdae535dcf1b9660a18afc10dc",
+  "model_output": {
+    "belongs_to_target": [
+      {
+        "fact_quote": "唐昊的胸膛很宽阔",
+        "category": "body",
+        "attribute": "胸膛",
+        "value": "宽阔"
+      },
+      {
+        "fact_quote": "面庞看上去更加苍老了几分",
+        "category": "face",
+        "attribute": "面庞苍老程度",
+        "value": "苍老"
+      },
+      {
+        "fact_quote": "高大的父亲",
+        "category": "body",
+        "attribute": "身高",
+        "value": "高大"
+      },
+      {
+        "fact_quote": "裸露在破烂裤管外的两条小腿",
+        "category": "body",
+        "attribute": "小腿",
+        "value": "裸露在破烂裤管外"
+      }
+    ]
+  },
+  "grounded_result": {
+    "grounding_policy_version": "unique-fact-occurrence-attribution-v2",
+    "target_character_ref": {
+      "source_document_version_id": "source-8bcb7305a759571b",
+      "chunk_id": "chunk-000011-22500-25000-8e969940f32a",
+      "local_mention_id": "m1",
+      "mention_type": "exact",
+      "packet_hash": "9cd39d848a2c5a3bd47d58719e5ff78c82d00f7a95d617dc0fffcd78099dffda"
+    },
+    "task_cache_key": "7a88a5bfd891bfaa87a5771346a1c482f7b54b729ffa358002ff6b8ac174a0c8",
+    "grounded_belongs_to_target": [
+      {
+        "fact_quote": "唐昊的胸膛很宽阔",
+        "category": "body",
+        "attribute": "胸膛",
+        "value": "宽阔",
+        "source_mention_id": "m1",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "唐昊的胸膛很宽阔，或许是因为长期做铁匠的原因，尽管表面上他看上去很懒散，可他身上的肌肉却并没有因为岁月而减少",
+        "source_evidence_span": {
+          "start": 58,
+          "end": 112
+        },
+        "fact_chunk_span": {
+          "start": 58,
+          "end": 66
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "面庞看上去更加苍老了几分",
+        "category": "face",
+        "attribute": "面庞苍老程度",
+        "value": "苍老",
+        "source_mention_id": "m1",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "面庞看上去更加苍老了几分",
+        "source_evidence_span": {
+          "start": 867,
+          "end": 879
+        },
+        "fact_chunk_span": {
+          "start": 867,
+          "end": 879
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "高大的父亲",
+        "category": "body",
+        "attribute": "身高",
+        "value": "高大",
+        "source_mention_id": "m1",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "高大的父亲",
+        "source_evidence_span": {
+          "start": 1666,
+          "end": 1671
+        },
+        "fact_chunk_span": {
+          "start": 1666,
+          "end": 1671
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "裸露在破烂裤管外的两条小腿",
+        "category": "body",
+        "attribute": "小腿",
+        "value": "裸露在破烂裤管外",
+        "source_mention_id": "m1",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "裸露在破烂裤管外的两条小腿",
+        "source_evidence_span": {
+          "start": 2411,
+          "end": 2424
+        },
+        "fact_chunk_span": {
+          "start": 2411,
+          "end": 2424
+        },
+        "match_mode": "exact"
+      }
+    ]
+  },
+  "grounding_issues": [],
+  "provider_trace": null
+}

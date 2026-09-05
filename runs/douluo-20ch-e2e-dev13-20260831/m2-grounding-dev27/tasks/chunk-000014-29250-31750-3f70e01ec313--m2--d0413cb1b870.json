@@ -1,0 +1,77 @@
+{
+  "schema_version": "m2-attribution-task-result-v1",
+  "source_run_dir": "E:\\project\\agent\\novel-cahracter-generator\\runs\\douluo-20ch-e2e-dev13-20260831\\m1",
+  "chunk_index": 14,
+  "chunk_id": "chunk-000014-29250-31750-3f70e01ec313",
+  "target_local_mention_id": "m2",
+  "target_mention_quote": "唐昊",
+  "task_cache_key": "d0413cb1b8709a9e99050adb809ac2bacefd86f30e983d1fd0fa59907c0793bb",
+  "request_fingerprint": "e1ec52a50e52210a5a46e55adf9ba069ff54e2ad18d3130c4eafe2bb67561045",
+  "model_output": {
+    "belongs_to_target": [
+      {
+        "fact_quote": "高大",
+        "category": "body",
+        "attribute": "身高",
+        "value": "高大"
+      },
+      {
+        "fact_quote": "苍老",
+        "category": "face",
+        "attribute": "面容",
+        "value": "苍老"
+      }
+    ]
+  },
+  "grounded_result": {
+    "grounding_policy_version": "unique-fact-occurrence-attribution-v2",
+    "target_character_ref": {
+      "source_document_version_id": "source-8bcb7305a759571b",
+      "chunk_id": "chunk-000014-29250-31750-3f70e01ec313",
+      "local_mention_id": "m2",
+      "mention_type": "exact",
+      "packet_hash": "dd04775e589c963e1a90e15cf24be2e048abf8e2586ed34ffec7ba9f849195e5"
+    },
+    "task_cache_key": "d0413cb1b8709a9e99050adb809ac2bacefd86f30e983d1fd0fa59907c0793bb",
+    "grounded_belongs_to_target": [
+      {
+        "fact_quote": "高大",
+        "category": "body",
+        "attribute": "身高",
+        "value": "高大",
+        "source_mention_id": "m2",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "眼前这个高大苍老的男人",
+        "source_evidence_span": {
+          "start": 1515,
+          "end": 1526
+        },
+        "fact_chunk_span": {
+          "start": 1519,
+          "end": 1521
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "苍老",
+        "category": "face",
+        "attribute": "面容",
+        "value": "苍老",
+        "source_mention_id": "m2",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "眼前这个高大苍老的男人",
+        "source_evidence_span": {
+          "start": 1515,
+          "end": 1526
+        },
+        "fact_chunk_span": {
+          "start": 1521,
+          "end": 1523
+        },
+        "match_mode": "exact"
+      }
+    ]
+  },
+  "grounding_issues": [],
+  "provider_trace": null
+}

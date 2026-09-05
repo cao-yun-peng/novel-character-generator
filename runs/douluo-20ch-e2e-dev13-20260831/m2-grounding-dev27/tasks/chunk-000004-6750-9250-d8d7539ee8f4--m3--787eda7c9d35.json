@@ -1,0 +1,101 @@
+{
+  "schema_version": "m2-attribution-task-result-v1",
+  "source_run_dir": "E:\\project\\agent\\novel-cahracter-generator\\runs\\douluo-20ch-e2e-dev13-20260831\\m1",
+  "chunk_index": 4,
+  "chunk_id": "chunk-000004-6750-9250-d8d7539ee8f4",
+  "target_local_mention_id": "m3",
+  "target_mention_quote": "小三",
+  "task_cache_key": "787eda7c9d35af4a903319d38d7eca64b68f589bc5eeded87825714d3688eb90",
+  "request_fingerprint": "a5a86bfcf3edbe89d89381a823481c8fb665dfbb03fa2363995769b164707aaa",
+  "model_output": {
+    "belongs_to_target": [
+      {
+        "fact_quote": "这种长柄铁锤甚至要比他的身高还高上几分",
+        "category": "body",
+        "attribute": "身高",
+        "value": "矮于长柄铁锤"
+      },
+      {
+        "fact_quote": "他的身体变得结实了几分",
+        "category": "body",
+        "attribute": "身体",
+        "value": "结实几分"
+      },
+      {
+        "fact_quote": "他那双稚嫩的小手看上去却并没有任何变化",
+        "category": "body",
+        "attribute": "双手",
+        "value": "稚嫩且无变化"
+      }
+    ]
+  },
+  "grounded_result": {
+    "grounding_policy_version": "unique-fact-occurrence-attribution-v2",
+    "target_character_ref": {
+      "source_document_version_id": "source-8bcb7305a759571b",
+      "chunk_id": "chunk-000004-6750-9250-d8d7539ee8f4",
+      "local_mention_id": "m3",
+      "mention_type": "exact",
+      "packet_hash": "5556b58728c2b4bdf55b053658af0fccc2a3dfa2acd5ec9f37153eadf7eeb478"
+    },
+    "task_cache_key": "787eda7c9d35af4a903319d38d7eca64b68f589bc5eeded87825714d3688eb90",
+    "grounded_belongs_to_target": [
+      {
+        "fact_quote": "这种长柄铁锤甚至要比他的身高还高上几分",
+        "category": "body",
+        "attribute": "身高",
+        "value": "矮于长柄铁锤",
+        "source_mention_id": "m3",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "这种长柄铁锤甚至要比他的身高还高上几分",
+        "source_evidence_span": {
+          "start": 1110,
+          "end": 1129
+        },
+        "fact_chunk_span": {
+          "start": 1110,
+          "end": 1129
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "他的身体变得结实了几分",
+        "category": "body",
+        "attribute": "身体",
+        "value": "结实几分",
+        "source_mention_id": "m3",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "他的身体变得结实了几分",
+        "source_evidence_span": {
+          "start": 1836,
+          "end": 1847
+        },
+        "fact_chunk_span": {
+          "start": 1836,
+          "end": 1847
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "他那双稚嫩的小手看上去却并没有任何变化",
+        "category": "body",
+        "attribute": "双手",
+        "value": "稚嫩且无变化",
+        "source_mention_id": "m3",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "他那双稚嫩的小手看上去却并没有任何变化。甚至连一个水泡都没有起过。",
+        "source_evidence_span": {
+          "start": 2147,
+          "end": 2180
+        },
+        "fact_chunk_span": {
+          "start": 2147,
+          "end": 2166
+        },
+        "match_mode": "exact"
+      }
+    ]
+  },
+  "grounding_issues": [],
+  "provider_trace": null
+}

@@ -1,0 +1,71 @@
+{
+  "schema_version": "automatic-appearance-semantics-v1",
+  "policy_version": "grounded-scene-clothing-conflicts-v1",
+  "source_document_version_id": "render-compiler-test-source",
+  "document_hash": "ca0a4fa117989ce96ab640139bfc9d7b8514ea13ede16db2cfaeec334d751091",
+  "fact_groups_hash": "2e530155fec84db49d1700573074af1618190598cc3413481e926b574adedf0c",
+  "source_bundle_hash": "d705553681b5203dbdbbe4ddb1dc76cbcdf3b51a990aaa0cc41e073f6ce4134c",
+  "events": [
+    {
+      "character_id": "char-aaaaaaaaaaaaaaaaaaaa",
+      "kind": "continuity",
+      "fact_ids": [
+        "cfact-11111111111111111111",
+        "cfact-55555555555555555555"
+      ],
+      "evidence": "红衣与蓝衣在此段同时保持原样。",
+      "document_span": {
+        "start": 88,
+        "end": 103
+      }
+    }
+  ],
+  "relations": [
+    {
+      "character_id": "char-aaaaaaaaaaaaaaaaaaaa",
+      "fact_ids": [
+        "cfact-11111111111111111111",
+        "cfact-22222222222222222222"
+      ],
+      "relation": "uncertain",
+      "evidence": []
+    },
+    {
+      "character_id": "char-aaaaaaaaaaaaaaaaaaaa",
+      "fact_ids": [
+        "cfact-11111111111111111111",
+        "cfact-55555555555555555555"
+      ],
+      "relation": "incompatible",
+      "evidence": [
+        {
+          "canonical_fact_id": "cfact-11111111111111111111",
+          "quote": "红衣",
+          "document_span": {
+            "start": 6,
+            "end": 8
+          }
+        },
+        {
+          "canonical_fact_id": "cfact-55555555555555555555",
+          "quote": "蓝衣",
+          "document_span": {
+            "start": 59,
+            "end": 61
+          }
+        }
+      ]
+    },
+    {
+      "character_id": "char-aaaaaaaaaaaaaaaaaaaa",
+      "fact_ids": [
+        "cfact-22222222222222222222",
+        "cfact-55555555555555555555"
+      ],
+      "relation": "uncertain",
+      "evidence": []
+    }
+  ],
+  "reviews": [],
+  "complete": true
+}

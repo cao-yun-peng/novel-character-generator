@@ -1,0 +1,6 @@
+{
+  "task_id": "88c9deb6f99360e1ff11c7af50d4253e091aa7f9266036cab42d698ed814fd22",
+  "payload_hash": "7d9fe50900bbf71d4b8d4f383714a47d9e9433caab02da107a458dc0238fc40b",
+  "request_fingerprint": "9d85b7caf2b7f46f3f718e945931c993b35f38c4bffc6de380c7068769b3d770",
+  "model_output": "{\"relation\": \"incompatible\", \"evidence_quotes\": [\"唐三瘦弱的身体\", \"他的身体变得结实了几分\"]}"
+}

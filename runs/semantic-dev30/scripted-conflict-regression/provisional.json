@@ -1,0 +1,597 @@
+{
+  "schema_version": "character-snapshot-v1",
+  "policy_version": "automatic-semantic-snapshot-v2",
+  "applicability_policy_version": "evidence-interval-applicability-v2",
+  "snapshot_id": "snapshot-5125aa74b77177af5ae3",
+  "artifact_set_id": "artifact-set-a7e64d3fbb6a3bc1585e",
+  "run_id": "test-run",
+  "source_document_version_id": "render-compiler-test-source",
+  "document_hash": "ca0a4fa117989ce96ab640139bfc9d7b8514ea13ede16db2cfaeec334d751091",
+  "offset_unit": "unicode_codepoint",
+  "identity_status": "linked",
+  "profile_id": "render-profile-1544516db32195b00764",
+  "character_id": "char-aaaaaaaaaaaaaaaaaaaa",
+  "selector": {
+    "life_stage": null,
+    "form_state": null,
+    "scene_state": null,
+    "document_position": 73
+  },
+  "compile_status": "compiled_with_warnings",
+  "candidate_state_segment_ids": [
+    "state-9ba3ab36eb6ffbe41552"
+  ],
+  "selected_state_segment_id": "state-9ba3ab36eb6ffbe41552",
+  "selected_state": {
+    "life_stage": "unknown",
+    "form_state": "unknown",
+    "scene_state": "unknown",
+    "chapter_number": 2,
+    "document_span": {
+      "start": 0,
+      "end": 104
+    }
+  },
+  "identity_labels": {
+    "character_id": "char-aaaaaaaaaaaaaaaaaaaa",
+    "preferred_label_id": "label-11111111111111111111",
+    "source_canonical_label": "唐三",
+    "source_canonical_label_status": "confirmed_name_like",
+    "labels": [
+      {
+        "label_id": "label-11111111111111111111",
+        "label_quote": "唐三",
+        "source_label_role": "name",
+        "label_kind": "proper_name",
+        "label_stability": "stable",
+        "source_globally_unique": true,
+        "selection_status": "preferred"
+      }
+    ]
+  },
+  "active_fact_ids": [],
+  "provisional_fact_ids": [
+    "cfact-11111111111111111111",
+    "cfact-22222222222222222222",
+    "cfact-33333333333333333333",
+    "cfact-55555555555555555555"
+  ],
+  "transitions": [],
+  "unresolved_conflicts": [],
+  "provenance": [
+    {
+      "canonical_fact_id": "cfact-11111111111111111111",
+      "fact_quote": "红衣",
+      "category": "clothing",
+      "attribute": "衣着",
+      "value": "红衣",
+      "document_fact_span": {
+        "start": 6,
+        "end": 8
+      },
+      "source_fact_hashes": [
+        "66bcb9102577060a8225de1c2682ac3a2c3bc4ddbf13a9d0c9b7b8b254bd332a"
+      ],
+      "source_occurrences": [
+        {
+          "source_fact_hash": "66bcb9102577060a8225de1c2682ac3a2c3bc4ddbf13a9d0c9b7b8b254bd332a",
+          "source_occurrence_index": 0,
+          "source_occurrence": {
+            "chunk_id": "chunk-test",
+            "chunk_hash": "ca0a4fa117989ce96ab640139bfc9d7b8514ea13ede16db2cfaeec334d751091",
+            "chunk_source_span": {
+              "start": 0,
+              "end": 104
+            },
+            "source_character_ref": {
+              "source_document_version_id": "render-compiler-test-source",
+              "chunk_id": "chunk-test",
+              "local_mention_id": "m1",
+              "mention_type": "exact",
+              "packet_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            },
+            "source_mention_id": "m1",
+            "source_mention_type": "exact",
+            "source_evidence_quote": "红衣",
+            "chunk_evidence_span": {
+              "start": 6,
+              "end": 8
+            },
+            "document_evidence_span": {
+              "start": 6,
+              "end": 8
+            },
+            "chunk_fact_span": {
+              "start": 6,
+              "end": 8
+            },
+            "match_mode": "exact"
+          }
+        }
+      ],
+      "applicability_status": "provisional",
+      "applicability_reason": "uncertain_continuity"
+    },
+    {
+      "canonical_fact_id": "cfact-22222222222222222222",
+      "fact_quote": "白衫",
+      "category": "clothing",
+      "attribute": "衣着",
+      "value": "白衫",
+      "document_fact_span": {
+        "start": 11,
+        "end": 13
+      },
+      "source_fact_hashes": [
+        "8ae6c975d0fd72544bcc0bff667da71408634a9c2b887b64307e156d95a6ef67"
+      ],
+      "source_occurrences": [
+        {
+          "source_fact_hash": "8ae6c975d0fd72544bcc0bff667da71408634a9c2b887b64307e156d95a6ef67",
+          "source_occurrence_index": 0,
+          "source_occurrence": {
+            "chunk_id": "chunk-test",
+            "chunk_hash": "ca0a4fa117989ce96ab640139bfc9d7b8514ea13ede16db2cfaeec334d751091",
+            "chunk_source_span": {
+              "start": 0,
+              "end": 104
+            },
+            "source_character_ref": {
+              "source_document_version_id": "render-compiler-test-source",
+              "chunk_id": "chunk-test",
+              "local_mention_id": "m1",
+              "mention_type": "exact",
+              "packet_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            },
+            "source_mention_id": "m1",
+            "source_mention_type": "exact",
+            "source_evidence_quote": "白衫",
+            "chunk_evidence_span": {
+              "start": 11,
+              "end": 13
+            },
+            "document_evidence_span": {
+              "start": 11,
+              "end": 13
+            },
+            "chunk_fact_span": {
+              "start": 11,
+              "end": 13
+            },
+            "match_mode": "exact"
+          }
+        }
+      ],
+      "applicability_status": "provisional",
+      "applicability_reason": "uncertain_continuity"
+    },
+    {
+      "canonical_fact_id": "cfact-33333333333333333333",
+      "fact_quote": "玉佩",
+      "category": "accessory",
+      "attribute": "accessory",
+      "value": "玉佩",
+      "document_fact_span": {
+        "start": 15,
+        "end": 17
+      },
+      "source_fact_hashes": [
+        "cfd2db0676d9092a9823fcca67cea37e24f2fa85431234c0431e722391b343c2"
+      ],
+      "source_occurrences": [
+        {
+          "source_fact_hash": "cfd2db0676d9092a9823fcca67cea37e24f2fa85431234c0431e722391b343c2",
+          "source_occurrence_index": 0,
+          "source_occurrence": {
+            "chunk_id": "chunk-test",
+            "chunk_hash": "ca0a4fa117989ce96ab640139bfc9d7b8514ea13ede16db2cfaeec334d751091",
+            "chunk_source_span": {
+              "start": 0,
+              "end": 104
+            },
+            "source_character_ref": {
+              "source_document_version_id": "render-compiler-test-source",
+              "chunk_id": "chunk-test",
+              "local_mention_id": "m1",
+              "mention_type": "exact",
+              "packet_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            },
+            "source_mention_id": "m1",
+            "source_mention_type": "exact",
+            "source_evidence_quote": "玉佩",
+            "chunk_evidence_span": {
+              "start": 15,
+              "end": 17
+            },
+            "document_evidence_span": {
+              "start": 15,
+              "end": 17
+            },
+            "chunk_fact_span": {
+              "start": 15,
+              "end": 17
+            },
+            "match_mode": "exact"
+          }
+        }
+      ],
+      "applicability_status": "provisional",
+      "applicability_reason": "uncertain_continuity"
+    },
+    {
+      "canonical_fact_id": "cfact-55555555555555555555",
+      "fact_quote": "蓝衣",
+      "category": "clothing",
+      "attribute": "衣着",
+      "value": "蓝衣",
+      "document_fact_span": {
+        "start": 59,
+        "end": 61
+      },
+      "source_fact_hashes": [
+        "5d52d67ff69ed37602f4b77d553082d19ed4e9b19ceb3a224466463893936c92"
+      ],
+      "source_occurrences": [
+        {
+          "source_fact_hash": "5d52d67ff69ed37602f4b77d553082d19ed4e9b19ceb3a224466463893936c92",
+          "source_occurrence_index": 0,
+          "source_occurrence": {
+            "chunk_id": "chunk-test",
+            "chunk_hash": "ca0a4fa117989ce96ab640139bfc9d7b8514ea13ede16db2cfaeec334d751091",
+            "chunk_source_span": {
+              "start": 0,
+              "end": 104
+            },
+            "source_character_ref": {
+              "source_document_version_id": "render-compiler-test-source",
+              "chunk_id": "chunk-test",
+              "local_mention_id": "m1",
+              "mention_type": "exact",
+              "packet_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            },
+            "source_mention_id": "m1",
+            "source_mention_type": "exact",
+            "source_evidence_quote": "蓝衣",
+            "chunk_evidence_span": {
+              "start": 59,
+              "end": 61
+            },
+            "document_evidence_span": {
+              "start": 59,
+              "end": 61
+            },
+            "chunk_fact_span": {
+              "start": 59,
+              "end": 61
+            },
+            "match_mode": "exact"
+          }
+        }
+      ],
+      "applicability_status": "provisional",
+      "applicability_reason": "uncertain_continuity"
+    }
+  ],
+  "compile_warnings": [
+    {
+      "code": "provisional_fact_applicability",
+      "message": "Some traits have unknown or scene-bounded persistence and remain provisional.",
+      "related_ids": [
+        "cfact-11111111111111111111",
+        "cfact-22222222222222222222",
+        "cfact-33333333333333333333",
+        "cfact-55555555555555555555"
+      ]
+    },
+    {
+      "code": "provisional_incompatible_relation",
+      "message": "Semantic incompatibility has uncertain temporal overlap; review required.",
+      "related_ids": [
+        "cfact-11111111111111111111",
+        "cfact-55555555555555555555",
+        "relation-5dc6f798994394c7ee80"
+      ]
+    },
+    {
+      "code": "provisional_unclassified_relation",
+      "message": "One or more in-scope relations have provisional applicability and remain unclassified.",
+      "related_ids": [
+        "cfact-11111111111111111111",
+        "cfact-22222222222222222222",
+        "cfact-55555555555555555555",
+        "relation-a3bcb524e02a97b142ff",
+        "relation-cbc284cd64f198d46b2b"
+      ]
+    },
+    {
+      "code": "unknown_form_state",
+      "message": "The selected segment has unknown form_state; no value was inferred.",
+      "related_ids": [
+        "state-9ba3ab36eb6ffbe41552"
+      ]
+    },
+    {
+      "code": "unknown_life_state",
+      "message": "The selected segment has unknown life_stage; no value was inferred.",
+      "related_ids": [
+        "state-9ba3ab36eb6ffbe41552"
+      ]
+    },
+    {
+      "code": "unknown_scene_state",
+      "message": "The selected segment has unknown scene_state; no value was inferred.",
+      "related_ids": [
+        "state-9ba3ab36eb6ffbe41552"
+      ]
+    }
+  ],
+  "active_traits": [],
+  "provisional_traits": [
+    {
+      "trait_id": "render-trait-36e77aadf076e20d8e1c",
+      "attribute": "衣着",
+      "value": "红衣",
+      "categories": [
+        "clothing"
+      ],
+      "source_proposition_id": "proposition-4f5a686ae0ad76bff220",
+      "canonical_fact_ids": [
+        "cfact-11111111111111111111"
+      ],
+      "persistence": [
+        "scene"
+      ],
+      "applicability_status": "provisional",
+      "kind": "scene_overrides"
+    },
+    {
+      "trait_id": "render-trait-98607dd7869aadacc686",
+      "attribute": "衣着",
+      "value": "白衫",
+      "categories": [
+        "clothing"
+      ],
+      "source_proposition_id": "proposition-c288fb83f07918aab025",
+      "canonical_fact_ids": [
+        "cfact-22222222222222222222"
+      ],
+      "persistence": [
+        "scene"
+      ],
+      "applicability_status": "provisional",
+      "kind": "scene_overrides"
+    },
+    {
+      "trait_id": "render-trait-a2b1d95b44ecf9f12c23",
+      "attribute": "accessory",
+      "value": "玉佩",
+      "categories": [
+        "accessory"
+      ],
+      "source_proposition_id": "proposition-0a4aedd309cba29b7271",
+      "canonical_fact_ids": [
+        "cfact-33333333333333333333"
+      ],
+      "persistence": [
+        "scene"
+      ],
+      "applicability_status": "provisional",
+      "kind": "scene_overrides"
+    },
+    {
+      "trait_id": "render-trait-271e6685a69e49f276cd",
+      "attribute": "衣着",
+      "value": "蓝衣",
+      "categories": [
+        "clothing"
+      ],
+      "source_proposition_id": "proposition-0a7b1010b34e1d95ae8b",
+      "canonical_fact_ids": [
+        "cfact-55555555555555555555"
+      ],
+      "persistence": [
+        "scene"
+      ],
+      "applicability_status": "provisional",
+      "kind": "scene_overrides"
+    }
+  ],
+  "applicability": [
+    {
+      "canonical_fact_id": "cfact-11111111111111111111",
+      "status": "provisional",
+      "reason": "uncertain_continuity",
+      "observation_span": {
+        "start": 6,
+        "end": 8
+      },
+      "valid_interval": {
+        "start": 6,
+        "end": null
+      },
+      "basis_event_ids": [],
+      "persistence": "scene"
+    },
+    {
+      "canonical_fact_id": "cfact-22222222222222222222",
+      "status": "provisional",
+      "reason": "uncertain_continuity",
+      "observation_span": {
+        "start": 11,
+        "end": 13
+      },
+      "valid_interval": {
+        "start": 11,
+        "end": null
+      },
+      "basis_event_ids": [],
+      "persistence": "scene"
+    },
+    {
+      "canonical_fact_id": "cfact-33333333333333333333",
+      "status": "provisional",
+      "reason": "uncertain_continuity",
+      "observation_span": {
+        "start": 15,
+        "end": 17
+      },
+      "valid_interval": {
+        "start": 15,
+        "end": null
+      },
+      "basis_event_ids": [],
+      "persistence": "scene"
+    },
+    {
+      "canonical_fact_id": "cfact-55555555555555555555",
+      "status": "provisional",
+      "reason": "uncertain_continuity",
+      "observation_span": {
+        "start": 59,
+        "end": 61
+      },
+      "valid_interval": {
+        "start": 59,
+        "end": null
+      },
+      "basis_event_ids": [],
+      "persistence": "scene"
+    }
+  ],
+  "excluded_facts": [
+    {
+      "canonical_fact_id": "cfact-44444444444444444444",
+      "status": "excluded",
+      "reason": "expired_momentary",
+      "observation_span": {
+        "start": 18,
+        "end": 20
+      },
+      "valid_interval": {
+        "start": 18,
+        "end": 20
+      },
+      "basis_event_ids": [],
+      "persistence": "momentary",
+      "provenance": {
+        "fact_quote": "微笑",
+        "document_fact_span": {
+          "start": 18,
+          "end": 20
+        },
+        "source_fact_hashes": [
+          "b596bc867e8be88773c90afd016710cf5c903c35e399b6c95d4bbbf9f6b031fd"
+        ],
+        "source_occurrences": [
+          {
+            "source_fact_hash": "b596bc867e8be88773c90afd016710cf5c903c35e399b6c95d4bbbf9f6b031fd",
+            "source_occurrence_index": 0,
+            "source_occurrence": {
+              "chunk_id": "chunk-test",
+              "chunk_hash": "ca0a4fa117989ce96ab640139bfc9d7b8514ea13ede16db2cfaeec334d751091",
+              "chunk_source_span": {
+                "start": 0,
+                "end": 104
+              },
+              "source_character_ref": {
+                "source_document_version_id": "render-compiler-test-source",
+                "chunk_id": "chunk-test",
+                "local_mention_id": "m1",
+                "mention_type": "exact",
+                "packet_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+              },
+              "source_mention_id": "m1",
+              "source_mention_type": "exact",
+              "source_evidence_quote": "微笑",
+              "chunk_evidence_span": {
+                "start": 18,
+                "end": 20
+              },
+              "document_evidence_span": {
+                "start": 18,
+                "end": 20
+              },
+              "chunk_fact_span": {
+                "start": 18,
+                "end": 20
+              },
+              "match_mode": "exact"
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "semantic_evidence": [
+    {
+      "character_id": "char-aaaaaaaaaaaaaaaaaaaa",
+      "fact_ids": [
+        "cfact-11111111111111111111",
+        "cfact-22222222222222222222"
+      ],
+      "relation": "uncertain",
+      "evidence": []
+    },
+    {
+      "character_id": "char-aaaaaaaaaaaaaaaaaaaa",
+      "fact_ids": [
+        "cfact-11111111111111111111",
+        "cfact-55555555555555555555"
+      ],
+      "relation": "incompatible",
+      "evidence": [
+        {
+          "canonical_fact_id": "cfact-11111111111111111111",
+          "quote": "红衣",
+          "document_span": {
+            "start": 6,
+            "end": 8
+          }
+        },
+        {
+          "canonical_fact_id": "cfact-55555555555555555555",
+          "quote": "蓝衣",
+          "document_span": {
+            "start": 59,
+            "end": 61
+          }
+        }
+      ]
+    },
+    {
+      "character_id": "char-aaaaaaaaaaaaaaaaaaaa",
+      "fact_ids": [
+        "cfact-22222222222222222222",
+        "cfact-55555555555555555555"
+      ],
+      "relation": "uncertain",
+      "evidence": []
+    }
+  ],
+  "semantic_events": [
+    {
+      "character_id": "char-aaaaaaaaaaaaaaaaaaaa",
+      "kind": "continuity",
+      "fact_ids": [
+        "cfact-11111111111111111111",
+        "cfact-55555555555555555555"
+      ],
+      "evidence": "红衣与蓝衣在此段同时保持原样。",
+      "document_span": {
+        "start": 88,
+        "end": 103
+      }
+    }
+  ],
+  "semantic_reviews": [],
+  "narrative_scene": {
+    "status": "unknown",
+    "boundary_event": null,
+    "document_span": {
+      "start": 0,
+      "end": null
+    }
+  },
+  "review_refs": [],
+  "applicability_events": []
+}

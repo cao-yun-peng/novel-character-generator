@@ -11,6 +11,7 @@ from .errors import ContractValidationError, ProviderError
 from .grounding import ground_m1_result
 from .m1 import M1OrchestrationEnvelope, M1Orchestrator, M1Provider
 from .providers import DeepSeekCallTrace
+from .request_cache import request_fingerprint, validate_cached_request
 from .text import sha256_text
 
 
@@ -202,6 +203,26 @@ def run_m1_document(
     resumed_chunks = 0
     chunks_dir = output_dir / "chunks"
 
+    # Validate all existing requests before generating any missing chunk.
+    envelopes = {
+        entry.chunk_id: M1OrchestrationEnvelope.from_manifest_entry(
+            source_document_version_id=manifest_object.source_document_version_id,
+            chunking_policy_version=manifest_object.chunking_policy_version,
+            entry=entry, document_text=document_text,
+        ) for entry in manifest_object.chunks
+    }
+    fingerprints = {
+        chunk_id: request_fingerprint(provider, orchestrator.request(envelope))
+        for chunk_id, envelope in envelopes.items()
+    }
+    for entry in manifest_object.chunks:
+        cached_path = chunks_dir / f"{entry.chunk_id}.json"
+        if cached_path.exists():
+            cached = _read_json(cached_path)
+            if not isinstance(cached, dict) or cached.get("schema_version") != M1_CHUNK_RESULT_VERSION:
+                raise ContractValidationError("saved chunk result schema mismatch; use a new output directory")
+            validate_cached_request(cached, fingerprints[entry.chunk_id])
+
     for index, entry in enumerate(manifest_object.chunks, start=1):
         result_path = chunks_dir / f"{entry.chunk_id}.json"
         if result_path.exists():
@@ -214,18 +235,19 @@ def run_m1_document(
                 )
             if existing.get("chunk_id") != entry.chunk_id or existing.get("chunk_hash") != entry.chunk_hash:
                 raise ContractValidationError(f"saved chunk result identity mismatch: {entry.chunk_id}")
-            records.append(existing)
+            bound = orchestrator.bind(envelopes[entry.chunk_id], existing.get("model_output"))
+            grounded = ground_m1_result(bound)
+            refreshed = dict(existing)
+            refreshed["grounded_packet"] = grounded.to_packet_dict()
+            refreshed["grounding_trace_events"] = [event.to_dict() for event in grounded.trace_events]
+            _write_json(result_path, refreshed)
+            records.append(refreshed)
             resumed_chunks += 1
             if progress is not None:
                 progress(f"[{index}/{len(manifest_object.chunks)}] resumed {entry.chunk_id}")
             continue
 
-        envelope = M1OrchestrationEnvelope.from_manifest_entry(
-            source_document_version_id=manifest_object.source_document_version_id,
-            chunking_policy_version=manifest_object.chunking_policy_version,
-            entry=entry,
-            document_text=document_text,
-        )
+        envelope = envelopes[entry.chunk_id]
         trace_count = len(traces) if traces is not None else 0
         try:
             bound = orchestrator.run(envelope)
@@ -236,6 +258,7 @@ def run_m1_document(
                 "chunk_id": entry.chunk_id,
                 "chunk_hash": entry.chunk_hash,
                 "chunk_source_span": entry.chunk_source_span.to_dict(),
+                "request_fingerprint": fingerprints[entry.chunk_id],
                 "model_output": bound.model_output.to_dict(),
                 "grounded_packet": grounded.to_packet_dict(),
                 "grounding_trace_events": [event.to_dict() for event in grounded.trace_events],

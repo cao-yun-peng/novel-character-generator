@@ -1,0 +1,10 @@
+{
+  "task_id": "CORRECTNESS-FOUNDATION-077",
+  "requested_by": "user",
+  "intent": "Implement docs/37 incrementally; user authorizes development of the checklist",
+  "invariants": [
+    "Preserve existing uncommitted work and immutable saved runs",
+    "Keep model payload free of code metadata",
+    "Do not mark all of R02/R05/R06 complete after a partial slice"
+  ]
+}

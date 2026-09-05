@@ -1,0 +1,6 @@
+{
+  "task_id": "0480fff0feaef25deb46c2799d7f6e3788b6609376e99ed2d41969c8ddf5cdf2",
+  "payload_hash": "94dc5d2074ae78f47b5470130b5767a462bff5bcb2f96044e355495fca61fb2d",
+  "request_fingerprint": "0220363dafc9279e2c915691bd4ba04ff58a68580cc30096f07172f6a77c8177",
+  "model_output": "{\"relation\": \"incompatible\", \"evidence_quotes\": [\"高大昂扬的身躯\", \"他的身材和同龄的孩子相比，要瘦小一些。\"]}"
+}

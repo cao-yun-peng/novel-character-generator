@@ -1,0 +1,6 @@
+{
+  "task_id": "afeaf5006a64deba74fefc8e4e045870356b243c2f40fb4043d7b5d8bc82c7a5",
+  "payload_hash": "e3f254921f733cd9a7a1702f13916190ba9110de24bbfb76b9e5564be0b62bb2",
+  "request_fingerprint": "be9be3871669561d4425a63c8e495650370f7bf9d648d0231b71cba83b5972dc",
+  "model_output": "{\"events\":[{\"character\":\"唐三\",\"kind\":\"scene_boundary\",\"facts\":[],\"evidence\":\"在老杰克的带领下，唐三跟随着他来到了村子中央的武魂殿。\"}]}"
+}

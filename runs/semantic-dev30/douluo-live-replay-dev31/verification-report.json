@@ -1,0 +1,52 @@
+{
+  "summary": {
+    "planned_tasks": 52,
+    "new_provider_calls": 0,
+    "resumed_tasks": 52,
+    "replay": true,
+    "events": 7,
+    "relations": 35,
+    "reviews": 1,
+    "failed_tasks": 0,
+    "complete": true
+  },
+  "model_event_counts": {
+    "remove": 1,
+    "scene_boundary": 6,
+    "wear": 1
+  },
+  "accepted_event_counts": {
+    "remove": 1,
+    "scene_boundary": 6
+  },
+  "model_relation_counts": {
+    "equivalent": 6,
+    "compatible": 21,
+    "incompatible": 5,
+    "uncertain": 3
+  },
+  "accepted_relation_counts": {
+    "compatible": 21,
+    "equivalent": 6,
+    "incompatible": 5,
+    "uncertain": 3
+  },
+  "review_counts": {
+    "target fact occurrence is missing or ambiguous": 1
+  },
+  "api_traces": 53,
+  "http_attempts": 53,
+  "successful_calls": 52,
+  "failed_calls": 1,
+  "known_usage": {
+    "input_tokens": 78499,
+    "output_tokens": 22921,
+    "reasoning_tokens": 21288,
+    "cached_input_tokens": 25728,
+    "total_tokens": 101420
+  },
+  "unknown_usage_calls": 1,
+  "snapshots": 4,
+  "snapshot_conflicts": 0,
+  "schema_and_reground_valid": true
+}

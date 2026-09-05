@@ -1,0 +1,6 @@
+{
+  "task_id": "fb5d2b74171bbb75349bc6bc3b8474862b1130554336bcdb3324284ad3d96ad0",
+  "payload_hash": "849a2a6c58f6e68469f84c5a3f89254b355c474cee717a49f251479e25c36ece",
+  "request_fingerprint": "a85750091452ee10554b68946d31ae0fcc540346f6b85e9839f46b75fedaa797",
+  "model_output": "{\"relation\":\"compatible\",\"evidence_quotes\":[\"唐三人虽然不大\",\"再过几天，唐三就要六岁了\"]}"
+}

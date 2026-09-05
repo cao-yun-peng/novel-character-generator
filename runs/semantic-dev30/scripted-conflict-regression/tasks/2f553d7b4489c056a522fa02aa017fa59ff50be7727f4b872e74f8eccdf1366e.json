@@ -1,0 +1,28 @@
+{
+  "task_id": "2f553d7b4489c056a522fa02aa017fa59ff50be7727f4b872e74f8eccdf1366e",
+  "payload_hash": "8d7a2bfd2a05b0cabb00bb8e760f28ff4919ffd585496a880dcc4c5c049b78f3",
+  "request_fingerprint": "2bf99e635556dda07d385c06b7d0d0c51dc3ef845eda80da2b53a14b701372ee",
+  "model_output": {
+    "events": [
+      {
+        "character": "唐三",
+        "kind": "continuity",
+        "evidence": "红衣与蓝衣在此段同时保持原样。",
+        "facts": [
+          {
+            "fact_quote": "红衣",
+            "category": "clothing",
+            "attribute": "衣着",
+            "value": "红衣"
+          },
+          {
+            "fact_quote": "蓝衣",
+            "category": "clothing",
+            "attribute": "衣着",
+            "value": "蓝衣"
+          }
+        ]
+      }
+    ]
+  }
+}

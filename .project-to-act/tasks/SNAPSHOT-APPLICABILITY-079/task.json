@@ -1,0 +1,23 @@
+{
+  "id": "SNAPSHOT-APPLICABILITY-079",
+  "title": "Evidence applicability and CharacterSnapshot foundation",
+  "status": "completed",
+  "revision": 1,
+  "owner": "Codex",
+  "risk_level": "L1",
+  "runtime": "0.1.0.dev29",
+  "schema": "3.29.0-draft1",
+  "evidence_ids": [
+    "E-20260905-SNAPSHOT-APPLICABILITY-079"
+  ],
+  "session": {
+    "actor": "Codex",
+    "status": "stopped",
+    "date": "2026-09-05"
+  },
+  "limitations": [
+    "R03 automatic semantic discovery pending",
+    "R02 full conflict generation pending",
+    "Stage 6 human quality gate not passed"
+  ]
+}

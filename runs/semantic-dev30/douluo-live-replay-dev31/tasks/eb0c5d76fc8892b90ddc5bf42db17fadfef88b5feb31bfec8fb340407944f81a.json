@@ -1,0 +1,6 @@
+{
+  "task_id": "eb0c5d76fc8892b90ddc5bf42db17fadfef88b5feb31bfec8fb340407944f81a",
+  "payload_hash": "4823682ed79ddf6e0012b552217e4671c0ac3aead3c137213fb8be43bcdb2dd9",
+  "request_fingerprint": "76e8efc683b1eca400d800808eb13829c80352c1c4870164c6684e9b42c5281c",
+  "model_output": "{\"relation\": \"uncertain\", \"evidence_quotes\": [\"身体比以前健壮了一些\", \"唐三瘦弱的身体\"]}"
+}

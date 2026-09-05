@@ -1,0 +1,149 @@
+{
+  "schema_version": "m2-attribution-task-result-v1",
+  "source_run_dir": "E:\\project\\agent\\novel-cahracter-generator\\runs\\douluo-20ch-e2e-dev13-20260831\\m1",
+  "chunk_index": 10,
+  "chunk_id": "chunk-000010-20250-22750-534a1b52e99f",
+  "target_local_mention_id": "m1",
+  "target_mention_quote": "唐昊",
+  "task_cache_key": "329db5bfb68b590cf81f6ed9dc4f26395f282309a8d6a2b6edc40af25555b329",
+  "request_fingerprint": "39db3be5f2c2d5f033ee25d6a897cdbf078dc2979eecb45d1e9702d96f6dbdf8",
+  "model_output": {
+    "belongs_to_target": [
+      {
+        "fact_quote": "一副懒洋洋的样子",
+        "category": "appearance_state",
+        "attribute": "神态",
+        "value": "懒洋洋"
+      },
+      {
+        "fact_quote": "苍老的面庞",
+        "category": "face",
+        "attribute": "面部",
+        "value": "苍老"
+      },
+      {
+        "fact_quote": "他的双眼通红",
+        "category": "face",
+        "attribute": "眼睛",
+        "value": "通红"
+      },
+      {
+        "fact_quote": "唐昊的胸膛很宽阔",
+        "category": "body",
+        "attribute": "胸膛",
+        "value": "宽阔"
+      },
+      {
+        "fact_quote": "他身上的肌肉却并没有因为岁月而减少",
+        "category": "body",
+        "attribute": "肌肉",
+        "value": "没有因岁月减少"
+      }
+    ]
+  },
+  "grounded_result": {
+    "grounding_policy_version": "unique-fact-occurrence-attribution-v2",
+    "target_character_ref": {
+      "source_document_version_id": "source-8bcb7305a759571b",
+      "chunk_id": "chunk-000010-20250-22750-534a1b52e99f",
+      "local_mention_id": "m1",
+      "mention_type": "exact",
+      "packet_hash": "32c2fb957cbe0532ca5c75cee47f962de9cf494af3a4f1578568dc06f2f903b5"
+    },
+    "task_cache_key": "329db5bfb68b590cf81f6ed9dc4f26395f282309a8d6a2b6edc40af25555b329",
+    "grounded_belongs_to_target": [
+      {
+        "fact_quote": "一副懒洋洋的样子",
+        "category": "appearance_state",
+        "attribute": "神态",
+        "value": "懒洋洋",
+        "source_mention_id": "m1",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "唐昊依旧是一副懒洋洋的样子",
+        "source_evidence_span": {
+          "start": 341,
+          "end": 354
+        },
+        "fact_chunk_span": {
+          "start": 346,
+          "end": 354
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "苍老的面庞",
+        "category": "face",
+        "attribute": "面部",
+        "value": "苍老",
+        "source_mention_id": "m1",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "已经现出苍老的面庞上流露出一丝极其冰冷的气息",
+        "source_evidence_span": {
+          "start": 1019,
+          "end": 1041
+        },
+        "fact_chunk_span": {
+          "start": 1023,
+          "end": 1028
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "他的双眼通红",
+        "category": "face",
+        "attribute": "眼睛",
+        "value": "通红",
+        "source_mention_id": "m1",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "他的双眼通红",
+        "source_evidence_span": {
+          "start": 1701,
+          "end": 1707
+        },
+        "fact_chunk_span": {
+          "start": 1701,
+          "end": 1707
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "唐昊的胸膛很宽阔",
+        "category": "body",
+        "attribute": "胸膛",
+        "value": "宽阔",
+        "source_mention_id": "m1",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "唐昊的胸膛很宽阔，或许是因为长期做铁匠的原因，尽管表面上他看上去很懒散，可他身上的肌肉却并没有因为岁月而减少",
+        "source_evidence_span": {
+          "start": 2308,
+          "end": 2362
+        },
+        "fact_chunk_span": {
+          "start": 2308,
+          "end": 2316
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "他身上的肌肉却并没有因为岁月而减少",
+        "category": "body",
+        "attribute": "肌肉",
+        "value": "没有因岁月减少",
+        "source_mention_id": "m1",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "唐昊的胸膛很宽阔，或许是因为长期做铁匠的原因，尽管表面上他看上去很懒散，可他身上的肌肉却并没有因为岁月而减少",
+        "source_evidence_span": {
+          "start": 2308,
+          "end": 2362
+        },
+        "fact_chunk_span": {
+          "start": 2345,
+          "end": 2362
+        },
+        "match_mode": "exact"
+      }
+    ]
+  },
+  "grounding_issues": [],
+  "provider_trace": null
+}

@@ -1,0 +1,12 @@
+{
+  "pyproject.toml": "7d1191fb5f153211bffe80d8324f4247ba6795113db5c7ef2c31b19dcd91b9e1",
+  "docs/contracts/simplified-character-evidence-v3-model-schemas.json": "6cbfa2620581f04e7808d75cce95416a6470e891cbf783a3321b99663544cf87",
+  "src/novel_character_generator/fact_applicability.py": "6935680e0aa69e0d78f7ea9fdc772e76d40a0c7f06740ee48ef2baad76551f1f",
+  "src/novel_character_generator/character_snapshot.py": "97e030f3227dd02bc6472afd638fb8b83b9d0aaccd17bd74c3fd1a3e11cdf7d2",
+  "src/novel_character_generator/render_profile_compiler.py": "587ada3b554ccb7c19082a1416b08f8b811a6e2417313924b8d9171a218b22a9",
+  "src/novel_character_generator/__main__.py": "35ed28cc0dd0f58d81ec43b7ef69838a20da477f683789a5e9e26f40bee28a36",
+  "src/novel_character_generator/__init__.py": "06fd2595f9318314df485176752db75d82107de09e819b0f61c097f8cfaa01a5",
+  "tests/test_character_snapshot.py": "eb6a0fa9c241d2088cdf4a0ea789286abdf335280e63122a5c4fee092accc7bc",
+  "tests/test_contract_alignment.py": "63320449fe245b2b9ee4c7884cb966ca6567169d7f6c64f8b8cafc1bf7ea3434",
+  ".project-to-act\\tasks\\SNAPSHOT-APPLICABILITY-079\\verify_real.py": "a6361ffc597df390efb33d7713649f2501b3215bd6c122e327a577f4b1890ac0"
+}

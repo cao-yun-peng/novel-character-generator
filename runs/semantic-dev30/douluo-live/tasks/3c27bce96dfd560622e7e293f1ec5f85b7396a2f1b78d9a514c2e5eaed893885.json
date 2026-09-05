@@ -1,0 +1,6 @@
+{
+  "task_id": "3c27bce96dfd560622e7e293f1ec5f85b7396a2f1b78d9a514c2e5eaed893885",
+  "payload_hash": "5fb22a0179e59cbd403972951df8103bf4b5793fe6ce3bd43678256ecdbc1837",
+  "request_fingerprint": "036da4839e5f09c27dea7947f1475b2940d7e66a531216749d044a0c3f19c1b6",
+  "model_output": "{\"relation\":\"compatible\",\"evidence_quotes\":[\"他的身体变得结实了几分\",\"唐三幼小的身体\"]}"
+}

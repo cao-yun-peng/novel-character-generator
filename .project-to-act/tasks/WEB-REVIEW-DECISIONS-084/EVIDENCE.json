@@ -1,0 +1,41 @@
+{
+  "id": "E-20260905-WEB-REVIEW-DECISIONS-084",
+  "artifacts": [
+    {
+      "path": "src/novel_character_generator/webapp/store.py",
+      "sha256": "03becbd27d5c32626c0918e418c8ef015cad416866978d2e50770e4e4fab27eb"
+    },
+    {
+      "path": "src/novel_character_generator/webapp/decisions.py",
+      "sha256": "77dc66400fb55b56035fa8a15275b7cd28dfe1d07f4fc1fcf874f9ec2c71ec4a"
+    },
+    {
+      "path": "src/novel_character_generator/webapp/app.py",
+      "sha256": "2cba7f5a219203d7e0d1d5d77375d85dc0bf0cbf544df9d661489d0991f8d705"
+    },
+    {
+      "path": "tests/test_webapp_decisions.py",
+      "sha256": "0047b3804153cbdf82618b58f82d0cb2db91d761b3a10f6368ee35924e793af5"
+    },
+    {
+      "path": "scripts/c_milestone_smoke.py",
+      "sha256": "399cdfb870f16b6abb4ca74a0b26e123dec22b806d8d313007df329856e8280f"
+    },
+    {
+      "path": "web/src/pages/ReviewsPage.tsx",
+      "sha256": "f435f98f6971d23861e33dcd67f4e59a0cf24dc752190354ad8e77d0f6cefb04"
+    },
+    {
+      "path": "web/src/api/client.ts",
+      "sha256": "4835b3e42688d1d1c52fec2ac02fb9fc50eee6a89ee1001c171bced509396f2f"
+    },
+    {
+      "path": "web/src/api/types.ts",
+      "sha256": "53642998ab38c37df622f57a62a22258293ae66adb3ead4916a6b2307da7e949"
+    },
+    {
+      "path": "web/src/styles.css",
+      "sha256": "96b751d70c351a3def227fc48e3abda4da69b00b897d5706cfc9210c918d9001"
+    }
+  ]
+}

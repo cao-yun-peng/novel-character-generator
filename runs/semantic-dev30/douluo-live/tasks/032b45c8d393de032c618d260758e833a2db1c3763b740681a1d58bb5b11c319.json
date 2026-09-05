@@ -1,0 +1,6 @@
+{
+  "task_id": "032b45c8d393de032c618d260758e833a2db1c3763b740681a1d58bb5b11c319",
+  "payload_hash": "275878c726dea898795112464e6d4acc338f9459a3461b664f3ac1a897ef2a0c",
+  "request_fingerprint": "ca278fcf35a936642df2b62669886f2be945f42e51b1925699641dee007253c2",
+  "model_output": "{\"relation\":\"compatible\",\"evidence_quotes\":[\"施展的人实在矮小了一些\",\"这种长柄铁锤甚至要比他的身高还高上几分\"]}"
+}

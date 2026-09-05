@@ -304,6 +304,18 @@ class DeepSeekProvider:
     ) -> DeepSeekProvider:
         return cls(DeepSeekConfig.from_env(env), **kwargs)
 
+    @property
+    def cache_identity(self) -> dict[str, object]:
+        # Credentials and transport retry controls do not change generation identity.
+        return {
+            "provider": "deepseek-responses-v1",
+            "endpoint": self.config.endpoint,
+            "model": self.config.model,
+            "max_output_tokens": self.config.max_output_tokens,
+            "reasoning_effort": self.config.reasoning_effort,
+            "stream": False,
+        }
+
     def generate(self, request: StructuredProviderRequest) -> str:
         body = self._build_request_body(request)
         started_at = self._clock()

@@ -1,0 +1,6 @@
+{
+  "task_id": "c09ba4f7a36877bfe988cf698cd67bce836453ba3afd998ddc7651487dafd64b",
+  "payload_hash": "98e74992ff70125b05eff676d5f748a8c0b60913a8747e8a432a342c9d17f41e",
+  "request_fingerprint": "5366d864ca6f8c10b5cb5704033532bcf2ed88570ddb1c86c8eb5b47d338e8e5",
+  "model_output": "{\"relation\":\"incompatible\",\"evidence_quotes\":[\"唐三人虽然不大\",\"他今年二十九岁\"]}"
+}

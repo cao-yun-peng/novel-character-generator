@@ -295,16 +295,21 @@ class M1Orchestrator:
     def __init__(self, provider: M1Provider) -> None:
         self._provider = provider
 
-    def run(self, envelope: M1OrchestrationEnvelope) -> M1BoundResult:
-        request = M1ProviderRequest(
+    @staticmethod
+    def request(envelope: M1OrchestrationEnvelope) -> M1ProviderRequest:
+        return M1ProviderRequest(
             system_instruction=M1_SYSTEM_INSTRUCTION,
             user_payload=copy.deepcopy(envelope.model_payload()),
             response_schema=copy.deepcopy(M1_RESPONSE_SCHEMA),
         )
-        raw_output = self._provider.generate(request)
+    @staticmethod
+    def bind(envelope: M1OrchestrationEnvelope, raw_output: str | Mapping[str, Any]) -> M1BoundResult:
         model_output = M1ModelOutput.parse(raw_output)
         mentions = tuple(
             M1BoundMention(local_mention_id=f"m{index + 1}", candidate=candidate)
             for index, candidate in enumerate(model_output.candidate_mentions)
         )
         return M1BoundResult(envelope=envelope, model_output=model_output, mentions=mentions)
+
+    def run(self, envelope: M1OrchestrationEnvelope) -> M1BoundResult:
+        return self.bind(envelope, self._provider.generate(self.request(envelope)))

@@ -1,0 +1,11 @@
+{
+  "pyproject.toml": "26041cb9bf0938050364c0e7095dc7a2521b1c20b1cba13528df33851d26cc02",
+  "src/novel_character_generator/automatic_semantics.py": "7a84a8e5e71c41807f6776db6b3b7d1fc3c199f27fb7c9a883dfdaeea3620150",
+  "src/novel_character_generator/character_snapshot.py": "913c68d5fbdd99eb78fdaebae4ca32a9572259a114df30232d2972440dbd4631",
+  "src/novel_character_generator/fact_applicability.py": "7538038431c9bb2fc315d62dedbad780982c4994142c665aa46be1e094230e9e",
+  "src/novel_character_generator/__main__.py": "a524d1d4211a05ed21c71293f4d8e0172f1c6a262a6020aeb8e2ab653368915b",
+  "src/novel_character_generator/__init__.py": "7f01cd1cbf62a20b9e0deef9e0d10e1fe465680b7b6628c07aeebdd86faa0a7a",
+  "tests/test_automatic_semantics.py": "0527f70c363a260bf2994b2066f71fd9be64750ebaeeb998561aa801be8f3f2f",
+  "tests/test_contract_alignment.py": "c9537b909d2289485e6581746f91e56cb7c2bcea5e83a3614220fc0a8b297f68",
+  "docs/contracts/simplified-character-evidence-v3-model-schemas.json": "69ec9b3bca79312efd649d3edc68be25e4fc679c36c557d3a6321186995e0821"
+}

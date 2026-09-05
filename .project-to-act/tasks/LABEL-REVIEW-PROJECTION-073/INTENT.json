@@ -1,0 +1,7 @@
+{
+  "task_id": "LABEL-REVIEW-PROJECTION-073",
+  "requested_by": "user",
+  "intent": "继续按已确认路线开发 073，让最终标签语义和可操作 review 成为可重建视图，而不是修改 Registry 或堆叠新的模型纠错节点。",
+  "current_behavior": "Registry 仍以 source mention 的 exact/describe 和 label_role 表达标签；大师被记录为 name。9 条历史 review 均保留 pending，虽然最终图只剩 1 条 unresolved binding。",
+  "desired_behavior": "生成正交 label_kind/label_stability 投影，并将完整 audit_items 与当前 actionable_review_items 分开；最终 identity graph 是 review 是否关闭的确定性依据。"
+}

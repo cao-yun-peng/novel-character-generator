@@ -6,6 +6,7 @@ import os
 import sys
 from pathlib import Path
 
+from .attribution_replay import replay_m2_grounding
 from .chunking import build_document_chunk_manifest
 from .appearance_scope import run_document_appearance_scope_assembly
 from .appearance_transition_batch import (
@@ -20,6 +21,9 @@ from .grounding import ground_m1_result
 from .identity_batch import prepare_document_identity, run_document_identity
 from .identity_local_closure import run_local_identity_closure_replay
 from .identity_rescue_batch import prepare_identity_rescue, run_identity_rescue
+from .label_review_projection import run_document_label_review_projection
+from .character_snapshot import run_character_snapshot
+from .render_profile_compiler import run_render_ready_character_profiles
 from .m1 import M1OrchestrationEnvelope, M1Orchestrator
 from .m1_batch import run_m1_document
 from .m2_batch import run_m2_from_m1_run
@@ -112,6 +116,45 @@ def _parser() -> argparse.ArgumentParser:
     appearance_scopes.add_argument("--input-file", type=Path, required=True)
     appearance_scopes.add_argument("--fact-groups-file", type=Path, required=True)
     appearance_scopes.add_argument("--output-file", type=Path, required=True)
+    label_review = subparsers.add_parser(
+        "build-document-character-label-review-projection",
+        help="Project orthogonal label semantics and current actionable identity reviews.",
+    )
+    label_review.add_argument("--input-file", type=Path, required=True)
+    label_review.add_argument("--registry-file", type=Path, required=True)
+    label_review.add_argument("--output-file", type=Path, required=True)
+    render_profiles = subparsers.add_parser(
+        "build-render-ready-character-profiles",
+        help="Compile state-selected structured character cards with active applicability.",
+    )
+    render_profiles.add_argument("--input-file", type=Path, required=True)
+    render_profiles.add_argument("--fact-groups-file", type=Path, required=True)
+    render_profiles.add_argument("--appearance-states-file", type=Path, required=True)
+    render_profiles.add_argument("--label-projection-file", type=Path, required=True)
+    render_profiles.add_argument("--requests-file", type=Path, required=True)
+    render_profiles.add_argument("--output-file", type=Path, required=True)
+    render_profiles.add_argument("--applicability-events-file", type=Path)
+    snapshot = subparsers.add_parser("build-character-snapshot", help="Query evidence-scoped character state without model calls")
+    for flag in ("input-file", "fact-groups-file", "appearance-states-file", "label-projection-file", "output-file"):
+        snapshot.add_argument("--" + flag, type=Path, required=True)
+    snapshot.add_argument("--run-id", required=True)
+    snapshot.add_argument("--character-id", required=True)
+    snapshot.add_argument("--document-position", type=int, required=True)
+    for flag in ("life-stage", "form-state", "scene-state"):
+        snapshot.add_argument("--" + flag)
+    snapshot.add_argument("--applicability-events-file", type=Path)
+    snapshot.add_argument("--explain", action="store_true")
+    snapshot.add_argument("--automatic-semantics-file", type=Path)
+    render_profiles.add_argument("--automatic-semantics-file", type=Path)
+    semantic = subparsers.add_parser("build-automatic-semantics", help="Discover grounded scene/clothing events and semantic incompatibilities")
+    for flag in ("input-file", "fact-groups-file", "appearance-states-file", "label-projection-file", "chunk-manifest-file", "output-dir"):
+        semantic.add_argument("--" + flag, type=Path, required=True)
+    semantic.add_argument("--max-new-calls", type=int, default=100)
+    modes = semantic.add_mutually_exclusive_group()
+    modes.add_argument("--prepare-only", action="store_true")
+    modes.add_argument("--replay-dir", type=Path)
+
+
     transition_prepare = subparsers.add_parser(
         "prepare-document-appearance-transitions",
         help="Build full-coverage transition windows and character rosters without a Provider.",
@@ -135,6 +178,14 @@ def _parser() -> argparse.ArgumentParser:
     transition_run.add_argument("--output-dir", type=Path, required=True)
     transition_run.add_argument("--env-file", type=Path, default=Path(".env"))
     transition_run.add_argument("--show-progress", action="store_true")
+    attribution_replay = subparsers.add_parser(
+        "replay-m2-grounding",
+        help="Re-ground saved M2 outputs into a new run without a Provider.",
+    )
+    attribution_replay.add_argument("--input-file", type=Path, required=True)
+    attribution_replay.add_argument("--source-m1-run-dir", type=Path, required=True)
+    attribution_replay.add_argument("--source-m2-run-dir", type=Path, required=True)
+    attribution_replay.add_argument("--output-dir", type=Path, required=True)
     replay = subparsers.add_parser(
         "replay-promotion-grounding",
         help="Re-ground saved promotion model outputs under the current deterministic policy.",
@@ -367,6 +418,31 @@ def _build_document_character_appearance_scopes(args: argparse.Namespace) -> int
     return 0
 
 
+def _build_document_character_label_review_projection(args: argparse.Namespace) -> int:
+    summary = run_document_label_review_projection(
+        document_text=_read_utf8_text(args.input_file),
+        registry_file=args.registry_file,
+        output_file=args.output_file,
+    )
+    print(json.dumps(summary, ensure_ascii=False, indent=2))
+    return 0
+
+
+def _build_render_ready_character_profiles(args: argparse.Namespace) -> int:
+    summary = run_render_ready_character_profiles(
+        document_text=_read_utf8_text(args.input_file),
+        fact_groups_file=args.fact_groups_file,
+        appearance_states_file=args.appearance_states_file,
+        label_projection_file=args.label_projection_file,
+        requests_file=args.requests_file,
+        output_file=args.output_file,
+        applicability_events_file=args.applicability_events_file,
+        automatic_semantics_file=args.automatic_semantics_file,
+    )
+    print(json.dumps(summary, ensure_ascii=False, indent=2))
+    return 0
+
+
 def _prepare_document_appearance_transitions(args: argparse.Namespace) -> int:
     summary = prepare_document_appearance_transitions(
         document_text=_read_utf8_text(args.input_file),
@@ -518,10 +594,49 @@ def main(argv: list[str] | None = None) -> int:
             return _build_document_character_fact_groups(args)
         if args.command == "build-document-character-appearance-scopes":
             return _build_document_character_appearance_scopes(args)
+        if args.command == "build-document-character-label-review-projection":
+            return _build_document_character_label_review_projection(args)
+        if args.command == "build-automatic-semantics":
+            from .automatic_semantics import run_automatic_semantics, _read
+            # Preparation/replay never construct a provider or read credentials.
+            provider = None if args.prepare_only or args.replay_dir else DeepSeekProvider.from_env()
+            summary = run_automatic_semantics(
+                document_text=_read_utf8_text(args.input_file), fact_groups=_read(args.fact_groups_file),
+                appearance_states=_read(args.appearance_states_file), label_projection=_read(args.label_projection_file),
+                chunk_manifest=_read(args.chunk_manifest_file), output_dir=args.output_dir, provider=provider,
+                max_new_calls=args.max_new_calls, prepare_only=args.prepare_only, replay_dir=args.replay_dir,
+            )
+            print(json.dumps(summary, ensure_ascii=False, indent=2))
+            return 0 if summary["complete"] or args.prepare_only else 2
+        if args.command == "build-character-snapshot":
+            if args.output_file.resolve() == args.input_file.resolve():
+                raise ContractValidationError("snapshot output must not overwrite source text")
+            summary = run_character_snapshot(
+                document_text=_read_utf8_text(args.input_file), fact_groups_file=args.fact_groups_file,
+                appearance_states_file=args.appearance_states_file, label_projection_file=args.label_projection_file,
+                output_file=args.output_file, run_id=args.run_id, character_id=args.character_id,
+                document_position=args.document_position, life_stage=args.life_stage,
+                form_state=args.form_state, scene_state=args.scene_state,
+                applicability_events_file=args.applicability_events_file,
+                automatic_semantics_file=args.automatic_semantics_file, explain=args.explain,
+            )
+            print(json.dumps(summary, ensure_ascii=False, indent=2))
+            return 0
+        if args.command == "build-render-ready-character-profiles":
+            return _build_render_ready_character_profiles(args)
         if args.command == "prepare-document-appearance-transitions":
             return _prepare_document_appearance_transitions(args)
         if args.command == "run-deepseek-appearance-transitions":
             return _run_deepseek_appearance_transitions(args)
+        if args.command == "replay-m2-grounding":
+            summary = replay_m2_grounding(
+                document_text=_read_utf8_text(args.input_file),
+                source_m1_run_dir=args.source_m1_run_dir,
+                source_m2_run_dir=args.source_m2_run_dir,
+                output_dir=args.output_dir,
+            )
+            print(json.dumps(summary, ensure_ascii=False, indent=2))
+            return 0 if summary["complete"] else 1
         if args.command == "replay-promotion-grounding":
             return _replay_promotion_grounding(args)
         if args.command == "prepare-document-identity":

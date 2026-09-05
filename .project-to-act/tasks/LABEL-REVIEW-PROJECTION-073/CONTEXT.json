@@ -1,0 +1,42 @@
+{
+  "task_id": "LABEL-REVIEW-PROJECTION-073",
+  "lifecycle_stage": "5",
+  "lifecycle_revision": 2,
+  "runtime_version_before": "0.1.0.dev24",
+  "schema_version_before": "3.24.0-draft1",
+  "runtime_version_target": "0.1.0.dev25",
+  "schema_version_target": "3.25.0-draft1",
+  "source_registry": "runs/douluo-20ch-e2e-dev13-20260831/identity-local-coreference-dev17/document-character-registry.json",
+  "source_registry_sha256": "9FF571B51398B734427303BBAAE2803409F6280EA8A2107A15759236543C1EE9",
+  "target_output": "runs/douluo-20ch-e2e-dev13-20260831/label-review-projection-dev25/document-character-label-review-projection.json",
+  "preexisting_user_change": "tests/test_appearance_transition.py contains user-authored trace/re-grounding coverage and must remain untouched",
+  "source_audit": {
+    "characters": 7,
+    "labels": 17,
+    "review_items": 9,
+    "partial_identity_evidence_grounding": 8,
+    "insufficient_identity_evidence": 1,
+    "unresolved_bindings": 1,
+    "model_calls": 0
+  },
+  "completion_result": {
+    "artifact_schema_version": "document-character-label-review-projection-v1",
+    "characters": 7,
+    "labels": 17,
+    "proper_name_labels": 5,
+    "alias_labels": 1,
+    "title_labels": 3,
+    "relationship_labels": 1,
+    "descriptive_labels": 7,
+    "stable_labels": 8,
+    "contextual_labels": 9,
+    "audit_items": 9,
+    "resolved_audit_items": 8,
+    "actionable_review_items": 1,
+    "model_calls": 0,
+    "artifact_sha256": "CABCB611F95144C5E29DFC272A3732FD1A6AD64D0D969DD3EBA89F4BF89C459D",
+    "tests": "180 passed, 13 subtests passed",
+    "schema_validation": "Draft 2020-12 real artifact passed"
+  },
+  "context_freshness": "verified-2026-09-04"
+}

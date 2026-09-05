@@ -1,0 +1,9 @@
+{
+  "task_id": "9b8b23e582465efe1d9c06b3c1e7bddc4c4cc882b10f7bfbd556955f74748ce2",
+  "payload_hash": "c890f6b1d993e1280bdf49344a287c51fb3cdd8cd38d1fc235cd29fa382304ed",
+  "request_fingerprint": "cb95e6f60a3f7174a2fd8aae666ef968a1d53cde2bf36df5efedb0abe65807e7",
+  "model_output": {
+    "relation": "uncertain",
+    "evidence_quotes": []
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "task_id": "ef9efb1997a5823cdd75c1e6f16055a8e0c4d05e039d0f08f61381ba427a51a8",
+  "payload_hash": "97f7ae222ad40b73094dcdb13dde57bf448dbad717e5b1f64b779f6facb94148",
+  "request_fingerprint": "76d35dcf0a9a0f6b49bd10075ca7f78b62703964007753fd41d33fd9cd962354",
+  "model_output": "{\"relation\": \"compatible\", \"evidence_quotes\": [\"他的身体如此纤瘦\", \"他的身体变得结实了几分\"]}"
+}

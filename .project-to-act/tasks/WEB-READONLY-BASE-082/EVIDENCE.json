@@ -1,0 +1,37 @@
+{
+  "id": "E-20260905-WEB-READONLY-BASE-082",
+  "artifacts": [
+    {
+      "path": "src/novel_character_generator/webapp/repository.py",
+      "sha256": "c337ad49849dc0bcd9cf2841f02f08beb1124a6044ff38f012a97c06efbf9d53"
+    },
+    {
+      "path": "src/novel_character_generator/webapp/service.py",
+      "sha256": "fd2bfa5b9aa1e5b5873febf9094157f0b49702c9968c3f87e89ec5d9fbe23c01"
+    },
+    {
+      "path": "tests/test_webapp.py",
+      "sha256": "4a815ae2279b0f4b9ea108efc7b6c4a4f6532e2dd49953540510ed327dc1ca5c"
+    },
+    {
+      "path": "web/src/lib/offsets.ts",
+      "sha256": "259fb23e04ee5278afd891d25e15f75c750032c7d7a65a04cae22c5299f3641a"
+    },
+    {
+      "path": "web/src/components/TextPane.tsx",
+      "sha256": "6b00e5719cc7b3805ac177cf2b75f8d1e7190e616282ee7e1a3a2a659c42ee41"
+    },
+    {
+      "path": "web/src/components/SnapshotPane.tsx",
+      "sha256": "4b2b5aece21a0250215e01a82aee7eec5b7c021b831d47e3cac841d3913aa3e2"
+    },
+    {
+      "path": "web/src/components/EvidencePane.tsx",
+      "sha256": "c3e32d9d528922da193d68d5654e2a505731e1ac09a5cf81c60e6a6da1f057d6"
+    },
+    {
+      "path": "web/src/components/SegmentTimeline.tsx",
+      "sha256": "3a88032dcf4a94a3ec6527cb6d325228b32344461821cf3090d04c6119282a8b"
+    }
+  ]
+}

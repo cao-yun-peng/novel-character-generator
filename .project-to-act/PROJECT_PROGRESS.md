@@ -39,9 +39,24 @@
 | APPEARANCE-STATE-TRANSITIONS-071 | completed | dev22 DeepSeek 17/17；10 model events→6 grounded/4 隔离，life 28/form 7/scene 1，已关闭已知传播与证据问题 |
 | APPEARANCE-STATE-SEGMENTS-0715 | completed | dev23 在同一 appearance-state artifact 内物化 7 人物/14 StateSegments；109/109 facts 唯一 observed binding，Provider 0 |
 | APPEARANCE-SEMANTIC-RELATIONS-072 | completed | dev24 生成 37 relations（7 equivalent/5 compatible/25 unclassified）与 103 propositions；只合并 equivalent，新增语义 Provider 0 |
-| LABEL-REVIEW-PROJECTION-073 | planned | 修正 title 语义并拆分 audit 与 actionable review 视图 |
-| RENDER-PROFILE-COMPILER-074 | planned | 按时期/形态/场景编译可生图的结构化人物卡，保留双层 provenance |
+| LABEL-REVIEW-PROJECTION-073 | completed | dev25 生成 17 个正交标签语义；9 reviews 全量审计，8 resolved/audit-only、1 actionable，Provider 0 |
+| RENDER-PROFILE-COMPILER-074 | completed | dev26 四张状态卡全部编译；7 active/40 provisional bindings、45 traits、4 transitions、0 conflicts，Provider 0 |
 | UPSTREAM-HUMAN-EVAL-GATE-075 | planned | 建立 M1/M2/promotion 及新增状态层的正式人工标注评测和 Stage 6 Gate |
+| WEB-READY-REPAIR-PLAN-076 | completed | docs/37 已交付 R01～R14 修复、依赖、验收与 Web 接口计划；14 项/10 个链接及文档与治理验证通过，仅规划完成，运行时不变 |
+| CORRECTNESS-FOUNDATION-077 | completed | dev27 首批修复：R01、R02 否定保护、R05 M1/M2 缓存重验及 M2 离线重放、R12 测试入口、R06 协议候选；209 tests/13 subtests 与 32 个真实 M2 包验证通过，首批切片验收完成，完整清单仍在推进 |
+
+| CACHE-CONTINUATION-078 | completed | dev28 四阶段请求指纹预检、promotion 重做 Grounding；211 tests/19 subtests，Provider 0；统一迁移和尝试历史待后续 |
+
+| SNAPSHOT-APPLICABILITY-079 | completed | dev29 有效期/Snapshot 基础切片，237 tests/19 subtests 与 4 张真实快照通过；自动语义事件发现、R02 完整冲突及人工 Gate 仍待实施 |
+
+| SEMANTICS-LIVE-081 | completed | 52 任务完成，53 次调用；dev31 修复重复证据，零调用重放及 4 个 Snapshot 通过，质量 Gate 待人工标注 |
+| AUTO-SEMANTICS-CONFLICT-080 | completed | dev30 自动事件/关系模型任务、Grounding、缓存/重放、Snapshot 真冲突闭环已接通；259 tests/19 subtests；真实样本仅准备，质量 Gate 未通过 |
+
+| WEB-READONLY-BASE-082 | completed | dev32 Web 里程碑 A：FastAPI `/v1` 只读服务 + React 三栏页面 + unicode_codepoint 坐标契约，验收全绿 |
+
+| WEB-PIPELINE-JOBS-083 | completed | dev32 Web 里程碑 B：异步任务/流水线/文档导入与双注册表合并，275 tests/19 subtests 与 smoke 联调通过 |
+
+| WEB-REVIEW-DECISIONS-084 | completed | dev33 Web 里程碑 C：R11 人工决策闭环（追加式决策日志/幂等键/乐观锁/reopen 补偿/历史审计）+ R08 subject 指定 run 解析；311 tests/19 subtests 与 smoke 联调通过，Provider 0 |
 
 ## 阻塞项
 
@@ -50,14 +65,30 @@
 
 ## 下一步
 
-1. 实现 `LABEL-REVIEW-PROJECTION-073`：将 mention 的 exact/describe 与 `label_kind`、`label_stability` 解耦，并把历史 audit 与当前 actionable review 分开。
-2. 为 074 准备 active applicability：根据 persistence、transition 和选择器派生事实跨 segment 的有效范围，不复用 `observed_fact_ids`。
-3. 只有 applicability 证明同 scope、同属性的事实有效期重叠后，才允许把 072 的 unclassified 候选升级为 true conflict；模型不得读取或输出内部 ID、hash、span、解释或置信度。
-4. 075 的标注规范和 evaluator 继续准备；Stage 6 前完成 M1/M2/promotion 正式人工质量 Gate，不以专家评分或确定性档案成功替代。
-5. 自然语言人物总结、图像提示词和视觉验收继续留在结构化 Profile Compiler 稳定之后。
+1. 按 docs/37 的 R06/R12 准备 075 标注协议、分层错误分类和完整测试入口；正式阈值基于冻结 baseline 确认。
+2. R01 与 R02 否定保护已完成；R05 六阶段请求指纹/续跑 Grounding 已接线，继续补统一离线迁移、跨轮预检及尝试历史。
+3. R03/R02 自动事件和冲突工程链路 dev30 已交付；52 个斗罗任务已实跑并重放通过；继续标注事件召回/定位与关系 precision，验证真实质量后再确认完整功能 Gate。
+4. Web 已交付只读基座、异步任务流与人工决策闭环（082/083/084）：R09 任务管理、R10 坐标契约、R11 查询与决策提交闭环均完成；R07 召回评测与 R08 完整合并/拆分迁移仍待推进；真实 provider 全流程实跑（含 managed registry 发布后的 subject 映射消费）待 API key 环境。
+5. R13 完整 Debug Viewer 与 R14 长篇基准优化后续实施；075 最终质量 Gate 和 Web 发布门槛分别验收，当前不开展自然语言或图像生成。
 
 ## 进度历史
 
+- 2026-09-05：084/dev33 完成 Web 里程碑 C（R11 人工决策闭环 + R08 subject 指定 run 解析最小版）。存储层 ReviewDecisionStore 提供按 run 追加式决策日志（乐观锁 revision、Idempotency-Key 幂等重放、同键异请求 409、决策指纹、原子写入）；决策服务校验 run/review/conflict 存在性与 action/basis 完整性（correct 需 new_value、reopen 需已有决策），reviews 视图融合 pending/decided/open 状态且不改写原始产物；端点 `POST/GET /v1/runs/{run_id}/reviews/{review_id}/decisions` 与 `GET /v1/documents/{id}/subjects/{subject_id}?run_id=`；前端复核页支持接受/拒绝/纠正/重开、决策历史时间线与版本冲突自动刷新。验收：311 tests/19 subtests、前端构建（56 modules，gzip 104.43 kB）、`scripts/c_milestone_smoke.py` 全流程（校验失败关闭、幂等重放与键冲突、乐观锁冲突、conflict 目标决策、reopen 补偿回 pending、历史 append-only、决策后 curated run 不可变）全部通过；真实 provider 实跑与 subject 映射消费仍待 API key 环境。
+
+- 2026-09-05：082/083 dev32 完成 Web 里程碑 A+B。A：FastAPI `/v1` 只读服务与 React/TypeScript/Vite 三栏页面（原文高亮、快照卡、StateSegment 时间线、证据轨迹树），坐标契约采用 unicode_codepoint 半开 span 绑定版本，前端经 offsets 映射消费。B：不可变文档版本与 JobStore 事件日志、12 阶段流水线执行器（协作式取消、产物发布到 managed registry）、线程任务服务（幂等键、cancel/resume、事件游标、重启恢复）、文档/任务/subjects 端点与导入/任务页；curated 与 managed 双注册表运行时合并。验收：275 tests/19 subtests、前端构建、`scripts/b_milestone_smoke.py` 全流程（导入幂等、文本窗口逐字回放、无 key 失败路径、resume 重试、curated 共存）全部通过；真实 provider 解析实跑与人工决策提交待后续里程碑。
+
+- 2026-09-05：080/dev30 已接通自动场景/换装模型任务、原文 Grounding、可恢复批处理与离线重放，以及 incompatible→双方 active→true_conflict 的 Snapshot/旧卡消费闭环。259 tests/19 subtests；斗罗准备 52 个任务（17 events/35 relations），真实 Provider 0。工程切片通过，R03/R02 的真实模型质量与 R06 Gate 待实跑标注验收。
+
+- 2026-09-05：079/dev29 已交付共享有效期引擎、CharacterSnapshot API/CLI/Schema、可选证据事件与 explain，旧人物卡改为 Snapshot 适配。237 tests/19 subtests 通过；斗罗 4 张快照为 7 active/42 provisional/71 excluded，Provider 0，源文件未改。R04 基础查询切片通过；R03 自动场景/换装语义发现、R02 真冲突和人工 Gate 仍未完成。
+
+- 2026-09-05：078/dev28 已补齐 promotion、M3 identity、cluster rescue、appearance transition 的请求指纹预检；promotion 续跑重新 Grounding。211 tests / 19 subtests 通过，真实 Provider 调用 0。R05 统一离线迁移、跨轮完整预检及尝试历史仍待实施；下一步衔接 R03/R04 有效期与 Snapshot，R02 真冲突及 R06 人工 Gate 仍未完成。
+
+- 2026-09-05：用户授权逐步开发清单。077 已实现 dev27/Schema 3.27：重复 exact quote 不再取最早位置；同位置重叠证据不误报；否定包含不再判 compatible；M1/M2 请求指纹在产生新调用前检查，缓存 Grounding 由保存模型输出重建；M2 旧结果可零模型调用重放到独立目录。斗罗 32/32 重放为 83 安全 facts/1 歧义，唐昊“邋遢”三个位置全部保留复核，源 run 未改。R02 完整冲突、R05 其他阶段/统一迁移、R06 人工标注/evaluator、Web 与 Snapshot 尚待后续。
+
+- 2026-09-05：076 启动 Stage 6 问题梳理与 Web 修复规划，revision 3→4。用户确认未来 Web 使用方向，计划范围增加服务接口和必要持久化；运行时修复尚未开始，075 最终 Gate 未通过。源码已确认已有按位置编译能力、scene 行/章关闭与可配置候选上限；新增 37 文档明确 R01～R14、Snapshot 复用边界、场景/衣着分离、Top-K 与模型预算分离、异步任务和浏览器坐标契约。
+
+- 2026-09-04：`RENDER-PROFILE-COMPILER-074` 完成。dev26/Schema 3.26 新增 `render-ready-character-profiles-v1`、批量 selector 请求、active/provisional applicability、scope conflict gate 和双层 provenance；来源 fact/state/label 在编译前确定性重建校验。斗罗四个 selector 分别生成唐三前世/儿童、素云涛普通/独狼附体卡，4/4 compiled；7 active、40 provisional bindings，2 stable、33 variant、10 scene traits，4 transitions、0 unresolved conflicts、17 聚合 warnings，Provider 0。重复 artifact SHA-256 为 `B0EF3F6F47716F2CE2DBD133EDA5FF8E5738E0E4598BE9B93BBB38DD01629A3B`。191 tests、13 subtests、compileall、Draft 2020-12 requests/真实实例、diff 与治理校验通过；Stage 5 Gate 决策为 passed，生命周期进入 Stage 6 ready、revision 3。
+- 2026-09-04：`LABEL-REVIEW-PROJECTION-073` 完成。dev25/Schema 3.25 新增纯代码 `document-character-label-review-projection-v1`，保留 Registry 来源语义并派生正交 `label_kind + label_stability`；“大师”为 `title + stable`，但 `source_label_role=name` 不被覆盖。斗罗 7 人物/17 labels 得到 5 proper name、1 alias、3 title、1 relationship、7 descriptive，8 stable/9 contextual；9 条历史 review 全部进入 audit，8 resolved/audit-only，唯一 actionable 为“看门的青年”。重复输出 SHA-256 为 `CABCB611F95144C5E29DFC272A3732FD1A6AD64D0D969DD3EBA89F4BF89C459D`，Provider 0。180 tests、13 subtests、compileall、Draft 2020-12 真实实例、diff 与两套治理校验通过。
 - 2026-09-04：`APPEARANCE-SEMANTIC-RELATIONS-072` 确定性 baseline 完成。dev24/v5 只在同人物、同 StateSegment、同 exact attribute 内生成关系；相等值为 equivalent，安全子串为有方向的 compatible，其余保留 unclassified，再只从 equivalent 连通分量生成 proposition。斗罗 109 observations 得到 37 relations（7/5/25）和 103 propositions；17/17 保存输出离线恢复，新增 Provider 0，重复 artifact SHA-256 一致。171 tests、13 subtests、compileall、Draft 2020-12 真实实例、diff 与治理校验通过。active applicability、完整 true-conflict 判定和 075 人工 Gate 不在本次验收内。
 - 2026-09-04：`APPEARANCE-STATE-SEGMENTS-0715` 完成。dev23/v4 为 grounded transitions 生成稳定 ID，并在现有 appearance-state artifact 中物化 7 个人物的 14 个连续 StateSegments；109/109 canonical facts 各自唯一进入一个 `observed_fact_ids`，active applicability 明确推迟到 072/074。斗罗 17/17 保存模型输出离线恢复，新增 Provider 0，重复 state artifact hash 一致。165 tests、13 subtests、compileall、Draft 2020-12 真实实例、diff 与治理校验通过。
 - 2026-09-02：`APPEARANCE-STATE-TRANSITIONS-071` 完成。dev22 复用原 M1 17 Chunk，模型 payload 仍只有 characters/name/aliases/text；17/17 得到 10 events，代码接受 6 个连续 Grounded transitions、隔离 4 个改写状态。状态物化为 life 28/form 7/scene 1；life 重置 form/scene，scene 在段落行或章节关闭，蓝银草等外物不进入 form。保存模型输出可零调用重新 Grounding，最终重放新增 Provider 0。160 tests、13 subtests、Schema/实例、compileall、diff 与治理校验通过；不替代 075 人工 Gate。

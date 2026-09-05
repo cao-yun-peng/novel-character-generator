@@ -1,0 +1,37 @@
+{
+  "id": "RENDER-PROFILE-COMPILER-074",
+  "title": "State-selected active applicability and render-ready character profiles",
+  "status": "completed",
+  "owner": "Codex",
+  "objective": "按 character_id 与显式 state selector 确定性编译结构化人物卡，区分 active/provisional applicability，并保留 canonical fact 到 raw occurrence 的完整 provenance。",
+  "risk_level": "L1-deterministic-derived-profile",
+  "allowed_paths": [
+    "src/novel_character_generator",
+    "tests",
+    "docs",
+    "README.md",
+    "pyproject.toml",
+    ".project-to-act",
+    "runs/douluo-20ch-e2e-dev13-20260831/render-profiles-dev26"
+  ],
+  "invariants": [
+    "Registry、fact groups、appearance states 与 Label/Review projection 均保持不可变并可重新校验",
+    "选择器必须唯一定位一个 StateSegment；不足或不匹配时不得混合多个时期或形态的事实",
+    "document_position 之前尚未观察到的事实不得进入当前卡片",
+    "stable/persistent_until_changed/scene/momentary/unknown 使用版本化的不同 applicability 规则",
+    "unknown persistence 只能产生显式 provisional trait 和 warning，不能冒充确定 active",
+    "只有两个确定 active fact 的 true_conflict 才进入 unresolved_conflicts；unclassified 只能保留 warning",
+    "每个输出 trait 必须引用 normalized proposition、canonical fact 和 raw source occurrence",
+    "本切片不生成自然语言 Prompt、性格、性别、服装补全或视觉风格，也不调用 Provider"
+  ],
+  "acceptance": [
+    "唐三前世与儿童、素云涛普通与独狼附体四个 selector 分别生成独立结构化人物卡",
+    "歧义 selector 输出 selector_required 且 trait 为空；不匹配 selector 输出 no_matching_state 且失败关闭",
+    "未来 observation、跨 life/form 的非适用事实和过期 scene/momentary 不进入 active traits",
+    "unknown persistence 的跨 segment 延续只进入 provisional，并带可机器消费 warning",
+    "true conflict 只有 active overlap 才进入 unresolved_conflicts，active unclassified 不被强制归类",
+    "输入数组重排不改变 profile ID、排序、source hash 或输出字节",
+    "新增 Schema、CLI、单测与斗罗零调用真实产物",
+    "全量测试、Schema、compileall、diff check 和两套治理校验通过"
+  ]
+}

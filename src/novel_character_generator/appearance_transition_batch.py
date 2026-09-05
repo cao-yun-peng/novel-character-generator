@@ -16,6 +16,7 @@ from .appearance_transition import (
     parse_transition_model_output,
     transition_chunks_artifact,
 )
+from .request_cache import request_fingerprint, validate_cached_request
 from .errors import ContractValidationError, ProviderError
 
 TRANSITION_CHUNK_RESULT_VERSION = "appearance-transition-chunk-result-v1"
@@ -162,6 +163,14 @@ def run_document_appearance_transitions(
     resumed = 0
     new_calls = 0
 
+    fingerprints = {}
+    for window in windows:
+        if window.characters:
+            fingerprints[window.chunk_id] = request_fingerprint(provider, build_transition_request(window))
+            cached_path = output_dir / "chunks" / f"{window.chunk_id}.json"
+            if cached_path.exists():
+                validate_cached_request(_mapping(_read_json(cached_path), "cached transition chunk"), fingerprints[window.chunk_id])
+
     for window in windows:
         result_path = output_dir / "chunks" / f"{window.chunk_id}.json"
         expected_names = [character.name for character in window.characters]
@@ -221,6 +230,7 @@ def run_document_appearance_transitions(
             record = {
                 "schema_version": TRANSITION_CHUNK_RESULT_VERSION,
                 "identity": expected_identity,
+                "request_fingerprint": fingerprints[window.chunk_id],
                 "model_output": {"events": [dict(event) for event in events]},
                 "grounded_transitions": [dict(item) for item in grounded],
                 "review": [dict(item) for item in review],

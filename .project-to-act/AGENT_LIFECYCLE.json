@@ -2,10 +2,10 @@
   "schemaVersion": 1,
   "projectId": "novel-character-generator",
   "projectName": "Novel Character Generator",
-  "revision": 2,
+  "revision": 4,
   "projectStatus": "active",
-  "currentStage": "5",
-  "updatedAt": "2026-08-30T08:02:54.455Z",
+  "currentStage": "6",
+  "updatedAt": "2026-09-05T01:40:45.564Z",
   "historicalLimitations": [
     "Adopt existing project at stage 5; stages 0-4 are legacy_unverified because this lifecycle ledger was introduced after the V3 contracts and M1 runtime foundation were created."
   ],
@@ -93,7 +93,7 @@
     {
       "id": "5",
       "name": "具体功能与纵向切片开发",
-      "status": "in_progress",
+      "status": "passed",
       "expectedArtifacts": [
         "Task Contract",
         "纵向切片",
@@ -102,27 +102,46 @@
       "taskIds": [
         "M1-DEEPSEEK-PROVIDER-048"
       ],
-      "evidenceIds": [],
-      "artifacts": [],
-      "decisions": [],
+      "evidenceIds": [
+        "E-20260904-RENDER-PROFILE-COMPILER-074"
+      ],
+      "artifacts": [
+        "runs/douluo-20ch-e2e-dev13-20260831/render-profiles-dev26/render-ready-character-profiles.json"
+      ],
+      "decisions": [
+        {
+          "at": "2026-09-04T15:31:27.903Z",
+          "decision": "passed",
+          "evidenceIds": [
+            "E-20260904-RENDER-PROFILE-COMPILER-074"
+          ],
+          "artifacts": [
+            "runs/douluo-20ch-e2e-dev13-20260831/render-profiles-dev26/render-ready-character-profiles.json"
+          ],
+          "summary": "Completed the Stage 5 engineering vertical slice through deterministic state-selected render-ready profiles with exact provenance, active/provisional applicability, conflict gating, schema validation, and full regression. Stage 6 human evaluation remains required for model quality.",
+          "nextStage": null
+        }
+      ],
       "startedAt": "2026-08-30T08:02:54.455Z",
-      "updatedAt": "2026-08-30T08:02:54.455Z"
+      "updatedAt": "2026-09-04T15:31:27.903Z"
     },
     {
       "id": "6",
       "name": "评测、安全测试与调优",
-      "status": "pending",
+      "status": "in_progress",
       "expectedArtifacts": [
         "分切片评测",
         "红队报告",
         "错误分类与回归集"
       ],
-      "taskIds": [],
+      "taskIds": [
+        "WEB-READY-REPAIR-PLAN-076"
+      ],
       "evidenceIds": [],
       "artifacts": [],
       "decisions": [],
-      "startedAt": null,
-      "updatedAt": null
+      "startedAt": "2026-09-05T01:40:45.564Z",
+      "updatedAt": "2026-09-05T01:40:45.564Z"
     },
     {
       "id": "7",
@@ -185,6 +204,36 @@
       "artifacts": [],
       "summary": "Implement and verify the DeepSeek Responses API adapter for the M1 vertical slice.",
       "revision": 2
+    },
+    {
+      "at": "2026-09-04T15:31:27.903Z",
+      "action": "decision",
+      "fromStage": "5",
+      "toStage": "6",
+      "taskId": "M1-DEEPSEEK-PROVIDER-048",
+      "decision": "passed",
+      "evidenceIds": [
+        "E-20260904-RENDER-PROFILE-COMPILER-074"
+      ],
+      "artifacts": [
+        "runs/douluo-20ch-e2e-dev13-20260831/render-profiles-dev26/render-ready-character-profiles.json"
+      ],
+      "summary": "Completed the Stage 5 engineering vertical slice through deterministic state-selected render-ready profiles with exact provenance, active/provisional applicability, conflict gating, schema validation, and full regression. Stage 6 human evaluation remains required for model quality.",
+      "revision": 3
+    },
+    {
+      "at": "2026-09-05T01:40:45.564Z",
+      "action": "start",
+      "fromStage": "6",
+      "toStage": "6",
+      "fromStatus": "ready",
+      "toStatus": "in_progress",
+      "taskId": "WEB-READY-REPAIR-PLAN-076",
+      "decision": null,
+      "evidenceIds": [],
+      "artifacts": [],
+      "summary": "Start source-backed defect triage and Web-ready repair planning only; no runtime repair or quality Gate completion.",
+      "revision": 4
     }
   ]
 }

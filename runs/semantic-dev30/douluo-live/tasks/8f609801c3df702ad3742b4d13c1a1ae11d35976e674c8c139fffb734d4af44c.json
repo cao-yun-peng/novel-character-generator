@@ -1,0 +1,6 @@
+{
+  "task_id": "8f609801c3df702ad3742b4d13c1a1ae11d35976e674c8c139fffb734d4af44c",
+  "payload_hash": "915285a37fed36879c06479146c05f0379945a304b49548222a570ae2c73d7f0",
+  "request_fingerprint": "8360c606c52afcaae6355a3d7c74edc0ba5bbb79411043c1322d7c51c5853d78",
+  "model_output": "{\"relation\": \"compatible\", \"evidence_quotes\": [\"唐三的身高还够不到灶台\", \"这种长柄铁锤甚至要比他的身高还高上几分\"]}"
+}

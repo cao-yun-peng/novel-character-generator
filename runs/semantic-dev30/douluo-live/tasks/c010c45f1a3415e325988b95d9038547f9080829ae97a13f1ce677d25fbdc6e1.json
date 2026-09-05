@@ -1,0 +1,6 @@
+{
+  "task_id": "c010c45f1a3415e325988b95d9038547f9080829ae97a13f1ce677d25fbdc6e1",
+  "payload_hash": "67bac322daccfb0b55144b60345bb3c6a94ce1089364210108af48c95d650182",
+  "request_fingerprint": "1119deda41017eab69c6bb7109b9417267546badf0b181e8497a1314eca9feb9",
+  "model_output": "{\"relation\":\"compatible\",\"evidence_quotes\":[\"他那些有着大小补丁的衣服\",\"身上衣服全是补丁\"]}"
+}

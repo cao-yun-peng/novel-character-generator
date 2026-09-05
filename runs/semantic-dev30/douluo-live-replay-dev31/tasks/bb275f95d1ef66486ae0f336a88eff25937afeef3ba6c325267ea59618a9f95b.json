@@ -1,0 +1,6 @@
+{
+  "task_id": "bb275f95d1ef66486ae0f336a88eff25937afeef3ba6c325267ea59618a9f95b",
+  "payload_hash": "188e8c12b41b6f0b0db81bd001d49690dfccb1c1e8bb54ae9144ee027bb6d059",
+  "request_fingerprint": "6d73999a64fee0ccc83b501e501b45ace88e830c83ab820e409ec02f4d1bd49c",
+  "model_output": "{\"relation\": \"uncertain\", \"evidence_quotes\": [\"他今年二十九岁\", \"那是个只有五、六岁的孩子\"]}"
+}

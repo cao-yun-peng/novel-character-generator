@@ -1,0 +1,45 @@
+{
+  "id": "CORRECTNESS-FOUNDATION-077",
+  "title": "First repair slice: grounding, semantic guards, test setup and replay foundations",
+  "status": "completed",
+  "revision": 3,
+  "owner": "Codex",
+  "risk_level": "L1",
+  "allowed_paths": [
+    "src",
+    "tests",
+    "docs",
+    "README.md",
+    "pyproject.toml",
+    ".project-to-act",
+    ".github",
+    "scripts",
+    ".gitignore",
+    "runs/douluo-20ch-e2e-dev13-20260831/m2-grounding-dev27"
+  ],
+  "acceptance": [
+    "Repeated exact quotes fail closed while duplicate evidence windows at one occurrence remain valid",
+    "Negated containment stays unclassified with raw facts intact",
+    "Full pytest entry and explicit development dependencies",
+    "Persist replay and request version boundaries with regressions",
+    "Prepare annotation protocol without claiming human quality Gate"
+  ],
+  "session": {
+    "actor": "Codex",
+    "status": "stopped",
+    "date": "2026-09-05"
+  },
+  "evidence_ids": [
+    "E-20260905-CORRECTNESS-FOUNDATION-077"
+  ],
+  "review_result": {
+    "slice_acceptance_reviewed": true,
+    "full_tests": 209,
+    "subtests": 13,
+    "real_replay_tasks": 32,
+    "grounded_facts": 83,
+    "ambiguous_facts": 1,
+    "new_provider_calls": 0,
+    "overall_checklist_complete": false
+  }
+}

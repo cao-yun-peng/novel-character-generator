@@ -1,0 +1,672 @@
+{
+  "schema_version": "document-character-label-review-projection-v1",
+  "label_projection_policy_version": "orthogonal-label-kind-stability-v1",
+  "review_projection_policy_version": "final-identity-graph-review-projection-v1",
+  "source_registry_version": "document-character-registry-v1",
+  "source_registry_hash": "46ca40d66923aa80e38e0d4995df646b4c61d1c0a79df07eaa66cb5a1a85b565",
+  "source_document_version_id": "source-8bcb7305a759571b",
+  "document_hash": "8bcb7305a759571b1fec70813b0631f2c884eba79697c3259170a7635d639741",
+  "characters": [
+    {
+      "character_id": "char-29c8430a024fab728208",
+      "source_canonical_label": "看门的青年",
+      "source_canonical_label_status": "provisional_description",
+      "preferred_label_id": "label-d34df7d091b882c38f7c",
+      "labels": [
+        {
+          "label_id": "label-d34df7d091b882c38f7c",
+          "label_quote": "看门的青年",
+          "source_label_role": "contextual_description",
+          "label_kind": "descriptive_label",
+          "label_stability": "contextual",
+          "source_globally_unique": false,
+          "selection_status": "preferred"
+        }
+      ]
+    },
+    {
+      "character_id": "char-431fd9f3afcbe1cece75",
+      "source_canonical_label": "素云涛",
+      "source_canonical_label_status": "confirmed_name_like",
+      "preferred_label_id": "label-6b64fec5edf848dbf187",
+      "labels": [
+        {
+          "label_id": "label-6b64fec5edf848dbf187",
+          "label_quote": "素云涛",
+          "source_label_role": "name",
+          "label_kind": "proper_name",
+          "label_stability": "stable",
+          "source_globally_unique": true,
+          "selection_status": "preferred"
+        },
+        {
+          "label_id": "label-11648241d7adddaf721e",
+          "label_quote": "战魂大师",
+          "source_label_role": "title",
+          "label_kind": "title",
+          "label_stability": "stable",
+          "source_globally_unique": false,
+          "selection_status": "alternate"
+        },
+        {
+          "label_id": "label-92872f722832680f6530",
+          "label_quote": "年轻人",
+          "source_label_role": "contextual_description",
+          "label_kind": "descriptive_label",
+          "label_stability": "contextual",
+          "source_globally_unique": false,
+          "selection_status": "alternate"
+        },
+        {
+          "label_id": "label-2458e09cbb58188b866d",
+          "label_quote": "青年",
+          "source_label_role": "contextual_description",
+          "label_kind": "descriptive_label",
+          "label_stability": "contextual",
+          "source_globally_unique": false,
+          "selection_status": "alternate"
+        }
+      ]
+    },
+    {
+      "character_id": "char-63ade04ce7e6ee22dd35",
+      "source_canonical_label": "男孩儿",
+      "source_canonical_label_status": "provisional_description",
+      "preferred_label_id": "label-5d1ef18ad3ae25adcea4",
+      "labels": [
+        {
+          "label_id": "label-5d1ef18ad3ae25adcea4",
+          "label_quote": "男孩儿",
+          "source_label_role": "contextual_description",
+          "label_kind": "descriptive_label",
+          "label_stability": "contextual",
+          "source_globally_unique": false,
+          "selection_status": "preferred"
+        }
+      ]
+    },
+    {
+      "character_id": "char-a6302c7128aa46abea7c",
+      "source_canonical_label": "唐昊",
+      "source_canonical_label_status": "confirmed_name_like",
+      "preferred_label_id": "label-7fd28a1e65dc52df307e",
+      "labels": [
+        {
+          "label_id": "label-7fd28a1e65dc52df307e",
+          "label_quote": "唐昊",
+          "source_label_role": "name",
+          "label_kind": "proper_name",
+          "label_stability": "stable",
+          "source_globally_unique": true,
+          "selection_status": "preferred"
+        },
+        {
+          "label_id": "label-5994a4c2f79b83e907bf",
+          "label_quote": "高大的身影",
+          "source_label_role": "contextual_description",
+          "label_kind": "descriptive_label",
+          "label_stability": "contextual",
+          "source_globally_unique": false,
+          "selection_status": "alternate"
+        },
+        {
+          "label_id": "label-4988730355a8946904f4",
+          "label_quote": "高大苍老的男人",
+          "source_label_role": "contextual_description",
+          "label_kind": "descriptive_label",
+          "label_stability": "contextual",
+          "source_globally_unique": false,
+          "selection_status": "alternate"
+        }
+      ]
+    },
+    {
+      "character_id": "char-b4f3861662461ef7a5b6",
+      "source_canonical_label": "大师",
+      "source_canonical_label_status": "confirmed_name_like",
+      "preferred_label_id": "label-06ec3f15e614ba87c099",
+      "labels": [
+        {
+          "label_id": "label-06ec3f15e614ba87c099",
+          "label_quote": "大师",
+          "source_label_role": "name",
+          "label_kind": "title",
+          "label_stability": "stable",
+          "source_globally_unique": true,
+          "selection_status": "preferred"
+        }
+      ]
+    },
+    {
+      "character_id": "char-c29b95295e06aa917f96",
+      "source_canonical_label": "老杰克",
+      "source_canonical_label_status": "confirmed_name_like",
+      "preferred_label_id": "label-a2d2226fd6c44c97e236",
+      "labels": [
+        {
+          "label_id": "label-a2d2226fd6c44c97e236",
+          "label_quote": "老杰克",
+          "source_label_role": "name",
+          "label_kind": "proper_name",
+          "label_stability": "stable",
+          "source_globally_unique": true,
+          "selection_status": "preferred"
+        },
+        {
+          "label_id": "label-f128b0bb1dbc1f314e0b",
+          "label_quote": "杰克",
+          "source_label_role": "name_variant",
+          "label_kind": "alias",
+          "label_stability": "stable",
+          "source_globally_unique": true,
+          "selection_status": "alternate"
+        },
+        {
+          "label_id": "label-7c968c1bd1551e4e517d",
+          "label_quote": "这位村长",
+          "source_label_role": "contextual_description",
+          "label_kind": "title",
+          "label_stability": "contextual",
+          "source_globally_unique": false,
+          "selection_status": "alternate"
+        },
+        {
+          "label_id": "label-8e446cfb91e93c96bfb0",
+          "label_quote": "杰克爷爷",
+          "source_label_role": "alias",
+          "label_kind": "relationship_label",
+          "label_stability": "contextual",
+          "source_globally_unique": true,
+          "selection_status": "alternate"
+        },
+        {
+          "label_id": "label-c103c818df54ba68f059",
+          "label_quote": "一名老人",
+          "source_label_role": "contextual_description",
+          "label_kind": "descriptive_label",
+          "label_stability": "contextual",
+          "source_globally_unique": false,
+          "selection_status": "alternate"
+        }
+      ]
+    },
+    {
+      "character_id": "char-f47075b7019563fd8315",
+      "source_canonical_label": "唐三",
+      "source_canonical_label_status": "confirmed_name_like",
+      "preferred_label_id": "label-0d9426e8a6fca0c640d0",
+      "labels": [
+        {
+          "label_id": "label-0d9426e8a6fca0c640d0",
+          "label_quote": "唐三",
+          "source_label_role": "name",
+          "label_kind": "proper_name",
+          "label_stability": "stable",
+          "source_globally_unique": true,
+          "selection_status": "preferred"
+        },
+        {
+          "label_id": "label-469f2254add2c78a75be",
+          "label_quote": "小三",
+          "source_label_role": "name",
+          "label_kind": "proper_name",
+          "label_stability": "stable",
+          "source_globally_unique": true,
+          "selection_status": "alternate"
+        }
+      ]
+    }
+  ],
+  "audit_items": [
+    {
+      "review_item_id": "review-2741e86bae408b1b00c5",
+      "review_type": "partial_identity_evidence_grounding",
+      "subject_character_ref": {
+        "ref_type": "local",
+        "local_character_ref": {
+          "source_document_version_id": "source-8bcb7305a759571b",
+          "chunk_id": "chunk-000017-36000-38251-39ec6c2a0304",
+          "local_mention_id": "m2",
+          "mention_type": "exact",
+          "packet_hash": "143b71c874725f2f0bfe68ebca4d866ce3e0d349539ecf9c403871e0265288df"
+        }
+      },
+      "subject_character_id": "char-f47075b7019563fd8315",
+      "label_quote": "唐三",
+      "candidate_character_ids": [
+        "char-f47075b7019563fd8315"
+      ],
+      "grounded_identity_evidence": [
+        {
+          "evidence_quote": "唐三根本没有什么好准备的",
+          "document_span": {
+            "start": 31507,
+            "end": 31519
+          },
+          "match_mode": "exact"
+        },
+        {
+          "evidence_quote": "出手的正是唐三",
+          "document_span": {
+            "start": 37557,
+            "end": 37564
+          },
+          "match_mode": "exact"
+        },
+        {
+          "evidence_quote": "出手的正是唐三",
+          "document_span": {
+            "start": 37557,
+            "end": 37564
+          },
+          "match_mode": "exact"
+        }
+      ],
+      "issue_codes": [
+        "identity_evidence_not_in_model_context"
+      ],
+      "source_status": "pending",
+      "current_status": "resolved",
+      "disposition": "audit_only",
+      "resolution_reason": "resolved_same_character"
+    },
+    {
+      "review_item_id": "review-433ec043568f3dcf8c4d",
+      "review_type": "partial_identity_evidence_grounding",
+      "subject_character_ref": {
+        "ref_type": "local",
+        "local_character_ref": {
+          "source_document_version_id": "source-8bcb7305a759571b",
+          "chunk_id": "chunk-000007-13500-16000-29d830992ba6",
+          "local_mention_id": "m1",
+          "mention_type": "exact",
+          "packet_hash": "42d3ac0513671684848b76c374030d62c174f9e033ae28faaae135e2cf57bf2b"
+        }
+      },
+      "subject_character_id": "char-f47075b7019563fd8315",
+      "label_quote": "唐三",
+      "candidate_character_ids": [
+        "char-f47075b7019563fd8315"
+      ],
+      "grounded_identity_evidence": [
+        {
+          "evidence_quote": "唐三站在最左侧。",
+          "document_span": {
+            "start": 13743,
+            "end": 13751
+          },
+          "match_mode": "exact"
+        }
+      ],
+      "issue_codes": [
+        "identity_evidence_not_in_model_context"
+      ],
+      "source_status": "pending",
+      "current_status": "resolved",
+      "disposition": "audit_only",
+      "resolution_reason": "resolved_same_character"
+    },
+    {
+      "review_item_id": "review-4ba3ef1baa04d6101c80",
+      "review_type": "partial_identity_evidence_grounding",
+      "subject_character_ref": {
+        "ref_type": "local",
+        "local_character_ref": {
+          "source_document_version_id": "source-8bcb7305a759571b",
+          "chunk_id": "chunk-000015-31500-34000-fb2b21bc7e87",
+          "local_mention_id": "m2",
+          "mention_type": "exact",
+          "packet_hash": "944ab6b185f40d04f2ca941c6b56f34ee48a60f790d82074317e8121a45d492f"
+        }
+      },
+      "subject_character_id": "char-a6302c7128aa46abea7c",
+      "label_quote": "唐昊",
+      "candidate_character_ids": [
+        "char-a6302c7128aa46abea7c"
+      ],
+      "grounded_identity_evidence": [
+        {
+          "evidence_quote": "唐昊看着在不断拉动风箱的唐三。",
+          "document_span": {
+            "start": 27400,
+            "end": 27415
+          },
+          "match_mode": "exact"
+        },
+        {
+          "evidence_quote": "唐昊站着没动，一直到唐三和村长杰克的背影已经完全消失了",
+          "document_span": {
+            "start": 33055,
+            "end": 33082
+          },
+          "match_mode": "exact"
+        },
+        {
+          "evidence_quote": "唐昊站着没动，一直到唐三和村长杰克的背影已经完全消失了，他依旧站在那里呆立半晌。",
+          "document_span": {
+            "start": 33055,
+            "end": 33095
+          },
+          "match_mode": "exact"
+        }
+      ],
+      "issue_codes": [
+        "identity_evidence_not_in_model_context"
+      ],
+      "source_status": "pending",
+      "current_status": "resolved",
+      "disposition": "audit_only",
+      "resolution_reason": "resolved_same_character"
+    },
+    {
+      "review_item_id": "review-509301c519e3feff54af",
+      "review_type": "partial_identity_evidence_grounding",
+      "subject_character_ref": {
+        "ref_type": "local",
+        "local_character_ref": {
+          "source_document_version_id": "source-8bcb7305a759571b",
+          "chunk_id": "chunk-000008-15750-18250-3249bedb72a1",
+          "local_mention_id": "m3",
+          "mention_type": "exact",
+          "packet_hash": "df6282e925fbea636622dfb4d9fee46fca50d3ae03ce256d53d580d6dbd0d446"
+        }
+      },
+      "subject_character_id": "char-431fd9f3afcbe1cece75",
+      "label_quote": "素云涛",
+      "candidate_character_ids": [
+        "char-431fd9f3afcbe1cece75"
+      ],
+      "grounded_identity_evidence": [
+        {
+          "evidence_quote": "素云涛将六颗黑色的石头在地面上摆出一个六角形",
+          "document_span": {
+            "start": 13897,
+            "end": 13919
+          },
+          "match_mode": "exact"
+        }
+      ],
+      "issue_codes": [
+        "ambiguous_identity_evidence"
+      ],
+      "source_status": "pending",
+      "current_status": "resolved",
+      "disposition": "audit_only",
+      "resolution_reason": "resolved_same_character"
+    },
+    {
+      "review_item_id": "review-b39e07f02449a5ece79b",
+      "review_type": "partial_identity_evidence_grounding",
+      "subject_character_ref": {
+        "ref_type": "promoted",
+        "promoted_character_ref": {
+          "source_document_version_id": "source-8bcb7305a759571b",
+          "chunk_id": "chunk-000005-9000-11500-f4a0068fbfb5",
+          "source_local_mention_id": "m3",
+          "source_mention_type": "describe",
+          "promotion_index": 1,
+          "character_origin": "remaining_describe",
+          "packet_hash": "889d95ba32c85c760d1f83334632e8178d9892a2ead23b4c450e854caa06181e",
+          "promotion_hash": "b02517ebced642424ac9ef110842fad8398d62be22bc7e5af87ec77658bbc8aa"
+        }
+      },
+      "subject_character_id": "char-c29b95295e06aa917f96",
+      "label_quote": "老杰克",
+      "candidate_character_ids": [
+        "char-c29b95295e06aa917f96"
+      ],
+      "grounded_identity_evidence": [
+        {
+          "evidence_quote": "这个人唐三认识，是圣魂村的村长老杰克。",
+          "document_span": {
+            "start": 10181,
+            "end": 10200
+          },
+          "match_mode": "exact"
+        },
+        {
+          "evidence_quote": "这个人唐三认识，是圣魂村的村长老杰克。",
+          "document_span": {
+            "start": 10181,
+            "end": 10200
+          },
+          "match_mode": "exact"
+        },
+        {
+          "evidence_quote": "杰克爷爷，您好。",
+          "document_span": {
+            "start": 10283,
+            "end": 10291
+          },
+          "match_mode": "exact"
+        }
+      ],
+      "issue_codes": [
+        "identity_evidence_not_in_model_context"
+      ],
+      "source_status": "pending",
+      "current_status": "resolved",
+      "disposition": "audit_only",
+      "resolution_reason": "resolved_same_character"
+    },
+    {
+      "review_item_id": "review-cb9e1d21d56680350b2f",
+      "review_type": "partial_identity_evidence_grounding",
+      "subject_character_ref": {
+        "ref_type": "local",
+        "local_character_ref": {
+          "source_document_version_id": "source-8bcb7305a759571b",
+          "chunk_id": "chunk-000009-18000-20500-3d2108420730",
+          "local_mention_id": "m1",
+          "mention_type": "exact",
+          "packet_hash": "3cde929af30ea30323824fbb87a4291a91e1ea12891036a8ed57ecda50963773"
+        }
+      },
+      "subject_character_id": "char-a6302c7128aa46abea7c",
+      "label_quote": "唐昊",
+      "candidate_character_ids": [
+        "char-a6302c7128aa46abea7c"
+      ],
+      "grounded_identity_evidence": [
+        {
+          "evidence_quote": "这就是唐昊，唐三在这个世界的父亲。",
+          "document_span": {
+            "start": 5809,
+            "end": 5826
+          },
+          "match_mode": "exact"
+        },
+        {
+          "evidence_quote": "唐昊，唐昊。",
+          "document_span": {
+            "start": 19627,
+            "end": 19633
+          },
+          "match_mode": "exact"
+        },
+        {
+          "evidence_quote": "唐昊，唐昊。",
+          "document_span": {
+            "start": 19627,
+            "end": 19633
+          },
+          "match_mode": "exact"
+        },
+        {
+          "evidence_quote": "这个邋遢铁匠",
+          "document_span": {
+            "start": 19650,
+            "end": 19656
+          },
+          "match_mode": "exact"
+        }
+      ],
+      "issue_codes": [
+        "ambiguous_identity_evidence"
+      ],
+      "source_status": "pending",
+      "current_status": "resolved",
+      "disposition": "audit_only",
+      "resolution_reason": "resolved_same_character"
+    },
+    {
+      "review_item_id": "review-e0c61a90bdf59ea5e8af",
+      "review_type": "insufficient_identity_evidence",
+      "subject_character_ref": {
+        "ref_type": "promoted",
+        "promoted_character_ref": {
+          "source_document_version_id": "source-8bcb7305a759571b",
+          "chunk_id": "chunk-000016-33750-36250-66f14c14f2ba",
+          "source_local_mention_id": "m3",
+          "source_mention_type": "describe",
+          "promotion_index": 1,
+          "character_origin": "remaining_describe",
+          "packet_hash": "572ea37e5b6ac2403fc33061baacddd1abb070dbc62529bd8ab9c1e406f09550",
+          "promotion_hash": "02e055b80da318f5aa3488d1293b1af5f472087c1917c210e631f882b2e64377"
+        }
+      },
+      "subject_character_id": "char-29c8430a024fab728208",
+      "label_quote": "看门的青年",
+      "candidate_character_ids": [
+        "char-431fd9f3afcbe1cece75"
+      ],
+      "grounded_identity_evidence": [],
+      "issue_codes": [],
+      "source_status": "pending",
+      "current_status": "actionable",
+      "disposition": "actionable",
+      "resolution_reason": "final_graph_unresolved"
+    },
+    {
+      "review_item_id": "review-e1d973d604eb925d24b2",
+      "review_type": "partial_identity_evidence_grounding",
+      "subject_character_ref": {
+        "ref_type": "promoted",
+        "promoted_character_ref": {
+          "source_document_version_id": "source-8bcb7305a759571b",
+          "chunk_id": "chunk-000006-11250-13750-9b713c3495b7",
+          "source_local_mention_id": "m3",
+          "source_mention_type": "describe",
+          "promotion_index": 1,
+          "character_origin": "remaining_describe",
+          "packet_hash": "6bb39f8aea9f26d417dbb45861d7d128217831446a93af0e30ebdfb3858bed8d",
+          "promotion_hash": "51def963316e4206373c79d4fabe6e1b299007e9666747b3ee62e2d301e06702"
+        }
+      },
+      "subject_character_id": "char-431fd9f3afcbe1cece75",
+      "label_quote": "战魂大师",
+      "candidate_character_ids": [
+        "char-431fd9f3afcbe1cece75"
+      ],
+      "grounded_identity_evidence": [
+        {
+          "evidence_quote": "除了村长杰克和到齐的八个孩子以外，武魂殿中还有一个青年",
+          "document_span": {
+            "start": 13111,
+            "end": 13138
+          },
+          "match_mode": "exact"
+        },
+        {
+          "evidence_quote": "“您好，尊敬的战魂大师，这次要麻烦您了。”老杰克恭敬的向年轻人行礼。",
+          "document_span": {
+            "start": 13315,
+            "end": 13349
+          },
+          "match_mode": "exact"
+        },
+        {
+          "evidence_quote": "老杰克恭敬的向年轻人行礼。",
+          "document_span": {
+            "start": 13336,
+            "end": 13349
+          },
+          "match_mode": "exact"
+        },
+        {
+          "evidence_quote": "老杰克道：“好的。孩子们，这位是来自诺丁城的战魂大师。",
+          "document_span": {
+            "start": 13405,
+            "end": 13432
+          },
+          "match_mode": "exact"
+        }
+      ],
+      "issue_codes": [
+        "identity_evidence_not_in_model_context"
+      ],
+      "source_status": "pending",
+      "current_status": "resolved",
+      "disposition": "audit_only",
+      "resolution_reason": "resolved_same_character"
+    },
+    {
+      "review_item_id": "review-f840afebad6fbd807198",
+      "review_type": "partial_identity_evidence_grounding",
+      "subject_character_ref": {
+        "ref_type": "local",
+        "local_character_ref": {
+          "source_document_version_id": "source-8bcb7305a759571b",
+          "chunk_id": "chunk-000014-29250-31750-3f70e01ec313",
+          "local_mention_id": "m2",
+          "mention_type": "exact",
+          "packet_hash": "dd04775e589c963e1a90e15cf24be2e048abf8e2586ed34ffec7ba9f849195e5"
+        }
+      },
+      "subject_character_id": "char-a6302c7128aa46abea7c",
+      "label_quote": "唐昊",
+      "candidate_character_ids": [
+        "char-a6302c7128aa46abea7c"
+      ],
+      "grounded_identity_evidence": [
+        {
+          "evidence_quote": "唐昊看着在不断拉动风箱的唐三。",
+          "document_span": {
+            "start": 27400,
+            "end": 27415
+          },
+          "match_mode": "exact"
+        }
+      ],
+      "issue_codes": [
+        "identity_evidence_not_in_model_context"
+      ],
+      "source_status": "pending",
+      "current_status": "resolved",
+      "disposition": "audit_only",
+      "resolution_reason": "resolved_same_character"
+    }
+  ],
+  "actionable_review_items": [
+    {
+      "review_item_id": "review-e0c61a90bdf59ea5e8af",
+      "review_type": "insufficient_identity_evidence",
+      "subject_character_id": "char-29c8430a024fab728208",
+      "label_quote": "看门的青年",
+      "candidate_character_ids": [
+        "char-431fd9f3afcbe1cece75"
+      ],
+      "reason_code": "insufficient_identity_evidence"
+    }
+  ],
+  "summary": {
+    "characters": 7,
+    "labels": 17,
+    "preferred_labels": 7,
+    "proper_name_labels": 5,
+    "alias_labels": 1,
+    "title_labels": 3,
+    "relationship_labels": 1,
+    "descriptive_labels": 7,
+    "unknown_kind_labels": 0,
+    "stable_labels": 8,
+    "contextual_labels": 9,
+    "temporary_labels": 0,
+    "unknown_stability_labels": 0,
+    "audit_items": 9,
+    "resolved_audit_items": 8,
+    "actionable_review_items": 1,
+    "model_calls": 0,
+    "complete": true
+  }
+}

@@ -108,6 +108,7 @@ def _document_nodes(text: str, *nodes: LocalCharacterNode) -> DocumentLocalChara
 
 
 class _Provider:
+    cache_identity = {"provider": "test-test_identity.py"}
     def __init__(self, output: dict[str, object]) -> None:
         self.output = output
         self.requests = []
@@ -118,6 +119,7 @@ class _Provider:
 
 
 class _FailIfCalledProvider:
+    cache_identity = {"provider": "test-test_identity.py"}
     def generate(self, request):
         raise AssertionError("resumed identity task must not call the Provider")
 
@@ -861,6 +863,10 @@ class IdentityPreparationAndRegistryTests(unittest.TestCase):
                     provider=provider,
                     output_dir=output,
                 )
+                cached_path = next((output / "tasks").glob("*.json"))
+                cached = json.loads(cached_path.read_text("utf-8"))
+                cached["grounded_result"] = {"corrupt": True}
+                cached_path.write_text(json.dumps(cached), encoding="utf-8")
                 second_summary = run_document_identity(
                     document_text=text,
                     source_n2_packets_file=Path("n2.json"),
@@ -869,6 +875,22 @@ class IdentityPreparationAndRegistryTests(unittest.TestCase):
                     provider=_FailIfCalledProvider(),
                     output_dir=output,
                 )
+                refreshed = json.loads(cached_path.read_text("utf-8"))
+                self.assertNotIn("corrupt", refreshed["grounded_result"])
+                for invalid in (None, "changed-request"):
+                    with self.subTest(fingerprint=invalid):
+                        refreshed["request_fingerprint"] = invalid
+                        cached_path.write_text(json.dumps(refreshed), encoding="utf-8")
+                        with self.assertRaisesRegex(ContractValidationError, "fingerprint"):
+                            run_document_identity(
+                                document_text=text,
+                                source_n2_packets_file=Path("n2.json"),
+                                source_n3_run_dir=Path("n3"),
+                                document_evidence_file=Path("document.json"),
+                                provider=_FailIfCalledProvider(),
+                                output_dir=output,
+                            )
+
             self.assertTrue(first_summary["complete"])
             self.assertEqual(first_summary["new_provider_calls"], 1)
             self.assertEqual(second_summary["new_provider_calls"], 0)

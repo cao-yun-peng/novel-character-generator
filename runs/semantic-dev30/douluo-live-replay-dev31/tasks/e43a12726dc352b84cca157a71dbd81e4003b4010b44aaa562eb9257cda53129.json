@@ -1,0 +1,6 @@
+{
+  "task_id": "e43a12726dc352b84cca157a71dbd81e4003b4010b44aaa562eb9257cda53129",
+  "payload_hash": "ddde76c52fa0d432af5998fd5efe4ca1639f581ac42ec29d393172619a6e062f",
+  "request_fingerprint": "c250d791c6d96b2a4bb7299b5fd398afeac804ff3dac6bd8ea76174266d2c2ce",
+  "model_output": "{\"relation\":\"equivalent\",\"evidence_quotes\":[\"他的身体如此纤瘦\",\"唐三瘦弱的身体\"]}"
+}

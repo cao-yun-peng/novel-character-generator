@@ -1,0 +1,16 @@
+{
+  "pyproject.toml": "8018faf556b516a089da86075c076222ebe9d810caa81146339f73d1380f749c",
+  "src/novel_character_generator/appearance_transition_batch.py": "b0eb5b1d4c1f953d5f926cea4fda7f0a8202f2abe6a90b165237178c46839845",
+  "src/novel_character_generator/identity_batch.py": "fbdc82332b8a9056bace89ef8cf1ab09f81cfc6023251d70913d226531b28293",
+  "src/novel_character_generator/identity_rescue_batch.py": "6773b4242b4face9f2e27ea78db487145a0a8ca9fe56b72165c2c19a33509062",
+  "src/novel_character_generator/m1_batch.py": "df0366e4cd82a5ffb98fcf6a3c4979ab5c793ebc7226a7a67f8d89845abeb2d0",
+  "src/novel_character_generator/m2_batch.py": "2507a9f16f389e93189a6198e93db6279fb5118b70091f648ed964410966eb49",
+  "src/novel_character_generator/n3_batch.py": "c1156e8337e87d24af47ef954298bdbc1e2cbcc7ad69e8578981c4f8b4249dc5",
+  "tests/test_batch_cache_reground.py": "44d7793cf271005a4b3a96c96fe7a3008901f713a6c313a5c1d5291e68c141df",
+  "tests/test_identity_cache_preflight.py": "f3d644cc3c981fde113195bf6c120f6e3729fa5a1e7dccbccdae874eb076f891",
+  "tests/test_request_cache.py": "8b6bd396254677342992fe8319d128e3bd7235df492038592185b447bff563e4",
+  "tests/test_identity.py": "ad2bae22d6315e94968c3bc1a2a085cf355ab4f4bcd5f0c0070522239cc31cf1",
+  "tests/test_identity_rescue.py": "e115378a738da88052d1cefd7010fdf6ad448e5f0dae112e21bf1168e8fd1cb6",
+  "tests/test_n3_batch.py": "36311a7a647c5467c45515e4d8a1c0b460dc112482f75bc013a6ee4b43036248",
+  "tests/test_appearance_transition.py": "2add49284a5f4dd21f425697ea66172e5b5d2676f8760a8a6cb96aa9f3c79510"
+}

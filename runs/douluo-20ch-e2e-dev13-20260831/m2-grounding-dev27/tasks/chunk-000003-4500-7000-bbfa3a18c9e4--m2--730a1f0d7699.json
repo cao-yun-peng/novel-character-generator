@@ -1,0 +1,269 @@
+{
+  "schema_version": "m2-attribution-task-result-v1",
+  "source_run_dir": "E:\\project\\agent\\novel-cahracter-generator\\runs\\douluo-20ch-e2e-dev13-20260831\\m1",
+  "chunk_index": 3,
+  "chunk_id": "chunk-000003-4500-7000-bbfa3a18c9e4",
+  "target_local_mention_id": "m2",
+  "target_mention_quote": "唐昊",
+  "task_cache_key": "730a1f0d769915d044614947add265aac3762ac76345ca8e9ca8448350115db7",
+  "request_fingerprint": "3e1fe5df6596cb7fe4522b023dd23844d646e358706578738e7349a84283622c",
+  "model_output": {
+    "belongs_to_target": [
+      {
+        "fact_quote": "大约有接近五十岁的样子",
+        "category": "age",
+        "attribute": "年龄",
+        "value": "接近五十岁"
+      },
+      {
+        "fact_quote": "身材却非常高大魁梧",
+        "category": "body",
+        "attribute": "身材",
+        "value": "高大魁梧"
+      },
+      {
+        "fact_quote": "破损的袍子穿在身上",
+        "category": "clothing",
+        "attribute": "服装",
+        "value": "破损的袍子"
+      },
+      {
+        "fact_quote": "古铜色的皮肤",
+        "category": "body",
+        "attribute": "皮肤",
+        "value": "古铜色"
+      },
+      {
+        "fact_quote": "五官却蒙着一层蜡黄色",
+        "category": "face",
+        "attribute": "五官",
+        "value": "蒙蜡黄色"
+      },
+      {
+        "fact_quote": "一副睡眼朦胧的样子",
+        "category": "appearance_state",
+        "attribute": "状态",
+        "value": "睡眼朦胧"
+      },
+      {
+        "fact_quote": "头发乱糟糟的像鸟窝一般",
+        "category": "hair",
+        "attribute": "头发",
+        "value": "乱糟糟像鸟窝"
+      },
+      {
+        "fact_quote": "一脸的胡子已经不知道有多少日子没有整理过了",
+        "category": "hair",
+        "attribute": "胡子",
+        "value": "未整理"
+      },
+      {
+        "fact_quote": "目光呆滞而昏黄",
+        "category": "face",
+        "attribute": "目光",
+        "value": "呆滞昏黄"
+      },
+      {
+        "fact_quote": "暗黄的脸色",
+        "category": "face",
+        "attribute": "脸色",
+        "value": "暗黄"
+      }
+    ]
+  },
+  "grounded_result": {
+    "grounding_policy_version": "unique-fact-occurrence-attribution-v2",
+    "target_character_ref": {
+      "source_document_version_id": "source-8bcb7305a759571b",
+      "chunk_id": "chunk-000003-4500-7000-bbfa3a18c9e4",
+      "local_mention_id": "m2",
+      "mention_type": "exact",
+      "packet_hash": "5e7fe6b4a8ac038fd3df626e6249fe921d8afc561f83b78c37d8168450b2760a"
+    },
+    "task_cache_key": "730a1f0d769915d044614947add265aac3762ac76345ca8e9ca8448350115db7",
+    "grounded_belongs_to_target": [
+      {
+        "fact_quote": "大约有接近五十岁的样子",
+        "category": "age",
+        "attribute": "年龄",
+        "value": "接近五十岁",
+        "source_mention_id": "m2",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "那是一名中年男子，看上去大约有接近五十岁的样子，但身材却非常高大魁梧",
+        "source_evidence_span": {
+          "start": 1115,
+          "end": 1149
+        },
+        "fact_chunk_span": {
+          "start": 1127,
+          "end": 1138
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "身材却非常高大魁梧",
+        "category": "body",
+        "attribute": "身材",
+        "value": "高大魁梧",
+        "source_mention_id": "m2",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "那是一名中年男子，看上去大约有接近五十岁的样子，但身材却非常高大魁梧",
+        "source_evidence_span": {
+          "start": 1115,
+          "end": 1149
+        },
+        "fact_chunk_span": {
+          "start": 1140,
+          "end": 1149
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "破损的袍子穿在身上",
+        "category": "clothing",
+        "attribute": "服装",
+        "value": "破损的袍子",
+        "source_mention_id": "m2",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "破损的袍子穿在身上，上面甚至连补丁都没有，露出下面古铜色的皮肤，原本还算端正的五官却蒙着一层蜡黄色，一副睡眼朦胧的样子，头发乱糟糟的像鸟窝一般，一脸的胡子已经不知道有多少日子没有整理过了。目光呆滞而昏黄",
+        "source_evidence_span": {
+          "start": 1169,
+          "end": 1270
+        },
+        "fact_chunk_span": {
+          "start": 1169,
+          "end": 1178
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "古铜色的皮肤",
+        "category": "body",
+        "attribute": "皮肤",
+        "value": "古铜色",
+        "source_mention_id": "m2",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "破损的袍子穿在身上，上面甚至连补丁都没有，露出下面古铜色的皮肤，原本还算端正的五官却蒙着一层蜡黄色，一副睡眼朦胧的样子，头发乱糟糟的像鸟窝一般，一脸的胡子已经不知道有多少日子没有整理过了。目光呆滞而昏黄",
+        "source_evidence_span": {
+          "start": 1169,
+          "end": 1270
+        },
+        "fact_chunk_span": {
+          "start": 1194,
+          "end": 1200
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "五官却蒙着一层蜡黄色",
+        "category": "face",
+        "attribute": "五官",
+        "value": "蒙蜡黄色",
+        "source_mention_id": "m2",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "破损的袍子穿在身上，上面甚至连补丁都没有，露出下面古铜色的皮肤，原本还算端正的五官却蒙着一层蜡黄色，一副睡眼朦胧的样子，头发乱糟糟的像鸟窝一般，一脸的胡子已经不知道有多少日子没有整理过了。目光呆滞而昏黄",
+        "source_evidence_span": {
+          "start": 1169,
+          "end": 1270
+        },
+        "fact_chunk_span": {
+          "start": 1208,
+          "end": 1218
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "一副睡眼朦胧的样子",
+        "category": "appearance_state",
+        "attribute": "状态",
+        "value": "睡眼朦胧",
+        "source_mention_id": "m2",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "破损的袍子穿在身上，上面甚至连补丁都没有，露出下面古铜色的皮肤，原本还算端正的五官却蒙着一层蜡黄色，一副睡眼朦胧的样子，头发乱糟糟的像鸟窝一般，一脸的胡子已经不知道有多少日子没有整理过了。目光呆滞而昏黄",
+        "source_evidence_span": {
+          "start": 1169,
+          "end": 1270
+        },
+        "fact_chunk_span": {
+          "start": 1219,
+          "end": 1228
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "头发乱糟糟的像鸟窝一般",
+        "category": "hair",
+        "attribute": "头发",
+        "value": "乱糟糟像鸟窝",
+        "source_mention_id": "m2",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "破损的袍子穿在身上，上面甚至连补丁都没有，露出下面古铜色的皮肤，原本还算端正的五官却蒙着一层蜡黄色，一副睡眼朦胧的样子，头发乱糟糟的像鸟窝一般，一脸的胡子已经不知道有多少日子没有整理过了。目光呆滞而昏黄",
+        "source_evidence_span": {
+          "start": 1169,
+          "end": 1270
+        },
+        "fact_chunk_span": {
+          "start": 1229,
+          "end": 1240
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "一脸的胡子已经不知道有多少日子没有整理过了",
+        "category": "hair",
+        "attribute": "胡子",
+        "value": "未整理",
+        "source_mention_id": "m2",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "破损的袍子穿在身上，上面甚至连补丁都没有，露出下面古铜色的皮肤，原本还算端正的五官却蒙着一层蜡黄色，一副睡眼朦胧的样子，头发乱糟糟的像鸟窝一般，一脸的胡子已经不知道有多少日子没有整理过了。目光呆滞而昏黄",
+        "source_evidence_span": {
+          "start": 1169,
+          "end": 1270
+        },
+        "fact_chunk_span": {
+          "start": 1241,
+          "end": 1262
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "目光呆滞而昏黄",
+        "category": "face",
+        "attribute": "目光",
+        "value": "呆滞昏黄",
+        "source_mention_id": "m2",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "破损的袍子穿在身上，上面甚至连补丁都没有，露出下面古铜色的皮肤，原本还算端正的五官却蒙着一层蜡黄色，一副睡眼朦胧的样子，头发乱糟糟的像鸟窝一般，一脸的胡子已经不知道有多少日子没有整理过了。目光呆滞而昏黄",
+        "source_evidence_span": {
+          "start": 1169,
+          "end": 1270
+        },
+        "fact_chunk_span": {
+          "start": 1263,
+          "end": 1270
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "暗黄的脸色",
+        "category": "face",
+        "attribute": "脸色",
+        "value": "暗黄",
+        "source_mention_id": "m2",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "暗黄的脸色这才看上去多了几分光泽",
+        "source_evidence_span": {
+          "start": 1648,
+          "end": 1664
+        },
+        "fact_chunk_span": {
+          "start": 1648,
+          "end": 1653
+        },
+        "match_mode": "exact"
+      }
+    ]
+  },
+  "grounding_issues": [],
+  "provider_trace": null
+}

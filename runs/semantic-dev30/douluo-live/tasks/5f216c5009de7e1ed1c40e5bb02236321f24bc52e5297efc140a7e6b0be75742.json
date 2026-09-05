@@ -1,0 +1,6 @@
+{
+  "task_id": "5f216c5009de7e1ed1c40e5bb02236321f24bc52e5297efc140a7e6b0be75742",
+  "payload_hash": "3db3876540b8d31f779cc012c9f1a80ed358dd9962316e5cbbf92e3510f118d5",
+  "request_fingerprint": "6e57f44cd585ba3914a0ca3c883425e96d45500275839645fbde4a48f0b8f6f3",
+  "model_output": "{\"relation\": \"equivalent\", \"evidence_quotes\": [\"看上去六十多岁的样子，身材瘦长，但精神矍铄，衣服干净整洁，头发也梳理的一丝不苟，和唐昊相比，简直就是两个极端\", \"看上去六十多岁的样子，身材瘦长，但精神矍铄，衣服干净整洁，头发也梳理的一丝不苟，和唐昊相比，简直就是两个极端\"]}"
+}

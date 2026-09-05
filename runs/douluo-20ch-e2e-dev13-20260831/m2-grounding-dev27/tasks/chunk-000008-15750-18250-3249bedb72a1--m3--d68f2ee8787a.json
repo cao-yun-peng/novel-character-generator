@@ -1,0 +1,77 @@
+{
+  "schema_version": "m2-attribution-task-result-v1",
+  "source_run_dir": "E:\\project\\agent\\novel-cahracter-generator\\runs\\douluo-20ch-e2e-dev13-20260831\\m1",
+  "chunk_index": 8,
+  "chunk_id": "chunk-000008-15750-18250-3249bedb72a1",
+  "target_local_mention_id": "m3",
+  "target_mention_quote": "素云涛",
+  "task_cache_key": "d68f2ee8787aca04be3ef34c04ff3381034f1b39f5c756bbd0c00b83f48c3395",
+  "request_fingerprint": "c45e88340489d676e961851c88d28785a3032ae366ff2fbbd64a0aa7aa917635",
+  "model_output": {
+    "belongs_to_target": [
+      {
+        "fact_quote": "素云涛的眼睛突然亮了起来",
+        "category": "face",
+        "attribute": "眼睛",
+        "value": "突然亮了起来"
+      },
+      {
+        "fact_quote": "素云涛呆滞的看着他",
+        "category": "face",
+        "attribute": "眼神",
+        "value": "呆滞"
+      }
+    ]
+  },
+  "grounded_result": {
+    "grounding_policy_version": "unique-fact-occurrence-attribution-v2",
+    "target_character_ref": {
+      "source_document_version_id": "source-8bcb7305a759571b",
+      "chunk_id": "chunk-000008-15750-18250-3249bedb72a1",
+      "local_mention_id": "m3",
+      "mention_type": "exact",
+      "packet_hash": "df6282e925fbea636622dfb4d9fee46fca50d3ae03ce256d53d580d6dbd0d446"
+    },
+    "task_cache_key": "d68f2ee8787aca04be3ef34c04ff3381034f1b39f5c756bbd0c00b83f48c3395",
+    "grounded_belongs_to_target": [
+      {
+        "fact_quote": "素云涛的眼睛突然亮了起来",
+        "category": "face",
+        "attribute": "眼睛",
+        "value": "突然亮了起来",
+        "source_mention_id": "m3",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "素云涛的眼睛突然亮了起来",
+        "source_evidence_span": {
+          "start": 247,
+          "end": 259
+        },
+        "fact_chunk_span": {
+          "start": 247,
+          "end": 259
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "素云涛呆滞的看着他",
+        "category": "face",
+        "attribute": "眼神",
+        "value": "呆滞",
+        "source_mention_id": "m3",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "素云涛呆滞的看着他",
+        "source_evidence_span": {
+          "start": 1519,
+          "end": 1528
+        },
+        "fact_chunk_span": {
+          "start": 1519,
+          "end": 1528
+        },
+        "match_mode": "exact"
+      }
+    ]
+  },
+  "grounding_issues": [],
+  "provider_trace": null
+}

@@ -1,0 +1,6 @@
+{
+  "task_id": "7bc30ae684922f4b16844f84bcf8d8dbb83be6819014162e06f603c2085aba60",
+  "payload_hash": "96cfdf602050d0217ea1a12680405be160fcf20ab521afe2005f515ac7e04851",
+  "request_fingerprint": "783bcd9ce05812f60a31ab2ffb5f75366bc3006548731942daf07dc964daffc6",
+  "model_output": "{\"events\":[{\"character\":\"唐三\",\"kind\":\"remove\",\"facts\":[{\"fact_quote\":\"身穿灰衣\",\"category\":\"clothing\",\"attribute\":\"服装\",\"value\":\"灰衣\"},{\"fact_quote\":\"从他胸口处那斗大的唐字\",\"category\":\"clothing\",\"attribute\":\"衣服标志\",\"value\":\"胸口有斗大的唐字\"}],\"evidence\":\"轰的一声炸鸣，当众位长老同时后退以防不测的时候，他们看到的却是全身赤裸的唐三。\"}]}"
+}

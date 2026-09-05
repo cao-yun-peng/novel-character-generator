@@ -1,0 +1,53 @@
+{
+  "schema_version": "m2-attribution-task-result-v1",
+  "source_run_dir": "E:\\project\\agent\\novel-cahracter-generator\\runs\\douluo-20ch-e2e-dev13-20260831\\m1",
+  "chunk_index": 13,
+  "chunk_id": "chunk-000013-27000-29500-cac937b0db28",
+  "target_local_mention_id": "m1",
+  "target_mention_quote": "唐昊",
+  "task_cache_key": "4f209a5d81f816f6ee85114de51e42f6fa073f809dba746788e8576dabc9a2a7",
+  "request_fingerprint": "2a97ef3cc192e7eacfd5ff7477d6b39d690257ccbeb0136ddc5aac94c3ee9456",
+  "model_output": {
+    "belongs_to_target": [
+      {
+        "fact_quote": "面不红，气不喘",
+        "category": "appearance_state",
+        "attribute": "面色呼吸",
+        "value": "不红不喘"
+      }
+    ]
+  },
+  "grounded_result": {
+    "grounding_policy_version": "unique-fact-occurrence-attribution-v2",
+    "target_character_ref": {
+      "source_document_version_id": "source-8bcb7305a759571b",
+      "chunk_id": "chunk-000013-27000-29500-cac937b0db28",
+      "local_mention_id": "m1",
+      "mention_type": "exact",
+      "packet_hash": "2ea6010509d469902dc5a873c24425a80d11c21c9756fc2f4af2ebf0c9ac4c31"
+    },
+    "task_cache_key": "4f209a5d81f816f6ee85114de51e42f6fa073f809dba746788e8576dabc9a2a7",
+    "grounded_belongs_to_target": [
+      {
+        "fact_quote": "面不红，气不喘",
+        "category": "appearance_state",
+        "attribute": "面色呼吸",
+        "value": "不红不喘",
+        "source_mention_id": "m1",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "面不红，气不喘",
+        "source_evidence_span": {
+          "start": 297,
+          "end": 304
+        },
+        "fact_chunk_span": {
+          "start": 297,
+          "end": 304
+        },
+        "match_mode": "exact"
+      }
+    ]
+  },
+  "grounding_issues": [],
+  "provider_trace": null
+}

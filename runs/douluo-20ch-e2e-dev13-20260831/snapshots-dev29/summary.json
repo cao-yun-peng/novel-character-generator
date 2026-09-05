@@ -1,0 +1,19 @@
+{
+  "snapshots": 4,
+  "model_calls": 0,
+  "active_fact_bindings": 7,
+  "provisional_fact_bindings": 42,
+  "excluded_fact_bindings": 71,
+  "source_hashes_unchanged": {
+    "runs\\douluo-20ch-e2e-dev13-20260831\\post-link-fact-groups-dev18\\document-character-fact-groups.json": "c5c42c1bdab21fd5b163e9418b927748ee90815b320158af04683dc423e3507f",
+    "runs\\douluo-20ch-e2e-dev13-20260831\\appearance-transitions-dev24\\document-character-appearance-states.json": "83d1a87edfe83a8591122aec5754861afee26d5531d0506c2639b74577071cdb",
+    "runs\\douluo-20ch-e2e-dev13-20260831\\label-review-projection-dev25\\document-character-label-review-projection.json": "cabcb611f95144c5e29dfc272a3732fd1a6ad64d0d969dd3eba89f4bf89c459d",
+    "runs\\douluo-20ch-e2e-dev13-20260831\\render-profiles-dev26\\render-profile-requests.json": "eac5431555dc6fb042cb6e0dff3e89d53e406a36077978aa623971a84cb8f685",
+    "runs\\douluo-20ch-e2e-dev13-20260831\\render-profiles-dev26\\render-ready-character-profiles.json": "b0ef3f6f47716f2ce2dbd133eda5ff8e5738e0e4598be9b93bbb38dd01629a3b",
+    "tests\\小说\\斗罗大陆前20章.txt": "8bcb7305a759571b1fec70813b0631f2c884eba79697c3259170a7635d639741"
+  },
+  "deterministic": true,
+  "legacy_schema_valid": true,
+  "current_schema_valid": true,
+  "snapshot_sha256": "87f01d10a19285e1b2edc088d22037e3adaff015eaacb711a332f886d163313d"
+}

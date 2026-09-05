@@ -1,0 +1,149 @@
+{
+  "schema_version": "m2-attribution-task-result-v1",
+  "source_run_dir": "E:\\project\\agent\\novel-cahracter-generator\\runs\\douluo-20ch-e2e-dev13-20260831\\m1",
+  "chunk_index": 7,
+  "chunk_id": "chunk-000007-13500-16000-29d830992ba6",
+  "target_local_mention_id": "m2",
+  "target_mention_quote": "素云涛",
+  "task_cache_key": "1092afced2ba0eb9db1158ad94c61fd8c18a1df75d8f4a17f405db7efaa1927c",
+  "request_fingerprint": "6a1d036905c875fd345641613ebd2ac05114befb69173a7bde1ce2289542b83a",
+  "model_output": {
+    "belongs_to_target": [
+      {
+        "fact_quote": "瞬间就变成了灰色，并且快速的变长",
+        "category": "hair",
+        "attribute": "头发",
+        "value": "灰色且变长"
+      },
+      {
+        "fact_quote": "同色毛发出现在他裸露在外的双手之上",
+        "category": "body",
+        "attribute": "双手毛发",
+        "value": "出现同色毛发"
+      },
+      {
+        "fact_quote": "全身充满了肌肉感",
+        "category": "body",
+        "attribute": "肌肉",
+        "value": "全身充满肌肉感"
+      },
+      {
+        "fact_quote": "素云涛的眼睛已经变成了幽幽的绿色",
+        "category": "face",
+        "attribute": "眼睛颜色",
+        "value": "绿色"
+      },
+      {
+        "fact_quote": "双手十指上探出的利爪闪烁着淡淡的寒光",
+        "category": "body",
+        "attribute": "利爪",
+        "value": "十指有利爪，闪烁寒光"
+      }
+    ]
+  },
+  "grounded_result": {
+    "grounding_policy_version": "unique-fact-occurrence-attribution-v2",
+    "target_character_ref": {
+      "source_document_version_id": "source-8bcb7305a759571b",
+      "chunk_id": "chunk-000007-13500-16000-29d830992ba6",
+      "local_mention_id": "m2",
+      "mention_type": "exact",
+      "packet_hash": "37c0adbd2fd3c545f154dd72d7f80178508c0fa7304c3d639cdbafd8cb53f97e"
+    },
+    "task_cache_key": "1092afced2ba0eb9db1158ad94c61fd8c18a1df75d8f4a17f405db7efaa1927c",
+    "grounded_belongs_to_target": [
+      {
+        "fact_quote": "瞬间就变成了灰色，并且快速的变长",
+        "category": "hair",
+        "attribute": "头发",
+        "value": "灰色且变长",
+        "source_mention_id": "m2",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "素云涛的头发原本是黑色的，但当那青光注入之后，瞬间就变成了灰色，并且快速的变长，同色毛发出现在他裸露在外的双手之上，同时，他的身体也似乎比之前膨胀了许多。全身充满了肌肉感。",
+        "source_evidence_span": {
+          "start": 550,
+          "end": 636
+        },
+        "fact_chunk_span": {
+          "start": 573,
+          "end": 589
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "同色毛发出现在他裸露在外的双手之上",
+        "category": "body",
+        "attribute": "双手毛发",
+        "value": "出现同色毛发",
+        "source_mention_id": "m2",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "素云涛的头发原本是黑色的，但当那青光注入之后，瞬间就变成了灰色，并且快速的变长，同色毛发出现在他裸露在外的双手之上，同时，他的身体也似乎比之前膨胀了许多。全身充满了肌肉感。",
+        "source_evidence_span": {
+          "start": 550,
+          "end": 636
+        },
+        "fact_chunk_span": {
+          "start": 590,
+          "end": 607
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "全身充满了肌肉感",
+        "category": "body",
+        "attribute": "肌肉",
+        "value": "全身充满肌肉感",
+        "source_mention_id": "m2",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "素云涛的头发原本是黑色的，但当那青光注入之后，瞬间就变成了灰色，并且快速的变长，同色毛发出现在他裸露在外的双手之上，同时，他的身体也似乎比之前膨胀了许多。全身充满了肌肉感。",
+        "source_evidence_span": {
+          "start": 550,
+          "end": 636
+        },
+        "fact_chunk_span": {
+          "start": 627,
+          "end": 635
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "素云涛的眼睛已经变成了幽幽的绿色",
+        "category": "face",
+        "attribute": "眼睛颜色",
+        "value": "绿色",
+        "source_mention_id": "m2",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "素云涛的眼睛已经变成了幽幽的绿色，双手十指上探出的利爪闪烁着淡淡的寒光。",
+        "source_evidence_span": {
+          "start": 669,
+          "end": 705
+        },
+        "fact_chunk_span": {
+          "start": 669,
+          "end": 685
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "双手十指上探出的利爪闪烁着淡淡的寒光",
+        "category": "body",
+        "attribute": "利爪",
+        "value": "十指有利爪，闪烁寒光",
+        "source_mention_id": "m2",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "素云涛的眼睛已经变成了幽幽的绿色，双手十指上探出的利爪闪烁着淡淡的寒光。",
+        "source_evidence_span": {
+          "start": 669,
+          "end": 705
+        },
+        "fact_chunk_span": {
+          "start": 686,
+          "end": 704
+        },
+        "match_mode": "exact"
+      }
+    ]
+  },
+  "grounding_issues": [],
+  "provider_trace": null
+}

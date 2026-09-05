@@ -121,7 +121,7 @@ class M2AttributionGroundingTests(unittest.TestCase):
             result, chunk_text=text, target_local_mention_id="m1"
         )
 
-    def test_target_evidence_has_priority_and_earliest_occurrence_is_deterministic(self):
+    def test_unique_target_evidence_has_priority_over_describe(self):
         text = "萧熏儿有修长的睫毛。少女也有修长的睫毛。"
         envelope = self.make_envelope(
             text,
@@ -134,6 +134,54 @@ class M2AttributionGroundingTests(unittest.TestCase):
         result = ground_m2_attribution_output(envelope, output)
         self.assertEqual(result.grounded_belongs_to_target[0].source_mention_type, "exact")
         self.assertEqual(result.grounded_belongs_to_target[0].source_mention_id, "m1")
+
+    def test_repeated_exact_fact_is_reviewed_without_selecting_first_or_describe(self):
+        text = "唐三前世身穿青衣。转生后唐三身穿青衣。少年身穿青衣。唐三双眼明亮。"
+        envelope = self.make_envelope(text, [
+            {"mention_type": "exact", "mention_scope": "individual", "mention_quote": "唐三",
+             "evidence_quotes": ["唐三前世身穿青衣", "转生后唐三身穿青衣", "唐三双眼明亮"]},
+            {"mention_type": "describe", "mention_scope": "individual", "mention_quote": "少年",
+             "evidence_quotes": ["少年身穿青衣"]},
+        ])
+        before = envelope.to_dict()
+        result = ground_m2_attribution_output(envelope, M2AttributionModelOutput.parse({
+            "belongs_to_target": [fact("青衣", category="clothing"), fact("双眼明亮")]
+        }))
+        self.assertEqual([f.fact_quote for f in result.grounded_belongs_to_target], ["双眼明亮"])
+        issue = result.issues[0].to_dict()
+        self.assertEqual(issue["code"], "ambiguous_fact_binding")
+        self.assertEqual(issue["fact_quote"], "青衣")
+        self.assertEqual(issue["candidate_occurrence_count"], 2)
+        self.assertEqual(len(issue["candidate_occurrences"]), 2)
+        for item in issue["candidate_occurrences"]:
+            span = item["fact_chunk_span"]
+            self.assertEqual(text[span["start"]:span["end"]], "青衣")
+            self.assertEqual(item["source_mention_id"], "m1")
+        self.assertEqual(envelope.to_dict(), before)
+
+    def test_overlapping_exact_evidence_at_one_fact_position_is_not_ambiguous(self):
+        text = "唐三有明亮的双眼。"
+        envelope = self.make_envelope(text, [{
+            "mention_type": "exact", "mention_scope": "individual", "mention_quote": "唐三",
+            "evidence_quotes": ["唐三有明亮的双眼", "明亮的双眼"],
+        }])
+        result = ground_m2_attribution_output(envelope, M2AttributionModelOutput.parse({
+            "belongs_to_target": [fact("明亮的双眼")]
+        }))
+        self.assertEqual(len(result.grounded_belongs_to_target), 1)
+        self.assertEqual(result.issues, ())
+
+    def test_repeated_quote_in_single_exact_evidence_is_not_unique(self):
+        text = "唐三先穿青衣，随后又换上青衣。"
+        envelope = self.make_envelope(text, [{
+            "mention_type": "exact", "mention_scope": "individual", "mention_quote": "唐三",
+            "evidence_quotes": [text],
+        }])
+        result = ground_m2_attribution_output(envelope, M2AttributionModelOutput.parse({
+            "belongs_to_target": [fact("青衣", category="clothing")]
+        }))
+        self.assertEqual(result.grounded_belongs_to_target, ())
+        self.assertEqual(result.issues[0].candidate_occurrence_count, 2)
 
     def test_unique_describe_fact_is_hydrated_for_n3(self):
         text = "萧熏儿轻轻一笑。少女抬起美丽的眼睛。"

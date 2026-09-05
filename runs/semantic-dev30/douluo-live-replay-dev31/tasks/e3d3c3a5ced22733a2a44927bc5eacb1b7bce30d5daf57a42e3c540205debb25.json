@@ -1,0 +1,6 @@
+{
+  "task_id": "e3d3c3a5ced22733a2a44927bc5eacb1b7bce30d5daf57a42e3c540205debb25",
+  "payload_hash": "27732f961c4d68091bbc4ab3a1c78744b522b647f84179d936d2eaeb50bcba3e",
+  "request_fingerprint": "ff73895bdd3e9dfbc7eaf0658fda17fc9f5b50bdee5e234c6eb67d06e4941407",
+  "model_output": "{\"relation\":\"compatible\",\"evidence_quotes\":[\"看上去六十多岁的样子\",\"他年纪已经不小了\"]}"
+}

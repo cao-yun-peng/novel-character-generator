@@ -1,0 +1,6 @@
+{
+  "task_id": "2215710e74abeedb10c9110db9b69461dba70cb5d444e0f6fe07a8c03c4a437f",
+  "payload_hash": "8163b23981ae4443a3aba44c12baa5496a781177705da61f46ac0563ce612ab3",
+  "request_fingerprint": "0b8848dccc070bcf8819462f194efcf073cde97ffb5a154352e6f72e7741007b",
+  "model_output": "{\"relation\": \"incompatible\", \"evidence_quotes\": [\"他的身体如此纤瘦\", \"身体比以前健壮了一些\"]}"
+}

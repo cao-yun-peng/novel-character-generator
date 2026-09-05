@@ -1,0 +1,12 @@
+{
+  "runtime_before": "0.1.0.dev29",
+  "schema_before": "3.29.0-draft1",
+  "lifecycle_stage": "6",
+  "lifecycle_revision": 4,
+  "freshness": "2026-09-05",
+  "root": "E:\\project\\agent\\novel-cahracter-generator",
+  "dependencies": [
+    "079 Snapshot",
+    "078 request cache"
+  ]
+}

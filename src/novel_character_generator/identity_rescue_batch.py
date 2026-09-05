@@ -8,6 +8,7 @@ from hashlib import sha256
 from pathlib import Path
 from typing import Callable, Mapping, Sequence
 
+from .request_cache import request_fingerprint, validate_cached_request
 from .errors import ContractValidationError, ProviderError
 from .identity import (
     GroundedIdentityDecision,
@@ -603,6 +604,21 @@ def run_identity_rescue(
         round_failure_count_before = len(failures)
         round_new_calls_before = new_provider_calls
         total_planned_tasks += len(rescue.envelopes)
+        requests = {}
+        fingerprints = {}
+        for envelope in rescue.envelopes:
+            request = IdentityProviderRequest(
+                system_instruction=CLUSTER_RESCUE_SYSTEM_INSTRUCTION,
+                user_payload=copy.deepcopy(envelope.model_payload()),
+                response_schema=cluster_rescue_response_schema(len(envelope.candidate_bindings)),
+                response_schema_name="m3_cluster_identity_rescue",
+            )
+            requests[envelope.task_cache_key] = request
+            fingerprints[envelope.task_cache_key] = request_fingerprint(provider, request)
+            cached_path = tasks_dir / f"{envelope.subject_anchor_node_key[:12]}--{envelope.task_cache_key[:12]}.json"
+            if cached_path.exists():
+                validate_cached_request(_mapping(_read_json(cached_path), "cached task"), fingerprints[envelope.task_cache_key])
+
         for envelope in rescue.envelopes:
             global_task_index = len(records) + len(failures) + 1
             round_envelopes.append(
@@ -615,6 +631,8 @@ def run_identity_rescue(
             task_path = tasks_dir / f"{envelope.subject_anchor_node_key[:12]}--{envelope.task_cache_key[:12]}.json"
             trace_before = len(traces) if traces is not None else 0
             try:
+                request = requests[envelope.task_cache_key]
+                fingerprint = fingerprints[envelope.task_cache_key]
                 if task_path.exists():
                     saved = _mapping(_read_json(task_path), "saved cluster rescue task")
                     if (
@@ -632,12 +650,6 @@ def run_identity_rescue(
                 else:
                     if new_provider_calls >= max_new_provider_calls:
                         raise ContractValidationError("cluster rescue max_new_provider_calls reached")
-                    request = IdentityProviderRequest(
-                        system_instruction=CLUSTER_RESCUE_SYSTEM_INSTRUCTION,
-                        user_payload=copy.deepcopy(envelope.model_payload()),
-                        response_schema=cluster_rescue_response_schema(len(envelope.candidate_bindings)),
-                        response_schema_name="m3_cluster_identity_rescue",
-                    )
                     new_provider_calls += 1
                     model_output = ClusterRescueModelOutput.parse(
                         provider.generate(request),
@@ -652,6 +664,7 @@ def run_identity_rescue(
                 )
                 record = {
                     "schema_version": CLUSTER_RESCUE_TASK_RESULT_VERSION,
+                    "request_fingerprint": fingerprint,
                     "round_index": round_index,
                     "task_index": global_task_index,
                     "task_cache_key": envelope.task_cache_key,

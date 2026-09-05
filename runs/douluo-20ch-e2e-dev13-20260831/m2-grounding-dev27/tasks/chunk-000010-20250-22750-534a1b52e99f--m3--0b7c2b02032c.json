@@ -1,0 +1,53 @@
+{
+  "schema_version": "m2-attribution-task-result-v1",
+  "source_run_dir": "E:\\project\\agent\\novel-cahracter-generator\\runs\\douluo-20ch-e2e-dev13-20260831\\m1",
+  "chunk_index": 10,
+  "chunk_id": "chunk-000010-20250-22750-534a1b52e99f",
+  "target_local_mention_id": "m3",
+  "target_mention_quote": "唐三",
+  "task_cache_key": "0b7c2b02032c0fc655275413b3045b13d00099b3ffade97f6121e2b0a3782884",
+  "request_fingerprint": "986ac0d5d9d46daff11ec76521226b939a9cfb44e3dcc32f7ff724875143bd96",
+  "model_output": {
+    "belongs_to_target": [
+      {
+        "fact_quote": "他的脸色已经变得有些苍白了",
+        "category": "face",
+        "attribute": "脸色",
+        "value": "苍白"
+      }
+    ]
+  },
+  "grounded_result": {
+    "grounding_policy_version": "unique-fact-occurrence-attribution-v2",
+    "target_character_ref": {
+      "source_document_version_id": "source-8bcb7305a759571b",
+      "chunk_id": "chunk-000010-20250-22750-534a1b52e99f",
+      "local_mention_id": "m3",
+      "mention_type": "exact",
+      "packet_hash": "1e76d1346cc7ed1911d0ed9d6c76c3090b3cbd5643c85dd92b254f4c4cf75ceb"
+    },
+    "task_cache_key": "0b7c2b02032c0fc655275413b3045b13d00099b3ffade97f6121e2b0a3782884",
+    "grounded_belongs_to_target": [
+      {
+        "fact_quote": "他的脸色已经变得有些苍白了",
+        "category": "face",
+        "attribute": "脸色",
+        "value": "苍白",
+        "source_mention_id": "m3",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "他的脸色已经变得有些苍白了",
+        "source_evidence_span": {
+          "start": 1966,
+          "end": 1979
+        },
+        "fact_chunk_span": {
+          "start": 1966,
+          "end": 1979
+        },
+        "match_mode": "exact"
+      }
+    ]
+  },
+  "grounding_issues": [],
+  "provider_trace": null
+}

@@ -16,6 +16,7 @@ M2_PROMOTED_RESULT_VERSION = "grounded-promoted-describe-characters-v6"
 M2_PROMOTION_GROUNDING_POLICY_VERSION = "promotion-partial-fact-acceptance-v1"
 M2_CONTEXT_VERSION = "m2-full-chunk-context-v1"
 M2_RESOLVER_VERSION = "m2-minimal-fact-binding-v1"
+M2_ATTRIBUTION_GROUNDING_POLICY_VERSION = "unique-fact-occurrence-attribution-v2"
 
 M2_CATEGORIES = (
     "age",
@@ -540,6 +541,7 @@ class M2GroundingIssue:
     character_index: int | None = None
     fact_quote: str | None = None
     candidate_occurrence_count: int | None = None
+    candidate_occurrences: tuple[Mapping[str, object], ...] = ()
 
     def to_dict(self) -> dict[str, object]:
         value: dict[str, object] = {
@@ -553,6 +555,8 @@ class M2GroundingIssue:
             value["fact_quote"] = self.fact_quote
         if self.candidate_occurrence_count is not None:
             value["candidate_occurrence_count"] = self.candidate_occurrence_count
+        if self.candidate_occurrences:
+            value["candidate_occurrences"] = [dict(item) for item in self.candidate_occurrences]
         return value
 
 
@@ -639,6 +643,7 @@ class M2GroundedAttributionResult:
 
     def to_packet_dict(self) -> dict[str, object]:
         return {
+            "grounding_policy_version": M2_ATTRIBUTION_GROUNDING_POLICY_VERSION,
             "target_character_ref": self.target_character_ref.to_dict(),
             "task_cache_key": self.task_cache_key,
             "grounded_belongs_to_target": [fact.to_dict() for fact in self.grounded_belongs_to_target],
@@ -648,6 +653,36 @@ class M2GroundedAttributionResult:
         value = self.to_packet_dict()
         value["issues"] = [issue.to_dict() for issue in self.issues]
         return value
+
+
+def _unique_attribution_occurrences(
+    candidates: tuple[_FactBindingCandidate, ...],
+) -> tuple[_FactBindingCandidate, ...]:
+    """Multiple evidence windows may support the same occurrence for one owner."""
+    unique: dict[tuple[str, SourceSpan], _FactBindingCandidate] = {}
+    for candidate in sorted(candidates, key=lambda item: (
+        item.fact_chunk_span.start, item.fact_chunk_span.end, item.source_mention_id,
+        item.source_evidence_span.start, item.source_evidence_span.end,
+    )):
+        unique.setdefault((candidate.source_mention_id, candidate.fact_chunk_span), candidate)
+    return tuple(unique.values())
+
+
+def _ambiguous_attribution_issue(
+    fact_index: int, fact_quote: str, candidates: tuple[_FactBindingCandidate, ...],
+) -> M2GroundingIssue:
+    return M2GroundingIssue(
+        "ambiguous_fact_binding", fact_index,
+        "fact matched multiple allowed occurrences; no occurrence selected",
+        fact_quote=fact_quote,
+        candidate_occurrence_count=len(candidates),
+        candidate_occurrences=tuple({
+            "source_mention_id": item.source_mention_id,
+            "source_mention_type": item.source_mention_type,
+            "source_evidence_span": item.source_evidence_span.to_dict(),
+            "fact_chunk_span": item.fact_chunk_span.to_dict(),
+        } for item in candidates),
+    )
 
 
 def ground_m2_attribution_output(
@@ -682,30 +717,19 @@ def ground_m2_attribution_output(
     seen: set[tuple[object, ...]] = set()
 
     for fact_index, fact in enumerate(output.belongs_to_target):
-        target_candidates = _fact_candidates(fact.fact_quote, target_bindings)
+        target_candidates = _unique_attribution_occurrences(_fact_candidates(fact.fact_quote, target_bindings))
         candidate: _FactBindingCandidate | None = None
         if target_candidates:
-            candidate = target_candidates[0]
-            if len(target_candidates) > 1:
-                issues.append(
-                    M2GroundingIssue(
-                        "multiple_target_occurrences",
-                        fact_index,
-                        "target evidence priority applied; earliest source occurrence selected",
-                    )
-                )
+            if len(target_candidates) == 1:
+                candidate = target_candidates[0]
+            else:
+                issues.append(_ambiguous_attribution_issue(fact_index, fact.fact_quote, target_candidates))
         else:
-            describe_candidates = _fact_candidates(fact.fact_quote, describe_bindings)
+            describe_candidates = _unique_attribution_occurrences(_fact_candidates(fact.fact_quote, describe_bindings))
             if len(describe_candidates) == 1:
                 candidate = describe_candidates[0]
             elif len(describe_candidates) > 1:
-                issues.append(
-                    M2GroundingIssue(
-                        "ambiguous_fact_binding",
-                        fact_index,
-                        f"fact matched {len(describe_candidates)} describe occurrences",
-                    )
-                )
+                issues.append(_ambiguous_attribution_issue(fact_index, fact.fact_quote, describe_candidates))
             else:
                 issues.append(
                     M2GroundingIssue(

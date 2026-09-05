@@ -1,0 +1,6 @@
+{
+  "task_id": "17579262577d0399a6c027137e2414cf9c5327b8bf36e7c427be592cef79456f",
+  "payload_hash": "238cd9d23fafeda1fa3b938f1643bb47afc5c29b05920f9de4404fdb7bdf0f87",
+  "request_fingerprint": "7cf8658a1c2cd3482c8489fbaf6de7d7580fe1fd9ad51d7e398b5d3289e911c6",
+  "model_output": "{\"relation\":\"compatible\",\"evidence_quotes\":[\"杰克脸上失望的表情\",\"老杰克一脸紧张\"]}"
+}

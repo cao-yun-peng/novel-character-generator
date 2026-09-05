@@ -226,6 +226,31 @@ python -m novel_character_generator run-deepseek-appearance-transitions `
 
 dev24 会在同一个 `document-character-appearance-states.json` 中为 Grounded Transition 保留稳定 `transition_id`，纯代码生成连续 `state_segments`，再在“同人物 + 同 StateSegment + 同原始 attribute”内建立关系图。完全相同的值标为 `equivalent`，安全子串标为有方向的 `compatible`，其余保守为 `unclassified`；只有 `equivalent` 连通分量会合并成 normalized proposition，raw 值和事实引用始终保留。每个 canonical fact 仍只进入一个 segment 的 `observed_fact_ids`，这表示原文观察位置，不表示跨区间仍有效；active applicability 与 `true_conflict` 的完整判定留给 render compiler 前的后续切片。保存的 071 Chunk 模型输出可以直接恢复并重建全部派生字段，不产生新的 Provider 调用。
 
+最终 identity registry 可以进一步生成不修改身份事实源的 Label/Review 派生视图（纯确定性代码，不调用模型）：
+
+```powershell
+python -m novel_character_generator build-document-character-label-review-projection `
+  --input-file 'tests/小说/斗罗大陆前20章.txt' `
+  --registry-file 'runs/douluo-20ch-e2e-dev13-20260831/identity-local-coreference-dev17/document-character-registry.json' `
+  --output-file 'runs/douluo-20ch-e2e-dev13-20260831/label-review-projection-dev25/document-character-label-review-projection.json'
+```
+
+dev25 使用正交的 `label_kind + label_stability`，同时保留原 `source_label_role` 与 `source_globally_unique`。例如 Registry 中来源角色仍为 `name` 的“大师”会投影为 `title + stable`，但原记录不会被覆盖。`audit_items` 一对一保留全部历史 review 和证据，`actionable_review_items` 只列出最终 identity graph 仍未闭合的问题；斗罗样本的 9 条历史 review 中有 8 条变为 `resolved/audit_only`，只有“看门的青年”仍 actionable。
+
+dev26 可以用显式人物/状态/文档位置请求编译结构化人物卡：
+
+```powershell
+python -m novel_character_generator build-render-ready-character-profiles `
+  --input-file 'tests/小说/斗罗大陆前20章.txt' `
+  --fact-groups-file 'runs/douluo-20ch-e2e-dev13-20260831/post-link-fact-groups-dev18/document-character-fact-groups.json' `
+  --appearance-states-file 'runs/douluo-20ch-e2e-dev13-20260831/appearance-transitions-dev24/document-character-appearance-states.json' `
+  --label-projection-file 'runs/douluo-20ch-e2e-dev13-20260831/label-review-projection-dev25/document-character-label-review-projection.json' `
+  --requests-file 'runs/douluo-20ch-e2e-dev13-20260831/render-profiles-dev26/render-profile-requests.json' `
+  --output-file 'runs/douluo-20ch-e2e-dev13-20260831/render-profiles-dev26/render-ready-character-profiles.json'
+```
+
+编译器要求 `document_position` 唯一选择一个 StateSegment，并拒绝把未来 observation 或跨 life/form 的事实混入当前卡片。`active_fact_ids` 与 `provisional_fact_ids` 分开；unknown persistence 和只有章节上界的 scene 事实会保留 warning，不冒充确定有效。只有两个确定 active 事实的 `true_conflict` 才进入 `unresolved_conflicts`，`unclassified` 仍只是 warning。输出保持 `identity_labels / stable_traits / variant_traits / scene_overrides / transitions / provenance` 的结构化边界，不生成自然语言 Prompt。
+
 分组键严格为 `character_id + document_fact_span + category + attribute + value`。不同 span、attribute 或 value 不合并，也不做同义词判断；每个 canonical group 保留全部 `source_fact_hashes`，每个 occurrence 继续带来源 raw fact hash 和原数组索引。斗罗 dev17 的 129 条 raw facts 形成 109 个 groups，129 个 fact bindings 与 130 个 occurrence bindings 全部保留。
 
 ### 配置 DeepSeek
@@ -257,10 +282,31 @@ python -m novel_character_generator probe-deepseek-m1 --text '林黛玉眉目清
 
 标准输出是经过 N2 grounding 和 exact precedence 的 packet；批处理另外生成 `n2-grounding-traces.json`，记录后缀归一、describe evidence 删除和空块删除，不包含 API Key、Prompt 或模型推理。`--show-trace` 只在标准错误输出 Provider 调用信息。该命令会产生一次真实 API 调用和相应费用，自动测试不会访问网络。
 
-运行最小测试：
+dev27 增加零模型调用的 M2 Grounding 重放。旧 M2 结果缺少唯一 occurrence 策略标记时，N3 会要求先重放；源 run 不变，目标使用独立目录：
 
 ```powershell
 $env:PYTHONPATH='src'
-$env:PYTHONDONTWRITEBYTECODE='1'
-python -m unittest discover -s tests -v
+python -m novel_character_generator replay-m2-grounding --input-file 'tests/小说/斗罗大陆前20章.txt' --source-m1-run-dir 'runs/douluo-20ch-e2e-dev13-20260831/m1' --source-m2-run-dir 'runs/douluo-20ch-e2e-dev13-20260831/m2' --output-dir 'runs/douluo-20ch-e2e-dev13-20260831/m2-grounding-dev27'
 ```
+
+M1/M2 新任务记录完整模型请求指纹，命中缓存后从保存的 model output 重新 Grounding。切换模型、Prompt、Schema 或生成预算需使用新输出目录；API Key 轮换和网络重试配置不改变生成身份。旧缓存缺指纹时不能静默续跑：M2 使用上面的显式重放；旧 M1 输出仍可作为 M2 输入以重放 N2。自定义 Provider 可提供不含凭据的 cache_identity 映射；未提供时允许生成，但不允许复用缓存。
+
+语义关系策略升级为 v2；旧 v1 appearance-state 结果需通过既有 transition 重放入口重新生成关系后再编译，不能把旧策略产物伪装为当前结果。
+
+运行完整测试（包含 unittest 类与 pytest 函数测试）：
+
+```powershell
+python -m venv .venv
+.\.venv\Scripts\python.exe -m pip install -e ".[dev]"
+.\.venv\Scripts\python.exe -m pytest -q --basetemp .pytest_cache/local-tests
+```
+
+开发依赖在 pyproject.toml 的 dev extra 声明。单独运行 unittest discover 无法完整收集函数测试。测试不调用真实模型；人工标注质量 Gate 独立验收。CI 可使用同一安装与 pytest 命令，基准环境为 pytest 9.0.2、jsonschema 4.26.0。
+
+从 dev28 起，promotion、M3 身份/残余裁决和状态转换也要求匹配完整请求指纹才能续跑；旧无指纹缓存不会自动接受。兼容范围及迁移限制见 [缓存续跑说明](docs/39-cache-resume-compatibility.md)。
+
+## CharacterSnapshot（dev29）
+
+已提供 `build-character-snapshot` CLI 和 `build_character_snapshot` Python 查询，按人物与原文位置返回确定/暂定 traits、有效区间、证据及排除原因。旧人物卡复用同一引擎。衣着跨章保留为暂定，明确脱下/替换只关闭指定事实；自动事件识别仍待实施。命令及事件格式见 [Snapshot 与有效期契约](docs/40-character-snapshot-and-applicability.md)。
+
+更新（dev30）：自动场景/换装事件识别及语义不兼容到 Snapshot 真实冲突的工程链路已交付，真实模型质量待评测。执行命令、预算与验收见 [自动事件与冲突闭环](docs/41-automatic-events-and-conflicts.md)。

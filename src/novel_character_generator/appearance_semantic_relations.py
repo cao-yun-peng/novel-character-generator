@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import re
 import unicodedata
 from hashlib import sha256
 from itertools import combinations
@@ -10,7 +11,7 @@ from .appearance_state_segments import PERSISTENCE_VALUES
 from .errors import ContractValidationError
 from .text import SourceSpan
 
-APPEARANCE_RELATION_POLICY_VERSION = "same-segment-exact-attribute-relations-v1"
+APPEARANCE_RELATION_POLICY_VERSION = "same-segment-exact-attribute-relations-v2"
 APPEARANCE_PROPOSITION_POLICY_VERSION = "equivalent-components-representative-v1"
 RELATION_TYPES = (
     "equivalent",
@@ -94,6 +95,12 @@ def _classify_pair(
     right = _comparison_text(right_value)
     if left == right:
         return "equivalent", "symmetric", "exact_value"
+    # Containment is not entailment when negation changes the proposition.
+    # Deliberately conservative: e.g. 不但 also stays unclassified.
+    if any(re.search(r"[不未无非没]|\b(?:no|not|never|without)\b",
+                     unicodedata.normalize("NFKC", value), re.IGNORECASE)
+           for value in (left_value, right_value)):
+        return "unclassified", "unknown", "no_safe_deterministic_rule"
     if min(len(left), len(right)) >= 2:
         if right in left:
             return "compatible", "left_contains_right", "value_containment"

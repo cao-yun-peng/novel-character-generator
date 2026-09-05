@@ -1,0 +1,77 @@
+{
+  "schema_version": "m2-attribution-task-result-v1",
+  "source_run_dir": "E:\\project\\agent\\novel-cahracter-generator\\runs\\douluo-20ch-e2e-dev13-20260831\\m1",
+  "chunk_index": 17,
+  "chunk_id": "chunk-000017-36000-38251-39ec6c2a0304",
+  "target_local_mention_id": "m1",
+  "target_mention_quote": "老杰克",
+  "task_cache_key": "461d7ad98c3711cc524bbb77d95c7fc84c6f6a75ed8c494daa391dba03c5e794",
+  "request_fingerprint": "55dcc132a47f2d41d6f7ea5b2aaf27a8a9089b36c232b3a26dcd8e2c4d195c9d",
+  "model_output": {
+    "belongs_to_target": [
+      {
+        "fact_quote": "不就是个老头儿么",
+        "category": "age",
+        "attribute": "年龄",
+        "value": "老头儿"
+      },
+      {
+        "fact_quote": "老杰克的穿着在圣魂村已经算是光鲜了，可到了诺丁城，却完全是一副乡下人的样子",
+        "category": "clothing",
+        "attribute": "穿着状态",
+        "value": "光鲜但像乡下人"
+      }
+    ]
+  },
+  "grounded_result": {
+    "grounding_policy_version": "unique-fact-occurrence-attribution-v2",
+    "target_character_ref": {
+      "source_document_version_id": "source-8bcb7305a759571b",
+      "chunk_id": "chunk-000017-36000-38251-39ec6c2a0304",
+      "local_mention_id": "m1",
+      "mention_type": "exact",
+      "packet_hash": "0d71a0b3c55e5882a3b2f7d4eb69a57119a6c821d3184cd926160c5528f8db42"
+    },
+    "task_cache_key": "461d7ad98c3711cc524bbb77d95c7fc84c6f6a75ed8c494daa391dba03c5e794",
+    "grounded_belongs_to_target": [
+      {
+        "fact_quote": "不就是个老头儿么",
+        "category": "age",
+        "attribute": "年龄",
+        "value": "老头儿",
+        "source_mention_id": "m5",
+        "source_mention_type": "describe",
+        "source_evidence_quote": "不就是个老头儿么",
+        "source_evidence_span": {
+          "start": 1096,
+          "end": 1104
+        },
+        "fact_chunk_span": {
+          "start": 1096,
+          "end": 1104
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "老杰克的穿着在圣魂村已经算是光鲜了，可到了诺丁城，却完全是一副乡下人的样子",
+        "category": "clothing",
+        "attribute": "穿着状态",
+        "value": "光鲜但像乡下人",
+        "source_mention_id": "m1",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "老杰克的穿着在圣魂村已经算是光鲜了，可到了诺丁城，却完全是一副乡下人的样子",
+        "source_evidence_span": {
+          "start": 252,
+          "end": 289
+        },
+        "fact_chunk_span": {
+          "start": 252,
+          "end": 289
+        },
+        "match_mode": "exact"
+      }
+    ]
+  },
+  "grounding_issues": [],
+  "provider_trace": null
+}

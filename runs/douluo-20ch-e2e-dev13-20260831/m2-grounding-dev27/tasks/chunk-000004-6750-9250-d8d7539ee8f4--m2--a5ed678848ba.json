@@ -1,0 +1,77 @@
+{
+  "schema_version": "m2-attribution-task-result-v1",
+  "source_run_dir": "E:\\project\\agent\\novel-cahracter-generator\\runs\\douluo-20ch-e2e-dev13-20260831\\m1",
+  "chunk_index": 4,
+  "chunk_id": "chunk-000004-6750-9250-d8d7539ee8f4",
+  "target_local_mention_id": "m2",
+  "target_mention_quote": "唐三",
+  "task_cache_key": "a5ed678848ba27f96760b75e4176b2fde95fb4e8e6ce6fcdd99912d67f99fcc8",
+  "request_fingerprint": "af9f2fc599a791a0e1b6a613400506b1398a6510e3e6c098391f6d6c8b48982b",
+  "model_output": {
+    "belongs_to_target": [
+      {
+        "fact_quote": "他的身体变得结实了几分",
+        "category": "body",
+        "attribute": "体格",
+        "value": "结实"
+      },
+      {
+        "fact_quote": "稚嫩的小手",
+        "category": "body",
+        "attribute": "双手",
+        "value": "稚嫩"
+      }
+    ]
+  },
+  "grounded_result": {
+    "grounding_policy_version": "unique-fact-occurrence-attribution-v2",
+    "target_character_ref": {
+      "source_document_version_id": "source-8bcb7305a759571b",
+      "chunk_id": "chunk-000004-6750-9250-d8d7539ee8f4",
+      "local_mention_id": "m2",
+      "mention_type": "exact",
+      "packet_hash": "269babc3e9a8ae5efb5f442d0eaab405a5b6dca1e79ded70b5648940c7a140bc"
+    },
+    "task_cache_key": "a5ed678848ba27f96760b75e4176b2fde95fb4e8e6ce6fcdd99912d67f99fcc8",
+    "grounded_belongs_to_target": [
+      {
+        "fact_quote": "他的身体变得结实了几分",
+        "category": "body",
+        "attribute": "体格",
+        "value": "结实",
+        "source_mention_id": "m2",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "他的身体变得结实了几分",
+        "source_evidence_span": {
+          "start": 1836,
+          "end": 1847
+        },
+        "fact_chunk_span": {
+          "start": 1836,
+          "end": 1847
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "稚嫩的小手",
+        "category": "body",
+        "attribute": "双手",
+        "value": "稚嫩",
+        "source_mention_id": "m2",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "他那双稚嫩的小手看上去却并没有任何变化。甚至连一个水泡都没有起过。",
+        "source_evidence_span": {
+          "start": 2147,
+          "end": 2180
+        },
+        "fact_chunk_span": {
+          "start": 2150,
+          "end": 2155
+        },
+        "match_mode": "exact"
+      }
+    ]
+  },
+  "grounding_issues": [],
+  "provider_trace": null
+}

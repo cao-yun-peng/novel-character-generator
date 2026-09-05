@@ -1,12 +1,14 @@
 # 项目总览
 
+081/dev31：斗罗 52 个语义任务已实跑完成（53 次调用，1 次输出截断后重试成功）；接受 7 个事件、35 条关系，1 项事件复核。修复重复关系引文导致 Snapshot 重新定位不一致，52 份响应零调用重放、4 个 Snapshot 校验通过。人工质量 Gate 仍未通过。 详见 [实测报告](../docs/42-semantics-live-validation.md)。
+
 ## 基本信息
 
 - 项目：Novel Character Generator
 - 分支：`v3-simplified-character-evidence`
-- 状态：M1/N2/M2/N3/promotion、文档事实汇总、身份、人物档案、post-link fact groups、appearance transition、StateSegment 与确定性 relation/proposition baseline 均已建立；斗罗 dev24 已物化状态和关系视图
-- 工作区：`E:\project\agent\novel-character-generator`
-- Agent 生命周期：阶段 5（具体功能与纵向切片开发）`in_progress`，revision 2，风险 L1
+- 状态：M1/N2/M2/N3/promotion、文档事实汇总、身份、人物档案、post-link fact groups、appearance state/relation、Label/Review 与 render-ready Profile Compiler 均已建立；斗罗 dev26 已生成四张状态选择人物卡
+- 工作区：`E:\project\agent\novel-cahracter-generator`
+- Agent 生命周期：阶段 6（系统验证与质量 Gate）`in_progress`，revision 4，风险 L1；已启动源码问题梳理与修复规划，人工质量 Gate 尚未通过
 
 ## 项目目标
 
@@ -27,15 +29,36 @@
 
 - 旧版代码、提示词、测试、评测数据和运行结果复用
 - 代词消解、跨文档长期人物记忆和自然语言/视觉人物画像
-- 数据库、Web API、图像生成和生产发布
+- 图像生成和生产发布；Web 页面所需的服务层、接口与任务存储已由用户授权按清单逐步开发
 - 在尚无真实失败案例时预先扩展同名不同人、`different`/`cannot-link` 的复杂策略
 
 ## 当前焦点
 
-指定斗罗大陆文件的 dev13 全链路真实回归已贯通到最终 profiles；文件实际只有第1至19章，完整覆盖结论只针对该文件的 38,251 字符。身份层已完成局部确定性闭合，post-link 层把 129 facts 归为 109 groups 并保留 130 occurrences。070/071 已建立章节/persistence 基线和 life/form/scene transition；071.5 把 6 个 grounded transitions 物化为 7 个人物的 14 个连续 StateSegments，并让 109/109 facts 唯一绑定 observation。072 又生成 37 条 segment-aware relations（7 equivalent、5 compatible、25 unclassified）和 103 个 normalized propositions，新增语义 Provider 调用为 0。当前焦点转向 073 Label/Review 投影；active applicability 与完整 true-conflict Gate 保留到 render compiler 前的后续切片，之后再进入 074 和上游人工质量评测。
+080/dev30 已接通自动场景/换装模型任务、原文 Grounding、可恢复批处理与离线重放，以及 incompatible→双方 active→true_conflict 的 Snapshot/旧卡消费闭环。259 tests/19 subtests；斗罗准备 52 个任务（17 events/35 relations），真实 Provider 0。工程切片通过，R03/R02 的真实模型质量与 R06 Gate 待实跑标注验收。
+
+079/dev29 已交付共享有效期引擎、CharacterSnapshot API/CLI/Schema、可选证据事件与 explain，旧人物卡改为 Snapshot 适配。237 tests/19 subtests 通过；斗罗 4 张快照为 7 active/42 provisional/71 excluded，Provider 0，源文件未改。R04 基础查询切片通过；R03 自动场景/换装语义发现、R02 真冲突和人工 Gate 仍未完成。
+
+078/dev28 已补齐 promotion、M3 identity、cluster rescue、appearance transition 的请求指纹预检；promotion 续跑重新 Grounding。211 tests / 19 subtests 通过，真实 Provider 调用 0。R05 统一离线迁移、跨轮完整预检及尝试历史仍待实施；下一步衔接 R03/R04 有效期与 Snapshot，R02 真冲突及 R06 人工 Gate 仍未完成。
+
+077 首个修复切片已实现 dev27：重复 exact occurrence 进入复核、同位置重叠证据去重、否定包含保守降级、M1/M2 请求指纹与缓存重新 Grounding、独立 M2 离线重放 CLI、pytest 开发依赖与 075 标注协议候选。斗罗 32 个 M2 输出离线重放得到 83 条安全事实和 1 条三位置歧义，旧 run 不变。下一切片继续 R05 剩余阶段的一致缓存/迁移及 R03/R04 场景有效期/Snapshot；R02 完整真冲突与 R06 人工 Gate 尚未完成。
+
+2026-09-05：根据用户要求形成 [源码修复与 Web 接口清单](../docs/37-web-ready-repair-checklist.md)。下一实施顺序为 075 标注协议/测试入口、Grounding/语义/缓存修复、场景有效期与 CharacterSnapshot、身份召回与稳定 ID、Web 服务与证据接口，再推进完整 Viewer 和长篇优化。当前运行时仍为 dev26，以下四张卡属于既有基线，新增 R01～R14 均待实施。
+
+指定斗罗大陆文件的 dev13 全链路真实回归已贯通到 render-ready profiles；文件实际只有第1至19章，完整覆盖结论只针对该文件的 38,251 字符。身份、109 个 post-link fact groups、14 个 StateSegments、37 条 relations、103 个 propositions 和 17 个正交标签均保持可重建。074 已按显式位置分别生成唐三前世/儿童与素云涛普通/独狼附体四张卡：7 个确定 active、40 个 provisional fact bindings，2 stable traits、33 variant traits、10 scene overrides、4 transitions、0 unresolved conflicts、17 聚合 warnings，Provider 0。当前焦点转向 075 冻结人工标注协议、代表性数据集与 evaluator；结构化编译成功不替代模型质量 Gate。
 
 ## 最新路线决定
 
+- `DEC-20260905-AUTO-SEMANTICS-CONFLICT-080`：用户授权 R03 自动识别与 R02 冲突生成。新增受约束模型任务，输入原文/标签/事实语义，输出事件及 incompatibility；代码唯一回填位置和事实引用。持久语义候选不标真实冲突，Snapshot 双 active 才物化 true_conflict，暂定/替换/跨状态不冲突。自动叙事场景单独投影，不回写历史 StateSegments。新增模型质量须由 R06 测试，当前 Stage 6/revision 4 保持。
+
+- `DEC-20260905-SNAPSHOT-APPLICABILITY-079`：用户授权继续 R03/R04。沿现有 compiler 抽出唯一有效性引擎，由 Snapshot 组织状态、traits、排除解释和来源，旧 API/CLI 做适配。衣着不跟随章节/scene 清空；未知连续性暂定，证据事件只指明具体事实，形态退出不恢复已关闭衣着。首版事件接口是代码侧已裁决语义契约，未新增模型输出字段或自动识别节点。生命周期 Stage 6/revision 4 保持，不改写历史 Gate。
+
+- `DEC-20260905-CACHE-CONTINUATION-078`：按用户要求沿 dev27 进度实施剩余四个模型阶段的缓存校验。请求指纹只存代码侧记录；旧无指纹缓存不得冒充同请求续跑，不回填伪造历史指纹。runtime dev28，模型及领域 Schema 仍为 3.27.0-draft1。Stage 6/revision 4 保持不变，离线统一迁移另行实施。
+
+- `DEC-20260905-INCREMENTAL-REPAIRS-077`：用户明确授权逐步按清单开发，替代 076 的“本轮仅规划”限制。首先实施正确性与测试/评测准备，保留所有历史 run 及既有未提交修改。M2 模型输出和 task_cache_key 保持原边界；Grounding 以独立策略版本标记，N3 拒绝缺失/过期标记，旧模型输出通过显式新目录重放迁移。关系 v2 对否定包含失败关闭，完整冲突判断仍等待有效期契约。Stage 6 保持 in_progress/revision 4，不把局部修复验收当作整体质量 Gate。
+
+- `DEC-20260905-WEB-READY-REPAIR-PLAN-076`：用户要求综合源码审查问题、CharacterSnapshot、场景/换装持续规则、高召回 Top-K 与 Evidence Debug Viewer 制定修复清单，并考虑后续 Web 页面使用。授权本轮形成规划及同步账本，将 Web 接口与必要存储从非目标调整为后续计划；不视为授权启动全部修复或发布。Snapshot 从现有按位置编译能力演进为统一、可重建查询视图，不复制 Registry 或状态真相源；衣着有效期与叙事场景边界分开。075 标注规范与错误基线优先，历史 Stage 5 验收保留，新发现的问题进入 Stage 6 修复评测范围。依据：本轮用户消息及 docs/37-web-ready-repair-checklist.md；复审条件：各切片实施前冻结 Schema、迁移及验收样例。
+- `DEC-20260904-STATE-SELECTED-RENDER-COMPILER-074`：Render compiler 必须以 `character_id + life/form/scene + document_position` 唯一命中一个半开 StateSegment；缺位置、歧义或无匹配时 traits 为空，禁止跨状态拼卡。未来 observation 不可进入当前卡；stable/persistent、scene/momentary 与 unknown 使用不同 applicability 规则。unknown persistence 和只有章节上界的 scene 只能作为 provisional 并产生 warning。只有两侧均确定 active 的 true conflict 才进入 unresolved conflicts，unclassified 不强制归类。输出是结构化、可丢弃视图，保留 proposition→canonical fact→raw occurrence，不生成自然语言或视觉推断。
+- `DEC-20260904-ORTHOGONAL-LABEL-REVIEW-PROJECTION-073`：Registry 继续保存来源标签和历史 review，不被派生层改写。`label_kind` 与 `label_stability` 正交，来源 `label_role` 与 `globally_unique` 只以 `source_*` 字段保留，不能被下游当成修正后语义；因此“大师”可投影为 `title + stable`，同时保留 `source_label_role=name`。全部历史 review 一对一进入 audit，只有最终 identity graph 或 unresolved 状态无法关闭的项进入精简 actionable 队列。该层纯代码、可重建、零 Provider 调用。
 - `DEC-20260904-DETERMINISTIC-SEMANTIC-BASELINE-072`：072 首版只比较同人物、同 StateSegment、同 exact attribute 的 observed facts。完全相同值为 equivalent，长度至少 2 的安全子串为有方向的 compatible，其余保守 unclassified；只有 equivalent 连通分量可以派生合并 proposition。没有 active applicability 时不得自动标 true conflict，25 条未分类项保持可见。只有冻结人工集证明确定性规则不足后才考虑最小模型分类节点。
 - `DEC-20260904-STATE-SEGMENT-MATERIALIZATION-0715`：冻结 M1/N2/M2/N3 的职责和接口，但不把当前模型质量误记为冻结。`StateSegment` 不是新的可变真相源，也不新增模型节点；它由 grounded transitions、canonical fact observation、persistence 和文档边界在现有 appearance-state artifact 内确定性重建。每个 fact 只进入一个 `observed_fact_ids`，未来跨段有效性另建 active applicability，不复用 observation 绑定。072 先构建 segment-aware relation graph，再从等价分量派生 normalized proposition，避免“先归一再判断关系”的循环。Registry 继续是身份唯一事实源并保留 `appearance_fact_refs` 归属边；ProfileView/render profile 均为可丢弃重建的派生视图。`label_kind` 与 `label_stability` 保持正交；外部视觉资产接入前必须先解决稳定 subject identity。
 - `DEC-20260902-STATE-CLOSING-GROUNDING-071`：life transition 更新时必须清空旧 form/scene；scene 只持续到当前可确定的段落行或章节边界；没有人物身体变化的武魂、植物、武器或其他外物状态不得进入 form。transition evidence 必须是单段连续原文，before/after 必须在同一 evidence 内唯一且顺序成立；仅省略标点时由代码回填对应连续原文，而不让模型输出 span。保存的模型输出在恢复时重新 Grounding，避免为确定性策略变化重复调用模型。

@@ -1,0 +1,6 @@
+{
+  "task_id": "051a20252b0d05301fc64431266b6a9cf2f18e622adb12d9bcb75c9000b89b01",
+  "payload_hash": "9e1265e86ee9c53ff752397ec28f0eef1005300f4b937f883b47f3ab2bff76bd",
+  "request_fingerprint": "ceba7dfefac1d5ef202ebe4e5f204f46173a8f7b336bcfbc1af3389dd669dfd2",
+  "model_output": "{\"relation\":\"equivalent\",\"evidence_quotes\":[\"不就是个老头儿么\",\"他年纪已经不小了\"]}"
+}

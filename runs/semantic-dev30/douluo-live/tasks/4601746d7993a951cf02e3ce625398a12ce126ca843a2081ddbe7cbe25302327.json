@@ -1,0 +1,6 @@
+{
+  "task_id": "4601746d7993a951cf02e3ce625398a12ce126ca843a2081ddbe7cbe25302327",
+  "payload_hash": "772361c3b1ff0b1c268a58e42bcae08789cb7b022e11c9f1552161124d12fcca",
+  "request_fingerprint": "935320bb4944b404bb12aec02468e10953be07c41d6e25e3f32dfc5635db1966",
+  "model_output": "{\"events\": [{\"character\": \"唐三\", \"kind\": \"scene_boundary\", \"facts\": [], \"evidence\": \"一进家门，唐三就已经闻到了扑鼻的饭香\"}]}"
+}

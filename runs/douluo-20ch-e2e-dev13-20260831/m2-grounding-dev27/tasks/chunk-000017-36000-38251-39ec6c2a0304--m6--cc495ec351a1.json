@@ -1,0 +1,149 @@
+{
+  "schema_version": "m2-attribution-task-result-v1",
+  "source_run_dir": "E:\\project\\agent\\novel-cahracter-generator\\runs\\douluo-20ch-e2e-dev13-20260831\\m1",
+  "chunk_index": 17,
+  "chunk_id": "chunk-000017-36000-38251-39ec6c2a0304",
+  "target_local_mention_id": "m6",
+  "target_mention_quote": "大师",
+  "task_cache_key": "cc495ec351a1da8ccb11c8edef0e9bb5d32ed8f99712e8532520ac5bb5348f01",
+  "request_fingerprint": "72f631ea821680af7e70feba60fa29bd3e0f113464fab8da20ab417811154087",
+  "model_output": {
+    "belongs_to_target": [
+      {
+        "fact_quote": "中等身材，略微有些偏瘦的男子",
+        "category": "body",
+        "attribute": "身材",
+        "value": "中等偏瘦"
+      },
+      {
+        "fact_quote": "大约四、五十岁的样子",
+        "category": "age",
+        "attribute": "年龄",
+        "value": "四五十岁"
+      },
+      {
+        "fact_quote": "黑色短发三七分开",
+        "category": "hair",
+        "attribute": "发型",
+        "value": "黑色短发三七分开"
+      },
+      {
+        "fact_quote": "相貌很普通",
+        "category": "face",
+        "attribute": "相貌",
+        "value": "普通"
+      },
+      {
+        "fact_quote": "双眼开阖之间带着几分懒散和颓废",
+        "category": "appearance_state",
+        "attribute": "神态",
+        "value": "懒散颓废"
+      }
+    ]
+  },
+  "grounded_result": {
+    "grounding_policy_version": "unique-fact-occurrence-attribution-v2",
+    "target_character_ref": {
+      "source_document_version_id": "source-8bcb7305a759571b",
+      "chunk_id": "chunk-000017-36000-38251-39ec6c2a0304",
+      "local_mention_id": "m6",
+      "mention_type": "exact",
+      "packet_hash": "c9d1bfc435bb0ffd48402e6988af581116e7d0a66902f63b1ac1f4000b313864"
+    },
+    "task_cache_key": "cc495ec351a1da8ccb11c8edef0e9bb5d32ed8f99712e8532520ac5bb5348f01",
+    "grounded_belongs_to_target": [
+      {
+        "fact_quote": "中等身材，略微有些偏瘦的男子",
+        "category": "body",
+        "attribute": "身材",
+        "value": "中等偏瘦",
+        "source_mention_id": "m6",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "中等身材，略微有些偏瘦的男子",
+        "source_evidence_span": {
+          "start": 1896,
+          "end": 1910
+        },
+        "fact_chunk_span": {
+          "start": 1896,
+          "end": 1910
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "大约四、五十岁的样子",
+        "category": "age",
+        "attribute": "年龄",
+        "value": "四五十岁",
+        "source_mention_id": "m6",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "这个人大约四、五十岁的样子，黑色短发三七分开，相貌很普通",
+        "source_evidence_span": {
+          "start": 1931,
+          "end": 1959
+        },
+        "fact_chunk_span": {
+          "start": 1934,
+          "end": 1944
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "黑色短发三七分开",
+        "category": "hair",
+        "attribute": "发型",
+        "value": "黑色短发三七分开",
+        "source_mention_id": "m6",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "这个人大约四、五十岁的样子，黑色短发三七分开，相貌很普通",
+        "source_evidence_span": {
+          "start": 1931,
+          "end": 1959
+        },
+        "fact_chunk_span": {
+          "start": 1945,
+          "end": 1953
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "相貌很普通",
+        "category": "face",
+        "attribute": "相貌",
+        "value": "普通",
+        "source_mention_id": "m6",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "这个人大约四、五十岁的样子，黑色短发三七分开，相貌很普通",
+        "source_evidence_span": {
+          "start": 1931,
+          "end": 1959
+        },
+        "fact_chunk_span": {
+          "start": 1954,
+          "end": 1959
+        },
+        "match_mode": "exact"
+      },
+      {
+        "fact_quote": "双眼开阖之间带着几分懒散和颓废",
+        "category": "appearance_state",
+        "attribute": "神态",
+        "value": "懒散颓废",
+        "source_mention_id": "m6",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "双眼开阖之间带着几分懒散和颓废",
+        "source_evidence_span": {
+          "start": 1979,
+          "end": 1994
+        },
+        "fact_chunk_span": {
+          "start": 1979,
+          "end": 1994
+        },
+        "match_mode": "exact"
+      }
+    ]
+  },
+  "grounding_issues": [],
+  "provider_trace": null
+}

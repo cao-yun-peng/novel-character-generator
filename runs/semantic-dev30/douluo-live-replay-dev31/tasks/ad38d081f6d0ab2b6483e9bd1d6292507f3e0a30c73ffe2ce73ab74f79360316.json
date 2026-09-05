@@ -1,0 +1,6 @@
+{
+  "task_id": "ad38d081f6d0ab2b6483e9bd1d6292507f3e0a30c73ffe2ce73ab74f79360316",
+  "payload_hash": "dc032fe88e5013418634fe93cf5e92ee425e2fe76660f10695478aa630611a84",
+  "request_fingerprint": "9b65a8c5af41c7c3d278727378b89fe6bdb6f380d43e7ca8b691b82d550ddc3b",
+  "model_output": "{\"events\":[{\"character\":\"唐三\",\"kind\":\"scene_boundary\",\"facts\":[],\"evidence\":\"唐三站起身，该是回去的时候了，今天，自己就要离开村子，下次再来这山顶，也不知道要什么时候才行了。\"},{\"character\":\"老杰克\",\"kind\":\"wear\",\"facts\":[{\"fact_quote\":\"今天的老杰克特意穿了一身新衣服\",\"category\":\"clothing\",\"attribute\":\"穿着\",\"value\":\"新衣服\"}],\"evidence\":\"今天的老杰克特意穿了一身新衣服，看上去更添几分矍铄。\"}]}"
+}

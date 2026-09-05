@@ -1,0 +1,27 @@
+{
+  "schema_version": "m2-attribution-task-result-v1",
+  "source_run_dir": "E:\\project\\agent\\novel-cahracter-generator\\runs\\douluo-20ch-e2e-dev13-20260831\\m1",
+  "chunk_index": 16,
+  "chunk_id": "chunk-000016-33750-36250-66f14c14f2ba",
+  "target_local_mention_id": "m1",
+  "target_mention_quote": "唐三",
+  "task_cache_key": "2f359101c7b9a4edb99d137162f662c38182a4ab6fbbb1a96d7ae2a30d5e340f",
+  "request_fingerprint": "846c0118d5499f4605434af12496922c1d0d88be0e9ef185b1a22995ebe050ac",
+  "model_output": {
+    "belongs_to_target": []
+  },
+  "grounded_result": {
+    "grounding_policy_version": "unique-fact-occurrence-attribution-v2",
+    "target_character_ref": {
+      "source_document_version_id": "source-8bcb7305a759571b",
+      "chunk_id": "chunk-000016-33750-36250-66f14c14f2ba",
+      "local_mention_id": "m1",
+      "mention_type": "exact",
+      "packet_hash": "38963b524533fd2d8dee43d5a964994531f951ce6a1461f8f8d4c7c1668348ca"
+    },
+    "task_cache_key": "2f359101c7b9a4edb99d137162f662c38182a4ab6fbbb1a96d7ae2a30d5e340f",
+    "grounded_belongs_to_target": []
+  },
+  "grounding_issues": [],
+  "provider_trace": null
+}

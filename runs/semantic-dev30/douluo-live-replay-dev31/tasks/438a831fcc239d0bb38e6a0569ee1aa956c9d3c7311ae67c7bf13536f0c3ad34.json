@@ -1,0 +1,6 @@
+{
+  "task_id": "438a831fcc239d0bb38e6a0569ee1aa956c9d3c7311ae67c7bf13536f0c3ad34",
+  "payload_hash": "da9c29c207a8983e8628e0c22636f3354079ac5d232947cfcff66dcaab2527dc",
+  "request_fingerprint": "130889fa6043b1a7ebb645a97d440ff935b275fe3b835e4dfd7df3419504761b",
+  "model_output": "{\"events\":[{\"character\":\"唐三\",\"kind\":\"scene_boundary\",\"facts\":[],\"evidence\":\"从圣魂村到诺丁城并不远，两人走了半天的时间，中途简单吃了点干粮，下午的时候，已经可以看到远处的城墙了。\"},{\"character\":\"唐三\",\"kind\":\"scene_boundary\",\"facts\":[],\"evidence\":\"诺丁初级魂师学院坐落在诺丁城西，老杰克向路人打听了几次，终于带着唐三来到了这里。\"}]}"
+}

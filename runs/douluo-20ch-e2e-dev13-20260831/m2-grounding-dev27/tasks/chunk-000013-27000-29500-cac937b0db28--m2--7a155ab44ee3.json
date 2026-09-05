@@ -1,0 +1,53 @@
+{
+  "schema_version": "m2-attribution-task-result-v1",
+  "source_run_dir": "E:\\project\\agent\\novel-cahracter-generator\\runs\\douluo-20ch-e2e-dev13-20260831\\m1",
+  "chunk_index": 13,
+  "chunk_id": "chunk-000013-27000-29500-cac937b0db28",
+  "target_local_mention_id": "m2",
+  "target_mention_quote": "唐三",
+  "task_cache_key": "7a155ab44ee3676cd711554557f7711f4b32b055f7e1e1012b7fc5f46e0e5bc8",
+  "request_fingerprint": "de9cf250c1f8b25cfe9cb800e496654c01357103051c9914f058e15f51b25498",
+  "model_output": {
+    "belongs_to_target": [
+      {
+        "fact_quote": "唐三脸上流露出一丝满足的笑容",
+        "category": "face",
+        "attribute": "表情",
+        "value": "满足的笑容"
+      }
+    ]
+  },
+  "grounded_result": {
+    "grounding_policy_version": "unique-fact-occurrence-attribution-v2",
+    "target_character_ref": {
+      "source_document_version_id": "source-8bcb7305a759571b",
+      "chunk_id": "chunk-000013-27000-29500-cac937b0db28",
+      "local_mention_id": "m2",
+      "mention_type": "exact",
+      "packet_hash": "c61bd4b9cf7aa9856bd2939b3e2104cd5a1578c2465779e7eb5ecd180d22b842"
+    },
+    "task_cache_key": "7a155ab44ee3676cd711554557f7711f4b32b055f7e1e1012b7fc5f46e0e5bc8",
+    "grounded_belongs_to_target": [
+      {
+        "fact_quote": "唐三脸上流露出一丝满足的笑容",
+        "category": "face",
+        "attribute": "表情",
+        "value": "满足的笑容",
+        "source_mention_id": "m2",
+        "source_mention_type": "exact",
+        "source_evidence_quote": "唐三脸上流露出一丝满足的笑容",
+        "source_evidence_span": {
+          "start": 1938,
+          "end": 1952
+        },
+        "fact_chunk_span": {
+          "start": 1938,
+          "end": 1952
+        },
+        "match_mode": "exact"
+      }
+    ]
+  },
+  "grounding_issues": [],
+  "provider_trace": null
+}

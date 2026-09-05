@@ -1,0 +1,6 @@
+{
+  "task_id": "178afec86f6a642630c946f7823cddeca47bcb9e0255af08c40ef279e9f13554",
+  "payload_hash": "47613d9c61951118c4369c0d918280a3a93949e9413134c68cddd909915fe4bc",
+  "request_fingerprint": "4e9edcab34f5925e8d9f8732b5ec2f0d7bd01a91e6cd7b6cb76c5bfaf196c032",
+  "model_output": "{\"relation\":\"compatible\",\"evidence_quotes\":[\"不就是个老头儿么\",\"看上去六十多岁的样子\"]}"
+}

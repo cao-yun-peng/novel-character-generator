@@ -7,9 +7,11 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Callable, Mapping, Sequence
 
+from .request_cache import request_fingerprint, validate_cached_request
 from .errors import ContractValidationError, ProviderError
 from .grounding import GroundingResult
 from .m2 import (
+    M2_ATTRIBUTION_GROUNDING_POLICY_VERSION,
     M2_PROMOTION_RESPONSE_SCHEMA,
     M2_PROMOTION_SYSTEM_INSTRUCTION,
     LocalCharacterRef,
@@ -105,6 +107,10 @@ def _load_m2_results(source_m2_run_dir: Path) -> dict[str, tuple[M2GroundedAttri
             raise ContractValidationError(f"duplicate M2 grounded result for {chunk_id}/{target_id}")
         seen.add((chunk_id, target_id))
         grounded = _mapping(record.get("grounded_result"), f"M2 grounded record[{index}].grounded_result")
+        if grounded.get("grounding_policy_version") != M2_ATTRIBUTION_GROUNDING_POLICY_VERSION:
+            raise ContractValidationError(
+                "M2 grounding policy is stale or missing; replay M2 grounding before N3"
+            )
         ref = _mapping(grounded.get("target_character_ref"), "target_character_ref")
         result = M2GroundedAttributionResult(
             target_character_ref=LocalCharacterRef(
@@ -124,6 +130,9 @@ def _load_m2_results(source_m2_run_dir: Path) -> dict[str, tuple[M2GroundedAttri
                     code=_string(_mapping(issue, "grounding issue").get("code"), "issue.code"),
                     fact_index=_mapping(issue, "grounding issue").get("fact_index"),
                     detail=_string(_mapping(issue, "grounding issue").get("detail"), "issue.detail"),
+                    fact_quote=_mapping(issue, "grounding issue").get("fact_quote"),
+                    candidate_occurrence_count=_mapping(issue, "grounding issue").get("candidate_occurrence_count"),
+                    candidate_occurrences=tuple(_mapping(issue, "grounding issue").get("candidate_occurrences", [])),
                 )
                 for issue in record.get("grounding_issues", [])
             ),
@@ -245,30 +254,49 @@ def run_n3_promotion_from_m2_run(
     records: list[dict[str, object]] = []
     failures: list[dict[str, object]] = []
     resumed = 0
+    requests = {}
+    fingerprints = {}
+    for _, grounding, envelope in envelopes:
+        request = M2ProviderRequest(
+            system_instruction=M2_PROMOTION_SYSTEM_INSTRUCTION,
+            user_payload=copy.deepcopy(envelope.model_payload()),
+            response_schema=copy.deepcopy(M2_PROMOTION_RESPONSE_SCHEMA),
+            response_schema_name="m2_promote_remaining_describe",
+        )
+        requests[envelope.promotion_hash] = request
+        fingerprints[envelope.promotion_hash] = request_fingerprint(provider, request)
+        source_id = envelope.describe_source_ref.local_mention_id
+        cached_path = output_dir / "tasks" / f"{grounding.chunk_id}--{source_id}--{envelope.promotion_hash[:12]}.json"
+        if cached_path.exists():
+            validate_cached_request(_mapping(_read_json(cached_path), "cached promotion task"), fingerprints[envelope.promotion_hash])
+
     for task_index, (chunk_index, grounding, envelope) in enumerate(envelopes, start=1):
+        request = requests[envelope.promotion_hash]
+        fingerprint = fingerprints[envelope.promotion_hash]
         source_id = envelope.describe_source_ref.local_mention_id
         task_path = output_dir / "tasks" / f"{grounding.chunk_id}--{source_id}--{envelope.promotion_hash[:12]}.json"
         if task_path.exists():
             record = _mapping(_read_json(task_path), "saved promotion task")
             if record.get("schema_version") != N3_PROMOTION_TASK_VERSION or record.get("promotion_hash") != envelope.promotion_hash:
                 raise ContractValidationError("saved promotion task does not match current envelope")
-            records.append(dict(record))
+            model_output = M2PromotionModelOutput.parse(_mapping(record.get("model_output"), "cached promotion output"))
+            grounded = ground_m2_promotion_output(envelope, model_output)
+            record = dict(record)
+            record["grounded_result"] = grounded.to_packet_dict()
+            record["grounding_issues"] = [issue.to_dict() for issue in grounded.issues]
+            _write_json(task_path, record)
+            records.append(record)
             resumed += 1
             if progress:
                 progress(f"[{task_index}/{len(envelopes)}] resumed {grounding.chunk_id}/{source_id}")
             continue
         trace_before = len(traces) if traces is not None else 0
         try:
-            request = M2ProviderRequest(
-                system_instruction=M2_PROMOTION_SYSTEM_INSTRUCTION,
-                user_payload=copy.deepcopy(envelope.model_payload()),
-                response_schema=copy.deepcopy(M2_PROMOTION_RESPONSE_SCHEMA),
-                response_schema_name="m2_promote_remaining_describe",
-            )
             model_output = M2PromotionModelOutput.parse(provider.generate(request))
             grounded = ground_m2_promotion_output(envelope, model_output)
             record = {
                 "schema_version": N3_PROMOTION_TASK_VERSION,
+                "request_fingerprint": fingerprint,
                 "chunk_index": chunk_index,
                 "chunk_id": grounding.chunk_id,
                 "describe_local_mention_id": source_id,

@@ -1,0 +1,53 @@
+{
+  "id": "E-20260905-WEB-PIPELINE-JOBS-083",
+  "artifacts": [
+    {
+      "path": "src/novel_character_generator/webapp/store.py",
+      "sha256": "c81c2ccfbf560a0bc47bf00f5ce8fc17bd1986373cf14ad801a375fd0d18926e"
+    },
+    {
+      "path": "src/novel_character_generator/webapp/pipeline.py",
+      "sha256": "94d910b5ddfe6e1208e2bfb2945278b4f1d697aa835f596b5fe7e9c69d4dbfd3"
+    },
+    {
+      "path": "src/novel_character_generator/webapp/jobs.py",
+      "sha256": "e0a81e8e92da9ef1b0028e8499e6c9748e61681aecd4c007aa14cb285fc9355e"
+    },
+    {
+      "path": "src/novel_character_generator/webapp/app.py",
+      "sha256": "b2e98941aae4e4fa697f39b2e3d46bc3be523470169c2281306f21f0953b3465"
+    },
+    {
+      "path": "tests/test_webapp_jobs.py",
+      "sha256": "4b5efd500c0f61044f46a65cf0849750cc9e63082ff7e7894d2feccdf334bd46"
+    },
+    {
+      "path": "tests/test_webapp_api.py",
+      "sha256": "694882b2c84bcdd7907d244c06baf1b33318ecf37944c4d9b498bb9e93c22552"
+    },
+    {
+      "path": "scripts/b_milestone_smoke.py",
+      "sha256": "e75c2ca8e89e14a37a94a546a8f4bd0dcf334676c03c0284f328534648ea8aec"
+    },
+    {
+      "path": "web/src/pages/JobDetailPage.tsx",
+      "sha256": "b4a968454739ba7aeb1e985e8c1a8e19956f5cc46ca22609b57141bfb50882f0"
+    },
+    {
+      "path": "web/src/pages/DocumentImportPage.tsx",
+      "sha256": "64d5d98542a290aab037d87709730228cd4d44b24a5f7f51b43eba22fb78dfd3"
+    },
+    {
+      "path": "web/src/pages/DocumentDetailPage.tsx",
+      "sha256": "8830c44a24d8390fb4c645ed2f89c13e9a84b5e4475bdc2e6e92f3957fe80dfd"
+    },
+    {
+      "path": "web/src/api/client.ts",
+      "sha256": "1d5dfd4729d45f1dbfddaffd360ca0c761ba0c4b62bffd7e8dccb1f75b1e4c55"
+    },
+    {
+      "path": "web/src/api/types.ts",
+      "sha256": "589715030dedbe8f280c3f838d92c3c9707a7232edf49585adf8fd0e5da0036c"
+    }
+  ]
+}

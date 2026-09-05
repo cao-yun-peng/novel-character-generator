@@ -1,0 +1,6 @@
+{
+  "task_id": "ce96fca5ee6bf56f3f48a395a79911721280e3cb8a3b6a3567a9744042a9cf06",
+  "payload_hash": "91e2d5c048d0f9f9544ef46bec357600df6e22d0ab2bec37b90b76e0772d4834",
+  "request_fingerprint": "4973e3c3070a1eec4fcc55a29d763dbad2a9f339adce91affa4a1285195090f1",
+  "model_output": "{\"relation\":\"uncertain\",\"evidence_quotes\":[\"唐三的身高还够不到灶台\",\"施展的人实在矮小了一些\"]}"
+}

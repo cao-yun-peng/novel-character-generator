@@ -1,0 +1,6 @@
+{
+  "task_id": "676f487328de7fbc74cc60217715fd73fcb42f333c6f4f49835eb4a14e0b7648",
+  "payload_hash": "3b3ee35e85bf38658c8bbb05c27f57eeebfb1877b3d930314f5d9763d1dc6d61",
+  "request_fingerprint": "993ae3b7db438d888b647f8e375d8024f1ff448ddbbb4d5edbf9ab02a5b9b1c5",
+  "model_output": "{\"relation\":\"compatible\",\"evidence_quotes\":[\"还没有铸造锤高吧\",\"唐三的身高还够不到灶台\"]}"
+}

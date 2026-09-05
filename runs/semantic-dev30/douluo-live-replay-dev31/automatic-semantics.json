@@ -1,0 +1,1012 @@
+{
+  "schema_version": "automatic-appearance-semantics-v1",
+  "policy_version": "grounded-scene-clothing-conflicts-v1",
+  "source_document_version_id": "source-8bcb7305a759571b",
+  "document_hash": "8bcb7305a759571b1fec70813b0631f2c884eba79697c3259170a7635d639741",
+  "fact_groups_hash": "46789284973c170607663d14455088bf11ebf4e6a033db29ddc3e2037a5f3df8",
+  "source_bundle_hash": "19e2881caf6734e31d10c9affb50e2db468c88afda0eb900d1616ce69197686d",
+  "events": [
+    {
+      "character_id": "char-f47075b7019563fd8315",
+      "kind": "remove",
+      "fact_ids": [
+        "cfact-1ccfdeb87c747f769956",
+        "cfact-6a73837eee0ad8071e4a"
+      ],
+      "evidence": "轰的一声炸鸣，当众位长老同时后退以防不测的时候，他们看到的却是全身赤裸的唐三。",
+      "document_span": {
+        "start": 1665,
+        "end": 1704
+      }
+    },
+    {
+      "character_id": "char-f47075b7019563fd8315",
+      "kind": "scene_boundary",
+      "fact_ids": [],
+      "evidence": "第2章 斗罗大陆，异界唐三（一）\r\n　　第2章 斗罗大陆，异界唐三（一） \r\n　　斗罗大陆，天斗帝国西南，法斯诺行省。",
+      "document_span": {
+        "start": 2722,
+        "end": 2781
+      }
+    },
+    {
+      "character_id": "char-f47075b7019563fd8315",
+      "kind": "scene_boundary",
+      "fact_ids": [],
+      "evidence": "一进家门，唐三就已经闻到了扑鼻的饭香",
+      "document_span": {
+        "start": 5222,
+        "end": 5240
+      }
+    },
+    {
+      "character_id": "char-f47075b7019563fd8315",
+      "kind": "scene_boundary",
+      "fact_ids": [],
+      "evidence": "在老杰克的带领下，唐三跟随着他来到了村子中央的武魂殿。",
+      "document_span": {
+        "start": 12819,
+        "end": 12846
+      }
+    },
+    {
+      "character_id": "char-f47075b7019563fd8315",
+      "kind": "scene_boundary",
+      "fact_ids": [],
+      "evidence": "唐三站起身，该是回去的时候了，今天，自己就要离开村子，下次再来这山顶，也不知道要什么时候才行了。",
+      "document_span": {
+        "start": 32573,
+        "end": 32621
+      }
+    },
+    {
+      "character_id": "char-f47075b7019563fd8315",
+      "kind": "scene_boundary",
+      "fact_ids": [],
+      "evidence": "从圣魂村到诺丁城并不远，两人走了半天的时间，中途简单吃了点干粮，下午的时候，已经可以看到远处的城墙了。",
+      "document_span": {
+        "start": 35614,
+        "end": 35665
+      }
+    },
+    {
+      "character_id": "char-f47075b7019563fd8315",
+      "kind": "scene_boundary",
+      "fact_ids": [],
+      "evidence": "诺丁初级魂师学院坐落在诺丁城西，老杰克向路人打听了几次，终于带着唐三来到了这里。",
+      "document_span": {
+        "start": 35950,
+        "end": 35990
+      }
+    }
+  ],
+  "relations": [
+    {
+      "character_id": "char-c29b95295e06aa917f96",
+      "fact_ids": [
+        "cfact-00786046760196febf87",
+        "cfact-a5120baf72d4b640a0ea"
+      ],
+      "relation": "compatible",
+      "evidence": [
+        {
+          "canonical_fact_id": "cfact-00786046760196febf87",
+          "quote": "杰克脸上失望的表情",
+          "document_span": {
+            "start": 18622,
+            "end": 18631
+          }
+        },
+        {
+          "canonical_fact_id": "cfact-a5120baf72d4b640a0ea",
+          "quote": "老杰克一脸紧张",
+          "document_span": {
+            "start": 18423,
+            "end": 18430
+          }
+        }
+      ]
+    },
+    {
+      "character_id": "char-431fd9f3afcbe1cece75",
+      "fact_ids": [
+        "cfact-02b3469bab7514a281b1",
+        "cfact-26ab57887c8b77253957"
+      ],
+      "relation": "equivalent",
+      "evidence": [
+        {
+          "canonical_fact_id": "cfact-02b3469bab7514a281b1",
+          "quote": "左胸上，有一枚雕刻着长剑的徽章",
+          "document_span": {
+            "start": 13219,
+            "end": 13234
+          }
+        },
+        {
+          "canonical_fact_id": "cfact-02b3469bab7514a281b1",
+          "quote": "左胸上，有一枚雕刻着长剑的徽章，徽章上一共是三柄长剑交错",
+          "document_span": {
+            "start": 13219,
+            "end": 13247
+          }
+        },
+        {
+          "canonical_fact_id": "cfact-26ab57887c8b77253957",
+          "quote": "左胸上，有一枚雕刻着长剑的徽章，徽章上一共是三柄长剑交错",
+          "document_span": {
+            "start": 13219,
+            "end": 13247
+          }
+        }
+      ]
+    },
+    {
+      "character_id": "char-a6302c7128aa46abea7c",
+      "fact_ids": [
+        "cfact-07d0e61696349467c22d",
+        "cfact-6629a1f7f244cfeadd3b"
+      ],
+      "relation": "compatible",
+      "evidence": [
+        {
+          "canonical_fact_id": "cfact-07d0e61696349467c22d",
+          "quote": "高大苍老的男人",
+          "document_span": {
+            "start": 30769,
+            "end": 30776
+          }
+        },
+        {
+          "canonical_fact_id": "cfact-6629a1f7f244cfeadd3b",
+          "quote": "身材却非常高大魁梧",
+          "document_span": {
+            "start": 5640,
+            "end": 5649
+          }
+        }
+      ]
+    },
+    {
+      "character_id": "char-f47075b7019563fd8315",
+      "fact_ids": [
+        "cfact-07d73b04f5aac7263bd4",
+        "cfact-1a705ae75891a5834fd3"
+      ],
+      "relation": "incompatible",
+      "evidence": [
+        {
+          "canonical_fact_id": "cfact-07d73b04f5aac7263bd4",
+          "quote": "他的身体如此纤瘦",
+          "document_span": {
+            "start": 5541,
+            "end": 5549
+          }
+        },
+        {
+          "canonical_fact_id": "cfact-1a705ae75891a5834fd3",
+          "quote": "身体比以前健壮了一些",
+          "document_span": {
+            "start": 31936,
+            "end": 31946
+          }
+        }
+      ]
+    },
+    {
+      "character_id": "char-f47075b7019563fd8315",
+      "fact_ids": [
+        "cfact-07d73b04f5aac7263bd4",
+        "cfact-3a19888f4f40235c90a8"
+      ],
+      "relation": "equivalent",
+      "evidence": [
+        {
+          "canonical_fact_id": "cfact-07d73b04f5aac7263bd4",
+          "quote": "他的身体如此纤瘦",
+          "document_span": {
+            "start": 5541,
+            "end": 5549
+          }
+        },
+        {
+          "canonical_fact_id": "cfact-3a19888f4f40235c90a8",
+          "quote": "唐三瘦弱的身体",
+          "document_span": {
+            "start": 33042,
+            "end": 33049
+          }
+        }
+      ]
+    },
+    {
+      "character_id": "char-f47075b7019563fd8315",
+      "fact_ids": [
+        "cfact-07d73b04f5aac7263bd4",
+        "cfact-6ec5251a25bebf636543"
+      ],
+      "relation": "compatible",
+      "evidence": [
+        {
+          "canonical_fact_id": "cfact-07d73b04f5aac7263bd4",
+          "quote": "他的身体如此纤瘦",
+          "document_span": {
+            "start": 5541,
+            "end": 5549
+          }
+        },
+        {
+          "canonical_fact_id": "cfact-6ec5251a25bebf636543",
+          "quote": "他的身体变得结实了几分",
+          "document_span": {
+            "start": 8586,
+            "end": 8597
+          }
+        }
+      ]
+    },
+    {
+      "character_id": "char-f47075b7019563fd8315",
+      "fact_ids": [
+        "cfact-07d73b04f5aac7263bd4",
+        "cfact-eef8c3b496503f82e695"
+      ],
+      "relation": "compatible",
+      "evidence": [
+        {
+          "canonical_fact_id": "cfact-07d73b04f5aac7263bd4",
+          "quote": "他的身体如此纤瘦",
+          "document_span": {
+            "start": 5541,
+            "end": 5549
+          }
+        },
+        {
+          "canonical_fact_id": "cfact-eef8c3b496503f82e695",
+          "quote": "唐三幼小的身体和手中的铁锤并不成比例",
+          "document_span": {
+            "start": 23892,
+            "end": 23910
+          }
+        }
+      ]
+    },
+    {
+      "character_id": "char-f47075b7019563fd8315",
+      "fact_ids": [
+        "cfact-08eddb767a64acd125f7",
+        "cfact-140d532034b902eae795"
+      ],
+      "relation": "compatible",
+      "evidence": [
+        {
+          "canonical_fact_id": "cfact-08eddb767a64acd125f7",
+          "quote": "还没有铸造锤高吧",
+          "document_span": {
+            "start": 33903,
+            "end": 33911
+          }
+        },
+        {
+          "canonical_fact_id": "cfact-140d532034b902eae795",
+          "quote": "唐三的身高还够不到灶台",
+          "document_span": {
+            "start": 5274,
+            "end": 5285
+          }
+        }
+      ]
+    },
+    {
+      "character_id": "char-f47075b7019563fd8315",
+      "fact_ids": [
+        "cfact-08eddb767a64acd125f7",
+        "cfact-4d7fab8b018f41600e8f"
+      ],
+      "relation": "equivalent",
+      "evidence": [
+        {
+          "canonical_fact_id": "cfact-08eddb767a64acd125f7",
+          "quote": "还没有铸造锤高吧",
+          "document_span": {
+            "start": 33903,
+            "end": 33911
+          }
+        },
+        {
+          "canonical_fact_id": "cfact-4d7fab8b018f41600e8f",
+          "quote": "这种长柄铁锤甚至要比他的身高还高上几分",
+          "document_span": {
+            "start": 7860,
+            "end": 7879
+          }
+        }
+      ]
+    },
+    {
+      "character_id": "char-f47075b7019563fd8315",
+      "fact_ids": [
+        "cfact-0cf96662775fc8ee319f",
+        "cfact-ddd426aa6e784afce96a"
+      ],
+      "relation": "compatible",
+      "evidence": [
+        {
+          "canonical_fact_id": "cfact-0cf96662775fc8ee319f",
+          "quote": "他那些有着大小补丁的衣服",
+          "document_span": {
+            "start": 31523,
+            "end": 31535
+          }
+        },
+        {
+          "canonical_fact_id": "cfact-ddd426aa6e784afce96a",
+          "quote": "身上衣服全是补丁",
+          "document_span": {
+            "start": 37152,
+            "end": 37160
+          }
+        }
+      ]
+    },
+    {
+      "character_id": "char-f47075b7019563fd8315",
+      "fact_ids": [
+        "cfact-140d532034b902eae795",
+        "cfact-192a9a2f3b9206f91869"
+      ],
+      "relation": "uncertain",
+      "evidence": [
+        {
+          "canonical_fact_id": "cfact-140d532034b902eae795",
+          "quote": "唐三的身高还够不到灶台",
+          "document_span": {
+            "start": 5274,
+            "end": 5285
+          }
+        },
+        {
+          "canonical_fact_id": "cfact-192a9a2f3b9206f91869",
+          "quote": "施展的人实在矮小了一些",
+          "document_span": {
+            "start": 37392,
+            "end": 37403
+          }
+        }
+      ]
+    },
+    {
+      "character_id": "char-f47075b7019563fd8315",
+      "fact_ids": [
+        "cfact-140d532034b902eae795",
+        "cfact-4d7fab8b018f41600e8f"
+      ],
+      "relation": "compatible",
+      "evidence": [
+        {
+          "canonical_fact_id": "cfact-140d532034b902eae795",
+          "quote": "唐三的身高还够不到灶台",
+          "document_span": {
+            "start": 5274,
+            "end": 5285
+          }
+        },
+        {
+          "canonical_fact_id": "cfact-4d7fab8b018f41600e8f",
+          "quote": "这种长柄铁锤甚至要比他的身高还高上几分",
+          "document_span": {
+            "start": 7860,
+            "end": 7879
+          }
+        }
+      ]
+    },
+    {
+      "character_id": "char-f47075b7019563fd8315",
+      "fact_ids": [
+        "cfact-192a9a2f3b9206f91869",
+        "cfact-4d7fab8b018f41600e8f"
+      ],
+      "relation": "compatible",
+      "evidence": [
+        {
+          "canonical_fact_id": "cfact-192a9a2f3b9206f91869",
+          "quote": "施展的人实在矮小了一些",
+          "document_span": {
+            "start": 37392,
+            "end": 37403
+          }
+        },
+        {
+          "canonical_fact_id": "cfact-4d7fab8b018f41600e8f",
+          "quote": "这种长柄铁锤甚至要比他的身高还高上几分",
+          "document_span": {
+            "start": 7860,
+            "end": 7879
+          }
+        }
+      ]
+    },
+    {
+      "character_id": "char-f47075b7019563fd8315",
+      "fact_ids": [
+        "cfact-1a705ae75891a5834fd3",
+        "cfact-3a19888f4f40235c90a8"
+      ],
+      "relation": "uncertain",
+      "evidence": [
+        {
+          "canonical_fact_id": "cfact-1a705ae75891a5834fd3",
+          "quote": "身体比以前健壮了一些",
+          "document_span": {
+            "start": 31936,
+            "end": 31946
+          }
+        },
+        {
+          "canonical_fact_id": "cfact-3a19888f4f40235c90a8",
+          "quote": "唐三瘦弱的身体",
+          "document_span": {
+            "start": 33042,
+            "end": 33049
+          }
+        }
+      ]
+    },
+    {
+      "character_id": "char-f47075b7019563fd8315",
+      "fact_ids": [
+        "cfact-1a705ae75891a5834fd3",
+        "cfact-6ec5251a25bebf636543"
+      ],
+      "relation": "compatible",
+      "evidence": [
+        {
+          "canonical_fact_id": "cfact-1a705ae75891a5834fd3",
+          "quote": "身体比以前健壮了一些",
+          "document_span": {
+            "start": 31936,
+            "end": 31946
+          }
+        },
+        {
+          "canonical_fact_id": "cfact-6ec5251a25bebf636543",
+          "quote": "他的身体变得结实了几分",
+          "document_span": {
+            "start": 8586,
+            "end": 8597
+          }
+        }
+      ]
+    },
+    {
+      "character_id": "char-f47075b7019563fd8315",
+      "fact_ids": [
+        "cfact-1a705ae75891a5834fd3",
+        "cfact-eef8c3b496503f82e695"
+      ],
+      "relation": "compatible",
+      "evidence": [
+        {
+          "canonical_fact_id": "cfact-1a705ae75891a5834fd3",
+          "quote": "身体比以前健壮了一些",
+          "document_span": {
+            "start": 31936,
+            "end": 31946
+          }
+        },
+        {
+          "canonical_fact_id": "cfact-eef8c3b496503f82e695",
+          "quote": "幼小的身体",
+          "document_span": {
+            "start": 23894,
+            "end": 23899
+          }
+        }
+      ]
+    },
+    {
+      "character_id": "char-a6302c7128aa46abea7c",
+      "fact_ids": [
+        "cfact-23e68c5987a39e0cc6dc",
+        "cfact-c9aa6ee3e67519ca1bfb"
+      ],
+      "relation": "compatible",
+      "evidence": [
+        {
+          "canonical_fact_id": "cfact-23e68c5987a39e0cc6dc",
+          "quote": "他的双眼通红",
+          "document_span": {
+            "start": 21951,
+            "end": 21957
+          }
+        },
+        {
+          "canonical_fact_id": "cfact-c9aa6ee3e67519ca1bfb",
+          "quote": "在他那的眼睛中，不知什么时候已经多了一层朦胧的水意",
+          "document_span": {
+            "start": 33293,
+            "end": 33318
+          }
+        }
+      ]
+    },
+    {
+      "character_id": "char-c29b95295e06aa917f96",
+      "fact_ids": [
+        "cfact-2cbdc4c7ffb177a46aaf",
+        "cfact-4b3013f7799acae8c637"
+      ],
+      "relation": "compatible",
+      "evidence": [
+        {
+          "canonical_fact_id": "cfact-2cbdc4c7ffb177a46aaf",
+          "quote": "不就是个老头儿么",
+          "document_span": {
+            "start": 37096,
+            "end": 37104
+          }
+        },
+        {
+          "canonical_fact_id": "cfact-4b3013f7799acae8c637",
+          "quote": "看上去六十多岁的样子",
+          "document_span": {
+            "start": 10126,
+            "end": 10136
+          }
+        }
+      ]
+    },
+    {
+      "character_id": "char-c29b95295e06aa917f96",
+      "fact_ids": [
+        "cfact-2cbdc4c7ffb177a46aaf",
+        "cfact-6c9369886529319af06d"
+      ],
+      "relation": "equivalent",
+      "evidence": [
+        {
+          "canonical_fact_id": "cfact-2cbdc4c7ffb177a46aaf",
+          "quote": "不就是个老头儿么",
+          "document_span": {
+            "start": 37096,
+            "end": 37104
+          }
+        },
+        {
+          "canonical_fact_id": "cfact-6c9369886529319af06d",
+          "quote": "他年纪已经不小了",
+          "document_span": {
+            "start": 19752,
+            "end": 19760
+          }
+        }
+      ]
+    },
+    {
+      "character_id": "char-a6302c7128aa46abea7c",
+      "fact_ids": [
+        "cfact-2f4940f4d5cc5d05164c",
+        "cfact-6629a1f7f244cfeadd3b"
+      ],
+      "relation": "equivalent",
+      "evidence": [
+        {
+          "canonical_fact_id": "cfact-2f4940f4d5cc5d05164c",
+          "quote": "高大的身影",
+          "document_span": {
+            "start": 5591,
+            "end": 5596
+          }
+        },
+        {
+          "canonical_fact_id": "cfact-6629a1f7f244cfeadd3b",
+          "quote": "身材却非常高大魁梧",
+          "document_span": {
+            "start": 5640,
+            "end": 5649
+          }
+        }
+      ]
+    },
+    {
+      "character_id": "char-f47075b7019563fd8315",
+      "fact_ids": [
+        "cfact-3a19888f4f40235c90a8",
+        "cfact-6ec5251a25bebf636543"
+      ],
+      "relation": "incompatible",
+      "evidence": [
+        {
+          "canonical_fact_id": "cfact-3a19888f4f40235c90a8",
+          "quote": "唐三瘦弱的身体",
+          "document_span": {
+            "start": 33042,
+            "end": 33049
+          }
+        },
+        {
+          "canonical_fact_id": "cfact-6ec5251a25bebf636543",
+          "quote": "他的身体变得结实了几分",
+          "document_span": {
+            "start": 8586,
+            "end": 8597
+          }
+        }
+      ]
+    },
+    {
+      "character_id": "char-f47075b7019563fd8315",
+      "fact_ids": [
+        "cfact-3a19888f4f40235c90a8",
+        "cfact-eef8c3b496503f82e695"
+      ],
+      "relation": "compatible",
+      "evidence": [
+        {
+          "canonical_fact_id": "cfact-3a19888f4f40235c90a8",
+          "quote": "唐三瘦弱的身体",
+          "document_span": {
+            "start": 33042,
+            "end": 33049
+          }
+        },
+        {
+          "canonical_fact_id": "cfact-eef8c3b496503f82e695",
+          "quote": "唐三幼小的身体和手中的铁锤并不成比例",
+          "document_span": {
+            "start": 23892,
+            "end": 23910
+          }
+        }
+      ]
+    },
+    {
+      "character_id": "char-f47075b7019563fd8315",
+      "fact_ids": [
+        "cfact-3dfcbdb9d1cea52462a2",
+        "cfact-81c8d372a54d9af5557f"
+      ],
+      "relation": "incompatible",
+      "evidence": [
+        {
+          "canonical_fact_id": "cfact-3dfcbdb9d1cea52462a2",
+          "quote": "高大昂扬的身躯",
+          "document_span": {
+            "start": 1892,
+            "end": 1899
+          }
+        },
+        {
+          "canonical_fact_id": "cfact-81c8d372a54d9af5557f",
+          "quote": "他的身材和同龄的孩子相比，要瘦小一些。",
+          "document_span": {
+            "start": 13751,
+            "end": 13770
+          }
+        }
+      ]
+    },
+    {
+      "character_id": "char-f47075b7019563fd8315",
+      "fact_ids": [
+        "cfact-494d2106357697a4f961",
+        "cfact-81bd286f72f416cb6161"
+      ],
+      "relation": "compatible",
+      "evidence": [
+        {
+          "canonical_fact_id": "cfact-494d2106357697a4f961",
+          "quote": "他那双稚嫩的小手看上去却并没有任何变化。甚至连一个水泡都没有起过。",
+          "document_span": {
+            "start": 8897,
+            "end": 8930
+          }
+        },
+        {
+          "canonical_fact_id": "cfact-81bd286f72f416cb6161",
+          "quote": "他那双稚嫩的小手看上去却并没有任何变化。甚至连一个水泡都没有起过。",
+          "document_span": {
+            "start": 8897,
+            "end": 8930
+          }
+        }
+      ]
+    },
+    {
+      "character_id": "char-f47075b7019563fd8315",
+      "fact_ids": [
+        "cfact-4b1bb7aada695c41a433",
+        "cfact-992b38817934c5b4ac4a"
+      ],
+      "relation": "incompatible",
+      "evidence": [
+        {
+          "canonical_fact_id": "cfact-4b1bb7aada695c41a433",
+          "quote": "唐三人虽然不大",
+          "document_span": {
+            "start": 37678,
+            "end": 37685
+          }
+        },
+        {
+          "canonical_fact_id": "cfact-992b38817934c5b4ac4a",
+          "quote": "他今年二十九岁",
+          "document_span": {
+            "start": 282,
+            "end": 289
+          }
+        }
+      ]
+    },
+    {
+      "character_id": "char-f47075b7019563fd8315",
+      "fact_ids": [
+        "cfact-4b1bb7aada695c41a433",
+        "cfact-bb76f0aa22dba5c097f5"
+      ],
+      "relation": "compatible",
+      "evidence": [
+        {
+          "canonical_fact_id": "cfact-4b1bb7aada695c41a433",
+          "quote": "唐三人虽然不大",
+          "document_span": {
+            "start": 37678,
+            "end": 37685
+          }
+        },
+        {
+          "canonical_fact_id": "cfact-bb76f0aa22dba5c097f5",
+          "quote": "那是个只有五、六岁的孩子",
+          "document_span": {
+            "start": 3102,
+            "end": 3114
+          }
+        }
+      ]
+    },
+    {
+      "character_id": "char-f47075b7019563fd8315",
+      "fact_ids": [
+        "cfact-4b1bb7aada695c41a433",
+        "cfact-f8c76f745f309080531f"
+      ],
+      "relation": "compatible",
+      "evidence": [
+        {
+          "canonical_fact_id": "cfact-4b1bb7aada695c41a433",
+          "quote": "唐三人虽然不大",
+          "document_span": {
+            "start": 37678,
+            "end": 37685
+          }
+        },
+        {
+          "canonical_fact_id": "cfact-f8c76f745f309080531f",
+          "quote": "再过几天，唐三就要六岁了",
+          "document_span": {
+            "start": 9905,
+            "end": 9917
+          }
+        }
+      ]
+    },
+    {
+      "character_id": "char-c29b95295e06aa917f96",
+      "fact_ids": [
+        "cfact-4b3013f7799acae8c637",
+        "cfact-6c9369886529319af06d"
+      ],
+      "relation": "compatible",
+      "evidence": [
+        {
+          "canonical_fact_id": "cfact-4b3013f7799acae8c637",
+          "quote": "看上去六十多岁的样子",
+          "document_span": {
+            "start": 10126,
+            "end": 10136
+          }
+        },
+        {
+          "canonical_fact_id": "cfact-6c9369886529319af06d",
+          "quote": "他年纪已经不小了",
+          "document_span": {
+            "start": 19752,
+            "end": 19760
+          }
+        }
+      ]
+    },
+    {
+      "character_id": "char-a6302c7128aa46abea7c",
+      "fact_ids": [
+        "cfact-5800297bd0364b02f2e1",
+        "cfact-6629a1f7f244cfeadd3b"
+      ],
+      "relation": "compatible",
+      "evidence": [
+        {
+          "canonical_fact_id": "cfact-5800297bd0364b02f2e1",
+          "quote": "高大的身影",
+          "document_span": {
+            "start": 32999,
+            "end": 33004
+          }
+        },
+        {
+          "canonical_fact_id": "cfact-6629a1f7f244cfeadd3b",
+          "quote": "身材却非常高大魁梧",
+          "document_span": {
+            "start": 5640,
+            "end": 5649
+          }
+        }
+      ]
+    },
+    {
+      "character_id": "char-f47075b7019563fd8315",
+      "fact_ids": [
+        "cfact-6ec5251a25bebf636543",
+        "cfact-eef8c3b496503f82e695"
+      ],
+      "relation": "compatible",
+      "evidence": [
+        {
+          "canonical_fact_id": "cfact-6ec5251a25bebf636543",
+          "quote": "他的身体变得结实了几分",
+          "document_span": {
+            "start": 8586,
+            "end": 8597
+          }
+        },
+        {
+          "canonical_fact_id": "cfact-eef8c3b496503f82e695",
+          "quote": "唐三幼小的身体",
+          "document_span": {
+            "start": 23892,
+            "end": 23899
+          }
+        }
+      ]
+    },
+    {
+      "character_id": "char-f47075b7019563fd8315",
+      "fact_ids": [
+        "cfact-992b38817934c5b4ac4a",
+        "cfact-bb76f0aa22dba5c097f5"
+      ],
+      "relation": "uncertain",
+      "evidence": [
+        {
+          "canonical_fact_id": "cfact-992b38817934c5b4ac4a",
+          "quote": "他今年二十九岁",
+          "document_span": {
+            "start": 282,
+            "end": 289
+          }
+        },
+        {
+          "canonical_fact_id": "cfact-bb76f0aa22dba5c097f5",
+          "quote": "那是个只有五、六岁的孩子",
+          "document_span": {
+            "start": 3102,
+            "end": 3114
+          }
+        }
+      ]
+    },
+    {
+      "character_id": "char-f47075b7019563fd8315",
+      "fact_ids": [
+        "cfact-992b38817934c5b4ac4a",
+        "cfact-f8c76f745f309080531f"
+      ],
+      "relation": "incompatible",
+      "evidence": [
+        {
+          "canonical_fact_id": "cfact-992b38817934c5b4ac4a",
+          "quote": "他今年二十九岁",
+          "document_span": {
+            "start": 282,
+            "end": 289
+          }
+        },
+        {
+          "canonical_fact_id": "cfact-f8c76f745f309080531f",
+          "quote": "再过几天，唐三就要六岁了",
+          "document_span": {
+            "start": 9905,
+            "end": 9917
+          }
+        }
+      ]
+    },
+    {
+      "character_id": "char-f47075b7019563fd8315",
+      "fact_ids": [
+        "cfact-bb76f0aa22dba5c097f5",
+        "cfact-f8c76f745f309080531f"
+      ],
+      "relation": "compatible",
+      "evidence": [
+        {
+          "canonical_fact_id": "cfact-bb76f0aa22dba5c097f5",
+          "quote": "那是个只有五、六岁的孩子",
+          "document_span": {
+            "start": 3102,
+            "end": 3114
+          }
+        },
+        {
+          "canonical_fact_id": "cfact-f8c76f745f309080531f",
+          "quote": "再过几天，唐三就要六岁了",
+          "document_span": {
+            "start": 9905,
+            "end": 9917
+          }
+        }
+      ]
+    },
+    {
+      "character_id": "char-c29b95295e06aa917f96",
+      "fact_ids": [
+        "cfact-eda04350353afdba5e34",
+        "cfact-f68ff232c604c2b5b55e"
+      ],
+      "relation": "equivalent",
+      "evidence": [
+        {
+          "canonical_fact_id": "cfact-eda04350353afdba5e34",
+          "quote": "看上去六十多岁的样子，身材瘦长，但精神矍铄，衣服干净整洁，头发也梳理的一丝不苟，和唐昊相比，简直就是两个极端",
+          "document_span": {
+            "start": 10126,
+            "end": 10180
+          }
+        },
+        {
+          "canonical_fact_id": "cfact-f68ff232c604c2b5b55e",
+          "quote": "看上去六十多岁的样子，身材瘦长，但精神矍铄，衣服干净整洁，头发也梳理的一丝不苟，和唐昊相比，简直就是两个极端",
+          "document_span": {
+            "start": 10126,
+            "end": 10180
+          }
+        }
+      ]
+    },
+    {
+      "character_id": "char-a6302c7128aa46abea7c",
+      "fact_ids": [
+        "cfact-ef74d813c4f82edf65c5",
+        "cfact-fe76fadd47638bd3c988"
+      ],
+      "relation": "compatible",
+      "evidence": [
+        {
+          "canonical_fact_id": "cfact-ef74d813c4f82edf65c5",
+          "quote": "苍老",
+          "document_span": {
+            "start": 30771,
+            "end": 30773
+          }
+        },
+        {
+          "canonical_fact_id": "cfact-fe76fadd47638bd3c988",
+          "quote": "大约有接近五十岁的样子",
+          "document_span": {
+            "start": 5627,
+            "end": 5638
+          }
+        }
+      ]
+    }
+  ],
+  "reviews": [
+    {
+      "task_id": "ad38d081f6d0ab2b6483e9bd1d6292507f3e0a30c73ffe2ce73ab74f79360316",
+      "item_index": 1,
+      "code": "event_grounding_rejected",
+      "message": "target fact occurrence is missing or ambiguous"
+    }
+  ],
+  "complete": true
+}

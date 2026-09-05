@@ -1,0 +1,6 @@
+{
+  "task_id": "0164d156bebd567a3b45ba007d1c2bd79c18ee2395fe22fa003a58c6d2ff8e6a",
+  "payload_hash": "595497833fe53cf8a6179bf4c61650fd5372ad08bae4c6a94fc22b5aaebd0031",
+  "request_fingerprint": "4cd3194094d20516d315f4d354077ef3948f58a98f465274bd52ee4516a2a7fc",
+  "model_output": "{\"relation\":\"compatible\",\"evidence_quotes\":[\"唐三人虽然不大\",\"那是个只有五、六岁的孩子\"]}"
+}

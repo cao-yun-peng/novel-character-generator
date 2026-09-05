@@ -1,10 +1,24 @@
 # 项目验收
 
+081/dev31：斗罗 52 个语义任务已实跑完成（53 次调用，1 次输出截断后重试成功）；接受 7 个事件、35 条关系，1 项事件复核。修复重复关系引文导致 Snapshot 重新定位不一致，52 份响应零调用重放、4 个 Snapshot 校验通过。人工质量 Gate 仍未通过。 详见 [实测报告](../docs/42-semantics-live-validation.md)。
+
 ## 当前验收结论
 
-设计基线、M1/N2/M2/N3、promotion、文档事实、跨 Chunk 身份、局部确定性身份闭合和人物档案组装均已建立。斗罗 dev17 离线重放把有完整局部关系原文的“高大的身影”并入唐昊，最终 7 个全局人物、129 条已分配事实、130 个来源 occurrence、0 未绑定事实；无关系原文的看门青年仍保守未决。事实/证据/Chunk/身份边回放和 Schema 校验通过。模型质量仍与确定性系统验收分开，不对未覆盖的一般化精度作宣称。
+设计基线、M1/N2/M2/N3、promotion、文档事实、身份、状态/语义、Label/Review 与 render-ready Profile Compiler 已形成完整 Stage 5 纵向切片。斗罗 dev26 四个显式 selector 分别生成唐三前世/儿童与素云涛普通/独狼附体结构化卡，active/provisional 分开，future observation 和跨状态事实不混入，canonical/raw provenance 完整。事实源和 Registry 未被改写。Stage 5 工程 Gate 已通过，生命周期进入 Stage 6（revision 3）；模型一般化质量仍须由冻结人工集评测。
 
 ## 验收标准
+
+080 工程验收：259 tests/19 subtests 通过；自动事件到有效期、语义不兼容到 true_conflict、缓存预检、离线重放、失败关闭和 Schema 已验证。可控 Provider 示例暂定时 0 冲突、双 active 时 1 冲突。斗罗准备 17 events+35 relations=52 任务，真实 Provider 0。E-20260905-AUTO-SEMANTICS-CONFLICT-080；不将工程回归当作真实模型质量 Gate。
+
+079 验收：237 tests、19 subtests 通过；Snapshot/事件/旧人物卡 Schema 验证通过。斗罗 4 张快照确定性重建为 7 active/42 provisional/71 excluded；6 个源文件哈希不变，Provider 0。证据 E-20260905-SNAPSHOT-APPLICABILITY-079。R04 基础查询与 R03 确定性有效期切片通过，R03 自动语义发现、R02 完整冲突、R06 人工 Gate 未完成。
+
+078 当前修复验证：211 tests、19 subtests 通过；四阶段缓存重建、缺失/变化指纹拒绝、M3 前面缺任务但后面缓存不兼容时零新增调用已验收。证据 E-20260905-CACHE-CONTINUATION-078。仅本切片通过，R05 全项与人工质量 Gate 未完成。
+
+077 当前修复验证：209 tests、13 subtests 通过；compileall 和 Draft 2020-12/32 个真实 M2 包验证通过。斗罗保存输出 32/32 零模型调用重放，84 条模型 facts -> 83 grounded + 1 三位置歧义。旧源 run 保持不变，既有 dev26 最终人物卡未自动改写为新 M2 链路结果。R01 当前范围通过；R02/R05/R06/R12 仅已实现子范围通过，其余清单未完成。
+
+2026-09-05 当前审查：Stage 6 已启动问题梳理与修复规划（revision 4），历史 Stage 5 Gate 保留。docs/37 的 R01 已验收，R02/R05/R06/R12 已实施子范围按 077/078 验收，其余仍待验证；075 人工质量 Gate 未通过。076 的完成仅代表修复清单与接口规划交付，不代表 bug 修复、Snapshot/Web 实现或发布。
+
+076 规划验收：14 个清单项、10 个本地链接、diff 检查与两套治理验证通过；证据 E-20260905-WEB-READY-REPAIR-PLAN-076。运行时/Schema 版本保持不变。
 
 | 标准 | 状态 |
 |---|---|
@@ -25,7 +39,7 @@
 | collective quarantine | 通过（设计/Schema/运行时路由单测） |
 | M2 模型无 ref/span/状态；代码用 fact_quote 回填来源 span | 通过（Schema 3.8/字段隔离/失败关闭测试；斗破 50/50 facts 严格匹配回填） |
 | N3 非重叠独立消费与重叠冲突 | 通过（设计/Schema/运行时单测；斗破实跑无 describe claim，因此真实冲突样本待补） |
-| task cache、pool/promotion guard 与原始 hash 规范 | 通过（稳定 task_cache_key、pool_hash、promotion_hash 与版本敏感测试）；持久缓存存储待接线 |
+| task cache、pool/promotion guard 与原始 hash 规范 | 既有文件缓存和断点续跑已接线；R05 待补完整模型请求指纹、统一 Grounding 重放与尝试历史 |
 | 重叠分块与 complete/truncated 文档覆盖清单 | 通过（设计/Schema/运行时单测） |
 | Chunk 局部 span → 文档绝对 span 与原文回放 | 通过（exact/promotion 单测、斗破 61/61 facts 与 evidence 回放） |
 | 重叠 Chunk 人物事实安全去重与来源保留 | 通过（同结构同位置合并、不同位置/结构不合并单测；斗破 61→60，合并项保留两个来源） |
@@ -47,16 +61,18 @@
 | M1 运行时和提示词 | DeepSeek Provider、可恢复全文批处理和真实样本运行已完成；人工质量评测未完成 |
 | DeepSeek Key 安全、json_schema、错误分类、重试与脱敏 trace | 通过（81 项总自动测试 + 真实 M1 样本 + 斗破 M2 18 tasks；含 IncompleteRead 恢复） |
 | N2/M2/N3 运行时 | Chunk 局部链路、promotion、绝对 span 与重叠事实去重已实现并实跑；真实人工质量验收待完成 |
-| 人物记忆 | 文档内身份与结构化人物档案已实现；时间/场景状态、跨文档长期记忆和真实模型一般化质量待后续 |
+| 人物记忆 | 文档内身份、结构化人物档案及基础时间/场景状态已实现；R03/R04 改进有效期与 Snapshot，跨文档长期记忆仍为非目标，模型一般化质量待评测 |
 | 局部确定性身份闭合 | 通过（同 Chunk、上下文交集、显式同位/命名/连续共指、逐字 span 回放；斗罗新增 1 edge，8→7 profiles，129 facts 保持；跨 Chunk、问句、无显式关系与 global unique name 不建边） |
 | Post-link canonical fact groups | 通过（`document-character-fact-groups-v1`；斗罗 129 raw facts→109 groups、10 multi-member groups、20 collapsed members；129 fact/130 occurrence bindings 全保留，同 span 不同 attribute 不合并） |
-| Appearance Scope / Variant | 部分通过（070/071/071.5/072 确定性 baseline 已完成；斗罗 dev24 为 7 人物生成 14 个连续 StateSegments、37 relations 与 103 propositions，109/109 facts 唯一 observed binding；active applicability 与完整 render variant 留给 074） |
-| 状态内语义关系与 true conflict | 部分通过（relation graph/proposition baseline 已通过：7 equivalent、5 compatible、25 unclassified；只合并 equivalent。active applicability 与有效期重叠建立前不生成 true conflict） |
-| Label/Review 投影 | 待实现（大师为 title/stable；历史 resolved review 保留 audit，只有真未决进入 actionable queue） |
-| Render-ready Profile Compiler | 待实现（按明确状态选择器编译；不得混合唐三生命阶段或素云涛形态；输出双层 provenance） |
+| Appearance Scope / Variant | 通过（070～074：14 个连续 StateSegments、37 relations、103 propositions、109/109 唯一 observations；dev26 区分 active/provisional，并以双 active overlap 限制 true conflict） |
+| 状态内语义关系与 true conflict | 部分通过（既有 relation/proposition baseline 和 compiler active-overlap 消费门槛）；生成器仍只产 equivalent/compatible/unclassified，R02 待修否定包含并补全真实冲突端到端生成/消费 |
+| Label/Review 投影 | 通过（`document-character-label-review-projection-v1`；大师为 title/stable 且保留 source role=name；17 labels 全量投影，9 reviews 全量 audit，8 resolved/audit-only、1 actionable） |
+| Render-ready Profile Compiler | 通过（四个显式 selector 4/4 compiled；7 active/40 provisional bindings、45 traits、4 transitions、0 conflicts、17 warnings；未来/跨状态隔离和双层 provenance 已验证） |
 | Stage 6 人工质量 Gate | 未通过（尚无冻结人工标注集、正式阈值和可复现 evaluator；专家主观评分不构成 Gate） |
 
 ## 证据索引
+
+- `.project-to-act/tasks/WEB-READY-REPAIR-PLAN-076/evidence/`（仅规划验收，不是运行时或模型质量 Gate）
 
 - `.project-to-act/tasks/PIPELINE-V3-SIMPLIFIED-039/evidence/`
 - `.project-to-act/tasks/PROJECT-V3-CLEAN-START-040/evidence/`
@@ -92,6 +108,8 @@
 - `.project-to-act/tasks/APPEARANCE-STATE-TRANSITIONS-071/evidence/`
 - `.project-to-act/tasks/APPEARANCE-STATE-SEGMENTS-0715/evidence/`
 - `.project-to-act/tasks/APPEARANCE-SEMANTIC-RELATIONS-072/evidence/`
+- `.project-to-act/tasks/LABEL-REVIEW-PROJECTION-073/evidence/`
+- `.project-to-act/tasks/RENDER-PROFILE-COMPILER-074/evidence/`
 
 ## 说明
 
@@ -99,6 +117,8 @@
 
 ## 验收记录
 
+- 2026-09-04：`RENDER-PROFILE-COMPILER-074` 验收通过，并作为 Stage 5 退出 Gate 证据。新增 dev26/Schema 3.26 的 requests/output 契约、唯一 StateSegment 选择、position cutoff、active/provisional applicability、双 active true-conflict gate 与 proposition→canonical fact→raw occurrence provenance。斗罗唐三前世/儿童和素云涛普通/独狼附体四卡 4/4 compiled；7 active、40 provisional，2 stable/33 variant/10 scene traits，4 transitions、0 conflicts、17 聚合 warnings，Provider 0。重复产物 SHA-256 为 `B0EF3F6F47716F2CE2DBD133EDA5FF8E5738E0E4598BE9B93BBB38DD01629A3B`。191 tests、13 subtests、compileall、Draft 2020-12 requests/真实实例、diff 与两套治理校验通过。Stage 6 仍须冻结人工集和阈值，不以本 Gate 替代模型质量评测。
+- 2026-09-04：`LABEL-REVIEW-PROJECTION-073` 验收通过。新增 dev25/Schema 3.25 的 `document-character-label-review-projection-v1`、稳定 label ID、正交 kind/stability、完整 audit 和精简 actionable queue；Registry 来源字段和历史证据不改写。斗罗 7 人物/17 labels 中“大师”为 `title + stable`、唐三为 `proper_name + stable`；9 条 review 全量保留，8 resolved/audit-only，唯一 actionable 为“看门的青年”。重复产物 SHA-256 为 `CABCB611F95144C5E29DFC272A3732FD1A6AD64D0D969DD3EBA89F4BF89C459D`，Provider 0。180 tests、13 subtests、compileall、Draft 2020-12 真实实例、diff 与两套治理校验通过。本 Gate 不包含 074 active applicability/render compiler 或 075 人工模型质量。
 - 2026-09-04：`APPEARANCE-SEMANTIC-RELATIONS-072` 确定性 baseline 验收通过。新增 dev24/Schema 3.24 的 `document-character-appearance-states-v5`、`same-segment-exact-attribute-relations-v1` 与 equivalent proposition 投影；关系先于归一生成，compatible/unclassified 不合并，raw facts 不改写。斗罗 109 observations 得到 37 relations（7 equivalent、5 compatible、25 unclassified）和 103 propositions；17/17 保存输出恢复、新 Provider 0，重复产物 SHA-256 为 `83D1A87EDFE83A8591122AEC5754861AFEE26D5531D0506C2639B74577071CDB`。171 tests、13 subtests、compileall、Draft 2020-12 真实实例、diff 与两套治理校验通过。本 Gate 不包含 active applicability、完整 true-conflict 判定、074 编译或 075 人工模型质量。
 - 2026-09-04：`APPEARANCE-STATE-SEGMENTS-0715` 验收通过。新增 dev23/Schema 3.23 的 `document-character-appearance-states-v4`、稳定 transition ID 与纯代码 StateSegment 构建器；区间按 document/transition/scene-expiry boundary 连续覆盖人物，life 重置 form/scene，fact 只保存唯一 observation ref。斗罗 17/17 保存输出恢复、新 Provider 0，7 人物/14 segments、6/6 transition IDs、109/109 observed facts，重复产物 SHA-256 一致。165 tests、13 subtests、compileall、Draft 2020-12 真实实例、diff 与两套治理校验通过。本 Gate 不包含 active applicability、072 语义关系、074 编译或 075 人工模型质量。
 - 2026-09-02：`APPEARANCE-STATE-TRANSITIONS-071` 当前范围验收通过。dev22 直接复用原 M1 17 Chunk，模型 payload 仅 characters/name/aliases/text；17/17 得到 10 events，代码接受 6 个单段连续 Grounded transitions、隔离 4 个改写状态。唐三 life、素云涛独狼附体进入/退出和老杰克换衣 scene 均闭合；状态物化 life 28/form 7/scene 1。life 重置 form/scene，scene 在段落行或章节边界关闭，蓝银草等非身体状态不进入 form。缓存恢复重新 Grounding 17/17、新 Provider 调用 0；160 tests、13 subtests、compileall、Draft 2020-12 Schema/两实例、diff 与治理校验通过。本 Gate 不替代 075 人工质量评测。

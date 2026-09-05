@@ -1,0 +1,33 @@
+{
+  "id": "E-20260905-SEMANTICS-LIVE-081",
+  "artifacts": [
+    {
+      "path": "docs/42-semantics-live-validation.md",
+      "sha256": "243c918e08d5be4fd670fd468c8a5e9b8e808199b9aa001f24da2d0f330eca36"
+    },
+    {
+      "path": "src/novel_character_generator/automatic_semantics.py",
+      "sha256": "a7c061f7ed0051d1a647e8e2a4227ef2e3901b2489122eb2955c9dd07767cdfb"
+    },
+    {
+      "path": "tests/test_automatic_semantics.py",
+      "sha256": "9c52a6495e76f09ab0a0adf2fe1838c83483e7fd52ee03d0988d43e7bf4dd3ec"
+    },
+    {
+      "path": "runs/semantic-dev30/douluo-live/live-provider-traces.jsonl",
+      "sha256": "5cf304d80d3ab26d6ccc1365ba4bcbb300de1240c612a89d197ad72bb8e0fc58"
+    },
+    {
+      "path": "runs/semantic-dev30/douluo-live-replay-dev31/automatic-semantics.json",
+      "sha256": "01814765ae81b85f7f1c64aa29ab98fcc52b65ffc9282e3d9035981e75405484"
+    },
+    {
+      "path": "runs/semantic-dev30/douluo-live-replay-dev31/verification-report.json",
+      "sha256": "8dc6e5fff224bff9b4e4c5b9702c4b28702a8582320845844e6254aedc1cbc82"
+    },
+    {
+      "path": "runs/semantic-dev30/douluo-live-replay-dev31/verified-snapshots.json",
+      "sha256": "6ca66cb6940e272da24a4cb5c458602321cc9fce4c8deae808eb6204683ffe70"
+    }
+  ]
+}

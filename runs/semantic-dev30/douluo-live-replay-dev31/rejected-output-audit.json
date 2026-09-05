@@ -1,0 +1,21 @@
+[
+  {
+    "task_id": "ad38d081f6d0ab2b6483e9bd1d6292507f3e0a30c73ffe2ce73ab74f79360316",
+    "item_index": 1,
+    "code": "event_grounding_rejected",
+    "message": "target fact occurrence is missing or ambiguous",
+    "model_item": {
+      "character": "老杰克",
+      "kind": "wear",
+      "facts": [
+        {
+          "fact_quote": "今天的老杰克特意穿了一身新衣服",
+          "category": "clothing",
+          "attribute": "穿着",
+          "value": "新衣服"
+        }
+      ],
+      "evidence": "今天的老杰克特意穿了一身新衣服，看上去更添几分矍铄。"
+    }
+  }
+]

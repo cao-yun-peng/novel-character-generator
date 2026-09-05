@@ -1,0 +1,6 @@
+{
+  "task_id": "6e7d89fa6a2bfbde4c1720f976937741518778ac80a10bf1f53ac181f73afa21",
+  "payload_hash": "f994d1451e8665b75d79d207940fa6f30cf00c7494e7d7016816c75027e4e773",
+  "request_fingerprint": "30755eb006e4af40c8d84f5e9e7c3b7f6b4230d654803a34d037d2df1b2474d2",
+  "model_output": "{\"relation\": \"compatible\", \"evidence_quotes\": [\"唐三瘦弱的身体\", \"唐三幼小的身体和手中的铁锤并不成比例\"]}"
+}

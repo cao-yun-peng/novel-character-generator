@@ -482,7 +482,7 @@ exact 归属和 N3 仲裁结束后，每个仍有未消费 evidence 的 describe
 
 ### 5.7 当前运行时映射
 
-Python `0.1.0.dev24` 按上述契约提供以下边界：
+Python `0.1.0.dev26` 按上述契约提供以下边界：
 
 - `build_m2_attribution_envelopes`：从一个 N2 `GroundingResult` 为每个 individual exact 生成一个 `M2OrchestrationEnvelope`，并把全部 individual describe 展开为代码侧 occurrence binding；collective 与 null mention 不进入输入；
 - `M2AttributionOrchestrator`：只把 `model_input`、M2 system instruction 和 `M2_ATTRIBUTION_RESPONSE_SCHEMA` 交给 Provider，解析最小事实输出后执行 target 优先、describe 唯一 occurrence 的安全绑定；失败项只进入代码侧 issues；
@@ -503,6 +503,8 @@ Python `0.1.0.dev24` 按上述契约提供以下边界：
 - `prepare_document_appearance_transitions`：不调用模型；直接验证并复用原 M1 Manifest 的重叠 Chunk，以 `chunk_id` 连接该 Chunk 下已绑定到最终人物簇的 local/promoted nodes，生成 Chunk 人物表；
 - `run_document_appearance_transitions`：模型每个原 Chunk 只读取 `name + aliases + text`，返回最小 transition 语义与逐字 evidence；`chunk_id/hash/span` 留在代码信封。v3 代码门槛要求单段连续 evidence、同一 evidence 内逐字且有序的 before/after，排除没有身体变化的武魂/外物状态；生命阶段变化重置 form/scene，scene 在段落行或章节边界关闭，再执行绝对 span/character_id 回填、重叠 Chunk 去重、change 推导、稳定 transition ID、canonical fact state 投影和 StateSegment 物化；
 - `build_appearance_semantic_projection`：不调用模型；只在同人物、同 StateSegment、同 exact attribute 内生成稳定 pair relation，以完全相等和安全子串规则分类，并只从 equivalent 连通分量派生 normalized propositions；
+- `run_document_label_review_projection`：不调用模型；从最终 identity registry 派生正交 label kind/stability，完整保留历史 review，并只把最终图未关闭的问题投影到 actionable queue；
+- `run_render_ready_character_profiles`：不调用模型；重新验证 fact/state/label 三层来源，以人物、life/form/scene 和 document position 唯一选择 StateSegment，区分 active/provisional applicability，再编译结构化 traits、相关 transitions、scope 内冲突、warnings 与 canonical/raw provenance；
 - `DeepSeekProvider`：读取每个阶段请求自带的 schema name 和 response schema，M1/M2 共用同一套 HTTPS、重试、错误分类与脱敏 trace 实现。
 
 ### 5.8 文档级事实汇总
@@ -754,6 +756,22 @@ M1/N2/M2/N3 的职责和模型边界在当前主线冻结；“冻结”不等�
 
 072 已先在 `character_id + state_segment_id + exact attribute` 内建立保留原值和方向的 relation graph，再由 `equivalent` 连通分量派生 normalized proposition；不得先覆盖原值再反推关系。确定性规则只把完全相同值判为 `equivalent`、长度至少 2 的安全子串判为有方向的 `compatible`，其他 pair 保守为 `unclassified`。斗罗 dev24 的 109 个 observations 形成 37 条关系（7 equivalent、5 compatible、25 unclassified）与 103 个 propositions，新增语义模型调用为 0。没有 active applicability 时不会生成 `true_conflict`。Registry 的 `appearance_fact_refs` 继续是身份到事实的归属边，ProfileView/render profile 只作为可重建视图。`label_kind` 与 `label_stability` 在 073 保持正交；当前 `character_id` 不可在缺少稳定 subject identity 或迁移协议时直接作为永久外部视觉资产键。
 
+### 7.10 Label 与 Review 派生视图
+
+`document-character-label-review-projection-v1` 只读取最终 `document-character-registry-v1` 和对应原文 hash，不修改 Registry。每个来源标签保留 `label_quote/source_label_role/source_globally_unique`，新增正交 `label_kind` 与 `label_stability`。确定性首版支持 proper name、alias、title、relationship label、descriptive label 与 unknown；稳定性独立为 stable、contextual、temporary 或 unknown。Preferred label 按语义类型、稳定性和来源 canonical label 的固定顺序选择。
+
+Review 投影不删除旧项。每个 Registry review 一对一进入 `audit_items`，原 `status=pending` 保存为 `source_status`；最终人物簇相同则标 `resolved_same_character`，最终 cannot-link 全覆盖则标 `resolved_different_characters`，仍在 `unresolved_bindings` 或无法证明关闭时进入 `actionable_review_items`。精简 actionable 队列只保存工作所需引用，完整 Grounding 证据仍在对应 audit item。
+
+斗罗 dev25 的 7 个人物和 17 个标签得到 3 个 title，其中来源仍为 `name` 的“大师”被安全投影为 `title + stable`。9 个历史 review 全部保留；8 个已由最终同人簇关闭为 `resolved/audit_only`，1 个“看门的青年”保持 actionable。该步骤模型调用为 0。
+
+### 7.11 Render-ready Profile Compiler
+
+`render-ready-character-profiles-v1` 读取完整 fact groups、appearance states、Label/Review projection 与 `render-profile-compile-requests-v1`。每个请求显式给出 `character_id`、life/form/scene 条件和 `document_position`；只有唯一命中一个半开 StateSegment 才编译 traits。缺少位置、多个候选或无匹配均输出空 traits 和机器可读 warning，不跨时期或形态拼接。
+
+Applicability 与 observation 分层。事实必须先于选择位置出现；stable 沿连续同 life/form 路径生效，persistent-until-changed 还受同 attribute appearance transition 截止，momentary 只在 fact span 内生效。scene 的章节上界和 unknown persistence 都只能产生 provisional，输出同时维护 `active_fact_ids` 与 `provisional_fact_ids`。Trait 仍引用 072 proposition 和所有参与的 canonical fact；provenance 逐 fact 保存 raw hash、document span 与全部 source occurrence。
+
+`unresolved_conflicts` 只接受两侧均为确定 active 的 `true_conflict`。一侧 provisional 的 true conflict 降为 warning；active/provisional 的 `unclassified` 也只保留 warning，不被强制解释。斗罗 dev26 的四个 selector 均完成编译，共 7 active、40 provisional fact bindings，0 unresolved conflicts、17 聚合 warnings，Provider 调用为 0。该结果是结构化编译 Gate，不等于自然语言 Prompt、视觉一致性或人工质量 Gate。
+
 ## 8. V3 完成门槛
 
 V3 设计完成不等于运行时完成。进入人物识别阶段前至少需要：
@@ -777,4 +795,10 @@ V3 设计完成不等于运行时完成。进入人物识别阶段前至少需�
 17. Post-link canonical fact groups 必须使用包含 `attribute` 的完整结构键，保留全部 raw fact hash 与 occurrence binding，并且不得改写 raw profiles；
 18. Grounded Transition 必须有稳定 ID；StateSegment 必须连续覆盖每个注册人物、由确定性输入重建，并让每个 canonical fact 恰好出现于一个 `observed_fact_ids`；
 19. 072 必须先形成 segment-aware relation graph，再只从 equivalent 连通分量派生 normalized proposition；compatible/unclassified 不得触发合并，observation binding 与 active applicability 必须分层；
-20. 真实模型身份精度需通过人工标注数据集评测，不能由“批处理完成”替代。
+20. Label/Review 投影必须保留来源标签语义和全部历史 review；`label_kind` 与 `label_stability` 正交，actionable 队列只能由最终人物图和 unresolved 状态确定；
+21. Render compiler 必须以 character/state/document position 唯一选择 StateSegment，区分 active/provisional applicability，禁止未来 observation 和跨 life/form 混合，并把每个 trait 回溯到 canonical fact 与 raw occurrence；
+22. 真实模型身份精度需通过人工标注数据集评测，不能由“批处理完成”替代。
+
+## dev29 派生快照接口
+
+R03/R04 的 `CharacterSnapshot`、有效期证据事件、旧 render adapter 和查询边界见 [40 契约](40-character-snapshot-and-applicability.md)。这是代码侧派生视图；M1/M2/M3 模型 payload 不变，自动场景/换装语义发现仍待实施。

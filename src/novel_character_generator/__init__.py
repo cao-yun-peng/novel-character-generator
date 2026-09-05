@@ -30,6 +30,21 @@ from .identity_rescue import (
     ground_cluster_rescue_output,
 )
 from .identity_rescue_batch import prepare_identity_rescue, run_identity_rescue
+from .label_review_projection import (
+    DOCUMENT_LABEL_REVIEW_PROJECTION_VERSION,
+    LABEL_PROJECTION_POLICY_VERSION,
+    REVIEW_PROJECTION_POLICY_VERSION,
+    build_document_label_review_projection,
+    run_document_label_review_projection,
+)
+from .render_profile_compiler import (
+    FACT_APPLICABILITY_POLICY_VERSION,
+    RENDER_PROFILE_COMPILER_POLICY_VERSION,
+    RENDER_PROFILE_REQUESTS_VERSION,
+    RENDER_READY_CHARACTER_PROFILES_VERSION,
+    build_render_ready_character_profiles,
+    run_render_ready_character_profiles,
+)
 from .document_evidence import build_document_character_evidence, run_document_evidence_aggregation
 from .document_profiles import build_document_character_profiles, run_document_profile_assembly
 from .fact_groups import (
@@ -98,6 +113,8 @@ __all__ = [
     "DeepSeekConfig",
     "DeepSeekProvider",
     "DeepSeekUsage",
+    "DOCUMENT_LABEL_REVIEW_PROJECTION_VERSION",
+    "FACT_APPLICABILITY_POLICY_VERSION",
     "GroundingResult",
     "DocumentLocalCharacterNodes",
     "GroundedIdentityDecision",
@@ -105,6 +122,7 @@ __all__ = [
     "IdentityModelOutput",
     "IdentityOrchestrator",
     "IdentityPreparation",
+    "LABEL_PROJECTION_POLICY_VERSION",
     "ClusterIdentityRescueOrchestrator",
     "ClusterRescueEnvelope",
     "ClusterRescueModelOutput",
@@ -121,6 +139,10 @@ __all__ = [
     "N3ChunkResolutionResult",
     "N3DescribePoolResult",
     "N3TargetAppearancePacket",
+    "REVIEW_PROJECTION_POLICY_VERSION",
+    "RENDER_PROFILE_COMPILER_POLICY_VERSION",
+    "RENDER_PROFILE_REQUESTS_VERSION",
+    "RENDER_READY_CHARACTER_PROFILES_VERSION",
     "SourceSpan",
     "APPEARANCE_PROPOSITION_POLICY_VERSION",
     "APPEARANCE_RELATION_POLICY_VERSION",
@@ -134,6 +156,8 @@ __all__ = [
     "build_document_character_profiles",
     "build_document_character_fact_groups",
     "build_document_character_appearance_scopes",
+    "build_document_label_review_projection",
+    "build_render_ready_character_profiles",
     "build_appearance_semantic_projection",
     "build_character_state_segments",
     "build_appearance_transition_chunks",
@@ -161,6 +185,8 @@ __all__ = [
     "run_document_profile_assembly",
     "run_document_fact_group_assembly",
     "run_document_appearance_scope_assembly",
+    "run_document_label_review_projection",
+    "run_render_ready_character_profiles",
     "run_document_appearance_transitions",
     "run_document_identity",
     "run_local_identity_closure_replay",
@@ -173,3 +199,9 @@ __all__ = [
     "transition_effective_position",
     "parse_document_chapters",
 ]
+
+from .character_snapshot import build_character_snapshot, run_character_snapshot, snapshot_to_render_profile
+__all__ += ["build_character_snapshot", "run_character_snapshot", "snapshot_to_render_profile"]
+
+from .automatic_semantics import run_automatic_semantics
+__all__ += ["run_automatic_semantics"]

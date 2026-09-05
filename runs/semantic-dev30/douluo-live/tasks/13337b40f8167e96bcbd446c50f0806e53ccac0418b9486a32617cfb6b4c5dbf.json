@@ -1,0 +1,6 @@
+{
+  "task_id": "13337b40f8167e96bcbd446c50f0806e53ccac0418b9486a32617cfb6b4c5dbf",
+  "payload_hash": "3723aa575cb2945eade17ae8ce4f93779215a5222ee184de644599989e56bb97",
+  "request_fingerprint": "fdfda45b7f93988c4d4854bc524a94a6d235cbc2bc7ce397d8c5232d13806c41",
+  "model_output": "{\"relation\": \"incompatible\", \"evidence_quotes\": [\"他今年二十九岁\", \"再过几天，唐三就要六岁了\"]}"
+}

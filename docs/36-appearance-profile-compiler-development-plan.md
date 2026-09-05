@@ -50,6 +50,12 @@ document-character-appearance-states-v5
   - corrected labels / actionable review projection
               |
               v
+document-character-label-review-projection-v1
+  - label_kind / label_stability
+  - complete audit_items
+  - current actionable_review_items
+              |
+              v
 render-ready-character-profiles-v1
   - 按时期、形态、场景选择
   - 结构化人物卡
@@ -157,7 +163,18 @@ character_id
 
 normalized proposition 只合并 `equivalent` 连通分量，并选择最早 observation 作为可重建代表；`compatible` 与 `unclassified` 事实各自保持 singleton。原始 `category/attribute/value`、canonical fact 与 raw provenance 均不被覆盖。当前确定性规则不会在缺少 active applicability 时生成 `true_conflict`。
 
-### 4.3 `render-ready-character-profiles-v1`
+### 4.3 `document-character-label-review-projection-v1`
+
+Label/Review 层是从最终 identity registry 确定性生成的可丢弃视图，不回写 Registry。标签保留 `label_quote`、`source_label_role` 和 `source_globally_unique`，再增加两个正交维度：
+
+- `label_kind`：`proper_name / alias / title / relationship_label / descriptive_label / unknown`；
+- `label_stability`：`stable / contextual / temporary / unknown`。
+
+首版只使用版本化确定性映射和保守称号/关系称谓后缀。`name` 通常成为 `proper_name + stable`，但“大师”这类明确称号会成为 `title + stable`；来源角色保持不变。上下文描述默认是 `descriptive_label + contextual`，不会因为上游 `exact` 就升级为姓名。
+
+`audit_items` 一对一保留 Registry 的全部历史 review、原 `source_status`、subject ref、candidate、issue 与 grounded evidence，并根据最终人物簇和 cannot-link 增加 `current_status/disposition/resolution_reason`。`actionable_review_items` 是不复制证据的精简工作队列：只引用仍在 unresolved，或无法由最终图证明已经关闭的问题。
+
+### 4.4 `render-ready-character-profiles-v1`
 
 编译器输入必须包含人物和状态选择器：
 
@@ -172,6 +189,19 @@ normalized proposition 只合并 `equivalent` 连通分量，并选择最早 obs
   }
 }
 ```
+
+dev26 要求成功编译时 `document_position` 非空，并与 life/form/scene 条件共同唯一命中一个半开 StateSegment。缺位置或命中多个 segment 时返回 `selector_required`，条件矛盾时返回 `no_matching_state`；两类结果都保留 identity labels 和候选 segment 引用，但 traits 必须为空，禁止跨状态拼卡。
+
+Applicability 首版按原文观察位置、StateSegment 路径、persistence、章节和 appearance transition 确定性派生：
+
+- 所有事实在 `document_fact_span.start > document_position` 时不可用，避免未来 observation 泄漏；
+- `stable` 只沿连续且 life/form 不变的 segment 路径确定 active；
+- `persistent_until_changed` 还会被同 attribute appearance transition 截止；
+- `momentary` 只有 document position 落在原文 fact span 时 active；
+- `scene` 在原文位置 active，同章节且 life/form/scene 未变时只能 provisional，因为章节只是场景的保守上界；
+- `unknown` 在原文位置 active，沿相同 life/form 路径延续时只能 provisional，并生成 warning。
+
+Main trait 数组允许携带 provisional 项，但每项必须有 `applicability_status`；确定与不确定的 fact ID 另以 `active_fact_ids/provisional_fact_ids` 分开。这样下游既不会丢失有证据的候选外貌，也不会把未知持续性静默当成事实。
 
 输出保持结构化，不在第一版直接生成自然语言 Prompt：
 
@@ -262,18 +292,18 @@ normalized proposition 只合并 `equivalent` 连通分量，并选择最早 obs
 
 ### 073：Label 与 Review 投影
 
-将 mention 的 `exact/describe` 与人物标签语义解耦。建议使用正交字段 `label_kind` 与 `label_stability`，使“大师”得到 `title + stable`，而不是 `name`。
+已实现纯代码派生视图，将 mention 的 `exact/describe` 与人物标签语义解耦。正交字段 `label_kind` 与 `label_stability` 使“大师”得到 `title + stable`，同时保留其 Registry 来源 `source_label_role=name`。
 
 review 同时输出两个视图：
 
-- `audit_items`：完整保存历史 review 和处理依据；
-- `actionable_review_items`：只保留最终图仍未解决且需要人工选择的问题。
+- `audit_items`：完整保存历史 review、原状态、Grounding 证据和最终图处理依据；
+- `actionable_review_items`：只保留最终图仍未解决且需要人工选择的问题，不重复保存证据。
 
-验收样例：8 个已被最终人物簇消解的 `partial_identity_evidence_grounding` 降为 `resolved/audit_only`；“看门的青年”仍为 actionable。
+斗罗 dev25 验收结果：7 人物、17 标签中得到 5 proper name、1 alias、3 title、1 relationship label、7 descriptive labels；8 stable、9 contextual。9 个历史 review 全部保留，8 个已被最终人物簇消解的 `partial_identity_evidence_grounding` 降为 `resolved/audit_only`；“看门的青年”仍是唯一 actionable。Provider 调用为 0。
 
 ### 074：Render-ready Profile Compiler
 
-实现按 `character_id + state selector` 的确定性编译器。选择器不足时不混合唐三两个生命阶段或素云涛两个形态。
+已实现按 `character_id + state selector` 的确定性编译器。输入 dev18 fact groups、dev24 appearance states 与 dev25 Label/Review projection；三层来源先执行文档身份、事实/状态重建和引用一致性校验，再生成可丢弃视图。选择器不足时不混合唐三两个生命阶段或素云涛两个形态。
 
 验收样例：
 
@@ -281,6 +311,8 @@ review 同时输出两个视图：
 - 输出不含无证据性格、性别、服装补全或视觉风格推断；
 - 每个输出字段都能回溯到 canonical fact 和 raw evidence；
 - 编译结果稳定、可缓存、相同输入重跑字节级一致。
+
+斗罗 dev26 使用四个显式位置分别编译唐三前世、唐三儿童、素云涛普通与独狼附体：4/4 compiled，7 个确定 active fact bindings、40 个 provisional bindings、2 stable traits、33 variant traits、10 scene overrides、4 条相关 transitions、0 unresolved conflicts 和 17 个聚合 warnings。四张卡均带 canonical fact 到 raw occurrence 的完整 provenance；重复输出 SHA-256 一致，新增 Provider 调用为 0。大量 provisional 是上游 64 个 unknown persistence 的诚实投影，不代表已完成 075 人工准确率 Gate。
 
 ### 075：上游人工质量评测与 Stage 6 Gate
 

@@ -1,0 +1,1156 @@
+[
+  {
+    "task_id": "5c643269e579c18730440f29408d54bb26d72c53303a321e95545c7d9b2f6bf4",
+    "facts": {
+      "character": "素云涛",
+      "left": {
+        "fact": {
+          "fact_quote": "左胸上，有一枚雕刻着长剑的徽章",
+          "category": "accessory",
+          "attribute": "徽章",
+          "value": "雕刻着长剑的徽章"
+        },
+        "context": [
+          "左胸上，有一枚雕刻着长剑的徽章，徽章上一共是三柄长剑交错。"
+        ]
+      },
+      "right": {
+        "fact": {
+          "fact_quote": "左胸上，有一枚雕刻着长剑的徽章，徽章上一共是三柄长剑交错",
+          "category": "accessory",
+          "attribute": "徽章",
+          "value": "雕刻着长剑的三柄长剑交错徽章"
+        },
+        "context": [
+          "左胸上，有一枚雕刻着长剑的徽章，徽章上一共是三柄长剑交错。"
+        ]
+      }
+    },
+    "relation": "equivalent",
+    "evidence_quotes": [
+      "左胸上，有一枚雕刻着长剑的徽章",
+      "左胸上，有一枚雕刻着长剑的徽章，徽章上一共是三柄长剑交错"
+    ]
+  },
+  {
+    "task_id": "6f497a5e3c98fb3fcc76cf1f7029460ca80f93cc4e95d4782c6d5ca7eed44666",
+    "facts": {
+      "character": "唐昊",
+      "left": {
+        "fact": {
+          "fact_quote": "苍老",
+          "category": "age",
+          "attribute": "年龄",
+          "value": "苍老"
+        },
+        "context": [
+          "高大苍老的男人"
+        ]
+      },
+      "right": {
+        "fact": {
+          "fact_quote": "大约有接近五十岁的样子",
+          "category": "age",
+          "attribute": "年龄",
+          "value": "接近五十岁"
+        },
+        "context": [
+          "那是一名中年男子，看上去大约有接近五十岁的样子，但身材却非常高大魁梧"
+        ]
+      }
+    },
+    "relation": "compatible",
+    "evidence_quotes": [
+      "苍老",
+      "大约有接近五十岁的样子"
+    ]
+  },
+  {
+    "task_id": "64a5d2245bb8a423c19a9e4a2b3dfda3760f49b677d5e6dfc92d8fa8866c48f2",
+    "facts": {
+      "character": "唐昊",
+      "left": {
+        "fact": {
+          "fact_quote": "高大",
+          "category": "body",
+          "attribute": "身材",
+          "value": "高大"
+        },
+        "context": [
+          "高大苍老的男人"
+        ]
+      },
+      "right": {
+        "fact": {
+          "fact_quote": "身材却非常高大魁梧",
+          "category": "body",
+          "attribute": "身材",
+          "value": "高大魁梧"
+        },
+        "context": [
+          "那是一名中年男子，看上去大约有接近五十岁的样子，但身材却非常高大魁梧"
+        ]
+      }
+    },
+    "relation": "compatible",
+    "evidence_quotes": [
+      "高大苍老的男人",
+      "身材却非常高大魁梧"
+    ]
+  },
+  {
+    "task_id": "8d82cfa11954987a0e3085696e7b62a332ede1ee28ee37e475b5875b0aa4da84",
+    "facts": {
+      "character": "唐昊",
+      "left": {
+        "fact": {
+          "fact_quote": "高大的身影",
+          "category": "body",
+          "attribute": "身材",
+          "value": "高大"
+        },
+        "context": [
+          "一个高大的身影迈着有些踉跄的步伐走了出来"
+        ]
+      },
+      "right": {
+        "fact": {
+          "fact_quote": "身材却非常高大魁梧",
+          "category": "body",
+          "attribute": "身材",
+          "value": "高大魁梧"
+        },
+        "context": [
+          "那是一名中年男子，看上去大约有接近五十岁的样子，但身材却非常高大魁梧"
+        ]
+      }
+    },
+    "relation": "equivalent",
+    "evidence_quotes": [
+      "高大的身影",
+      "身材却非常高大魁梧"
+    ]
+  },
+  {
+    "task_id": "dcff71158bf3bb8be67db99b5f6b3c47ea88eddcb6d121e485238fe2828640ef",
+    "facts": {
+      "character": "唐昊",
+      "left": {
+        "fact": {
+          "fact_quote": "高大的身影",
+          "category": "body",
+          "attribute": "身材",
+          "value": "高大"
+        },
+        "context": [
+          "高大的身影"
+        ]
+      },
+      "right": {
+        "fact": {
+          "fact_quote": "身材却非常高大魁梧",
+          "category": "body",
+          "attribute": "身材",
+          "value": "高大魁梧"
+        },
+        "context": [
+          "那是一名中年男子，看上去大约有接近五十岁的样子，但身材却非常高大魁梧"
+        ]
+      }
+    },
+    "relation": "compatible",
+    "evidence_quotes": [
+      "高大的身影",
+      "身材却非常高大魁梧"
+    ]
+  },
+  {
+    "task_id": "c0c7f23d8fd323cf89d61eb6b4245d3b395a8fa7e901446cb7612c2da02e0884",
+    "facts": {
+      "character": "唐昊",
+      "left": {
+        "fact": {
+          "fact_quote": "他的双眼通红",
+          "category": "face",
+          "attribute": "眼睛",
+          "value": "通红"
+        },
+        "context": [
+          "他的双眼通红"
+        ]
+      },
+      "right": {
+        "fact": {
+          "fact_quote": "在他那的眼睛中，不知什么时候已经多了一层朦胧的水意",
+          "category": "face",
+          "attribute": "眼睛",
+          "value": "多了一层朦胧的水意"
+        },
+        "context": [
+          "在他那的眼睛中，不知什么时候已经多了一层朦胧的水意"
+        ]
+      }
+    },
+    "relation": "compatible",
+    "evidence_quotes": [
+      "他的双眼通红",
+      "在他那的眼睛中，不知什么时候已经多了一层朦胧的水意"
+    ]
+  },
+  {
+    "task_id": "178afec86f6a642630c946f7823cddeca47bcb9e0255af08c40ef279e9f13554",
+    "facts": {
+      "character": "老杰克",
+      "left": {
+        "fact": {
+          "fact_quote": "不就是个老头儿么",
+          "category": "age",
+          "attribute": "年龄",
+          "value": "老头儿"
+        },
+        "context": [
+          "不就是个老头儿么"
+        ]
+      },
+      "right": {
+        "fact": {
+          "fact_quote": "看上去六十多岁的样子",
+          "category": "age",
+          "attribute": "年龄",
+          "value": "六十多岁"
+        },
+        "context": [
+          "看上去六十多岁的样子，身材瘦长，但精神矍铄，衣服干净整洁，头发也梳理的一丝不苟，和唐昊相比，简直就是两个极端"
+        ]
+      }
+    },
+    "relation": "compatible",
+    "evidence_quotes": [
+      "不就是个老头儿么",
+      "看上去六十多岁的样子"
+    ]
+  },
+  {
+    "task_id": "051a20252b0d05301fc64431266b6a9cf2f18e622adb12d9bcb75c9000b89b01",
+    "facts": {
+      "character": "老杰克",
+      "left": {
+        "fact": {
+          "fact_quote": "不就是个老头儿么",
+          "category": "age",
+          "attribute": "年龄",
+          "value": "老头儿"
+        },
+        "context": [
+          "不就是个老头儿么"
+        ]
+      },
+      "right": {
+        "fact": {
+          "fact_quote": "他年纪已经不小了",
+          "category": "age",
+          "attribute": "年龄",
+          "value": "年纪不小"
+        },
+        "context": [
+          "他年纪已经不小了"
+        ]
+      }
+    },
+    "relation": "equivalent",
+    "evidence_quotes": [
+      "不就是个老头儿么",
+      "他年纪已经不小了"
+    ]
+  },
+  {
+    "task_id": "e3d3c3a5ced22733a2a44927bc5eacb1b7bce30d5daf57a42e3c540205debb25",
+    "facts": {
+      "character": "老杰克",
+      "left": {
+        "fact": {
+          "fact_quote": "看上去六十多岁的样子",
+          "category": "age",
+          "attribute": "年龄",
+          "value": "六十多岁"
+        },
+        "context": [
+          "看上去六十多岁的样子，身材瘦长，但精神矍铄，衣服干净整洁，头发也梳理的一丝不苟，和唐昊相比，简直就是两个极端"
+        ]
+      },
+      "right": {
+        "fact": {
+          "fact_quote": "他年纪已经不小了",
+          "category": "age",
+          "attribute": "年龄",
+          "value": "年纪不小"
+        },
+        "context": [
+          "他年纪已经不小了"
+        ]
+      }
+    },
+    "relation": "compatible",
+    "evidence_quotes": [
+      "看上去六十多岁的样子",
+      "他年纪已经不小了"
+    ]
+  },
+  {
+    "task_id": "5f216c5009de7e1ed1c40e5bb02236321f24bc52e5297efc140a7e6b0be75742",
+    "facts": {
+      "character": "老杰克",
+      "left": {
+        "fact": {
+          "fact_quote": "精神矍铄",
+          "category": "appearance_state",
+          "attribute": "精神状态",
+          "value": "矍铄"
+        },
+        "context": [
+          "看上去六十多岁的样子，身材瘦长，但精神矍铄，衣服干净整洁，头发也梳理的一丝不苟，和唐昊相比，简直就是两个极端"
+        ]
+      },
+      "right": {
+        "fact": {
+          "fact_quote": "精神矍铄",
+          "category": "appearance_state",
+          "attribute": "精神状态",
+          "value": "精神矍铄"
+        },
+        "context": [
+          "看上去六十多岁的样子，身材瘦长，但精神矍铄，衣服干净整洁，头发也梳理的一丝不苟，和唐昊相比，简直就是两个极端"
+        ]
+      }
+    },
+    "relation": "equivalent",
+    "evidence_quotes": [
+      "看上去六十多岁的样子，身材瘦长，但精神矍铄，衣服干净整洁，头发也梳理的一丝不苟，和唐昊相比，简直就是两个极端",
+      "看上去六十多岁的样子，身材瘦长，但精神矍铄，衣服干净整洁，头发也梳理的一丝不苟，和唐昊相比，简直就是两个极端"
+    ]
+  },
+  {
+    "task_id": "17579262577d0399a6c027137e2414cf9c5327b8bf36e7c427be592cef79456f",
+    "facts": {
+      "character": "老杰克",
+      "left": {
+        "fact": {
+          "fact_quote": "杰克脸上失望的表情",
+          "category": "face",
+          "attribute": "表情",
+          "value": "失望"
+        },
+        "context": [
+          "杰克脸上失望的表情"
+        ]
+      },
+      "right": {
+        "fact": {
+          "fact_quote": "老杰克一脸紧张",
+          "category": "face",
+          "attribute": "表情",
+          "value": "紧张"
+        },
+        "context": [
+          "老杰克一脸紧张"
+        ]
+      }
+    },
+    "relation": "compatible",
+    "evidence_quotes": [
+      "杰克脸上失望的表情",
+      "老杰克一脸紧张"
+    ]
+  },
+  {
+    "task_id": "c09ba4f7a36877bfe988cf698cd67bce836453ba3afd998ddc7651487dafd64b",
+    "facts": {
+      "character": "唐三",
+      "left": {
+        "fact": {
+          "fact_quote": "唐三人虽然不大",
+          "category": "age",
+          "attribute": "年龄",
+          "value": "不大"
+        },
+        "context": [
+          "唐三人虽然不大"
+        ]
+      },
+      "right": {
+        "fact": {
+          "fact_quote": "他今年二十九岁",
+          "category": "age",
+          "attribute": "年龄",
+          "value": "二十九岁"
+        },
+        "context": [
+          "他今年二十九岁"
+        ]
+      }
+    },
+    "relation": "incompatible",
+    "evidence_quotes": [
+      "唐三人虽然不大",
+      "他今年二十九岁"
+    ]
+  },
+  {
+    "task_id": "0164d156bebd567a3b45ba007d1c2bd79c18ee2395fe22fa003a58c6d2ff8e6a",
+    "facts": {
+      "character": "唐三",
+      "left": {
+        "fact": {
+          "fact_quote": "唐三人虽然不大",
+          "category": "age",
+          "attribute": "年龄",
+          "value": "不大"
+        },
+        "context": [
+          "唐三人虽然不大"
+        ]
+      },
+      "right": {
+        "fact": {
+          "fact_quote": "那是个只有五、六岁的孩子",
+          "category": "age",
+          "attribute": "年龄",
+          "value": "五、六岁"
+        },
+        "context": [
+          "那是个只有五、六岁的孩子，显然，他经常承受太阳的温暖，皮肤呈现出健康的小麦色，黑色短发看上去很利落，一身衣服虽然朴素，到也干净。"
+        ]
+      }
+    },
+    "relation": "compatible",
+    "evidence_quotes": [
+      "唐三人虽然不大",
+      "那是个只有五、六岁的孩子"
+    ]
+  },
+  {
+    "task_id": "fb5d2b74171bbb75349bc6bc3b8474862b1130554336bcdb3324284ad3d96ad0",
+    "facts": {
+      "character": "唐三",
+      "left": {
+        "fact": {
+          "fact_quote": "唐三人虽然不大",
+          "category": "age",
+          "attribute": "年龄",
+          "value": "不大"
+        },
+        "context": [
+          "唐三人虽然不大"
+        ]
+      },
+      "right": {
+        "fact": {
+          "fact_quote": "再过几天，唐三就要六岁了",
+          "category": "age",
+          "attribute": "年龄",
+          "value": "六岁（即将）"
+        },
+        "context": [
+          "再过几天，唐三就要六岁了"
+        ]
+      }
+    },
+    "relation": "compatible",
+    "evidence_quotes": [
+      "唐三人虽然不大",
+      "再过几天，唐三就要六岁了"
+    ]
+  },
+  {
+    "task_id": "bb275f95d1ef66486ae0f336a88eff25937afeef3ba6c325267ea59618a9f95b",
+    "facts": {
+      "character": "唐三",
+      "left": {
+        "fact": {
+          "fact_quote": "他今年二十九岁",
+          "category": "age",
+          "attribute": "年龄",
+          "value": "二十九岁"
+        },
+        "context": [
+          "他今年二十九岁"
+        ]
+      },
+      "right": {
+        "fact": {
+          "fact_quote": "那是个只有五、六岁的孩子",
+          "category": "age",
+          "attribute": "年龄",
+          "value": "五、六岁"
+        },
+        "context": [
+          "那是个只有五、六岁的孩子，显然，他经常承受太阳的温暖，皮肤呈现出健康的小麦色，黑色短发看上去很利落，一身衣服虽然朴素，到也干净。"
+        ]
+      }
+    },
+    "relation": "uncertain",
+    "evidence_quotes": [
+      "他今年二十九岁",
+      "那是个只有五、六岁的孩子"
+    ]
+  },
+  {
+    "task_id": "13337b40f8167e96bcbd446c50f0806e53ccac0418b9486a32617cfb6b4c5dbf",
+    "facts": {
+      "character": "唐三",
+      "left": {
+        "fact": {
+          "fact_quote": "他今年二十九岁",
+          "category": "age",
+          "attribute": "年龄",
+          "value": "二十九岁"
+        },
+        "context": [
+          "他今年二十九岁"
+        ]
+      },
+      "right": {
+        "fact": {
+          "fact_quote": "再过几天，唐三就要六岁了",
+          "category": "age",
+          "attribute": "年龄",
+          "value": "六岁（即将）"
+        },
+        "context": [
+          "再过几天，唐三就要六岁了"
+        ]
+      }
+    },
+    "relation": "incompatible",
+    "evidence_quotes": [
+      "他今年二十九岁",
+      "再过几天，唐三就要六岁了"
+    ]
+  },
+  {
+    "task_id": "b34d9ab7e61f553d6703f027d6126138909dbfa44b544a5326ad16e572b094c2",
+    "facts": {
+      "character": "唐三",
+      "left": {
+        "fact": {
+          "fact_quote": "那是个只有五、六岁的孩子",
+          "category": "age",
+          "attribute": "年龄",
+          "value": "五、六岁"
+        },
+        "context": [
+          "那是个只有五、六岁的孩子，显然，他经常承受太阳的温暖，皮肤呈现出健康的小麦色，黑色短发看上去很利落，一身衣服虽然朴素，到也干净。"
+        ]
+      },
+      "right": {
+        "fact": {
+          "fact_quote": "再过几天，唐三就要六岁了",
+          "category": "age",
+          "attribute": "年龄",
+          "value": "六岁（即将）"
+        },
+        "context": [
+          "再过几天，唐三就要六岁了"
+        ]
+      }
+    },
+    "relation": "compatible",
+    "evidence_quotes": [
+      "那是个只有五、六岁的孩子",
+      "再过几天，唐三就要六岁了"
+    ]
+  },
+  {
+    "task_id": "b755855d5e8469255874a54f19b0617e478ff8a67ead78b6d5476304e665c312",
+    "facts": {
+      "character": "唐三",
+      "left": {
+        "fact": {
+          "fact_quote": "稚嫩的小手",
+          "category": "body",
+          "attribute": "双手",
+          "value": "稚嫩"
+        },
+        "context": [
+          "他那双稚嫩的小手看上去却并没有任何变化。甚至连一个水泡都没有起过。"
+        ]
+      },
+      "right": {
+        "fact": {
+          "fact_quote": "他那双稚嫩的小手看上去却并没有任何变化",
+          "category": "body",
+          "attribute": "双手",
+          "value": "稚嫩且无变化"
+        },
+        "context": [
+          "他那双稚嫩的小手看上去却并没有任何变化。甚至连一个水泡都没有起过。"
+        ]
+      }
+    },
+    "relation": "compatible",
+    "evidence_quotes": [
+      "他那双稚嫩的小手看上去却并没有任何变化。甚至连一个水泡都没有起过。"
+    ]
+  },
+  {
+    "task_id": "2215710e74abeedb10c9110db9b69461dba70cb5d444e0f6fe07a8c03c4a437f",
+    "facts": {
+      "character": "唐三",
+      "left": {
+        "fact": {
+          "fact_quote": "他的身体如此纤瘦",
+          "category": "body",
+          "attribute": "身体",
+          "value": "纤瘦"
+        },
+        "context": [
+          "他的身体如此纤瘦"
+        ]
+      },
+      "right": {
+        "fact": {
+          "fact_quote": "身体比以前健壮了一些",
+          "category": "body",
+          "attribute": "身体",
+          "value": "健壮"
+        },
+        "context": [
+          "身体比以前健壮了一些"
+        ]
+      }
+    },
+    "relation": "incompatible",
+    "evidence_quotes": [
+      "他的身体如此纤瘦",
+      "身体比以前健壮了一些"
+    ]
+  },
+  {
+    "task_id": "e43a12726dc352b84cca157a71dbd81e4003b4010b44aaa562eb9257cda53129",
+    "facts": {
+      "character": "唐三",
+      "left": {
+        "fact": {
+          "fact_quote": "他的身体如此纤瘦",
+          "category": "body",
+          "attribute": "身体",
+          "value": "纤瘦"
+        },
+        "context": [
+          "他的身体如此纤瘦"
+        ]
+      },
+      "right": {
+        "fact": {
+          "fact_quote": "唐三瘦弱的身体",
+          "category": "body",
+          "attribute": "身体",
+          "value": "瘦弱"
+        },
+        "context": [
+          "唐三瘦弱的身体"
+        ]
+      }
+    },
+    "relation": "equivalent",
+    "evidence_quotes": [
+      "他的身体如此纤瘦",
+      "唐三瘦弱的身体"
+    ]
+  },
+  {
+    "task_id": "ef9efb1997a5823cdd75c1e6f16055a8e0c4d05e039d0f08f61381ba427a51a8",
+    "facts": {
+      "character": "唐三",
+      "left": {
+        "fact": {
+          "fact_quote": "他的身体如此纤瘦",
+          "category": "body",
+          "attribute": "身体",
+          "value": "纤瘦"
+        },
+        "context": [
+          "他的身体如此纤瘦"
+        ]
+      },
+      "right": {
+        "fact": {
+          "fact_quote": "他的身体变得结实了几分",
+          "category": "body",
+          "attribute": "身体",
+          "value": "结实几分"
+        },
+        "context": [
+          "他的身体变得结实了几分"
+        ]
+      }
+    },
+    "relation": "compatible",
+    "evidence_quotes": [
+      "他的身体如此纤瘦",
+      "他的身体变得结实了几分"
+    ]
+  },
+  {
+    "task_id": "09303898b0be8136bb81b4a4b50ba8d43f6fcf481f8da5c87f0bd72f74609e78",
+    "facts": {
+      "character": "唐三",
+      "left": {
+        "fact": {
+          "fact_quote": "他的身体如此纤瘦",
+          "category": "body",
+          "attribute": "身体",
+          "value": "纤瘦"
+        },
+        "context": [
+          "他的身体如此纤瘦"
+        ]
+      },
+      "right": {
+        "fact": {
+          "fact_quote": "幼小的身体",
+          "category": "body",
+          "attribute": "身体",
+          "value": "幼小"
+        },
+        "context": [
+          "唐三幼小的身体和手中的铁锤并不成比例"
+        ]
+      }
+    },
+    "relation": "compatible",
+    "evidence_quotes": [
+      "他的身体如此纤瘦",
+      "唐三幼小的身体和手中的铁锤并不成比例"
+    ]
+  },
+  {
+    "task_id": "eb0c5d76fc8892b90ddc5bf42db17fadfef88b5feb31bfec8fb340407944f81a",
+    "facts": {
+      "character": "唐三",
+      "left": {
+        "fact": {
+          "fact_quote": "身体比以前健壮了一些",
+          "category": "body",
+          "attribute": "身体",
+          "value": "健壮"
+        },
+        "context": [
+          "身体比以前健壮了一些"
+        ]
+      },
+      "right": {
+        "fact": {
+          "fact_quote": "唐三瘦弱的身体",
+          "category": "body",
+          "attribute": "身体",
+          "value": "瘦弱"
+        },
+        "context": [
+          "唐三瘦弱的身体"
+        ]
+      }
+    },
+    "relation": "uncertain",
+    "evidence_quotes": [
+      "身体比以前健壮了一些",
+      "唐三瘦弱的身体"
+    ]
+  },
+  {
+    "task_id": "0e34de97fb348082b637c1134ffb13de98be5ece6bbbf8798777faee1b922589",
+    "facts": {
+      "character": "唐三",
+      "left": {
+        "fact": {
+          "fact_quote": "身体比以前健壮了一些",
+          "category": "body",
+          "attribute": "身体",
+          "value": "健壮"
+        },
+        "context": [
+          "身体比以前健壮了一些"
+        ]
+      },
+      "right": {
+        "fact": {
+          "fact_quote": "他的身体变得结实了几分",
+          "category": "body",
+          "attribute": "身体",
+          "value": "结实几分"
+        },
+        "context": [
+          "他的身体变得结实了几分"
+        ]
+      }
+    },
+    "relation": "compatible",
+    "evidence_quotes": [
+      "身体比以前健壮了一些",
+      "他的身体变得结实了几分"
+    ]
+  },
+  {
+    "task_id": "7779bf7f1566ed2117a903daf82436f292ba1f9d7b22ebba02d40b93df0f0b18",
+    "facts": {
+      "character": "唐三",
+      "left": {
+        "fact": {
+          "fact_quote": "身体比以前健壮了一些",
+          "category": "body",
+          "attribute": "身体",
+          "value": "健壮"
+        },
+        "context": [
+          "身体比以前健壮了一些"
+        ]
+      },
+      "right": {
+        "fact": {
+          "fact_quote": "幼小的身体",
+          "category": "body",
+          "attribute": "身体",
+          "value": "幼小"
+        },
+        "context": [
+          "唐三幼小的身体和手中的铁锤并不成比例"
+        ]
+      }
+    },
+    "relation": "compatible",
+    "evidence_quotes": [
+      "身体比以前健壮了一些",
+      "幼小的身体"
+    ]
+  },
+  {
+    "task_id": "88c9deb6f99360e1ff11c7af50d4253e091aa7f9266036cab42d698ed814fd22",
+    "facts": {
+      "character": "唐三",
+      "left": {
+        "fact": {
+          "fact_quote": "唐三瘦弱的身体",
+          "category": "body",
+          "attribute": "身体",
+          "value": "瘦弱"
+        },
+        "context": [
+          "唐三瘦弱的身体"
+        ]
+      },
+      "right": {
+        "fact": {
+          "fact_quote": "他的身体变得结实了几分",
+          "category": "body",
+          "attribute": "身体",
+          "value": "结实几分"
+        },
+        "context": [
+          "他的身体变得结实了几分"
+        ]
+      }
+    },
+    "relation": "incompatible",
+    "evidence_quotes": [
+      "唐三瘦弱的身体",
+      "他的身体变得结实了几分"
+    ]
+  },
+  {
+    "task_id": "6e7d89fa6a2bfbde4c1720f976937741518778ac80a10bf1f53ac181f73afa21",
+    "facts": {
+      "character": "唐三",
+      "left": {
+        "fact": {
+          "fact_quote": "唐三瘦弱的身体",
+          "category": "body",
+          "attribute": "身体",
+          "value": "瘦弱"
+        },
+        "context": [
+          "唐三瘦弱的身体"
+        ]
+      },
+      "right": {
+        "fact": {
+          "fact_quote": "幼小的身体",
+          "category": "body",
+          "attribute": "身体",
+          "value": "幼小"
+        },
+        "context": [
+          "唐三幼小的身体和手中的铁锤并不成比例"
+        ]
+      }
+    },
+    "relation": "compatible",
+    "evidence_quotes": [
+      "唐三瘦弱的身体",
+      "唐三幼小的身体和手中的铁锤并不成比例"
+    ]
+  },
+  {
+    "task_id": "3c27bce96dfd560622e7e293f1ec5f85b7396a2f1b78d9a514c2e5eaed893885",
+    "facts": {
+      "character": "唐三",
+      "left": {
+        "fact": {
+          "fact_quote": "他的身体变得结实了几分",
+          "category": "body",
+          "attribute": "身体",
+          "value": "结实几分"
+        },
+        "context": [
+          "他的身体变得结实了几分"
+        ]
+      },
+      "right": {
+        "fact": {
+          "fact_quote": "幼小的身体",
+          "category": "body",
+          "attribute": "身体",
+          "value": "幼小"
+        },
+        "context": [
+          "唐三幼小的身体和手中的铁锤并不成比例"
+        ]
+      }
+    },
+    "relation": "compatible",
+    "evidence_quotes": [
+      "他的身体变得结实了几分",
+      "唐三幼小的身体"
+    ]
+  },
+  {
+    "task_id": "0480fff0feaef25deb46c2799d7f6e3788b6609376e99ed2d41969c8ddf5cdf2",
+    "facts": {
+      "character": "唐三",
+      "left": {
+        "fact": {
+          "fact_quote": "高大昂扬的身躯",
+          "category": "body",
+          "attribute": "身材",
+          "value": "高大昂扬"
+        },
+        "context": [
+          "高大昂扬的身躯"
+        ]
+      },
+      "right": {
+        "fact": {
+          "fact_quote": "他的身材和同龄的孩子相比，要瘦小一些。",
+          "category": "body",
+          "attribute": "身材",
+          "value": "比同龄孩子瘦小"
+        },
+        "context": [
+          "他的身材和同龄的孩子相比，要瘦小一些。"
+        ]
+      }
+    },
+    "relation": "incompatible",
+    "evidence_quotes": [
+      "高大昂扬的身躯",
+      "他的身材和同龄的孩子相比，要瘦小一些。"
+    ]
+  },
+  {
+    "task_id": "676f487328de7fbc74cc60217715fd73fcb42f333c6f4f49835eb4a14e0b7648",
+    "facts": {
+      "character": "唐三",
+      "left": {
+        "fact": {
+          "fact_quote": "还没有铸造锤高吧",
+          "category": "body",
+          "attribute": "身高",
+          "value": "矮小"
+        },
+        "context": [
+          "还没有铸造锤高吧"
+        ]
+      },
+      "right": {
+        "fact": {
+          "fact_quote": "唐三的身高还够不到灶台",
+          "category": "body",
+          "attribute": "身高",
+          "value": "够不到灶台"
+        },
+        "context": [
+          "唐三的身高还够不到灶台"
+        ]
+      }
+    },
+    "relation": "compatible",
+    "evidence_quotes": [
+      "还没有铸造锤高吧",
+      "唐三的身高还够不到灶台"
+    ]
+  },
+  {
+    "task_id": "399cca19fcc113a70bb45f6e089b4c973402e2f07707c4695467876f3b9fdb75",
+    "facts": {
+      "character": "唐三",
+      "left": {
+        "fact": {
+          "fact_quote": "还没有铸造锤高吧",
+          "category": "body",
+          "attribute": "身高",
+          "value": "矮小"
+        },
+        "context": [
+          "还没有铸造锤高吧"
+        ]
+      },
+      "right": {
+        "fact": {
+          "fact_quote": "这种长柄铁锤甚至要比他的身高还高上几分",
+          "category": "body",
+          "attribute": "身高",
+          "value": "矮于长柄铁锤"
+        },
+        "context": [
+          "这种长柄铁锤甚至要比他的身高还高上几分"
+        ]
+      }
+    },
+    "relation": "equivalent",
+    "evidence_quotes": [
+      "还没有铸造锤高吧",
+      "这种长柄铁锤甚至要比他的身高还高上几分"
+    ]
+  },
+  {
+    "task_id": "ce96fca5ee6bf56f3f48a395a79911721280e3cb8a3b6a3567a9744042a9cf06",
+    "facts": {
+      "character": "唐三",
+      "left": {
+        "fact": {
+          "fact_quote": "唐三的身高还够不到灶台",
+          "category": "body",
+          "attribute": "身高",
+          "value": "够不到灶台"
+        },
+        "context": [
+          "唐三的身高还够不到灶台"
+        ]
+      },
+      "right": {
+        "fact": {
+          "fact_quote": "施展的人实在矮小了一些",
+          "category": "body",
+          "attribute": "身高",
+          "value": "矮小"
+        },
+        "context": [
+          "施展的人实在矮小了一些"
+        ]
+      }
+    },
+    "relation": "uncertain",
+    "evidence_quotes": [
+      "唐三的身高还够不到灶台",
+      "施展的人实在矮小了一些"
+    ]
+  },
+  {
+    "task_id": "8f609801c3df702ad3742b4d13c1a1ae11d35976e674c8c139fffb734d4af44c",
+    "facts": {
+      "character": "唐三",
+      "left": {
+        "fact": {
+          "fact_quote": "唐三的身高还够不到灶台",
+          "category": "body",
+          "attribute": "身高",
+          "value": "够不到灶台"
+        },
+        "context": [
+          "唐三的身高还够不到灶台"
+        ]
+      },
+      "right": {
+        "fact": {
+          "fact_quote": "这种长柄铁锤甚至要比他的身高还高上几分",
+          "category": "body",
+          "attribute": "身高",
+          "value": "矮于长柄铁锤"
+        },
+        "context": [
+          "这种长柄铁锤甚至要比他的身高还高上几分"
+        ]
+      }
+    },
+    "relation": "compatible",
+    "evidence_quotes": [
+      "唐三的身高还够不到灶台",
+      "这种长柄铁锤甚至要比他的身高还高上几分"
+    ]
+  },
+  {
+    "task_id": "032b45c8d393de032c618d260758e833a2db1c3763b740681a1d58bb5b11c319",
+    "facts": {
+      "character": "唐三",
+      "left": {
+        "fact": {
+          "fact_quote": "施展的人实在矮小了一些",
+          "category": "body",
+          "attribute": "身高",
+          "value": "矮小"
+        },
+        "context": [
+          "施展的人实在矮小了一些"
+        ]
+      },
+      "right": {
+        "fact": {
+          "fact_quote": "这种长柄铁锤甚至要比他的身高还高上几分",
+          "category": "body",
+          "attribute": "身高",
+          "value": "矮于长柄铁锤"
+        },
+        "context": [
+          "这种长柄铁锤甚至要比他的身高还高上几分"
+        ]
+      }
+    },
+    "relation": "compatible",
+    "evidence_quotes": [
+      "施展的人实在矮小了一些",
+      "这种长柄铁锤甚至要比他的身高还高上几分"
+    ]
+  },
+  {
+    "task_id": "c010c45f1a3415e325988b95d9038547f9080829ae97a13f1ce677d25fbdc6e1",
+    "facts": {
+      "character": "唐三",
+      "left": {
+        "fact": {
+          "fact_quote": "他那些有着大小补丁的衣服",
+          "category": "clothing",
+          "attribute": "衣服",
+          "value": "有大小补丁"
+        },
+        "context": [
+          "他那些有着大小补丁的衣服"
+        ]
+      },
+      "right": {
+        "fact": {
+          "fact_quote": "身上衣服全是补丁",
+          "category": "clothing",
+          "attribute": "衣服",
+          "value": "全是补丁"
+        },
+        "context": [
+          "身上衣服全是补丁"
+        ]
+      }
+    },
+    "relation": "compatible",
+    "evidence_quotes": [
+      "他那些有着大小补丁的衣服",
+      "身上衣服全是补丁"
+    ]
+  }
+]

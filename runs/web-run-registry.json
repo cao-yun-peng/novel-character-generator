@@ -1,0 +1,36 @@
+{
+  "schema_version": "web-run-registry-v1",
+  "description": "Manually curated read-only runs for the web UI. Paths are relative to the repository root. Artifact sha256 values are verified at load time; mismatch fails closed.",
+  "runs": [
+    {
+      "run_id": "douluo-20ch-dev13",
+      "display_name": "斗罗大陆·前20章(dev13 全链路,Snapshot dev29)",
+      "input_file": "tests/小说/斗罗大陆前20章.txt",
+      "document_hash": "8bcb7305a759571b1fec70813b0631f2c884eba79697c3259170a7635d639741",
+      "source_document_version_id": "source-8bcb7305a759571b",
+      "snapshot_namespace": "douluo-snapshot-dev29",
+      "artifacts": {
+        "registry": {
+          "path": "runs/douluo-20ch-e2e-dev13-20260831/identity-local-coreference-dev17/document-character-registry.json",
+          "sha256": "9ff571b51398b734427303bbaae2803409f6280ea8a2107a15759236543c1ee9"
+        },
+        "fact_groups": {
+          "path": "runs/douluo-20ch-e2e-dev13-20260831/post-link-fact-groups-dev18/document-character-fact-groups.json",
+          "sha256": "c5c42c1bdab21fd5b163e9418b927748ee90815b320158af04683dc423e3507f"
+        },
+        "appearance_states": {
+          "path": "runs/douluo-20ch-e2e-dev13-20260831/snapshots-dev29/document-character-appearance-states.json",
+          "sha256": "b7adaa13e57a5d0592584b7c12a3e3709c4a1ada410e70869534c7a8049740c7"
+        },
+        "label_projection": {
+          "path": "runs/douluo-20ch-e2e-dev13-20260831/label-review-projection-dev25/document-character-label-review-projection.json",
+          "sha256": "cabcb611f95144c5e29dfc272a3732fd1a6ad64d0d969dd3eba89f4bf89c459d"
+        },
+        "document_evidence": {
+          "path": "runs/douluo-20ch-e2e-dev13-20260831/document-character-evidence.json",
+          "sha256": "926e6221ca69ad5ae0843d90870129617df7597e47ed586d9d20035c22a3a439"
+        }
+      }
+    }
+  ]
+}
